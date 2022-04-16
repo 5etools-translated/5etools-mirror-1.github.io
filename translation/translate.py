@@ -293,7 +293,7 @@ def translate_file(language: str, fileName: str, writeJSON: bool, useDeepl: bool
 
 	if writeJSON:
 		with open(output_file, 'w', encoding='utf-8') as f:
-			json.dump(data, f, indent='\t')
+			json.dump(data, f, indent='\t', ensure_ascii=False)
 
 
 if __name__ == "__main__":
