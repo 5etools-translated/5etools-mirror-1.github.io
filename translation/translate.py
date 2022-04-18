@@ -6,6 +6,7 @@ import json
 import time
 from signal import signal, SIGINT
 import argparse
+import traceback
 
 from selenium import webdriver
 
@@ -48,6 +49,7 @@ class Translator:
 
 		self._useDeepl = useDeepl
 		self._glossary = {}
+		self._deeplGlossary = []
 		self._recheckWords = recheckWords
 
 		self.charCount = 0
@@ -124,22 +126,40 @@ class Translator:
 		self._inputField = self._webdriver.find_element(By.XPATH, '//textarea[@dl-test="translator-source-input"]')
 		self._outputField = self._webdriver.find_element(By.XPATH, '//*[@id="target-dummydiv"]')
 
-		# Load glossary data
-		if len(self._glossary) > 0:
-			# open glossary
-			print("Adding glossary data")
-			self._webdriver.find_element(By.CLASS_NAME, 'lmt__glossary_button_label').click()
+		# Init glossary
+		self._deeplGlossary = []
+
+	def _setupGlossary(self, text: str):
+		contains = {
+			word: translation
+			for word, translation in self._glossary.items()
+			if word.lower() in text.lower() and word not in self._deeplGlossary
+		}
+		if len(contains) == 0:
+			return
+
+		self._webdriver.find_element(By.CLASS_NAME, 'lmt__glossary_button_label').click()
+		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="glossary-close-editor"]')))
+
+		entries = self._webdriver.find_elements(By.XPATH, '//button[@dl-test="glossary-entry-delete-button"]')
+		# Delete some if needed
+		for i in range(0, -10+(len(entries)+len(contains))):
+			removed_word = entries[i].parent.find_element(By.XPATH, '//span[@dl-test="glossary-entry-source-text"]').text
+			print(f"remove '{removed_word}' from glossary to make room")
+			entries[i].click()
+			self._deeplGlossary.remove(removed_word)
+
+		for word, translation in contains.items():
+			print(f"adding {word}:{translation} to glossary")
+			self._webdriver.find_element(By.XPATH, '//input[@dl-test="glossary-newentry-source-input"]').send_keys(word)
+			self._webdriver.find_element(By.XPATH, '//input[@dl-test="glossary-newentry-target-input"]').send_keys(translation)
+			self._webdriver.find_element(By.XPATH, '//button[@dl-test="glossary-newentry-accept-button"]').click()
 			time.sleep(0.5)
+			self._deeplGlossary.append(word)
 
-			for word, translation in self._glossary.items():
-				self._webdriver.find_element(By.XPATH, '//input[@dl-test="glossary-newentry-source-input"]').send_keys(word)
-				self._webdriver.find_element(By.XPATH, '//input[@dl-test="glossary-newentry-target-input"]').send_keys(translation)
-				self._webdriver.find_element(By.XPATH, '//button[@dl-test="glossary-newentry-accept-button"]').click()
-				time.sleep(0.5)
+		# close
+		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="glossary-close-editor"]'))).click()
 
-			#self._webdriver.save_screenshot('screenshot_final.png')
-			# close
-			WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="glossary-close-editor"]'))).click()
 
 	def _needsRecheck(self, text: str) -> bool:
 		for word in self._recheckWords:
@@ -201,8 +221,11 @@ class Translator:
 		elif self._webdriver is None:
 			self.initWebdriver()
 
+
 		# Replace links with specific markers we can put in place after translating later
 		translate_text, links = self.links2tags(text)
+
+		self._setupGlossary(translate_text)
 
 		self._inputField.click()
 		self._inputField.clear()
@@ -292,6 +315,7 @@ def translate_file(language: str, fileName: str, writeJSON: bool, useDeepl: bool
 			translate_data(translator, data)
 		except Exception as e:
 			print(repr(e))
+			traceback.print_exc()
 			# Make sure we save what we got
 			translator.cacheSync()
 
