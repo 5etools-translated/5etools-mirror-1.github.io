@@ -76,7 +76,7 @@ class Translator:
 	def cacheSync(self):
 		if self._cacheDirty:
 			with open(f"{self._cacheFile}.swp", mode='w', encoding='utf-8') as f:
-				json.dump(self._cacheData, f, indent='\t')
+				json.dump(self._cacheData, f, indent='\t', ensure_ascii=False)
 			os.rename(f"{self._cacheFile}.swp", self._cacheFile)
 			self._cacheDirty = False
 
