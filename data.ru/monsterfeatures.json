@@ -3,159 +3,159 @@
 		{
 			"name": "Aggressive",
 			"example": "Orc",
-			"effect": "As a bonus action, the creature can move up to its speed toward a hostile creature it can see.",
+			"effect": "В качестве бонусного действия существо может двигаться со скоростью, равной его скорости, в сторону враждебного существа, которое оно может видеть.",
 			"dpr": "2"
 		},
 		{
 			"name": "Ambusher",
 			"example": "Doppelganger",
-			"effect": "The creature has advantage on attack rolls against any creature it has surprised.",
+			"effect": "Существо имеет преимущество при бросках атаки против любого существа, которое оно застало врасплох.",
 			"attackBonus": "1"
 		},
 		{
 			"name": "Angelic Weapons",
 			"example": "Deva",
-			"effect": "The creature's weapon attacks are magical. When the creature hits with any weapon, the weapon deals extra radiant damage. Input this extra damage per round.",
+			"effect": "Оружейные атаки этого существа являются магическими. Когда существо бьет любым оружием, оружие наносит дополнительный урон от излучения. Наносите этот дополнительный урон за раунд.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Avoidance",
 			"example": "Demilich",
-			"effect": "If the creature is subjected to an effect that allows it to make a saving throw to only take half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails.",
+			"effect": "Если существо подвергается эффекту, который позволяет ему сделать бросок спасброска, чтобы получить только половину урона, оно не получает никакого урона, если бросок спасброска удался, и только половину урона, если он провален.",
 			"ac": "1"
 		},
 		{
 			"name": "Blood Frenzy",
 			"example": "Sahuagin",
-			"effect": "The creature has advantage on melee attack rolls against any creature that doesn't have all its hit points.",
+			"effect": "Существо имеет преимущество при бросках атаки в ближнем бою против любого существа, у которого нет всех его хит-поинтов.",
 			"attackBonus": "4"
 		},
 		{
 			"name": "Constrict",
 			"example": "Giant Constrictor Snake",
-			"effect": "The creature has the ability to restrain and/or grapple a target as part of an attack.",
+			"effect": "Существо обладает способностью удерживать и/или захватывать цель как часть атаки.",
 			"ac": "1"
 		},
 		{
 			"name": "Damage Transfer",
 			"example": "Cloaker",
-			"effect": "While attached or grappling a creature, the creature takes only half damage dealt to it (rounded down), and the other creature takes the other half.",
+			"effect": "Когда существо привязано или схвачено, оно получает только половину нанесенного ему урона (с округлением вниз), а другое существо получает вторую половину.",
 			"hp": "hp",
 			"dpr": "hp * 0.33"
 		},
 		{
 			"name": "Enlarge",
 			"example": "Duergar",
-			"effect": "The creature magically increases in size, along with anything it is wearing or carrying. Input the extra damage inflicted per round whilst enlarged.",
+			"effect": "Существо магически увеличивается в размерах вместе со всем, что на нем надето или носится. Введите дополнительный урон, наносимый за раунд при увеличении.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Frightful Presence",
 			"example": "Ancient Gold Dragon",
-			"effect": "Each creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
+			"effect": "Каждое существо по выбору существа в радиусе действия должно сделать бросок на спасение по Мудрости или быть напуганным на 1 минуту.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Heated Body",
 			"example": "Azer",
-			"effect": "Touching or hitting the creature while within 5 ft. of it causes damage.",
+			"effect": "Прикосновение или удар существа в радиусе 5 футов от него наносит урон.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Horrifying Visage",
 			"example": "Banshee",
-			"effect": "Each non-undead creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
+			"effect": "Каждое неживое существо по выбору существа в радиусе действия должно сделать бросок на спасение по Мудрости или быть напуганным на 1 минуту.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Legendary Resistance",
 			"example": "Tarrasque",
-			"effect": "If the creature fails a saving throw, it can choose to succeed instead. Input the number of uses per day.",
+			"effect": "Если существо проваливает бросок спасения, оно может выбрать вместо него успех. Введите количество использований в день.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 10*trait : ((expectedCr >= 5 && expectedCr <= 10) ? 20*trait : ((expectedCr >= 11) ? 30*trait : 0)))",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Magic Resistance",
 			"example": "Balor",
-			"effect": "The creature has advantage on saving throws against spells and other magical effects.",
+			"effect": "Существо имеет преимущество при бросках спасения против заклинаний и других магических эффектов.",
 			"ac": "2"
 		},
 		{
 			"name": "Martial Advantage",
 			"example": "Hobgoblin",
-			"effect": "The creature can deal extra damage to a creature it hits if that creature is with in 5 ft. of an ally of the creature that isn't incapacitated. Input the extra damage inflicted per round.",
+			"effect": "Существо может нанести дополнительный урон существу, в которое оно попало, если это существо находится на расстоянии 5 футов от союзника существа, который не недееспособен. Нанесенный дополнительный урон вводится за раунд.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Nimble Escape",
 			"example": "Goblin",
-			"effect": "The creature can take the Disengage or Hide action as a bonus action on each of its turns.",
+			"effect": "Существо может совершить действие Disengage или Hide в качестве бонусного действия на каждом из своих ходов.",
 			"ac": "4",
 			"attackBonus": "4"
 		},
 		{
 			"name": "Pack Tactics",
 			"example": "Kobold",
-			"effect": "The creature has advantage on an attack roll against a creature if at least one of the creature's allies is within 5 feet of the creature and the ally isn't incapacitated.",
+			"effect": "Существо имеет преимущество при броске атаки против существа, если хотя бы один из союзников существа находится в пределах 5 футов от него и союзник не недееспособен.",
 			"attackBonus": "1"
 		},
 		{
 			"name": "Parry",
 			"example": "Hobgoblin warlord",
-			"effect": "The creature adds its proficiency bonus to its AC against one melee attack that would hit it as a reaction.",
+			"effect": "Существо добавляет свой бонус мастерства к своему AC против одной атаки ближнего боя, которая поразила бы его в качестве реакции.",
 			"ac": "1"
 		},
 		{
 			"name": "Possession",
 			"example": "Ghost",
-			"effect": "The creature can control another creature, during which time it cannot be targeted by nearly any effect.",
+			"effect": "Существо может управлять другим существом, в это время оно не может быть целью практически ни одного эффекта.",
 			"hp": "hp"
 		},
 		{
 			"name": "Regeneration",
 			"example": "Troll",
-			"effect": "At the beginning of the creature's turn, it regains hit points and cannot be killed until this effect is mitigated in some way, usually through acid or fire damage. Input how many hit points it regains at the beginning of its turn.",
+			"effect": "В начале своего хода существо восстанавливает хит-пойнты и не может быть убито, пока этот эффект не будет ослаблен каким-либо образом, обычно за счет повреждения кислотой или огнем. Введите, сколько хит-пойнтов оно восстанавливает в начале своего хода.",
 			"hp": "trait*3",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Relentless",
 			"example": "Boar",
-			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1.",
+			"effect": "Если существо должно быть уменьшено до 0 хит-поинтов, есть шанс, что оно может быть уменьшено только до 1.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{
 			"name": "Shadow Stealth",
 			"example": "Shadow Demon",
-			"effect": "While in dim light or darkness, the creature can take the Hide action as a bonus action.",
+			"effect": "Находясь в тусклом свете или темноте, существо может использовать действие \"Скрыть\" в качестве бонусного действия.",
 			"ac": "4"
 		},
 		{
 			"name": "Stench",
 			"example": "Troglodyte",
-			"effect": "Any creature other than the monster within 5 feet of it must make a saving throw or be poisoned.",
+			"effect": "Любое существо, кроме монстра, в радиусе 5 футов от него должно сделать бросок на спасение или быть отравленным.",
 			"ac": "1"
 		},
 		{
 			"name": "Superior Invisibility",
 			"example": "Pixie",
-			"effect": "The creature can turn invisible as an action or bonus action.",
+			"effect": "Существо может стать невидимым как действие или бонусное действие.",
 			"ac": "2"
 		},
 		{
 			"name": "Undead Fortitude",
 			"example": "Zombie",
-			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1. This feature is negated if the damage is from radiant nature.",
+			"effect": "Если существо уменьшится до 0 хит-поинтов, есть шанс, что оно уменьшится только до 1. Это свойство отрицается, если урон нанесен лучевой природой.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{
 			"name": "Web",
 			"example": "Giant Spider",
-			"effect": "Ranged Weapon Attack that restrains the target on a hit.",
+			"effect": "Атака дальнобойным оружием, при попадании сковывающая цель.",
 			"ac": "1"
 		}
 	]

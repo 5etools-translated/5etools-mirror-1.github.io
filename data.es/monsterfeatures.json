@@ -3,7 +3,7 @@
 		{
 			"name": "Aggressive",
 			"example": "Orc",
-			"effect": "Como acci\u00f3n de bonificaci\u00f3n, la criatura puede moverse hasta su velocidad hacia una criatura hostil que pueda ver.",
+			"effect": "Como acción de bonificación, la criatura puede moverse hasta su velocidad hacia una criatura hostil que pueda ver.",
 			"dpr": "2"
 		},
 		{
@@ -15,14 +15,14 @@
 		{
 			"name": "Angelic Weapons",
 			"example": "Deva",
-			"effect": "Los ataques con armas de la criatura son m\u00e1gicos. Cuando la criatura golpea con cualquier arma, el arma inflige un da\u00f1o radiante extra. Introduce este da\u00f1o extra por asalto.",
+			"effect": "Los ataques con armas de la criatura son mágicos. Cuando la criatura golpea con cualquier arma, el arma inflige un daño radiante extra. Introduce este daño extra por asalto.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Avoidance",
 			"example": "Demilich",
-			"effect": "Si la criatura est\u00e1 sometida a un efecto que le permite hacer una tirada de salvaci\u00f3n para recibir s\u00f3lo la mitad del da\u00f1o, no recibe ning\u00fan da\u00f1o si tiene \u00e9xito en la tirada de salvaci\u00f3n, y s\u00f3lo la mitad del da\u00f1o si falla.",
+			"effect": "Si la criatura está sometida a un efecto que le permite hacer una tirada de salvación para recibir sólo la mitad del daño, no recibe ningún daño si tiene éxito en la tirada de salvación, y sólo la mitad del daño si falla.",
 			"ac": "1"
 		},
 		{
@@ -40,116 +40,116 @@
 		{
 			"name": "Damage Transfer",
 			"example": "Cloaker",
-			"effect": "Mientras est\u00e1 atada o agarrada a una criatura, \u00e9sta s\u00f3lo recibe la mitad del da\u00f1o infligido (redondeado hacia abajo), y la otra criatura recibe la otra mitad.",
+			"effect": "Mientras está atada o agarrada a una criatura, ésta sólo recibe la mitad del daño infligido (redondeado hacia abajo), y la otra criatura recibe la otra mitad.",
 			"hp": "hp",
 			"dpr": "hp * 0.33"
 		},
 		{
 			"name": "Enlarge",
 			"example": "Duergar",
-			"effect": "La criatura aumenta de tama\u00f1o por arte de magia, junto con todo lo que lleva puesto o en brazos. Introduce el da\u00f1o extra infligido por asalto mientras est\u00e1 agrandada.",
+			"effect": "La criatura aumenta de tamaño por arte de magia, junto con todo lo que lleva puesto o en brazos. Introduce el daño extra infligido por asalto mientras está agrandada.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Frightful Presence",
 			"example": "Ancient Gold Dragon",
-			"effect": "Cada criatura a elecci\u00f3n de la criatura dentro del alcance debe hacer una tirada de salvaci\u00f3n de Sabidur\u00eda o quedar asustada durante 1 minuto.",
+			"effect": "Cada criatura a elección de la criatura dentro del alcance debe hacer una tirada de salvación de Sabiduría o quedar asustada durante 1 minuto.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Heated Body",
 			"example": "Azer",
-			"effect": "Tocar o golpear a la criatura mientras est\u00e1 a 5 pies de ella causa da\u00f1o.",
+			"effect": "Tocar o golpear a la criatura mientras está a 5 pies de ella causa daño.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Horrifying Visage",
 			"example": "Banshee",
-			"effect": "Cada criatura no muerta a elecci\u00f3n de la criatura dentro del alcance debe hacer una tirada de salvaci\u00f3n de Sabidur\u00eda o quedar asustada durante 1 minuto.",
+			"effect": "Cada criatura no muerta a elección de la criatura dentro del alcance debe hacer una tirada de salvación de Sabiduría o quedar asustada durante 1 minuto.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Legendary Resistance",
 			"example": "Tarrasque",
-			"effect": "Si la criatura falla una tirada de salvaci\u00f3n, puede elegir tener \u00e9xito en su lugar. Introduce el n\u00famero de usos por d\u00eda.",
+			"effect": "Si la criatura falla una tirada de salvación, puede elegir tener éxito en su lugar. Introduce el número de usos por día.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 10*trait : ((expectedCr >= 5 && expectedCr <= 10) ? 20*trait : ((expectedCr >= 11) ? 30*trait : 0)))",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Magic Resistance",
 			"example": "Balor",
-			"effect": "La criatura tiene ventaja en las tiradas de salvaci\u00f3n contra hechizos y otros efectos m\u00e1gicos.",
+			"effect": "La criatura tiene ventaja en las tiradas de salvación contra hechizos y otros efectos mágicos.",
 			"ac": "2"
 		},
 		{
 			"name": "Martial Advantage",
 			"example": "Hobgoblin",
-			"effect": "La criatura puede infligir da\u00f1o extra a una criatura a la que impacte si esa criatura est\u00e1 a menos de 1,5 m de un aliado de la criatura que no est\u00e9 incapacitado. Introduce el da\u00f1o extra infligido por asalto.",
+			"effect": "La criatura puede infligir daño extra a una criatura a la que impacte si esa criatura está a menos de 1,5 m de un aliado de la criatura que no esté incapacitado. Introduce el daño extra infligido por asalto.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Nimble Escape",
 			"example": "Goblin",
-			"effect": "La criatura puede realizar la acci\u00f3n de Desengancharse u Ocultarse como acci\u00f3n adicional en cada uno de sus turnos.",
+			"effect": "La criatura puede realizar la acción de Desengancharse u Ocultarse como acción adicional en cada uno de sus turnos.",
 			"ac": "4",
 			"attackBonus": "4"
 		},
 		{
 			"name": "Pack Tactics",
 			"example": "Kobold",
-			"effect": "La criatura tiene ventaja en una tirada de ataque contra una criatura si al menos uno de sus aliados est\u00e1 a menos de 5 pies de la criatura y el aliado no est\u00e1 incapacitado.",
+			"effect": "La criatura tiene ventaja en una tirada de ataque contra una criatura si al menos uno de sus aliados está a menos de 5 pies de la criatura y el aliado no está incapacitado.",
 			"attackBonus": "1"
 		},
 		{
 			"name": "Parry",
 			"example": "Hobgoblin warlord",
-			"effect": "La criatura a\u00f1ade su bonificaci\u00f3n de competencia a su CA contra un ataque cuerpo a cuerpo que la golpear\u00eda como reacci\u00f3n.",
+			"effect": "La criatura añade su bonificación de competencia a su CA contra un ataque cuerpo a cuerpo que la golpearía como reacción.",
 			"ac": "1"
 		},
 		{
 			"name": "Possession",
 			"example": "Ghost",
-			"effect": "La criatura puede controlar a otra criatura, durante la cual no puede ser objetivo de casi ning\u00fan efecto.",
+			"effect": "La criatura puede controlar a otra criatura, durante la cual no puede ser objetivo de casi ningún efecto.",
 			"hp": "hp"
 		},
 		{
 			"name": "Regeneration",
 			"example": "Troll",
-			"effect": "Al principio del turno de la criatura, \u00e9sta recupera puntos de vida y no puede ser asesinada hasta que este efecto sea mitigado de alguna manera, normalmente a trav\u00e9s de da\u00f1os por \u00e1cido o fuego. Introduce cu\u00e1ntos puntos de vida recupera al principio de su turno.",
+			"effect": "Al principio del turno de la criatura, ésta recupera puntos de vida y no puede ser asesinada hasta que este efecto sea mitigado de alguna manera, normalmente a través de daños por ácido o fuego. Introduce cuántos puntos de vida recupera al principio de su turno.",
 			"hp": "trait*3",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Relentless",
 			"example": "Boar",
-			"effect": "Si la criatura se redujera a 0 puntos de golpe, existe la posibilidad de que en su lugar s\u00f3lo se reduzca a 1.",
+			"effect": "Si la criatura se redujera a 0 puntos de golpe, existe la posibilidad de que en su lugar sólo se reduzca a 1.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{
 			"name": "Shadow Stealth",
 			"example": "Shadow Demon",
-			"effect": "Mientras est\u00e9 en la penumbra o en la oscuridad, la criatura puede realizar la acci\u00f3n de Esconderse como acci\u00f3n de bonificaci\u00f3n.",
+			"effect": "Mientras esté en la penumbra o en la oscuridad, la criatura puede realizar la acción de Esconderse como acción de bonificación.",
 			"ac": "4"
 		},
 		{
 			"name": "Stench",
 			"example": "Troglodyte",
-			"effect": "Cualquier criatura que no sea el monstruo en un radio de 1,5 metros debe hacer una tirada de salvaci\u00f3n o ser envenenada.",
+			"effect": "Cualquier criatura que no sea el monstruo en un radio de 1,5 metros debe hacer una tirada de salvación o ser envenenada.",
 			"ac": "1"
 		},
 		{
 			"name": "Superior Invisibility",
 			"example": "Pixie",
-			"effect": "La criatura puede volverse invisible como acci\u00f3n o acci\u00f3n extra.",
+			"effect": "La criatura puede volverse invisible como acción o acción extra.",
 			"ac": "2"
 		},
 		{
 			"name": "Undead Fortitude",
 			"example": "Zombie",
-			"effect": "Si la criatura quedar\u00eda reducida a 0 puntos de golpe, existe la posibilidad de que en su lugar s\u00f3lo se reduzca a 1. Esta caracter\u00edstica se anula si el da\u00f1o es de naturaleza radiante.",
+			"effect": "Si la criatura quedaría reducida a 0 puntos de golpe, existe la posibilidad de que en su lugar sólo se reduzca a 1. Esta característica se anula si el daño es de naturaleza radiante.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{

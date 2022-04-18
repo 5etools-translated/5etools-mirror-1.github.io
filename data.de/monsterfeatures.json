@@ -3,19 +3,19 @@
 		{
 			"name": "Aggressive",
 			"example": "Orc",
-			"effect": "Als Bonusaktion kann sich die Kreatur bis zur H\u00f6he ihrer Geschwindigkeit auf eine feindliche Kreatur zubewegen, die sie sehen kann.",
+			"effect": "Als Bonusaktion kann sich die Kreatur bis zur Höhe ihrer Geschwindigkeit auf eine feindliche Kreatur zubewegen, die sie sehen kann.",
 			"dpr": "2"
 		},
 		{
 			"name": "Ambusher",
 			"example": "Doppelganger",
-			"effect": "Die Kreatur hat Vorteil bei Angriffsw\u00fcrfen gegen jede Kreatur, die sie \u00fcberrascht hat.",
+			"effect": "Die Kreatur hat Vorteil bei Angriffswürfen gegen jede Kreatur, die sie überrascht hat.",
 			"attackBonus": "1"
 		},
 		{
 			"name": "Angelic Weapons",
 			"example": "Deva",
-			"effect": "Die Waffenangriffe der Kreatur sind magisch. Wenn die Kreatur mit einer beliebigen Waffe zuschl\u00e4gt, verursacht die Waffe zus\u00e4tzlichen Strahlenschaden. Gib diesen zus\u00e4tzlichen Schaden pro Runde ein.",
+			"effect": "Die Waffenangriffe der Kreatur sind magisch. Wenn die Kreatur mit einer beliebigen Waffe zuschlägt, verursacht die Waffe zusätzlichen Strahlenschaden. Gib diesen zusätzlichen Schaden pro Runde ein.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
@@ -28,116 +28,116 @@
 		{
 			"name": "Blood Frenzy",
 			"example": "Sahuagin",
-			"effect": "Die Kreatur hat Vorteil bei Nahkampfangriffsw\u00fcrfen gegen jede Kreatur, die nicht alle ihre Trefferpunkte hat.",
+			"effect": "Die Kreatur hat Vorteil bei Nahkampfangriffswürfen gegen jede Kreatur, die nicht alle ihre Trefferpunkte hat.",
 			"attackBonus": "4"
 		},
 		{
 			"name": "Constrict",
 			"example": "Giant Constrictor Snake",
-			"effect": "Die Kreatur hat die F\u00e4higkeit, ein Ziel als Teil eines Angriffs zu fesseln und/oder zu packen.",
+			"effect": "Die Kreatur hat die Fähigkeit, ein Ziel als Teil eines Angriffs zu fesseln und/oder zu packen.",
 			"ac": "1"
 		},
 		{
 			"name": "Damage Transfer",
 			"example": "Cloaker",
-			"effect": "Wenn eine Kreatur angeheftet oder gepackt ist, erleidet sie nur die H\u00e4lfte des ihr zugef\u00fcgten Schadens (abgerundet), die andere Kreatur erleidet die andere H\u00e4lfte.",
+			"effect": "Wenn eine Kreatur angeheftet oder gepackt ist, erleidet sie nur die Hälfte des ihr zugefügten Schadens (abgerundet), die andere Kreatur erleidet die andere Hälfte.",
 			"hp": "hp",
 			"dpr": "hp * 0.33"
 		},
 		{
 			"name": "Enlarge",
 			"example": "Duergar",
-			"effect": "Die Kreatur nimmt auf magische Weise an Gr\u00f6\u00dfe zu, zusammen mit allem, was sie tr\u00e4gt oder mit sich f\u00fchrt. Gib den zus\u00e4tzlichen Schaden ein, der ihr pro Runde zugef\u00fcgt wird, w\u00e4hrend sie vergr\u00f6\u00dfert ist.",
+			"effect": "Die Kreatur nimmt auf magische Weise an Größe zu, zusammen mit allem, was sie trägt oder mit sich führt. Gib den zusätzlichen Schaden ein, der ihr pro Runde zugefügt wird, während sie vergrößert ist.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Frightful Presence",
 			"example": "Ancient Gold Dragon",
-			"effect": "Jede Kreatur nach Wahl der Kreatur in Reichweite muss einen Weisheitswurf machen oder 1 Minute lang ver\u00e4ngstigt sein.",
+			"effect": "Jede Kreatur nach Wahl der Kreatur in Reichweite muss einen Weisheitswurf machen oder 1 Minute lang verängstigt sein.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Heated Body",
 			"example": "Azer",
-			"effect": "Eine Ber\u00fchrung oder ein Treffer in einem Umkreis von 5 Fu\u00df um die Kreatur verursacht Schaden.",
+			"effect": "Eine Berührung oder ein Treffer in einem Umkreis von 5 Fuß um die Kreatur verursacht Schaden.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Horrifying Visage",
 			"example": "Banshee",
-			"effect": "Jede nicht untote Kreatur nach Wahl der Kreatur in Reichweite muss einen Weisheitswurf machen oder 1 Minute lang ver\u00e4ngstigt werden.",
+			"effect": "Jede nicht untote Kreatur nach Wahl der Kreatur in Reichweite muss einen Weisheitswurf machen oder 1 Minute lang verängstigt werden.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Legendary Resistance",
 			"example": "Tarrasque",
-			"effect": "Wenn der Kreatur ein Rettungswurf misslingt, kann sie stattdessen einen erfolgreichen Wurf w\u00e4hlen. Gib die Anzahl der Anwendungen pro Tag ein.",
+			"effect": "Wenn der Kreatur ein Rettungswurf misslingt, kann sie stattdessen einen erfolgreichen Wurf wählen. Gib die Anzahl der Anwendungen pro Tag ein.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 10*trait : ((expectedCr >= 5 && expectedCr <= 10) ? 20*trait : ((expectedCr >= 11) ? 30*trait : 0)))",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Magic Resistance",
 			"example": "Balor",
-			"effect": "Die Kreatur hat einen Vorteil bei Rettungsw\u00fcrfen gegen Zauber und andere magische Effekte.",
+			"effect": "Die Kreatur hat einen Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte.",
 			"ac": "2"
 		},
 		{
 			"name": "Martial Advantage",
 			"example": "Hobgoblin",
-			"effect": "Die Kreatur kann einer Kreatur, die sie trifft, zus\u00e4tzlichen Schaden zuf\u00fcgen, wenn sich diese Kreatur in einem Umkreis von 5 Fu\u00df um einen Verb\u00fcndeten der Kreatur befindet, der nicht au\u00dfer Gefecht gesetzt ist. Gib den zus\u00e4tzlich zugef\u00fcgten Schaden pro Runde ein.",
+			"effect": "Die Kreatur kann einer Kreatur, die sie trifft, zusätzlichen Schaden zufügen, wenn sich diese Kreatur in einem Umkreis von 5 Fuß um einen Verbündeten der Kreatur befindet, der nicht außer Gefecht gesetzt ist. Gib den zusätzlich zugefügten Schaden pro Runde ein.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Nimble Escape",
 			"example": "Goblin",
-			"effect": "Die Kreatur kann in jeder ihrer Spielrunden die Aktion \"Abr\u00fccken\" oder \"Verstecken\" als Bonusaktion ausf\u00fchren.",
+			"effect": "Die Kreatur kann in jeder ihrer Spielrunden die Aktion \"Abrücken\" oder \"Verstecken\" als Bonusaktion ausführen.",
 			"ac": "4",
 			"attackBonus": "4"
 		},
 		{
 			"name": "Pack Tactics",
 			"example": "Kobold",
-			"effect": "Die Kreatur hat Vorteil bei einem Angriffswurf gegen eine Kreatur, wenn sich mindestens ein Verb\u00fcndeter der Kreatur im Umkreis von 5 Fu\u00df um die Kreatur befindet und der Verb\u00fcndete nicht au\u00dfer Gefecht gesetzt ist.",
+			"effect": "Die Kreatur hat Vorteil bei einem Angriffswurf gegen eine Kreatur, wenn sich mindestens ein Verbündeter der Kreatur im Umkreis von 5 Fuß um die Kreatur befindet und der Verbündete nicht außer Gefecht gesetzt ist.",
 			"attackBonus": "1"
 		},
 		{
 			"name": "Parry",
 			"example": "Hobgoblin warlord",
-			"effect": "Die Kreatur addiert ihren F\u00e4higkeits-Bonus zu ihrem AC gegen einen Nahkampfangriff, der sie als Reaktion treffen w\u00fcrde.",
+			"effect": "Die Kreatur addiert ihren Fähigkeits-Bonus zu ihrem AC gegen einen Nahkampfangriff, der sie als Reaktion treffen würde.",
 			"ac": "1"
 		},
 		{
 			"name": "Possession",
 			"example": "Ghost",
-			"effect": "Die Kreatur kann eine andere Kreatur kontrollieren, w\u00e4hrend dieser Zeit kann sie von fast keinem Effekt angegriffen werden.",
+			"effect": "Die Kreatur kann eine andere Kreatur kontrollieren, während dieser Zeit kann sie von fast keinem Effekt angegriffen werden.",
 			"hp": "hp"
 		},
 		{
 			"name": "Regeneration",
 			"example": "Troll",
-			"effect": "Zu Beginn des Zuges der Kreatur erh\u00e4lt sie ihre Trefferpunkte zur\u00fcck und kann nicht get\u00f6tet werden, bis dieser Effekt auf irgendeine Weise abgeschw\u00e4cht wird, normalerweise durch S\u00e4ure- oder Feuerschaden. Geben Sie ein, wie viele Trefferpunkte sie zu Beginn ihres Zuges wiedererlangt.",
+			"effect": "Zu Beginn des Zuges der Kreatur erhält sie ihre Trefferpunkte zurück und kann nicht getötet werden, bis dieser Effekt auf irgendeine Weise abgeschwächt wird, normalerweise durch Säure- oder Feuerschaden. Geben Sie ein, wie viele Trefferpunkte sie zu Beginn ihres Zuges wiedererlangt.",
 			"hp": "trait*3",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Relentless",
 			"example": "Boar",
-			"effect": "Wenn die Kreatur auf 0 Trefferpunkte reduziert werden w\u00fcrde, besteht die Chance, dass sie stattdessen nur auf 1 reduziert werden kann.",
+			"effect": "Wenn die Kreatur auf 0 Trefferpunkte reduziert werden würde, besteht die Chance, dass sie stattdessen nur auf 1 reduziert werden kann.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{
 			"name": "Shadow Stealth",
 			"example": "Shadow Demon",
-			"effect": "Bei schwachem Licht oder in der Dunkelheit kann die Kreatur die Aktion Verstecken als Bonusaktion ausf\u00fchren.",
+			"effect": "Bei schwachem Licht oder in der Dunkelheit kann die Kreatur die Aktion Verstecken als Bonusaktion ausführen.",
 			"ac": "4"
 		},
 		{
 			"name": "Stench",
 			"example": "Troglodyte",
-			"effect": "Jede Kreatur au\u00dfer dem Monster, die sich im Umkreis von 5 Fu\u00df befindet, muss einen Rettungswurf machen oder wird vergiftet.",
+			"effect": "Jede Kreatur außer dem Monster, die sich im Umkreis von 5 Fuß befindet, muss einen Rettungswurf machen oder wird vergiftet.",
 			"ac": "1"
 		},
 		{
@@ -149,7 +149,7 @@
 		{
 			"name": "Undead Fortitude",
 			"example": "Zombie",
-			"effect": "Wenn die Kreatur auf 0 Trefferpunkte reduziert werden w\u00fcrde, besteht die Chance, dass sie stattdessen nur auf 1 reduziert werden kann.",
+			"effect": "Wenn die Kreatur auf 0 Trefferpunkte reduziert werden würde, besteht die Chance, dass sie stattdessen nur auf 1 reduziert werden kann.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{

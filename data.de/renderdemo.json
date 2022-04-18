@@ -4,7 +4,7 @@
 			"type": "section",
 			"name": "Renderer Demo",
 			"entries": [
-				"(Dies ist eine Abschnitts\u00fcberschrift. Sie wird haupts\u00e4chlich in Abenteuern f\u00fcr die \u00dcberschrift ganzer Kapitel verwendet. Der Stammeintrag muss {@b not} den Typ \"Abschnitt\" haben, stattdessen wird in der Regel \"Eintr\u00e4ge\" verwendet. Der \"Abschnitt\" erzeugt eine {@bold level -1} \u00dcberschrift, sozusagen das \"Kellergeschoss\").",
+				"(Dies ist eine Abschnittsüberschrift. Sie wird hauptsächlich in Abenteuern für die Überschrift ganzer Kapitel verwendet. Der Stammeintrag muss {@b not} den Typ \"Abschnitt\" haben, stattdessen wird in der Regel \"Einträge\" verwendet. Der \"Abschnitt\" erzeugt eine {@bold level -1} Überschrift, sozusagen das \"Kellergeschoss\").",
 				{
 					"type": "quote",
 					"entries": [
@@ -13,66 +13,66 @@
 					"by": "Anon",
 					"from": "Archive of Lost Chats"
 				},
-				"Dies ist eine Demo des JSON-Formats, und wie es (normalerweise) gerendert wird. Sie k\u00f6nnen diesen Text bearbeiten, und er wird beim Aktualisieren zur\u00fcckgesetzt.",
+				"Dies ist eine Demo des JSON-Formats, und wie es (normalerweise) gerendert wird. Sie können diesen Text bearbeiten, und er wird beim Aktualisieren zurückgesetzt.",
 				"{@b If a JSON property is described as 'optional,' the property may be excluded, unless otherwise noted.}",
-				"Ziel dieses Systems ist es, das Erscheinungsbild der B\u00fccher nachzubilden und gleichzeitig eine bequeme und konsistente Datenstruktur zu erhalten, die wiederverwendet werden kann.",
-				"Das allgemeine Format besteht darin, mehrere Ebenen von Objekten des Typs \"Eintr\u00e4ge\" zu verschachteln, wobei je nach Bedarf andere spezifische Typen (die weiter unten ausf\u00fchrlich beschrieben werden) verwendet werden.",
-				"String-Eintr\u00e4ge k\u00f6nnen Tags enthalten, und diese funktionieren, wenn sie in den meisten anderen Strukturen verschachtelt sind. Diese werden schlie\u00dflich alle mit der Hover-to-View-Funktion funktionieren. Gro\u00df- und Kleinschreibung wird nicht beachtet, sofern nicht anders angegeben. Diese sind:",
+				"Ziel dieses Systems ist es, das Erscheinungsbild der Bücher nachzubilden und gleichzeitig eine bequeme und konsistente Datenstruktur zu erhalten, die wiederverwendet werden kann.",
+				"Das allgemeine Format besteht darin, mehrere Ebenen von Objekten des Typs \"Einträge\" zu verschachteln, wobei je nach Bedarf andere spezifische Typen (die weiter unten ausführlich beschrieben werden) verwendet werden.",
+				"String-Einträge können Tags enthalten, und diese funktionieren, wenn sie in den meisten anderen Strukturen verschachtelt sind. Diese werden schließlich alle mit der Hover-to-View-Funktion funktionieren. Groß- und Kleinschreibung wird nicht beachtet, sofern nicht anders angegeben. Diese sind:",
 				{
 					"type": "list",
 					"items": [
 						"Stil-Tags; {@bold some text to be bolded} (Alternative {@b shorthand}), {@italic some text to be italicised} (Alternative {@i shorthand}), {@underline some text to be underlined} (Alternative {@u shorthand}), {@strike some text to strike-through}, (Alternative {@s shorthand}), {@color color|e40707} Tags",
-						"Zus\u00e4tzlich {@note note tags}, verwendet f\u00fcr das Hinzuf\u00fcgen von Errata oder Twitter \"Designer-Fu\u00dfnoten\".",
-						"W\u00fcrfelrollen-Tags; {@dice 1d2-2+2d3+5} f\u00fcr normale W\u00fcrfelw\u00fcrfe ({@dice 1d6;2d6} f\u00fcr mehrere Optionen; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} f\u00fcr Eingabeaufforderungen), mit erweiterten {@dice 1d20+2|display text} und {@dice 1d20+2|display text|rolled by name} und einer speziellen \"Treffer\"-Version, die davon ausgeht, dass ein d20 gew\u00fcrfelt werden soll {@hit +7} (und bei Shift-Klick einen Vorteil und bei Alt-Klick einen Nachteil w\u00fcrfelt). Es gibt auch {@damage 1d12+3}, das bei Shift-Klick kritische Treffer und bei Alt-Klick den halben Schaden (abrundend) w\u00fcrfelt, und {@d20 -4}, das ebenfalls Vorteil/Nachteil w\u00fcrfelt, obwohl @hit-Tags bevorzugt werden, wo es angebracht ist. Zauber k\u00f6nnen mit Skalierungsw\u00fcrfeln versehen werden (Schaden von 2d6 oder 3d6 auf Stufe 1, zus\u00e4tzlich {@scaledice 2d6;3d6|2-9|1d6} f\u00fcr jede Stufe \u00fcber 2), wenn ein Zaubereffekt auf h\u00f6heren Stufen skaliert. {@ability str 20}, {@savingThrow str 5} und {@skillCheck animal_handling 5} werden als interne Abk\u00fcrzung verwendet, k\u00f6nnen aber auch anderswo n\u00fctzlich sein.",
-						"Zufalls-Tags; \u00e4hnlich wie W\u00fcrfelrollen-Tags, aber Ausgabe von Erfolg/Misserfolg. \u00c4hnliche Syntax wie bei W\u00fcrfel-Tags: {@chance 50}, {@chance 50|display text}, und {@chance 50|display text|rolled by name}.",
-						"Auflade-Tags; Ausgabe von Erfolg/Misserfolg beim Aufladen von F\u00e4higkeiten. {@recharge} in einem F\u00e4higkeitstitel f\u00fcr \"(Aufladen 6)\", {@recharge 4} f\u00fcr \"(Aufladen 4-6)\".",
-						"Skill- und Sense-Tags; {@skill Athletics}/{@skill Perception} (Gro\u00df- und Kleinschreibung wird ber\u00fccksichtigt) und {@sense Truesight}/{@sense darkvision} (Gro\u00df- und Kleinschreibung wird nicht ber\u00fccksichtigt), die Tooltips beim Hovern liefern.",
-						"Fu\u00dfnoten-Tags; erm\u00f6glicht die Einbettung einer Fu\u00dfnote {@footnote directly in text|This is primarily for homebrew purposes, as the official texts (so far) avoid using footnotes}, mit {@footnote optional reference information|This is the footnote. References are free text.|Footnote 1, page 20}.",
+						"Zusätzlich {@note note tags}, verwendet für das Hinzufügen von Errata oder Twitter \"Designer-Fußnoten\".",
+						"Würfelrollen-Tags; {@dice 1d2-2+2d3+5} für normale Würfelwürfe ({@dice 1d6;2d6} für mehrere Optionen; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} für Eingabeaufforderungen), mit erweiterten {@dice 1d20+2|display text} und {@dice 1d20+2|display text|rolled by name} und einer speziellen \"Treffer\"-Version, die davon ausgeht, dass ein d20 gewürfelt werden soll {@hit +7} (und bei Shift-Klick einen Vorteil und bei Alt-Klick einen Nachteil würfelt). Es gibt auch {@damage 1d12+3}, das bei Shift-Klick kritische Treffer und bei Alt-Klick den halben Schaden (abrundend) würfelt, und {@d20 -4}, das ebenfalls Vorteil/Nachteil würfelt, obwohl @hit-Tags bevorzugt werden, wo es angebracht ist. Zauber können mit Skalierungswürfeln versehen werden (Schaden von 2d6 oder 3d6 auf Stufe 1, zusätzlich {@scaledice 2d6;3d6|2-9|1d6} für jede Stufe über 2), wenn ein Zaubereffekt auf höheren Stufen skaliert. {@ability str 20}, {@savingThrow str 5} und {@skillCheck animal_handling 5} werden als interne Abkürzung verwendet, können aber auch anderswo nützlich sein.",
+						"Zufalls-Tags; ähnlich wie Würfelrollen-Tags, aber Ausgabe von Erfolg/Misserfolg. Ähnliche Syntax wie bei Würfel-Tags: {@chance 50}, {@chance 50|display text}, und {@chance 50|display text|rolled by name}.",
+						"Auflade-Tags; Ausgabe von Erfolg/Misserfolg beim Aufladen von Fähigkeiten. {@recharge} in einem Fähigkeitstitel für \"(Aufladen 6)\", {@recharge 4} für \"(Aufladen 4-6)\".",
+						"Skill- und Sense-Tags; {@skill Athletics}/{@skill Perception} (Groß- und Kleinschreibung wird berücksichtigt) und {@sense Truesight}/{@sense darkvision} (Groß- und Kleinschreibung wird nicht berücksichtigt), die Tooltips beim Hovern liefern.",
+						"Fußnoten-Tags; ermöglicht die Einbettung einer Fußnote {@footnote directly in text|This is primarily for homebrew purposes, as the official texts (so far) avoid using footnotes}, mit {@footnote optional reference information|This is the footnote. References are free text.|Footnote 1, page 20}.",
 						"Das Homebrew-Tag; kann {@homebrew changes|modifications}, {@homebrew additions} oder {@homebrew |removals} anzeigen.",
 						"Inhalts-Tags:",
 						{
 							"type": "list",
 							"items": [
-								"Zauberspr\u00fcche: {@spell acid splash} setzt standardm\u00e4\u00dfig PHB voraus, {@spell tiny servant|xge} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@spell tiny servant|xge|and optional link text added with another pipe}.",
-								"Gegenst\u00e4nde: {@item alchemy jug} nimmt standardm\u00e4\u00dfig DMG an, {@item longsword|phb} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@item longsword|phb|and optional link text added with another pipe}.",
-								"Kreaturen: {@creature goblin} nimmt standardm\u00e4\u00dfig MM an, {@creature cow|vgm} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@creature cow|vgm|and optional link text added with another pipe}.",
-								"Hintergr\u00fcnde: {@background Charlatan} setzt standardm\u00e4\u00dfig PHB voraus, {@background Anthropologist|toa} kann Quellen mit einer Pipe hinzugef\u00fcgt werden, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
-								"Rassen: {@race Human} setzt standardm\u00e4\u00dfig PHB voraus, {@race Aarakocra|eepc} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
-								"Aufforderungen und andere optionale Funktionen: {@optfeature Agonizing Blast} nimmt standardm\u00e4\u00dfig PHB an, {@optfeature Aspect of the Moon|xge} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@optfeature Aspect of the Moon|xge|and optional link text added with another pipe}.",
-								"Klassen: {@class fighter} setzt standardm\u00e4\u00dfig PHB voraus, {@class artificer|uaartificer} kann Quellen mit einer Pipe hinzuf\u00fcgen, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} mit einer weiteren Pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|2-0} mit einer weiteren Pipe (die erste Zahl ist der Stufenindex (0-19), die zweite Zahl ist der Merkmalsindex (0-n)).",
+								"Zaubersprüche: {@spell acid splash} setzt standardmäßig PHB voraus, {@spell tiny servant|xge} kann Quellen mit einer Pipe hinzugefügt haben, {@spell tiny servant|xge|and optional link text added with another pipe}.",
+								"Gegenstände: {@item alchemy jug} nimmt standardmäßig DMG an, {@item longsword|phb} kann Quellen mit einer Pipe hinzugefügt haben, {@item longsword|phb|and optional link text added with another pipe}.",
+								"Kreaturen: {@creature goblin} nimmt standardmäßig MM an, {@creature cow|vgm} kann Quellen mit einer Pipe hinzugefügt haben, {@creature cow|vgm|and optional link text added with another pipe}.",
+								"Hintergründe: {@background Charlatan} setzt standardmäßig PHB voraus, {@background Anthropologist|toa} kann Quellen mit einer Pipe hinzugefügt werden, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
+								"Rassen: {@race Human} setzt standardmäßig PHB voraus, {@race Aarakocra|eepc} kann Quellen mit einer Pipe hinzugefügt haben, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
+								"Aufforderungen und andere optionale Funktionen: {@optfeature Agonizing Blast} nimmt standardmäßig PHB an, {@optfeature Aspect of the Moon|xge} kann Quellen mit einer Pipe hinzugefügt haben, {@optfeature Aspect of the Moon|xge|and optional link text added with another pipe}.",
+								"Klassen: {@class fighter} setzt standardmäßig PHB voraus, {@class artificer|uaartificer} kann Quellen mit einer Pipe hinzufügen, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} mit einer weiteren Pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|2-0} mit einer weiteren Pipe (die erste Zahl ist der Stufenindex (0-19), die zweite Zahl ist der Merkmalsindex (0-n)).",
 								"Klassenmerkmale: {@classFeature Rage|Barbarian||1}, {@classFeature Infuse Item|Artificer|TCE|2}, {@classFeature Survival Instincts|Barbarian||2|UAClassFeatureVariants}, {@classFeature Rage|Barbarian||1||optional display text}. Als Klassenquelle wird das PHB angenommen. Es wird angenommen, dass die Quelle des Klassenmerkmals dieselbe ist wie die Quelle der Klasse.",
 								"Merkmale der Unterklasse: {@subclassFeature Path of the Berserker|Barbarian||Berserker||3}, {@subclassFeature Alchemist|Artificer|TCE|Alchemist|TCE|3}, {@subclassFeature Path of the Battlerager|Barbarian||Battlerager|SCAG|3}, {@subclassFeature Blessed Strikes|Cleric||Life||8|UAClassFeatureVariants}, {@subclassFeature Path of the Berserker|Barbarian||Berserker||3||optional display text}. Als Quelle der Klasse wird das PHB angenommen. Die Quelle der Unterklasse wird als PHB angenommen. Es wird angenommen, dass die Quelle der Unterklasseneigenschaft dieselbe ist wie die Quelle der Unterklasse.",
-								"Bedingungen: {@condition stunned} setzt standardm\u00e4\u00dfig PHB voraus, {@condition stunned|PHB} kann Quellen mit einer Pipe hinzuf\u00fcgen (nicht, dass das jemals n\u00fctzlich w\u00e4re), {@condition stunned|PHB|and optional link text added with another pipe}.",
-								"Krankheiten: {@disease cackle fever} nimmt standardm\u00e4\u00dfig DMG an, {@disease cackle fever} kann Quellen mit einer Pipe hinzugef\u00fcgt werden, {@disease cackle fever|DMG|and optional link text added with another pipe}.",
-								"Andere Belohnungen: {@reward Blessing of Health} geht standardm\u00e4\u00dfig von DMG aus, {@reward Blessing of Health} kann Quellen mit einer Pipe hinzugef\u00fcgt werden, {@reward Blessing of Health|DMG|and optional link text added with another pipe}.",
-								"Eigenschaften: {@feat Alert} setzt standardm\u00e4\u00dfig das PHB voraus, {@feat Elven Accuracy|xge} kann Quellen mit einer Pipe hinzugef\u00fcgt werden, {@feat Elven Accuracy|xge|and optional link text added with another pipe}.",
-								"Psioniker: {@psionic Mastery of Force} nimmt standardm\u00e4\u00dfig UATheMysticClass an, {@psionic Mastery of Force|UATheMysticClass} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@psionic Mastery of Force|UATheMysticClass|and optional link text added with another pipe}.",
-								"Objekte: {@object Ballista} geht standardm\u00e4\u00dfig von DMG aus, {@object Ballista} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@object Ballista|DMG|and optional link text added with another pipe}.",
-								"Vorz\u00fcge: {@boon Demonic Boon of Demogorgon} geht standardm\u00e4\u00dfig von MTF aus, {@boon Demonic Boon of Demogorgon} kann Quellen mit einer Pipe hinzugef\u00fcgt werden, {@boon Demonic Boon of Demogorgon|MTF|and optional link text added with another pipe}.",
-								"Kulte: {@cult Cult of Asmodeus} setzt standardm\u00e4\u00dfig MTF voraus, {@cult Cult of Asmodeus} kann Quellen mit einer Pipe hinzuf\u00fcgen, {@cult Cult of Asmodeus|MTF|and optional link text added with another pipe}.",
-								"Fallen: {@trap falling net} geht standardm\u00e4\u00dfig von DMG aus, {@trap falling portcullis|xge} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@trap falling portcullis|xge|and optional link text added with another pipe}.",
-								"Gefahren: {@hazard brown mold} geht standardm\u00e4\u00dfig von DMG aus, {@hazard russet mold|vgm} kann Quellen mit einer Pipe hinzugef\u00fcgt werden, {@hazard russet mold|vgm|and optional link text added with another pipe}.",
-								"Gottheiten: {@deity Gond} \u00fcbernimmt standardm\u00e4\u00dfig das PHB-Pantheon der Vergessenen Reiche, {@deity Gruumsh|nonhuman} kann mit einer Pipe Pantheons hinzugef\u00fcgt werden, {@deity Ioun|dawn war|dmg} kann mit einer anderen Pipe Quellen hinzugef\u00fcgt werden, {@deity Ioun|dawn war|dmg|and optional link text added with another pipe}.",
-								"Abweichende Regeln: {@variantrule Diagonals} geht standardm\u00e4\u00dfig von DMG aus, {@variantrule Multiclassing|phb} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@variantrule Multiclassing|phb|and optional link text added with another pipe}.",
-								"Fahrzeuge: {@vehicle Galley} geht standardm\u00e4\u00dfig von GoS aus, {@vehicle Galley|UAOfShipsAndSea} kann Quellen mit einem Rohr hinzuf\u00fcgen, {@vehicle Galley|GoS|and optional link text added with another pipe}.",
-								"Fahrzeug-Upgrades: {@vehupgrade Guardian Figurehead} geht standardm\u00e4\u00dfig von GoS aus, {@vehicle Gilded Death Armor|BGDIA} kann mit einem Rohr um Quellen erweitert werden, {@vehicle Guardian Figurehead|GoS|and optional link text added with another pipe}.",
-								"Tabellen: {@table 25 gp Art Objects} geht standardm\u00e4\u00dfig von DMG aus, {@table Adventuring Gear|phb} kann Quellen mit einer Pipe hinzugef\u00fcgt haben, {@table Adventuring Gear|phb|and optional link text added with another pipe}.",
-								"Aktionen: {@action Attack} setzt standardm\u00e4\u00dfig PHB voraus, {@action Tumble|DMG} kann Quellen mit einer Pipe hinzuf\u00fcgen, {@action Tumble|DMG|and optional link text added with another pipe}.",
-								"Sprachen: {@language common} nimmt standardm\u00e4\u00dfig PHB an, {@language Dambrathan|SCAG} kann Quellen mit einer Pipe hinzugef\u00fcgt werden, {@language Dambrathan|SCAG|and optional link text added with another pipe}.",
-								"Andere Optionen f\u00fcr die Charaktererstellung: {@charoption Anvilwrought} nimmt standardm\u00e4\u00dfig MOT an, {@charoption Hollow One|EGW} kann Quellen mit einer Pipe hinzugef\u00fcgt werden, {@charoption Hollow One|EGW|and optional link text added with another pipe}.",
-								"Rezepte: {@recipe Elven Bread} setzt standardm\u00e4\u00dfig das Heldenmahl voraus, {@recipe Elven Bread|HF} kann Quellen mit einer Pipe hinzugef\u00fcgt werden, {@recipe Elven Bread|HF|and optional link text added with another pipe}."
+								"Bedingungen: {@condition stunned} setzt standardmäßig PHB voraus, {@condition stunned|PHB} kann Quellen mit einer Pipe hinzufügen (nicht, dass das jemals nützlich wäre), {@condition stunned|PHB|and optional link text added with another pipe}.",
+								"Krankheiten: {@disease cackle fever} nimmt standardmäßig DMG an, {@disease cackle fever} kann Quellen mit einer Pipe hinzugefügt werden, {@disease cackle fever|DMG|and optional link text added with another pipe}.",
+								"Andere Belohnungen: {@reward Blessing of Health} geht standardmäßig von DMG aus, {@reward Blessing of Health} kann Quellen mit einer Pipe hinzugefügt werden, {@reward Blessing of Health|DMG|and optional link text added with another pipe}.",
+								"Eigenschaften: {@feat Alert} setzt standardmäßig das PHB voraus, {@feat Elven Accuracy|xge} kann Quellen mit einer Pipe hinzugefügt werden, {@feat Elven Accuracy|xge|and optional link text added with another pipe}.",
+								"Psioniker: {@psionic Mastery of Force} nimmt standardmäßig UATheMysticClass an, {@psionic Mastery of Force|UATheMysticClass} kann Quellen mit einer Pipe hinzugefügt haben, {@psionic Mastery of Force|UATheMysticClass|and optional link text added with another pipe}.",
+								"Objekte: {@object Ballista} geht standardmäßig von DMG aus, {@object Ballista} kann Quellen mit einer Pipe hinzugefügt haben, {@object Ballista|DMG|and optional link text added with another pipe}.",
+								"Vorzüge: {@boon Demonic Boon of Demogorgon} geht standardmäßig von MTF aus, {@boon Demonic Boon of Demogorgon} kann Quellen mit einer Pipe hinzugefügt werden, {@boon Demonic Boon of Demogorgon|MTF|and optional link text added with another pipe}.",
+								"Kulte: {@cult Cult of Asmodeus} setzt standardmäßig MTF voraus, {@cult Cult of Asmodeus} kann Quellen mit einer Pipe hinzufügen, {@cult Cult of Asmodeus|MTF|and optional link text added with another pipe}.",
+								"Fallen: {@trap falling net} geht standardmäßig von DMG aus, {@trap falling portcullis|xge} kann Quellen mit einer Pipe hinzugefügt haben, {@trap falling portcullis|xge|and optional link text added with another pipe}.",
+								"Gefahren: {@hazard brown mold} geht standardmäßig von DMG aus, {@hazard russet mold|vgm} kann Quellen mit einer Pipe hinzugefügt werden, {@hazard russet mold|vgm|and optional link text added with another pipe}.",
+								"Gottheiten: {@deity Gond} übernimmt standardmäßig das PHB-Pantheon der Vergessenen Reiche, {@deity Gruumsh|nonhuman} kann mit einer Pipe Pantheons hinzugefügt werden, {@deity Ioun|dawn war|dmg} kann mit einer anderen Pipe Quellen hinzugefügt werden, {@deity Ioun|dawn war|dmg|and optional link text added with another pipe}.",
+								"Abweichende Regeln: {@variantrule Diagonals} geht standardmäßig von DMG aus, {@variantrule Multiclassing|phb} kann Quellen mit einer Pipe hinzugefügt haben, {@variantrule Multiclassing|phb|and optional link text added with another pipe}.",
+								"Fahrzeuge: {@vehicle Galley} geht standardmäßig von GoS aus, {@vehicle Galley|UAOfShipsAndSea} kann Quellen mit einem Rohr hinzufügen, {@vehicle Galley|GoS|and optional link text added with another pipe}.",
+								"Fahrzeug-Upgrades: {@vehupgrade Guardian Figurehead} geht standardmäßig von GoS aus, {@vehicle Gilded Death Armor|BGDIA} kann mit einem Rohr um Quellen erweitert werden, {@vehicle Guardian Figurehead|GoS|and optional link text added with another pipe}.",
+								"Tabellen: {@table 25 gp Art Objects} geht standardmäßig von DMG aus, {@table Adventuring Gear|phb} kann Quellen mit einer Pipe hinzugefügt haben, {@table Adventuring Gear|phb|and optional link text added with another pipe}.",
+								"Aktionen: {@action Attack} setzt standardmäßig PHB voraus, {@action Tumble|DMG} kann Quellen mit einer Pipe hinzufügen, {@action Tumble|DMG|and optional link text added with another pipe}.",
+								"Sprachen: {@language common} nimmt standardmäßig PHB an, {@language Dambrathan|SCAG} kann Quellen mit einer Pipe hinzugefügt werden, {@language Dambrathan|SCAG|and optional link text added with another pipe}.",
+								"Andere Optionen für die Charaktererstellung: {@charoption Anvilwrought} nimmt standardmäßig MOT an, {@charoption Hollow One|EGW} kann Quellen mit einer Pipe hinzugefügt werden, {@charoption Hollow One|EGW|and optional link text added with another pipe}.",
+								"Rezepte: {@recipe Elven Bread} setzt standardmäßig das Heldenmahl voraus, {@recipe Elven Bread|HF} kann Quellen mit einer Pipe hinzugefügt werden, {@recipe Elven Bread|HF|and optional link text added with another pipe}."
 							]
 						},
 						{
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"Ein weiteres Tag, das gelegentlich in den Daten auftaucht, ist das @filter-Tag. Die Verwendung dieses Tags kann schwierig sein und setzt im Allgemeinen Kenntnisse \u00fcber die Interna der einzelnen Seiten voraus. Seien Sie also vorsichtig bei der Verwendung, und wenn Sie sich nicht sicher sind, scheuen Sie sich nicht, bei uns vorbeizukommen {@link Discord|https://discord.gg/5etools} und Fragen zu stellen.",
-								"Die Syntax f\u00fcr das @filter-Tag lautet wie folgt:",
-								"(geschweifte Klammer \u00f6ffnen)@filter display text|page_without_file_extension|filter_name_1=filter_1_wert_1;filter_1_wert_2;...filter_1_wert_n|...|filter_name_m=filter_m_wert_1;filter_m_wert_2;...(geschweifte Klammer schlie\u00dfen)",
-								"Der Zweck dieses Tags ist es, die angegebene Seite zu \u00f6ffnen, die mit den angegebenen Filteroptionen vorgefiltert ist. Es gibt eine wichtige Einschr\u00e4nkung, die die Verwendung f\u00fcr angehende JSONtranauten schwierig macht - die Filterwerte verwenden die {@i internal}-Version, wie sie in den Daten zu finden ist. So w\u00fcrde z.B. ..|school=D|... die Zauberspr\u00fcche nach den Zauberspr\u00fcchen der Wahrsagerschule filtern, da 'D' die Kennung f\u00fcr Wahrsager in den Daten ist. Der Versuch, z.B. ..|school=Divination|.. zu verwenden, wird nicht funktionieren.",
-								"Der \"Filtername_X\" entspricht hier dem w\u00f6rtlichen Namen des Filters, wie er in der Dropdown-Liste angezeigt wird.",
-								"Einige Beispiele f\u00fcr den Tag in Aktion:",
+								"Ein weiteres Tag, das gelegentlich in den Daten auftaucht, ist das @filter-Tag. Die Verwendung dieses Tags kann schwierig sein und setzt im Allgemeinen Kenntnisse über die Interna der einzelnen Seiten voraus. Seien Sie also vorsichtig bei der Verwendung, und wenn Sie sich nicht sicher sind, scheuen Sie sich nicht, bei uns vorbeizukommen {@link Discord|https://discord.gg/5etools} und Fragen zu stellen.",
+								"Die Syntax für das @filter-Tag lautet wie folgt:",
+								"(geschweifte Klammer öffnen)@filter display text|page_without_file_extension|filter_name_1=filter_1_wert_1;filter_1_wert_2;...filter_1_wert_n|...|filter_name_m=filter_m_wert_1;filter_m_wert_2;...(geschweifte Klammer schließen)",
+								"Der Zweck dieses Tags ist es, die angegebene Seite zu öffnen, die mit den angegebenen Filteroptionen vorgefiltert ist. Es gibt eine wichtige Einschränkung, die die Verwendung für angehende JSONtranauten schwierig macht - die Filterwerte verwenden die {@i internal}-Version, wie sie in den Daten zu finden ist. So würde z.B. ..|school=D|... die Zaubersprüche nach den Zaubersprüchen der Wahrsagerschule filtern, da 'D' die Kennung für Wahrsager in den Daten ist. Der Versuch, z.B. ..|school=Divination|.. zu verwenden, wird nicht funktionieren.",
+								"Der \"Filtername_X\" entspricht hier dem wörtlichen Namen des Filters, wie er in der Dropdown-Liste angezeigt wird.",
+								"Einige Beispiele für den Tag in Aktion:",
 								"{@filter Races that have a bonus to Intelligence|races|Ability Bonus (Including Subrace)=Intelligence +any}",
 								"{@filter Bard cantrips and first-level spells|spells|level=0;1|class=bard}",
 								"{@filter Beast with challenge rating 1 or lower|bestiary|challenge rating=[&0;&1]|type=beast}",
@@ -80,15 +80,15 @@
 								"{@filter Divination and Evocation spells|spells|school=D;V}",
 								"{@filter All uncommon magic items|items|source=|type=|rarity=uncommon|miscellaneous=Magic}",
 								"{@filter Simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
-								"Meta-Optionen k\u00f6nnen gesetzt werden; inline f\u00fcr einzelne Filter und mit 'fbmt' f\u00fcr die Filterung von Meta-Optionen {@filter filter meta example|spells|level=1;2=sor~sand~b1|fbmt=sor|fbmh=source}",
+								"Meta-Optionen können gesetzt werden; inline für einzelne Filter und mit 'fbmt' für die Filterung von Meta-Optionen {@filter filter meta example|spells|level=1;2=sor~sand~b1|fbmt=sor|fbmh=source}",
 								"Suche kann eingestellt werden; {@filter view dinosaurs|bestiary|search=dinosaur}",
-								"Eine exakte Anfangsentit\u00e4t; {@filter filter for beasts and show cat|bestiary|type=beast|hash=cat_mm}, wobei \"Raute\" der Teil nach einem \"#\" und vor einem Komma ist, der bei der Anzeige der Entit\u00e4t in der URL-Leiste erscheint.",
+								"Eine exakte Anfangsentität; {@filter filter for beasts and show cat|bestiary|type=beast|hash=cat_mm}, wobei \"Raute\" der Teil nach einem \"#\" und vor einem Komma ist, der bei der Anzeige der Entität in der URL-Leiste erscheint.",
 								{
 									"type": "entries",
 									"name": "Note",
 									"entries": [
-										"Das Setzen eines Filters auf \"keinen Wert\", d.h. ..|school=|... ist gleichbedeutend mit \"Filter l\u00f6schen\", d.h. er wird auf \"all-white\" zur\u00fcckgesetzt.",
-										"Die Seiten, die diese Funktion unterst\u00fctzen, sind diejenigen mit der Schaltfl\u00e4che \"Magnet\"; der Link, den diese Schaltfl\u00e4che exportiert, gibt Hinweise darauf, was man mit dem Filter-Tag machen kann."
+										"Das Setzen eines Filters auf \"keinen Wert\", d.h. ..|school=|... ist gleichbedeutend mit \"Filter löschen\", d.h. er wird auf \"all-white\" zurückgesetzt.",
+										"Die Seiten, die diese Funktion unterstützen, sind diejenigen mit der Schaltfläche \"Magnet\"; der Link, den diese Schaltfläche exportiert, gibt Hinweise darauf, was man mit dem Filter-Tag machen kann."
 									]
 								}
 							]
@@ -97,20 +97,20 @@
 							"type": "inset",
 							"name": "Area Tags and IDs",
 							"entries": [
-								"Abenteuer- und Buchinhalte unterst\u00fctzen \"area\"-Tags, die die Form `@area [area name]|[entry id]` oder `@area [area name]|[entry id]|[modifiers]` haben, wobei [modifiers] eine Kombination aus \"x\" f\u00fcr e[x]act text und \"u\" f\u00fcr [u]ppercase ist. Der Modifikator \"exact\" entfernt das f\u00fchrende \"area\", das dem Bereichsnamen vorangestellt wird, und der Modifikator \"uppercase\" macht den vorangestellten Text zu \"Area\".",
-								"Eine Vielzahl von Eintragsbl\u00f6cken kann \"id\"-Felder haben (und kann daher mit \"area\"-Tags verkn\u00fcpft werden), insbesondere \"entries\"-Typ, \"section\"-Typ und \"inset\"-Typ. Bei diesen IDs handelt es sich \u00fcblicherweise um dreistellige Hexadezimalzahlen (die insgesamt 4096 IDs pro Abenteuer/Buch zulassen), aber jede beliebige Zeichenkette, die innerhalb des Dokuments eindeutig ist, reicht aus."
+								"Abenteuer- und Buchinhalte unterstützen \"area\"-Tags, die die Form `@area [area name]|[entry id]` oder `@area [area name]|[entry id]|[modifiers]` haben, wobei [modifiers] eine Kombination aus \"x\" für e[x]act text und \"u\" für [u]ppercase ist. Der Modifikator \"exact\" entfernt das führende \"area\", das dem Bereichsnamen vorangestellt wird, und der Modifikator \"uppercase\" macht den vorangestellten Text zu \"Area\".",
+								"Eine Vielzahl von Eintragsblöcken kann \"id\"-Felder haben (und kann daher mit \"area\"-Tags verknüpft werden), insbesondere \"entries\"-Typ, \"section\"-Typ und \"inset\"-Typ. Bei diesen IDs handelt es sich üblicherweise um dreistellige Hexadezimalzahlen (die insgesamt 4096 IDs pro Abenteuer/Buch zulassen), aber jede beliebige Zeichenkette, die innerhalb des Dokuments eindeutig ist, reicht aus."
 							]
 						},
 						{
 							"type": "inset",
 							"name": "Book/Reference Tags",
 							"entries": [
-								"Die folgenden Tags k\u00f6nnen verwendet werden, um bestimmte Abschnitte von Abenteuern/B\u00fcchern zu verlinken. Beachten Sie, dass Kapitel und \u00dcberschriften von Null an indexiert werden.",
+								"Die folgenden Tags können verwendet werden, um bestimmte Abschnitte von Abenteuern/Büchern zu verlinken. Beachten Sie, dass Kapitel und Überschriften von Null an indexiert werden.",
 								{
 									"type": "list",
 									"items": [
-										"Abenteuer-Tags: Link zu einem Abenteuer {@adventure display text|CoS}; ein Kapitel in einem Abenteuer {@adventure display text|CoS|2}; eine \u00dcberschrift in einem Kapitel in einem Abenteuer {@adventure display text|CoS|2|Treasure}; oder die N-te \u00dcberschrift eines bestimmten Namens in einem Kapitel in einem Abenteuer {@adventure display text|CoS|2|Treasure|1}",
-										"Buch-Tags: Link zu einem Buch {@book display text|PHB}; ein Kapitel in einem Buch {@book display text|PHB|2}; eine \u00dcberschrift in einem Kapitel in einem Buch {@book display text|PHB|2|Age}; oder die N-te \u00dcberschrift eines bestimmten Namens in einem Kapitel in einem Buch {@book display text|PHB|2|Age|0} (obwohl dies im Allgemeinen unn\u00f6tig ist, da B\u00fccher im Gegensatz zu Abenteuern ihre \u00dcberschriften nicht sehr oft wiederholen."
+										"Abenteuer-Tags: Link zu einem Abenteuer {@adventure display text|CoS}; ein Kapitel in einem Abenteuer {@adventure display text|CoS|2}; eine Überschrift in einem Kapitel in einem Abenteuer {@adventure display text|CoS|2|Treasure}; oder die N-te Überschrift eines bestimmten Namens in einem Kapitel in einem Abenteuer {@adventure display text|CoS|2|Treasure|1}",
+										"Buch-Tags: Link zu einem Buch {@book display text|PHB}; ein Kapitel in einem Buch {@book display text|PHB|2}; eine Überschrift in einem Kapitel in einem Buch {@book display text|PHB|2|Age}; oder die N-te Überschrift eines bestimmten Namens in einem Kapitel in einem Buch {@book display text|PHB|2|Age|0} (obwohl dies im Allgemeinen unnötig ist, da Bücher im Gegensatz zu Abenteuern ihre Überschriften nicht sehr oft wiederholen."
 									]
 								}
 							]
@@ -134,12 +134,12 @@
 										"Bestiarium 'Angriff' Tags: {@atk m}, {@atk r}, {@atk m,r}, {@atk mw}, {@atk rw}, {@atk ms}, {@atk rs}; (nur Eigenbau) {@atk a}, {@atk aw}. Kommas trennen or'd-Angriffstypen; die allgemeine Form ist: '@atk &lt;m|r|a&gt;[&lt;w|s&gt;][,&lt;m|r|a&gt;[&lt;w|s&gt;][,...]]'"
 									]
 								},
-								"Homebrew Lade-Tags: {@loader Tome of Beasts|creature/Kobold Press; Tome of Beasts.json}. Bei der URL nach der Pipe wird davon ausgegangen, dass sie von der Wurzel des Homebrew-Repository stammt, es sei denn, sie beginnt mit einem \"...://\"-Pr\u00e4fix (d.h. jeder Link sollte funktionieren, aber es gibt eine Abk\u00fcrzung f\u00fcr Homebrew-Repository-Links)."
+								"Homebrew Lade-Tags: {@loader Tome of Beasts|creature/Kobold Press; Tome of Beasts.json}. Bei der URL nach der Pipe wird davon ausgegangen, dass sie von der Wurzel des Homebrew-Repository stammt, es sei denn, sie beginnt mit einem \"...://\"-Präfix (d.h. jeder Link sollte funktionieren, aber es gibt eine Abkürzung für Homebrew-Repository-Links)."
 							]
 						}
 					]
 				},
-				"Diese Tags k\u00f6nnen {@b {@i {@spell fireball|phb|nested}}} sein, obwohl es oft bessere M\u00f6glichkeiten gibt, die Kombination von fett und kursiv zu erhalten, f\u00fcr die Sie dies wahrscheinlich verwenden werden; erw\u00e4gen Sie die Verwendung eines der unten stehenden, richtig getippten Objekte (z. B. \u00dcberschriften der Ebene 2).",
+				"Diese Tags können {@b {@i {@spell fireball|phb|nested}}} sein, obwohl es oft bessere Möglichkeiten gibt, die Kombination von fett und kursiv zu erhalten, für die Sie dies wahrscheinlich verwenden werden; erwägen Sie die Verwendung eines der unten stehenden, richtig getippten Objekte (z. B. Überschriften der Ebene 2).",
 				{
 					"type": "entries",
 					"name": "A Subclass Name, For Example",
@@ -155,8 +155,8 @@
 									"type": "entries",
 									"name": "A Subclass Feature Inline Header",
 									"entries": [
-										"Diese fett-kursive Inline-\u00dcberschrift ist eine \"Level 2\"-\u00dcberschrift, bitte verwenden Sie diese im Gegensatz zu verschachtelten Tags. Sie k\u00f6nnen bei Bedarf eine Kette von leeren, namenlosen Eintragsobjekten erstellen, um zu dieser \u00dcberschriftsebene zu gelangen.",
-										"Beachten Sie, dass der Punkt im Inline-Namen automatisch hinzugef\u00fcgt wird."
+										"Diese fett-kursive Inline-Überschrift ist eine \"Level 2\"-Überschrift, bitte verwenden Sie diese im Gegensatz zu verschachtelten Tags. Sie können bei Bedarf eine Kette von leeren, namenlosen Eintragsobjekten erstellen, um zu dieser Überschriftsebene zu gelangen.",
+										"Beachten Sie, dass der Punkt im Inline-Namen automatisch hinzugefügt wird."
 									]
 								}
 							]
@@ -173,7 +173,7 @@
 									"type": "entries",
 									"name": "This is an example of a level 2 header with no real parents",
 									"entries": [
-										"Diese Technik kann manchmal n\u00fctzlich sein."
+										"Diese Technik kann manchmal nützlich sein."
 									]
 								}
 							]
@@ -183,7 +183,7 @@
 				{
 					"type": "inline",
 					"entries": [
-						"Eintr\u00e4ge k\u00f6nnen eingef\u00fcgt werden, z. B. f\u00fcr Links, die \u00fcber die oben aufgef\u00fchrten Tags hinausgehen,",
+						"Einträge können eingefügt werden, z. B. für Links, die über die oben aufgeführten Tags hinausgehen,",
 						{
 							"type": "link",
 							"href": {
@@ -192,13 +192,13 @@
 							},
 							"text": "such as a link to the homepage"
 						},
-						" aber Sie k\u00f6nnen sehen, warum die Tags vorzuziehen sind."
+						" aber Sie können sehen, warum die Tags vorzuziehen sind."
 					]
 				},
 				{
 					"type": "inlineBlock",
 					"entries": [
-						"\u00c4hnlich wie oben, aber mit Beibehaltung der Absatz-/etc-Tags um die untergeordneten Zeilen,",
+						"Ähnlich wie oben, aber mit Beibehaltung der Absatz-/etc-Tags um die untergeordneten Zeilen,",
 						{
 							"type": "link",
 							"href": {
@@ -207,7 +207,7 @@
 							},
 							"text": "such as a link to the homepage"
 						},
-						" k\u00f6nnen also leicht mit Textzeilen gemischt werden."
+						" können also leicht mit Textzeilen gemischt werden."
 					]
 				},
 				{
@@ -217,14 +217,14 @@
 							"type": "entries",
 							"name": "Option B",
 							"entries": [
-								"Manchmal n\u00fctzlich, z.B. f\u00fcr Fighting Styles einer Klasse. (Beachten Sie, dass diese Option an zweiter Stelle gerendert wird, obwohl sie in den Daten an erster Stelle aufgef\u00fchrt ist)."
+								"Manchmal nützlich, z.B. für Fighting Styles einer Klasse. (Beachten Sie, dass diese Option an zweiter Stelle gerendert wird, obwohl sie in den Daten an erster Stelle aufgeführt ist)."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Option A",
 							"entries": [
-								"Der Typ \"Optionen\" ist einer Liste von Eintr\u00e4gen sehr \u00e4hnlich, aber er sortiert die Liste der Optionen alphabetisch nach Namen, bevor er sie anzeigt."
+								"Der Typ \"Optionen\" ist einer Liste von Einträgen sehr ähnlich, aber er sortiert die Liste der Optionen alphabetisch nach Namen, bevor er sie anzeigt."
 							]
 						}
 					]
@@ -245,20 +245,20 @@
 					"rows": [
 						[
 							"Dies ist eine Tabellenzeile",
-							"Die Anzahl der Eintr\u00e4ge sollte nat\u00fcrlich mit der Anzahl der Spalten \u00fcbereinstimmen*.",
+							"Die Anzahl der Einträge sollte natürlich mit der Anzahl der Spalten übereinstimmen*.",
 							""
 						],
 						[
-							"Die Liste \"colStyles\" wird buchst\u00e4blich als CSS-Klassen verwendet",
-							"Spaltenbreiten k\u00f6nnen in Zw\u00f6lfteln angegeben werden, als \"col-[1 bis 12]\" (z.B. col-12 ist 100% breit, und col-6 ist 50% breit)",
+							"Die Liste \"colStyles\" wird buchstäblich als CSS-Klassen verwendet",
+							"Spaltenbreiten können in Zwölfteln angegeben werden, als \"col-[1 bis 12]\" (z.B. col-12 ist 100% breit, und col-6 ist 50% breit)",
 							"**"
 						],
 						[
 							{
 								"type": "list",
 								"items": [
-									"Auch verschachtelte Eintr\u00e4ge funktionieren (im Allgemeinen).",
-									"Warum man allerdings eine Liste in eine Tabelle einf\u00fcgt, ist mir schleierhaft."
+									"Auch verschachtelte Einträge funktionieren (im Allgemeinen).",
+									"Warum man allerdings eine Liste in eine Tabelle einfügt, ist mir schleierhaft."
 								]
 							},
 							"{@spell bless||Spells, on the other hand, make sense.}",
@@ -279,7 +279,7 @@
 						"** As an extension to Bootstrap's 1-to-12 system, 1/10th subdivisions can be used, e.g. col-1-5 for 1.5/12. The total column widths should still sum to exactly 12; enjoy doing the math."
 					]
 				},
-				"Rollbare Tabellen k\u00f6nnen wie folgt erstellt werden (beachten Sie das 'Pad' zur Formatierung einstelliger Zahlen, z. B. '01' f\u00fcr Tabellen mit mehr als 10 Zeilen):",
+				"Rollbare Tabellen können wie folgt erstellt werden (beachten Sie das 'Pad' zur Formatierung einstelliger Zahlen, z. B. '01' für Tabellen mit mehr als 10 Zeilen):",
 				{
 					"type": "table",
 					"caption": "Rollable Table Caption",
@@ -328,7 +328,7 @@
 									"exact": 5
 								}
 							},
-							"Artikel V: Die Artikel sind zur\u00fcck"
+							"Artikel V: Die Artikel sind zurück"
 						],
 						[
 							{
@@ -337,15 +337,15 @@
 									"exact": 6
 								}
 							},
-							"Artikel f\u00fcr gl\u00fcckliche Gewinner"
+							"Artikel für glückliche Gewinner"
 						]
 					]
 				},
 				{
 					"type": "list",
 					"items": [
-						"Eine grundlegende Liste von Gegenst\u00e4nden",
-						"Wie \u00fcblich, funktionieren verschachtelte Eintr\u00e4ge",
+						"Eine grundlegende Liste von Gegenständen",
+						"Wie üblich, funktionieren verschachtelte Einträge",
 						{
 							"type": "list",
 							"items": [
@@ -364,12 +364,12 @@
 						"Und wird versuchen, den Inhalt zwischen den einzelnen Spalten auszugleichen"
 					]
 				},
-				"Au\u00dferdem gibt es:",
+				"Außerdem gibt es:",
 				{
 					"type": "list",
 					"style": "list-no-bullets",
 					"items": [
-						"Eine Liste von Punkten ohne Aufz\u00e4hlungszeichen",
+						"Eine Liste von Punkten ohne Aufzählungszeichen",
 						"Sehr selten verwendet"
 					]
 				},
@@ -378,8 +378,8 @@
 					"style": "list-hang",
 					"name": "Hanging List",
 					"items": [
-						"Eine Liste mit h\u00e4ngenden Gegenst\u00e4nden",
-						"die einen \"Namen\"/Titel hat und unter diesem Titel h\u00e4ngt"
+						"Eine Liste mit hängenden Gegenständen",
+						"die einen \"Namen\"/Titel hat und unter diesem Titel hängt"
 					]
 				},
 				{
@@ -390,9 +390,9 @@
 						{
 							"type": "item",
 							"name": "An extension of the hanging list",
-							"entry": "die fettgedruckte Inline-Titel hat - beachten Sie, dass dies nur {@i one} Eintr\u00e4ge pro Element erlaubt (es hei\u00dft \"Eintrag\" und nicht \"Eintr\u00e4ge\")"
+							"entry": "die fettgedruckte Inline-Titel hat - beachten Sie, dass dies nur {@i one} Einträge pro Element erlaubt (es heißt \"Eintrag\" und nicht \"Einträge\")"
 						},
-						"Kann mit regul\u00e4ren Strings gemischt werden"
+						"Kann mit regulären Strings gemischt werden"
 					]
 				},
 				{
@@ -402,7 +402,7 @@
 						{
 							"type": "item",
 							"name": "A similar story here",
-							"entry": "Das \"Element\" ist ein Eintrag wie oben, aber es gibt keinen \"Namen\" f\u00fcr die gesamte Liste, so dass diese keinen linken Einschub hat. Ein langer Text, um zu zeigen, was passiert, wenn die Zeilen umbrochen werden, sollte fortgesetzt, aber nach der ersten Zeile einger\u00fcckt werden. Ein Beispiel daf\u00fcr in den Quellenb\u00fcchern findet sich in Metalic Dragon breath weapons im Monster Manual."
+							"entry": "Das \"Element\" ist ein Eintrag wie oben, aber es gibt keinen \"Namen\" für die gesamte Liste, so dass diese keinen linken Einschub hat. Ein langer Text, um zu zeigen, was passiert, wenn die Zeilen umbrochen werden, sollte fortgesetzt, aber nach der ersten Zeile eingerückt werden. Ein Beispiel dafür in den Quellenbüchern findet sich in Metalic Dragon breath weapons im Monster Manual."
 						},
 						{
 							"type": "itemSub",
@@ -413,10 +413,10 @@
 							"type": "item",
 							"name": "Multiple entry version",
 							"entries": [
-								"Dies war wiederum speziell f\u00fcr die komplexen Fallen von XGE erforderlich, die mehrere Textzeilen umfassen k\u00f6nnen; aufgrund ihrer gro\u00dfen und komplexen Natur muss man davon ausgehen.",
-								"Apropos Zeilen, diese ist sehr lang (\u00e4hnlich wie die obige, die extra mit \u00fcberfl\u00fcssigen Informationen vollgestopft wurde, um sie auf eine annehmbare Wortzahl zu bringen), um hoffentlich die Auswirkungen zu demonstrieren, die es hat, wenn man einen Absatz in die Spalte einf\u00fcgt, die nur die erste Zeile des Absatzes einr\u00fccken sollte. Wenn Sie dies auf einem obsz\u00f6n breiten Monitor sehen, wird dies nat\u00fcrlich wenig oder gar keine Auswirkungen haben. Wenn Sie also in der Zukunft leben, in der 10k-Monitore Standard sind, dann herzlichen Gl\u00fcckwunsch. Andernfalls sollten Sie, wie der Rest von uns, das gew\u00fcnschte Layout sehen.",
-								"F\u00fcr die meisten Verwendungszwecke ist die Version mit einem Eintrag vorzuziehen.",
-								"Und hier ist noch ein wirklich langer Satz am St\u00fcck, nur um die Auswirkungen von {@s drugs} exzessivem Text zu verdeutlichen, etwas, zu dem meine Englischlehrerin sicher etwas zu sagen h\u00e4tte; zum Gl\u00fcck ist sie kein gro\u00dfer Fan von Dungeons & Dragons oder sogar von Fantasy im Allgemeinen (es er\u00fcbrigt sich zu sagen, dass sie der \u00fcberwiegenden Mehrheit meiner literarischen Interessen als Teenager bestenfalls ambivalent gegen\u00fcberstand; zumindest so ambivalent, wie ein Englischlehrer einem Sch\u00fcler gegen\u00fcber sein kann, der gerne liest und dies aus eigenem Antrieb tut).",
+								"Dies war wiederum speziell für die komplexen Fallen von XGE erforderlich, die mehrere Textzeilen umfassen können; aufgrund ihrer großen und komplexen Natur muss man davon ausgehen.",
+								"Apropos Zeilen, diese ist sehr lang (ähnlich wie die obige, die extra mit überflüssigen Informationen vollgestopft wurde, um sie auf eine annehmbare Wortzahl zu bringen), um hoffentlich die Auswirkungen zu demonstrieren, die es hat, wenn man einen Absatz in die Spalte einfügt, die nur die erste Zeile des Absatzes einrücken sollte. Wenn Sie dies auf einem obszön breiten Monitor sehen, wird dies natürlich wenig oder gar keine Auswirkungen haben. Wenn Sie also in der Zukunft leben, in der 10k-Monitore Standard sind, dann herzlichen Glückwunsch. Andernfalls sollten Sie, wie der Rest von uns, das gewünschte Layout sehen.",
+								"Für die meisten Verwendungszwecke ist die Version mit einem Eintrag vorzuziehen.",
+								"Und hier ist noch ein wirklich langer Satz am Stück, nur um die Auswirkungen von {@s drugs} exzessivem Text zu verdeutlichen, etwas, zu dem meine Englischlehrerin sicher etwas zu sagen hätte; zum Glück ist sie kein großer Fan von Dungeons & Dragons oder sogar von Fantasy im Allgemeinen (es erübrigt sich zu sagen, dass sie der überwiegenden Mehrheit meiner literarischen Interessen als Teenager bestenfalls ambivalent gegenüberstand; zumindest so ambivalent, wie ein Englischlehrer einem Schüler gegenüber sein kann, der gerne liest und dies aus eigenem Antrieb tut).",
 								"Was in aller Welt habe ich gerade geschrieben?"
 							]
 						}
@@ -426,7 +426,7 @@
 					"type": "list",
 					"style": "list-decimal",
 					"items": [
-						"Eine mit Dezimalzahlen versehene Liste. Alternativ kann \"list-lower-roman\" f\u00fcr r\u00f6mische Kleinbuchstaben verwendet werden.",
+						"Eine mit Dezimalzahlen versehene Liste. Alternativ kann \"list-lower-roman\" für römische Kleinbuchstaben verwendet werden.",
 						"Bislang nur in Homebrew gesehen."
 					]
 				},
@@ -435,13 +435,13 @@
 					"type": "bonus",
 					"value": 3
 				},
-				"Den benutzen wir nicht oft. Es ist n\u00fctzlich, weil es uns erlaubt, die Daten als Zahl zu speichern und sie bei Bedarf mit einem Pluszeichen darzustellen, aber es wird meistens einfach vergessen.",
-				"\u00c4hnlich verh\u00e4lt es sich mit dem Typ \"bonusSpeed\" (diese \"Bonus\"-Ausf\u00fchrungen werden haupts\u00e4chlich in den Klassentabellen verwendet)",
+				"Den benutzen wir nicht oft. Es ist nützlich, weil es uns erlaubt, die Daten als Zahl zu speichern und sie bei Bedarf mit einem Pluszeichen darzustellen, aber es wird meistens einfach vergessen.",
+				"Ähnlich verhält es sich mit dem Typ \"bonusSpeed\" (diese \"Bonus\"-Ausführungen werden hauptsächlich in den Klassentabellen verwendet)",
 				{
 					"type": "bonusSpeed",
 					"value": 100
 				},
-				"Der Typ \"W\u00fcrfel\" wird nur selten verwendet, da es das K\u00fcrzel \"Tag\" gibt, aber er sieht wie folgt aus:",
+				"Der Typ \"Würfel\" wird nur selten verwendet, da es das Kürzel \"Tag\" gibt, aber er sieht wie folgt aus:",
 				{
 					"type": "dice",
 					"toRoll": [
@@ -472,7 +472,7 @@
 						"int"
 					]
 				},
-				"Dies gilt auch f\u00fcr den Typ \"abilityAttackMod\":",
+				"Dies gilt auch für den Typ \"abilityAttackMod\":",
 				{
 					"type": "abilityAttackMod",
 					"name": "Killing Things",
@@ -503,8 +503,8 @@
 					},
 					"text": "The full 'entry' schema."
 				},
-				"Interne Links sind ebenfalls m\u00f6glich, werden aber im Allgemeinen durch @tags abgedeckt. Schauen Sie sich das oben verlinkte Schema f\u00fcr die vollst\u00e4ndige Verwendung an; es ist umfangreich und furchtbar, daher werde ich hier nicht ins Detail gehen.",
-				"Beschw\u00f6rungen/andere optionale Merkmale:",
+				"Interne Links sind ebenfalls möglich, werden aber im Allgemeinen durch @tags abgedeckt. Schauen Sie sich das oben verlinkte Schema für die vollständige Verwendung an; es ist umfangreich und furchtbar, daher werde ich hier nicht ins Detail gehen.",
+				"Beschwörungen/andere optionale Merkmale:",
 				{
 					"type": "optfeature",
 					"name": "Optional Feature Name",
@@ -513,12 +513,12 @@
 						"Optionaler Merkmalstext."
 					]
 				},
-				"G\u00f6nner:",
+				"Gönner:",
 				{
 					"type": "inset",
 					"name": "Inset Title (Optional)",
 					"entries": [
-						"Dies ist ein Texteinschub/Einf\u00fcgung/Sidebar/etc."
+						"Dies ist ein Texteinschub/Einfügung/Sidebar/etc."
 					]
 				},
 				{
@@ -542,14 +542,14 @@
 									"type": "variantSub",
 									"name": "These can have child items",
 									"entries": [
-										"Und der Kopfzeilenstil f\u00fcr sie ist einzigartig, daher gibt es diese Funktion, um dem gerecht zu werden."
+										"Und der Kopfzeilenstil für sie ist einzigartig, daher gibt es diese Funktion, um dem gerecht zu werden."
 									]
 								}
 							]
 						}
 					]
 				},
-				"Bilder (\u00e4hnlich der Struktur des Typs \"Link\"):",
+				"Bilder (ähnlich der Struktur des Typs \"Link\"):",
 				{
 					"type": "image",
 					"href": {
@@ -558,7 +558,7 @@
 					},
 					"title": "Optional Title"
 				},
-				"Kreaturen; das Format basiert auf den Daten des Bestiariums, mit hinzugef\u00fcgtem Typ (beachten Sie, dass ein richtiger Eintrag im Bestiarium und ein Link zu diesem Eintrag die bevorzugte Methode zum Hinzuf\u00fcgen von Kreaturen ist; diese Funktion ist in erster Linie f\u00fcr selbst erstellte Daten gedacht):",
+				"Kreaturen; das Format basiert auf den Daten des Bestiariums, mit hinzugefügtem Typ (beachten Sie, dass ein richtiger Eintrag im Bestiarium und ein Link zu diesem Eintrag die bevorzugte Methode zum Hinzufügen von Kreaturen ist; diese Funktion ist in erster Linie für selbst erstellte Daten gedacht):",
 				{
 					"type": "dataCreature",
 					"dataCreature": {
@@ -611,13 +611,13 @@
 							{
 								"name": "Charge",
 								"entries": [
-									"Wenn sich das Einhorn mindestens 20 Fu\u00df gerade auf ein Ziel zubewegt und es dann im selben Zug mit einem Hornangriff trifft, erleidet das Ziel zus\u00e4tzlich 9 ({@dice 2d8}) Stichschaden. Handelt es sich bei dem Ziel um eine Kreatur, so muss diese einen {@dc 15} St\u00e4rkeschutzwurf bestehen oder sie wird am Boden liegend getroffen."
+									"Wenn sich das Einhorn mindestens 20 Fuß gerade auf ein Ziel zubewegt und es dann im selben Zug mit einem Hornangriff trifft, erleidet das Ziel zusätzlich 9 ({@dice 2d8}) Stichschaden. Handelt es sich bei dem Ziel um eine Kreatur, so muss diese einen {@dc 15} Stärkeschutzwurf bestehen oder sie wird am Boden liegend getroffen."
 								]
 							},
 							{
 								"name": "Magic Resistance",
 								"entries": [
-									"Das Einhorn hat einen Vorteil bei Rettungsw\u00fcrfen gegen Zauber und andere magische Effekte."
+									"Das Einhorn hat einen Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte."
 								]
 							},
 							{
@@ -631,31 +631,31 @@
 							{
 								"name": "Multiattack",
 								"entries": [
-									"Das Einhorn f\u00fchrt zwei Angriffe aus: einen mit seinen Hufen und einen mit seinem Horn."
+									"Das Einhorn führt zwei Angriffe aus: einen mit seinen Hufen und einen mit seinem Horn."
 								]
 							},
 							{
 								"name": "Hooves",
 								"entries": [
-									"{@atk mw} {@hit 7} bis zum Treffer, Reichweite 5 Fu\u00df, ein Ziel. Treffer: 11 ({@damage 2d6 + 4}) Schaden durch Wucht."
+									"{@atk mw} {@hit 7} bis zum Treffer, Reichweite 5 Fuß, ein Ziel. Treffer: 11 ({@damage 2d6 + 4}) Schaden durch Wucht."
 								]
 							},
 							{
 								"name": "Horn",
 								"entries": [
-									"{@atk mw} {@hit 7} bis zum Treffer, Reichweite 5 Fu\u00df, ein Ziel. Treffer: 8 ({@damage 1d8 + 4}) Stich-Schaden."
+									"{@atk mw} {@hit 7} bis zum Treffer, Reichweite 5 Fuß, ein Ziel. Treffer: 8 ({@damage 1d8 + 4}) Stich-Schaden."
 								]
 							},
 							{
 								"name": "Healing Touch (3/Day)",
 								"entries": [
-									"Das Einhorn ber\u00fchrt mit seinem Horn ein anderes Lebewesen. Das Ziel erh\u00e4lt auf magische Weise 11 ({@dice 2d8 + 2}) Trefferpunkte zur\u00fcck. Au\u00dferdem entfernt die Ber\u00fchrung alle Krankheiten und neutralisiert alle Gifte, die das Ziel befallen."
+									"Das Einhorn berührt mit seinem Horn ein anderes Lebewesen. Das Ziel erhält auf magische Weise 11 ({@dice 2d8 + 2}) Trefferpunkte zurück. Außerdem entfernt die Berührung alle Krankheiten und neutralisiert alle Gifte, die das Ziel befallen."
 								]
 							},
 							{
 								"name": "Teleport (1/Day)",
 								"entries": [
-									"Das Einhorn teleportiert sich selbst und bis zu drei willige Kreaturen, die es im Umkreis von 5 Fu\u00df sehen kann, zusammen mit jeglicher Ausr\u00fcstung, die sie tragen, auf magische Weise an einen Ort, der dem Einhorn vertraut ist, bis zu 1 Meile entfernt."
+									"Das Einhorn teleportiert sich selbst und bis zu drei willige Kreaturen, die es im Umkreis von 5 Fuß sehen kann, zusammen mit jeglicher Ausrüstung, die sie tragen, auf magische Weise an einen Ort, der dem Einhorn vertraut ist, bis zu 1 Meile entfernt."
 								]
 							}
 						],
@@ -667,19 +667,19 @@
 							{
 								"name": "Hooves",
 								"entries": [
-									"Das Einhorn f\u00fchrt einen Angriff mit seinen Hufen aus."
+									"Das Einhorn führt einen Angriff mit seinen Hufen aus."
 								]
 							},
 							{
 								"name": "Shimmering Shield (Costs 2 Actions)",
 								"entries": [
-									"Das Einhorn erschafft ein schimmerndes, magisches Feld um sich selbst oder eine andere Kreatur, die es im Umkreis von 60 Fu\u00df sieht. Das Ziel erh\u00e4lt bis zum Ende des n\u00e4chsten Zuges des Einhorns einen Bonus von +2 auf AC."
+									"Das Einhorn erschafft ein schimmerndes, magisches Feld um sich selbst oder eine andere Kreatur, die es im Umkreis von 60 Fuß sieht. Das Ziel erhält bis zum Ende des nächsten Zuges des Einhorns einen Bonus von +2 auf AC."
 								]
 							},
 							{
 								"name": "Heal Self (Costs 3 Actions)",
 								"entries": [
-									"Das Einhorn erh\u00e4lt auf magische Weise 11 ({@dice 2d8 + 2}) Trefferpunkte zur\u00fcck."
+									"Das Einhorn erhält auf magische Weise 11 ({@dice 2d8 + 2}) Trefferpunkte zurück."
 								]
 							}
 						],
@@ -688,7 +688,7 @@
 							{
 								"name": "Innate Spellcasting",
 								"headerEntries": [
-									"Die angeborene F\u00e4higkeit des Einhorns zur Zauberei ist Charisma (Zauberschutz {@dc 14}). Das Einhorn kann von Natur aus die folgenden Zauberspr\u00fcche wirken, die keine Komponenten ben\u00f6tigen:"
+									"Die angeborene Fähigkeit des Einhorns zur Zauberei ist Charisma (Zauberschutz {@dc 14}). Das Einhorn kann von Natur aus die folgenden Zaubersprüche wirken, die keine Komponenten benötigen:"
 								],
 								"will": [
 									"{@spell detect evil and good}",
@@ -722,7 +722,7 @@
 						]
 					}
 				},
-				"Zauberspr\u00fcche; wie oben:",
+				"Zaubersprüche; wie oben:",
 				{
 					"type": "dataSpell",
 					"dataSpell": {
@@ -798,15 +798,15 @@
 						},
 						"source": "PHB",
 						"entries": [
-							"Ein heller Streifen blinkt von Ihrem Zeigefinger zu einem von Ihnen gew\u00e4hlten Punkt in Reichweite und geht dann mit einem leisen Br\u00fcllen in eine Flammenexplosion \u00fcber. Jede Kreatur in einem Umkreis von 20 Fu\u00df um diesen Punkt muss einen Rettungswurf in Geschicklichkeit machen. Bei einem misslungenen Schutzwurf erleidet das Ziel {@dice 8d6} Feuerschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden.",
-							"Das Feuer breitet sich um Ecken aus. Es entz\u00fcndet brennbare Gegenst\u00e4nde in der Umgebung, die nicht getragen werden."
+							"Ein heller Streifen blinkt von Ihrem Zeigefinger zu einem von Ihnen gewählten Punkt in Reichweite und geht dann mit einem leisen Brüllen in eine Flammenexplosion über. Jede Kreatur in einem Umkreis von 20 Fuß um diesen Punkt muss einen Rettungswurf in Geschicklichkeit machen. Bei einem misslungenen Schutzwurf erleidet das Ziel {@dice 8d6} Feuerschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden.",
+							"Das Feuer breitet sich um Ecken aus. Es entzündet brennbare Gegenstände in der Umgebung, die nicht getragen werden."
 						],
 						"entriesHigherLevel": [
 							{
 								"type": "entries",
 								"name": "At Higher Levels",
 								"entries": [
-									"Wenn du diesen Zauber mit einem Zauberslot der Stufe 4 oder h\u00f6her wirkst, erh\u00f6ht sich der Schaden um {@scaledice 8d6|3-9|1d6} f\u00fcr jeden Slot der Stufe 3 oder h\u00f6her."
+									"Wenn du diesen Zauber mit einem Zauberslot der Stufe 4 oder höher wirkst, erhöht sich der Schaden um {@scaledice 8d6|3-9|1d6} für jeden Slot der Stufe 3 oder höher."
 								]
 							}
 						],

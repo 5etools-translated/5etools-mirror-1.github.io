@@ -31,6 +31,9 @@ supported_languages = {
 }
 
 todoCharCounter = 0
+maxRuntime = 0
+startTime = time.time()
+
 
 class Translator:
 	def __init__(self, language: str, cacheFile: str, useDeepl: bool, glossary_file: str, recheckWords: list):
@@ -187,6 +190,11 @@ class Translator:
 					self.cachedCharCount += len(text)
 					return translated_text
 
+
+		global maxRuntime, startTime
+		if maxRuntime != 0 and time.time() - startTime > maxRuntime:
+			raise Exception('maximum runtime exceeded - aborting')
+
 		self.charCount += len(text)
 		if not self._useDeepl:
 			return text
@@ -301,9 +309,11 @@ if __name__ == "__main__":
 	parser.add_argument('--language', type=str, required=True)
 	parser.add_argument('--translate', type=bool, default=False, action=argparse.BooleanOptionalAction)
 	parser.add_argument('--deepl', type=bool, default=False, action=argparse.BooleanOptionalAction)
+	parser.add_argument('--maxrun', type=int, default=False)
 	parser.add_argument('--recheck-words', type=str, default=[], nargs='*')
 	parser.add_argument('files', type=str, nargs='*')
 	args = parser.parse_args()
+	maxRuntime = args.maxrun
 
 	if args.language.lower() not in supported_languages:
 		raise Exception(f"Unsupported language {args.language} - Valid are: {supported_languages.keys()}")
