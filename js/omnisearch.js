@@ -1,6 +1,19 @@
 "use strict";
 
 class Omnisearch {
+	static _sortResults (a, b) {
+		const byScore = SortUtil.ascSort(b.score, a.score);
+		if (byScore) return byScore;
+
+		const byName = SortUtil.ascSortLower(a.doc.n || "", b.doc.n || "");
+		if (byName) return byName;
+
+		const isNonStandardA = SourceUtil.isNonstandardSource(a.doc.s);
+		const isNonStandardB = SourceUtil.isNonstandardSource(b.doc.s);
+
+		return Number(isNonStandardA) - Number(isNonStandardB);
+	}
+
 	static init () {
 		if (IS_VTT) return;
 
@@ -212,6 +225,8 @@ class Omnisearch {
 				return !ExcludeUtil.isExcluded(r.doc.u, bCat, r.doc.s, {isNoCount: true});
 			});
 		}
+
+		results.sort(this._sortResults);
 
 		return results;
 	}

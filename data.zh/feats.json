@@ -139,7 +139,7 @@
 					"type": "list",
 					"items": [
 						"你获得对{@skill Acrobatics}技能的熟练度。如果你已经精通该技能，你在使用该技能进行检查时将获得双倍的精通奖励。",
-						"作为奖励动作，你可以进行DC15的灵巧（（%0%））检查。如果你成功了，在当前回合结束前，困难的地形不会让你损失额外的移动。"
+						"作为奖励动作，你可以进行DC15的灵巧（（%0%））检查。如果你成功了，{@quickref difficult terrain||3}在当前回合结束前不会让你付出额外的行动。"
 					]
 				}
 			]
@@ -2341,6 +2341,17 @@
 					"spellcasting2020": true
 				}
 			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Eldritch Invocations",
+					"featureType": [
+						"EI"
+					],
+					"progression": {
+						"*": 1
+					}
+				}
+			],
 			"entries": [
 				"学习神秘学，你可以从术士类中选择一个（%0%）的选项。你对该召唤的施法能力是智力、智慧或魅力（在你选择此特技时选择）。如果该召唤有一个先决条件，那么只有当你是一个符合先决条件的术士时，你才能选择该召唤。",
 				"每当你获得一个等级时，你可以用术士类的另一个召唤来替换这个召唤。"
@@ -2719,7 +2730,7 @@
 				{
 					"type": "list",
 					"items": [
-						"你学会了{@spell misty step}的法术和一个你选择的{@filter 1st-level spell|spells|level=1|school=E;D}。一级法术必须来自占卜或魔法学校。你可以在不耗费法术槽的情况下施展这些法术中的每一个。一旦你以这种方式施放了这些法术中的任何一个，你就不能再以这种方式施放该法术，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽来施放这些法术。法术的施法能力是由这个特技增加的能力。"
+						"你学会了{@spell misty step}的法术和一个你选择的{@filter 1st-level spell|spells|level=1|school=E;D}。{@filter 1st-level spell|spells|level=1|school=E;D}必须是来自占卜或魔法学校。你可以在不耗费法术槽的情况下施展这些法术中的每一个。一旦你以这种方式施展了这些法术中的任何一个，你就不能再以这种方式施展该法术，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽来施放这些法术。法术的施法能力是由这个特技增加的能力。"
 					]
 				}
 			]
@@ -2762,7 +2773,7 @@
 				{
 					"type": "list",
 					"items": [
-						"你学会了{@spell misty step}的法术和一个你选择的{@filter 1st-level spell|spells|level=1|school=E;D}。一级法术必须来自占卜或魔法学校。你可以在不耗费法术槽的情况下施展这些法术中的每一个。一旦你以这种方式施放了这些法术中的任何一个，你就不能再以这种方式施放该法术，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽来施放这些法术。法术的施法能力是由这个特技增加的能力。"
+						"你学会了{@spell misty step}的法术和一个你选择的{@filter 1st-level spell|spells|level=1|school=E;D}。{@filter 1st-level spell|spells|level=1|school=E;D}必须是来自占卜或魔法学校。你可以在不耗费法术槽的情况下施展这些法术中的每一个。一旦你以这种方式施展了这些法术中的任何一个，你就不能再以这种方式施展该法术，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽来施放这些法术。法术的施法能力是由这个特技增加的能力。"
 					]
 				}
 			]
@@ -2778,6 +2789,17 @@
 							"weapon": "martial"
 						}
 					]
+				}
+			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Fighting Style",
+					"featureType": [
+						"FS:F"
+					],
+					"progression": {
+						"*": 1
+					}
 				}
 			],
 			"entries": [
@@ -4023,6 +4045,17 @@
 			"name": "Martial Adept",
 			"source": "PHB",
 			"page": 168,
+			"optionalfeatureProgression": [
+				{
+					"name": "Maneuvers",
+					"featureType": [
+						"MV:B"
+					],
+					"progression": {
+						"*": 2
+					}
+				}
+			],
 			"entries": [
 				"你的武术训练使你能够进行特殊的战斗演习。你获得以下好处。",
 				{
@@ -4174,6 +4207,17 @@
 					"spellcasting2020": true
 				}
 			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Metamagic",
+					"featureType": [
+						"MM"
+					],
+					"progression": {
+						"*": 2
+					}
+				}
+			],
 			"entries": [
 				"你已经学会了如何对你的法术施加你的意志来改变它们的运作方式。",
 				{
@@ -4215,7 +4259,7 @@
 					"type": "list",
 					"items": [
 						"你的速度增加10英尺。",
-						"当你使用{@action Dash}行动时，困难的地形不会使你在该回合中损失额外的行动。",
+						"当你使用{@action Dash}行动时，{@quickref difficult terrain||3}在该回合不会让你付出额外的行动。",
 						"当你对一个生物进行近战攻击时，无论你是否命中，你在回合的剩余时间内都不会激起该生物的机会攻击。"
 					]
 				}
@@ -5181,7 +5225,7 @@
 				{
 					"type": "list",
 					"items": [
-						"你学会了{@spell invisibility}的法术和一个你选择的一级法术。{@filter 1st-level spell|spells|level=1|school=I;N}必须是来自幻术或死灵学派的魔法。你可以在不耗费法术槽的情况下施展这些法术中的每一个。一旦你以这种方式施放了这些法术中的任何一个，你就不能再以这种方式施放该法术，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽来施放这些法术。法术的施法能力是由这个特技增加的能力。"
+						"你学会了{@spell invisibility}的法术和一个你选择的{@filter 1st-level spell|spells|level=1|school=I;N}。{@filter 1st-level spell|spells|level=1|school=I;N}必须是来自幻术或死灵学派的魔法。你可以在不耗费法术槽的情况下施展这些法术中的每一个。一旦你以这种方式施展了这些法术中的任何一个，你就不能再以这种方式施展该法术，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽来施放这些法术。法术的施法能力是由这个特技增加的能力。"
 					]
 				}
 			]
@@ -5224,7 +5268,7 @@
 				{
 					"type": "list",
 					"items": [
-						"你学会了{@spell darkness}的法术和一个你选择的{@filter 1st-level spell|spells|level=1|school=I;N}。一级法术必须是来自幻术或死灵学派的魔法。你可以在不耗费法术槽的情况下施展这些法术中的每一个。一旦你以这种方式施放了这些法术中的任何一个，你就不能再以这种方式施放该法术，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽来施放这些法术。法术的施法能力是由这个特技增加的能力。"
+						"你学会了{@spell darkness}的法术和一个你选择的{@filter 1st-level spell|spells|level=1|school=I;N}。{@filter 1st-level spell|spells|level=1|school=I;N}必须是来自幻术或死灵学派的魔法。你可以在不耗费法术槽的情况下施展这些法术中的每一个。一旦你以这种方式施展了这些法术中的任何一个，你就不能再以这种方式施展该法术，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽来施放这些法术。法术的施法能力是由这个特技增加的能力。"
 					]
 				}
 			]

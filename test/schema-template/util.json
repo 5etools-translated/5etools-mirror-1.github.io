@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.14",
+	"version": "1.11.16",
 
 	"definitions" : {
 		"metaBlock": {
@@ -1441,6 +1441,20 @@
 			}
 		},
 
+		"sensesArray": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"propertyNames": {
+					"enum": ["blindsight", "darkvision", "tremorsense", "truesight"]
+				},
+				"additionalProperties": {
+					"type": "integer"
+				},
+				"minProperties": 1
+			}
+		},
+
 		"consumesObject": {
 			"type": "object",
 			"properties": {
@@ -2371,6 +2385,66 @@
 			"items": {"$ref": "entry.json"}
 		},
 
+		"optionalfeatureProgression": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {"type": "string"},
+					"featureType": {
+						"type": "array",
+						"items": {"$ref": "#/definitions/dataOptionalfeatureType"},
+						"uniqueItems": true
+					},
+					"progression": {
+						"oneOf": [
+							{
+								"type": "array",
+								"description": "Features gained when the total count of features increases according to level.",
+								"items": {"type": "integer"},
+								"minItems": 20,
+								"maxItems": 20
+							},
+							{
+								"type": "object",
+								"description": "Features gained at the exact levels specified.",
+								"patternProperties": {
+									"^\\d+$": {"type": "integer"}
+								},
+								"additionalProperties": false
+							},
+							{
+								"type": "object",
+								"description": "Features gained at the level this feature is gained.",
+								"properties": {
+									"*": {"type": "integer"}
+								},
+								"additionalProperties": false
+							}
+						]
+					},
+					"required": {
+						"oneOf": [
+							{
+								"type": "array",
+								"items": {"type": "array", "items": {"type": "string"}},
+								"minItems": 20,
+								"maxItems": 20
+							},
+							{
+								"type": "object",
+								"patternProperties": {
+									"^\\d+$": {"type": "array", "items": {"type": "string"}}
+								},
+								"additionalProperties": false
+							}
+						]
+					}
+				},
+				"required": ["name", "featureType", "progression"]
+			}
+		},
+
 		"foundryDataObject": {
 			"type": "object"
 		},
@@ -2442,6 +2516,7 @@
 					"source": {"type": "string"},
 
 					"entries": {"type": "array", "items": {"$ref": "entry.json"}},
+					"isIgnored": {"const": true},
 
 					"data": {"$ref": "#/definitions/foundryDataObject"},
 					"actorDataMod": {"type": "object"},

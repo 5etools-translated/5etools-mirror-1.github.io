@@ -891,16 +891,15 @@ class IndexableFileQuickReference extends IndexableFile {
 	}
 
 	static _getDeepDoc (indexer, primary, nameMeta, alias) {
-		const hashParts = [
-			"bookref-quick",
-			primary.ix,
-			UrlUtil.encodeForHash(nameMeta.name.toLowerCase()),
-		];
-		if (nameMeta.ixBook) hashParts.push(nameMeta.ixBook);
+		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_QUICKREF]({
+			name: nameMeta.name,
+			ixChapter: primary.ix,
+			ixHeader: nameMeta.ixBook,
+		});
 
 		return {
 			n: alias || nameMeta.name,
-			u: hashParts.join(HASH_PART_SEP),
+			u: hash,
 			s: indexer.getMetaId("s", nameMeta.source),
 			p: nameMeta.page,
 		};

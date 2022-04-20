@@ -5218,7 +5218,7 @@
 					"type": "list",
 					"items": [
 						"Du hast eine Resistenz gegen Kälteschaden.",
-						"Sie ignorieren schwieriges Gelände, das durch Eis oder Schnee entstanden ist.",
+						"Sie ignorieren {@quickref difficult terrain||3}, die durch Eis oder Schnee entstehen.",
 						"Sie können Temperaturen von bis zu -50 Grad Fahrenheit ohne zusätzlichen Schutz ertragen. Wenn Sie schwere Kleidung tragen, können Sie Temperaturen von bis zu -100 Grad Fahrenheit ertragen."
 					]
 				}
@@ -5925,9 +5925,10 @@
 			"weaponCategory": "simple",
 			"dmg1": "1d6",
 			"dmgType": "B",
+			"bonusWeapon": "+1",
 			"weapon": true,
 			"entries": [
-				"Der Kopf dieses Streitkolbens spendet helles Licht in einem Umkreis von 1,5 Metern und schwaches Licht in einem weiteren Umkreis von 1,5 Metern. Wenn du diesen Streitkolben schwingst, kannst du sein Licht als Aktion löschen oder entzünden."
+				"Du erhältst einen Bonus von +1 auf Angriffs- und Schadenswürfe mit dieser magischen Waffe. Der Kopf dieses Streitkolbens spendet helles Licht in einem Radius von 5 Fuß und schwaches Licht für weitere 5 Fuß. Wenn du diesen Streitkolben schwingst, kannst du sein Licht als Aktion löschen oder entzünden."
 			]
 		},
 		{
@@ -7005,7 +7006,7 @@
 						"Du hast eine Resistenz gegen Giftschaden.",
 						"Deine Klettergeschwindigkeit entspricht deiner Gehgeschwindigkeit.",
 						"Sie können sich nach oben, unten und über vertikale Flächen sowie kopfüber an der Decke entlang bewegen und haben dabei die Hände frei.",
-						"Du kannst dich nicht in Spinnweben jeglicher Art verfangen und dich durch Spinnweben bewegen, als wären sie schwieriges Gelände.",
+						"Du kannst dich nicht in Spinnweben jeglicher Art verfangen und kannst dich durch Spinnweben bewegen, als ob sie es wären {@quickref difficult terrain||3}.",
 						"Du kannst eine Aktion nutzen, um den Zauber {@spell web} zu wirken (Schutzwurf DC 13). Das Netz, das durch den Zauber erzeugt wird, füllt die doppelte Fläche des normalen Bereichs aus. Einmal benutzt, kann diese Eigenschaft des Umhangs bis zur nächsten Morgendämmerung nicht erneut genutzt werden."
 					]
 				}
@@ -13592,6 +13593,8 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"wondrous": true,
+			"recharge": "dawn",
+			"charges": 3,
 			"entries": [
 				"Diese fein geschnitzte Pfeife bläst geruchlose Blasen anstelle von Rauch, wenn sie benutzt wird. Die Pfeife hat 3 Ladungen und erhält täglich im Morgengrauen alle verbrauchten Ladungen zurück. Während du die Pfeife hältst, kannst du Ladungen ausgeben, um Zugang zu den folgenden Eigenschaften zu erhalten:",
 				{
@@ -13602,6 +13605,10 @@
 						"Du kannst einen {@creature steam mephit} als Aktion (3 Aufladungen) beschwören. Der Mephit ist dir freundlich gesinnt, gehorcht deinen verbalen Befehlen und handelt in seinem eigenen Zug in der Reihenfolge der Initiative. Er verschwindet in einer harmlosen Dampfwolke nach 1 Minute oder wenn er seinen Zug mehr als 60 Fuß vom Rohr entfernt beendet."
 					]
 				}
+			],
+			"attachedSpells": [
+				"fog cloud",
+				"misty step"
 			]
 		},
 		{
@@ -13799,7 +13806,7 @@
 							"items": [
 								"Du bist resistent gegen Wucht-, Stich- und Hiebschaden durch nichtmagische Angriffe.",
 								"Sie können nicht {@condition grappled} oder {@condition restrained} sein.",
-								"Du kannst dich durch Kreaturen und feste Gegenstände bewegen, als wären sie schwieriges Gelände. Wenn du deinen Zug in einem festen Gegenstand beendest, erleidest du {@damage 1d10} Kraftschaden. Wenn der Effekt endet, während du dich in einem festen Gegenstand befindest, wirst du stattdessen in den nächstgelegenen unbesetzten Raum geschoben und erleidest {@damage 1d10} Kraftschaden für alle 5 Fuß, die du zurücklegst."
+								"Du kannst dich durch Kreaturen und feste Gegenstände bewegen, als ob sie {@quickref difficult terrain||3} wären. Wenn du deinen Zug in einem festen Gegenstand beendest, erleidest du {@damage 1d10} Kraftschaden. Endet der Effekt, während du dich in einem festen Gegenstand befindest, wirst du stattdessen in den nächstgelegenen unbesetzten Raum geschoben und erleidest {@damage 1d10} Kraftschaden pro 5 Fuß, die du zurücklegst."
 							]
 						}
 					]
@@ -13824,7 +13831,7 @@
 					"items": [
 						"Du bist resistent gegen Wucht-, Stich- und Hiebschaden durch nichtmagische Angriffe.",
 						"Sie können nicht {@condition grappled} oder {@condition restrained} sein.",
-						"Du kannst dich durch Kreaturen und feste Gegenstände bewegen, als wären sie schwieriges Gelände. Wenn du deinen Zug in einem festen Gegenstand beendest, erleidest du {@damage 1d10} Kraftschaden. Wenn der Effekt endet, während du dich in einem festen Gegenstand befindest, wirst du stattdessen in den nächstgelegenen unbesetzten Raum geschoben und erleidest {@damage 1d10} Kraftschaden für alle 5 Fuß, die du zurücklegst."
+						"Du kannst dich durch Kreaturen und feste Gegenstände bewegen, als ob sie {@quickref difficult terrain||3} wären. Wenn du deinen Zug in einem festen Gegenstand beendest, erleidest du {@damage 1d10} Kraftschaden. Endet der Effekt, während du dich in einem festen Gegenstand befindest, wirst du stattdessen in den nächstgelegenen unbesetzten Raum geschoben und erleidest {@damage 1d10} Kraftschaden pro 5 Fuß, die du zurücklegst."
 					]
 				},
 				{
@@ -16633,7 +16640,7 @@
 			"rarity": "very rare",
 			"wondrous": true,
 			"entries": [
-				"Diese eisernen Hufeisen werden in einem Satz von vier Stück geliefert. Während alle vier Hufeisen an den Hufen eines Pferdes oder einer ähnlichen Kreatur befestigt sind, erlauben sie der Kreatur, sich normal zu bewegen, während sie 4 Zoll über dem Boden schwebt. Dieser Effekt bedeutet, dass die Kreatur nicht feste oder instabile Oberflächen wie Wasser oder Lava überqueren oder auf ihnen stehen kann. Die Kreatur hinterlässt keine Spuren und ignoriert schwieriges Terrain. Außerdem kann sich die Kreatur bis zu 12 Stunden am Tag mit normaler Geschwindigkeit bewegen, ohne {@condition exhaustion} unter einem Gewaltmarsch zu leiden."
+				"Diese Eisenhufeisen werden in einem Satz von vier Stück geliefert. Wenn alle vier Hufeisen an den Hufen eines Pferdes oder einer ähnlichen Kreatur befestigt sind, erlauben sie der Kreatur, sich normal zu bewegen, während sie 4 Zoll über dem Boden schwebt. Dieser Effekt bedeutet, dass die Kreatur über nicht feste oder instabile Oberflächen, wie z.B. Wasser oder Lava, gehen oder stehen kann. Die Kreatur hinterlässt keine Spuren und ignoriert {@quickref difficult terrain||3}. Darüber hinaus kann sich die Kreatur bis zu 12 Stunden am Tag mit normaler Geschwindigkeit bewegen, ohne {@condition exhaustion} durch einen Gewaltmarsch zu erleiden."
 			],
 			"lootTables": [
 				"Magic Item Table D"
@@ -21247,7 +21254,7 @@
 			"rarity": "common",
 			"wondrous": true,
 			"entries": [
-				"Wenn du eine Aktion verwendest, um den Rand dieser Medaille nachzuzeichnen, kostet dich schwieriges Gelände 1 Stunde lang keine zusätzliche Bewegung. Wenn diese Eigenschaft einmal verwendet wurde, kann sie nicht noch einmal verwendet werden, und die Medaille wird nicht mehr magisch."
+				"Wenn du eine Aktion verwendest, um den Rand dieser Medaille zu zeichnen, kostet dich {@quickref difficult terrain||3} 1 Stunde lang keine zusätzliche Bewegung. Sobald diese Eigenschaft genutzt wurde, kann sie nicht mehr verwendet werden und die Medaille wird nicht mehr magisch."
 			]
 		},
 		{
@@ -26908,13 +26915,13 @@
 			"entries": [
 				"Wenn du diesen Ring trägst, hast du einen Vorteil bei Angriffswürfen gegen Elementare aus der Dimension Erde und sie haben einen Nachteil bei Angriffswürfen gegen dich. Außerdem hast du Zugang zu Eigenschaften, die auf der Elementarebene der Erde basieren.",
 				"Der Ring hat 5 Ladungen. {@dice 1d4 + 1} verbrauchte Ladungen werden täglich im Morgengrauen wiederhergestellt. Zauber, die mit dem Ring gewirkt werden, haben einen Schutz-DC von 17.",
-				"Du kannst 2 Ladungen des Rings aufwenden, um {@spell dominate monster} auf {@creature earth elemental} zu zaubern. Außerdem kannst du dich in schwierigem Gelände, das aus Geröll, Felsen oder Erde besteht, wie in normalem Gelände bewegen. Du kannst auch Terranisch sprechen und verstehen.",
+				"Du kannst 2 Ladungen des Rings aufwenden, um {@spell dominate monster} auf ein {@creature earth elemental} zu wirken. Außerdem kannst du dich in {@quickref difficult terrain||3} bewegen, die aus Schutt, Felsen oder Erde bestehen, als wäre es normales Gelände. Du kannst auch Terranisch sprechen und verstehen.",
 				"Wenn du dabei hilfst, einen {@creature earth elemental} zu töten, während du auf den Ring eingestimmt bist, erhältst du Zugang zu den folgenden zusätzlichen Eigenschaften:",
 				{
 					"type": "list",
 					"items": [
 						"Du hast eine Resistenz gegen Säureschaden.",
-						"Du kannst dich durch feste Erde oder Felsen bewegen, als ob es sich dabei um schwieriges Gelände handeln würde. Wenn du deinen Zug dort beendest, wirst du auf den nächstgelegenen unbesetzten Platz geschoben, den du zuletzt besetzt hast.",
+						"Du kannst dich durch feste Erde oder Felsen bewegen, als ob diese Gebiete {@quickref difficult terrain||3} wären. Wenn du deinen Zug dort beendest, wirst du auf den nächstgelegenen unbesetzten Platz geschoben, den du zuletzt besetzt hast.",
 						"Du kannst die folgenden Zauber mit dem Ring wirken, indem du die erforderliche Anzahl an Aufladungen verbrauchst: {@spell stone shape} (2 Aufladungen), {@spell stoneskin} (3 Aufladungen), oder {@spell wall of stone} (3 Aufladungen)."
 					]
 				}
@@ -27054,7 +27061,7 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"entries": [
-				"Solange du diesen Ring trägst, kostet dich schwieriges Gelände keine zusätzliche Bewegung. Außerdem kann Magie weder deine Geschwindigkeit verringern noch bewirken, dass du {@condition paralyzed} oder {@condition restrained} wirst."
+				"Während du diesen Ring trägst, kostet dich {@quickref difficult terrain||3} keine zusätzliche Bewegung. Außerdem kann Magie weder deine Geschwindigkeit verringern noch dich {@condition paralyzed} oder {@condition restrained} werden lassen."
 			],
 			"lootTables": [
 				"Magic Item Table G"
@@ -29418,7 +29425,7 @@
 								{
 									"type": "item",
 									"name": "Boots",
-									"entry": "Das Paar Stiefel ist nun ein seltener magischer Gegenstand, der eine Einstimmung erfordert. Wenn du es trägst, ignorierst du beim Gehen schwieriges Terrain und kannst über Wasser gehen."
+									"entry": "Das Paar Stiefel ist nun ein seltener magischer Gegenstand, der eine Einstimmung erfordert. Wenn du sie trägst, ignorierst du {@quickref difficult terrain||3} beim Gehen und kannst über Wasser gehen."
 								}
 							]
 						}
@@ -29899,7 +29906,7 @@
 								"Du hast {@sense darkvision} mit einer Reichweite von 60 Fuß. Wenn du bereits {@sense darkvision} hast, erhöht die Einstimmung auf das Rapier die Reichweite deines {@sense darkvision} um 60 Fuß.",
 								"Du erhältst einen Bonus von +1 auf Angriffs- und Schadenswürfe mit dieser magischen Waffe.",
 								"Du kannst eine Aktion verwenden, um die Klinge des Rapiers mit Gift zu überziehen. Das Gift bleibt 1 Minute lang bestehen oder bis ein Angriff mit dieser Waffe eine Kreatur trifft. Diese Kreatur muss einen Rettungswurf von DC 13 auf die Konstitution bestehen oder wird für 1 Stunde {@condition poisoned}. Wenn der Rettungswurf um 5 oder mehr scheitert, ist die Kreatur auch {@condition unconscious}, während sie auf diese Weise {@condition poisoned} ist. Die Kreatur wacht auf, wenn sie Schaden erleidet oder wenn eine andere Kreatur ihre Aktion verwendet, um die Kreatur wachzurütteln.",
-								"Während du den Degen trägst, kannst du dich aufwärts, abwärts, über vertikale Flächen und kopfüber an Decken entlang bewegen, während du die Hände frei hast. Du hast eine Klettergeschwindigkeit, die deiner Gehgeschwindigkeit entspricht. Außerdem kannst du dich nicht in Spinnweben jeglicher Art verfangen und dich durch Spinnweben bewegen, als wären sie schwieriges Terrain."
+								"Während du den Degen trägst, kannst du dich aufwärts, abwärts, über vertikale Flächen und kopfüber an Decken entlang bewegen, während du die Hände frei lässt. Du hast eine Klettergeschwindigkeit, die deiner Gehgeschwindigkeit entspricht. Außerdem kannst du dich nicht in Spinnweben verfangen und dich durch Spinnweben bewegen, als wären es welche {@quickref difficult terrain||3}."
 							]
 						}
 					]
@@ -34811,7 +34818,7 @@
 						],
 						[
 							"43",
-							"Gras, Moos und Blumen wachsen sofort in deinen Fußstapfen, und auch schwieriges Terrain, das von Pflanzen geschaffen wird, kann dir nichts anhaben.",
+							"Gras, Moos und Blumen wachsen sofort in deinen Fußstapfen. Du bist auch von {@quickref difficult terrain||3}, die von Pflanzen erzeugt werden, unbeeinflusst.",
 							"Jeder Schaden, der einer Pflanze zugefügt wird, die du sehen kannst (ein Holzfäller, der einen Baum absägt, ein Gärtner, der Unkraut zupft usw.), erfüllt dich mit einer Traurigkeit, die dir für 1 Minute einen Nachteil bei Fähigkeitsprüfungen auferlegt."
 						],
 						[
@@ -34861,7 +34868,7 @@
 						],
 						[
 							"53",
-							"Als Aktion kannst du für 10 Minuten körperlos werden und dich durch andere Kreaturen und Objekte bewegen, als wären sie schwieriges Gelände. Du erleidest 5 ({@damage 1d10}) Kraftschaden, wenn du deinen Zug in einem Objekt beendest. Du kannst diese Eigenschaft einmal benutzen.",
+							"Als Aktion kannst du für 10 Minuten körperlos werden und dich durch andere Kreaturen und Objekte bewegen, als ob sie {@quickref difficult terrain||3} wären. Du erleidest 5 ({@damage 1d10}) Kraftschaden, wenn du deinen Zug innerhalb eines Objekts beendest. Du kannst diese Eigenschaft einmal benutzen.",
 							"Deine Sinne schwinden, als ob die Welt um dich herum verblasst wäre, und du hast einen Nachteil bei Weisheitsprüfungen ({@skill Perception})."
 						],
 						[
@@ -34921,8 +34928,8 @@
 						],
 						[
 							"65",
-							"Als Aktion kannst du schwieriges Gelände im Umkreis von 50 Fuß in normales Gelände verwandeln. Du kannst diese Eigenschaft dreimal einsetzen.",
-							"Jedes Mal, wenn du dich durch schwieriges Gelände bewegst, wird deine Geschwindigkeit bis zum Ende deines nächsten Zuges um 10 Fuß verringert."
+							"Als Aktion kannst du bewirken, dass {@quickref difficult terrain||3} im Umkreis von 50 Fuß um dich herum zu normalem Terrain wird. Du kannst diese Eigenschaft dreimal einsetzen.",
+							"Jedes Mal, wenn du dich durch {@quickref difficult terrain||3} bewegst, wird deine Geschwindigkeit bis zum Ende deines nächsten Zuges um 10 Fuß verringert."
 						],
 						[
 							"66",
@@ -37320,7 +37327,6 @@
 			"baseItem": "sling|PHB",
 			"type": "R",
 			"rarity": "rare",
-			"value": 10,
 			"weaponCategory": "simple",
 			"property": [
 				"A"
@@ -37664,6 +37670,13 @@
 				"Du erhältst einen Bonus von +1 auf Angriffs- und Schadenswürfe mit diesem magischen Viertelstab. Solange du ihn hältst, erhältst du einen Bonus von +1 auf Angriffswürfe mit Zaubern.",
 				"Dieser Stab hat 10 Ladungen. Während du ihn in der Hand hältst, kannst du eine Aktion nutzen, um 1 oder mehrere Ladungen des Stabs zu verbrauchen, um einen der folgenden Zauber aus ihm zu wirken, wobei du deinen Zauberschutz-DC verwendest: {@spell banishment} (4 Ladungen), {@spell blink} (3 Ladungen), {@spell misty step} (2 Ladungen), {@spell passwall} (5 Ladungen) oder {@spell teleport} (7 Ladungen).",
 				"Der Stab erhält täglich im Morgengrauen {@dice 1d6 + 4} verbrauchte Ladungen zurück. Wenn du die letzte Ladung verbrauchst, wirf einen {@dice d20}. Bei einer 1 verschwindet der Stab für immer."
+			],
+			"attachedSpells": [
+				"banishment",
+				"blink",
+				"misty step",
+				"passwall",
+				"teleport"
 			]
 		},
 		{

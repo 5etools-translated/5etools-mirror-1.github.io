@@ -127,6 +127,10 @@ class SchemaPreprocessor {
 		return this._recurse_$$if({root, obj, k, v: obj[k]});
 	}
 
+	static _getDirectoryTranslation ({file}) {
+		return file.startsWith("../") ? "../" : null;
+	}
+
 	static _getResolvedRefJson ({root, toMerge, dirSource}) {
 		if (!toMerge.$ref) return toMerge;
 
@@ -142,14 +146,23 @@ class SchemaPreprocessor {
 		const externalSchema = ut.readJson(path.join(dirSource, file));
 		const refData = MiscUtil.get(externalSchema, ...pathParts);
 
+		const directoryTranslation = this._getDirectoryTranslation({file});
+
 		// Convert any `#/ ...` definitions to refer to the original file, as the schema will be copied into our file
+		// Similarly, add any path changes (`../`), as the schema will be copied into our file
 		SchemaPreprocessor._WALKER.walk(
 			refData,
 			{
 				string: (str, lastKey) => {
 					if (lastKey !== "$ref") return str;
 					const [otherFile, otherPath] = str.split("#");
-					if (otherFile) return str;
+					if (otherFile) {
+						if (directoryTranslation && directoryTranslation !== this._getDirectoryTranslation({file: otherFile})) {
+							return `${directoryTranslation}${otherFile}#${otherPath}`;
+						}
+						return str;
+					}
+					// `file` already includes our directory translations, so we do not need to add it
 					return [file, otherPath].filter(Boolean).join("#");
 				},
 			},

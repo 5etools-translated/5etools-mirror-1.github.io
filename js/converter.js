@@ -1018,7 +1018,7 @@ async function doPageInit () {
 	SpellcastingTraitConvert.init(spells);
 	ItemParser.init(items, classes);
 	AcConvert.init(items);
-	TagCondition.init(legendaryGroups, spells);
+	TaggerUtils.init({legendaryGroups, spells});
 	await TagJsons.pInit({spells});
 	RaceTraitTag.init({itemsRaw});
 

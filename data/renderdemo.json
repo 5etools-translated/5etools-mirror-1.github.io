@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@underline some text to be underlined} (alternative {@u shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand}), {@color color|e40707} tags",
+						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@underline some text to be underlined} (alternative {@u shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand}), {@color color|e40707} tags, {@code print(&quot;hello world&quot;)} tags",
 						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes.\"",
 						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls ({@dice 1d6;2d6} for multiple options; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} for input prompts), with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on shift-click, disadvantage on alt-click). There's also {@damage 1d12+3} which will roll critical hits on shift-click and half damage (rounding down) on alt-click, and {@d20 -4} which will also roll advantage/disadvantage, although @hit tags are preferred where appropriate. Spells can have scaling-dice tags, (damage of 2d6 or 3d6 at level 1, add an extra {@scaledice 2d6;3d6|2-9|1d6} for each level beyond 2nd), for when a spell effect scales at higher levels. {@ability str 20}, {@savingThrow str 5}, and {@skillCheck animal_handling 5} are used as internal shorthand, but may be useful elsewhere.",
 						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
@@ -110,7 +110,8 @@
 									"type": "list",
 									"items": [
 										"Adventure tags: link to an adventure {@adventure display text|CoS}; a chapter in an adventure {@adventure display text|CoS|2}; a heading in a chapter in an adventure {@adventure display text|CoS|2|Treasure}; or the Nth heading of a given name in a chapter in an adventure {@adventure display text|CoS|2|Treasure|1}",
-										"Book tags: link to a book {@book display text|PHB}; a chapter in a book {@book display text|PHB|2}; a heading in a chapter in a book {@book display text|PHB|2|Age}; or the Nth heading of a given name in a chapter in a book {@book display text|PHB|2|Age|0} (although this is generally unnecessary as, unlike adventures, books don't repeat their headings very often."
+										"Book tags: link to a book {@book display text|PHB}; a chapter in a book {@book display text|PHB|2}; a heading in a chapter in a book {@book display text|PHB|2|Age}; or the Nth heading of a given name in a chapter in a book {@book display text|PHB|2|Age|0} (although this is generally unnecessary as, unlike adventures, books don't repeat their headings very often.",
+										"Quick Reference tags; {@code &lt;name&gt;|&lt;source&gt;|&lt;chapterIndex&gt;|&lt;headerIndex&gt;|&lt;displayText&gt;}: {@quickref Multiclassing}, {@quickref Multiclassing|PHB}, {@quickref Adventuring Gear|PHB|1}, {@quickref Adventuring Gear|PHB|1|0}, {@quickref Adventuring Gear|PHB|1|0|Display Text}."
 									]
 								}
 							]

@@ -849,9 +849,9 @@ class FilterBox extends ProxyBase {
 		Hist.setSuppressHistory(true);
 		Hist.replaceHistoryHash(`${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`);
 
-		if (filterInitialSearch && ($iptSearch || this._$iptSearch)) ($iptSearch || this._$iptSearch).val(filterInitialSearch).change().keydown().keyup();
+		if (filterInitialSearch && ($iptSearch || this._$iptSearch)) ($iptSearch || this._$iptSearch).val(filterInitialSearch).change().keydown().keyup().trigger("instantKeyup");
 		this.fireChangeEvent();
-		Hist.hashChange();
+		Hist.hashChange({isBlankFilterLoad: true});
 		return outSub;
 	}
 
@@ -1146,7 +1146,7 @@ class FilterBase extends BaseComponent {
 	_getBtnMobToggleControls (wrpControls) {
 		const btnMobToggleControls = e_({
 			tag: "button",
-			clazz: `btn btn-xs btn-default mobile__visible ml-2 px-3`,
+			clazz: `btn btn-xs btn-default mobile__visible ml-auto px-3 mr-2`,
 			html: `<span class="glyphicon glyphicon-option-vertical"></span>`,
 			click: () => this._meta.isMobileHeaderHidden = !this._meta.isMobileHeaderHidden,
 		});
@@ -1754,7 +1754,7 @@ class Filter extends FilterBase {
 		this.__$wrpFilter = $$`<div>
 			${opts.isFirst ? "" : `<div class="fltr__dropdown-divider ${opts.isMulti ? "fltr__dropdown-divider--indented" : ""} mb-1"></div>`}
 			<div class="split fltr__h ${this._minimalUi ? "fltr__minimal-hide" : ""} mb-1">
-				<div class="ml-2 fltr__h-text ve-flex-h-center">${opts.isMulti ? `<span class="mr-2">\u2012</span>` : ""}${this._getRenderedHeader()}${btnMobToggleControls}</div>
+				<div class="ml-2 fltr__h-text ve-flex-h-center mobile__w-100">${opts.isMulti ? `<span class="mr-2">\u2012</span>` : ""}${this._getRenderedHeader()}${btnMobToggleControls}</div>
 				${wrpControls}
 			</div>
 			${this.__wrpPills}

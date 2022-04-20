@@ -28,7 +28,8 @@ const PANEL_TYP_TWITCH = 11;
 const PANEL_TYP_TWITCH_CHAT = 12;
 const PANEL_TYP_ADVENTURES = 13;
 const PANEL_TYP_BOOKS = 14;
-const PANEL_TYP_INITIATIVE_TRACKER_PLAYER = 15;
+const PANEL_TYP_INITIATIVE_TRACKER_PLAYER_V1 = 15;
+const PANEL_TYP_INITIATIVE_TRACKER_PLAYER_V0 = 151;
 const PANEL_TYP_COUNTER = 16;
 const PANEL_TYP_IMAGE = 20;
 const PANEL_TYP_ADVENTURE_DYNAMIC_MAP = 21;
@@ -890,8 +891,12 @@ class Panel {
 					p.doPopulate_InitiativeTracker(saved.s, saved.r);
 					handleTabRenamed(p);
 					return p;
-				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER:
-					p.doPopulate_InitiativeTrackerPlayer(saved.s, saved.r);
+				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER_V1:
+					p.doPopulate_InitiativeTrackerPlayerV1(saved.s, saved.r);
+					handleTabRenamed(p);
+					return p;
+				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER_V0:
+					p.doPopulate_InitiativeTrackerPlayerV0(saved.s, saved.r);
 					handleTabRenamed(p);
 					return p;
 				case PANEL_TYP_COUNTER:
@@ -1394,11 +1399,21 @@ class Panel {
 		);
 	}
 
-	doPopulate_InitiativeTrackerPlayer (state = {}, title) {
+	doPopulate_InitiativeTrackerPlayerV1 (state = {}, title) {
 		this.set$ContentTab(
-			PANEL_TYP_INITIATIVE_TRACKER_PLAYER,
+			PANEL_TYP_INITIATIVE_TRACKER_PLAYER_V1,
 			state,
-			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTrackerPlayer.make$tracker(this.board, state)),
+			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTrackerPlayerV1.make$tracker(this.board, state)),
+			title || "Initiative Tracker",
+			true,
+		);
+	}
+
+	doPopulate_InitiativeTrackerPlayerV0 (state = {}, title) {
+		this.set$ContentTab(
+			PANEL_TYP_INITIATIVE_TRACKER_PLAYER_V0,
+			state,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTrackerPlayerV0.make$tracker(this.board, state)),
 			title || "Initiative Tracker",
 			true,
 		);
@@ -2251,7 +2266,8 @@ class Panel {
 						s: $content.find(`.dm-init`).data("getState")(),
 					};
 				}
-				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER: {
+				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER_V1:
+				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER_V0: {
 					return {
 						t: type,
 						r: toSaveTitle,
@@ -2979,15 +2995,26 @@ class AddMenuSpecialTab extends AddMenuTab {
 				this.menu.doClose();
 			});
 
-			const $btnPlayertracker = $(`<button class="btn btn-primary btn-sm">Add</button>`)
+			const $btnPlayertrackerV1 = $(`<button class="btn btn-primary btn-sm">Add</button>`)
 				.click(() => {
-					this.menu.pnl.doPopulate_InitiativeTrackerPlayer();
+					this.menu.pnl.doPopulate_InitiativeTrackerPlayerV1();
 					this.menu.doClose();
 				});
 
 			$$`<div class="ui-modal__row">
-			<span>Initiative Tracker Player View</span>
-			${$btnPlayertracker}
+			<span>Initiative Tracker Player View (Standard)</span>
+			${$btnPlayertrackerV1}
+			</div>`.appendTo($tab);
+
+			const $btnPlayertrackerV0 = $(`<button class="btn btn-primary btn-sm">Add</button>`)
+				.click(() => {
+					this.menu.pnl.doPopulate_InitiativeTrackerPlayerV0();
+					this.menu.doClose();
+				});
+
+			$$`<div class="ui-modal__row">
+			<span>Initiative Tracker Player View (Manual/Legacy)</span>
+			${$btnPlayertrackerV0}
 			</div>`.appendTo($tab);
 
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);

@@ -5218,7 +5218,7 @@
 					"type": "list",
 					"items": [
 						"Tienes resistencia al daño por frío.",
-						"Ignoras el terreno difícil creado por el hielo o la nieve.",
+						"Se ignora {@quickref difficult terrain||3} creado por el hielo o la nieve.",
 						"Puede tolerar temperaturas de hasta -50 grados Fahrenheit sin ninguna protección adicional. Si lleva ropa gruesa, puede tolerar temperaturas de hasta -100 grados Fahrenheit."
 					]
 				}
@@ -5925,9 +5925,10 @@
 			"weaponCategory": "simple",
 			"dmg1": "1d6",
 			"dmgType": "B",
+			"bonusWeapon": "+1",
 			"weapon": true,
 			"entries": [
-				"La cabeza de esta maza emite una luz brillante en un radio de 1,5 metros y una luz tenue en 1,5 metros adicionales. Cuando empuñas esta maza, puedes apagar o encender su luz como acción."
+				"Tienes un bonificador +1 a las tiradas de ataque y daño realizadas con esta arma mágica. La cabeza de esta maza emite una luz brillante en un radio de 1,5 metros y una luz tenue en 1,5 metros adicionales. Cuando empuñas esta maza, puedes apagar o encender su luz como acción."
 			]
 		},
 		{
@@ -7005,7 +7006,7 @@
 						"Tienes resistencia al daño por veneno.",
 						"Tienes una velocidad de ascenso igual a tu velocidad de marcha.",
 						"Puede desplazarse hacia arriba, hacia abajo y a través de superficies verticales y boca abajo a lo largo de los techos, dejando las manos libres.",
-						"No puedes quedar atrapado en telarañas de ningún tipo y puedes moverte a través de ellas como si fueran un terreno difícil.",
+						"No puedes quedar atrapado en telarañas de ningún tipo y puedes moverte a través de ellas como si fueran {@quickref difficult terrain||3}.",
 						"Puedes usar una acción para lanzar el hechizo {@spell web} (salvación DC 13). La red creada por el hechizo llena el doble de su área normal. Una vez utilizada, esta propiedad de la capa no puede volver a utilizarse hasta el siguiente amanecer."
 					]
 				}
@@ -13592,6 +13593,8 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"wondrous": true,
+			"recharge": "dawn",
+			"charges": 3,
 			"entries": [
 				"Esta pipa finamente tallada sopla burbujas inodoras en lugar de humo cuando se usa. La pipa tiene 3 cargas, y recupera todas las cargas gastadas diariamente al amanecer. Mientras sostienes la pipa, puedes gastar cargas para acceder a las siguientes propiedades:",
 				{
@@ -13602,6 +13605,10 @@
 						"Puedes invocar un {@creature steam mephit} como acción (3 cargas). El mephit es amistoso contigo, obedece tus órdenes verbales y actúa en su propio turno en el orden de iniciativa. Desaparece en una inofensiva bocanada de vapor después de 1 minuto o si termina su turno a más de 60 pies de la tubería."
 					]
 				}
+			],
+			"attachedSpells": [
+				"fog cloud",
+				"misty step"
 			]
 		},
 		{
@@ -13799,7 +13806,7 @@
 							"items": [
 								"Tienes resistencia al daño contundente, perforante y cortante de los ataques no mágicos.",
 								"No puedes ser {@condition grappled} o {@condition restrained}.",
-								"Puedes moverte a través de criaturas y objetos sólidos como si fueran terreno difícil. Si terminas tu turno en un objeto sólido, recibes {@damage 1d10} de daño de fuerza. Si el efecto finaliza mientras estás dentro de un objeto sólido, en su lugar eres desplazado al espacio desocupado más cercano, y recibes {@damage 1d10} de daño de fuerza por cada 5 pies recorridos."
+								"Puedes moverte a través de criaturas y objetos sólidos como si fueran {@quickref difficult terrain||3}. Si terminas tu turno en un objeto sólido, recibes {@damage 1d10} de daño de fuerza. Si el efecto finaliza mientras estás dentro de un objeto sólido, en su lugar eres desviado al espacio desocupado más cercano, y recibes {@damage 1d10} de daño de fuerza por cada 5 pies recorridos."
 							]
 						}
 					]
@@ -13824,7 +13831,7 @@
 					"items": [
 						"Tienes resistencia al daño contundente, perforante y cortante de los ataques no mágicos.",
 						"No puedes ser {@condition grappled} o {@condition restrained}.",
-						"Puedes moverte a través de criaturas y objetos sólidos como si fueran terreno difícil. Si terminas tu turno en un objeto sólido, recibes {@damage 1d10} de daño de fuerza. Si el efecto finaliza mientras estás dentro de un objeto sólido, en su lugar eres desplazado al espacio desocupado más cercano, y recibes {@damage 1d10} de daño de fuerza por cada 5 pies recorridos."
+						"Puedes moverte a través de criaturas y objetos sólidos como si fueran {@quickref difficult terrain||3}. Si terminas tu turno en un objeto sólido, recibes {@damage 1d10} de daño de fuerza. Si el efecto finaliza mientras estás dentro de un objeto sólido, en su lugar eres desviado al espacio desocupado más cercano, y recibes {@damage 1d10} de daño de fuerza por cada 5 pies recorridos."
 					]
 				},
 				{
@@ -16633,7 +16640,7 @@
 			"rarity": "very rare",
 			"wondrous": true,
 			"entries": [
-				"Estas herraduras de hierro vienen en un juego de cuatro. Mientras las cuatro herraduras están fijadas a los cascos de un caballo o criatura similar, permiten que la criatura se mueva normalmente mientras flota a 10 centímetros del suelo. Este efecto significa que la criatura puede cruzar o situarse sobre superficies no sólidas o inestables, como el agua o la lava. La criatura no deja huellas e ignora el terreno difícil. Además, la criatura puede moverse a velocidad normal hasta 12 horas al día sin sufrir {@condition exhaustion} de marcha forzada."
+				"Estas herraduras de hierro vienen en un juego de cuatro. Mientras las cuatro herraduras están fijadas a los cascos de un caballo o criatura similar, permiten que la criatura se mueva normalmente mientras flota a 10 centímetros del suelo. Este efecto significa que la criatura puede cruzar o situarse sobre superficies no sólidas o inestables, como el agua o la lava. La criatura no deja huellas e ignora {@quickref difficult terrain||3}. Además, la criatura puede moverse a velocidad normal hasta 12 horas al día sin sufrir {@condition exhaustion} de marcha forzada."
 			],
 			"lootTables": [
 				"Magic Item Table D"
@@ -21247,7 +21254,7 @@
 			"rarity": "common",
 			"wondrous": true,
 			"entries": [
-				"Cuando usas una acción para trazar el borde de esta medalla, el terreno difícil no te cuesta movimiento extra durante 1 hora. Una vez utilizada esta propiedad, no se puede volver a utilizar, y la medalla pasa a ser no mágica."
+				"Cuando usas una acción para trazar el borde de esta medalla, {@quickref difficult terrain||3} no te cuesta movimiento extra durante 1 hora. Una vez utilizada esta propiedad, no se puede volver a usar, y la medalla pasa a ser no mágica."
 			]
 		},
 		{
@@ -26908,13 +26915,13 @@
 			"entries": [
 				"Mientras lleves este anillo, tienes ventaja en las tiradas de ataque contra los elementales del Plano Elemental de la Tierra y ellos tienen desventaja en las tiradas de ataque contra ti. Además, tienes acceso a propiedades basadas en el Plano Elemental de la Tierra.",
 				"El anillo tiene 5 cargas. Recupera {@dice 1d4 + 1} las cargas gastadas diariamente al amanecer. Los hechizos lanzados desde el anillo tienen una DC de salvación de 17.",
-				"Puedes gastar 2 de las cargas del anillo para lanzar {@spell dominate monster} sobre un {@creature earth elemental}. Además, puedes moverte en terreno difícil compuesto por escombros, rocas o tierra como si fuera terreno normal. También puedes hablar y entender el terran.",
+				"Puedes gastar 2 de las cargas del anillo para lanzar {@spell dominate monster} sobre un {@creature earth elemental}. Además, puedes moverte en {@quickref difficult terrain||3} que esté compuesto por escombros, rocas o tierra como si fuera terreno normal. También puedes hablar y entender el terran.",
 				"Si ayudas a matar a un {@creature earth elemental} mientras estás en sintonía con el anillo, obtienes acceso a las siguientes propiedades adicionales:",
 				{
 					"type": "list",
 					"items": [
 						"Tienes resistencia al daño por ácido.",
-						"Puedes moverte a través de tierra sólida o roca como si esas zonas fueran terreno difícil. Si terminas tu turno allí, eres expulsado al espacio desocupado más cercano que ocupaste por última vez.",
+						"Puedes moverte a través de la tierra sólida o la roca como si esas áreas fueran {@quickref difficult terrain||3}. Si terminas tu turno allí, te desplazas al espacio desocupado más cercano que ocupaste por última vez.",
 						"Puedes lanzar los siguientes hechizos desde el anillo, gastando el número necesario de cargas: {@spell stone shape} (2 cargas), {@spell stoneskin} (3 cargas), o {@spell wall of stone} (3 cargas)."
 					]
 				}
@@ -27054,7 +27061,7 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"entries": [
-				"Mientras lleves este anillo, los terrenos difíciles no te cuestan movimiento extra. Además, la magia no puede reducir tu velocidad ni causarte {@condition paralyzed} o {@condition restrained}."
+				"Mientras lleves este anillo, el {@quickref difficult terrain||3} no te cuesta movimiento extra. Además, la magia no puede reducir tu velocidad ni hacer que seas {@condition paralyzed} o {@condition restrained}."
 			],
 			"lootTables": [
 				"Magic Item Table G"
@@ -29418,7 +29425,7 @@
 								{
 									"type": "item",
 									"name": "Boots",
-									"entry": "El par de botas es ahora un objeto mágico raro que requiere sintonización. Mientras las llevas puestas, ignoras los terrenos difíciles al caminar y puedes caminar sobre el agua."
+									"entry": "El par de botas es ahora un objeto mágico raro que requiere sintonización. Mientras las llevas puestas, ignoras {@quickref difficult terrain||3} al caminar, y puedes caminar sobre el agua."
 								}
 							]
 						}
@@ -29899,7 +29906,7 @@
 								"Tienes {@sense darkvision} hasta un alcance de 60 pies. Si ya tienes {@sense darkvision}, estar sintonizado con el estoque aumenta el alcance de tu {@sense darkvision} en 60 pies.",
 								"Obtienes un bono de +1 a las tiradas de ataque y daño realizadas con esta arma mágica.",
 								"Puedes usar una acción para hacer que el veneno cubra la hoja del estoque. El veneno permanece durante 1 minuto o hasta que un ataque con esta arma golpee a una criatura. Esa criatura debe tener éxito en una tirada de salvación de Constitución DC 13 o quedar {@condition poisoned} durante 1 hora. Si la tirada de salvación falla por 5 o más, la criatura también queda {@condition unconscious} mientras {@condition poisoned} de esta manera. La criatura se despierta si recibe daño o si otra criatura utiliza su acción para sacudirla.",
-								"Mientras llevas el estoque, puedes moverte hacia arriba, hacia abajo y a través de superficies verticales y hacia arriba a lo largo de los techos, dejando las manos libres. Tienes una velocidad de escalada igual a tu velocidad al caminar. Además, no puedes quedar atrapado en telas de araña de ningún tipo y puedes moverte a través de ellas como si fueran terreno difícil."
+								"Mientras llevas el estoque, puedes moverte hacia arriba, hacia abajo y a través de superficies verticales y de cabeza por los techos, dejando las manos libres. Tienes una velocidad de escalada igual a tu velocidad al caminar. Además, no puedes quedar atrapado en telas de araña de ningún tipo y puedes moverte a través de ellas como si lo fueran {@quickref difficult terrain||3}."
 							]
 						}
 					]
@@ -34811,7 +34818,7 @@
 						],
 						[
 							"43",
-							"La hierba, el musgo y las flores crecen instantáneamente sobre tus pasos. Tampoco te afectan los terrenos difíciles creados por las plantas.",
+							"La hierba, el musgo y las flores crecen instantáneamente sobre tus pasos. Tampoco te afecta el {@quickref difficult terrain||3} creado por las plantas.",
 							"Cualquier daño que le ocurra a una planta que puedas ver (un leñador aserrando un árbol, un jardinero arrancando malas hierbas, etc.) te llena de una tristeza que te impone desventaja en los chequeos de habilidad durante 1 minuto."
 						],
 						[
@@ -34861,7 +34868,7 @@
 						],
 						[
 							"53",
-							"Como acción, puedes volverte incorpóreo durante 10 minutos, lo que te permite moverte a través de otras criaturas y objetos como si fueran terreno difícil. Recibes 5 ({@damage 1d10}) de daño de fuerza si terminas tu turno dentro de un objeto. Puedes utilizar esta propiedad una vez.",
+							"Como acción, puedes volverte incorpóreo durante 10 minutos, lo que te permite moverte a través de otras criaturas y objetos como si fueran {@quickref difficult terrain||3}. Recibes 5 ({@damage 1d10}) de daño de fuerza si terminas tu turno dentro de un objeto. Puedes utilizar esta propiedad una vez.",
 							"Tus sentidos disminuyen como si el mundo se desvaneciera a tu alrededor, imponiendo desventaja en los chequeos de Sabiduría ({@skill Perception})."
 						],
 						[
@@ -34921,8 +34928,8 @@
 						],
 						[
 							"65",
-							"Como acción, haces que el terreno difícil en un radio de 50 pies se convierta en terreno normal. Puedes usar esta propiedad tres veces.",
-							"Cada vez que te mueves por un terreno difícil, tu velocidad se reduce en 3 metros hasta el final de tu siguiente turno."
+							"Como acción, haces que {@quickref difficult terrain||3} en un radio de 50 pies se convierta en terreno normal. Puedes usar esta propiedad tres veces.",
+							"Cada vez que atraviesas {@quickref difficult terrain||3}, tu velocidad se reduce en 3 metros hasta el final de tu siguiente turno."
 						],
 						[
 							"66",
@@ -37320,7 +37327,6 @@
 			"baseItem": "sling|PHB",
 			"type": "R",
 			"rarity": "rare",
-			"value": 10,
 			"weaponCategory": "simple",
 			"property": [
 				"A"
@@ -37664,6 +37670,13 @@
 				"Obtienes un bonificador +1 a las tiradas de ataque y daño realizadas con este báculo mágico. Mientras la tengas en tus manos, obtienes un bonificador de +1 a las tiradas de ataque con hechizos.",
 				"Este bastón tiene 10 cargas. Mientras lo sostienes, puedes usar una acción para gastar 1 o más de las cargas del bastón para lanzar uno de los siguientes hechizos, usando tu DC de salvación de hechizos: {@spell banishment} (4 cargas), {@spell blink} (3 cargas), {@spell misty step} (2 cargas), {@spell passwall} (5 cargas), o {@spell teleport} (7 cargas).",
 				"El bastón recupera {@dice 1d6 + 4} las cargas gastadas diariamente al amanecer. Si gastas la última carga, tira un {@dice d20}. Con un 1, el bastón desaparece para siempre."
+			],
+			"attachedSpells": [
+				"banishment",
+				"blink",
+				"misty step",
+				"passwall",
+				"teleport"
 			]
 		},
 		{

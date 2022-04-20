@@ -129,7 +129,8 @@ class BookUtil {
 					BookUtil._renderer.recursiveRender(d, textStack);
 				});
 			} else BookUtil._renderer.recursiveRender(data[ixChapter], textStack);
-			BookUtil.$dispBook.append(`<tr class="text"><td colspan="6" class="py-2 px-y">${Renderer.utils.getExcludedHtml({entity: fromIndex, dataProp: BookUtil.contentType, page: UrlUtil.getCurrentPage()})}${textStack.join("")}</td></tr>`);
+			// If there is no source, we're probably in the Quick Reference, so avoid adding the "Excluded" text, as this is a composite source.
+			BookUtil.$dispBook.append(`<tr class="text"><td colspan="6" class="py-2 px-y">${fromIndex.source ? Renderer.utils.getExcludedHtml({entity: fromIndex, dataProp: BookUtil.contentType, page: UrlUtil.getCurrentPage()}) : ""}${textStack.join("")}</td></tr>`);
 			Renderer.initLazyImageLoaders();
 			BookUtil._renderer
 				.setLazyImages(false)
@@ -211,7 +212,7 @@ class BookUtil {
 			const $toShow = $allSects.filter((i, e) => {
 				const $e = $(e);
 				const cleanSectionHead = sectionHeader.trim().toLowerCase();
-				const $match = $e.children(`.rd__h`).find(`span.entry-title-inner`).filter(`:textEquals("${cleanSectionHead}")`);
+				const $match = $e.children(`.rd__h`).find(`.entry-title-inner`).filter(`:textEquals("${cleanSectionHead}")`);
 				return $match.length;
 			});
 

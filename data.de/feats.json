@@ -139,7 +139,7 @@
 					"type": "list",
 					"items": [
 						"Du erlangst die Fertigkeit {@skill Acrobatics}. Wenn du diese Fertigkeit bereits beherrschst, erhältst du den doppelten Bonus auf deine Fertigkeitsprüfungen.",
-						"Als Bonusaktion kannst du eine Geschicklichkeitsprüfung ({@skill Acrobatics}) mit DC 15 ablegen. Wenn du sie bestehst, kostet dich schwieriges Gelände bis zum Ende der aktuellen Runde keine zusätzliche Bewegung."
+						"Als Bonusaktion kannst du eine DC 15 Geschicklichkeitsüberprüfung ({@skill Acrobatics}) ablegen. Wenn du erfolgreich bist, kostet dich {@quickref difficult terrain||3} bis zum Ende der aktuellen Runde keine zusätzliche Bewegung."
 					]
 				}
 			]
@@ -2341,6 +2341,17 @@
 					"spellcasting2020": true
 				}
 			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Eldritch Invocations",
+					"featureType": [
+						"EI"
+					],
+					"progression": {
+						"*": 1
+					}
+				}
+			],
 			"entries": [
 				"Durch das Studium okkulter Überlieferungen erlernst du eine {@filter Eldritch Invocation|optionalfeatures|Feature Type=EI} Option deiner Wahl aus der Warlock-Klasse. Deine Zauberfähigkeit für die Beschwörung ist Intelligenz, Weisheit oder Charisma (wähle sie, wenn du diese Fähigkeit wählst). Wenn die Beschwörung eine Voraussetzung irgendeiner Art hat, kannst du diese Beschwörung nur wählen, wenn du ein Warlock bist, der die Voraussetzung erfüllt.",
 				"Jedes Mal, wenn du eine Stufe aufsteigst, kannst du die Beschwörung durch eine andere der Hexenmeisterklasse ersetzen."
@@ -2719,7 +2730,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Du erlernst den Zauber {@spell misty step} und einen {@filter 1st-level spell|spells|level=1|school=E;D} deiner Wahl. Der Zauber der 1. Stufe muss aus der Schule der Wahrsagerei oder der Verzauberung stammen. Du kannst jeden dieser Zauber wirken, ohne einen Zauberslot zu verbrauchen. Sobald du einen dieser Zauber auf diese Weise gewirkt hast, kannst du diesen Zauber nicht mehr auf diese Weise wirken, bis du eine lange Ruhepause beendet hast. Du kannst diese Zauber auch mit Zauberslots wirken, die du in der entsprechenden Stufe hast. Die Zauberfähigkeit des Zaubers ist die Fähigkeit, die durch diese Fähigkeit erhöht wird."
+						"Du lernst den {@spell misty step} Zauberspruch und einen {@filter 1st-level spell|spells|level=1|school=E;D} deiner Wahl. Die {@filter 1st-level spell|spells|level=1|school=E;D} müssen aus der Schule der Weissagung oder der Verzauberung stammen. Du kannst jeden dieser Zauber wirken, ohne einen Zauberslot zu verbrauchen. Sobald du einen dieser Zauber auf diese Weise gewirkt hast, kannst du diesen Zauber erst wieder nach einer langen Pause auf diese Weise wirken. Du kannst diese Zauber auch mit Zauberfeldern der entsprechenden Stufe wirken. Die Zauberfähigkeit des Zaubers ist die Fähigkeit, die durch diese Fähigkeit erhöht wird."
 					]
 				}
 			]
@@ -2762,7 +2773,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Du erlernst den Zauber {@spell misty step} und einen {@filter 1st-level spell|spells|level=1|school=E;D} deiner Wahl. Der Zauber der 1. Stufe muss aus der Schule der Wahrsagerei oder der Verzauberung stammen. Du kannst jeden dieser Zauber wirken, ohne einen Zauberslot zu verbrauchen. Sobald du einen dieser Zauber auf diese Weise gewirkt hast, kannst du diesen Zauber nicht mehr auf diese Weise wirken, bis du eine lange Ruhepause beendet hast. Du kannst diese Zauber auch mit Zauberslots wirken, die du in der entsprechenden Stufe hast. Die Zauberfähigkeit des Zaubers ist die Fähigkeit, die durch diese Fähigkeit erhöht wird."
+						"Du lernst den {@spell misty step} Zauberspruch und einen {@filter 1st-level spell|spells|level=1|school=E;D} deiner Wahl. Die {@filter 1st-level spell|spells|level=1|school=E;D} müssen aus der Schule der Weissagung oder der Verzauberung stammen. Du kannst jeden dieser Zauber wirken, ohne einen Zauberslot zu verbrauchen. Sobald du einen dieser Zauber auf diese Weise gewirkt hast, kannst du diesen Zauber erst wieder nach einer langen Pause auf diese Weise wirken. Du kannst diese Zauber auch mit Zauberfeldern der entsprechenden Stufe wirken. Die Zauberfähigkeit des Zaubers ist die Fähigkeit, die durch diese Fähigkeit erhöht wird."
 					]
 				}
 			]
@@ -2778,6 +2789,17 @@
 							"weapon": "martial"
 						}
 					]
+				}
+			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Fighting Style",
+					"featureType": [
+						"FS:F"
+					],
+					"progression": {
+						"*": 1
+					}
 				}
 			],
 			"entries": [
@@ -4023,6 +4045,17 @@
 			"name": "Martial Adept",
 			"source": "PHB",
 			"page": 168,
+			"optionalfeatureProgression": [
+				{
+					"name": "Maneuvers",
+					"featureType": [
+						"MV:B"
+					],
+					"progression": {
+						"*": 2
+					}
+				}
+			],
 			"entries": [
 				"Du verfügst über eine Kampfausbildung, die es dir erlaubt, spezielle Kampfmanöver auszuführen. Du erhältst die folgenden Vorteile:",
 				{
@@ -4174,6 +4207,17 @@
 					"spellcasting2020": true
 				}
 			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Metamagic",
+					"featureType": [
+						"MM"
+					],
+					"progression": {
+						"*": 2
+					}
+				}
+			],
 			"entries": [
 				"Du hast gelernt, wie du deinen Willen auf deine Zaubersprüche ausüben kannst, um ihre Funktionsweise zu verändern:",
 				{
@@ -4215,7 +4259,7 @@
 					"type": "list",
 					"items": [
 						"Deine Geschwindigkeit erhöht sich um 10 Fuß.",
-						"Wenn du die Aktion {@action Dash} benutzt, kostet dich schwieriges Gelände in dieser Runde keine zusätzliche Bewegung.",
+						"Wenn du die Aktion {@action Dash} benutzt, kostet dich {@quickref difficult terrain||3} in diesem Zug keine zusätzliche Bewegung.",
 						"Wenn du einen Nahkampfangriff gegen eine Kreatur ausführst, provozierst du für den Rest der Runde keine Gelegenheitsangriffe von dieser Kreatur, egal ob du triffst oder nicht."
 					]
 				}
@@ -5181,7 +5225,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Du erlernst den Zauber {@spell invisibility} und einen Zauber des 1. Grades deiner Wahl. {@filter 1st-level spell|spells|level=1|school=I;N} muss aus der Schule der Illusion oder der Nekromantie stammen. Du kannst jeden dieser Zauber wirken, ohne einen Zauberslot zu verbrauchen. Sobald du einen dieser Zauber auf diese Weise gewirkt hast, kannst du diesen Zauber nicht mehr auf diese Weise wirken, bis du eine lange Ruhepause beendet hast. Du kannst diese Zauber auch mit Zauberslots wirken, die du in der entsprechenden Stufe hast. Die Zauberfähigkeit des Zaubers ist die Fähigkeit, die durch diese Fähigkeit erhöht wird."
+						"Du lernst den {@spell invisibility}-Zauber und einen {@filter 1st-level spell|spells|level=1|school=I;N}-Zauber deiner Wahl. Die {@filter 1st-level spell|spells|level=1|school=I;N} müssen aus der Schule der Illusions- oder Nekromantiemagie sein. Du kannst jeden dieser Zauber wirken, ohne einen Zauberslot zu verbrauchen. Sobald du einen dieser Zauber auf diese Weise gewirkt hast, kannst du diesen Zauber erst wieder nach einer langen Pause auf diese Weise wirken. Du kannst diese Zauber auch mit Zauberfeldern der entsprechenden Stufe wirken. Die Zauberfähigkeit des Zaubers ist die Fähigkeit, die durch diese Fähigkeit erhöht wird."
 					]
 				}
 			]
@@ -5224,7 +5268,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Du erlernst den Zauber {@spell darkness} und einen {@filter 1st-level spell|spells|level=1|school=I;N} deiner Wahl. Der Zauber der 1. Stufe muss aus der Schule der Illusion oder der Nekromantie stammen. Du kannst jeden dieser Zauber wirken, ohne einen Zauberslot zu verbrauchen. Sobald du einen dieser Zauber auf diese Weise gewirkt hast, kannst du diesen Zauber nicht mehr auf diese Weise wirken, bis du eine lange Ruhepause beendet hast. Du kannst diese Zauber auch mit Zauberslots wirken, die du in der entsprechenden Stufe hast. Die Zauberfähigkeit des Zaubers ist die Fähigkeit, die durch diese Fähigkeit erhöht wird."
+						"Du lernst den {@spell darkness}-Zauber und einen {@filter 1st-level spell|spells|level=1|school=I;N}-Zauber deiner Wahl. Die {@filter 1st-level spell|spells|level=1|school=I;N} müssen aus der Schule der Illusions- oder Nekromantiemagie sein. Du kannst jeden dieser Zauber wirken, ohne einen Zauberslot zu verbrauchen. Sobald du einen dieser Zauber auf diese Weise gewirkt hast, kannst du diesen Zauber erst wieder nach einer langen Pause auf diese Weise wirken. Du kannst diese Zauber auch mit Zauberfeldern der entsprechenden Stufe wirken. Die Zauberfähigkeit des Zaubers ist die Fähigkeit, die durch diese Fähigkeit erhöht wird."
 					]
 				}
 			]

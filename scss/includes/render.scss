@@ -252,6 +252,11 @@ $rgb-inset-border: #656565;
 		}
 
 		// section headers
+		&h {
+			margin: 0;
+			line-height: inherit;
+		}
+
 		// statsBlockSectionHead
 		&h--0 {
 			@include rd__h--large();
@@ -299,6 +304,14 @@ $rgb-inset-border: #656565;
 			font-weight: bolder;
 			font-size: 1.1em;
 			text-align: center;
+		}
+
+		&h--2-inset > h4,
+		&h--2-flow-block > h4 {
+			font-size: inherit;
+			font-weight: inherit;
+			line-height: $font-line-height;
+			margin: 0;
 		}
 
 		// inline headers

@@ -1000,6 +1000,8 @@ class CreatureParser extends BaseParser {
 		SenseFilterTag.tryRun(stats);
 		SpellcastingTypeTag.tryRun(stats);
 		DamageTypeTag.tryRun(stats);
+		DamageTypeTag.tryRunSpells(stats);
+		DamageTypeTag.tryRunRegionalsLairs(stats);
 		MiscTag.tryRun(stats);
 		DetectNamedCreature.tryRun(stats);
 		TagImmResVulnConditional.tryRun(stats);

@@ -13,8 +13,8 @@
 
 	<title>Initiative Tracker Player View - 5etools</title>
 
-	<link rel="stylesheet" href="css/bootstrap.css?v=v1.152.4.1650434666">
-	<link rel="stylesheet" href="css/main.css?v=v1.152.4.1650434666">
+	<link rel="stylesheet" href="css/bootstrap.css?v=v1.152.4.1650460039">
+	<link rel="stylesheet" href="css/main.css?v=v1.152.4.1650460039">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -51,13 +51,17 @@
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");</script>
 
-	<script type="text/javascript" src="js/styleswitch.js?v=v1.152.4.1650434666"></script>
-	<script type="text/javascript" src="js/navigation.js?v=v1.152.4.1650434666"></script>
-	<script type="text/javascript" src="js/browsercheck.js?v=v1.152.4.1650434666"></script>
+	<script type="text/javascript" src="js/styleswitch.js?v=v1.152.4.1650460039"></script>
+	<script type="text/javascript" src="js/navigation.js?v=v1.152.4.1650460039"></script>
+	<script type="text/javascript" src="js/browsercheck.js?v=v1.152.4.1650460039"></script>
 
 	<style>
 		#initp__wrp_active {
 			display: none;
+		}
+
+		.is-fullscreen .initp__fullscreen-hidden {
+			display: none !important;
 		}
 	</style>
 </head>
@@ -75,61 +79,27 @@
 </header>
 <nav class="container page__nav" id="navigation"><ul class="nav nav-pills page__nav-inner" id="navbar"></ul></nav>
 
-<main class="container view-col-wrapper">
-	<div class="initp__content">
-
-		<div class="initp__initial row">
-			<div class="col-12">
-				<p>
-					The Player View is part of a peer-to-peer (i.e., serverless) system to allow players to connect to a DM's <a href="dmscreen.html">DM Screen</a> initiative tracker. As a player, the usage is as follows:
-				<ol>
-					<li>Enter a name into the "Player Name" field.</li>
-					<li>Paste a "server token," provided by a DM, into the "Server Token" field.</li>
-					<li>Click "Connect."</li>
-				</ol>
-				<p>After a short delay, you should be connected to the DM and this page will change to display the encounter in the DM's tracker. <i>Please note that this system is highly experimental. Your experience may vary.</i></p>
-			</div>
-		</div>
-
-		<hr class="initp__initial">
-
-		<div class="initp__initial row w-100 ve-flex">
-			<div class="col-5 bold mr-4">Player Name</div>
-			<div class="col-5 bold">Server Token</div>
-			<div class="col-2 text-center"></div>
-		</div>
-		<div class="initp__initial row w-100 ve-flex mb-4">
-			<div class="col-5 bold mr-4"><input class="form-control code" id="initp__ipt_player_name"></div>
-			<div class="col-5 bold"><input class="form-control code" id="initp__ipt_server_token"></div>
-			<div class="col-2 ve-flex-vh-center"><button class="btn btn-xs btn-primary" id="initp__btn_connect">Connect</button></div>
-		</div>
-
-		<div class="initp__wrp_active" id="initp__wrp_active">
-			<div class="initp__meta"></div>
-			<div class="initp__header"></div>
-			<div class="initp__rows"></div>
-		</div>
-	</div>
-
+<main class="container view-col-wrapper" id="page-content">
+	<div class="flex-vh-center initial-message">Loading...</div>
 </main>
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <!--5ETOOLS_AD_ADHESION-->
 <script type="text/javascript" src="lib/peerjs.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/lzma.js"></script>
-<script type="text/javascript" src="js/parser.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/utils.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/utils-ui.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/utils-p2p.js?v=v1.152.4.1650434666"></script>
+<script type="text/javascript" src="js/parser.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/utils.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/utils-ui.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/utils-p2p.js?v=v1.152.4.1650460039"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
-<script type="text/javascript" src="js/omnidexer.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/omnisearch.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/render.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/render-dice.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/scalecreature.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/hist.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/initiativetrackerutils.js?v=v1.152.4.1650434666"></script>
-<script type="text/javascript" src="js/inittrackerplayerview.js?v=v1.152.4.1650434666"></script>
+<script type="text/javascript" src="js/omnidexer.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/omnisearch.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/render.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/render-dice.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/scalecreature.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/hist.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/initiativetrackerutils.js?v=v1.152.4.1650460039"></script>
+<script type="text/javascript" src="js/inittrackerplayerview.js?v=v1.152.4.1650460039"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
 </html>

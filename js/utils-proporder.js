@@ -1,6 +1,5 @@
 "use strict";
 
-// TODO add deep sorting, e.g. "_copy" sections should be sorted
 class PropOrder {
 	/**
 	 * @param obj
@@ -194,6 +193,8 @@ PropOrder._MONSTER = [
 	new PropOrder._ArrayKey("actionTags", {fnSort: SortUtil.ascSortLower}),
 	new PropOrder._ArrayKey("languageTags", {fnSort: SortUtil.ascSortLower}),
 	new PropOrder._ArrayKey("damageTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("damageTagsLegendary", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("damageTagsSpell", {fnSort: SortUtil.ascSortLower}),
 	new PropOrder._ArrayKey("spellcastingTags", {fnSort: SortUtil.ascSortLower}),
 	new PropOrder._ArrayKey("miscTags", {fnSort: SortUtil.ascSortLower}),
 	new PropOrder._ArrayKey("conditionInflict", {fnSort: SortUtil.ascSortLower}),
@@ -727,6 +728,8 @@ PropOrder._FEAT = [
 
 	"additionalSpells",
 
+	"optionalfeatureProgression",
+
 	"entries",
 ];
 PropOrder._VEHICLE = [
@@ -1049,6 +1052,8 @@ PropOrder._OPTIONALFEATURE = [
 	"weaponProficiencies",
 	"armorProficiencies",
 
+	"senses",
+
 	"additionalSpells",
 
 	"consumes",
@@ -1126,6 +1131,7 @@ PropOrder._RACE_SUBRACE = [
 	"age",
 
 	"darkvision",
+	"blindsight",
 	"feats",
 
 	new PropOrder._ArrayKey("traitTags", {fnSort: SortUtil.ascSortLower}),

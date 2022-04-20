@@ -51,6 +51,9 @@ class PageFilterBestiary extends PageFilter {
 			it[key].forEach(nxt => this._getAllImmRest_recurse(nxt, key, out, !!it.cond));
 		}
 	}
+
+	static _getDamageTagDisplayText (tag) { return Parser.dmgTypeToFull(tag).toTitleCase(); }
+	static _getConditionDisplayText (uid) { return uid.split("|")[0].toTitleCase(); }
 	// endregion
 
 	constructor () {
@@ -111,24 +114,41 @@ class PageFilterBestiary extends PageFilter {
 			umbrellaItems: ["X", "XX"],
 			umbrellaExcludes: ["CS"],
 		});
-		this._damageTypeFilter = new Filter({
-			header: "Damage Inflicted",
-			displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase(),
+		this._damageTypeFilterBase = new Filter({
+			header: "Damage Inflicted by Traits/Actions",
+			displayFn: this.constructor._getDamageTagDisplayText,
+			displayFnMini: tag => `Deals ${this.constructor._getDamageTagDisplayText(tag)} (Trait/Action)`,
 			items: Object.keys(Parser.DMGTYPE_JSON_TO_FULL),
 		});
+		this._damageTypeFilterLegendary = new Filter({
+			header: "Damage Inflicted by Lair Actions/Regional Effects",
+			displayFn: this.constructor._getDamageTagDisplayText,
+			displayFnMini: tag => `Deals ${this.constructor._getDamageTagDisplayText(tag)} (Lair/Regional)`,
+			items: Object.keys(Parser.DMGTYPE_JSON_TO_FULL),
+		});
+		this._damageTypeFilterSpells = new Filter({
+			header: "Damage Inflicted by Spells",
+			displayFn: this.constructor._getDamageTagDisplayText,
+			displayFnMini: tag => `Deals ${this.constructor._getDamageTagDisplayText(tag)} (Spell)`,
+			items: Object.keys(Parser.DMGTYPE_JSON_TO_FULL),
+		});
+		this._damageTypeFilter = new MultiFilter({header: "Damage Inflicted", filters: [this._damageTypeFilterBase, this._damageTypeFilterLegendary, this._damageTypeFilterSpells]});
 		this._conditionsInflictedFilterBase = new Filter({
-			header: "By Traits/Actions",
-			displayFn: uid => uid.split("|")[0].toTitleCase(),
+			header: "Conditions Inflicted by Traits/Actions",
+			displayFn: this.constructor._getConditionDisplayText,
+			displayFnMini: uid => `Inflicts ${this.constructor._getConditionDisplayText(uid)} (Trait/Action)`,
 			items: [...Parser.CONDITIONS],
 		});
 		this._conditionsInflictedFilterLegendary = new Filter({
-			header: "By Lair Actions/Regional Effects",
-			displayFn: uid => uid.split("|")[0].toTitleCase(),
+			header: "Conditions Inflicted by Lair Actions/Regional Effects",
+			displayFn: this.constructor._getConditionDisplayText,
+			displayFnMini: uid => `Inflicts ${this.constructor._getConditionDisplayText(uid)} (Lair/Regional)`,
 			items: [...Parser.CONDITIONS],
 		});
 		this._conditionsInflictedFilterSpells = new Filter({
-			header: "By Spells",
-			displayFn: uid => uid.split("|")[0].toTitleCase(),
+			header: "Conditions Inflicted by Spells",
+			displayFn: this.constructor._getConditionDisplayText,
+			displayFnMini: uid => `Inflicts ${this.constructor._getConditionDisplayText(uid)} (Spell)`,
 			items: [...Parser.CONDITIONS],
 		});
 		this._conditionsInflictedFilter = new MultiFilter({header: "Conditions Inflicted", filters: [this._conditionsInflictedFilterBase, this._conditionsInflictedFilterLegendary, this._conditionsInflictedFilterSpells]});
@@ -158,22 +178,30 @@ class PageFilterBestiary extends PageFilter {
 		this._vulnerableFilter = new Filter({
 			header: "Vulnerabilities",
 			items: PageFilterBestiary.DMG_TYPES,
+			displayFnMini: str => `Vuln. ${str.toTitleCase()}`,
+			displayFnTitle: str => `Damage Vulnerability: ${str.toTitleCase()}`,
 			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._resistFilter = new Filter({
 			header: "Resistance",
 			items: PageFilterBestiary.DMG_TYPES,
+			displayFnMini: str => `Res. ${str.toTitleCase()}`,
+			displayFnTitle: str => `Damage Resistance: ${str.toTitleCase()}`,
 			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._immuneFilter = new Filter({
 			header: "Immunity",
 			items: PageFilterBestiary.DMG_TYPES,
+			displayFnMini: str => `Imm. ${str.toTitleCase()}`,
+			displayFnTitle: str => `Damage Immunity: ${str.toTitleCase()}`,
 			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._defenceFilter = new MultiFilter({header: "Damage", filters: [this._vulnerableFilter, this._resistFilter, this._immuneFilter]});
 		this._conditionImmuneFilter = new Filter({
 			header: "Condition Immunity",
 			items: PageFilterBestiary.CONDS,
+			displayFnMini: str => `Imm. ${str.toTitleCase()}`,
+			displayFnTitle: str => `Condition Immunity: ${str.toTitleCase()}`,
 			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._traitFilter = new Filter({
@@ -374,6 +402,9 @@ class PageFilterBestiary extends PageFilter {
 		this._spellSlotLevelFilter.addItem(mon._fSpellSlotLevels);
 		this._spellKnownFilter.addItem(mon._fSpellsKnown);
 		if (mon._versionBase_isVersion) this._miscFilter.addItem("Is Variant");
+		this._damageTypeFilterBase.addItem(mon.damageTags);
+		this._damageTypeFilterLegendary.addItem(mon.damageTagsLegendary);
+		this._damageTypeFilterSpells.addItem(mon.damageTagsSpell);
 		this._conditionsInflictedFilterBase.addItem(mon.conditionInflict);
 		this._conditionsInflictedFilterLegendary.addItem(mon.conditionInflictLegendary);
 		this._conditionsInflictedFilterSpells.addItem(mon.conditionInflictSpell);
@@ -448,7 +479,11 @@ class PageFilterBestiary extends PageFilter {
 			m.senseTags,
 			m._fPassive,
 			m._fLanguageTags,
-			m.damageTags,
+			[
+				m.damageTags,
+				m.damageTagsLegendary,
+				m.damageTagsSpell,
+			],
 			[
 				m.conditionInflict,
 				m.conditionInflictLegendary,

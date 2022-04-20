@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Теги стиля; {@bold some text to be bolded} (альтернатива {@b shorthand}), {@italic some text to be italicised} (альтернатива {@i shorthand}), {@underline some text to be underlined} (альтернатива {@u shorthand}), {@strike some text to strike-through}, (альтернатива {@s shorthand}), {@color color|e40707} теги",
+						"Теги стиля; {@bold some text to be bolded} (альтернатива {@b shorthand}), {@italic some text to be italicised} (альтернатива {@i shorthand}), {@underline some text to be underlined} (альтернатива {@u shorthand}), {@strike some text to strike-through}, (альтернатива {@s shorthand}), {@color color|e40707} теги, {@code print(&quot;hello world&quot;)} теги",
 						"Дополнительно, {@note note tags}, используется для добавления опечаток или \"дизайнерских сносок\" в Твиттере.",
 						"Теги роликов кубиков; {@dice 1d2-2+2d3+5} для обычных бросков кубиков ({@dice 1d6;2d6} для нескольких вариантов; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} для подсказок ввода), с расширенными {@dice 1d20+2|display text} и {@dice 1d20+2|display text|rolled by name}, а также специальная версия 'hit', которая предполагает, что бросается d20 {@hit +7} (и бросает преимущество при нажатии shift, недостаток при нажатии alt). Есть также {@damage 1d12+3}, который будет бросать критические удары при нажатии на shift и половину урона (с округлением вниз) при нажатии на alt, и {@d20 -4}, который также будет бросать преимущество/недостаток, хотя теги @hit предпочтительнее там, где это уместно. Заклинания могут иметь метки масштабирования кубиков (урон 2d6 или 3d6 на первом уровне, добавление дополнительных {@scaledice 2d6;3d6|2-9|1d6} за каждый уровень после второго), когда эффект заклинания масштабируется на более высоких уровнях. {@ability str 20}, {@savingThrow str 5} и {@skillCheck animal_handling 5} используются как внутреннее сокращение, но могут быть полезны и в других местах.",
 						"Теги шанса; аналогичны тегам броска кубиков, но выводят успех/неуспех. Синтаксис аналогичен синтаксису тегов игральных костей: {@chance 50}, {@chance 50|display text} и {@chance 50|display text|rolled by name}.",
@@ -110,7 +110,8 @@
 									"type": "list",
 									"items": [
 										"Теги приключений: ссылка на приключение {@adventure display text|CoS}; глава в приключении {@adventure display text|CoS|2}; заголовок в главе в приключении {@adventure display text|CoS|2|Treasure}; или N-й заголовок данного имени в главе в приключении {@adventure display text|CoS|2|Treasure|1}.",
-										"Теги книг: ссылка на книгу {@book display text|PHB}; глава в книге {@book display text|PHB|2}; заголовок в главе книги {@book display text|PHB|2|Age}; или N-й заголовок данного имени в главе книги {@book display text|PHB|2|Age|0} (хотя в этом, как правило, нет необходимости, поскольку, в отличие от приключений, книги не повторяют свои заголовки очень часто."
+										"Теги книг: ссылка на книгу {@book display text|PHB}; глава в книге {@book display text|PHB|2}; заголовок в главе книги {@book display text|PHB|2|Age}; или N-й заголовок данного имени в главе книги {@book display text|PHB|2|Age|0} (хотя в этом, как правило, нет необходимости, поскольку, в отличие от приключений, книги не повторяют свои заголовки очень часто.",
+										"Теги быстрой справки; {@code &lt;name&gt;|&lt;source&gt;|&lt;chapterIndex&gt;|&lt;headerIndex&gt;|&lt;displayText&gt;}: {@quickref Multiclassing}, {@quickref Multiclassing|PHB}, {@quickref Adventuring Gear|PHB|1}, {@quickref Adventuring Gear|PHB|1|0}, {@quickref Adventuring Gear|PHB|1|0|Display Text}."
 									]
 								}
 							]

@@ -227,39 +227,42 @@ const ListUtil = {
 
 	getPrimaryLists () { return this._primaryLists; },
 
-	__mouseMoveId: 1,
-	async _pBindSublistResizeHandlers ($ele) {
+	async _pBindSublistResizeHandlers ($wrpList) {
 		const STORAGE_KEY = "SUBLIST_RESIZE";
-		const BORDER_SIZE = 3;
-		const MOUSE_MOVE_ID = ListUtil.__mouseMoveId++;
-		const $doc = $(document);
+
+		const $handle = $(`<div class="sublist__ele-resize mobile__hidden">...</div>`).appendTo($wrpList);
 
 		let mousePos;
 		function resize (evt) {
-			const dx = evt.clientY - mousePos;
-			mousePos = evt.clientY;
-			$ele.css("height", parseInt($ele.css("height")) + dx);
+			evt.preventDefault();
+			evt.stopPropagation();
+			const dx = EventUtil.getClientY(evt) - mousePos;
+			mousePos = EventUtil.getClientY(evt);
+			$wrpList.css("height", parseInt($wrpList.css("height")) + dx);
 		}
 
-		$ele.on("mousedown", (evt) => {
-			if (evt.which === 1 && evt.target === $ele[0]) {
+		$handle
+			.on("mousedown", (evt) => {
+				if (evt.which !== 1) return;
+
 				evt.preventDefault();
-				if (evt.offsetY > $ele.height() - BORDER_SIZE) {
-					mousePos = evt.clientY;
-					$doc.on(`mousemove.sublist_resize-${MOUSE_MOVE_ID}`, resize);
-				}
-			}
+				mousePos = evt.clientY;
+				document.removeEventListener("mousemove", resize);
+				document.addEventListener("mousemove", resize);
+			});
+
+		document.addEventListener("mouseup", evt => {
+			if (evt.which !== 1) return;
+
+			document.removeEventListener("mousemove", resize);
+			StorageUtil.pSetForPage(STORAGE_KEY, $wrpList.css("height"));
 		});
 
-		$doc.on("mouseup", (evt) => {
-			if (evt.which === 1) {
-				$(document).off(`mousemove.sublist_resize-${MOUSE_MOVE_ID}`);
-				StorageUtil.pSetForPage(STORAGE_KEY, $ele.css("height"));
-			}
-		});
+		// Avoid setting the height on mobile, as we force the sublist to a static size
+		if (JqueryUtil.isMobile()) return;
 
 		const storedHeight = await StorageUtil.pGetForPage(STORAGE_KEY);
-		if (storedHeight) $ele.css("height", storedHeight);
+		if (storedHeight) $wrpList.css("height", storedHeight);
 	},
 
 	getOrTabRightButton: (id, icon) => {

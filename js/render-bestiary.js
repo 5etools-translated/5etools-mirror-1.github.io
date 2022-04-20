@@ -108,22 +108,22 @@ class RenderBestiary {
 		<tr>${options.selSummonClassLevel ? $$`<td colspan="6"><strong>Class Level</strong> ${options.selSummonClassLevel}</td>` : ""}</tr>
 
 		${allTraits ? `<tr><td class="divider" colspan="6"><div></div></td></tr>${RenderBestiary._getRenderedSection("trait", allTraits, 1)}` : ""}
-		${allActions ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Actions${mon.actionNote ? ` (<span class="small">${mon.actionNote}</span>)` : ""}</span></td></tr>
+		${allActions ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Actions${mon.actionNote ? ` (<span class="small">${mon.actionNote}</span>)` : ""}</h3></td></tr>
 		${RenderBestiary._getRenderedSection("action", allActions, 1)}` : ""}
-		${mon.bonus ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Bonus Actions</span></td></tr>
+		${mon.bonus ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Bonus Actions</h3></td></tr>
 		${RenderBestiary._getRenderedSection("bonus", mon.bonus, 1)}` : ""}
-		${mon.reaction ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Reactions</span></td></tr>
+		${mon.reaction ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Reactions</h3></td></tr>
 		${RenderBestiary._getRenderedSection("reaction", mon.reaction, 1)}` : ""}
-		${mon.legendary ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Legendary Actions</span></td></tr>
+		${mon.legendary ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Legendary Actions</h3></td></tr>
 		<tr class="legendary"><td colspan="6"><span class="name"></span> <span>${Renderer.monster.getLegendaryActionIntro(mon)}</span></td></tr>
 		${RenderBestiary._getRenderedSection("legendary", mon.legendary, 1)}` : ""}
-		${mon.mythic ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Mythic Actions</span></td></tr>
+		${mon.mythic ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Mythic Actions</h3></td></tr>
 		<tr class="mythic"><td colspan="6"><span class="name"></span> <span>${Renderer.monster.getMythicActionIntro(mon)}</span></td></tr>
 		${RenderBestiary._getRenderedSection("mythic", mon.mythic, 1)}` : ""}
 
-		${legGroup && legGroup.lairActions ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Lair Actions</span></td></tr>
+		${legGroup && legGroup.lairActions ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Lair Actions</h3></td></tr>
 		${RenderBestiary._getRenderedSection("lairaction", legGroup.lairActions, -1)}` : ""}
-		${legGroup && legGroup.regionalEffects ? `<tr><td colspan="6" class="mon__stat-header-underline"><span class="mon__sect-header-inner">Regional Effects</span></td></tr>
+		${legGroup && legGroup.regionalEffects ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Regional Effects</h3></td></tr>
 		${RenderBestiary._getRenderedSection("regionaleffect", legGroup.regionalEffects, -1)}` : ""}
 
 		${renderedVariants ? `<tr><td colspan=6>${renderedVariants}</td></tr>` : ""}

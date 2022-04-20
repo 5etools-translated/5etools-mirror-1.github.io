@@ -136,6 +136,9 @@
 			"damageTags": [
 				"O"
 			],
+			"damageTagsSpell": [
+				"L"
+			],
 			"miscTags": [
 				"AOE"
 			],
@@ -1041,7 +1044,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The allip can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
+						"The allip can move through other creatures and objects as if they were {@quickref difficult terrain||3}. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
@@ -1298,6 +1301,9 @@
 				"N",
 				"O",
 				"S",
+				"Y"
+			],
+			"damageTagsSpell": [
 				"Y"
 			],
 			"miscTags": [
@@ -1662,6 +1668,9 @@
 			],
 			"damageTags": [
 				"O"
+			],
+			"damageTagsSpell": [
+				"F"
 			],
 			"hasToken": true,
 			"hasFluff": true
@@ -2630,6 +2639,9 @@
 				"A",
 				"S"
 			],
+			"damageTagsSpell": [
+				"F"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -2849,6 +2861,12 @@
 			"damageTags": [
 				"N",
 				"O"
+			],
+			"damageTagsSpell": [
+				"B",
+				"F",
+				"P",
+				"S"
 			],
 			"miscTags": [
 				"MW",
@@ -3682,6 +3700,9 @@
 				"P",
 				"S"
 			],
+			"damageTagsSpell": [
+				"O"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -3932,7 +3953,7 @@
 				{
 					"name": "Ice Walk",
 					"entries": [
-						"The hag can move across and climb icy surfaces without needing to make an ability check, and difficult terrain composed of ice or snow doesn't cost the hag extra moment."
+						"The hag can move across and climb icy surfaces without needing to make an ability check, and {@quickref difficult terrain||3} composed of ice or snow doesn't cost the hag extra moment."
 					]
 				}
 			],
@@ -3981,6 +4002,10 @@
 				"GI"
 			],
 			"damageTags": [
+				"B",
+				"C"
+			],
+			"damageTagsSpell": [
 				"B",
 				"C"
 			],
@@ -4721,7 +4746,7 @@
 				{
 					"name": "Oil Puddle",
 					"entries": [
-						"The boggle creates a puddle of nonflammable oil. The puddle is 1 inch deep and covers the ground in the boggle's space. The puddle is difficult terrain for all creatures except boggles and lasts for 1 hour. The oil has one of the following additional effects of the boggle's choice:",
+						"The boggle creates a puddle of nonflammable oil. The puddle is 1 inch deep and covers the ground in the boggle's space. The puddle is {@quickref difficult terrain||3} for all creatures except boggles and lasts for 1 hour. The oil has one of the following additional effects of the boggle's choice:",
 						{
 							"type": "list",
 							"style": "list-hang-notitle",
@@ -6415,21 +6440,21 @@
 							"style": "list-hang-notitle",
 							"items": [
 								{
-									"name": "1\u20132: Confusion",
+									"name": "1–2: Confusion",
 									"type": "item",
 									"entries": [
 										"On its next turn, the target must use its action to make one weapon attack against a random creature it can see within 30 feet of it, using whatever weapon it has in hand and moving beforehand if necessary to get in range. If it's holding no weapon, it makes an unarmed strike. If no creature is visible within 30 feet, it takes the {@action Dash} action, moving toward the nearest creature."
 									]
 								},
 								{
-									"name": "3\u20134: Paralysis",
+									"name": "3–4: Paralysis",
 									"type": "item",
 									"entries": [
 										"The target is {@condition paralyzed} until the end of its next turn."
 									]
 								},
 								{
-									"name": "5\u20136: Poison",
+									"name": "5–6: Poison",
 									"type": "item",
 									"entries": [
 										"The target takes 13 ({@damage 3d8}) poison damage."
@@ -7019,6 +7044,9 @@
 			"damageTags": [
 				"O"
 			],
+			"damageTagsSpell": [
+				"F"
+			],
 			"conditionInflictSpell": [
 				"restrained"
 			],
@@ -7563,7 +7591,7 @@
 				{
 					"name": "Multiattack",
 					"entries": [
-						"The death kiss makes three Tentacle attacks. Up to three of these attacks can be replaced by Blood Drain\u2014one replacement per tentacle grappling a creature."
+						"The death kiss makes three Tentacle attacks. Up to three of these attacks can be replaced by Blood Drain—one replacement per tentacle grappling a creature."
 					]
 				},
 				{
@@ -7767,6 +7795,10 @@
 			"damageTags": [
 				"N"
 			],
+			"damageTagsSpell": [
+				"A",
+				"C"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -7940,6 +7972,9 @@
 			],
 			"damageTags": [
 				"N"
+			],
+			"damageTagsSpell": [
+				"O"
 			],
 			"miscTags": [
 				"MW"
@@ -8598,21 +8633,21 @@
 							"items": [
 								{
 									"type": "item",
-									"name": "1\u20132: Beguiling Gaze",
+									"name": "1–2: Beguiling Gaze",
 									"entries": [
 										"The target is {@condition stunned} until the start of Demogorgon's next turn or until Demogorgon is no longer within line of sight."
 									]
 								},
 								{
 									"type": "item",
-									"name": "3\u20134: Confusing Gaze",
+									"name": "3–4: Confusing Gaze",
 									"entries": [
 										"The target suffers the effect of the {@spell confusion} spell without making a saving throw. The effect lasts until the start of Demogorgon's next turn. Demogorgon doesn't need to concentrate on the spell."
 									]
 								},
 								{
 									"type": "item",
-									"name": "5\u20136: Hypnotic Gaze",
+									"name": "5–6: Hypnotic Gaze",
 									"entries": [
 										"The target is {@condition charmed} by Demogorgon until the start of Demogorgon's next turn. Demogorgon chooses how the {@condition charmed} target uses its action, reaction, and movement."
 									]
@@ -8666,6 +8701,9 @@
 				"B",
 				"N",
 				"O"
+			],
+			"damageTagsSpell": [
+				"Y"
 			],
 			"miscTags": [
 				"MW",
@@ -9567,6 +9605,9 @@
 				"R",
 				"Y"
 			],
+			"damageTagsSpell": [
+				"L"
+			],
 			"miscTags": [
 				"AOE"
 			],
@@ -10115,6 +10156,10 @@
 				"I",
 				"P"
 			],
+			"damageTagsSpell": [
+				"O",
+				"P"
+			],
 			"miscTags": [
 				"MW",
 				"RW"
@@ -10284,6 +10329,10 @@
 				"I",
 				"O",
 				"S"
+			],
+			"damageTagsSpell": [
+				"F",
+				"O"
 			],
 			"miscTags": [
 				"MW"
@@ -10878,6 +10927,9 @@
 				"F",
 				"R",
 				"Y"
+			],
+			"damageTagsSpell": [
+				"S"
 			],
 			"miscTags": [
 				"AOE",
@@ -12444,7 +12496,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The dybbuk can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
+						"The dybbuk can move through other creatures and objects as if they were {@quickref difficult terrain||3}. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
@@ -12502,6 +12554,10 @@
 			"damageTags": [
 				"N",
 				"O"
+			],
+			"damageTagsSpell": [
+				"O",
+				"Y"
 			],
 			"miscTags": [
 				"MW"
@@ -12713,7 +12769,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The eidolon can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object other than a {@creature sacred statue|MPMM}."
+						"The eidolon can move through other creatures and objects as if they were {@quickref difficult terrain||3}. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object other than a {@creature sacred statue|MPMM}."
 					]
 				},
 				{
@@ -13155,6 +13211,9 @@
 			"damageTags": [
 				"B",
 				"Y"
+			],
+			"damageTagsSpell": [
+				"O"
 			],
 			"spellcastingTags": [
 				"P"
@@ -13599,6 +13658,11 @@
 			],
 			"damageTags": [
 				"O"
+			],
+			"damageTagsSpell": [
+				"B",
+				"C",
+				"L"
 			],
 			"miscTags": [
 				"AOE"
@@ -14659,6 +14723,15 @@
 				"O",
 				"Y"
 			],
+			"damageTagsLegendary": [
+				"Y"
+			],
+			"damageTagsSpell": [
+				"B",
+				"P",
+				"S",
+				"Y"
+			],
 			"miscTags": [
 				"MW",
 				"RCH"
@@ -15657,6 +15730,15 @@
 				"I",
 				"O"
 			],
+			"damageTagsLegendary": [
+				"C"
+			],
+			"damageTagsSpell": [
+				"B",
+				"C",
+				"P",
+				"S"
+			],
 			"miscTags": [
 				"MW",
 				"RCH"
@@ -16111,6 +16193,10 @@
 				"S",
 				"Y"
 			],
+			"damageTagsSpell": [
+				"F",
+				"O"
+			],
 			"spellcastingTags": [
 				"P"
 			],
@@ -16428,6 +16514,10 @@
 			"damageTags": [
 				"S",
 				"Y"
+			],
+			"damageTagsSpell": [
+				"B",
+				"O"
 			],
 			"spellcastingTags": [
 				"P"
@@ -17611,6 +17701,11 @@
 				"I",
 				"O"
 			],
+			"damageTagsSpell": [
+				"B",
+				"P",
+				"S"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -18373,6 +18468,9 @@
 				"I",
 				"P"
 			],
+			"damageTagsSpell": [
+				"P"
+			],
 			"miscTags": [
 				"MW",
 				"RNG",
@@ -18912,21 +19010,21 @@
 							"style": "list-hang-notitle",
 							"items": [
 								{
-									"name": "1\u20132: Bonemelt Sprayer",
+									"name": "1–2: Bonemelt Sprayer",
 									"type": "item",
 									"entries": [
 										"The hellfire engine spews acidic flame in a 60-foot cone. Each creature in the cone must make a {@dc 20} Dexterity saving throw, taking 11 ({@damage 2d10}) fire damage plus 18 ({@damage 4d8}) acid damage on a failed save, or half as much damage on a successful one. Creatures that fail the saving throw are drenched in burning acid and take 5 ({@damage 1d10}) fire damage plus 9 ({@damage 2d8}) acid damage at the end of their turns. An affected creature or another creature within 5 feet of it can take an action to scrape off the burning fuel."
 									]
 								},
 								{
-									"name": "3\u20134: Lightning Flail",
+									"name": "3–4: Lightning Flail",
 									"type": "item",
 									"entries": [
 										"{@atk mw} {@hit 10} to hit, reach 15 ft., one creature. {@h}18 ({@damage 3d8 + 5}) bludgeoning damage plus 22 ({@damage 5d8}) lightning damage. Up to three other creatures of the hellfire engine's choice that it can see within 30 feet of the target must each make a {@dc 20} Dexterity saving throw, taking 22 ({@damage 5d8}) lightning damage on a failed save, or half as much damage on a successful one."
 									]
 								},
 								{
-									"name": "5\u20136: Thunder Cannon",
+									"name": "5–6: Thunder Cannon",
 									"type": "item",
 									"entries": [
 										"The hellfire engine targets a point within 120 feet of it that it can see. Each creature within 30 feet of that point must make a {@dc 20} Dexterity saving throw, taking 27 ({@damage 5d10}) bludgeoning damage plus 19 ({@damage 3d12}) thunder damage on a failed save, or half as much damage on a successful one.",
@@ -19101,6 +19199,10 @@
 			"damageTags": [
 				"B",
 				"O"
+			],
+			"damageTagsSpell": [
+				"F",
+				"L"
 			],
 			"miscTags": [
 				"MW"
@@ -19741,6 +19843,13 @@
 				"O",
 				"T"
 			],
+			"damageTagsSpell": [
+				"B",
+				"F",
+				"L",
+				"P",
+				"S"
+			],
 			"miscTags": [
 				"AOE",
 				"MW",
@@ -19943,6 +20052,9 @@
 				"O",
 				"Y"
 			],
+			"damageTagsSpell": [
+				"B"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -20068,6 +20180,9 @@
 				"X"
 			],
 			"damageTags": [
+				"Y"
+			],
+			"damageTagsSpell": [
 				"Y"
 			],
 			"conditionInflictSpell": [
@@ -20242,7 +20357,7 @@
 				{
 					"name": "Eject Slime {@recharge 5}",
 					"entries": [
-						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must succeed on a {@dc 21} Dexterity saving throw or take 55 ({@damage 10d10}) acid damage. Unless the target avoids taking all of this damage, any metal armor worn by the target takes a permanent \u22121 penalty to the AC it offers, and any metal weapon the target is carrying or wearing takes a permanent \u22121 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to \u22125, the object is destroyed. The penalty on an object can be removed by the {@spell mending} spell."
+						"Juiblex spews out a corrosive slime, targeting one creature that it can see within 60 feet of it. The target must succeed on a {@dc 21} Dexterity saving throw or take 55 ({@damage 10d10}) acid damage. Unless the target avoids taking all of this damage, any metal armor worn by the target takes a permanent −1 penalty to the AC it offers, and any metal weapon the target is carrying or wearing takes a permanent −1 penalty to damage rolls. The penalty worsens each time a target is subjected to this effect. If the penalty on an object drops to −5, the object is destroyed. The penalty on an object can be removed by the {@spell mending} spell."
 					]
 				}
 			],
@@ -20283,6 +20398,9 @@
 			"damageTags": [
 				"A",
 				"I"
+			],
+			"damageTagsLegendary": [
+				"F"
 			],
 			"miscTags": [
 				"MW",
@@ -20560,7 +20678,7 @@
 				{
 					"name": "Dragon's Resistance",
 					"entries": [
-						"The kobold has resistance to a type of damage based on the color of dragon that invested it with power (choose or roll a {@dice d10}): 1\u20132, acid (black or copper); 3\u20134, cold (silver or white); 5\u20136, fire (brass, gold, or red); 7\u20138, lightning (blue or bronze); 9\u201310, poison (green)."
+						"The kobold has resistance to a type of damage based on the color of dragon that invested it with power (choose or roll a {@dice d10}): 1–2, acid (black or copper); 3–4, cold (silver or white); 5–6, fire (brass, gold, or red); 7–8, lightning (blue or bronze); 9–10, poison (green)."
 					]
 				},
 				{
@@ -21106,6 +21224,9 @@
 			"damageTags": [
 				"B"
 			],
+			"damageTagsSpell": [
+				"B"
+			],
 			"miscTags": [
 				"MW",
 				"RW"
@@ -21248,6 +21369,9 @@
 			"damageTags": [
 				"L",
 				"T"
+			],
+			"damageTagsSpell": [
+				"B"
 			],
 			"conditionInflict": [
 				"frightened",
@@ -22111,12 +22235,12 @@
 							"items": [
 								{
 									"type": "item",
-									"name": "1\u20132: Knock Down.",
+									"name": "1–2: Knock Down.",
 									"entry": "The target must succeed on a {@dc 13} Dexterity saving throw or be knocked {@condition prone}."
 								},
 								{
 									"type": "item",
-									"name": "3\u20134: Push.",
+									"name": "3–4: Push.",
 									"entry": "The target must succeed on a {@dc 13} Strength saving throw or be pushed up to 10 feet directly away from the adept."
 								}
 							]
@@ -23275,6 +23399,9 @@
 			"damageTags": [
 				"F"
 			],
+			"damageTagsSpell": [
+				"B"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -23687,6 +23814,12 @@
 				"T",
 				"Y"
 			],
+			"damageTagsSpell": [
+				"B",
+				"F",
+				"P",
+				"S"
+			],
 			"miscTags": [
 				"AOE",
 				"MW",
@@ -23910,6 +24043,9 @@
 				"N",
 				"O"
 			],
+			"damageTagsSpell": [
+				"L"
+			],
 			"miscTags": [
 				"MW",
 				"RCH"
@@ -24080,6 +24216,10 @@
 				"S",
 				"Y"
 			],
+			"damageTagsSpell": [
+				"L",
+				"O"
+			],
 			"miscTags": [
 				"AOE",
 				"MW",
@@ -24161,22 +24301,22 @@
 							"items": [
 								{
 									"type": "item",
-									"name": "1\u20133:",
+									"name": "1–3:",
 									"entry": "The giant makes three Fist attacks against one random creature within reach. If no creatures are within reach, the giant flies into a rage and gains advantage on all attack rolls until the end of its next turn."
 								},
 								{
 									"type": "item",
-									"name": "4\u20135:",
+									"name": "4–5:",
 									"entry": "The giant makes one Fist attack against each creature within reach. If no creatures are within reach, the giant makes one Fist attack against itself."
 								},
 								{
 									"type": "item",
-									"name": "6\u20137:",
+									"name": "6–7:",
 									"entry": "The giant makes one Bite attack against one random creature within reach. If no other creatures are within reach, its eyes glaze over and it is {@condition stunned} until the start of its next turn."
 								},
 								{
 									"type": "item",
-									"name": "8\u201310:",
+									"name": "8–10:",
 									"entry": "The giant makes one Bite attack and two Fist attacks against one random creature within reach. If no creatures are within reach, the giant flies into a rage and gains advantage on all attack rolls until the end of its next turn."
 								}
 							]
@@ -24536,6 +24676,11 @@
 				"B",
 				"N"
 			],
+			"damageTagsSpell": [
+				"F",
+				"O",
+				"Y"
+			],
 			"miscTags": [
 				"AOE",
 				"MW"
@@ -24844,6 +24989,11 @@
 			],
 			"damageTags": [
 				"N"
+			],
+			"damageTagsSpell": [
+				"F",
+				"N",
+				"O"
 			],
 			"conditionInflictSpell": [
 				"restrained"
@@ -25248,6 +25398,11 @@
 				"N",
 				"P"
 			],
+			"damageTagsSpell": [
+				"A",
+				"C",
+				"O"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -25382,6 +25537,9 @@
 			"damageTags": [
 				"A",
 				"B",
+				"Y"
+			],
+			"damageTagsSpell": [
 				"Y"
 			],
 			"spellcastingTags": [
@@ -26473,6 +26631,9 @@
 				"N",
 				"S"
 			],
+			"damageTagsSpell": [
+				"Y"
+			],
 			"miscTags": [
 				"AOE",
 				"MW"
@@ -26729,6 +26890,9 @@
 				"I",
 				"N",
 				"O"
+			],
+			"damageTagsSpell": [
+				"N"
 			],
 			"miscTags": [
 				"AOE",
@@ -27845,6 +28009,9 @@
 				"O",
 				"S"
 			],
+			"damageTagsSpell": [
+				"F"
+			],
 			"miscTags": [
 				"MW",
 				"RCH"
@@ -28302,21 +28469,21 @@
 							"style": "list-hang-notitle",
 							"items": [
 								{
-									"name": "1\u20132: Bite",
+									"name": "1–2: Bite",
 									"type": "item",
 									"entries": [
 										"{@atk mw} {@hit 4} to hit, reach 5 ft., one target. {@h}4 ({@damage 1d4 + 2}) piercing damage."
 									]
 								},
 								{
-									"name": "3\u20134: Poison Quills",
+									"name": "3–4: Poison Quills",
 									"type": "item",
 									"entries": [
 										"{@atk mw} {@hit 4} to hit, reach 5 ft., one creature. {@h}3 ({@damage 1d6}) poison damage, and the target must succeed on a {@dc 12} Constitution saving throw or be {@condition poisoned} for 1 minute. The target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
 									]
 								},
 								{
-									"name": "5\u20136: Tentacle",
+									"name": "5–6: Tentacle",
 									"type": "item",
 									"entries": [
 										"{@atk mw} {@hit 4} to hit, reach 10 ft., one target. {@h}5 ({@damage 1d6 + 2}) bludgeoning damage, and the target is {@condition grappled} (escape {@dc 12}) if it is a Medium or smaller creature. Until this grapple ends, the sea spawn can't use this tentacle on another target."
@@ -28613,21 +28780,21 @@
 							"style": "list-hang-notitle",
 							"items": [
 								{
-									"name": "1\u20132: Decay",
+									"name": "1–2: Decay",
 									"type": "item",
 									"entries": [
 										"The target takes 22 ({@damage 4d10}) necrotic damage."
 									]
 								},
 								{
-									"name": "3\u20134: Grapple",
+									"name": "3–4: Grapple",
 									"type": "item",
 									"entries": [
 										"The target is {@condition grappled} (escape {@dc 14}) if it is a Medium or smaller creature. Until the grapple ends, the target is {@condition restrained}, and the shadar-kai can't grapple another target."
 									]
 								},
 								{
-									"name": "5\u20136: Topple",
+									"name": "5–6: Topple",
 									"type": "item",
 									"entries": [
 										"The target is knocked {@condition prone}."
@@ -28845,6 +29012,9 @@
 				"N",
 				"P",
 				"Y"
+			],
+			"damageTagsSpell": [
+				"N"
 			],
 			"miscTags": [
 				"AOE",
@@ -29331,7 +29501,7 @@
 				{
 					"name": "Contamination",
 					"entries": [
-						"The sibriex emits an aura of corruption 30 feet in every direction. Vegetation withers in the aura, and the ground in the aura is difficult terrain for other creatures. Any creature that starts its turn in the aura must succeed on a {@dc 20} Constitution saving throw or take 14 ({@damage 4d6}) poison damage. A creature that succeeds on the save is immune to this sibriex's Contamination for 24 hours."
+						"The sibriex emits an aura of corruption 30 feet in every direction. Vegetation withers in the aura, and the ground in the aura is {@quickref difficult terrain||3} for other creatures. Any creature that starts its turn in the aura must succeed on a {@dc 20} Constitution saving throw or take 14 ({@damage 4d6}) poison damage. A creature that succeeds on the save is immune to this sibriex's Contamination for 24 hours."
 					]
 				},
 				{
@@ -29412,83 +29582,83 @@
 							],
 							"rows": [
 								[
-									"01\u201305",
+									"01–05",
 									"The color of the target's hair, eyes, and skin becomes blue, red, yellow, or patterned."
 								],
 								[
-									"06\u201310",
+									"06–10",
 									"The target's eyes push out of its head at the end of stalks."
 								],
 								[
-									"11\u201315",
+									"11–15",
 									"The target's hands grow claws, which can be used as daggers."
 								],
 								[
-									"16\u201320",
+									"16–20",
 									"One of the target's legs grows longer than the other, reducing its walking speed by 10 feet."
 								],
 								[
-									"21\u201325",
+									"21–25",
 									"The target's eyes become beacons, filling a 15- foot cone with dim light when they are open."
 								],
 								[
-									"26\u201330",
+									"26–30",
 									"A pair of wings, either feathered or leathery, sprout from the target's back, granting it a flying speed of 30 feet."
 								],
 								[
-									"31\u201335",
+									"31–35",
 									"The target's ears tear free from its head and scurry away; the target is {@condition deafened}."
 								],
 								[
-									"36\u201340",
+									"36–40",
 									"Two of the target's teeth turn into short tusks."
 								],
 								[
-									"41\u201345",
+									"41–45",
 									"The target's skin develops bark-like scales, granting it a +1 bonus to AC but reducing its Charisma score by 2 (to a minimum of 1)."
 								],
 								[
-									"46\u201350",
+									"46–50",
 									"The target's arms and legs switch places, preventing the target from moving unless it crawls."
 								],
 								[
-									"51\u201355",
+									"51–55",
 									"The target's arms become tentacles with fingers on the ends, increasing its reach by 5 feet."
 								],
 								[
-									"56\u201360",
+									"56–60",
 									"The target's legs grow incredibly long and springy, increasing its walking speed by 10 feet."
 								],
 								[
-									"61\u201365",
+									"61–65",
 									"The target grows a long, thin tail, which it can use as a whip."
 								],
 								[
-									"66\u201370",
+									"66–70",
 									"The target's entire eyes turn black, and it gains {@sense darkvision} out to a range of 120 feet."
 								],
 								[
-									"71\u201375",
+									"71–75",
 									"The target swells, tripling its weight."
 								],
 								[
-									"76\u201380",
+									"76–80",
 									"The target becomes thin and skeletal, halving its weight."
 								],
 								[
-									"81\u201385",
+									"81–85",
 									"The target's head triples in size."
 								],
 								[
-									"86\u201390",
+									"86–90",
 									"The target's ears become wings, giving it a flying speed of 5 feet."
 								],
 								[
-									"91\u201395",
+									"91–95",
 									"The target's body becomes unusually brittle, causing the target to have vulnerability to bludgeoning, piercing, and slashing damage."
 								],
 								[
-									"96\u201300",
+									"96–00",
 									"The target grows another head, causing it to have advantage on saving throws against being {@condition charmed}, {@condition frightened}, or {@condition stunned}."
 								]
 							]
@@ -29525,6 +29695,9 @@
 				"A",
 				"I",
 				"O"
+			],
+			"damageTagsSpell": [
+				"Y"
 			],
 			"miscTags": [
 				"MW",
@@ -29864,6 +30037,11 @@
 			"damageTags": [
 				"B",
 				"N"
+			],
+			"damageTagsSpell": [
+				"C",
+				"I",
+				"O"
 			],
 			"miscTags": [
 				"MW"
@@ -30229,7 +30407,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"The troll can move through other creatures and objects as if they were difficult terrain. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
+						"The troll can move through other creatures and objects as if they were {@quickref difficult terrain||3}. It takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
 					]
 				},
 				{
@@ -31077,7 +31255,7 @@
 				{
 					"name": "Out-Of-Phase Movement",
 					"entries": [
-						"The seer can move through other creatures and objects as if they were difficult terrain, and its movement doesn't provoke {@action opportunity attack||opportunity attacks}.",
+						"The seer can move through other creatures and objects as if they were {@quickref difficult terrain||3}, and its movement doesn't provoke {@action opportunity attack||opportunity attacks}.",
 						"Each creature it moves through takes 5 ({@damage 1d10}) psychic damage; no creature can take this damage more than once per turn.",
 						"The seer takes 5 ({@damage 1d10}) force damage if it ends its turn inside an object."
 					]
@@ -31315,6 +31493,9 @@
 				"L",
 				"O",
 				"T"
+			],
+			"damageTagsSpell": [
+				"O"
 			],
 			"miscTags": [
 				"AOE",
@@ -33141,6 +33322,11 @@
 				"N",
 				"O"
 			],
+			"damageTagsSpell": [
+				"B",
+				"P",
+				"S"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -33342,7 +33528,7 @@
 				{
 					"name": "Light Crossbow",
 					"entries": [
-						"{@atk rw} {@hit 2} to hit, range 80/320ft., one target. {@h}4 ({@damage 1d8}) piercing damage."
+						"{@atk rw} {@hit 2} to hit, range 80/320 ft., one target. {@h}4 ({@damage 1d8}) piercing damage."
 					]
 				},
 				{
@@ -33503,6 +33689,9 @@
 			],
 			"damageTags": [
 				"S"
+			],
+			"damageTagsSpell": [
+				"T"
 			],
 			"miscTags": [
 				"MW"
@@ -33665,6 +33854,9 @@
 			],
 			"damageTags": [
 				"A"
+			],
+			"damageTagsSpell": [
+				"F"
 			],
 			"conditionInflictSpell": [
 				"restrained"
@@ -33923,6 +34115,9 @@
 			],
 			"damageTags": [
 				"P",
+				"Y"
+			],
+			"damageTagsSpell": [
 				"Y"
 			],
 			"spellcastingTags": [
@@ -34812,6 +35007,10 @@
 				"B",
 				"R"
 			],
+			"damageTagsSpell": [
+				"F",
+				"R"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -34959,6 +35158,9 @@
 			"damageTags": [
 				"P",
 				"Y"
+			],
+			"damageTagsSpell": [
+				"O"
 			],
 			"spellcastingTags": [
 				"CL"
@@ -35126,6 +35328,11 @@
 				"B",
 				"F",
 				"N"
+			],
+			"damageTagsSpell": [
+				"B",
+				"P",
+				"S"
 			],
 			"spellcastingTags": [
 				"CL"
@@ -35562,7 +35769,7 @@
 				{
 					"name": "Undertow",
 					"entries": [
-						"If the wastrilith is underwater, it causes all water within 60 feet of it to be difficult terrain for other creatures until the start of its next turn."
+						"If the wastrilith is underwater, it causes all water within 60 feet of it to be {@quickref difficult terrain||3} for other creatures until the start of its next turn."
 					]
 				}
 			],
@@ -36516,6 +36723,9 @@
 				"I",
 				"S"
 			],
+			"damageTagsSpell": [
+				"F"
+			],
 			"miscTags": [
 				"MW"
 			],
@@ -36709,6 +36919,9 @@
 				"L",
 				"N",
 				"O"
+			],
+			"damageTagsSpell": [
+				"L"
 			],
 			"miscTags": [
 				"MW",
@@ -36945,6 +37158,9 @@
 				"A",
 				"O"
 			],
+			"damageTagsLegendary": [
+				"P"
+			],
 			"miscTags": [
 				"AOE",
 				"MW",
@@ -37157,7 +37373,7 @@
 				{
 					"name": "Tunneler",
 					"entries": [
-						"The kruthik can burrow through solid rock at half its burrowing speed and leaves a 2V2-foot-diameter tunnel in its wake."
+						"The kruthik can burrow through solid rock at half its burrowing speed and leaves a 2½-foot-diameter tunnel in its wake."
 					]
 				}
 			],
@@ -38220,7 +38436,7 @@
 				{
 					"name": "Earth-Shaking Movement",
 					"entries": [
-						"After moving at least 10 feet on the ground, the zaratan sends a shock wave through the ground in a 120-foot-radius circle centered on itself. That area becomes difficult terrain for 1 minute. Each creature on the ground that is concentrating must succeed on a {@dc 25} Constitution saving throw or the creature's concentration is broken. The shock wave deals 100 thunder damage to all structures in contact with the ground in the area. If a creature is near a structure that collapses, the creature might be buried; a creature within half the distance of the structure's height must make a {@dc 25} Dexterity saving throw. On a failed save, the creature takes 17 ({@damage 5d6}) bludgeoning damage, is knocked {@condition prone}, and is trapped in the rubble. A trapped creature is {@condition restrained}, requiring a successful {@dc 20} Strength ({@skill Athletics}) check as an action to escape. Another creature within 5 feet of the buried creature can use its action to clear rubble and grant advantage on the check. If three creatures use their actions in this way, the check is an automatic success. On a successful save, the creature takes half as much damage and doesn't fall {@condition prone} or become trapped."
+						"After moving at least 10 feet on the ground, the zaratan sends a shock wave through the ground in a 120-foot-radius circle centered on itself. That area becomes {@quickref difficult terrain||3} for 1 minute. Each creature on the ground that is concentrating must succeed on a {@dc 25} Constitution saving throw or the creature's concentration is broken. The shock wave deals 100 thunder damage to all structures in contact with the ground in the area. If a creature is near a structure that collapses, the creature might be buried; a creature within half the distance of the structure's height must make a {@dc 25} Dexterity saving throw. On a failed save, the creature takes 17 ({@damage 5d6}) bludgeoning damage, is knocked {@condition prone}, and is trapped in the rubble. A trapped creature is {@condition restrained}, requiring a successful {@dc 20} Strength ({@skill Athletics}) check as an action to escape. Another creature within 5 feet of the buried creature can use its action to clear rubble and grant advantage on the check. If three creatures use their actions in this way, the check is an automatic success. On a successful save, the creature takes half as much damage and doesn't fall {@condition prone} or become trapped."
 					]
 				}
 			],
@@ -38515,6 +38731,16 @@
 				"O",
 				"R"
 			],
+			"damageTagsLegendary": [
+				"F"
+			],
+			"damageTagsSpell": [
+				"B",
+				"F",
+				"N",
+				"P",
+				"S"
+			],
 			"miscTags": [
 				"MW",
 				"RCH"
@@ -38727,6 +38953,9 @@
 			],
 			"damageTags": [
 				"I"
+			],
+			"damageTagsSpell": [
+				"O"
 			],
 			"miscTags": [
 				"AOE",

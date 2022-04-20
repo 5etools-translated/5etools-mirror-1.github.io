@@ -584,8 +584,8 @@ class UiUtil {
 				clearTimeout(timerTyping);
 				timerTyping = setTimeout(() => { fnKeyup(evt); }, UiUtil.TYPE_TIMEOUT_MS);
 			})
-			.on("keypress", (e) => {
-				if (fnKeypress) fnKeypress(e);
+			.on("keypress", evt => {
+				if (fnKeypress) fnKeypress(evt);
 			})
 			.on("keydown", evt => {
 				if (fnKeydown) fnKeydown(evt);
@@ -593,7 +593,12 @@ class UiUtil {
 			})
 			.on("click", () => {
 				if (fnClick) fnClick();
-			});
+			})
+			.on("instantKeyup", () => {
+				clearTimeout(timerTyping);
+				fnKeyup();
+			})
+		;
 	}
 
 	/** Brute-force select the input, in case something has delayed the rendering (e.g. a VTT application window) */
@@ -935,7 +940,7 @@ class TabUiUtilBase {
 		};
 
 		/** Render a collection of tabs. */
-		obj._renderTabs = function (tabMetas, {$parent, propProxy = TabUiUtilBase._DEFAULT_PROP_PROXY, tabGroup = TabUiUtilBase._DEFAULT_TAB_GROUP, cbTabChange} = {}) {
+		obj._renderTabs = function (tabMetas, {$parent, propProxy = TabUiUtilBase._DEFAULT_PROP_PROXY, tabGroup = TabUiUtilBase._DEFAULT_TAB_GROUP, cbTabChange, additionalClassesWrpHeads} = {}) {
 			if (!tabMetas.length) throw new Error(`One or more tab meta must be specified!`);
 			obj._resetTabs({tabGroup});
 
@@ -971,7 +976,7 @@ class TabUiUtilBase {
 				return renderTabMetas_standard(it, i);
 			}).filter(Boolean);
 
-			if ($parent) obj.__renderTabs_addToParent({$dispTabTitle, $parent, tabMetasOut});
+			if ($parent) obj.__renderTabs_addToParent({$dispTabTitle, $parent, tabMetasOut, additionalClassesWrpHeads});
 
 			const hkActiveTab = () => {
 				tabMetasOut.forEach(it => {
@@ -998,12 +1003,12 @@ class TabUiUtilBase {
 			return tabMetasOut;
 		};
 
-		obj.__renderTabs_addToParent = function ({$dispTabTitle, $parent, tabMetasOut}) {
+		obj.__renderTabs_addToParent = function ({$dispTabTitle, $parent, tabMetasOut, additionalClassesWrpHeads}) {
 			const hasBorder = tabMetasOut.some(it => it.hasBorder);
 			$$`<div class="ve-flex-col w-100 h-100">
 				${$dispTabTitle}
 				<div class="ve-flex-col w-100 h-100 min-h-0">
-					<div class="ve-flex ${hasBorder ? `ui-tab__wrp-tab-heads--border` : ""}">${tabMetasOut.map(it => it.$btnTab)}</div>
+					<div class="ve-flex ${hasBorder ? `ui-tab__wrp-tab-heads--border` : ""} ${additionalClassesWrpHeads || ""}">${tabMetasOut.map(it => it.$btnTab)}</div>
 					<div class="ve-flex w-100 h-100 min-h-0">${tabMetasOut.map(it => it.$wrpTab).filter(Boolean)}</div>
 				</div>
 			</div>`.appendTo($parent);
@@ -1260,7 +1265,7 @@ class SearchUiUtil {
 			if (
 				SearchUiUtil._isNoHoverCat(d.c)
 				|| fromDeepIndex(d)
-				|| ExcludeUtil.isExcluded(d.h, Parser.pageCategoryToProp(d.c), d.s, {isNoCount: true})
+				|| ExcludeUtil.isExcluded(d.u, Parser.pageCategoryToProp(d.c), d.s, {isNoCount: true})
 			) return;
 			d.cf = d.c === Parser.CAT_ID_CREATURE ? "Creature" : Parser.pageCategoryToFull(d.c);
 			if (isAlternate) d.cf = `alt_${d.cf}`;
@@ -1778,7 +1783,7 @@ class SearchWidget {
 			customIndexSubSpecs: [
 				new SearchWidget.CustomIndexSubSpec({
 					dataSource: `${Renderer.get().baseUrl}data/optionalfeatures.json`,
-					prop: "background",
+					prop: "optionalfeature",
 					catId: Parser.CAT_ID_OPTIONAL_FEATURE_OTHER,
 					page: UrlUtil.PG_OPT_FEATURES,
 				}),

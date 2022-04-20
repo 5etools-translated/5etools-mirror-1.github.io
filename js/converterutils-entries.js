@@ -42,6 +42,7 @@ class TagJsons {
 							obj = HazardTag.tryRun(obj);
 							obj = ChanceTag.tryRun(obj);
 							obj = DiceConvert.getTaggedEntry(obj);
+							obj = QuickrefTag.tryRun(obj);
 
 							if (fnCreatureTagSpecific) obj = fnCreatureTagSpecific(obj);
 
@@ -401,6 +402,40 @@ class ChanceTag {
 		;
 	}
 }
+
+class QuickrefTag {
+	static tryRun (it) {
+		return TagJsons.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@quickref"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod
+			.replace(QuickrefTag._RE_BASIC, (...m) => `{@quickref ${QuickrefTag._LOOKUP[m[0]]}}`)
+		;
+	}
+}
+QuickrefTag._RE_BASIC = /\b(difficult terrain)\b/g;
+QuickrefTag._LOOKUP = {
+	"difficult terrain": "difficult terrain||3",
+};
 
 if (typeof module !== "undefined") {
 	module.exports = {

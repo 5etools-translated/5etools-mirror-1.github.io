@@ -3117,10 +3117,12 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_NRH_TLT,
 	SRC_NRH_AWoL,
 	SRC_NRH_AT,
+	SRC_SCC,
 	SRC_SCC_CK,
 	SRC_SCC_HfMT,
 	SRC_SCC_TMM,
 	SRC_SCC_ARiR,
+	SRC_CRCotN,
 
 	SRC_AWM,
 ]);
@@ -3345,6 +3347,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"charoption": SRC_MOT,
 	"recipe": SRC_HEROES_FEAST,
 	"itemEntry": SRC_DMG,
+	"quickref": SRC_PHB,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;

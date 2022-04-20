@@ -20,6 +20,7 @@ class MakeCards extends BaseComponent {
 		this._modalFilterRaces = new ModalFilterRaces({namespace: "makecards.race"});
 		this._modalFilterBackgrounds = new ModalFilterBackgrounds({namespace: "makecards.background"});
 		this._modalFilterFeats = new ModalFilterFeats({namespace: "makecards.feat"});
+		this._modalFilterOptionalFeatures = new ModalFilterOptionalFeatures({namespace: "makecards.optionalfeatures"});
 
 		this._doSaveStateDebounced = MiscUtil.debounce(() => this._pDoSaveState(), 50);
 	}
@@ -238,6 +239,7 @@ class MakeCards extends BaseComponent {
 						case "race": return this._modalFilterRaces;
 						case "background": return this._modalFilterBackgrounds;
 						case "feat": return this._modalFilterFeats;
+						case "optionalfeature": return this._modalFilterOptionalFeatures;
 						default: throw new Error(`Unhandled branch!`);
 					}
 				})();
@@ -374,7 +376,7 @@ class MakeCards extends BaseComponent {
 			<div class="col-1 mr-2 ve-flex-vh-center">${$cbSel}</div>
 			<div class="col-3 mr-2 ve-flex-v-center">${loaded.name}</div>
 			<div class="col-1-5 mr-2 ve-flex-vh-center ${Parser.sourceJsonToColor(loaded.source)}" title="${Parser.sourceJsonToFull(loaded.source)}" ${BrewUtil.sourceJsonToStyle(loaded.source)}>${Parser.sourceJsonToAbv(loaded.source)}</div>
-			<div class="col-1-5 mr-2 ve-flex-vh-center">${cardMeta.entityType.toTitleCase()}</div>
+			<div class="col-1-5 mr-2 ve-flex-vh-center">${Parser.getPropDisplayName(cardMeta.entityType)}</div>
 			<div class="col-1-1 mr-2 ve-flex-vh-center">${$iptRgb}</div>
 			<div class="col-1-1 mr-2 ve-flex-vh-center">${$btnIcon}</div>
 			<div class="col-1 mr-2 ve-flex-vh-center">${$iptCount}</div>
@@ -546,6 +548,16 @@ class MakeCards extends BaseComponent {
 			prerequisite ? this._ct_property("Prerequisites", prerequisite) : null,
 			prerequisite ? this._ct_rule() : null,
 			...this._ct_renderEntries(feat._fullEntries || feat.entries, 2),
+		].filter(Boolean);
+	}
+
+	static _getCardContents_optionalfeature (optfeat) {
+		const prerequisite = Renderer.utils.getPrerequisiteHtml(optfeat.prerequisite, {isListMode: true});
+		Renderer.feat.initFullEntries(optfeat);
+		return [
+			prerequisite ? this._ct_property("Prerequisites", prerequisite) : null,
+			prerequisite ? this._ct_rule() : null,
+			...this._ct_renderEntries(optfeat._fullEntries || optfeat.entries, 2),
 		].filter(Boolean);
 	}
 	// endregion
@@ -757,6 +769,18 @@ MakeCards._AVAILABLE_TYPES = {
 		fnGetContents: MakeCards._getCardContents_feat.bind(MakeCards),
 		fnGetTags: (feat) => {
 			return ["feat", Parser.sourceJsonToAbv(feat.source)];
+		},
+	},
+	optionalfeature: {
+		searchTitle: "Optional Feature",
+		pageTitle: "Optional Features",
+		page: UrlUtil.PG_OPT_FEATURES,
+		colorDefault: "#8c6a00",
+		iconDefault: "checkbox-tree",
+		pFnSearch: SearchWidget.pGetUserOptionalFeatureSearch,
+		fnGetContents: MakeCards._getCardContents_optionalfeature.bind(MakeCards),
+		fnGetTags: (optfeat) => {
+			return ["optional feature", Parser.sourceJsonToAbv(optfeat.source)];
 		},
 	},
 	// TODO add more entities

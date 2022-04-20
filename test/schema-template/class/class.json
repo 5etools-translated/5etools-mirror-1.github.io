@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "2.10.4",
+	"version": "2.10.5",
 	"$id": "class.json",
 
 	"type": "object",
@@ -444,7 +444,7 @@
 						]
 					}
 				},
-				"optionalfeatureProgression": {"$ref": "#/definitions/optionalfeatureProgression"},
+				"optionalfeatureProgression": {"$ref": "../util.json#/definitions/optionalfeatureProgression"},
 				"subclassTableGroups": {
 					"type": "array",
 					"items": { "$ref": "#/definitions/classTableGroup"}
@@ -540,56 +540,6 @@
 				}
 			},
 			"additionalProperties": false
-		},
-
-		"optionalfeatureProgression": {
-			"type": "array",
-			"items": {
-				"type": "object",
-				"properties": {
-					"name": {"type": "string"},
-					"featureType": {
-						"type": "array",
-						"items": {"$ref": "../util.json#/definitions/dataOptionalfeatureType"},
-						"uniqueItems": true
-					},
-					"progression": {
-						"oneOf": [
-							{
-								"type": "array",
-								"items": {"type": "integer"},
-								"minItems": 20,
-								"maxItems": 20
-							},
-							{
-								"type": "object",
-								"patternProperties": {
-									"^\\d+$": {"type": "integer"}
-								},
-								"additionalProperties": false
-							}
-						]
-					},
-					"required": {
-						"oneOf": [
-							{
-								"type": "array",
-								"items": {"type": "array", "items": {"type": "string"}},
-								"minItems": 20,
-								"maxItems": 20
-							},
-							{
-								"type": "object",
-								"patternProperties": {
-									"^\\d+$": {"type": "array", "items": {"type": "string"}}
-								},
-								"additionalProperties": false
-							}
-						]
-					}
-				},
-				"required": ["name", "featureType", "progression"]
-			}
 		},
 
 		"class": {
@@ -783,7 +733,7 @@
 					},
 					"additionalProperties": false
 				},
-				"optionalfeatureProgression": {"$ref": "#/definitions/optionalfeatureProgression"},
+				"optionalfeatureProgression": {"$ref": "../util.json#/definitions/optionalfeatureProgression"},
 				"classFeatures": {
 					"type": "array",
 					"description": "Format: \" name | className | classSource | level | source \" , PHB is assumed as classSource and featureSource is assumed to be the same as classSource.",

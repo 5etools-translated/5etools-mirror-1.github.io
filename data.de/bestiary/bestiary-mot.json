@@ -127,7 +127,7 @@
 				{
 					"name": "Storm of Crows {@recharge}",
 					"entries": [
-						"Der abscheuliche Overlord beschwört einen Schwarm spektraler Krähen und Harpyien in einem Radius von 20 Fuß, der auf einen Punkt zentriert ist, den der Overlord in einem Umkreis von 120 Fuß um sich herum sehen kann. Die Sphäre bleibt 1 Minute lang bestehen oder bis der Overlord die Konzentration verliert (als ob er sich auf einen Zauber konzentrieren würde), und ihr Bereich ist leicht verdunkeltes und schwieriges Gelände.",
+						"Der abscheuliche Overlord beschwört einen Schwarm spektraler Krähen und Harpyien in einer Sphäre mit einem Radius von 20 Fuß, die auf einen Punkt zentriert ist, den der Overlord in einem Umkreis von 120 Fuß von ihm sehen kann. Die Sphäre bleibt 1 Minute lang bestehen oder bis der Overlord die Konzentration verliert (als würde er sich auf einen Zauber konzentrieren), und ihr Bereich ist leicht verdunkelt und {@quickref difficult terrain||3}.",
 						"Jede Kreatur, die sich in einem Zug zum ersten Mal in das Gebiet bewegt oder ihren Zug dort beginnt, muss einen {@dc 15} Konstitutionsschutzwurf ablegen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 16 ({@damage 3d10}) Hiebschaden plus 16 ({@damage 3d10}) psychischen Schaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden."
 					]
 				}
@@ -773,7 +773,7 @@
 				{
 					"name": "Web of Hair {@recharge 4}",
 					"entries": [
-						"Arasta entfesselt ihr Haar in Form von Gurtbändern, die einen 30 Fuß großen Würfel neben ihr ausfüllen. Das Netz ist schwieriges Terrain, sein Bereich ist leicht verdunkelt, und es hält 1 Minute lang an. Jede Kreatur, die sich in das Netz hineinbewegt oder ihren Zug dort beginnt, muss einen Schutzwurf in Geschicklichkeit von {@dc 21} ablegen. Bei einem misslungenen Schutzwurf ist die Kreatur {@condition restrained}, solange sie sich im Netz befindet. Eine Kreatur kann eine Aktion nutzen, um eine {@dc 21} Stärkeprobe zu machen. Bei einem Erfolg kann sie sich selbst oder eine Kreatur im Umkreis von 5 Fuß befreien, die {@condition restrained} durch das Netz gefangen ist. Dieses Netz ist immun gegen jeglichen Schaden außer magischem Feuer. Ein 5-Fuß-Würfel des Netzes wird zerstört, wenn er in einer einzigen Runde mindestens 20 Feuerschaden durch einen Zauber oder eine andere magische Quelle erleidet."
+						"Arasta entfesselt ihr Haar in Form von Gitternetzen, die einen Würfel von 30 Fuß neben ihr ausfüllen. Das Netz ist {@quickref difficult terrain||3} groß, sein Bereich ist leicht verdunkelt, und es hält 1 Minute lang an. Jede Kreatur, die sich in das Netz hineinbewegt oder ihren Zug dort beginnt, muss einen {@dc 21} Schutzwurf auf Geschicklichkeit ablegen. Bei einem misslungenen Rettungswurf ist die Kreatur {@condition restrained}, solange sie sich im Netz befindet. Eine Kreatur kann eine Aktion nutzen, um eine {@dc 21} Stärkeprobe zu machen. Bei einem Erfolg kann sie sich selbst oder eine Kreatur im Umkreis von 5 Fuß befreien, die {@condition restrained} von dem Netz umschlossen ist. Dieses Netz ist immun gegen jeglichen Schaden außer magischem Feuer. Ein 5-Fuß-Würfel des Netzes wird zerstört, wenn er in einer einzigen Runde mindestens 20 Feuerschaden durch einen Zauber oder eine andere magische Quelle erleidet."
 					]
 				}
 			],
@@ -1013,6 +1013,10 @@
 				"P",
 				"R"
 			],
+			"damageTagsSpell": [
+				"N",
+				"R"
+			],
 			"spellcastingTags": [
 				"I"
 			],
@@ -1176,6 +1180,9 @@
 			"damageTags": [
 				"N",
 				"R",
+				"S"
+			],
+			"damageTagsSpell": [
 				"S"
 			],
 			"spellcastingTags": [
@@ -2235,7 +2242,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"Das Eidolon kann sich durch andere Kreaturen und Objekte bewegen, als wären sie schwieriges Terrain. Es erleidet 5 ({@damage 1d10}) Kraftschaden, wenn es seinen Zug innerhalb eines Objekts beendet."
+						"Das Eidolon kann sich durch andere Kreaturen und Objekte bewegen, als ob sie {@quickref difficult terrain||3} wären. Es erleidet 5 ({@damage 1d10}) Kraftschaden, wenn es seinen Zug innerhalb eines Objekts beendet."
 					]
 				},
 				{
@@ -2358,7 +2365,7 @@
 				{
 					"name": "Incorporeal Movement",
 					"entries": [
-						"Das Eidolon kann sich durch andere Kreaturen und Objekte bewegen, als wären sie schwieriges Terrain. Es erleidet 5 ({@damage 1d10}) Kraftschaden, wenn es seinen Zug innerhalb eines Objekts beendet."
+						"Das Eidolon kann sich durch andere Kreaturen und Objekte bewegen, als ob sie {@quickref difficult terrain||3} wären. Es erleidet 5 ({@damage 1d10}) Kraftschaden, wenn es seinen Zug innerhalb eines Objekts beendet."
 					]
 				},
 				{
@@ -2868,7 +2875,7 @@
 				{
 					"name": "Petrified Earth (Costs 2 Actions)",
 					"entries": [
-						"Hythonia lässt in einem Radius von 30 Fuß um sich herum Steinspitzen aus dem Boden brechen. Das Gebiet wird bis zum Beginn ihres nächsten Zuges zu schwierigem Gelände. Jede Kreatur, außer Hythonia, erleidet 9 ({@damage 2d8}) Stich-Schaden pro 5 Fuß, die sie sich auf diesen Stacheln bewegt."
+						"Hythonia lässt in einem Radius von 30 Fuß um sie herum Steinstacheln aus dem Boden ausbrechen. Das Gebiet wird bis zum Beginn ihres nächsten Zuges zu {@quickref difficult terrain||3}. Jede Kreatur, außer Hythonia, erleidet 9 ({@damage 2d8}) Stichschaden pro 5 Fuß, die sie sich auf diesen Stacheln bewegt."
 					]
 				}
 			],
@@ -2908,6 +2915,15 @@
 			"damageTags": [
 				"B",
 				"I",
+				"P",
+				"S"
+			],
+			"damageTagsLegendary": [
+				"B",
+				"P"
+			],
+			"damageTagsSpell": [
+				"B",
 				"P",
 				"S"
 			],
@@ -3157,6 +3173,9 @@
 				"S"
 			],
 			"damageTags": [
+				"N"
+			],
+			"damageTagsSpell": [
 				"N"
 			],
 			"spellcastingTags": [
@@ -3463,6 +3482,10 @@
 				"C",
 				"P"
 			],
+			"damageTagsSpell": [
+				"C",
+				"S"
+			],
 			"spellcastingTags": [
 				"CW"
 			],
@@ -3612,6 +3635,9 @@
 				"S"
 			],
 			"damageTags": [
+				"Y"
+			],
+			"damageTagsSpell": [
 				"Y"
 			],
 			"spellcastingTags": [
@@ -3966,6 +3992,9 @@
 			"damageTags": [
 				"O"
 			],
+			"damageTagsSpell": [
+				"R"
+			],
 			"spellcastingTags": [
 				"I"
 			],
@@ -4106,6 +4135,9 @@
 				"S"
 			],
 			"damageTags": [
+				"F"
+			],
+			"damageTagsSpell": [
 				"F"
 			],
 			"spellcastingTags": [
@@ -5369,6 +5401,10 @@
 				"P"
 			],
 			"damageTags": [
+				"C"
+			],
+			"damageTagsSpell": [
+				"B",
 				"C"
 			],
 			"spellcastingTags": [

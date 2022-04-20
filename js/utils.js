@@ -6,8 +6,8 @@ IS_NODE = typeof module !== "undefined";
 if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
-IS_DEPLOYED="v1.152.4.1650434666";
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.152.4"/* 5ETOOLS_VERSION__CLOSE */;
+IS_DEPLOYED="v1.152.4.1650460039";
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.153.1"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -322,8 +322,6 @@ CleanUtil = {
 		str = str
 			.replace(CleanUtil.SHARED_REPLACEMENTS_REGEX, (match) => CleanUtil.SHARED_REPLACEMENTS[match])
 			.replace(CleanUtil._SOFT_HYPHEN_REMOVE_REGEX, "")
-			.replace(CleanUtil._ELLIPSIS_COLLAPSE_REGEX, "$1")
-			.replace(CleanUtil._TAG_DASH_EXPAND_REGEX, "$1 $2")
 		;
 
 		if (isFast) return str;
@@ -350,7 +348,9 @@ CleanUtil = {
 				if (tagCount) {
 					ptrStack._ += s;
 				} else {
-					ptrStack._ += s.replace(CleanUtil._DASH_COLLAPSE_REGEX, "$1");
+					ptrStack._ += s
+						.replace(CleanUtil._DASH_COLLAPSE_REGEX, "$1")
+						.replace(CleanUtil._ELLIPSIS_COLLAPSE_REGEX, "$1");
 				}
 			}
 		}
@@ -388,7 +388,6 @@ CleanUtil.STR_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.STR_REPLACEM
 CleanUtil._SOFT_HYPHEN_REMOVE_REGEX = /\u00AD *\r?\n?\r?/g;
 CleanUtil._ELLIPSIS_COLLAPSE_REGEX = /\s*(\.\s*\.\s*\.)/g;
 CleanUtil._DASH_COLLAPSE_REGEX = /[ ]*([\u2014\u2013])[ ]*/g;
-CleanUtil._TAG_DASH_EXPAND_REGEX = /({@[a-zA-Z])([\u2014\u2013])/g;
 
 // SOURCES =============================================================================================================
 SourceUtil = {
@@ -787,6 +786,12 @@ JqueryUtil = {
 		}
 
 		JqueryUtil._ACTIVE_TOAST.push($toast);
+	},
+
+	isMobile () {
+		if (navigator?.userAgentData?.mobile) return true;
+		// Equivalent to `$width-screen-sm`
+		return window.matchMedia("(max-width: 768px)").matches;
 	},
 };
 
@@ -1711,6 +1716,13 @@ EventUtil = {
 	getClientX (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientX : evt.clientX; },
 	getClientY (evt) { return evt.touches && evt.touches.length ? evt.touches[0].clientY : evt.clientY; },
 
+	getOffsetY (evt) {
+		if (!evt.touches?.length) return evt.offsetY;
+
+		const bounds = evt.target.getBoundingClientRect();
+		return evt.targetTouches[0].clientY - bounds.y;
+	},
+
 	isUsingTouch () { return !!EventUtil._isUsingTouch; },
 
 	isInInput (evt) {
@@ -2196,6 +2208,11 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHas
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CHAR_CREATION_OPTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RECIPES] = (it) => `${UrlUtil.encodeForHash([it.name, it.source])}${it._scaleFactor ? `${HASH_PART_SEP}${VeCt.HASH_SCALED}${HASH_SUB_KV_SEP}${it._scaleFactor}` : ""}`;
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASS_SUBCLASS_FEATURES] = (it) => (it.__prop === "subclassFeature" || it.subclassSource) ? UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](it) : UrlUtil.URL_TO_HASH_BUILDER["classFeature"](it);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_QUICKREF] = ({name, ixChapter, ixHeader}) => {
+	const hashParts = ["bookref-quick", ixChapter, UrlUtil.encodeForHash(name.toLowerCase())];
+	if (ixHeader) hashParts.push(ixHeader);
+	return hashParts.join(HASH_PART_SEP);
+};
 
 // region Fake pages (props)
 UrlUtil.URL_TO_HASH_BUILDER["monster"] = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY];
@@ -3033,10 +3050,12 @@ DataUtil = {
 			return [name, source].join("|");
 		},
 
-		getUid (ent) {
+		getUid (ent, {isMaintainCase = false} = {}) {
 			const {name, source} = ent;
 			if (!name || !source) throw new Error(`Entity did not have a name and source!`);
-			return [name, source].join("|").toLowerCase();
+			const out = [name, source].join("|");
+			if (isMaintainCase) return out;
+			return out.toLowerCase();
 		},
 
 		async _pMergeCopy (impl, page, entryList, entry, options) {
@@ -3684,7 +3703,7 @@ DataUtil = {
 		getVersions (prop, ent) { return (DataUtil[prop]?.getVersions || DataUtil.generic.getVersions)(ent); },
 		unpackUid (prop, uid, tag, opts) { return (DataUtil[prop]?.unpackUid || DataUtil.generic.unpackUid)(uid, tag, opts); },
 		getNormalizedUid (prop, uid, tag, opts) { return (DataUtil[prop]?.getNormalizedUid || DataUtil.generic.getNormalizedUid)(uid, tag, opts); },
-		getUid (prop, ent) { return (DataUtil[prop]?.getUid || DataUtil.generic.getUid)(ent); },
+		getUid (prop, ent, opts) { return (DataUtil[prop]?.getUid || DataUtil.generic.getUid)(ent, opts); },
 	},
 
 	monster: {
@@ -4531,6 +4550,28 @@ DataUtil = {
 		},
 	},
 
+	quickreference: {
+		/**
+		 * @param uid
+		 * @param [opts]
+		 * @param [opts.isLower] If the returned values should be lowercase.
+		 */
+		unpackUid (uid, opts) {
+			opts = opts || {};
+			if (opts.isLower) uid = uid.toLowerCase();
+			let [name, source, ixChapter, ixHeader, displayText] = uid.split("|").map(it => it.trim());
+			source = source || (opts.isLower ? SRC_PHB.toLowerCase() : SRC_PHB);
+			ixChapter = Number(ixChapter || 0);
+			return {
+				name,
+				ixChapter,
+				ixHeader,
+				source,
+				displayText,
+			};
+		},
+	},
+
 	brew: {
 		_getCleanUrlRoot (urlRoot) {
 			if (urlRoot && urlRoot.trim()) {
@@ -5005,7 +5046,16 @@ BrewUtil = {
 
 		const page = BrewUtil._PAGE || UrlUtil.getCurrentPage();
 		const allData = await Promise.all(indexLocal.toImport.map(it => DataUtil.loadJSON(`homebrew/${it}`)));
-		for (const d of allData) await BrewUtil._pDoHandleBrewJson(d, page, {isLocalPreload: true, homebrew});
+		for (const d of allData) {
+			await BrewUtil._pDoHandleBrewJson(d, page, {isLocalPreload: true, homebrew});
+			await BrewUtil._pAddBrewBlacklistData(d);
+		}
+	},
+
+	/** Allow blacklists to be loaded alongside homebrew */
+	async _pAddBrewBlacklistData (json) {
+		if (!json.blacklist?.length) return;
+		await ExcludeUtil.pExtendList(json.blacklist);
 	},
 
 	/**
@@ -5924,10 +5974,7 @@ BrewUtil = {
 		try {
 			await BrewUtil._pDoHandleBrewJson(json, page, {pFuncRefresh});
 
-			// Allow blacklists to be loaded alongside homebrew
-			if (json.blacklist && ExcludeUtil.isInitialised) {
-				await ExcludeUtil.pSetList(ExcludeUtil.getList().concat(json.blacklist || []));
-			}
+			await BrewUtil._pAddBrewBlacklistData(json);
 		} finally {
 			BrewUtil._lockHandleBrewJson.unlock();
 		}
@@ -7068,8 +7115,21 @@ BookModeView._BOOK_VIEW_COLUMNS_K = "bookViewColumns";
 ExcludeUtil = {
 	isInitialised: false,
 	_excludes: null,
+	_cache_excludesLookup: null,
+	_lock: null,
 
-	async pInitialise () {
+	async pInitialise ({lockToken = null} = {}) {
+		try {
+			await ExcludeUtil._lock.pLock({token: lockToken});
+			await ExcludeUtil._pInitialise();
+		} finally {
+			ExcludeUtil._lock.unlock();
+		}
+	},
+
+	async _pInitialise () {
+		if (ExcludeUtil.isInitialised) return;
+
 		ExcludeUtil.pSave = MiscUtil.throttle(ExcludeUtil._pSave, 50);
 		try {
 			ExcludeUtil._excludes = await StorageUtil.pGet(VeCt.STORAGE_EXCLUDES) || [];
@@ -7097,7 +7157,64 @@ ExcludeUtil = {
 
 	async pSetList (toSet) {
 		ExcludeUtil._excludes = toSet;
+		ExcludeUtil._cache_excludesLookup = null;
 		await ExcludeUtil.pSave();
+	},
+
+	async pExtendList (toAdd) {
+		try {
+			const lockToken = await ExcludeUtil._lock.pLock();
+			await ExcludeUtil._pExtendList({toAdd, lockToken});
+		} finally {
+			ExcludeUtil._lock.unlock();
+		}
+	},
+
+	async _pExtendList ({toAdd, lockToken}) {
+		await ExcludeUtil.pInitialise({lockToken});
+		this._doBuildCache();
+
+		const out = MiscUtil.copy(ExcludeUtil._excludes || []);
+		MiscUtil.copy(toAdd || [])
+			.filter(({hash, category, source}) => {
+				if (!hash || !category || !source) return false;
+				const cacheUid = ExcludeUtil._getCacheUids(hash, category, source, true);
+				return !ExcludeUtil._cache_excludesLookup[cacheUid];
+			})
+			.forEach(it => out.push(it));
+
+		await ExcludeUtil.pSetList(out);
+	},
+
+	_doBuildCache () {
+		if (ExcludeUtil._cache_excludesLookup) return;
+		if (!ExcludeUtil._excludes) return;
+
+		ExcludeUtil._cache_excludesLookup = {};
+		ExcludeUtil._excludes.forEach(({source, category, hash}) => {
+			const cacheUid = ExcludeUtil._getCacheUids(hash, category, source, true);
+			ExcludeUtil._cache_excludesLookup[cacheUid] = true;
+		});
+	},
+
+	_getCacheUids (hash, category, source, isExact) {
+		hash = (hash || "").toLowerCase();
+		category = (category || "").toLowerCase();
+		source = (source.source || source || "").toLowerCase();
+
+		const exact = `${hash}__${category}__${source}`;
+		if (isExact) return [exact];
+
+		return [
+			`${hash}__${category}__${source}`,
+			`*__${category}__${source}`,
+			`${hash}__*__${source}`,
+			`${hash}__${category}__*`,
+			`*__*__${source}`,
+			`*__${category}__*`,
+			`${hash}__*__*`,
+			`*__*__*`,
+		];
 	},
 
 	_excludeCount: 0,
@@ -7113,10 +7230,25 @@ ExcludeUtil = {
 		if (!source) throw new Error(`Entity had no source!`);
 		opts = opts || {};
 
+		this._doBuildCache();
+
+		hash = (hash || "").toLowerCase();
+		category = (category || "").toLowerCase();
 		source = (source.source || source || "").toLowerCase();
-		const out = !!ExcludeUtil._excludes.find(row => (row.source === "*" || (row.source || "").toLowerCase() === source) && (row.category === "*" || row.category === category) && (row.hash === "*" || row.hash === hash));
-		if (out && !opts.isNoCount) ++ExcludeUtil._excludeCount;
-		return out;
+
+		const isExcluded = ExcludeUtil._isExcluded(hash, category, source);
+		if (!isExcluded) return isExcluded;
+
+		if (!opts.isNoCount) ++ExcludeUtil._excludeCount;
+
+		return isExcluded;
+	},
+
+	_isExcluded (hash, category, source) {
+		for (const cacheUid of ExcludeUtil._getCacheUids(hash, category, source)) {
+			if (ExcludeUtil._cache_excludesLookup[cacheUid]) return true;
+		}
+		return false;
 	},
 
 	isAllContentExcluded (list) { return (!list.length && ExcludeUtil._excludeCount) || (list.length > 0 && list.length === ExcludeUtil._excludeCount); },
@@ -7283,25 +7415,37 @@ TokenUtil = {
 VeLock = function () {
 	this._lockMeta = null;
 
-	this.pLock = async () => {
+	this.pLock = async ({token = null} = {}) => {
+		if (token != null && this._lockMeta?.token === token) {
+			++this._lockMeta.depth;
+			return token;
+		}
+
 		while (this._lockMeta) await this._lockMeta.lock;
 		let unlock = null;
 		const lock = new Promise(resolve => unlock = resolve);
 		this._lockMeta = {
 			lock,
 			unlock,
+			token: CryptUtil.uid(),
+			depth: 0,
 		};
+
+		return this._lockMeta.token;
 	};
 
 	this.unlock = () => {
+		if (!this._lockMeta) return;
+
+		if (this._lockMeta.depth > 0) return --this._lockMeta.depth;
+
 		const lockMeta = this._lockMeta;
-		if (lockMeta) {
-			this._lockMeta = null;
-			lockMeta.unlock();
-		}
+		this._lockMeta = null;
+		lockMeta.unlock();
 	};
 };
 BrewUtil._lockHandleBrewJson = new VeLock();
+ExcludeUtil._lock = new VeLock();
 
 // DATETIME ============================================================================================================
 DatetimeUtil = {

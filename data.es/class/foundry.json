@@ -564,6 +564,20 @@
 			"classSource": "PHB",
 			"level": 3,
 			"isIgnored": true
+		},
+		{
+			"name": "Blindsense",
+			"source": "PHB",
+			"className": "Rogue",
+			"classSource": "PHB",
+			"level": 14,
+			"entryData": {
+				"senses": [
+					{
+						"blindsight": 10
+					}
+				]
+			}
 		}
 	],
 	"subclassFeature": [
@@ -861,7 +875,7 @@
 				"activation.condition": "When you hit a creature with a weapon attack",
 				"damage.parts": [
 					[
-						"2d6 + ((@classes.bard.levels)>=5)d6 + (((@classes.bard.levels)>=10)*2)d6 + (((@classes.bard.levels)>=15)*3)d6",
+						"2d6 + (min(floor(@classes.bard.levels/5),1))d6 + (min(floor(@classes.bard.levels/10),1)*2)d6 + (min(floor(@classes.bard.levels/15),1)*3)d6",
 						"psychic"
 					]
 				]
@@ -955,7 +969,7 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(((@classes.cleric.levels)>=14) + 1)d8",
+						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
 						"necrotic"
 					]
 				]
@@ -972,7 +986,7 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(((@classes.cleric.levels)>=14) + 1)d8",
+						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
 						"fire"
 					]
 				]
@@ -1144,15 +1158,15 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(((@classes.cleric.levels)>=14) + 1)d8",
+						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
 						"cold"
 					],
 					[
-						"(((@classes.cleric.levels)>=14) + 1)d8",
+						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
 						"fire"
 					],
 					[
-						"(((@classes.cleric.levels)>=14) + 1)d8",
+						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
 						"lightning"
 					]
 				]
@@ -1183,7 +1197,7 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(((@classes.cleric.levels)>=14) + 1)d8",
+						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
 						"psychic"
 					]
 				]
@@ -1215,7 +1229,7 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(((@classes.cleric.levels)>=14) + 1)d8",
+						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
 						"poison"
 					]
 				]

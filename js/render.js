@@ -744,7 +744,7 @@ function Renderer () {
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
 		if (entry.name != null && Renderer.ENTRIES_WITH_ENUMERATED_TITLES_LOOKUP[entry.type]) this._handleTrackTitles(entry.name);
 
-		const headerEle = "span" || `h${Math.min(Math.max(meta.depth + 1, 1), 6)}`; // FIXME(Future) use `h<N>` tags; fix CSS across the board (and external uses)
+		const headerTag = isInlineTitle ? "span" : `h${Math.min(Math.max(meta.depth + 1, 1), 6)}`;
 		const headerClass = `rd__h--${meta.depth + 1}`; // adjust as the CSS is 0..4 rather than -1..3
 
 		const cachedLastDepthTrackerProps = MiscUtil.copy(this._lastDepthTrackerInheritedProps);
@@ -752,7 +752,7 @@ function Renderer () {
 
 		const pluginDataNamePrefix = this._getPlugins(`${type}_namePrefix`).map(plugin => plugin(entry, textStack, meta, options)).filter(Boolean);
 
-		const headerSpan = entry.name ? `<${headerEle} class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner${!pagePart && entry.source ? ` help-subtle` : ""}"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${pluginDataNamePrefix.join("")}${this.render({type: "inline", entries: [entry.name]})}${isAddPeriod ? "." : ""}</span>${partPageExpandCollapse}</${headerEle}> ` : "";
+		const headerSpan = entry.name ? `<${headerTag} class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner${!pagePart && entry.source ? ` help-subtle` : ""}"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${pluginDataNamePrefix.join("")}${this.render({type: "inline", entries: [entry.name]})}${isAddPeriod ? "." : ""}</span>${partPageExpandCollapse}</${headerTag}> ` : "";
 
 		if (meta.depth === -1) {
 			if (!this._firstSection) textStack[0] += `<hr class="rd__hr rd__hr--section">`;
@@ -867,7 +867,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			if (Renderer.ENTRIES_WITH_ENUMERATED_TITLES_LOOKUP[entry.type]) this._handleTrackTitles(entry.name);
-			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span>${partPageExpandCollapse}</span>`;
+			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><h4 class="entry-title-inner">${entry.name}</h4>${partPageExpandCollapse}</span>`;
 		} else {
 			textStack[0] += `<span class="rd__h rd__h--2-inset rd__h--2-inset-no-name">${partPageExpandCollapse}</span>`;
 		}
@@ -900,7 +900,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			if (Renderer.ENTRIES_WITH_ENUMERATED_TITLES_LOOKUP[entry.type]) this._handleTrackTitles(entry.name);
-			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span>${this._getPagePart(entry, true)}</span>`;
+			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><h4 class="entry-title-inner">${entry.name}</h4>${this._getPagePart(entry, true)}</span>`;
 		} else {
 			textStack[0] += `<span class="rd__h rd__h--2-inset rd__h--2-inset-no-name">${partPageExpandCollapse}</span>`;
 		}
@@ -930,7 +930,7 @@ function Renderer () {
 		const partPageExpandCollapse = `<span class="ve-flex-vh-center">${[pagePart, partExpandCollapse].filter(Boolean).join("")}</span>`;
 
 		textStack[0] += `<${this.wrapperTag} class="rd__b-special rd__b-inset" ${dataString}>`;
-		textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">Variant: ${entry.name}</span>${partPageExpandCollapse}</span>`;
+		textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><h4 class="entry-title-inner">Variant: ${entry.name}</h4>${partPageExpandCollapse}</span>`;
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
 			const cacheDepth = meta.depth;
@@ -952,7 +952,7 @@ function Renderer () {
 		this._handleTrackDepth(entry, 1);
 
 		textStack[0] += `<${this.wrapperTag} class="rd__b-inset-inner" ${dataString}>`;
-		textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
+		textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><h4 class="entry-title-inner">${entry.name}</h4></span>`;
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
 			const cacheDepth = meta.depth;
@@ -1275,7 +1275,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			if (Renderer.ENTRIES_WITH_ENUMERATED_TITLES_LOOKUP[entry.type]) this._handleTrackTitles(entry.name);
-			textStack[0] += `<span class="rd__h rd__h--2-flow-block" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
+			textStack[0] += `<span class="rd__h rd__h--2-flow-block" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><h4 class="entry-title-inner">${entry.name}</h4></span>`;
 		}
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1414,6 +1414,11 @@ function Renderer () {
 				textStack[0] += `<u>`;
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</u>`;
+				break;
+			case "@code":
+				textStack[0] += `<span class="code">`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</span>`;
 				break;
 			case "@note":
 				textStack[0] += `<i class="ve-muted">`;
@@ -2657,7 +2662,7 @@ Renderer.utils = {
 		tabButtons.forEach((tb, i) => {
 			tb.ix = i;
 
-			tb.$t = $(`<span class="ui-tab__btn-tab-head btn btn-default stat-tab-gen">${tb.label}</span>`)
+			tb.$t = $(`<button class="ui-tab__btn-tab-head btn btn-default stat-tab-gen">${tb.label}</button>`)
 				.click(() => tb.fnActivateTab({isUserInput: true}));
 
 			tb.fnActivateTab = ({isUserInput = false} = {}) => {
@@ -3118,7 +3123,7 @@ Renderer.utils = {
 						if (!isNaN(rollText)) {
 							const n = Number(rollText);
 							mod = `${n >= 0 ? "+" : ""}${n}`;
-						} else mod = rollText;
+						} else mod = /^\s+[-+]/.test(rollText) ? rollText : `+${rollText}`;
 						fauxEntry.displayText = fauxEntry.displayText || mod;
 						fauxEntry.toRoll = `1d20${mod}`;
 						fauxEntry.subType = "d20";
@@ -3284,6 +3289,22 @@ Renderer.utils = {
 					pageHover: "subclassfeature",
 					hashHover: UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](unpacked),
 					hashPreEncodedHover: true,
+				};
+			}
+
+			case "@quickref": {
+				const unpacked = DataUtil.quickreference.unpackUid(text);
+
+				const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_QUICKREF](unpacked);
+
+				return {
+					name: unpacked.name,
+					displayText: unpacked.displayText,
+
+					page: UrlUtil.PG_QUICKREF,
+					source: unpacked.source,
+					hash,
+					hashPreEncoded: true,
 				};
 			}
 
@@ -5576,7 +5597,7 @@ Renderer.monster = {
 			? [{type: "entries", entries: mon[key]}]
 			: mon[key];
 
-		return `<tr class="mon__stat-header-underline"><td colspan="6"><span class="mon__sect-header-inner">${title}${mon[noteKey] ? ` (<span class="ve-small">${mon[noteKey]}</span>)` : ""}</span></td></tr>
+		return `<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${title}${mon[noteKey] ? ` (<span class="ve-small">${mon[noteKey]}</span>)` : ""}</h3></td></tr>
 		<tr class="text"><td colspan="6">
 		${key === "legendary" && mon.legendary ? `<p>${Renderer.monster.getLegendaryActionIntro(mon)}</p>` : ""}
 		${key === "mythic" && mon.mythic ? `<p>${Renderer.monster.getMythicActionIntro(mon)}</p>` : ""}
@@ -8078,6 +8099,7 @@ Renderer.hover = {
 		"classFeature": UrlUtil.PG_CLASSES,
 		"subclassFeature": UrlUtil.PG_CLASSES,
 		"recipe": UrlUtil.PG_RECIPES,
+		"quickref": UrlUtil.PG_QUICKREF,
 	},
 
 	LinkMeta: function () {
@@ -9415,6 +9437,14 @@ Renderer.hover = {
 						const hash = hashParts.join(HASH_PART_SEP);
 
 						Renderer.hover._addToCache(page, nameMeta.source, hash, nameMeta.entry);
+
+						// region Add the hash with the redundant `0` header included
+						if (!nameMeta.ixBook) {
+							hashParts.push(nameMeta.ixBook);
+							const hashAlt = hashParts.join(HASH_PART_SEP);
+							Renderer.hover._addToCache(page, nameMeta.source, hashAlt, nameMeta.entry);
+						}
+						// endregion
 					});
 				});
 			},
@@ -10169,6 +10199,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@strike":
 					case "@u":
 					case "@underline":
+					case "@code":
 						return text;
 
 					case "@unit": {
@@ -10263,6 +10294,11 @@ Renderer._stripTagLayer = function (str) {
 					case "@help": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts[0];
+					}
+
+					case "@quickref": {
+						const {name, displayText} = DataUtil.quickreference.unpackUid(text);
+						return displayText || name;
 					}
 
 					case "@area": {

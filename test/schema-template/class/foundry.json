@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "foundry-class.json",
-	"version": "1.3.2",
+	"version": "1.3.4",
 
 	"type": "object",
 
@@ -45,6 +45,9 @@
 				},
 				"resources": {
 					"$ref": "../util.json#/definitions/resourcesArray"
+				},
+				"senses": {
+					"$ref": "../util.json#/definitions/sensesArray"
 				}
 			},
 			"additionalProperties": false
@@ -67,7 +70,7 @@
 					"flags": {"$ref": "../util.json#/definitions/foundryFlagsObject"},
 					"chooseData": {"type": "array", "items": {"$ref": "../util.json#/definitions/foundryDataObject"}},
 					"isChooseDataRenderEntries": {"type": "boolean"},
-					"isIgnored": {"type": "boolean"},
+					"isIgnored": {"const": true},
 					"actorDataMod": {"type": "object"},
 					"actorTokenMod": {"type": "object"},
 					"effects": {"type": "array", "items": {"$ref": "../util.json#/definitions/foundryEffectObject"}},
@@ -100,7 +103,7 @@
 					"flags": {"$ref": "../util.json#/definitions/foundryFlagsObject"},
 					"chooseData": {"type": "array", "items": {"$ref": "../util.json#/definitions/foundryDataObject"}},
 					"isChooseDataRenderEntries": {"type": "boolean"},
-					"isIgnored": {"type": "boolean"},
+					"isIgnored": {"const": true},
 					"actorDataMod": {"type": "object"},
 					"actorTokenMod": {"type": "object"},
 					"effects": {"type": "array", "items": {"$ref": "../util.json#/definitions/foundryEffectObject"}},
@@ -139,7 +142,7 @@
 					"flags": {"$ref": "../util.json#/definitions/foundryFlagsObject"},
 					"chooseData": {"type": "array", "items": {"$ref": "../util.json#/definitions/foundryDataObject"}},
 					"isChooseDataRenderEntries": {"type": "boolean"},
-					"isIgnored": {"type": "boolean"},
+					"isIgnored": {"const": true},
 					"actorDataMod": {"type": "object"},
 					"actorTokenMod": {"type": "object"},
 					"effects": {"type": "array", "items": {"$ref": "../util.json#/definitions/foundryEffectObject"}},

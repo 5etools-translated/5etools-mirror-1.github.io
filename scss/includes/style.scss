@@ -548,6 +548,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 	height: 24px;
 	cursor: pointer;
 	user-select: none;
+	border: 0;
 
 	.glyphicon {
 		position: absolute;
@@ -1075,6 +1076,11 @@ div#lootoutput {
 		margin-top: -0.3rem;
 		margin-bottom: -0.3rem;
 		font-weight: 100;
+		color: $rgb-name-red;
+		font-size: 18px;
+		line-height: 23px;
+		font-family: "Times New Roman", serif;
+		font-variant: small-caps;
 	}
 
 	&sect-row-inner {
@@ -1086,12 +1092,7 @@ div#lootoutput {
 	}
 
 	&stat-header-underline {
-		font-size: 18px;
-		line-height: 23px;
-		font-family: "Times New Roman", serif;
-		font-variant: small-caps;
 		border-bottom: 1px solid $rgb-name-red;
-		color: $rgb-name-red;
 		vertical-align: bottom !important;
 		padding-left: 0.2rem;
 	}
@@ -1734,8 +1735,22 @@ input[type=checkbox].readonly {
 		min-height: 75px;
 		max-height: 80%;
 
-		&::after {
-			content: "...";
+		@media (max-width: $width-screen-md) {
+			max-height: 40vh;
+			height: initial;
+		}
+	}
+
+	&__ {
+		&wrp-cols {
+			display: flex;
+
+			> *:last-child {
+				flex-grow: 1;
+			}
+		}
+
+		&ele-resize {
 			background-color: #aaa4;
 			border: 1px solid $rgb-border-grey--trans-muted;
 			position: absolute;
@@ -1747,14 +1762,6 @@ input[type=checkbox].readonly {
 			line-height: 1px;
 			font-size: 10px;
 			text-align: center;
-		}
-	}
-
-	&__wrp-cols {
-		display: flex;
-
-		> *:last-child {
-			flex-grow: 1;
 		}
 	}
 }
@@ -3244,6 +3251,9 @@ th.border {
 
 	.mon__stat-header-underline {
 		border-bottom-color: $rgb-name-red--night;
+	}
+
+	.mon__sect-header-inner {
 		color: $rgb-name-red--night;
 	}
 

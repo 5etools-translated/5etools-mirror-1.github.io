@@ -139,7 +139,7 @@
 					"type": "list",
 					"items": [
 						"Ganas competencia en la habilidad {@skill Acrobatics}. Si ya eres competente en la habilidad, añades el doble de tu bonificación de competencia a los chequeos que hagas con ella.",
-						"Como acción adicional, puedes hacer un chequeo de Destreza ({@skill Acrobatics}) DC 15. Si lo consigues, el terreno difícil no te cuesta movimiento extra hasta el final del turno actual."
+						"Como acción adicional, puedes hacer un chequeo de Destreza ({@skill Acrobatics}) de DC 15. Si lo consigues, el {@quickref difficult terrain||3} no te cuesta movimiento extra hasta el final del turno actual."
 					]
 				}
 			]
@@ -2341,6 +2341,17 @@
 					"spellcasting2020": true
 				}
 			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Eldritch Invocations",
+					"featureType": [
+						"EI"
+					],
+					"progression": {
+						"*": 1
+					}
+				}
+			],
 			"entries": [
 				"Estudiando el saber oculto, aprendes una {@filter Eldritch Invocation|optionalfeatures|Feature Type=EI} opción a tu elección de la clase brujo. Tu habilidad de lanzamiento de conjuros para la invocación es Inteligencia, Sabiduría o Carisma (elige cuando selecciones esta hazaña). Si la invocación tiene un prerrequisito de cualquier tipo, puedes elegir esa invocación sólo si eres un brujo que cumple el prerrequisito.",
 				"Cada vez que ganes un nivel, puedes sustituir la invocación por otra de la clase brujo."
@@ -2719,7 +2730,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Aprendes el hechizo {@spell misty step} y uno {@filter 1st-level spell|spells|level=1|school=E;D} de tu elección. El hechizo de primer nivel debe ser de la escuela de magia de adivinación o encantamiento. Puedes lanzar cada uno de estos conjuros sin gastar una ranura de conjuro. Una vez que lances cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso largo. También puedes lanzar estos hechizos utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento de los hechizos es la habilidad aumentada por esta hazaña."
+						"Aprendes el hechizo {@spell misty step} y un {@filter 1st-level spell|spells|level=1|school=E;D} de tu elección. El {@filter 1st-level spell|spells|level=1|school=E;D} debe ser de la escuela de magia de adivinación o encantamiento. Puedes lanzar cada uno de estos conjuros sin gastar una ranura de conjuro. Una vez que lanzas cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso largo. También puedes lanzar estos hechizos utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento de los hechizos es la habilidad aumentada por esta hazaña."
 					]
 				}
 			]
@@ -2762,7 +2773,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Aprendes el hechizo {@spell misty step} y uno {@filter 1st-level spell|spells|level=1|school=E;D} de tu elección. El hechizo de primer nivel debe ser de la escuela de magia de adivinación o encantamiento. Puedes lanzar cada uno de estos conjuros sin gastar una ranura de conjuro. Una vez que lances cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso largo. También puedes lanzar estos hechizos utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento de los hechizos es la habilidad aumentada por esta hazaña."
+						"Aprendes el hechizo {@spell misty step} y un {@filter 1st-level spell|spells|level=1|school=E;D} de tu elección. El {@filter 1st-level spell|spells|level=1|school=E;D} debe ser de la escuela de magia de adivinación o encantamiento. Puedes lanzar cada uno de estos conjuros sin gastar una ranura de conjuro. Una vez que lanzas cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso largo. También puedes lanzar estos hechizos utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento de los hechizos es la habilidad aumentada por esta hazaña."
 					]
 				}
 			]
@@ -2778,6 +2789,17 @@
 							"weapon": "martial"
 						}
 					]
+				}
+			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Fighting Style",
+					"featureType": [
+						"FS:F"
+					],
+					"progression": {
+						"*": 1
+					}
 				}
 			],
 			"entries": [
@@ -4023,6 +4045,17 @@
 			"name": "Martial Adept",
 			"source": "PHB",
 			"page": 168,
+			"optionalfeatureProgression": [
+				{
+					"name": "Maneuvers",
+					"featureType": [
+						"MV:B"
+					],
+					"progression": {
+						"*": 2
+					}
+				}
+			],
 			"entries": [
 				"Tienes un entrenamiento marcial que te permite realizar maniobras especiales de combate. Obtienes los siguientes beneficios:",
 				{
@@ -4174,6 +4207,17 @@
 					"spellcasting2020": true
 				}
 			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Metamagic",
+					"featureType": [
+						"MM"
+					],
+					"progression": {
+						"*": 2
+					}
+				}
+			],
 			"entries": [
 				"Has aprendido a ejercer tu voluntad sobre tus hechizos para alterar su funcionamiento:",
 				{
@@ -4215,7 +4259,7 @@
 					"type": "list",
 					"items": [
 						"Tu velocidad aumenta en 3 metros.",
-						"Cuando usas la acción {@action Dash}, el terreno difícil no te cuesta movimiento extra en ese turno.",
+						"Cuando usas la acción {@action Dash}, {@quickref difficult terrain||3} no te cuesta movimiento extra en ese turno.",
 						"Cuando realizas un ataque cuerpo a cuerpo contra una criatura, no provocas ataques de oportunidad de esa criatura durante el resto del turno, impactes o no."
 					]
 				}
@@ -5181,7 +5225,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Aprendes el hechizo {@spell invisibility} y un hechizo de 1er nivel a tu elección. El {@filter 1st-level spell|spells|level=1|school=I;N} debe ser de la escuela de magia de ilusión o nigromancia. Puedes lanzar cada uno de estos conjuros sin gastar una ranura de conjuro. Una vez que lanzas cualquiera de estos conjuros de esta manera, no puedes volver a lanzar ese conjuro de esta manera hasta que termines un descanso largo. También puedes lanzar estos hechizos utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento de los hechizos es la habilidad incrementada por esta hazaña."
+						"Aprendes el hechizo {@spell invisibility} y un {@filter 1st-level spell|spells|level=1|school=I;N} de tu elección. El {@filter 1st-level spell|spells|level=1|school=I;N} debe ser de la escuela de magia de ilusión o nigromancia. Puedes lanzar cada uno de estos hechizos sin gastar una ranura de hechizo. Una vez que lanzas cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso largo. También puedes lanzar estos hechizos utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento de los hechizos es la habilidad aumentada por esta hazaña."
 					]
 				}
 			]
@@ -5224,7 +5268,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Aprendes el hechizo {@spell darkness} y uno {@filter 1st-level spell|spells|level=1|school=I;N} de tu elección. El hechizo de primer nivel debe ser de la escuela de magia de la ilusión o la nigromancia. Puedes lanzar cada uno de estos conjuros sin gastar una ranura de conjuro. Una vez que lances cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso largo. También puedes lanzar estos hechizos utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento de los hechizos es la habilidad incrementada por esta hazaña."
+						"Aprendes el hechizo {@spell darkness} y un {@filter 1st-level spell|spells|level=1|school=I;N} de tu elección. El {@filter 1st-level spell|spells|level=1|school=I;N} debe ser de la escuela de magia de ilusión o nigromancia. Puedes lanzar cada uno de estos hechizos sin gastar una ranura de hechizo. Una vez que lanzas cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso largo. También puedes lanzar estos hechizos utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento de los hechizos es la habilidad aumentada por esta hazaña."
 					]
 				}
 			]

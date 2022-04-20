@@ -684,7 +684,62 @@ SpellcastingTypeTag.CLASSES = {
 };
 
 class DamageTypeTag {
-	static _handleProp (m, prop, typeSet) {
+	static _init () {
+		if (DamageTypeTag._isInit) return;
+
+		DamageTypeTag._isInit = true;
+		DamageTypeTag._WALKER = MiscUtil.getWalker({isNoModification: true, keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
+		Object.entries(Parser.DMGTYPE_JSON_TO_FULL).forEach(([k, v]) => DamageTypeTag._TYPE_LOOKUP[v] = k);
+	}
+
+	static _PROPS_PRIMARY = ["action", "reaction", "bonus", "trait", "legendary", "mythic", "variant"];
+	static tryRun (m) {
+		this._init();
+
+		const typeSet = new Set();
+		this._PROPS_PRIMARY.forEach(prop => DamageTypeTag._handleProp({m, prop, typeSet}));
+		if (typeSet.size) m.damageTags = [...typeSet].sort(SortUtil.ascSortLower);
+	}
+
+	static tryRunSpells (m, {cbMan} = {}) {
+		if (!m.spellcasting) return;
+
+		this._init();
+
+		const typeSet = new Set();
+
+		const spells = TaggerUtils.getSpellsFromString(JSON.stringify(m.spellcasting), {cbMan});
+		spells.forEach(spell => {
+			if (!spell.damageInflict) return;
+			spell.damageInflict.forEach(it => typeSet.add(DamageTypeTag._TYPE_LOOKUP[it]));
+		});
+
+		if (typeSet.size) m.damageTagsSpell = [...typeSet].sort(SortUtil.ascSortLower);
+	}
+
+	static tryRunRegionalsLairs (m, {cbMan} = {}) {
+		if (!m.legendaryGroup) return;
+
+		this._init();
+
+		const meta = TaggerUtils.ALL_LEGENDARY_GROUPS.find(it => it.name === m.legendaryGroup.name && it.source === m.legendaryGroup.source);
+		if (!meta) return;
+
+		const typeSet = new Set();
+		this._handleEntries({entries: meta, typeSet});
+
+		// region Also add damage types from spells contained in the legendary group
+		const spells = TaggerUtils.getSpellsFromString(JSON.stringify(meta), {cbMan});
+		spells.forEach(spell => {
+			if (!spell.damageInflict) return;
+			spell.damageInflict.forEach(it => typeSet.add(DamageTypeTag._TYPE_LOOKUP[it]));
+		});
+		// endregion
+
+		if (typeSet.size) m.damageTagsLegendary = [...typeSet].sort(SortUtil.ascSortLower);
+	}
+
+	static _handleProp ({m, prop, typeSet}) {
 		if (!m[prop]) return;
 
 		m[prop].forEach(it => {
@@ -693,63 +748,50 @@ class DamageTypeTag {
 				&& DamageTypeTag._BLACKLIST_NAMES.has(it.name.toLowerCase().trim().replace(/\([^)]+\)/g, ""))
 			) return;
 
-			if (it.entries) {
-				DamageTypeTag._WALKER.walk(
-					it.entries,
-					{
-						string: (str) => {
-							// if (str.includes("your spell attack modifier")) debugger
-							str.replace(RollerUtil.REGEX_DAMAGE_DICE, (m0, average, prefix, diceExp, suffix) => {
-								suffix.replace(ConverterConst.RE_DAMAGE_TYPE, (m0, type) => typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]));
-							});
+			if (!it.entries) return;
 
-							str.replace(DamageTypeTag._STATIC_DAMAGE_REGEX, (m0, type) => {
-								typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]);
-							});
-
-							str.replace(DamageTypeTag._TARGET_TASKES_DAMAGE_REGEX, (m0, type) => {
-								typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]);
-							});
-
-							if (DamageTypeTag._isSummon(m)) {
-								str.split(/[.?!]/g)
-									.forEach(sentence => {
-										let isSentenceMatch = DamageTypeTag._SUMMON_DAMAGE_REGEX.test(sentence);
-										if (!isSentenceMatch) return;
-
-										// debugger
-										sentence.replace(ConverterConst.RE_DAMAGE_TYPE, (m0, type) => {
-											typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]);
-										});
-									});
-							}
-						},
-					},
-				);
-			}
+			this._handleEntries({m, entries: it.entries, typeSet});
 		});
 	}
 
-	static tryRun (m) {
-		if (!DamageTypeTag._isInit) {
-			DamageTypeTag._isInit = true;
-			DamageTypeTag._WALKER = MiscUtil.getWalker({isNoModification: true, keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
-			Object.entries(Parser.DMGTYPE_JSON_TO_FULL).forEach(([k, v]) => DamageTypeTag._TYPE_LOOKUP[v] = k);
-		}
+	static _handleEntries ({m = null, entries, typeSet}) {
+		DamageTypeTag._WALKER.walk(
+			entries,
+			{
+				string: (str) => {
+					str.replace(RollerUtil.REGEX_DAMAGE_DICE, (m0, average, prefix, diceExp, suffix) => {
+						suffix.replace(ConverterConst.RE_DAMAGE_TYPE, (m0, type) => typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]));
+					});
 
-		const typeSet = new Set();
-		DamageTypeTag._handleProp(m, "action", typeSet);
-		DamageTypeTag._handleProp(m, "reaction", typeSet);
-		DamageTypeTag._handleProp(m, "bonus", typeSet);
-		DamageTypeTag._handleProp(m, "trait", typeSet);
-		DamageTypeTag._handleProp(m, "legendary", typeSet);
-		DamageTypeTag._handleProp(m, "mythic", typeSet);
-		DamageTypeTag._handleProp(m, "variant", typeSet);
-		if (typeSet.size) m.damageTags = [...typeSet];
+					str.replace(DamageTypeTag._STATIC_DAMAGE_REGEX, (m0, type) => {
+						typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]);
+					});
+
+					str.replace(DamageTypeTag._TARGET_TASKES_DAMAGE_REGEX, (m0, type) => {
+						typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]);
+					});
+
+					if (DamageTypeTag._isSummon(m)) {
+						str.split(/[.?!]/g)
+							.forEach(sentence => {
+								let isSentenceMatch = DamageTypeTag._SUMMON_DAMAGE_REGEX.test(sentence);
+								if (!isSentenceMatch) return;
+
+								// debugger
+								sentence.replace(ConverterConst.RE_DAMAGE_TYPE, (m0, type) => {
+									typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]);
+								});
+							});
+					}
+				},
+			},
+		);
 	}
 
 	/** Attempt to detect an e.g. TCE summon creature. */
 	static _isSummon (m) {
+		if (!m) return false;
+
 		let isSummon = false;
 
 		const reProbableSummon = /level of the spell|spell level|\+\s*PB(?:\W|$)|your (?:[^?!.]+)?level/g;

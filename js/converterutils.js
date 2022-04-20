@@ -122,6 +122,13 @@ class BaseParser {
 }
 
 class TaggerUtils {
+	static ALL_LEGENDARY_GROUPS = null;
+	static ALL_SPELLS = null;
+	static init ({legendaryGroups, spells}) {
+		this.ALL_LEGENDARY_GROUPS = legendaryGroups;
+		this.ALL_SPELLS = spells;
+	}
+
 	/**
 	 *
 	 * @param targetTags e.g. `["@condition"]`
@@ -167,14 +174,34 @@ class TaggerUtils {
 			}
 		}
 	}
+
+	static getSpellsFromString (str, {cbMan} = {}) {
+		const strSpellcasting = str;
+		const knownSpells = {};
+		strSpellcasting.replace(/{@spell ([^}]+)}/g, (...m) => {
+			let [spellName, spellSource] = m[1].split("|").map(it => it.toLowerCase());
+			spellSource = spellSource || SRC_PHB.toLowerCase();
+
+			(knownSpells[spellSource] = knownSpells[spellSource] || new Set()).add(spellName);
+		});
+
+		const out = [];
+
+		Object.entries(knownSpells)
+			.forEach(([source, spellSet]) => {
+				spellSet.forEach(it => {
+					const spell = TaggerUtils.ALL_SPELLS.find(s => (s.name.toLowerCase() === it || (typeof s.srd === "string" && s.srd.toLowerCase() === it)) && s.source.toLowerCase() === source);
+					if (!spell) return cbMan ? cbMan(`${it} :: ${source}`) : null;
+
+					out.push(spell);
+				});
+			});
+
+		return out;
+	}
 }
 
 class TagCondition {
-	static init (legendaryGroups, spells) {
-		TagCondition._ALL_LEGENDARY_GROUPS = legendaryGroups;
-		TagCondition._ALL_SPELLS = spells;
-	}
-
 	static _getConvertedEntry (mon, entry, {inflictedSet, inflictedWhitelist} = {}) {
 		const walker = MiscUtil.getWalker({keyBlacklist: TagCondition._KEY_BLACKLIST});
 		const nameStack = [];
@@ -260,24 +287,10 @@ class TagCondition {
 
 		const inflictedSet = isTagInflicted ? new Set() : null;
 
-		// Collect known spells
-		const strSpellcasting = JSON.stringify(m.spellcasting);
-		const knownSpells = {};
-		strSpellcasting.replace(/{@spell ([^}]+)}/g, (...m) => {
-			let [spellName, spellSource] = m[1].split("|").map(it => it.toLowerCase());
-			spellSource = spellSource || SRC_PHB.toLowerCase();
-
-			(knownSpells[spellSource] = knownSpells[spellSource] || new Set()).add(spellName);
+		const spells = TaggerUtils.getSpellsFromString(JSON.stringify(m.spellcasting), {cbMan});
+		spells.forEach(spell => {
+			if (spell.conditionInflict) spell.conditionInflict.filter(c => !inflictedWhitelist || inflictedWhitelist.has(c)).forEach(c => inflictedSet.add(c));
 		});
-
-		Object.entries(knownSpells)
-			.forEach(([source, spellSet]) => {
-				spellSet.forEach(it => {
-					const spell = TagCondition._ALL_SPELLS.find(s => (s.name.toLowerCase() === it || (typeof s.srd === "string" && s.srd.toLowerCase() === it)) && s.source.toLowerCase() === source);
-					if (!spell) return cbMan ? cbMan(`${it} :: ${source}`) : null;
-					if (spell.conditionInflict) spell.conditionInflict.filter(c => !inflictedWhitelist || inflictedWhitelist.has(c)).forEach(c => inflictedSet.add(c));
-				});
-			});
 
 		this._mutAddInflictedSet({m, inflictedSet, isInflictedAddOnly, prop: "conditionInflictSpell"});
 	}
@@ -287,7 +300,7 @@ class TagCondition {
 
 		const inflictedSet = isTagInflicted ? new Set() : null;
 
-		const meta = TagCondition._ALL_LEGENDARY_GROUPS.find(it => it.name === m.legendaryGroup.name && it.source === m.legendaryGroup.source);
+		const meta = TaggerUtils.ALL_LEGENDARY_GROUPS.find(it => it.name === m.legendaryGroup.name && it.source === m.legendaryGroup.source);
 		if (!meta) return cbMan ? cbMan(m.legendaryGroup) : null;
 		this._collectInflictedConditions(JSON.stringify(meta), {inflictedSet, inflictedWhitelist});
 
@@ -338,8 +351,6 @@ TagCondition._KEY_BLACKLIST = new Set([
 	...MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
 	"conditionImmune",
 ]);
-TagCondition._ALL_LEGENDARY_GROUPS = null;
-TagCondition._ALL_SPELLS = null;
 TagCondition._CONDITIONS = [
 	"blinded",
 	"charmed",

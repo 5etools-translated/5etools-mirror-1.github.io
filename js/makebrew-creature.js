@@ -394,6 +394,8 @@ class CreatureBuilder extends Builder {
 			SenseFilterTag.tryRun(this._state);
 			SpellcastingTypeTag.tryRun(this._state);
 			DamageTypeTag.tryRun(this._state);
+			DamageTypeTag.tryRunSpells(this._state);
+			DamageTypeTag.tryRunRegionalsLairs(this._state);
 			MiscTag.tryRun(this._state);
 
 			this.renderOutput();
