@@ -5218,7 +5218,7 @@
 					"type": "list",
 					"items": [
 						"Hai resistenza ai danni da freddo.",
-						"Si ignorano i terreni difficili creati dal ghiaccio o dalla neve.",
+						"Si ignora il {@quickref difficult terrain||3} creato dal ghiaccio o dalla neve.",
 						"Puoi tollerare temperature fino a -50 gradi Fahrenheit senza alcuna protezione aggiuntiva. Se si indossano abiti pesanti, si possono tollerare temperature fino a -100 gradi Fahrenheit."
 					]
 				}
@@ -5925,9 +5925,10 @@
 			"weaponCategory": "simple",
 			"dmg1": "1d6",
 			"dmgType": "B",
+			"bonusWeapon": "+1",
 			"weapon": true,
 			"entries": [
-				"La testa di questa mazza emette una luce brillante in un raggio di 5 piedi e una luce fioca per altri 5 piedi. Quando brandisci questa mazza, puoi spegnere o accendere la sua luce come azione."
+				"Hai un bonus di +1 ai tiri per attaccare e ai danni effettuati con quest'arma magica. La testa di questa mazza emette una luce brillante in un raggio di 5 piedi e una luce fioca per altri 5 piedi. Quando brandisci questa mazza, puoi spegnere o accendere la sua luce come azione."
 			]
 		},
 		{
@@ -7005,7 +7006,7 @@
 						"Hai resistenza ai danni da veleno.",
 						"Hai una velocità di salita pari alla tua velocità di camminata.",
 						"Puoi muoverti su, giù e attraverso le superfici verticali e a testa in giù lungo i soffitti, lasciando le mani libere.",
-						"Non puoi essere intrappolato in ragnatele di nessun tipo e puoi muoverti attraverso le ragnatele come se fossero un terreno difficile.",
+						"Non puoi essere intrappolato in ragnatele di nessun tipo e puoi muoverti attraverso le ragnatele come se fossero {@quickref difficult terrain||3}.",
 						"Puoi usare un'azione per lanciare l'incantesimo {@spell web} (tiro salvezza DC 13). La ragnatela creata dall'incantesimo riempie il doppio della sua area normale. Una volta usata, questa proprietà del mantello non può essere riutilizzata fino all'alba successiva."
 					]
 				}
@@ -13592,6 +13593,8 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"wondrous": true,
+			"recharge": "dawn",
+			"charges": 3,
 			"entries": [
 				"Questa pipa finemente intagliata soffia bolle inodori al posto del fumo quando viene usata. La pipa ha 3 cariche, e recupera tutte le cariche spese ogni giorno all'alba. Mentre tieni in mano la pipa, puoi spendere cariche per ottenere l'accesso alle seguenti proprietà:",
 				{
@@ -13602,6 +13605,10 @@
 						"Puoi evocare un {@creature steam mephit} come azione (3 cariche). Il mephit è amichevole con te, obbedisce ai tuoi comandi verbali e agisce nel suo turno nell'ordine di iniziativa. Scompare in un innocuo sbuffo di vapore dopo 1 minuto o se finisce il suo turno a più di 60 piedi dal tubo."
 					]
 				}
+			],
+			"attachedSpells": [
+				"fog cloud",
+				"misty step"
 			]
 		},
 		{
@@ -13799,7 +13806,7 @@
 							"items": [
 								"Hai resistenza ai danni da randellate, perforazioni e fendenti degli attacchi non magici.",
 								"Non puoi essere {@condition grappled} o {@condition restrained}.",
-								"Puoi muoverti attraverso creature e oggetti solidi come se fossero un terreno difficile. Se finisci il tuo turno in un oggetto solido, prendi {@damage 1d10} danni da forza. Se l'effetto termina mentre sei all'interno di un oggetto solido, vieni invece spostato nello spazio non occupato più vicino e prendi {@damage 1d10} danni da forza per ogni 5 piedi percorsi."
+								"Puoi muoverti attraverso creature e oggetti solidi come se fossero {@quickref difficult terrain||3}. Se finisci il tuo turno in un oggetto solido, prendi {@damage 1d10} danni da forza. Se l'effetto termina mentre sei all'interno di un oggetto solido, vieni invece spostato nello spazio non occupato più vicino e prendi {@damage 1d10} danni da forza per ogni 5 piedi percorsi."
 							]
 						}
 					]
@@ -13824,7 +13831,7 @@
 					"items": [
 						"Hai resistenza ai danni da randellate, perforazioni e fendenti degli attacchi non magici.",
 						"Non puoi essere {@condition grappled} o {@condition restrained}.",
-						"Puoi muoverti attraverso creature e oggetti solidi come se fossero un terreno difficile. Se finisci il tuo turno in un oggetto solido, prendi {@damage 1d10} danni da forza. Se l'effetto termina mentre sei all'interno di un oggetto solido, vieni invece spostato nello spazio non occupato più vicino e prendi {@damage 1d10} danni da forza per ogni 5 piedi percorsi."
+						"Puoi muoverti attraverso creature e oggetti solidi come se fossero {@quickref difficult terrain||3}. Se finisci il tuo turno in un oggetto solido, prendi {@damage 1d10} danni da forza. Se l'effetto termina mentre sei all'interno di un oggetto solido, vieni invece spostato nello spazio non occupato più vicino e prendi {@damage 1d10} danni da forza per ogni 5 piedi percorsi."
 					]
 				},
 				{
@@ -16633,7 +16640,7 @@
 			"rarity": "very rare",
 			"wondrous": true,
 			"entries": [
-				"Questi ferri di cavallo di ferro sono disponibili in un set di quattro. Mentre tutti e quattro i ferri sono attaccati agli zoccoli di un cavallo o di una creatura simile, essi permettono alla creatura di muoversi normalmente mentre galleggia a 4 pollici dal suolo. Questo effetto significa che la creatura può attraversare o stare sopra superfici non solide o instabili, come l'acqua o la lava. La creatura non lascia tracce e ignora il terreno difficile. Inoltre, la creatura può muoversi a velocità normale per un massimo di 12 ore al giorno senza soffrire {@condition exhaustion} di una marcia forzata."
+				"Questi ferri di cavallo di ferro sono disponibili in un set di quattro. Mentre tutti e quattro i ferri sono attaccati agli zoccoli di un cavallo o di una creatura simile, essi permettono alla creatura di muoversi normalmente mentre galleggia a 4 pollici dal suolo. Questo effetto significa che la creatura può attraversare o stare sopra superfici non solide o instabili, come l'acqua o la lava. La creatura non lascia tracce e ignora il {@quickref difficult terrain||3}. Inoltre, la creatura può muoversi a velocità normale per un massimo di 12 ore al giorno senza soffrire {@condition exhaustion} di una marcia forzata."
 			],
 			"lootTables": [
 				"Magic Item Table D"
@@ -21247,7 +21254,7 @@
 			"rarity": "common",
 			"wondrous": true,
 			"entries": [
-				"Quando usi un'azione per tracciare il bordo di questa medaglia, il terreno difficile non ti costa movimenti extra per 1 ora. Una volta che questa proprietà è stata utilizzata, non può essere usata di nuovo e la medaglia diventa non magica."
+				"Quando usi un'azione per tracciare il bordo di questa medaglia, {@quickref difficult terrain||3} non ti costa movimento extra per 1 ora. Una volta che questa proprietà è stata usata, non può essere usata di nuovo e la medaglia diventa non magica."
 			]
 		},
 		{
@@ -26908,13 +26915,13 @@
 			"entries": [
 				"Mentre indossi questo anello, hai un vantaggio sui tiri per attaccare contro gli elementali del Piano Elementale della Terra e loro hanno uno svantaggio sui tiri per attaccare contro di te. Inoltre, hai accesso alle proprietà basate sul Piano Elementale della Terra.",
 				"L'anello ha 5 cariche. Riacquista {@dice 1d4 + 1} le cariche consumate ogni giorno all'alba. Gli incantesimi lanciati dall'anello hanno una CD di salvataggio di 17.",
-				"Puoi spendere 2 cariche dell'anello per lanciare {@spell dominate monster} su un {@creature earth elemental}. Inoltre, puoi muoverti su un terreno difficile composto da macerie, rocce o terra come se fosse un terreno normale. Puoi anche parlare e capire il Terran.",
+				"Puoi spendere 2 cariche dell'anello per lanciare {@spell dominate monster} su un {@creature earth elemental}. Inoltre, puoi muoverti in {@quickref difficult terrain||3} che è composto da macerie, rocce o terra come se fosse un terreno normale. Puoi anche parlare e capire il Terran.",
 				"Se aiuti a uccidere un {@creature earth elemental} mentre sei in sintonia con l'anello, avrai accesso alle seguenti proprietà aggiuntive:",
 				{
 					"type": "list",
 					"items": [
 						"Hai resistenza ai danni da acido.",
-						"Puoi muoverti attraverso la terra solida o la roccia come se queste aree fossero un terreno difficile. Se finisci il tuo turno lì, vieni spostato nel più vicino spazio non occupato che hai occupato per ultimo.",
+						"Puoi muoverti attraverso la terra solida o la roccia come se queste aree fossero {@quickref difficult terrain||3}. Se finisci il tuo turno lì, vieni spostato nel più vicino spazio non occupato che hai occupato per ultimo.",
 						"Puoi lanciare i seguenti incantesimi dall'anello, spendendo il numero di cariche necessario: {@spell stone shape} (2 cariche), {@spell stoneskin} (3 cariche) o {@spell wall of stone} (3 cariche)."
 					]
 				}
@@ -27054,7 +27061,7 @@
 			"rarity": "rare",
 			"reqAttune": true,
 			"entries": [
-				"Mentre indossi questo anello, i terreni difficili non ti costano movimenti extra. Inoltre, la magia non può ridurre la tua velocità né causarti {@condition paralyzed} o {@condition restrained}."
+				"Mentre indossi questo anello, il {@quickref difficult terrain||3} non ti costa movimenti extra. Inoltre, la magia non può ridurre la tua velocità né farti diventare {@condition paralyzed} o {@condition restrained}."
 			],
 			"lootTables": [
 				"Magic Item Table G"
@@ -29418,7 +29425,7 @@
 								{
 									"type": "item",
 									"name": "Boots",
-									"entry": "Il paio di stivali è ora un oggetto magico raro che richiede una sintonizzazione. Mentre lo indossi, ignori i terreni difficili mentre cammini e puoi camminare sull'acqua."
+									"entry": "Il paio di stivali è ora un oggetto magico raro che richiede una sintonizzazione. Mentre lo indossi, ignori {@quickref difficult terrain||3} mentre cammini e puoi camminare sull'acqua."
 								}
 							]
 						}
@@ -29899,7 +29906,7 @@
 								"Hai {@sense darkvision} fino a una portata di 60 piedi. Se hai già {@sense darkvision}, essere in sintonia con la pinza aumenta la portata del tuo {@sense darkvision} di 60 piedi.",
 								"Guadagni un bonus di +1 ai tiri per attaccare e infliggere danni effettuati con quest'arma magica.",
 								"Puoi usare un'azione per far ricoprire di veleno la lama della pinza. Il veleno rimane per 1 minuto o finché un attacco con quest'arma non colpisce una creatura. Quella creatura deve riuscire in un tiro salvezza di Costituzione a Dc 13 o diventare {@condition poisoned} per 1 ora. Se il tiro salvezza fallisce di 5 o più, la creatura è anche {@condition unconscious} mentre {@condition poisoned} in questo modo. La creatura si risveglia se subisce danni o se un'altra creatura usa la sua azione per scuoterla.",
-								"Mentre porti la pinza, puoi muoverti su, giù e attraverso superfici verticali e a testa in giù lungo i soffitti, lasciando le mani libere. Hai una velocità di arrampicata pari alla tua velocità di camminata. Inoltre, non puoi essere intrappolato in ragnatele di alcun tipo e puoi muoverti attraverso le ragnatele come se fossero un terreno difficile."
+								"Mentre porti la pinza, puoi muoverti su, giù e attraverso superfici verticali e a testa in giù lungo i soffitti, lasciando le mani libere. Hai una velocità di arrampicata pari alla tua velocità di camminata. Inoltre, non puoi essere intrappolato in ragnatele di alcun tipo e puoi muoverti attraverso le ragnatele come se lo fossero {@quickref difficult terrain||3}."
 							]
 						}
 					]
@@ -34811,7 +34818,7 @@
 						],
 						[
 							"43",
-							"L'erba, il muschio e i fiori crescono istantaneamente sui tuoi passi. Inoltre, non sei influenzato dal terreno difficile creato dalle piante.",
+							"L'erba, il muschio e i fiori crescono istantaneamente sui tuoi passi. Inoltre non sei influenzato dal {@quickref difficult terrain||3} creato dalle piante.",
 							"Qualsiasi danno che colpisce una pianta che puoi vedere (un taglialegna che sega un albero, un giardiniere che strappa le erbacce e così via) ti riempie di una tristezza che ti impone svantaggio alle prove di abilità per 1 minuto."
 						],
 						[
@@ -34861,7 +34868,7 @@
 						],
 						[
 							"53",
-							"Come azione, puoi diventare incorporeo per 10 minuti, permettendoti di muoverti attraverso altre creature e oggetti come se fossero un terreno difficile. Prendi 5 ({@damage 1d10}) danni da forza se finisci il tuo turno dentro un oggetto. Puoi usare questa proprietà una volta sola.",
+							"Come azione, puoi diventare incorporeo per 10 minuti, permettendoti di muoverti attraverso altre creature e oggetti come se fossero {@quickref difficult terrain||3}. Prendi 5 ({@damage 1d10}) danni da forza se finisci il tuo turno dentro un oggetto. Puoi usare questa proprietà una volta sola.",
 							"I tuoi sensi diminuiscono come se il mondo fosse sbiadito intorno a te, imponendoti svantaggio alle prove di Saggezza ({@skill Perception})."
 						],
 						[
@@ -34921,8 +34928,8 @@
 						],
 						[
 							"65",
-							"Come azione, fai sì che un terreno difficile entro 50 piedi da te diventi un terreno normale. Puoi usare questa proprietà tre volte.",
-							"Ogni volta che ti muovi attraverso un terreno difficile, la tua velocità è ridotta di 10 piedi fino alla fine del tuo prossimo turno."
+							"Come azione, fai sì che {@quickref difficult terrain||3} entro 50 piedi da te diventi terreno normale. Puoi usare questa proprietà tre volte.",
+							"Ogni volta che ti muovi attraverso {@quickref difficult terrain||3}, la tua velocità è ridotta di 10 piedi fino alla fine del tuo prossimo turno."
 						],
 						[
 							"66",
@@ -37320,7 +37327,6 @@
 			"baseItem": "sling|PHB",
 			"type": "R",
 			"rarity": "rare",
-			"value": 10,
 			"weaponCategory": "simple",
 			"property": [
 				"A"
@@ -37664,6 +37670,13 @@
 				"Guadagni un bonus di +1 ai tiri per attaccare e ai danni effettuati con questo bastone magico. Mentre lo impugni, ottieni un bonus di +1 ai tiri per gli incantesimi.",
 				"Questo bastone ha 10 cariche. Mentre lo tieni in mano, puoi usare un'azione per spendere 1 o più cariche del bastone per lanciare uno dei seguenti incantesimi da esso, usando la tua CD di salvataggio degli incantesimi: {@spell banishment} (4 cariche), {@spell blink} (3 cariche), {@spell misty step} (2 cariche), {@spell passwall} (5 cariche) o {@spell teleport} (7 cariche).",
 				"Il bastone recupera {@dice 1d6 + 4} le cariche consumate ogni giorno all'alba. Se spendi l'ultima carica, tira un {@dice d20}. Con un 1, il bastone svanisce per sempre."
+			],
+			"attachedSpells": [
+				"banishment",
+				"blink",
+				"misty step",
+				"passwall",
+				"teleport"
 			]
 		},
 		{

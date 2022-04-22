@@ -139,7 +139,7 @@
 					"type": "list",
 					"items": [
 						"Ottieni competenza nell'abilità {@skill Acrobatics}. Se sei già abile nell'abilità, aggiungerai il doppio del tuo bonus di competenza alle prove che effettui con essa.",
-						"Come azione bonus, puoi effettuare una prova di Destrezza DC 15 ({@skill Acrobatics}). Se ci riesci, il terreno difficile non ti costa movimenti extra fino alla fine del turno in corso."
+						"Come azione bonus, puoi effettuare una prova di Destrezza DC 15 ({@skill Acrobatics}). Se ci riesci, {@quickref difficult terrain||3} non ti costa più movimento fino alla fine del turno in corso."
 					]
 				}
 			]
@@ -2341,6 +2341,17 @@
 					"spellcasting2020": true
 				}
 			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Eldritch Invocations",
+					"featureType": [
+						"EI"
+					],
+					"progression": {
+						"*": 1
+					}
+				}
+			],
 			"entries": [
 				"Studiando le tradizioni occulte, impari un'opzione {@filter Eldritch Invocation|optionalfeatures|Feature Type=EI} a tua scelta della classe warlock. La tua capacità di incantatore per l'invocazione è Intelligenza, Saggezza o Carisma (scegli quando selezioni questo talento). Se l'invocazione ha un prerequisito di qualsiasi tipo, puoi scegliere quell'invocazione solo se sei uno stregone che soddisfa il prerequisito.",
 				"Ogni volta che guadagni un livello, puoi sostituire l'invocazione con un'altra della classe warlock."
@@ -2719,7 +2730,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Impari l'incantesimo {@spell misty step} e un {@filter 1st-level spell|spells|level=1|school=E;D} a tua scelta. L'incantesimo di 1° livello deve essere della scuola di magia divinazione o incantesimo. Puoi lanciare ognuno di questi incantesimi senza spendere uno slot incantesimo. Una volta che hai lanciato uno di questi incantesimi in questo modo, non puoi lanciare nuovamente quell'incantesimo in questo modo finché non finisci un lungo riposo. Puoi anche lanciare questi incantesimi utilizzando gli slot per incantesimi che possiedi del livello appropriato. L'abilità di lancio degli incantesimi è quella aumentata da questo talento."
+						"Impari l'incantesimo {@spell misty step} e un {@filter 1st-level spell|spells|level=1|school=E;D} a tua scelta. Il {@filter 1st-level spell|spells|level=1|school=E;D} deve essere della scuola di magia divinazione o incantesimo. Puoi lanciare ognuno di questi incantesimi senza spendere uno slot incantesimo. Una volta che hai lanciato uno di questi incantesimi in questo modo, non puoi lanciare nuovamente quell'incantesimo in questo modo finché non finisci un lungo riposo. Puoi anche lanciare questi incantesimi utilizzando gli slot per incantesimi che possiedi del livello appropriato. L'abilità di lancio degli incantesimi è l'abilità aumentata da questo talento."
 					]
 				}
 			]
@@ -2762,7 +2773,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Impari l'incantesimo {@spell misty step} e un {@filter 1st-level spell|spells|level=1|school=E;D} a tua scelta. L'incantesimo di 1° livello deve essere della scuola di magia divinazione o incantesimo. Puoi lanciare ognuno di questi incantesimi senza spendere uno slot incantesimo. Una volta che hai lanciato uno di questi incantesimi in questo modo, non puoi lanciare nuovamente quell'incantesimo in questo modo finché non finisci un lungo riposo. Puoi anche lanciare questi incantesimi utilizzando gli slot per incantesimi che possiedi del livello appropriato. L'abilità di lancio degli incantesimi è quella aumentata da questo talento."
+						"Impari l'incantesimo {@spell misty step} e un {@filter 1st-level spell|spells|level=1|school=E;D} a tua scelta. Il {@filter 1st-level spell|spells|level=1|school=E;D} deve essere della scuola di magia divinazione o incantesimo. Puoi lanciare ognuno di questi incantesimi senza spendere uno slot incantesimo. Una volta che hai lanciato uno di questi incantesimi in questo modo, non puoi lanciare nuovamente quell'incantesimo in questo modo finché non finisci un lungo riposo. Puoi anche lanciare questi incantesimi utilizzando gli slot per incantesimi che possiedi del livello appropriato. L'abilità di lancio degli incantesimi è l'abilità aumentata da questo talento."
 					]
 				}
 			]
@@ -2778,6 +2789,17 @@
 							"weapon": "martial"
 						}
 					]
+				}
+			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Fighting Style",
+					"featureType": [
+						"FS:F"
+					],
+					"progression": {
+						"*": 1
+					}
 				}
 			],
 			"entries": [
@@ -4023,6 +4045,17 @@
 			"name": "Martial Adept",
 			"source": "PHB",
 			"page": 168,
+			"optionalfeatureProgression": [
+				{
+					"name": "Maneuvers",
+					"featureType": [
+						"MV:B"
+					],
+					"progression": {
+						"*": 2
+					}
+				}
+			],
 			"entries": [
 				"Hai un addestramento marziale che ti permette di eseguire speciali manovre di combattimento. Ottieni i seguenti benefici:",
 				{
@@ -4174,6 +4207,17 @@
 					"spellcasting2020": true
 				}
 			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Metamagic",
+					"featureType": [
+						"MM"
+					],
+					"progression": {
+						"*": 2
+					}
+				}
+			],
 			"entries": [
 				"Hai imparato a esercitare la tua volontà sui tuoi incantesimi per alterarne il funzionamento:",
 				{
@@ -4215,7 +4259,7 @@
 					"type": "list",
 					"items": [
 						"La tua velocità aumenta di 10 piedi.",
-						"Quando usi l'azione {@action Dash}, il terreno difficile non ti costa movimento extra in quel turno.",
+						"Quando usi l'azione {@action Dash}, {@quickref difficult terrain||3} non ti costa movimento extra in quel turno.",
 						"Quando effettui un attacco in mischia contro una creatura, non provochi attacchi di opportunità da parte di quella creatura per il resto del turno, che tu colpisca o meno."
 					]
 				}
@@ -5181,7 +5225,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Impari l'incantesimo {@spell invisibility} e un incantesimo di 1° livello a tua scelta. Il {@filter 1st-level spell|spells|level=1|school=I;N} deve appartenere alla scuola di magia dell'illusione o della negromanzia. Puoi lanciare ognuno di questi incantesimi senza spendere uno slot incantesimo. Una volta che hai lanciato uno di questi incantesimi in questo modo, non puoi lanciare nuovamente quell'incantesimo in questo modo finché non finisci un lungo riposo. Puoi anche lanciare questi incantesimi utilizzando gli slot per incantesimi che possiedi del livello appropriato. L'abilità di lancio degli incantesimi è l'abilità aumentata da questo talento."
+						"Impari l'incantesimo {@spell invisibility} e un {@filter 1st-level spell|spells|level=1|school=I;N} a tua scelta. Il {@filter 1st-level spell|spells|level=1|school=I;N} deve essere della scuola di magia dell'illusione o della negromanzia. Puoi lanciare ognuno di questi incantesimi senza spendere uno slot incantesimo. Una volta che hai lanciato uno di questi incantesimi in questo modo, non puoi lanciare nuovamente quell'incantesimo in questo modo finché non finisci un lungo riposo. Puoi anche lanciare questi incantesimi utilizzando gli slot per incantesimi che possiedi del livello appropriato. L'abilità di lancio degli incantesimi è quella aumentata da questo talento."
 					]
 				}
 			]
@@ -5224,7 +5268,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Impari l'incantesimo {@spell darkness} e un {@filter 1st-level spell|spells|level=1|school=I;N} a tua scelta. L'incantesimo di 1° livello deve appartenere alla scuola di magia dell'illusione o della negromanzia. Puoi lanciare ognuno di questi incantesimi senza spendere uno slot incantesimo. Una volta lanciato uno di questi incantesimi in questo modo, non potrai lanciare nuovamente quell'incantesimo in questo modo finché non avrai finito un lungo riposo. Puoi anche lanciare questi incantesimi utilizzando gli slot per incantesimi che possiedi del livello appropriato. L'abilità di lancio degli incantesimi è quella aumentata da questo talento."
+						"Impari l'incantesimo {@spell darkness} e un {@filter 1st-level spell|spells|level=1|school=I;N} a tua scelta. Il {@filter 1st-level spell|spells|level=1|school=I;N} deve essere della scuola di magia dell'illusione o della negromanzia. Puoi lanciare ognuno di questi incantesimi senza spendere uno slot incantesimo. Una volta che hai lanciato uno di questi incantesimi in questo modo, non puoi lanciare nuovamente quell'incantesimo in questo modo finché non finisci un lungo riposo. Puoi anche lanciare questi incantesimi utilizzando gli slot per incantesimi che possiedi del livello appropriato. L'abilità di lancio degli incantesimi è quella aumentata da questo talento."
 					]
 				}
 			]

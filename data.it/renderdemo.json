@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Tag di stile; {@bold some text to be bolded} (alternativa {@b shorthand}), {@italic some text to be italicised} (alternativa {@i shorthand}), {@underline some text to be underlined} (alternativa {@u shorthand}), {@strike some text to strike-through}, (alternativa {@s shorthand}), {@color color|e40707} tag",
+						"Tag di stile; {@bold some text to be bolded} (alternativa {@b shorthand}), {@italic some text to be italicised} (alternativa {@i shorthand}), {@underline some text to be underlined} (alternativa {@u shorthand}), {@strike some text to strike-through}, (alternativa {@s shorthand}), {@color color|e40707} tag, {@code print(&quot;hello world&quot;)} tag",
 						"Inoltre, {@note note tags}, usato per aggiungere errata corrige o Twitter \"note a piè di pagina di design\".",
 						"Tag del rullo di dadi; {@dice 1d2-2+2d3+5} per i normali lanci di dadi ({@dice 1d6;2d6} per le opzioni multiple; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} per le richieste di input), con {@dice 1d20+2|display text} e {@dice 1d20+2|display text|rolled by name} estesi, e una versione speciale \"hit\" che assume che un d20 debba essere lanciato {@hit +7} (e lancia vantaggio su shift-click, svantaggio su alt-click). C'è anche {@damage 1d12+3} che tira i colpi critici su shift-click e metà danno (arrotondando per difetto) su alt-click, e {@d20 -4} che tira anche vantaggio/svantaggio, anche se i tag @hit sono preferiti dove appropriato. Gli incantesimi possono avere tag di dado scalare, (danno di 2d6 o 3d6 al livello 1, aggiungere un extra {@scaledice 2d6;3d6|2-9|1d6} per ogni livello oltre il 2°), per quando l'effetto di un incantesimo scala a livelli più alti. {@ability str 20}, {@savingThrow str 5} e {@skillCheck animal_handling 5} sono usati come stenografia interna, ma possono essere utili altrove.",
 						"Tag di probabilità; simili ai tag dei rulli dei dadi, ma con output successo/fallimento. Sintassi simile a quella dei tag dei dadi: {@chance 50}, {@chance 50|display text} e {@chance 50|display text|rolled by name}.",
@@ -110,7 +110,8 @@
 									"type": "list",
 									"items": [
 										"Tag dell'avventura: collegamento a un'avventura {@adventure display text|CoS}; un capitolo di un'avventura {@adventure display text|CoS|2}; un titolo in un capitolo di un'avventura {@adventure display text|CoS|2|Treasure}; o il nono titolo di un dato nome in un capitolo di un'avventura {@adventure display text|CoS|2|Treasure|1}",
-										"Tag libro: link a un libro {@book display text|PHB}; un capitolo di un libro {@book display text|PHB|2}; un titolo di un capitolo di un libro {@book display text|PHB|2|Age}; o l'ennesimo titolo di un dato nome in un capitolo di un libro {@book display text|PHB|2|Age|0} (anche se questo non è generalmente necessario poiché, a differenza delle avventure, i libri non ripetono molto spesso i loro titoli."
+										"Tag libro: link a un libro {@book display text|PHB}; un capitolo di un libro {@book display text|PHB|2}; un titolo di un capitolo di un libro {@book display text|PHB|2|Age}; o l'ennesimo titolo di un dato nome in un capitolo di un libro {@book display text|PHB|2|Age|0} (anche se questo non è generalmente necessario poiché, a differenza delle avventure, i libri non ripetono molto spesso i loro titoli.",
+										"Tag di riferimento rapido; {@code &lt;name&gt;|&lt;source&gt;|&lt;chapterIndex&gt;|&lt;headerIndex&gt;|&lt;displayText&gt;}: {@quickref Multiclassing}, {@quickref Multiclassing|PHB}, {@quickref Adventuring Gear|PHB|1}, {@quickref Adventuring Gear|PHB|1|0}, {@quickref Adventuring Gear|PHB|1|0|Display Text}."
 									]
 								}
 							]
