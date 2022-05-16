@@ -536,6 +536,8 @@ Renderer.dice = {
 		const wrpTree = Renderer.dice.lang.getTree3(entry.toRoll);
 		wrpTree.tree.successThresh = entry.successThresh;
 		wrpTree.tree.successMax = entry.successMax;
+		wrpTree.tree.chanceSuccessText = entry.chanceSuccessText;
+		wrpTree.tree.chanceFailureText = entry.chanceFailureText;
 
 		// arbitrarily return the result of the highest roll if we roll multiple times
 		const results = [];
@@ -636,7 +638,7 @@ Renderer.dice = {
 			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
 			const totalPart = tree.successThresh
-				? `<span class="roll">${result > (tree.successMax || 100) - tree.successThresh ? "Success!" : "Failure"}</span>`
+				? `<span class="roll">${result > (tree.successMax || 100) - tree.successThresh ? (tree.chanceSuccessText || "Success!") : (tree.chanceFailureText || "Failure")}</span>`
 				: `<span class="roll ${allMax ? "roll-max" : allMin ? "roll-min" : ""}">${result}</span>`;
 
 			const title = `${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${tree}`;

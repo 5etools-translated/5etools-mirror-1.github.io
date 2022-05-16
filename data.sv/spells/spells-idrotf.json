@@ -1,0 +1,112 @@
+{
+	"spell": [
+		{
+			"name": "Create Magen",
+			"source": "IDRotF",
+			"page": 318,
+			"level": 7,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a vial of quicksilver worth 500 gp and a life-sized human doll, both of which the spell consumes, and an intricate crystal rod worth at least 1,500 gp that is not consumed",
+					"cost": 50000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Medan du uttalar besvärjelsen placerar du en flaska kvicksilver i bröstet på en människodocka i naturlig storlek som är fylld med aska eller damm. Du syr sedan ihop dockan och droppar ditt blod på den. I slutet av trollformeln slår du på dockan med en kristallstav och förvandlar den till en {@filter magen|bestiary|search=magen|source=IDRotF} klädd i det som dockan hade på sig. Typen av magen väljer du själv när du kastar besvärjelsen. Se {@adventure appendix C|IDRotF|21} för olika typer av magen och deras statistik.",
+				"När magen dyker upp minskar din maximala träffpunktsnivå med ett belopp som är lika stort som magens utmaningsvärde (minsta minskning på 1). Endast en {@spell wish} besvärjelse kan upphäva denna minskning av din högsta träffpunkt.",
+				"Alla magen som du skapar med den här besvärjelsen lyder dina kommandon utan att ifrågasätta dem."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Frost Fingers",
+			"source": "IDRotF",
+			"page": 318,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Frysande kyla sprutar från dina fingertoppar i en 15-fots kon. Varje varelse i det området måste göra ett räddningskast med konstitutionen och tar {@damage 2d8} kallskada vid ett misslyckat räddningskast, eller hälften så mycket skada vid ett lyckat räddningskast.",
+				"Kylan fryser icke-magiska vätskor i området som inte bärs eller bärs."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spelledare på 2:a nivån eller högre ökar skadan med {@dice 1d8} för varje spelledare över 1:a nivån."
+					]
+				}
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

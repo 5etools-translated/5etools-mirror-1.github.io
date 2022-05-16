@@ -1056,6 +1056,8 @@ PropOrder._OPTIONALFEATURE = [
 
 	"additionalSpells",
 
+	"optionalfeatureProgression",
+
 	"consumes",
 
 	"entries",

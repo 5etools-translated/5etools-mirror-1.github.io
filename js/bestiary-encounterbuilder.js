@@ -1528,7 +1528,7 @@ EncounterBuilder.Adjuster = class {
 				.map(soln => ({
 					encounter: soln,
 					distance: (() => {
-						const xp = EncounterBuilderUtils.calculateEncounterXp(soln, this._partyMeta.cntPlayers);
+						const xp = EncounterBuilderUtils.calculateEncounterXp(soln, this._partyMeta);
 						if (xp > targetMax) return xp - targetMax;
 						else if (xp < targetMin) return targetMin - xp;
 						else return 0;
@@ -1592,7 +1592,7 @@ EncounterBuilder.Adjuster = class {
 				const ix = RollerUtil.randomise(pickFrom.length) - 1;
 				const picked = pickFrom.splice(ix, 1)[0];
 				picked.count++;
-				if (EncounterBuilderUtils.calculateEncounterXp(currentEncounter, this._partyMeta.cntPlayers).adjustedXp > targetMax) {
+				if (EncounterBuilderUtils.calculateEncounterXp(currentEncounter, this._partyMeta).adjustedXp > targetMax) {
 					picked.count--;
 				}
 			}

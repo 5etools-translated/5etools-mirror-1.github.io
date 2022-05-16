@@ -122,11 +122,35 @@ class BaseParser {
 }
 
 class TaggerUtils {
-	static ALL_LEGENDARY_GROUPS = null;
-	static ALL_SPELLS = null;
+	static _ALL_LEGENDARY_GROUPS = null;
+	static _ALL_SPELLS = null;
 	static init ({legendaryGroups, spells}) {
-		this.ALL_LEGENDARY_GROUPS = legendaryGroups;
-		this.ALL_SPELLS = spells;
+		this._ALL_LEGENDARY_GROUPS = legendaryGroups;
+		this._ALL_SPELLS = spells;
+	}
+
+	static findLegendaryGroup ({name, source}) {
+		name = name.toLowerCase();
+		source = source.toLowerCase();
+
+		const doFind = arr => arr.find(it => it.name.toLowerCase() === name && it.source.toLowerCase() === source);
+
+		const fromBrew = typeof BrewUtil !== "undefined" && BrewUtil.homebrew?.legendaryGroup?.length ? doFind(BrewUtil.homebrew.legendaryGroup) : null;
+		if (fromBrew) return fromBrew;
+
+		return doFind(this._ALL_LEGENDARY_GROUPS);
+	}
+
+	static findSpell ({name, source}) {
+		name = name.toLowerCase();
+		source = source.toLowerCase();
+
+		const doFind = arr => arr.find(s => (s.name.toLowerCase() === name || (typeof s.srd === "string" && s.srd.toLowerCase() === name)) && s.source.toLowerCase() === source);
+
+		const fromBrew = typeof BrewUtil !== "undefined" && BrewUtil.homebrew?.spell?.length ? doFind(BrewUtil.homebrew.spell) : null;
+		if (fromBrew) return fromBrew;
+
+		return doFind(this._ALL_SPELLS);
 	}
 
 	/**
@@ -190,7 +214,7 @@ class TaggerUtils {
 		Object.entries(knownSpells)
 			.forEach(([source, spellSet]) => {
 				spellSet.forEach(it => {
-					const spell = TaggerUtils.ALL_SPELLS.find(s => (s.name.toLowerCase() === it || (typeof s.srd === "string" && s.srd.toLowerCase() === it)) && s.source.toLowerCase() === source);
+					const spell = TaggerUtils.findSpell({name: it, source});
 					if (!spell) return cbMan ? cbMan(`${it} :: ${source}`) : null;
 
 					out.push(spell);
@@ -300,7 +324,7 @@ class TagCondition {
 
 		const inflictedSet = isTagInflicted ? new Set() : null;
 
-		const meta = TaggerUtils.ALL_LEGENDARY_GROUPS.find(it => it.name === m.legendaryGroup.name && it.source === m.legendaryGroup.source);
+		const meta = TaggerUtils.findLegendaryGroup({name: m.legendaryGroup.name, source: m.legendaryGroup.source});
 		if (!meta) return cbMan ? cbMan(m.legendaryGroup) : null;
 		this._collectInflictedConditions(JSON.stringify(meta), {inflictedSet, inflictedWhitelist});
 

@@ -1,0 +1,1101 @@
+{
+	"spell": [
+		{
+			"name": "Arcane Hacking (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "hacking tools"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Zyskujesz przewagę we wszystkich testach na inteligencję z użyciem narzędzi do hakowania, aby złamać szyfrowanie oprogramowania lub zabezpieczenia online, gdy korzystasz z obcego systemu. Zaklęcie to pozwala także na złamanie zaklęć ochronnych 2. i niższego poziomu, takich jak magiczna blokada czy glify ochronne, poprzez wykonanie testu Inteligencji przy użyciu narzędzi hakerskich przeciwko DC obrony przed zaklęciem rzucającego zaklęcie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, możesz próbować przeciwdziałać zaklęciu ustawionemu w celu zabezpieczenia obcego systemu, jeśli poziom zaklęcia jest równy lub niższy od poziomu gniazda zaklęć, którego użyłeś."
+					]
+				}
+			],
+			"abilityCheck": [
+				"intelligence"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Commune with City (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 5,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Na krótko stajesz się jednym z miastem i zyskujesz wiedzę o otaczającym je terenie. Na powierzchni ziemi zaklęcie to daje ci wiedzę o obszarze w promieniu 1 mili od ciebie. W kanałach i innych podziemnych miejscach zdobywasz wiedzę o obszarze w promieniu 600 stóp od ciebie.",
+				"Natychmiast zdobędziesz wiedzę na temat maksymalnie trzech wybranych przez siebie faktów dotyczących dowolnego z poniższych tematów, związanych z danym obszarem:",
+				{
+					"type": "list",
+					"items": [
+						"Ukształtowanie terenu i zbiorniki wodne",
+						"Przeważające budynki, rośliny, zwierzęta lub istoty inteligentne",
+						"Potężne (CR 1 lub wyższa) istoty niebieskie, fey, fiendy, elementale lub nieumarli",
+						"Wpływy z innych płaszczyzn egzystencji",
+						"Prądy elektryczne, sygnały bezprzewodowe oraz czynne linie i tory tranzytowe"
+					]
+				},
+				"Na przykład, możesz ustalić, gdzie w okolicy znajdują się potężni nieumarli, gdzie znajdują się główne źródła energii elektrycznej lub zakłóceń oraz gdzie znajdują się pobliskie parki."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Knowbot (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					}
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Dotykasz pojedynczego urządzenia komputerowego lub systemu komputerowego, aby wyczarować knowbota - częściowo czujące oprogramowanie, na którym odciśnięte są ślady twoich własnych umiejętności i zdolności komputerowych. Przez czas trwania zaklęcia możesz użyć dodatkowej akcji, aby zlecić mu wykonanie zadania związanego z komputerem, które normalnie wymagałoby akcji. Knowbot wykonuje testy zdolności Inteligencji, wykorzystując swój wynik zdolności i premie za biegłość (w tym biegłość w posługiwaniu się narzędziami hakerskimi, jeśli dotyczy).",
+				"Posiadasz ograniczoną więź telepatyczną z knowbotem, w zasięgu do 500 stóp od urządzenia lub systemu, w którym został on stworzony. Jeśli wyjdziesz poza ten zasięg, knowbot zniknie w ciągu {@dice 2d4} rund, tak jakby czas działania zaklęcia upłynął. Ponowne poruszenie się w tym zasięgu natychmiast przywraca więź.",
+				"Knowbot jest związany z systemem, w którym został stworzony, i pozostaje w nim do czasu, aż zostanie usunięty lub upłynie czas działania zaklęcia."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Jeśli rzucisz to zaklęcie używając gniazda zaklęć 5. poziomu lub wyższego, czas trwania zaklęcia wydłuża się do 1 godziny. Dodatkowo, Twoja więź telepatyczna z knowbotem działa w zasięgu do 1000 stóp, a jeśli opuścisz zasięg więzi, knowbot będzie kontynuował wykonywanie ostatniego zleconego mu zadania aż do wygaśnięcia zaklęcia."
+					]
+				}
+			],
+			"miscTags": [
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Digital Phantom (UA)",
+			"source": "UAModernMagic",
+			"page": 6,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a small piece of copper wire"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"To zaklęcie pozwala aktywnie ukryć swoją obecność w systemie komputerowym. W czasie trwania zaklęcia ty i inni wybrani przez ciebie użytkownicy w sieci lokalnej otrzymują premię +10 do testów inteligencji, aby uniknąć wykrycia przez administratorów, knowboty, oprogramowanie śledzące i tym podobne. Za każdym razem, gdy ty i wybrani przez ciebie użytkownicy opuszczają system komputerowy, w którym pracujesz w czasie działania tego zaklęcia, wszystkie ślady twojej poprzedniej obecności w tym systemie zostają wymazane."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Find Vehicle (UA)",
+			"source": "UAModernMagic",
+			"page": 6,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 10,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha, który przybiera postać wybranego przez ciebie niewojskowego pojazdu lądowego i pojawia się na pustej przestrzeni w zasięgu. Pojazd ma statystyki normalnego pojazdu tego typu, ale jest niebiański, bajkowy lub diabelski (twoje pochodzenie). Fizyczne cechy pojazdu w pewnym stopniu odzwierciedlają jego pochodzenie. Na przykład diabelski SUV może być czarny jak smoła, mieć przyciemniane szyby i złowrogo wyglądającą przednią kratę.",
+				"Posiadasz nadprzyrodzoną więź z wyczarowanym pojazdem, która pozwala ci prowadzić pojazd w sposób wykraczający poza twoje normalne umiejętności. Podczas prowadzenia wyczarowanego pojazdu jesteś uważany za biegłego w pojazdach tego typu, a do testów umiejętności związanych z prowadzeniem pojazdu dodajesz podwójną premię do biegłości. Podczas prowadzenia pojazdu możesz sprawić, że wszystkie zaklęcia, które rzucasz, a które są skierowane tylko do ciebie, będą również skierowane do pojazdu.",
+				"Jeśli pojazd spadnie do 0 punktów życia, znika, nie pozostawiając po sobie żadnej fizycznej postaci. Możesz też w dowolnym momencie oddalić pojazd, wykonując akcję, która spowoduje jego zniknięcie.",
+				"Nie możesz mieć więcej niż jeden pojazd związany tym zaklęciem w tym samym czasie. Jako akcję możesz w dowolnym momencie uwolnić pojazd z więzów, powodując jego zniknięcie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, możesz wyczarować niewojskowy pojazd wodny, wystarczająco duży, by pomieścić sześć średnich stworzeń. Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 5. poziomu lub wyższego, możesz wyczarować niewojskowy pojazd powietrzny, wystarczająco duży, by unieść 10 średnich stworzeń. Kiedy rzucasz to zaklęcie używając gniazda zaklęć 7. poziomu lub wyższego, możesz wyczarować dowolny typ pojazdu, pod warunkiem, że DM wyrazi na to zgodę."
+					]
+				}
+			],
+			"miscTags": [
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Haywire (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"To zaklęcie sieje spustoszenie w urządzeniach elektronicznych, praktycznie uniemożliwiając korzystanie z nich. Każde urządzenie elektroniczne w sferze o promieniu 10 stóp, skupionej na wybranym przez ciebie punkcie w zasięgu, podlega losowym zachowaniom, dopóki pozostaje na tym obszarze. Urządzenie, które nie jest w posiadaniu istoty, zostaje automatycznie dotknięte. Jeśli urządzenie elektroniczne jest w posiadaniu istoty, musi jej się udać rzut ratunkowy na Mądrość lub urządzenie zostanie dotknięte zaklęciem.",
+				"Na początku każdej swojej tury, rzuć {@dice d6} dla każdego dotkniętego urządzenia, aby określić jego zachowanie. O ile nie zaznaczono inaczej, zachowanie to trwa do początku twojej następnej tury, kiedy to zaklęcie jest w mocy.",
+				{
+					"type": "table",
+					"colLabels": [
+						"{@dice d6}",
+						"Effect"
+					],
+					"colStyles": [
+						"col-1 text-center no-wrap",
+						"col-11"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"Urządzenie wyłącza się i musi zostać ponownie uruchomione. Do czasu ponownego uruchomienia urządzenia nie należy wykonywać na nim żadnych czynności."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"min": 2,
+									"max": 4
+								}
+							},
+							"Urządzenie nie działa."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Urządzenie doświadcza skoku napięcia, powodując porażenie prądem posiadacza (jeśli jest) i jednej losowej istoty w promieniu 5 stóp od urządzenia. Każda dotknięta istota musi wykonać rzut zręcznością przeciwko DC obrony przed zaklęciem, otrzymując {@damage 6d6} obrażeń od błyskawic w przypadku nieudanego testu lub połowę tych obrażeń w przypadku udanego testu."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Urządzenie nadaje się do normalnego użytku."
+						]
+					]
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 4. poziomu lub wyższego, promień sfery, na którą działa to zaklęcie, zwiększa się o 5 stóp za każdy poziom gniazda powyżej 3."
+					]
+				}
+			],
+			"damageInflict": [
+				"lightning"
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Infallible Relay (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a mobile phone"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Za pomocą tego zaklęcia możesz namierzyć dowolną istotę, z którą wcześniej rozmawiałeś, pod warunkiem, że oboje jesteście na tej samej płaszczyźnie egzystencji. Kiedy rzucasz zaklęcie, najbliższy działający telefon lub podobne urządzenie komunikacyjne w promieniu 100 stóp od celu zaczyna dzwonić. Jeśli w pobliżu celu nie ma żadnego odpowiedniego urządzenia, zaklęcie się nie udaje.",
+				"Cel musi wykonać udany rzut obronny na Charyzmę lub zostać zmuszony do odpowiedzi na twoje wezwanie. Po nawiązaniu połączenia, rozmowa jest krystalicznie czysta i nie można jej przerwać, dopóki nie zakończy się rozmowa lub nie skończy się czas trwania zaklęcia. Możesz zakończyć rozmowę w dowolnym momencie, ale cel musi wykonać udany rzut na ocalenie z Charyzmy, aby zakończyć rozmowę."
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Invisibility to Cameras (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 3,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a scrap of black paper"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Cztery wybrane przez ciebie istoty w zasięgu stają się niewykrywalne dla elektronicznych czujników i kamer na czas trwania zaklęcia. Wszystko, co cel ma na sobie lub niesie, jest również niewykrywalne, dopóki znajduje się na jego ciele. Cele pozostają widoczne dla wzroku."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "On/Off (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Ten cantrip pozwala aktywować lub dezaktywować dowolne urządzenie elektroniczne znajdujące się w zasięgu, pod warunkiem, że posiada ono jasno zdefiniowaną funkcję włączania lub wyłączania, która jest łatwo dostępna z zewnątrz urządzenia. Włączenie/wyłączenie nie ma wpływu na żadne urządzenie, które wymaga programowej sekwencji wyłączania w celu aktywacji lub dezaktywacji."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Protection from Ballistics (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a shell casing"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Zaklęcie to uodparnia ciało celu na uderzenia pocisków. Do końca działania zaklęcia cel jest odporny na niemagiczne obrażenia balistyczne."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Remote Access (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					}
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Możesz używać dowolnego urządzenia elektronicznego znajdującego się w zasięgu, tak jakby było w twoich rękach. Nie jest to efekt telekinezy. To zaklęcie pozwala raczej na elektroniczne symulowanie mechanicznych funkcji urządzenia. Masz dostęp tylko do tych funkcji, do których miałaby dostęp osoba korzystająca z urządzenia ręcznie. Możesz używać zdalnego dostępu tylko do jednego urządzenia na raz."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Shutdown (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Zaklęcie to wyłącza wszystkie urządzenia elektroniczne w zasięgu, które nie są trzymane przez istotę lub nie znajdują się pod jej bezpośrednią kontrolą. Jeśli urządzenie elektroniczne w zasięgu jest używane przez jakąś istotę, musi ona wykonać rzut ratunkowy na Konstytucję, aby zapobiec wyłączeniu urządzenia. Gdy zaklęcie pozostaje aktywne, żadne urządzenie elektroniczne w zasięgu nie może zostać uruchomione lub ponownie włączone."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Synchronicity (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Istota, której dotkniesz, czuje, że rzeczywistość subtelnie zmienia się na jej korzyść, gdy to zaklęcie jest w mocy. Celowi nie przeszkadzają żadne zwykłe opóźnienia. Światła drogowe są zawsze zielone, winda zawsze czeka, a taksówka jest zawsze za rogiem. Cel może biec z pełną prędkością przez gęste tłumy, a ataki z okazji sprowokowane przez jego ruch są wykonywane z minusem.",
+				"Synchroniczność daje przewagę w testach Zręczności ({@skill Stealth}), ponieważ cel zawsze znajdzie dogodną osłonę. Dodatkowo, cel ma przewagę we wszystkich testach umiejętności związanych z prowadzeniem pojazdów.",
+				"W przypadku, gdy dwie lub więcej istot pod wpływem efektu synchroniczności stara się uniknąć wzajemnych niedogodności, istoty te angażują się w konkurs Charyzmy za każdym razem, gdy efekty zaklęć przeciwstawiają się sobie."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "System Backdoor (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 4,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "hacking tools"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"To zaklęcie pozwala ominąć zabezpieczenia systemu w celu utworzenia bezpiecznego loginu w obcym systemie. Stworzony login daje ci uprawnienia na poziomie administratora w każdym systemie komputerowym, który nie został ulepszony dzięki technomagii. Login pokonuje wszelkie zaklęcia technomagiczne 3. poziomu lub niższe.",
+				"Po upłynięciu czasu trwania zaklęcia login i wszystkie uprawnienia są usuwane z systemu. W dziennikach systemowych nadal widoczna jest aktywność użytkownika, ale nie można znaleźć ani wyśledzić jego tożsamości."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 5. poziomu lub wyższego, możesz ominąć zaklęcia technomagiczne, jeśli poziom zaklęcia jest równy lub niższy od poziomu gniazda zaklęć, którego użyłeś."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		}
+	]
+}

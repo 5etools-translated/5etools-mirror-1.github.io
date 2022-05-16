@@ -1,0 +1,469 @@
+{
+	"spell": [
+		{
+			"name": "Distort Value",
+			"source": "AI",
+			"page": 75,
+			"level": 1,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Behöver du pressa några fler guldstycken ur en köpman när du försöker sälja den konstiga bläckfiskstatyn som du befriade från kaostemplet? Behöver du nedvärdera värdet av vissa magiska tillgångar när skatteindrivaren kommer förbi? Med Distort value har du allt du behöver.",
+				"Du kastar den här besvärjelsen på ett föremål som inte är mer än 1 fot på en sida och fördubblar föremålets värde genom att lägga till illusoriska detaljer eller polering, eller minskar dess värde med hälften med hjälp av illusoriska repor, bucklor och andra fula detaljer. Den som undersöker föremålet kan fastställa dess verkliga värde med en lyckad intelligenskontroll ({@skill Investigation}) mot din spellednings räddnings-DC."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med hjälp av en spellokal på 2:a nivån eller högre, ökar objektets maximala storlek med 1 fot för varje spellokalnivå över 1:a nivån."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Fast Friends",
+			"source": "AI",
+			"page": 75,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"När du måste se till att något blir gjort kan du inte förlita dig på vaga löften, edsvurna eder eller bindande anställningsavtal. När du uttalar den här besvärjelsen väljer du en humanoid inom räckhåll som kan se och höra dig och som kan förstå dig. Varelsen måste lyckas med ett Visdomssparandekast eller bli {@condition charmed} av dig under varaktigheten. Medan varelsen är {@condition charmed} på detta sätt förbinder den sig att utföra alla tjänster eller aktiviteter som du ber den om på ett vänligt sätt, efter bästa förmåga.",
+				"Du kan ställa in nya uppgifter för varelsen när en tidigare uppgift är slutförd eller om du bestämmer dig för att avsluta den aktuella uppgiften. Om tjänsten eller aktiviteten kan skada varelsen, eller om den står i konflikt med varelsens normala aktiviteter och önskemål, kan varelsen göra ett nytt räddningskast med Visdom för att försöka avsluta effekten. Detta räddningsförsök görs med fördel om du eller dina följeslagare kämpar mot varelsen. Om aktiviteten skulle resultera i en säker död för varelsen upphör förtrollningen.",
+				"När förtrollningen avslutas vet varelsen att den var {@condition charmed} av dig."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med hjälp av en spell slot på 4:e nivå eller högre kan du rikta in dig på ytterligare en varelse för varje slot-nivå över 3:e nivån."
+					]
+				}
+			],
+			"conditionInflict": [
+				"charmed"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"affectsCreatureType": [
+				"humanoid"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Gift of Gab",
+			"source": "AI",
+			"page": 76,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when you speak to another creature"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"r": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"När jag träffade Jim Darkmagic undrade jag hur han fick något gjort i den klädseln. Sedan dess har jag lärt mig att de flesta av hans talanger handlar om att stå och prata. Hans kläder är perfekta för det."
+					],
+					"by": "Môrgæn"
+				},
+				"Jim Darkmagic sägs ha uppfunnit denna trollformel och kallade den ursprungligen för {@i I said what?!} Har du någonsin pratat med den lokala monarken och råkat nämna att deras son ser ut som din favoritsvin från när du växte upp på familjens gård? Vi har alla varit med om det! Men i stället för att bli halshuggen för en ärlig glidning på tungan kan du låtsas att det aldrig har hänt - genom att se till att ingen vet att det har hänt.",
+				"När du uttalar den här besvärjelsen omformar du på ett skickligt sätt minnena hos lyssnare i ditt närområde, så att varje varelse som du väljer inom en halv meter från dig glömmer allt du sagt under de senaste 6 sekunderna. Dessa varelser minns sedan att du faktiskt sa de ord som du säger som den verbala komponenten av förtrollningen."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Incite Greed",
+			"source": "AI",
+			"page": 76,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gem worth at least 50 gp",
+					"cost": 5000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"När du uttalar den här besvärjelsen visar du upp den ädelsten som används som materialkomponent och väljer hur många varelser inom räckhåll som helst som kan se dig. Varje mål måste lyckas med ett Visdomsbesparingskast eller vara {@condition charmed} av dig tills förtrollningen upphör, eller tills du eller dina följeslagare gör något skadligt åt det. Medan {@condition charmed} på detta sätt kan en varelse inte göra något annat än att använda sin rörelse för att närma sig dig på ett säkert sätt. Medan en drabbad varelse befinner sig inom 5 fot från dig kan den inte röra sig, utan stirrar helt enkelt girigt på den ädelsten du presenterar.",
+				"I slutet av varje vändning kan ett drabbat mål göra ett räddningskast med visdom. Om den lyckas upphör denna effekt för det målet."
+			],
+			"conditionInflict": [
+				"charmed"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Jim's Glowing Coin",
+			"source": "AI",
+			"page": 76,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true,
+				"m": "a coin",
+				"r": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Av de många taktiker som används av mästarkonstnären och den berömda äventyraren Jim Darkmagic är det gamla glödande mynttricket en gammal klassiker. När du kastar trollformeln kastar du myntet som är trollformelns materiella komponent till vilken plats som helst inom räckhåll. Myntet lyser upp som om det är under effekt av en {@spell light} förtrollning. Varje varelse av ditt val som du kan se inom 30 fot från myntet måste lyckas med ett Wisdom räddningskast eller bli distraherad under hela tiden. Medan den är distraherad har en varelse nackdel på visdomskontroller ({@skill Perception}) och initiativkast."
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Jim's Magic Missile",
+			"source": "AI",
+			"page": 76,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"r": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Jims magiska missil är en gammal och kraftfull trollformel och dessutom namnet på mitt band i Wizard Academy."
+					],
+					"by": "Jim Darkmagic"
+				},
+				"Alla trollkarlslärlingar kan kasta en tråkig gammal magisk missil. Visst, den träffar alltid sitt mål. Gäsp. Gör dig av med den tråkiga magin från din farfars magi med den här förbättrade versionen av besvärjelsen, som den används av Jim Darkmagic!",
+				"Du skapar tre vridande, visslande, hypoallergena, glutenfria pilbitar av magisk kraft. Varje pil riktar sig mot en valfri varelse som du kan se inom räckhåll. Gör en trollformelattack på distans för varje missil. Vid en träff tillfogar en missil {@damage 2d4} kraftskada till sitt mål.",
+				"Om attacken ger en kritisk träff, tar målet för missilen {@damage 5d4} kraftskada istället för att du ska göra två gånger skada för en kritisk träff. Om attackkastet för någon missil ger 1 missar alla missiler sina mål och exploderar i ansiktet på dig, vilket ger dig 1 kraftskada per missil."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spellokal på 2:a nivån eller högre skapar besvärjelsen ytterligare en pil, och den kungliga komponenten ökar med 1 gp för varje spellokalnivå över 1:a nivån."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Motivational Speech",
+			"source": "AI",
+			"page": 77,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Jag hörde en gång ett motiverande tal av Jim och det var de värsta nittio sekunderna i mitt liv. Vad ser Omin i honom egentligen?"
+					],
+					"by": "Walnut Dankgrass"
+				},
+				"Du vänder dig till allierade, personal eller oskyldiga åskådare för att uppmana och inspirera dem till storhet, oavsett om de har något att glädja sig åt eller inte. Välj upp till fem varelser inom räckhåll som kan höra dig. Under varaktigheten får varje drabbad varelse 5 tillfälliga träffpunkter och har fördel på visdomssparande kast. Om en drabbad varelse träffas av en attack har den fördel på nästa attackkast som den gör. När en drabbad varelse förlorar de tillfälliga träffpoäng som den här besvärjelsen beviljar upphör besvärjelsen för den varelsen."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med hjälp av en spell slot på 4:e nivå eller högre ökar de tillfälliga träffpunkterna med 5 för varje slotnivå över 3:e nivån."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"THP"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

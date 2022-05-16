@@ -1,0 +1,1101 @@
+{
+	"spell": [
+		{
+			"name": "Arcane Hacking (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "hacking tools"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Du får en fördel på alla underrättelsekontroller när du använder hackningsverktyg för att bryta kryptering av programvara eller onlinesäkerhet när du använder ett utländskt system. Den här besvärjelsen tillåter dig också att bryta skyddande besvärjelser på 2:a nivån och lägre, såsom arcane lock eller glyph of warding, genom att göra en intelligensprövning med hjälp av hackerverktyg mot besvärjelsens räddnings-DC för besvärjelsens kastare."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en trollformel på 3:e nivån eller högre kan du försöka motverka en besvärjelse som är inställd på att säkra det utländska systemet om besvärjelsens nivå är lika med eller lägre än nivån på den spelledare som du använde."
+					]
+				}
+			],
+			"abilityCheck": [
+				"intelligence"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Commune with City (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 5,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Du blir kortvarigt ett med staden och får kunskap om det omgivande området. Ovan jord ger den här besvärjelsen dig kunskap om området inom en kilometer från dig. I kloaker och andra underjordiska miljöer får du kunskap om området inom 600 fot från dig.",
+				"Du får direkt kunskap om upp till tre valfria fakta om något av följande ämnen med anknytning till området:",
+				{
+					"type": "list",
+					"items": [
+						"Terräng och vattendrag",
+						"Förekommande byggnader, växter, djur eller intelligenta varelser.",
+						"Kraftiga (CR 1 eller högre) celestials, fey, fiends, elementals, eller undead",
+						"Påverkan från andra existensplan",
+						"Elektriska strömmar, trådlösa signaler och aktiva transportlinjer och spår."
+					]
+				},
+				"Du kan till exempel ta reda på var det finns kraftfulla odöda i området, var det finns stora källor till elkraft eller störningar och var det finns närliggande parker."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Knowbot (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					}
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Du rör vid en enda datoriserad enhet eller ett datorsystem för att trolla fram en knowbot - en delvis kännande programvara som är präglad med rester av dina egna färdigheter och datorkunskaper. Under trollformelns varaktighet kan du använda en bonushandling för att låta knowbot utföra en datarelaterad uppgift som normalt skulle kräva en handling. Kunskapsroboten gör intelligensförmågekontroller med hjälp av dina förmågebonusar och kompetensbonusar (inklusive din kompetens med hackerverktyg, om tillämpligt).",
+				"Du har ett begränsat telepatisk band med knowbot, upp till en räckvidd av 500 fot från den enhet eller det system där knowbot framkallades. Om du rör dig utanför detta område försvinner knowbot på {@dice 2d4} rundor, som om trollformelns varaktighet hade gått ut. Om du rör dig inom räckvidden igen återupprättas bandet omedelbart.",
+				"Knowbot är bunden till det system där den skapades och stannar där tills den avvisas eller tills trollformelns varaktighet löper ut."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spell slot på 5:e nivå eller högre ökar besvärjelsens varaktighet till 1 timme. Dessutom är ditt telepatiska band med knowbot effektivt upp till en räckvidd av 1000 fot, och om du lämnar bandets räckvidd fortsätter knowbot att utföra sin senast riktade uppgift tills förtrollningen upphör."
+					]
+				}
+			],
+			"miscTags": [
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Digital Phantom (UA)",
+			"source": "UAModernMagic",
+			"page": 6,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a small piece of copper wire"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Den här trollformeln fungerar för att aktivt dölja din närvaro i ett datorsystem. Under trollformelns varaktighet får du och alla andra användare du väljer i ditt lokala nätverk en bonus på +10 på intelligenskontroller för att undvika att bli upptäckta av administratörer, knowbots, spårningsprogram och liknande. När du och dina valda användare lämnar ett datorsystem som du arbetar i medan den här förtrollningen är i kraft, raderas alla spår av er tidigare närvaro i det systemet."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Find Vehicle (UA)",
+			"source": "UAModernMagic",
+			"page": 6,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 10,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Du kallar på en ande som antar formen av ett icke-militärt landfordon som du väljer och som dyker upp på ett obebott utrymme inom räckhåll. Fordonet har statistiken för ett normalt fordon av sitt slag, även om det är himmelskt, fey eller djävulsk (ditt val av ursprung). Fordonets fysiska egenskaper återspeglar dess ursprung i viss utsträckning. Till exempel kan en djävulsk SUV vara kolsvart i färgen, med tonade rutor och en olycksbådande frontgrill.",
+				"Du har ett övernaturligt band med det framtrollade fordonet som gör att du kan köra mer än vad du normalt kan. När du kör det besvärjade fordonet anses du vara skicklig på fordon av dess typ och du lägger till dubbla din färdighetsbonus på förmågekontroller relaterade till att köra fordonet. Medan du kör fordonet kan du göra så att alla besvärjelser som du kastar och som endast riktar sig till dig också riktar sig till fordonet.",
+				"Om fordonet sjunker till 0 träffpunkter försvinner det och lämnar ingen fysisk form efter sig. Du kan också avfärda fordonet när som helst som en handling, vilket gör att det försvinner.",
+				"Du kan inte ha mer än ett fordon som är bundet av den här besvärjelsen åt gången. Som en handling kan du när som helst frigöra fordonet från bindningen och få det att försvinna."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du använder den här besvärjelsen med en spell slot på 3:e nivån eller högre kan du trolla fram ett icke-militärt vattenfordon som är tillräckligt stort för att transportera sex Medium-varelser. När du använder den här besvärjelsen med hjälp av ett trollformelutrymme på 5:e nivån eller högre kan du frammana ett icke-militärt luftfordon som är tillräckligt stort för att transportera tio mediumvarelser. När du använder den här besvärjelsen med hjälp av en spellplats på 7:e nivån eller högre kan du trolla fram vilken typ av fordon som helst, med förbehåll för DM:s godkännande."
+					]
+				}
+			],
+			"miscTags": [
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Haywire (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Denna trollformel orsakar förödelse på elektroniska apparater och gör det nästan omöjligt att använda dem. Varje elektronisk enhet inom en 10-fots radie sfär centrerad på en punkt du väljer inom räckvidd är föremål för slumpmässigt beteende medan den är kvar inom området. En enhet som inte innehas av en varelse påverkas automatiskt. Om en elektronisk anordning hålls av en varelse måste den varelsen lyckas med ett räddningskast i Visdom eller så påverkas anordningen av besvärjelsen.",
+				"I början av varje tur kastar du en {@dice d6} för varje påverkad enhet för att bestämma dess beteende. Om inget annat anges, varar det beteendet till början av din nästa tur medan den här besvärjelsen är i kraft.",
+				{
+					"type": "table",
+					"colLabels": [
+						"{@dice d6}",
+						"Effect"
+					],
+					"colStyles": [
+						"col-1 text-center no-wrap",
+						"col-11"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"Enheten stängs av och måste startas om. Rulla inte igen för den här enheten förrän den har startats om."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"min": 2,
+									"max": 4
+								}
+							},
+							"Anordningen fungerar inte."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Apparaten utsätts för en strömstöt som orsakar en elektrisk chock för den som använder den (om någon) och en slumpmässig varelse inom en radie av 1,5 meter från apparaten. Varje drabbad varelse måste göra ett Dexterity räddningskast mot din spelledars räddnings DC, och tar {@damage 6d6} blixtskada på ett misslyckat räddningskast, eller hälften så mycket skada på ett lyckat räddningskast."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Enheten kan användas som vanligt."
+						]
+					]
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med hjälp av en spelledare på 4:e nivå eller högre, ökar radien för den sfär som påverkas av besvärjelsen med 5 fot för varje spelledare över 3:e nivån."
+					]
+				}
+			],
+			"damageInflict": [
+				"lightning"
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Infallible Relay (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a mobile phone"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Med den här besvärjelsen kan du rikta in dig på vilken varelse som helst som du tidigare har talat med, så länge ni två befinner er på samma existensplan. När du uttalar besvärjelsen börjar den närmaste fungerande telefonen eller liknande kommunikationsanordning inom 30 meter från målet ringa. Om det inte finns någon lämplig enhet tillräckligt nära målet misslyckas förtrollningen.",
+				"Målet måste göra ett lyckat räddningskast med Charisma eller tvingas att svara på ditt rop. När anslutningen väl är etablerad är samtalet kristallklart och kan inte avbrytas förrän samtalet är avslutat eller trollformelns varaktighet upphör. Du kan avsluta samtalet när som helst, men målet måste lyckas med ett Charisma-sparkast för att avsluta samtalet."
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Invisibility to Cameras (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 3,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a scrap of black paper"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Fyra valfria varelser inom räckhåll blir omöjliga att upptäcka för elektroniska sensorer och kameror under hela trollformelns varaktighet. Allt som en måltavla har på sig eller bär på sig är också omöjligt att upptäcka så länge som det finns på måltavlans person. Målen förblir synliga för synen."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "On/Off (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Med den här trollkarlen kan du aktivera eller inaktivera alla elektroniska apparater inom räckhåll, så länge apparaten har en tydligt definierad på- eller av-funktion som är lätt åtkomlig från apparatens utsida. Alla enheter som kräver en mjukvarubaserad avstängningssekvens för att aktiveras eller avaktiveras kan inte påverkas av on/off."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Protection from Ballistics (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a shell casing"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Denna besvärjelse förtrollar målets kött mot kulor. Tills förtrollningen upphör har målet motstånd mot icke-magisk ballistisk skada."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Remote Access (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					}
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Du kan använda alla elektroniska enheter inom räckvidden som om de vore i dina händer. Detta är inte en telekinesiseffekt. Snarare tillåter den här besvärjelsen dig att simulera en apparats mekaniska funktioner elektroniskt. Du kan endast få tillgång till funktioner som en person som använder apparaten manuellt skulle kunna få tillgång till. Du kan använda fjärråtkomst med endast en enhet åt gången."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Shutdown (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Den här besvärjelsen stänger av alla elektroniska apparater inom räckhåll som inte används av eller kontrolleras direkt av en varelse. Om en elektronisk enhet inom räckvidden används av en varelse måste den varelsen lyckas med ett räddningskast i konstitutionen för att förhindra att enheten stängs av. Så länge besvärjelsen är aktiv kan ingen elektronisk enhet inom räckhåll startas eller startas om."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Synchronicity (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Den varelse som du rör vid känner att verkligheten har förskjutits till dess fördel medan den här besvärjelsen är i kraft. Målet är inte besväras av världsliga förseningar av något slag. Trafikljusen är alltid gröna, det finns alltid en väntande hiss och en taxi är alltid runt hörnet. Målet kan springa i full fart genom täta folkmassor, och attacker av möjlighet som provoceras av målets rörelse görs med nackdel.",
+				"Synkronicitet ger en fördel vid Dexterity ({@skill Stealth}) kontroller, eftersom målet alltid hittar en praktisk bit av skydd tillgänglig. Dessutom har målet en fördel på alla förmågekontroller som görs för att köra ett fordon.",
+				"I händelse av att två eller flera varelser under effekten av synkronicitet försöker undvika att bli besvärade av varandra, deltar varelserna i en tävling i Charisma varje gång effekterna av trollformlerna skulle motsätta sig varandra."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "System Backdoor (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 4,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "hacking tools"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Med denna stavning kan du kringgå systemets säkerhet för att skapa en säker inloggning på ett annat system. Inloggningen du skapar ger dig privilegier på administratörsnivå i alla datorsystem som inte har förbättrats med hjälp av teknomagi. Inloggningen besegrar alla teknomagiska trollformler av 3:e nivån eller lägre.",
+				"När förtrollningen har upphört att gälla raderas inloggningen och alla rättigheter från systemet. Systemloggarna visar fortfarande användarens aktivitet, men användaridentifikationen kan inte hittas eller spåras."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med hjälp av en spelledningsfält på 5:e nivå eller högre kan du kringgå teknomagiska besvärjelser om besvärjelsens nivå är lika med eller lägre än nivån på det spelledningsfält du använde."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		}
+	]
+}

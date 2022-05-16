@@ -42,7 +42,7 @@
 				{
 					"name": "Talons",
 					"entries": [
-						"Sei abile con i tuoi colpi disarmati, che infliggono {@dice 1d4} danni da taglio con un colpo."
+						"Sei abile nei colpi senz'armi, che infliggono {@damage 1d4} danni da taglio se colpiti."
 					],
 					"type": "entries"
 				},
@@ -1471,7 +1471,7 @@
 					"type": "entries",
 					"name": "Hooves",
 					"entries": [
-						"I tuoi zoccoli sono armi naturali da mischia, che puoi usare per sferrare colpi disarmati. Se colpisci con esse, infliggi un danno da randellate pari a {@dice 1d4} + il tuo modificatore di Forza, invece del danno da randellate normale per un colpo senz'armi."
+						"Gli zoccoli sono armi da mischia naturali che possono essere usate per sferrare colpi senz'armi. Se li colpisci, infliggi danni da percosse pari a {@damage 1d4} + il tuo modificatore di Forza, invece dei normali danni da percosse per un colpo senz'armi."
 					]
 				},
 				{
@@ -2317,7 +2317,7 @@
 					"type": "entries",
 					"name": "Vampiric Bite",
 					"entries": [
-						"Il tuo morso a zanna è un'arma naturale, che conta come un'arma da mischia semplice con cui sei abile. Aggiungerai il tuo modificatore di Costituzione all'attacco e ai tiri per i danni quando attacchi con il tuo morso. Il tuo morso infligge {@dice 1d4} danni da perforazione quando viene colpito. Quando ti manca metà o più dei tuoi punti ferita, hai un vantaggio nei tiri per attaccare con questo morso.",
+						"Il morso zannuto è un'arma naturale, che conta come un'arma da mischia semplice con cui si è abili. Quando si attacca con il morso, si aggiunge il proprio modificatore di Costituzione ai tiri di attacco e di danno. Il morso infligge {@damage 1d4} danni perforanti quando viene colpito. Se mancano metà o più dei punti ferita, si ha vantaggio nei tiri per colpire effettuati con questo morso.",
 						"Quando usi il tuo morso e colpisci una creatura che non sia un costrutto o un non morto, puoi potenziarti in uno dei seguenti modi a tua scelta:",
 						{
 							"type": "list",
@@ -2390,7 +2390,7 @@
 					"type": "entries",
 					"name": "Vampiric Bite",
 					"entries": [
-						"Il tuo morso zannuto è un'arma naturale, che conta come un'arma da mischia semplice con cui sei abile. Aggiungerai il tuo modificatore di Costituzione, invece del modificatore di Forza, ai tiri per l'attacco e ai tiri per i danni quando attacchi con questo morso. Infligge {@dice 1d4} danni da perforazione quando viene colpito. Quando ti manca metà o più dei tuoi punti ferita, hai un vantaggio nei tiri per attaccare con questo morso.",
+						"Il tuo morso zannuto è un'arma naturale, che conta come un'arma da mischia semplice con cui sei esperto. Quando si attacca con questo morso, si aggiunge il proprio modificatore di Costituzione, anziché quello di Forza, ai tiri per l'attacco e per i danni. Infligge {@damage 1d4} danni perforanti quando viene colpito. Se mancano metà o più dei punti ferita, si ha vantaggio nei tiri per colpire effettuati con questo morso.",
 						"Quando attacchi con questo morso e colpisci una creatura che non sia un costrutto o un non morto, puoi potenziarti in uno dei seguenti modi a tua scelta:",
 						{
 							"type": "list",
@@ -4897,7 +4897,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"La tua zanna è un'arma naturale, che puoi usare per effettuare dei colpi disarmati. Se colpisci con essa, infliggi un danno da perforazione pari a {@dice 1d4} + il tuo modificatore di Forza, invece del danno da randellate normale per un colpo senz'armi."
+						"La tua bocca zannuta è un'arma naturale che puoi usare per sferrare colpi senz'armi. Se si colpisce con essa, si infligge un danno perforante pari a {@damage 1d4} + il proprio modificatore di Forza, invece del normale danno da percosse per un colpo senz'armi."
 					],
 					"type": "entries"
 				},
@@ -6164,7 +6164,8 @@
 			},
 			"darkvision": 60,
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"languageProficiencies": [
 				{
@@ -7598,6 +7599,54 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Kender",
+			"source": "UA2022HeroesOfKrynnRevisited",
+			"page": 1,
+			"lineage": "VRGR",
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"insight",
+							"investigation",
+							"sleight of hand",
+							"stealth",
+							"survival"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fearless",
+					"entries": [
+						"Siete immuni alla condizione {@condition frightened}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Kender Curiosity",
+					"entries": [
+						"Grazie all'origine mistica del tuo popolo, ottieni una competenza in una delle seguenti abilità a tua scelta: {@skill Insight}, {@skill Investigation}, {@skill Sleight of Hand}, {@skill Stealth} o {@skill Survival}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Taunt",
+					"entries": [
+						"Avete una capacità straordinaria di provocare le creature. Come azione bonus, potete scatenare una serie di parole provocatorie contro una creatura entro 60 piedi da voi che può sentirvi e capirvi. Il bersaglio deve riuscire in un tiro salvezza di Saggezza o ha svantaggio nei tiri di attacco contro bersagli diversi da voi fino all'inizio del vostro prossimo turno. La DC è pari a 8 + il bonus di competenza + il modificatore di Intelligenza, Saggezza o Carisma (da scegliere quando si seleziona questa razza).",
+						"Puoi usare questa azione bonus un numero di volte pari al tuo bonus di competenza, e riacquisti tutti gli usi consumati quando finisci un riposo lungo."
+					]
+				}
+			],
+			"hasFluff": true
+		},
+		{
 			"name": "Kenku",
 			"source": "DMG",
 			"page": 282,
@@ -8449,7 +8498,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"I tuoi artigli sono armi naturali, che puoi usare per sferrare colpi disarmati. Se colpisci con essi, puoi infliggere un danno da taglio pari a {@dice 1d4} + il tuo modificatore di Forza, invece del danno da randellate normale per un colpo disarmato."
+						"Gli artigli sono armi naturali e possono essere usati per sferrare colpi senz'armi. Se li colpisci, puoi infliggere danni da taglio pari a {@damage 1d4} + il tuo modificatore di Forza, invece dei normali danni da percosse per un colpo senz'armi."
 					],
 					"type": "entries"
 				},
@@ -9808,7 +9857,7 @@
 					"name": "Natural Weapons",
 					"entries": [
 						"La tua bocca zannuta e il tuo corpo serpentino costrittivo sono armi naturali, che puoi usare per effettuare colpi disarmati.",
-						"Se colpisci con il tuo morso, infliggi un danno da perforazione pari al {@dice 1d4} + il tuo modificatore di Forza, e il tuo bersaglio deve effettuare un tiro salvezza di Costituzione (DC 8 + il tuo bonus di competenza + il tuo modificatore di Costituzione). Se il tiro salvezza viene fallito, il bersaglio subisce un danno da veleno pari al {@dice 1d4}.",
+						"Se si colpisce con il morso, si infliggono danni perforanti pari a {@damage 1d4} + il proprio modificatore di Forza, e il bersaglio deve effettuare un tiro salvezza di Costituzione (DC 8 + il proprio bonus di competenza + il proprio modificatore di Costituzione). Se il tiro salvezza fallisce, il bersaglio subisce {@damage 1d4} danni da veleno.",
 						"Se colpisci con il tuo attacco di costrizione, infliggi un danno da randellate pari al {@dice 1d6} + il tuo modificatore di Forza, e il bersaglio è {@condition grappled} (DC di fuga 8 + il tuo bonus di competenza + il tuo modificatore di Forza). Fino al termine di questa presa, il bersaglio è {@condition restrained} e non puoi costringere un altro bersaglio."
 					],
 					"type": "entries"
@@ -10880,7 +10929,7 @@
 				{
 					"name": "Ram",
 					"entries": [
-						"Puoi usare la tua testa e le tue corna per sferrare dei colpi disarmati. Se colpisci con esse, infliggi un danno da randellate pari a {@dice 1d4} + il tuo modificatore di Forza."
+						"Si possono usare la testa e le corna per sferrare colpi senz'armi. Se li colpisci, infliggi danni da percosse pari a {@damage 1d4} + il tuo modificatore di Forza."
 					],
 					"type": "entries"
 				},
@@ -12072,7 +12121,7 @@
 				{
 					"name": "Cat's Claws",
 					"entries": [
-						"Grazie ai tuoi artigli, hai una velocità di arrampicata di 20 piedi. Inoltre, i tuoi artigli sono armi naturali, che puoi usare per effettuare colpi disarmati. Se colpisci con essi, infliggi un danno da taglio pari a {@dice 1d4} + il tuo modificatore di Forza, invece del danno da randellate normale per un colpo disarmato."
+						"Grazie ai suoi artigli, ha una velocità di arrampicata di 6 metri. Inoltre, gli artigli sono armi naturali e possono essere usati per sferrare colpi senz'armi. Se li colpisci, infliggi danni da taglio pari a {@damage 1d4} + il tuo modificatore di Forza, invece dei normali danni da percosse per un colpo senz'armi."
 					],
 					"type": "entries"
 				},
@@ -12433,7 +12482,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"I tuoi artigli sono armi naturali, che puoi usare per sferrare colpi disarmati. Se colpisci con essi, infliggi un danno da taglio pari a {@dice 1d4} + il tuo modificatore di Forza, invece del danno da randellate normale per un colpo disarmato."
+						"Gli artigli sono armi naturali e possono essere usati per sferrare colpi senz'armi. Se li colpisci, infliggi danni da taglio pari a {@damage 1d4} + il tuo modificatore di Forza, invece dei normali danni da percosse per un colpo senz'armi."
 					],
 					"type": "entries"
 				},
@@ -13000,6 +13049,10 @@
 				"mature": 40,
 				"max": 500
 			},
+			"traitTags": [
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
+			],
 			"skillProficiencies": [
 				{
 					"choose": {
@@ -13058,7 +13111,7 @@
 				{
 					"name": "Tireless Precision",
 					"entries": [
-						"Sei abile in una delle seguenti abilità a tua scelta: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance} o {@skill Sleight of Hand}.  Sei anche abile in una {@book tool|phb|5|tools} a tua scelta.",
+						"Sei abile in una delle seguenti abilità a tua scelta: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance} o {@skill Sleight of Hand}. Sei anche abile in una {@book tool|phb|5|tools} a tua scelta.",
 						"Ogni volta che effettui una prova di abilità con l'abilità o lo strumento scelto, tira un {@dice d4} e aggiungi il numero tirato al totale della prova."
 					],
 					"type": "entries"
@@ -13168,6 +13221,10 @@
 				"mature": 40,
 				"max": 500
 			},
+			"traitTags": [
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
+			],
 			"languageProficiencies": [
 				{
 					"common": true
@@ -13374,14 +13431,14 @@
 					"type": "entries",
 					"name": "Bite",
 					"entries": [
-						"La tua zanna è un'arma naturale, che puoi usare per effettuare dei colpi disarmati. Se colpisci con essa, infliggi un danno da perforazione pari a {@dice 1d4} + il tuo modificatore di Forza, invece del danno da randellate normale per un colpo senz'armi."
+						"La tua bocca zannuta è un'arma naturale che puoi usare per sferrare colpi senz'armi. Se si colpisce con essa, si infligge un danno perforante pari a {@damage 1d4} + il proprio modificatore di Forza, invece del normale danno da percosse per un colpo senz'armi."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Lashing Tail",
 					"entries": [
-						"La tua coda semi-precaria è dotata di una lama ossea. Subito dopo che una creatura entro 1,5 metri da te ti infligge danni con un attacco in mischia, puoi usare la tua reazione per effettuare un colpo senz'armi contro quella creatura con la tua coda. Se colpisci, infliggi un danno da taglio pari a {@dice 1d4} + il tuo modificatore di Forza, invece del danno da randellate normale per un attacco disarmato."
+						"La coda semi-premente è dotata di una lama ossea. Immediatamente dopo che una creatura entro un metro e mezzo da te subisce danni con un attacco in mischia, puoi usare la tua reazione per sferrare un colpo senz'armi contro quella creatura con la tua coda. Se si colpisce, si infligge un danno da taglio pari a {@damage 1d4} + il proprio modificatore di Forza, invece del normale danno da percosse per un colpo senz'armi."
 					]
 				},
 				{
@@ -14888,7 +14945,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -15607,7 +15666,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -17447,7 +17507,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -17889,7 +17951,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -18013,7 +18076,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"resist": [
 				"lightning"
@@ -18512,7 +18577,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -18628,7 +18695,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -18875,7 +18944,8 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"languageProficiencies": [
 				{
@@ -19028,7 +19098,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -19159,7 +19230,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"toolProficiencies": [
 				{
@@ -19203,7 +19276,7 @@
 					"type": "entries",
 					"name": "Artisan's Intuition",
 					"entries": [
-						"Quando effettui una prova di {@skill Arcana} o una prova di abilità che coinvolge gli strumenti dell'artigiano, puoi tirare un {@dice d4} e aggiungere il numero tirato alla prova di abilità."
+						"Quando si effettua una prova di {@skill Arcana} o una prova di abilità che coinvolge {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan's tools}, si può tirare un {@dice d4} e aggiungere il numero tirato alla prova di abilità."
 					]
 				},
 				{
@@ -19337,7 +19410,7 @@
 					"type": "entries",
 					"name": "Intuitive Motion",
 					"entries": [
-						"Quando effettui una prova di Destrezza ({@skill Acrobatics}) o una qualsiasi prova di abilità per operare o mantenere un veicolo terrestre, puoi tirare un {@dice d4} e aggiungere il numero tirato alla prova di abilità."
+						"Quando si effettua una prova di Destrezza ({@skill Acrobatics}) o una qualsiasi prova di abilità per utilizzare o mantenere un {@filter land vehicle|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (land)}, si può tirare un {@dice d4} e aggiungere il numero tirato alla prova di abilità."
 					]
 				},
 				{
@@ -19409,7 +19482,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -21681,7 +21755,7 @@
 						"Come suggerisce il nome, la maggior parte dei warforged sono stati costruiti per combattere nell'Ultima Guerra. La stragrande maggioranza dei warforged sono juggernaut o skirmishers, soldati ed esploratori che hanno combattuto sotto la bandiera di una delle Cinque Nazioni. Gli inviati warforged, tuttavia, sono stati progettati per svolgere altre funzioni. Come inviato, hai un'abilità, una competenza degli strumenti e uno strumento che fa parte del tuo corpo. Quando crei un personaggio inviato, considera le seguenti domande: Qual è il tuo scopo? In che modo la tua abilità e il tuo strumento riflettono questo scopo? Che forma assume il tuo strumento integrato? Se hai strumenti da ladro integrati, per esempio, le tue dita sono in realtà dei grimaldelli o puoi produrre chiavi da varie parti del tuo corpo? I seguenti personaggi sono esempi di warforged con strumenti integrati.",
 						"{@b Lute} è un bardo con un background da intrattenitore; il suo strumento omonimo esce dal suo braccio sinistro.",
 						"{@b Compass Rose} è un mago con un background da Outlander. Appassionata esploratrice, usa il suo {@item cartographer's tools|phb} incorporato per registrare i sentieri che percorre.",
-						"{@b Masque} è un'infiltrata. Una canaglia con un background da ciarlatano e un {@item disguise Kit|phb} integrato, è stata costruita per mimetizzarsi e assassinare. Cannith ha costruito sei warforged come lei, e la Maschera ha giurato di dare la caccia e distruggere gli altri cinque.",
+						"{@b Masque} è un'infiltrata. Una canaglia con un passato da ciarlatana e un {@item disguise kit|phb} integrato, è stata costruita per mimetizzarsi e assassinare. Cannith ha costruito sei warforged su suo disegno e Masque ha giurato di dare la caccia e distruggere gli altri cinque.",
 						"Nello sviluppo del tuo strumento integrato, ricorda che devi avere le mani libere per usarlo. Masque, l'infiltrato di cui sopra, non muta forma come un changeling; deve regolare manualmente il suo aspetto."
 					]
 				}

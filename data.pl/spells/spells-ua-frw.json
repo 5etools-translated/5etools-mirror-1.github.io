@@ -1,0 +1,617 @@
+{
+	"spell": [
+		{
+			"name": "Ego Whip",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przeszywasz umysł jednej istoty, którą widzisz w zasięgu, napełniając ją rozpaczą. Celowi musi się udać rzut na ocalenie z inteligencji, w przeciwnym razie będzie miał problemy z atakiem, sprawdzaniem umiejętności i rzutami ratunkowymi, a także nie będzie mógł rzucać zaklęć. Na koniec każdej swojej tury cel może wykonać kolejny rzut ratujący inteligencję. Jeśli się powiedzie, zaklęcie kończy działanie na cel."
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Id Insinuation",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Wyzwalasz potok sprzecznych pragnień w umyśle jednej istoty, którą widzisz w zasięgu, upośledzając jej zdolność podejmowania decyzji. Celowi musi udać się rzut ratunkowy na Mądrość lub zostanie unieruchomiony. Na koniec każdej swojej tury otrzymuje {@damage 1d12} obrażeń psychicznych i może wykonać kolejny rzut na oszczędność mądrości. Jeśli się powiedzie, zaklęcie kończy działanie na cel."
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Intellect Fortress",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 5,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Tworzysz wokół siebie słabo mieniącą się barierę ochronną z mocy psychicznej. Przez cały czas jej trwania masz przewagę we wszystkich rzutach ratunkowych.",
+				"Kiedy inna istota, którą widzisz w promieniu 30 stóp od siebie, nie zda rzutu ratującego, możesz użyć swojej reakcji, aby pozwolić jej na ponowne wykonanie rzutu ratującego. Musi użyć nowego rzutu."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mental Barrier",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when you are forced to make an Intelligence, a Wisdom, or a Charisma saving throw"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Chronisz swój umysł murem zapętlonych, powtarzających się myśli. Do początku swojej następnej tury masz przewagę w rzutach ratunkowych na Inteligencję, Mądrość i Charyzmę oraz odporność na obrażenia psychiczne."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Sliver",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 0,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Wrzucasz dezorientujący impuls energii psychicznej w umysł jednej istoty, którą widzisz w zasięgu. Cel musi wykonać rzut obronny na inteligencję. Jeśli rzut nie powiedzie się, cel otrzymuje {@damage 1d6} obrażeń psychicznych, a gdy po raz pierwszy wykona rzut ratunkowy przed końcem twojej następnej tury, musi rzucić {@dice d4} i odjąć wyliczoną liczbę od wyniku.",
+				"Obrażenia zadawane przez to zaklęcie zwiększają się o {@dice 1d6} po osiągnięciu określonych poziomów: 5. poziomu ({@damage 2d6}), 11. poziomu ({@damage 3d6}) i 17. poziomu ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Thrust",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Wystrzeliwujesz lancę psionicznych zakłóceń w umysł jednej istoty, którą widzisz w zasięgu. Cel musi wykonać rzut obronny na Inteligencję. W przypadku nieudanego ataku, cel otrzymuje {@damage 3d6} obrażeń psychicznych i może użyć swojej akcji tylko do {@action Dash} lub {@action Disengage} w swojej następnej turze. Jeśli atak się powiedzie, cel otrzymuje o połowę mniej obrażeń, a zaklęcie nie ogranicza jego możliwości działania."
+			],
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"type": "entries",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, możesz obrać za cel jedno dodatkowe stworzenie za każdy poziom gniazda powyżej 2. Stworzenia te muszą znajdować się w odległości do 30 stóp od siebie, kiedy je namierzasz."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Psionic Blast",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
+			"level": 3,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Wyzwalasz niszczycielską falę mocy psychicznej w promieniu 30 stóp. Każda istota na tym obszarze musi wykonać rzut obronny na zręczność. W przypadku nieudanego testu, cel otrzymuje {@damage 5d8} obrażeń od siły, zostaje odepchnięty na odległość 20 stóp i powalony {@condition prone}. W przypadku udanego ataku, cel otrzymuje o połowę mniejsze obrażenia i nie zostaje odepchnięty ani powalony na ziemię."
+			],
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"type": "entries",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 4. poziomu lub wyższego, obrażenia zwiększają się o {@dice 1d8} za każdy poziom gniazda powyżej 3."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"miscTags": [
+				"FMV"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Psychic Crush",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
+			"level": 6,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Przeciążasz umysł jednej istoty, którą widzisz w zasięgu, wypełniając jej psychikę sprzecznymi emocjami. Cel musi wykonać rzut obronny na inteligencję. W przypadku nieudanego ataku, cel otrzymuje {@damage 12d6} obrażeń psychicznych i jest {@condition stunned} przez 1 minutę. W przypadku udanego ataku, cel otrzymuje o połowę mniej obrażeń i nie jest ogłuszony.",
+				"Ogłuszony cel może wykonać rzut na inteligencję na koniec każdej swojej tury. Jeśli rzut się powiedzie, zaklęcie kończy działanie na cel."
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"stunned"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Thought Shield",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Spuszczasz mętną zasłonę na umysł jednej istoty, której dotkniesz. Przez ten czas umysł celu nie może być odczytany ani wykryty, istoty nie mogą się z nim telepatycznie komunikować, chyba że cel na to pozwoli, a cel ma przewagę w rzutach ratunkowych przeciwko efektom, które mogłyby określić, czy mówi prawdę."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

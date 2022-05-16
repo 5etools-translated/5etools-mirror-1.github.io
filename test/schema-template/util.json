@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.16",
+	"version": "1.11.18",
 
 	"definitions" : {
 		"metaBlock": {
@@ -948,6 +948,23 @@
 									"type": "string"
 								},
 								"subrace": {
+									"type": "string"
+								}
+							},
+							"required": ["name"],
+							"additionalProperties": false
+						}
+					},
+					"background": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"displayEntry": {
+									"description": "Optional long-form name to be used in the rendered entity.",
 									"type": "string"
 								}
 							},
@@ -2453,6 +2470,16 @@
 			"type": "object"
 		},
 
+		"foundryAdvancementObject": {
+			"type": "object"
+		},
+
+		"foundryAdvancementsArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/foundryAdvancementObject"},
+			"uniqueItems": true
+		},
+
 		"foundryImg": {
 			"type": "string"
 		},
@@ -2483,6 +2510,12 @@
 			},
 			"required": ["changes"],
 			"additionalProperties": false
+		},
+
+		"foundryEffectsArray": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/foundryEffectObject"},
+			"uniqueItems": true
 		},
 
 		"foundrySideDataGenericArray": {

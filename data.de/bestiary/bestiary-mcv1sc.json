@@ -1,0 +1,1276 @@
+{
+	"monster": [
+		{
+			"name": "Asteroid Spider",
+			"source": "MCV1SC",
+			"page": 3,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 348,
+				"formula": "24d20 + 96"
+			},
+			"speed": {
+				"walk": 60,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 26,
+			"dex": 10,
+			"con": 18,
+			"int": 17,
+			"wis": 13,
+			"cha": 12,
+			"save": {
+				"con": "+9",
+				"wis": "+6"
+			},
+			"skill": {
+				"perception": "+11",
+				"stealth": "+5"
+			},
+			"senses": [
+				"blindsight 120 ft. while the spider's eyes are closed",
+				"darkvision 120 ft."
+			],
+			"passive": 21,
+			"cr": "15",
+			"trait": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Wenn die Spinne zu Beginn des Kampfes bewegungslos ist, ihre Augen und ihren Mund geschlossen hat und ihre Beine um ihren Körper gewickelt sind, hat sie einen Vorteil bei ihrem Initiativwurf. Wenn eine Kreatur die Spinne nicht beobachtet hat, muss sie einen {@dc 18} Intelligenztest (Erkundung) bestehen, um zu erkennen, dass es sich bei der Spinne um etwas anderes als einen Asteroiden handelt."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"Wenn der Spinne ein Rettungswurf misslingt, kann sie stattdessen einen erfolgreichen Wurf wählen."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Die Spinne braucht keine Luft."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Die Spinne führt zwei Netzstrang-Attacken aus, benutzt Spulen und führt zwei Biss-Attacken aus."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 13} auf Treffer, Reichweite 10 Fuß, ein Ziel. {@h}21 ({@damage 3d8 + 8}) Stich-Schaden plus 10 ({@damage 3d6}) Säure-Schaden."
+					]
+				},
+				{
+					"name": "Web Strand",
+					"entries": [
+						"{@atk rw} {@hit 13} zu treffen, Reichweite 120 Fuß, eine Kreatur. {@h}Das Ziel ist {@condition grappled} (Flucht {@dc 18}). Der Netzstrang kann angegriffen und zerstört werden (AC 12; 20 Trefferpunkte; Verwundbarkeit gegen Feuerschaden; Immunität gegen Wucht, Gift und psychischen Schaden). Die Spinne kann bis zu sechs Kreaturen gleichzeitig mit ihren Netzsträngen packen."
+					]
+				},
+				{
+					"name": "Reel",
+					"entries": [
+						"Die Spinne zieht jede Kreatur {@condition grappled}, die sich in ihrer Nähe befindet, bis zu 60 Fuß direkt zu sich heran."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Snare Ship (1/Day)",
+					"entries": [
+						"Die Spinne webt ein magisches Netz um ein verzauberndes Schiff, das sie in einem Umkreis von 120 Fuß um sich herum sieht. Das Netz hält 1 Minute lang an und unterdrückt die Magie aller Spelljamming-Helme an Bord des Schiffes. Decks und andere Oberflächen des Schiffes, die nicht eingeschlossen sind, werden zu schwierigem Terrain, bis der Effekt endet. Das Netz ist unempfindlich gegen Schaden, wird aber durch einen erfolgreichen Zauber von {@spell dispel magic} ({@dc 18}) zerstört."
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance",
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"B",
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"A",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Clockwork Horror",
+			"source": "MCV1SC",
+			"page": 4,
+			"size": [
+				"S"
+			],
+			"type": "construct",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "8d6 + 32"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 14,
+			"dex": 14,
+			"con": 18,
+			"int": 13,
+			"wis": 14,
+			"cha": 10,
+			"save": {
+				"str": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 16,
+			"immune": [
+				"lightning",
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"languages": [
+				"Thri-kreen",
+				"Ziklight"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Shutdown",
+					"entries": [
+						"Wenn er von {@spell dispel magic} getroffen wird, muss der Schrecken einen Konstitutionsschutzwurf gegen den Zauberschutz-DC des Zaubernden bestehen oder er fällt {@condition unconscious} für 1 Minute oder bis er Schaden nimmt."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Das Grauen braucht keine Luft, kein Essen, kein Trinken und keinen Schlaf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Der Schrecken führt einen Biss-Angriff und zwei Angriffe mit der rotierenden Säge aus, oder er führt zwei Angriffe mit einem Blitzstoß aus."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} bis zum Treffer, Reichweite 5 ft., ein Ziel. {@h}6 ({@damage 1d8 + 2}) Stich-Schaden."
+					]
+				},
+				{
+					"name": "Rotating Saw",
+					"entries": [
+						"{@atk mw} {@hit 4} bis zum Treffer, Reichweite 5 ft., ein Ziel. {@h}4 ({@damage 1d4 + 2}) Hiebschaden."
+					]
+				},
+				{
+					"name": "Lightning Jolt",
+					"entries": [
+						"{@atk rs} {@hit 4} bis Treffer, Reichweite 120 Fuß, ein Ziel. {@h}7 ({@damage 1d10 + 2}) Blitzschaden."
+					]
+				},
+				{
+					"name": "Spelljamming Helm Interface",
+					"entries": [
+						"Das Grauen setzt sich an einen Zauberstopp-Helm, den es im Umkreis von 5 Fuß um sich herum sehen kann, und stimmt sich sofort auf den Helm ein. Wenn eine andere Kreatur bereits auf den Helm eingestimmt ist, endet die Einstimmung dieser Kreatur auf den Helm, wenn die Einstimmung des Grauens beginnt. Der Schrecken kann den Helm bedienen, auch wenn er kein Zauberer ist. Der Schrecken kann sich als Bonusaktion vom Helm lösen, was seine Einstimmung auf den Helm beendet."
+					]
+				}
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"L",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Eldritch Lich",
+			"source": "MCV1SC",
+			"page": 6,
+			"size": [
+				"M"
+			],
+			"type": "undead",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 165,
+				"formula": "22d8 + 66"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 11,
+			"dex": 18,
+			"con": 16,
+			"int": 19,
+			"wis": 14,
+			"cha": 12,
+			"save": {
+				"int": "+9",
+				"wis": "+7"
+			},
+			"skill": {
+				"arcana": "+14",
+				"perception": "+7"
+			},
+			"senses": [
+				"truesight 120ft."
+			],
+			"passive": 17,
+			"resist": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
+			"languages": [
+				"Common",
+				"Deep Speech",
+				"telepathy 120 ft."
+			],
+			"cr": "15",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Der Lich wirkt einen der folgenden Zauber, wobei er Intelligenz als Zauberfähigkeit verwendet (Zauberschutz {@dc 17}): Nach Belieben: Magie entdecken, Magierhand, Prestidigitation"
+					],
+					"daily": {
+						"2e": [
+							"{@spell dispel magic}",
+							"{@spell hunger of Hadar}",
+							"{@spell lightning bolt}"
+						],
+						"1e": [
+							"{@spell arcane eye}",
+							"{@spell dimension door}",
+							"{@spell plane shift} (self only)"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Far Realm Parasite",
+					"entries": [
+						"Im Torso des Lichs wohnt ein wurmartiger Parasit, der die Seele des Lichs enthält. Wenn der Lich stirbt, implodiert er in den Parasiten, der dann in das Ferne Reich verschwindet. Nach {@dice 2d4} Tagen lässt der Parasit den Lich in einem Umkreis von {@dice 1d4} Meilen um seinen Todesort wieder auftauchen. Wenn der Lich innerhalb eines magischen Kreises gestorben ist, der Untote einschließt, erscheint der Lich stattdessen als Otyugh mit allen Erinnerungen des Lichs."
+					]
+				},
+				{
+					"name": "Legendary Resistance (4/Day)",
+					"entries": [
+						"Wenn dem Lich ein Rettungswurf misslingt, kann er stattdessen wählen, ob er erfolgreich ist."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Der Lich braucht weder Luft, Essen, Trinken noch Schlaf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Der Lich führt einen Angriff mit Parasitischen Tentakeln durch oder setzt Zauberei ein. Der Lich setzt außerdem zweimal Psychisches Flüstern ein."
+					]
+				},
+				{
+					"name": "Parasitic Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 9} auf Treffer, Reichweite 10 ft., eine Kreatur. {@h}25 ({@damage 6d6 + 4}) Stichschaden plus 25 ({@damage 6d6 + 4}) nekrotischer Schaden. Das Ziel muss einen {@dc 17} Konstitutions-Sicherungswurf bestehen oder {@condition poisoned} Schaden erleiden. Das {@condition poisoned} Ziel kann den Schutzwurf am Ende jeder seiner Runden wiederholen, wobei der Effekt bei einem Erfolg für es selbst endet. Wenn das Ziel den Schutzwurf zum dritten Mal nicht besteht, stirbt es und verwandelt sich in einen kauzigen Mundwerker, der dem Lich gehorcht und die Initiative des Ziels nutzt."
+					]
+				},
+				{
+					"name": "Psychic Whisper",
+					"entries": [
+						"Der Lich zielt auf eine Kreatur, die er in einem Umkreis von 120 Fuß um sich herum sehen kann. Das Ziel muss einen {@dc 17} Weisheitswurf bestehen oder 25 ({@damage 6d6 + 4}) psychischen Schaden erleiden und bis zum Ende der nächsten Runde des Lichs {@condition stunned} sein, während unverständliches Geflüster den Geist des Ziels erfüllt."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Far Realm Step",
+					"entries": [
+						"Unmittelbar nachdem der Lich Schaden erlitten hat, teleportiert er sich zusammen mit der Ausrüstung, die er trägt, auf magische Weise bis zu 60 Fuß weit in einen unbesetzten Raum, den er sehen kann."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"U"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DS",
+				"TP"
+			],
+			"damageTags": [
+				"N",
+				"P",
+				"Y"
+			],
+			"damageTagsSpell": [
+				"A",
+				"C",
+				"L",
+				"O"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"poisoned",
+				"stunned"
+			],
+			"conditionInflictSpell": [
+				"blinded"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Fractine",
+			"source": "MCV1SC",
+			"page": 7,
+			"size": [
+				"L"
+			],
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 110,
+				"formula": "13d10 + 39"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 1,
+			"dex": 13,
+			"con": 16,
+			"int": 18,
+			"wis": 18,
+			"cha": 11,
+			"skill": {
+				"perception": "+8"
+			},
+			"senses": [
+				"blindsight 360 ft. (blind beyond this radius)"
+			],
+			"passive": 18,
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned"
+			],
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"Die Fraktine hat einen Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte."
+					]
+				},
+				{
+					"name": "Scrying Focus",
+					"entries": [
+						"Ein Zaubernder kann die Fraktine als Ersatzfokus verwenden, wenn er den {@spell scrying}-Zauber oder eine ähnliche Magie wirkt, vorausgesetzt, der Zaubernde und die Fraktine befinden sich in einem Umkreis von 5 Fuß voneinander."
+					]
+				},
+				{
+					"name": "Two-Dimensionality",
+					"entries": [
+						"Die Fraktine kann den Raum einer anderen Kreatur einnehmen und umgekehrt. Sie kann sich durch andere Kreaturen und Objekte bewegen, als wären sie schwieriges Terrain, aber sie erleidet 5 ({@damage 1d10}) Kraftschaden, wenn sie ihren Zug innerhalb eines Objekts beendet."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Die Fraktine braucht keine Luft, kein Trinken und keinen Schlaf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Extradimensional Touch",
+					"entries": [
+						"{@atk ms} {@hit 5} Treffer, Reichweite 5 ft., ein Ziel. {@h}24 ({@damage 8d6}) Kraftschaden."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Imprison",
+					"entries": [
+						"Die Fraktine zielt auf eine Kreatur ihrer Größe oder kleiner in ihrem Raum. Das Ziel muss einen {@dc 16} Geschicklichkeitswurf bestehen oder wird in einer Dämonenebene gefangen gehalten. Während die Kreatur gefangen ist, ist ein verzerrtes Bild von ihr auf der zweidimensionalen Oberfläche der Fraktine zu sehen.",
+						"Die Dämmebene bewegt sich mit dem Fraktin, hat unzerstörbare und undurchsichtige Wände und ist nur so groß, wie sie sein muss, um das Ziel zu fassen, das nicht an Hunger oder Durst leidet, während es gefangen ist. Keine andere Kreatur kann die Dämmebene betreten, und das Fraktin kann innerhalb der Dämmebene nicht verletzt werden.",
+						"Die Fraktine kann jeweils nur eine Kreatur gefangen halten und diese als Bonusaktion freilassen. Wenn die Fraktine auf 0 Trefferpunkte reduziert wird, wird jede Kreatur in der Demiplane der Fraktine sofort freigelassen. Eine freigelassene Kreatur taucht an einem unbesetzten Ort wieder auf, der so nah wie möglich an der Fraktine (oder an der Stelle, an der sie gestorben ist) liegt. Eine Kreatur kann die Demiplane aus eigener Kraft verlassen, indem sie Magie einsetzt, die planares Reisen ermöglicht, wie z.B. den {@spell plane shift}-Zauber."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Mirrored Damage",
+					"entries": [
+						"Als Reaktion auf Schaden durch eine Kreatur, die sie im Umkreis von 120 Fuß sehen kann, zwingt die Fraktine diese Kreatur zu einem {@dc 16} Konstitutionsschutzwurf. Bei einem misslungenen Schutzwurf erleidet die Kreatur 24 ({@damage 8d6}) Kraftschaden. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur nur halb so viel Schaden."
+					]
+				},
+				{
+					"name": "Split",
+					"entries": [
+						"Wenn eine Große Fraktine, die noch mindestens 10 Trefferpunkte hat, durch eine beliebige Quelle Wucht-, Stich-, Hieb- oder Donnerschaden erleidet, spaltet sie sich in zwei Mittlere Fraktinen. Die neuen Fraktine nehmen den Platz ein, der zuvor von der ursprünglichen Fraktine eingenommen wurde, und jede neue Fraktine hat die Hälfte der Trefferpunkte der ursprünglichen Fraktine, abgerundet. Wenn die ursprüngliche Fraktine eine Kreatur in ihrer Dämmebene gefangen hatte, wird diese Kreatur freigelassen, wenn sich die Fraktine aufspaltet, und taucht in einem unbesetzten Raum so nahe wie möglich bei den neuen Fraktinen wieder auf."
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"B"
+			],
+			"damageTags": [
+				"O"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Gadabout",
+			"source": "MCV1SC",
+			"page": 8,
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 11,
+				"formula": "2d8 + 2"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 12,
+			"dex": 10,
+			"con": 14,
+			"int": 1,
+			"wis": 6,
+			"cha": 1,
+			"senses": [
+				"blindsight 10 ft. (blind beyond this radius)"
+			],
+			"passive": 8,
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Air Envelope",
+					"entries": [
+						"Wenn er mindestens 1 Trefferpunkt hat, kann der Gadabout eine Lufthülle um sich herum erzeugen, wenn er sich in einem Vakuum befindet. Diese Lufthülle kann den Gadabout und eine weitere Kreatur in seinem Raum unbegrenzt am Leben erhalten."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Der Gadabout braucht weder Essen noch Schlaf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Der Gadabout macht zwei Zweig-Angriffe."
+					]
+				},
+				{
+					"name": "Branch",
+					"entries": [
+						"{@atk mw} {@hit 3} Treffer, Reichweite 5 ft., ein Ziel. {@h}3 ({@damage 1d4 + 1}) Hiebschaden."
+					]
+				},
+				{
+					"name": "Wrap",
+					"entries": [
+						"Der Gadabout betritt den Raum einer willigen mittleren oder kleinen Kreatur im Umkreis von 5 Fuß und wickelt seine Äste sanft um das Ziel. Das Ziel ist {@condition grappled} (Flucht {@dc 0}). Jeder Versuch des Ziels, sich aus dem Griff zu befreien, veranlasst den Gadabout, seine Reaktion zu nutzen, um sich in den nächsten unbesetzten Raum zu bewegen. Solange sich der Gadabout {@condition grappled} in seiner Nähe befindet, bestimmt das Ziel, wohin sich der Gadabout bewegt, und begleitet den Gadabout, wohin er auch geht."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Goon Balloon",
+			"source": "MCV1SC",
+			"page": 9,
+			"size": [
+				"M"
+			],
+			"type": "aberration",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				10
+			],
+			"hp": {
+				"average": 6,
+				"formula": "1d8 + 2"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 10,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 14,
+			"cha": 4,
+			"save": {
+				"con": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 16,
+			"vulnerable": [
+				"piercing"
+			],
+			"languages": [
+				"Deep Speech"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Burst",
+					"entries": [
+						"Der Goon-Ballon platzt, wenn er auf 0 Trefferpunkte sinkt, und setzt giftiges Gas in einer Kugel mit einem Radius von 10 Fuß um sich selbst frei. Kreaturen in diesem Bereich müssen einen {@dc 12} Konstitutionsschutzwurf bestehen oder 1 Minute lang {@condition poisoned} sein. Eine {@condition poisoned} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Der Goon-Ballon braucht weder Luft noch Essen oder Trinken."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Der Goon-Ballon führt zwei Klauenangriffe aus."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 2} Treffer, Reichweite 5 ft., ein Ziel. {@h}3 ({@damage 1d6}) Hiebschaden."
+					]
+				},
+				{
+					"name": "Scintillating Eye",
+					"entries": [
+						"Magisches, kaleidoskopisches Licht strömt aus einem der Augen des Gaunerballons, während der Gaunerballon eine Kreatur anvisiert, die er im Umkreis von 30 Fuß sehen kann. Das Ziel muss einen {@dc 12} Weisheitswurf ablegen und erleidet bei einem Fehlschlag 6 ({@damage 1d12}) psychischen Schaden, bei einem Erfolg halb so viel."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Float",
+					"entries": [
+						"Der Goon-Ballon bewegt sich bis zu 20 Fuß vertikal in eine Richtung, ohne Gelegenheitsangriffe zu provozieren. Wenn er diese Bewegung in der Luft schwebend beendet, schwebt er an Ort und Stelle. Er kann nicht umgestoßen werden {@condition prone}, während er in der Luft schwebt."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DS"
+			],
+			"damageTags": [
+				"S",
+				"Y"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflict": [
+				"poisoned",
+				"prone"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nightmare Beast",
+			"source": "MCV1SC",
+			"page": 10,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 232,
+				"formula": "15d20 + 75"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 26,
+			"dex": 10,
+			"con": 21,
+			"int": 9,
+			"wis": 12,
+			"cha": 15,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 11,
+			"languages": [
+				"understands the languages of its creator but can't speak"
+			],
+			"cr": "16",
+			"trait": [
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"Misslingt dem Biest ein Rettungswurf, kann es stattdessen einen erfolgreichen Wurf wählen."
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"Die Bestie verursacht doppelten Schaden an Objekten und Strukturen."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Die Bestie führt zwei Klauenangriffe und einen Stoßzahnangriff aus."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 13} auf Treffer, Reichweite 15 ft., ein Ziel. {@h}14 ({@damage 1d12 + 8}) Hiebschaden, und wenn das Ziel eine Kreatur ist, muss sie einen {@dc 21} Stärke-Sicherungswurf bestehen oder wird {@condition prone} umgeworfen."
+					]
+				},
+				{
+					"name": "Tusk",
+					"entries": [
+						"{@atk mw} {@hit 13} bis zum Treffer, Reichweite 15 Fuß, ein Ziel. {@h}17 ({@damage 2d8 + 8}) Hiebschaden."
+					]
+				},
+				{
+					"name": "Disintegration Gaze {@recharge 5}",
+					"entries": [
+						"Die Bestie zielt auf eine Kreatur im Umkreis von 60 Fuß, die sie sehen kann. Das Ziel muss einen {@dc 18} Konstitutionsschutzwurf ablegen und erleidet bei einem misslungenen Schutzwurf 70 ({@damage 10d6 + 40}) Kraftschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden. Wenn dieser magische Effekt das Ziel auf 0 Trefferpunkte reduziert, wird das Ziel aufgelöst und hinterlässt nichts außer einem Haufen Asche und jeglicher Ausrüstung, die es trug oder bei sich hatte."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Teleport (2/Day)",
+					"entries": [
+						"Die Bestie teleportiert sich mitsamt der Ausrüstung, die sie trägt, auf magische Weise bis zu 120 Fuß weit in einen unbesetzten Raum, den sie sehen kann."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Tusk Attack",
+					"entries": [
+						"Die Bestie führt einen Stoßzahn-Angriff durch."
+					]
+				},
+				{
+					"name": "Charge (Costs 2 Actions)",
+					"entries": [
+						"Die Bestie bewegt sich bis zu ihrer Geschwindigkeit, ohne Gelegenheitsangriffe zu provozieren, und führt dann zwei Stoßzahnangriffe aus."
+					]
+				},
+				{
+					"name": "Frightful Howl (Costs 2 Actions)",
+					"entries": [
+						"Die Bestie heult, während sie eine Wolke aus magischem Angstgas in einem Kegel von 120 Fuß ausstößt. Jede Kreatur in diesem Gebiet muss einen {@dc 18} Weisheitswurf bestehen oder 1 Minute lang {@condition frightened} der Bestie ausgesetzt sein. Eine Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances",
+				"Siege Monster"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"CS"
+			],
+			"damageTags": [
+				"O",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"frightened",
+				"prone"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Puppeteer Parasite",
+			"source": "MCV1SC",
+			"page": 11,
+			"size": [
+				"T"
+			],
+			"type": "aberration",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 71,
+				"formula": "11d4 + 44"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 2,
+			"dex": 15,
+			"con": 18,
+			"int": 16,
+			"wis": 10,
+			"cha": 3,
+			"save": {
+				"dex": "+4",
+				"con": "+6",
+				"wis": "+2"
+			},
+			"skill": {
+				"stealth": "+4"
+			},
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"fire",
+				"necrotic",
+				"poison"
+			],
+			"vulnerable": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
+			"languages": [
+				"telepathy 30 ft."
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Der Parasit braucht weder Luft noch Schlaf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Cling",
+					"entries": [
+						"{@atk mw} {@hit 4} Treffer, Reichweite 5 ft., eine Kreatur. {@h}12 ({@damage 3d6 + 2}) nekrotischer Schaden, und der Parasit heftet sich an das Ziel. Solange er angeheftet ist, kann der Parasit keine Klammerangriffe durchführen. Der Parasit kann sich ablösen, indem er 5 Fuß seiner Bewegung aufwendet. Als Aktion kann eine Kreatur in Reichweite des Parasiten versuchen, ihn mit einer erfolgreichen {@dc 14} Stärkeprobe abzulösen."
+					]
+				},
+				{
+					"name": "Consume Life",
+					"entries": [
+						"Der Parasit fügt einer Kreatur, an die er physisch gebunden ist, 12 ({@damage 3d6 + 2}) nekrotischen Schaden zu, vorausgesetzt, diese Kreatur ist kein Konstrukt oder Untoter. Der Parasit erhält Trefferpunkte in Höhe des erlittenen Schadens zurück."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Suggestion (Psionics; 1/Day)",
+					"entries": [
+						"Der Parasit wirkt den {@spell suggestion}-Zauber, der keine Zauberkomponenten benötigt und Intelligenz als Zauberfähigkeit verwendet (Zauberschutz {@dc 13})."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"languageTags": [
+				"TP"
+			],
+			"damageTags": [
+				"N"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Star Lancer",
+			"source": "MCV1SC",
+			"page": 12,
+			"size": [
+				"L"
+			],
+			"type": "celestial",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "8d10 + 16"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 50
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 15,
+			"int": 10,
+			"wis": 13,
+			"cha": 8,
+			"save": {
+				"dex": "+4",
+				"con": "+4"
+			},
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"passive": 13,
+			"resist": [
+				"radiant"
+			],
+			"languages": [
+				"Celestial",
+				"telepathy 120 ft."
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"Der Star Lancer provoziert keine Gelegenheitsangriffe, wenn er außerhalb der Reichweite eines Feindes fliegt."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Horn",
+					"entries": [
+						"{@atk mw} {@hit 6} bis zum Treffer, Reichweite 5 ft., ein Ziel. {@h}7 ({@damage 1d6 + 4}) Stich-Schaden. Wenn sich der Sternlanzenreiter unmittelbar vor dem Treffer mindestens 20 Fuß direkt auf das Ziel zubewegt hat, erleidet das Ziel zusätzlich 10 ({@damage 3d6}) Stich-Schaden."
+					]
+				},
+				{
+					"name": "Invisibility Cloak (3/Day)",
+					"entries": [
+						"Der Sternentänzer und eine Kreatur, die auf ihm reitet (vom Sternentänzer gewählt), verwandeln sich magisch {@condition invisible}. Dieser Effekt hält an, bis der Sterntänzer oder eine Kreatur auf ihm angreift oder einen Zauber wirkt oder bis die Konzentration des Sterntänzers endet (als ob er sich auf einen Zauber konzentrieren würde). Jegliche Ausrüstung, die von den {@condition invisible} Kreaturen getragen wird, ist für die Dauer des Unsichtbarkeitsmantels ebenfalls {@condition invisible}."
+					]
+				}
+			],
+			"traitTags": [
+				"Flyby"
+			],
+			"languageTags": [
+				"CE",
+				"TP"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Yggdrasti",
+			"source": "MCV1SC",
+			"page": 13,
+			"size": [
+				"G"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 112,
+				"formula": "9d20 + 18"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 20,
+			"dex": 10,
+			"con": 15,
+			"int": 3,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 120 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
+			"immune": [
+				"lightning"
+			],
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"exhaustion"
+			],
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Cavities",
+					"entries": [
+						"Der Yggdrasti hat {@dice 1d4 + 2} Hohlräume in seinem Rumpf. Jede Höhle ist groß genug, um eine mittlere Kreatur, zwei kleine Kreaturen oder acht winzige Kreaturen aufzunehmen. Eine Kreatur, die sich in einer Höhle befindet, ist zu drei Vierteln gegen Angriffe und andere Effekte geschützt, die von außerhalb der Höhle ausgehen. Die Höhlen des Yggdrasti sind nicht miteinander verbunden."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Wenn der Yggdrasti zu Beginn des Kampfes bewegungslos und im Boden verwurzelt ist, sieht er wie ein toter Baum aus und hat einen Vorteil bei seinem Initiativwurf. Wenn eine Kreatur den verwurzelten Yggdrasti nicht beobachtet hat, muss sie eine {@dc 18} Intelligenzprüfung (Erkundung) bestehen, um zu erkennen, dass der Yggdrasti lebendig ist."
+					]
+				},
+				{
+					"name": "Lightning Conduit",
+					"entries": [
+						"Wenn der Yggdrasti Blitzschaden erleidet, bleibt er unverletzt, und der Blitzschaden wird stattdessen gleichmäßig auf alle Kreaturen verteilt, die er packt. Darüber hinaus erhält der Yggdrasti einen Einsatz von Blitzentladung zurück."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Der Yggdrasti braucht weder Luft noch Schlaf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Der Yggdrasti führt zwei Wurzelangriffe aus und benutzt Blitzentladung (falls verfügbar)."
+					]
+				},
+				{
+					"name": "Root",
+					"entries": [
+						"{@atk mw} {@hit 8} Treffer, Reichweite 20 ft., ein Ziel. {@h}12 ({@damage 2d6 + 5}) Wucht-Schaden, und wenn das Ziel eine Kreatur ist, ist es {@condition grappled} (Flucht {@dc 15}). Der Yggdrasti hat vier Wurzeln, von denen jede ein Ziel packen kann."
+					]
+				},
+				{
+					"name": "Lightning Discharge (3/Day)",
+					"entries": [
+						"Der Yggdrasti schießt Blitze auf eine Kreatur im Umkreis von 120 Fuß um sich selbst. Das Ziel muss einen {@dc 13} Schutzwurf auf Geschicklichkeit machen und erleidet bei einem misslungenen Schutzwurf 31 ({@damage 7d8}) Blitzschaden, bei einem erfolgreichen Schutzwurf die Hälfte des Schadens."
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"L"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

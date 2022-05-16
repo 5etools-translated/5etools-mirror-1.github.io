@@ -1,0 +1,1176 @@
+{
+	"spell": [
+		{
+			"name": "Cause Fear (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Budzisz poczucie śmiertelności w jednej istocie, którą widzisz w zasięgu. Celowi musi udać się rzut ratujący z Mądrości, albo stanie się {@condition frightened} na czas trwania ataku. Cel z 25 lub mniejszą liczbą punktów trafień wykonuje ten rzut z minusem. Zaklęcie nie działa na konstrukty i nieumarłych."
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Ceremony (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "25 gp worth of powdered silver",
+					"cost": 2500
+				}
+			},
+			"duration": [
+				{
+					"type": "instant",
+					"condition": "see text"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Odprawiasz jedną z kilku ceremonii religijnych. Kiedy rzucasz zaklęcie, wybierz jedną z poniższych ceremonii, której cel musi znajdować się w odległości 10 stóp od ciebie podczas rzucania zaklęcia.",
+				{
+					"type": "entries",
+					"name": "Atonement",
+					"entries": [
+						"Dotykasz jedną chętną istotę, której ułożenie uległo zmianie i wykonujesz test Mądrości DC 20 ({@skill Insight}). Jeśli ci się powiedzie, przywracasz cel do jego pierwotnego ułożenia."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Bless Water",
+					"entries": [
+						"Dotykasz jednej {@item vial|phb} wody i sprawiasz, że staje się ona {@item Holy Water (flask)|phb|holy water}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Coming of Age",
+					"entries": [
+						"Dotykasz jednego humanoida, który jest wystarczająco stary, by być młodym dorosłym. Przez następne 24 godziny, za każdym razem, gdy cel będzie sprawdzał swoją umiejętność, może rzucić {@dice d4} i dodać wyliczoną liczbę do sprawdzanej umiejętności. Jedna istota może skorzystać z tej ceremonii tylko raz."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dedication",
+					"entries": [
+						"Dotykasz jednego humanoida, który chętnie nawróciłby się na twoją religię lub chciałby zostać oddany na służbę twojemu bogu. Przez następne 24 godziny, za każdym razem, gdy cel wykonuje rzut obronny, może rzucić {@dice d4} i dodać wyliczoną liczbę do wyniku. Jedna istota może skorzystać z tej ceremonii tylko raz."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Funeral Rite",
+					"entries": [
+						"Błogosławisz jednego trupa w promieniu 5 stóp od siebie. Przez następne 24 godziny cel nie może stać się nieumarłym w żaden inny sposób, niż za pomocą zaklęcia {@spell wish}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Investiture",
+					"entries": [
+						"Dotykasz jednego chętnego humanoida. Wybierasz jedno przygotowane zaklęcie 1. poziomu i zużywasz slot na zaklęcie oraz wszelkie składniki materialne, tak jakbyś rzucał to zaklęcie. Zaklęcie nie wywołuje żadnego efektu. Zamiast tego, cel może rzucić to zaklęcie raz, bez konieczności wydawania slotu na zaklęcie lub używania składników materialnych. Jeśli cel nie rzuci zaklęcia w ciągu 1 godziny, zainwestowane zaklęcie przepada."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Marriage",
+					"entries": [
+						"Dotykasz dorosłych humanoidów, którzy chcą połączyć się w małżeństwo. Przez następne 24 godziny każdy cel otrzymuje premię +2 do AC i rzutów na przetrwanie, jeśli znajduje się w odległości 30 stóp od siebie. Jedna istota może skorzystać z tej ceremonii tylko raz."
+					]
+				}
+			],
+			"affectsCreatureType": [
+				"humanoid"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Chaos Bolt (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Rzucasz falującą, buczącą masę chaotycznej energii w kierunku jednego stworzenia w zasięgu. Wykonaj dystansowy atak zaklęciem przeciwko celowi. Jeśli trafisz, cel otrzymuje {@damage 2d8} obrażeń. Wybierz jedno z {@dice d8}. Liczba, którą wylosował, określa rodzaj obrażeń, jak pokazano poniżej.",
+				{
+					"type": "table",
+					"caption": "Chaos Bolt",
+					"colLabels": [
+						"{@dice d8}",
+						"Damage Type"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"Acid"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								}
+							},
+							"Cold"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 3
+								}
+							},
+							"Fire"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 4
+								}
+							},
+							"Siła"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Błyskawica"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Trucizna"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 7
+								}
+							},
+							"Psychic"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 8
+								}
+							},
+							"Grzmot"
+						]
+					]
+				},
+				"Jeśli uzyskasz ten sam wynik na obu {@dice d8}, chaotyczna energia przeskakuje z celu na inne, wybrane przez ciebie stworzenie w promieniu 30 stóp od niego. Wykonaj nowy rzut ataku na nowy cel i nowy rzut obrażeń, który może spowodować ponowny przeskok energii chaosu. Stworzenie może zostać zaatakowane tylko raz przez tę masę chaotycznej energii."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 2. poziomu lub wyższego, każdy cel otrzymuje dodatkowe obrażenia, zgodne z rodzajem zaklęcia. Dodatkowe obrażenia są równe {@scaledamage 2d8|1-9|1d6} dla każdego slotu powyżej 1. poziomu."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"force",
+				"lightning",
+				"poison",
+				"psychic",
+				"thunder"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Guiding Hand (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Tworzysz Maleńką bezcielesną dłoń z mieniącego się światła w niezajętej przestrzeni, którą widzisz w zasięgu. Ręka istnieje przez cały czas, ale znika, jeśli się teleportujesz lub przeniesiesz na inną płaszczyznę egzystencji.",
+				"Gdy pojawi się ręka, podajesz jeden ważny punkt orientacyjny, np. miasto, górę, zamek lub pole bitwy znajdujące się na tej samej płaszczyźnie istnienia co Ty. Ktoś w historii musiał odwiedzić to miejsce i sporządzić jego mapę. Jeśli punkt orientacyjny nie pojawia się na żadnej istniejącej mapie, zaklęcie kończy się niepowodzeniem. W przeciwnym razie, kiedy poruszasz się w kierunku ręki, ona oddala się od ciebie z taką samą prędkością, z jaką ty się poruszasz, i porusza się w kierunku punktu orientacyjnego, zawsze pozostając w odległości 5 stóp od ciebie.",
+				"Jeśli nie zbliżysz się do ręki, pozostanie ona w miejscu, dopóki tego nie zrobisz, i będzie zapraszać Cię do podążania za nią co {@dice 1d4} minut."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Hand of Radiance (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Podnosisz rękę, a z niej wybucha płonący blask. Każda wybrana przez ciebie istota, którą widzisz w promieniu 5 stóp od siebie, musi wykonać rzut ratunkowy na Konstytucję albo otrzyma {@damage 1d6} obrażeń od promieniowania.",
+				"Obrażenia od tego zaklęcia wzrastają o {@dice 1d6} po osiągnięciu 5. poziomu ({@damage 2d6}), 11. poziomu ({@damage 3d6}) i 17. poziomu ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "radiant damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"radiant"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Healing Elixir (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "alchemist's supplies"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"Tworzysz leczniczy eliksir w prostej fiolce, która pojawia się w twojej dłoni. Eliksir zachowuje swoją moc przez cały czas trwania lub do momentu jego spożycia, po czym fiolka znika.",
+				"Jako akcję, istota może wypić eliksir lub podać go innej istocie. Osoba pijąca odzyskuje {@dice 2d4 + 2} punktów trafień."
+			],
+			"miscTags": [
+				"HL"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Infestation (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a living flea"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Powodujesz, że roztocza, pchły i inne pasożyty pojawiają się na chwilę na jednej istocie, którą widzisz w zasięgu. Celowi musi udać się rzut ratunkowy na Konstytucję lub otrzyma {@damage 1d6} obrażeń od przebicia. Jeśli cel otrzyma jakiekolwiek obrażenia, przesunie się o 5 stóp w losowym kierunku. Rzuć {@dice d8} za kierunek: 1, północ; 2, północny wschód; 3, wschód; 4, południowy wschód; 5, południe; 6, południowy zachód; 7, zachód lub 8, północny zachód.",
+				"Obrażenia od tego zaklęcia wzrastają o {@dice 1d6} po osiągnięciu 5. poziomu ({@damage 2d6}), 11. poziomu ({@damage 3d6}) i 17. poziomu ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "piercing damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"piercing"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Primal Savagery (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Twoje zęby lub paznokcie wydłużają się i ostrzą. Ty decydujesz, które. Wykonaj atak zaklęciem w walce wręcz przeciwko jednej istocie w promieniu 5 stóp od ciebie. Jeśli trafisz, cel otrzymuje {@damage 1d10} obrażeń od przeszywających lub tnących (do wyboru). Po wykonaniu ataku Twoje zęby lub paznokcie wracają do normalnego stanu.",
+				"Obrażenia od tego zaklęcia wzrastają o {@dice 1d10} po osiągnięciu 5. poziomu ({@damage 2d10}), 11. poziomu ({@damage 3d10}) i 17. poziomu ({@damage 4d10})."
+			],
+			"scalingLevelDice": {
+				"label": "piercing damage",
+				"scaling": {
+					"1": "1d10",
+					"5": "2d10",
+					"11": "3d10",
+					"17": "4d10"
+				}
+			},
+			"damageInflict": [
+				"piercing",
+				"slashing"
+			],
+			"spellAttack": [
+				"M"
+			],
+			"miscTags": [
+				"SCL"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Puppet (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Twój gest zmusza jednego humanoida, którego widzisz w zasięgu, do wykonania rzutu obronnego na Konstytucję. W przypadku niepowodzenia, cel musi poruszyć się z prędkością równą swojej prędkości w wybranym przez ciebie kierunku. Dodatkowo, możesz sprawić, że cel upuści to, co trzyma w ręku. To zaklęcie nie działa na humanoida odpornego na bycie {@condition charmed}."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"affectsCreatureType": [
+				"aberration",
+				"beast",
+				"celestial",
+				"construct",
+				"dragon",
+				"elemental",
+				"fey",
+				"fiend",
+				"giant",
+				"monstrosity",
+				"ooze",
+				"plant",
+				"undead"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sense Emotion (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Na czas trwania zaklęcia dostrajasz swoje zmysły do odbierania emocji innych osób. Kiedy rzucasz zaklęcie i jako swoją akcję w każdej turze aż do zakończenia zaklęcia, możesz skupić swoje zmysły na jednym humanoidzie, którego widzisz w promieniu 30 stóp od siebie. Natychmiast poznajesz dominującą emocję celu, niezależnie od tego, czy jest to miłość, gniew, ból, strach, spokój, czy coś innego. Jeśli cel nie jest humanoidem lub jest odporny na bycie humanoidem {@condition charmed}, wyczuwasz, że jest spokojny."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Snare (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "30 feet of cord or rope, which is consumed by the spell",
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "permanent",
+					"ends": [
+						"dispel",
+						"trigger"
+					]
+				}
+			],
+			"entries": [
+				"Podczas rzucania tego zaklęcia, używasz sznura lub liny do utworzenia okręgu o promieniu 5 stóp na płaskiej powierzchni w zasięgu ręki. Po zakończeniu zaklęcia sznur lub lina znikają, stając się magiczną pułapką.",
+				"Pułapka jest prawie niewidoczna i wymaga udanego testu Inteligencji ({@skill Investigation}) przeciwko DC obrony przed zaklęciem, aby ją znaleźć. Pułapka uruchamia się, gdy małe lub większe stworzenie wejdzie na obszar chroniony zaklęciem.",
+				"Wyzwalająca istota musi wykonać udany rzut na Zręczność lub spaść {@condition prone} i zostać wyniesiona w powietrze, aż zawiśnie do góry nogami 3 stopy nad chronioną powierzchnią, gdzie znajduje się {@condition restrained}.",
+				"{@condition restrained} stworzenie może wykonać rzut ratujący zręczność z minusem na koniec każdej ze swoich tur i kończy efekt {@condition restrained} w przypadku sukcesu. Alternatywnie, inna istota, która może dosięgnąć {@condition restrained} stworzenia, może użyć akcji, aby wykonać test Inteligencji ({@skill Arcana}) przeciwko DC obrony przed zaklęciem. Jeśli się powiedzie, efekt {@condition restrained} również się kończy."
+			],
+			"conditionInflict": [
+				"prone",
+				"restrained"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"abilityCheck": [
+				"intelligence"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sudden Awakening (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Każda wybrana przez ciebie śpiąca istota w zasięgu budzi się, a następnie każda {@condition prone} istota w zasięgu może wstać, nie tracąc ruchu."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Toll the Dead (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 0,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Wskazujesz na jedną istotę, którą widzisz w zasięgu, a dźwięk lamentującego dzwonu na chwilę wypełnia powietrze wokół niej. Celowi musi udać się rzut ratunkowy na mądrość lub otrzyma {@damage 1d8} obrażeń nekrotycznych. Jeśli celowi brakuje punktów życia, otrzymuje {@damage 1d12} obrażeń nekrotycznych.",
+				"Obrażenia od tego zaklęcia wzrastają o jedną kostkę po osiągnięciu 5. poziomu ({@damage 2d8} lub {@damage 2d12}), 11. poziomu ({@damage 3d8} lub {@damage 3d12}) i 17. poziomu ({@damage 4d8} lub {@damage 4d12})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "necrotic damage",
+					"scaling": {
+						"1": "1d8",
+						"5": "2d8",
+						"11": "3d8",
+						"17": "4d8"
+					}
+				},
+				{
+					"label": "necrotic damage to wounded creature",
+					"scaling": {
+						"1": "1d12",
+						"5": "2d12",
+						"11": "3d12",
+						"17": "4d12"
+					}
+				}
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Unearthly Chorus (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Muzyka w wybranym przez Ciebie stylu wypełnia powietrze wokół Ciebie w promieniu 30 stóp. Muzyka rozchodzi się po kątach i może być słyszana z odległości do 100 stóp. Muzyka porusza się razem z Tobą, skupiając się na Tobie przez cały czas.",
+				"Do końca działania zaklęcia wykonujesz testy Charyzmy ({@skill Performance}) z przewagą. Dodatkowo, w każdej swojej turze możesz użyć dodatkowej akcji, aby oczarować jedno wybrane przez siebie stworzenie w promieniu 30 stóp od ciebie, które cię widzi i słyszy muzykę. Stworzenie to musi wykonać rzut ratunkowy na Charyzmę. Jeśli ty lub twoi towarzysze atakują to stworzenie, to automatycznie udaje mu się ten rzut. W przypadku porażki, stworzenie staje się do ciebie przyjaźnie nastawione na tak długo, jak długo słyszy muzykę, a potem na 1 godzinę. Wykonujesz z przewagą testy Charyzmy ({@skill Deception}) i Charyzmy ({@skill Persuasion}) przeciwko stworzeniom, które stały się przyjazne dzięki temu zaklęciu."
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Virtue (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 0,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Dotykasz jedną istotę, napełniając ją witalnością. Jeśli cel ma co najmniej 1 punkt trafienia, zyskuje liczbę tymczasowych punktów trafienia równą {@dice 1d4} + twój modyfikator zdolności zaklęcia. Tymczasowe punkty trafienia przepadają po zakończeniu zaklęcia."
+			],
+			"miscTags": [
+				"THP"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Wild Cunning (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Wzywasz duchy natury, aby ci pomogły. Kiedy rzucasz to zaklęcie, wybierz jeden z poniższych efektów:",
+				{
+					"type": "list",
+					"items": [
+						"Jeśli w zasięgu znajdują się jakieś ślady na ziemi, wiesz, gdzie się znajdują, i wykonujesz testy Mądrości ({@skill Survival}), aby podążać za tymi śladami z przewagą przez 1 godzinę lub do momentu ponownego rzucenia tego zaklęcia.",
+						"Jeśli w zasięgu znajduje się jadalna pasza, użytkownik wie, gdzie ją znaleźć.",
+						"Jeśli w zasięgu znajduje się czysta woda pitna, wiesz, gdzie ją znaleźć.",
+						"Jeśli istnieje odpowiednie schronienie dla Ciebie i Twoich towarzyszy z zasięgiem, wiesz, gdzie je znaleźć.",
+						"Wyślij duchy, aby przyniosły drewno na ognisko i założyły obozowisko w okolicy, korzystając z twoich zapasów. Duchy budują ognisko w kręgu z kamieni, stawiają namioty, rozkładają śpiwory i wykładają racje żywnościowe oraz wodę do picia.",
+						"Poproś zuchy o natychmiastowe rozłożenie obozowiska, co obejmuje gaszenie ognia, rozłożenie namiotów, spakowanie worków i zakopanie śmieci."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Zephyr Strike (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Poruszasz się jak wiatr. Przez cały czas trwania gry twój ruch nie prowokuje ataku z okazji.",
+				"Ponadto, gdy po raz pierwszy wykonasz atak bronią w swojej turze przed końcem działania zaklęcia, wykonasz rolkę ataku z przewagą, a twoja szybkość wzrośnie o 30 stóp do końca tej tury."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

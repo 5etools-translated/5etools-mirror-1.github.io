@@ -722,7 +722,7 @@ class DamageTypeTag {
 
 		this._init();
 
-		const meta = TaggerUtils.ALL_LEGENDARY_GROUPS.find(it => it.name === m.legendaryGroup.name && it.source === m.legendaryGroup.source);
+		const meta = TaggerUtils.findLegendaryGroup({name: m.legendaryGroup.name, source: m.legendaryGroup.source});
 		if (!meta) return;
 
 		const typeSet = new Set();

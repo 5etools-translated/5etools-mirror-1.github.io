@@ -1,0 +1,103 @@
+{
+	"spell": [
+		{
+			"name": "Linked Glyphs",
+			"source": "AitFR-AVT",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "AitFR-FCD",
+					"page": 11
+				}
+			],
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "incense and powdered diamond worth at least 300 gp, which the spell consumes",
+					"cost": 30000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "permanent",
+					"ends": [
+						"dispel",
+						"trigger"
+					]
+				}
+			],
+			"entries": [
+				"Kiedy rzucasz to zaklęcie, wpisujesz glif wykrywający, który później aktywuje magiczny efekt w miejscu oddzielnego, powiązanego glifu. Glif wykrywający umieszcza się na powierzchni (np. na stole, fragmencie podłogi lub ściany) lub wewnątrz przedmiotu, który można zamknąć (np. księgi, zwoju lub skrzyni ze skarbami), aby ukryć glif. Glif może pokryć obszar o średnicy nie większej niż 10 stóp. Jeśli powierzchnia lub przedmiot zostanie przesunięty o więcej niż 10 stóp od miejsca, w którym rzucono zaklęcie, glif wykrywający zostaje przerwany, a zaklęcie kończy się bez aktywacji.",
+				"Oba glify są prawie niewidoczne, a ich odnalezienie wymaga udanego testu Inteligencji ({@skill Investigation}) przeciwko DC obrony przed zaklęciami.",
+				"Sam decydujesz, co wyzwala glif wykrywający podczas rzucania tego zaklęcia. W przypadku glifów zapisanych na powierzchni, najbardziej typowe wyzwalacze to dotknięcie lub stanięcie na glifie, usunięcie innego przedmiotu zakrywającego glif, zbliżenie się na określoną odległość od glifu lub manipulowanie przedmiotem, na którym glif jest zapisany. W przypadku glifów wpisanych w obiekt najczęstszymi wyzwalaczami są: otwarcie obiektu, zbliżenie się na określoną odległość od obiektu, zobaczenie lub odczytanie glifu. Po uruchomieniu glifu zaklęcie to kończy się.",
+				"Możesz doprecyzować wyzwalacz tak, aby zaklęcie aktywowało się tylko w określonych okolicznościach lub w zależności od cech fizycznych (takich jak wzrost lub waga), rodzaju stworzenia (na przykład, oddział może dotyczyć aberracji lub drowów) lub zestrojenia. Można również określić warunki dla stworzeń, które nie aktywują glifu, np. dla tych, które wypowiedzą określone hasło.",
+				"Podczas wpisywania glifu wykrywania należy wybrać glif alarmowy lub glif zaklęcia, który zostanie z nim połączony.",
+				{
+					"type": "entries",
+					"name": "Alarm Glyph",
+					"entries": [
+						"Tworzysz i magicznie łączysz dwa glify: glif wykrywania i glif efektu. Każdy z tych dwóch glifów musi znajdować się w promieniu 100 mil od drugiego, inaczej efekt zaklęcia wygasa. Kiedy glif wykrywający zostanie uruchomiony, glif efektowy reaguje jak zaklęcie alarmowe, tworząc mentalne ping w twoim umyśle, jeśli znajdujesz się w promieniu 1 mili od glifu efektowego. To ping budzi cię, jeśli śpisz."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spell Glyph",
+					"entries": [
+						"Tworzysz i magicznie łączysz dwa glify: glif wykrywania i glif efektu. Te dwa glify muszą znajdować się w odległości 100 stóp od siebie. W glifie efektu można przechowywać przygotowane zaklęcie czwartego poziomu lub niższego, rzucając je w trakcie tworzenia glifów. Zaklęcie musi być skierowane na pojedynczą istotę lub obszar. Przechowywane zaklęcie nie ma natychmiastowego efektu, gdy zostanie rzucone w ten sposób. Kiedy glif wykrywania zostanie uruchomiony, rzucane jest zaklęcie zapisane w glifie efektu. Jeśli zaklęcie ma cel, to jest nim istota, która uruchomiła glif. Jeśli zaklęcie działa na obszar, obszar ten jest skupiony na glifie efektu. Jeśli zaklęcie przywołuje wrogie istoty lub tworzy szkodliwe obiekty albo pułapki, pojawiają się one jak najbliżej glifu efektu. Jeśli zaklęcie wymaga koncentracji, trwa ona do końca jego pełnego czasu trwania."
+					]
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 5. poziomu lub wyższego do stworzenia glifu zaklęcia, możesz przechowywać w nim dowolne zaklęcie o poziomie równym poziomowi gniazda, którego używasz."
+					]
+				}
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"miscTags": [
+				"PRM"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		}
+	]
+}

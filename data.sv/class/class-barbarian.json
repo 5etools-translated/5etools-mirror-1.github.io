@@ -1,0 +1,3190 @@
+{
+	"class": [
+		{
+			"name": "Barbarian",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 12
+			},
+			"proficiency": [
+				"str",
+				"con"
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"{@item shield|phb|shields}"
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"animal handling",
+								"athletics",
+								"intimidation",
+								"nature",
+								"perception",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item greataxe|phb} or (b) any {@filter martial melee weapon|items|source=phb|category=basic|type=martial weapon;melee weapon=sand}",
+					"(a) two {@item handaxe|phb|handaxes} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"An {@item explorer's pack|phb}, and four {@item javelin|phb|javelins}"
+				],
+				"goldAlternative": "{@dice 2d4 × 10|2d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"greataxe|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponMartialMelee"
+							}
+						]
+					},
+					{
+						"a": [
+							{
+								"item": "handaxe|phb",
+								"quantity": 2
+							}
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"_": [
+							"explorer's pack|phb",
+							{
+								"item": "javelin|phb",
+								"quantity": 4
+							}
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"str": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"{@item shield|phb|shields}"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Rages",
+						"Rage Damage"
+					],
+					"rows": [
+						[
+							"2",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"2",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"3",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"3",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"3",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"6",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"6",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"6",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"Obegränsad",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Rage|Barbarian||1",
+				"Unarmored Defense|Barbarian||1",
+				"Danger Sense|Barbarian||2",
+				"Survival Instincts|Barbarian||2|UAClassFeatureVariants",
+				"Reckless Attack|Barbarian||2",
+				{
+					"classFeature": "Primal Path|Barbarian||3",
+					"gainSubclassFeature": true
+				},
+				"Primal Knowledge|Barbarian||3|TCE",
+				"Ability Score Improvement|Barbarian||4",
+				"Proficiency Versatility|Barbarian||4|UAClassFeatureVariants",
+				"Extra Attack|Barbarian||5",
+				"Fast Movement|Barbarian||5",
+				"Instinctive Pounce|Barbarian||5|UAClassFeatureVariants",
+				{
+					"classFeature": "Path Feature|Barbarian||6",
+					"gainSubclassFeature": true
+				},
+				"Feral Instinct|Barbarian||7",
+				"Instinctive Pounce|Barbarian||7|TCE",
+				"Ability Score Improvement|Barbarian||8",
+				"Proficiency Versatility|Barbarian||8|UAClassFeatureVariants",
+				"Brutal Critical (1 die)|Barbarian||9",
+				{
+					"classFeature": "Path feature|Barbarian||10",
+					"gainSubclassFeature": true
+				},
+				"Relentless Rage|Barbarian||11",
+				"Ability Score Improvement|Barbarian||12",
+				"Proficiency Versatility|Barbarian||12|UAClassFeatureVariants",
+				"Brutal Critical (2 dice)|Barbarian||13",
+				{
+					"classFeature": "Path feature|Barbarian||14",
+					"gainSubclassFeature": true
+				},
+				"Persistent Rage|Barbarian||15",
+				"Ability Score Improvement|Barbarian||16",
+				"Proficiency Versatility|Barbarian||16|UAClassFeatureVariants",
+				"Brutal Critical (3 dice)|Barbarian||17",
+				"Indomitable Might|Barbarian||18",
+				"Ability Score Improvement|Barbarian||19",
+				"Proficiency Versatility|Barbarian||19|UAClassFeatureVariants",
+				"Primal Champion|Barbarian||20"
+			],
+			"subclassTitle": "Primal Path",
+			"fluff": [
+				{
+					"name": "Barbarian",
+					"type": "section",
+					"entries": [
+						"En lång mänsklig stammedlem kliver genom snöstormen, klädd i päls och med en yxa i handen. Han skrattar när han rusar mot den frostjätte som vågade tjuvskjuta sitt folks älgflock.",
+						"En halvorc snorar åt den senaste utmanaren till hennes auktoritet över deras vilda stam, redo att bryta nacken av honom med sina bara händer som hon gjort med de sex senaste rivalerna.",
+						"En dvärg som skummade i munnen slog sin hjälm i ansiktet på sin drow-fiende och vände sig sedan om för att köra in sin bepansrade armbåge i magen på en annan dvärg.",
+						"Dessa barbarer, hur olika de än må vara, definieras av sitt raseri: otyglad, osläckbar och tanklös ilska. Mer än bara en känsla är deras ilska den grymhet som ett rovdjur i ett hörn har, stormens obevekliga angrepp, havets upprörda turbulens.",
+						"För vissa är deras ilska sprungen ur en gemenskap med vilda djurandar. Andra hämtar sin ilska från en kokande reservoar av ilska över en värld full av smärta. För varje barbar är raseri en kraft som inte bara ger bränsle till en stridshysteri utan också till otroliga reflexer, motståndskraft och kraftprov.",
+						{
+							"type": "entries",
+							"name": "Primal Instinct",
+							"entries": [
+								"Människor i städerna är stolta över att deras civiliserade sätt skiljer dem från djuren, som om det vore ett tecken på överlägsenhet att förneka sin egen natur. För en barbar är dock civilisation ingen dygd utan ett tecken på svaghet. De starka omfamnar sin djuriska natur - starka instinkter, ursprunglig fysik och vildsint raseri. Barbarer känner sig obekväma när de är inhägnade av murar och folkmassor. De trivs i sina hemländers vildmark: tundran, djungeln eller gräsmarkerna där deras stammar lever och jagar.",
+								"Barbarer blir levande i stridens kaos. De kan gå in i ett berserk-tillstånd där raseriet tar över, vilket ger dem övermänsklig styrka och uthållighet. En barbar kan dra nytta av denna reservoar av raseri endast några få gånger utan att vila, men dessa få raserier är vanligtvis tillräckliga för att besegra vilka hot som helst."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "A Life of Danger",
+							"entries": [
+								"Det är inte alla medlemmar av de stammar som anses vara \"barbarer\" av det civiliserade samhällets ättlingar som tillhör barbarklassen. En sann barbar bland dessa människor är lika ovanlig som en skicklig kämpe i en stad, och han eller hon spelar en liknande roll som folkets beskyddare och ledare i krigstider. Livet på världens vilda platser är fyllt av faror: rivaliserande stammar, dödligt väder och skräckinjagande monster. Barbarer ger sig ut i faran så att deras folk inte behöver göra det.",
+								"Deras mod inför faran gör barbarer perfekt lämpade för äventyr. Att vandra är ofta en livsstil för deras inhemska stammar, och äventyrarens rotlösa liv är en liten svårighet för en barbar. En del barbarer saknar stammens nära familjestrukturer, men finner dem så småningom ersatta av de band som bildas mellan medlemmarna i deras äventyrsgrupper."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Barbarian",
+							"entries": [
+								"När du skapar en barbarisk karaktär bör du tänka på var din karaktär kommer ifrån och vilken plats han eller hon har i världen. Prata med din DM om ett lämpligt ursprung för din barbar. Kommer du från ett avlägset land, vilket gör dig till en främling i kampanjens område? Eller utspelar sig kampanjen i en tuff gräns där barbarer är vanliga?",
+								"Vad fick dig att börja med äventyrslivet? Lockades du till bosatta länder av löftet om rikedomar? Slöt du dig samman med soldater från dessa länder för att möta ett gemensamt hot? Fördrev monster eller en invaderande hord dig från ditt hemland och gjorde dig till en rotlös flykting? Kanske var du en krigsfånge som fördes i kedjor till \"civiliserade\" länder och först nu har kunnat vinna din frihet. Eller så har du fördrivits från ditt folk på grund av ett brott du begått, ett tabu du brutit mot eller en kupp som avlägsnat dig från en maktposition.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Du kan göra en barbar snabbt genom att följa de här förslagen. Först sätter du din högsta poäng i styrka, följt av konstitution. För det andra väljer du {@background outlander} bakgrund."
+									]
+								}
+							]
+						}
+					],
+					"source": "PHB",
+					"page": 46
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"Jag har bevittnat barbarernas okuvliga prestationer på slagfältet, och det får mig att undra vilken kraft som ligger bakom deras raseri."
+							],
+							"by": "Seret, archwizard"
+						},
+						"Den ilska som en normal människa känner liknar en barbars raseri på samma sätt som en lätt bris liknar ett rasande åskväder. Barbarens drivkraft kommer från en plats som överskrider rena känslor, vilket gör att dess manifestation blir ännu mer fruktansvärd. Oavsett om drivkraften för raseriet kommer helt och hållet inifrån eller om den kommer från en koppling med ett andedjur, blir en rasande barbar förmögen att utföra övernaturliga prestationer av styrka och uthållighet. Utbrottet är tillfälligt, men så länge det varar tar det över kropp och sinne och driver barbaren vidare trots fara och skada, tills den sista fienden faller.",
+						"Det kan vara frestande att spela en barbarisk karaktär som är en enkel tillämpning av den klassiska arketypen - ett brutalt djur, och oftast en dumskalle dessutom, som rusar in där andra inte vågar gå. Men inte alla barbarer i världen är skurna av detta tyg, så du kan säkert sätta din egen prägel på saker och ting. I vilket fall som helst bör du överväga att lägga till några detaljer för att få din barbar att sticka ut från alla andra; se följande avsnitt för några idéer.",
+						{
+							"type": "entries",
+							"name": "Personal Totems",
+							"entries": [
+								"Barbarer reser lätt och har inte mycket personliga tillhörigheter eller annan onödig utrustning med sig. De få ägodelar de bär med sig är ofta små föremål som har särskild betydelse. En personlig totem är betydelsefull eftersom den har ett mystiskt ursprung eller är knuten till ett viktigt ögonblick i karaktärens liv - kanske ett minne från barbarens förflutna eller ett förebud om vad som ligger framför honom.",
+								"Ett personligt totem av detta slag kan vara förknippat med en barbars andedjur, eller kan faktiskt vara djurets totemobjekt, men en sådan koppling är inte nödvändig. En person som till exempel har en björntotemand kan fortfarande bära en örnfjäder som personligt totem.",
+								"Överväg att skapa en eller flera personliga totem för din karaktär - föremål som har en speciell koppling till din karaktärs förflutna eller framtid. Tänk på hur en totem kan påverka din karaktärs handlingar.",
+								{
+									"type": "table",
+									"caption": "Personal Totems",
+									"colLabels": [
+										"{@dice d6}",
+										"Totem"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"En päls från en ensam varg som du blev vän med under en jakt."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Tre örnfjädrar som du har fått av en vis shaman, som sa att de skulle spela en roll för ditt öde."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Ett halsband tillverkat av klorna från en ung grottbjörn som du dödade på egen hand som barn."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"En liten läderpåse med tre stenar som representerar dina förfäder."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Några små ben från det första djuret du dödat, bundna ihop med färgad ull."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"En äggstor sten i form av ditt andedjur som en dag dök upp i din bältesväska."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Tattoos",
+							"entries": [
+								"Medlemmarna i många barbariska klaner dekorerar sina kroppar med tatueringar som var och en representerar ett viktigt ögonblick i bärarens eller bärarens förfäders liv, eller som symboliserar en känsla eller en attityd. Precis som med personliga totem kan en barbars tatueringar vara relaterade till en djuranda eller inte.",
+								"Varje tatuering som en barbar visar upp bidrar till individens identitet. Om din karaktär har tatueringar, hur ser de ut och vad representerar de?",
+								{
+									"type": "table",
+									"caption": "Tattoos",
+									"colLabels": [
+										"{@dice d6}",
+										"Tattoo"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Örnens vingar är brett spridda över din övre del av ryggen."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"På dina handryggar finns en grottbjörns tassar inristade."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Din klans symboler visas i viny-mönster längs armarna."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"En älgs horn är inristade på din rygg."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Bilder av ditt andedjur tatueras längs din vapenarm och hand."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Vargens ögon är markerade på ryggen för att hjälpa dig att se och avvärja onda andar."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Superstitions",
+							"entries": [
+								"Barbarerna har mycket olika sätt att förstå livet. Vissa följer gudar och söker vägledning från dessa gudar i naturens cykler och de djur de möter. Dessa barbarer tror att andar bor i världens växter och djur, och barbarerna ser till dem för att få omen och makt.",
+								"Andra barbarer litar bara på det blod som rinner i deras ådror och det stål de håller i sina händer. De har ingen användning för den osynliga världen, utan förlitar sig på sina sinnen för att jaga och överleva som de vilda djur de efterliknar.",
+								"Båda dessa attityder kan ge upphov till vidskepelser. Dessa föreställningar förs ofta vidare inom en familj eller delas mellan medlemmarna i en klan eller en jaktgrupp.",
+								"Om din barbariska karaktär har några vidskepelser, har du fått dem inlärda av din familj eller är de ett resultat av personlig erfarenhet?",
+								{
+									"type": "table",
+									"caption": "Superstition",
+									"colLabels": [
+										"{@dice d6}",
+										"Superstition"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Om du stör de dödas ben ärver du alla problem som plågade dem i livet."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Lita aldrig på en trollkarl. De är alla djävlar i förklädnad, särskilt de vänliga."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Dvärgarna har förlorat sin själ och är nästan som odöda. Det är därför de lever under jorden."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Magiska saker ger problem. Sov aldrig med ett magiskt föremål inom tre meter från dig."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"När du går genom en kyrkogård ska du bära silver, annars kan ett spöke hoppa in i din kropp."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Om en älva ser dig i ögonen försöker hon läsa dina tankar."
+										]
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 8
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Path of the Berserker",
+			"shortName": "Berserker",
+			"source": "PHB",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 49,
+			"srd": true,
+			"subclassFeatures": [
+				"Path of the Berserker|Barbarian||Berserker||3",
+				"Mindless Rage|Barbarian||Berserker||6",
+				"Intimidating Presence|Barbarian||Berserker||10",
+				"Retaliation|Barbarian||Berserker||14"
+			]
+		},
+		{
+			"name": "Path of the Totem Warrior",
+			"shortName": "Totem Warrior",
+			"source": "PHB",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 50,
+			"additionalSpells": [
+				{
+					"innate": {
+						"3": {
+							"ritual": [
+								"beast sense",
+								"speak with animals"
+							]
+						},
+						"10": {
+							"ritual": [
+								"commune with nature"
+							]
+						}
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Path of the Totem Warrior|Barbarian||Totem Warrior||3",
+				"Aspect of the Beast|Barbarian||Totem Warrior||6",
+				"Spirit Walker|Barbarian||Totem Warrior||10",
+				"Totemic Attunement|Barbarian||Totem Warrior||14"
+			]
+		},
+		{
+			"name": "Path of the Battlerager",
+			"shortName": "Battlerager",
+			"source": "SCAG",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 121,
+			"subclassFeatures": [
+				"Path of the Battlerager|Barbarian||Battlerager|SCAG|3",
+				"Reckless Abandon|Barbarian||Battlerager|SCAG|6",
+				"Battlerager Charge|Barbarian||Battlerager|SCAG|10",
+				"Spiked Retribution|Barbarian||Battlerager|SCAG|14"
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian (UA)",
+			"shortName": "Ancestral Guardian (UA)",
+			"source": "UABarbarianPrimalPaths",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Ancestral Guardian|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|3",
+				"Ancestral Shield|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|6",
+				"Consult the Spirits|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|10",
+				"Vengeful Ancestors|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|14"
+			]
+		},
+		{
+			"name": "Path of the Storm Herald (UA)",
+			"shortName": "Storm Herald (UA)",
+			"source": "UABarbarianPrimalPaths",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Storm Herald|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|3",
+				"Storm Soul|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|6",
+				"Shield of the Storm|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|10",
+				"Raging Storm|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|14"
+			]
+		},
+		{
+			"name": "Path of the Zealot (UA)",
+			"shortName": "Zealot (UA)",
+			"source": "UABarbarianPrimalPaths",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Zealot|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|3",
+				"Zealous Focus|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|6",
+				"Zealous Presence|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|10",
+				"Rage Beyond Death|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|14"
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian v2 (UA)",
+			"shortName": "Ancestral Guardian v2 (UA)",
+			"source": "UARevisedSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"spellcastingAbility": "wis",
+			"subclassFeatures": [
+				"Path of the Ancestral Guardian v2|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|3",
+				"Ancestral Shield|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|6",
+				"Consult the Spirits|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|10",
+				"Vengeful Ancestors|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|14"
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian",
+			"shortName": "Ancestral Guardian",
+			"source": "XGE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 9,
+			"spellcastingAbility": "wis",
+			"additionalSpells": [
+				{
+					"innate": {
+						"10": [
+							"augury",
+							"clairvoyance"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Path of the Ancestral Guardian|Barbarian||Ancestral Guardian|XGE|3",
+				"Spirit Shield|Barbarian||Ancestral Guardian|XGE|6",
+				"Consult the Spirits|Barbarian||Ancestral Guardian|XGE|10",
+				"Vengeful Ancestors|Barbarian||Ancestral Guardian|XGE|14"
+			]
+		},
+		{
+			"name": "Path of the Storm Herald",
+			"shortName": "Storm Herald",
+			"source": "XGE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 10,
+			"subclassFeatures": [
+				"Path of the Storm Herald|Barbarian||Storm Herald|XGE|3",
+				"Storm Soul|Barbarian||Storm Herald|XGE|6",
+				"Shielding Storm|Barbarian||Storm Herald|XGE|10",
+				"Raging Storm|Barbarian||Storm Herald|XGE|14"
+			]
+		},
+		{
+			"name": "Path of the Zealot",
+			"shortName": "Zealot",
+			"source": "XGE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 11,
+			"subclassFeatures": [
+				"Path of the Zealot|Barbarian||Zealot|XGE|3",
+				"Fanatical Focus|Barbarian||Zealot|XGE|6",
+				"Zealous Presence|Barbarian||Zealot|XGE|10",
+				"Rage beyond Death|Barbarian||Zealot|XGE|14"
+			]
+		},
+		{
+			"name": "Path of the Wild Soul (UA)",
+			"shortName": "Wild Soul (UA)",
+			"source": "UABarbarianAndMonk",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Wild Soul|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|3",
+				"Magic Reserves|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|6",
+				"Arcane Rebuke|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|10",
+				"Chaotic Fury|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|14",
+				"Improved Magic Reserves|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|14"
+			]
+		},
+		{
+			"name": "Path of the Beast (UA)",
+			"shortName": "Beast (UA)",
+			"source": "UA2020SubclassesPt1",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Beast|Barbarian||Beast (UA)|UA2020SubclassesPt1|3",
+				"Bestial Soul|Barbarian||Beast (UA)|UA2020SubclassesPt1|6",
+				"Infectious Fury|Barbarian||Beast (UA)|UA2020SubclassesPt1|10",
+				"Call the Hunt|Barbarian||Beast (UA)|UA2020SubclassesPt1|14"
+			]
+		},
+		{
+			"name": "Path of the Beast",
+			"shortName": "Beast",
+			"source": "TCE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 24,
+			"subclassFeatures": [
+				"Path of the Beast|Barbarian||Beast|TCE|3",
+				"Bestial Soul|Barbarian||Beast|TCE|6",
+				"Infectious Fury|Barbarian||Beast|TCE|10",
+				"Call the Hunt|Barbarian||Beast|TCE|14"
+			]
+		},
+		{
+			"name": "Path of Wild Magic",
+			"shortName": "Wild Magic",
+			"source": "TCE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 25,
+			"subclassFeatures": [
+				"Path of Wild Magic|Barbarian||Wild Magic|TCE|3",
+				"Bolstering Magic|Barbarian||Wild Magic|TCE|6",
+				"Unstable Backlash|Barbarian||Wild Magic|TCE|10",
+				"Controlled Surge|Barbarian||Wild Magic|TCE|14"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Rage",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"I strid kämpar du med en ursprunglig vildhet. På din tur kan du bli rasande som en bonusåtgärd.",
+				"När du är rasande får du följande fördelar om du inte bär en tung rustning:",
+				{
+					"type": "list",
+					"items": [
+						"Du har fördel på styrkekontroller och räddningsprov med styrka.",
+						"När du gör en närstridsattack med styrka får du en bonus på +2 på skaderollen. Denna bonus ökar med stigande nivå.",
+						"Du är motståndskraftig mot skador av slag, piercing och slashing."
+					]
+				},
+				"Om du kan kasta trollformler kan du inte kasta dem eller koncentrera dig på dem när du är rasande.",
+				"Din ilska varar i 1 minut. Den tar slut tidigt om du blir knockad {@condition unconscious} eller om din tur slutar och du inte har attackerat en fientlig varelse sedan din senaste tur eller tagit skada sedan dess. Du kan också avsluta din raseri på din tur som en bonusåtgärd.",
+				"När du har rasat maximalt antal gånger för din barbarnivå måste du vila länge innan du kan rasera igen. Du kan rasa 2 gånger på 1:a nivån, 3 på 3:e, 4 på 6:e, 5 på 12:e och 6 på 17:e."
+			]
+		},
+		{
+			"name": "Unarmored Defense",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"När du inte bär någon rustning är din Armor Class lika med 10 + din Dexterity-modifierare + din Constitution-modifierare. Du kan använda en sköld och ändå få den här fördelen."
+			]
+		},
+		{
+			"name": "Danger Sense",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"På nivå 2 får du en oanad känsla för när saker i närheten inte är som de borde vara, vilket ger dig en fördel när du undviker fara. Du har fördel på Dexterity räddningskast mot effekter som du kan se, såsom fällor och trollformler. För att få den här fördelen kan du inte vara {@condition blinded}, {@condition deafened} eller {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Reckless Attack",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Från och med nivå 2 kan du kasta bort all oro för försvar och attackera med våldsam desperation. När du gör din första attack på din tur kan du bestämma dig för att attackera hänsynslöst. Att göra det ger dig fördel på attackkast med närstridsvapen med hjälp av Strength under den här vändan, men attackkast mot dig har fördel fram till nästa vändning."
+			]
+		},
+		{
+			"name": "Survival Instincts",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level barbarian feature (replaces Danger Sense)}",
+				"Du blir skicklig i två av följande färdigheter: {@skill Animal Handling}, {@skill Medicine}, {@skill Nature}, {@skill Perception} eller {@skill Survival}.",
+				"Din kompetensbonus fördubblas för varje förmågekontroll du gör som använder någon av dessa färdigheter."
+			]
+		},
+		{
+			"name": "Primal Knowledge",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 3rd-level barbarian {@variantrule optional class features|tce|optional feature}}",
+				"När du når 3:e nivån och återigen vid 10:e nivån får du kompetens i en valfri färdighet från listan över färdigheter som är tillgängliga för barbarer på 1:a nivån."
+			]
+		},
+		{
+			"name": "Primal Path",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"På nivå 3 väljer du en väg som formar din raseri från listan över tillgängliga vägar. Ditt val ger dig egenskaper på 3:e nivån och igen på 6:e, 10:e och 14:e nivån."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"När du når 4:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"Från och med 5:e nivån kan du attackera två gånger, istället för en, när du gör {@action Attack}-åtgärden på din tur."
+			]
+		},
+		{
+			"name": "Fast Movement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"Från och med 5:e nivån ökar din hastighet med 10 fot när du inte bär en tung rustning."
+			]
+		},
+		{
+			"name": "Instinctive Pounce",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 5,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 5th-level barbarian feature (replaces Fast Movement)}",
+				"När en varelse avslutar sin tur inom 15 fot från dig kan du använda din reaktion för att flytta upp till halva din hastighet till ett utrymme närmare varelsen. Den här förflyttningen framkallar inte möjlighet till attacker."
+			]
+		},
+		{
+			"name": "Path Feature",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"På 6:e nivån får du en egenskap från din Primal Path."
+			]
+		},
+		{
+			"name": "Feral Instinct",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 7,
+			"entries": [
+				"På 7:e nivån är dina instinkter så välutvecklade att du har en fördel på initiativkast.",
+				"Om du blir överraskad i början av striden och inte är {@condition incapacitated} kan du agera normalt på din första vändning, men bara om du börjar bli rasande innan du gör något annat på den vändningen."
+			]
+		},
+		{
+			"name": "Instinctive Pounce",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 7,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 7th-level barbarian {@variantrule optional class features|tce|optional feature}}",
+				"Som en del av bonusåtgärden som du tar för att bli rasande kan du förflytta dig upp till halva din hastighet."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"När du når 8:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Brutal Critical (1 die)",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 9,
+			"entries": [
+				"Från och med 9:e nivån kan du kasta en extra vapenskadetärning när du bestämmer den extra skadan för en kritisk träff med en närstridsattack.",
+				"Detta ökar till två extra tärningar på 13:e nivån och tre extra tärningar på 17:e nivån."
+			]
+		},
+		{
+			"name": "Path feature",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"På 10:e nivån får du en egenskap från din Primal Path."
+			]
+		},
+		{
+			"name": "Relentless Rage",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 11,
+			"entries": [
+				"Från och med 11:e nivån kan ditt raseri få dig att fortsätta kämpa trots svåra sår. Om du sjunker till 0 träffpunkter medan du är rasande och inte dör direkt, kan du göra ett DC 10 Konstitutionssparande kast. Om du lyckas sjunker du istället till 1 träffpunkt.",
+				"Varje gång du använder denna funktion efter den första ökar DC med 5. När du avslutar en kort eller lång vila återställs DC till 10."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"När du når 12:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Brutal Critical (2 dice)",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 13,
+			"entries": [
+				"På 13:e nivån kan du kasta två extra vapenskadetärningar när du bestämmer den extra skadan för en kritisk träff med en närstridsattack.",
+				"Detta ökar till tre extra tärningar på 17:e nivån."
+			]
+		},
+		{
+			"name": "Path feature",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"På 14:e nivån får du en egenskap från din Primal Path."
+			]
+		},
+		{
+			"name": "Persistent Rage",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 15,
+			"entries": [
+				"Från och med 15:e nivån är ditt raseri så våldsamt att det slutar i förtid endast om du faller {@condition unconscious} eller om du väljer att avsluta det."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"När du når 16:e nivån kan du öka en valfri förmågaspoäng med 2 eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Brutal Critical (3 dice)",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 17,
+			"entries": [
+				"På 17:e nivån kan du kasta tre extra vapenskadetärningar när du bestämmer den extra skadan för en kritisk träff med en närstridsattack."
+			]
+		},
+		{
+			"name": "Indomitable Might",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"Från och med 18:e nivån kan du använda den totala summan för en styrkekontroll som är mindre än din styrkepoäng i stället för den totala summan om den totala summan är mindre än din styrkepoäng."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"När du når 19:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Primal Champion",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"På 20:e nivån förkroppsligar du kraften hos vildmarken. Dina poäng för styrka och konstitution ökar med 4. Din maximala poäng för dessa poäng är nu 24."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Path of the Berserker",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"För vissa barbarer är ilska ett medel för att nå ett mål - ett mål som är våld. Berserkarens väg är en väg av ohämmat raseri, glittrig av blod. När du går in i berserkarens raseri, är du upprymd av stridens kaos, utan hänsyn till din egen hälsa eller ditt eget välbefinnande.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Frenzy|Barbarian||Berserker||3"
+				}
+			]
+		},
+		{
+			"name": "Frenzy",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med när du väljer den här vägen på 3:e nivån kan du bli rasande när du blir rasande. Om du gör det kan du under din raseri göra en enda närstridsattack som en bonusåtgärd vid varje tur efter denna. När ditt raseri slutar lider du en nivå av {@condition exhaustion}."
+			]
+		},
+		{
+			"name": "Mindless Rage",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan du inte vara {@condition charmed} eller {@condition frightened} när du är rasande. Om du är {@condition charmed} eller {@condition frightened} när du börjar rasa är effekten upphävd under raseriets varaktighet."
+			]
+		},
+		{
+			"name": "Intimidating Presence",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Från och med 10:e nivån kan du använda din handling för att skrämma någon med din hotfulla närvaro. När du gör det väljer du en varelse som du kan se inom 30 fot från dig. Om varelsen kan se eller höra dig måste den lyckas med ett Visdomsbesparingskast (DC lika med 8 + din kompetensbonus + din Charismamodifierare) eller vara {@condition frightened} av dig fram till slutet av din nästa vändning. Vid efterföljande vändningar kan du använda din handling för att förlänga varaktigheten av denna effekt på {@condition frightened} varelsen till slutet av din nästa vändning. Den här effekten upphör om varelsen avslutar sin tur utanför synfältet eller mer än 60 fot från dig.",
+				"Om varelsen lyckas med sitt räddningskast kan du inte använda den här funktionen på den varelsen igen på 24 timmar."
+			]
+		},
+		{
+			"name": "Retaliation",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån kan du, när du tar skada av en varelse som befinner sig inom en radie av 1,5 meter från dig, använda din reaktion för att göra en närstridsattack mot den varelsen."
+			]
+		},
+		{
+			"name": "Bear",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"När du är rasande är du motståndskraftig mot all skada utom psykisk skada. Björnens ande gör dig tillräckligt stark för att stå emot alla bestraffningar."
+			]
+		},
+		{
+			"name": "Eagle",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"När du är rasande och inte bär tung rustning har andra varelser nackdel vid tillfälliga attacker mot dig, och du kan använda {@action Dash} som en bonusåtgärd på din tur. Örnens ande gör dig till ett rovdjur som lätt kan väva sig igenom striden."
+			]
+		},
+		{
+			"name": "Path of the Totem Warrior",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Totemkrigarens väg är en andlig resa då barbaren accepterar ett andedjur som guide, beskyddare och inspiration. I strid fyller din totemand dig med övernaturlig kraft och ger magiskt bränsle till ditt barbariska raseri.",
+				"De flesta barbariska stammar anser att ett totemdjur är släkt med en viss klan. I sådana fall är det ovanligt att en individ har mer än ett totemdjur, även om det finns undantag.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spirit Seeker|Barbarian||Totem Warrior||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Totem Spirit|Barbarian||Totem Warrior||3"
+				}
+			]
+		},
+		{
+			"name": "Wolf",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"När du är rasande har dina vänner fördel på närkampsattacker mot alla varelser som befinner sig inom 1,5 meter från dig och som är fientligt inställda till dig. Vargens ande gör dig till en ledare för jägare."
+			]
+		},
+		{
+			"name": "Spirit Seeker",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Din väg är en väg som söker samklang med den naturliga världen, vilket ger dig ett släktskap med djur. På 3:e nivån när du väljer denna väg får du förmågan att kasta {@spell beast sense} och {@spell speak with animals} trollformlerna, men endast som ritualer, enligt beskrivningen i {@book chapter 10|PHB|10|rituals}."
+			]
+		},
+		{
+			"name": "Totem Spirit",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På 3:e nivån, när du väljer denna väg, väljer du en totemand och får dess egenskap. Du måste tillverka eller skaffa ett fysiskt totemobjekt - en amulett eller liknande smycke - som innehåller päls eller fjädrar, klor, tänder eller ben från totemdjuret. Du får också, enligt ditt val, mindre fysiska attribut som påminner om din totemand. Om du till exempel har en björntotemand kan du bli ovanligt hårig och tjockhudad, eller om ditt totem är örnen blir dina ögon ljusgula.",
+				"Ditt totemdjur kan vara ett djur som är besläktat med de djur som anges här, men som är mer lämpligt för ditt hemland. Du kan till exempel välja en hök eller en gam i stället för en örn.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bear|Barbarian||Totem Warrior||3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Eagle|Barbarian||Totem Warrior||3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Elk|Barbarian|SCAG|Totem Warrior||3|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tiger|Barbarian|SCAG|Totem Warrior||3|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Wolf|Barbarian||Totem Warrior||3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bear",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Du får en björns styrka. Din bärförmåga (inklusive maximal last och maximalt lyft) fördubblas, och du har fördel på styrkeprov som görs för att knuffa, dra, lyfta eller bryta föremål."
+			]
+		},
+		{
+			"name": "Eagle",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Du får en örns synförmåga. Du kan se upp till en mils avstånd utan problem och kan urskilja även fina detaljer som om du tittade på något som inte är mer än 30 meter från dig. Dessutom ger svagt ljus inte nackdel på dina Wisdom ({@skill Perception})-kontroller."
+			]
+		},
+		{
+			"name": "Wolf",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Du får en vargs jaktkänsla. Du kan spåra andra varelser när du färdas i snabb takt, och du kan röra dig smygande när du färdas i normal takt."
+			]
+		},
+		{
+			"name": "Aspect of the Beast",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får du en magisk fördel baserad på ett totemdjur som du väljer. Du kan välja samma djur som du valde på 3:e nivån eller ett annat.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bear|Barbarian||Totem Warrior||6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Eagle|Barbarian||Totem Warrior||6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Elk|Barbarian|SCAG|Totem Warrior||6|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tiger|Barbarian|SCAG|Totem Warrior||6|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Wolf|Barbarian||Totem Warrior||6"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Walker",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån kan du kasta {@spell commune with nature}-besvärjelsen, men endast som en ritual. När du gör det, visas en andlig version av ett av de djur som du valde som Totem Spirit eller Aspect of the Beast för dig för att förmedla den information du söker."
+			]
+		},
+		{
+			"name": "Bear",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"När du är rasande har alla varelser inom 1,5 meter från dig som är fientliga mot dig nackdel på attackkast mot andra mål än dig eller en annan karaktär med den här egenskapen. En fiende är immun mot den här effekten om den inte kan se eller höra dig eller om den inte kan vara {@condition frightened}."
+			]
+		},
+		{
+			"name": "Eagle",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"När du är rasande har du en flyghastighet som är lika stor som din nuvarande gånghastighet. Den här fördelen fungerar bara i korta perioder; du faller om du slutar din tur i luften och inget annat håller dig uppe."
+			]
+		},
+		{
+			"name": "Wolf",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"När du är rasande kan du använda en bonusåtgärd på din tur för att slå en stor eller mindre varelse {@condition prone} när du träffar den med ett närstridsvapen."
+			]
+		},
+		{
+			"name": "Totemic Attunement",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån får du en magisk fördel baserad på ett totemdjur av ditt val. Du kan välja samma djur som du valde tidigare eller ett annat.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bear|Barbarian||Totem Warrior||14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Eagle|Barbarian||Totem Warrior||14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Elk|Barbarian|SCAG|Totem Warrior||14|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tiger|Barbarian|SCAG|Totem Warrior||14|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Wolf|Barbarian||Totem Warrior||14"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Battlerager",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"entries": [
+				"Kuldjargh (bokstavligen \"yxidiot\") på dvärgiska, battleragers är dvärgar som följer krigsgudarna och följer Battleragers väg. De specialiserar sig på att bära skrymmande, {@item spiked armor|scag} och kasta sig in i strid, slå med själva kroppen och ge sig hän åt stridens raseri.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Restriction—Dwarves Only|Barbarian||Battlerager|SCAG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Battlerager Armor|Barbarian||Battlerager|SCAG|3"
+				}
+			]
+		},
+		{
+			"name": "Battlerager Armor",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du väljer den här vägen på 3:e nivån får du förmågan att använda {@item spiked armor|scag} som vapen.",
+				"När du bär {@item spiked armor|scag} och är rasande kan du använda en bonusåtgärd för att göra en närstridsattack med dina pansarspikar mot ett mål inom 1,5 meter från dig. Om attacken träffar ger spikarna {@damage 1d4} genomträngande skada. Du använder din styrka-modifierare för attack- och skaderollen.",
+				"När du använder åtgärden {@action Attack} för att gripa tag i en varelse får målet dessutom 3 stickande skador om du lyckas med din gripkontroll."
+			]
+		},
+		{
+			"name": "Restriction—Dwarves Only",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Endast dvärgar kan följa Battleragers väg. Battlerager fyller en särskild nisch i det dvärgiska samhället och kulturen.",
+				"Din DM kan häva denna begränsning för att bättre passa kampanjen. Begränsningen finns för Forgotten Realms. Den kanske inte gäller för din DM:s miljö eller din DM:s version av Realms."
+			]
+		},
+		{
+			"name": "Reckless Abandon",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån, när du använder Reckless Attack när du är rasande, får du också tillfälliga träffpoäng lika med din Constitution-modifierare (minst 1). De försvinner om det finns några kvar när ditt raseri upphör."
+			]
+		},
+		{
+			"name": "Battlerager Charge",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Från och med 10:e nivån kan du utföra åtgärden {@action Dash} som en bonusåtgärd när du är rasande."
+			]
+		},
+		{
+			"name": "Spiked Retribution",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån, när en varelse inom 1,5 meter från dig träffar dig med en närstridsattack, tar angriparen 3 stickande skador om du är rasande, om du inte är {@condition incapacitated} och om du har {@item spiked armor|scag} på dig."
+			]
+		},
+		{
+			"name": "Path of the Beast",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Barbarer som vandrar på Odjurets väg hämtar sin vrede från en bestialisk gnista som brinner i deras själar. Detta odjur bryter fram i raseriets kval och förvandlar barbaren fysiskt.",
+				"En sådan barbar kan vara bebodd av en urand eller härstamma från formskiftare. Du kan välja ursprunget till din vilda kraft eller bestämma det genom att rulla på bordet Origin of the Beast.",
+				{
+					"type": "table",
+					"caption": "Origin of the Beast",
+					"colLabels": [
+						"d4",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"En av dina föräldrar är en lycanthrop och du har ärvt en del av deras förbannelse."
+						],
+						[
+							"2",
+							"Du härstammar från en archdruid och har ärvt förmågan att delvis byta skepnad."
+						],
+						[
+							"3",
+							"En fey ande gav dig förmågan att anta olika bestialiska aspekter."
+						],
+						[
+							"4",
+							"En uråldrig djurisk ande bor i dig, vilket gör att du kan gå den här vägen."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Form of the Beast|Barbarian||Beast|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Form of the Beast",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of the Beast feature}",
+				"När du blir rasande kan du förvandlas och avslöja den bestialiska kraften inom dig. Tills raseriet upphör manifesterar du ett naturligt vapen. Det räknas som ett enkelt närstridsvapen för dig, och du lägger till din styrka-modifierare till attack- och skadegörelser när du attackerar med det, som vanligt.",
+				"Du väljer vapnets form varje gång du blir rasande:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bite",
+							"entry": "Din mun förvandlas till en bestialisk munkorg eller stora käkar (du väljer själv). Den ger {@damage 1d8} genomträngande skada vid en träff. En gång på varje tur när du skadar en varelse med det här bettet får du tillbaka ett antal träffpoäng som är lika med din färdighetsbonus, förutsatt att du har mindre än hälften av dina träffpoäng när du träffar."
+						},
+						{
+							"type": "item",
+							"name": "Claws",
+							"entry": "Var och en av dina händer förvandlas till en klo, som du kan använda som ett vapen om den är tom. Den ger {@damage 1d6} snittskada vid en träff. En gång under varje varv när du attackerar med en klo med hjälp av {@action Attack}-åtgärden kan du göra ytterligare en kloattack som en del av samma åtgärd."
+						},
+						{
+							"type": "item",
+							"name": "Tail",
+							"entry": "Du får en piskande, taggig svans som ger {@damage 1d8} stickande skada vid en träff och har egenskapen reach. Om en varelse som du kan se inom tre meter från dig träffar dig med en attackrulle kan du använda din reaktion för att svepa din svans och kasta en {@dice d8}, vilket ger en bonus på din AC lika med det kastade talet, vilket potentiellt gör att attacken missar dig."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bestial Soul",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Path of the Beast feature}",
+				"Den vilda kraften inom dig ökar, vilket gör att de naturliga vapnen i din Form of the Beast räknas som magiska när det gäller att övervinna motstånd och immunitet mot icke-magiska attacker och skador.",
+				"Du kan också ändra din form för att anpassa dig till din omgivning. När du avslutar en kort eller lång vila väljer du en av följande fördelar, som varar tills du avslutar nästa korta eller långa vila:",
+				{
+					"type": "list",
+					"items": [
+						"Du får en simhastighet som är lika stor som din gånghastighet, och du kan andas under vatten.",
+						"Du får en klättringshastighet som är lika med din gånghastighet, och du kan klättra på svåra ytor, inklusive upp och ner i tak, utan att behöva göra en förmågekontroll.",
+						"När du hoppar kan du göra en styrkekontroll ({@skill Athletics}) och förlänga ditt hopp med ett antal fot som är lika stort som kontrollens totala värde. Du kan göra den här specialkontrollen endast en gång per vändning."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infectious Fury",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Path of the Beast feature}",
+				"När du träffar en varelse med dina naturliga vapen medan du är rasande kan odjuret inom dig förbanna din måltavla med rabiat raseri. Målet måste lyckas med ett Visdomsbesparingskast (DC lika med 8 + din konstitutionsmodifierare + din kompetensbonus) eller drabbas av en av följande effekter (ditt val):",
+				{
+					"type": "list",
+					"items": [
+						"Målet måste använda sin reaktion för att göra en närstridsattack mot en annan valfri varelse som du kan se.",
+						"Målet tar {@damage 2d12} psykisk skada."
+					]
+				},
+				"Du kan använda den här egenskapen ett antal gånger som är lika med din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Call the Hunt",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Path of the Beast feature}",
+				"Odjuret inom dig blir så kraftfullt att du kan sprida dess grymhet till andra och vinna motståndskraft genom att de ansluter sig till din jakt. När du börjar bli rasande kan du välja ett antal andra villiga varelser som du kan se inom 30 fot från dig som är lika med din konstitutionsmodifierare (minst en varelse).",
+				"Du får 5 tillfälliga träffpoäng för varje varelse som accepterar den här egenskapen. Tills raseriet upphör kan de valda varelserna använda följande fördel en gång var och en av sina turer: När varelsen träffar ett mål med en attackrulle och orsakar skada på det kan varelsen kasta en {@dice d6} och få en bonus på skadan som är lika stor som det kastade antalet.",
+				"Du kan använda den här egenskapen ett antal gånger som är lika med din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Path of Wild Magic",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Många platser i multiversumet är fyllda av skönhet, intensiva känslor och vild magi; Feywild, de övre planen och andra riken med övernaturlig kraft utstrålar sådana krafter och kan påverka människor på djupet. Som folk med djupa känslor är barbarer särskilt mottagliga för dessa vilda influenser, och vissa barbarer förvandlas av magin. Dessa magiskt påverkade barbarer vandrar på den vilda magins väg. Elf-, tiefling-, aasimar- och genasi-barbarer söker sig ofta till denna väg, ivriga att manifestera sina förfäders utomvärldsmagi.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Magic Awareness|Barbarian||Wild Magic|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Wild Surge|Barbarian||Wild Magic|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Magic Awareness",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of Wild Magic feature}",
+				"Som en åtgärd kan du öppna din medvetenhet för närvaron av koncentrerad magi. Fram till slutet av din nästa vändning vet du var alla trollformler eller magiska föremål inom 60 fot från dig som inte är bakom totalt skydd finns. När du känner av en trollformel får du veta vilken magisk skola den tillhör.",
+				"Du kan använda den här egenskapen ett antal gånger som är lika med din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Wild Surge",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of Wild Magic feature}",
+				"Den magiska energin som kokar inom dig bryter ibland ut ur dig. När du blir rasande kastar du på Wild Magic-tabellen för att avgöra vilken magisk effekt som produceras.",
+				"Om effekten kräver ett räddningskast är DC lika med 8 + din kompetensbonus + din konstitutionsmodifierare.",
+				{
+					"type": "table",
+					"caption": "Wild Magic",
+					"colLabels": [
+						"d8",
+						"Magical Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Skuggiga rännor slår sig runt dig. Varje varelse av ditt val som du kan se inom 30 fot från dig måste lyckas med ett räddningskast i konstitutionen eller ta {@damage 1d12} nekrotisk skada. Du får också {@dice 1d12} tillfälliga träffpunkter."
+						],
+						[
+							"2",
+							"Du teleporterar dig upp till 30 fot till ett obebott utrymme som du kan se. Tills ditt raseri slutar kan du använda den här effekten igen vid varje tur som en bonusåtgärd."
+						],
+						[
+							"3",
+							"En immateriell ande, som ser ut som en {@creature flumph} eller en {@creature pixie} (ditt val), dyker upp inom 5 fot från en varelse av ditt val som du kan se inom 30 fot från dig. I slutet av den aktuella vändningen exploderar anden, och varje varelse inom 5 fot från den måste lyckas med ett räddningskast i Dexterity eller ta {@damage 1d6} kraftskada. Tills ditt raseri slutar kan du använda den här effekten igen, och kalla på en annan ande, på var och en av dina vändor som en bonusåtgärd."
+						],
+						[
+							"4",
+							"Magi ger ett valfritt vapen som du håller i handen. Tills ditt raseri slutar ändras vapnets skadetyp till kraft och det får egenskaperna ljus och kastat, med en normal räckvidd på 20 fot och en lång räckvidd på 60 fot. Om vapnet lämnar din hand, dyker vapnet upp i din hand igen i slutet av den aktuella vändningen."
+						],
+						[
+							"5",
+							"När en varelse träffar dig med en attackrulle innan ditt raseri slutar tar den varelsen {@damage 1d6} kraftskada, eftersom magin slår ut som hämnd."
+						],
+						[
+							"6",
+							"Tills ditt raseri upphör är du omgiven av flerfärgade, skyddande ljus; du får en +1 bonus på AC, och när du befinner dig inom tre meter från dig får dina allierade samma bonus."
+						],
+						[
+							"7",
+							"Blommor och vinrankor växer tillfälligt runt omkring dig. Tills ditt raseri upphör är marken inom 15 fot från dig {@quickref difficult terrain||3} för dina fiender."
+						],
+						[
+							"8",
+							"En ljusbåge skjuter ut från ditt bröst. En annan varelse av ditt val som du kan se inom 30 fot från dig måste lyckas med ett räddningskast i konstitutionen eller ta {@damage 1d6} strålningsskada och vara {@condition blinded} tills början av din nästa tur. Tills ditt raseri slutar kan du använda den här effekten igen på var och en av dina turer som en bonushandling."
+						]
+					],
+					"data": {
+						"tableInclude": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Bolstering Magic",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Path of Wild Magic feature}",
+				"Du kan utnyttja din vilda magi för att stärka dig själv eller en följeslagare. Som en handling kan du röra vid en varelse (som kan vara du själv) och ge den varelsen en av följande fördelar som du väljer:",
+				{
+					"type": "list",
+					"items": [
+						"I 10 minuter kan varelsen kasta en {@dice d3} när den gör en anfalls- eller förmågekontroll och lägga till det kastade antalet till {@dice d20} kastet.",
+						"Rulla en {@dice d3}. Varelsen återfår en förbrukad trollformelplats, vars nivå är lika med det antal som kastades eller lägre (varelsens val). När en varelse får den här förmånen kan den inte få den igen förrän efter en lång vila."
+					]
+				},
+				"Du kan utföra den här åtgärden ett antal gånger som motsvarar din kompetensbonus, och du återfår alla förbrukade användningsområden när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Unstable Backlash",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Path of Wild Magic feature}",
+				"När du blir hotad under ditt raseri kan magin inom dig slå ut; omedelbart efter att du tar skada eller misslyckas med ett räddningskast när du är i raseri kan du använda din reaktion för att rulla på Wild Magic-tabellen och omedelbart producera den effekt som du har rullat. Den här effekten ersätter din nuvarande Wild Magic-effekt."
+			]
+		},
+		{
+			"name": "Controlled Surge",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Path of Wild Magic feature}",
+				"När du kastar på Wild Magic-bordet kan du kasta tärningen två gånger och välja vilken av de två effekterna du vill utlösa. Om du kastar samma nummer på båda tärningarna kan du ignorera numret och välja vilken effekt som helst på bordet."
+			]
+		},
+		{
+			"name": "Path of the Beast",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"entries": [
+				"Barbarer som vandrar på Beast's Path hämtar sitt raseri från en bestialisk gnista som brinner i deras själar. Detta odjur skriker för att släppas loss och bryter ut i raseriets kval.",
+				"De som går denna väg kan vara bebodda av en urand eller härstamma från formskiftare. Du kan välja ursprunget till din vilda kraft eller bestämma det slumpmässigt genom att rulla på bordet Origin of the Beast.",
+				{
+					"type": "table",
+					"caption": "Origin of the Beast",
+					"colLabels": [
+						"d4",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"En av dina föräldrar är en lycantrop och du har ärvt en del av förbannelsen."
+						],
+						[
+							"2",
+							"Du härstammar från en legendarisk druid, vilket visar sig i din förmåga att delvis byta skepnad."
+						],
+						[
+							"3",
+							"En fey ande gav dig förmågan att anta olika bestialiska aspekter."
+						],
+						[
+							"4",
+							"En uråldrig djurisk ande bor i dig, vilket gör att du kan gå den här vägen."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Form of the Beast|Barbarian||Beast (UA)|UA2020SubclassesPt1|3"
+				}
+			]
+		},
+		{
+			"name": "Form of the Beast",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of the Beast feature}",
+				"När du blir rasande kan du förvandlas och avslöja den bestialiska kraften inom dig. Tills ditt raseri slutar manifesterar du ett naturligt närstridsvapen och väljer ett av följande alternativ varje gång du raserar:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bite",
+							"entry": "Din mun förvandlas till en bestialisk nos eller stora mandibler (du väljer själv). Ditt bett ger {@damage 1d8} genomträngande skada vid en träff. En gång på varje tur när du skadar en varelse med ditt bett får du tillbaka ett antal träffpunkter som är lika med din konstitutionsmodifierare (minst 1 träffpunkt)."
+						},
+						{
+							"type": "item",
+							"name": "Claws",
+							"entry": "Dina händer förvandlas till klor som ger {@damage 1d6} snittskada vid en träff. När du tar {@action Attack}-åtgärden på din tur och gör en attack med dina klor kan du göra ytterligare en attack med dina klor som en del av samma åtgärd."
+						},
+						{
+							"type": "item",
+							"name": "Tail",
+							"entry": "Du odlar en piskande, taggig svans som ger {@damage 1d12} genomträngande skada vid en träff och har egenskapen räckvidd."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bestial Soul",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Path of the Beast feature}",
+				"Den vilda anden inom dig växer i kraft, vilket gör att de naturliga vapnen i din Form of the Beast räknas som magiska för att övervinna motstånd och immunitet mot icke-magiska attacker och skador.",
+				"Du kan också kalla på den vilda anden för att hjälpa dig att anpassa dig till din omgivning. När du avslutar en kort eller lång vila väljer du en av följande fördelar, som varar tills du avslutar en kort eller lång vila:",
+				{
+					"type": "list",
+					"items": [
+						"Du får en simhastighet som är lika stor som din gånghastighet, och du kan andas under vatten.",
+						"Du får en klättringshastighet som är lika med din gånghastighet, och du kan klättra på svåra ytor, inklusive upp och ner i tak, utan att behöva göra en förmågekontroll.",
+						"När du hoppar kan du göra en styrkekontroll ({@skill Athletics}) och förlänga ditt hopp med ett antal fot som är lika stort som kontrollens totala värde. Du kan göra den här specialkontrollen endast en gång per vändning."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infectious Fury",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Path of the Beast feature}",
+				"När du träffar en varelse med dina naturliga vapen medan du är rasande kan anden inom dig förbanna din måltavla med rabiat raseri. Målet måste lyckas med ett Visdomsbesparingskast (DC lika med 8 + din konstitutionsmodifierare + din kompetensbonus) eller drabbas av en av följande effekter (ditt val):",
+				{
+					"type": "list",
+					"items": [
+						"Målet måste använda sin reaktion för att göra en närstridsattack mot en annan valfri varelse som du kan se.",
+						"Målet tar {@damage 2d12} psykisk skada."
+					]
+				},
+				"Du kan använda den här funktionen ett antal gånger som är lika med din konstitutionsmodifierare (minst en gång). Du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Call the Hunt",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Path of the Beast feature}",
+				"Odjuret inom dig blir så kraftfullt att du kan sprida dess grymhet till dina allierade. När du börjar rasa kan du välja ett antal villiga varelser som du kan se inom 30 fot från dig som är lika med din konstitutionsmodifierare (minst en varelse). Tills ditt raseri slutar får de valda varelserna egenskapen Reckless {@action Attack} och du har fördel på räddningskast mot att vara {@condition frightened}. Du får också 5 tillfälliga träffpunkter för varje varelse som accepterar förmånen. Du kan använda den här egenskapen ett antal gånger som är lika med din konstitutionsmodifierare (minst en gång). Du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Path of the Wild Soul",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"entries": [
+				"Feywilds rike är fullt av skönhet, oförutsägbara känslor och vild magi. En barbar som utsätts för denna värld känner känslor kraftfullt och magi mättar deras kropp.",
+				"När en barbar som följer den här vägen rasar är det ett bröl för frihet, en explosion av uttryck som manifesterar sig på oförutsägbara sätt.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Lingering Magic|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Wild Surge|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|3"
+				}
+			]
+		},
+		{
+			"name": "Lingering Magic",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På tredje nivån reagerar din kropp på närvaron av magi. Du kan kasta {@spell detect magic} trollformeln utan att använda en trollformelplats eller komponenter. Konstitution är din trollformelseförmåga för den här besvärjelsen. Du glöder svagt en färg som motsvarar den magiska skola du upptäcker (du väljer färgerna).",
+				"Du kan använda den här funktionen ett antal gånger som är lika med din konstitutionsmodifierare (minst en gång). Du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Wild Surge",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med 3:e nivån kan du få magiska utbrott från dig när du rasar. När du börjar rasa kastar du på Wild Surge-tabellen för att avgöra vilken magisk effekt som produceras.",
+				"Om den vilda vågen kräver ett räddningskast är DC:n lika med 8 + din kompetensbonus + din konstitutionsmodifierare.",
+				{
+					"type": "table",
+					"caption": "Wild Surge",
+					"colLabels": [
+						"d8",
+						"Effect"
+					],
+					"colStyles": [
+						"col-1 text-center",
+						"col-11"
+					],
+					"rows": [
+						[
+							1,
+							"Nekrotisk energi sprids från dig. Varje varelse inom 30 fot från dig tar {@damage 1d10} nekrotisk skada, och du får tillfälliga träffpoäng lika med summan av den nekrotiska skadan som orsakas av varelserna."
+						],
+						[
+							2,
+							"Du teleporterar dig upp till 6 meter till ett obebott utrymme som du kan se. Tills ditt raseri slutar kan du aktivera den här effekten igen vid varje tur som en bonusåtgärd."
+						],
+						[
+							3,
+							"Du framkallar {@dice 1d4} immateriella andar som ser ut som {@creature flumph||flumphs} i obebodda utrymmen inom 30 fot från dig. Varje ande flyger omedelbart 30 fot i en slumpmässig riktning. I slutet av din tur exploderar alla andar och varje varelse inom 5 fot från en eller flera av dem måste lyckas med ett räddningskast i Dexterity eller ta {@damage 2d8} kraftskada."
+						],
+						[
+							4,
+							"Arkane energi omsluter dig. Tills ditt raseri upphör får du en +2 bonus på AC, och när en varelse inom tre meter från dig träffar dig med en attack tar den varelsen kraftskada lika med din konstitutionsmodifierare."
+						],
+						[
+							5,
+							"Växtlivet växer tillfälligt runt dig: tills ditt raseri slutar är marken inom tre meter från dig {@quickref difficult terrain||3}."
+						],
+						[
+							6,
+							"Arkaisk energi kopplar in sig på de omkringliggande personernas sinnen. Varje varelse inom 30 fot från dig måste lyckas med ett Visdomsbesparingskast annars ser du en glimt av varelsens tankar och får veta hur den planerar att attackera dig. Som ett resultat har varelsen nackdel på attackkast mot dig fram till början av din nästa tur."
+						],
+						[
+							7,
+							"Skuggor vävs runt ett valfritt vapen som du håller i handen. Tills ditt raseri slutar, ger ditt vapen psykisk skada istället för att ge blåslagning, skärande eller genomträngande skada, och det får egenskaperna ljus och kastat med en normal räckvidd på 20 fot och en lång räckvidd på 60 fot. Om du tappar vapnet eller kastar det, upplöses vapnet och dyker upp igen i din hand i slutet av din tur."
+						],
+						[
+							8,
+							"En strål av strålande ljus utgår från ditt bröst i en 5 fot bred och 60 fot lång linje. Varje varelse i linjen måste lyckas med ett räddningskast i konstitutionen eller ta {@damage 2d8} strålningsskada och vara {@condition blinded} tills början av din nästa tur."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Magic Reserves",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån kan du kanalisera magin i dig till andra varelser. Som en handling kan du röra vid en varelse och kasta en {@dice d4}. Varelsen återfår en förbrukad trollformelplats av en nivå som är lika med det antal som kastats. Om den varelse du rör vid inte kan återfå en trollformelplats på den nivån får varelsen istället tillfälliga träffpoäng som är lika med fem gånger det antal som kastades.",
+				"Du tar kraftskador som är lika med fem gånger det antal som kastades.",
+				"När du når 14:e nivån i den här klassen ökar du tärningen till {@dice d6}."
+			]
+		},
+		{
+			"name": "Arcane Rebuke",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån kan magin som gnistrar i din själ slå ut. När en varelse tvingar dig att göra ett räddningskast medan du är rasande kan du använda din reaktion för att ge {@damage 3d6} kraftskada till den varelsen."
+			]
+		},
+		{
+			"name": "Chaotic Fury",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån blir du en källa till vild magi när du är rasande. Som en bonusåtgärd kan du göra en ny roll på Wild Surge-tabellen och ersätta din nuvarande effekt med den nya."
+			]
+		},
+		{
+			"name": "Improved Magic Reserves",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån ökar du dina magiska reserver till {@dice d6}."
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"entries": [
+				"Vissa barbarer kommer från kulturer som vördar sina förfäder. Dessa stammar lär sig att krigare från det förflutna lever kvar i världen som mäktiga andar som kan vägleda och skydda de levande. När barbarer som följer den här vägen rasar går de över barriären till andevärlden och anropar dessa skyddsandar om hjälp.",
+				"Barbarer som använder sig av sina förfäders väktare kämpar för att skydda sina stammar och sina allierade. Med andarnas hjälp kan de hindra sina fiender samtidigt som de slår kraftfulla slag mot dem.",
+				"För att stärka banden till sina förfäders väktare täcker barbarer som följer denna väg sig själva med genomarbetade tatueringar som hyllar deras förfäders gärningar. Dessa tatueringar berättar episka sagor om segrar mot fruktansvärda monster och andra fruktansvärda rivaler.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ancestral Protectors|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|3"
+				}
+			]
+		},
+		{
+			"name": "Ancestral Protectors",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med när du väljer den här vägen på 3:e nivån dyker spektralkrigare upp när du rasar. Dessa krigare distraherar en fiende som du utser och hindrar dess försök att undvika dig. Medan du rasar kan du använda en bonushandling på din tur för att välja en varelse som du kan se inom en radie av 5 fot från dig. Fram till början av din nästa vändning eller tills ditt raseri upphör har den valda varelsen nackdel på alla attackkast som inte riktar sig mot dig, och om varelsen utför {@action Disengage} åtgärden inom 5 fot från dig halveras dess hastighet fram till slutet av dess vändning."
+			]
+		},
+		{
+			"name": "Ancestral Shield",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan de skyddsandar som hjälper dig ge skydd åt dina allierade. Om du är rasande och en allierad som du kan se inom 30 fot från dig tar dödande, genomträngande eller skärande skada, kan du använda din reaktion för att överföra din motståndskraft mot dessa skadetyper till den allierade. Motståndet gäller för den inkommande skadan. Fram till början av din nästa tur behåller den allierade motståndet och du saknar det, om du inte också har det från en annan källa än raseri."
+			]
+		},
+		{
+			"name": "Consult the Spirits",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån får du förmågan att rådgöra med dina förfäders andar. Precis innan du gör en intelligens- eller visdomskontroll kan du ge dig själv en fördel på kontrollen. Du kan använda den här egenskapen tre gånger, och du återfår förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Vengeful Ancestors",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån blir dina förfäders andar tillräckligt kraftfulla för att slå dina fiender. När du eller en allierad som du kan se inom 30 fot från dig skadas av en närkampsattack medan du är rasande kan du använda din reaktion för att få angriparen att ta {@damage 2d8} kraftskada från andarna."
+			]
+		},
+		{
+			"name": "Path of the Storm Herald",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"entries": [
+				"Typiska barbarer bär på en vrede som bor i deras inre. Deras raseri ger dem överlägsen styrka, hållbarhet och snabbhet. Barbarer som följer Storm Heralds väg lär sig istället att omvandla sin vrede till en mantel av urmagi som virvlar runt omkring dem. När en barbar på denna väg är i raseri kan han eller hon utnyttja naturen för att skapa kraftfulla, magiska effekter.",
+				"Stormheralds är vanligtvis elitmästare som tränar tillsammans med druider, rangers och andra som svurit att skydda naturområdet. Andra stormheraldiker finslipar sitt hantverk i elitloger som grundats i regioner som drabbats av stormar, i de frusna områdena vid världens ände eller djupt inne i de hetaste öknarna.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Storm of Fury|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|3"
+				}
+			]
+		},
+		{
+			"name": "Storm of Fury",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du väljer den här vägen på tredje nivån väljer du ett av följande alternativ: öken, hav eller tundra. Den miljö du väljer formar karaktären på den storm du framkallar när du rasar. När du rasar utstrålar du en aura i en radie på tre meter. Effekterna av denna aura beror på din valda miljö.",
+				{
+					"type": "entries",
+					"name": "Desert",
+					"entries": [
+						"Varje fiende som slutar sin tur i din aura tar brandskador lika med 2 + din barbarnivå dividerat med 4."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sea",
+					"entries": [
+						"I slutet av varje tur kan du välja en varelse i din aura förutom dig själv. Målet måste göra ett Dexterity räddningskast mot en DC som är lika med 8 + din kompetensbonus + din konstitutionsmodifierare. Målet tar {@damage 2d6} blixtskada vid ett misslyckat räddningsförsök, och hälften så mycket skada vid ett lyckat räddningsförsök. Denna skada ökar till {@dice 3d6} på 10:e nivån och till {@dice 4d6} på 15:e nivån."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tundra",
+					"entries": [
+						"Varje fiende som slutar sin tur i din aura tar kallskador lika med 2 + din barbarnivå dividerad med 4."
+					]
+				}
+			]
+		},
+		{
+			"name": "Storm Soul",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån ger din koppling till stormens kraft dig ytterligare förmågor baserade på den miljö du valde på 3:e nivån.",
+				{
+					"type": "entries",
+					"name": "Desert",
+					"entries": [
+						"Du får motstånd mot brandskador och drabbas inte av effekterna av extrem värme."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sea",
+					"entries": [
+						"Du får motstånd mot blixtskador och kan andas under vatten."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tundra",
+					"entries": [
+						"Tundra. Du får resistens mot köldskador och drabbas inte av effekterna av extrem kyla."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shield of the Storm",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån lär du dig att använda din behärskning av stormen för att skydda dina allierade. När du rasar får allierade inom din aura fördelarna av din egenskap Storm Soul."
+			]
+		},
+		{
+			"name": "Raging Storm",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån blir kraften i den storm du kanaliserar starkare.",
+				{
+					"type": "entries",
+					"name": "Desert",
+					"entries": [
+						"Marken runt omkring dig blir som sand som rör sig. Varje fiende som försöker förflytta sig mer än 5 fot per tur på marken medan den befinner sig i din aura måste göra ett räddningskast i styrka (DC 8 + din kompetensbonus + din konstitutionsmodifierare). Vid ett misslyckat räddningsförsök sjunker varelsens hastighet till 0 fram till början av nästa vändning."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sea",
+					"entries": [
+						"Brusande vindar sliter sig genom området runt omkring dig. Varje varelse i din aura som du träffar med en attack måste göra ett räddningskast i styrka (DC 8 + din färdighetsbonus + din styrka-modifierare) eller slås omkull {@condition prone}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tundra",
+					"entries": [
+						"Luften runt omkring dig gör dina fiender kallt långsamma. Området inom din aura är {@quickref difficult terrain||3} för dina fiender."
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Zealot",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"entries": [
+				"Vissa gudomar inspirerar sina anhängare till att sätta sig i ett vilt slagfält. Dessa barbarer är fanatiker - krigare som kanaliserar sin vrede till kraftfulla uppvisningar av gudomlig makt.",
+				"En mängd olika gudar i D&D:s världar inspirerar sina anhängare att välja denna väg. Tempus från Forgotten Realms och Hextor och Erythnul från Greyhawk är alla utmärkta exempel. I allmänhet är de gudar som inspirerar fanatiker gudar för strid, förstörelse och våld. Alla är inte onda, men få är goda.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Divine Fury|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Warrior of the Gods|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|3"
+				}
+			]
+		},
+		{
+			"name": "Divine Fury",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med när du väljer den här vägen på 3:e nivån kan du kanalisera gudomlig vrede när du börjar rasa. Om du gör det blir du höljd i en aura av gudomlig kraft tills raseriet upphör. I slutet av var och en av dina turer under den varaktigheten tar varje varelse inom en halv meter från dig skada som är lika med {@dice 1d6} + halva din barbariska nivå. Skadan är nekrotisk eller radiant; du väljer skadetyp när du får den här egenskapen."
+			]
+		},
+		{
+			"name": "Warrior of the Gods",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På 3:e nivån är din själ märkt för oändlig kamp. Om en besvärjelse skulle ha som enda effekt att återställa dig till liv (men inte till odödlighet) behöver inte kastaren några materiella komponenter för att kasta besvärjelsen på dig."
+			]
+		},
+		{
+			"name": "Zealous Focus",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På sjätte nivån kan den gudomliga kraft som driver din vrede skydda dig från skada. Om du misslyckas med ett räddningskast när du är rasande kan du istället lyckas med det räddningskastet som en reaktion. Om du gör det avslutar du dock omedelbart ditt raseri, och du kan inte rasa igen förrän du avslutar en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Zealous Presence",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån lär du dig att kanalisera gudomlig kraft för att inspirera andra till fanatism. Som en handling kan du yla av raseri och släppa ut ett stridsrop som genomsyras av gudomlig energi. Varje allierad inom 60 fot från dig får fördel på attackkast och räddningskast fram till början av din nästa vändning.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Rage Beyond Death",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med den 14:e nivån kan du tack vare den gudomliga kraft som driver ditt raseri avvärja dödliga slag.",
+				"När du är rasande får du inte 0 träffpunkter {@condition unconscious}. Du måste fortfarande göra räddningskast för att rädda döden, och du drabbas av de normala effekterna av att ta skada när du har 0 träffpunkter. Men om du skulle dö på grund av misslyckade räddningskast för döden dör du inte förrän ditt raseri upphör."
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian v2",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"entries": [
+				"Vissa barbarer kommer från kulturer som vördar sina förfäder. Dessa stammar lär sig att krigare från det förflutna lever kvar i världen som mäktiga andar som kan vägleda och skydda de levande. När barbarer som följer den här vägen rasar går de över barriären till andevärlden och anropar dessa skyddsandar om hjälp.",
+				"Barbarer som använder sig av sina förfäders väktare kämpar för att skydda sina stammar och sina allierade. Med andarnas hjälp kan de hindra sina fiender samtidigt som de slår kraftfulla slag mot dem.",
+				"För att stärka banden till sina förfäders väktare täcker barbarer som följer denna väg sig själva med genomarbetade tatueringar som hyllar deras förfäders gärningar. Dessa tatueringar berättar episka sagor om segrar mot fruktansvärda monster och andra fruktansvärda rivaler.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ancestral Protectors|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Ancestral Protectors",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med när du väljer den här vägen på 3:e nivån dyker spektralkrigare upp när du rasar. Dessa krigare distraherar en fiende som du utser och hindrar dess försök att undvika dig. Medan du är rasande blir den första varelse du träffar med en attack på din tur måltavla för dessa krigare. Fram till början av din nästa vändning eller tills ditt raseri upphör har det målet nackdel på alla attackkast som inte riktar sig mot dig, och andra varelser än du har motstånd mot skadan av varelsens attacker."
+			]
+		},
+		{
+			"name": "Ancestral Shield",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan de skyddsandar som hjälper dig ge skydd åt dina allierade. Om du är rasande och en varelse som du kan se inom 30 fot från dig tar skada, kan du använda din reaktion och minska skadan med {@dice 2d8}. När du når vissa nivåer i den här klassen kan du minska skadan med mer: med {@dice 3d8} på 10:e nivån och med {@dice 4d8} på 14:e nivån."
+			]
+		},
+		{
+			"name": "Consult the Spirits",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån får du förmågan att rådgöra med dina förfäders andar och använda dem för att spana i fjärran länder. När du gör det kastar du {@spell clairvoyance}-besvärjelsen utan att behöva en spell slot. Istället för att skapa en sfärisk sensor kallar förtrollningen osynligt på en av dina förfäders andar till den valda platsen. Visdom är din förtrollningsförmåga för förtrollningen. Efter att du kastat besvärjelsen på detta sätt kan du inte göra det igen förrän du avslutar en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Vengeful Ancestors",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån blir dina förfäders andar tillräckligt kraftfulla för att slå fiender som vågar skada dem som du skyddar. När du använder din förmåga Spirit Shield för att skydda en varelse som skadas av en attack, tar angriparen lika mycket skada som Spirit Shield skyddar."
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Vissa barbarer kommer från kulturer som vördar sina förfäder. Dessa stammar lär att krigare från det förflutna lever kvar i världen som mäktiga andar som kan vägleda och skydda de levande. När en barbar som följer denna väg rasar kontaktar barbaren andevärlden och kallar dessa skyddsandar till hjälp.",
+				"Barbarer som använder sig av sina förfäders väktare kan bättre slåss för att skydda sina stammar och allierade. För att befästa banden till sina förfäders väktare täcker barbarer som följer denna väg sig själva med genomarbetade tatueringar som hyllar deras förfäders gärningar. Dessa tatueringar berättar sagor om segrar mot fruktansvärda monster och andra fruktansvärda rivaler.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ancestral Protectors|Barbarian||Ancestral Guardian|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Ancestral Protectors",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med när du väljer den här vägen på 3:e nivån dyker spektralkrigare upp när du blir rasande. Medan du är rasande blir den första varelsen du träffar med en attack på din tur måltavla för krigarna, som hindrar dess attacker. Fram till början av din nästa vändning har det målet nackdel på alla attackkast som inte är mot dig, och när målet träffar en annan varelse än dig med en attack har den varelsen motstånd mot den skada som attacken ger. Effekten på målet upphör i förtid om ditt raseri upphör."
+			]
+		},
+		{
+			"name": "Spirit Shield",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan de skyddsandar som hjälper dig ge övernaturligt skydd till dem du försvarar. Om du är rasande och en annan varelse som du kan se inom 30 fot från dig tar skada, kan du använda din reaktion för att minska skadan med {@dice 2d6}.",
+				"När du når vissa nivåer i den här klassen kan du minska skadan mer: med {@dice 3d6} på 10:e nivån och med {@dice 4d6} på 14:e nivån."
+			]
+		},
+		{
+			"name": "Consult the Spirits",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån får du förmågan att rådgöra med dina förfäders andar. När du gör det kastar du {@spell augury} eller {@spell clairvoyance} besvärjelsen utan att använda en spell slot eller materiella komponenter. Istället för att skapa en sfärisk sensor kallar denna användning av {@spell clairvoyance} osynligt på en av dina förfäders andar till den valda platsen. Visdom är din förtrollningsförmåga för dessa trollformler.",
+				"När du har kastat en trollformel på det här sättet kan du inte använda den här funktionen igen förrän du har avslutat en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Vengeful Ancestors",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån blir dina förfäders andar tillräckligt kraftfulla för att kunna ge igen. När du använder din Spirit Shield för att minska skadan av en attack tar angriparen en mängd kraftskada som är lika stor som den skada som din Spirit Shield förhindrar."
+			]
+		},
+		{
+			"name": "Path of the Storm Herald",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Alla barbarer bär på ett raseri inom sig. Deras raseri ger dem överlägsen styrka, hållbarhet och snabbhet. Barbarer som följer Storm Heralds väg lär sig att förvandla denna vrede till en mantel av ursprunglig magi, som virvlar runt dem. När en barbar på denna väg är i raseri utnyttjar han naturens krafter för att skapa kraftfulla magiska effekter.",
+				"Stormheralds är vanligtvis elitmästare som tränar tillsammans med druider, rangers och andra som svurit att skydda naturen. Andra stormheraldiker finslipar sitt hantverk i loger i regioner som drabbas av stormar, i de frusna områdena vid världens ände eller djupt inne i de hetaste öknarna.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Storm Aura|Barbarian||Storm Herald|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Storm Aura",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med 3:e nivån kan du utstråla en stormig, magisk aura när du rasar. Auran sträcker sig 10 fot från dig i alla riktningar, men inte genom totalt skydd.",
+				"Din aura har en effekt som aktiveras när du blir rasande, och du kan aktivera effekten igen vid varje tur som en bonusåtgärd. Välj öken, hav eller tundra. Din auras effekt beror på den valda miljön, enligt nedan. Du kan ändra ditt miljöval varje gång du får en nivå i den här klassen.",
+				"Om effekterna av din aura kräver ett räddningskast är DC lika med 8 + din kompetensbonus + din konstitutionsmodifierare.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Desert|Barbarian|XGE|Storm Herald|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Sea|Barbarian|XGE|Storm Herald|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tundra|Barbarian|XGE|Storm Herald|XGE|3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Storm Soul",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På sjätte nivån ger stormen dig fördelar även när din aura inte är aktiv. Fördelarna är baserade på den miljö du valt för din Storm Aura.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Desert|Barbarian|XGE|Storm Herald|XGE|6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Sea|Barbarian|XGE|Storm Herald|XGE|6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tundra|Barbarian|XGE|Storm Herald|XGE|6"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shielding Storm",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån lär du dig att använda din behärskning av stormen för att skydda andra. Varje varelse som du väljer har det motstånd mot skada som du fick från Storm Soul-funktionen medan varelsen befinner sig i din Storm Aura."
+			]
+		},
+		{
+			"name": "Raging Storm",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån blir kraften i den storm du kanaliserar starkare och slår ut mot dina fiender. Effekten är baserad på den miljö du valt för din Storm Aura.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Desert|Barbarian|XGE|Storm Herald|XGE|14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Sea|Barbarian|XGE|Storm Herald|XGE|14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tundra|Barbarian|XGE|Storm Herald|XGE|14"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Zealot",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Vissa gudomar inspirerar sina anhängare till att sätta sig i ett vilt slagfält. Dessa barbarer är fanatiker - krigare som kanaliserar sin vrede till kraftfulla uppvisningar av gudomlig makt.",
+				"En mängd olika gudar i D&D:s världar inspirerar sina anhängare att välja denna väg. Tempus från Forgotten Realms och Hextor och Erythnul från Greyhawk är alla utmärkta exempel. I allmänhet är de gudar som inspirerar fanatiker gudar för strid, förstörelse och våld. Alla är inte onda, men få är goda.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Divine Fury|Barbarian||Zealot|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Warrior of the Gods|Barbarian||Zealot|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Divine Fury",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med när du väljer den här vägen på 3:e nivån kan du kanalisera gudomlig vrede i dina vapenattacker. Medan du är rasande tar den första varelsen du träffar på varje tur med en vapenattack extra skada lika med {@dice 1d6} + halva din barbariska nivå. Den extra skadan är nekrotisk eller radiant; du väljer skadetyp när du får den här egenskapen."
+			]
+		},
+		{
+			"name": "Warrior of the Gods",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På 3:e nivån är din själ märkt för oändlig kamp. Om en besvärjelse, såsom {@spell raise dead}, har som enda effekt att återställa dig till liv (men inte till odödlighet), behöver kastaren inte materiella komponenter för att kasta besvärjelsen på dig."
+			]
+		},
+		{
+			"name": "Fanatical Focus",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan den gudomliga kraft som driver din vrede skydda dig. Om du misslyckas med ett räddningskast medan du är rasande kan du göra ett nytt kast, och du måste använda det nya kastet. Du kan använda den här förmågan endast en gång per raseri."
+			]
+		},
+		{
+			"name": "Zealous Presence",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån lär du dig att kanalisera gudomlig kraft för att inspirera andra till fanatism. Som en bonusåtgärd släpper du ut ett stridsrop som genomsyras av gudomlig energi. Upp till tio andra varelser av ditt val inom 60 fot från dig som kan höra dig får fördel på attackkast och räddningskast fram till början av din nästa vändning.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Rage beyond Death",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med den 14:e nivån kan du tack vare den gudomliga kraft som driver ditt raseri avvärja dödliga slag.",
+				"När du är rasande får du inte 0 träffpunkter {@condition unconscious}. Du måste fortfarande göra räddningskast för död och du drabbas av de normala effekterna av att ta skada när du har 0 träffpunkter. Men om du skulle dö på grund av misslyckade räddningskast för döden dör du inte förrän ditt raseri upphör, och du dör då bara om du fortfarande har 0 träffpunkter."
+			]
+		},
+		{
+			"name": "Elk",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"När du är rasande och inte bär en tung rustning ökar din gånghastighet med 15 fot. Älgens ande gör dig utomordentligt snabb."
+			]
+		},
+		{
+			"name": "Tiger",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"När du är rasande kan du lägga till 10 fot till ditt längdhopp och 3 fot till ditt höjdhopp. Tigerns ande förstärker dina hopp."
+			]
+		},
+		{
+			"name": "Elk",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Oavsett om du är till häst eller till fots fördubblas din reshastighet, liksom upp till tio följeslagares reshastighet när de befinner sig inom 60 fot från dig och du inte gör det {@condition incapacitated}. Älgandan hjälper dig att vandra långt och snabbt."
+			]
+		},
+		{
+			"name": "Tiger",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Du får färdighet i två färdigheter från följande lista: {@skill Athletics}, {@skill Acrobatics}, {@skill Stealth} och {@skill Survival}. Kattandan skärper dina överlevnadsinstinkter."
+			]
+		},
+		{
+			"name": "Elk",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"När du är rasande kan du använda en bonusåtgärd under ditt drag för att passera genom utrymmet för en stor eller mindre varelse. Den varelsen måste lyckas med ett räddningskast i styrka (DC 8 + din styrkebonus + din färdighetsbonus) eller slås {@condition prone} och ta smällskada lika med {@dice 1d12} + din styrka-modifierare."
+			]
+		},
+		{
+			"name": "Tiger",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"När du är rasande, om du rör dig minst 6 meter i en rak linje mot ett Large eller mindre mål precis innan du gör en närstridsattack mot det, kan du använda en bonusåtgärd för att göra ytterligare en närstridsattack mot det."
+			]
+		},
+		{
+			"name": "Desert",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"När den här effekten aktiveras tar alla andra varelser i din aura 2 brandskador vardera. Skadan ökar när du når vissa nivåer i den här klassen och ökar till 3 på 5:e nivån, 4 på 10:e nivån, 5 på 15:e nivån och 6 på 20:e nivån."
+			]
+		},
+		{
+			"name": "Sea",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"När den här effekten aktiveras kan du välja en annan varelse som du kan se i din aura. Målet måste göra ett räddningskast i Dexterity. Målet tar {@damage 1d6} blixtskada vid ett misslyckat räddningsförsök, eller hälften så mycket skada vid ett lyckat försök. Skadan ökar när du når vissa nivåer i den här klassen och ökar till {@dice 2d6} på 10:e nivån, {@dice 3d6} på 15:e nivån och {@dice 4d6} på 20:e nivån."
+			]
+		},
+		{
+			"name": "Tundra",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"När den här effekten aktiveras får varje valfri varelse i din aura 2 tillfälliga träffpoäng, eftersom isande andar utsätter den för lidande. De tillfälliga träffpunkterna ökar när du når vissa nivåer i den här klassen, och ökar till 3 på 5:e nivån, 4 på 10:e nivån, 5 på 15:e nivån och 6 på 20:e nivån."
+			]
+		},
+		{
+			"name": "Desert",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Du får motstånd mot brandskador och du drabbas inte av effekterna av extrem värme, enligt beskrivningen i Dungeon Master's Guide. Dessutom kan du som en handling röra vid ett brännbart föremål som inte bärs eller bärs av någon annan och sätta eld på det."
+			]
+		},
+		{
+			"name": "Sea",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Du får motstånd mot blixtskador och kan andas under vatten. Du får också en simhastighet på 30 fot."
+			]
+		},
+		{
+			"name": "Tundra",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Du får resistens mot köldskador och du drabbas inte av effekterna av extrem kyla, enligt beskrivningen i Dungeon Master's Guide. Dessutom kan du som en handling röra vid vatten och förvandla en kub på 1,5 meter av det till is, som smälter efter 1 minut. Denna handling misslyckas om en varelse befinner sig i kuben."
+			]
+		},
+		{
+			"name": "Desert",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"entries": [
+				"Omedelbart efter att en varelse i din aura har träffat dig med en attack kan du använda din reaktion för att tvinga den varelsen att göra ett räddningskast i Dexterity. Vid ett misslyckat räddningsförsök tar varelsen brandskada lika med halva din barbariska nivå."
+			]
+		},
+		{
+			"name": "Sea",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"entries": [
+				"När du träffar en varelse i din aura med en attack kan du använda din reaktion för att tvinga den varelsen att göra ett räddningskast för styrka. Vid ett misslyckat räddningsförsök slås varelsen omkull {@condition prone}, som om den träffades av en våg."
+			]
+		},
+		{
+			"name": "Tundra",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"entries": [
+				"När effekten av din Storm Aura aktiveras kan du välja en varelse som du kan se i auran. Den varelsen måste lyckas med ett räddningskast i styrka, annars reduceras dess hastighet till 0 fram till början av din nästa tur, eftersom magisk frost täcker den."
+			]
+		}
+	]
+}

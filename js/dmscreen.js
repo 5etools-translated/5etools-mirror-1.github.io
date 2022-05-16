@@ -951,6 +951,11 @@ class Panel {
 		if (saved.a) {
 			p.isTabs = true;
 			p.doRenderTabs();
+
+			// If tab data is untyped, replace it with a blank panel, to avoid breaking "active tab" index.
+			// This can happen if a "blank space" panel is mixed in with other tabs.
+			saved.a.forEach(it => it.t = it.t ?? PANEL_TYP_BLANK);
+
 			for (let ix = 0; ix < saved.a.length; ++ix) {
 				const tab = saved.a[ix];
 				await pLoadState(tab, true, ix);

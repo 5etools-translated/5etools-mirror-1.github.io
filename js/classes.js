@@ -544,7 +544,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 
 		(cpyCls.subclasses || []).forEach(sc => {
 			sc.subclassFeatures = sc.subclassFeatures.map(lvlFeatures => {
-				const level = CollectionUtil.bfs(lvlFeatures, "level");
+				const level = CollectionUtil.bfs(lvlFeatures, {prop: "level"});
 
 				return walker.walk(
 					lvlFeatures,

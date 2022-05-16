@@ -1,0 +1,5073 @@
+{
+	"_meta": {
+		"dependencies": {
+			"subclass": [
+				"generic"
+			]
+		}
+	},
+	"class": [
+		{
+			"name": "Druid",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"int",
+				"wis"
+			],
+			"spellcastingAbility": "wis",
+			"casterProgression": "full",
+			"preparedSpells": "<$level$> + <$wis_mod$>",
+			"cantripProgression": [
+				2,
+				2,
+				2,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					{
+						"proficiency": "{@item shield|phb|shields}",
+						"full": "shields (druids will not wear armor or use shields made of metal)"
+					}
+				],
+				"weapons": [
+					"{@item club|phb|clubs}",
+					"{@item dagger|phb|daggers}",
+					"{@item dart|phb|darts}",
+					"{@item javelin|phb|javelins}",
+					"{@item mace|phb|maces}",
+					"{@item quarterstaff|phb|quarterstaffs}",
+					"{@item scimitar|phb|scimitars}",
+					"{@item sickle|phb|sickles}",
+					"{@item sling|phb|slings}",
+					"{@item spear|phb|spears}"
+				],
+				"tools": [
+					"{@item Herbalism kit|PHB}"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"animal handling",
+								"insight",
+								"medicine",
+								"nature",
+								"perception",
+								"religion",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a wooden {@item shield|phb} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item scimitar|phb} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
+					"{@item Leather armor|phb}, an {@item explorer's pack|phb}, and a {@item druidic focus|phb}"
+				],
+				"goldAlternative": "{@dice 2d4 × 10|2d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"shield|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"scimitar|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimpleMelee"
+							}
+						]
+					},
+					{
+						"_": [
+							"Leather armor|phb",
+							"explorer's pack|phb",
+							"druidic focus|phb"
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						{
+							"proficiency": "{@item shield|phb|shields}",
+							"full": "shields (druids will not wear armor or use shields made of metal)"
+						}
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"{@filter Cantrips Known|spells|level=0|class=Druid}"
+					],
+					"rows": [
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=Druid}",
+						"{@filter 2nd|spells|level=2|class=Druid}",
+						"{@filter 3rd|spells|level=3|class=Druid}",
+						"{@filter 4th|spells|level=4|class=Druid}",
+						"{@filter 5th|spells|level=5|class=Druid}",
+						"{@filter 6th|spells|level=6|class=Druid}",
+						"{@filter 7th|spells|level=7|class=Druid}",
+						"{@filter 8th|spells|level=8|class=Druid}",
+						"{@filter 9th|spells|level=9|class=Druid}"
+					],
+					"rowsSpellProgression": [
+						[
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							2,
+							1,
+							1
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Druidic|Druid||1",
+				"Spellcasting|Druid||1",
+				"Cantrip Versatility|Druid||1|UAClassFeatureVariants",
+				"Wild Shape|Druid||2",
+				"Wild Companion|Druid||2|UAClassFeatureVariants",
+				"Wild Companion|Druid||2|TCE",
+				{
+					"classFeature": "Druid Circle|Druid||2",
+					"gainSubclassFeature": true
+				},
+				"Wild Shape Improvement|Druid||4",
+				"Ability Score Improvement|Druid||4",
+				"Proficiency Versatility|Druid||4|UAClassFeatureVariants",
+				"Cantrip Versatility|Druid||4|TCE",
+				{
+					"classFeature": "Druid Circle feature|Druid||6",
+					"gainSubclassFeature": true
+				},
+				"Wild Shape Improvement|Druid||8",
+				"Ability Score Improvement|Druid||8",
+				"Proficiency Versatility|Druid||8|UAClassFeatureVariants",
+				{
+					"classFeature": "Druid Circle feature|Druid||10",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Druid||12",
+				"Proficiency Versatility|Druid||12|UAClassFeatureVariants",
+				{
+					"classFeature": "Druid Circle feature|Druid||14",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Druid||16",
+				"Proficiency Versatility|Druid||16|UAClassFeatureVariants",
+				"Timeless Body|Druid||18",
+				"Beast Spells|Druid||18",
+				"Ability Score Improvement|Druid||19",
+				"Proficiency Versatility|Druid||19|UAClassFeatureVariants",
+				"Archdruid|Druid||20"
+			],
+			"subclassTitle": "Druid Circle",
+			"fluff": [
+				{
+					"name": "Druid",
+					"type": "section",
+					"entries": [
+						"Med en knotig stav med hasselkrans i handen kallar en alv på stormens raseri och kallar ner explosiva blixtar för att slå ner de fackeltågsbärande orcherna som hotar hennes skog.",
+						"En människa sitter på en hög trädgren i form av en leopard och tittar ut ur djungeln på den märkliga konstruktionen av ett tempel för Evil Elemental Air och håller ett vakande öga på kultisternas aktiviteter.",
+						"En halvälv svingar ett blad av ren eld och går in i en massa skelettsoldater och krossar den onaturliga magi som ger de hemska varelserna ett hånfullt sken av liv.",
+						"Vare sig de kallar på naturens elementära krafter eller efterliknar djurvärldens varelser är druiderna en förkroppsligande av naturens motståndskraft, list och vrede. De gör inga anspråk på att behärska naturen. Istället ser de sig själva som förlängningar av naturens okuvliga vilja.",
+						{
+							"type": "entries",
+							"name": "Power of Nature",
+							"entries": [
+								"Druider vördar naturen framför allt och får sina trollformler och andra magiska krafter antingen från själva naturkraften eller från en naturgudinna. Många druider följer en mystisk andlighet av transcendent förening med naturen snarare än hängivenhet till en gudomlig entitet, medan andra tjänar gudar för den vilda naturen, djur eller elementära krafter. De gamla druidiska traditionerna kallas ibland för den gamla tron, i motsats till dyrkan av gudar i tempel och helgedomar.",
+								"Druidernas trollformler är inriktade på naturen och djuren - kraften hos tänder och klor, solen och månen, elden och stormen. Druider får också förmågan att anta djurformer, och vissa druider gör ett särskilt studium av denna praktik, till och med till den grad att de föredrar djurformen framför sin naturliga form."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Preserve the Balance",
+							"entries": [
+								"För druider existerar naturen i en osäker balans. De fyra element som utgör en värld - luft, jord, eld och vatten - måste förbli i jämvikt. Om ett element skulle få makt över de andra kan världen förstöras, dras in i ett av de elementära planen och brytas sönder i sina beståndsdelar. Därför motsätter sig druiderna kulter av elementarisk ondska och andra som främjar ett element och utesluter de andra.",
+								"Druiderna är också intresserade av den känsliga ekologiska balansen som upprätthåller växt- och djurlivet, och behovet av att civiliserade människor lever i harmoni med naturen, inte i motsats till den. Druiderna accepterar det som är grymt i naturen och hatar det som är onaturligt, inklusive avvikelser (som beholders och mind flayers) och odöda (som zombies och vampyrer). Druider leder ibland räder mot sådana varelser, särskilt när monstren inkräktar på druidernas territorium.",
+								"Druiderna vakar ofta över heliga platser eller bevakar områden med orörd natur. Men när en stor fara uppstår som hotar naturens balans eller det land de skyddar tar druiderna en mer aktiv roll i kampen mot hotet, som äventyrare."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Druid",
+							"entries": [
+								"När du skapar en druid bör du fundera på varför din karaktär har ett så nära band till naturen. Kanske lever din karaktär i ett samhälle där den gamla tron fortfarande frodas, eller så uppfostrades din karaktär av en druid efter att ha blivit övergiven i skogens djup. Kanske har din karaktär haft ett dramatiskt möte med naturens andar, där han eller hon har stått öga mot öga med en gigantisk örn eller en fruktansvärd varg och överlevt upplevelsen. Kanske föddes din karaktär under en episk storm eller ett vulkanutbrott, vilket tolkades som ett tecken på att det var en del av din karaktärs öde att bli druid.",
+								"Har du alltid varit en äventyrare som en del av din druidiska kallelse, eller var du först en skötare av en helig lund eller källa? Kanske har ditt hemland blivit besudlat av ondska, och du har börjat med att vara äventyrare i hopp om att hitta ett nytt hem eller ett nytt syfte.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Du kan snabbt bli druid genom att följa de här förslagen. För det första bör Visdom vara din högsta förmågaspoäng, följt av Konstitution. För det andra ska du välja en {@background hermit} bakgrund."
+									]
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Sacred Plants and Wood",
+							"entries": [
+								"En druid anser att vissa växter är heliga, särskilt al, ask, björk, fläder, hassel, hassel, sten, enbär, mistel, ek, rönn, pil och idegran. Druider använder ofta sådana växter som en del av ett trollerifokus, genom att använda längder av ek eller idegran eller kvistar av mistel.",
+								"På samma sätt använder en druid sådana skogar för att tillverka andra föremål, t.ex. vapen och sköldar. Igen är förknippad med död och återfödelse, så vapengreppen för krumsärkar eller siklar kan tillverkas av den. Ask förknippas med liv och ek med styrka. Dessa träslag ger utmärkta handtag eller hela vapen, t.ex. klubbor eller kvartsstavar, samt sköldar. Alder förknippas med luft och kan användas för kastvapen, t.ex. pilbågar eller spjut.",
+								"Druider från regioner som saknar de växter som beskrivs här har valt andra växter för liknande användningsområden. En druid från en ökenregion kan till exempel uppskatta yucca- och kaktusväxter."
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Druids and the Gods",
+							"entries": [
+								"Vissa druider vördar själva naturkrafterna, men de flesta druider är hängivna någon av de många naturgudar som dyrkas i multiversumet (listorna över gudar i appendix B innehåller många sådana gudar). Dyrkan av dessa gudomar anses ofta vara en äldre tradition än trosbekännelserna hos kleriker och urbaniserade folk. Faktum är att i Greyhawks värld kallas den druidiska tron för den gamla tron, och den har många anhängare bland bönder, skogsbrukare, fiskare och andra som lever nära naturen. Denna tradition innefattar dyrkan av naturen som en urkraft bortom personifiering, men omfattar också dyrkan av Beory, Oerth-mamman, liksom hängivna till Obad-Hai, Ehlonna och Ulaa.",
+								"I världarna Greyhawk och Forgotten Realms är druidiska cirklar vanligtvis inte kopplade till tron på en enda naturgudinna. En viss cirkel i Forgotten Realms kan till exempel innehålla druider som vördar Silvanus, Mielikki, Eldath, Chauntea eller till och med de hårda raserigudarna Talos, Malar, Auril och Umberlee. Dessa naturgudar kallas ofta First Circle, den första bland druiderna, och de flesta druider räknar dem alla (även de våldsamma) som värda att vördas.",
+								"Druiderna i Eberron har animistiska trosuppfattningar som är helt utan koppling till Sovereign Host, Dark Six eller någon av de andra religionerna i världen. De tror att varje levande varelse och varje naturfenomen - solen, månen, vinden, elden och själva världen - har en ande. Deras trollformler är därför ett sätt att kommunicera med och beordra dessa andar. Olika druidiska sekter har dock olika filosofier om dessa andars rätta förhållande till varandra och till civilisationens krafter. Ashbound, till exempel, anser att arkan magi är en styggelse mot naturen, Children of Winter vördar dödens krafter och Gatekeepers bevarar gamla traditioner som är avsedda att skydda världen från avvikelser."
+							]
+						}
+					],
+					"source": "PHB",
+					"page": 64
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"Även i döden spelar varje varelse sin roll för att upprätthålla den stora balansen. Men nu växer en obalans fram, en kraft som försöker få makt över naturen. Detta är de dödliga rasernas destruktiva beteende. Ju längre bort från naturen deras handlingar för dem, desto mer korrumperande blir deras inflytande. Som druider försöker vi främst att skydda och utbilda, att bevara den stora balansen, men det finns tillfällen då vi måste resa oss mot faran och utrota den."
+							],
+							"by": "Safhran, archdruid"
+						},
+						"Druider är naturens väktare, och det sägs att en druid med tiden blir naturens röst och talar sanningen som är för subtil för att allmänheten ska kunna höra den. Många som blir druider upptäcker att de naturligt dras till naturen; dess krafter, cykler och rörelser fyller deras sinnen och andar med förundran och insikt. Många vise och kloka människor har studerat naturen och skrivit volymer om dess mysterium och kraft, men druider är en speciell sorts varelse: vid någon tidpunkt börjar de förkroppsliga dessa naturkrafter och producerar magiska fenomen som knyter dem till naturens ande och livets flöde. På grund av deras märkliga och mystiska kraft är druider ofta vördade, undvikna eller anses farliga av människorna i deras omgivning.",
+						"Din druid-karaktär kan vara en sann naturdyrkare som alltid har föraktat civilisationen och funnit tröst i naturen. Eller så kan din karaktär vara ett barn av staden som nu strävar efter att föra den civiliserade världen i harmoni med vildmarken. Du kan använda avsnitten som följer för att konkretisera din druid, oavsett hur din karaktär kom till yrket.",
+						{
+							"type": "entries",
+							"name": "Treasured Item",
+							"entries": [
+								"Vissa druider bär på ett eller flera föremål som är heliga för dem eller som har en djup personlig betydelse. Sådana föremål är inte nödvändigtvis magiska, men varje föremål är ett objekt vars betydelse kopplar druidens sinne och hjärta till ett djupt koncept eller andlig syn.",
+								"När du bestämmer dig för vilket föremål din karaktär ska ha, tänk på att ge det en ursprunglig historia: hur fick du tag på föremålet och varför är det viktigt för dig?",
+								{
+									"type": "table",
+									"caption": "Treasured Item",
+									"colLabels": [
+										"{@dice d6}",
+										"Treasured Item"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"En kvist från mötesträdet som står i mitten av din by."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"En flaska med vatten från källan till en helig flod."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Särskilda örter bundna till ett knippe"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"En liten skål i brons graverad med djurbilder."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"En skallra tillverkad av en torkad kalebass och hillebär."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"En gyllene sax i miniatyr som du har fått av din mentor."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Guiding Aspects",
+							"entries": [
+								"Många druider känner en stark koppling till en specifik aspekt av naturen, till exempel en vattensamling, ett djur, ett trädslag eller någon annan växt. Du identifierar dig med den valda aspekten; genom dess beteende eller dess natur ger den ett exempel som du försöker efterlikna.",
+								{
+									"type": "table",
+									"caption": "Guiding Aspects",
+									"colLabels": [
+										"{@dice d6}",
+										"Guiding Aspects"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Igenkäppar påminner dig om att förnya ditt sinne och din ande, att låta det gamla dö och det nya växa fram."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Ekar representerar styrka och livskraft. Att meditera under en ek fyller din kropp och ditt sinne med beslutsamhet och styrka."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Flodens oändliga flöde påminner dig om världens stora spännvidd. Du försöker agera med naturens långsiktiga intressen i åtanke."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Havet är en ständig, omvälvande kittel av makt och kaos. Det påminner dig om att det är nödvändigt att acceptera förändringar för att kunna hävda dig i världen."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Fåglarna på himlen är ett bevis på att även de minsta varelserna kan överleva om de håller sig ovanför striden."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Som vargens handlingar visar är en individs styrka ingenting jämfört med flocken."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Mentors",
+							"entries": [
+								"Det är inte ovanligt att blivande druider söker sig till (eller blir sökta av) instruktörer eller äldre som lär dem grunderna i sina magiska konster. De flesta druider som lär sig av en mentor börjar sin utbildning vid ung ålder, och mentorn har en viktig roll när det gäller att forma en elevs attityder och övertygelser.",
+								"Om din karaktär fick utbildning av någon annan, vem eller vad var den personen och hur såg ert förhållande ut? Har din mentor gett dig ett särskilt synsätt eller på annat sätt påverkat ditt sätt att uppnå målen för den väg du valt?",
+								{
+									"type": "table",
+									"caption": "Mentors",
+									"colLabels": [
+										"{@dice d6}",
+										"Mentors"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Din mentor var en klok trädkarl som lärde dig att tänka i termer av år och årtionden snarare än dagar och månader."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Du fick undervisning av en dryad som vakade över en slumrande portal till avgrunden. Under din utbildning fick du i uppdrag att hålla utkik efter dolda hot mot världen."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Din handledare har alltid interagerat med dig i form av en falk. Du såg aldrig lärarens humanoida form."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Du var en av flera ungdomar som fick en gammal druid som mentor, tills en av dina medelever förrådde gruppen och dödade din mästare."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Din mentor har bara visat sig för dig i syner. Du har ännu inte träffat denna person och du är inte säker på att en sådan person existerar i dödlig form."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Din mentor var en varbjörn som lärde dig att behandla alla levande varelser med samma respekt."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Learning Beast Shapes",
+							"entries": [
+								"Wild Shape-funktionen i spelarens handbok låter dig förvandlas till ett djur som du har sett. Den regeln ger dig en enorm flexibilitet och gör det lätt att samla ihop en rad olika djurformer för dig själv, men du måste följa begränsningarna i tabellen Beast Shapes i den boken.",
+								"När du får Wild Shape som druid på 2:a nivån kan du undra vilka djur du redan har sett. Följande tabeller organiserar odjur från monstermanualen enligt odjurens mest sannolika miljöer. Tänk på den miljö som din druid växte upp i och konsultera sedan den lämpliga tabellen för att få en lista över djur som din druid troligen har sett på 2:a nivån.",
+								"Dessa tabeller kan också hjälpa dig och ditt DM att avgöra vilka djur ni kan se på era resor. Dessutom innehåller tabellerna varje djurs utmaningsklass och anger om ett djur har en flyg- eller simhastighet. Denna information hjälper dig att avgöra om du kvalificerar dig för att anta det djurets form.",
+								"Tabellerna innehåller alla enskilda djur som är berättigade till Wild Shape (upp till ett utmaningsvärde på 1) eller Circle Forms-funktionen i Circle of the Moon (upp till ett utmaningsvärde på 6).",
+								{
+									"type": "table",
+									"caption": "Arctic",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Owl}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant owl}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Brown bear}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Polar bear}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Saber-toothed tiger}",
+											"—"
+										],
+										[
+											"6",
+											"{@creature Mammoth}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Coast",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Crab}",
+											"Swim"
+										],
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant crab}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Pteranodon}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Plesiosaurus}",
+											"Swim"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Desert",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Cat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Jackal}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Scorpion}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Vulture}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Camel}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Flying snake}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Mule}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant vulture}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"3",
+											"{@creature Giant scorpion}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Forest",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Baboon}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Badger}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Cat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Deer}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Owl}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Flying snake}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant rat}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Giant weasel}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Mastiff}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Boar}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Elk}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant badger}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant bat}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant frog}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant owl}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Panther}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Wolf}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Ape}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Black bear}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Giant wasp}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Brown bear}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Dire wolf}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Tiger}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant boar}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Grassland",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Cat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Deer}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Goat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Jackal}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Vulture}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Flying snake}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant weasel}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Axe beak}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Boar}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Elk}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Panther} (leopard)",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Pteranodon}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Riding horse}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Wolf}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Giant goat}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Giant wasp}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant vulture}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Tiger}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Allosaurus}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant boar}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Rhinoceros}",
+											"—"
+										],
+										[
+											"3",
+											"{@creature Ankylosaurus}",
+											"—"
+										],
+										[
+											"4",
+											"{@creature Elephant}",
+											"—"
+										],
+										[
+											"5",
+											"{@creature Triceratops}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Hill",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Baboon}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Goat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Raven}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Vulture}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant weasel}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Mastiff}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Mule}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Axe beak}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Boar}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Elk}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant owl}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Panther} (puma)",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Wolf}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Giant goat}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Brown bear}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Dire wolf}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant boar}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Mountain",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Goat}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Pteranodon}",
+											"Fly"
+										],
+										[
+											"1/2",
+											"{@creature Giant goat}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Saber-toothed tiger}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Swamp",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Rat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Raven}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant rat}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant frog}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/2",
+											"{@creature Crocodile}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"5",
+											"{@creature Giant crocodile}",
+											"Swim"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Underdark",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Giant fire beetle}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Giant rat}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant bat}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant centipede}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Polar bear} (grottbjörn)",
+											"Swim"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Underwater",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Quipper}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/2",
+											"{@creature Giant sea horse}",
+											"Swim"
+										],
+										[
+											"1/2",
+											"{@creature Reef shark}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant octopus}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Hunter shark}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Plesiosaurus}",
+											"Swim"
+										],
+										[
+											"3",
+											"{@creature Killer whale}",
+											"Swim"
+										],
+										[
+											"5",
+											"{@creature Giant shark}",
+											"Swim"
+										]
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 21
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Circle of the Land",
+			"shortName": "Land",
+			"source": "PHB",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 68,
+			"srd": true,
+			"additionalSpells": [
+				{
+					"name": "Arctic",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"hold person",
+							"spike growth"
+						],
+						"5": [
+							"sleet storm",
+							"slow"
+						],
+						"7": [
+							"freedom of movement",
+							"ice storm"
+						],
+						"9": [
+							"commune with nature",
+							"cone of cold"
+						]
+					}
+				},
+				{
+					"name": "Coast",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"mirror image",
+							"misty step"
+						],
+						"5": [
+							"water breathing",
+							"water walk"
+						],
+						"7": [
+							"control water",
+							"freedom of movement"
+						],
+						"9": [
+							"conjure elemental",
+							"scrying"
+						]
+					}
+				},
+				{
+					"name": "Desert",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"blur",
+							"silence"
+						],
+						"5": [
+							"create food and water",
+							"protection from energy"
+						],
+						"7": [
+							"blight",
+							"hallucinatory terrain"
+						],
+						"9": [
+							"insect plague",
+							"wall of stone"
+						]
+					}
+				},
+				{
+					"name": "Forest",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"barkskin",
+							"spider climb"
+						],
+						"5": [
+							"call lightning",
+							"plant growth"
+						],
+						"7": [
+							"divination",
+							"freedom of movement"
+						],
+						"9": [
+							"commune with nature",
+							"tree stride"
+						]
+					}
+				},
+				{
+					"name": "Grassland",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"invisibility",
+							"pass without trace"
+						],
+						"5": [
+							"daylight",
+							"haste"
+						],
+						"7": [
+							"divination",
+							"freedom of movement"
+						],
+						"9": [
+							"dream",
+							"insect plague"
+						]
+					}
+				},
+				{
+					"name": "Mountain",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"spider climb",
+							"spike growth"
+						],
+						"5": [
+							"lightning bolt",
+							"meld into stone"
+						],
+						"7": [
+							"stone shape",
+							"stoneskin"
+						],
+						"9": [
+							"passwall",
+							"wall of stone"
+						]
+					}
+				},
+				{
+					"name": "Swamp",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"darkness",
+							"Melf's acid arrow"
+						],
+						"5": [
+							"water walk",
+							"stinking cloud"
+						],
+						"7": [
+							"freedom of movement",
+							"locate creature"
+						],
+						"9": [
+							"insect plague",
+							"scrying"
+						]
+					}
+				},
+				{
+					"name": "Underdark",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"spider climb",
+							"web"
+						],
+						"5": [
+							"gaseous form",
+							"stinking cloud"
+						],
+						"7": [
+							"greater invisibility",
+							"stone shape"
+						],
+						"9": [
+							"cloudkill",
+							"insect plague"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of the Land|Druid||Land||2",
+				"Land's Stride|Druid||Land||6",
+				"Nature's Ward|Druid||Land||10",
+				"Nature's Sanctuary|Druid||Land||14"
+			]
+		},
+		{
+			"name": "Circle of the Moon",
+			"shortName": "Moon",
+			"source": "PHB",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 69,
+			"additionalSpells": [
+				{
+					"known": {
+						"14": [
+							"alter self"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of the Moon|Druid||Moon||2",
+				"Primal Strike|Druid||Moon||6",
+				"Elemental Wild Shape|Druid||Moon||10",
+				"Thousand Forms|Druid||Moon||14"
+			]
+		},
+		{
+			"name": "Circle of Dreams (UA)",
+			"shortName": "Dreams (UA)",
+			"source": "UADruid",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Circle of Dreams|Druid||Dreams (UA)|UADruid|2",
+				"Hearth of Moonlight and Shadow|Druid||Dreams (UA)|UADruid|6",
+				"Hidden Paths|Druid||Dreams (UA)|UADruid|10",
+				"Purifying Light|Druid||Dreams (UA)|UADruid|14"
+			]
+		},
+		{
+			"name": "Circle of the Shepherd (UA)",
+			"shortName": "Shepherd (UA)",
+			"source": "UADruid",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Circle of the Shepherd|Druid||Shepherd (UA)|UADruid|2",
+				"Mighty Summoner|Druid||Shepherd (UA)|UADruid|6",
+				"Guardian Spirit|Druid||Shepherd (UA)|UADruid|10",
+				"Faithful Summons|Druid||Shepherd (UA)|UADruid|14"
+			]
+		},
+		{
+			"name": "Circle of Twilight (UA)",
+			"shortName": "Twilight (UA)",
+			"source": "UADruid",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 2,
+			"subclassFeatures": [
+				"Circle of Twilight|Druid||Twilight (UA)|UADruid|2",
+				"Speech Beyond the Grave|Druid||Twilight (UA)|UADruid|6",
+				"Watcher at the Threshold|Druid||Twilight (UA)|UADruid|10",
+				"Paths of the Dead|Druid||Twilight (UA)|UADruid|14"
+			]
+		},
+		{
+			"name": "Circle of the Shepherd v2 (UA)",
+			"shortName": "Shepherd v2 (UA)",
+			"source": "UARevisedClassOptions",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Circle of the Shepherd v2|Druid||Shepherd v2 (UA)|UARevisedClassOptions|2",
+				"Mighty Summoner|Druid||Shepherd v2 (UA)|UARevisedClassOptions|6",
+				"Guardian Spirit|Druid||Shepherd v2 (UA)|UARevisedClassOptions|10",
+				"Faithful Summons|Druid||Shepherd v2 (UA)|UARevisedClassOptions|14"
+			]
+		},
+		{
+			"name": "Circle of Dreams",
+			"shortName": "Dreams",
+			"source": "XGE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 22,
+			"subclassFeatures": [
+				"Circle of Dreams|Druid||Dreams|XGE|2",
+				"Hearth of Moonlight and Shadow|Druid||Dreams|XGE|6",
+				"Hidden Paths|Druid||Dreams|XGE|10",
+				"Walker in Dreams|Druid||Dreams|XGE|14"
+			]
+		},
+		{
+			"name": "Circle of the Shepherd",
+			"shortName": "Shepherd",
+			"source": "XGE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 23,
+			"subclassFeatures": [
+				"Circle of the Shepherd|Druid||Shepherd|XGE|2",
+				"Mighty Summoner|Druid||Shepherd|XGE|6",
+				"Guardian Spirit|Druid||Shepherd|XGE|10",
+				"Faithful Summons|Druid||Shepherd|XGE|14"
+			]
+		},
+		{
+			"name": "Circle of Spores (UA)",
+			"shortName": "Spores (UA)",
+			"source": "UAThreeSubclasses",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"gentle repose",
+							"ray of enfeeblement"
+						],
+						"5": [
+							"animate dead",
+							"gaseous form"
+						],
+						"7": [
+							"blight",
+							"confusion"
+						],
+						"9": [
+							"cloudkill",
+							"contagion"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Spores (UA)|Druid||Spores (UA)|UAThreeSubclasses|2",
+				"Fungal Infestation|Druid||Spores (UA)|UAThreeSubclasses|6",
+				"Spreading Spores|Druid||Spores (UA)|UAThreeSubclasses|10",
+				"Fungal Body|Druid||Spores (UA)|UAThreeSubclasses|14"
+			]
+		},
+		{
+			"name": "Circle of Wildfire (UA)",
+			"shortName": "Wildfire (UA)",
+			"source": "UAClericDruidWizard",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"locate animals or plants",
+							"scorching ray"
+						],
+						"5": [
+							"fireball",
+							"plant growth"
+						],
+						"7": [
+							"aura of life",
+							"fire shield"
+						],
+						"9": [
+							"flame strike",
+							"raise dead"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Wildfire|Druid||Wildfire (UA)|UAClericDruidWizard|2",
+				"Enhanced Bond|Druid||Wildfire (UA)|UAClericDruidWizard|6",
+				"Flames of Life|Druid||Wildfire (UA)|UAClericDruidWizard|10",
+				"Blazing Endurance|Druid||Wildfire (UA)|UAClericDruidWizard|14"
+			]
+		},
+		{
+			"name": "Circle of the Stars (UA)",
+			"shortName": "Stars (UA)",
+			"source": "UA2020SubclassesPt3",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 3,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Circle of the Stars|Druid||Stars (UA)|UA2020SubclassesPt3|2",
+				"Cosmic Omen|Druid||Stars (UA)|UA2020SubclassesPt3|6",
+				"Full of Stars|Druid||Stars (UA)|UA2020SubclassesPt3|10",
+				"Star Flare|Druid||Stars (UA)|UA2020SubclassesPt3|14"
+			]
+		},
+		{
+			"name": "Circle of Spores",
+			"shortName": "Spores",
+			"source": "TCE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"2": [
+							"chill touch#c"
+						]
+					},
+					"prepared": {
+						"3": [
+							"blindness/deafness",
+							"gentle repose"
+						],
+						"5": [
+							"animate dead",
+							"gaseous form"
+						],
+						"7": [
+							"blight",
+							"confusion"
+						],
+						"9": [
+							"cloudkill",
+							"contagion"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Spores|Druid||Spores|TCE|2",
+				"Fungal Infestation|Druid||Spores|TCE|6",
+				"Spreading Spores|Druid||Spores|TCE|10",
+				"Fungal Body|Druid||Spores|TCE|14"
+			]
+		},
+		{
+			"name": "Circle of Stars",
+			"shortName": "Stars",
+			"source": "TCE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 38,
+			"additionalSpells": [
+				{
+					"known": {
+						"2": [
+							"guidance#c"
+						]
+					},
+					"prepared": {
+						"2": [
+							"guiding bolt"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Stars|Druid||Stars|TCE|2",
+				"Cosmic Omen|Druid||Stars|TCE|6",
+				"Twinkling Constellations|Druid||Stars|TCE|10",
+				"Full of Stars|Druid||Stars|TCE|14"
+			]
+		},
+		{
+			"name": "Circle of Wildfire",
+			"shortName": "Wildfire",
+			"source": "TCE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 39,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"2": [
+							"burning hands",
+							"cure wounds"
+						],
+						"3": [
+							"flaming sphere",
+							"scorching ray"
+						],
+						"5": [
+							"plant growth",
+							"revivify"
+						],
+						"7": [
+							"aura of life",
+							"fire shield"
+						],
+						"9": [
+							"flame strike",
+							"mass cure wounds"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Wildfire|Druid||Wildfire|TCE|2",
+				"Enhanced Bond|Druid||Wildfire|TCE|6",
+				"Cauterizing Flames|Druid||Wildfire|TCE|10",
+				"Blazing Revival|Druid||Wildfire|TCE|14"
+			]
+		},
+		{
+			"name": "Mage of Prismari (UA)",
+			"shortName": "Prismari (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Druid",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Prismari (UA)",
+				"shortName": "Prismari (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		},
+		{
+			"name": "Mage of Witherbloom (UA)",
+			"shortName": "Witherbloom (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Druid",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Witherbloom (UA)",
+				"shortName": "Witherbloom (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Cantrip Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 4,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level druid feature (enhances Spellcasting)}",
+				"När du får en nivå i den här klassen kan du ersätta ett cantrip som du lärt dig från den här funktionen Spellcasting med ett annat cantrip från druidens spellista."
+			]
+		},
+		{
+			"name": "Druidic",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Du kan {@language Druidic}, druidernas hemliga språk. Du kan tala språket och använda det för att lämna dolda meddelanden. Du och andra som kan språket upptäcker automatiskt ett sådant meddelande. Andra upptäcker meddelandets närvaro med en lyckad DC 15 Wisdom ({@skill Perception})-kontroll men kan inte tyda det utan magi."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Genom att dra nytta av naturens gudomliga essens kan du kasta trollformler för att forma denna essens enligt din vilja. Se {@book chapter 10|PHB|10} för de allmänna reglerna för trollkonst och {@book chapter 11|PHB|11} för {@filter druid spell list|spells|class=druid}.",
+				{
+					"type": "entries",
+					"name": "Cantrips",
+					"entries": [
+						"På 1:a nivån känner du till två valfria cantrips från {@filter druid spell list|spells|level=0|class=druid}. Du lär dig ytterligare druid cantrips av ditt val på högre nivåer, vilket visas i kolumnen Cantrips Known i Druidtabellen."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Preparing and Casting Spells",
+					"entries": [
+						"Druidtabellen visar hur många spell slots du har för att kasta dina {@filter druid spells|spells|class=druid} från 1:a nivån och högre. För att kasta en av dessa druidbesvärjelser måste du använda en plats på besvärjelsens nivå eller högre. Du återfår alla förbrukade trollformelplatser när du avslutar en lång vila.",
+						"Du förbereder en lista över druidbesvärjelser som är tillgängliga för dig att kasta, genom att välja från listan över druidbesvärjelser. När du gör det väljer du ett antal druidbesvärjelser som är lika med din visdomsmodifierare + din druidnivå (minst en besvärjelse). Besvärjelserna måste vara av en nivå som du har spell slots för.",
+						"Om du till exempel är en druid på 3:e nivån har du fyra spell slots på 1:a nivån och två på 2:a nivån. Med en Wisdom på 16 kan din lista över förberedda trollformler innehålla sex trollformler på 1:a eller 2:a nivån, i vilken kombination som helst. Om du förbereder trollformeln på 1:a nivån {@spell cure wounds} kan du kasta den med hjälp av en plats på 1:a eller 2:a nivån. Att kasta besvärjelsen tar inte bort den från din lista över förberedda besvärjelser.",
+						"Du kan också ändra din lista över förberedda trollformler när du avslutar en lång vila. Att förbereda en ny lista över druidens trollformler kräver tid som spenderas i bön och meditation: minst 1 minut per trollformelnivå för varje trollformel på din lista."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Ability",
+					"entries": [
+						"Visdom är din förmåga att kasta trollformler för dina druidiska trollformler, eftersom din magi bygger på din hängivenhet och samhörighet med naturen. Du använder din Visdom när en trollformel hänvisar till din trollformelförmåga. Dessutom använder du din visdomsmodifierare när du fastställer räddningskast-DC:n för en druidbesvärjelse som du kastar och när du gör en attackrulle med en sådan.",
+						{
+							"type": "abilityDc",
+							"name": "Spell",
+							"attributes": [
+								"wis"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Spell",
+							"attributes": [
+								"wis"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ritual Casting",
+					"entries": [
+						"Du kan kasta en druidbesvärjelse som en ritual om besvärjelsen har ritualmarkeringen och du har besvärjelsen förberedd."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Focus",
+					"entries": [
+						"Du kan använda en {@item druidic focus|phb} som fokus för dina druidiska trollformler."
+					]
+				}
+			]
+		},
+		{
+			"name": "Druid Circle",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"På nivå 2 väljer du att identifiera dig med en druidkrets från listan över tillgängliga kretsar. Ditt val ger dig egenskaper på 2:a nivån och igen på 6:e, 10:e och 14:e nivån."
+			]
+		},
+		{
+			"name": "Wild Companion",
+			"source": "TCE",
+			"page": 35,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level druid {@variantrule optional class features|tce|optional feature}}",
+				"Du får förmågan att kalla på en ande som antar en djurform: som en handling kan du använda din egenskap Wild Shape för att kasta {@spell find familiar} besvärjelsen, utan materiella komponenter.",
+				"När du uttalar besvärjelsen på detta sätt är den bekanta en fey istället för ett djur, och den bekanta försvinner efter ett antal timmar som är lika med halva din druidnivå."
+			]
+		},
+		{
+			"name": "Wild Companion",
+			"source": "UAClassFeatureVariants",
+			"page": 4,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level druid feature (enhances Wild Shape)}",
+				"Du får förmågan att kalla på en ande som antar en djurform: som en handling kan du använda din egenskap Wild Shape för att kasta {@spell find familiar} besvärjelsen, utan materiella komponenter.",
+				"När du uttalar besvärjelsen på detta sätt är den bekanta en fey istället för ett djur, och den bekanta försvinner efter ett antal timmar som är lika med halva din druidnivå."
+			]
+		},
+		{
+			"name": "Wild Shape",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Från och med nivå 2 kan du använda din handling för att magiskt anta formen av ett djur som du har sett förut. Du kan använda denna egenskap två gånger. Du återfår förbrukade användningar när du avslutar en kort eller lång vila.",
+				"Din druidnivå bestämmer vilka djur du kan förvandla dig till, vilket visas i tabellen Beast Shapes. På 2:a nivån kan du till exempel förvandla dig till vilket djur som helst som har ett utmaningsvärde på 1/4 eller lägre och som inte har en flyg- eller simhastighet.",
+				{
+					"type": "table",
+					"caption": "Beast Shapes",
+					"colLabels": [
+						"Level",
+						"Max. CR",
+						"Limitations",
+						"Example"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-2 text-center",
+						"col-5",
+						"col-3"
+					],
+					"rows": [
+						[
+							"2nd",
+							"{@filter 1/4|bestiary|challenge rating=[&0;&1/4]|type=beast|speed type=!fly;!swim|miscellaneous=!swarm}",
+							"Ingen flyg- eller simhastighet",
+							"Wolf"
+						],
+						[
+							"4th",
+							"{@filter 1/2|bestiary|challenge rating=[&0;&1/2]|type=beast|speed type=!fly|miscellaneous=!swarm}",
+							"Ingen flyghastighet",
+							"Krokodil"
+						],
+						[
+							"8th",
+							"{@filter 1|bestiary|challenge rating=[&0;&1]|type=beast|miscellaneous=!swarm}",
+							"—",
+							"Jätteörnen"
+						]
+					]
+				},
+				"Du kan vara i djurform i ett antal timmar som är lika med halva din druidnivå (avrundat nedåt). Du återgår sedan till din normala form om du inte använder en annan användning av denna egenskap. Du kan återgå till din normala form tidigare genom att använda en bonusåtgärd på din tur. Du återvänder automatiskt om du faller {@condition unconscious}, faller till 0 träffpunkter eller dör.",
+				"Följande regler gäller när du är förvandlad:",
+				{
+					"type": "list",
+					"items": [
+						"Din spelstatistik ersätts av djurets statistik, men du behåller din inriktning, personlighet och dina poäng för intelligens, visdom och karisma. Du behåller också alla dina färdighets- och räddningskastprofessioner, förutom att du får varelsens. Om varelsen har samma färdighet som du och bonusen i dess statblock är högre än din, använd varelsens bonus istället för din. Om varelsen har några legendariska handlingar eller handlingar i en håla kan du inte använda dem.",
+						"När du förvandlar dig tar du över djurets träffpunkter och Hit Dice. När du återgår till din normala form återgår du till det antal träffpunkter du hade innan du förvandlades. Men om du återvänder som ett resultat av att du sjunkit till 0 träffpoäng, överförs all överskottsskada till din normala form. Om du till exempel tar 10 skador i djurform och bara har 1 träffpunkt kvar, återvänder du och tar 9 skador. Så länge den överskjutande skadan inte sänker din normala form till 0 träffpoäng, blir du inte knockad {@condition unconscious}.",
+						"Du kan inte kasta trollformler, och din förmåga att tala eller göra något som kräver händerna är begränsad till din djurforms kapacitet. Att förvandlas bryter dock inte din koncentration på en besvärjelse som du redan har kastat, eller hindrar dig från att vidta åtgärder som är en del av en besvärjelse, som {@spell call lightning}, som du redan har kastat.",
+						"Du behåller fördelarna med alla egenskaper från din klass, ras eller annan källa och kan använda dem om den nya formen är fysiskt kapabel att göra det. Du kan dock inte använda något av dina speciella sinnen, till exempel {@sense darkvision}, om inte din nya form också har det sinnet.",
+						"Du väljer själv om din utrustning ska falla till marken i ditt utrymme, smälta in i din nya form eller om den ska bäras av den. Bärd utrustning fungerar som vanligt, men DM avgör om det är praktiskt för den nya formen att bära en utrustning, baserat på varelsens form och storlek. Din utrustning ändrar inte storlek eller form för att passa den nya formen, och all utrustning som den nya formen inte kan bära måste antingen falla till marken eller smälta samman med den. Utrustning som smälter samman med formen har ingen effekt tills du lämnar formen."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"När du når 4:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Cantrip Versatility",
+			"source": "TCE",
+			"page": 35,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level druid {@variantrule optional class features|tce|optional feature}}",
+				"När du når en nivå i den här klassen som ger egenskapen Förbättring av förmögenhetspoäng kan du ersätta ett trollkonstverk som du lärt dig från den här klassens trollkonstverk med ett annat trollkonstverk från {@filter druid spell list|spells|level=0|class=Druid}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Wild Shape Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"På 4:e nivån förbättras din Wild Shape enligt tabellen Beast Shapes."
+			]
+		},
+		{
+			"name": "Druid Circle feature",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"På 6:e nivån får du en egenskap som du får av din Druid Circle."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"När du når 8:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Wild Shape Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"På 8:e nivån förbättras din Wild Shape enligt tabellen Beast Shapes."
+			]
+		},
+		{
+			"name": "Druid Circle feature",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"På 10:e nivån får du en egenskap som du får av din Druid Circle-funktion."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"När du når 12:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Druid Circle feature",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"På 14:e nivån får du en egenskap som du får genom din Druid Circle-funktion."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"När du når 16:e nivån kan du öka en valfri förmågaspoäng med 2 eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Beast Spells",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"Från och med 18:e nivån kan du kasta många av dina druidförtrollningar i vilken form som helst med hjälp av Wild Shape. Du kan utföra de somatiska och verbala komponenterna av en druidbesvärjelse när du är i en djurform, men du kan inte tillhandahålla materiella komponenter."
+			]
+		},
+		{
+			"name": "Timeless Body",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"Från och med 18:e nivån får den urmagiska magi du använder dig av dig dig själv att åldras långsammare. För varje 10 år som går åldras din kropp endast 1 år."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"När du når 19:e nivån kan du öka en valfri förmågaspoäng med 2 eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Archdruid",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"På 20:e nivån kan du använda din Wild Shape ett obegränsat antal gånger.",
+				"Dessutom kan du ignorera de verbala och somatiska komponenterna i dina druidbesvärjelser, liksom alla materiella komponenter som saknar kostnad och som inte konsumeras av en besvärjelse. Du får den här fördelen i både din normala form och din djurform från Wild Shape."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Circle of the Land",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Circle of the Land består av mystiker och vise som värnar om gammal kunskap och riter genom en omfattande muntlig tradition. Dessa druider möts i heliga cirklar av träd eller stående stenar för att viska ursprungliga hemligheter i {@language Druidic}. Cirkelns klokaste medlemmar är överstepräster i samhällen som håller fast vid den gamla tron och fungerar som rådgivare till dessa folks härskare. Som medlem av denna cirkel påverkas din magi av det land där du invigdes i cirkelns mystiska riter.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Cantrip|Druid||Land||2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Natural Recovery|Druid||Land||2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Land||2"
+				}
+			]
+		},
+		{
+			"name": "Bonus Cantrip",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Du lär dig ytterligare en druid cantrip av ditt val. Denna cantrip räknas inte mot antalet druid cantrips du kan."
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Din mystiska koppling till jorden ger dig förmågan att kasta vissa trollformler. På 3:e, 5:e, 7:e och 9:e nivån får du tillgång till cirkelformler som är kopplade till det land där du blev druid. Välj det landet - arktiskt, kust, öken, skog, gräsmark, berg, träsk eller Underdark - och konsultera den tillhörande listan över trollformler.",
+				"När du får tillgång till en cirkelbesvärjelse har du den alltid förberedd, och den räknas inte mot det antal besvärjelser du kan förbereda varje dag. Om du får tillgång till en trollformel som inte finns med på druidernas trollformellista är trollformeln ändå en druidernas trollformel för dig.",
+				{
+					"type": "table",
+					"caption": "Arctic",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell hold person}, {@spell spike growth}"
+						],
+						[
+							"5th",
+							"{@spell sleet storm}, {@spell slow}"
+						],
+						[
+							"7th",
+							"{@spell freedom of movement}, {@spell ice storm}"
+						],
+						[
+							"9th",
+							"{@spell commune with nature}, {@spell cone of cold}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Coast",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell mirror image}, {@spell misty step}"
+						],
+						[
+							"5th",
+							"{@spell water breathing}, {@spell water walk}"
+						],
+						[
+							"7th",
+							"{@spell control water}, {@spell freedom of movement}"
+						],
+						[
+							"9th",
+							"{@spell conjure elemental}, {@spell scrying}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Desert",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell blur}, {@spell silence}"
+						],
+						[
+							"5th",
+							"{@spell create food and water}, {@spell protection from energy}"
+						],
+						[
+							"7th",
+							"{@spell blight}, {@spell hallucinatory terrain}"
+						],
+						[
+							"9th",
+							"{@spell insect plague}, {@spell wall of stone}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Forest",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell barkskin}, {@spell spider climb}"
+						],
+						[
+							"5th",
+							"{@spell call lightning}, {@spell plant growth}"
+						],
+						[
+							"7th",
+							"{@spell divination}, {@spell freedom of movement}"
+						],
+						[
+							"9th",
+							"{@spell commune with nature}, {@spell tree stride}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Grassland",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell invisibility}, {@spell pass without trace}"
+						],
+						[
+							"5th",
+							"{@spell daylight}, {@spell haste}"
+						],
+						[
+							"7th",
+							"{@spell divination}, {@spell freedom of movement}"
+						],
+						[
+							"9th",
+							"{@spell dream}, {@spell insect plague}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Mountain",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell spider climb}, {@spell spike growth}"
+						],
+						[
+							"5th",
+							"{@spell lightning bolt}, {@spell meld into stone}"
+						],
+						[
+							"7th",
+							"{@spell stone shape}, {@spell stoneskin}"
+						],
+						[
+							"9th",
+							"{@spell passwall}, {@spell wall of stone}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Swamp",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell darkness}, {@spell Melf's acid arrow}"
+						],
+						[
+							"5th",
+							"{@spell water walk}, {@spell stinking cloud}"
+						],
+						[
+							"7th",
+							"{@spell freedom of movement}, {@spell locate creature}"
+						],
+						[
+							"9th",
+							"{@spell insect plague}, {@spell scrying}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Underdark",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell spider climb}, {@spell web}"
+						],
+						[
+							"5th",
+							"{@spell gaseous form}, {@spell stinking cloud}"
+						],
+						[
+							"7th",
+							"{@spell greater invisibility}, {@spell stone shape}"
+						],
+						[
+							"9th",
+							"{@spell cloudkill}, {@spell insect plague}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Natural Recovery",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Från och med nivå 2 kan du återfå en del av din magiska energi genom att sitta i meditation och kommunicera med naturen. Under en kort vila väljer du förbrukade trollformelplatser för att återhämta dig. Besvärjelseplatserna kan ha en kombinerad nivå som är lika med eller mindre än halva din druidnivå (avrundat uppåt), och ingen av platserna kan vara på 6:e nivån eller högre. Du kan inte använda den här funktionen igen förrän du avslutar en lång vila.",
+				"När du till exempel är en druid på fjärde nivån kan du återfå upp till två nivåer av trollformelplatser. Du kan återfå antingen en spelledare på andra nivån eller två spelledare på första nivån."
+			]
+		},
+		{
+			"name": "Land's Stride",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kostar det dig ingen extra rörelse att förflytta dig genom icke-magiska {@quickref difficult terrain||3} områden. Du kan också passera genom icke-magiska växter utan att fördröjas av dem och utan att ta skada av dem om de har törnen, taggar eller liknande faror.",
+				"Dessutom har du fördel på räddningskast mot växter som är magiskt skapade eller manipulerade för att hindra rörelse, såsom de som skapats av {@spell entangle}-besvärjelsen."
+			]
+		},
+		{
+			"name": "Nature's Ward",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"När du når 10:e nivån kan du inte bli {@condition charmed} eller {@condition frightened} utsatt för elementariska eller fey-varelser, och du är immun mot gift och sjukdomar."
+			]
+		},
+		{
+			"name": "Nature's Sanctuary",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"När du når 14:e nivån känner naturens varelser din koppling till naturen och blir tveksamma till att attackera dig. När ett djur eller en växtvarelse attackerar dig måste den varelsen göra ett visdomssparande kast mot din druidbesvärjelses räddnings-DC. Vid ett misslyckat räddningsförsök måste varelsen välja ett annat mål, annars missar attacken automatiskt. Vid en lyckad räddning är varelsen immun mot denna effekt i 24 timmar.",
+				"Varelsen är medveten om den här effekten innan den utför sin attack mot dig."
+			]
+		},
+		{
+			"name": "Circle of the Moon",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Druider från månens cirkel är vilda väktare av vildmarken. Deras orden samlas under fullmånen för att dela med sig av nyheter och utbyta varningar. De hemsöker de djupaste delarna av vildmarken, där de kan gå i flera veckor i sträck innan de möter en annan humanoid varelse, än mindre en annan druid.",
+				"En druid i denna cirkel kan vara föränderlig som månen, och kan smyga omkring som en stor katt en natt, sväva över trädtopparna som en örn nästa dag, och störta genom undervegetationen i björnform för att driva bort ett monster som tränger sig in. Det vilda finns i druidens blod.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Combat Wild Shape|Druid||Moon||2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Forms|Druid||Moon||2"
+				}
+			]
+		},
+		{
+			"name": "Circle Forms",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Riterna i din cirkel ger dig förmågan att förvandlas till farligare djurformer. Från och med 2:a nivån kan du använda din Wild Shape för att förvandla dig till en {@filter beast with a challenge rating as high as 1|bestiary|challenge rating=[&0;&1]|type=beast|speed type=!fly;!swim|miscellaneous=!swarm} (du ignorerar Max. CR-kolumnen i tabellen Beast Shapes, men måste följa de andra begränsningarna där).",
+				"Från och med 6:e nivån kan du förvandlas till ett odjur med en utmaningsgrad som är lika hög som din druidnivå dividerad med 3, avrundat nedåt.",
+				{
+					"type": "table",
+					"caption": "Circle of the Moon Beast Shapes",
+					"colLabels": [
+						"Level",
+						"Max. CR",
+						"Limitations"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-2 text-center",
+						"col-8"
+					],
+					"rows": [
+						[
+							"2nd",
+							"{@filter 1|bestiary|challenge rating=[&0;&1]|type=beast|speed type=!fly;!swim|miscellaneous=!swarm}",
+							"Ingen flyg- eller simhastighet"
+						],
+						[
+							"4th",
+							"{@filter 1|bestiary|challenge rating=[&0;&1]|type=beast|speed type=!fly|miscellaneous=!swarm}",
+							"Ingen flyghastighet"
+						],
+						[
+							"6th",
+							"{@filter 2|bestiary|challenge rating=[&0;&2]|type=beast|speed type=!fly|miscellaneous=!swarm}",
+							"Ingen flyghastighet"
+						],
+						[
+							"8th",
+							"{@filter 2|bestiary|challenge rating=[&0;&2]|type=beast|miscellaneous=!swarm}",
+							"—"
+						],
+						[
+							"9th",
+							"{@filter 3|bestiary|challenge rating=[&0;&3]|type=beast|miscellaneous=!swarm}",
+							"—"
+						],
+						[
+							"12th",
+							"{@filter 4|bestiary|challenge rating=[&0;&4]|type=beast|miscellaneous=!swarm}",
+							"—"
+						],
+						[
+							"15th",
+							"{@filter 5|bestiary|challenge rating=[&0;&5]|type=beast|miscellaneous=!swarm}",
+							"—"
+						],
+						[
+							"18th",
+							"{@filter 6|bestiary|challenge rating=[&0;&6]|type=beast|miscellaneous=!swarm}",
+							"—"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Combat Wild Shape",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Du får förmågan att använda Wild Shape på din tur som en bonusåtgärd i stället för som en åtgärd.",
+				"När du är förvandlad av Wild Shape kan du dessutom använda en bonusåtgärd för att använda en trollformelplats för att återfå {@dice 1d8} träffpoäng per nivå av den förbrukade trollformelplatsen."
+			]
+		},
+		{
+			"name": "Primal Strike",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån räknas dina attacker i djurform som magiska när det gäller att övervinna motstånd och immunitet mot icke-magiska attacker och skador."
+			]
+		},
+		{
+			"name": "Elemental Wild Shape",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"consumes": {
+				"name": "Wild Shape",
+				"amount": 2
+			},
+			"entries": [
+				"På 10:e nivån kan du använda Wild Shape två gånger samtidigt för att förvandla dig till en {@creature air elemental}, en {@creature earth elemental}, en {@creature fire elemental} eller en {@creature water elemental}."
+			]
+		},
+		{
+			"name": "Thousand Forms",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån har du lärt dig att använda magi för att förändra din fysiska form på mer subtila sätt. Du kan kasta {@spell alter self} besvärjelsen när du vill."
+			]
+		},
+		{
+			"name": "Circle of Spores",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"entries": [
+				"Druider från Circle of Spores finner skönhet i förfall. De ser i mögel och andra svampar förmågan att förvandla livlöst material till rikligt, om än något märkligt, liv.",
+				"Dessa druider tror att liv och död är delar av en stor cykel, där det ena leder till det andra och sedan tillbaka igen. Döden är inte slutet på livet, utan i stället en förändring av tillståndet där livet övergår till en ny form.",
+				"Druider i den här cirkeln har ett komplicerat förhållande till de odöda. Till skillnad från de flesta andra druider ser de inget fel med den odöda, som de betraktar som en följeslagare till livet och döden. Men dessa druider anser att det naturliga kretsloppet är mest hälsosamt när varje segment av det är levande och föränderligt. Odöda som försöker ersätta allt liv med odödlighet, eller som försöker undvika att gå över till en slutlig vila, bryter mot cykeln och måste motarbetas.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Spores|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Halo of Spores|Druid||Spores|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Symbiotic Entity|Druid||Spores|TCE|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Din symbiotiska koppling till svampen och din förmåga att ta del av livets och dödens cykel ger dig tillgång till vissa trollformler. På 2:a nivån lär du dig {@spell chill touch} cantrip. På 3:e, 5:e, 7:e och 9:e nivån får du tillgång till de trollformler som anges för den nivån i tabellen Circle of Spores Spells Spells.",
+				"När du får tillgång till en av dessa trollformler har du den alltid förberedd, och den räknas inte mot det antal trollformler du kan förbereda varje dag. Om du får tillgång till en besvärjelse som inte finns med på druidernas besvärjelselista är besvärjelsen ändå en druidbesvärjelse för dig.",
+				{
+					"type": "table",
+					"caption": "Circle of Spores Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell blindness/deafness}, {@spell gentle repose}"
+						],
+						[
+							"5th",
+							"{@spell animate dead}, {@spell gaseous form}"
+						],
+						[
+							"7th",
+							"{@spell blight}, {@spell confusion}"
+						],
+						[
+							"9th",
+							"{@spell cloudkill}, {@spell contagion}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Halo of Spores",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Från och med nivå 2 är du omgiven av osynliga, nekrotiska sporer som är ofarliga tills du släpper ut dem på en varelse i närheten. När en varelse som du kan se rör sig i ett utrymme inom 10 fot från dig eller börjar sin tur där kan du använda din reaktion för att ge {@damage 1d4} nekrotisk skada till den varelsen om den inte lyckas med ett konstitutionellt räddningskast mot din spökräddnings DC. Den nekrotiska skadan ökar till {@dice 1d6} på 6:e nivån, {@dice 1d8} på 10:e nivån och {@dice 1d10} på 14:e nivån."
+			]
+		},
+		{
+			"name": "Symbiotic Entity",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"På andra nivån får du förmågan att kanalisera magi i dina sporer. Som en handling kan du använda din egenskap Wild Shape för att väcka dessa sporer, istället för att förvandla dig till en djurform, och du får 4 tillfälliga träffpunkter för varje nivå du har i den här klassen. Medan den här funktionen är aktiv får du följande fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"När du orsakar din Halo of Spores-skada kastar du skadetärningen en andra gång och lägger till den till den totala skadan.",
+						"Dina närstridsvapenattacker ger extra {@damage 1d6} nekrotisk skada till alla mål de träffar."
+					]
+				},
+				"Dessa fördelar varar i 10 minuter, tills du förlorar alla dessa tillfälliga träffpoäng eller tills du använder din Wild Shape igen."
+			]
+		},
+		{
+			"name": "Fungal Infestation",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får dina sporer förmågan att infektera ett lik och ge liv åt det. Om ett djur eller en humanoid som är Small eller Medium dör inom tre meter från dig kan du använda din reaktion för att animera det, vilket gör att det omedelbart reser sig upp med 1 träffpunkt. Varelsen använder {@creature zombie} statblocket i {@book Monster Manual|MM}. Den förblir animerad i 1 timme, varefter den kollapsar och dör.",
+				"I strid kommer zombiens tur omedelbart efter din tur. Den lyder dina mentala kommandon, och den enda handling den kan utföra är {@action Attack}-handlingen, vilket innebär en närstridsattack.",
+				"Du kan använda den här egenskapen ett antal gånger som är lika med din visdomsmodifierare (minst en gång), och du återfår alla förbrukade användningar av den när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Spreading Spores",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån får du förmågan att sprida dödliga sporer över ett område. Som en bonusåtgärd medan din egenskap Symbiotic Entity är aktiv kan du kasta sporer upp till 30 fot bort, där de virvlar i en 10-fots kub i 1 minut. Sporerna försvinner tidigt om du använder den här funktionen igen, om du avfärdar dem som en bonushandling eller om din egenskap Symbiotic Entity inte längre är aktiv.",
+				"När en varelse flyttar in i kuben eller börjar sin tur där, tar den varelsen din Halo of Spores-skada, om inte varelsen lyckas med ett räddningskast mot din trollformels räddnings-DC. En varelse kan inte ta denna skada mer än en gång per tur.",
+				"Så länge kuben med sporer finns kvar kan du inte använda din Halo of Spores-reaktion."
+			]
+		},
+		{
+			"name": "Fungal Body",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån förändrar svampsporerna i din kropp dig: du kan inte vara {@condition blinded}, {@condition deafened}, {@condition frightened} eller {@condition poisoned}, och varje kritisk träff mot dig räknas istället som en normal träff, såvida du inte är {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Circle of Stars",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 2,
+			"entries": [
+				"Circle of Stars gör det möjligt för druider att dra nytta av stjärnljusets kraft. Dessa druider har följt himmelska mönster sedan urminnes tider och upptäckt hemligheter som är dolda bland konstellationerna. Genom att avslöja och förstå dessa hemligheter försöker stjärnornas cirkel utnyttja kosmos krafter.",
+				"Många druider i denna krets för register över konstellationerna och stjärnornas inverkan på världen. Vissa grupper dokumenterar dessa observationer på megalitplatser, som fungerar som gåtfulla bibliotek med kunskap. Dessa förvaringsställen kan ha formen av stencirklar, pyramider, hällristningar och underjordiska tempel - alla konstruktioner som är tillräckligt hållbara för att skydda cirkelns heliga kunskap även mot en stor katastrof.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Star Map|Druid||Stars|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Starry Form|Druid||Stars|TCE|2"
+				}
+			]
+		},
+		{
+			"name": "Star Map",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"Du har skapat ett stjärndiagram som en del av dina studier om himlen. Det är ett Tiny-objekt och kan fungera som ett fokus för dina druidiska trollformler. Du bestämmer dess form genom att rulla på tabellen Stjärnkarta eller genom att välja en.",
+				{
+					"type": "table",
+					"caption": "Star Map",
+					"colLabels": [
+						"d6",
+						"Map Form"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"En bokrulle med avbildningar av stjärnbilder."
+						],
+						[
+							"2",
+							"En stentavla med fina hål borrade genom den."
+						],
+						[
+							"3",
+							"Ett späckat skinn av en ugglebjörn, bearbetat med upphöjda märken."
+						],
+						[
+							"4",
+							"En samling kartor inbundna i ett omslag av ebenholtsfärgat trä."
+						],
+						[
+							"5",
+							"En kristall som projicerar stjärnmönster när den placeras framför ett ljus."
+						],
+						[
+							"6",
+							"Glasskivor som avbildar konstellationer"
+						]
+					]
+				},
+				"När du innehar den här kartan har du följande fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"Du känner till {@spell guidance} cantrip.",
+						"Du har förberett {@spell guiding bolt} besvärjelsen. Den räknas som en druidbesvärjelse för dig, och den räknas inte mot antalet besvärjelser du kan ha förberett.",
+						"Du kan kasta {@spell guiding bolt} utan att använda en trollformelplats. Du kan göra det ett antal gånger som är lika med din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+					]
+				},
+				"Om du förlorar kartan kan du utföra en 1 timmes ceremoni för att på magisk väg skapa en ny karta. Ceremonin kan utföras under en kort eller lång vila, och den förstör den tidigare kartan."
+			]
+		},
+		{
+			"name": "Starry Form",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"Som en bonusåtgärd kan du använda din egenskap Wild Shape för att anta en stjärnform i stället för att förvandlas till ett djur.",
+				"När du är i din stjärnform behåller du din spelstatistik, men din kropp blir självlysande; dina leder glimmar som stjärnor och glödande linjer förbinder dem som på ett stjärndiagram. Den här formen avger starkt ljus i en radie på 10 fot och svagt ljus i ytterligare 10 fot. Formen varar i 10 minuter. Den upphör i förtid om du avfärdar den (ingen åtgärd krävs), är {@condition incapacitated}, dör eller använder den här funktionen igen.",
+				"När du antar din stjärnform väljer du vilken av följande konstellationer som skymtar på din kropp; ditt val ger dig vissa fördelar när du är i denna form:",
+				{
+					"type": "entries",
+					"name": "Archer",
+					"entries": [
+						"En konstellation av en bågskytt visas på dig. När du aktiverar den här formen, och som en bonusåtgärd på dina efterföljande vändningar så länge den varar, kan du göra en trollformelattack på distans och kasta en lysande pil som riktar sig mot en varelse inom 60 fot från dig. Vid en träff ger attacken strålande skada lika med {@dice 1d8} + din visdomsmodifierare."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Chalice",
+					"entries": [
+						"En konstellation av en livgivande bägare visas på dig. Närhelst du kastar en besvärjelse som använder en spellplats som återställer träffpoäng till en varelse kan du eller en annan varelse inom 30 fot från dig återfå träffpoäng lika med {@dice 1d8} + din visdomsmodifierare."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon",
+					"entries": [
+						"En konstellation av en klok drake visas på dig. När du gör en intelligens- eller visdomskontroll eller ett räddningskast i konstitutionen för att bibehålla koncentrationen på en trollformel, kan du behandla ett kast på 9 eller lägre på {@dice d20} som en 10:a."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cosmic Omen",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of the Stars feature}",
+				"När du avslutar en lång vila kan du titta på din stjärnkarta för att se omen. När du gör det kastar du en tärning. Tills du avslutar din nästa långa vila får du tillgång till en speciell reaktion beroende på om du kastade ett jämnt eller udda tal på tärningen:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Weal (even)",
+							"entry": "När en varelse som du kan se inom 30 fot från dig är på väg att göra ett attackkast, ett räddningskast eller en förmågekontroll kan du använda din reaktion för att kasta en {@dice d6} och lägga till antalet till den totala summan."
+						},
+						{
+							"type": "item",
+							"name": "Woe (odd)",
+							"entry": "När en varelse som du kan se inom 30 fot från dig är på väg att göra ett anfallskast, ett räddningskast eller en förmågekontroll kan du använda din reaktion för att kasta en {@dice d6} och subtrahera antalet som kastats från den totala summan."
+						}
+					]
+				},
+				"Du kan använda den här reaktionen lika många gånger som din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Twinkling Constellations",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of the Stars feature}",
+				"Konstellationerna i din stjärnform förbättras. Bågskyttens och bägarens {@dice 1d8} blir {@dice 2d8}, och medan draken är aktiv har du en flyghastighet på 6 meter och kan sväva.",
+				"Dessutom kan du i början av varje tur när du är i din Starry Form ändra vilken konstellation som skymtar på din kropp."
+			]
+		},
+		{
+			"name": "Full of Stars",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of the Stars feature}",
+				"När du är i din Starry Form blir du delvis okroppslig, vilket ger dig motståndskraft mot dödande, genomträngande och slående skador."
+			]
+		},
+		{
+			"name": "Circle of Wildfire",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 2,
+			"entries": [
+				"Druider inom Circle of Wildfire förstår att förstörelse ibland är en föregångare till skapelse, till exempel när en skogsbrand främjar senare tillväxt. Dessa druider knyter band med en ursprunglig ande som hyser både destruktiv och kreativ kraft, vilket gör att druiderna kan skapa kontrollerade lågor som bränner bort en sak men ger liv åt en annan.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Wildfire|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Summon Wildfire Spirit|Druid||Wildfire|TCE|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"Du har bildat ett band med en vild eldsand, en ursprunglig varelse av skapande och förstörelse. Din koppling med denna ande ger dig tillgång till vissa trollformler när du når vissa nivåer i denna klass, vilket visas på tabellen Circle of Wildfire Spells.",
+				"När du får tillgång till en av dessa trollformler har du den alltid förberedd, och den räknas inte mot det antal trollformler du kan förbereda varje dag. Om du får tillgång till en besvärjelse som inte finns med på druidernas besvärjelselista är besvärjelsen ändå en druidbesvärjelse för dig.",
+				{
+					"type": "table",
+					"caption": "Circle of Wildfire Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"2nd",
+							"{@spell burning hands}, {@spell cure wounds}"
+						],
+						[
+							"3rd",
+							"{@spell flaming sphere}, {@spell scorching ray}"
+						],
+						[
+							"5th",
+							"{@spell plant growth}, {@spell revivify}"
+						],
+						[
+							"7th",
+							"{@spell aura of life}, {@spell fire shield}"
+						],
+						[
+							"9th",
+							"{@spell flame strike}, {@spell mass cure wounds}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Summon Wildfire Spirit",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"Du kan kalla på den ursprungliga anden som är bunden till din själ. Som en handling kan du använda en användning av din egenskap Wild Shape för att kalla på din vilda eldsand, istället för att anta en djurform.",
+				"Anden dyker upp i ett obebott utrymme som du väljer och som du kan se inom 30 fot från dig. Varje varelse inom tre meter från anden (förutom du) när den dyker upp måste lyckas med ett räddningskast i Dexterity mot din spellednings räddnings-DC eller ta {@damage 2d6} brandskada.",
+				"Anden är vänlig mot dig och dina följeslagare och lyder dina kommandon. Se den här varelsens spelstatistik i statblocket {@creature Wildfire Spirit|TCE}, som använder din färdighetsbonus (PB) på flera ställen. Du bestämmer andens utseende. Vissa andar tar formen av en humanoid figur gjord av knotiga grenar som är täckta av flammor, medan andra ser ut som odjur omgärdade av eld.",
+				"I strid delar anden din initiativräkning, men den tar sin tur omedelbart efter din. Den enda handling som den utför på sin tur är {@action Dodge}, om du inte utför en bonushandling på din tur för att beordra den att utföra en annan handling. Den handlingen kan vara en i dess statblock eller någon annan handling. Om du är {@condition incapacitated} kan anden utföra vilken handling som helst av sitt val, inte bara {@action Dodge}.",
+				"Anden manifesterar sig i 1 timme, tills den har minskat till 0 träffpoäng, tills du använder den här funktionen för att kalla på anden igen, eller tills du dör."
+			]
+		},
+		{
+			"name": "Enhanced Bond",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of Wildfire feature}",
+				"Bandet med din vilda eldsand förbättrar dina destruktiva och återställande trollformler. Närhelst du kastar en besvärjelse som ger brandskada eller återställer träffpunkter medan din vilda eldsand är kallad, kasta en {@dice d8}, och du får en bonus som är lika stor som det kastade talet på en skade- eller helande roll för besvärjelsen.",
+				"När du kastar en besvärjelse med en annan räckvidd än dig själv kan besvärjelsen dessutom komma från dig eller din vilda eldsand."
+			]
+		},
+		{
+			"name": "Cauterizing Flames",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of Wildfire feature}",
+				"Du får förmågan att förvandla döden till magiska lågor som kan läka eller bränna. När en liten eller större varelse dör inom 30 fot från dig eller din vilda eldsand, uppstår en ofarlig spektralflamma i den döda varelsens utrymme och flimrar där i 1 minut. När en varelse som du kan se kommer in i det utrymmet kan du använda din reaktion för att släcka den spektrala lågan där och antingen läka varelsen eller tillfoga den brandskada. Helandet eller skadan är lika med {@dice 2d10} + din visdomsmodifierare.",
+				"Du kan använda den här reaktionen lika många gånger som din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Blazing Revival",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of Wildfire feature}",
+				"Bandet med din vilda eldsand kan rädda dig från döden. Om anden befinner sig inom 120 fot från dig när du reduceras till 0 träffpoäng och därmed faller {@condition unconscious} kan du få anden att falla till 0 träffpoäng. Du återfår då hälften av dina träffpunkter och reser dig omedelbart upp på fötterna.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Circle of the Stars",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 2,
+			"entries": [
+				"En urgammal linje, Circle of Stars, som gör det möjligt för druider att dra nytta av stjärnljusets kraft. Dessa druider har följt himmelska mönster sedan urminnes tider och upptäckt hemligheter som är dolda bland konstellationerna. Genom att avslöja och förstå dessa hemligheter försöker Circle of the Stars utnyttja kosmos krafter.",
+				"Många druider i denna krets för detaljerade register över stjärnorna och deras effekter på världen. Vissa grupper dokumenterar dessa observationer på megalitplatser, som fungerar som gåtfulla bibliotek med kunskap. Dessa förvaringsställen kan ta formen av stencirklar, pyramider, hällristningar och underjordiska tempel - alla konstruktioner som är tillräckligt hållbara för att skydda cirkelns heliga kunskap även mot en stor katastrof.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Star Map|Druid||Stars (UA)|UA2020SubclassesPt3|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Starry Form|Druid||Stars (UA)|UA2020SubclassesPt3|2"
+				}
+			]
+		},
+		{
+			"name": "Star Map",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"Du har skapat en stjärnkarta som en del av din studie av himlen. Kartan är ett Tiny-objekt och kan fungera som ett fokus för dina druidbesvärjelser. Du bestämmer vilken form objektet tar, eller så kan du bestämma vad det är genom att rulla på tabellen Star Map (Stjärnkarta).",
+				{
+					"type": "table",
+					"caption": "Star Map",
+					"colLabels": [
+						"d6",
+						"Map Form"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"En rulle av levande trä som är i linje med himmelska kroppar."
+						],
+						[
+							"2",
+							"En stentavla med fina hål borrade genom den."
+						],
+						[
+							"3",
+							"Ett späckat skinn av en ugglebjörn, bearbetat med upphöjda märken."
+						],
+						[
+							"4",
+							"En samling kartor inbundna i ett omslag av ebenholtsfärgat trä."
+						],
+						[
+							"5",
+							"En kristall som projicerar stjärnmönster när den placeras framför ett ljus."
+						],
+						[
+							"6",
+							"Skivor av härdat glas som är anpassade för att avbilda konstellationer."
+						]
+					]
+				},
+				"Om du förlorar din karta kan du utföra en 1 timmes ceremoni för att på magisk väg skapa en ny karta. Ceremonin kan utföras under en kort eller lång vila, och den förstör den tidigare kartan.",
+				"Du kan kasta {@spell augury} och {@spell guiding bolt} trollformler utan att använda en trollformelplats och utan att förbereda trollformeln, förutsatt att du använder stjärnkartan som fokus för trollformeln. Du kan kasta en trollformel från kartan på detta sätt ett antal gånger som är lika med din visdomsmodifierare (minst en gång), och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Starry Form",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"Du får förmågan att utnyttja konstellationernas kraft för att förändra din form. Som en handling kan du använda din egenskap Wild Shape för att anta en stjärnform i stället för att förvandlas till ett djur.",
+				"När du är i din stjärnform behåller du din spelstatistik, men din kropp får en lysande, stjärnliknande kvalitet; dina leder glimmar som stjärnor och glödande linjer förbinder dem som på ett stjärndiagram. Den här formen avger starkt ljus i en radie på 10 fot och svagt ljus i ytterligare 10 fot. Formen varar i 10 minuter eller tills du är {@condition incapacitated}.",
+				"När du antar din stjärnform väljer du vilken av följande konstellationer som skymtar på din kropp; ditt val ger dig vissa fördelar när du är i denna form:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Chalice",
+							"entry": "En konstellation av en livgivande bägare visas på dig. Närhelst du kastar en besvärjelse som använder en spellplats som återställer träffpoäng till en varelse kan du eller en annan varelse inom 30 fot från dig återfå träffpoäng lika med {@dice 1d8} + halva din nivå i den här klassen."
+						},
+						{
+							"type": "item",
+							"name": "Archer",
+							"entry": "En konstellation av en bågskytt visas på dig. Du får en bonusåtgärd som du kan använda för att göra en trollformelattack på distans och kasta en lysande pil som riktar sig mot en varelse som du kan se inom 60 fot från dig. Vid en träff ger attacken strålningsskada lika med {@dice 1d8} + din visdomsmodifierare."
+						},
+						{
+							"type": "item",
+							"name": "Dragon",
+							"entry": "En konstellation av en klok, gammal drake visas på dig. När du gör en intelligens- eller visdomskontroll eller ett räddningskast i konstitutionen för att bibehålla koncentrationen på en trollformel kan du behandla ett kast på 9 eller lägre på {@dice d20} som en 10:a."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cosmic Omen",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of the Stars feature}",
+				"Du lär dig att använda din stjärnkarta för att förstå kosmos vilja. När du avslutar en lång vila kan du konsultera din stjärnkarta för att se omen. När du gör det, rulla en {@dice d6}. Du får ett av följande möjliga omen beroende på om du kastade ett jämnt eller udda tal på {@dice d6}:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Weal (even)",
+							"entry": "När en varelse som du kan se inom 30 fot från dig gör ett anfallskast, ett räddningskast eller en förmågekontroll kan du använda din reaktion för att kasta en {@dice d6} och lägga till antalet som kastats till den totala summan."
+						},
+						{
+							"type": "item",
+							"name": "Woe (odd)",
+							"entry": "När en varelse som du kan se inom 30 fot från dig gör ett anfallskast, ett räddningskast eller en förmågekontroll kan du använda din reaktion för att kasta en {@dice d6} och subtrahera antalet från det totala antalet."
+						}
+					]
+				},
+				"Du kan använda den här reaktionen ett antal gånger som är lika med din visdomsmodifierare, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Full of Stars",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of the Stars feature}",
+				"När din Starry Form-funktion är aktiv blir du delvis kroppslös, vilket ger dig motståndskraft mot slagskador, piercing och slashing."
+			]
+		},
+		{
+			"name": "Star Flare",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of the Stars feature}",
+				"Din koppling till kosmos gör att du kan framkalla strålande stjärnljus. Som en handling trollar du fram en ljusstorm i en 30-fots radie som är centrerad på en punkt som du kan se inom 120 fot från dig. Du kan omedelbart teleportera varje villig varelse i sfären till ett obebott utrymme inom 30 fot från den. Varje varelse som är kvar i sfären måste lyckas med ett räddningskast i konstitutionen mot din trollformels räddnings-DC eller ta {@damage 4d10} strålningsskada och vara {@condition blinded} till slutet av din nästa tur.",
+				"När du har använt den här åtgärden kan du inte använda den igen förrän du avslutar en lång vila eller förrän du använder en trollformel på 5:e nivå eller högre för att använda den igen."
+			]
+		},
+		{
+			"name": "Circle of Wildfire",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 2,
+			"entries": [
+				"Druider som är medlemmar i Circle of Wildfire förstår nödvändigheten av förstörelse, till exempel hur en skogsbrand främjar tillväxt. Dessa druider knyter band med en urand som hyser destruktiva tendenser, vilket gör att druiderna kan använda sin kraft för att skapa kontrollerade lågor som hjälper flora och fauna att reproducera sig och växa.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Wildfire (UA)|UAClericDruidWizard|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Summon Wildfire|Druid||Wildfire (UA)|UAClericDruidWizard|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"Du har bildat ett mystiskt band med en vild eldsand, en ursprunglig varelse som skapar och förstör. Din koppling med denna ande ger dig tillgång till vissa trollformler. På 2:a nivån lär du dig fire bolt cantrip.",
+				"När du når vissa nivåer i den här klassen får du tillgång till de trollformler som anges för den nivån i tabellen Circle of Wildfire Spells. När du får tillgång till en av dessa trollformler har du den alltid förberedd och den räknas inte mot det antal trollformler du kan förbereda varje dag. Om du får tillgång till en trollformel som inte finns med i listan över druidbesvärjelser är trollformeln ändå en druidbesvärjelse för dig.",
+				{
+					"type": "table",
+					"caption": "Circle of Wildfire Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell locate animals or plants}, {@spell scorching ray}"
+						],
+						[
+							"5th",
+							"{@spell fireball}, {@spell plant growth}"
+						],
+						[
+							"7th",
+							"{@spell aura of life}, {@spell fire shield}"
+						],
+						[
+							"9th",
+							"{@spell flame strike}, {@spell raise dead}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Summon Wildfire",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"Du kan kalla på den ursprungliga anden som är bunden till din själ. Som en handling kan du använda en användning av din egenskap Wild Shape för att framkalla din {@creature wildfire spirit|UAClericDruidWizard}, istället för att anta en djurform.",
+				"Anden dyker upp i ett obebott utrymme som du väljer och som du kan se inom 30 fot från dig. Varje varelse inom 3 meter från anden (förutom du) när den dyker upp måste lyckas med ett räddningskast i Dexterity mot din spellednings räddnings-DC eller ta {@damage 2d10} brandskada.",
+				"Wildfire Spirit är vänlig mot dig och dina följeslagare och lyder dina kommandon. Se den här varelsens spelstatistik i statblocket Wildfire Spirit. Du bestämmer andens utseende. Vissa andar tar formen av en humanoid figur gjord av knotiga grenar som är täckta av eld, medan andra ser ut som odjur omgärdade av eld.",
+				"I strid delar vilda eldanden din initiativräkning, men den tar sin tur direkt efter din. Den enda handling den utför på sin tur är {@action Dodge}, såvida du inte utför en bonushandling på din tur för att beordra den att utföra någon av handlingarna i dess statblock eller att utföra {@action Dash}, {@action Disengage}, {@action Help} eller {@action Hide}.",
+				"Wildfire-andan manifesterar sig i 1 timme, tills den har minskat till 0 träffpoäng eller tills du använder din Wild Shape igen."
+			]
+		},
+		{
+			"name": "Enhanced Bond",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of Wildfire feature}",
+				"Bandet med din vilda eldsand förbättrar dina destruktiva och återställande trollformler. Närhelst du kastar en besvärjelse som ger eldskada eller återställer träffpunkter medan din vilda eldsand är kallad, kasta en {@dice d8}, och du får en bonus på en roll av besvärjelsen lika med det antal som kastades. När du dessutom kastar en besvärjelse med en annan räckvidd än dig själv kan besvärjelsen härröra från dig eller din vilda eldsand."
+			]
+		},
+		{
+			"name": "Flames of Life",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of Wildfire feature}",
+				"Du får förmågan att förvandla döden till flammor av livskraft. När en liten eller större varelse som du kan se dör inom 30 fot från dig eller din vilda eldsand kan du använda din reaktion för att få urlågor att sprätta ur kroppen. När en varelse som du kan se rör vid dessa flammor återfår varelsen träffpunkter eller tar brandskada (ditt val) lika med {@dice 2d10} + din visdomsmodifierare. Flammorna försvinner efter att en varelse har rört vid dem eller efter 1 minut. Du kan använda den här egenskapen ett antal gånger som är lika med din visdomsmodifierare (minst en gång). Du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Blazing Endurance",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of Wildfire feature}",
+				"Bandet med din vilda eldsanda är exceptionellt starkt, även dödliga slag ger bara bränsle åt din trotsighet. Om du sjunker till 0 träffpunkter och inte dör direkt, sjunker du istället till 1 träffpunkt och får tillfälliga träffpunkter lika med fem gånger din druidnivå, och varje varelse av ditt val inom 30 fot från dig som du kan se tar brandskador lika med {@dice 2d10} + din druidnivå.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Circle of Dreams",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"entries": [
+				"Druider som är medlemmar i Circle of Dreams kommer från regioner som har starka band till Feywild. Druidernas beskydd av den naturliga världen skapar en naturlig allians mellan dem och de goda feerna. Dessa druider strävar efter att fylla världen med glädje och ljus. Deras magi läker sår och ger glädje åt nedstämda hjärtan, och de riken som de skyddar är skinande, fruktbara platser.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Balm of the Summer Court|Druid||Dreams (UA)|UADruid|2"
+				}
+			]
+		},
+		{
+			"name": "Balm of the Summer Court",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"På andra nivån blir du genomsyrad av sommardomstolens välsignelser. Du är en källa av energi som ger lindring till trötta fötter och lindring från skador. Du har en pool av feyenergi som representeras av ett antal {@dice d6}s lika med din druidnivå.",
+				"Som en bonusåtgärd kan du välja en allierad som du kan se inom 120 fot från dig och spendera ett antal av dessa tärningar som är lika med halva din druidnivå eller mindre. Slå de använda tärningarna och addera dem tillsammans. Målet återfår ett antal träffpunkter som är lika med summan. Målet får också 1 tillfällig träffpunkt per spenderad tärning och dess hastighet ökar med 5 fot per spenderad tärning. Hastighetsökningen varar i 1 minut.",
+				"Du får tillbaka de förbrukade tärningarna när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Hearth of Moonlight and Shadow",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På sjätte nivån är hemmet den plats där du slår läger. Under en kort eller lång vila kan du åberopa den skuggiga kraften från Gloaming Court för att skydda din lägerplats från inkräktare. I början av vilan skapar du ett område med en radie på 30 fot. Inom detta område får du och dina allierade en bonus på +5 på Visdom ({@skill Perception})-kontroller för att upptäcka varelser, och allt ljus från öppna lågor (lägereld, facklor och liknande) är inte synligt utanför området. Dessa effekter upphör när vilan avslutas eller när du lämnar området."
+			]
+		},
+		{
+			"name": "Hidden Paths",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån kan du använda de dolda, oförutsägbara magiska vägar som vissa feer använder för att ta sig genom rymden på ett ögonblick. På din tur kan du teleportera dig upp till 30 fot till en plats som du kan se. Varje fot av denna teleportering kostar 1 fot av din rörelse.",
+				"Du kan också använda den här funktionen för att teleportera någon annan. Som en åtgärd kan du teleportera en villig allierad som du rör vid upp till 30 fot till en punkt som du kan se.",
+				"När du har använt ett av alternativen - att teleportera dig själv eller en allierad - kan du inte använda det alternativet igen förrän {@dice 1d4} rundor har gått."
+			]
+		},
+		{
+			"name": "Purifying Light",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån kan du med Sommarrättens gunst avsluta trollformler som hindrar dig och dina allierade. När du kastar en besvärjelse med en spelledningsfält och den återställer träffpunkter för dig eller en allierad denna tur, kan du samtidigt rikta den helade varelsen med dispel magic, med hjälp av ett spelledningsfält med en nivå som är lika stor som det fält som användes för att kasta helande besvärjelsen.",
+				"Du kan använda den här funktionen tre gånger, och du återfår den när du har använt den när du har vilat länge. Om helandebesvärjelsen riktar sig till mer än en varelse kan du använda den här funktionen på fler än en varelse samtidigt och använda den en gång per varelse."
+			]
+		},
+		{
+			"name": "Circle of the Shepherd",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"entries": [
+				"Druiderna i herdecirkeln kommunicerar med djurens andar. Även om dessa druider erkänner att alla levande varelser spelar en roll i den naturliga världen, fokuserar de på att skydda djuren. Herdar, som de kallas, ser djuren som sina beskyddare. De avvärjer monster som hotar naturliga varelser, tillrättavisar jägare som dödar fler byten än nödvändigt och hindrar civilisationen från att inkräkta på livsmiljöer och vägar som behövs för djurens vandringar. Många av dessa druider är lyckligast långt från städer och byar, nöjda med att tillbringa sina dagar i sällskap med vilda djur.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spirit Bond|Druid||Shepherd (UA)|UADruid|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Beast Speech|Druid||Shepherd (UA)|UADruid|2"
+				}
+			]
+		},
+		{
+			"name": "Beast Speech",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"På 2:a nivån får du förmågan att samtala med djur. Djur kan förstå ditt tal, och du får förmågan att dechiffrera deras ljud och rörelser till igenkännbara ord och fraser. De flesta djur saknar intelligens för att förmedla eller förstå sofistikerade begrepp, men ett vänligt djur kan förmedla vad det har sett eller hört under den senaste tiden.",
+				"Den här förmågan ger dig ingen speciell vänskap med djur, men du kan kombinera den här förmågan med gåvor och andra tjänster för att vinna deras gunst på samma sätt som du skulle göra med andra karaktärer som inte är spelare."
+			]
+		},
+		{
+			"name": "Spirit Bond",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Från och med nivå 2 får du förmågan att kalla fram djurandar och använda dem för att påverka världen omkring dig. Som en bonusåtgärd kan du magiskt framkalla en medium ande till ett obebott utrymme som du kan se inom 60 fot från dig. Anden skapar en aura i en radie på 30 fot runt den, den upptar inte sitt utrymme, den är orörlig och räknas varken som en varelse eller ett objekt.",
+				"Andan är kvar i 1 minut. När du har använt den här egenskapen kan du inte använda den igen förrän du har avslutat en kort eller lång vila.",
+				"Aurans karaktär beror på vilken typ av ande du väljer att åkalla från alternativen nedan.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Bear",
+							"entries": [
+								"Björnandan ger dig och dina allierade sin styrka och uthållighet. Du och dina allierade som befinner sig i auran när anden dyker upp får var och en tillfälliga träffpoäng lika med 5 + din druidnivå. Dessutom får du och dina allierade fördel på styrkekontroller och räddningskast för styrka när de befinner sig i auran."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Hawk",
+							"entries": [
+								"Hökanden är en fulländad jägare som markerar dina fiender med sin skarpa syn. Du och dina allierade får en fördel på distansattacker mot mål i andens aura."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Wolf",
+							"entries": [
+								"Vargandan ger dig och dina allierade sina exakta sinnen, medan din magi fungerar till förmån för medlemmarna i din flock. Du och dina allierade får en fördel på alla förmågaskontroller som görs för att upptäcka varelser i andens aura. Dessutom, om du kastar en besvärjelse med en spellokal som återställer träffpunkter för någon inom eller utanför auran, återfår var och en av dina allierade i auran också träffpunkter lika med din druidnivå."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mighty Summoner",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får du förmågan att trolla fram kraftfulla djur. Alla djur som kallas eller skapas av dina trollformler får två fördelar. Dess maximala träffpunktsantal ökar med 2 per Hit Die, och skadan från dess naturliga vapen betraktas som magisk i syfte att övervinna immunitet och motstånd mot icke-magiska attacker och skador."
+			]
+		},
+		{
+			"name": "Guardian Spirit",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån får du hjälp av en ande som vakar över dig och skyddar dig från skada. När du avslutar en lång vila får du fördelarna av en {@spell death ward} besvärjelse. Besvärjelsens varaktighet förlängs till 24 timmar."
+			]
+		},
+		{
+			"name": "Faithful Summons",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån skyddar de bestialiska andar du kommunicerar med dig när du är sårbar. Om du reduceras till 0 träffpunkter eller blir {@condition incapacitated} mot din vilja kan du omedelbart få fördelarna med {@spell conjure animals} som om den kastades med en trollformel på 9:e nivån. Den framkallar fyra odjur av ditt val som har utmaningsgrad 2 eller lägre. De trollade odjuren dyker upp inom sex meter från dig. Om de inte får några kommandon från dig skyddar de dig från skada och attackerar dina fiender. Besvärjelsen varar i 1 timme.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Circle of Twilight",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"entries": [
+				"Circle of Twilight försöker utrota odöda varelser och bevara den naturliga cykeln av liv och död som styr kosmos. Deras magi gör det möjligt för dem att manipulera gränsen mellan liv och död, skicka sina fiender till sin sista vila medan de håller sina allierade borta från det ödet.",
+				"Dessa druider letar efter länder som har blivit smutsiga av odödlighet. Sådana platser är dystra och fördomsfulla. En gång levande skogar blir dystra, hemsökta platser utan djur och fyllda med växter som dör en långsam, långsam död. Circle of Twilight går till sådana platser för att fördriva odöden och återupprätta livet.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Harvest's Scythe|Druid||Twilight (UA)|UADruid|2"
+				}
+			]
+		},
+		{
+			"name": "Harvest's Scythe",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Från och med nivå 2 lär du dig att ta reda på och skörda livsenergi från andra varelser. Du kan förstärka dina trollformler för att dränera livskraften från varelser. Du har en pool av energi som representeras av ett antal {@dice d10}s lika med din druidnivå.",
+				"När du kastar skada för en besvärjelse kan du öka skadan genom att använda tärningar från poolen. Du kan spendera ett antal tärningar som är lika med halva din druidnivå eller mindre. Rulla de använda tärningarna och lägg dem till skadan som nekrotisk skada. Om du dödar en eller flera fientliga varelser med en besvärjelse som förstärkts på detta sätt, får du eller en allierad som du väljer och som du kan se inom 30 fot från dig tillbaka 2 träffpoäng per tärning som spenderats för att öka besvärjelsens skada, eller 5 träffpoäng per tärning om minst en av de dödade varelserna var odöd.",
+				"Du får tillbaka de förbrukade tärningarna när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Speech Beyond the Grave",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får du förmågan att nå bortom dödens slöja i jakt på kunskap. Med hjälp av denna egenskap kan du kasta {@spell speak with dead} utan materiella komponenter, och du förstår vad målet för denna kastning säger. Den kan förstå dina frågor, även om ni inte delar språk eller om den inte är tillräckligt intelligent för att tala.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har avslutat en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Watcher at the Threshold",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån får du motstånd mot nekrotisk och strålande skada. Dessutom, medan du inte är {@condition incapacitated}, har alla allierade inom 30 fot från dig fördel på räddningskast mot döden."
+			]
+		},
+		{
+			"name": "Paths of the Dead",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån kan du med hjälp av din dödsmästarförmåga gå på de vägar som används av spöken och andra andar. Med hjälp av denna egenskap kan du kasta {@spell etherealness}. När besvärjelsen upphör kan du inte kasta den med den här funktionen igen förrän du avslutar en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Circle of the Shepherd v2",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 2,
+			"entries": [
+				"Druider från Shepherd Circle kommunicerar med naturens andar, särskilt djurens och feernas andar, och kallar dessa andar till hjälp. Dessa druider inser att alla levande varelser spelar en roll i den naturliga världen, men de fokuserar ändå på att skydda djur och feyvarelser som har svårt att försvara sig själva. Herdar, som de kallas, ser sådana varelser som sina skyddslingar. De avvärjer monster som hotar dem, tillrättavisar jägare som dödar fler byten än nödvändigt och hindrar civilisationen från att inkräkta på sällsynta djurens livsmiljöer och på platser som är heliga för feyerna. Många av dessa druider är lyckligast långt från städer och byar, nöjda med att tillbringa sina dagar i sällskap med djur och feyvarelser i vildmarken.",
+				"Medlemmarna i denna cirkel blir äventyrare för att bekämpa krafter som hotar deras skyddslingar eller för att söka kunskap och makt som hjälper dem att skydda sina skyddslingar bättre. Vart dessa druider än går är vildmarkens andar med dem.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Speech of the Woods|Druid||Shepherd v2 (UA)|UARevisedClassOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spirit Totem|Druid||Shepherd v2 (UA)|UARevisedClassOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Speech of the Woods",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"På 2:a nivån får du förmågan att samtala med djur och många fey.",
+				"Du lär dig tala, läsa och skriva {@language Sylvan}. Dessutom kan djur förstå ditt tal och du får förmågan att tyda deras ljud och rörelser. De flesta djur saknar intelligens för att förmedla eller förstå sofistikerade begrepp, men ett vänligt djur kan förmedla vad det har sett eller hört nyligen. Den här förmågan ger dig inte någon speciell vänskap med djur, även om du kan kombinera den här förmågan med gåvor för att få dem i gunst på samma sätt som du skulle göra med vilken icke-spelarkaraktär som helst."
+			]
+		},
+		{
+			"name": "Spirit Totem",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Från och med 2:a nivån får du förmågan att kalla på naturandar och använda dem för att påverka världen omkring dig. Som en bonusåtgärd kan du magiskt framkalla en kroppslös ande till en punkt som du kan se inom 60 fot från dig. Anden skapar en aura i en radie på 30 fot runt den punkten. Den räknas varken som en varelse eller ett objekt, även om den har det spektrala utseendet hos den varelse den representerar.",
+				"Som en bonusåtgärd kan du flytta anden upp till 60 fot till en punkt som du kan se.",
+				"Andan är kvar i 1 minut. När du har använt den här egenskapen kan du inte använda den igen förrän du har avslutat en kort eller lång vila.",
+				"Effekten av andens aura beror på vilken typ av ande du kallar på från alternativen nedan.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Bear Spirit",
+							"entries": [
+								"Björnandan ger dig och dina allierade sin styrka och uthållighet. Varje varelse av ditt val som befinner sig i auran när anden dyker upp får tillfälliga träffpoäng lika med 5 + din druidnivå. Dessutom får du och dina allierade fördel på styrkekontroller och räddningskast för styrka när de befinner sig i auran."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Hawk Spirit",
+							"entries": [
+								"Hökanden är en fulländad jägare som markerar dina fiender med sin skarpa syn. När en varelse gör en anfallsrulle mot ett mål i andens aura kan du använda din reaktion för att ge fördel på den anfallsrullen."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Unicorn Spirit",
+							"entries": [
+								"Enhörningens ande ger sitt skydd till dem som befinner sig i närheten. Du och dina allierade får en fördel på alla förmågaskontroller som görs för att upptäcka varelser i andens aura. Dessutom, om du kastar en besvärjelse med en spelledningsfält som återställer träffpoäng för någon inom eller utanför auran, återfår varje varelse av ditt val i auran också träffpoäng lika med din druidnivå."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mighty Summoner",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får du förmågan att trolla fram kraftfulla djur och fey. Varje djur eller fey som kallas eller skapas av dina trollformler får två fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"Varelsen har fler träffpunkter än normalt: 2 extra träffpunkter per Hit Die som den har.",
+						"Skadan från dess naturliga vapen betraktas som magisk när det gäller att övervinna immunitet och motståndskraft mot icke-magiska attacker och skador."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guardian Spirit",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån skyddar din Spirit Totem de djur och fey som du kallar fram med din magi. När ett djur eller en fey som du har kallat på eller skapat med en trollformel avslutar sin tur i din Spirit Totem-ura, får den varelsen tillbaka ett antal träffpunkter som är lika med halva din druidnivå."
+			]
+		},
+		{
+			"name": "Faithful Summons",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån skyddar de naturandar du kommunicerar med dig när du är som mest försvarslös. Om du reduceras till 0 träffpunkter eller blir {@condition incapacitated} mot din vilja kan du omedelbart få fördelarna med {@spell conjure animals} som om den kastades med en trollformel på 9:e nivån. Den framkallar fyra bestar av ditt val som har utmaningsgrad 2 eller lägre. De trollade odjuren dyker upp inom sex meter från dig. Om de inte får några kommandon från dig skyddar de dig från skada och attackerar dina fiender. Besvärjelsen varar i 1 timme och kräver ingen koncentration, eller tills du avbryter den (ingen handling krävs).",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Circle of Spores (UA)",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 2,
+			"entries": [
+				"Druider från Circle of Spores finner skönhet i förfall. De ser i mögel och andra svampar förmågan att förvandla livlöst material till rikligt, om än något märkligt, liv. Dessa druider tror att liv och död är delar av en stor cykel, där det ena leder till det andra och sedan tillbaka igen. Döden är inte livets slut, utan istället en förändring av tillstånd där livet övergår till en ny form. Druider från denna krets har ett komplicerat förhållande till de odöda. Till skillnad från de flesta andra druider ser de inget i sig självt fel med den odöda, som de betraktar som en följeslagare till livet och döden. Dessa druider anser dock att det naturliga kretsloppet är mest hälsosamt när varje segment av det är levande och föränderligt. Odöda som försöker ersätta allt liv med odödlighet, eller undvika att gå över till en slutlig vila, bryter mot cykeln och måste motarbetas.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Spores (UA)|UAThreeSubclasses|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Halo of Spores|Druid||Spores (UA)|UAThreeSubclasses|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Symbiotic Entity|Druid||Spores (UA)|UAThreeSubclasses|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Din symbiotiska koppling till svampen och din förmåga att utnyttja livets och dödens cykel ger dig tillgång till vissa trollformler. På 1:a nivån lär du dig {@spell chill touch} cantrip. På 3:e, 5:e, 7:e och 9:e nivån får du tillgång till de trollformler som listas för den nivån i tabellen Circle of Spores Spells Spells.",
+				"När du får tillgång till en av dessa trollformler har du den alltid förberedd, och den räknas inte mot det antal trollformler du kan förbereda varje dag. Om du får tillgång till en besvärjelse som inte finns med på druidernas besvärjelselista är besvärjelsen ändå en druidbesvärjelse för dig.",
+				{
+					"type": "table",
+					"caption": "Circle of Spores Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell gentle repose}, {@spell ray of enfeeblement}"
+						],
+						[
+							"5th",
+							"{@spell animate dead}, {@spell gaseous form}"
+						],
+						[
+							"7th",
+							"{@spell blight}, {@spell confusion}"
+						],
+						[
+							"9th",
+							"{@spell cloudkill}, {@spell contagion}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Halo of Spores",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Från och med nivå 2 kan du skicka giftiga sporer mot andra varelser. För att göra det använder du din reaktion på din tur för att tillfoga 3 giftskador till en varelse som du kan se inom tre meter från dig. Denna skada ökar till 6 på 6:e nivån, 9 på 10:e nivån och 12 på 14:e nivån."
+			]
+		},
+		{
+			"name": "Symbiotic Entity",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"På 2:a nivån får du förmågan att kanalisera magi till de sporer som genomsyrar dig.",
+				"När du använder din Wild Shape-funktion kan du väcka dessa sporer i stället för att förvandla dem. När du gör det får du 3 tillfälliga träffpunkter per nivå i den här klassen, skadan från din Halo of Spores-funktion fördubblas och dina närstridsvapenattacker ger extra {@damage 1d6} giftskada till alla mål de träffar. Dessa fördelar varar i 10 minuter eller tills du använder din Wild Shape igen."
+			]
+		},
+		{
+			"name": "Fungal Infestation",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får dina sporer förmågan att infektera ett humanoid lik och ge liv åt det.",
+				"Om du dödar en humanoid med din Halo of Spores-skada, stiger varelsen upp som en {@creature zombie} i slutet av din tur. Den har 1 träffpunkt. I strid är dess tur omedelbart efter din tur. Den lyder dina mentala kommandon, och den enda handling den kan utföra är {@action Attack}-handlingen, vilket innebär att den gör en närkampsattack. Den förblir animerad i 1 timme, varefter den kollapsar och dör."
+			]
+		},
+		{
+			"name": "Spreading Spores",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"På 10:e nivån får du förmågan att sprida dödliga sporer över ett område. Som en bonushandling kastar du svampsporer upp till 30 fot bort, där de virvlar runt i en 10-fots kub i 1 minut. Medan kuben av sporer består kan du inte använda din egenskap Halo of Spores, men alla varelser som börjar sin tur i kuben tar din Halo of Spores-skada. Kuben av sporer försvinner tidigt om du använder den här funktionen igen."
+			]
+		},
+		{
+			"name": "Fungal Body",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån förändrar svampsporerna i din kropp dig: du kan inte vara {@condition blinded}, {@condition deafened}, {@condition frightened} eller {@condition poisoned}, och om en attack är en kritisk träff mot dig, ger den inte sin extra skada till dig."
+			]
+		},
+		{
+			"name": "Circle of Dreams",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 2,
+			"entries": [
+				"Druider som är medlemmar i Circle of Dreams kommer från regioner som har starka band till Feywild och dess drömlika världar. Druidernas beskydd av den naturliga världen gör att det finns en naturlig allians mellan dem och fey med god inriktning. Dessa druider strävar efter att fylla världen med drömska underverk. Deras magi läker sår och ger glädje till nedstämda hjärtan, och de riken som de skyddar är glänsande, fruktbara platser, där dröm och verklighet smälter samman och där de trötta kan finna vila.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Balm of the Summer Court|Druid||Dreams|XGE|2"
+				}
+			]
+		},
+		{
+			"name": "Balm of the Summer Court",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"På andra nivån blir du genomsyrad av sommardomstolens välsignelser. Du är en källa till energi som ger dig andrum från skador. Du har en pool av fey-energi som representeras av ett antal {@dice d6}s lika med din druidnivå.",
+				"Som en bonusåtgärd kan du välja en varelse som du kan se inom 120 fot från dig och använda ett antal av dessa tärningar som är lika med halva din druidnivå eller mindre. Slå de använda tärningarna och addera dem tillsammans. Målet återfår ett antal träffpunkter som är lika med summan. Målet får också 1 tillfällig träffpunkt per spenderad tärning.",
+				"Du återfår alla förbrukade tärningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Hearth of Moonlight and Shadow",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På sjätte nivån kan hemmet vara var du än befinner dig. Under en kort eller lång vila kan du åberopa den skuggiga kraften från Gloaming Court för att skydda din vila. I början av vilan rör du vid en punkt i rymden, och en osynlig, 30 fot radie av magi dyker upp, centrerad på den punkten. Totalt skydd blockerar sfären.",
+				"När du och dina allierade befinner er inom sfären får du och dina allierade en +5 bonus på Dexterity ({@skill Stealth}) och Wisdom ({@skill Perception}) kontroller, och allt ljus från öppna lågor inom sfären (en lägereld, facklor, eller liknande) är inte synligt utanför den.",
+				"Sfären försvinner i slutet av vilan eller när du lämnar sfären."
+			]
+		},
+		{
+			"name": "Hidden Paths",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Från och med 10:e nivån kan du använda de dolda, magiska vägar som vissa feer använder för att ta sig fram i rymden på ett ögonblick. Som en bonusåtgärd på din tur kan du teleportera dig upp till 60 fot till ett obebott utrymme som du kan se. Alternativt kan du använda din handling för att teleportera en villig varelse som du rör vid upp till 30 fot till ett obebott utrymme som du kan se.",
+				"Du kan använda den här egenskapen ett antal gånger som är lika med din visdomsmodifierare (minst en gång), och du återfår alla förbrukade användningar av den när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Walker in Dreams",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån ger Feywilds magi dig förmågan att resa mentalt eller fysiskt genom drömmar.",
+				"När du avslutar en kort vila kan du kasta en av följande trollformler utan att använda en trollformelplats eller kräva materiella komponenter: {@spell dream} (med dig som budbärare), {@spell scrying} eller {@spell teleportation circle}.",
+				"Denna användning av {@spell teleportation circle} är speciell. Istället för att öppna en portal till en permanent {@spell teleportation circle} öppnar den en portal till den sista platsen där du avslutade en lång vila på ditt nuvarande existensplan. Om du inte har tagit en lång vila på ditt nuvarande plan misslyckas besvärjelsen men är inte bortkastad.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Circle of the Shepherd",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 2,
+			"entries": [
+				"Druider från Shepherd Circle kommunicerar med naturens andar, särskilt djurens och feernas andar, och kallar dessa andar till hjälp. Dessa druider inser att alla levande varelser spelar en roll i den naturliga världen, men de fokuserar ändå på att skydda djur och feyvarelser som har svårt att försvara sig själva. Herdar, som de kallas, ser sådana varelser som sina skyddslingar. De avvärjer monster som hotar dem, tillrättavisar jägare som dödar fler byten än nödvändigt och hindrar civilisationen från att inkräkta på sällsynta djurens livsmiljöer och på platser som är heliga för feyerna. Många av dessa druider är lyckligast långt från städer och byar, nöjda med att tillbringa sina dagar i sällskap med djur och feyvarelser i vildmarken.",
+				"Medlemmarna i denna cirkel blir äventyrare för att bekämpa krafter som hotar deras skyddslingar eller för att söka kunskap och makt som hjälper dem att skydda sina skyddslingar bättre. Vart dessa druider än går är vildmarkens andar med dem.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Speech of the Woods|Druid||Shepherd|XGE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spirit Totem|Druid||Shepherd|XGE|2"
+				}
+			]
+		},
+		{
+			"name": "Speech of the Woods",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"På 2:a nivån får du förmågan att samtala med djur och många fey.",
+				"Du lär dig tala, läsa och skriva {@language Sylvan}. Dessutom kan djur förstå ditt tal och du får förmågan att tyda deras ljud och rörelser. De flesta djur saknar intelligens för att förmedla eller förstå sofistikerade begrepp, men ett vänligt djur kan förmedla vad det har sett eller hört nyligen. Den här förmågan ger dig inte vänskap med djur, även om du kan kombinera den här förmågan med gåvor för att få dem att ställa sig i gunst på samma sätt som du skulle göra med vilken icke-spelarkaraktär som helst."
+			]
+		},
+		{
+			"name": "Spirit Totem",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Från och med nivå 2 kan du kalla på naturandar för att påverka världen omkring dig. Som en bonusåtgärd kan du magiskt framkalla en kroppslös ande till en punkt som du kan se inom 60 fot från dig. Anden skapar en aura i en radie på 30 fot runt den punkten. Den räknas varken som en varelse eller ett objekt, även om den har det spektrala utseendet hos den varelse den representerar.",
+				"Som en bonusåtgärd kan du flytta anden upp till 60 fot till en punkt som du kan se.",
+				"Andan är kvar i 1 minut eller tills du är {@condition incapacitated}. När du har använt den här egenskapen kan du inte använda den igen förrän du har avslutat en kort eller lång vila.",
+				"Effekten av andens aura beror på vilken typ av ande du kallar på från alternativen nedan.",
+				{
+					"type": "entries",
+					"name": "Bear Spirit",
+					"entries": [
+						"Björnandan ger dig och dina allierade sin styrka och uthållighet. Varje varelse av ditt val som befinner sig i auran när anden dyker upp får tillfälliga träffpoäng lika med 5 + din druidnivå. Dessutom får du och dina allierade fördel på styrkekontroller och räddningskast för styrka när de befinner sig i auran."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hawk Spirit",
+					"entries": [
+						"Hökanden är en fulländad jägare som hjälper dig och dina allierade med sin skarpa syn. När en varelse gör en anfallsrulle mot ett mål i andens aura kan du använda din reaktion för att ge fördel på den anfallsrullen. Dessutom har du och dina allierade en fördel på Visdom ({@skill Perception})-kontroller när de befinner sig i auran."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Unicorn Spirit",
+					"entries": [
+						"Enhörningens ande ger sitt skydd till dem som befinner sig i närheten. Du och dina allierade får en fördel på alla förmågaskontroller som görs för att upptäcka varelser i andens aura. Dessutom, om du kastar en besvärjelse med hjälp av en spellplats som återställer träffpoäng för någon varelse inom eller utanför auran, återfår varje varelse av ditt val i auran också träffpoäng lika med din druidnivå."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mighty Summoner",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån är djur och fey som du trollar fram mer motståndskraftiga än normalt. Varje djur eller fey som kallas eller skapas av en besvärjelse som du kastar får följande fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"Varelsen har fler träffpunkter än normalt: 2 extra träffpunkter per Hit Die som den har.",
+						"Skadan från dess naturliga vapen betraktas som magisk när det gäller att övervinna immunitet och motståndskraft mot icke-magiska attacker och skador."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guardian Spirit",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Från och med 10:e nivån skyddar din Spirit Totem de djur och fey som du kallar fram med din magi. När ett djur eller en fey som du har kallat på eller skapat med en besvärjelse avslutar sin tur i din Spirit Totem-ura får den varelsen tillbaka ett antal träffpunkter som är lika med halva din druidnivå."
+			]
+		},
+		{
+			"name": "Faithful Summons",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån skyddar de naturandar du kommunicerar med dig när du är som mest försvarslös. Om du reduceras till 0 träffpunkter eller blir {@condition incapacitated} mot din vilja, kan du omedelbart få fördelarna med {@spell conjure animals} som om den kastades med en trollformel på 9:e nivån. Den framkallar fyra odjur av ditt val som har utmaningsgrad 2 eller lägre. De trollade odjuren dyker upp inom sex meter från dig. Om de inte får några kommandon från dig skyddar de dig från skada och attackerar dina fiender. Besvärjelsen varar i 1 timme och kräver ingen koncentration, eller tills du avbryter den (ingen handling krävs).",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		}
+	]
+}

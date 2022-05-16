@@ -1,0 +1,311 @@
+{
+	"spell": [
+		{
+			"name": "Conjure Barlgura (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					}
+				}
+			],
+			"entries": [
+				"Du kallar på en {@creature barlgura} som dyker upp i ett obebott utrymme som du kan se inom räckhåll. {@creature barlgura} försvinner när den sjunker till 0 träffpunkter eller när förtrollningen upphör.",
+				"{@creature barlgura} är fientlig mot alla icke-demoner. Rulla initiativ för {@creature barlgura}, som har sina egna turer. I början av sin tur rör den sig mot och attackerar den närmaste icke-demon som den kan uppfatta. Om två eller flera varelser är lika nära väljer den en slumpmässigt. Om den inte kan se några potentiella fiender rör sig {@creature barlgura} i en slumpmässig riktning för att söka efter fiender.",
+				"Som en del av besvärjelsen kan du rita en cirkel på marken med blodet från en intelligent humanoid som dödats inom de senaste 24 timmarna. Cirkeln är tillräckligt stor för att omfatta ditt område. Den framkallade {@creature barlgura} kan inte korsa cirkeln eller sikta på någon i den medan trollformeln varar."
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Hezrou (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 7,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "food worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du kallar på en {@creature hezrou} som dyker upp i ett obebott utrymme som du kan se inom räckhåll. {@creature hezrou} försvinner när den sjunker till 0 träffpunkter eller när förtrollningen upphör.",
+				"{@creature hezrou}:s attityd beror på värdet av den mat som används som en materiell komponent för denna besvärjelse. Rulla initiativ för {@creature hezrou}, som har sina egna turer. I början av {@creature hezrou}:s tur gör DM en hemlig Charisma-kontroll för din räkning, med en bonus som är lika med matens värde dividerat med 20. Kontrollens DC börjar på 10 och ökar med 2 varje runda. Du kan ge order till {@creature hezrou} och få den att lyda dig så länge du lyckas med Charisma-kontrollen.",
+				"Om testet misslyckas kräver besvärjelsen inte längre koncentration och demonen är inte längre under din kontroll. {@creature hezrou} fokuserar sedan på att sluka alla lik den kan se. Om det inte finns några sådana måltider till hands attackerar den de närmaste varelserna och äter allt den dödar. Om dess träffpunkter reduceras till under hälften av dess maximala träffpunktsantal återvänder den till avgrunden.",
+				"Som en del av besvärjelsen kan du rita en cirkel på marken med blodet från en intelligent humanoid som dödats inom de senaste 24 timmarna. Cirkeln är tillräckligt stor för att omfatta ditt område. Den framkallade {@creature hezrou} kan inte korsa cirkeln eller sikta på någon i den medan trollformeln varar."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Lesser Demon (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a vial of blood from an intelligent humanoid killed within the past 24 hours"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du kan framkalla upp till totalt åtta {@creature manes} eller {@creature dretch||dretches} som dyker upp i obebodda utrymmen som du kan se inom räckhåll. En {@creature manes} eller {@creature dretch} försvinner när den sjunker till 0 träffpunkter eller när förtrollningen upphör.",
+				"Demonerna är fientliga mot alla varelser. Ta initiativ för de kallade demonerna som en grupp, som har sina egna turer. Demonerna attackerar de närmaste icke-demonerna efter bästa förmåga.",
+				"Som en del av besvärjelsen kan du rita en cirkel på marken med blodet som materialkomponent. Cirkeln är tillräckligt stor för att omfatta ditt utrymme. De framkallade demonerna kan inte korsa cirkeln eller sikta in sig på någon i den så länge trollformeln varar. Att använda den materiella komponenten på detta sätt förbrukar den."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spell slot på 6:e eller 7:e nivån kallar du på sexton demoner. Om du kastar den med en trollformel på 8:e eller 9:e nivån, kallar du på trettiotvå demoner."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Shadow Demon (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 3,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a vial of blood from an intelligent humanoid killed within the past 24 hours"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du kallar på en {@creature shadow demon} som dyker upp i ett obebott utrymme som du kan se inom räckhåll. {@creature shadow demon} försvinner när den sjunker till 0 träffpunkter eller när förtrollningen upphör.",
+				"Ta initiativ för {@creature shadow demon}, som har sina egna turer. Du kan ge order till {@creature shadow demon}, och den lyder dig så länge den kan attackera en varelse på var och en av sina turer och inte börjar sin tur i ett område med starkt ljus. Om något av dessa villkor inte uppfylls gör {@creature shadow demon} omedelbart en Charismabedömning som bestrids av din Charismabedömning. Om du misslyckas med testet kräver förtrollningen inte längre koncentration och demonen är inte längre under din kontroll. Demonen lyckas automatiskt på kontrollen om den befinner sig mer än 100 fot från dig.",
+				"Som en del av besvärjelsen kan du rita en cirkel på marken med blodet från en intelligent humanoid som dödats inom de senaste 24 timmarna. Cirkeln är tillräckligt stor för att omfatta ditt område. Den framkallade {@creature shadow demon} kan inte korsa cirkeln eller sikta på någon i den medan trollformeln varar."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Vrock (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 3,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gem worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du kallar på en {@creature vrock} som dyker upp i ett obebott utrymme som du kan se inom räckhåll. {@creature vrock} försvinner när den sjunker till 0 träffpunkter eller när förtrollningen upphör.",
+				"{@creature vrock}'s attityd beror på värdet av den ädelsten som används som en materiell komponent för denna besvärjelse. Rulla initiativ för {@creature vrock}, som har sina egna turer. I början av {@creature vrock}:s tur gör DM en hemlig Charisma-kontroll för din räkning, med en bonus som är lika med ädelstens värde dividerat med 20. Kontrollens DC börjar på 10 och ökar med 2 varje runda. Du kan ge order till {@creature vrock} och få den att lyda dig så länge du lyckas med Charisma-kontrollen.",
+				"Om testet misslyckas kräver förtrollningen inte längre koncentration och {@creature vrock} är inte längre under din kontroll. {@creature vrock} tar inga åtgärder på sin nästa tur och använder sin telepati för att berätta för alla varelser den kan se att den kommer att slåss i utbyte mot en skatt. Den varelse som ger {@creature vrock} den dyraste ädelstenen kan befalla den under de kommande {@dice 1d6} ronderna. I slutet av den tiden erbjuder den bytet igen. Om ingen erbjuder {@creature vrock} skatten innan dess nästa tur börjar, attackerar den de närmaste varelserna i {@dice 1d6} rundor innan den återvänder till Abyss.",
+				"Som en del av besvärjelsen kan du rita en cirkel på marken med blodet från en intelligent humanoid som dödats inom de senaste 24 timmarna. Cirkeln är tillräckligt stor för att omfatta ditt område. Den framkallade {@creature vrock} kan inte korsa cirkeln eller sikta på någon i den medan trollformeln varar."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

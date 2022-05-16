@@ -1,5 +1,245 @@
 {
-	"class": [],
+	"class": [
+		{
+			"name": "Sorcerer",
+			"source": "PHB",
+			"advancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "sorcery-points",
+						"type": "number",
+						"scale": {
+							"2": {
+								"value": 2
+							},
+							"3": {
+								"value": 3
+							},
+							"4": {
+								"value": 4
+							},
+							"5": {
+								"value": 5
+							},
+							"6": {
+								"value": 6
+							},
+							"7": {
+								"value": 7
+							},
+							"8": {
+								"value": 8
+							},
+							"9": {
+								"value": 9
+							},
+							"10": {
+								"value": 10
+							},
+							"11": {
+								"value": 11
+							},
+							"12": {
+								"value": 12
+							},
+							"13": {
+								"value": 13
+							},
+							"14": {
+								"value": 14
+							},
+							"15": {
+								"value": 15
+							},
+							"16": {
+								"value": 16
+							},
+							"17": {
+								"value": 17
+							},
+							"18": {
+								"value": 18
+							},
+							"19": {
+								"value": 19
+							},
+							"20": {
+								"value": 20
+							}
+						}
+					},
+					"title": "Sorcery Points"
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "College of Whispers",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"advancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "psychic-blades",
+						"type": "dice",
+						"scale": {
+							"3": {
+								"n": 2,
+								"die": 6
+							},
+							"5": {
+								"n": 3,
+								"die": 6
+							},
+							"10": {
+								"n": 5,
+								"die": 6
+							},
+							"15": {
+								"n": 8,
+								"die": 6
+							}
+						}
+					},
+					"title": "Psychic Blades"
+				}
+			]
+		},
+		{
+			"name": "Death Domain",
+			"source": "DMG",
+			"className": "Cleric",
+			"classSource": "PHB",
+			"advancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "divine-strike",
+						"type": "dice",
+						"scale": {
+							"8": {
+								"n": 1,
+								"die": 8
+							},
+							"14": {
+								"n": 2,
+								"die": 8
+							}
+						}
+					},
+					"title": "Divine Strike"
+				}
+			]
+		},
+		{
+			"name": "Forge Domain",
+			"source": "XGE",
+			"className": "Cleric",
+			"classSource": "PHB",
+			"advancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "divine-strike",
+						"type": "dice",
+						"scale": {
+							"8": {
+								"n": 1,
+								"die": 8
+							},
+							"14": {
+								"n": 2,
+								"die": 8
+							}
+						}
+					},
+					"title": "Divine Strike"
+				}
+			]
+		},
+		{
+			"name": "Nature Domain",
+			"source": "PHB",
+			"className": "Cleric",
+			"classSource": "PHB",
+			"advancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "divine-strike",
+						"type": "dice",
+						"scale": {
+							"8": {
+								"n": 1,
+								"die": 8
+							},
+							"14": {
+								"n": 2,
+								"die": 8
+							}
+						}
+					},
+					"title": "Divine Strike"
+				}
+			]
+		},
+		{
+			"name": "Order Domain",
+			"source": "TCE",
+			"className": "Cleric",
+			"classSource": "PHB",
+			"advancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "divine-strike",
+						"type": "dice",
+						"scale": {
+							"8": {
+								"n": 1,
+								"die": 8
+							},
+							"14": {
+								"n": 2,
+								"die": 8
+							}
+						}
+					},
+					"title": "Divine Strike"
+				}
+			]
+		},
+		{
+			"name": "Trickery Domain",
+			"source": "PHB",
+			"className": "Cleric",
+			"classSource": "PHB",
+			"advancement": [
+				{
+					"type": "ScaleValue",
+					"configuration": {
+						"identifier": "divine-strike",
+						"type": "dice",
+						"scale": {
+							"8": {
+								"n": 1,
+								"die": 8
+							},
+							"14": {
+								"n": 2,
+								"die": 8
+							}
+						}
+					},
+					"title": "Divine Strike"
+				}
+			]
+		}
+	],
 	"classFeature": [
 		{
 			"name": "Unarmored Movement",
@@ -14,27 +254,27 @@
 						{
 							"key": "data.attributes.movement.walk",
 							"mode": "ADD",
-							"value": "sign(@attributes.movement.walk) * ((ceil((@classes.monk.levels - 1) / 4) * 5) + 5)"
+							"value": "sign(@attributes.movement.walk) * @scale.monk.unarmored-movement"
 						},
 						{
 							"key": "data.attributes.movement.burrow",
 							"mode": "ADD",
-							"value": "sign(@attributes.movement.burrow) * ((ceil((@classes.monk.levels - 1) / 4) * 5) + 5)"
+							"value": "sign(@attributes.movement.burrow) * @scale.monk.unarmored-movement"
 						},
 						{
 							"key": "data.attributes.movement.climb",
 							"mode": "ADD",
-							"value": "sign(@attributes.movement.climb) * ((ceil((@classes.monk.levels - 1) / 4) * 5) + 5)"
+							"value": "sign(@attributes.movement.climb) * @scale.monk.unarmored-movement"
 						},
 						{
 							"key": "data.attributes.movement.fly",
 							"mode": "ADD",
-							"value": "sign(@attributes.movement.fly) * ((ceil((@classes.monk.levels - 1) / 4) * 5) + 5)"
+							"value": "sign(@attributes.movement.fly) * @scale.monk.unarmored-movement"
 						},
 						{
 							"key": "data.attributes.movement.swim",
 							"mode": "ADD",
-							"value": "sign(@attributes.movement.swim) * ((ceil((@classes.monk.levels - 1) / 4) * 5) + 5)"
+							"value": "sign(@attributes.movement.swim) * @scale.monk.unarmored-movement"
 						}
 					]
 				}
@@ -134,7 +374,7 @@
 							"equipped": true,
 							"damage.parts": [
 								[
-									"1d(2 + ceil((@classes.monk.levels + 2) / 6) * 2) + @mod",
+									"1d@(scale.monk.die) + @mod",
 									"bludgeoning"
 								]
 							],
@@ -529,7 +769,7 @@
 			"level": 2,
 			"data": {
 				"uses.per": "lr",
-				"uses.max": "@classes.sorcerer.levels * sign(max(0, @classes.sorcerer.levels - 2))"
+				"uses.max": "@scale.sorcerer.sorcery-points"
 			},
 			"img": "icons/magic/control/silhouette-hold-change-blue.webp"
 		},
@@ -875,7 +1115,7 @@
 				"activation.condition": "When you hit a creature with a weapon attack",
 				"damage.parts": [
 					[
-						"2d6 + (min(floor(@classes.bard.levels/5),1))d6 + (min(floor(@classes.bard.levels/10),1)*2)d6 + (min(floor(@classes.bard.levels/15),1)*3)d6",
+						"@scale.college-of-whispers.psychic-blades",
 						"psychic"
 					]
 				]
@@ -969,7 +1209,7 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
+						"@scale.death-domain.divine-strike",
 						"necrotic"
 					]
 				]
@@ -986,7 +1226,7 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
+						"@scale.forge-domain.divine-strike",
 						"fire"
 					]
 				]
@@ -1158,15 +1398,15 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
+						"@scale.nature-domain.divine-strike",
 						"cold"
 					],
 					[
-						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
+						"@scale.nature-domain.divine-strike",
 						"fire"
 					],
 					[
-						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
+						"@scale.nature-domain.divine-strike",
 						"lightning"
 					]
 				]
@@ -1197,7 +1437,7 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
+						"@scale.order-domain.divine-strike",
 						"psychic"
 					]
 				]
@@ -1229,7 +1469,7 @@
 			"data": {
 				"damage.parts": [
 					[
-						"(min(floor(@classes.cleric.levels/14),1) + 1)d8",
+						"@scale.order-domain.divine-strike",
 						"poison"
 					]
 				]

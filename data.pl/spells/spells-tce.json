@@ -1,0 +1,1732 @@
+{
+	"spell": [
+		{
+			"name": "Blade of Disaster",
+			"source": "TCE",
+			"page": 106,
+			"otherSources": [
+				{
+					"source": "IDRotF",
+					"page": 318
+				}
+			],
+			"level": 9,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Tworzysz planarną szczelinę w kształcie ostrza o długości około 3 stóp w niezamieszkanej przestrzeni, którą widzisz w zasięgu. Ostrze utrzymuje się przez cały czas trwania zaklęcia. Kiedy rzucasz to zaklęcie, możesz wykonać do dwóch ataków ostrzem w walce wręcz, każdy przeciwko stworzeniu, luźnemu obiektowi lub strukturze w promieniu 5 stóp od ostrza. W przypadku trafienia, cel otrzymuje {@damage 4d12} obrażeń od siły. Atak ten kończy się trafieniem krytycznym, jeśli liczba na {@dice d20} wynosi 18 lub więcej. Przy trafieniu krytycznym, ostrze zadaje dodatkowe {@damage 8d12} obrażeń od siły (w sumie {@damage 12d12} obrażeń od siły).",
+				"Jako dodatkową akcję w swojej turze możesz przenieść ostrze na odległość do 30 stóp do widocznej dla ciebie niezajętej przestrzeni, a następnie ponownie wykonać nim do dwóch ataków wręcz.",
+				"Ostrze może nieszkodliwie przejść przez każdą barierę, w tym przez {@spell wall of force}."
+			],
+			"damageInflict": [
+				"force"
+			],
+			"spellAttack": [
+				"M"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Booming Blade",
+			"source": "TCE",
+			"page": 106,
+			"otherSources": [
+				{
+					"source": "SCAG",
+					"page": 142
+				}
+			],
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a melee weapon worth at least 1 sp",
+					"cost": 10
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Rzucasz bronią użytą podczas rzucania zaklęcia i wykonujesz nią atak w walce wręcz przeciwko jednemu stworzeniu znajdującemu się w promieniu 5 stóp od ciebie. W przypadku trafienia, cel odczuwa normalne efekty ataku bronią, a następnie zostaje owinięty dudniącą energią do początku twojej następnej tury. Jeśli cel dobrowolnie przemieści się o 5 stóp lub więcej, otrzymuje {@damage 1d8} obrażeń od piorunów, a czar się kończy.",
+				"Obrażenia zadawane przez to zaklęcie zwiększają się po osiągnięciu określonych poziomów. Na 5. poziomie atak w walce wręcz zadaje celowi dodatkowe {@damage 1d8} obrażeń od piorunów przy trafieniu, a obrażenia, które cel otrzymuje za poruszanie się, wzrastają do {@damage 2d8}. Oba obrażenia wzrastają o 1d8 na 11. poziomie ({@damage 2d8} i {@damage 3d8}) i ponownie na 17. poziomie ({@damage 3d8} i {@damage 4d8})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "thunder damage on moving",
+					"scaling": {
+						"1": "1d8",
+						"5": "2d8",
+						"11": "3d8",
+						"17": "4d8"
+					}
+				},
+				{
+					"label": "thunder damage on hit",
+					"scaling": {
+						"5": "1d8",
+						"11": "2d8",
+						"17": "3d8"
+					}
+				}
+			],
+			"damageInflict": [
+				"thunder"
+			],
+			"miscTags": [
+				"SCL"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Dream of the Blue Veil",
+			"source": "TCE",
+			"page": 106,
+			"level": 7,
+			"school": "C",
+			"time": [
+				{
+					"number": 10,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 20
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a magic item or a willing creature from the destination world"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 6
+					}
+				}
+			],
+			"entries": [
+				"Ty i do ośmiu chętnych istot w zasięgu spadacie {@condition unconscious} na czas trwania zaklęcia i doświadczacie wizji innego świata na Płaszczyźnie Materialnej, takiego jak Oerth, Toril, Krynn czy Eberron. Jeśli zaklęcie osiągnie swój pełny czas trwania, wizje kończą się tym, że każdy z was napotyka i odsuwa tajemniczą niebieską zasłonę. Zaklęcie kończy się tym, że mentalnie i fizycznie przenosisz się do świata, który był w wizjach.",
+				"Aby rzucić to zaklęcie, musisz posiadać magiczny przedmiot, który powstał na świecie, do którego chcesz się dostać, i musisz wiedzieć o istnieniu tego świata, nawet jeśli nie znasz jego nazwy. Twoim celem w innym świecie jest bezpieczne miejsce w promieniu 1 mili od miejsca, w którym został stworzony magiczny przedmiot. Możesz też rzucić zaklęcie, jeśli jedno z dotkniętych nim stworzeń urodziło się na innym świecie, co spowoduje, że celem podróży będzie bezpieczne miejsce w promieniu 1 mili od miejsca, w którym urodziło się to stworzenie.",
+				"Zaklęcie kończy się wcześnie na stworzeniu, jeśli otrzyma ono jakiekolwiek obrażenia, a stworzenie nie zostanie przetransportowane. Jeśli otrzymasz jakiekolwiek obrażenia, zaklęcie kończy się dla ciebie i wszystkich innych stworzeń, przy czym żadne z nich nie zostaje przetransportowane."
+			],
+			"conditionInflict": [
+				"unconscious"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Bard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluff": true
+		},
+		{
+			"name": "Green-Flame Blade",
+			"source": "TCE",
+			"page": 107,
+			"otherSources": [
+				{
+					"source": "SCAG",
+					"page": 143
+				}
+			],
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a melee weapon worth at least 1 sp",
+					"cost": 10
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Wymachujesz bronią użytą podczas rzucania zaklęcia i wykonujesz nią atak w walce wręcz przeciwko jednemu stworzeniu znajdującemu się w promieniu 5 stóp od ciebie. W przypadku trafienia, cel otrzymuje normalne efekty ataku bronią, a ty możesz sprawić, że zielony ogień przeskoczy z celu na inne, wybrane przez ciebie stworzenie, które widzisz w promieniu 5 stóp od niego. Druga istota otrzymuje obrażenia od ognia równe twojemu modyfikatorowi zdolności czarowania.",
+				"Obrażenia zadawane przez to zaklęcie zwiększają się po osiągnięciu określonych poziomów. Na 5. poziomie atak w walce wręcz zadaje dodatkowe {@damage 1d8} obrażeń od ognia celowi przy trafieniu, a obrażenia od ognia drugiej istoty wzrastają do {@damage 1d8} + twój modyfikator zdolności rzucania zaklęć. Oba obrażenia zwiększają się o {@damage 1d8} na 11. poziomie ({@damage 2d8} i {@damage 2d8}) oraz na 17. poziomie ({@damage 3d8} i {@damage 3d8})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "fire damage to secondary creature",
+					"scaling": {
+						"1": "{{spellcasting_mod}}",
+						"5": "1d8 + {{spellcasting_mod}}",
+						"11": "2d8 + {{spellcasting_mod}}",
+						"17": "3d8 + {{spellcasting_mod}}"
+					}
+				},
+				{
+					"label": "fire damage on hit",
+					"scaling": {
+						"5": "1d8",
+						"11": "2d8",
+						"17": "3d8"
+					}
+				}
+			],
+			"damageInflict": [
+				"fire"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Intellect Fortress",
+			"source": "TCE",
+			"page": 107,
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przez cały czas trwania ataku ty lub jedna chętna istota, którą widzisz w zasięgu, jesteście odporni na obrażenia psychiczne, a także macie przewagę w rzutach ratunkowych na Inteligencję, Mądrość i Charyzmę."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 4. poziomu lub wyższego, możesz obrać za cel jedno dodatkowe stworzenie za każdy poziom gniazda powyżej 3. Stworzenia te muszą znajdować się w odległości do 30 stóp od siebie, kiedy je namierzasz."
+					]
+				}
+			],
+			"damageResist": [
+				"psychic"
+			],
+			"damageImmune": [
+				"psychic"
+			],
+			"damageVulnerable": [
+				"psychic"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Bard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Lightning Lure",
+			"source": "TCE",
+			"page": 107,
+			"otherSources": [
+				{
+					"source": "SCAG",
+					"page": 143
+				}
+			],
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Tworzysz błyskawicę, która uderza w wybrane przez ciebie stworzenie, znajdujące się w promieniu 15 stóp od ciebie. Cel musi odnieść sukces w rzucie obronnym na Wytrzymałość lub zostać pociągnięty do 10 stóp w linii prostej w twoją stronę, a następnie otrzyma {@damage 1d8} obrażeń od błyskawic, jeśli znajduje się w odległości do 5 stóp od ciebie.",
+				"Obrażenia od tego zaklęcia wzrastają o {@dice 1d8} po osiągnięciu 5. poziomu ({@damage 2d8}), 11. poziomu ({@damage 3d8}) i 17. poziomu ({@damage 4d8})."
+			],
+			"scalingLevelDice": {
+				"label": "lightning damage",
+				"scaling": {
+					"1": "1d8",
+					"5": "2d8",
+					"11": "3d8",
+					"17": "4d8"
+				}
+			},
+			"damageInflict": [
+				"lightning"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"miscTags": [
+				"FMV",
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Sliver",
+			"source": "TCE",
+			"page": 108,
+			"level": 0,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Wrzucasz dezorientujący impuls energii psychicznej w umysł jednej istoty, którą widzisz w zasięgu. Cel musi zdać rzut na ocalenie przed atakiem na inteligencję lub otrzyma {@damage 1d6} obrażeń psychicznych i odjąć {@dice 1d4} od następnego rzutu na ocalenie, który wykona przed końcem twojej następnej tury.",
+				"Obrażenia zadawane przez to zaklęcie zwiększają się o {@dice 1d6} po osiągnięciu określonych poziomów: 5. poziomu ({@dice 2d6}), 11. poziomu ({@dice 3d6}) i 17. poziomu ({@dice 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Sorcerer",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Aberrant Mind",
+							"source": "TCE"
+						}
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Spirit Shroud",
+			"source": "TCE",
+			"page": 108,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz duchy zmarłych, które krążą wokół ciebie przez cały czas trwania zaklęcia. Duchy są niematerialne i odporne na ataki.",
+				"Do końca działania zaklęcia każdy twój atak zadaje {@damage 1d8} dodatkowych obrażeń, jeśli trafisz istotę znajdującą się w promieniu 10 stóp od ciebie. Obrażenia te są radiacyjne, nekrotyczne lub od zimna (wybór należy do ciebie podczas rzucania zaklęcia). Stworzenie, które otrzyma te obrażenia, nie może odzyskać punktów życia do początku twojej następnej tury.",
+				"Dodatkowo, każda wybrana przez ciebie istota, którą widzisz, a która rozpoczyna swoją turę w promieniu 10 stóp od ciebie, ma zmniejszoną prędkość o 10 stóp do początku twojej następnej tury."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając slotu na 4. lub wyższym poziomie, obrażenia zwiększają się o {@scaledamage 1d8|3,5,7,9|1d8} za każde dwa poziomy slotu powyżej 3."
+					]
+				}
+			],
+			"damageInflict": [
+				"radiant",
+				"necrotic",
+				"cold"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Cleric",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Aberration",
+			"source": "TCE",
+			"page": 109,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a pickled tentacle and an eyeball in a platinum-inlaid vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz aberracyjnego ducha. Manifestuje się on w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna forma używa bloku statystyk {@creature Aberrant Spirit|TCE}. Kiedy rzucasz zaklęcie, wybierz Beholderkin, Slaad lub Star Spawn. Stworzenie przypomina aberrację tego rodzaju, co determinuje pewne cechy w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów trafień lub gdy zaklęcie się skończy.",
+				"Stworzenie jest sprzymierzeńcem twoim i twoich towarzyszy. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje twoje słowne rozkazy (nie wymaga od ciebie żadnej akcji). Jeśli nie wydasz żadnego, wykonuje akcję {@action Dodge} i wykorzystuje swój ruch, aby uniknąć niebezpieczeństwa."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 5. poziomu lub wyższego, użyj wyższego poziomu wszędzie tam, gdzie poziom zaklęcia pojawia się w bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Sorcerer",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Aberrant Mind",
+							"source": "TCE"
+						}
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Beast",
+			"source": "TCE",
+			"page": 109,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp",
+					"cost": 20000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz bestialskiego ducha. Manifestuje się on w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Bestial Spirit|TCE}. Kiedy rzucasz zaklęcie, wybierz środowisko: Powietrze, Ląd lub Woda. Stworzenie przypomina wybrane przez ciebie zwierzę, które pochodzi z wybranego środowiska, co determinuje pewne cechy w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się skończy.",
+				"Stworzenie jest sprzymierzeńcem twoim i twoich towarzyszy. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje twoje słowne rozkazy (nie wymaga od ciebie żadnej akcji). Jeśli nie wydasz żadnego, wykonuje akcję {@action Dodge} i wykorzystuje swój ruch, aby uniknąć niebezpieczeństwa."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, użyj wyższego poziomu wszędzie tam, gdzie poziom zaklęcia pojawia się w bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Druid",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Celestial",
+			"source": "TCE",
+			"page": 110,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a golden reliquary worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha niebieskiego. Objawia się on w anielskiej postaci w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Celestial Spirit|TCE}. Podczas rzucania zaklęcia wybierz opcję Mściciela lub Obrońcy. Twój wybór decyduje o ataku stworzenia w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów trafień lub gdy zaklęcie się skończy.",
+				"Stworzenie jest sprzymierzeńcem twoim i twoich towarzyszy. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje twoje słowne rozkazy (nie wymaga od ciebie żadnej akcji). Jeśli nie wydasz żadnego, wykonuje akcję {@action Dodge} i wykorzystuje swój ruch, aby uniknąć niebezpieczeństwa."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 6. poziomu lub wyższego, użyj wyższego poziomu wszędzie tam, gdzie poziom zaklęcia pojawia się w bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Cleric",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Summon Construct",
+			"source": "TCE",
+			"page": 111,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an ornate stone and metal lockbox worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha konstruktu. Manifestuje się on w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna forma używa bloku statystyk {@creature Construct Spirit|TCE}. Kiedy rzucasz zaklęcie, wybierz materiał: Glinę, Metal lub Kamień. Stworzenie przypomina golema lub modrona (do wyboru) wykonanego z wybranego materiału, co determinuje pewne cechy w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się skończy.",
+				"Stworzenie jest sprzymierzeńcem twoim i twoich towarzyszy. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje twoje słowne rozkazy (nie wymaga od ciebie żadnej akcji). Jeśli nie wydasz żadnego, wykonuje akcję {@action Dodge} i wykorzystuje swój ruch, aby uniknąć niebezpieczeństwa."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć czwartego poziomu lub wyższego, użyj wyższego poziomu wszędzie tam, gdzie poziom zaklęcia pojawia się w bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Sorcerer",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Clockwork Soul",
+							"source": "TCE"
+						}
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Elemental",
+			"source": "TCE",
+			"page": 111,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "air, a pebble, ash, and water inside a gold-inlaid vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha żywiołu. Manifestuje się on w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna forma używa bloku statystyk {@creature Elemental Spirit|TCE}. Podczas rzucania zaklęcia wybierz jeden z żywiołów: Powietrze, Ziemia, Ogień lub Woda. Stworzenie przypomina dwunożną postać owiniętą w wybrany żywioł, który determinuje pewne cechy w jej bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się zakończy.",
+				"Stworzenie jest sprzymierzeńcem twoim i twoich towarzyszy. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje twoje słowne rozkazy (nie wymaga od ciebie żadnej akcji). Jeśli nie wydasz żadnego, wykonuje akcję {@action Dodge} i wykorzystuje swój ruch, aby uniknąć niebezpieczeństwa."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 5. poziomu lub wyższego, użyj wyższego poziomu wszędzie tam, gdzie poziom zaklęcia pojawia się w bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Fathomless",
+							"source": "TCE"
+						}
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Druid",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fey",
+			"source": "TCE",
+			"page": 112,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded flower worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha fey. Manifestuje się on w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Fey Spirit|TCE}. Kiedy rzucasz zaklęcie, wybierz nastrój: Dymny, Wesoły lub Podstępny. Stworzenie przypomina wybraną przez ciebie istotę fey, naznaczoną wybranym nastrojem, który określa jedną z cech w jej bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się skończy.",
+				"Stworzenie jest sprzymierzeńcem twoim i twoich towarzyszy. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje twoje słowne rozkazy (nie wymaga od ciebie żadnej akcji). Jeśli nie wydasz żadnego, wykonuje akcję {@action Dodge} i wykorzystuje swój ruch, aby uniknąć niebezpieczeństwa."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć czwartego poziomu lub wyższego, użyj wyższego poziomu wszędzie tam, gdzie poziom zaklęcia pojawia się w bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Druid",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fiend",
+			"source": "TCE",
+			"page": 112,
+			"level": 6,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "humanoid blood inside a ruby vial worth at least 600 gp",
+					"cost": 60000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz potwornego ducha. Manifestuje się on w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Fiendish Spirit|TCE}. Kiedy rzucasz zaklęcie, wybierz Demona, Diabła lub Yugolotha. Stworzenie przypomina potwora wybranego typu, co determinuje pewne cechy w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów trafień lub gdy zaklęcie się skończy.",
+				"Stworzenie jest sprzymierzeńcem twoim i twoich towarzyszy. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje twoje słowne rozkazy (nie wymaga od ciebie żadnej akcji). Jeśli nie wydasz żadnego, wykonuje akcję {@action Dodge} i wykorzystuje swój ruch, aby uniknąć niebezpieczeństwa."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 7. poziomu lub wyższego, użyj wyższego poziomu wszędzie tam, gdzie poziom zaklęcia pojawia się w bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Shadowspawn",
+			"source": "TCE",
+			"page": 113,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "tears inside a gem worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz cienistego ducha. Manifestuje się on w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna forma używa bloku statystyk {@creature Shadow Spirit|TCE}. Kiedy rzucasz zaklęcie, wybierz jedną z emocji: Wściekłość, Rozpacz lub Strach. Stworzenie przypomina zniekształconego dwunoga naznaczonego wybraną emocją, która determinuje pewne cechy w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się zakończy.",
+				"Stworzenie jest sprzymierzeńcem twoim i twoich towarzyszy. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje twoje słowne rozkazy (nie wymaga od ciebie żadnej akcji). Jeśli nie wydasz żadnego, wykonuje akcję {@action Dodge} i wykorzystuje swój ruch, aby uniknąć niebezpieczeństwa."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć czwartego poziomu lub wyższego, użyj wyższego poziomu wszędzie tam, gdzie poziom zaklęcia pojawia się w bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Summon Undead",
+			"source": "TCE",
+			"page": 114,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded skull worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz nieumarłego ducha. Manifestuje się on w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna forma używa bloku statystyk {@creature Undead Spirit|TCE}. Kiedy rzucasz zaklęcie, wybierz formę stworzenia: Upiorna, Złowroga lub Szkieletowa. Duch przypomina nieumarłą istotę z wybraną formą, co determinuje pewne cechy w jej bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się zakończy.",
+				"Stworzenie jest sprzymierzeńcem twoim i twoich towarzyszy. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje twoje słowne rozkazy (nie wymaga od ciebie żadnej akcji). Jeśli nie wydasz żadnego, wykonuje akcję {@action Dodge} i wykorzystuje swój ruch, aby uniknąć niebezpieczeństwa."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć czwartego poziomu lub wyższego, użyj wyższego poziomu wszędzie tam, gdzie poziom zaklęcia pojawia się w bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sword Burst",
+			"source": "TCE",
+			"page": 115,
+			"otherSources": [
+				{
+					"source": "SCAG",
+					"page": 143
+				}
+			],
+			"level": 0,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Tworzysz chwilowy krąg widmowych ostrzy, które rozchodzą się wokół ciebie. Wszystkie istoty w promieniu 5 stóp od ciebie muszą wykonać rzut obronny na Zręczność lub otrzymają {@damage 1d6} obrażeń od siły.",
+				"Obrażenia od tego zaklęcia wzrastają o {@dice 1d6} po osiągnięciu 5. poziomu ({@damage 2d6}), 11. poziomu ({@damage 3d6}) i 17. poziomu ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "force damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"miscTags": [
+				"SCL"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Tasha's Caustic Brew",
+			"source": "TCE",
+			"page": 115,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "line",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a bit of rotten food"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Strumień kwasu wypływa z ciebie w linii o długości 30 stóp i szerokości 5 stóp w wybranym kierunku. Każda istota w tej linii musi zdać rzut na Zręczność, albo zostanie pokryta kwasem na czas trwania zaklęcia lub do momentu, gdy użyje swojej akcji, aby zdrapać lub zmyć kwas z siebie lub innej istoty. Istota pokryta kwasem otrzymuje {@damage 2d4} obrażeń od kwasu na początku każdej swojej tury."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 2. poziomu lub wyższego, obrażenia zwiększają się o {@scaledamage 2d4|1-9|2d4} za każdy poziom gniazda powyżej 1. poziomu."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Tasha's Mind Whip",
+			"source": "TCE",
+			"page": 115,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Wyładowujesz się psychicznie na jednej istocie, którą widzisz w zasięgu. Cel musi wykonać rzut obronny na Inteligencję. W przypadku nieudanego ataku, cel otrzymuje {@damage 3d6} obrażeń psychicznych i nie może podjąć reakcji do końca swojej następnej tury. Ponadto, w swojej następnej turze musi wybrać, czy otrzyma ruch, akcję, czy dodatkową akcję; otrzyma tylko jedną z tych trzech. Jeśli uda mu się uratować, cel otrzymuje o połowę mniej obrażeń i nie odczuwa żadnego z pozostałych efektów zaklęcia."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, możesz obrać za cel jedno dodatkowe stworzenie za każdy poziom gniazda powyżej 2. Stworzenia te muszą znajdować się w odległości do 30 stóp od siebie, kiedy je namierzasz."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Tasha's Otherworldly Guise",
+			"source": "TCE",
+			"page": 116,
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an object engraved with a symbol of the Outer Planes, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Wypowiadając zaklęcie, korzystasz z magii niższego lub wyższego planu (do wyboru), aby się przemienić. Do końca działania zaklęcia zyskujesz następujące korzyści:",
+				{
+					"type": "list",
+					"items": [
+						"Jesteś odporny na obrażenia od ognia i trucizny (planety dolne) oraz na obrażenia od promieniowania i nekrotyczne (planety górne).",
+						"Jesteś odporny na {@condition poisoned} choroby (Dolne Płaszczyzny) lub {@condition charmed} choroby (Górne Płaszczyzny).",
+						"Na twoich plecach pojawiają się widmowe skrzydła, które dają ci prędkość lotu 40 stóp.",
+						"Masz premię +2 do AC.",
+						"Wszystkie twoje ataki bronią są magiczne, a kiedy wykonujesz atak bronią, możesz użyć modyfikatora zdolności zaklęć, zamiast Siły lub Zręczności, do ataku i zadania obrażeń.",
+						"Możesz zaatakować dwa razy, zamiast raz, kiedy wykonujesz akcję {@action Attack} w swojej turze. Ignorujesz tę korzyść, jeśli posiadasz już cechę, taką jak Dodatkowy Atak, która pozwala ci zaatakować więcej niż raz, kiedy podejmujesz akcję Atak w swojej turze."
+					]
+				}
+			],
+			"damageImmune": [
+				"fire",
+				"poison",
+				"radiant",
+				"necrotic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"poisoned"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		}
+	]
+}

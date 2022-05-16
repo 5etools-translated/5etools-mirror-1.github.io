@@ -1,0 +1,103 @@
+{
+	"spell": [
+		{
+			"name": "Linked Glyphs",
+			"source": "AitFR-AVT",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "AitFR-FCD",
+					"page": 11
+				}
+			],
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "incense and powdered diamond worth at least 300 gp, which the spell consumes",
+					"cost": 30000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "permanent",
+					"ends": [
+						"dispel",
+						"trigger"
+					]
+				}
+			],
+			"entries": [
+				"När du uttalar den här besvärjelsen skriver du in en upptäcktsglyff som senare aktiverar en magisk effekt på platsen för en separat, länkad glyff. Du skriver in upptäcktsglyfen antingen på en yta (t.ex. ett bord, ett golv eller en vägg) eller i ett föremål som kan stängas (t.ex. en bok, en skriftrulle eller en skattkista) för att dölja glyfen. Glyfen kan täcka ett område som inte är större än 10 fot i diameter. Om ytan eller föremålet flyttas mer än tre meter från den plats där du uttalar denna besvärjelse bryts upptäcktsglyfen och besvärjelsen avslutas utan att utlösas.",
+				"Båda glyferna är nästan osynliga, och för att hitta någon av dem krävs en lyckad intelligenskontroll ({@skill Investigation}) mot din spell save DC.",
+				"Du bestämmer vad som utlöser upptäcktsglyfen när du kastar den här besvärjelsen. För glyfer som är inskrivna på en yta är de mest typiska utlösarna att röra vid eller stå på glyfen, ta bort ett annat föremål som täcker glyfen, närma sig inom ett visst avstånd från glyfen eller manipulera föremålet som glyfen är inskriven på. När det gäller glyfer som är inskrivna i ett föremål är de vanligaste utlösande faktorerna att öppna föremålet, närma sig föremålet inom ett visst avstånd eller att se eller läsa glyfen. När en glyf har utlösts upphör denna besvärjelse.",
+				"Du kan ytterligare förfina utlösaren så att besvärjelsen endast aktiveras under vissa omständigheter eller enligt fysiska egenskaper (t.ex. längd eller vikt), typ av varelse (t.ex. kan man ställa in att besvärjelsen ska påverka aberrationer eller drow) eller inriktning. Du kan också ställa in villkor för varelser som inte utlöser glyfen, till exempel de som säger ett visst lösenord.",
+				"När du skriver in detektionsglyfen väljer du en larmglyf eller trollformelglyf att koppla till den.",
+				{
+					"type": "entries",
+					"name": "Alarm Glyph",
+					"entries": [
+						"Du skapar och kopplar magiskt ihop två glyfer: en upptäcktsglyf och en effektglyf. Var och en av dessa två glyfer måste hålla sig inom 160 km från den andra, annars upphör trollformelns effekt. När detektionsglyfen utlöses reagerar effektglyfen som en larmförtrollning och skapar ett mentalt ping i ditt sinne om du befinner dig inom 1 mil från effektglyfen. Detta ping väcker dig om du sover."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spell Glyph",
+					"entries": [
+						"Du skapar och kopplar magiskt ihop två glyfer: en upptäcktsglyf och en effektglyf. Dessa två glyfer måste vara inom 30 meter från varandra. Du kan lagra en förberedd besvärjelse av 4:e nivå eller lägre i effektglyfen genom att kasta den som en del av skapandet av glyferna. Besvärjelsen måste rikta sig mot en enda varelse eller ett område. Besvärjelsen som lagras har ingen omedelbar effekt när den kastas på detta sätt. När upptäcktsglyfen utlöses kastas den trollformel som lagrats i effektglyfen. Om trollformeln har ett mål riktar den sig mot den varelse som utlöste glyfen. Om förtrollningen påverkar ett område är området centrerat på effektglyfen. Om trollformeln kallar på fientliga varelser eller skapar skadliga föremål eller fällor visas de så nära som möjligt vid effektglyfen. Om trollformeln kräver koncentration varar den till slutet av sin fulla varaktighet."
+					]
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du använder den här besvärjelsen med en spell slot på 5:e nivå eller högre för att skapa en spell glyph, kan du lagra vilken besvärjelse som helst på upp till samma nivå som den slot du använder."
+					]
+				}
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"miscTags": [
+				"PRM"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		}
+	]
+}

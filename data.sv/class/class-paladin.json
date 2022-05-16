@@ -1,0 +1,5131 @@
+{
+	"class": [
+		{
+			"name": "Paladin",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 10
+			},
+			"proficiency": [
+				"wis",
+				"cha"
+			],
+			"spellcastingAbility": "cha",
+			"casterProgression": "1/2",
+			"preparedSpells": "<$level$> / 2 + <$cha_mod$>",
+			"optionalfeatureProgression": [
+				{
+					"name": "Fighting Style",
+					"featureType": [
+						"FS:P"
+					],
+					"progression": {
+						"2": 1
+					}
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"heavy",
+					"{@item shield|phb|shields}"
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"athletics",
+								"insight",
+								"intimidation",
+								"medicine",
+								"persuasion",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@filter martial weapon|items|source=phb|category=basic|type=martial weapon} and a {@item shield|phb} or (b) two {@filter martial weapons|items|source=phb|category=basic|type=martial weapon}",
+					"(a) five {@item javelin|phb|javelins} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
+					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
+					"{@item Chain mail|phb} and a {@item holy symbol|phb}"
+				],
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							{
+								"equipmentType": "weaponMartial"
+							},
+							"shield|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponMartial",
+								"quantity": 2
+							}
+						]
+					},
+					{
+						"a": [
+							{
+								"item": "javelin|phb",
+								"quantity": 5
+							}
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimpleMelee"
+							}
+						]
+					},
+					{
+						"a": [
+							"priest's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					},
+					{
+						"_": [
+							"Chain mail|phb",
+							"holy symbol|phb"
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"str": 13,
+					"cha": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						"{@item shield|phb|shields}"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=Paladin}",
+						"{@filter 2nd|spells|level=2|class=Paladin}",
+						"{@filter 3rd|spells|level=3|class=Paladin}",
+						"{@filter 4th|spells|level=4|class=Paladin}",
+						"{@filter 5th|spells|level=5|class=Paladin}"
+					],
+					"rowsSpellProgression": [
+						[
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Divine Sense|Paladin||1",
+				"Lay on Hands|Paladin||1",
+				"Divine Smite|Paladin||2",
+				"Fighting Style|Paladin||2",
+				"Martial Versatility|Paladin||2|UAClassFeatureVariants",
+				"Spellcasting|Paladin||2",
+				"Divine Health|Paladin||3",
+				{
+					"classFeature": "Sacred Oath|Paladin||3",
+					"gainSubclassFeature": true,
+					"gainSubclassFeatureHasContent": true
+				},
+				"Ability Score Improvement|Paladin||4",
+				"Proficiency Versatility|Paladin||4|UAClassFeatureVariants",
+				"Martial Versatility|Paladin||4|TCE",
+				"Extra Attack|Paladin||5",
+				"Aura of Protection|Paladin||6",
+				{
+					"classFeature": "Sacred Oath feature|Paladin||7",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Paladin||8",
+				"Proficiency Versatility|Paladin||8|UAClassFeatureVariants",
+				"Aura of Courage|Paladin||10",
+				"Improved Divine Smite|Paladin||11",
+				"Ability Score Improvement|Paladin||12",
+				"Proficiency Versatility|Paladin||12|UAClassFeatureVariants",
+				"Cleansing Touch|Paladin||14",
+				{
+					"classFeature": "Sacred Oath feature|Paladin||15",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Paladin||16",
+				"Proficiency Versatility|Paladin||16|UAClassFeatureVariants",
+				"Aura improvements|Paladin||18",
+				"Ability Score Improvement|Paladin||19",
+				"Proficiency Versatility|Paladin||19|UAClassFeatureVariants",
+				{
+					"classFeature": "Sacred Oath feature|Paladin||20",
+					"gainSubclassFeature": true
+				}
+			],
+			"subclassTitle": "Sacred Oath",
+			"fluff": [
+				{
+					"name": "Paladin",
+					"type": "section",
+					"entries": [
+						"Klädd i en plåtrustning som glänser i solljuset trots damm och smuts från en lång resa, lägger en människa ner sitt svärd och sin sköld och lägger sina händer på en dödligt skadad man. Gudomlig utstrålning lyser från hennes händer, mannens sår sluter sig och hans ögon öppnas vidöppet av förvåning.",
+						"En dvärg sitter på huk bakom en utskjutning, hans svarta kappa gör honom nästan osynlig i natten, och tittar på ett orc-krigsband som firar sin senaste seger. Tyst smyger han in i deras mitt och viskar en ed, och två orcher är döda innan de ens inser att han är där.",
+						"Silverhåret lyser i ett ljussken som bara tycks lysa upp honom, och en alv skrattar av glädje. Hans spjut blinkar som hans ögon när han hugger om och om igen mot en förvrängd jätte, tills hans ljus äntligen övervinner dess ohyggliga mörker.",
+						"Oavsett ursprung och uppdrag förenas paladinerna av sin ed att stå upp mot ondskans krafter. Vare sig de svär inför en guds altare och en prästs vittne, i en helig glänta inför naturandar och feer, eller i ett ögonblick av desperation och sorg med de döda som enda vittne, är en paladins ed ett kraftfullt band. Det är en kraftkälla som förvandlar en hängiven krigare till en välsignad mästare.",
+						{
+							"type": "entries",
+							"name": "The Cause of Righteousness",
+							"entries": [
+								"En paladin svär att upprätthålla rättvisa och rättfärdighet, att stå på världens goda sida mot det annalkande mörkret och att jaga ondskans krafter varhelst de lurar. Olika paladiner fokuserar på olika aspekter av rättfärdighetens sak, men alla är bundna av de eder som ger dem kraft att utföra sitt heliga arbete. Även om många paladiner är hängivna goda gudar, kommer en paladins kraft lika mycket från ett engagemang för rättvisan som från en gud.",
+								"Paladiner tränar i åratal för att lära sig stridsteknik och behärska en mängd olika vapen och rustningar. Trots detta är deras kampkunskaper sekundära i förhållande till den magiska kraft de använder: kraft att läka sjuka och skadade, att slå de onda och odöda och att skydda de oskyldiga och de som ansluter sig till dem i kampen för rättvisa."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Beyond the Mundane Life",
+							"entries": [
+								"Nästan per definition är en paladins liv ett äventyrsliv. Om inte en bestående skada har tagit honom eller henne från äventyrslivet för en tid, lever varje paladin på frontlinjen i den kosmiska kampen mot ondskan. Krigare är sällsynta nog bland miliserna och arméerna i världen, men ännu färre människor kan göra anspråk på paladinernas sanna kallelse. När de väl får kallelsen vänder sig dessa krigare från sina tidigare sysselsättningar och tar till vapen för att bekämpa ondskan. Ibland leder deras eder dem in i kronans tjänst som ledare för elitgrupper av riddare, men även då är deras lojalitet först och främst till rättfärdighetens sak, inte till krona och land.",
+								"Äventyrliga paladiner tar sitt arbete på allvar. En utflykt till en gammal ruin eller en dammig krypta kan vara ett uppdrag som drivs av ett högre syfte än att samla in skatter. Ondskan lurar i fängelsehålor och urskogar, och även den minsta seger mot den kan få den kosmiska balansen att tippa bort från glömska."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Paladin",
+							"entries": [
+								"Den viktigaste aspekten av en paladin-karaktär är karaktären på hans eller hennes heliga uppdrag. Även om de klassegenskaper som är relaterade till din ed inte dyker upp förrän du når 3:e nivån, planera i förväg för det valet genom att läsa beskrivningarna av ederna i slutet av klassen. Är du en hängiven tjänare av det goda, lojal mot rättvisans och hederns gudar, en helig riddare i skinande rustning som vågar sig fram för att slå ut ondskan? Är du en ärofull mästare av ljuset, som värnar om allt vackert som står emot skuggan, en riddare vars ed härstammar från traditioner som är äldre än många av gudarna? Eller är du en förbittrad ensamvarg som svurit att hämnas på dem som har gjort stor ondska, skickad som en dödsängel av gudarna eller driven av ditt behov av hämnd? Bilaga B listar många gudar som dyrkas av paladiner i hela multiversum, såsom Torm, Tyr, Heironeous, Paladine, Kiri-Jolith, Dol Arrah, Silverflamman, Bahamut, Athena, Re-Horakhty och Heimdall.",
+								"Hur upplevde du din kallelse att tjäna som paladin? Hörde du en viskning från en osynlig gud eller ängel när du bad? Kände en annan paladin potentialen i dig och bestämde sig för att utbilda dig till väpnare? Eller var det någon fruktansvärd händelse - kanske förstörelsen av ditt hem - som drev dig till dina uppdrag? Kanske snubblade du över en helig lund eller en dold alvenklav och fann dig själv kallad att skydda alla sådana tillflyktsorter av godhet och skönhet. Eller så kanske du redan från dina tidigaste minnen har vetat att paladinlivet var din kallelse, nästan som om du hade skickats ut i världen med det syftet stämplat i din själ.",
+								"Som väktare mot ondskans krafter är paladiner sällan av ondoktrinär inriktning. De flesta av dem vandrar på välgörenhetens och rättvisans stigar. Fundera över hur din inriktning färgar det sätt på vilket du fullföljer ditt heliga sökande och det sätt på vilket du uppför dig inför gudar och dödliga. Din ed och din inriktning kan vara i harmoni, eller så kan din ed representera normer för beteende som du ännu inte har uppnått.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Du kan snabbt skapa en paladin genom att följa de här förslagen. För det första bör du ha styrka som högsta poäng, följt av karisma. För det andra ska du välja en {@background noble} bakgrund."
+									]
+								}
+							]
+						}
+					],
+					"page": 82,
+					"source": "PHB"
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"En paladins sanna värde mäts inte i besegrade fiender eller plundrade fängelsehålor. Det mäts i räddade liv och hjärtan som vänds till barmhärtighetens och rättvisans sak."
+							],
+							"by": "Isteval"
+						},
+						"En paladin är ett levande förkroppsligande av en ed - ett löfte eller ett löfte som manifesteras i en helig krigare som har förmågan och beslutsamheten att fullfölja sin sak till slutet. Vissa paladiner ägnar sig uttryckligen åt att skydda de oskyldiga och sprida rättvisa i världen, medan andra bestämmer sig för att nå det målet genom att erövra dem som står trotsiga och föra dem under lagens styre.",
+						"Även om ingen paladin i världen kan beskrivas som typisk, är ett antal av dem trångsynta godhetsmänniskor som vägrar att tolerera minsta avvikelse från sin egen åskådning. Paladiner som tar sig an äventyrslivet förblir dock sällan så rigida i sina attityder - om så bara för att inte stöta bort sina följeslagare.",
+						"Du kan utveckla din paladin-karaktär med hjälp av förslagen nedan. Det är viktigt att komma ihåg att de flesta paladiner inte är robotar. De har tvivel och fördomar och hyser motsägelsefulla tankar precis som alla andra karaktärer. Vissa drivs av en inre motivation som ibland kan stå i strid med principerna i deras eder.",
+						{
+							"type": "entries",
+							"name": "Personal Goal",
+							"entries": [
+								"Föreskrifterna i en paladins ed ger karaktären ett syfte och dikterar ett slutgiltigt mål eller en övergripande avsikt som paladinen följer och främjar. Utöver detta drivs vissa paladiner av ett personligt mål som antingen kompletterar eller överskrider dikten i deras eder. Paladiner som svär olika eder kan ha samma personliga mål, som bara skiljer sig åt i hur de tillämpar detta mål i sina handlingar när de upprätthåller sina eder.",
+								"Om din paladin-karaktär har ett personligt mål kan det vara baserat på någon livshändelse och därmed inte vara direkt kopplat till eden.",
+								{
+									"type": "table",
+									"caption": "Personal Goal",
+									"colLabels": [
+										"{@dice d6}",
+										"Personal Goal"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Fred. Ni kämpar för att framtida generationer inte ska behöva göra det."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Hämnd. Din ed är det medel genom vilket du kommer att rätta till ett gammalt fel."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Tull. Du kommer att leva upp till det du har svurit att göra, eller dö i ett försök."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Ledarskap. Du kommer att vinna ett stort slag som barderna kommer att sjunga om, och på så sätt blir du en förebild som inspirerar andra."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Tro. Du vet att din väg är rättvis, annars skulle gudarna inte ha gett dig den."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Ära. Du kommer att leda världen in i en storartad ny era, en era som kommer att präglas av ditt namn."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Symbol",
+							"entries": [
+								"Paladiner är medvetna om symbolernas inflytande, och många av dem antar eller utformar en konstnärlig anordning som bär en distinkt bild. Din symbol exemplifierar den ed du har svurit och kommunicerar det budskapet till dem som finns runt omkring dig, både vänner och fiender.",
+								"Din symbol kan visas på en banderoll, en flagga eller på dina kläder så att alla kan se den. Den kan också vara mindre uppenbar, till exempel en prydnad eller en symbol som du bär dolt på dig.",
+								{
+									"type": "table",
+									"caption": "Symbol",
+									"colLabels": [
+										"{@dice d6}",
+										"Symbol"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"En drake som symboliserar din ädelhet i fred och din grymhet i strid."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"En knuten näve, eftersom du alltid är redo att kämpa för dina övertygelser."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"En upphöjd öppen hand som visar att du föredrar diplomati framför strid."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Ett rött hjärta som visar världen ditt engagemang för rättvisa."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Ett svart hjärta som visar att känslor som medlidande inte kan påverka din hängivenhet till din ed."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Ett oinställt öga, vilket innebär att du alltid är uppmärksam på alla hot mot din sak."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Nemesis",
+							"entries": [
+								"Deras anslutning till en helig ed kräver att paladiner tar en aktiv ställning för att föra ut sin tro i världen. Denna aktivitet leder naturligtvis till konflikter med varelser eller enheter som motsätter sig dessa trosuppfattningar. Bland dessa motståndare är det ofta en som sticker ut som en paladins mest ihärdiga eller mest formidabla fiende - en nemesis vars närvaro eller inflytande är en konstant faktor i en paladins liv.",
+								"Din paladin-karaktär kan ha en fiende som härstammar från tiden innan du tog din väg. Eller så kan du vara en måltavla eftersom du när du blev paladin omedelbart drog till dig uppmärksamheten från dem som skulle kunna döda dig. Om du har en nemesis, vem eller vad är det? Vem bland dina fiender anser du vara det största hotet mot att uppnå dina mål?",
+								{
+									"type": "table",
+									"caption": "Nemesis",
+									"colLabels": [
+										"{@dice d6}",
+										"Nemesis"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"En mäktig orc-krigshövding som hotar att överrösta och förstöra allt som är heligt för dig."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"En djävul eller en himmelsman, agent för en kraft från de yttre planen, som har fått i uppdrag att fördärva eller frälsa dig, beroende på vad som är lämpligt."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"En drake vars tjänare följer dina steg"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"En överstepräst som ser dig som en missledd idiot och vill att du ska överge din religion."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"En rivaliserande paladin som tränade med dig men blev en edsbrytare och håller dig ansvarig."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"En vampyr som har svurit hämnd på alla paladiner efter att ha blivit besegrad av en."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Temptation",
+							"entries": [
+								"Även om paladiner är hängivna sina eder är de dödliga, och därför har de brister. Många av dem uppvisar ett beteende eller har en attityd som inte överensstämmer med de högsta idealen i deras kallelse.",
+								"Vilken frestelse ger din karaktär efter för eller har svårt att motstå?",
+								{
+									"type": "table",
+									"caption": "Temptation",
+									"colLabels": [
+										"{@dice d6}",
+										"Temptation"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Fury. När du är arg har du svårt att tänka klart och du är rädd att du ska göra något som du kommer att ångra."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Stolthet. Dina gärningar är anmärkningsvärda, och ingen noterar dem oftare än du själv."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Lust. Du kan inte motstå ett attraktivt ansikte och ett trevligt leende."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Avundsjuka. Du är uppmärksam på vad vissa berömda personer har åstadkommit och du känner dig otillräcklig när dina handlingar inte kan jämföras med deras."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Förtvivlan. Du tänker på den stora styrkan hos de fiender du måste besegra och ibland ser du inget sätt att nå slutlig seger."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Girighet. Oavsett hur mycket ära och skatter du samlar på dig är det aldrig tillräckligt för dig."
+										]
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 36
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Oath of Devotion",
+			"shortName": "Devotion",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 85,
+			"srd": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"protection from evil and good",
+							"sanctuary"
+						],
+						"5": [
+							"lesser restoration",
+							"zone of truth"
+						],
+						"9": [
+							"beacon of hope",
+							"dispel magic"
+						],
+						"13": [
+							"freedom of movement",
+							"guardian of faith"
+						],
+						"17": [
+							"commune",
+							"flame strike"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Devotion|Paladin||Devotion||3",
+				"Aura of Devotion|Paladin||Devotion||7",
+				"Purity of Spirit|Paladin||Devotion||15",
+				"Holy Nimbus|Paladin||Devotion||20"
+			]
+		},
+		{
+			"name": "Oath of the Ancients",
+			"shortName": "Ancients",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 86,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"ensnaring strike",
+							"speak with animals"
+						],
+						"5": [
+							"moonbeam",
+							"misty step"
+						],
+						"9": [
+							"plant growth",
+							"protection from energy"
+						],
+						"13": [
+							"ice storm",
+							"stoneskin"
+						],
+						"17": [
+							"commune with nature",
+							"tree stride"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of the Ancients|Paladin||Ancients||3",
+				"Aura of Warding|Paladin||Ancients||7",
+				"Undying Sentinel|Paladin||Ancients||15",
+				"Elder Champion|Paladin||Ancients||20"
+			]
+		},
+		{
+			"name": "Oath of Vengeance",
+			"shortName": "Vengeance",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 87,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"bane",
+							"hunter's mark"
+						],
+						"5": [
+							"hold person",
+							"misty step"
+						],
+						"9": [
+							"haste",
+							"protection from energy"
+						],
+						"13": [
+							"banishment",
+							"dimension door"
+						],
+						"17": [
+							"hold monster",
+							"scrying"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Vengeance|Paladin||Vengeance||3",
+				"Relentless Avenger|Paladin||Vengeance||7",
+				"Soul of Vengeance|Paladin||Vengeance||15",
+				"Avenging Angel|Paladin||Vengeance||20"
+			]
+		},
+		{
+			"name": "Oathbreaker",
+			"shortName": "Oathbreaker",
+			"source": "DMG",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 97,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"hellish rebuke",
+							"inflict wounds"
+						],
+						"5": [
+							"crown of madness",
+							"darkness"
+						],
+						"9": [
+							"animate dead",
+							"bestow curse"
+						],
+						"13": [
+							"blight",
+							"confusion"
+						],
+						"17": [
+							"contagion",
+							"dominate person"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oathbreaker|Paladin||Oathbreaker|DMG|3",
+				"Aura of Hate|Paladin||Oathbreaker|DMG|7",
+				"Supernatural Resistance|Paladin||Oathbreaker|DMG|15",
+				"Dread Lord|Paladin||Oathbreaker|DMG|20"
+			]
+		},
+		{
+			"name": "Oath of the Crown",
+			"shortName": "Crown",
+			"source": "SCAG",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 132,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"command",
+							"compelled duel"
+						],
+						"5": [
+							"warding bond",
+							"zone of truth"
+						],
+						"9": [
+							"aura of vitality",
+							"spirit guardians"
+						],
+						"13": [
+							"banishment",
+							"guardian of faith"
+						],
+						"17": [
+							"circle of power",
+							"geas"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of the Crown|Paladin||Crown|SCAG|3",
+				"Divine Allegiance|Paladin||Crown|SCAG|7",
+				"Unyielding Spirit|Paladin||Crown|SCAG|15",
+				"Exalted Champion|Paladin||Crown|SCAG|20"
+			]
+		},
+		{
+			"name": "Oath of Conquest (UA)",
+			"shortName": "Conquest (UA)",
+			"source": "UAPaladin",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"armor of Agathys",
+							"command"
+						],
+						"5": [
+							"hold person",
+							"spiritual weapon"
+						],
+						"9": [
+							"bestow curse",
+							"fear"
+						],
+						"13": [
+							"blight",
+							"dominate beast"
+						],
+						"17": [
+							"dominate person",
+							"insect plague"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Conquest|Paladin||Conquest (UA)|UAPaladin|3",
+				"Aura of Conquest|Paladin||Conquest (UA)|UAPaladin|7",
+				"Implacable Spirit|Paladin||Conquest (UA)|UAPaladin|15",
+				"Invincible Conqueror|Paladin||Conquest (UA)|UAPaladin|20"
+			]
+		},
+		{
+			"name": "Oath of Treachery (UA)",
+			"shortName": "Treachery (UA)",
+			"source": "UAPaladin",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 2,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"charm person",
+							"expeditious retreat"
+						],
+						"5": [
+							"invisibility",
+							"mirror image"
+						],
+						"9": [
+							"gaseous form",
+							"haste"
+						],
+						"13": [
+							"confusion",
+							"greater invisibility"
+						],
+						"17": [
+							"dominate person",
+							"passwall"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Treachery|Paladin||Treachery (UA)|UAPaladin|3",
+				"Aura of Treachery|Paladin||Treachery (UA)|UAPaladin|7",
+				"Blackguard's Escape|Paladin||Treachery (UA)|UAPaladin|15",
+				"Icon of Deceit|Paladin||Treachery (UA)|UAPaladin|20"
+			]
+		},
+		{
+			"name": "Oath of Redemption (UA)",
+			"shortName": "Redemption (UA)",
+			"source": "UAATrioOfSubclasses",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"shield",
+							"sleep"
+						],
+						"5": [
+							"hold person",
+							"ray of enfeeblement"
+						],
+						"9": [
+							"counterspell",
+							"hypnotic pattern"
+						],
+						"13": [
+							"Otiluke's resilient sphere",
+							"stoneskin"
+						],
+						"17": [
+							"hold monster",
+							"wall of force"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Redemption|Paladin||Redemption (UA)|UAATrioOfSubclasses|3",
+				"Aura of the Guardian|Paladin||Redemption (UA)|UAATrioOfSubclasses|7",
+				"Protective Spirit|Paladin||Redemption (UA)|UAATrioOfSubclasses|15",
+				"Emissary of Redemption|Paladin||Redemption (UA)|UAATrioOfSubclasses|20"
+			]
+		},
+		{
+			"name": "Oath of Conquest v2 (UA)",
+			"shortName": "Conquest v2 (UA)",
+			"source": "UARevisedClassOptions",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 3,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"armor of Agathys",
+							"command"
+						],
+						"5": [
+							"hold person",
+							"spiritual weapon"
+						],
+						"9": [
+							"bestow curse",
+							"fear"
+						],
+						"13": [
+							"dominate beast",
+							"stoneskin"
+						],
+						"17": [
+							"cloudkill",
+							"dominate person"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Conquest v2|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3",
+				"Aura of Conquest|Paladin||Conquest v2 (UA)|UARevisedClassOptions|7",
+				"Scornful Rebuke|Paladin||Conquest v2 (UA)|UARevisedClassOptions|15",
+				"Invincible Conqueror|Paladin||Conquest v2 (UA)|UARevisedClassOptions|20"
+			]
+		},
+		{
+			"name": "Oath of Conquest",
+			"shortName": "Conquest",
+			"source": "XGE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 37,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"armor of Agathys",
+							"command"
+						],
+						"5": [
+							"hold person",
+							"spiritual weapon"
+						],
+						"9": [
+							"bestow curse",
+							"fear"
+						],
+						"13": [
+							"dominate beast",
+							"stoneskin"
+						],
+						"17": [
+							"cloudkill",
+							"dominate person"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Conquest|Paladin||Conquest|XGE|3",
+				"Aura of Conquest|Paladin||Conquest|XGE|7",
+				"Scornful Rebuke|Paladin||Conquest|XGE|15",
+				"Invincible Conqueror|Paladin||Conquest|XGE|20"
+			]
+		},
+		{
+			"name": "Oath of Redemption",
+			"shortName": "Redemption",
+			"source": "XGE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 38,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"sanctuary",
+							"sleep"
+						],
+						"5": [
+							"calm emotions",
+							"hold person"
+						],
+						"9": [
+							"counterspell",
+							"hypnotic pattern"
+						],
+						"13": [
+							"Otiluke's resilient sphere",
+							"stoneskin"
+						],
+						"17": [
+							"hold monster",
+							"wall of force"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Redemption|Paladin||Redemption|XGE|3",
+				"Aura of the Guardian|Paladin||Redemption|XGE|7",
+				"Protective Spirit|Paladin||Redemption|XGE|15",
+				"Emissary of Redemption|Paladin||Redemption|XGE|20"
+			]
+		},
+		{
+			"name": "Oath of Heroism (UA)",
+			"shortName": "Heroism (UA)",
+			"source": "UABardAndPaladin",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"expeditious retreat",
+							"guiding bolt"
+						],
+						"5": [
+							"enhance ability",
+							"enthrall"
+						],
+						"9": [
+							"haste",
+							"protection from energy"
+						],
+						"13": [
+							"compulsion",
+							"freedom of movement"
+						],
+						"17": [
+							"commune",
+							"conjure volley"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Heroism|Paladin||Heroism (UA)|UABardAndPaladin|3",
+				"Mighty Deed|Paladin||Heroism (UA)|UABardAndPaladin|7",
+				"Glorious Defense|Paladin||Heroism (UA)|UABardAndPaladin|15",
+				"Living Myth|Paladin||Heroism (UA)|UABardAndPaladin|20"
+			]
+		},
+		{
+			"name": "Oath of the Watchers (UA)",
+			"shortName": "Watchers (UA)",
+			"source": "UA2020SubclassesPt1",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 3,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"alarm",
+							"chromatic orb"
+						],
+						"5": [
+							"augury",
+							"moonbeam"
+						],
+						"9": [
+							"counterspell",
+							"nondetection"
+						],
+						"13": [
+							"aura of purity",
+							"banishment"
+						],
+						"17": [
+							"hold monster",
+							"hallow"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of the Watchers|Paladin||Watchers (UA)|UA2020SubclassesPt1|3",
+				"Aura of the Sentinel|Paladin||Watchers (UA)|UA2020SubclassesPt1|7",
+				"Vigilant Rebuke|Paladin||Watchers (UA)|UA2020SubclassesPt1|15",
+				"Mortal Bulwark|Paladin||Watchers (UA)|UA2020SubclassesPt1|20"
+			]
+		},
+		{
+			"name": "Oath of Glory",
+			"shortName": "Glory",
+			"source": "TCE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"guiding bolt",
+							"heroism"
+						],
+						"5": [
+							"enhance ability",
+							"magic weapon"
+						],
+						"9": [
+							"haste",
+							"protection from energy"
+						],
+						"13": [
+							"compulsion",
+							"freedom of movement"
+						],
+						"17": [
+							"commune",
+							"flame strike"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Glory|Paladin||Glory|TCE|3",
+				"Aura of Alacrity|Paladin||Glory|TCE|7",
+				"Glorious Defense|Paladin||Glory|TCE|15",
+				"Living Legend|Paladin||Glory|TCE|20"
+			]
+		},
+		{
+			"name": "Oath of the Watchers",
+			"shortName": "Watchers",
+			"source": "TCE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 54,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"alarm",
+							"detect magic"
+						],
+						"5": [
+							"moonbeam",
+							"see invisibility"
+						],
+						"9": [
+							"counterspell",
+							"nondetection"
+						],
+						"13": [
+							"aura of purity",
+							"banishment"
+						],
+						"17": [
+							"hold monster",
+							"scrying"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of the Watchers|Paladin||Watchers|TCE|3",
+				"Aura of the Sentinel|Paladin||Watchers|TCE|7",
+				"Vigilant Rebuke|Paladin||Watchers|TCE|15",
+				"Mortal Bulwark|Paladin||Watchers|TCE|20"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Divine Sense",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Närvaron av stark ondska registreras i dina sinnen som en obehaglig lukt, och kraftfullt gott låter som himmelsk musik i dina öron. Som en handling kan du öppna din medvetenhet för att upptäcka sådana krafter. Fram till slutet av din nästa vändning vet du var alla himmelska, djävulska eller odöda som befinner sig inom 60 fot från dig och som inte befinner sig bakom totalt skydd vet var de befinner sig. Du känner till typen (celestial, fiend eller undead) av varje varelse vars närvaro du känner, men inte dess identitet (vampyren Count Strahd von Zarovich, till exempel). Inom samma radie känner du också av närvaron av en plats eller ett föremål som har blivit invigt eller vanhelgat, som med {@spell hallow} besvärjelsen.",
+				"Du kan använda den här funktionen ett antal gånger som är lika med 1 + din Charisma-modifierare. När du avslutar en lång vila återfår du alla förbrukade användningar."
+			]
+		},
+		{
+			"name": "Lay on Hands",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Din välsignade beröring kan läka sår. Du har en pool av helande kraft som fylls på när du tar en lång vila. Med den poolen kan du återställa ett totalt antal träffpunkter som är lika med din paladinnivå × 5.",
+				"Som en handling kan du röra vid en varelse och dra kraft från poolen för att återställa ett visst antal träffpoäng till den varelsen, upp till det maximala antalet som finns kvar i poolen.",
+				"Alternativt kan du använda 5 träffpunkter från din healingpool för att bota målet från en sjukdom eller neutralisera ett gift som påverkar det. Du kan bota flera sjukdomar och neutralisera flera gifter med en enda användning av Lay on Hands, genom att spendera träffpunkter separat för varje sjukdom.",
+				"Denna egenskap har ingen effekt på odöda och konstruktioner."
+			]
+		},
+		{
+			"name": "Divine Smite",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"När du träffar en varelse med ett närstridsvapen kan du från och med nivå 2 använda en trollformelplats för att ge målet strålningsskada, utöver vapnets skada. Den extra skadan är {@dice 2d8} för en trollformelplats på 1:a nivån, plus {@dice 1d8} för varje trollformelnivå högre än 1:a, till ett maximum av {@dice 5d8}. Skadan ökar med {@dice 1d8} om målet är en odöd eller en djävul, till maximalt {@dice 6d8}."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"På andra nivån kan du välja en viss kampstil som din specialitet. Välj ett av följande alternativ. Du kan inte välja samma alternativ för Fighting Style mer än en gång, även om du får välja igen.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Close Quarters Shooter|UALightDarkUnderdark"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Defense"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Great Weapon Fighting"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mariner|UAWaterborneAdventures"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Protection"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Tunnel Fighter|UALightDarkUnderdark"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Thrown Weapon Fighting|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unarmed Fighting|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blessed Warrior|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blessed Warrior|TCE"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|TCE"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|TCE"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Martial Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 12,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level feature (enhances Fighting Style)}",
+				"När du får en nivå i den här klassen kan du byta ut en kampstil som du kan mot en annan stil som är tillgänglig för din klass. Detta byte representerar en förändring av fokus i din kampsportsträning och träning, vilket gör att du förlorar fördelarna med en stil och får fördelarna med en annan stil."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"På andra nivån har du lärt dig att använda dig av gudomlig magi genom meditation och bön för att kasta trollformler på samma sätt som en kleriker. Se {@book chapter 10|PHB|10} för de allmänna reglerna för trollkonst och {@book chapter 11|PHB|11} för {@filter paladin spell list|spells|class=paladin}.",
+				{
+					"type": "entries",
+					"name": "Preparing and Casting Spells",
+					"entries": [
+						"Paladin-tabellen visar hur många spell slots du har för att kasta dina {@filter paladin spells|spells|class=paladin}. För att kasta en av dina paladinbesvärjelser på 1:a nivån eller högre måste du använda en plats på besvärjelsens nivå eller högre. Du återfår alla förbrukade trollformelplatser när du avslutar en lång vila.",
+						"Du förbereder listan över paladinbesvärjelser som är tillgängliga för dig att kasta, genom att välja från paladinbesvärjelselistan. När du gör det väljer du ett antal paladinbesvärjelser som är lika med din Charisma-modifierare + halva din paladinnivå, avrundat nedåt (minst en besvärjelse). Besvärjelserna måste vara av en nivå som du har spell slots för.",
+						"Om du till exempel är en paladin på femte nivån har du fyra spell slots på första nivån och två på andra nivån. Med en Charisma på 14 kan din lista över förberedda trollformler innehålla fyra trollformler på 1:a eller 2:a nivån, i vilken kombination som helst. Om du förbereder förtrollningen på 1:a nivån {@spell cure wounds} kan du kasta den med hjälp av en plats på 1:a eller 2:a nivån. Att kasta besvärjelsen tar inte bort den från din lista över förberedda besvärjelser.",
+						"Du kan ändra din lista över förberedda trollformler när du avslutar en lång vila. Att förbereda en ny lista över paladinbesvärjelser kräver tid som spenderas i bön och meditation: minst 1 minut per besvärjelsegrad för varje besvärjelse på din lista."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Ability",
+					"entries": [
+						"Charisma är din trollformelförmåga för dina paladinbesvärjelser, eftersom deras kraft kommer från styrkan i dina övertygelser. Du använder din Charisma närhelst en besvärjelse hänvisar till din förtrollningsförmåga. Dessutom använder du din Charisma-modifierare när du fastställer räddningskast-DC:n för en paladinbesvärjelse som du kastar och när du gör en attackrulle med en sådan.",
+						{
+							"type": "abilityDc",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Focus",
+					"entries": [
+						"Du kan använda en {@item holy symbol|phb} som fokus för dina paladinbesvärjelser."
+					]
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Din ed gör det möjligt för dig att kanalisera gudomlig energi för att ge bränsle till magiska effekter. Varje alternativ för att kanalisera gudomlighet som din ed ger dig förklarar hur du använder det.",
+				"När du använder din Channel Divinity väljer du vilket alternativ du vill använda. Du måste sedan avsluta en kort eller lång vila för att använda din Channel Divinity igen.",
+				"Vissa Channel Divinity-effekter kräver räddningskast. När du använder en sådan effekt från den här klassen är DC:n lika med din paladin-besvärjelse räddnings DC."
+			]
+		},
+		{
+			"name": "Channel Divinity: Harness Divine Power",
+			"source": "TCE",
+			"page": 52,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level paladin {@variantrule optional class features|tce|optional feature}}",
+				"Du kan använda en användning av din Channel Divinity för att ge bränsle till dina trollformler. Som en bonusåtgärd rör du vid din heliga symbol, yttrar en bön och återfår en förbrukad trollformelplats, vars nivå inte kan vara högre än halva din kompetensbonus (avrundat uppåt). Antalet gånger du kan använda den här funktionen är baserat på den nivå du har uppnått i den här klassen: 3:e nivån, en gång, 7:e nivån, två gånger och 15:e nivån, tre gånger. Du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Channel Divinity: Harness Divine Power",
+			"source": "UAClassFeatureVariants",
+			"page": 6,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level paladin feature (enhances Channel Divinity)}",
+				"Du kan använda en användning av din Channel Divinity för att ge bränsle åt dina trollformler. Som en bonusåtgärd kan du röra vid din heliga symbol, uttala en bön och återfå en förbrukad spell slot på 1:a nivån."
+			]
+		},
+		{
+			"name": "Divine Health",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"På tredje nivån gör den gudomliga magi som flödar genom dig dig immun mot sjukdomar."
+			]
+		},
+		{
+			"name": "Sacred Oath",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"När du når 3:e nivån svär du en ed som binder dig som paladin för alltid. Fram till den här tiden har du befunnit dig i ett förberedande skede, du har åtagit dig vägen men ännu inte svurit den. Nu väljer du från listan över tillgängliga eder.",
+				"Ditt val ger dig egenskaper på 3:e nivån och igen på 7:e, 15:e och 20:e nivån. Dessa funktioner inkluderar edförtrollningar och funktionen Channel Divinity.",
+				{
+					"name": "Oath Spells",
+					"type": "entries",
+					"entries": [
+						"Varje ed har en lista över tillhörande trollformler. Du får tillgång till dessa trollformler på de nivåer som anges i beskrivningen av eden. När du väl har fått tillgång till en edsbesvärjelse har du den alltid förberedd. Edsbesvärjelser räknas inte mot det antal besvärjelser du kan förbereda varje dag.",
+						"Om du får en edförtrollning som inte finns med på listan över paladinförtrollningar är förtrollningen ändå en paladinförtrollning för dig."
+					]
+				},
+				{
+					"type": "refClassFeature",
+					"classFeature": "Channel Divinity|Paladin||3"
+				},
+				{
+					"type": "refClassFeature",
+					"classFeature": "Channel Divinity: Harness Divine Power|Paladin||3|UAClassFeatureVariants"
+				},
+				{
+					"type": "refClassFeature",
+					"classFeature": "Channel Divinity: Harness Divine Power|Paladin||3|TCE"
+				},
+				{
+					"name": "Breaking Your Oath",
+					"type": "inset",
+					"entries": [
+						"En paladin försöker hålla sig till de högsta uppförandestandarderna, men även den mest dygdige paladin är felbar. Ibland visar sig den rätta vägen vara för krävande, ibland kräver en situation att man väljer det minst onda av två onda, och ibland får känslornas hetta en paladin att bryta mot sin ed.",
+						"En paladin som har brutit ett löfte söker vanligtvis förlåtelse från en präst som delar hans eller hennes tro eller från en annan paladin av samma orden. Paladinen kan tillbringa en hel natt i bön som ett tecken på botgöring, eller genomföra en fasta eller liknande självförnekande handling. Efter en ritual av bekännelse och förlåtelse börjar paladinen på nytt.",
+						"Om en paladin medvetet bryter mot sin ed och inte visar några tecken på ånger kan konsekvenserna bli allvarligare. Enligt DM:s bedömning kan en oskyldig paladin tvingas att överge denna klass och anta en annan, eller kanske välja alternativet Oathbreaker paladin som finns i Dungeon Master's Guide."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"När du når 4:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Martial Versatility",
+			"source": "TCE",
+			"page": 52,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level paladin {@variantrule optional class features|tce|optional feature}}",
+				"När du når en nivå i den här klassen som ger egenskapen Förbättring av förmögenhetsvärden kan du ersätta en {@filter fighting style|optionalfeatures|feature type=FS:P} du känner till med en annan kampstil som är tillgänglig för paladiner. Denna ersättning representerar en förändring av fokus i din kampsport."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"Från och med 5:e nivån kan du attackera två gånger, istället för en, när du gör {@action Attack}-åtgärden på din tur."
+			]
+		},
+		{
+			"name": "Aura of Protection",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Från och med 6:e nivån, när du eller en vänskaplig varelse inom tre meter från dig måste göra ett räddningskast, får varelsen en bonus på räddningskastet som är lika med din Charisma-modifierare (med en minsta bonus på +1). Du måste vara medveten för att bevilja denna bonus.",
+				"På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Sacred Oath feature",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 7,
+			"entries": [
+				"På 7:e nivån får du en egenskap som du får genom din heliga ed."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"När du når 8:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Aura of Courage",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Från och med 10:e nivån kan du och vänskapliga varelser inom tre meter från dig inte vara {@condition frightened} när du är vid medvetande.",
+				"På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Improved Divine Smite",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 11,
+			"entries": [
+				"På 11:e nivån är du så genomsyrad av rättfärdig makt att alla dina slag med närstridsvapen bär med sig gudomlig kraft. Varje gång du träffar en varelse med ett närstridsvapen tar varelsen extra {@damage 1d8} strålningsskada."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"När du når 12:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Cleansing Touch",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Från och med 14:e nivån kan du använda din handling för att avsluta en besvärjelse på dig själv eller på en villig varelse som du rör vid.",
+				"Du kan använda den här funktionen ett antal gånger som är lika med din Charisma-modifierare (minst en gång). Du återfår förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Sacred Oath feature",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 15,
+			"entries": [
+				"På 15:e nivån får du en egenskap som du får genom din heliga ed."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"När du når 16:e nivån kan du öka en valfri förmågaspoäng med 2 eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Aura improvements",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"På 18:e nivån ökar räckvidden för din Aura of Protection till 30 fot."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"När du når 19:e nivån kan du öka en valfri förmågaspoäng med 2 eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Sacred Oath feature",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"På 20:e nivån får du en egenskap som du får genom din heliga ed."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Oathbreaker",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"entries": [
+				"En Oathbreaker är en paladin som bryter sina heliga eder för att fullfölja en mörk ambition eller tjäna en ond makt. Det ljus som brann i paladinens hjärta har slocknat. Endast mörker återstår.",
+				"En paladin måste vara ond och ha uppnått minst tredje nivån för att bli en Oathbreaker. Paladinen ersätter de egenskaper som är specifika för hans eller hennes Sacred Oath med Oathbreaker-egenskaper.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oathbreaker Spells|Paladin||Oathbreaker|DMG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oathbreaker Channel Divinity: Control Undead|Paladin||Oathbreaker|DMG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oathbreaker Channel Divinity: Dreadful Aspect|Paladin||Oathbreaker|DMG|3"
+				}
+			]
+		},
+		{
+			"name": "Oathbreaker Channel Divinity: Control Undead",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Som en handling kan paladinen rikta in sig på en odöd varelse som han eller hon kan se inom en radie på 30 fot. Målet måste göra ett räddningskast med visdom. Vid ett misslyckat räddningsförsök måste målet lyda paladinens kommandon under de kommande 24 timmarna, eller tills paladinen använder detta Channel Divinity-alternativ igen. En odöd vars utmaningsvärde är lika med eller högre än paladinens nivå är immun mot denna effekt."
+			]
+		},
+		{
+			"name": "Oathbreaker Channel Divinity: Dreadful Aspect",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Som en handling kan paladinen kanalisera sina mörkaste känslor och fokusera dem till en magisk hotfull explosion. Varje varelse av paladinens val inom 30 fot från paladinen måste göra ett visdomssparande kast om den kan se paladinen. Vid ett misslyckat räddningsförsök är målet {@condition frightened} av paladinen i 1 minut. Om en varelse {@condition frightened} av den här effekten avslutar sin tur mer än 30 fot från paladinen kan den försöka göra ett nytt Visdomsbesparingskast för att avsluta effekten på den."
+			]
+		},
+		{
+			"name": "Oathbreaker Spells",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får oathbreaker-besvärjelser på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oathbreaker Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell hellish rebuke}, {@spell inflict wounds}"
+						],
+						[
+							"5th",
+							"{@spell crown of madness}, {@spell darkness}"
+						],
+						[
+							"9th",
+							"{@spell animate dead}, {@spell bestow curse}"
+						],
+						[
+							"13th",
+							"{@spell blight}, {@spell confusion}"
+						],
+						[
+							"17th",
+							"{@spell contagion}, {@spell dominate person}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Hate",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med 7:e nivån får paladinen, liksom alla djävlar och odöda inom tre meter från paladinen, en bonus på skadekast med närstridsvapen som är lika med paladinens Charisma-modifierare (minst +1). En varelse kan dra nytta av denna egenskap från endast en paladin åt gången.",
+				"På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Supernatural Resistance",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"På 15:e nivån får paladin motstånd mot dödande, genomträngande och slående skador från icke-magiska vapen."
+			]
+		},
+		{
+			"name": "Dread Lord",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån kan paladinen, som en handling, omge sig själv med en aura av dysterhet som varar i 1 minut. Auran reducerar allt starkt ljus i en radie på 30 fot runt paladinen till svagt ljus. Närhelst en fiende som är {@condition frightened} av paladinen börjar sin tur i auran tar den {@damage 4d10} psykisk skada. Dessutom är paladinen och varelser som han eller hon väljer i auran draperade i djupare skugga. Varelser som förlitar sig på synen har nackdel på attackkast mot varelser draperade i denna skugga.",
+				"Medan auran varar kan paladinen använda en bonusåtgärd på sin tur för att få skuggorna i auran att attackera en varelse. Paladinen gör en närkampsbesvärjelseattack mot målet. Om attacken träffar tar målet nekrotisk skada lika med {@dice 3d10} + paladinens Charisma-modifierare.",
+				"Efter att ha aktiverat auran kan paladinen inte göra det igen förrän han eller hon har fått en lång vila."
+			]
+		},
+		{
+			"name": "Oath of the Ancients",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"De äldres ed är lika gammal som alvrasen och druidernas ritualer. Paladiner som svär denna ed kallas ibland fey riddare, gröna riddare eller hornade riddare, och kastar sin lott på ljusets sida i den kosmiska kampen mot mörkret för att de älskar de vackra och livgivande sakerna i världen, inte nödvändigtvis för att de tror på principer om heder, mod och rättvisa. De pryder sina rustningar och kläder med bilder av växande saker - blad, horn eller blommor - för att återspegla sitt engagemang för att bevara livet och ljuset i världen.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of the Ancients|Paladin||Ancients||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Ancients||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Nature's Wrath|Paladin||Ancients||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Turn the Faithless|Paladin||Ancients||3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Nature's Wrath",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att åberopa urkrafter för att fånga en fiende. Som en handling kan du få spektrala vinrankor att växa upp och sträcka sig efter en varelse inom tre meter från dig som du kan se. Varelsen måste lyckas med ett räddningskast i styrka eller smidighet (valfritt) eller bli {@condition restrained}. Medan {@condition restrained} av vinrankorna upprepar varelsen räddningskastet i slutet av var och en av sina turer. Om den lyckas frigör den sig och vinrankorna försvinner."
+			]
+		},
+		{
+			"name": "Channel Divinity: Turn the Faithless",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att uttala uråldriga ord som är smärtsamma att höra för fey och fiends. Som en handling presenterar du din heliga symbol, och varje fey eller fiend inom 30 fot från dig som kan höra dig måste göra ett räddningskast i visdom. Vid ett misslyckat räddningsförsök förvandlas varelsen i 1 minut eller tills den tar skada.",
+				"En förvandlad varelse måste spendera sina vändor med att försöka flytta så långt bort från dig som möjligt, och den kan inte frivilligt flytta sig till ett utrymme inom 30 fot från dig. Den kan inte heller ta reaktioner. För sin handling kan den bara använda {@action Dash} handlingen eller försöka fly från en effekt som hindrar den från att röra sig. Om det inte finns någonstans att röra sig kan varelsen använda handlingen {@action Dodge}.",
+				"Om varelsens sanna form är dold av en illusion, formskiftning eller annan effekt, avslöjas den formen när den förvandlas."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of the Ancients Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell ensnaring strike}, {@spell speak with animals}"
+						],
+						[
+							"5th",
+							"{@spell moonbeam}, {@spell misty step}"
+						],
+						[
+							"9th",
+							"{@spell plant growth}, {@spell protection from energy}"
+						],
+						[
+							"13th",
+							"{@spell ice storm}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell commune with nature}, {@spell tree stride}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of the Ancients",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Principerna i de äldres ed har bevarats i oräkneliga århundraden. Denna ed betonar det godas principer framför alla frågor om lag eller kaos. Dess fyra centrala principer är enkla.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Kindle the Light",
+							"entries": [
+								"Genom dina handlingar av barmhärtighet, vänlighet och förlåtelse tänder du hoppets ljus i världen och slår tillbaka förtvivlan."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Shelter the Light",
+							"entries": [
+								"När det finns godhet, skönhet, kärlek och skratt i världen, stå upp mot den ondska som skulle vilja svälja det. Där livet blomstrar, stå upp mot de krafter som skulle göra det ofruktbart."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Preserve Your Own Light",
+							"entries": [
+								"Gläd dig åt sång och skratt, åt skönhet och konst. Om du låter ljuset dö i ditt eget hjärta kan du inte bevara det i världen."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Be the Light",
+							"entries": [
+								"Var en strålande fyr för alla som lever i förtvivlan. Låt ljuset av din glädje och ditt mod lysa fram i alla dina handlingar."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Warding",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med 7:e nivån ligger forntida magi så tungt över dig att den bildar en eldritch ward. Du och vänskapliga varelser inom tre meter från dig har motstånd mot skador från trollformler.",
+				"På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Undying Sentinel",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Från och med 15:e nivån kan du välja att minska till 0 träffpunkter när du inte dödas direkt, men du kan välja att minska till 1 träffpunkt istället. När du har använt den här förmågan kan du inte använda den igen förrän du avslutar en lång vila.",
+				"Dessutom lider du inte av någon av de nackdelar som ålderdom medför, och du kan inte åldras magiskt."
+			]
+		},
+		{
+			"name": "Elder Champion",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån kan du anta formen av en uråldrig naturkraft och anta ett utseende som du själv väljer. Din hud kan till exempel bli grön eller få en barkliknande struktur, ditt hår kan bli löv- eller mossliknande, eller du kan få en hornspira eller en lejonliknande mane.",
+				"Med hjälp av din handling genomgår du en förvandling. I 1 minut får du följande fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"I början av varje tur får du 10 träffpoäng tillbaka.",
+						"När du kastar en paladinbesvärjelse som har en kasttid på 1 åtgärd kan du kasta den med din bonusåtgärd istället.",
+						"Fientliga varelser inom tre meter från dig har nackdel på räddningskast mot dina paladin-besvärjelser och Channel Divinity-alternativ."
+					]
+				},
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Oath of Devotion",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Den hängivna eden binder en paladin till de högsta idealen av rättvisa, dygd och ordning. Ibland kallas de för kavaljerer, vita riddare eller heliga krigare, och dessa paladiner uppfyller idealet av riddaren i skinande rustning, och agerar med ära i strävan efter rättvisa och det större goda. De håller sig själva till de högsta uppförandestandarderna, och vissa, på gott och ont, håller resten av världen till samma standarder. Många av dem som svär denna ed är hängivna till gudar för lag och gott och använder gudarnas principer som måttstock för sin hängivenhet. De håller änglar - det godas perfekta tjänare - som sina ideal och införlivar bilder av änglavingar i sina hjälmar eller vapensköldar.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Devotion|Paladin||Devotion||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Devotion||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Sacred Weapon|Paladin||Devotion||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Turn the Unholy|Paladin||Devotion||3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Sacred Weapon",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Som en handling kan du genomsyra ett vapen som du håller i med positiv energi med hjälp av din Channel Divinity. I 1 minut lägger du till din Charisma-modifierare till attackkast som görs med det vapnet (med en minsta bonus på +1). Vapnet avger också starkt ljus i en radie på 20 fot och svagt ljus 20 fot bortom den. Om vapnet inte redan är magiskt blir det magiskt under hela tiden.",
+				"Du kan avsluta denna effekt på din tur som en del av en annan åtgärd. Om du inte längre håller eller bär det här vapnet, eller om du faller {@condition unconscious}, upphör den här effekten."
+			]
+		},
+		{
+			"name": "Channel Divinity: Turn the Unholy",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Som en handling visar du din heliga symbol och talar en bön som förbannar djävlar och odöda med hjälp av din Channel Divinity. Varje djävul eller odöd som kan se eller höra dig inom 30 fot från dig måste göra ett visdomssparande kast. Om varelsen misslyckas med sitt räddningskast blir den förvandlad i 1 minut eller tills den tar skada.",
+				"En förvandlad varelse måste spendera sina vändor med att försöka flytta så långt bort från dig som möjligt, och den kan inte frivilligt flytta sig till ett utrymme inom 30 fot från dig. Den kan inte heller ta reaktioner. För sin handling kan den bara använda {@action Dash} handlingen eller försöka fly från en effekt som hindrar den från att röra sig. Om det inte finns någonstans att röra sig kan varelsen använda handlingen {@action Dodge}."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of Devotion Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell protection from evil and good}, {@spell sanctuary}"
+						],
+						[
+							"5th",
+							"{@spell lesser restoration}, {@spell zone of truth}"
+						],
+						[
+							"9th",
+							"{@spell beacon of hope}, {@spell dispel magic}"
+						],
+						[
+							"13th",
+							"{@spell freedom of movement}, {@spell guardian of faith}"
+						],
+						[
+							"17th",
+							"{@spell commune}, {@spell flame strike}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Devotion",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Även om de exakta orden och kraven i eden av hängivenhet varierar, delar paladinerna av denna ed dessa principer.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Honesty",
+							"entries": [
+								"Ljug inte och fuska inte. Låt ditt ord vara ditt löfte."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Courage",
+							"entries": [
+								"Var aldrig rädd för att agera, även om det är klokt att vara försiktig."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Compassion",
+							"entries": [
+								"Hjälpa andra, skydda de svaga och straffa dem som hotar dem. Visa barmhärtighet mot dina fiender, men mildra den med visdom."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Honor",
+							"entries": [
+								"Behandla andra rättvist och låt dina hedervärda handlingar vara en förebild för dem. Gör så mycket gott som möjligt samtidigt som du orsakar så lite skada som möjligt."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Duty",
+							"entries": [
+								"Ta ansvar för dina handlingar och deras konsekvenser, skydda dem som du har anförtrotts och lyda dem som har rättmätiga befogenheter över dig."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Devotion",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med 7:e nivån kan du och vänskapliga varelser inom tre meter från dig inte vara {@condition charmed} när du är vid medvetande.",
+				"På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Purity of Spirit",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Från och med 15:e nivån är du alltid påverkad av en {@spell protection from evil and good} besvärjelse."
+			]
+		},
+		{
+			"name": "Holy Nimbus",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån kan du som en handling utstråla en aura av solljus. I 1 minut lyser starkt ljus från dig i en radie på 30 fot, och dunkelt ljus lyser 30 fot bortom det.",
+				"När en fiendevarelse börjar sin tur i det ljusa ljuset får den 10 strålningsskador.",
+				"Dessutom har du under hela perioden en fördel på räddningskast mot trollformler som kastas av djävlar eller odöda.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Oath of Vengeance",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Hämndens ed är ett högtidligt åtagande att straffa dem som har begått en allvarlig synd. När onda krafter slaktar hjälplösa bybor, när ett helt folk vänder sig mot gudarnas vilja, när ett tjuvgille blir för våldsamt och mäktigt, när en drake rasar genom landet - vid sådana tillfällen reser sig paladiner och svär en hämndens ed för att rätta till det som har gått fel. För dessa paladiner - som ibland kallas hämnare eller mörka riddare - är deras egen renhet inte lika viktig som att skipa rättvisa.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Vengeance|Paladin||Vengeance||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Vengeance||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Abjure Enemy|Paladin||Vengeance||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Vow of Enmity|Paladin||Vengeance||3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Abjure Enemy",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Som en handling visar du din heliga symbol och talar en fördömande bön med hjälp av din Channel Divinity. Välj en varelse inom 60 fot från dig som du kan se. Den varelsen måste göra ett räddningskast i Visdom, om den inte är immun mot att bli {@condition frightened}. Djävlar och odöda har nackdel på detta räddningskast.",
+				"Om räddningen misslyckas är varelsen {@condition frightened} i 1 minut eller tills den tar skada. Medan {@condition frightened} är varelsens hastighet 0, och den kan inte dra nytta av någon bonus för sin hastighet.",
+				"Om räddningen lyckas halveras varelsens hastighet i 1 minut eller tills varelsen tar skada."
+			]
+		},
+		{
+			"name": "Channel Divinity: Vow of Enmity",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Som en bonusåtgärd kan du uttala ett löfte om fiendskap mot en varelse som du kan se inom tre meter från dig, med hjälp av din Channel Divinity. Du får fördel på attackkast mot varelsen i 1 minut eller tills den sjunker till 0 träffpunkter eller faller {@condition unconscious}."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of Vengeance Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell bane}, {@spell hunter's mark}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell misty step}"
+						],
+						[
+							"9th",
+							"{@spell haste}, {@spell protection from energy}"
+						],
+						[
+							"13th",
+							"{@spell banishment}, {@spell dimension door}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell scrying}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Vengeance",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Hämndens ed varierar från paladin till paladin, men alla principer kretsar kring att straffa förövare med alla nödvändiga medel. Paladiner som upprätthåller dessa principer är villiga att offra till och med sin egen rättfärdighet för att skipa rättvisa mot dem som gör ont, så paladinerna är ofta neutrala eller lagligt neutrala i sin inriktning. Kärnprinciperna i dessa principer är brutalt enkla.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Fight the Greater Evil",
+							"entries": [
+								"När jag ställs inför valet att slåss mot mina svurna fiender eller bekämpa en mindre ondska, väljer jag den större ondskan."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "No Mercy for the Wicked",
+							"entries": [
+								"Vanliga fiender kan vinna min nåd, men inte mina svurna fiender."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "By Any Means Necessary",
+							"entries": [
+								"Mina betänkligheter får inte stå i vägen för att utrota mina fiender."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Restitution",
+							"entries": [
+								"Om mina fiender förstör världen är det för att jag inte lyckades stoppa dem. Jag måste hjälpa dem som skadats av deras missgärningar."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Relentless Avenger",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"På 7:e nivån hjälper ditt övernaturliga fokus dig att stänga av fiendens reträtt. När du träffar en varelse med en möjlighet till attack kan du förflytta dig upp till halva din hastighet omedelbart efter attacken och som en del av samma reaktion. Den här rörelsen framkallar inte möjlighet till attacker."
+			]
+		},
+		{
+			"name": "Soul of Vengeance",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Från och med 15:e nivån ger den auktoritet med vilken du uttalar ditt löfte om fiendskap dig större makt över din fiende. När en varelse som är under effekt av din Vow of Enmity gör en attack kan du använda din reaktion för att göra en närstridsvapenattack mot den varelsen om den är inom räckhåll."
+			]
+		},
+		{
+			"name": "Avenging Angel",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån kan du anta formen av en änglaläkare. Genom att använda din handling genomgår du en förvandling. I 1 timme får du följande fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"Vingar växer ut från din rygg och ger dig en flyghastighet på 60 fot.",
+						"Du utstrålar en hotfull aura i en radie på 30 fot. Första gången en fiendevarelse går in i auran eller börjar sin tur där under en strid måste varelsen lyckas med ett räddningskast i Visdom eller bli {@condition frightened} av dig i 1 minut eller tills den tar skada. {@action Attack} kast mot {@condition frightened} varelsen har fördel."
+					]
+				},
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Oath of the Crown",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"entries": [
+				"Kronans ed svärs till civilisationens ideal, vare sig det är en nations anda, trohet mot en suverän eller tjänst till en gudom som är lag och styre. De paladiner som svär denna ed ägnar sig åt att tjäna samhället och i synnerhet de lagar som håller ihop samhället. Dessa paladiner är de vaksamma väktarna på murarna, som står emot de kaotiska tidvatten av barbari som hotar att riva ner allt som civilisationen har byggt upp, och de kallas vanligen för väktare, exemplar eller vaktposter. Ofta är paladiner som svär denna ed medlemmar av en riddarorden i tjänst hos en nation eller suverän, och genomgår sin ed som en del av sitt inträde i ordens led.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of the Crown|Paladin||Crown|SCAG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Crown|SCAG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Champion Challenge|Paladin||Crown|SCAG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Turn the Tide|Paladin||Crown|SCAG|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Champion Challenge",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Som en bonusåtgärd kan du ge en utmaning som tvingar andra varelser att slåss mot dig. Varje varelse av ditt val som du kan se inom 30 fot från dig måste göra ett räddningskast i visdom. Vid ett misslyckat räddningsförsök kan en varelse inte frivilligt röra sig mer än 30 fot bort från dig. Den här effekten upphör på varelsen om du är {@condition incapacitated} eller dör eller om varelsen befinner sig mer än 30 fot från dig."
+			]
+		},
+		{
+			"name": "Channel Divinity: Turn the Tide",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Som en bonusåtgärd kan du hjälpa skadade varelser med din Channel Divinity. Varje varelse av ditt val som kan höra dig inom 30 fot från dig återfår träffpoäng lika med {@dice 1d6} + din Charisma-modifierare (minst 1) om den inte har mer än hälften av sina träffpoäng."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of the Crown Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell command}, {@spell compelled duel}"
+						],
+						[
+							"5th",
+							"{@spell warding bond}, {@spell zone of truth}"
+						],
+						[
+							"9th",
+							"{@spell aura of vitality}, {@spell spirit guardians}"
+						],
+						[
+							"13th",
+							"{@spell banishment}, {@spell guardian of faith}"
+						],
+						[
+							"17th",
+							"{@spell circle of power}, {@spell geas}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of the Crown",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Principerna för kronans ed fastställs ofta av den suveränitet som eden svärs inför, men i allmänhet betonas följande principer.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Law",
+							"entries": [
+								"Lagen är viktigast. Den är det murbruk som håller ihop civilisationens stenar, och den måste respekteras."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Loyalty",
+							"entries": [
+								"Ditt ord är ditt band. Utan lojalitet är eder och lagar meningslösa."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Courage",
+							"entries": [
+								"Du måste vara villig att göra det som måste göras för ordningens skull, även om du står inför överväldigande odds. Om du inte agerar, vem gör det då?"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Responsibility",
+							"entries": [
+								"Du måste ta konsekvenserna av dina handlingar, och du är ansvarig för att uppfylla dina plikter och skyldigheter."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Divine Allegiance",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med nivå 7 kan du använda din reaktion för att magiskt ersätta din egen hälsa med målvarelsens när en varelse inom en halvmeter från dig tar skada, vilket gör att den varelsen inte tar skada. Istället tar du skadan. Denna skada på dig kan inte minskas eller förhindras på något sätt."
+			]
+		},
+		{
+			"name": "Unyielding Spirit",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Från och med 15:e nivån har du fördel på räddningskast för att undvika att bli {@condition paralyzed} eller {@condition stunned}."
+			]
+		},
+		{
+			"name": "Exalted Champion",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån är din närvaro på slagfältet en inspiration för dem som är hängivna din sak. Du kan använda din handling för att få följande fördelar i 1 timme:",
+				{
+					"type": "list",
+					"items": [
+						"Du är motståndskraftig mot skador från icke-magiska vapen som är slående, genomträngande och slående.",
+						"Dina allierade har fördel på räddningskast mot döden när de befinner sig inom 30 fot från dig.",
+						"Du har en fördel på besparingsförsök med visdom, liksom dina allierade inom 30 fot från dig."
+					]
+				},
+				"Den här effekten upphör tidigt om du är {@condition incapacitated} eller dör. När du har använt den här egenskapen kan du inte använda den igen förrän du har avslutat en lång vila."
+			]
+		},
+		{
+			"name": "Oath of Glory",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Paladiner som tar Glory's Oath tror att de och deras följeslagare är förutbestämda att uppnå ära genom hjältedåd. De tränar flitigt och uppmuntrar sina följeslagare så att de är redo när ödet kallar.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Glory|Paladin||Glory|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Glory|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Glory|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level Oath of Glory feature}",
+				"Du får följande två alternativ för Channel Divinity. Se klassegenskapen Sacred Oath för hur Channel Divinity fungerar.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Peerless Athlete|Paladin||Glory|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Inspiring Smite|Paladin||Glory|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of Glory feature}",
+				"Du får edförtrollningar på de paladinnivåer som anges i tabellen Oath of Glory Spells (trollformler för ära). Se klassegenskapen Sacred Oath för hur edsförtrollningar fungerar.",
+				{
+					"type": "table",
+					"caption": "Oath of Glory Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell guiding bolt}, {@spell heroism}"
+						],
+						[
+							"5th",
+							"{@spell enhance ability}, {@spell magic weapon}"
+						],
+						[
+							"9th",
+							"{@spell haste}, {@spell protection from energy}"
+						],
+						[
+							"13th",
+							"{@spell compulsion}, {@spell freedom of movement}"
+						],
+						[
+							"17th",
+							"{@spell commune}, {@spell flame strike}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Glory",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Principerna i Oath of Glory driver en paladin till att försöka utföra hjältedåd som en dag kan lysa upp i legender.",
+				{
+					"type": "entries",
+					"name": "Actions over Words",
+					"entries": [
+						"Sträva efter att bli känd genom ärofyllda gärningar, inte genom ord."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Challenges Are but Tests",
+					"entries": [
+						"Stå modigt inför svårigheter och uppmuntra dina bundsförvanter att möta dem tillsammans med dig."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hone the Body",
+					"entries": [
+						"Precis som rå sten måste din kropp bearbetas för att dess potential ska kunna förverkligas."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Discipline the Soul",
+					"entries": [
+						"Du måste samla disciplin för att övervinna brister inom dig själv som hotar att fördunkla din och dina vänners ära."
+					]
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Inspiring Smite",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Omedelbart efter att du har skadat en varelse med din egenskap Divine Smite kan du använda din Channel Divinity som en bonusåtgärd och dela ut tillfälliga träffpoäng till varelser som du väljer inom 30 fot från dig, vilket kan inkludera dig själv. Det totala antalet tillfälliga träffpoäng är lika med {@dice 2d8} + din nivå i den här klassen, fördelat på de valda varelserna på det sätt du vill."
+			]
+		},
+		{
+			"name": "Channel Divinity: Peerless Athlete",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Som en bonusåtgärd kan du använda din Channel Divinity för att öka din atletiska förmåga. Under de kommande 10 minuterna har du fördel på styrka ({@skill Athletics}) och smidighet ({@skill Acrobatics}) kontrollerna; du kan bära, knuffa, dra och lyfta dubbelt så mycket vikt som normalt; och avståndet för dina långa och höga hopp ökar med 10 fot (detta extra avstånd kostar rörelse som normalt)."
+			]
+		},
+		{
+			"name": "Aura of Alacrity",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Oath of Glory feature}",
+				"Du utstrålar en aura som ger dig och dina följeslagare en övernaturlig snabbhet, vilket gör att ni kan springa över ett slagfält i formation. Din gånghastighet ökar med 10 fot. Dessutom, om du inte är {@condition incapacitated}, ökar gånghastigheten för alla allierade som börjar sin tur inom 5 fot från dig med 10 fot fram till slutet av den vändan.",
+				"När du når 18:e nivån i den här klassen ökar aurans räckvidd till 3 meter."
+			]
+		},
+		{
+			"name": "Glorious Defense",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of Glory feature}",
+				"Du kan omvandla försvaret till ett plötsligt angrepp. När du eller en annan varelse som du kan se inom tre meter från dig träffas av en attackrulle kan du använda din reaktion för att ge en bonus till målets AC mot attacken, vilket kan leda till att den missar. Bonusen är lika med din Charisma-modifierare (minst +1). Om attacken missar kan du göra en vapenattack mot angriparen som en del av denna reaktion, förutsatt att angriparen befinner sig inom ditt vapens räckvidd.",
+				"Du kan använda den här funktionen ett antal gånger som är lika med din Charisma-modifierare (minst en gång), och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Living Legend",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of Glory feature}",
+				"Du kan stärka dig själv med legenderna - sanna eller överdrivna - om dina stora gärningar. Som en bonusåtgärd får du följande fördelar i 1 minut:",
+				{
+					"type": "list",
+					"items": [
+						"Du är välsignad med en utomvärldslig närvaro och får fördelar på alla Charisma-kontroller.",
+						"När du gör en vapenattack och missar, kan du en gång under varje vändning få den attacken att träffa i stället.",
+						"Om du misslyckas med ett räddningskast kan du använda din reaktion för att göra ett nytt kast. Du måste använda denna nya rulle."
+					]
+				},
+				"När du har använt den här funktionen kan du inte använda den igen förrän du avslutar en lång vila, såvida du inte använder en spell slot på 5:e nivån för att använda den igen."
+			]
+		},
+		{
+			"name": "Oath of the Watchers",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Watchers ed binder paladiner till att skydda dödliga riken från utomjordiska varelser, av vilka många kan ödelägga dödliga soldater. Därför finslipar Watchers sina sinnen, andar och kroppar för att bli de ultimata vapnen mot sådana hot.",
+				"Paladiner som följer Watchers ed är ständigt vaksamma när det gäller att upptäcka inflytande från utomjordiska krafter och upprättar ofta ett nätverk av spioner och informatörer för att samla in information om misstänkta kulter. För en Watcher är det lika naturligt att hålla en sund misstänksamhet och medvetenhet om sin omgivning som att bära rustning i strid.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of the Watchers|Paladin||Watchers|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Watchers|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Watchers|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"Du får följande alternativ för Channel Divinity. Se klassegenskapen Sacred Oath för hur Channel Divinity fungerar.",
+				{
+					"type": "entries",
+					"name": "Watcher's Will",
+					"entries": [
+						"Du kan använda din Channel Divinity för att investera din närvaro med din tros skyddande kraft. Som en handling kan du välja ett antal varelser som du kan se inom 30 fot från dig, upp till ett antal som är lika med din Charisma-modifierare (minst en varelse). I 1 minut har du och de valda varelserna fördel på räddningskast på intelligens, visdom och karisma."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Abjure the Extraplanar",
+					"entries": [
+						"Du kan använda din Channel Divinity för att straffa världsfrånvända varelser. Som en handling presenterar du din heliga symbol och varje aberration, celestial, elemental, fey, eller fiend inom 30 fot från dig som kan höra dig måste göra ett Visdom räddningskast. Vid ett misslyckat räddningsförsök förvandlas varelsen i 1 minut eller tills den tar skada.",
+						"En förvandlad varelse måste spendera sina varv med att försöka flytta så långt bort från dig som möjligt, och den kan inte frivilligt avsluta sitt drag i ett utrymme inom 30 fot från dig. För sin handling kan den bara använda {@action Dash} handlingen eller försöka fly från en effekt som hindrar den från att röra sig. Om det inte finns någonstans att röra sig kan varelsen ta handlingen {@action Dodge}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"Du får edförtrollningar på de paladinnivåer som anges i tabellen Oath of the Watchers. Se klassegenskapen Sacred Oath för hur edsförtrollningar fungerar.",
+				{
+					"type": "table",
+					"caption": "Oath of the Watchers Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell alarm}, {@spell detect magic}"
+						],
+						[
+							"5th",
+							"{@spell moonbeam}, {@spell see invisibility}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell nondetection}"
+						],
+						[
+							"13th",
+							"{@spell aura of purity}, {@spell banishment}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell scrying}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of the Watchers",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"En paladin som tar på sig Watchers ed svär att skydda de dödliga rikena från hot från andra världar.",
+				{
+					"type": "entries",
+					"name": "Vigilance",
+					"entries": [
+						"De hot du möter är listiga, kraftfulla och subversiva. Var ständigt vaksamma på deras korruption."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Loyalty",
+					"entries": [
+						"Acceptera aldrig gåvor eller tjänster från djävlar eller de som arbetar med dem. Håll dig trogen din order, dina kamrater och din plikt."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Discipline",
+					"entries": [
+						"Du är skölden mot de oändliga fasor som finns bortom stjärnorna. Ditt blad måste för alltid vara skarpt och ditt sinne skarpt för att överleva det som ligger bortom stjärnorna."
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of the Sentinel",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Oath of the Watchers feature}",
+				"Du utstrålar en aura av vakenhet när du inte är det {@condition incapacitated}. När du och alla varelser som du väljer inom tre meter från dig kastar initiativ, får ni alla en bonus på initiativ som är lika med din kompetensbonus.",
+				"På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Vigilant Rebuke",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of the Watchers feature}",
+				"Du har lärt dig hur man tuktar alla som vågar använda beguingar mot dig och dina beskyddare. Närhelst du eller en varelse som du kan se inom 30 fot från dig lyckas med ett räddningskast på intelligens, visdom eller karisma kan du använda din reaktion för att ge {@damage 2d8} + din karisma-modifierare kraftskada till den varelse som tvingade fram räddningskastet."
+			]
+		},
+		{
+			"name": "Mortal Bulwark",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of the Watchers feature}",
+				"Du manifesterar en gnista av gudomlig kraft för att försvara de dödliga världarna. Som en bonushandling får du följande fördelar i 1 minut:",
+				{
+					"type": "list",
+					"items": [
+						"Du får {@sense truesight} med en räckvidd på 120 fot.",
+						"Du har fördel på attackkast mot aberrationer, celestials, elementals, fey och fiends.",
+						"När du träffar en varelse med en anfallsrulle och ger den skada kan du också tvinga den att göra ett Charisma-räddningskast mot din trollformels räddnings-DC. Vid ett misslyckat räddningsförsök förvisas varelsen magiskt till sitt ursprungliga existensplan om den för närvarande inte är där. Vid ett lyckat räddningsförsök kan varelsen inte förvisas av denna egenskap på 24 timmar."
+					]
+				},
+				"När du har använt den här bonusåtgärden kan du inte använda den igen förrän du har avslutat en lång vila, såvida du inte använder en spell slot på 5:e nivå för att använda den igen."
+			]
+		},
+		{
+			"name": "Oath of the Watchers",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Paladiner som svär Watchers ed försöker skydda den dödliga världen från utomjordiska varelser, av vilka många kan ödelägga dödliga soldater. Därför finslipar Watchers sina sinnen, andar och kroppar för att bli de ultimata vapnen mot sådana hot.",
+				"Paladiner som följer Watchers ed är ständigt vaksamma när det gäller att upptäcka inflytande från utomjordiska krafter och upprättar ofta ett nätverk av spioner och informatörer för att samla in information om misstänkta kulter. För en Watcher är det lika naturligt att hålla en sund misstänksamhet och medvetenhet om sin omgivning som att bära rustning i strid.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of the Watchers|Paladin||Watchers (UA)|UA2020SubclassesPt1|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Watchers (UA)|UA2020SubclassesPt1|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Watchers (UA)|UA2020SubclassesPt1|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"Du får följande alternativ för Channel Divinity. Se klassegenskapen Sacred Oath för hur Channel Divinity fungerar.",
+				{
+					"type": "entries",
+					"name": "Watcher's Will",
+					"entries": [
+						"Du kan använda din Channel Divinity för att investera din närvaro med din tros skyddande kraft. Som en handling kan du välja ett antal varelser som du kan se inom 30 fot från dig, upp till ett antal som är lika med din Charisma-modifierare (minst en varelse). I 1 minut har alla valda varelser fördel på räddningskast på intelligens, visdom och karisma."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Abjure the Extraplanar",
+					"entries": [
+						"Du kan använda din Channel Divinity för att straffa världsfrånvända varelser. Som en handling presenterar du din heliga symbol och varje elementär, fey, fiend eller aberration inom 30 fot från dig som kan höra dig måste göra ett visdomssparande kast. Vid ett misslyckat räddningsförsök förvandlas varelsen i 1 minut eller tills den tar skada.",
+						"En förvandlad varelse måste spendera sina vändor med att försöka flytta så långt bort från dig som möjligt, och den kan inte frivilligt flytta sig till ett utrymme inom 30 fot från dig. För sin handling kan den bara använda {@action Dash} handlingen eller försöka fly från en effekt som hindrar den från att röra sig. Om det inte finns någonstans att röra sig kan varelsen använda handlingen {@action Dodge}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"Du får edförtrollningar på de paladinnivåer som anges i tabellen Oath of the Watchers. Se klassegenskapen Sacred Oath för hur edsförtrollningar fungerar.",
+				{
+					"type": "table",
+					"caption": "Oath of the Watchers Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell alarm}, {@spell chromatic orb}"
+						],
+						[
+							"5th",
+							"{@spell augury}, {@spell moonbeam}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell nondetection}"
+						],
+						[
+							"13th",
+							"{@spell aura of purity}, {@spell banishment}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell hallow}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of the Watchers",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"En paladin som tar på sig Watchers ed svär att skydda den dödliga världen från hot från andra världar.",
+				{
+					"type": "entries",
+					"name": "Vigilance",
+					"entries": [
+						"De hot du möter är listiga, kraftfulla och subversiva. Var ständigt vaksamma på deras korruption."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Loyalty",
+					"entries": [
+						"Acceptera aldrig gåvor eller tjänster från djävlar eller de som arbetar med dem. Håll dig trogen din order, dina kamrater och din plikt."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Discipline",
+					"entries": [
+						"Du är skölden mot de oändliga fasor som finns bortom stjärnorna. Ditt blad måste för alltid vara skarpt och ditt sinne skarpt för att överleva det som ligger bortom stjärnorna."
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of the Sentinel",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th- and 18th-level Oath of the Watchers feature}",
+				"Du utstrålar en aura av vakenhet när du inte är det {@condition incapacitated}. När du och en valfri varelse inom tre meter från dig kastar initiativ, får ni båda en bonus på initiativ som är lika med din Charisma-modifierare (minst +1). På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Vigilant Rebuke",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of the Watchers feature}",
+				"Du har lärt dig hur du magiskt kan tukta alla som vågar kasta oönskade trollformler mot dig och dina vakter. Närhelst du eller en varelse som du kan se inom 30 fot från dig lyckas med ett räddningskast mot en besvärjelse kan du använda din reaktion för att ge {@damage 2d8} + din Charismamodifierare kraftskada till trollkarlen."
+			]
+		},
+		{
+			"name": "Mortal Bulwark",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of the Watchers feature}",
+				"Du manifesterar en gnista av din gudoms kraft för att försvara din heliga ed. Som en bonusåtgärd får du följande fördelar i 1 minut:",
+				{
+					"type": "list",
+					"items": [
+						"Du får {@sense truesight} i en radie på 120 fot.",
+						"Du har en fördel på attackkast mot elementarvarelser, feer, djävlar och aberrationer.",
+						"När du träffar en varelse med en attack och ger den skada kan du också tvinga den att göra ett räddningskast med Charisma. Vid ett misslyckat räddningsförsök förvisas varelsen magiskt till sitt ursprungliga existensplan om den för närvarande inte är där. Vid ett lyckat räddningsförsök kan varelsen inte förvisas av denna egenskap på 24 timmar."
+					]
+				},
+				"När du använder den här bonusåtgärden kan du inte använda den igen förrän du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Oath of Redemption",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Oath of Redemption ger en paladin en svår väg, en väg som kräver att en helig krigare endast använder våld som en sista utväg. Paladiner som ägnar sig åt denna ed tror att alla människor kan bli förlösta och att välviljans och rättvisans väg är en väg som vem som helst kan vandra. Dessa paladiner möter onda varelser i hopp om att vända dem till ljuset, och paladinerna dödar dem endast när ett sådant dåd uppenbarligen kommer att rädda andra liv. Paladiner som följer den här vägen är kända som förlösare.",
+				"Även om återlösarna är idealister är de inte dumma. Återlösare vet att odöda, demoner, djävlar och andra övernaturliga hot kan vara onda i sig själva. Mot sådana fiender använder paladinerna hela vreden från sina vapen och trollformler. Ändå ber förlösarna fortfarande att en dag kommer även de onda varelserna att bjuda in till sin egen förlösning.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Redemption|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Armor of Peace|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Warrior of Reconciliation|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Emissary of Peace|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Rebuke the Violent|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Armor of Peace",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med nivå 3 kan du tack vare ditt engagemang för fred gå in i de farligaste situationerna utan att vara bepansrad. När du inte bär rustning eller svingar en sköld är din bas-AC 16 + din Dexterity-modifierare."
+			]
+		},
+		{
+			"name": "Channel Divinity: Emissary of Peace",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att förstärka din närvaro med gudomlig kraft. Som en bonusåtgärd ger du dig själv en +5 bonus på nästa Charisma ({@skill Persuasion})-kontroll du gör inom den närmaste minuten."
+			]
+		},
+		{
+			"name": "Channel Divinity: Rebuke the Violent",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att tillrättavisa dem som använder våld. Som en reaktion när en fiende inom tre meter från dig orsakar skada med en närstridsattack mot en annan varelse än du, tvingar du den angriparen att göra ett räddningskast i visdom. Vid ett misslyckat räddningsförsök tar angriparen strålningsskada som är lika stor som den skada som han just fick. Vid ett lyckat räddningsförsök tar den hälften så mycket skada."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of Redemption Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell shield}, {@spell sleep}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell ray of enfeeblement}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell hypnotic pattern}"
+						],
+						[
+							"13th",
+							"{@spell Otiluke's resilient sphere}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell wall of force}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Redemption",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Principerna i Redemption Oath of Redemption håller en paladin till en hög standard för fred och rättvisa.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Peace",
+							"entries": [
+								"Våld är ett vapen som är en sista utväg. Diplomati och förståelse är vägarna till långvarig fred."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Innocence",
+							"entries": [
+								"Alla människor börjar livet i ett oskyldigt tillstånd, och det är deras miljö eller inflytande från mörka krafter som driver dem till ondska. Genom att föregå med gott exempel och arbeta för att läka såren i en djupt bristfällig värld kan du få vem som helst på rättvis väg."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Patience",
+							"entries": [
+								"Förändringar tar tid. De som har vandrat på de ondas väg måste få påminnelser för att hålla dem ärliga och sanna. När du väl har planterat rättfärdighetens frö i en varelse måste du arbeta dag efter dag för att låta det överleva och sedan blomstra."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Wisdom",
+							"entries": [
+								"Ditt hjärta och ditt sinne måste vara klart, för till slut kommer du att tvingas erkänna ditt nederlag. Även om alla varelser kan återlösas är vissa så långt på den onda vägen att du inte har något annat val än att avsluta deras liv för det goda. Varje sådan åtgärd måste vägas noggrant och konsekvenserna måste förstås fullt ut, men när du väl har fattat beslutet ska du fullfölja det i vetskap om att din väg är rättvis."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Warrior of Reconciliation",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På nivå 3 kan du avstå från krigsvapen och istället använda enkla verktyg. När du svingar ett enkelt vapen som ger blödande skada får du en särskild fördel om du reducerar en varelse till 0 träffpoäng med det vapnet och bestämmer dig för att skona varelsens liv. Istället för att falla {@condition unconscious} är varelsen {@condition charmed} av dig i 1 minut. Under den tiden är {@condition charmed} varelsen fridfull och foglig och vägrar att röra sig eller vidta åtgärder eller reaktioner, såvida du inte beordrar den att göra det. Du kan inte beordra varelsen att attackera, tvinga någon att göra ett räddningskast eller orsaka skada på sig själv eller andra. Den här {@condition charmed} effekten upphör tidigt om du är {@condition incapacitated} eller om du eller dina följeslagare attackerar varelsen, ger den skada eller tvingar den att göra ett räddningskast. När effekten upphör faller varelsen {@condition unconscious} om den fortfarande har 0 träffpunkter."
+			]
+		},
+		{
+			"name": "Aura of the Guardian",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med 7:e nivån kan du skydda dina allierade från skada på bekostnad av din egen hälsa. Som en reaktion när en allierad inom tre meter från dig tar skada, tar du istället magiskt den skadan. Denna egenskap överför inte några andra effekter som kan följa med skadan."
+			]
+		},
+		{
+			"name": "Protective Spirit",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Från och med 15:e nivån kan en helig närvaro läka dina sår i strid. Du återfår träffpunkter motsvarande {@dice 1d6} + halva din paladinnivå om du avslutar din tur i strid med mindre än hälften av dina träffpunkter kvar och du inte är {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Emissary of Redemption",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån blir du en fredens avatar, vilket ger dig två fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"Du är motståndskraftig mot all skada som orsakas av andra varelser (deras attacker, trollformler och andra effekter).",
+						"När en varelse skadar dig tar den skada som är lika med hälften av det belopp som den gav dig."
+					]
+				},
+				"Om du attackerar en varelse, ger den skada eller tvingar den att göra ett räddningskast fungerar ingen av dessa fördelar mot den varelsen förrän du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Oath of Heroism",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"entries": [
+				"Hjältemodets ed är en bekräftelse på en ödesbestämd väg, en väg som gudomliga händer har utstakat för dig. Av någon anledning har en gud eller en grupp av gudar inkluderat dig i sina intriger. Du är inte en motvillig hjälte, utan en som helt och hållet omfamnar idén om att stora gärningar är dina att uppnå. Du tränar flitigt, skulpterar din kropp och förfinar dina färdigheter så att du är redo när ödet kallar.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Heroism|Paladin||Heroism (UA)|UABardAndPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Heroism (UA)|UABardAndPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Heroism (UA)|UABardAndPaladin|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level Oath of Heroism feature}",
+				"Du får följande två alternativ för Channel Divinity.",
+				{
+					"type": "entries",
+					"name": "Peerless Athlete",
+					"entries": [
+						"Du kan använda din Channel Divinity för att öka din atletiska förmåga med gudomlig hjälp. Som en bonusåtgärd får du fördel på alla styrke- ({@skill Athletics}) och smidighetskontroller ({@skill Acrobatics}) under de kommande 10 minuterna."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Legendary Strike",
+					"entries": [
+						"Du kan använda din Channel Divinity som en bonusåtgärd för att styra dina attacker: i 1 minut får dina vapenattacker en kritisk träff om du kastar 19 eller 20 på {@dice d20}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of Heroism feature}",
+				"Du får edförtrollningar på de paladinnivåer som anges i tabellen Oath of Heroism Spells.",
+				{
+					"type": "table",
+					"caption": "Oath of Heroism Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell expeditious retreat}, {@spell guiding bolt}"
+						],
+						[
+							"5th",
+							"{@spell enhance ability}, {@spell enthrall}"
+						],
+						[
+							"9th",
+							"{@spell haste}, {@spell protection from energy}"
+						],
+						[
+							"13th",
+							"{@spell compulsion}, {@spell freedom of movement}"
+						],
+						[
+							"17th",
+							"{@spell commune}, {@spell conjure volley}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Heroism",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Principerna i Heroisms ed återspeglar en paladins åtagande att uppfylla sin kallelse som en hjälte värdig en legend.",
+				{
+					"type": "entries",
+					"name": "Actions over Words",
+					"entries": [
+						"Sträva efter att bli känd genom gärningar och inte genom ord."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Challenges Are but Tests",
+					"entries": [
+						"Varje svårighet är till för att utmana din förmåga och stärka din beslutsamhet."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Embrace Destiny",
+					"entries": [
+						"Du valde inte den här vägen, men den är din att gå. Och den kommer att bära dig in i legenden."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hone the Body",
+					"entries": [
+						"Precis som rå sten måste din kropp bearbetas för att dess potential ska kunna förverkligas."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mighty Deed",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Oath of Heroism feature}",
+				"Dina handlingar på slagfältet kan på ett övernaturligt sätt stärka dina allierade och demoralisera dina fiender. Varje gång du får en kritisk träff eller reducerar en varelse till 0 träffpoäng kan du välja en eller flera varelser som du kan se inom 30 fot från dig, upp till ett antal som är lika med din Charisma-modifierare (minst en varelse). Alla de valda varelserna påverkas av en av följande effekter enligt ditt val:",
+				{
+					"type": "list",
+					"items": [
+						"Varelsen får tillfälliga träffpunkter motsvarande {@dice 1d6} + din Charisma-modifierare (minst 1 tillfällig träffpunkt).",
+						"Varelsen måste lyckas med ett Visdomsräddningskast mot din trollformels räddnings-DC eller vara {@condition frightened} av dig fram till början av din nästa vändning."
+					]
+				},
+				"När du har använt den här funktionen kan du inte använda den igen förrän i början av nästa tur."
+			]
+		},
+		{
+			"name": "Glorious Defense",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of Heroism feature}",
+				"Din välsignade ära på slagfältet kan leda en attack fel. När en varelse som du kan se träffar dig med en attack kan du använda din reaktion för att få en bonus på AC mot den attacken, vilket kan leda till att den missar dig. Bonusen är lika med din Charisma-modifierare (minst +1). Om attacken missar kan du göra en vapenattack mot angriparen som en del av denna reaktion."
+			]
+		},
+		{
+			"name": "Living Myth",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of Heroism feature}",
+				"Du kan nu stärka dig själv med de legender - sanna eller överdrivna - som berättas om dina stora gärningar. Som en bonusåtgärd får du följande fördelar i 10 minuter:",
+				{
+					"type": "list",
+					"items": [
+						"Du är välsignad med en utomvärldslig skönhet och får fördelar på alla karismakontroller.",
+						"När du gör en vapenattack och missar, kan du en gång under varje vändning få den attacken att träffa i stället.",
+						"Om du misslyckas med ett räddningskast kan du använda din reaktion för att lyckas istället."
+					]
+				},
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Oath of Conquest",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"entries": [
+				"Erövringens ed är till för paladiner som söker ära i strid och för att underkuva sina fiender. Det räcker inte för dessa paladiner att skapa ordning. De måste krossa kaosets krafter. De som svär den här eden samlas ibland som riddartyranner eller järnmongrer i grymma ordnar som tjänar gudar eller filosofier om krig och välordnad makt. En del av dessa paladiner går så långt att de umgås med de nio helvetenas krafter. Ärkedejden Bel, krigsherre i Avernus, räknar många av dessa paladiner som kallas helvetesriddare som sina mest ivriga anhängare. Helvetesriddarna täcker sina rustningar med troféer tagna från fallna fiender, en dyster varning till alla som vågar motsätta sig dem och deras herrars dekret.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Conquest|Paladin||Conquest (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Conquest (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Conquering Strike|Paladin||Conquest (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Guided Strike|Paladin||Conquest (UA)|UAPaladin|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Conquering Strike",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att bryta fiendens vilja. När du träffar en varelse med en närstridsattack som en del av {@action Attack} handlingen kan du också använda din Channel Divinity för att tvinga målet att göra ett Visdomsbesparingskast. Vid ett misslyckat räddningsförsök blir målet {@condition frightened} av dig i 1 minut. {@condition frightened}-varelsen kan upprepa detta räddningskast i slutet av var och en av sina vändor, och avsluta effekten på sig själv om den lyckas."
+			]
+		},
+		{
+			"name": "Channel Divinity: Guided Strike",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att slå till med övernaturlig precision. När du gör en anfallsrulle kan du använda din Channel Divinity för att få en +10-bonus på rullen. Du gör detta val efter att du har sett kastet, men innan DM säger om attacken träffar eller missar."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of Conquest Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell armor of Agathys}, {@spell command}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell spiritual weapon}"
+						],
+						[
+							"9th",
+							"{@spell bestow curse}, {@spell fear}"
+						],
+						[
+							"13th",
+							"{@spell blight}, {@spell dominate beast}"
+						],
+						[
+							"17th",
+							"{@spell dominate person}, {@spell insect plague}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Conquest",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"En paladin som svär denna ed har erövringens principer inristade på överarmen. En helvetesriddares ed visas i {@language Infernal} runor, en brutal påminnelse om löften till helvetets herrar.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Douse the Flame of Hope",
+							"entries": [
+								"Det räcker inte att bara besegra en fiende i strid. Din seger måste vara så överväldigande att fiendens vilja att kämpa för alltid krossas. En kniv kan avsluta ett liv. Rädsla kan göra slut på ett imperium."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Rule with an Iron Fist",
+							"entries": [
+								"När du väl har erövrat, tolererar du ingen oliktänkande. Ditt ord är lag. De som lyder det ska gynnas. De som trotsar det ska straffas som ett exempel för alla som följer efter."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Strength Above All",
+							"entries": [
+								"Du ska regera tills en starkare uppstår. Då måste du bli mäktigare och möta utmaningen, annars faller du i din egen undergång."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Conquest",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med 7:e nivån kan du utstråla en hotfull aura när du inte är det {@condition incapacitated}. Auran omfattar ditt utrymme, sträcker sig 10 fot från dig i alla riktningar och blockeras av total täckning. Alla fiender i auran har nackdel på räddningskast mot att vara {@condition frightened}.",
+				"På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Implacable Spirit",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"När du når 15:e nivån kan du inte längre vara {@condition charmed}."
+			]
+		},
+		{
+			"name": "Invincible Conqueror",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån får du förmågan att utnyttja extraordinära krigiska färdigheter. Som en handling kan du magiskt bli en avatar av erövring och få följande fördelar i 1 minut:",
+				{
+					"type": "list",
+					"items": [
+						"Du är motståndskraftig mot all skada.",
+						"När du gör åtgärden {@action Attack} på din tur kan du göra ytterligare en attack som en del av den åtgärden.",
+						"Dina närstridsvapenattacker får en kritisk träff om du kastar 19 eller 20."
+					]
+				},
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Oath of Treachery",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"entries": [
+				"Förräderiets ed är den väg som följs av paladiner som har svurit andra eder eller som bara bryr sig om sin egen makt och överlevnad. Dessa profana krigare, som vanligen kallas blackguards, är trogna endast sig själva. Alla som är tillräckligt desperata för att följa en av dessa paladiner gör det eftersom dessa paladiner, trots att de är bedrägliga, har stor makt. De som följer dem utan att falla offer för deras förräderi hoppas kunna ägna sig åt hänsynslöst våld och samla på sig stora skatter. Många av dessa paladiner hyllar demonherrar, särskilt Grazz't och Orcus. Till och med helvetets herrar är ovilliga att alliera sig med dessa kaosets mästare, men ibland finner Baalzebul och Glasya en själsfrände i en svartgardists förkärlek för dubbelspel och förräderi.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Treachery|Paladin||Treachery (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Treachery (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Conjure Duplicate|Paladin||Treachery (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Poison Strike|Paladin||Treachery (UA)|UAPaladin|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Conjure Duplicate",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Som en handling skapar du en visuell illusion av dig själv som varar i 1 minut, eller tills du förlorar din koncentration (som om du koncentrerade dig på en trollformel). Illusionen visas i ett obebott utrymme som du väljer och som du kan se inom 30 fot från dig. Illusionen ser exakt ut som du; den är tyst; den har din storlek, är substanslös, upptar inte sitt utrymme; och den påverkas inte av attacker och skada. Som en bonushandling på din tur kan du flytta illusionen upp till 30 fot till ett utrymme du kan se, men illusionen måste förbli inom 120 fot från dig.",
+				"Under den tiden kan du kasta trollformler som om du befann dig i illusionens rum, men du måste använda dina egna sinnen. Dessutom, när både du och din illusion är inom 5 fot från en varelse som kan se illusionen, har du fördel på attackkast mot den varelsen, med tanke på hur kuslig illusionen är."
+			]
+		},
+		{
+			"name": "Channel Divinity: Poison Strike",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att göra ett vapen dödligare. Som en bonusåtgärd rör du vid ett vapen eller en ammunitionsbit och trollar fram ett speciellt gift på det. Giftet varar i 1 minut. Nästa gång du träffar ett mål med en attack med det vapnet eller den ammunitionen tar målet giftskada direkt efter attacken. Giftskadan är lika med {@dice 2d10} + din paladinnivå, eller 20 + din paladinnivå om du hade fördel på attackkastet."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of Treachery Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell charm person}, {@spell expeditious retreat}"
+						],
+						[
+							"5th",
+							"{@spell invisibility}, {@spell mirror image}"
+						],
+						[
+							"9th",
+							"{@spell gaseous form}, {@spell haste}"
+						],
+						[
+							"13th",
+							"{@spell confusion}, {@spell greater invisibility}"
+						],
+						[
+							"17th",
+							"{@spell dominate person}, {@spell passwall}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Treachery",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"En paladin som tar emot förräderiets ed är inte skyldig någon lojalitet. Det finns inga principer för denna ed, för den saknar substans. De som är olyckliga nog att ha nära kontakt med svartgardister har observerat att en svartgardists överväldigande intresse är makt och säkerhet, särskilt om båda kan erhållas på andras bekostnad."
+			]
+		},
+		{
+			"name": "Aura of Treachery",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med 7:e nivån kan du utstråla en aura av disharmoni, vilket ger dig följande fördelar.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Cull the Herd",
+							"entries": [
+								"Du har fördel på närkampsattacker mot alla varelser som har en eller flera av sina allierade inom en radie av 1,5 meter."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Treacherous Strike",
+							"entries": [
+								"Om en varelse inom 1,5 meter från dig missar dig med en närstridsattack kan du använda din reaktion för att tvinga angriparen att omvalta attacken mot en varelse som du väljer och som också befinner sig inom 1,5 meter från angriparen. Förmågan misslyckas och är bortkastad om angriparen är immun mot att vara {@condition charmed}.",
+								"Du kan använda den här förmågan tre gånger. Du återfår förbrukade användningar av den när du avslutar en kort eller lång vila."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Blackguard's Escape",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"På 15:e nivån har du förmågan att smita undan dina fiender. Omedelbart efter att du träffas av en attack kan du använda din reaktion för att vända dig {@condition invisible} och teleportera dig upp till 60 fot till en plats du kan se. Du förblir {@condition invisible} till slutet av din nästa vändning eller tills du attackerar, ger skada eller tvingar en varelse att göra ett räddningskast. När du har använt den här egenskapen måste du avsluta en kort eller lång vila innan du kan använda den igen."
+			]
+		},
+		{
+			"name": "Icon of Deceit",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån får du förmågan att utstråla känslor av förräderi. Som en handling kan du magiskt bli en avatar av svek och få följande fördelar i 1 minut:",
+				{
+					"type": "list",
+					"items": [
+						"Du är {@condition invisible}.",
+						"Om en varelse skadar dig på sin tur måste den lyckas med ett räddningskast i Visdom (DC lika med din spellednings räddnings DC) eller så kontrollerar du dess nästa handling, förutsatt att du inte är {@condition incapacitated} när den utför handlingen. En varelse lyckas automatiskt på räddningen om varelsen är immun mot att vara {@condition charmed}.",
+						"Om du har fördel på en anfallsrulle får du en bonus på dess skaderulle som är lika stor som din paladinnivå."
+					]
+				},
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Oath of Conquest v2",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"entries": [
+				"Erövringens ed är till för paladiner som söker ära i strid och för att underkuva sina fiender. Det räcker inte för dessa paladiner att skapa ordning. De måste krossa kaosets krafter. De som svär den här eden samlas ibland som riddartyranner eller järnmongrer i grymma ordnar som tjänar gudar eller filosofier om krig och välordnad makt.",
+				"En del av dessa paladiner går så långt att de umgås med de nio helvetenas krafter och värderar lagens regler högre än barmhärtighetens balsam. Ärkedejävulen Bel, krigsherre i Avernus, räknar många av dessa paladiner - så kallade helvetesriddare - som sina mest ivriga anhängare. Helvetesriddarna täcker sina rustningar med troféer tagna från fallna fiender, en dyster varning till alla som vågar motsätta sig dem och deras herrars dekret. Dessa riddare får ofta hårdast motstånd av andra paladiner av denna ed, som anser att helvetesriddarna har vandrat för långt in i mörkret.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Conquest|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Conquering Presence|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Guided Strike|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Conquering Presence",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att utstråla en skrämmande närvaro. Som en handling tvingar du varje varelse av ditt val som du kan se inom 30 fot från dig att göra ett räddningskast i visdom. Vid ett misslyckat räddningsförsök blir en varelse {@condition frightened} av dig i 1 minut. Den {@condition frightened} varelsen kan upprepa detta räddningskast i slutet av var och en av sina vändor, vilket avslutar effekten på sig själv om den lyckas."
+			]
+		},
+		{
+			"name": "Channel Divinity: Guided Strike",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att slå till med övernaturlig precision. När du gör en anfallsrulle kan du använda din Channel Divinity för att få en +10-bonus på rullen. Du gör detta val efter att du har sett kastet, men innan DM säger om attacken träffar eller missar."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of Conquest Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell armor of Agathys}, {@spell command}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell spiritual weapon}"
+						],
+						[
+							"9th",
+							"{@spell bestow curse}, {@spell fear}"
+						],
+						[
+							"13th",
+							"{@spell dominate beast}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell cloudkill}, {@spell dominate person}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Conquest",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"En paladin som svär denna ed har erövringens principer inristade på överarmen. En helvetesriddares ed visas i {@language Infernal} runor, en brutal påminnelse om löften till helvetets herrar.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Douse the Flame of Hope",
+							"entries": [
+								"Det räcker inte att bara besegra en fiende i strid. Din seger måste vara så överväldigande att dina fienders vilja att kämpa för alltid krossas. En kniv kan avsluta ett liv. Rädsla kan göra slut på ett imperium."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Rule with an Iron Fist",
+							"entries": [
+								"När du väl har erövrat, tolererar du ingen oliktänkande. Ditt ord är lag. De som lyder det ska gynnas. De som trotsar det ska straffas som ett exempel för alla som följer efter."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Strength Above All",
+							"entries": [
+								"Du ska regera tills en starkare uppstår. Då måste du bli mäktigare och möta utmaningen, annars faller du i din egen undergång."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Conquest",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med 7:e nivån kan du ständigt utstråla en hotfull aura när du inte är det {@condition incapacitated}. Auran omfattar ditt utrymme, sträcker sig 10 fot från dig i alla riktningar och blockeras av total täckning.",
+				"Om en varelse befinner sig {@condition frightened} från dig reduceras dess hastighet till 0 medan den befinner sig i auran, och den varelsen tar psykisk skada motsvarande halva din paladinnivå om den börjar sin tur där. På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Scornful Rebuke",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Från och med 15:e nivån straffas de som vågar slå dig psykiskt för sin djärvhet. När en varelse träffar dig med en attack tar den varelsen psykisk skada lika med din Charisma-modifierare (minst 0) om du inte är det {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Invincible Conqueror",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån får du förmågan att utnyttja extraordinära krigiska färdigheter. Som en handling kan du magiskt bli en avatar av erövring och få följande fördelar i 1 minut:",
+				{
+					"type": "list",
+					"items": [
+						"Du är motståndskraftig mot all skada.",
+						"När du gör åtgärden {@action Attack} på din tur kan du göra ytterligare en attack som en del av den åtgärden.",
+						"Dina närstridsvapenattacker får en kritisk träff om du får 19 eller 20 på {@dice d20}."
+					]
+				},
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Oath of Conquest",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Erövringens ed är till för paladiner som söker ära i strid och för att underkuva sina fiender. Det räcker inte för dessa paladiner att skapa ordning. De måste krossa kaosets krafter. De som svär den här eden samlas ibland som riddartyranner eller järnmongrer i grymma ordnar som tjänar gudar eller filosofier om krig och välordnad makt.",
+				"En del av dessa paladiner går så långt att de umgås med de nio helvetenas krafter och värderar lagens regler högre än barmhärtighetens balsam. Ärkedejävulen Bel, krigsherre i Avernus, räknar många av dessa paladiner - så kallade helvetesriddare - som sina mest ivriga anhängare. Helvetesriddarna täcker sina rustningar med troféer tagna från fallna fiender, en dyster varning till alla som vågar motsätta sig dem och deras herrars dekret. Dessa riddare får ofta hårdast motstånd av andra paladiner av denna ed, som anser att helvetesriddarna har vandrat för långt in i mörkret.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Conquest|Paladin||Conquest|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Conquest|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Conquering Presence|Paladin||Conquest|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Guided Strike|Paladin||Conquest|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Conquering Presence",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att utstråla en skrämmande närvaro. Som en handling tvingar du varje varelse av ditt val som du kan se inom 30 fot från dig att göra ett räddningskast i visdom. Vid ett misslyckat räddningsförsök blir en varelse {@condition frightened} av dig i 1 minut. Den {@condition frightened} varelsen kan upprepa detta räddningskast i slutet av var och en av sina vändor, vilket avslutar effekten på sig själv om den lyckas."
+			]
+		},
+		{
+			"name": "Channel Divinity: Guided Strike",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att slå till med övernaturlig precision. När du gör en anfallsrulle kan du använda din Channel Divinity för att få en +10-bonus på rullen. Du gör detta val efter att du har sett kastet, men innan DM säger om attacken träffar eller missar."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of Conquest Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell armor of Agathys}, {@spell command}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell spiritual weapon}"
+						],
+						[
+							"9th",
+							"{@spell bestow curse}, {@spell fear}"
+						],
+						[
+							"13th",
+							"{@spell dominate beast}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell cloudkill}, {@spell dominate person}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Conquest",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"En paladin som svär denna ed har erövringens principer inristade på överarmen.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Douse the Flame of Hope",
+							"entries": [
+								"Det räcker inte att bara besegra en fiende i strid. Din seger måste vara så överväldigande att dina fienders vilja att kämpa för alltid krossas. En kniv kan avsluta ett liv. Rädsla kan göra slut på ett imperium."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Rule with an Iron Fist",
+							"entries": [
+								"När du väl har erövrat, tolererar du ingen oliktänkande. Ditt ord är lag. De som lyder det ska gynnas. De som trotsar det ska straffas som ett exempel för alla som följer efter."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Strength Above All",
+							"entries": [
+								"Du ska regera tills en starkare uppstår. Då måste du bli mäktigare och möta utmaningen, annars faller du i din egen undergång."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Conquest",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med 7:e nivån kan du ständigt utstråla en hotfull aura när du inte är det {@condition incapacitated}. Auran sträcker sig 10 fot från dig i alla riktningar, men inte genom totalt skydd.",
+				"Om en varelse befinner sig {@condition frightened} från dig reduceras dess hastighet till 0 medan den befinner sig i auran, och den varelsen tar psykisk skada lika med halva din paladinnivå om den börjar sin tur där.",
+				"På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Scornful Rebuke",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Från och med 15:e nivån straffas de som vågar slå dig psykiskt för sin djärvhet. När en varelse träffar dig med en attack tar den varelsen psykisk skada lika med din Charisma-modifierare (minst 1) om du inte är det {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Invincible Conqueror",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån får du förmågan att utnyttja extraordinära krigiska färdigheter. Som en handling kan du magiskt bli en avatar av erövring och få följande fördelar i 1 minut:",
+				{
+					"type": "list",
+					"items": [
+						"Du är motståndskraftig mot all skada.",
+						"När du gör åtgärden {@action Attack} på din tur kan du göra ytterligare en attack som en del av den åtgärden.",
+						"Dina närstridsvapenattacker får en kritisk träff om du får 19 eller 20 på {@dice d20}."
+					]
+				},
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Oath of Redemption",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Oath of Redemption ger en paladin en svår väg, en väg som kräver att en helig krigare endast använder våld som en sista utväg. Paladiner som ägnar sig åt denna ed tror att alla människor kan bli förlösta och att välviljans och rättvisans väg är en väg som vem som helst kan vandra. Dessa paladiner möter onda varelser i hopp om att vända sina fiender till ljuset, och de dödar sina fiender endast när ett sådant dåd uppenbarligen kommer att rädda andra liv. Paladiner som följer den här vägen är kända som förlösare.",
+				"Även om återlösarna är idealister är de inte dumma. Återlösare vet att odöda, demoner, djävlar och andra övernaturliga hot kan vara onda i sig själva. Mot sådana fiender tar paladiner som svär den här eden med sig hela vreden från sina vapen och trollformler. Ändå ber förlösarna fortfarande att en dag kommer även onda varelser att bjuda in till sin egen förlösning.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Redemption|Paladin||Redemption|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Redemption|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Emissary of Peace|Paladin||Redemption|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Rebuke the Violent|Paladin||Redemption|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Emissary of Peace",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att förstärka din närvaro med gudomlig kraft. Som en bonusåtgärd ger du dig själv en +5 bonus på Charisma ({@skill Persuasion})-kontroller under de kommande 10 minuterna."
+			]
+		},
+		{
+			"name": "Channel Divinity: Rebuke the Violent",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Du kan använda din Channel Divinity för att tillrättavisa dem som använder våld. Omedelbart efter att en angripare inom 30 fot från dig orsakar skada med en attack mot en annan varelse än du, kan du använda din reaktion för att tvinga angriparen att göra ett räddningskast för visdom. Vid ett misslyckat räddningsförsök tar angriparen strålningsskada som är lika stor som den skada som han just fick. Vid ett lyckat räddningsförsök tar den hälften så mycket skada."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Du får edförtrollningar på de angivna paladinnivåerna.",
+				{
+					"type": "table",
+					"caption": "Oath of Redemption Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell sanctuary}, {@spell sleep}"
+						],
+						[
+							"5th",
+							"{@spell calm emotions}, {@spell hold person}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell hypnotic pattern}"
+						],
+						[
+							"13th",
+							"{@spell Otiluke's resilient sphere}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell wall of force}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Redemption",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Principerna i Redemption Oath of Redemption håller en paladin till en hög standard för fred och rättvisa.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Peace",
+							"entries": [
+								"Våld är ett vapen som är en sista utväg. Diplomati och förståelse är vägarna till långvarig fred."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Innocence",
+							"entries": [
+								"Alla människor börjar livet i ett oskyldigt tillstånd, och det är deras miljö eller inflytande från mörka krafter som driver dem till ondska. Genom att föregå med gott exempel och arbeta för att läka såren i en djupt bristfällig värld kan du få vem som helst på rättvis väg."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Patience",
+							"entries": [
+								"Förändringar tar tid. De som har vandrat på de ondas väg måste få påminnelser för att hålla dem ärliga och sanna. När du väl har planterat rättfärdighetens frö i en varelse måste du arbeta dag efter dag för att låta fröet överleva och blomstra."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Wisdom",
+							"entries": [
+								"Ditt hjärta och ditt sinne måste vara klart, för till slut kommer du att tvingas erkänna ditt nederlag. Även om alla varelser kan återlösas är vissa så långt på den onda vägen att du inte har något annat val än att avsluta deras liv för det goda. Varje sådan åtgärd måste vägas noggrant och konsekvenserna måste förstås fullt ut, men när du väl har fattat beslutet ska du fullfölja det i vetskap om att din väg är rättvis."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of the Guardian",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Från och med 7:e nivån kan du skydda andra från skada på bekostnad av din egen hälsa. När en varelse inom tre meter från dig tar skada kan du använda din reaktion för att magiskt ta den skadan, istället för att den varelsen tar den. Den här egenskapen överför inte några andra effekter som kan följa med skadan, och den här skadan kan inte minskas på något sätt.",
+				"På 18:e nivån ökar räckvidden för denna aura till 30 fot."
+			]
+		},
+		{
+			"name": "Protective Spirit",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Från och med 15:e nivån kan en helig närvaro läka dina sår i strid. Du återfår träffpunkter motsvarande {@dice 1d6} + halva din paladinnivå om du avslutar din tur i strid med mindre än hälften av dina träffpunkter kvar och du inte är {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Emissary of Redemption",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"På 20:e nivån blir du en fredens avatar, vilket ger dig två fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"Du är motståndskraftig mot all skada som orsakas av andra varelser (deras attacker, trollformler och andra effekter).",
+						"När en varelse träffar dig med en attack tar den strålningsskada som är lika stor som hälften av den skada du tar från attacken."
+					]
+				},
+				"Om du attackerar en varelse, kastar en trollformel på den eller orsakar skada på den på något annat sätt än med den här egenskapen, fungerar ingen av dessa fördelar mot den varelsen förrän du avslutar en lång vila."
+			]
+		}
+	]
+}

@@ -1,0 +1,522 @@
+{
+	"spell": [
+		{
+			"name": "Draconic Transformation",
+			"source": "UA2021DraconicOptions",
+			"page": 5,
+			"level": 7,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a statuette of a dragon, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Med ett vrål drar du nytta av drakarnas magi för att förvandla dig själv och ta på dig olika drakoniska drag. Du får följande fördelar tills förtrollningen upphör:",
+				{
+					"type": "list",
+					"items": [
+						"Du har {@sense blindsight} med en räckvidd på 30 fot. Inom den räckvidden kan du effektivt se allt som inte är bakom totalt skydd, även om du är {@condition blinded} eller i mörker. Dessutom kan du se en {@condition invisible} varelse, om inte varelsen lyckas gömma sig för dig.",
+						"Incorporeal wings växer ut från din rygg och ger dig en flyghastighet på 40 fot.",
+						"När du kastar den här besvärjelsen, och som en bonusåtgärd i efterföljande vändningar under hela tiden, kan du andas ut en andedräkt av skimrande energi i en 30-fots kon. Varje varelse i området måste göra ett räddningskast i Dexterity, och tar {@damage 3d8} kraftskada på ett misslyckat räddningskast eller hälften så mycket skada på ett lyckat."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"blinded",
+				"invisible"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Fizban's Platinum Shield",
+			"source": "UA2021DraconicOptions",
+			"page": 5,
+			"level": 6,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a platinum-plated dragon scale, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du skapar ett fält av silverfärgat ljus som omger en valfri varelse inom räckhåll (du kan välja dig själv). Fältet avger svagt ljus på en sträcka av 5 fot.",
+				"Som en bonusåtgärd vid efterföljande vändningar kan du flytta fältet till en annan varelse inom 60 fot från fältet.",
+				"Den varelse som skyddas av fältet får följande fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"Varelsen har halvt skydd.",
+						"Varelsen är motståndskraftig mot syra, kyla, eld, blixtnedslag och gift.",
+						"Om varelsen utsätts för en effekt som gör det möjligt för den att göra ett räddningskast i Dexterity för att bara ta halva skadan, tar varelsen istället ingen skada om den lyckas med räddningskastet, och bara halva skadan om den misslyckas."
+					]
+				}
+			],
+			"damageResist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Flame Stride",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 3,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Drakens böljande flammor täcker dina fötter och ger dig explosiv hastighet. Under hela tiden ökar din hastighet med 20 fot och att röra dig framkallar inte tillfälliga attacker.",
+				"När du rör dig inom en halv meter från en varelse eller ett föremål som inte bärs eller bärs, tar det {@damage 1d6} brandskada från ditt värmespår. En varelse eller ett föremål kan ta den här skadan endast en gång under ett varv."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spell slot på 4:e nivå eller högre, ökar du din hastighet med 5 fot för varje spell slot-nivå över 3:e. Dessutom ger trollformeln ytterligare {@damage 1d6} brandskada för varje nivå över 3:e nivån."
+					]
+				}
+			],
+			"damageInflict": [
+				"fire"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Icingdeath's Frost",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 2,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"s": true,
+				"m": "a vial of meltwater"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"En explosion av iskall energi utgår från dig i en 30-fots kon. Varje varelse i det området måste göra ett räddningskast för konstitution. Vid ett misslyckat räddningsförsök tar en varelse {@damage 3d8} kallskada och är täckt av is i 1 minut eller tills en varelse använder sin handling för att bryta isen från sig själv eller en annan varelse. En varelse som är täckt av is har sin hastighet reducerad till 0. Vid ett lyckat räddningsförsök tar en varelse hälften så mycket skada utan ytterligare effekter."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spelledare på 3:e nivå eller högre ökar du den kalla skadan med {@dice 1d8} för varje spelledarnivå över 2:a nivån."
+					]
+				}
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Nathair's Mischief",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 2,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true,
+				"m": "a piece of crust from an apple pie"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du fyller en sex meters kub med en punkt du väljer inom räckvidd med fey och drakonisk magi. Rulla på bordet Mischievous Surge för att avgöra vilken magisk effekt som produceras. I början av varje tur kan du flytta kuben upp till 10 fot och göra en ny roll på bordet.",
+				{
+					"type": "table",
+					"caption": "Mischievous Surge",
+					"colLabels": [
+						"d4",
+						"Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-12"
+					],
+					"rows": [
+						[
+							"1",
+							"Doften av äppelpaj fyller luften, och varje varelse i kuben måste lyckas med ett räddningskast i Visdom eller bli {@condition charmed} av dig fram till början av din nästa tur."
+						],
+						[
+							"2",
+							"Blombuketter dyker upp runt omkring, och varje varelse i kuben måste lyckas med ett räddningsprov för att rädda sin skicklighet eller bli {@condition blinded} tills början av din nästa vändning när blommorna sprutar vatten i deras ansikten."
+						],
+						[
+							"3",
+							"Varje varelse i kuben måste lyckas med ett räddningskast i Visdom eller börja fnissa fram till början av din nästa tur. En fnissande varelse är {@condition incapacitated} och använder all sin rörelse för att röra sig i en slumpmässig riktning."
+						],
+						[
+							"4",
+							"Droppar av melass dyker upp och svävar i kuben och förvandlar den till {@quickref difficult terrain||3} fram till början av din nästa tur."
+						]
+					]
+				}
+			],
+			"conditionInflict": [
+				"blinded",
+				"charmed",
+				"incapacitated"
+			],
+			"savingThrow": [
+				"dexterity",
+				"wisdom"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Raulothim's Psychic Lance",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du släpper en skimrande lans av psykisk kraft från pannan mot en varelse som du kan se inom räckhåll. Alternativt kan du säga varelsens namn. Om det namngivna målet befinner sig inom räckhåll får det ingen fördel av täckning eller osynlighet när lansen kommer in på det. Om det namngivna målet inte är inom räckvidd försvinner lansen och trollformelplatsen förbrukas inte.",
+				"Målet måste lyckas med ett räddningskast i intelligens eller ta {@damage 10d6} psykisk skada och vara {@condition incapacitated} tills början av din nästa vändning."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spell slot på 5:e nivå eller högre ökar skadan med {@dice 1d6} för varje slotnivå över 4:e."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Draconic Spirit",
+			"source": "UA2021DraconicOptions",
+			"page": 7,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an art object from a dragon's hoard, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du kallar på en drakonisk ande. Den manifesterar sig i ett obebott utrymme som du kan se inom räckhåll.",
+				"Den här kroppsliga formen använder {@creature Draconic Spirit|UA2021DraconicOptions} stat-blocket. När du kastar den här besvärjelsen väljer du en drakfamilj: Chromatisk, Gem eller Metallic. Varelsen liknar en drake av den valda familjen, vilket bestämmer vissa egenskaper i dess statblock. Varelsen försvinner när den sjunker till 0 träffpunkter eller när förtrollningen upphör.",
+				"Varelsen är en allierad till dig och dina följeslagare. I strid delar varelsen din initiativräkning, men den tar sin tur omedelbart efter din. Den lyder dina muntliga kommandon (ingen handling krävs av dig). Om du inte ger några tar den {@action Dodge} handlingen och använder sin rörelse för att undvika fara."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spell slot på 6:e nivån eller högre, använd den högre nivån närhelst besvärjelsens nivå visas i statblocket."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

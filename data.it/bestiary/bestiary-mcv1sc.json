@@ -1,0 +1,1276 @@
+{
+	"monster": [
+		{
+			"name": "Asteroid Spider",
+			"source": "MCV1SC",
+			"page": 3,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 348,
+				"formula": "24d20 + 96"
+			},
+			"speed": {
+				"walk": 60,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 26,
+			"dex": 10,
+			"con": 18,
+			"int": 17,
+			"wis": 13,
+			"cha": 12,
+			"save": {
+				"con": "+9",
+				"wis": "+6"
+			},
+			"skill": {
+				"perception": "+11",
+				"stealth": "+5"
+			},
+			"senses": [
+				"blindsight 120 ft. while the spider's eyes are closed",
+				"darkvision 120 ft."
+			],
+			"passive": 21,
+			"cr": "15",
+			"trait": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Se il ragno è immobile, ha gli occhi e la bocca chiusi e ha le zampe avvolte intorno al corpo all'inizio del combattimento, ha un vantaggio sul tiro iniziativa. Inoltre, se una creatura non ha osservato il ragno muoversi o agire, deve superare una prova di Intelligenza {@dc 18} per capire che il ragno non è altro che un asteroide."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"Se il ragno fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il ragno non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il ragno compie due attacchi di Filo di ragnatela, usa Mulinello e compie due attacchi di Morso."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 13} per colpire, raggio d'azione 10 ft., un bersaglio. {@h}21 ({@damage 3d8 + 8}) danni da perforazione più 10 ({@damage 3d6}) danni da acido."
+					]
+				},
+				{
+					"name": "Web Strand",
+					"entries": [
+						"{@atk rw} {@hit 13} per colpire, portata 120 ft., una creatura. {@h}Il bersaglio è {@condition grappled} (fuga {@dc 18}). Il filo di ragnatela può essere attaccato e distrutto (CA 12; 20 punti ferita; vulnerabilità ai danni da fuoco; immunità ai danni da percosse, veleno e psichici). Il ragno può afferrare fino a sei creature alla volta usando i suoi fili di ragnatela."
+					]
+				},
+				{
+					"name": "Reel",
+					"entries": [
+						"Il ragno trascina verso di sé ogni creatura {@condition grappled} fino a 60 piedi."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Snare Ship (1/Day)",
+					"entries": [
+						"Il ragno tesse una ragnatela magica attorno a una nave incantatrice che riesce a vedere entro 120 piedi da sé. La ragnatela dura per 1 minuto e sopprime la magia di qualsiasi elmo incantatore a bordo della nave. I ponti e le altre superfici della nave che non sono racchiuse diventano terreno difficile fino al termine dell'effetto. La ragnatela è insensibile ai danni, ma viene distrutta da un lancio riuscito di {@spell dispel magic} ({@dc 18})."
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance",
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"B",
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"A",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Clockwork Horror",
+			"source": "MCV1SC",
+			"page": 4,
+			"size": [
+				"S"
+			],
+			"type": "construct",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "8d6 + 32"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 14,
+			"dex": 14,
+			"con": 18,
+			"int": 13,
+			"wis": 14,
+			"cha": 10,
+			"save": {
+				"str": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 16,
+			"immune": [
+				"lightning",
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"languages": [
+				"Thri-kreen",
+				"Ziklight"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Shutdown",
+					"entries": [
+						"Se bersagliato da {@spell dispel magic}, l'orrore deve riuscire a effettuare un tiro salvezza di Costituzione contro la DC dell'incantatore o cadere {@condition unconscious} per 1 minuto o finché non subisce danni."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'orrore non richiede aria, cibo, bevande o sonno."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'orrore effettua un attacco di Morso e due attacchi di Sega rotante, oppure effettua due attacchi di Fulmine."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}6 ({@damage 1d8 + 2}) danni perforanti."
+					]
+				},
+				{
+					"name": "Rotating Saw",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}4 ({@damage 1d4 + 2}) danni da taglio."
+					]
+				},
+				{
+					"name": "Lightning Jolt",
+					"entries": [
+						"{@atk rs} {@hit 4} per colpire, gittata 120 m, un bersaglio. {@h}7 ({@damage 1d10 + 2}) danni da fulmine."
+					]
+				},
+				{
+					"name": "Spelljamming Helm Interface",
+					"entries": [
+						"L'orrore si attacca a un elmo incantatore che riesce a vedere nel raggio di 2 metri e si sintonizza con l'elmo istantaneamente. Se un'altra creatura è già sintonizzata con l'elmo, la sintonia di quella creatura con l'elmo termina quando inizia la sintonia dell'orrore. L'orrore può azionare l'elmo anche se non è un incantatore. L'orrore può staccarsi dall'elmo come azione bonus, che pone fine alla sua sintonia con l'elmo."
+					]
+				}
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"L",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Eldritch Lich",
+			"source": "MCV1SC",
+			"page": 6,
+			"size": [
+				"M"
+			],
+			"type": "undead",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 165,
+				"formula": "22d8 + 66"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 11,
+			"dex": 18,
+			"con": 16,
+			"int": 19,
+			"wis": 14,
+			"cha": 12,
+			"save": {
+				"int": "+9",
+				"wis": "+7"
+			},
+			"skill": {
+				"arcana": "+14",
+				"perception": "+7"
+			},
+			"senses": [
+				"truesight 120ft."
+			],
+			"passive": 17,
+			"resist": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
+			"languages": [
+				"Common",
+				"Deep Speech",
+				"telepathy 120 ft."
+			],
+			"cr": "15",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Il lich lancia uno dei seguenti incantesimi, utilizzando l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 17}): A volontà: individuare la magia, mano del mago, prestidigitazione."
+					],
+					"daily": {
+						"2e": [
+							"{@spell dispel magic}",
+							"{@spell hunger of Hadar}",
+							"{@spell lightning bolt}"
+						],
+						"1e": [
+							"{@spell arcane eye}",
+							"{@spell dimension door}",
+							"{@spell plane shift} (self only)"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Far Realm Parasite",
+					"entries": [
+						"All'interno del torso del lich risiede un parassita simile a un verme che contiene l'anima del lich. Quando il lich muore, implode nel parassita, che poi scompare nel Regno Lontano. In {@dice 2d4} giorni, il parassita fa riapparire il lich entro {@dice 1d4} miglia dal luogo in cui è morto. Se il lich è morto all'interno di un cerchio magico lanciato per contenere i non morti, il lich riappare come un otyugh con tutti i suoi ricordi."
+					]
+				},
+				{
+					"name": "Legendary Resistance (4/Day)",
+					"entries": [
+						"Se il lich fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il lich non ha bisogno di aria, cibo, bevande o sonno."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il lich effettua un attacco di Tentacoli Parassiti o usa Incantesimi. Il lich usa anche Sussurro Psichico due volte."
+					]
+				},
+				{
+					"name": "Parasitic Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 9} per colpire, portata 10 m, una creatura. {@h}25 ({@damage 6d6 + 4}) danni perforanti più 25 ({@damage 6d6 + 4}) danni necrotici. Il bersaglio deve riuscire in un tiro salvezza di Costituzione {@dc 17} o subire {@condition poisoned}. Il bersaglio {@condition poisoned} può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stesso in caso di successo. La terza volta che il bersaglio fallisce il tiro salvezza, muore e si dissolve in una bocca farfugliante che obbedisce al lich e usa l'iniziativa del bersaglio."
+					]
+				},
+				{
+					"name": "Psychic Whisper",
+					"entries": [
+						"Il lich prende di mira una creatura che può vedere entro 120 piedi da sé. Il bersaglio deve riuscire in un tiro salvezza di Saggezza {@dc 17} o subire 25 ({@damage 6d6 + 4}) danni psichici e subire {@condition stunned} fino alla fine del prossimo turno del lich, mentre sussurri incomprensibili riempiono la mente del bersaglio."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Far Realm Step",
+					"entries": [
+						"Subito dopo aver subito danni, il lich, insieme a qualsiasi equipaggiamento che indossa o trasporta, si teletrasporta magicamente fino a 60 piedi in uno spazio non occupato che può vedere."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"U"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DS",
+				"TP"
+			],
+			"damageTags": [
+				"N",
+				"P",
+				"Y"
+			],
+			"damageTagsSpell": [
+				"A",
+				"C",
+				"L",
+				"O"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"poisoned",
+				"stunned"
+			],
+			"conditionInflictSpell": [
+				"blinded"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Fractine",
+			"source": "MCV1SC",
+			"page": 7,
+			"size": [
+				"L"
+			],
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 110,
+				"formula": "13d10 + 39"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 1,
+			"dex": 13,
+			"con": 16,
+			"int": 18,
+			"wis": 18,
+			"cha": 11,
+			"skill": {
+				"perception": "+8"
+			},
+			"senses": [
+				"blindsight 360 ft. (blind beyond this radius)"
+			],
+			"passive": 18,
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned"
+			],
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"Il frattino ha vantaggio nei tiri salvezza contro incantesimi e altri effetti magici."
+					]
+				},
+				{
+					"name": "Scrying Focus",
+					"entries": [
+						"Un incantatore può usare il frattino come focus sostitutivo quando lancia l'incantesimo {@spell scrying} o una magia simile, a patto che l'incantatore e il frattino si trovino entro un raggio di 5 piedi l'uno dall'altro."
+					]
+				},
+				{
+					"name": "Two-Dimensionality",
+					"entries": [
+						"Il frattino può occupare lo spazio di un'altra creatura e viceversa. Può muoversi attraverso altre creature e oggetti come se fossero terreni difficili, ma subisce 5 ({@damage 1d10}) danni da forza se termina il suo turno all'interno di un oggetto."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"La frattina non ha bisogno di aria, di bere o di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Extradimensional Touch",
+					"entries": [
+						"{@atk ms} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}24 ({@damage 8d6}) danni da forza."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Imprison",
+					"entries": [
+						"Il frattino prende di mira una creatura della sua taglia o più piccola nel suo spazio. Il bersaglio deve riuscire in un tiro salvezza di Destrezza {@dc 16} o essere imprigionato in un demipiano. Mentre la creatura è imprigionata, una sua immagine distorta può essere vista sulla superficie bidimensionale del frattino.",
+						"Il demipiano si muove con il frattino, ha pareti indistruttibili e opache ed è grande solo quanto serve per contenere il bersaglio, che non soffre di fame o sete mentre è imprigionato. Nessun'altra creatura può entrare nel demipiano e il frattino non può essere danneggiato dall'interno del demipiano.",
+						"Il frattino può imprigionare una sola creatura alla volta e può liberarla come azione bonus. Se il frattino è ridotto a 0 punti ferita, qualsiasi creatura nel suo demipiano viene liberata istantaneamente. Una creatura liberata riappare in uno spazio non occupato il più vicino possibile al frattino (o al luogo in cui è morta). Una creatura può lasciare il demipiano da sola usando una magia che consente di viaggiare sul piano, come l'incantesimo {@spell plane shift}."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Mirrored Damage",
+					"entries": [
+						"In risposta ai danni subiti da una creatura che può vedere entro 120 piedi da sé, il frattino costringe quella creatura a effettuare un tiro salvezza di Costituzione {@dc 16}. Se il tiro salvezza fallisce, la creatura subisce 24 ({@damage 8d6}) danni da forza. Se il tiro salvezza riesce, la creatura subisce la metà dei danni."
+					]
+				},
+				{
+					"name": "Split",
+					"entries": [
+						"Quando un frattino Grande con almeno 10 punti ferita rimanenti subisce danni da randellata, perforazione, fendente o tuono da qualsiasi fonte, si divide in due frattini Medi. I nuovi frattini occupano lo spazio precedentemente occupato dal frattino originale e ogni nuovo frattino ha punti ferita pari alla metà di quello originale, arrotondato per difetto. Se il frattino originale aveva una creatura intrappolata nel suo demipiano, questa viene liberata quando il frattino si divide, riapparendo in uno spazio non occupato il più vicino possibile ai nuovi frattini."
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"B"
+			],
+			"damageTags": [
+				"O"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Gadabout",
+			"source": "MCV1SC",
+			"page": 8,
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 11,
+				"formula": "2d8 + 2"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 12,
+			"dex": 10,
+			"con": 14,
+			"int": 1,
+			"wis": 6,
+			"cha": 1,
+			"senses": [
+				"blindsight 10 ft. (blind beyond this radius)"
+			],
+			"passive": 8,
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Air Envelope",
+					"entries": [
+						"Se ha almeno 1 punto ferita, il gadabout può generare un involucro d'aria intorno a sé quando si trova nel vuoto. Questo involucro d'aria può sostenere il gadabout e un'altra creatura nel suo spazio a tempo indeterminato."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il gadabout non ha bisogno di cibo né di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il gadabout effettua due attacchi di Ramo."
+					]
+				},
+				{
+					"name": "Branch",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, portata 5 ft., un bersaglio. {@h}3 ({@damage 1d4 + 1}) danni da taglio."
+					]
+				},
+				{
+					"name": "Wrap",
+					"entries": [
+						"Il gadabout entra nello spazio di una creatura volenterosa di taglia Media o Piccola entro un raggio di 3 metri e avvolge delicatamente i suoi rami attorno al bersaglio. Il bersaglio è {@condition grappled} (fuga {@dc 0}). Qualsiasi tentativo del bersaglio di sfuggire alla presa fa sì che il gadabout usi la sua reazione per spostarsi nello spazio non occupato più vicino. Mentre {@condition grappled} è vicino al gadabout, il bersaglio determina dove il gadabout si muove durante i suoi turni e lo accompagna ovunque vada."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Goon Balloon",
+			"source": "MCV1SC",
+			"page": 9,
+			"size": [
+				"M"
+			],
+			"type": "aberration",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				10
+			],
+			"hp": {
+				"average": 6,
+				"formula": "1d8 + 2"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 10,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 14,
+			"cha": 4,
+			"save": {
+				"con": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 16,
+			"vulnerable": [
+				"piercing"
+			],
+			"languages": [
+				"Deep Speech"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Burst",
+					"entries": [
+						"Il pallone esplode quando scende a 0 punti ferita, rilasciando gas nocivo in una sfera di 3 metri di raggio centrata su di sé. Le creature che si trovano in quell'area devono superare un tiro salvezza di Costituzione {@dc 12} o subire {@condition poisoned} per 1 minuto. Una creatura {@condition poisoned} può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stessa in caso di successo."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il pallone da golf non ha bisogno di aria, cibo o bevande."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il pallone da guerra effettua due attacchi con l'artiglio."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 2} per colpire, portata 5 ft., un bersaglio. {@h}3 ({@damage 1d6}) danni da taglio."
+					]
+				},
+				{
+					"name": "Scintillating Eye",
+					"entries": [
+						"Una luce magica e caleidoscopica emana da uno degli occhi del pallone goon, che prende di mira una creatura che riesce a vedere entro 9 metri da sé. Il bersaglio deve effettuare un tiro salvezza di Saggezza {@dc 12}, subendo 6 ({@damage 1d12}) danni psichici in caso di fallimento del tiro salvezza, o la metà dei danni in caso di successo."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Float",
+					"entries": [
+						"Il pallone si muove fino a 6 metri in verticale in una direzione senza provocare attacchi di opportunità. Se termina questo movimento sospeso in aria, si libra sul posto. Non può essere colpito {@condition prone} mentre è in volo."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DS"
+			],
+			"damageTags": [
+				"S",
+				"Y"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflict": [
+				"poisoned",
+				"prone"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nightmare Beast",
+			"source": "MCV1SC",
+			"page": 10,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 232,
+				"formula": "15d20 + 75"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 26,
+			"dex": 10,
+			"con": 21,
+			"int": 9,
+			"wis": 12,
+			"cha": 15,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 11,
+			"languages": [
+				"understands the languages of its creator but can't speak"
+			],
+			"cr": "16",
+			"trait": [
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"Se la bestia fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"La bestia infligge danni doppi a oggetti e strutture."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"La bestia effettua due attacchi con gli artigli e uno con le zanne."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 13} per colpire, portata 15 m, un bersaglio. {@h}14 ({@damage 1d12 + 8}) danni da taglio; se il bersaglio è una creatura, deve superare un tiro salvezza di Forza {@dc 21} o essere colpito {@condition prone}."
+					]
+				},
+				{
+					"name": "Tusk",
+					"entries": [
+						"{@atk mw} {@hit 13} per colpire, portata 15 m, un bersaglio. {@h}17 ({@damage 2d8 + 8}) danni da taglio."
+					]
+				},
+				{
+					"name": "Disintegration Gaze {@recharge 5}",
+					"entries": [
+						"La bestia prende di mira una creatura che riesce a vedere entro 60 piedi da sé. Il bersaglio deve effettuare un tiro salvezza di Costituzione {@dc 18}, subendo 70 ({@damage 10d6 + 40}) danni da forza in caso di fallimento del tiro salvezza, o la metà dei danni in caso di successo. Se questo effetto magico riduce il bersaglio a 0 punti ferita, il bersaglio si disintegra e non lascia nulla dietro di sé, se non un mucchio di cenere e l'equipaggiamento che indossava o trasportava."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Teleport (2/Day)",
+					"entries": [
+						"La bestia si teletrasporta magicamente, insieme a qualsiasi equipaggiamento che indossa o trasporta, fino a 120 piedi in uno spazio non occupato che può vedere."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Tusk Attack",
+					"entries": [
+						"La bestia effettua un attacco di zanne."
+					]
+				},
+				{
+					"name": "Charge (Costs 2 Actions)",
+					"entries": [
+						"La bestia si muove fino alla sua velocità senza provocare attacchi di opportunità, quindi effettua due attacchi di zanne."
+					]
+				},
+				{
+					"name": "Frightful Howl (Costs 2 Actions)",
+					"entries": [
+						"La bestia ulula mentre esala una nube di gas magico della paura in un cono di 120 piedi. Ogni creatura che si trova in quell'area deve superare un tiro salvezza di Saggezza {@dc 18} o essere {@condition frightened} della bestia per 1 minuto. Una creatura può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stessa in caso di successo."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances",
+				"Siege Monster"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"CS"
+			],
+			"damageTags": [
+				"O",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"frightened",
+				"prone"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Puppeteer Parasite",
+			"source": "MCV1SC",
+			"page": 11,
+			"size": [
+				"T"
+			],
+			"type": "aberration",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 71,
+				"formula": "11d4 + 44"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 2,
+			"dex": 15,
+			"con": 18,
+			"int": 16,
+			"wis": 10,
+			"cha": 3,
+			"save": {
+				"dex": "+4",
+				"con": "+6",
+				"wis": "+2"
+			},
+			"skill": {
+				"stealth": "+4"
+			},
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"fire",
+				"necrotic",
+				"poison"
+			],
+			"vulnerable": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
+			"languages": [
+				"telepathy 30 ft."
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il parassita non ha bisogno di aria né di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Cling",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, raggio d'azione di 5 m, una creatura. {@h}12 ({@damage 3d6 + 2}) danni necrotici e il parassita si attacca al bersaglio. Mentre è attaccato, il parassita non può effettuare attacchi di aggrapparsi. Il parassita può staccarsi spendendo 1,5 metri del suo movimento. Come azione, una creatura a portata di mano del parassita può tentare di staccarlo, ottenendo una prova di Forza {@dc 14} riuscita."
+					]
+				},
+				{
+					"name": "Consume Life",
+					"entries": [
+						"Il parassita infligge 12 ({@damage 3d6 + 2}) danni necrotici a una creatura a cui è fisicamente attaccato, a patto che tale creatura non sia un Costrutto o un Non Morto. Il parassita recupera punti ferita pari ai danni subiti."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Suggestion (Psionics; 1/Day)",
+					"entries": [
+						"Il parassita lancia l'incantesimo {@spell suggestion}, senza bisogno di componenti e usando l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 13})."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"languageTags": [
+				"TP"
+			],
+			"damageTags": [
+				"N"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Star Lancer",
+			"source": "MCV1SC",
+			"page": 12,
+			"size": [
+				"L"
+			],
+			"type": "celestial",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "8d10 + 16"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 50
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 15,
+			"int": 10,
+			"wis": 13,
+			"cha": 8,
+			"save": {
+				"dex": "+4",
+				"con": "+4"
+			},
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"passive": 13,
+			"resist": [
+				"radiant"
+			],
+			"languages": [
+				"Celestial",
+				"telepathy 120 ft."
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"Il lanciere stellare non provoca attacchi di opportunità quando vola fuori dalla portata di un nemico."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Horn",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 5 ft., un bersaglio. {@h}7 ({@damage 1d6 + 4}) danni perforanti. Se il lanciatore di stelle si è spostato di almeno 6 metri verso il bersaglio immediatamente prima del colpo, il bersaglio subisce 10 ({@damage 3d6}) danni perforanti in più."
+					]
+				},
+				{
+					"name": "Invisibility Cloak (3/Day)",
+					"entries": [
+						"Il lanciatore di stelle e una creatura che lo cavalca (scelta dal lanciatore di stelle) si trasformano magicamente {@condition invisible}. Questo effetto dura finché il lanciere stellare o una creatura che lo cavalca non attacca o lancia un incantesimo, o finché la concentrazione del lanciere stellare non termina (come se si concentrasse su un incantesimo). Qualsiasi equipaggiamento indossato o portato dalle creature {@condition invisible} è anch'esso {@condition invisible} per la durata del Mantello dell'Invisibilità."
+					]
+				}
+			],
+			"traitTags": [
+				"Flyby"
+			],
+			"languageTags": [
+				"CE",
+				"TP"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Yggdrasti",
+			"source": "MCV1SC",
+			"page": 13,
+			"size": [
+				"G"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 112,
+				"formula": "9d20 + 18"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 20,
+			"dex": 10,
+			"con": 15,
+			"int": 3,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 120 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
+			"immune": [
+				"lightning"
+			],
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"exhaustion"
+			],
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Cavities",
+					"entries": [
+						"L'yggdrasti ha {@dice 1d4 + 2} cavità nel suo tronco. Ogni cavità è abbastanza grande da contenere una creatura media, due creature piccole o otto creature minuscole. Una creatura all'interno di una cavità ha tre quarti di copertura contro gli attacchi e gli altri effetti che hanno origine all'esterno della cavità. Le cavità dell'yggdrasti non sono collegate tra loro."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Se l'yggdrasti è immobile e radicato al suolo all'inizio del combattimento, sembra un albero morto e ha un vantaggio sul tiro iniziativa. Inoltre, se una creatura non ha osservato l'yggdrasti radicato muoversi o agire, deve riuscire a effettuare una prova di Intelligenza {@dc 18} per capire che l'yggdrasti è animato."
+					]
+				},
+				{
+					"name": "Lightning Conduit",
+					"entries": [
+						"Se l'yggdrasti subisce danni da fulmine, non subisce danni e i danni da fulmine vengono invece divisi equamente tra tutte le creature che sta afferrando. Inoltre, l'yggdrasti recupera un uso di Scarica di fulmini."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'yggdrasti non ha bisogno di aria né di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'yggdrasti effettua due attacchi di Radice e utilizza Scarica di fulmini (se disponibile)."
+					]
+				},
+				{
+					"name": "Root",
+					"entries": [
+						"{@atk mw} {@hit 8} per colpire, portata 20 m, un bersaglio. {@h}12 ({@damage 2d6 + 5}) danni da percosse, e se il bersaglio è una creatura, sono {@condition grappled} (fuga {@dc 15}). L'yggdrasti ha quattro radici, ognuna delle quali può afferrare un bersaglio."
+					]
+				},
+				{
+					"name": "Lightning Discharge (3/Day)",
+					"entries": [
+						"L'yggdrasti spara fulmini contro una creatura entro 120 piedi da sé. Il bersaglio deve effettuare un tiro salvezza di Destrezza {@dc 13}, subendo 31 ({@damage 7d8}) danni da fulmine se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"L"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

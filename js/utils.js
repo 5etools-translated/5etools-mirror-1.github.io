@@ -6,8 +6,8 @@ IS_NODE = typeof module !== "undefined";
 if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
-IS_DEPLOYED="v1.152.4.1652594340";
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.153.1"/* 5ETOOLS_VERSION__CLOSE */;
+IS_DEPLOYED="v1.152.4.1652736388";
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.154.2"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -429,7 +429,7 @@ SourceUtil = {
 	},
 
 	isNonstandardSourceWotc (source) {
-		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.startsWith(SRC_AL_PREFIX) || Parser.SOURCES_NON_STANDARD_WOTC.has(source);
+		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.startsWith(SRC_AL_PREFIX) || source.startsWith(SRC_MCVX_PREFIX) || Parser.SOURCES_NON_STANDARD_WOTC.has(source);
 	},
 
 	getFilterGroup (source) {
@@ -1089,13 +1089,37 @@ MiscUtil = {
 		return existing || MiscUtil.set(object, ...pathAndVal);
 	},
 
+	getThenSetCopy (object1, object2, ...path) {
+		const val = MiscUtil.get(object1, ...path);
+		return MiscUtil.set(object2, ...path, MiscUtil.copy(val, true));
+	},
+
 	delete (object, ...path) {
-		if (object == null) return null;
+		if (object == null) return object;
 		for (let i = 0; i < path.length - 1; ++i) {
 			object = object[path[i]];
 			if (object == null) return object;
 		}
 		return delete object[path.last()];
+	},
+
+	/** Delete a prop from a nested object, then all now-empty objects backwards from that point. */
+	deleteObjectPath (object, ...path) {
+		const stack = [object];
+
+		if (object == null) return object;
+		for (let i = 0; i < path.length - 1; ++i) {
+			object = object[path[i]];
+			stack.push(object);
+			if (object === undefined) return object;
+		}
+		const out = delete object[path.last()];
+
+		for (let i = path.length - 1; i > 0; --i) {
+			if (!Object.keys(stack[i]).length) delete stack[i - 1][path[i - 1]];
+		}
+
+		return out;
 	},
 
 	merge (obj1, obj2) {
@@ -2625,7 +2649,9 @@ DataUtil = {
 		'de': { name: 'Deutsch',  baseDir: 'data.de/' },
 		'it': { name: 'Italiano', baseDir: 'data.it/' },
 		'ru': { name: 'Pусский',  baseDir: 'data.ru/' },
-		'zh': { name: '中文',      baseDir: 'data.zh/' },
+		'zh': { name: '中文',     baseDir: 'data.zh/' },
+		'pl': { name: 'Polska',   baseDir: 'data.pl/' },
+		'sv': { name: 'Svenska',  baseDir: 'data.sv/' },
 	},
 
 	async _pLoad (url) {
@@ -3260,7 +3286,7 @@ DataUtil = {
 			function doMod_insertArr (modInfo, prop) {
 				doEnsureArray(modInfo, "items");
 				if (!copyTo[prop]) throw new Error(`${msgPtFailed} Could not find "${prop}" array`);
-				copyTo[prop].splice(modInfo.index, 0, ...modInfo.items);
+				copyTo[prop].splice(~modInfo.index ? modInfo.index : copyTo[prop].length, 0, ...modInfo.items);
 			}
 
 			function doMod_removeArr (modInfo, prop) {
@@ -3714,6 +3740,7 @@ DataUtil = {
 			altArt: true,
 			variant: true,
 			dragonCastingColor: true,
+			familiar: true,
 		},
 		_mergeCache: {},
 		async pMergeCopy (monList, mon, options) {
@@ -6656,33 +6683,43 @@ CollectionUtil = {
 	},
 
 	// region Find first <X>
-	dfs (obj, prop) {
+	dfs (obj, opts) {
+		const {prop = null, fnMatch = null} = opts;
+		if (!prop && !fnMatch) throw new Error(`One of "prop" or "fnMatch" must be specified!`);
+
 		if (obj instanceof Array) {
 			for (const child of obj) {
-				const n = CollectionUtil.dfs(child, prop);
+				const n = CollectionUtil.dfs(child, opts);
 				if (n) return n;
 			}
 			return;
 		}
 
 		if (obj instanceof Object) {
-			if (obj[prop]) return obj[prop];
+			if (prop && obj[prop]) return obj[prop];
+			if (fnMatch && fnMatch(obj)) return obj;
 
 			for (const child of Object.values(obj)) {
-				const n = CollectionUtil.dfs(child, prop);
+				const n = CollectionUtil.dfs(child, opts);
 				if (n) return n;
 			}
 		}
 	},
 
-	bfs (obj, prop) {
+	bfs (obj, opts) {
+		const {prop = null, fnMatch = null} = opts;
+		if (!prop && !fnMatch) throw new Error(`One of "prop" or "fnMatch" must be specified!`);
+
 		if (obj instanceof Array) {
 			for (const child of obj) {
-				if (!(child instanceof Array) && child instanceof Object && child[prop]) return child[prop];
+				if (!(child instanceof Array) && child instanceof Object) {
+					if (prop && child[prop]) return child[prop];
+					if (fnMatch && fnMatch(child)) return child;
+				}
 			}
 
 			for (const child of obj) {
-				const n = CollectionUtil.bfs(child, prop);
+				const n = CollectionUtil.bfs(child, opts);
 				if (n) return n;
 			}
 
@@ -6690,7 +6727,8 @@ CollectionUtil = {
 		}
 
 		if (obj instanceof Object) {
-			if (obj[prop]) return obj[prop];
+			if (prop && obj[prop]) return obj[prop];
+			if (fnMatch && fnMatch(obj)) return obj;
 
 			return CollectionUtil.bfs(Object.values(obj));
 		}

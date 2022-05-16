@@ -42,7 +42,7 @@
 				{
 					"name": "Talons",
 					"entries": [
-						"你精通你的徒手攻击，击中后会造成{@dice 1d4}的砍击伤害。"
+						"你精通你的徒手攻击，击中后会造成{@damage 1d4}的砍击伤害。"
 					],
 					"type": "entries"
 				},
@@ -1471,7 +1471,7 @@
 					"type": "entries",
 					"name": "Hooves",
 					"entries": [
-						"你的蹄子是天然的近战武器，你可以用它来进行徒手攻击。如果你用它们击中，你会造成相当于{@dice 1d4}+你力量修饰值的破坏性伤害，而不是徒手攻击的正常破坏性伤害。"
+						"你的蹄子是天然的近战武器，你可以用它来进行徒手攻击。如果你用它们击中，你会造成相当于{@damage 1d4}+你力量修饰值的破坏性伤害，而不是徒手攻击的正常破坏性伤害。"
 					]
 				},
 				{
@@ -2317,7 +2317,7 @@
 					"type": "entries",
 					"name": "Vampiric Bite",
 					"entries": [
-						"你的獠牙之咬是一种自然武器，算作你精通的简单近战武器。当你用獠牙攻击时，你会在攻击和伤害卷中加入你的体质修正值。你的咬合在命中时造成{@dice 1d4}的穿刺伤害。当你缺少一半或更多的命中率时，你在用这个咬合进行的攻击卷中具有优势。",
+						"你的獠牙之咬是一种自然武器，算作你精通的简单近战武器。当你用獠牙攻击时，你会在攻击和伤害卷中加入你的体质修正值。你的咬合在命中时造成{@damage 1d4}的穿刺伤害。当你缺少一半或更多的命中率时，你在用这个咬合进行的攻击卷中具有优势。",
 						"当你使用你的咬伤并击中一个非构筑物或不死族的生物时，你可以用你选择的下列方式之一赋予自己力量。",
 						{
 							"type": "list",
@@ -2390,7 +2390,7 @@
 					"type": "entries",
 					"name": "Vampiric Bite",
 					"entries": [
-						"你的獠牙之咬是一种自然武器，算作你精通的简单近战武器。当你用这一口攻击时，你在攻击和伤害卷中加入你的体质修正值，而不是你的力量修正值。它在击中时造成{@dice 1d4}的穿刺伤害。当你缺少一半或更多的命中率时，你在用这一咬进行的攻击卷中具有优势。",
+						"你的獠牙之咬是一种自然武器，算作你精通的简单近战武器。当你用这一口攻击时，你在攻击和伤害卷中加入你的体质修正值，而不是你的力量修正值。它在击中时造成{@damage 1d4}的穿刺伤害。当你缺少一半或更多的命中率时，你在用这一咬进行的攻击卷中具有优势。",
 						"当你用这一口攻击并击中一个非构筑物或不死族的生物时，你可以用你选择的下列方式之一赋予自己力量。",
 						{
 							"type": "list",
@@ -4897,7 +4897,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"你的獠牙之嘴是一种自然武器，你可以用它来进行徒手攻击。如果你用它攻击，你会造成相当于{@dice 1d4}+你力量修饰值的穿刺伤害，而不是徒手攻击时的重击伤害。"
+						"你的獠牙之嘴是一种自然武器，你可以用它来进行徒手攻击。如果你用它攻击，你会造成相当于{@damage 1d4}+你力量修饰值的穿刺伤害，而不是徒手攻击时的重击伤害。"
 					],
 					"type": "entries"
 				},
@@ -6164,7 +6164,8 @@
 			},
 			"darkvision": 60,
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"languageProficiencies": [
 				{
@@ -7598,6 +7599,54 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Kender",
+			"source": "UA2022HeroesOfKrynnRevisited",
+			"page": 1,
+			"lineage": "VRGR",
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"insight",
+							"investigation",
+							"sleight of hand",
+							"stealth",
+							"survival"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fearless",
+					"entries": [
+						"你对{@condition frightened}条件免疫。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Kender Curiosity",
+					"entries": [
+						"由于你的民族的神秘起源，你获得了以下技能的熟练度：{@skill Insight}、{@skill Investigation}、{@skill Sleight of Hand}、{@skill Stealth}或{@skill Survival}。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Taunt",
+					"entries": [
+						"你有一种惊吓生物的特殊能力。作为一个额外的动作，你可以对你周围60英尺内能听到并理解你的生物释放一串挑衅性的语言。目标必须在智慧救赎中成功，否则它在对你以外的目标进行攻击时将处于劣势，直到你下一个回合开始。判断力等于8+你的熟练度加成+你的智力、智慧或魅力修正值（在你选择这个种族时选择）。",
+						"你可以使用这个额外动作的次数与你的熟练度加成相等，当你完成一个长时间的休息时，你会恢复所有消耗的动作。"
+					]
+				}
+			],
+			"hasFluff": true
+		},
+		{
 			"name": "Kenku",
 			"source": "DMG",
 			"page": 282,
@@ -8449,7 +8498,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"你的爪子是天然武器，你可以用它来进行徒手攻击。如果你用它们击中，你可以造成相当于{@dice 1d4}+你力量修饰的砍击伤害，而不是徒手攻击的破坏性伤害。"
+						"你的爪子是天然武器，你可以用它来进行徒手攻击。如果你用它们击中，你可以造成相当于{@damage 1d4}+你力量修饰的砍击伤害，而不是徒手攻击的破坏性伤害。"
 					],
 					"type": "entries"
 				},
@@ -9808,7 +9857,7 @@
 					"name": "Natural Weapons",
 					"entries": [
 						"你的獠牙大嘴和紧缩的蛇形身体是天然的武器，你可以用它来进行徒手打击。",
-						"如果你咬中了，你会造成相当于{@dice 1d4}+你的力量修正值的穿刺伤害，并且你的目标必须做一个宪法救赎动作（DC 8+你的熟练度奖励+你的宪法修正值）。如果拯救失败，目标会受到1%的毒药伤害。",
+						"如果你咬中了，你会造成相当于{@damage 1d4}+你的力量修正值的穿刺伤害，并且你的目标必须做一个宪法救赎动作（DC 8+你的熟练度奖励+你的宪法修正值）。如果拯救失败，目标会受到1%的毒药伤害。",
 						"如果你的束缚攻击命中，你会造成相当于{@dice 1d6}+你力量修正值的重击伤害，并且目标是{@condition grappled}（逃脱DC8+你的熟练度奖励+你的力量修正值）。在这个抓捕结束之前，目标是{@condition restrained}，而且你不能再抓捕另一个目标。"
 					],
 					"type": "entries"
@@ -10880,7 +10929,7 @@
 				{
 					"name": "Ram",
 					"entries": [
-						"你可以用你的头和角来进行徒手攻击。如果你用它们击中，你会造成相当于{@dice 1d4}+你力量修正值的破坏性伤害。"
+						"你可以用你的头和角来进行徒手攻击。如果你用它们击中，你会造成相当于{@damage 1d4}+你力量修正值的破坏性伤害。"
 					],
 					"type": "entries"
 				},
@@ -12072,7 +12121,7 @@
 				{
 					"name": "Cat's Claws",
 					"entries": [
-						"因为你的爪子，你有20英尺的爬行速度。此外，你的爪子是天然武器，你可以用它来进行徒手打击。如果你用它们击中了，你会造成相当于{@dice 1d4}+你力量修正值的砍伤，而不是非武装打击的普通伤害。"
+						"因为你的爪子，你有20英尺的爬行速度。此外，你的爪子是天然武器，你可以用它来进行徒手打击。如果你用它们击中了，你会造成相当于{@damage 1d4}+你力量修饰的砍伤，而不是非武装打击的普通伤害。"
 					],
 					"type": "entries"
 				},
@@ -12433,7 +12482,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"你的爪子是天然武器，你可以用它来进行徒手攻击。如果你用它们击中，你会造成相当于{@dice 1d4}+你力量修正值的砍伤伤害，而不是徒手攻击的破坏伤害。"
+						"你的爪子是天然武器，你可以用它来进行徒手攻击。如果你用它们击中，你会造成相当于{@damage 1d4}+你力量修正值的砍伤伤害，而不是徒手攻击的破坏伤害。"
 					],
 					"type": "entries"
 				},
@@ -13000,6 +13049,10 @@
 				"mature": 40,
 				"max": 500
 			},
+			"traitTags": [
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
+			],
 			"skillProficiencies": [
 				{
 					"choose": {
@@ -13058,7 +13111,7 @@
 				{
 					"name": "Tireless Precision",
 					"entries": [
-						"你精通以下一种你选择的技能。{@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, 或 {@skill Sleight of Hand}。 你还精通你选择的一项（%6%）。",
+						"你精通以下一种你选择的技能。{@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, 或 {@skill Sleight of Hand}。你还精通你选择的一项（%6%）。",
 						"每当你用所选择的技能或工具进行能力检查时，掷出一个（%0%），并将掷出的数字加入检查的总数。"
 					],
 					"type": "entries"
@@ -13168,6 +13221,10 @@
 				"mature": 40,
 				"max": 500
 			},
+			"traitTags": [
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
+			],
 			"languageProficiencies": [
 				{
 					"common": true
@@ -13374,14 +13431,14 @@
 					"type": "entries",
 					"name": "Bite",
 					"entries": [
-						"你的獠牙之嘴是一种自然武器，你可以用它来进行徒手攻击。如果你用它攻击，你会造成相当于{@dice 1d4}+你力量修饰值的穿刺伤害，而不是徒手攻击时的重击伤害。"
+						"你的獠牙之嘴是一种自然武器，你可以用它来进行徒手攻击。如果你用它攻击，你会造成相当于{@damage 1d4}+你力量修饰值的穿刺伤害，而不是徒手攻击时的重击伤害。"
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Lashing Tail",
 					"entries": [
-						"你的半截尾巴上有一个骨质的刀片。在你周围5英尺内的生物用近战攻击对你造成伤害后，你可以用你的反应用你的尾巴对该生物进行一次徒手攻击。如果你击中了，你会造成相当于{@dice 1d4}+你力量修饰的砍击伤害，而不是徒手攻击时的重击伤害。"
+						"你的半截尾巴上有一个骨质的刀片。在你周围5英尺内的生物用近战攻击对你造成伤害后，你可以用你的反应用你的尾巴对该生物进行一次徒手攻击。如果你击中了，你会造成相当于{@damage 1d4}+你力量修饰的砍击伤害，而不是徒手攻击时的重击伤害。"
 					]
 				},
 				{
@@ -14888,7 +14945,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -15607,7 +15666,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -17447,7 +17507,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -17889,7 +17951,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -18013,7 +18076,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"resist": [
 				"lightning"
@@ -18512,7 +18577,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -18628,7 +18695,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -18875,7 +18944,8 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"languageProficiencies": [
 				{
@@ -19028,7 +19098,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -19159,7 +19230,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"toolProficiencies": [
 				{
@@ -19203,7 +19276,7 @@
 					"type": "entries",
 					"name": "Artisan's Intuition",
 					"entries": [
-						"当你进行{@skill Arcana}检查或涉及工匠工具的能力检查时，你可以掷出{@dice d4}并将掷出的数字加入能力检查。"
+						"当你进行{@skill Arcana}检查或涉及{@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan's tools}的能力检查时，你可以掷出{@dice d4}，并将掷出的数字加入能力检查。"
 					]
 				},
 				{
@@ -19337,7 +19410,7 @@
 					"type": "entries",
 					"name": "Intuitive Motion",
 					"entries": [
-						"当你进行灵巧（（%0%））检查或任何操作或维护陆地车辆的能力检查时，你可以掷出（%1%），并将掷出的数字加入能力检查。"
+						"当你进行灵巧（（%0%））检查或任何操作或维护（%1%）的能力检查时，你可以掷出（%2%），并将掷出的数字加入能力检查。"
 					]
 				},
 				{
@@ -19409,7 +19482,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -21681,7 +21755,7 @@
 						"顾名思义，大多数战争锻造者都是为了在最后的战争中作战。绝大多数的战争锻造者是杂兵或小兵--在五国之一的旗帜下作战的士兵和侦察兵。然而，战神特使被设计来执行其他功能。作为一个特使，你有一个技能，一个工具熟练度，以及一个作为你身体一部分的工具。当你制造一个特使角色时，请考虑以下问题。你的目的是什么？你的技能和你的工具如何反映这个目的？你的综合工具是什么形式的？例如，如果你有嵌入式的盗贼工具，你的手指实际上是锁匙，还是你能从你身体的各个部位产生钥匙？下面的人物是拥有综合工具的战神的例子。",
 						"{@b Lute}是一个有艺人背景的吟游诗人；他的同名乐器从他的左臂折出。",
 						"{@b Compass Rose}是一个具有外乡人背景的巫师。她是一个敏锐的探险家，用她内置的{@item cartographer's tools|phb}来记录她所走过的道路。",
-						"{@b Masque}是一个潜入者。她是一个有江湖背景的流氓，有一个综合的（%1%），她是为了混入和暗杀而制造的。坎尼斯按照她的设计建造了六个战争锻造者，马斯克发誓要追捕并摧毁另外五个。",
+						"{@b Masque}是一个潜入者。她是一个有江湖背景的流氓，有一个综合的（%1%），她是为了混入和暗杀而建造的。坎尼斯按照她的设计建造了六个战争锻造者，马斯克发誓要追捕并摧毁另外五个。",
 						"在开发你的综合工具时，请记住，你必须腾出双手来使用它。上面提到的潜入者马斯克，并不像变身者那样变身，她必须手动调整自己的外表。"
 					]
 				}

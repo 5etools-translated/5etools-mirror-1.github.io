@@ -2,6 +2,21 @@ const fs = require("fs");
 const utB = require("./util-book-reference");
 require("../js/utils");
 
+const index = utB.UtilBookReference.getIndex(
+	{
+		name: "Quick Reference",
+		id: "bookref-quick",
+		tag: "quickref",
+	},
+	{
+		name: "DM Reference",
+		id: "bookref-dmscreen",
+		tag: "dmref",
+	},
+);
+
+fs.writeFileSync("data/generated/bookref-dmscreen.json", CleanUtil.getCleanJson(index, {isMinify: true}), "utf8");
+
 function flattenReferenceIndex (ref, skipHeaders) {
 	const outMeta = {
 		name: {},
@@ -59,22 +74,5 @@ function flattenReferenceIndex (ref, skipHeaders) {
 	};
 }
 
-Object.entries(DataUtil.contentLanguages).forEach(([k, v]) => {
-	const index = utB.UtilBookReference.getIndex("../"+v.baseDir,
-		{
-			name: "Quick Reference",
-			id: "bookref-quick",
-			tag: "quickref",
-		},
-		{
-			name: "DM Reference",
-			id: "bookref-dmscreen",
-			tag: "dmref",
-		},
-	);
-
-	fs.writeFileSync(`${v.baseDir}/generated/bookref-dmscreen.json`, CleanUtil.getCleanJson(index, { isMinify: true }), "utf8");
-	fs.writeFileSync(`${v.baseDir}/generated/bookref-dmscreen-index.json`, JSON.stringify(flattenReferenceIndex(index.reference)), "utf8");
-});
-
+fs.writeFileSync("data/generated/bookref-dmscreen-index.json", JSON.stringify(flattenReferenceIndex(index.reference)), "utf8");
 console.log("Updated DM Screen references.");

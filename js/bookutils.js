@@ -39,7 +39,7 @@ class BookUtil {
 			return;
 		}
 
-		const trackedTitlesInverse = BookUtil._renderer.getTrackedTitlesInverted();
+		const trackedTitlesInverse = BookUtil._renderer.getTrackedTitlesInverted({isStripTags: true});
 
 		const ixTitle = (trackedTitlesInverse[headerText] || [])[headerNumber || 0];
 		if (ixTitle != null) $(`[data-title-index="${ixTitle}"]`)[0].scrollIntoView();
@@ -460,6 +460,8 @@ class BookUtil {
 		const [bookIdRaw, ...hashParts] = window.location.hash.slice(1).split(HASH_PART_SEP);
 		const bookId = decodeURIComponent(bookIdRaw);
 
+		const isNewBook = BookUtil.curRender.curBookId !== bookId;
+
 		// Handle "page:" parts
 		if (hashParts.some(it => it.toLowerCase().startsWith("page:"))) {
 			let term = "";
@@ -507,7 +509,7 @@ class BookUtil {
 
 		const fromIndex = BookUtil.bookIndex.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
 		if (fromIndex && !fromIndex.uniqueId) {
-			return this._booksHashChange_pHandleFound({fromIndex, bookId, hashParts, $contents});
+			return this._booksHashChange_pHandleFound({fromIndex, bookId, hashParts, $contents, isNewBook});
 		}
 
 		// if it's homebrew
@@ -518,7 +520,7 @@ class BookUtil {
 			const bookData = (brew[BookUtil.homebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
 
 			if (!bookData) return this._booksHashChange_handleNotFound({$contents, bookId});
-			return this._booksHashChange_pHandleFound({fromIndex, homebrewData: bookData, bookId, hashParts, $contents});
+			return this._booksHashChange_pHandleFound({fromIndex, homebrewData: bookData, bookId, hashParts, $contents, isNewBook});
 		}
 
 		return this._booksHashChange_handleNotFound({$contents, bookId});
@@ -532,12 +534,13 @@ class BookUtil {
 		return fromIndex.name;
 	}
 
-	static async _booksHashChange_pHandleFound ({fromIndex, homebrewData, bookId, hashParts, $contents}) {
+	static async _booksHashChange_pHandleFound ({fromIndex, homebrewData, bookId, hashParts, $contents, isNewBook}) {
 		document.title = `${fromIndex.name} - 5etools`;
 		$(`.book-head-header`).html(this._booksHashChange_getCleanName(fromIndex));
 		$(`.book-head-message`).html("Browse content. Press F to find, and G to go to page.");
 		await this._pLoadChapter(fromIndex, bookId, hashParts, homebrewData, $contents);
 		NavBar.highlightCurrentPage();
+		if (isNewBook) MiscUtil.scrollPageTop();
 	}
 
 	static _booksHashChange_handleNotFound ({$contents, bookId}) {
@@ -929,8 +932,9 @@ BookUtil.Search = class {
 
 	static _searchEntriesForRecursive (chapterIndex, prevLastName, appendTo, term, cleanTerm, obj, isPageMode) {
 		if (BookUtil.Search._isNamedEntry(obj)) {
-			if (BookUtil._headerCounts[obj.name] === undefined) BookUtil._headerCounts[obj.name] = 0;
-			else BookUtil._headerCounts[obj.name]++;
+			const cleanName = Renderer.stripTags(obj.name);
+			if (BookUtil._headerCounts[cleanName] === undefined) BookUtil._headerCounts[cleanName] = 0;
+			else BookUtil._headerCounts[cleanName]++;
 		}
 
 		let lastName;

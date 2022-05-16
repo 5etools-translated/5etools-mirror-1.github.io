@@ -1,0 +1,311 @@
+{
+	"spell": [
+		{
+			"name": "Conjure Barlgura (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					}
+				}
+			],
+			"entries": [
+				"Przywołujesz {@creature barlgura}, który pojawia się w niezajętej przestrzeni, którą widzisz w zasięgu. {@creature barlgura} znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się skończy.",
+				"{@creature barlgura} jest wrogo nastawiony do wszystkich nie-demonów. Rzuć inicjatywę dla {@creature barlgura}, który ma własną turę. Na początku swojej tury porusza się w kierunku najbliższego niedemona, którego może dostrzec i atakuje go. Jeśli w pobliżu znajdują się dwa lub więcej stworzeń, wybiera losowo jedno z nich. Jeśli nie widzi żadnych potencjalnych wrogów, {@creature barlgura} porusza się w losowym kierunku w poszukiwaniu wrogów.",
+				"W ramach rzucania zaklęcia możesz wyrysować na ziemi krąg, używając krwi inteligentnego humanoida zabitego w ciągu ostatnich 24 godzin. Krąg jest wystarczająco duży, by objąć całą przestrzeń. Przywołany {@creature barlgura} nie może przekroczyć kręgu ani celować w nikogo w nim, dopóki trwa zaklęcie."
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Hezrou (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 7,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "food worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz {@creature hezrou}, który pojawia się w niezajętej przestrzeni, którą widzisz w zasięgu. {@creature hezrou} znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się skończy.",
+				"Postawa {@creature hezrou} zależy od wartości żywności użytej jako składnik materialny tego zaklęcia. Rzuć inicjatywę dla {@creature hezrou}, który ma swoją własną turę. Na początku tury {@creature hezrou} DM wykonuje w twoim imieniu tajny test Charyzmy, z premią równą wartości jedzenia podzielonej przez 20. DC tego testu zaczyna się od 10 i wzrasta o 2 co rundę. Możesz wydawać rozkazy {@creature hezrou} i sprawić, że będzie ci posłuszny, o ile zdasz test Charyzmy.",
+				"Jeśli test się nie powiedzie, zaklęcie nie wymaga już koncentracji, a demon nie jest już pod twoją kontrolą. Następnie {@creature hezrou} skupia się na pożeraniu wszystkich zwłok, które widzi. Jeśli nie ma takich posiłków pod ręką, atakuje najbliższe stworzenia i zjada wszystko, co zabije. Jeśli jego punkty trafień spadną poniżej połowy maksymalnej liczby punktów trafień, wraca do Otchłani.",
+				"W ramach rzucania zaklęcia możesz wyrysować na ziemi krąg, używając krwi inteligentnego humanoida zabitego w ciągu ostatnich 24 godzin. Krąg jest wystarczająco duży, by objąć całą przestrzeń. Przywołany {@creature hezrou} nie może przekroczyć kręgu ani celować w nikogo w nim, dopóki trwa zaklęcie."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Lesser Demon (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a vial of blood from an intelligent humanoid killed within the past 24 hours"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz w sumie do ośmiu {@creature manes} lub {@creature dretch||dretches}, które pojawiają się w niezajętych miejscach, które widzisz w zasięgu. {@creature manes} lub {@creature dretch} znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się skończy.",
+				"Demony są wrogo nastawione do wszystkich stworzeń. Rzuć inicjatywę dla przyzwanych demonów jako grupy, która ma swoje tury. Demony atakują najbliższe nie-demony najlepiej jak potrafią.",
+				"W ramach rzucania zaklęcia możesz wyrysować na ziemi okrąg, używając krwi jako składnika materiału. Krąg jest wystarczająco duży, by objąć całą przestrzeń. W czasie trwania zaklęcia przywołane demony nie mogą przekroczyć tego kręgu ani celować w nikogo w nim. Użycie składnika materialnego w ten sposób powoduje jego zużycie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Jeśli rzucisz to zaklęcie, używając gniazda zaklęć 6. lub 7. poziomu, przywołasz szesnaście demonów. Jeśli rzucisz to zaklęcie, używając gniazda zaklęć 8. lub 9. poziomu, przywołasz trzydzieści dwa demony."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Shadow Demon (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 3,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a vial of blood from an intelligent humanoid killed within the past 24 hours"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz {@creature shadow demon}, który pojawia się w niezajętej przestrzeni, którą widzisz w zasięgu. {@creature shadow demon} znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się skończy.",
+				"Rzuć inicjatywę dla {@creature shadow demon}, który ma swoje tury. Możesz wydawać rozkazy {@creature shadow demon}, a on jest ci posłuszny, dopóki może atakować stwory w każdej ze swoich tur i nie zaczyna swojej tury w obszarze jasnego światła. Jeśli którykolwiek z tych warunków nie jest spełniony, {@creature shadow demon} natychmiast wykonuje test Charyzmy, który jest kwestionowany przez twój test Charyzmy. Jeśli nie zdasz tego testu, zaklęcie nie wymaga już koncentracji, a demon nie jest już pod twoją kontrolą. Demonowi automatycznie powiedzie się test, jeśli znajduje się w odległości większej niż 100 stóp od ciebie.",
+				"W ramach rzucania zaklęcia możesz wyrysować na ziemi krąg, używając krwi inteligentnego humanoida zabitego w ciągu ostatnich 24 godzin. Krąg jest wystarczająco duży, by objąć całą przestrzeń. Przywołany {@creature shadow demon} nie może przekroczyć kręgu ani celować w nikogo w nim, dopóki trwa zaklęcie."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Vrock (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 3,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gem worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz {@creature vrock}, który pojawia się w niezajętej przestrzeni, którą widzisz w zasięgu. {@creature vrock} znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się skończy.",
+				"Postawa {@creature vrock} zależy od wartości klejnotu użytego jako składnik materialny tego zaklęcia. Rzuć inicjatywę dla {@creature vrock}, który ma swoją własną turę. Na początku tury {@creature vrock} DM wykonuje w twoim imieniu tajny test Charyzmy, z premią równą wartości klejnotu podzielonej przez 20. DC tego testu zaczyna się od 10 i wzrasta o 2 co rundę. Możesz wydawać rozkazy {@creature vrock} i sprawić, że będzie ci posłuszny, o ile zdasz test Charyzmy.",
+				"Jeśli test się nie powiedzie, zaklęcie nie wymaga już koncentracji, a {@creature vrock} nie jest już pod twoją kontrolą. {@creature vrock} nie podejmuje żadnych akcji w swojej następnej turze i używa telepatii, aby powiedzieć każdej istocie, którą widzi, że będzie walczyć w zamian za skarb. Istota, która da {@creature vrock} najdroższy klejnot, może nim dowodzić przez następne {@dice 1d6} rund. Na koniec tego czasu ponownie oferuje okazję. Jeśli nikt nie zaoferuje {@creature vrock} skarbu przed rozpoczęciem jego następnej tury, atakuje najbliższe stworzenia przez {@dice 1d6} rund, po czym wraca do Otchłani.",
+				"W ramach rzucania zaklęcia możesz wyrysować na ziemi krąg, używając krwi inteligentnego humanoida zabitego w ciągu ostatnich 24 godzin. Krąg jest wystarczająco duży, by objąć całą przestrzeń. Przywołany {@creature vrock} nie może przekroczyć kręgu ani celować w nikogo w nim, dopóki trwa zaklęcie."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

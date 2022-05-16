@@ -1,0 +1,112 @@
+{
+	"spell": [
+		{
+			"name": "Create Magen",
+			"source": "IDRotF",
+			"page": 318,
+			"level": 7,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a vial of quicksilver worth 500 gp and a life-sized human doll, both of which the spell consumes, and an intricate crystal rod worth at least 1,500 gp that is not consumed",
+					"cost": 50000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Podczas rzucania zaklęcia umieszczasz fiolkę z rtęcią w klatce piersiowej naturalnej wielkości ludzkiej lalki wypchanej popiołem lub pyłem. Następnie zszywasz lalkę i ociekasz na nią swoją krwią. Po zakończeniu rzucania, stukasz lalkę kryształową laską, zmieniając ją w {@filter magen|bestiary|search=magen|source=IDRotF} ubranego w to, co lalka miała na sobie. Rodzaj magenu jest wybierany przez ciebie podczas rzucania zaklęcia. Zobacz {@adventure appendix C|IDRotF|21}, aby poznać różne rodzaje magenów i ich statystyki.",
+				"Kiedy pojawia się magen, twój limit punktów trafień zmniejsza się o wartość równą współczynnikowi wyzwania magena (minimalna redukcja o 1). Jedynie zaklęcie {@spell wish} może cofnąć tę redukcję maksymalnych punktów trafień.",
+				"Każdy mag, którego stworzysz za pomocą tego zaklęcia, wykonuje twoje polecenia bez pytania."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Frost Fingers",
+			"source": "IDRotF",
+			"page": 318,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Mroźne zimno bucha z koniuszków twoich palców w promieniu 15 stóp. Każda istota w tym obszarze musi wykonać rzut obronny na Konstytucję i otrzymuje {@damage 2d8} obrażeń od zimna w przypadku nieudanego testu lub połowę tych obrażeń w przypadku udanego testu.",
+				"Zimno zamraża niemagiczne płyny w okolicy, które nie są noszone lub przenoszone."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 2. poziomu lub wyższego, obrażenia zwiększają się o {@dice 1d8} za każdy poziom gniazda powyżej 1. poziomu."
+					]
+				}
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

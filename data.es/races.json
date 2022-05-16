@@ -42,7 +42,7 @@
 				{
 					"name": "Talons",
 					"entries": [
-						"Eres competente con tus golpes desarmados, que infligen {@dice 1d4} de daño cortante al impactar."
+						"Eres competente con tus golpes desarmados, que infligen {@damage 1d4} de daño cortante al impactar."
 					],
 					"type": "entries"
 				},
@@ -1471,7 +1471,7 @@
 					"type": "entries",
 					"name": "Hooves",
 					"entries": [
-						"Tus pezuñas son armas naturales de combate cuerpo a cuerpo, que puedes utilizar para realizar golpes desarmados. Si golpeas con ellas, infliges un daño contundente igual a {@dice 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal de un golpe desarmado."
+						"Tus pezuñas son armas naturales de combate cuerpo a cuerpo, que puedes utilizar para realizar golpes desarmados. Si golpeas con ellas, infliges un daño contundente igual a {@damage 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal de un golpe desarmado."
 					]
 				},
 				{
@@ -2317,7 +2317,7 @@
 					"type": "entries",
 					"name": "Vampiric Bite",
 					"entries": [
-						"Tu mordisco con colmillos es un arma natural, que cuenta como un arma simple cuerpo a cuerpo con la que eres competente. Añades tu modificador de Constitución a las tiradas de ataque y daño cuando atacas con tu mordisco. Tu mordisco inflige {@dice 1d4} de daño perforante en un golpe. Mientras te falte la mitad o más de tus puntos de golpe, tienes ventaja en las tiradas de ataque que hagas con este mordisco.",
+						"Tu mordisco con colmillos es un arma natural, que cuenta como un arma simple cuerpo a cuerpo con la que eres competente. Añades tu modificador de Constitución a las tiradas de ataque y daño cuando atacas con tu mordisco. Tu mordisco inflige {@damage 1d4} de daño perforante en un golpe. Mientras te falte la mitad o más de tus puntos de golpe, tienes ventaja en las tiradas de ataque que hagas con este mordisco.",
 						"Cuando usas tu mordisco y golpeas a una criatura que no es un Construct o un Undead, puedes potenciarte de una de las siguientes maneras a tu elección:",
 						{
 							"type": "list",
@@ -2390,7 +2390,7 @@
 					"type": "entries",
 					"name": "Vampiric Bite",
 					"entries": [
-						"Tu mordisco de colmillo es un arma natural, que cuenta como un arma simple de combate cuerpo a cuerpo con la que eres competente. Sumas tu modificador de Constitución, en lugar de tu modificador de Fuerza, a las tiradas de ataque y daño cuando atacas con este mordisco. Inflige {@dice 1d4} de daño perforante en un golpe. Mientras te falte la mitad o más de tus puntos de golpe, tienes ventaja en las tiradas de ataque que hagas con este mordisco.",
+						"Tu mordisco con colmillos es un arma natural, que cuenta como un arma simple cuerpo a cuerpo con la que eres competente. Sumas tu modificador de Constitución, en lugar de tu modificador de Fuerza, a las tiradas de ataque y daño cuando atacas con este mordisco. Inflige {@damage 1d4} de daño perforante en un golpe. Mientras te falte la mitad o más de tus puntos de golpe, tienes ventaja en las tiradas de ataque que hagas con este mordisco.",
 						"Cuando atacas con este mordisco y golpeas a una criatura que no es un Construct o un Undead, puedes potenciarte de una de las siguientes maneras a tu elección:",
 						{
 							"type": "list",
@@ -4897,7 +4897,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"Tus fauces colmilludas son un arma natural que puedes utilizar para realizar golpes desarmados. Si golpeas con ella, infliges un daño perforante igual a {@dice 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
+						"Tus fauces colmilludas son un arma natural que puedes utilizar para realizar golpes desarmados. Si golpeas con ella, infliges un daño perforante igual a {@damage 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
 					],
 					"type": "entries"
 				},
@@ -6164,7 +6164,8 @@
 			},
 			"darkvision": 60,
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"languageProficiencies": [
 				{
@@ -7598,6 +7599,54 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Kender",
+			"source": "UA2022HeroesOfKrynnRevisited",
+			"page": 1,
+			"lineage": "VRGR",
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"insight",
+							"investigation",
+							"sleight of hand",
+							"stealth",
+							"survival"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fearless",
+					"entries": [
+						"Eres inmune a la condición {@condition frightened}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Kender Curiosity",
+					"entries": [
+						"Gracias al origen místico de tu pueblo, adquieres competencia en una de las siguientes habilidades a tu elección: {@skill Insight}, {@skill Investigation}, {@skill Sleight of Hand}, {@skill Stealth} o {@skill Survival}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Taunt",
+					"entries": [
+						"Tienes una habilidad extraordinaria para provocar a las criaturas. Como acción adicional, puedes soltar una retahíla de palabras provocadoras a una criatura en un radio de 60 pies que pueda oírte y entenderte. El objetivo debe tener éxito en una tirada de salvación de Sabiduría o tiene desventaja en las tiradas de ataque contra objetivos que no sean tú hasta el comienzo de tu siguiente turno. La DC es igual a 8 + tu bonificación de competencia + tu modificador de Inteligencia, Sabiduría o Carisma (elige al seleccionar esta raza).",
+						"Puedes usar esta acción de bonificación un número de veces igual a tu bonificación de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo."
+					]
+				}
+			],
+			"hasFluff": true
+		},
+		{
 			"name": "Kenku",
 			"source": "DMG",
 			"page": 282,
@@ -8449,7 +8498,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Tus garras son armas naturales que puedes utilizar para realizar golpes desarmados. Si golpeas con ellas, puedes infligir un daño cortante igual a {@dice 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
+						"Tus garras son armas naturales que puedes utilizar para realizar golpes desarmados. Si golpeas con ellas, puedes infligir un daño cortante igual a {@damage 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
 					],
 					"type": "entries"
 				},
@@ -9808,7 +9857,7 @@
 					"name": "Natural Weapons",
 					"entries": [
 						"Sus fauces con colmillos y su cuerpo de serpiente constrictor son armas naturales, que puede utilizar para realizar golpes desarmados.",
-						"Si golpeas con tu mordisco, infliges un daño penetrante igual a {@dice 1d4} + tu modificador de Fuerza, y tu objetivo debe hacer una tirada de salvación de Constitución (DC 8 + tu bonificación de competencia + tu modificador de Constitución). Si fallas la tirada de salvación, el objetivo recibe un {@dice 1d4} de daño por veneno.",
+						"Si golpeas con tu mordisco, infliges un daño penetrante igual a {@damage 1d4} + tu modificador de Fuerza, y tu objetivo debe hacer una tirada de salvación de Constitución (DC 8 + tu bonificación de competencia + tu modificador de Constitución). Si fallas la tirada de salvación, el objetivo recibe un {@damage 1d4} de daño por veneno.",
 						"Si aciertas con tu ataque de constricción, infliges un daño por apaleamiento igual a {@dice 1d6} + tu modificador de Fuerza, y el objetivo queda {@condition grappled} (DC de escape 8 + tu bonificación de competencia + tu modificador de Fuerza). Hasta que este ataque termine, el objetivo es {@condition restrained}, y no puedes constreñir a otro objetivo."
 					],
 					"type": "entries"
@@ -10880,7 +10929,7 @@
 				{
 					"name": "Ram",
 					"entries": [
-						"Puedes utilizar tu cabeza y tus cuernos para realizar golpes desarmados. Si golpeas con ellos, infliges un daño por apaleamiento igual a {@dice 1d4} + tu modificador de Fuerza."
+						"Puedes utilizar tu cabeza y tus cuernos para realizar golpes desarmados. Si golpeas con ellos, infliges un daño por apaleamiento igual a {@damage 1d4} + tu modificador de Fuerza."
 					],
 					"type": "entries"
 				},
@@ -12072,7 +12121,7 @@
 				{
 					"name": "Cat's Claws",
 					"entries": [
-						"Gracias a tus garras, tienes una velocidad de escalada de 6 metros. Además, tus garras son armas naturales que puedes utilizar para realizar golpes desarmados. Si golpeas con ellas, infliges un daño cortante igual a {@dice 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
+						"Gracias a tus garras, tienes una velocidad de escalada de 6 metros. Además, tus garras son armas naturales que puedes utilizar para realizar golpes desarmados. Si golpeas con ellas, infliges un daño cortante igual a {@damage 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
 					],
 					"type": "entries"
 				},
@@ -12433,7 +12482,7 @@
 				{
 					"name": "Claws",
 					"entries": [
-						"Tus garras son armas naturales que puedes utilizar para realizar golpes desarmados. Si golpeas con ellas, infliges un daño cortante igual a {@dice 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
+						"Tus garras son armas naturales que puedes utilizar para realizar golpes desarmados. Si golpeas con ellas, infliges un daño cortante igual a {@damage 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
 					],
 					"type": "entries"
 				},
@@ -13000,6 +13049,10 @@
 				"mature": 40,
 				"max": 500
 			},
+			"traitTags": [
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
+			],
 			"skillProficiencies": [
 				{
 					"choose": {
@@ -13058,7 +13111,7 @@
 				{
 					"name": "Tireless Precision",
 					"entries": [
-						"Eres competente en una de las siguientes habilidades a tu elección: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance} o {@skill Sleight of Hand}.  También dominas un {@book tool|phb|5|tools} de tu elección.",
+						"Eres competente en una de las siguientes habilidades a tu elección: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance} o {@skill Sleight of Hand}. También dominas un {@book tool|phb|5|tools} de tu elección.",
 						"Cada vez que realices un chequeo de habilidad con la habilidad o herramienta elegida, tira un {@dice d4} y añade el número obtenido al total del chequeo."
 					],
 					"type": "entries"
@@ -13168,6 +13221,10 @@
 				"mature": 40,
 				"max": 500
 			},
+			"traitTags": [
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
+			],
 			"languageProficiencies": [
 				{
 					"common": true
@@ -13374,14 +13431,14 @@
 					"type": "entries",
 					"name": "Bite",
 					"entries": [
-						"Tus fauces colmilludas son un arma natural que puedes utilizar para realizar golpes desarmados. Si golpeas con ella, infliges un daño perforante igual a {@dice 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
+						"Tus fauces colmilludas son un arma natural que puedes utilizar para realizar golpes desarmados. Si golpeas con ella, infliges un daño perforante igual a {@damage 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal para un golpe desarmado."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Lashing Tail",
 					"entries": [
-						"Tu cola semiprehensiva tiene la punta de una hoja ósea. Inmediatamente después de que una criatura a menos de 1,5 metros de ti te haga daño con un ataque cuerpo a cuerpo, puedes usar tu reacción para hacer un golpe sin armas contra esa criatura con tu cola. Si aciertas, infliges un daño cortante igual a {@dice 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal de un golpe sin armas."
+						"Tu cola semiprehensiva tiene la punta de una hoja ósea. Inmediatamente después de que una criatura a menos de 1,5 metros de ti te haga daño con un ataque cuerpo a cuerpo, puedes usar tu reacción para hacer un golpe sin armas contra esa criatura con tu cola. Si aciertas, infliges un daño cortante igual a {@damage 1d4} + tu modificador de Fuerza, en lugar del daño contundente normal de un golpe sin armas."
 					]
 				},
 				{
@@ -14888,7 +14945,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -15607,7 +15666,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -17447,7 +17507,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -17889,7 +17951,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -18013,7 +18076,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"resist": [
 				"lightning"
@@ -18512,7 +18577,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -18628,7 +18695,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -18875,7 +18944,8 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"languageProficiencies": [
 				{
@@ -19028,7 +19098,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -19159,7 +19230,9 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice",
+				"Tool Bonus Dice"
 			],
 			"toolProficiencies": [
 				{
@@ -19203,7 +19276,7 @@
 					"type": "entries",
 					"name": "Artisan's Intuition",
 					"entries": [
-						"Cuando haces un chequeo de {@skill Arcana} o un chequeo de habilidad que implique herramientas de artesano, puedes tirar un {@dice d4} y añadir el número obtenido al chequeo de habilidad."
+						"Cuando haces un chequeo de {@skill Arcana} o un chequeo de habilidad que implique {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan's tools}, puedes tirar un {@dice d4} y añadir el número obtenido al chequeo de habilidad."
 					]
 				},
 				{
@@ -19337,7 +19410,7 @@
 					"type": "entries",
 					"name": "Intuitive Motion",
 					"entries": [
-						"Cuando hagas un chequeo de Destreza ({@skill Acrobatics}) o cualquier chequeo de habilidad para manejar o mantener un vehículo terrestre, puedes tirar un {@dice d4} y añadir el número obtenido al chequeo de habilidad."
+						"Cuando hagas un chequeo de Destreza ({@skill Acrobatics}) o cualquier chequeo de habilidad para manejar o mantener un {@filter land vehicle|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (land)}, puedes tirar un {@dice d4} y añadir el número obtenido al chequeo de habilidad."
 					]
 				},
 				{
@@ -19409,7 +19482,8 @@
 				}
 			],
 			"traitTags": [
-				"Dragonmark"
+				"Dragonmark",
+				"Skill Bonus Dice"
 			],
 			"additionalSpells": [
 				{
@@ -21681,7 +21755,7 @@
 						"Como su nombre indica, la mayoría de los forjados de guerra fueron creados para luchar en la Última Guerra. La gran mayoría de los forjados de guerra son juggernauts o escaramuzadores: soldados y exploradores que lucharon bajo el estandarte de una de las Cinco Naciones. Los enviados forjados de guerra, sin embargo, fueron diseñados para desempeñar otras funciones. Como enviado, tienes una habilidad, una competencia de herramienta y una herramienta que forma parte de tu cuerpo. Cuando hagas un personaje de enviado, considera las siguientes preguntas: ¿Cuál es su propósito? ¿Cómo reflejan tu habilidad y tu herramienta ese propósito? ¿Qué forma tiene tu herramienta integrada? Si tienes herramientas de ladrón integradas, por ejemplo, ¿son tus dedos realmente ganzúas, o puedes producir llaves de varias partes de tu cuerpo? Los siguientes personajes son ejemplos de forjados de guerra con herramientas integradas.",
 						"{@b Lute} es un bardo con formación de animador; su instrumento homónimo sale de su brazo izquierdo.",
 						"{@b Compass Rose} es una maga de origen forastero. Una exploradora entusiasta, utiliza su {@item cartographer's tools|phb} incorporado para registrar los caminos que recorre.",
-						"{@b Masque} es una infiltrada. Una pícara con antecedentes de charlatana y un {@item disguise Kit|phb} integrado, fue construida para pasar desapercibida y asesinar. Cannith construyó seis warforged de su diseño, y Masque ha jurado perseguir y destruir a los otros cinco.",
+						"{@b Masque} es una infiltrada. Una pícara con antecedentes de charlatana y un {@item disguise kit|phb} integrado, fue construida para pasar desapercibida y asesinar. Cannith construyó seis warforged de su diseño, y Masque ha jurado perseguir y destruir a los otros cinco.",
 						"Al desarrollar su herramienta integrada, recuerde que debe tener las manos libres para utilizarla. Masque, la infiltrada mencionada anteriormente, no cambia de forma como un mutante; tiene que ajustar manualmente su apariencia."
 					]
 				}

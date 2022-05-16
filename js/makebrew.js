@@ -1292,7 +1292,7 @@ class Makebrew {
 		// Do this asynchronously, to avoid blocking the load
 		SearchWidget.pDoGlobalInit();
 
-		TaggerUtils.init({spells: await DataUtil.spell.pLoadAll()});
+		TaggerUtils.init({legendaryGroups: await DataUtil.legendaryGroup.pLoadAll(), spells: await DataUtil.spell.pLoadAll()});
 
 		// page-specific init
 		await Builder.pInitAll();

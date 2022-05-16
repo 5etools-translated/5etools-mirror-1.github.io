@@ -1620,7 +1620,7 @@
 				{
 					"ac": 14,
 					"from": [
-						"{@item studded leather armor|phb}"
+						"{@item studded leather armor|phb|studded leather}"
 					]
 				}
 			],
@@ -2587,7 +2587,7 @@
 				{
 					"ac": 14,
 					"from": [
-						"{@item studded leather armor|phb}"
+						"{@item studded leather armor|phb|studded leather}"
 					]
 				}
 			],
@@ -2752,6 +2752,42 @@
 			"hasFluffImages": true
 		},
 		{
+			"name": "Phantom Warrior (Archer)",
+			"isNpc": true,
+			"source": "CoS",
+			"page": 142,
+			"_copy": {
+				"name": "Phantom Warrior",
+				"source": "CoS",
+				"_mod": {
+					"action": [
+						{
+							"mode": "appendArr",
+							"items": [
+								{
+									"name": "Spectral Longbow",
+									"entries": [
+										"{@atk rw} {@hit 2} to hit, range 150/600 ft., one target. {@h}4 ({@damage 1d8}) force damage."
+									]
+								}
+							]
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"The phantom warrior makes two attacks with its spectral longsword or spectral longbow."
+								]
+							}
+						}
+					]
+				}
+			},
+			"hasToken": true
+		},
+		{
 			"name": "Piccolo",
 			"isNpc": true,
 			"source": "CoS",
@@ -2882,7 +2918,7 @@
 				{
 					"ac": 18,
 					"from": [
-						"{@item studded leather armor|phb}"
+						"{@item studded leather armor|phb|studded leather}"
 					]
 				}
 			],

@@ -1,0 +1,528 @@
+{
+	"object": [
+		{
+			"name": "Ballista",
+			"source": "DMG",
+			"page": 255,
+			"size": "L",
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 50,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"entries": [
+				"Balista to masywna kusza, która wystrzeliwuje ciężkie bełty. Zanim będzie można z niej wystrzelić, musi zostać załadowana i wycelowana. Załadowanie broni zajmuje jedną akcję, wycelowanie - jedną, a wystrzelenie - jedną."
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Bolt",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +6} to hit, range 120/480 ft., one target."
+							],
+							"hitEntries": [
+								"16 ({@damage 3d10}) piercing damage."
+							]
+						}
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Cannon",
+			"source": "DMG",
+			"page": 255,
+			"size": "L",
+			"objectType": "SW",
+			"ac": 19,
+			"hp": 75,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"entries": [
+				"Armata wykorzystuje proch strzelniczy do wystrzeliwania ciężkich kul z żelaza w powietrze z niszczycielską prędkością. W kampanii, w której nie używa się prochu, armata może być magicznym urządzeniem zbudowanym przez sprytne gnomy lub czarodziejskich inżynierów.",
+				"Działo jest zwykle wsparte na drewnianej ramie z kołami. Przed oddaniem strzału armata musi zostać załadowana i wycelowana. Załadowanie broni zajmuje jedną akcję, wycelowanie - jedną, a wystrzelenie - jedną."
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Cannon Ball",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +6} to hit, range 600/2,400 ft., one target."
+							],
+							"hitEntries": [
+								"44 ({@damage 8d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Captain A-Hole",
+			"isNpc": true,
+			"source": "RMBRE",
+			"page": 21,
+			"size": "L",
+			"objectType": "U",
+			"ac": 17,
+			"hp": 50,
+			"speed": 0,
+			"str": 14,
+			"dex": 10,
+			"int": 3,
+			"wis": 3,
+			"cha": 1,
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Cannon",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +5} to hit, range 30 ft., one target."
+							],
+							"hitEntries": [
+								"3 ({@damage 1d6}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Generic Object",
+			"source": "DMG",
+			"page": 246,
+			"srd": true,
+			"size": "V",
+			"objectType": "GEN",
+			"ac": {
+				"special": "Varies (see below)"
+			},
+			"hp": {
+				"special": "Varies (see below)"
+			},
+			"immune": [
+				{
+					"special": "Varies (see below)"
+				}
+			],
+			"entries": [
+				"Kiedy postacie muszą przepiłować liny, rozbić okno lub roztrzaskać trumnę wampira, jedyną twardą i szybką zasadą jest to, że mając wystarczająco dużo czasu i odpowiednie narzędzia, postacie mogą zniszczyć każdy obiekt, który można zniszczyć. Określając sukces postaci w niszczeniu obiektu, kieruj się zdrowym rozsądkiem. Czy wojownik może przeciąć mieczem fragment kamiennego muru? Nie, miecz prawdopodobnie pęknie, zanim zrobi to ściana.",
+				"Na potrzeby tych zasad obiekt to pojedynczy, nieożywiony przedmiot, taki jak okno, drzwi, miecz, książka, stół, krzesło lub kamień, a nie budynek lub pojazd złożony z wielu innych obiektów.",
+				{
+					"type": "entries",
+					"name": "Statistics for Objects",
+					"entries": [
+						"Kiedy czas jest czynnikiem, możesz przypisać zniszczalnemu obiektowi klasę pancerza i punkty trafień. Możesz także nadać mu odporność, immunitety i podatność na określone rodzaje obrażeń.",
+						{
+							"type": "entries",
+							"name": "Armor Class",
+							"entries": [
+								" Klasa pancerza obiektu to miara tego, jak trudno jest zadać mu obrażenia podczas uderzenia (ponieważ obiekt nie ma szans na uniknięcie obrażeń). Tabela Klasa pancerza obiektu zawiera sugerowane wartości AC dla różnych substancji.",
+								{
+									"type": "table",
+									"caption": "Object Armor Class",
+									"colLabels": [
+										"Substance",
+										"AC"
+									],
+									"colStyles": [
+										"col-6",
+										"col-6"
+									],
+									"rows": [
+										[
+											"Tkanina, papier, lina",
+											"11"
+										],
+										[
+											"Kryształ, szklanka, lód",
+											"13"
+										],
+										[
+											"Drewno, kość",
+											"15"
+										],
+										[
+											"Kamień",
+											"17"
+										],
+										[
+											"Żelazo, stal",
+											"19"
+										],
+										[
+											"Mithral",
+											"21"
+										],
+										[
+											"Adamantyna",
+											"23"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Hit Points",
+							"entries": [
+								" Punkty trafienia obiektu określają, ile obrażeń może on przyjąć, zanim straci swoją integralność strukturalną. Odporne obiekty mają więcej punktów trafień niż kruche. Duże obiekty również mają więcej punktów trafień niż małe, chyba że zniszczenie małej części obiektu jest tak samo efektywne jak zniszczenie całości. Tabela Punktów trafień obiektów zawiera sugerowane punkty trafień dla kruchych i wytrzymałych obiektów, które są duże lub mniejsze.",
+								{
+									"type": "table",
+									"caption": "Object Hit Points",
+									"colLabels": [
+										"Size",
+										"Fragile",
+										"Resilient"
+									],
+									"colStyles": [
+										"col-6",
+										"col-6"
+									],
+									"rows": [
+										[
+											"Drobiazgi (butelka, zamek)",
+											"2 (1d4)",
+											"5 (2d4)"
+										],
+										[
+											"Małe (skrzynia, lutnia)",
+											"3 (1d6)",
+											"10 (3d6)"
+										],
+										[
+											"Średnie (beczka, żyrandol)",
+											"4 (1d8)",
+											"18 (4d8)"
+										],
+										[
+											"Duże (wózek, okno o wymiarach 10 stóp na 10 stóp)",
+											"5 (1d10)",
+											"27 (5d10)"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Huge and Gargantuan Objects",
+							"entries": [
+								"Zwykła broń jest mało przydatna w walce z wieloma ogromnymi i gargantuicznymi obiektami, takimi jak kolosalne posągi, kamienne kolumny czy potężne głazy. Jednak jedna pochodnia może spalić ogromny gobelin, a zaklęcie trzęsienia ziemi może zniszczyć kolosa. Możesz śledzić punkty trafień Ogromnego lub Gargantuicznego obiektu, albo po prostu zdecydować, jak długo obiekt wytrzyma działanie jakiejkolwiek broni lub siły. Jeśli śledzisz punkty trafień obiektu, podziel go na duże lub mniejsze sekcje i śledzisz punkty trafień każdej z nich osobno. Zniszczenie jednej z tych części może zniszczyć cały obiekt. Na przykład, gargantuiczny posąg człowieka może się przewrócić, jeśli jedna z jego Dużych nóg zostanie zredukowana do 0 punktów trafień."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Objects and Damage Types",
+							"entries": [
+								"Przedmioty są odporne na obrażenia od trucizny i psychiczne. Możesz zdecydować, że niektóre rodzaje obrażeń są bardziej skuteczne w walce z danym przedmiotem lub substancją niż inne. Na przykład, obrażenia od obrażeń od uderzeń sprawdzają się przy rozbijaniu przedmiotów, ale nie przy przecinaniu liny lub skóry. Przedmioty z papieru lub tkaniny mogą być podatne na obrażenia od ognia i błyskawic. Kilof może odłupać kamień, ale nie jest w stanie skutecznie ściąć drzewa. Jak zawsze, kieruj się własnym osądem."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Damage Threshold",
+							"entries": [
+								"Duże obiekty, takie jak mury zamków, często mają dodatkową odporność, reprezentowaną przez próg obrażeń. Obiekt z progiem obrażeń jest odporny na wszystkie obrażenia, chyba że otrzyma obrażenia od pojedynczego ataku lub efektu równe lub większe od swojego progu obrażeń, wtedy otrzymuje obrażenia jak zwykle. Wszelkie obrażenia, które nie osiągną lub przekroczą progu obrażeń obiektu, są uważane za powierzchowne i nie zmniejszają jego punktów trafień."
+							]
+						}
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Gulthias Tree",
+			"source": "TftYP",
+			"page": 31,
+			"size": "G",
+			"objectType": "U",
+			"ac": 10,
+			"hp": 35,
+			"immune": [
+				"necrotic",
+				"poison",
+				"psychic"
+			],
+			"resist": [
+				"piercing"
+			],
+			"vulnerable": [
+				"fire"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fruit",
+					"entries": [
+						"Każdego roku na drzewie dojrzewają dwa magiczne owoce (szkoła przywoływania). Każdy owoc przypomina jabłko, ale powoli wysuwa się z drzewa jak cysta.",
+						"Do tygodnia przed przesileniem letnim wyrasta rubinowoczerwony owoc. Ktoś inny niż stwór, kto zje jedną czwartą lub więcej tego owocu, odzyskuje 70 punktów życia. Ponadto kończą się wszelkie {@condition blinded||blindness}, {@condition deafened||deafness} i choroby dotykające jedzącego.",
+						"Na tydzień przed przesileniem zimowym wyrasta chory, biały owoc. Osoba, która zje ćwiartkę lub więcej owocu, otrzymuje 70 obrażeń nekrotycznych. Każdy owoc ma {@dice 1d4} nasion, z których po zasadzeniu wyrastają bezlistne, zdrewniałe krzewy, ożywające po roku jako gałązki."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tree Thralls",
+					"entries": [
+						"Jeśli humanoid zostanie przywiązany do pnia Drzewa Gulthiasa, przez następne 24 godziny ofiara zostanie całkowicie wessana do drzewa. Kiedy ofiara zostanie całkowicie wchłonięta przez drzewo, staje się jego niewolnikiem i zostaje wydalona w ciągu 1 godziny. Drzewo Gulthias może mieć tylko czterech niewolników w tym samym czasie. Skóra ofiary jest szorstka, szara i przypomina korę. Thrall jest całkowicie zepsuty i staje się neutralnie zły. Taka istota istnieje tylko po to, by służyć Drzewu Gulthias i tym, którzy się nim opiekują (np. Belakowi). Posiada wszystkie swoje poprzednie zdolności i zyskuje następujące cechy:",
+						{
+							"type": "entries",
+							"name": "Barkskin",
+							"entries": [
+								"AC niewolnika nie może być niższe niż 16."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Tree Thrall",
+							"entries": [
+								"Jeśli Drzewo Gulthias zginie, jego niewolnik umiera 24 godziny później."
+							]
+						}
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Ice Troll Heart",
+			"source": "IDRotF",
+			"page": 294,
+			"size": "T",
+			"objectType": "U",
+			"ac": 13,
+			"hp": 4,
+			"immune": [
+				"acid",
+				"bludgeoning",
+				"cold",
+				"force",
+				"lightning",
+				"necrotic",
+				"piercing",
+				"poison",
+				"psychic",
+				"radiant",
+				"slashing",
+				"thunder"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Heart Effects",
+					"entries": [
+						"Serce lodowego trolla pozostaje zimne nawet po jego zniszczeniu. Dopóki troll nie może się zregenerować, jego serce można bezpiecznie wyjąć z jego szczątków, przenosić i przechowywać. Serce lodowego trolla po wyjęciu staje się nieszkodliwym maleńkim przedmiotem. Przez następne 24 godziny serce ma następujące magiczne właściwości:",
+						{
+							"type": "list",
+							"items": [
+								"Stworzenie, które zje serce, zyskuje zdolność regeneracji przez następne 24 godziny, odzyskując 5 punktów trafień na początku każdej swojej tury. Jeśli stworzenie otrzyma obrażenia od kwasu lub ognia, cecha ta nie działa na początku jego następnej tury. Stworzenie umiera tylko wtedy, gdy zaczyna swoją turę z 0 punktami trafień i nie regeneruje się.",
+								"Jeśli serce zostanie zakopane w ziemi pod warstwą ziemi o grubości co najmniej stopy, topi się i wywołuje zamieć podobną do tej, którą tworzy zaklęcie {@spell control weather}. Roztopienie serca i utworzenie zamieci trwa 10 minut. Zamieć utrzymuje się przez 8 godzin.",
+								"Jędza lub podobna istota może odprawić rytuał, który zmieni serce w magiczny talizman, działający jak plaster brązowej pleśni (patrz \"{@hazard Brown Mold}\" w {@book Dungeon Master's Guide|DMG}). Efekt ten trwa do momentu, aż serce zostanie zniszczone.",
+								"Istota biegła w posługiwaniu się przyborami alchemicznymi może wycisnąć z serca wystarczającą ilość resztek płynu, aby zmieszać go z innymi składnikami alchemicznymi i stworzyć jedną miksturę {@item Potion of Cold Resistance||potion of resistance (cold)}. Tworzenie tej mikstury trwa 1 godzinę."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mangonel",
+			"source": "DMG",
+			"page": 255,
+			"size": "L",
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 100,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"entries": [
+				"Mangonela to rodzaj katapulty, która wyrzuca ciężkie pociski po wysokim łuku. Taki ładunek może trafić w cele znajdujące się za osłoną. Zanim można wystrzelić z mangusty, należy ją załadować i wycelować. Załadowanie broni zajmuje dwie akcje, wycelowanie - dwie, a wystrzelenie jej - jedną.",
+				"Mangonel zazwyczaj rzuca ciężkim kamieniem, ale może też rzucać innymi rodzajami pocisków, o różnych efektach."
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Mangonel Stone",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +5} to hit, range 200/800 ft. (can't hit targets within 60 feet of it), one target."
+							],
+							"hitEntries": [
+								"27 ({@damage 5d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Ram",
+			"source": "DMG",
+			"page": 255,
+			"size": "L",
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 100,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"entries": [
+				"Taran składa się z ruchomej galerii wyposażonej w ciężką kłodę zawieszoną na dwóch belkach dachowych za pomocą łańcuchów.",
+				"Kłoda jest okuta żelazem i służy do przebijania drzwi i barykad.",
+				"Do obsługi tarana potrzeba co najmniej czterech stworzeń średnich. Ze względu na dach galerii operatorzy tarana mają całkowitą osłonę przed atakami z góry."
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Ram",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "MW",
+							"attackEntries": [
+								"{@hit +8} to hit, reach 5 ft., one object."
+							],
+							"hitEntries": [
+								"16 ({@damage 3d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Siege Tower",
+			"source": "DMG",
+			"page": 256,
+			"size": "G",
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 200,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"entries": [
+				"Wieża oblężnicza to ruchoma konstrukcja drewniana z ramą z belek i listew w ścianach. Duże drewniane koła lub rolki umożliwiają pchanie lub ciągnięcie wieży przez żołnierzy lub zwierzęta pociągowe. Średnie lub mniejsze stworzenia mogą używać wieży oblężniczej, aby dostać się na szczyt murów o wysokości do 40 stóp. Istota w wieży ma całkowitą osłonę przed atakami spoza wieży."
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Suspended Cauldron",
+			"source": "DMG",
+			"page": 255,
+			"size": "L",
+			"objectType": "SW",
+			"ac": 19,
+			"hp": 20,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"entries": [
+				"Kociołek to żelazny garnek zawieszony w taki sposób, że można go łatwo przechylić, rozlewając jego zawartość. Po opróżnieniu kociołek musi zostać ponownie napełniony, a jego zawartość zazwyczaj musi zostać podgrzana, zanim będzie można go ponownie użyć. Potrzeba trzech akcji, aby napełnić kociołek i jednej akcji, aby go przewrócić.",
+				"Kociołki można napełniać innymi płynami, takimi jak kwas lub {@hazard green slime}, co daje różne efekty."
+			],
+			"actionEntries": [
+				{
+					"type": "entries",
+					"name": "Boiling Oil",
+					"entries": [
+						"Kociołek wylewa wrzący olej na obszar 10 stóp kwadratowych bezpośrednio pod nim. Każde stworzenie na tym obszarze musi wykonać rzut obronny na zręczność DC 15, otrzymując 10 ({@damage 3d6}) obrażeń od ognia w przypadku nieudanego testu lub połowę tych obrażeń w przypadku udanego testu."
+					]
+				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "The Head",
+			"isNpc": true,
+			"source": "RMBRE",
+			"page": 25,
+			"size": "L",
+			"objectType": "U",
+			"ac": 17,
+			"hp": 50,
+			"speed": 0,
+			"str": 14,
+			"dex": 3,
+			"int": 3,
+			"wis": 3,
+			"cha": 10,
+			"immune": [
+				"poison",
+				"psychic"
+			]
+		},
+		{
+			"name": "Trebuchet",
+			"source": "DMG",
+			"page": 256,
+			"size": "H",
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 150,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"entries": [
+				"Trebusze to potężne katapulty, które wyrzucają ładunek użyteczny po wysokim łuku, dzięki czemu mogą trafiać w cele znajdujące się za osłoną.",
+				"Zanim będzie można wystrzelić z trebusza, musi on zostać załadowany i wycelowany. Załadowanie broni zajmuje dwie akcje, wycelowanie jej dwie akcje i jedna akcja, aby wystrzelić.",
+				"Trebusz zazwyczaj wyrzuca ciężki kamień. Może jednak wystrzeliwać inne rodzaje pocisków, takie jak beczki z olejem lub ściekami, z różnymi efektami."
+			],
+			"actionEntries": [
+				{
+					"type": "actions",
+					"name": "Trebuchet Stone",
+					"entries": [
+						{
+							"type": "attack",
+							"attackType": "RW",
+							"attackEntries": [
+								"{@hit +5} to hit, range 300/1,200 ft. (can't hit targets within 60 feet of it), one target."
+							],
+							"hitEntries": [
+								"44 ({@damage 8d10}) bludgeoning damage."
+							]
+						}
+					]
+				}
+			],
+			"hasToken": true
+		}
+	]
+}

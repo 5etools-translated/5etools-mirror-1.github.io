@@ -1,0 +1,225 @@
+{
+	"spell": [
+		{
+			"name": "Intellect Fortress",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 7,
+			"level": 4,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Na czas trwania ataku, ty lub jedna chętna istota, którą widzisz w zasięgu, jesteście odporni na obrażenia psychiczne, a także macie przewagę w rzutach ratunkowych na Inteligencję, Mądrość i Charyzmę."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie używając gniazda zaklęć 5 poziomu lub wyższego, możesz obrać za cel jedno dodatkowe stworzenie za każdy poziom gniazda powyżej 4. Stworzenia te muszą znajdować się w odległości do 30 stóp od siebie, kiedy je namierzasz."
+					]
+				}
+			],
+			"damageResist": [
+				"psychic"
+			],
+			"damageImmune": [
+				"psychic"
+			],
+			"damageVulnerable": [
+				"psychic"
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Sliver",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 7,
+			"level": 0,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Wrzucasz dezorientujący impuls energii psychicznej w umysł jednej istoty, którą widzisz w zasięgu. Cel musi wykonać rzut obronny na inteligencję. Jeśli rzut nie powiedzie się, cel otrzymuje {@damage 1d6} obrażeń psychicznych, a kiedy po raz pierwszy wykona rzut ratunkowy przed końcem twojej następnej tury, musi rzucić {@dice d4} i odjąć wyliczoną liczbę od wyniku.",
+				"Obrażenia zadawane przez to zaklęcie zwiększają się o {@dice 1d6} po osiągnięciu określonych poziomów: 5. poziomu ({@dice 2d6}), 11. poziomu ({@dice 3d6}) i 17. poziomu ({@dice 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Thrust",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 7,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Rzucasz lancę zakłóceń psychicznych w umysł jednej istoty, którą widzisz w zasięgu. Cel musi wykonać rzut obronny na Inteligencję. W przypadku nieudanego ataku, cel otrzymuje {@damage 3d6} obrażeń psychicznych i nie może podjąć reakcji do końca swojej następnej tury. Ponadto, w swojej następnej turze musi wybrać, czy otrzyma ruch, akcję, czy dodatkową akcję; otrzyma tylko jedną z tych trzech. Jeśli uda mu się uratować, cel otrzymuje o połowę mniej obrażeń i nie odczuwa żadnego z pozostałych efektów zaklęcia."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, możesz obrać za cel jedno dodatkowe stworzenie za każdy poziom gniazda powyżej 2. Stworzenia te muszą znajdować się w odległości do 30 stóp od siebie, kiedy je namierzasz."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

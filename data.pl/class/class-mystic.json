@@ -1,0 +1,1596 @@
+{
+	"class": [
+		{
+			"name": "Mystic",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"int",
+				"wis"
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple"
+				],
+				"tools": [
+					"None"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"history",
+								"insight",
+								"medicine",
+								"nature",
+								"perception",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item spear|phb} or (b) a {@item mace|phb}",
+					"(a) {@item leather armor|phb} or (b) {@item studded leather armor|phb}",
+					"(a) a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}"
+				],
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"spear|phb"
+						],
+						"b": [
+							"mace|phb"
+						]
+					},
+					{
+						"a": [
+							"leather armor|phb"
+						],
+						"b": [
+							"studded leather armor|phb"
+						]
+					},
+					{
+						"a": [
+							"light crossbow|phb",
+							"crossbow bolts (20)|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"scholar's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					}
+				]
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"{@filter Talents Known|psionics|type=T}",
+						"{@filter Disciplines Known|psionics|type=D}",
+						"Psi Points",
+						"Psi Limit"
+					],
+					"rows": [
+						[
+							1,
+							1,
+							4,
+							2
+						],
+						[
+							1,
+							1,
+							6,
+							2
+						],
+						[
+							2,
+							2,
+							14,
+							3
+						],
+						[
+							2,
+							2,
+							17,
+							3
+						],
+						[
+							2,
+							3,
+							27,
+							5
+						],
+						[
+							2,
+							3,
+							32,
+							5
+						],
+						[
+							2,
+							4,
+							38,
+							6
+						],
+						[
+							2,
+							4,
+							44,
+							6
+						],
+						[
+							2,
+							5,
+							57,
+							7
+						],
+						[
+							3,
+							5,
+							64,
+							7
+						],
+						[
+							3,
+							5,
+							64,
+							7
+						],
+						[
+							3,
+							6,
+							64,
+							7
+						],
+						[
+							3,
+							6,
+							64,
+							7
+						],
+						[
+							3,
+							6,
+							64,
+							7
+						],
+						[
+							3,
+							7,
+							64,
+							7
+						],
+						[
+							3,
+							7,
+							64,
+							7
+						],
+						[
+							4,
+							7,
+							64,
+							7
+						],
+						[
+							4,
+							8,
+							71,
+							7
+						],
+						[
+							4,
+							8,
+							71,
+							7
+						],
+						[
+							4,
+							8,
+							71,
+							7
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Psionics|Mystic|UATheMysticClass|1",
+				"Psionic Disciplines and Talents|Mystic|UATheMysticClass|1",
+				"Using a Discipline|Mystic|UATheMysticClass|1",
+				{
+					"classFeature": "Mystic Order|Mystic|UATheMysticClass|1",
+					"gainSubclassFeature": true
+				},
+				"Mystical Recovery|Mystic|UATheMysticClass|2",
+				"Telepathy|Mystic|UATheMysticClass|2",
+				{
+					"classFeature": "Mystic Order feature|Mystic|UATheMysticClass|3",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Mystic|UATheMysticClass|4",
+				"Proficiency Versatility|Mystic|UATheMysticClass|4|UAClassFeatureVariants",
+				"Strength of Mind|Mystic|UATheMysticClass|4",
+				{
+					"classFeature": "Mystic Order feature|Mystic|UATheMysticClass|6",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Mystic|UATheMysticClass|8",
+				"Proficiency Versatility|Mystic|UATheMysticClass|8|UAClassFeatureVariants",
+				"Potent Psionics (1d8)|Mystic|UATheMysticClass|8",
+				"Consumptive Power|Mystic|UATheMysticClass|10",
+				"Psionic Mastery (1/Day)|Mystic|UATheMysticClass|11",
+				"Ability Score Improvement|Mystic|UATheMysticClass|12",
+				"Proficiency Versatility|Mystic|UATheMysticClass|12|UAClassFeatureVariants",
+				"Psionic Mastery (2/Day)|Mystic|UATheMysticClass|13",
+				{
+					"classFeature": "Mystic Order feature|Mystic|UATheMysticClass|14",
+					"gainSubclassFeature": true
+				},
+				"Potent Psionics (2d8)|Mystic|UATheMysticClass|14",
+				"Psionic Mastery (3/Day)|Mystic|UATheMysticClass|15",
+				"Ability Score Improvement|Mystic|UATheMysticClass|16",
+				"Proficiency Versatility|Mystic|UATheMysticClass|16|UAClassFeatureVariants",
+				"Psionic Mastery (4/Day)|Mystic|UATheMysticClass|17",
+				"Ability Score Improvement|Mystic|UATheMysticClass|19",
+				"Proficiency Versatility|Mystic|UATheMysticClass|19|UAClassFeatureVariants",
+				"Psionic Body|Mystic|UATheMysticClass|20"
+			],
+			"subclassTitle": "Mystic Order",
+			"fluff": [
+				{
+					"type": "section",
+					"name": "Mystic",
+					"entries": [
+						"Człowiek ubrany w proste szaty idzie leśną ścieżką. Z zarośli wyłania się banda goblinów, z wycelowanymi w niego strzałami, uśmiechając się szeroko z radości, że znaleźli tak łatwą zdobycz do legionowych zagród dla niewolników. Ich uśmiechy zamieniają się w krzyki przerażenia, gdy podróżnik urasta do gigantycznych rozmiarów i skacze na nich, a jego laska staje się teraz śmiercionośną pałką.",
+						"Milicja ustawia się w szeregu, aby przygotować się na atak orków. Warczące bestie wydają okrzyki bojowe i ruszają naprzód. Ku ich zaskoczeniu, ludzki tłum utrzymuje się na nogach i walczy z zaskakującą zaciekłością. Nagle bezmyślny strach ogarnia umysły orków, którzy, mimo że mają do czynienia z dużo gorszym przeciwnikiem, odwracają się i uciekają, nie zauważając spokojnego półelfa stojącego pośród milicji i kierującego jej działaniami.",
+						"Baron von Ludwig był zawsze dumny ze swojej wielkiej biblioteki. Nie wiedział, że każdego wieczoru skrzat obładowany pustymi zwojami prześlizgiwał się obok jego strażników i skrupulatnie kopiował jego najpilniej strzeżone archiwa. Kiedy ludzie księcia przybyli, by aresztować go za kontakty z demonami, nie przypuszczał, że podróżujący z nimi skrzat spędził w jego komnacie więcej czasu niż on sam w ciągu ostatniego roku.",
+						"Wszyscy ci bohaterowie są mistykami, wyznawcami dziwnej i tajemniczej formy mocy. Mistycy stronią od świata, aby zwrócić oczy do wewnątrz, opanować cały potencjał swojego umysłu i zgłębić swoją psychikę, zanim zwrócą się ku światu. Mistycy są niezwykle rzadcy, a większość z nich woli zachować naturę swoich zdolności w tajemnicy. Wykorzystując swoją wewnętrzną, psychiczną siłę, potrafią czytać w myślach, stawać się niewidzialni, przekształcać swoje ciała w żywe żelazo, a także przejmować kontrolę nad światem fizycznym i naginać go do swojej woli.",
+						{
+							"type": "entries",
+							"name": "Hermits and Outcasts",
+							"entries": [
+								"Mistycy są samotnikami. Większość z nich poznaje sekrety swojej mocy dzięki niejasnym wzmiankom w księgach wiedzy lub poprzez zadurzenie się w mistrzu mocy.",
+								"Aby opanować swoją moc, mistycy muszą najpierw opanować samych siebie. Spędzają miesiące i lata na cichej kontemplacji, zgłębiając swój umysł i nie pozostawiając nic niezbadanego. W tym czasie stronią od społeczeństwa i zazwyczaj żyją jako pustelnicy na jego obrzeżach. Mistycy, którzy uczyli się u mistrza, pracowali jako wirtualni niewolnicy, wykonując prozaiczne zadania w zamian za okazjonalną lekcję lub tajemniczą wskazówkę.",
+								"Kiedy mistycy w końcu opanują swoją moc, wracają do świata, aby poszerzać horyzonty i ćwiczyć się w swoim fachu. Niektórzy mistycy wolą pozostać w odosobnieniu, ale ci, którzy stają się poszukiwaczami przygód, nie zadowalają się pozostaniem na obrzeżach świata."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Eccentric Minds",
+							"entries": [
+								"Aby utrzymać ścisłą dyscyplinę i intensywną samoświadomość, które są niezbędne do korzystania z mocy, mistycy stosują różne praktyki, które pozwalają im zachować ostrość widzenia.",
+								"Praktyki te znajdują odzwierciedlenie w tabu i dziwactwach, dziwnych zachowaniach, które rządzą działaniami mistyków. Te dziwactwa to przysięgi lub tiki behawioralne, które pomagają mistykom utrzymać odpowiedni stan umysłu przy jednoczesnym zachowaniu doskonałej kontroli nad swoim umysłem i ciałem.",
+								"Choć te tabu są nieszkodliwe, to jednak sprawiają, że mistycy są postrzegani jako osoby z zewnątrz. Niewielu z nich czuje się akceptowanych przez społeczeństwo, a jeszcze mniej chce się z nim zintegrować. Dla mistyków życie umysłu jest miejscem, w którym czują się najlepiej.",
+								{
+									"type": "entries",
+									"name": "Selecting Quirks",
+									"entries": [
+										"Aby dodać trochę tekstury do swojej mistyczki, zastanów się nad dziwactwami, jakie posiada Twoja postać. Te zachowania nie mają wpływu na grę, ale Twoja postać może się irytować lub denerwować, jeśli zostanie zmuszona do ich złamania. To świetne narzędzie do odgrywania ról, które dodaje grze charakteru. Możesz toczyć lub wybrać z poniższej tabeli, albo stworzyć własne dziwactwa. Staraj się stworzyć dwa dziwactwa, aby dać im więcej szans na zaistnienie w grze. Na koniec zastanów się, dlaczego Twoja postać wybrała te zachowania. Co one mówią o osobowości lub pochodzeniu Twojej postaci? Czy wynikają z jakiegoś konkretnego wydarzenia lub przekonań?",
+										{
+											"type": "table",
+											"caption": "Mystic Quirks",
+											"colLabels": [
+												"d20",
+												"Quirk"
+											],
+											"colStyles": [
+												"col-2 text-center",
+												"col-10"
+											],
+											"rows": [
+												[
+													1,
+													"Nigdy nie obcinasz włosów."
+												],
+												[
+													2,
+													"Odmawiasz noszenia ubrań w określonym kolorze."
+												],
+												[
+													3,
+													"Nigdy nie wymawiasz swojego imienia."
+												],
+												[
+													4,
+													"Nigdy nie nosisz obuwia."
+												],
+												[
+													5,
+													"Zawsze nosisz maskę."
+												],
+												[
+													6,
+													"Farbujesz włosy na jaskrawy niebieski lub zielony kolor."
+												],
+												[
+													7,
+													"Każdego dnia wybierasz nowe imię."
+												],
+												[
+													8,
+													"Nigdy nie zanurzaj się w wodzie."
+												],
+												[
+													9,
+													"Śpisz na gołej ziemi."
+												],
+												[
+													10,
+													"Nigdy nie spożywa się alkoholu."
+												],
+												[
+													11,
+													"Nosisz welon, aby ukryć swoją twarz."
+												],
+												[
+													12,
+													"Zawsze nosisz określoną część garderoby."
+												],
+												[
+													13,
+													"Odmawiasz rozpalania ognisk."
+												],
+												[
+													14,
+													"Odmawiasz zapisywania rzeczy, zamiast tego używając piktogramów."
+												],
+												[
+													15,
+													"Nigdy nie siadasz na krześle, wolisz stać lub siedzieć na podłodze."
+												],
+												[
+													16,
+													"Nigdy nie odpowiadasz pod żadnym innym imieniem niż własne."
+												],
+												[
+													17,
+													"Zapisujesz imię każdego zabitego stworzenia i wymieniasz te, które są nienazwane."
+												],
+												[
+													18,
+													"Spożywa się tylko wodę i surowe warzywa."
+												],
+												[
+													19,
+													"Wszystkie zarobione pieniądze wydajesz w ciągu 1 tygodnia od ich zdobycia."
+												],
+												[
+													20,
+													"Często rozmawiasz z wyimaginowanym towarzyszem i działasz tylko z jego błogosławieństwem."
+												]
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Mystic",
+							"entries": [
+								"Tworząc mistyka, zastanów się nad pochodzeniem swojej postaci. Jak zostałeś mistykiem? Co po raz pierwszy przyciągnęło Cię do tej praktyki? Czy jesteś samoukiem, czy może miałeś mistrza? Jeśli miałeś mistrza, jak wyglądała ta relacja?",
+								"Zastanów się także, dlaczego wróciłeś do świata ze swojej pustelni. Czy podejmując studia, zostawiłeś kogoś lub coś za sobą? Czy kierowałeś się zemstą, czy jakąś inną motywacją?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Możesz szybko stać się mistykiem, stosując się do poniższych wskazówek. Po pierwsze, wybierz Inteligencję jako najwyższy wynik umiejętności, a następnie Zręczność lub Konstytucję. Po drugie, wybierz {@background hermit} tło."
+									]
+								}
+							]
+						}
+					],
+					"source": "UATheMysticClass",
+					"page": 1
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Order of the Avatar",
+			"shortName": "Avatar",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 5,
+			"subclassFeatures": [
+				"Order of the Avatar|Mystic|UATheMysticClass|Avatar|UATheMysticClass|1",
+				"Avatar of Battle|Mystic|UATheMysticClass|Avatar|UATheMysticClass|3",
+				"Avatar of Healing|Mystic|UATheMysticClass|Avatar|UATheMysticClass|6",
+				"Avatar of Speed|Mystic|UATheMysticClass|Avatar|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Awakened",
+			"shortName": "Awakened",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 6,
+			"subclassFeatures": [
+				"Order of the Awakened|Mystic|UATheMysticClass|Awakened|UATheMysticClass|1",
+				"Psionic Investigation|Mystic|UATheMysticClass|Awakened|UATheMysticClass|3",
+				"Psionic Surge|Mystic|UATheMysticClass|Awakened|UATheMysticClass|6",
+				"Spectral Form|Mystic|UATheMysticClass|Awakened|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Immortal",
+			"shortName": "Immortal",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 6,
+			"subclassFeatures": [
+				"Order of the Immortal|Mystic|UATheMysticClass|Immortal|UATheMysticClass|1",
+				"Psionic Resilience|Mystic|UATheMysticClass|Immortal|UATheMysticClass|3",
+				"Surge of Health|Mystic|UATheMysticClass|Immortal|UATheMysticClass|6",
+				"Immortal Will|Mystic|UATheMysticClass|Immortal|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Nomad",
+			"shortName": "Nomad",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 7,
+			"subclassFeatures": [
+				"Order of the Nomad|Mystic|UATheMysticClass|Nomad|UATheMysticClass|1",
+				"Memory of One Thousand Steps|Mystic|UATheMysticClass|Nomad|UATheMysticClass|3",
+				"Superior Teleportation|Mystic|UATheMysticClass|Nomad|UATheMysticClass|6",
+				"Effortless Journey|Mystic|UATheMysticClass|Nomad|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Soul Knife",
+			"shortName": "Soul Knife",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 7,
+			"subclassFeatures": [
+				"Order of the Soul Knife|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|1",
+				"Hone the Blade|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|3",
+				"Consumptive Knife|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|6",
+				"Phantom Knife|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Wu Jen",
+			"shortName": "Wu Jen",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 8,
+			"subclassFeatures": [
+				"Order of the Wu Jen|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|1",
+				"Elemental Attunement|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|3",
+				"Arcane Dabbler|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|6",
+				"Elemental Mastery|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|14"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Mystic Order",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Na 1. poziomie wybierasz Zakon Mistyczny z listy dostępnych zakonów. Każdy zakon specjalizuje się w specyficznym podejściu do psioniki.",
+				"Twój zakon daje ci cechy, gdy wybierzesz go na 1. poziomie, oraz dodatkowe cechy na 3., 6. i 14. poziomie."
+			]
+		},
+		{
+			"name": "Psionic Disciplines and Talents",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Talenty i dyscypliny psioniczne stanowią serce rzemiosła mistyka. Są to ćwiczenia umysłowe i formuły psioniczne używane do przekuwania woli w namacalne, magiczne efekty.",
+				"Dyscypliny psioniczne zostały odkryte przez różne zakony i odzwierciedlają specjalizacje ich twórców. Jednak mistyk może nauczyć się każdej dyscypliny, niezależnie od tego, z jakim zakonem jest związana."
+			]
+		},
+		{
+			"name": "Psionics",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Jako uczeń psioniki możesz opanować i wykorzystywać talenty i dyscypliny psioniczne, których zasady znajdują się na końcu tego dokumentu. Psionika to specjalna forma użycia magii, różniąca się od rzucania czarów.",
+				{
+					"type": "entries",
+					"name": "Psionic Talents",
+					"entries": [
+						"Talent psioniczny to pomniejszy efekt psioniczny, który udało ci się opanować. Na 1. poziomie poznajesz jeden wybrany talent psioniczny. Na wyższych poziomach uczysz się kolejnych talentów. Kolumna Znane talenty w tabeli Mistyków pokazuje całkowitą liczbę talentów, które znasz na każdym poziomie; kiedy ta liczba wzrośnie, wybierz nowy talent."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psionic Disciplines",
+					"entries": [
+						"Dyscyplina psioniczna to sztywny zestaw ćwiczeń umysłowych, który pozwala mistykowi przejawiać moc psioniczną. Mistyk może opanować tylko kilka dyscyplin naraz.",
+						"Na 1. poziomie znasz jedną, wybraną przez siebie dyscyplinę psioniczną. Kolumna Znane dyscypliny w tabeli Mistyków pokazuje całkowitą liczbę dyscyplin, które znasz na każdym poziomie; kiedy ta liczba wzrośnie, wybierz nową dyscyplinę.",
+						"Dodatkowo, za każdym razem, gdy zdobędziesz poziom w tej klasie, możesz zastąpić jedną dyscyplinę, którą znasz, inną, wybraną przez siebie."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psi Points",
+					"entries": [
+						"Posiadasz wewnętrzny rezerwuar energii, którą możesz przeznaczyć na znane ci dyscypliny psioniczne. Energia ta jest reprezentowana przez punkty psi. Każda dyscyplina psioniczna opisuje efekty, które można wywołać za jej pomocą, wydając określoną liczbę punktów psi. Talent psioniczny nie wymaga punktów psi.",
+						"Liczba punktów psi, które posiadasz, zależy od twojego poziomu mistycznego, jak pokazano w kolumnie Punkty Psi w tabeli Mistyków. Liczba podana dla Twojego poziomu to maksymalna liczba punktów psi. Liczba punktów psi wraca do maksymalnej wartości po zakończeniu długiego odpoczynku. Liczba punktów psi, którą posiadasz, nie może spaść poniżej 0 ani przekroczyć maksimum."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psi Limit",
+					"entries": [
+						"Chociaż masz dostęp do potężnej ilości energii psionicznej, jej wykorzystanie wymaga treningu i praktyki. Istnieje limit punktów psi, które możesz wydać, aby aktywować dyscyplinę psioniczną. Limit ten jest zależny od poziomu mistyka, jak pokazano w kolumnie Limit psi w tabeli Mistyków. Na przykład, jako mistyk na 3. poziomie, możesz wydać nie więcej niż 3 punkty psi na dyscyplinę za każdym razem, gdy z niej korzystasz, niezależnie od tego, ile masz punktów psi."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psychic Focus",
+					"entries": [
+						"Możesz skupić energię psioniczną na jednej ze swoich dyscyplin psionicznych, aby czerpać z niej ciągłe korzyści. Jako dodatkową akcję, możesz wybrać jedną z dyscyplin psionicznych i uzyskać korzyść z jej skupienia psychicznego, która jest opisana w opisie tej dyscypliny. Korzyść ta trwa do czasu, aż osiągniesz poziom {@condition incapacitated} lub do czasu, gdy użyjesz innej akcji bonusowej, aby wybrać inną korzyść ze skupienia.",
+						"W tym samym czasie możesz mieć tylko jedną korzyść ze skupienia psychicznego, a korzystanie ze skupienia psychicznego w jednej dyscyplinie nie ogranicza możliwości korzystania z innych dyscyplin."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psionic Ability",
+					"entries": [
+						"Inteligencja jest twoją umiejętnością psioniczną dla dyscyplin psionicznych. Używasz swojego modyfikatora inteligencji, gdy ustalasz DC rzutu ratunkowego dla dyscypliny psionicznej lub gdy wykonujesz rolkę ataku za jej pomocą.",
+						{
+							"type": "abilityDc",
+							"name": "Discipline",
+							"attributes": [
+								"int"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Discipline",
+							"attributes": [
+								"int"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Using a Discipline",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Każda dyscyplina psioniczna ma kilka sposobów, na jakie można z niej korzystać, wszystkie zawarte są w jej opisie. Dyscyplina określa rodzaj akcji i liczbę punktów psi, których wymaga. Określa również, czy musisz się skoncentrować na jej efektach, na ile celów ma ona wpływ, jakich rzutów ratujących wymaga i tak dalej.",
+				"W kolejnych rozdziałach omówiono bardziej szczegółowo użycie dyscypliny. Dyscypliny Psioniczne są magiczne i działają podobnie do zaklęć.",
+				{
+					"type": "entries",
+					"name": "Psychic Focus",
+					"entries": [
+						"Sekcja Psychic Focus (Skupienie psychiczne) opisuje korzyści, jakie można uzyskać, wybierając tę dyscyplinę jako przedmiot skupienia psychicznego."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Effect Options and Psi Points",
+					"entries": [
+						"Dyscyplina daje różne możliwości wykorzystania punktów psi. Każda opcja efektu ma swoją nazwę, a koszt punktów psi tej opcji pojawia się w nawiasie po jej nazwie. Aby skorzystać z tej opcji, musisz wydać taką liczbę punktów psi, nie przekraczając limitu psi. Jeśli nie masz wystarczającej liczby punktów psi lub koszt przekracza twój limit psi, nie możesz skorzystać z tej opcji.",
+						"Niektóre opcje podają zakres punktów psi, a nie konkretny koszt. Aby skorzystać z tej opcji, musisz wydać pewną liczbę punktów z tego przedziału, nadal przestrzegając swojego limitu psi. Niektóre opcje pozwalają wydać dodatkowe punkty psi, aby zwiększyć siłę działania danej dyscypliny. Również w tym przypadku musisz przestrzegać swojego limitu psi i wydać wszystkie punkty przy pierwszym użyciu dyscypliny; nie możesz zdecydować się na wydanie dodatkowych punktów, kiedy już zobaczysz, że dyscyplina działa.",
+						"Każda opcja zawiera szczegółowe informacje o jej działaniu, w tym o czynnościach wymaganych do jej użycia oraz jej zasięgu."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Components",
+					"entries": [
+						"Dyscypliny nie wymagają składników, których wymaga wiele zaklęć. Użycie dyscypliny nie wymaga wypowiadania słów, gestów ani materiałów. Moc psioniki pochodzi z umysłu."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Duration",
+					"entries": [
+						"Opcja efektu w dyscyplinie określa, jak długo trwa jej efekt.",
+						{
+							"type": "entries",
+							"name": "Instantaneous",
+							"entries": [
+								"Jeśli nie zostanie określony czas trwania, efekt działania opcji jest natychmiastowy."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Concentration",
+							"entries": [
+								"Niektóre opcje wymagają koncentracji, aby utrzymać swoje efekty. Wymóg ten jest oznaczony symbolem \"conc.\" po koszcie punktu psi opcji. Po oznaczeniu \"conc.\" podany jest maksymalny czas trwania koncentracji. Na przykład, jeśli na opcji jest napisane \"conc., 1 min.\", to możesz koncentrować się na jej efekcie przez maksymalnie 1 minutę.",
+								"Koncentracja na dyscyplinie podlega tym samym zasadom, co koncentracja na zaklęciu. Oznacza to, że nie możesz skupić się na zaklęciu i dyscyplinie w tym samym czasie, ani na dwóch dyscyplinach w tym samym czasie. Zobacz {@book chapter 10|PHB|10}, \"Rzucanie czarów\" w Podręczniku Gracza, aby dowiedzieć się, jak działa koncentracja."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Targets and Areas of Effect",
+					"entries": [
+						"Dyscypliny Psioniczne wykorzystują te same zasady co zaklęcia do określania celów i obszarów działania, przedstawione w {@book chapter 10|PHB|10}, \"Rzucanie zaklęć\" w Podręczniku Gracza."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Saving Throws and Attack Rolls",
+					"entries": [
+						"Jeśli dana dyscyplina wymaga rzutu obronnego, to określa rodzaj tego rzutu oraz wynik udanego lub nieudanego rzutu. DC jest określane przez twoją zdolność psioniczną.",
+						"Niektóre dyscypliny wymagają wykonania rzutu ataku, aby określić, czy efekt dyscypliny trafi w cel. Walka ataku wykorzystuje twoją zdolność psioniczną."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Combining Psionic Effects",
+					"entries": [
+						"Efekty różnych dyscyplin psionicznych sumują się, a czas ich trwania nakłada się na siebie. Podobnie, różne opcje z danej dyscypliny psionicznej łączą się, jeśli są aktywne w tym samym czasie. Jednak konkretna opcja z dyscypliny psionicznej nie łączy się sama z sobą, jeśli jest używana wielokrotnie. Zamiast tego stosuje się najsilniejszy efekt - zwykle zależny od tego, ile punktów psi zostało użytych do stworzenia efektu - podczas gdy czasy trwania efektów nakładają się na siebie.",
+						"Psionika i zaklęcia są odrębnymi efektami, dlatego ich zalety i wady nakładają się na siebie. Wyjątkiem od tej zasady jest efekt psioniczny, który odtwarza zaklęcie."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mystical Recovery",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 2,
+			"entries": [
+				"Od 2. poziomu możesz czerpać wigor z energii psi, której używasz do zasilania swoich psionicznych dyscyplin.",
+				"Natychmiast po wydaniu punktów psi na dyscyplinę psioniczną możesz podjąć dodatkową akcję, aby odzyskać punkty trafienia równe liczbie wydanych punktów psi."
+			]
+		},
+		{
+			"name": "Telepathy",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 2,
+			"entries": [
+				"Na 2. poziomie twój umysł budzi się do zdolności porozumiewania się za pomocą telepatii. Możesz w ten sposób rozmawiać telepatycznie z każdą istotą, którą widzisz w promieniu 120 stóp od siebie. Nie musisz posługiwać się tym samym językiem, aby istota zrozumiała twoje telepatyczne komunikaty, ale musi ona rozumieć przynajmniej jeden język lub sama być telepatyczna."
+			]
+		},
+		{
+			"name": "Mystic Order feature",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 3,
+			"entries": [
+				"Na 3. poziomie zyskujesz kolejną cechę z Zakonu Mistyków."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 4,
+			"entries": [
+				"Po osiągnięciu 4. poziomu, a następnie na 8., 12., 16. i 19. poziomie, możesz zwiększyć jeden wybrany przez siebie wynik umiejętności o 2 lub dwa wybrane przez siebie wyniki umiejętności o 1. Jak zwykle, nie możesz zwiększyć wyniku umiejętności powyżej 20 przy użyciu tej cechy."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"Kiedy otrzymujesz cechę Poprawa wyniku umiejętności od swojej klasy, możesz również zastąpić jedną ze swoich biegłości umiejętnościami oferowanymi przez swoją klasę na 1. poziomie (biegłość, którą zastępujesz, nie musi być z tej klasy).",
+				"Ta zmiana oznacza, że jedna z umiejętności zanika, ponieważ koncentrujesz się na innej umiejętności."
+			]
+		},
+		{
+			"name": "Strength of Mind",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 4,
+			"entries": [
+				"Nawet najprostsza technika psioniczna wymaga głębokiego zrozumienia, w jaki sposób energia psioniczna może wzmocnić umysł i ciało. To zrozumienie pozwala na zmianę obrony, aby lepiej radzić sobie z zagrożeniami.",
+				"Począwszy od 4 poziomu, możesz zastąpić biegłość w rzutach ratunkowych na Mądrość, kiedy zakończysz krótki lub długi odpoczynek. Aby to zrobić, wybierz Siłę, Zręczność, Konstytucję lub Charyzmę. Zyskujesz biegłość w rzutach ratunkowych przy użyciu tej umiejętności, zamiast Mądrości. Zmiana ta trwa do zakończenia kolejnego krótkiego lub długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Mystic Order feature",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 6,
+			"entries": [
+				"Na 6. poziomie zyskujesz kolejną cechę z Zakonu Mistyków."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 8,
+			"entries": [
+				"Po osiągnięciu 4. poziomu, a następnie na 8., 12., 16. i 19. poziomie, możesz zwiększyć jeden wybrany przez siebie wynik umiejętności o 2 lub dwa wybrane przez siebie wyniki umiejętności o 1. Jak zwykle, nie możesz zwiększyć wyniku umiejętności powyżej 20 przy użyciu tej cechy."
+			]
+		},
+		{
+			"name": "Potent Psionics (1d8)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 8,
+			"entries": [
+				"Na 8. poziomie zyskujesz umiejętność napełniania swoich ataków bronią energią psychiczną. Raz na turę, kiedy trafiasz bronią istotę, możesz zadać jej dodatkowe {@damage 1d8} obrażeń psychicznych. Po osiągnięciu 14. poziomu dodatkowe obrażenia wzrastają do {@dice 2d8}.",
+				"Dodatkowo dodajesz swój modyfikator Inteligencji do każdego obrażeń zadawanych przez talent psioniczny."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"Kiedy otrzymujesz cechę Poprawa wyniku umiejętności od swojej klasy, możesz również zastąpić jedną ze swoich biegłości umiejętnościami oferowanymi przez swoją klasę na 1. poziomie (biegłość, którą zastępujesz, nie musi być z tej klasy).",
+				"Ta zmiana oznacza, że jedna z umiejętności zanika, ponieważ koncentrujesz się na innej umiejętności."
+			]
+		},
+		{
+			"name": "Consumptive Power",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 10,
+			"entries": [
+				"Na 10. poziomie zyskujesz możliwość poświęcenia swojej wytrzymałości fizycznej w zamian za moc psioniczną. Kiedy aktywujesz dyscyplinę psioniczną, możesz zapłacić jej koszt punktami psi za pomocą swoich punktów trafień, zamiast używać punktów psi. Twoje aktualne punkty trafień i maksymalne punkty trafień są zmniejszone o liczbę wydanych punktów trafień. Redukcja ta nie może być w żaden sposób zmniejszona, a zmniejszenie maksymalnej liczby punktów trafienia trwa do zakończenia długiego odpoczynku.",
+				"Po użyciu tej cechy nie można z niej skorzystać ponownie, dopóki nie zakończy się długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Psionic Mastery (1/Day)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 11,
+			"entries": [
+				"Począwszy od 11 poziomu, twoje opanowanie energii psionicznej pozwala ci wykraczać poza normalne granice umysłu. Jako akcję, zyskujesz 9 specjalnych punktów psi, które możesz wydać tylko na dyscypliny wymagające akcji lub dodatkowej akcji. Możesz wykorzystać wszystkie 9 punktów na jedną dyscyplinę lub rozłożyć je na kilka dyscyplin. Nie możesz wydać normalnych punktów psi na te dyscypliny; możesz wydać tylko specjalne punkty uzyskane dzięki tej umiejętności. Kiedy kończysz długi odpoczynek, tracisz wszystkie punkty specjalne, których nie wydałeś.",
+				"Jeśli więcej niż jedna z dyscyplin, które aktywujesz za pomocą tych punktów, wymaga koncentracji, możesz skoncentrować się na nich wszystkich. Aktywacja jednej z nich kończy efekt, na którym się koncentrowałeś, a jeśli zaczniesz koncentrować się na efekcie, który nie wykorzystuje tych punktów specjalnych, kończą się dyscypliny, na których się koncentrujesz.",
+				"Na 15. poziomie pula punktów psi, które zyskujesz dzięki tej umiejętności, wzrasta do 11.",
+				"Masz jedno użycie tej cechy i odzyskujesz ją po długim odpoczynku. Na 13, 15 i 17 poziomie zyskujesz jedno dodatkowe użycie tej cechy."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 12,
+			"entries": [
+				"Po osiągnięciu 4. poziomu, a następnie na 8., 12., 16. i 19. poziomie, możesz zwiększyć jeden wybrany przez siebie wynik umiejętności o 2 lub dwa wybrane przez siebie wyniki umiejętności o 1. Jak zwykle, nie możesz zwiększyć wyniku umiejętności powyżej 20 przy użyciu tej cechy."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"Kiedy otrzymujesz cechę Poprawa wyniku umiejętności od swojej klasy, możesz również zastąpić jedną ze swoich biegłości umiejętnościami oferowanymi przez swoją klasę na 1. poziomie (biegłość, którą zastępujesz, nie musi być z tej klasy).",
+				"Ta zmiana oznacza, że jedna z umiejętności zanika, ponieważ koncentrujesz się na innej umiejętności."
+			]
+		},
+		{
+			"name": "Psionic Mastery (2/Day)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 13,
+			"entries": [
+				"Na 13. poziomie możesz użyć Psionicznego Opanowania dwa razy dziennie."
+			]
+		},
+		{
+			"name": "Mystic Order feature",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 14,
+			"entries": [
+				"Na 14. poziomie zyskujesz kolejną cechę z Zakonu Mistyków."
+			]
+		},
+		{
+			"name": "Potent Psionics (2d8)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 14,
+			"entries": [
+				"Na 14. poziomie twoje silne obrażenia od psioniki zwiększają się do {@dice 2d8}."
+			]
+		},
+		{
+			"name": "Psionic Mastery (3/Day)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 15,
+			"entries": [
+				"Na 15. poziomie możesz użyć Psionicznego Opanowania trzy razy dziennie."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 16,
+			"entries": [
+				"Po osiągnięciu 4. poziomu, a następnie na 8., 12., 16. i 19. poziomie, możesz zwiększyć jeden wybrany przez siebie wynik umiejętności o 2 lub dwa wybrane przez siebie wyniki umiejętności o 1. Jak zwykle, nie możesz zwiększyć wyniku umiejętności powyżej 20 przy użyciu tej cechy."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"Kiedy otrzymujesz cechę Poprawa wyniku umiejętności od swojej klasy, możesz również zastąpić jedną ze swoich biegłości umiejętnościami oferowanymi przez swoją klasę na 1. poziomie (biegłość, którą zastępujesz, nie musi być z tej klasy).",
+				"Ta zmiana oznacza, że jedna z umiejętności zanika, ponieważ koncentrujesz się na innej umiejętności."
+			]
+		},
+		{
+			"name": "Psionic Mastery (4/Day)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 17,
+			"entries": [
+				"Na 17. poziomie możesz użyć mistrzostwa psionicznego cztery razy dziennie."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 19,
+			"entries": [
+				"Po osiągnięciu 4. poziomu, a następnie na 8., 12., 16. i 19. poziomie, możesz zwiększyć jeden wybrany przez siebie wynik umiejętności o 2 lub dwa wybrane przez siebie wyniki umiejętności o 1. Jak zwykle, nie możesz zwiększyć wyniku umiejętności powyżej 20 przy użyciu tej cechy."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"Kiedy otrzymujesz cechę Poprawa wyniku umiejętności od swojej klasy, możesz również zastąpić jedną ze swoich biegłości umiejętnościami oferowanymi przez swoją klasę na 1. poziomie (biegłość, którą zastępujesz, nie musi być z tej klasy).",
+				"Ta zmiana oznacza, że jedna z umiejętności zanika, ponieważ koncentrujesz się na innej umiejętności."
+			]
+		},
+		{
+			"name": "Psionic Body",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 20,
+			"entries": [
+				"Na 20. poziomie opanowanie mocy psionicznej sprawia, że twój umysł przekracza ciało. Twoja forma fizyczna zostaje nasycona energią psioniczną. Zyskujesz następujące korzyści:",
+				{
+					"type": "list",
+					"items": [
+						"Zyskujesz odporność na obrażenia od ciosów, przebicia i cięcia.",
+						"Już się nie starzejesz.",
+						"Jesteś odporny na choroby, obrażenia od trucizn i kondycję {@condition poisoned}.",
+						"Jeśli zginiesz, rzuć {@dice d20}. Przy wyniku 10 lub wyższym, zamiast umrzeć, odłączasz się od gry z 0 punktami życia i spadasz {@condition unconscious}. Ty i twój ekwipunek znikacie. Pojawiasz się w wybranym przez siebie miejscu {@dice 1d3} dni później na płaszczyźnie egzystencji, na której zginąłeś, zyskując korzyści z jednego długiego odpoczynku."
+					]
+				}
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Order of the Avatar",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Mistycy z Zakonu Awatara zagłębiają się w świat emocji, opanowując swoje życie wewnętrzne do tego stopnia, że potrafią manipulować i wzmacniać emocje innych z taką samą łatwością, z jaką artysta kształtuje glinę. Znani jako Awatary, mistycy ci bywają zarówno tyranami, jak i inspirującymi przywódcami, uwielbianymi przez swoich zwolenników.",
+				"Awatary mogą wywoływać skrajne emocje w ludziach wokół nich. Sprzymierzeńcom mogą dawać nadzieję, waleczność i odwagę, przekształcając walczącą bandę w śmiertelnie niebezpieczną, zjednoczoną siłę. Wrogom zaś przynoszą strach, odrazę i obawę, które sprawiają, że nawet najbardziej zatwardziały weteran zachowuje się jak chwiejny nowicjusz.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Avatar|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Armor Training|Mystic|UATheMysticClass|Avatar|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Armor Training",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie zyskujesz biegłość w posługiwaniu się średnimi zbrojami i tarczami."
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie uczysz się dwóch dodatkowych dyscyplin psionicznych do wyboru. Muszą one zostać wybrane spośród dyscyplin Awatarów."
+			]
+		},
+		{
+			"name": "Avatar of Battle",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Od 3. poziomu roztaczasz inspirującą aurę. Kiedy nie jesteś {@condition incapacitated}, każdy sojusznik w promieniu 30 stóp od ciebie, który cię widzi, zyskuje premię +2 do rzutów inicjatywy."
+			]
+		},
+		{
+			"name": "Avatar of Healing",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Od 6. poziomu roztaczasz wokół siebie aurę odporności. Kiedy nie jesteś {@condition incapacitated}, każdy sojusznik w promieniu 30 stóp od ciebie, który cię widzi, odzyskuje dodatkowe punkty trafień równe twojemu modyfikatorowi Inteligencji (minimum 0), ilekroć odzyskuje punkty trafień w wyniku działania dyscypliny psionicznej."
+			]
+		},
+		{
+			"name": "Avatar of Speed",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Od 14. poziomu roztaczasz aurę szybkości. Kiedy nie jesteś {@condition incapacitated}, każdy sojusznik w promieniu 30 stóp od ciebie, który cię widzi, może wykonać akcję {@action Dash} jako akcję dodatkową."
+			]
+		},
+		{
+			"name": "Order of the Awakened",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Mistycy związani z Zakonem Przebudzonych dążą do uwolnienia pełnego potencjału umysłu. Przekraczając granice tego, co fizyczne, Przebudzeni mają nadzieję osiągnąć stan, w którym skupiają się na czystym intelekcie i energii umysłowej.",
+				"Przebudzeni potrafią naginać umysły i wyprowadzać niszczycielskie ataki psioniczne, a także odczytywać tajemnice świata za pomocą energii psionicznej. Przebudzeni mistycy, którzy wybierają się na poszukiwanie przygód, doskonale radzą sobie z rozwikływaniem tajemnic, rozwiązywaniem zagadek i pokonywaniem potworów, zamieniając je w mimowolne pionki.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Awakened|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Awakened Talent|Mystic|UATheMysticClass|Awakened|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Awakened Talent",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie zyskujesz biegłość w dwóch z następujących umiejętności do wyboru: {@skill Animal Handling}, {@skill Deception}, {@skill Insight}, {@skill Intimidation}, {@skill Investigation}, {@skill Perception} i {@skill Persuasion}."
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie uczysz się dwóch dodatkowych dyscyplin psionicznych do wyboru. Muszą one zostać wybrane spośród dyscyplin Przebudzonych."
+			]
+		},
+		{
+			"name": "Psionic Investigation",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Od 3. poziomu możesz skupić swój umysł, aby odczytać psioniczny odcisk pozostawiony na przedmiocie. Jeśli trzymasz przedmiot i koncentrujesz się na nim przez 10 minut (tak jakbyś koncentrował się na dyscyplinie psionicznej), dowiadujesz się o nim kilku podstawowych faktów. Otrzymujesz mentalny obraz z punktu widzenia przedmiotu, pokazujący ostatnią istotę, która trzymała ten przedmiot w ciągu ostatnich 24 godzin.",
+				"Dowiadujesz się także o wszelkich wydarzeniach, które miały miejsce w promieniu 20 stóp od obiektu w ciągu ostatniej godziny. Wydarzenia, które postrzegasz, rozgrywają się z perspektywy obiektu. Widzisz i słyszysz te wydarzenia tak, jakbyś tam był, ale nie możesz używać innych zmysłów.",
+				"Dodatkowo, możesz umieścić w przedmiocie niematerialny czujnik psioniczny. Przez następne 24 godziny możesz użyć akcji, aby poznać położenie przedmiotu względem ciebie (jego odległość i kierunek) i spojrzeć na otoczenie przedmiotu z jego punktu widzenia, tak jakbyś tam był. Ta percepcja trwa do początku twojej następnej tury.",
+				"Po użyciu tej funkcji nie można z niej korzystać ponownie, dopóki nie zakończy się krótkiego lub długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Psionic Surge",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Od 6. poziomu możesz przeciążyć swoje skupienie psychiczne, aby osłabić obronę przeciwnika. Możesz zmniejszyć szansę na wykonanie rzutu obronnego przeciwko dyscyplinie lub talentowi, którego używasz, ale kosztem użycia psychicznego skupienia. Twoje skupienie psychiczne natychmiast się kończy, jeśli jest aktywne, i nie możesz go użyć, dopóki nie zakończysz krótkiego lub długiego odpoczynku.",
+				"Nie można korzystać z tej funkcji, jeśli nie można używać skupienia psychicznego."
+			]
+		},
+		{
+			"name": "Spectral Form",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Na 14. poziomie zyskujesz umiejętność przemiany w upiorną postać z energii psionicznej. W ramach akcji możesz przemienić się w przezroczystą, upiorną wersję samego siebie. W tej postaci jesteś odporny na wszystkie obrażenia, poruszasz się z połową prędkości i możesz przechodzić przez obiekty i stworzenia, ale nie możesz dobrowolnie zakończyć ruchu w ich przestrzeni. Postać trwa przez 10 minut lub do czasu, gdy użyjesz akcji, by ją zakończyć.",
+				"Po użyciu tej cechy nie można z niej skorzystać ponownie, dopóki nie zakończy się długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Order of the Immortal",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Zakon Nieśmiertelnych wykorzystuje energię psioniczną do wzmacniania i modyfikowania formy fizycznej. Wyznawcy tego zakonu nazywani są Nieśmiertelnymi. Używają oni energii psionicznej do modyfikowania swoich ciał, wzmacniając je przed atakami i zamieniając się w żywą broń.",
+				"Ich opanowanie formy fizycznej nadaje im nazwę, ponieważ Nieśmiertelni są notorycznie trudni do zabicia.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Immortal|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Immortal Durability|Mystic|UATheMysticClass|Immortal|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie uczysz się dwóch dodatkowych dyscyplin psionicznych do wyboru. Muszą one zostać wybrane spośród dyscyplin Nieśmiertelnych."
+			]
+		},
+		{
+			"name": "Immortal Durability",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Od 1. poziomu maksymalna liczba punktów życia wzrasta o 1 na każdy poziom mistycyzmu.",
+				"Dodatkowo, jeśli nie masz na sobie zbroi lub tarczy, twoja podstawowa wartość AC wynosi 10 + modyfikator Zręczności + modyfikator Konstytucji."
+			]
+		},
+		{
+			"name": "Psionic Resilience",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Od 3. poziomu energia psioniczna daje ci niezwykłe męstwo. Na początku każdej swojej tury zyskujesz tymczasowo punkty trafień równe twojemu modyfikatorowi inteligencji (minimum 0), jeśli masz co najmniej 1 punkt trafienia."
+			]
+		},
+		{
+			"name": "Surge of Health",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Od 6. poziomu możesz wykorzystać swoje skupienie psychiczne, aby uciec przed śmiercią. Jako reakcję na otrzymane obrażenia, możesz zmniejszyć je o połowę. Twoje skupienie psychiczne natychmiast się kończy, jeśli jest aktywne, i nie możesz go użyć, dopóki nie zakończysz krótkiego lub długiego odpoczynku.",
+				"Nie można korzystać z tej funkcji, jeśli nie można używać skupienia psychicznego."
+			]
+		},
+		{
+			"name": "Immortal Will",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Od 14 poziomu możesz korzystać z rezerw mocy psionicznej, aby przetrwać po śmierci. Na koniec swojej tury, kiedy masz 0 punktów trafień, możesz wydać 5 punktów psionicznych, aby natychmiast odzyskać liczbę punktów trafień równą twojemu poziomowi mistycznemu + modyfikator Konstytucji."
+			]
+		},
+		{
+			"name": "Order of the Nomad",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Mistycy z Zakonu Nomadów utrzymują swoje umysły w dziwnym, wyjątkowym stanie. Dążą do zgromadzenia jak największej ilości wiedzy, starając się rozwikłać tajemnice multiwersum i poszukując podstawowej struktury wszystkich rzeczy. Jednocześnie dostrzegają przedziwną, żywą sieć wiedzy, którą nazywają noosferą.",
+				"Nomadzi, jak wskazuje ich nazwa, uwielbiają podróże, eksplorację i odkrywanie. Pragną zgromadzić jak najwięcej wiedzy, a poszukiwanie tajemnic i ukrytych legend może stać się dla nich obsesją.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Nomad|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Breadth of Knowledge|Mystic|UATheMysticClass|Nomad|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie uczysz się dwóch dodatkowych dyscyplin psionicznych do wyboru. Muszą one zostać wybrane spośród dyscyplin Nomadów."
+			]
+		},
+		{
+			"name": "Breadth of Knowledge",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie zyskujesz umiejętność poszerzania swojej wiedzy. Kiedy kończysz długi odpoczynek, zyskujesz dwie biegłości do wyboru: dwa narzędzia, dwie umiejętności lub po jednej z nich. Możesz zastąpić jeden lub oba z tych wyborów językami. Korzyść ta trwa do zakończenia długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Memory of One Thousand Steps",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Na 3. poziomie zyskujesz możliwość wykorzystania psioniki do przywołania swoich kroków. W reakcji na atak możesz teleportować się do niezajętego miejsca, które zajmowałeś od początku swojej ostatniej tury, a atak cię ominął. Jeśli raz użyjesz tej umiejętności, nie możesz jej użyć ponownie, dopóki nie zakończysz krótkiego lub długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Superior Teleportation",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Na 6. poziomie zyskujesz ponadprzeciętny talent do teleportacji. Kiedy używasz dyscypliny psionicznej do teleportacji na dowolną odległość, możesz zwiększyć ten dystans o maksymalnie 10 stóp."
+			]
+		},
+		{
+			"name": "Effortless Journey",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Od 14 poziomu twój umysł może w mistyczny sposób poruszać twoim ciałem. Raz w każdej swojej turze możesz stracić do 30 stóp ruchu, aby teleportować się na odległość, na którą straciłeś ruch. Musisz teleportować się na pustą przestrzeń, którą widzisz."
+			]
+		},
+		{
+			"name": "Order of the Soul Knife",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Zakon Noża Duszy poświęca szeroki zakres wiedzy, jaką zdobywają inni mistycy, aby skupić się na konkretnej technice psionicznej. Mistycy ci uczą się manifestować śmiercionośną broń z czystej energii psychicznej, którą mogą wykorzystać do przecinania wrogów.",
+				"Noże duszy bardzo różnią się pod względem podejścia do tej ścieżki. Niektórzy podążają nią z chęci osiągnięcia perfekcji w walce. Inni są bezwzględnymi zabójcami, którzy chcą stać się doskonałymi zabójcami.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Martial Training|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Soul Knife|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Martial Training",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie zyskujesz biegłość w posługiwaniu się średnią zbroją i bronią bojową."
+			]
+		},
+		{
+			"name": "Soul Knife",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Od 1. poziomu zyskujesz umiejętność manifestacji ostrza energii psychicznej. Jako dodatkowe działanie tworzysz błyszczące noże energii, które wystrzeliwują z obu twoich pięści. Podczas manifestacji ostrzy nie możesz niczego trzymać w rękach. Możesz je odrzucić jako dodatkową akcję.",
+				"Dla ciebie nóż duszy to broń do walki wręcz z właściwościami lekkości i finezji. Przy trafieniu zadaje {@damage 1d8} obrażeń psychicznych.",
+				"Jako akcję bonusową możesz przygotować się do użycia ostrzy do parowania. Zyskujesz premię +2 do AC do początku swojej następnej tury lub do osiągnięcia {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Hone the Blade",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Od 3. poziomu możesz wydawać punkty psi, aby wzmocnić atak i obrażenia zadawane przez twój nóż duszy. Zyskujesz premię do ataku i obrażeń zadawanych nożami duszy, zależną od liczby wydanych punktów psi, jak pokazano w poniższej tabeli. Premia ta utrzymuje się przez 10 minut.",
+				{
+					"type": "table",
+					"colLabels": [
+						"Psi Points",
+						"Attack and Damage Bonus"
+					],
+					"colStyles": [
+						"col-6 text-center",
+						"col-6 text-center"
+					],
+					"rows": [
+						[
+							"2",
+							"+1"
+						],
+						[
+							"5",
+							"+2"
+						],
+						[
+							"7",
+							"+4"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Consumptive Knife",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Od 6. poziomu, za każdym razem, gdy zabijesz wrogiego stwora atakiem nożem duszy, natychmiast odzyskujesz 2 punkty psi."
+			]
+		},
+		{
+			"name": "Phantom Knife",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Od 14. poziomu możesz wykonać atak, który przełamuje większość obron. Jako akcję, możesz wykonać jeden atak nożem duszy. Traktuj AC celu jako 10 przeciwko temu atakowi, niezależnie od jego rzeczywistego AC."
+			]
+		},
+		{
+			"name": "Order of the Wu Jen",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Do Zakonu Wu Jen należą jedni z najbardziej oddanych mistyków. Mistycy ci starają się odizolować od świata, zaprzeczając ograniczeniom świata fizycznego i zastępując go rzeczywistością, którą sami tworzą. Znani jako wu jen, mistycy ci rzucają swoje umysły w świat, przejmują kontrolę nad jego podstawowymi zasadami i odbudowują go.",
+				"W praktyce wu jenowie doskonale radzą sobie z kontrolowaniem sił świata przyrody. Potrafią rzucać przedmiotami za pomocą swoich umysłów, kontrolować cztery żywioły i zmieniać rzeczywistość tak, by odpowiadała ich pragnieniom.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Hermit's Study|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie uczysz się dwóch dodatkowych dyscyplin psionicznych do wyboru. Muszą one zostać wybrane spośród dyscyplin Wu Jena."
+			]
+		},
+		{
+			"name": "Hermit's Study",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Na 1. poziomie zyskujesz biegłość w dwóch z następujących umiejętności do wyboru: {@skill Animal Handling}, {@skill Arcana}, {@skill History}, {@skill Insight}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, {@skill Religion} lub {@skill Survival}."
+			]
+		},
+		{
+			"name": "Elemental Attunement",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Począwszy od 3. poziomu, kiedy odporność istoty zmniejsza obrażenia zadawane przez twoją psioniczną dyscyplinę, możesz wydać 1 punkt psi, aby sprawić, że ta dyscyplina zignoruje odporność istoty. Nie możesz wydać tego punktu, jeśli spowodowałoby to zwiększenie kosztu dyscypliny powyżej twojego limitu psi."
+			]
+		},
+		{
+			"name": "Arcane Dabbler",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Na 6. poziomie uczysz się trzech dowolnie wybranych zaklęć czarodziejskich i zawsze masz je przygotowane. Zaklęcia muszą być od 1. do 3. poziomu.",
+				"Jako dodatkową akcję, możesz wydać punkty psi, aby stworzyć gniazda zaklęć, które możesz wykorzystać do rzucania tych zaklęć, jak również innych zaklęć, które jesteś w stanie rzucić. Koszt każdego slotu na zaklęcia jest podany w poniższej tabeli.",
+				{
+					"type": "table",
+					"colLabels": [
+						"Spell Slot Level",
+						"Psi Cost"
+					],
+					"colStyles": [
+						"col-6 text-center",
+						"col-6 text-center"
+					],
+					"rows": [
+						[
+							"1st",
+							"2"
+						],
+						[
+							"2nd",
+							"3"
+						],
+						[
+							"3rd",
+							"5"
+						],
+						[
+							"4th",
+							"6"
+						],
+						[
+							"5th",
+							"7"
+						]
+					]
+				},
+				"Slot na zaklęcie pozostaje do momentu jego wykorzystania lub zakończenia długiego odpoczynku. Wydając punkty psi na stworzenie gniazda zaklęcia, musisz przestrzegać swojego limitu psi.",
+				"Za każdym razem, gdy zdobędziesz poziom w tej klasie, możesz zastąpić jedno z wybranych zaklęć czarodziejskich innym zaklęciem czarodziejskim od 1. do 3. poziomu."
+			]
+		},
+		{
+			"name": "Elemental Mastery",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Od 14. poziomu, jeśli posiadasz odporność na obrażenia danego typu, możesz wydać 2 punkty psi jako reakcję na otrzymanie obrażeń tego typu, aby je zignorować; zyskujesz odporność na ten typ obrażeń do końca swojej następnej tury."
+			]
+		}
+	]
+}

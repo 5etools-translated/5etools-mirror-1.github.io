@@ -1250,10 +1250,18 @@ class LootGenOutput {
 	}
 
 	_$getEleTitleSplit () {
-		return !IS_VTT && ExtensionUtil.ACTIVE
+		const $btnRivet = !IS_VTT && ExtensionUtil.ACTIVE
 			? $(`<button title="Send to Foundry (SHIFT for Temporary Import)" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-send"></span></button>`)
 				.click(evt => this._pDoSendToFoundry({isTemp: !!evt.shiftKey}))
 			: null;
+
+		const $btnDownload = $(`<button title="Download JSON" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-download glyphicon--top-2p"></span></button>`)
+			.click(() => this._pDoSaveAsJson());
+
+		return $$`<div class="btn-group">
+			${$btnRivet}
+			${$btnDownload}
+		</div>`;
 	}
 
 	render ($parent) {
@@ -1296,11 +1304,16 @@ class LootGenOutput {
 		this._pGetFoundryForm().then(it => dropData = it);
 	}
 
-	async _pDoSendToFoundry ({isTemp}) {
+	async _pDoSendToFoundry ({isTemp} = {}) {
 		const toSend = await this._pGetFoundryForm();
 		if (isTemp) toSend.isTemp = isTemp;
 		if (toSend.currency || toSend.entityInfos) return ExtensionUtil.pDoSend({type: "5etools.lootgen.loot", data: toSend});
 		JqueryUtil.doToast({content: `Nothing to send!`, type: "warning"});
+	}
+
+	async _pDoSaveAsJson () {
+		const serialized = await this._pGetFoundryForm();
+		await DataUtil.userDownload("loot", serialized);
 	}
 
 	async _pGetFoundryForm () {

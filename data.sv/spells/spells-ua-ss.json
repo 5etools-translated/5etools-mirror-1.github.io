@@ -1,0 +1,1176 @@
+{
+	"spell": [
+		{
+			"name": "Cause Fear (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du väcker känslan av dödlighet hos en varelse som du kan se inom räckhåll. Målet måste lyckas med ett räddningskast i Visdom eller bli {@condition frightened} för varaktigheten. Ett mål med 25 träffpunkter eller färre gör räddningskastet med nackdel. Besvärjelsen har ingen effekt på konstruktioner eller odöda."
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Ceremony (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "25 gp worth of powdered silver",
+					"cost": 2500
+				}
+			},
+			"duration": [
+				{
+					"type": "instant",
+					"condition": "see text"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Du utför en av flera religiösa ceremonier. När du uttalar besvärjelsen väljer du en av följande ceremonier, vars mål måste vara inom tre meter från dig under hela besvärjelsen.",
+				{
+					"type": "entries",
+					"name": "Atonement",
+					"entries": [
+						"Du rör vid en villig varelse vars inriktning har ändrats och du gör en DC 20 Visdomskontroll ({@skill Insight}). Om du lyckas återställer du målet till dess ursprungliga inriktning."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Bless Water",
+					"entries": [
+						"Du rör vid ett {@item vial|phb} vatten och får det att bli {@item Holy Water (flask)|phb|holy water}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Coming of Age",
+					"entries": [
+						"Du rör vid en humanoid som är tillräckligt gammal för att vara en ung vuxen. Under de kommande 24 timmarna kan målet, närhelst det gör en förmågekontroll, kasta en {@dice d4} och lägga till antalet som kastats till förmågekontrollen. En varelse kan dra nytta av den här ceremonin bara en gång."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dedication",
+					"entries": [
+						"Du rör vid en humanoid som vill konvertera till din religion eller som vill bli hängiven din gud. Under de kommande 24 timmarna kan målet, närhelst det gör ett räddningskast, kasta en {@dice d4} och lägga till antalet som kastats till räddningen. En varelse kan dra nytta av denna ceremoni endast en gång."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Funeral Rite",
+					"entries": [
+						"Du välsignar ett lik inom en radie av 1,5 meter. Under de kommande 24 timmarna kan målet inte bli odödligt på något sätt förutom genom en {@spell wish} besvärjelse."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Investiture",
+					"entries": [
+						"Du rör vid en villig humanoid. Välj en trollformel på 1:a nivån som du har förberett och förbruka en trollformelplats och alla materiella komponenter som om du kastade den trollformeln. Besvärjelsen har ingen effekt. Istället kan målet kasta denna besvärjelse en gång utan att behöva förbruka en trollformelplats eller använda materiella komponenter. Om målet inte kastar besvärjelsen inom 1 timme går den investerade besvärjelsen förlorad."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Marriage",
+					"entries": [
+						"Du rör vid vuxna humanoider som är villiga att gifta sig med varandra. Under de kommande 24 timmarna får varje mål en +2 bonus på AC och räddningskast när de befinner sig inom 30 fot från varandra. En varelse kan dra nytta av den här ceremonin bara en gång."
+					]
+				}
+			],
+			"affectsCreatureType": [
+				"humanoid"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Chaos Bolt (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du kastar en böljande och sjungande massa kaotisk energi mot en varelse inom räckhåll. Gör en trollformelattack på distans mot målet. Vid en träff tar målet {@damage 2d8} skada. Välj en av de {@dice d8}s. Siffran som den kastade bestämmer typen av skada, enligt nedan.",
+				{
+					"type": "table",
+					"caption": "Chaos Bolt",
+					"colLabels": [
+						"{@dice d8}",
+						"Damage Type"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"Acid"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								}
+							},
+							"Cold"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 3
+								}
+							},
+							"Fire"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 4
+								}
+							},
+							"Kraft"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Blixtnedslag"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Gift"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 7
+								}
+							},
+							"Psykisk"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 8
+								}
+							},
+							"Thunder"
+						]
+					]
+				},
+				"Om du får samma siffra på båda {@dice d8} hoppar den kaotiska energin från målet till en annan varelse som du väljer inom 30 fot från det. Gör en ny attackrulle mot det nya målet och gör en ny skaderulle, vilket kan få den kaotiska energin att hoppa igen. En varelse kan bara bli måltavla en gång för denna massa kaotisk energi."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spellplats på andra nivån eller högre, tar varje mål extra skada av den typ som kastats. Den extra skadan är lika med {@scaledamage 2d8|1-9|1d6} för varje slotnivå över 1:a."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"force",
+				"lightning",
+				"poison",
+				"psychic",
+				"thunder"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Guiding Hand (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Du skapar en Tiny hand av skimrande ljus i ett obebott utrymme som du kan se inom räckhåll. Handen existerar under hela tiden, men den försvinner om du teleporterar dig eller om du reser till ett annat existensplan.",
+				"När handen dyker upp nämner du ett viktigt landmärke, t.ex. en stad, ett berg, ett slott eller ett slagfält på samma existensplan som du. Någon i historien måste ha besökt platsen och kartlagt den. Om landmärket inte finns på någon karta som existerar misslyckas förtrollningen. Annars, närhelst du rör dig mot handen, rör den sig bort från dig med samma hastighet som du rörde dig, och den rör sig i riktningen av landmärket, och förblir alltid 5 fot från dig.",
+				"Om du inte rör dig mot handen förblir den på plats tills du gör det och vinkar till dig att följa efter en gång var {@dice 1d4} minut."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Hand of Radiance (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du höjer din hand, och brinnande strålning utgår från den. Varje varelse av ditt val som du kan se inom en radie på 1,5 meter måste lyckas med ett räddningskast i konstitutionen eller ta {@damage 1d6} strålningsskada.",
+				"Besvärjelsens skada ökar med {@dice 1d6} när du når 5:e nivån ({@damage 2d6}), 11:e nivån ({@damage 3d6}) och 17:e nivån ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "radiant damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"radiant"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Healing Elixir (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "alchemist's supplies"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"Du skapar ett helande elixir i en enkel flaska som dyker upp i din hand. Elixiret behåller sin styrka under hela tiden eller tills det är förbrukat, då flaskan försvinner.",
+				"Som en handling kan en varelse dricka elixiret eller ge det till en annan varelse. Den som dricker får tillbaka {@dice 2d4 + 2} träffpunkter."
+			],
+			"miscTags": [
+				"HL"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Infestation (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a living flea"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du får kvalster, loppor och andra parasiter att tillfälligt dyka upp på en varelse som du kan se inom räckhåll. Målet måste lyckas med ett räddningskast i konstitutionen eller ta {@damage 1d6} stickande skada. Om målet tar någon av den skadan rör sig målet 5 fot i en slumpmässig riktning. Slå en {@dice d8} för riktningen: 1, norr; 2, nordost; 3, öst; 4, sydost; 5, syd; 6, sydväst; 7, väst; eller 8, nordväst.",
+				"Besvärjelsens skada ökar med {@dice 1d6} när du når 5:e nivån ({@damage 2d6}), 11:e nivån ({@damage 3d6}) och 17:e nivån ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "piercing damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"piercing"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Primal Savagery (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Dina tänder och naglar blir längre och vassare. Du väljer själv vilket. Gör en närkampsbesvärjelseattack mot en varelse inom en halvmeter från dig. Vid en träff får målet {@damage 1d10} piercing eller slashing damage (ditt val). Efter att du gjort attacken återgår dina tänder eller naglar till det normala.",
+				"Besvärjelsens skada ökar med {@dice 1d10} när du når 5:e nivån ({@damage 2d10}), 11:e nivån ({@damage 3d10}) och 17:e nivån ({@damage 4d10})."
+			],
+			"scalingLevelDice": {
+				"label": "piercing damage",
+				"scaling": {
+					"1": "1d10",
+					"5": "2d10",
+					"11": "3d10",
+					"17": "4d10"
+				}
+			},
+			"damageInflict": [
+				"piercing",
+				"slashing"
+			],
+			"spellAttack": [
+				"M"
+			],
+			"miscTags": [
+				"SCL"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Puppet (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Din gest tvingar en humanoid som du kan se inom räckhåll att göra ett räddningskast för att rädda sin konstitution. Vid ett misslyckat räddningsförsök måste målet röra sig upp till sin hastighet i en riktning som du väljer. Dessutom kan du få målet att släppa det som det håller i handen. Den här besvärjelsen har ingen effekt på en humanoid som är immun mot att vara {@condition charmed}."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"affectsCreatureType": [
+				"aberration",
+				"beast",
+				"celestial",
+				"construct",
+				"dragon",
+				"elemental",
+				"fey",
+				"fiend",
+				"giant",
+				"monstrosity",
+				"ooze",
+				"plant",
+				"undead"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sense Emotion (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du ställer in dina sinnen så att du kan uppfatta andras känslor under hela tiden. När du kastar besvärjelsen, och som din åtgärd i varje tur tills besvärjelsen upphör, kan du fokusera dina sinnen på en humanoid som du kan se inom 30 fot från dig. Du får omedelbart reda på målets rådande känsla, oavsett om det är kärlek, ilska, smärta, rädsla, lugn eller något annat. Om målet faktiskt inte är humanoid eller om det är immunt mot att vara det {@condition charmed}, känner du att det är lugnt."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Snare (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "30 feet of cord or rope, which is consumed by the spell",
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "permanent",
+					"ends": [
+						"dispel",
+						"trigger"
+					]
+				}
+			],
+			"entries": [
+				"Medan du uttalar den här besvärjelsen använder du sladden eller repet för att skapa en cirkel med en radie på 5 fot på en plan yta inom din räckvidd. När du avslutar din trollformel försvinner snöret eller repet och blir en magisk fälla.",
+				"Fällan är nästan osynlig och kräver en lyckad intelligenskontroll ({@skill Investigation}) mot din spellednings räddning DC för att hittas. Fällan utlöses när en liten varelse eller större rör sig i det område som skyddas av förtrollningen.",
+				"Den utlösande varelsen måste lyckas med ett räddningskast eller falla {@condition prone} och hissas upp i luften tills den hänger upp och ner en meter över den skyddade ytan, där den är {@condition restrained}.",
+				"{@condition restrained} varelsen kan göra ett räddningskast i Dexterity med nackdel i slutet av var och en av sina turer och avslutar {@condition restrained} effekten om den lyckas. Alternativt kan en annan varelse som kan nå den {@condition restrained} varelsen använda en handling för att göra en intelligenskontroll ({@skill Arcana}) mot din trollformels räddning DC. Vid en framgång upphör också {@condition restrained}-effekten."
+			],
+			"conditionInflict": [
+				"prone",
+				"restrained"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"abilityCheck": [
+				"intelligence"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sudden Awakening (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Varje sovande varelse du väljer inom räckvidd vaknar, och sedan kan varje {@condition prone} varelse inom räckvidd resa sig upp utan att behöva förflytta sig."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Toll the Dead (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 0,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du pekar på en varelse som du kan se inom räckhåll, och ljudet av en doldisig klocka fyller luften runt omkring den för ett ögonblick. Målet måste lyckas med ett räddningskast i Visdom eller ta {@damage 1d8} nekrotisk skada. Om målet saknar någon av sina träffpunkter tar det istället {@damage 1d12} nekrotisk skada.",
+				"Besvärjelsens skada ökar med en tärning när du når 5:e nivån ({@damage 2d8} eller {@damage 2d12}), 11:e nivån ({@damage 3d8} eller {@damage 3d12}) och 17:e nivån ({@damage 4d8} eller {@damage 4d12})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "necrotic damage",
+					"scaling": {
+						"1": "1d8",
+						"5": "2d8",
+						"11": "3d8",
+						"17": "4d8"
+					}
+				},
+				{
+					"label": "necrotic damage to wounded creature",
+					"scaling": {
+						"1": "1d12",
+						"5": "2d12",
+						"11": "3d12",
+						"17": "4d12"
+					}
+				}
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Unearthly Chorus (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Musik av en stil du väljer fyller luften runt dig i en radie på 30 fot. Musiken sprider sig runt hörn och kan höras på upp till 30 meters avstånd. Musiken rör sig med dig och är centrerad på dig under hela tiden.",
+				"Tills förtrollningen upphör gör du Charisma ({@skill Performance})-kontroller med fördel. Dessutom kan du använda en bonusåtgärd på var och en av dina turer för att bedåra en varelse du väljer inom 30 fot från dig som kan se dig och höra musiken. Varelsen måste göra ett räddningskast med Charisma. Om du eller dina följeslagare attackerar den lyckas varelsen automatiskt på räddningskastet. Vid ett misslyckande blir varelsen vänskaplig mot dig så länge den kan höra musiken och i 1 timme därefter. Du gör Charisma ({@skill Deception})-kontroller och Charisma ({@skill Persuasion})-kontroller mot varelser som blivit vänskapliga av denna besvärjelse med fördel."
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Virtue (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 0,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Du rör vid en varelse och ger den livskraft. Om målet har minst 1 träffpunkt får det ett antal tillfälliga träffpunkter som är lika med {@dice 1d4} + din modulerande förmåga till trollkonst. De tillfälliga träffpunkterna förloras när förtrollningen upphör."
+			],
+			"miscTags": [
+				"THP"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Wild Cunning (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Du ropar på naturens andar för att få hjälp. När du kastar den här besvärjelsen kan du välja en av följande effekter:",
+				{
+					"type": "list",
+					"items": [
+						"Om det finns spår på marken inom räckhåll vet du var de finns, och du kan göra Visdomskontroller ({@skill Survival}) för att följa dessa spår med fördel i 1 timme eller tills du kastar den här besvärjelsen igen.",
+						"Om det finns ätbart foder inom räckhåll vet du var det finns och var du kan hitta det.",
+						"Om det finns rent dricksvatten inom räckhåll vet du var det finns och var du kan hitta det.",
+						"Om det finns ett lämpligt skydd för dig och dina följeslagare med räckvidd vet du var det finns och var du kan hitta det.",
+						"Skicka andarna att hämta ved till en eld och att upprätta en lägerplats i området med hjälp av dina förnödenheter. Andarna gör upp elden i en cirkel av stenar, sätter upp tält, rullar ut sängkläder och ställer fram eventuella ransoner och vatten för konsumtion.",
+						"Låt andarna omedelbart bryta ner en lägerplats, vilket innebär att släcka en eld, ta ner tält, packa ihop väskor och gräva ner allt skräp."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Zephyr Strike (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du rör dig som vinden. Under hela tiden ger din rörelse inte upphov till möjlighet till attacker.",
+				"Dessutom, första gången du gör en vapenattack på din tur innan förtrollningen slutar, gör du attackkastet med fördel och din hastighet ökar med 30 fot fram till slutet av den vändan."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

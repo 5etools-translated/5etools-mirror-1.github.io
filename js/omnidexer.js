@@ -848,7 +848,7 @@ class IndexableFileQuickReference extends IndexableFile {
 		this._walker = MiscUtil.getWalker();
 	}
 
-	static getChapterNameMetas (it) {
+	static getChapterNameMetas (it, {isRequireQuickrefFlag = true} = {}) {
 		const trackedNames = [];
 		const renderer = Renderer.get().setDepthTracker(trackedNames);
 		renderer.render(it);
@@ -863,6 +863,8 @@ class IndexableFileQuickReference extends IndexableFile {
 
 		return trackedNames
 			.filter(it => {
+				if (!isRequireQuickrefFlag) return true;
+
 				if (!it.data) return false;
 				return it.data.quickref != null || it.data.quickrefIndex;
 			});

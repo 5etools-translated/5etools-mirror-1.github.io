@@ -29,6 +29,8 @@ supported_languages = {
 	'it': 'it-IT',
 	'ru': 'ru-RU',
 	'zh': 'zh-ZH',
+	'pl': 'pl-PL',
+	'sv': 'sv-SV',
 }
 
 todoCharCounter = 0

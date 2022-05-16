@@ -1,0 +1,3531 @@
+{
+	"_meta": {
+		"dependencies": {
+			"subclass": [
+				"generic"
+			]
+		}
+	},
+	"class": [
+		{
+			"name": "Bard",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"dex",
+				"cha"
+			],
+			"spellcastingAbility": "cha",
+			"casterProgression": "full",
+			"cantripProgression": [
+				2,
+				2,
+				2,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4
+			],
+			"spellsKnownProgression": [
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				14,
+				15,
+				15,
+				16,
+				18,
+				19,
+				19,
+				20,
+				22,
+				22,
+				22
+			],
+			"additionalSpells": [
+				{
+					"name": "Magical Secrets",
+					"known": {
+						"10": [
+							{
+								"choose": "level=0;1;2;3;4;5"
+							},
+							{
+								"choose": "level=0;1;2;3;4;5"
+							}
+						],
+						"14": [
+							{
+								"choose": "level=0;1;2;3;4;5;6;7"
+							},
+							{
+								"choose": "level=0;1;2;3;4;5;6;7"
+							}
+						],
+						"18": [
+							{
+								"choose": ""
+							},
+							{
+								"choose": ""
+							}
+						]
+					}
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple",
+					"{@item hand crossbow|phb|hand crossbows}",
+					"{@item longsword|phb|longswords}",
+					"{@item rapier|phb|rapiers}",
+					"{@item shortsword|phb|shortswords}"
+				],
+				"tools": [
+					"three {@item musical instrument|PHB|musical instruments} of your choice"
+				],
+				"skills": [
+					{
+						"any": 3
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item rapier|phb}, (b) a {@item longsword|phb}, or (c) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item diplomat's pack|phb} or (b) an {@item entertainer's pack|phb}",
+					"(a) a {@item lute|phb} or (b) any other {@filter musical instrument|items|miscellaneous=mundane|type=instrument}",
+					"{@item Leather armor|phb}, and a {@item dagger|phb}"
+				],
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"rapier|phb"
+						],
+						"b": [
+							"longsword|phb"
+						],
+						"c": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"diplomat's pack|phb"
+						],
+						"b": [
+							"entertainer's pack|phb"
+						]
+					},
+					{
+						"a": [
+							"lute|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "instrumentMusical"
+							}
+						]
+					},
+					{
+						"_": [
+							"Leather armor|phb",
+							"dagger|phb"
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"cha": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light"
+					],
+					"skills": [
+						{
+							"choose": {
+								"from": [
+									"athletics",
+									"acrobatics",
+									"sleight of hand",
+									"stealth",
+									"arcana",
+									"history",
+									"investigation",
+									"nature",
+									"religion",
+									"animal handling",
+									"insight",
+									"medicine",
+									"perception",
+									"survival",
+									"deception",
+									"intimidation",
+									"performance",
+									"persuasion"
+								],
+								"count": 1
+							}
+						}
+					],
+					"tools": [
+						"one {@item musical instrument|PHB} of your choice"
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"{@filter Cantrips Known|spells|level=0|class=bard}",
+						"{@filter Spells Known|spells|class=bard}"
+					],
+					"rows": [
+						[
+							2,
+							4
+						],
+						[
+							2,
+							5
+						],
+						[
+							2,
+							6
+						],
+						[
+							3,
+							7
+						],
+						[
+							3,
+							8
+						],
+						[
+							3,
+							9
+						],
+						[
+							3,
+							10
+						],
+						[
+							3,
+							11
+						],
+						[
+							3,
+							12
+						],
+						[
+							4,
+							14
+						],
+						[
+							4,
+							15
+						],
+						[
+							4,
+							15
+						],
+						[
+							4,
+							16
+						],
+						[
+							4,
+							18
+						],
+						[
+							4,
+							19
+						],
+						[
+							4,
+							19
+						],
+						[
+							4,
+							20
+						],
+						[
+							4,
+							22
+						],
+						[
+							4,
+							22
+						],
+						[
+							4,
+							22
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=bard}",
+						"{@filter 2nd|spells|level=2|class=bard}",
+						"{@filter 3rd|spells|level=3|class=bard}",
+						"{@filter 4th|spells|level=4|class=bard}",
+						"{@filter 5th|spells|level=5|class=bard}",
+						"{@filter 6th|spells|level=6|class=bard}",
+						"{@filter 7th|spells|level=7|class=bard}",
+						"{@filter 8th|spells|level=8|class=bard}",
+						"{@filter 9th|spells|level=9|class=bard}"
+					],
+					"rowsSpellProgression": [
+						[
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							2,
+							1,
+							1
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Bardic Inspiration|Bard||1",
+				"Magical Inspiration|Bard||1|UAClassFeatureVariants",
+				"Spellcasting|Bard||1",
+				"Spell Versatility|Bard||1|UAClassFeatureVariants",
+				"Jack of All Trades|Bard||2",
+				"Song of Rest (d6)|Bard||2",
+				"Magical Inspiration|Bard||2|TCE",
+				{
+					"classFeature": "Bard College|Bard||3",
+					"gainSubclassFeature": true
+				},
+				"Expertise|Bard||3",
+				"Ability Score Improvement|Bard||4",
+				"Proficiency Versatility|Bard||4|UAClassFeatureVariants",
+				"Bardic Versatility|Bard||4|TCE",
+				"Bardic Inspiration (d8)|Bard||5",
+				"Font of Inspiration|Bard||5",
+				"Countercharm|Bard||6",
+				{
+					"classFeature": "Bard College feature|Bard||6",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Bard||8",
+				"Proficiency Versatility|Bard||8|UAClassFeatureVariants",
+				"Song of Rest (d8)|Bard||9",
+				"Bardic Inspiration (d10)|Bard||10",
+				"Expertise|Bard||10",
+				"Magical Secrets|Bard||10",
+				"Ability Score Improvement|Bard||12",
+				"Proficiency Versatility|Bard||12|UAClassFeatureVariants",
+				"Song of Rest (d10)|Bard||13",
+				"Magical Secrets|Bard||14",
+				{
+					"classFeature": "Bard College feature|Bard||14",
+					"gainSubclassFeature": true
+				},
+				"Bardic Inspiration (d12)|Bard||15",
+				"Ability Score Improvement|Bard||16",
+				"Proficiency Versatility|Bard||16|UAClassFeatureVariants",
+				"Song of Rest (d12)|Bard||17",
+				"Magical Secrets|Bard||18",
+				"Ability Score Improvement|Bard||19",
+				"Proficiency Versatility|Bard||19|UAClassFeatureVariants",
+				"Superior Inspiration|Bard||20"
+			],
+			"subclassTitle": "Bard College",
+			"fluff": [
+				{
+					"name": "Bard",
+					"type": "section",
+					"entries": [
+						"När hon nynnar medan hon följer sina fingrar över ett gammalt monument i en sedan länge bortglömd ruin, finner en halvälv i robust läder kunskap som sprungit in i hennes sinne, framkallad av magin i hennes sång - kunskap om de människor som byggde monumentet och den mytiska saga som det skildrar.",
+						"En sträng mänsklig krigare slår sitt svärd rytmiskt mot sin sköldpansarväst och sätter tempot för sin krigssång och uppmanar sina kamrater till mod och hjältemod. Magin i hans sång stärker och uppmuntrar dem.",
+						"En gnom skrattar medan hon stämmer sin cittern och väver sin subtila magi över de samlade adelsmännen, för att se till att hennes följeslagares ord kommer att tas emot väl.",
+						"Vare sig du är lärd, skald eller skurk, väver en bard magi genom ord och musik för att inspirera allierade, demoralisera fiender, manipulera sinnen, skapa illusioner och till och med läka sår.",
+						{
+							"type": "entries",
+							"name": "Music and Magic",
+							"entries": [
+								"I D&D:s världar är ord och musik inte bara vibrationer av luft, utan även röstlägen med egen kraft. Barden är en mästare på sång, tal och den magi de innehåller. Barder säger att multiversum talades in i existens, att gudarnas ord gav det form, och att ekon av dessa primordiala Skapelsens ord fortfarande ljuder i hela kosmos. Barderns musik är ett försök att fånga och utnyttja dessa ekon, subtilt invävda i deras trollformler och krafter.",
+								"Bardens största styrka är deras mångsidighet. Många barder föredrar att hålla sig vid sidan om i strid, och använder sin magi för att inspirera sina allierade och hindra sina fiender på avstånd. Men barder kan försvara sig i närstrid om det behövs och använda sin magi för att förstärka sina svärd och rustningar. Deras trollformler lutar åt charm och illusioner snarare än uppenbart destruktiva trollformler. De har en bred kunskap om många ämnen och en naturlig begåvning som gör att de kan göra nästan vad som helst bra. Barder blir mästare i de talanger de vill fullända, från musikaliska framträdanden till esoterisk kunskap."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Learning from Experience",
+							"entries": [
+								"Äkta barder är inte vanliga i världen. Det är inte alla hantverkare som sjunger på en krog eller alla narr som går runt vid ett kungligt hov som är barder. För att upptäcka den magi som finns gömd i musiken krävs hårda studier och ett visst mått av naturlig talang som de flesta trubadurer och jonglörer saknar. Det kan dock vara svårt att se skillnaden mellan dessa artister och riktiga barder. En bards liv går ut på att vandra runt i landet och samla in kunskap, berätta historier och leva på publikens tacksamhet, precis som alla andra underhållare. Men djup kunskap, musikalisk skicklighet och en gnutta magi skiljer barderna från sina medmänniskor.",
+								"Det är sällan som barder stannar länge på en plats, och deras naturliga önskan att resa - att hitta nya historier att berätta, nya färdigheter att lära sig och nya upptäckter bortom horisonten - gör att en karriär som äventyrare är en naturlig kallelse. Varje äventyr är ett tillfälle att lära sig, öva på en mängd olika färdigheter, gå in i sedan länge bortglömda gravar, upptäcka förlorade magiska verk, dechiffrera gamla tomer, resa till främmande platser eller möta exotiska varelser. Barder älskar att följa med hjältar för att bevittna deras gärningar på nära håll. En bard som kan berätta en imponerande historia från personlig erfarenhet vinner berömmelse bland andra bardar. Efter att ha berättat så många historier om hjältar som utfört mäktiga gärningar tar många barder dessa teman till hjärtat och antar själva hjälteroller."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Bard",
+							"entries": [
+								"Barder trivs med berättelser, oavsett om de är sanna eller inte. Din karaktärs bakgrund och motivation är inte lika viktig som de historier som han eller hon berättar om dem. Kanske hade du en trygg och vardaglig barndom. Det finns ingen bra historia att berätta om det, så du kanske målar upp dig själv som en föräldralös uppväxt av en hagga i ett dystert träsk. Eller så kanske din barndom är värd en berättelse. Vissa barder får sin magiska musik på extraordinära sätt, inklusive inspiration från feer eller andra övernaturliga varelser.",
+								"Var du lärling, studerade du under en mästare och följde den mer erfarne barden tills du var redo att börja arbeta på egen hand? Eller gick du på en högskola där du studerade bardiska läror och övade din musikaliska magi? Kanske var du en ung rymling eller föräldralös och blev vän med en vandrande bard som blev din mentor. Eller så var du ett bortskämt adelsbarn som fick handledning av en mästare. Kanske råkade du hamna i klorna på en häxa och gjorde en affär för att få en musikalisk gåva utöver ditt liv och din frihet, men till vilket pris?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Du kan göra en bard snabbt genom att följa de här förslagen. För det första bör du ha Charisma som högsta egenskapspoäng, följt av Dexterity. För det andra ska du välja {@background entertainer} bakgrund. För det tredje, välj {@spell dancing lights} och {@spell vicious mockery} cantrips, tillsammans med följande trollformler på första nivån: {@spell charm person}, {@spell detect magic}, {@spell healing word} och {@spell thunderwave}."
+									]
+								}
+							]
+						}
+					],
+					"source": "PHB",
+					"page": 51
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"Musiken är frukten av det gudomliga trädet som vibrerar med skapelsens ord. Men frågan jag ställer till dig är: kan en bard gå till roten av detta träd? Kan man koppla sig till källan till denna kraft? Ah, vilken musik de skulle kunna ge denna värld!"
+							],
+							"by": "Fletcher Danairia, master bard"
+						},
+						"Barder ger lättsamhet i allvarliga tider, de ger visdom för att kompensera okunskap och de får det löjliga att verka sublimt. Barder är bevarare av forntida historia, deras sånger och berättelser förvarar minnet av stora händelser genom tiderna - kunskap som är så viktig att den memoreras och förs vidare som muntlig historia, för att överleva även när det inte finns några skriftliga dokument kvar.",
+						"Det är också bardens roll att berätta om mindre och mer samtida händelser - historierna om dagens hjältar, inklusive deras tapperhetsinsatser och deras mindre imponerande misslyckanden.",
+						"Naturligtvis finns det många människor i världen som kan sjunga en melodi eller berätta en bra historia, och det finns mycket mer för en äventyrande bard än en smidig tunga och en melodisk röst. Men det som verkligen skiljer barderna från andra - och från varandra - är stilen och innehållet i deras framträdanden.",
+						"För att fånga och behålla publikens uppmärksamhet är barder vanligtvis flamboyanta och utåtriktade när de uppträder. De mest kända av dem är i princip D&D-världens motsvarighet till popstjärnor. Om du spelar en bard kan du överväga att använda en av dina favoritmusiker som förebild för din karaktär.",
+						"Du kan lägga till några unika aspekter till din bard-karaktär genom att ta hänsyn till förslagen nedan.",
+						{
+							"type": "entries",
+							"name": "Defining Work",
+							"entries": [
+								"Varje framgångsrik bard är känd för minst ett verk, vanligtvis en sång eller dikt som är populär hos alla som hör den. Dessa föreställningar är omtalade i åratal av dem som ser dem, och vissa åskådare har fått sina liv förändrade för alltid på grund av upplevelsen.",
+								"Om din karaktär precis har börjat, ligger ditt slutgiltiga avgörande arbete troligen i framtiden. Men om du ska kunna försörja dig på ditt yrke är det troligt att du redan har ett eller två verk i din repertoar som har visat sig vara populära hos publiken.",
+								{
+									"type": "table",
+									"caption": "Defining Work",
+									"colLabels": [
+										"{@dice d6}",
+										"Defining Work"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"\"The Three Flambinis\", en skämtsam sång om förväxlade identiteter och obegränsad åtrå."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"\"Waltz of the Myconids\", en glad melodi som särskilt barn tycker om."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"\"Asmodeus's Golden Arse\", en dramatisk dikt som enligt dig inspirerades av ditt personliga besök på Avernus."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"\"The Pirates of Luskan\", din förstahandsberättelse om hur du som barn blev kidnappad av sjörövare."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"\"A Hoop, Two Pigeons, and a Hell Hound\", en subtil parodi på en inkompetent adelsman."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"\"A Fool in the Abyss\", en komisk dikt om en narrs resor bland demoner."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Instrument",
+							"entries": [
+								"I en bardes strävan efter det ultimata framträdandet och den högsta hyllningen är ens instrument minst lika viktigt som ens röstförmåga. Instrumentets tillverkningskvalitet är naturligtvis en kritisk faktor; de bästa gör den bästa musiken, och vissa barder är ständigt på jakt efter en förbättring. Kanske lika viktigt är dock instrumentets eget underhållningsvärde; de som är bisarrt konstruerade eller tillverkade av exotiska material lämnar sannolikt ett bestående intryck på en publik.",
+								"Du kanske har ett instrument som du inte har råd med för tillfället, kanske för att det är det enda du har råd med just nu. Eller om du fick ditt första instrument i gåva kan det vara av ett mer genomarbetat slag. Är du nöjd med det instrument du har, eller vill du ersätta det med något riktigt speciellt?",
+								{
+									"type": "table",
+									"caption": "Instrument",
+									"colLabels": [
+										"{@dice d6}",
+										"Instrument"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"En mästerligt tillverkad halvlingfiol"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"En mithral {@item horn|PHB} tillverkad av alver."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"En cittra tillverkad av drow spindelsilke"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"En orcish {@item drum|PHB}"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"En box av trä för att få en bullywug att kråka."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"En harpa av gnomisk design"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Embarrassment",
+							"entries": [
+								"Nästan alla barder har haft minst en dålig erfarenhet av att stå inför publik, och du är förmodligen inget undantag. Ingen blir trots allt berömd på en gång; kanske hade du några små svårigheter tidigt i din karriär, eller så tog det dig ett tag att återställa ditt rykte efter en plågsam natt då ödet konspirerade till din teatrala ruin.",
+								"Det finns lika många olika sätt som fisken i havet att gå fel i en föreställning. Men oavsett vilken typ av katastrof som kan inträffa har en bard modet och självförtroendet att återhämta sig från det - antingen genom att fortsätta med föreställningen (om det är möjligt) eller genom att lova att komma tillbaka i morgon med en ny föreställning som garanterat kommer att glädja alla.",
+								{
+									"type": "table",
+									"caption": "Embarrassment",
+									"colLabels": [
+										"{@dice d6}",
+										"Embarrassment"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"När din komiska sång \"Big Tom's Hijinks\" - som du förresten tyckte var briljant - inte gick hem hos Big Tom."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Matinéföreställningen när cirkusens ugglebjörn släppte lös och skrämde publiken."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"När er öppningssång var er entusiastiska men allmänt hatade tolkning av \"Song of the Froghemoth\"."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Den första och sista offentliga föreställningen av \"Mirt, Man about Town\"."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"När din peruk fattade eld på scenen och du kastade ner den - vilket satte eld på scenen."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"När du satt på din {@item lute|PHB} av misstag under sista strofen av \"Starlight Serenade\"."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "A Bard's Muse",
+							"entries": [
+								"Naturligtvis har varje bard en repertoar av sånger och berättelser. Vissa barder är generalister som kan använda sig av ett brett spektrum av ämnen för varje framträdande och som är stolta över sin mångsidighet. Andra har ett mer personligt förhållningssätt till sin konst, som drivs av deras anknytning till en musa - ett särskilt koncept som inspirerar mycket av det som dessa barder gör framför en publik.",
+								"En bard som följer en musa gör det i allmänhet för att få en djupare förståelse för vad musan representerar och hur man bäst förmedlar den förståelsen till andra genom att uppträda.",
+								"Om din bard-karaktär har en musa kan det vara en av de tre som beskrivs här, eller en musa som du själv hittar på.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Nature",
+											"entries": [
+												"Du känner dig nära besläktad med naturen, och dess skönhet och mystik inspirerar dig. För dig är ett träd djupt symboliskt, dess rötter gräver ner i det mörka okända för att hämta fram jordens kraft, medan dess grenar sträcker sig mot solen för att ge näring åt blommor och frukter. Naturen är det urgamla vittnet som har sett varje rike stiga och falla, även de vars namn har glömts bort och väntar på att återupptäckas. Naturens gudar delar med sig av sina hemligheter till druider och vise, och öppnar deras hjärtan och sinnen för nya sätt att se, och precis som med dessa individer finner du att din kreativitet blommar upp medan du vandrar på ett öppet fält med viftande gräs eller går i tyst vördnad genom en dunge med gamla ekar."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Love",
+											"entries": [
+												"Du är på jakt efter den sanna kärlekens väsen. Även om du inte föraktar den ytliga kärleken av kött och form, är det den djupare formen av kärlek som kan inspirera tusentals människor eller ge glädje i varje ögonblick som du är intresserad av. Kärlek av det här slaget tar sig många uttryck, och du kan se dess närvaro överallt - från gnistret i en vacker ädelsten till sången från en enkel fiskare som tackar havet för dess överflöd. Du är på spåren av kärleken, den mest värdefulla och mystiska av alla känslor, och ditt sökande fyller dina berättelser och dina sånger med vitalitet och passion."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Conflict",
+											"entries": [
+												"Dramatik är en konflikt, och de bästa berättelserna har konflikter som ett centralt element. Från morgonens berättelse om ett krogslagsmål till ett episkt slag, från ett kärleksbråk till en spricka mellan mäktiga dynastier - konflikter är det som inspirerar berättare som du att skapa dina bästa verk. Konflikter kan få fram det bästa hos vissa människor och få deras hjältemodiga natur att lysa fram och förändra världen, men de kan också få andra att dra sig mot mörkret och falla under ondskans inflytande. Du strävar efter att uppleva eller bevittna alla former av konflikter, stora som små, för att studera denna eviga aspekt av livet och föreviga den i dina ord och din musik."
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 12
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "College of Lore",
+			"shortName": "Lore",
+			"source": "PHB",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 54,
+			"srd": true,
+			"additionalSpells": [
+				{
+					"name": "Additional Magical Secrets",
+					"known": {
+						"6": [
+							{
+								"choose": "level=0;1;2;3"
+							},
+							{
+								"choose": "level=0;1;2;3"
+							}
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"College of Lore|Bard||Lore||3",
+				"Additional Magical Secrets|Bard||Lore||6",
+				"Peerless Skill|Bard||Lore||14"
+			]
+		},
+		{
+			"name": "College of Valor",
+			"shortName": "Valor",
+			"source": "PHB",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 55,
+			"subclassFeatures": [
+				"College of Valor|Bard||Valor||3",
+				"Extra Attack|Bard||Valor||6",
+				"Battle Magic|Bard||Valor||14"
+			]
+		},
+		{
+			"name": "College of Satire (UA)",
+			"shortName": "Satire (UA)",
+			"source": "UAKitsOfOld",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 2,
+			"subclassFeatures": [
+				"College of Satire|Bard||Satire (UA)|UAKitsOfOld|3",
+				"Fool's Insight|Bard||Satire (UA)|UAKitsOfOld|6",
+				"Fool's Luck|Bard||Satire (UA)|UAKitsOfOld|14"
+			]
+		},
+		{
+			"name": "College of Swords (UA)",
+			"shortName": "Swords (UA)",
+			"source": "UAKitsOfOld",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Swords|Bard||Swords (UA)|UAKitsOfOld|3",
+				"Extra Attack|Bard||Swords (UA)|UAKitsOfOld|6",
+				"Battle Magic|Bard||Swords (UA)|UAKitsOfOld|14"
+			]
+		},
+		{
+			"name": "College of Glamour (UA)",
+			"shortName": "Glamour (UA)",
+			"source": "UABardBardColleges",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Glamour|Bard||Glamour (UA)|UABardBardColleges|3",
+				"Mantle of Majesty|Bard||Glamour (UA)|UABardBardColleges|6",
+				"Mantle of Majesty|Bard||Glamour (UA)|UABardBardColleges|14"
+			]
+		},
+		{
+			"name": "College of Whispers (UA)",
+			"shortName": "Whispers (UA)",
+			"source": "UABardBardColleges",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Whispers|Bard||Whispers (UA)|UABardBardColleges|3",
+				"Mantle of Whispers|Bard||Whispers (UA)|UABardBardColleges|6",
+				"Shadow Lore|Bard||Whispers (UA)|UABardBardColleges|14"
+			]
+		},
+		{
+			"name": "College of Swords v2 (UA)",
+			"shortName": "Swords v2 (UA)",
+			"source": "UARevisedSubclasses",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Swords v2|Bard||Swords v2 (UA)|UARevisedSubclasses|3",
+				"Cunning Flourish|Bard||Swords v2 (UA)|UARevisedSubclasses|6",
+				"Master's Flourish|Bard||Swords v2 (UA)|UARevisedSubclasses|14"
+			]
+		},
+		{
+			"name": "College of Glamour",
+			"shortName": "Glamour",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 14,
+			"additionalSpells": [
+				{
+					"innate": {
+						"6": [
+							"command"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"College of Glamour|Bard||Glamour|XGE|3",
+				"Mantle of Majesty|Bard||Glamour|XGE|6",
+				"Unbreakable Majesty|Bard||Glamour|XGE|14"
+			]
+		},
+		{
+			"name": "College of Swords",
+			"shortName": "Swords",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 15,
+			"subclassFeatures": [
+				"College of Swords|Bard||Swords|XGE|3",
+				"Extra Attack|Bard||Swords|XGE|6",
+				"Master's Flourish|Bard||Swords|XGE|14"
+			]
+		},
+		{
+			"name": "College of Whispers",
+			"shortName": "Whispers",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 16,
+			"subclassFeatures": [
+				"College of Whispers|Bard||Whispers|XGE|3",
+				"Mantle of Whispers|Bard||Whispers|XGE|6",
+				"Shadow Lore|Bard||Whispers|XGE|14"
+			]
+		},
+		{
+			"name": "College of Eloquence (UA)",
+			"shortName": "Eloquence (UA)",
+			"source": "UABardAndPaladin",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Eloquence|Bard||Eloquence (UA)|UABardAndPaladin|3",
+				"Undeniable Logic|Bard||Eloquence (UA)|UABardAndPaladin|6",
+				"Infectious Inspiration|Bard||Eloquence (UA)|UABardAndPaladin|14"
+			]
+		},
+		{
+			"name": "College of Creation (UA)",
+			"shortName": "Creation (UA)",
+			"source": "UA2020SubclassesPt2",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Creation|Bard||Creation (UA)|UA2020SubclassesPt2|3",
+				"Animating Performance|Bard||Creation (UA)|UA2020SubclassesPt2|6",
+				"Performance of Creation|Bard||Creation (UA)|UA2020SubclassesPt2|14"
+			]
+		},
+		{
+			"name": "College of Spirits (UA)",
+			"shortName": "Spirits (UA)",
+			"source": "UA2020SubclassesPt4",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Spirits|Bard||Spirits (UA)|UA2020SubclassesPt4|3",
+				"Spirit Session|Bard||Spirits (UA)|UA2020SubclassesPt4|6",
+				"Spiritual Focus|Bard||Spirits (UA)|UA2020SubclassesPt4|6",
+				"Mystical Connection|Bard||Spirits (UA)|UA2020SubclassesPt4|14"
+			]
+		},
+		{
+			"name": "College of Creation",
+			"shortName": "Creation",
+			"source": "TCE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 28,
+			"subclassFeatures": [
+				"College of Creation|Bard||Creation|TCE|3",
+				"Animating Performance|Bard||Creation|TCE|6",
+				"Creative Crescendo|Bard||Creation|TCE|14"
+			]
+		},
+		{
+			"name": "College of Eloquence",
+			"shortName": "Eloquence",
+			"source": "TCE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 29,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 28
+				}
+			],
+			"subclassFeatures": [
+				"College of Eloquence|Bard||Eloquence|TCE|3",
+				"Unfailing Inspiration|Bard||Eloquence|TCE|6",
+				"Universal Speech|Bard||Eloquence|TCE|6",
+				"Infectious Inspiration|Bard||Eloquence|TCE|14"
+			]
+		},
+		{
+			"name": "College of Spirits",
+			"shortName": "Spirits",
+			"source": "VRGR",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 28,
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"guidance#c"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"College of Spirits|Bard||Spirits|VRGR|3",
+				"Spirit Session|Bard||Spirits|VRGR|6",
+				"Mystical Connection|Bard||Spirits|VRGR|14"
+			]
+		},
+		{
+			"name": "Mage of Lorehold (UA)",
+			"shortName": "Lorehold (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Bard",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Lorehold (UA)",
+				"shortName": "Lorehold (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		},
+		{
+			"name": "Mage of Silverquill (UA)",
+			"shortName": "Silverquill (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Bard",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Silverquill (UA)",
+				"shortName": "Silverquill (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Bardic Inspiration",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Du kan inspirera andra genom medryckande ord eller musik. För att göra det använder du en bonusåtgärd på din tur för att välja en annan varelse än dig själv inom 60 fot från dig som kan höra dig. Den varelsen får en Bardic Inspiration tärning, en {@dice d6}.",
+				"En gång inom de kommande 10 minuterna kan varelsen kasta tärningen och lägga till det antal som kastats till en förmågekontroll, ett anfallskast eller ett räddningskast som den gör. Varelsen kan vänta tills efter att den kastat {@dice d20} innan den bestämmer sig för att använda tärningen Bardic Inspiration, men måste bestämma sig innan DM säger om kastet lyckas eller misslyckas. När väl Bardic Inspiration-tärningen har kastats är den förlorad. En varelse kan bara ha en Bardic Inspiration tärning åt gången.",
+				"Du kan använda den här funktionen ett antal gånger som är lika med din Charisma-modifierare (minst en gång). Du återfår alla förbrukade användningar när du avslutar en lång vila.",
+				"Din Bardic Inspiration-matris ändras när du når vissa nivåer i den här klassen. Tärningen blir en {@dice d8} på 5:e nivån, en {@dice d10} på 10:e nivån och en {@dice d12} på 15:e nivån."
+			]
+		},
+		{
+			"name": "Magical Inspiration",
+			"source": "UAClassFeatureVariants",
+			"page": 3,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level bard feature (enhances Bardic Inspiration)}",
+				"Om en varelse har en Bardic Inspiration-tärning från dig och kastar en besvärjelse, kan varelsen kasta den tärningen och lägga till antalet som kastats till en skade- eller läkningskast för besvärjelsen. Bardic Inspiration-tärningen förloras då."
+			]
+		},
+		{
+			"name": "Spell Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 3,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level bard feature (enhances Spellcasting)}",
+				"När du avslutar en lång vila kan du ersätta en trollformel som du lärt dig från denna funktion för trollkonst med en annan trollformel från listan över bard-trollformler. Den nya besvärjelsen måste vara på samma nivå som den besvärjelse du ersätter."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Du har lärt dig att reda ut och omforma verklighetens väv i harmoni med dina önskemål och din musik. Dina trollformler är en del av din stora repertoar, magi som du kan anpassa till olika situationer. Se {@book chapter 10|PHB|10} för de allmänna reglerna för trollkonst och {@book chapter 11|PHB|11} för {@filter bard spell list|spells|class=bard}.",
+				{
+					"type": "entries",
+					"name": "Cantrips",
+					"entries": [
+						"Du kan två cantrips som du väljer från Bard spell list. Du lär dig ytterligare bard cantrips av ditt val på högre nivåer, du lär dig ett 3:e cantrip på 4:e nivån och ett 4:e på 10:e nivån."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spell Slots",
+					"entries": [
+						"Bard-tabellen visar hur många spell slots du har för att kasta dina {@filter bard spells|spells|class=bard} av 1:a nivån och högre. För att kasta en av dessa trollformler måste du använda en plats på trollformelns nivå eller högre. Du återfår alla förbrukade spell slots när du avslutar en lång vila.",
+						"Om du till exempel kan besvärjelsen på 1:a nivån {@spell cure wounds} och har en plats för besvärjelse på 1:a nivån och en plats för besvärjelse på 2:a nivån tillgänglig, kan du kasta {@spell cure wounds} med båda platserna."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells Known of 1st Level and Higher",
+					"entries": [
+						"Du kan fyra trollformler på 1:a nivån som du väljer från listan över trollformler för barder.",
+						"Du lär dig ytterligare en bardbesvärjelse av ditt val på varje nivå utom 12, 16, 19 och 20. Var och en av dessa trollformler måste vara på en nivå som du har trollformelplatser för. Till exempel, när du når 3:e nivån i denna klass kan du lära dig en ny trollformel på 1:a eller 2:a nivån.",
+						"När du får en nivå i den här klassen kan du dessutom välja en av de bardbesvärjelser du kan och ersätta den med en annan besvärjelse från listan över bardbesvärjelser, som också måste vara av en nivå som du har spell slots för."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Ability",
+					"entries": [
+						"Charisma är din trollformelförmåga för dina bard-besvärjelser. Din magi kommer från ditt hjärta och din själ som du lägger ner i din musik eller ditt tal. Du använder din Charisma när en trollformel hänvisar till din förtrollningsförmåga. Dessutom använder du din Charisma-modifierare när du fastställer räddningskast-DC:n för en bardbesvärjelse som du kastar och när du gör en attackrulle med en sådan.",
+						{
+							"type": "abilityDc",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ritual Casting",
+					"entries": [
+						"Du kan kasta alla bardbesvärjelser som du känner till som en ritual om besvärjelsen har ritualmärket."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Focus",
+					"entries": [
+						"Du kan använda en {@item musical instrument|PHB} som fokus för dina trollformler."
+					]
+				}
+			]
+		},
+		{
+			"name": "Jack of All Trades",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Från och med 2:a nivån kan du lägga till halva din färdighetsbonus, avrundat nedåt, till alla förmågekontroller du gör som inte redan inkluderar din färdighetsbonus."
+			]
+		},
+		{
+			"name": "Magical Inspiration",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level bard {@variantrule optional class features|tce|optional feature}}",
+				"Om en varelse har en Bardic Inspiration tärning från dig och kastar en besvärjelse som återställer träffpunkter eller ger skada, kan varelsen kasta den tärningen och välja ett mål som påverkas av besvärjelsen. Lägg till det kastade talet som en bonus till de återvunna träffpunkterna eller den utdelade skadan. Tärningen för Bardic Inspiration går då förlorad."
+			]
+		},
+		{
+			"name": "Song of Rest (d6)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Från och med nivå 2 kan du använda lugnande musik eller tal för att återuppliva dina sårade allierade under en kort vila. Om du eller någon vänskaplig varelse som kan höra ditt framförande återfår träffpoäng genom att spendera Hit Dice i slutet av den korta vilan, återfår var och en av dessa varelser en extra {@dice 1d6} träffpoäng.",
+				"De extra träffpunkterna ökar när du når vissa nivåer i denna klass: till {@dice 1d8} på 9:e nivån, till {@dice 1d10} på 13:e nivån och till {@dice 1d12} på 17:e nivån."
+			]
+		},
+		{
+			"name": "Bard College",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"På 3:e nivån kan du fördjupa dig i de avancerade teknikerna i ett bard college som du väljer från listan över tillgängliga colleges. Ditt val ger dig egenskaper på 3:e nivån och igen på 6:e och 14:e nivån."
+			]
+		},
+		{
+			"name": "Expertise",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"På 3:e nivån kan du välja två av dina färdighetskompetenser. Din färdighetsbonus fördubblas för varje förmågekontroll du gör som använder någon av de valda färdigheterna.",
+				"På 10:e nivån kan du välja ytterligare två färdighetskompetenser för att få den här fördelen."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"När du når 4:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Bardic Versatility",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level bard {@variantrule optional class features|tce|optional feature}}",
+				"När du når en nivå i den här klassen som ger egenskapen Förbättring av förmågor kan du göra något av följande, vilket representerar en förändring av fokus när du använder dina färdigheter och magi:",
+				{
+					"type": "list",
+					"items": [
+						"Ersätt en av de färdigheter som du valde för expertisen med en av dina andra färdighetskompetenser som inte gynnas av expertisen.",
+						"Ersätt ett trollkonstverk som du lärt dig från den här klassens magi-funktion med ett annat trollkonstverk från {@filter bard spell list|spells|level=0|class=bard}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Bardic Inspiration (d8)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"På 5:e nivån ändras din Bardic Inspiration-tärning till en {@dice d8}."
+			]
+		},
+		{
+			"name": "Font of Inspiration",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"Från och med när du når 5:e nivån återfår du alla dina förbrukade användningar av Bardic Inspiration när du avslutar en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Bard College feature",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"På 6:e nivån får du en egenskap från ditt Bard College."
+			]
+		},
+		{
+			"name": "Countercharm",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"På 6:e nivån får du förmågan att använda musikaliska toner eller kraftord för att störa sinnespåverkande effekter. Som en handling kan du starta ett uppträdande som varar till slutet av din nästa tur. Under den tiden har du och alla vänskapliga varelser inom 30 fot från dig fördel på räddningskast mot att bli {@condition frightened} eller {@condition charmed}. En varelse måste kunna höra dig för att få den här fördelen. Föreställningen upphör i förtid om du blir {@condition incapacitated} eller tystad eller om du frivilligt avslutar den (ingen handling krävs)."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"När du når 8:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Song of Rest (d8)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 9,
+			"entries": [
+				"På 9:e nivån ökar de extra träffpunkterna från Song of Rest till {@dice 1d8}."
+			]
+		},
+		{
+			"name": "Bardic Inspiration (d10)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"På 10:e nivån ändras din Bardic Inspiration-matris till {@dice d10}."
+			]
+		},
+		{
+			"name": "Expertise",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"På 10:e nivån kan du välja ytterligare två färdighetskompetenser. Din färdighetsbonus fördubblas för varje förmågekontroll du gör som använder någon av de valda färdigheterna."
+			]
+		},
+		{
+			"name": "Magical Secrets",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"På 10:e nivån har du plundrat magisk kunskap från ett brett spektrum av discipliner. Välj två trollformler från vilken klass som helst, inklusive denna. En trollformel du väljer måste vara av en nivå som du kan kasta, enligt Bard-tabellen, eller en cantrip.",
+				"De valda besvärjelserna räknas som bardbesvärjelser för dig och inkluderas i antalet i kolumnen Spells Known (Besvärjelser kända) i Bard-tabellen.",
+				"Du lär dig ytterligare två trollformler från alla klasser på 14:e nivån och igen på 18:e nivån."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"När du når 12:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Song of Rest (d10)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 13,
+			"entries": [
+				"På 13:e nivån ökar de extra träffpunkterna från Song of Rest till {@dice 1d10}."
+			]
+		},
+		{
+			"name": "Bard College feature",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"På 14:e nivån får du en egenskap från ditt Bard College."
+			]
+		},
+		{
+			"name": "Magical Secrets",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"På 14:e nivån kan du välja ytterligare två trollformler från vilken klass som helst, inklusive denna. En trollformel du väljer måste vara på en nivå som du kan kasta, enligt Bard-tabellen, eller en cantrip.",
+				"De valda besvärjelserna räknas som bardbesvärjelser för dig och inkluderas i antalet i kolumnen Spells Known (Besvärjelser kända) i Bard-tabellen."
+			]
+		},
+		{
+			"name": "Bardic Inspiration (d12)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 15,
+			"entries": [
+				"På 15:e nivån ändras din Bardic Inspiration-matris till {@dice d12}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"När du når 16:e nivån kan du öka en valfri förmågaspoäng med 2 eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Song of Rest (d12)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 17,
+			"entries": [
+				"På 17:e nivån ökar de extra träffpunkterna från Song of Rest till {@dice 1d12}."
+			]
+		},
+		{
+			"name": "Magical Secrets",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"På 18:e nivån kan du välja ytterligare två trollformler från vilken klass som helst, inklusive denna. En trollformel du väljer måste vara av en nivå som du kan kasta, enligt Bard-tabellen, eller en cantrip.",
+				"De valda besvärjelserna räknas som bardbesvärjelser för dig och inkluderas i antalet i kolumnen Spells Known (Besvärjelser kända) i Bard-tabellen."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"När du når 19:e nivån kan du öka en valfri förmågepoäng med 2 eller två valfria förmågepoäng med 1. Som vanligt kan du inte öka en förmågepoäng över 20 med den här funktionen.",
+				"Om din DM tillåter användning av feats kan du istället ta en {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Superior Inspiration",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"På 20:e nivån, när du kastar initiativ och inte har några användningsområden för Bardic Inspiration kvar, får du tillbaka ett användningsområde."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "College of Lore",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Barder från College of Lore vet något om det mesta, och samlar in bitar av kunskap från så olika källor som lärda böcker och bondesagor. Vare sig de sjunger folkballader på krogar eller utarbetade kompositioner vid kungliga domstolar använder dessa barder sina gåvor för att trollbinda publiken. När applåderna tystnar kan det hända att åhörarna ifrågasätter allt som de ansåg vara sant, från deras tro på prästerskapet i det lokala templet till deras lojalitet mot kungen.",
+				"Lojaliteten hos dessa barder ligger i strävan efter skönhet och sanning, inte i trohet mot en monark eller i att följa en gudoms principer. En adelsman som har en sådan bard som herald eller rådgivare vet att bard hellre är ärlig än politisk.",
+				"Kollegiets medlemmar samlas i bibliotek och ibland i riktiga skolor, med klassrum och sovsalar, för att dela med sig av sina kunskaper till varandra. De träffas också vid festivaler och statsangelägenheter, där de kan avslöja korruption, avslöja lögner och driva med självupptagna makthavare.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Lore||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Cutting Words|Bard||Lore||3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du går med i College of Lore på 3:e nivån får du färdigheter i tre valfria färdigheter."
+			]
+		},
+		{
+			"name": "Cutting Words",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På nivå 3 lär du dig också hur du kan använda din intelligens för att distrahera, förvirra och på annat sätt minska andras förtroende och kompetens. När en varelse som du kan se inom 60 fot från dig gör en anfalls-, förmåge- eller skaderoll kan du använda din reaktion för att använda en av dina användningar av Bardisk inspiration, genom att kasta en Bardisk inspirationstärning och subtrahera det kastade antalet från varelsens roll. Du kan välja att använda den här funktionen efter att varelsen gör sin rulle, men innan DM avgör om attackrullen eller förmågekontrollen lyckas eller misslyckas, eller innan varelsen ger sin skada. Varelsen är immun om den inte kan höra dig eller om den är immun mot att vara {@condition charmed}."
+			]
+		},
+		{
+			"name": "Additional Magical Secrets",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån lär du dig två trollformler som du väljer från vilken klass som helst. En trollformel du väljer måste vara på en nivå som du kan kasta, enligt Bard-tabellen, eller en cantrip. De valda trollformlerna räknas som bard-trollformler för dig men räknas inte mot antalet bard-trollformler du kan."
+			]
+		},
+		{
+			"name": "Peerless Skill",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån kan du använda Bardic Inspiration en gång när du gör en förmågekontroll. Slå en tärning för Bardisk inspiration och lägg till antalet som kastats till din förmågekontroll. Du kan välja att göra detta efter att du kastat tärningen för förmågekontrollen, men innan DM talar om för dig om du lyckas eller misslyckas."
+			]
+		},
+		{
+			"name": "College of Valor",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Bards of the College of Valor är djärva skaldar vars berättelser håller minnet av de stora hjältarna från det förflutna vid liv och inspirerar därmed en ny generation av hjältar. Dessa barder samlas i mjödhallar eller runt stora eldar för att sjunga de mäktigas gärningar, både förr och nu. De reser runt i landet för att bevittna stora händelser på plats och för att se till att minnet av dessa händelser inte försvinner från världen. Med sina sånger inspirerar de andra att nå samma höjder av prestationer som de gamla hjältarna.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Valor||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Combat Inspiration|Bard||Valor||3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du går med i College of Valor på 3:e nivån får du färdighet med medium rustning, sköldar och kampvapen."
+			]
+		},
+		{
+			"name": "Combat Inspiration",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På 3:e nivån lär du dig också att inspirera andra i strid. En varelse som har en Bardic Inspiration tärning från dig kan kasta den tärningen och lägga till det kastade talet till en vapen-skadegranskning som den just gjort. Alternativt kan varelsen, när en anfallsrulle görs mot den, använda sin reaktion för att kasta Bardic Inspiration-tärningen och lägga till det kastade talet till sin AC mot den attacken, efter att ha sett kastet men innan den vet om den träffar eller missar."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan du attackera två gånger, istället för en, när du gör {@action Attack}-åtgärden på din tur."
+			]
+		},
+		{
+			"name": "Battle Magic",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån behärskar du konsten att väva samman trollkonst och vapenanvändning till en enda harmonisk handling. När du använder din handling för att kasta en bardbesvärjelse kan du göra en vapenattack som en bonushandling."
+			]
+		},
+		{
+			"name": "College of Creation",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Barder tror att kosmos är ett konstverk - skapelsen av de första drakarna och gudarna. Det kreativa arbetet innehöll harmonier som fortsätter att ljuda genom tillvaron än idag, en kraft som är känd som Skapelsens sång. Barderna i College of Creation drar nytta av denna urtidssång genom dans, musik och poesi, och deras lärare delar med sig av den här lektionen:",
+				"\"Före solen och månen fanns sången, och dess musik väckte den första gryningen. Dess melodier gladde stenarna och träden så mycket att några av dem fick en egen röst. Och nu sjunger de också. Lär er sången, elever, så kan ni också lära bergen att sjunga och dansa.\"",
+				"Dvärgar och gnomer uppmuntrar ofta sina barder att studera Skapelsens sång. Och bland drakfödda är Skapelsens sång vördad, eftersom legenderna beskriver Bahamut och Tiamat - den största av alla drakar - som två av sångens första sångare.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Mote of Potential|Bard||Creation|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Performance of Creation|Bard||Creation|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Mote of Potential",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Creation feature}",
+				"När du ger en varelse en Bardic Inspiration-tärning kan du uttala en not från Song of Creation för att skapa en Tiny mote of potential, som kretsar inom en radie av 5 fot runt den varelsen. Tretan är immateriell och osårbar, och den varar tills Bardic Inspiration-tärningen förloras. Mote ser ut som en musiknot, en stjärna, en blomma eller en annan symbol för konst eller liv som du väljer.",
+				"När varelsen använder tärningen Bardic Inspiration ger mote en extra effekt beroende på om tärningen gynnar en förmågaskontroll, ett anfallskast eller ett räddningskast, enligt nedan:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ability Check",
+							"entry": "När varelsen kastar tärningen Bardic Inspiration för att lägga till den till en förmågaskontroll kan varelsen kasta tärningen Bardic Inspiration igen och välja vilken tärning som ska användas, då mote poppar upp och avger färgglada, ofarliga gnistor för ett ögonblick."
+						},
+						{
+							"type": "item",
+							"name": "Attack Roll",
+							"entry": "Omedelbart efter att varelsen kastar Bardic Inspiration tärningen för att lägga till den till en attack mot ett mål, splittras mote med dunder och brak. Målet och varje varelse av ditt val som du kan se inom 5 fot från det måste lyckas med ett konstitutionellt räddningskast mot din trollformels räddnings-DC eller ta åskskskada lika med antalet som kastades på Bardic Inspiration-tärningen."
+						},
+						{
+							"type": "item",
+							"name": "Saving Throw",
+							"entry": "Omedelbart efter att varelsen kastat tärningen Bardic Inspiration och lagt till den till ett räddningskast, försvinner mote med ljudet av mjuk musik, vilket gör att varelsen får tillfälliga träffpoäng lika med antalet som kastats på tärningen Bardic Inspiration plus din Charisma-modifierare (minst 1 tillfällig träffpoäng)."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Performance of Creation",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Creation feature}",
+				"Som en handling kan du kanalisera magin från Song of Creation för att skapa ett icke-magiskt föremål av ditt val i ett obebott utrymme inom tre meter från dig. Föremålet måste dyka upp på en yta eller i en vätska som kan bära det. Föremålets gp-värde kan inte vara mer än 20 gånger din bardnivå, och föremålet måste vara Medium eller mindre. Föremålet skimrar mjukt och en varelse kan svagt höra musik när den rör vid det. Det skapade föremålet försvinner efter ett antal timmar som är lika med din kompetensbonus. För exempel på föremål som du kan skapa, se kapitlet om utrustning i {@book Player's Handbook|PHB|5}.",
+				"När du har skapat ett föremål med den här funktionen kan du inte göra det igen förrän du har vilat länge, såvida du inte använder en trollformel på 2:a nivån eller högre för att använda den här funktionen igen. Du kan bara ha ett föremål skapat med denna funktion åt gången; om du använder denna handling och redan har ett föremål från denna funktion försvinner det första omedelbart.",
+				"Storleken på det föremål du kan skapa med den här funktionen ökar med en storlekskategori när du når 6:e nivån (Large) och 14:e nivån (Huge)."
+			]
+		},
+		{
+			"name": "Animating Performance",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Creation feature}",
+				"Som en handling kan du animera ett stort eller mindre icke-magiskt föremål inom 30 fot från dig som inte bärs eller bärs. Det animerade föremålet använder {@creature Dancing Item|TCE} stat-blocket, som använder din kompetensbonus (PB). Föremålet är vänligt inställt till dig och dina följeslagare och lyder dina kommandon. Den lever i 1 timme, tills den reduceras till 0 träffpunkter eller tills du dör.",
+				"I strid delar föremålet din initiativräkning, men det tar sin tur direkt efter din tur. Den kan röra sig och använda sin reaktion på egen hand, men den enda handling som den utför på sin tur är {@action Dodge}-handlingen, såvida du inte utför en bonushandling på din tur för att beordra den att utföra en annan handling. Den handlingen kan vara en i dess statblock eller någon annan handling. Om du är {@condition incapacitated} kan föremålet utföra vilken handling som helst av dess val, inte bara {@action Dodge}.",
+				"När du använder din Bardic Inspiration-funktion kan du beordra föremålet som en del av samma bonusåtgärd som du använder för Bardic Inspiration.",
+				"När du har besjälat ett föremål med den här funktionen kan du inte göra det igen förrän du har vilat länge, såvida du inte använder en trollformel på 3:e nivå eller högre för att använda den här funktionen igen. Du kan bara ha ett föremål animerat med den här funktionen åt gången; om du använder den här åtgärden och redan har en {@creature dancing item|TCE} från den här funktionen blir den första omedelbart livlös."
+			]
+		},
+		{
+			"name": "Creative Crescendo",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Creation feature}",
+				"När du använder din funktion för skapande prestanda kan du skapa mer än ett objekt på en gång. Antalet föremål är lika med din Charisma-modifierare (minst två föremål). Om du skapar ett föremål som skulle överstiga det antalet väljer du vilket av de tidigare skapade föremålen som försvinner. Endast en av dessa föremål kan vara av den maximala storleken du kan skapa; resten måste vara Small eller Tiny.",
+				"Du är inte längre begränsad av gp-värdet när du skapar föremål med Performance of Creation."
+			]
+		},
+		{
+			"name": "College of Eloquence",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Anhängare av College of Eloquence behärskar konsten att tala. Övertalning betraktas som en hög konst, och ett välgrundat och vältaligt argument är ofta mer övertygande än fakta. Dessa barder använder sig av en blandning av logik och teatraliska ordlekar, och vinner över skeptiker och motståndare med logiska argument och plockar på hjärtats strängar för att vädja till publikens känslor.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Silver Tongue|Bard||Eloquence|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Unsettling Words|Bard||Eloquence|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Silver Tongue",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Du är en mästare på att säga rätt saker vid rätt tillfälle. När du gör en Charisma ({@skill Persuasion}) eller Charisma ({@skill Deception}) kontroll kan du behandla ett {@dice d20} kast på 9 eller lägre som en 10."
+			]
+		},
+		{
+			"name": "Unsettling Words",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Du kan spinna ord med magi som gör en varelse orolig och får den att tvivla på sig själv. Som en bonusåtgärd kan du använda en användning av din Bardic Inspiration och välja en varelse som du kan se inom 60 fot från dig. Slå tärningen Bardic Inspiration. Varelsen måste subtrahera det kastade talet från nästa räddningskast som den gör innan början av din nästa tur."
+			]
+		},
+		{
+			"name": "Unfailing Inspiration",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Eloquence feature}",
+				"Dina inspirerande ord är så övertygande att andra känner sig drivna att lyckas. När en varelse lägger till en av dina Bardic Inspiration tärningar till sin förmågekontroll, attackkast eller räddningskast och kastet misslyckas, kan varelsen behålla Bardic Inspiration tärningen."
+			]
+		},
+		{
+			"name": "Universal Speech",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Eloquence feature}",
+				"Du har fått förmågan att göra ditt tal begripligt för alla varelser. Som en handling kan du välja en eller flera varelser inom 60 fot från dig, upp till ett antal som är lika med din Charisma-modifierare (minst en varelse). De valda varelserna kan magiskt förstå dig, oavsett vilket språk du talar, i 1 timme.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge, såvida du inte använder en trollformelplats för att använda den igen."
+			]
+		},
+		{
+			"name": "Infectious Inspiration",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Eloquence feature}",
+				"När du lyckas inspirera någon kan kraften i din vältalighet nu spridas till någon annan. När en varelse inom 60 fot från dig lägger till en av dina Bardic Inspiration tärningar till sin förmågekontroll, attackkast eller räddningskast och kastet lyckas, kan du använda din reaktion för att uppmuntra en annan varelse (förutom dig själv) som kan höra dig inom 60 fot från dig, och ge den en Bardic Inspiration tärning utan att förbruka någon av dina Bardic Inspiration användningsområden.",
+				"Du kan använda den här reaktionen ett antal gånger som är lika med din Charisma-modifierare (minst en gång), och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "College of Creation",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 3,
+			"entries": [
+				"Bards tror att multiversumet fick sin existens genom ord och ljud, esoteriska harmonier som fortsätter att ljuda genom hela tillvaron: Skapelsens sång. Barderna i denna skola använder sig av denna uråldriga kraft genom dans, musik eller sång för att skapa det som de behöver mest.",
+				"Medlemmarna i detta kollegium kan ha utvecklat sina krafter under upplevelser i andra världar eller existensplan. De som har sett de gemensamma dragen i flera verkligheter kan ha lärt sig hur de kan ta del av sanningar som de flesta dödliga bara skymtar för ett ögonblick. Alternativt kan barden finna sig själv i otakt med sitt eget hemplan, sin egen verklighet eller tid, och deras kopplingar till andra platser gör att de kan manipulera rymden runt omkring dem. Oavsett varifrån en bard hämtar sina krafter kan andra artister dras till dem, antingen för att lära sig deras hemligheter eller för att sätta stopp för deras farliga manipulation av Skapelsens sång.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Note of Potential|Bard||Creation (UA)|UA2020SubclassesPt2|3"
+				}
+			]
+		},
+		{
+			"name": "Note of Potential",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Creation feature}",
+				"Du kan manipulera Skapelsens sång för att frammana en flytande musikalisk not av möjligheter: När du ger en varelse en Bardic Inspiration tärning kan du skapa en Note of Potential. Noten kretsar inom 5 fot från varelsen. Noten är ett Tiny objekt som är immateriellt och osårbart, och den varar tills Bardic Inspiration tärningen förloras. En varelse med en anteckning kan använda den på följande sätt.",
+				{
+					"type": "entries",
+					"name": "Note of Destruction",
+					"entries": [
+						"Omedelbart efter att varelsen kastar Bardic Inspiration tärningen för att lägga till den till en attackrunda, kan varelsen använda noten för att skapa en ljudstöt. Varje annan varelse inom en halv meter från den måste lyckas med ett konstitutionellt räddningskast mot din spellednings räddnings-DC eller ta åskskskada lika med det antal som kastats på Bardic Inspiration-tärningen."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Note of Protection",
+					"entries": [
+						"Omedelbart efter att varelsen kastar Bardic Inspiration-tärningen och lägger till den till ett räddningskast kan varelsen använda anteckningen för att få tillfälliga träffpunkter som motsvarar antalet som kastats på Bardic Inspiration-tärningen + din Charisma-modifierare, förutsatt att varelsen inte redan har tillfälliga träffpunkter."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Note of Ingenuity",
+					"entries": [
+						"När varelsen kastar Bardic Inspiration-tärningen för att lägga till den till en förmågaskontroll kan varelsen använda noten för att kasta Bardic Inspiration-tärningen igen och välja vilken tärning som ska användas."
+					]
+				}
+			]
+		},
+		{
+			"name": "Animating Performance",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Creation feature}",
+				"Din behärskning av Skapelsens sång gör att du kan ge liv åt föremål på magisk väg. Som en handling kan du rikta in dig på ett stort eller mindre icke-magiskt föremål som du kan se inom 30 fot från dig och animera det. Det animerade föremålet använder {@creature Dancing Item|UA2020SubclassesPt2} stat-blocket och är under din kontroll i 1 timme eller tills det reduceras till 0 träffpunkter.",
+				"I strid delar föremålet din initiativräkning, men det tar sin tur direkt efter din tur. Den kan röra sig och använda sin reaktion på egen hand, men den enda handling som den utför på sin tur är {@action Dodge}-handlingen, såvida du inte tar en bonushandling på din tur för att beordra den att utföra en av handlingarna i dess statblock eller {@action Dash}, {@action Disengage}, {@action Help}, {@action Hide} eller {@action Search}-handlingen.",
+				"När du använder din Bardic Inspiration-funktion kan du bestämma vilken åtgärd ditt animerade föremål utför som en del av samma bonusåtgärd.",
+				"När du har besjälat ett föremål med den här funktionen kan du inte göra det igen förrän du avslutar en lång vila eller förrän du använder en trollformel på tredje nivån eller högre för att använda den här funktionen. Du kan bara ha ett föremål animerat med den här funktionen åt gången; om du använder den här åtgärden och redan har en {@creature dancing item|UA2020SubclassesPt2} från den här funktionen, blir den första omedelbart livlös."
+			]
+		},
+		{
+			"name": "Performance of Creation",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Creation feature}",
+				"Din föreställning kan manipulera skapelsens magi och förvandla världen runt omkring dig. Som en handling kan du skapa ett icke-magiskt föremål efter eget val i ett obebott utrymme inom tre meter från dig. Föremålet måste dyka upp på en yta eller i en vätska som kan bära det. Föremålets gp-värde kan inte vara mer än 20 gånger din bardnivå och måste vara Large eller mindre. Små skimrande, ogripbara toner svävar runt omkring den, och en varelse kan svagt höra musik när den rör vid den. För exempel på föremål som du kan skapa, se tabellerna Armor, Weapons, Adventuring Gear, Tools och Mounts and Vehicles i kapitel 5, \"Equipment\", i Player's Handbook.",
+				"Det skapade föremålet försvinner i slutet av din nästa tur, om du inte använder din åtgärd för att behålla det. Varje gång du använder din handling på detta sätt förlängs föremålets varaktighet till slutet av din nästa tur, upp till maximalt 1 minut. Om du behåller föremålet i hela minuten fortsätter det att existera i ett antal timmar lika med din bardnivå.",
+				"När du har skapat ett föremål med den här funktionen kan du inte göra det igen förrän du avslutar en lång vila eller förrän du använder en trollformel på 5:e nivå eller högre för att använda den här funktionen. Du kan bara ha ett föremål skapat med denna funktion åt gången; om du använder denna handling och redan har ett föremål från denna funktion försvinner det första omedelbart."
+			]
+		},
+		{
+			"name": "College of Spirits",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"entries": [
+				"Berättelser från det förflutna är kraftfulla; de innehåller lärdomar om historia, filosofi och magi. Barder från College of Spirits söker efter berättelser från dem som befinner sig bortom det materiella planet. Med hjälp av speluppsättningar når de ut för att höra deras berättelser, men barderna har ingen kontroll över vilken berättelse de hittar.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Guiding Whispers|Bard||Spirits (UA)|UA2020SubclassesPt4|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spiritual Focus|Bard||Spirits (UA)|UA2020SubclassesPt4|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tales from Beyond|Bard||Spirits (UA)|UA2020SubclassesPt4|3"
+				}
+			]
+		},
+		{
+			"name": "Guiding Whispers",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Du kan vända dig till andar som kan vägleda dig och andra. Du lär dig {@spell guidance} cantrip, som inte räknas mot antalet bard cantrips du kan. För dig har den en räckvidd på 60 fot när du kastar den."
+			]
+		},
+		{
+			"name": "Spiritual Focus",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Du kan använda särskilda verktyg för att kontakta andar. Du kan använda följande föremål som fokus för dina bardbesvärjelser: ett ljus, en kristallkula, en talande tavla, en tarokka-däck eller en skalle.",
+				"På 6:e nivån, när du kastar en bardbesvärjelse som ger skada eller återställer träffpoäng genom den andliga fokuseringen, kasta en {@dice d6}, och du får en bonus på en kast av besvärjelsen som är lika stor som antalet som kastades."
+			]
+		},
+		{
+			"name": "Tales from Beyond",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Du når ut till andar som berättar sina historier genom dig. Medan du håller ditt Spirituella fokus kan du använda en bonusåtgärd för att använda en användning av din Bardic Inspiration och rulla på Spirits' Tales-tabellen med din Bardic Inspiration-tärning för att avgöra vilken berättelse som berättas. Du behåller sagan i minnet tills du skänker sagans effekt eller avslutar en kort eller lång vila.",
+				"Du kan använda en åtgärd för att välja en varelse som du kan se inom 30 fot från dig (detta kan vara du själv) som ska vara målet för sagans effekt. När du har gjort det kan du inte skänka sagans effekt igen förrän du kastar den igen.",
+				"Du kan bara ha en av dessa berättelser i minnet åt gången, och genom att kasta på tabellen Spirits' Tales upphör effekten av den föregående berättelsen omedelbart. Om sagan kräver ett räddningskast är DC:n lika med din spellednings räddningsDC.",
+				{
+					"type": "table",
+					"caption": "Spirits' Tales",
+					"colLabels": [
+						"Bardic Insp. Die",
+						"Tale"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							1,
+							"{@b 1 Beast.} Du berättar en saga om ett smart djur. I 1 minut har målet fördel på visdomskontroller ({@skill Perception}) och fördel på attackkast mot en varelse om en annan fiende befinner sig inom 1,5 meter från det, och den fienden är inte {@condition incapacitated}."
+						],
+						[
+							2,
+							"{@b 2 Warrior.} Du berättar historien om en berömd duellist. Gör en trollformelattack i närstrid mot målet när en anfallande spektralkrigare kortvarigt dyker upp i ett obebott utrymme inom 5 fot från målet innan han försvinner. Vid en träff tar målet kraftskada lika med två kast av din Bardic Inspiration-tärning + din Charisma-modifierare."
+						],
+						[
+							3,
+							"{@b 3 Friends.} Du berättar historien om vänner som hittade varandra i livet efter detta. Målet och en annan varelse av dess val som det kan se inom en radie av 5 fot får tillbaka träffpoäng lika med en rulle av din Bardic Inspiration tärning + din Charisma-modifierare."
+						],
+						[
+							4,
+							"{@b 4 Runaway.} Du berättar historien om en äventyrare som kunde fly från alla slags fängelser. Målet kan omedelbart använda sin reaktion för att teleportera upp till 30 fot till ett obebott utrymme som det kan se. När målet teleporterar kan det välja ett antal varelser som det kan se inom 30 fot från det upp till din Charismamodifierare (minst 1) för att omedelbart använda samma reaktion."
+						],
+						[
+							5,
+							"{@b 5 Avenger.} Du berättar historien om en hämnande riddare. I 1 minut, närhelst en varelse som målet kan se inom 30 fot från det skadas av en varelse, kan målet använda sin reaktion för att tillfoga angriparen kraftskada som är lika stor som en rulle av din Bardic Inspiration tärning."
+						],
+						[
+							6,
+							"{@b 6 Hero.} Du berättar om en episk hjälte. Välj en varelse som du kan se inom 30 fot från dig. Målet får tillfälliga träffpoäng lika med ett kast av din Bardic Inspiration tärning + din bardnivå. Medan den har dessa tillfälliga träffpunkter ökar målets gånghastighet med 10 fot."
+						],
+						[
+							7,
+							"{@b 7 Fey.} Du berättar historien om en busig fey. Målet måste lyckas med ett räddningskast i Visdom eller bli {@condition charmed} av dig tills slutet av dess nästa tur. Målet {@condition charmed} måste använda sin handling för att göra en närstridsattack mot en annan varelse än sig själv som du mentalt väljer. Målet kan agera normalt på sin tur om du inte väljer någon annan varelse."
+						],
+						[
+							8,
+							"{@b 8 Dark Spirit.} Du berättar en fruktansvärd historia om en mördande mördare i mörkret. Målet blir {@condition invisible} tills slutet av nästa tur eller tills det träffar en varelse med en attack. Om den träffar en varelse med en attack under den här osynligheten tar den varelsen nekrotisk skada som är lika stor som ett kast av din Bardic Inspiration-tärning och är {@condition frightened} av målet tills slutet av dess nästa tur."
+						],
+						[
+							9,
+							"{@b 9 Giant.} Du talar om en mäktig jättes gärningar. Varje varelse av målets val som det kan se inom 30 fot från det måste göra ett räddningskast i styrka, och tar kraftskador lika med två kast av din Bardic Inspiration tärning på ett misslyckat räddningskast och blir knockad {@condition prone}. En varelse som lyckas med sitt räddningskast tar hälften så mycket skada och blir inte knockad {@condition prone}."
+						],
+						[
+							10,
+							"{@b 10 Dragon.} Du andas en dikt av en vred drake. Målet spottar magiskt ut eld från sin mun i en 30-fots kon. Varje varelse i det området måste göra ett räddningskast i Dexterity, och tar brandskador lika med tre kast av din Bardic Inspiration tärning på ett misslyckat räddningskast, eller hälften så mycket skada på ett lyckat."
+						],
+						[
+							11,
+							"{@b 11 Celestial.} Du talar om en celestials upphöjda gärningar. Målet återfår träffpunkter som motsvarar två kast av din Bardic Inspiration tärning + din bardnivå, och du avslutar en sjukdom eller ett tillstånd från följande lista som påverkar målet: {@condition blinded}, {@condition deafened}, {@condition paralyzed}, {@condition petrified}, eller {@condition poisoned}."
+						],
+						[
+							12,
+							"{@b 12 Unknown.} Du säger en obegriplig fabel från en varelse bortom stjärnorna. Välj en varelse som du kan se inom 30 fot från dig. Målet måste lyckas med ett räddningskast i intelligens eller ta psykisk skada lika med tre kast av din Bardic Inspiration tärning, och målet kan inte tala något språk i 1 minut."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Session",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Spirits feature}",
+				"Du kan kanalisera andar för att få insikt i magi. Du kan genomföra en timslång ritual för att kanalisera andar (vilket kan göras under en kort eller lång vila) med hjälp av ditt Spirituella fokus. Du kan genomföra ritualen med ett antal varelser som är lika med din färdighetsbonus (inklusive dig själv). I slutet av ritualen lär du dig tillfälligt {@filter one spell of your choice from any class|spells|school=d;n|level=0;1;2;3;4;5;6}.",
+				"Besvärjelsen du väljer måste ha en nivå som är lika med antalet varelser som utförde ritualen eller mindre, den måste ha en nivå som du kan kasta och den måste vara i skolan för divination eller nekromantik. Den valda besvärjelsen räknas som en bardbesvärjelse för dig men räknas inte mot antalet bardbesvärjelser du kan.",
+				"När du har utfört ritualen kan du inte göra det igen förrän du börjar en lång vila, och du känner till den valda besvärjelsen tills du börjar en lång vila."
+			]
+		},
+		{
+			"name": "Spiritual Focus",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Spirits feature}",
+				"På 6:e nivån, när du kastar en bardbesvärjelse som ger skada eller återställer träffpoäng genom den andliga fokuseringen, kasta en {@dice d6}, och du får en bonus på en kast av besvärjelsen som är lika stor som antalet som kastades."
+			]
+		},
+		{
+			"name": "Mystical Connection",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Spirits feature}",
+				"Din koppling till andarna har blivit halvpermanent. När du använder din Tales from Beyond-funktion kan du kasta en {@dice d6} och använda den istället för att använda en Bardic Inspiration-tärning. Du använder fortfarande din Bardic Inspiration tärning för sagans effekt, utan att använda den."
+			]
+		},
+		{
+			"name": "College of Eloquence",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"entries": [
+				"Anhängare av College of Eloquence behärskar konsten att tala. Övertalning betraktas som en hög konst, och ett välgrundat och vältaligt argument är ofta mer kraftfullt än en objektiv sanning. Dessa barder använder sig av en blandning av logik och teatraliska ordlekar, och vinner över skeptiker och motståndare med logiska argument, och plockar på hjärtats strängar för att vädja till hela publikens känslor.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Universal Speech|Bard||Eloquence (UA)|UABardAndPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Soothing Words|Bard||Eloquence (UA)|UABardAndPaladin|3"
+				}
+			]
+		},
+		{
+			"name": "Soothing Words",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Du kan nu kasta lugna känslor utan att använda en trollformelplats. Du kan använda den här funktionen ett antal gånger som är lika med din Charisma-modifierare. Du återfår alla förbrukade användningar av den här funktionen när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Universal Speech",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Du har fått förmågan att tala och resonera med vilken varelse som helst. Som en bonusåtgärd kan du använda en av dina användningar av Bardic Inspiration. När du gör det kastar du din Bardic Inspiration-tärning och väljer ett antal varelser inom 60 fot från dig som du kan se lika många som kastet. I 10 minuter kan de valda varelserna magiskt förstå dig, oavsett vilket språk du talar, och du har fördel på Charisma-kontroller som görs för att påverka dem. Denna egenskap fungerar även på en varelse som inte talar något språk."
+			]
+		},
+		{
+			"name": "Undeniable Logic",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Eloquence feature}",
+				"Du kan spinna ihop ord med magi till en knut av resonemang som kan vara uppmuntrande eller omöjlig att följa.",
+				"Som en bonusåtgärd kan du använda en av dina användningar av Bardic Inspiration. När du gör det väljer du en varelse som du kan se inom 60 meter från dig och som kan höra dig, kasta sedan din Bardic Inspiration tärning och välj något av följande:",
+				{
+					"type": "list",
+					"items": [
+						"Varelsen tar psykisk skada som är lika stor som det antal du kastar på Bardic Inspiration-tärningen, och varelsen måste lyckas med ett räddningskast med intelligens mot din trollformels räddnings-DC eller ha nackdel på nästa räddningskast som den gör före slutet av din nästa vändning.",
+						"Varelsen återfår träffpoäng motsvarande det antal du kastar på Bardic Inspiration-tärningen, och varelsen har fördel på nästa räddningskast som den gör före slutet av din nästa vändning."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infectious Inspiration",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Eloquence feature}",
+				"När en varelse lägger till en av dina Bardic Inspiration-tärningar till sin förmågaskontroll, sitt anfallskast eller sitt räddningskast och kastet misslyckas kan varelsen behålla Bardic Inspiration-tärningen.",
+				"När en varelse lägger till en av dina Bardic Inspiration tärningar till sin förmågaskontroll, sitt anfallskast eller sitt räddningskast och kastet lyckas, kan du dessutom använda din reaktion för att uppmuntra en annan varelse (förutom dig själv) som kan höra dig inom 60 fot från dig och ge den en Bardic Inspiration tärning utan att använda någon av dina Bardic Inspiration användningsområden. Du kan använda den här reaktionen ett antal gånger som är lika med din Charisma-modifierare (minst en gång), och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "College of Glamour",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"entries": [
+				"College of Glamour är öppet för de barder som behärskar sitt hantverk i Feywilds livfulla och dödliga värld. Under ledning av satyrer, eladrin och andra feer lär sig dessa barder att använda sin magi för att glädja och fängsla andra.",
+				"De som är barder i detta college betraktas med en blandning av vördnad och rädsla. Deras framträdanden är legendariska. Barderna i detta college är så vältaliga att ett tal eller en sång som en av dem framför kan få fångvaktare att släppa barden oskadd och kan lugna en rasande drake till lugn. Samma magi som gör det möjligt för dem att dämpa odjur kan också förvränga sinnena. Skurkaktiga barder av detta kollegium kan utnyttja ett samhälle i veckor och missbruka sin magi för att förvandla sina värdar till trälar.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Mantle of Inspiration|Bard||Glamour (UA)|UABardBardColleges|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Enthralling Performance|Bard||Glamour (UA)|UABardBardColleges|3"
+				}
+			]
+		},
+		{
+			"name": "Enthralling Performance",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med 3:e nivån kan du ladda ditt uppträdande med förförisk fe-magi.",
+				"Om du uppträder i minst 10 minuter kan du försöka skapa förundran hos publiken genom att sjunga, läsa en dikt eller dansa. I slutet av föreställningen kan du välja ett antal humanoider inom 60 fot från dig som såg och lyssnade på allt, upp till ett antal av dem som är lika med din Charismamodifierare (minst en). Varje mål måste lyckas med ett visdomssparande kast mot din trollformels räddnings-DC eller bli {@condition charmed} av dig. Medan {@condition charmed} på detta sätt idoliserar målet dig, det talar glödande om dig till alla som talar till det, och det hindrar alla som motsätter sig dig, och undviker våld om det inte redan var benäget att slåss för din räkning. Den här effekten upphör på ett mål efter 1 timme, om det tar skada, om du attackerar det eller om det bevittnar att du attackerar eller skadar någon av dess allierade.",
+				"Om ett mål lyckas med sin räddning mot den här effekten har målet ingen aning om att du försökte förtrolla det.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har avslutat en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Mantle of Inspiration",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du går med i College of Glamour på 3:e nivån får du förmågan att väva en sång av fey magi som fängslar dina allierade med kraft och snabbhet.",
+				"Som en bonusåtgärd kan du använda en användning av Bardic Inspiration för att ge dig själv ett underbart, utomvärldsligt utseende. När du gör det väljer du ett antal allierade som du kan se och som kan se dig inom 60 fot från dig, upp till ett antal av dem som är lika med din Charismamodifierare (minst en). Varje mål får {@dice 2d6} tillfälliga träffpunkter.",
+				"När ett mål får dessa tillfälliga träffpoäng kan det också använda sin reaktion för att röra sig upp till sin hastighet mot dig, utan att provocera fram tillfälliga attacker. Det måste ta den kortaste och säkraste vägen till dig.",
+				"Antalet tillfälliga träffpunkter ökar när du når vissa nivåer i den här klassen och ökar till {@dice 2d8} på 5:e nivån, {@dice 2d10} på 10:e nivån och {@dice 2d12} på 15:e nivån."
+			]
+		},
+		{
+			"name": "Mantle of Majesty",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får du förmågan att hölja dig i en fey magi som får andra att vilja tjäna dig. Som en bonusåtgärd tar du på dig ett utseende av överjordisk skönhet i 1 minut. Under den här tiden kan du kasta {@spell command} som en bonusåtgärd på var och en av dina turer, utan att använda en trollformelplats. Den här effekten varar i 1 minut, och alla varelser {@condition charmed} vid dig misslyckas automatiskt med sitt räddningskast mot besvärjelsen.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Mantle of Majesty",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån får du en utomjordisk aspekt på ditt utseende som gör att du ser mer våldsam och vacker ut.",
+				"Dessutom kan du genom den här funktionen kasta {@spell sanctuary} på dig själv. Om en varelse misslyckas med sitt räddningskast mot besvärjelsen får du också fördel på alla Charismakontroller mot varelsen i 1 minut, och den har nackdel på alla räddningskast den gör mot dina besvärjelser på din nästa tur.",
+				"När du har kastat {@spell sanctuary} med den här funktionen kan du inte göra det igen förrän du har fått en kort eller lång vila."
+			]
+		},
+		{
+			"name": "College of Whispers",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"entries": [
+				"De flesta människor är glada över att välkomna en bard till sig. Barder från College of Whispers utnyttjar detta till sin fördel. De ser ut att vara som vilken annan bard som helst och delar med sig av nyheter, sjunger sånger och berättar historier för den publik de samlar. I själva verket lär Whispers College sina elever att de är vargar bland får. Dessa barder använder sin kunskap och magi för att avslöja hemligheter och vända dem mot andra genom utpressning och hot.",
+				"Många andra barder hatar College of Whispers och ser det som en parasit som använder bardernas rykte för att skaffa sig rikedom och makt. Av denna anledning avslöjar dessa barder sällan sin sanna natur om de inte måste. De hävdar vanligtvis att de följer något annat kollegium, eller håller sin sanna natur hemlig för att bättre kunna infiltrera och utnyttja kungliga domstolar och andra maktmiljöer.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Venomous Blades|Bard||Whispers (UA)|UABardBardColleges|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Venomous Words|Bard||Whispers (UA)|UABardBardColleges|3"
+				}
+			]
+		},
+		{
+			"name": "Venomous Blades",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du går med i College of Whispers på 3:e nivån får du förmågan att magiskt göra dina vapenattacker giftiga för ett ögonblick.",
+				"När du träffar en varelse med en vapenattack kan du använda en användning av din Bardic Inspiration för att tillfoga ytterligare {@damage 2d6} giftskada till målet. Du kan göra detta endast en gång per runda på din tur.",
+				"Den extra skadan ökar när du når vissa nivåer i den här klassen och ökar till {@dice 2d8} på 5:e nivån, {@dice 2d10} på 10:e nivån och {@dice 2d12} på 15:e nivån."
+			]
+		},
+		{
+			"name": "Venomous Words",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På nivå 3 lär du dig att ge oskyldiga ord en försåtlig magi. En varelse som hör dig prata kan bli nedstämd i rädsla och paranoia.",
+				"Om du talar med en humanoid ensam i minst 10 minuter kan du försöka sprida paranoia och rädsla i dess sinne. I slutet av samtalet måste målet lyckas med ett Visdomsbesparingskast mot din trollformels räddnings-DC eller vara {@condition frightened} för den kommande timmen, tills det blir attackerat eller skadat, eller tills det bevittnar att dess allierade blir attackerade eller skadade. Medan {@condition frightened} på detta sätt är målet paranoid och försöker undvika andras sällskap, inklusive dess allierade. Målet söker upp vad det anser vara den säkraste och mest hemliga platsen som är tillgänglig för det och gömmer sig där.",
+				"Om målet lyckas med sin räddning har det ingen aning om att du försökte skrämma det.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har avslutat en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Mantle of Whispers",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får du förmågan att anta en varelses persona. När du dödar en varelse med en attack eller en besvärjelse eller när en varelse dör inom en radie på 1,5 meter från dig kan du magiskt fånga dess skugga med hjälp av din reaktion. Du kan endast fånga skuggan av en varelse som är din varelsetyp, till exempel humanoid, och din storlek (du kan fånga en Small eller Medium skugga om du är Small), och du kan endast ha en skugga fångad åt gången.",
+				"När du har fångat en varelses skugga kan du använda din magi för att väva in den i en förklädnad som gör att du kan anta dess utseende och få tillgång till dess ytliga minnen. Som en handling tar du på dig varelsens utseende i 1 timme eller tills du avslutar denna effekt som en bonushandling.",
+				"Under den timmen får du tillgång till all information som varelsen skulle dela med sig av till en bekant. Informationen omfattar allmänna detaljer om dess bakgrund och personliga liv, men inte hemligheter. Informationen är tillräcklig för att du ska kunna utge dig för att vara varelsen genom att dra nytta av dess minnen.",
+				"En annan varelse kan se igenom den här förklädnaden genom att göra en Visdom ({@skill Insight})-kontroll mot din Charisma ({@skill Deception})-kontroll, men du får en bonus på +5 på din kontroll.",
+				"Förklädnaden och den kunskap som den ger försvinner när den här förmågans varaktighet upphör."
+			]
+		},
+		{
+			"name": "Shadow Lore",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån får du förmågan att väva in mörk magi i dina ord och utnyttja en varelses djupaste rädslor.",
+				"Som en handling kan du på magiskt sätt viska en fras som endast en valfri varelse inom 30 fot från dig kan höra. Målet måste göra ett Visdomssparande kast mot din spellednings räddnings-DC. Det lyckas automatiskt om det inte delar språk med dig eller om det inte kan höra dig. Vid ett lyckat räddningskast låter din viskning som obegripligt mumlande och har ingen effekt.",
+				"Om målet misslyckas med sitt räddningskast är det {@condition charmed} av dig de kommande 8 timmarna eller tills du eller dina allierade attackerar eller skadar det. Den tolkar viskningarna som en beskrivning av sin mest förödmjukande hemlighet. Även om du inte får någon kunskap om denna hemlighet är målet övertygat om att du känner till den.",
+				"Medan {@condition charmed} den är på detta sätt lyder den dina kommandon av rädsla för att du ska avslöja dess hemlighet. Den kommer inte att riskera sitt liv för dig eller slåss för dig, om den inte redan var benägen att göra det. Den beviljar dig tjänster och gåvor som den skulle erbjuda en nära vän.",
+				"När effekten upphör har varelsen ingen förståelse för varför den höll dig i sådan rädsla. När du har använt den här egenskapen kan du inte använda den igen förrän du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "College of Satire",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"entries": [
+				"Barder från satirskolan kallas för narrar. De använder sig av enkla historier, djärva akrobatiker och skämt för att underhålla sin publik, allt från folkmassorna i en nedsliten hamnpub till adelsmännen vid en kungs kungliga hov. Där andra barder söker efter glömda historier eller berättelser om episkt mod, letar narrarna efter pinsamma och roliga historier av alla slag. Vare sig det handlar om att berätta den skrytsamma historien om en muskulös stallarbetares affär med en åldrad hertiginna eller en hånfull satir om en paladin av Hjelms kladdiga oskuld, så låter en narr aldrig smak, social anständighet eller skam komma i vägen för ett gott skratt.",
+				"Narrar är mästare på ordvitsar, skämt och verbala hugskott, men de är mycket mer än bara en komisk lättnad. De förväntas håna och provocera och dra nytta av att även de mäktigaste människorna enligt traditionen förväntas uthärda en narrs hugskott med gott humör. Denna förväntan gör det möjligt för en narr att fungera som kritiker eller en röst av förnuft när andra är för skrämda för att tala sanning.",
+				"För hertiginnan med smak för unga, spända arbetare kan sådana berättelser tjäna till att varna måltavlorna för hennes kärlek och tvinga henne att ändra sig i brist på villiga partners. Att slå tillbaka mot narren förstör bara hennes redan skadade rykte och kan vara det bästa beviset på att narren har träffat rätt. Men om hon är snäll och generös mot sina erövringar gör skämten och berättelserna henne till en slags folkhjälte och lockar till sig ännu fler potentiella partners.",
+				"Narrativister är lojala mot en enda sak: att söka och sprida sanningen. De använder sin komik och sitt oskyldiga utseende för att bryta ner sociala barriärer och avslöja korruption, inkompetens och dumhet bland de rika och mäktiga. Vare sig de avslöjar en bedragares förräderi eller avslöjar en barons krigsplaner som drivs av girighet och blodtörst, fungerar en narr som ett riks samvete.",
+				"Narrativister äventyrar för att skydda det vanliga folket och för att underminera de rika, mäktiga och arroganta personernas planer. Deras magi stärker de allierades humör samtidigt som de kastar tvivel i fiendernas huvuden. Bland barder är narrar oöverträffade akrobater, och deras förmåga att tumla, undvika, hoppa och klättra gör dem till halkiga motståndare i strid.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Satire (UA)|UAKitsOfOld|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tumbling Fool|Bard||Satire (UA)|UAKitsOfOld|3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du går med i College of Satire på 3:e nivån får du kompetens i {@item thieves' tools|phb}. Du får också färdighet i {@skill Sleight of Hand} och ytterligare en färdighet som du själv väljer. Om du redan är skicklig i {@item thieves' tools|phb} eller i {@skill Sleight of Hand}, välj ytterligare en färdighetsfärdighet för varje färdighet du redan har."
+			]
+		},
+		{
+			"name": "Tumbling Fool",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På 3:e nivån behärskar du en mängd akrobatiska tekniker som gör att du kan undvika faror. Som en bonusåtgärd kan du tumla. När du tumlar får du följande fördelar under resten av din tur:",
+				{
+					"type": "list",
+					"items": [
+						"Du får fördelarna av att utföra åtgärderna {@action Dash} och {@action Disengage}.",
+						"Du får en stigningshastighet som är lika stor som din nuvarande hastighet.",
+						"Du tar halva skadan av att falla."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fool's Insight",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får din förmåga att samla in berättelser och lärdomar en övernaturlig fördel. Du kan kasta detect thoughts upp till ett antal gånger som är lika med din Charisma-modifierare. Du återfår alla förbrukade användningar av den här förmågan efter en lång vila.",
+				"Om en varelse motstår ditt försök att undersöka djupare och lyckas med sitt räddningskast mot dina upptäckta tankar, lider den omedelbart av en pinsam social tabbe. Den kan högljutt ge ifrån sig gas, släppa ut en dundrande rap, snubbla och falla, eller tvingas berätta ett smaklöst skämt."
+			]
+		},
+		{
+			"name": "Fool's Luck",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Narrativister verkar ha en förmåga att ta sig ur trånga situationer och förvandla det som ser ut som ett säkert misslyckande till en pinsam men effektiv framgång.",
+				"På 14:e nivån kan du använda Bardic Inspiration en gång efter att du misslyckats med en förmågaskontroll, ett räddningskast eller en missad attack. Slå en Bardic Inspiration-tärning och lägg till det antal som kastats till din attack, räddningskast eller förmågekontroll, och använd det nya resultatet i stället för det misslyckade.",
+				"Om du lyckas med attacken, räddningskastet eller förmågekontrollen genom att använda den här förmågan, notera det antal du kastade på Bardic Inspiration-tärningen. DM kan sedan tillämpa detta resultat som ett straff på en attack eller kontroll du gör, och du kan inte använda den här förmågan igen förrän du drabbas av den här nackdelen. När DM åberopar detta straff ska du beskriva ett pinsamt misstag eller en pinsam tabbe som du gör som en del av den påverkade tärningskastet."
+			]
+		},
+		{
+			"name": "College of Swords",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"entries": [
+				"Barder från College of Swords kallas blades, och de underhåller genom djärva vapenkonster. Blades utför stunts som att svälja svärd, kasta och jonglera med knivar och låtsasstrider. Men även om de använder sina vapen för att underhålla är de också högt tränade och skickliga krigare i sin egen rätt.",
+				"Deras talang med vapen inspirerar många knivar att leva ett dubbelt liv. En Blade kan använda en cirkustrupp som täckmantel för skändliga handlingar som mord, rån och utpressning. Andra blad slår till mot de onda och skipar rättvisa mot de grymma och mäktiga. De flesta trupper är glada att acceptera en blade's talang för den spänning som det tillför en föreställning, men få underhållare litar helt och hållet på dem.",
+				"Blades som överger livet som underhållare har ofta råkat ut för problem som gör det omöjligt att upprätthålla sin hemliga verksamhet. En blade som ertappas med att stjäla eller delta i självrättvisa är en alltför stor belastning för de flesta artistgrupper. Med sina vapenkunskaper som sin största tillgång tar dessa blad antingen arbete som verkställare för tjuvarnas gillen eller ger sig ut på egen hand som äventyrare.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Swords (UA)|UAKitsOfOld|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fighting Style|Bard||Swords (UA)|UAKitsOfOld|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blade Flourish|Bard||Swords (UA)|UAKitsOfOld|3"
+				}
+			]
+		},
+		{
+			"name": "Blade Flourish",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På tredje nivån lär du dig att visa upp imponerande färdigheter med dina vapen. När du använder åtgärden {@action Attack} på din tur och attackerar med en dolk, ett långsvärd, en rapir, en krumsabel eller ett kortsvärd, kan du försöka göra en av följande uppvisningar.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Defensive Flourish",
+							"entries": [
+								"Du snurrar vapnet runt dig i snabba cirklar och skapar en hypnotisk bild. Som en bonusåtgärd använder du en användning av Bardic Inspiration och kastar en Bardic Inspiration-tärning och tillämpar det kastade antalet som en bonus på din AC fram till början av din nästa tur."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Trick Shooter's Flourish",
+							"entries": [
+								"Detta favoritknep för knivkastare gör att du kan använda Bardic Inspiration en gång som en bonusåtgärd. Slå en Bardic Inspiration-tärning och tillämpa det kastade talet som en bonus på nästa distansattackkast som du gör med en dolk under den här vändan. Om målet för attacken är ett obevakat, livlöst föremål är bonusen lika med dubbla tärningskastet."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Unnerving Flourish",
+							"entries": [
+								"Din dödliga uppvisning i stridsteknik gör dina motståndare nervösa och gör att de kryper ihop av rädsla och är utlämnade till din nåd. Närhelst du reducerar en varelse till 0 träffpunkter med en närstridsattack kan du använda en bonushandling för att använda en användning av Bardic Inspiration, och istället lämna varelsen på 1 träffpunkt.",
+								"Varelsen är {@condition frightened} av dig i ett antal minuter lika med din Charisma-modifierare. Den måste också göra ett Charisma räddningskast med ett DC som är lika med ditt spellednings DC + en bonus som är lika med din Bardic Inspiration tärning. Om varelsen misslyckas med detta räddningskast svarar den sanningsenligt på alla frågor du ställer till den och lyder dina direkta order medan den är {@condition frightened} av den här effekten."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du ansluter dig till College of Blades på 3:e nivån får du färdighet med medium rustning och med scimitars."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"College of Blades betonar mästerskap med vapen och ger dig tillgång till tvåvapenstrider för klassfunktionen Fighting Style.",
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Two-Weapon Fighting"
+				}
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan du attackera två gånger, istället för en, när du gör {@action Attack}-åtgärden på din tur."
+			]
+		},
+		{
+			"name": "Battle Magic",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån behärskar du konsten att väva samman trollkonst och vapenanvändning till en enda harmonisk handling. När du använder din handling för att kasta en bardbesvärjelse kan du göra en vapenattack som en bonushandling."
+			]
+		},
+		{
+			"name": "College of Swords v2",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"entries": [
+				"Barder från College of Swords kallas blades, och de underhåller genom djärva vapenkonster. Blades utför stunts som att svälja svärd, kasta och jonglera med knivar och låtsasstrider. Men även om de använder sina vapen för att underhålla är de också högt tränade och skickliga krigare i sin egen rätt.",
+				"Deras talang med vapen inspirerar många knivar att leva ett dubbelt liv. En Blade kan använda en cirkustrupp som täckmantel för skändliga handlingar som mord, rån och utpressning. Andra blad slår till mot de onda och skipar rättvisa mot de grymma och mäktiga. De flesta trupper är glada att acceptera en blade's talang för den spänning som det tillför en föreställning, men få underhållare litar helt och hållet på dem.",
+				"Blades som överger livet som underhållare har ofta råkat ut för problem som gör det omöjligt att upprätthålla sin hemliga verksamhet. En blade som ertappas med att stjäla eller delta i självrättvisa är en alltför stor belastning för de flesta artistgrupper. Med sina vapenkunskaper som sin största tillgång tar dessa blad antingen arbete som verkställare för tjuvarnas gillen eller ger sig ut på egen hand som äventyrare.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Swords v2 (UA)|UARevisedSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fighting Style|Bard||Swords v2 (UA)|UARevisedSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blade Flourish|Bard||Swords v2 (UA)|UARevisedSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Blade Flourish",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På tredje nivån lär du dig att visa upp imponerande färdigheter med dina vapen. Som en standardhandling kan du göra en standard närstridsattack och öka din gånghastighet med 10 fot fram till slutet av den aktuella vändningen. När du använder det här alternativet kan du också använda ett av följande Blade Flourish-alternativ tillsammans med det.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Defensive Flourish",
+							"entries": [
+								"Du snurrar vapnet runt dig i snabba cirklar och skapar en hypnotisk bild. Du kan använda en av dina användningar av Bardic Inspiration, kasta en Bardic Inspiration tärning och tillämpa det kastade talet som en bonus på din AC fram till början av din nästa vändning."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Slashing Flourish",
+							"entries": [
+								"Om attacken träffar sitt mål kan du använda en av dina användningar av Bardic Inspiration för att få vapnet att skada varje valfri varelse, förutom målet, som du kan se inom en radie på 1,5 meter från dig. Skadan är lika med det antal du kastar på tärningen Bardic Inspiration."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Mobile Flourish",
+							"entries": [
+								"Om attacken träffar sitt mål kan du använda en av dina användningar av Bardic Inspiration för att skjuta målet upp till 5 fot bort från dig, plus ett antal fot som är lika med det antal du kastar på Bardic Inspiration-tärningen. Du kan sedan omedelbart använda din reaktion för att förflytta dig upp till din hastighet till ett obebott utrymme inom 5 fot från målet."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du ansluter dig till College of Blades på 3:e nivån får du färdighet med medium rustning och med scimitar. Om du är duktig på ett enkelt eller martialiskt närstridsvapen kan du använda det som ett trollformelsfokus för dina Bard-besvärjelser."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"College of Blades betonar mästerskap med vapen och ger dig tillgång till antingen duell- eller tvåvapenkampalternativet för klassegenskapen Fighting Style, som är följande.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cunning Flourish",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan du attackera två gånger, istället för en, när du utför åtgärden Blade Flourish på din tur. Du kan dock bara använda ett Blade Flourish-alternativ när du gör den åtgärden."
+			]
+		},
+		{
+			"name": "Master's Flourish",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån kan du, när du använder ett Blade Flourish-alternativ, kasta en {@dice d6} och använda det istället för att använda en Bardic Inspiration-tärning."
+			]
+		},
+		{
+			"name": "College of Spirits",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"entries": [
+				"Barder från College of Spirits söker efter berättelser med inneboende kraft - vare sig de är legender, historier eller fiktioner - och väcker sina ämnen till liv. Med hjälp av ockulta inslag frammanar dessa barder andliga förkroppsliganden av kraftfulla krafter för att förändra världen igen. Sådana andar är dock nyckfulla, och vad en bard kallar på är inte alltid helt under deras kontroll.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Guiding Whispers|Bard||Spirits|VRGR|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spiritual Focus|Bard||Spirits|VRGR|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tales from Beyond|Bard||Spirits|VRGR|3"
+				}
+			]
+		},
+		{
+			"name": "Guiding Whispers",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Du kan vända dig till andar som kan vägleda dig och andra. Du lär dig {@spell guidance} cantrip, som inte räknas mot antalet bard cantrips du kan. För dig har den en räckvidd på 60 fot när du kastar den."
+			]
+		},
+		{
+			"name": "Spiritual Focus",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Du använder verktyg som hjälper dig att kanalisera andar, vare sig de är historiska figurer eller fiktiva arketyper. Du kan använda följande föremål som fokus för dina bardbesvärjelser: ett ljus, en kristallkula, en dödskalle, en andebräda eller en tarokka-däck.",
+				"Från och med 6:e nivån, när du kastar en bardbesvärjelse som ger skada eller återställer träffpunkter genom den andliga fokuseringen, kasta en {@dice d6}, och du får en bonus på en skade- eller läkningskast för besvärjelsen som är lika stor som det kastade antalet."
+			]
+		},
+		{
+			"name": "Tales from Beyond",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Du når ut till andar som berättar sina historier genom dig. Medan du håller ditt Spirituella fokus kan du använda en bonusåtgärd för att använda en användning av din Bardic Inspiration och rulla på Spirit Tales-tabellen med hjälp av din Bardic Inspiration-tärning för att bestämma vilken berättelse som andarna ber dig att berätta. Du behåller sagan i minnet tills du skänker sagans effekt eller avslutar en kort eller lång vila.",
+				"Du kan använda en åtgärd för att välja en varelse som du kan se inom 30 fot från dig (detta kan vara du själv) som ska vara målet för sagans effekt. När du har gjort det kan du inte skänka sagans effekt igen förrän du kastar den igen.",
+				"Du kan bara ha en av dessa berättelser i åtanke åt gången, och genom att rulla på Spirit Tales-tabellen upphör effekten av den föregående berättelsen omedelbart.",
+				"Om sagan kräver ett räddningskast är DC:n lika med din trollformels räddningsDC.",
+				{
+					"type": "table",
+					"caption": "Spirit Tales",
+					"colLabels": [
+						"Bardic Insp. Die",
+						"Tale Told Through You"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Berättelsen om det smarta djuret. Under de kommande 10 minuterna, närhelst målet gör en intelligens-, visdoms- eller karismakontroll, kan målet kasta en extra tärning omedelbart efter att ha kastat {@dice d20} och lägga till den extra tärningens nummer till kontrollen. Den extra tärningen är av samma typ som din Bardic Inspiration-tärning."
+						],
+						[
+							"2",
+							"Berättelse om den berömda duellanten. Du gör en trollformelattack i närkamp mot målet. Vid en träff tar målet kraftskada lika med två kast av din Bardic Inspiration tärning + din Charisma-modifierare."
+						],
+						[
+							"3",
+							"Berättelsen om de älskade vännerna. Målet och en annan varelse av dess val som det kan se inom en radie på 1,5 meter får tillfälliga träffpoäng som motsvarar en rulle av din Bardic Inspiration-tärning + din Charisma-modifierare."
+						],
+						[
+							"4",
+							"Berättelsen om en rymling. Målet kan omedelbart använda sin reaktion för att teleportera upp till 30 fot till ett obebott utrymme som det kan se. När målet teleporterar kan det välja ett antal varelser som det kan se inom 30 fot från det upp till din Charismamodifierare (minst 0) för att omedelbart använda samma reaktion."
+						],
+						[
+							"5",
+							"Berättelse om Avenger. I 1 minut tar alla varelser som träffar målet med en närstridsattack kraftskada som motsvarar din Bardic Inspiration-tärning."
+						],
+						[
+							"6",
+							"Berättelse om resenären. Målet får tillfälliga träffpoäng som motsvarar din Bardic Inspiration tärning + din bardnivå. Medan den har dessa tillfälliga träffpunkter ökar målets gånghastighet med 10 fot och den får en +1 bonus på sin AC."
+						],
+						[
+							"7",
+							"Berättelsen om Bedragaren. Målet måste lyckas med ett räddningskast i Visdom eller ta psykisk skada som är lika stor som två kast av din Bardic Inspiration-tärning, och målet är {@condition incapacitated} tills slutet av sin nästa tur."
+						],
+						[
+							"8",
+							"Fantomens berättelse. Målet blir {@condition invisible} till slutet av nästa tur eller tills det träffar en varelse med en attack. Om målet träffar en varelse med en attack under den här osynligheten tar den varelse den träffar nekrotisk skada som är lika med ett kast av din Bardic Inspiration-tärning och är {@condition frightened} av målet tills slutet av {@condition frightened} varelsens nästa tur."
+						],
+						[
+							"9",
+							"Berättelsen om den brutala människan. Varje varelse av målets val som det kan se inom 30 fot från det måste göra ett räddningskast för styrka. Vid ett misslyckat räddningsförsök tar en varelse åskskskada lika med tre kast av din Bardic Inspiration tärning och blir knockad {@condition prone}. En varelse som lyckas med sitt räddningskast tar hälften så mycket skada och blir inte knockad {@condition prone}."
+						],
+						[
+							"10",
+							"Sagan om draken. Målet spottar eld från munnen i en 30-fots kon. Varje varelse i det området måste göra ett räddningskast i Dexterity, och tar brandskador lika med fyra kast av din Bardic Inspiration tärning på ett misslyckat räddningskast, eller hälften så mycket skada på ett lyckat."
+						],
+						[
+							"11",
+							"Berättelsen om ängeln. Målet återfår träffpunkter som motsvarar två kast av din Bardic Inspiration-tärning + din Charisma-modifierare, och du avslutar ett tillstånd från följande lista som påverkar målet: {@condition blinded}, {@condition deafened}, {@condition paralyzed}, {@condition petrified} eller {@condition poisoned}."
+						],
+						[
+							"12",
+							"Berättelsen om tankesmedjan. Du framkallar en obegriplig saga från en utomvärldslig varelse. Målet måste lyckas med ett räddningskast i intelligens eller ta psykisk skada lika med tre kast av din Bardic Inspiration-tärning och vara {@condition stunned} till slutet av nästa tur."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Session",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Spirits feature}",
+				"Andar ger dig övernaturliga insikter. Du kan genomföra en timslång ritual för att kanalisera andar (vilket kan göras under en kort eller lång vila) med hjälp av ditt Spirituella fokus. Du kan genomföra ritualen med ett antal villiga varelser som är lika med din kompetensbonus (inklusive dig själv). I slutet av ritualen lär du dig tillfälligt {@filter one spell of your choice from any class|spells|school=d;n|level=0;1;2;3;4;5;6}.",
+				"Besvärjelsen du väljer måste vara på en nivå som är lika med antalet varelser som utförde ritualen eller mindre, besvärjelsen måste vara på en nivå som du kan kasta, och den måste vara i skolan för spådom eller nekromantik. Den valda besvärjelsen räknas som en bardbesvärjelse för dig men räknas inte mot antalet bardbesvärjelser du kan.",
+				"När du har utfört ritualen kan du inte göra det igen förrän du börjar en lång vila, och du känner till den valda besvärjelsen tills du börjar en lång vila."
+			]
+		},
+		{
+			"name": "Mystical Connection",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Spirits feature}",
+				"Du har nu möjlighet att få andarna i Tales from Beyond att välja vissa berättelser. När du kastar på Spirit Tales-tabellen kan du kasta tärningen två gånger och välja vilken av de två effekterna du vill ge. Om du kastar samma nummer på båda tärningarna kan du ignorera numret och välja vilken effekt som helst på bordet.",
+				{
+					"type": "inset",
+					"name": "Spirit Tales",
+					"entries": [
+						"Berättare, som barder från College of Spirits, ger ofta röst åt berättelser som inspirerats av ett större tema eller verk. När du bestämmer vilka historier du berättar, tänk på vad som förenar dem. Har de alla karaktärer från en specifik grupp, som arketyper från tarokka-däcket, figurer från konstellationer, fantasivänner från barndomen eller karaktärer i en viss sagobok? Eller är dina inspirationer mer generella och omfattar historiska mästare, mytologiska hjältar eller stadslegender? Använd de berättelser du berättar för att definiera din nisch som berättande äventyrare."
+					]
+				}
+			]
+		},
+		{
+			"name": "College of Glamour",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"College of Glamour är hem för barder som lärt sig sitt hantverk i Feywilds pulserande värld eller under handledning av någon som bodde där. Under ledning av satyrer, eladrin och andra feer lär sig dessa barder att använda sin magi för att glädja och fängsla andra.",
+				"De som är barder i detta college betraktas med en blandning av vördnad och rädsla. Deras framträdanden är legendariska. Dessa barder är så vältaliga att ett tal eller en sång som en av dem framför kan få fångvaktare att släppa barden oskadd och kan lugna en rasande drake till lugn. Samma magi som gör det möjligt för dem att dämpa odjur kan också förvränga sinnena. Skurkaktiga barder av detta kollegium kan suga ut ett samhälle i veckor och missbruka sin magi för att förvandla sina värdar till trälar. Hjältemodiga barder från denna skola använder istället denna kraft för att glädja de förtryckta och underminera förtryckare.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Mantle of Inspiration|Bard||Glamour|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Enthralling Performance|Bard||Glamour|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Enthralling Performance",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Från och med 3:e nivån kan du ladda ditt uppträdande med förförisk, fey magi.",
+				"Om du uppträder i minst en minut kan du försöka skapa förundran hos publiken genom att sjunga, läsa en dikt eller dansa. I slutet av föreställningen kan du välja ett antal humanoider inom 60 fot från dig som såg och lyssnade på hela föreställningen, upp till ett antal som är lika med din Charismamodifierare (minst en). Varje mål måste lyckas med ett Visdomssparande kast mot din trollformels räddnings-DC eller bli {@condition charmed} av dig. Medan {@condition charmed} på detta sätt idoliserar målet dig, det talar glödande om dig till alla som pratar med det, och det hindrar alla som motsätter sig dig, även om det undviker våld om det inte redan var benäget att slåss för din räkning. Den här effekten upphör på ett mål efter 1 timme, om det tar skada, om du attackerar det eller om det bevittnar att du attackerar eller skadar någon av dess allierade.",
+				"Om ett mål lyckas med sitt räddningskast har målet ingen aning om att du försökte förtrolla det.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har avslutat en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Mantle of Inspiration",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du går med i College of Glamour på 3:e nivån får du förmågan att väva en sång av fey magi som ger dina allierade kraft och snabbhet.",
+				"Som en bonusåtgärd kan du använda en användning av din Bardic Inspiration för att ge dig själv ett underbart utseende. När du gör det väljer du ett antal varelser som du kan se och som kan se dig inom 60 fot från dig, upp till ett antal som är lika med din Charisma-modifierare (minst en). Var och en av dem får 5 tillfälliga träffpunkter. När en varelse får dessa tillfälliga träffpunkter kan den omedelbart använda sin reaktion för att röra sig upp till sin hastighet, utan att provocera fram opportunitetsattacker.",
+				"Antalet tillfälliga träffpunkter ökar när du når vissa nivåer i den här klassen och ökar till 8 på 5:e nivån, 11 på 10:e nivån och 14 på 15:e nivån."
+			]
+		},
+		{
+			"name": "Mantle of Majesty",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får du förmågan att hölja dig i en fey magi som får andra att vilja tjäna dig. Som en bonushandling kan du kasta {@spell command}, utan att använda en trollformelplats, och du antar ett utseende av överjordisk skönhet i 1 minut eller tills din koncentration upphör (som om du koncentrerade dig på en trollformel). Under den här tiden kan du kasta {@spell command} som en bonusåtgärd på var och en av dina turer, utan att förbruka en trollformelplats.",
+				"Alla varelser {@condition charmed} som befinner sig i närheten av dig misslyckas automatiskt med sitt räddningskast mot de {@spell command} som du kastar med den här egenskapen.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Unbreakable Majesty",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån får ditt utseende permanent en utomvärldslig aspekt som gör att du ser mer vacker och våldsam ut.",
+				"Dessutom kan du som en bonusåtgärd anta en magiskt majestätisk närvaro i 1 minut eller tills du är {@condition incapacitated}. Under denna tid måste angriparen, närhelst någon varelse försöker attackera dig för första gången under en tur, göra ett Charisma räddningskast mot din magiska räddnings-DC. Vid ett misslyckat räddningsförsök kan den inte attackera dig under den här vändningen, och den måste välja ett nytt mål för sin attack eller så är attacken bortkastad. Vid ett lyckat räddningsförsök kan den attackera dig den här vändan, men den har nackdel på alla räddningsförsök som den gör mot dina trollformler vid din nästa vändning.",
+				"När du väl har intagit denna majestätiska närvaro kan du inte göra det igen förrän du har avslutat en kort eller lång vila."
+			]
+		},
+		{
+			"name": "College of Swords",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Barder från College of Swords kallas blades, och de underhåller genom djärva vapenkonster. Blades utför stunts som att svälja svärd, kasta och jonglera med knivar och låtsasstrider. Även om de använder sina vapen för att underhålla är de också högt tränade och skickliga krigare i sin egen rätt.",
+				"Deras talang med vapen inspirerar många knivar att leva ett dubbelt liv. En Blade kan använda en cirkustrupp som täckmantel för skändliga handlingar som mord, rån och utpressning. Andra blad slår till mot de onda och skipar rättvisa mot de grymma och mäktiga. De flesta trupper är glada att acceptera en blade's talang för den spänning som det tillför en föreställning, men få underhållare litar helt och hållet på en blade i sina led.",
+				"Blades som överger sina liv som underhållare har ofta råkat ut för problem som gör det omöjligt att upprätthålla sin hemliga verksamhet. En blade som ertappas med att stjäla eller delta i självrättvisa är en alltför stor belastning för de flesta trupper. Med sina vapenkunskaper och sin magi tar dessa blad antingen arbete som verkställare för tjuvarnas gillen eller ger sig ut på egen hand som äventyrare.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Swords|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fighting Style|Bard||Swords|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blade Flourish|Bard||Swords|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Blade Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På 3:e nivån lär du dig att utföra imponerande uppvisningar av krigisk skicklighet och snabbhet.",
+				"När du gör åtgärden {@action Attack} på din tur ökar din gånghastighet med 10 fot fram till slutet av vändan, och om en vapenattack som du gör som en del av den här åtgärden träffar en varelse kan du använda ett av följande Blade Flourish-alternativ som du väljer. Du kan endast använda ett Blade Flourish-alternativ per tur.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Defensive Flourish|Bard|XGE|Swords|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Slashing Flourish|Bard|XGE|Swords|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Mobile Flourish|Bard|XGE|Swords|XGE|3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du går med i College of Swords på 3:e nivån får du färdighet med medium rustning och {@item scimitar|phb}.",
+				"Om du är duktig på ett enkelt eller martialiskt närstridsvapen kan du använda det som fokus för dina trollformler."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På 3:e nivån antar du en kampstil som din specialitet. Välj ett av följande alternativ. Du kan inte välja ett alternativ för Fighting Style mer än en gång, även om något i spelet låter dig välja igen.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan du attackera två gånger, istället för en, när du gör {@action Attack}-åtgärden på din tur."
+			]
+		},
+		{
+			"name": "Master's Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån kan du, när du använder ett Blade Flourish-alternativ, kasta en {@dice d6} och använda det istället för att använda en Bardic Inspiration-tärning."
+			]
+		},
+		{
+			"name": "College of Whispers",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"De flesta människor är glada över att välkomna en bard till sig. Barder från College of Whispers utnyttjar detta till sin fördel. De verkar vara som andra barder och delar med sig av nyheter, sjunger sånger och berättar historier för den publik de samlar. I själva verket lär Whispers College sina elever att de är vargar bland får. Dessa barder använder sin kunskap och magi för att avslöja hemligheter och vända dem mot andra genom utpressning och hot.",
+				"Många andra barder hatar College of Whispers och ser det som en parasit som använder en bards rykte för att skaffa sig rikedom och makt. Av denna anledning avslöjar sällan medlemmarna i detta college sin sanna natur. De hävdar vanligtvis att de följer något annat kollegium, eller så håller de sitt egentliga kall hemligt för att kunna infiltrera och utnyttja kungliga hovar och andra maktmiljöer.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Psychic Blades|Bard||Whispers|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Words of Terror|Bard||Whispers|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Psychic Blades",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"När du går med i College of Whispers på 3:e nivån får du förmågan att göra dina vapenattacker magiskt giftiga för en varelses sinne.",
+				"När du träffar en varelse med en vapenattack kan du använda en användning av din Bardic Inspiration för att tillfoga extra {@damage 2d6} psykisk skada till målet. Du kan göra detta endast en gång per runda på din tur.",
+				"Den psykiska skadan ökar när du når vissa nivåer i den här klassen och ökar till {@dice 3d6} på 5:e nivån, {@dice 5d6} på 10:e nivån och {@dice 8d6} på 15:e nivån."
+			]
+		},
+		{
+			"name": "Words of Terror",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"På 3:e nivån lär du dig att ge oskyldiga ord en försåtlig magi som kan skapa skräck.",
+				"Om du talar med en humanoid ensam i minst 1 minut kan du försöka skapa paranoia i dess sinne. I slutet av samtalet måste målet lyckas med ett Visdomsbesparingskast mot din trollformels räddnings-DC eller vara {@condition frightened} av dig eller en annan varelse av ditt val. Målet är {@condition frightened} på detta sätt i 1 timme, tills det blir attackerat eller skadat, eller tills det bevittnar att dess allierade blir attackerade eller skadade.",
+				"Om målet lyckas med sitt räddningskast har det ingen aning om att du försökte skrämma det.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har avslutat en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Mantle of Whispers",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får du förmågan att anta en humanoid personlighet. När en humanoid dör inom 30 fot från dig kan du magiskt fånga dess skugga med hjälp av din reaktion. Du behåller denna skugga tills du använder den eller avslutar en lång vila.",
+				"Du kan använda skuggan som en åtgärd. När du gör det försvinner den och förvandlas magiskt till en förklädnad som visas på dig. Du ser nu ut som den döda personen, men frisk och levande. Denna förklädnad varar i 1 timme eller tills du avslutar den som en bonushandling.",
+				"Medan du är förklädd får du tillgång till all information som humanoiden skulle dela med sig av till en bekant. Sådan information inkluderar allmänna detaljer om dess bakgrund och personliga liv, men inte hemligheter. Informationen är tillräcklig för att du ska kunna utge dig för att vara personen genom att dra nytta av dess minnen.",
+				"En annan varelse kan genomskåda denna förklädnad genom att lyckas med en Visdomskontroll ({@skill Insight}) som du kan motverka med din Charismakontroll ({@skill Deception}). Du får en bonus på +5 på din kontroll.",
+				"När du har fångat en skugga med den här funktionen kan du inte fånga en ny med den förrän du har avslutat en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Shadow Lore",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån får du förmågan att väva in mörk magi i dina ord och utnyttja en varelses djupaste rädslor.",
+				"Som en handling kan du på magiskt sätt viska en fras som endast en valfri varelse inom 30 fot från dig kan höra. Målet måste göra ett Visdomssparande kast mot din spellednings räddnings-DC. Det lyckas automatiskt om det inte delar språk med dig eller om det inte kan höra dig. Vid ett lyckat räddningskast låter din viskning som obegripligt mumlande och har ingen effekt.",
+				"Vid ett misslyckat räddningskast är målet {@condition charmed} av dig de kommande 8 timmarna eller tills du eller dina allierade attackerar det, skadar det eller tvingar det att göra ett räddningskast. Den tolkar viskningarna som en beskrivning av sin mest förödmjukande hemlighet. Du får ingen kunskap om denna hemlighet, men målet är övertygat om att du känner till den.",
+				"{@condition charmed} varelsen lyder dina kommandon av rädsla för att du ska avslöja dess hemlighet. Den kommer inte att riskera sitt liv för dig eller slåss för dig, om den inte redan var benägen att göra det. Den ger dig tjänster och gåvor som den skulle erbjuda en nära vän.",
+				"När effekten upphör har varelsen ingen förståelse för varför den höll dig i sådan rädsla.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Defensive Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "XGE",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Du kan använda en användning av din Bardic Inspiration för att få vapnet att ge extra skada till det mål du träffar. Skadan är lika med det antal du kastar på tärningen Bardic Inspiration. Du lägger också till det kastade antalet till din AC fram till början av din nästa tur."
+			]
+		},
+		{
+			"name": "Mobile Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "XGE",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Du kan använda en användning av din Bardic Inspiration för att få vapnet att ge extra skada till det mål du träffar. Skadan är lika med det antal du kastar på tärningen Bardic Inspiration. Du kan också skjuta målet upp till 5 fot bort från dig, plus ett antal fot som är lika med det antal du kastar på den tärningen. Du kan då omedelbart använda din reaktion för att flytta upp till din gånghastighet till ett obebott utrymme inom 5 fot från målet."
+			]
+		},
+		{
+			"name": "Slashing Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "XGE",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Du kan använda en användning av din Bardic Inspiration för att få vapnet att ge extra skada till det mål du träffar och till någon annan varelse som du väljer och som du kan se inom en radie av 1,5 meter. Skadan är lika med det antal du kastar på tärningen Bardic Inspiration."
+			]
+		}
+	]
+}

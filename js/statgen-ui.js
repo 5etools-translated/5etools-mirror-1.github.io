@@ -101,6 +101,7 @@ class StatGenUi extends BaseComponent {
 	removeHookBase (prop, hook) { return this._removeHookBase(prop, hook); }
 	proxyAssignSimple (hookProp, toObj, isOverwrite) { return this._proxyAssignSimple(hookProp, toObj, isOverwrite); }
 	get race () { return this._races[this._state.common_ixRace]; }
+	get isLevelUp () { return this._isLevelUp; }
 	// endregion
 
 	getTotals () {
@@ -1930,7 +1931,7 @@ StatGenUi.CompAsi = class extends BaseComponent {
 		</div>`;
 		const hkIxRace = () => {
 			const race = this._parent.race;
-			$stgRace.toggleVe(!!race?.feats);
+			$stgRace.toggleVe(!this._parent.isLevelUp && !!race?.feats);
 		};
 		this._parent.addHookBase("common_ixRace", hkIxRace);
 		hkIxRace();

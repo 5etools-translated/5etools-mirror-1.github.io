@@ -1,0 +1,316 @@
+{
+	"spell": [
+		{
+			"name": "Borrowed Knowledge",
+			"source": "SCC",
+			"page": 37,
+			"level": 2,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a book worth at least 25 gp",
+					"cost": 2500
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Czerpiesz wiedzę od duchów przeszłości. Wybierz jedną umiejętność, w której nie masz biegłości. Na czas trwania zaklęcia zyskujesz biegłość w wybranej umiejętności. Zaklęcie kończy się przedwcześnie, jeśli rzucisz je ponownie."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Kinetic Jaunt",
+			"source": "SCC",
+			"page": 37,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"W magiczny sposób wzmacniasz swój ruch za pomocą kroków przypominających taniec, zapewniając sobie następujące korzyści na cały czas jego trwania.",
+				{
+					"type": "list",
+					"items": [
+						"Twoja prędkość chodzenia wzrasta o 10 stóp.",
+						"Nie prowokujesz ataków okazjonalnych.",
+						"Możesz poruszać się przez przestrzeń innego stworzenia i nie liczy się to jako {@quickref difficult terrain||3}. Jeśli zakończysz swoją turę w przestrzeni innego stworzenia, zostajesz przesunięty do ostatniej niezajętej przestrzeni, którą zajmowałeś i otrzymujesz {@damage 1d8} obrażeń od siły."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Silvery Barbs",
+			"source": "SCC",
+			"page": 38,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when a creature you can see within 60 feet of yourself succeeds on an attack roll, an ability check, or a saving throw"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"W magiczny sposób odwracasz uwagę wywołującego stwora i zmieniasz jego chwilową niepewność w zachętę dla innego stworzenia. Wyzwalająca istota musi powtórzyć rzut {@dice d20} i wykorzystać niższy rzut.",
+				"Następnie możesz wybrać inną istotę, którą widzisz w zasięgu (możesz wybrać siebie). Wybrana istota ma przewagę przy następnym ataku, sprawdzeniu umiejętności lub rzucie ratunkowym, który wykona w ciągu 1 minuty. Stworzenie może być wzmocnione tylko jednym użyciem tego zaklęcia naraz."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Vortex Warp",
+			"source": "SCC",
+			"page": 38,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"W magiczny sposób zamieniasz przestrzeń wokół innego stworzenia, które widzisz w zasięgu. Celowi musi udać się rzut ratunkowy na Konstytucję (cel może wybrać opcję nieudaną), albo zostanie on teleportowany do wybranej przez ciebie niezajętej przestrzeni, którą widzisz w zasięgu. Wybrana przestrzeń musi znajdować się na powierzchni lub w cieczy, która może utrzymać cel bez konieczności przeciskania się przez nią."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, zasięg zaklęcia zwiększa się o 30 stóp za każdy poziom gniazda powyżej 2."
+					]
+				}
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT",
+				"TP"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Wither and Bloom",
+			"source": "SCC",
+			"page": 38,
+			"level": 2,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a withered vine twisted into a loop"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Przywołujesz śmierć i życie w sferze o promieniu 10 stóp, skupionej na punkcie znajdującym się w zasięgu. Każde wybrane przez ciebie stworzenie na tym obszarze musi wykonać rzut obronny na Konstytucję, otrzymując {@damage 2d6} obrażeń nekrotycznych w przypadku nieudanego testu lub połowę tych obrażeń w przypadku udanego testu. Roślinność niemagiczna na tym obszarze usycha.",
+				"Dodatkowo, jedno wybrane przez ciebie stworzenie na tym obszarze może wydać i rzucić jedną z niewydanych kości trafień i odzyskać liczbę punktów trafień równą wartości rzutu plus twój modyfikator zdolności zaklęć."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, obrażenia wzrastają o {@scaledamage 2d6|2-9|1d6} za każde gniazdo powyżej drugiego, a liczba kostek trafień, które można wydać i dodać do rzutu leczenia, wzrasta o jeden za każde gniazdo powyżej drugiego."
+					]
+				}
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"HL"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

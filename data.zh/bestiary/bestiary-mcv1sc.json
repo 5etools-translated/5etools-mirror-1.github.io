@@ -1,0 +1,1276 @@
+{
+	"monster": [
+		{
+			"name": "Asteroid Spider",
+			"source": "MCV1SC",
+			"page": 3,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 348,
+				"formula": "24d20 + 96"
+			},
+			"speed": {
+				"walk": 60,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 26,
+			"dex": 10,
+			"con": 18,
+			"int": 17,
+			"wis": 13,
+			"cha": 12,
+			"save": {
+				"con": "+9",
+				"wis": "+6"
+			},
+			"skill": {
+				"perception": "+11",
+				"stealth": "+5"
+			},
+			"senses": [
+				"blindsight 120 ft. while the spider's eyes are closed",
+				"darkvision 120 ft."
+			],
+			"passive": 21,
+			"cr": "15",
+			"trait": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"如果蜘蛛一动不动，闭着眼睛和嘴巴，并且在战斗开始时，它的腿环绕着身体，那么它在主动性卷轴上有优势。此外，如果一个生物没有观察到蜘蛛的行动，那么该生物必须通过智力（调查）检查（%0%）来辨别蜘蛛是否是小行星以外的东西。"
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"如果蜘蛛的拯救动作失败，它可以选择成功。"
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"蜘蛛不需要空气。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"蜘蛛进行两次网链攻击，使用卷轴，并进行两次咬人攻击。"
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 13}击中，到达10英尺，一个目标。{@h}21 ({@damage 3d8 + 8})穿刺伤害加上10 ({@damage 3d6})酸液伤害。"
+					]
+				},
+				{
+					"name": "Web Strand",
+					"entries": [
+						"{@atk rw} {@hit 13}击中，达到120英尺，一个生物。{@h}目标是{@condition grappled}(逃跑{@dc 18})。网链可以被攻击和摧毁（AC12；20点命中率；易受火灾伤害；对击打、中毒和精神伤害免疫）。蜘蛛一次可以用它的网绳抓取多达六个生物。"
+					]
+				},
+				{
+					"name": "Reel",
+					"entries": [
+						"蜘蛛会把它身边的每个生物（%0%）拉到60英尺以内，直奔自己。"
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Snare Ship (1/Day)",
+					"entries": [
+						"蜘蛛在它能看到的120英尺范围内的法术干扰船周围编织一张魔法网。这张网持续1分钟，并抑制船上的任何法术干扰舵手的魔法。在效果结束前，没有被封闭的甲板和其他船体表面都会变成困难的地形。这张网不受伤害，但在成功施放{@spell dispel magic}({@dc 18})后会被摧毁。"
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance",
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"B",
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"A",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Clockwork Horror",
+			"source": "MCV1SC",
+			"page": 4,
+			"size": [
+				"S"
+			],
+			"type": "construct",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "8d6 + 32"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 14,
+			"dex": 14,
+			"con": 18,
+			"int": 13,
+			"wis": 14,
+			"cha": 10,
+			"save": {
+				"str": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 16,
+			"immune": [
+				"lightning",
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"languages": [
+				"Thri-kreen",
+				"Ziklight"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Shutdown",
+					"entries": [
+						"如果目标是{@spell dispel magic}，恐怖必须对施法者的法术救赎DC进行宪法救赎成功，否则就会在1分钟内或在它受到任何伤害之前跌倒{@condition unconscious}。"
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"恐怖不需要空气、食物、饮料或睡眠。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"恐怖会进行一次咬人攻击和两次旋转锯攻击，或者进行两次闪电攻击。"
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4}击中，到达5英尺，一个目标。{@h}6 ({@damage 1d8 + 2})穿刺伤害。"
+					]
+				},
+				{
+					"name": "Rotating Saw",
+					"entries": [
+						"{@atk mw} {@hit 4}击中，到达5英尺，一个目标。{@h}4 ({@damage 1d4 + 2})砍击伤害。"
+					]
+				},
+				{
+					"name": "Lightning Jolt",
+					"entries": [
+						"{@atk rs} {@hit 4}击中，范围120英尺，一个目标。{@h}7 ({@damage 1d10 + 2})雷电伤害。"
+					]
+				},
+				{
+					"name": "Spelljamming Helm Interface",
+					"entries": [
+						"恐怖会附着在它能看到的5英尺范围内的法术干扰头盔上，并立即与该头盔相适应。如果另一个生物已经与头盔相合，那么当恐怖的相合开始时，该生物对头盔的相合就会结束。恐怖者可以操作头盔，即使它不是一个施法者。恐怖者可以通过一个额外的动作脱离头盔，从而结束它对头盔的适应性。"
+					]
+				}
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"L",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Eldritch Lich",
+			"source": "MCV1SC",
+			"page": 6,
+			"size": [
+				"M"
+			],
+			"type": "undead",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 165,
+				"formula": "22d8 + 66"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 11,
+			"dex": 18,
+			"con": 16,
+			"int": 19,
+			"wis": 14,
+			"cha": 12,
+			"save": {
+				"int": "+9",
+				"wis": "+7"
+			},
+			"skill": {
+				"arcana": "+14",
+				"perception": "+7"
+			},
+			"senses": [
+				"truesight 120ft."
+			],
+			"passive": 17,
+			"resist": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
+			"languages": [
+				"Common",
+				"Deep Speech",
+				"telepathy 120 ft."
+			],
+			"cr": "15",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"巫师可以施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。随意：探测魔法、法师之手、预言术"
+					],
+					"daily": {
+						"2e": [
+							"{@spell dispel magic}",
+							"{@spell hunger of Hadar}",
+							"{@spell lightning bolt}"
+						],
+						"1e": [
+							"{@spell arcane eye}",
+							"{@spell dimension door}",
+							"{@spell plane shift} (self only)"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Far Realm Parasite",
+					"entries": [
+						"巫师的躯干里住着一个蠕虫状的寄生虫，里面有巫师的灵魂。当巫师死亡时，它就会内爆到寄生虫中，然后消失在远方的世界中。在{@dice 2d4}天内，寄生虫会使巫师重新出现在它死亡地点的{@dice 1d4}英里内。如果这个巫师死在一个用来控制亡灵的魔法阵里，那么这个巫师就会以一个带有巫师所有记忆的奥特曼的形式重新出现。"
+					]
+				},
+				{
+					"name": "Legendary Resistance (4/Day)",
+					"entries": [
+						"如果巫师的拯救动作失败，它可以选择成功。"
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"巫师不需要空气、食物、饮料或睡眠。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"巫师会进行一次寄生触手攻击或使用法术攻击。巫师也会使用精神低语两次。"
+					]
+				},
+				{
+					"name": "Parasitic Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 9}击中，到达10英尺，一个生物。{@h}25({@damage 6d6 + 4})穿刺伤害加上25({@damage 6d6 + 4})坏死伤害。目标必须在{@dc 17}体质测试中成功，或被{@condition poisoned}。{@condition poisoned}目标可以在其每个回合结束时重复蓄力，如果成功则结束对自己的影响。第三次救赎失败时，目标会死亡并变成一个胡言乱语的人，听从巫师的命令并使用目标的倡议。"
+					]
+				},
+				{
+					"name": "Psychic Whisper",
+					"entries": [
+						"巫师的目标是自己周围120英尺内可以看到的一个生物。目标必须在一个{@dc 17}的智慧救赎中成功，否则会受到25({@damage 6d6 + 4})的精神伤害，并且会被{@condition stunned}，直到巫师的下一个回合结束，因为难以理解的低语充满了目标的头脑。"
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Far Realm Step",
+					"entries": [
+						"在受到伤害后，巫师和它所穿戴或携带的任何装备会立即被魔法传送到它能看到的无人空间，最远可达60英尺。"
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"U"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DS",
+				"TP"
+			],
+			"damageTags": [
+				"N",
+				"P",
+				"Y"
+			],
+			"damageTagsSpell": [
+				"A",
+				"C",
+				"L",
+				"O"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"poisoned",
+				"stunned"
+			],
+			"conditionInflictSpell": [
+				"blinded"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Fractine",
+			"source": "MCV1SC",
+			"page": 7,
+			"size": [
+				"L"
+			],
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 110,
+				"formula": "13d10 + 39"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 1,
+			"dex": 13,
+			"con": 16,
+			"int": 18,
+			"wis": 18,
+			"cha": 11,
+			"skill": {
+				"perception": "+8"
+			},
+			"senses": [
+				"blindsight 360 ft. (blind beyond this radius)"
+			],
+			"passive": 18,
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned"
+			],
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"分裂体对法术和其他魔法效果的救赎有优势。"
+					]
+				},
+				{
+					"name": "Scrying Focus",
+					"entries": [
+						"施法者在施展{@spell scrying}法术或类似的魔法时，可以用分身作为替代焦点，前提是施法者和分身在5英尺以内。"
+					]
+				},
+				{
+					"name": "Two-Dimensionality",
+					"entries": [
+						"分裂物可以占据另一个生物的空间，反之亦然。它可以在其他生物和物体中移动，就像它们是困难的地形一样，但是如果它在一个物体中结束它的回合，它会受到5（（%0%））的力量伤害。"
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"分裂物不需要空气、饮料或睡眠。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Extradimensional Touch",
+					"entries": [
+						"{@atk ms} {@hit 5}击中，到达5英尺，一个目标。{@h}24 ({@damage 8d6})武力伤害。"
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Imprison",
+					"entries": [
+						"分裂物的目标是在它的空间里的一个同体积或更小的生物。目标必须成功地进行灵巧救赎，否则就会被囚禁在一个半空间里。当生物被囚禁时，在分形体的二维表面可以看到它的扭曲影像。",
+						"半位面与分身一起移动，拥有坚不可摧和不透明的墙壁，其大小仅能容纳目标，而目标在被囚禁时不会遭受饥饿或口渴。其他生物无法进入半位面，而分身也无法从半位面内受到伤害。",
+						"分裂者一次只能禁锢一个生物，并且可以将该生物作为一个额外动作释放。如果分身的命中率降至0，分身的半位面中的任何生物都会被立即释放。被释放的生物会重新出现在离分形体（或它死亡的地方）尽可能近的一个无人的空间。生物可以通过使用能够进行平面旅行的魔法，例如{@spell plane shift}咒语，自行离开半位面。"
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Mirrored Damage",
+					"entries": [
+						"在被它能看到的120英尺范围内的生物伤害时，分身会强迫该生物做一个{@dc 16}宪法规定的救赎。拯救失败时，该生物会受到24（%1%）的力量伤害。拯救成功时，该生物会受到一半的伤害。"
+					]
+				},
+				{
+					"name": "Split",
+					"entries": [
+						"当一个剩余至少10点命中率的大型分身受到来自任何来源的打击、穿刺、砍击或雷击伤害时，它将分裂成两个中型分身。新的分身占据原来分身所占据的空间，每个新分身的命中率等于原来分身的一半，向下取整。如果原来的分形有一个生物被困在它的半位面，那么这个生物会在分形分裂时被释放，并重新出现在离新分形尽可能近的未被占领的空间。"
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"B"
+			],
+			"damageTags": [
+				"O"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Gadabout",
+			"source": "MCV1SC",
+			"page": 8,
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 11,
+				"formula": "2d8 + 2"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 12,
+			"dex": 10,
+			"con": 14,
+			"int": 1,
+			"wis": 6,
+			"cha": 1,
+			"senses": [
+				"blindsight 10 ft. (blind beyond this radius)"
+			],
+			"passive": 8,
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Air Envelope",
+					"entries": [
+						"如果它至少有1个命中率，当处于真空状态时，嘎达布特可以在自己周围产生一个空气包络。这个空气罩可以无限期地维持这个小人和它空间中的一个其他生物。"
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"嘎达人不需要食物或睡眠。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"嘎达布特进行了两次分支攻击。"
+					]
+				},
+				{
+					"name": "Branch",
+					"entries": [
+						"{@atk mw} {@hit 3}击中，到达5英尺，一个目标。{@h}3 ({@damage 1d4 + 1})砍击伤害。"
+					]
+				},
+				{
+					"name": "Wrap",
+					"entries": [
+						"虻虫进入自己5英尺范围内一个愿意的中型或小型生物的空间，并将它的树枝轻轻地缠绕在目标身上。目标是（%0%）（逃跑（%1%））。任何目标试图逃脱抓捕的行为都会导致小妖精使用它的反应，移动到最近的无人空间。在被抓捕的{@condition grappled}期间，目标决定了抓捕者在抓捕过程中的移动位置，并且无论抓捕者走到哪里都会伴随着他。"
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Goon Balloon",
+			"source": "MCV1SC",
+			"page": 9,
+			"size": [
+				"M"
+			],
+			"type": "aberration",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				10
+			],
+			"hp": {
+				"average": 6,
+				"formula": "1d8 + 2"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 10,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 14,
+			"cha": 4,
+			"save": {
+				"con": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 16,
+			"vulnerable": [
+				"piercing"
+			],
+			"languages": [
+				"Deep Speech"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Burst",
+					"entries": [
+						"当地痞气球下降到0命中率时就会爆裂，在以自身为中心的10英尺半径的范围内释放有毒气体。该区域内的生物必须成功地进行一次{@dc 12}的体质判定，否则会被{@condition poisoned}，持续1分钟。一个{@condition poisoned}的生物可以在它的每个回合结束时重复蓄力，如果成功则结束对它的影响。"
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"地狱气球不需要空气、食物或饮料。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"地狱气球进行了两次爪子攻击。"
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 2}击中，到达5英尺，一个目标。{@h}3 ({@damage 1d6})砍击伤害。"
+					]
+				},
+				{
+					"name": "Scintillating Eye",
+					"entries": [
+						"神奇的万花筒之光从气球的一只眼睛中射出，目标是30英尺内它能看到的一个生物。目标必须做一个{@dc 12}智慧救赎，如果救赎失败，将受到6({@damage 1d12})的精神伤害，如果救赎成功，将受到一半的伤害。"
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Float",
+					"entries": [
+						"暴徒气球在一个方向上最多可以垂直移动20英尺，而不会引起机会攻击。如果它结束这次移动时悬浮在空中，它就在原地盘旋。它在空中时不能被击倒（%0%）。"
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DS"
+			],
+			"damageTags": [
+				"S",
+				"Y"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflict": [
+				"poisoned",
+				"prone"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nightmare Beast",
+			"source": "MCV1SC",
+			"page": 10,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 232,
+				"formula": "15d20 + 75"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 26,
+			"dex": 10,
+			"con": 21,
+			"int": 9,
+			"wis": 12,
+			"cha": 15,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 11,
+			"languages": [
+				"understands the languages of its creator but can't speak"
+			],
+			"cr": "16",
+			"trait": [
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"如果野兽的拯救动作失败，它可以选择成功。"
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"野兽对物体和结构造成双倍伤害。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"野兽进行两次爪子攻击和一次獠牙攻击。"
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 13}击中，到达15英尺，一个目标。{@h}14 ({@damage 1d12 + 8})砍击伤害，如果目标是生物，它必须成功进行{@dc 21}力量救赎，否则会被击倒{@condition prone}。"
+					]
+				},
+				{
+					"name": "Tusk",
+					"entries": [
+						"{@atk mw} {@hit 13}击中，到达15英尺，一个目标。{@h}17 ({@damage 2d8 + 8})砍击伤害。"
+					]
+				},
+				{
+					"name": "Disintegration Gaze {@recharge 5}",
+					"entries": [
+						"野兽的目标是它能看到的60英尺内的一个生物。目标必须做一个{@dc 18}宪法救赎，如果救赎失败，将受到70({@damage 10d6 + 40})武力伤害，如果救赎成功，将受到一半的伤害。如果这个魔法效果将目标降低到0命中率，目标就会被瓦解，除了一堆灰烬和它所穿戴或携带的装备外，什么都不会留下。"
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Teleport (2/Day)",
+					"entries": [
+						"这只野兽会神奇地将它和它所穿戴或携带的任何装备一起传送到它能看到的无人的空间，最远可达120英尺。"
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Tusk Attack",
+					"entries": [
+						"野兽进行一次獠牙攻击。"
+					]
+				},
+				{
+					"name": "Charge (Costs 2 Actions)",
+					"entries": [
+						"野兽在不引起机会攻击的情况下移动到其速度，然后进行两次獠牙攻击。"
+					]
+				},
+				{
+					"name": "Frightful Howl (Costs 2 Actions)",
+					"entries": [
+						"野兽一边嚎叫一边在120英尺的范围内呼出一团神奇的恐惧气体。该区域内的任何生物必须在{@dc 18}智慧救赎中成功，否则将在1分钟内受到野兽的{@condition frightened}攻击。一个生物可以在它的每个回合结束时重复蓄力，如果成功则结束对它的影响。"
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances",
+				"Siege Monster"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"CS"
+			],
+			"damageTags": [
+				"O",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"frightened",
+				"prone"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Puppeteer Parasite",
+			"source": "MCV1SC",
+			"page": 11,
+			"size": [
+				"T"
+			],
+			"type": "aberration",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 71,
+				"formula": "11d4 + 44"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 2,
+			"dex": 15,
+			"con": 18,
+			"int": 16,
+			"wis": 10,
+			"cha": 3,
+			"save": {
+				"dex": "+4",
+				"con": "+6",
+				"wis": "+2"
+			},
+			"skill": {
+				"stealth": "+4"
+			},
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"fire",
+				"necrotic",
+				"poison"
+			],
+			"vulnerable": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
+			"languages": [
+				"telepathy 30 ft."
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"这种寄生虫不需要空气或睡眠。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Cling",
+					"entries": [
+						"{@atk mw} {@hit 4}击中，到达5英尺，一个生物。{@h}12 ({@damage 3d6 + 2})坏死伤害，并且寄生虫会附着在目标身上。在附着时，寄生虫不能进行附着攻击。寄生虫可以通过花费5英尺的移动距离来脱离自己。作为一个动作，在寄生虫触及范围内的生物可以尝试分离它，如果成功地进行力量检查，就可以做到。"
+					]
+				},
+				{
+					"name": "Consume Life",
+					"entries": [
+						"寄生虫对它所附着的一个生物造成12({@damage 3d6 + 2})的坏死伤害，只要该生物不是构装体或亡灵。寄生虫恢复的命中率与受到的伤害相等。"
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Suggestion (Psionics; 1/Day)",
+					"entries": [
+						"寄生虫施展{@spell suggestion}法术，不需要法术组件，使用智力作为施法能力（法术保全{@dc 13}）。"
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"languageTags": [
+				"TP"
+			],
+			"damageTags": [
+				"N"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Star Lancer",
+			"source": "MCV1SC",
+			"page": 12,
+			"size": [
+				"L"
+			],
+			"type": "celestial",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "8d10 + 16"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 50
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 15,
+			"int": 10,
+			"wis": 13,
+			"cha": 8,
+			"save": {
+				"dex": "+4",
+				"con": "+4"
+			},
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"passive": 13,
+			"resist": [
+				"radiant"
+			],
+			"languages": [
+				"Celestial",
+				"telepathy 120 ft."
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"当星际飞行者飞出敌人的范围时，不会引起机会攻击。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Horn",
+					"entries": [
+						"{@atk mw} {@hit 6}击中，到达5英尺，一个目标。{@h}7 ({@damage 1d6 + 4})穿刺伤害。如果在命中前，星辰使者至少向目标直线移动了20英尺，目标会受到额外的10({@damage 3d6})穿刺伤害。"
+					]
+				},
+				{
+					"name": "Invisibility Cloak (3/Day)",
+					"entries": [
+						"舞星者和一个骑着它的生物（由舞星者选择）神奇地转身（%0%）。这个效果一直持续到舞星者或骑着它的生物进行攻击或施法，或者直到舞星者的注意力结束（就像集中在一个法术上）。在隐身斗篷的持续时间内，任何由{@condition invisible}生物穿戴或携带的装备也会被{@condition invisible}。"
+					]
+				}
+			],
+			"traitTags": [
+				"Flyby"
+			],
+			"languageTags": [
+				"CE",
+				"TP"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Yggdrasti",
+			"source": "MCV1SC",
+			"page": 13,
+			"size": [
+				"G"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 112,
+				"formula": "9d20 + 18"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 20,
+			"dex": 10,
+			"con": 15,
+			"int": 3,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 120 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
+			"immune": [
+				"lightning"
+			],
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"exhaustion"
+			],
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Cavities",
+					"entries": [
+						"yggdrasti的躯干上有{@dice 1d4 + 2}个空洞。每个空洞都足以容纳一个中型生物、两个小型生物或八个微型生物。洞穴内的生物有四分之三的保护，可以抵御来自洞穴外的攻击和其他影响。yggdrasti的空洞并不互相连接。"
+					]
+				},
+				{
+					"name": "False Appearance",
+					"entries": [
+						"如果yggdrasti在战斗开始时一动不动地扎根于地面，它看起来就像一棵死树，并且在主动性卷轴上有优势。此外，如果一个生物没有观察过扎根的yggdrasti的动作或行动，该生物必须成功地进行智力（调查）检查，以辨别yggdrasti是有生命的。"
+					]
+				},
+				{
+					"name": "Lightning Conduit",
+					"entries": [
+						"如果yggdrasti受到雷电伤害，它不会受到伤害，而且雷电伤害会平均分配给它正在抓捕的所有生物。此外，Yggdrasti会重新获得一次闪电放电的使用权。"
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"yggdrasti不需要空气或睡眠。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"yggdrasti进行两次根部攻击并使用闪电放电（如果有的话）。"
+					]
+				},
+				{
+					"name": "Root",
+					"entries": [
+						"{@atk mw} {@hit 8}击中，到达20英尺，一个目标。{@h}12 ({@damage 2d6 + 5})重击伤害，如果目标是生物，则是{@condition grappled}(逃生{@dc 15})。yggdrasti有四个根部，每个根部可以抓取一个目标。"
+					]
+				},
+				{
+					"name": "Lightning Discharge (3/Day)",
+					"entries": [
+						"Yggdrasti向自己120英尺内的一个生物发射闪电。目标必须做一个{@dc 13}灵巧的蓄力动作，如果蓄力失败，将受到31({@damage 7d8})的闪电伤害，如果蓄力成功，将受到一半的伤害。"
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"L"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

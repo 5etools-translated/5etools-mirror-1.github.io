@@ -59,6 +59,12 @@ class SchemaPreprocessor {
 		Object.entries(obj)
 			.forEach(([k, v]) => {
 				switch (k) {
+					case "$$dbgger": {
+						delete obj[k];
+						// eslint-disable-next-line no-debugger
+						debugger;
+						return;
+					}
 					case "$$merge": return this._recurse_$$merge({root, obj, k, v, isBrew, isFast, dirSource});
 					case "$$ifBrew": return this._recurse_$$ifBrew({root, obj, k, v, isBrew, isFast, dirSource});
 					case "$$ifSite": return this._recurse_$$ifSite({root, obj, k, v, isBrew, isFast, dirSource});
@@ -74,10 +80,10 @@ class SchemaPreprocessor {
 	static _recurse_$$merge ({root, obj, k, v, isBrew, isFast, dirSource}) {
 		const merged = {};
 		v.forEach(toMerge => {
-			// handle any mergeable children
-			toMerge = this._recurse({root, obj: toMerge, isBrew, isFast});
 			// resolve references
 			toMerge = this._getResolvedRefJson({root, toMerge, dirSource});
+			// handle any mergeable children
+			toMerge = this._recurse({root, obj: toMerge, isBrew, isFast, dirSource});
 			// merge
 			this._mutMergeObjects(merged, toMerge);
 		});
@@ -92,20 +98,20 @@ class SchemaPreprocessor {
 
 	static _recurse_$$ifBrew ({root, obj, k, v, isBrew, isFast, dirSource}) {
 		if (!isBrew) return void delete obj[k];
-		this._recurse_$$if({root, obj, k, v});
+		this._recurse_$$if({root, obj, k, v, isBrew, isFast, dirSource});
 	}
 
 	static _recurse_$$ifSite ({root, obj, k, v, isBrew, isFast, dirSource}) {
 		if (isBrew) return void delete obj[k];
-		this._recurse_$$if({root, obj, k, v});
+		this._recurse_$$if({root, obj, k, v, isBrew, isFast, dirSource});
 	}
 
 	static _recurse_$$ifNotFast ({root, obj, k, v, isBrew, isFast, dirSource}) {
 		if (isFast) return void delete obj[k];
-		this._recurse_$$if({root, obj, k, v});
+		this._recurse_$$if({root, obj, k, v, isBrew, isFast, dirSource});
 	}
 
-	static _recurse_$$if ({root, obj, k, v}) {
+	static _recurse_$$if ({root, obj, k, v, isBrew, isFast, dirSource}) {
 		Object.entries(v)
 			.forEach(([kCond, vCond]) => {
 				if (obj[kCond] === undefined) {
@@ -119,12 +125,14 @@ class SchemaPreprocessor {
 			});
 
 		delete obj[k];
+
+		this._recurse({root, obj, isBrew, isFast, dirSource});
 	}
 
 	static _recurse_$$ifSiteElse_key ({root, obj, k, v, isBrew, isFast, dirSource}) {
 		const key = v[isBrew ? "keyBrew" : "keySite"];
 		obj[k] = {[key]: v.value};
-		return this._recurse_$$if({root, obj, k, v: obj[k]});
+		return this._recurse_$$if({root, obj, k, v: obj[k], isBrew, isFast, dirSource});
 	}
 
 	static _getDirectoryTranslation ({file}) {
@@ -140,11 +148,11 @@ class SchemaPreprocessor {
 		if (!file) {
 			const refData = MiscUtil.get(root, ...pathParts);
 			if (!refData) throw new Error(`Could not find referenced data for "${defPath}" in local file!`);
-			return refData;
+			return this._getResolvedRefJson({root, toMerge: MiscUtil.copy(refData), dirSource});
 		}
 
 		const externalSchema = ut.readJson(path.join(dirSource, file));
-		const refData = MiscUtil.get(externalSchema, ...pathParts);
+		const refData = MiscUtil.copy(MiscUtil.get(externalSchema, ...pathParts), {safe: true});
 
 		const directoryTranslation = this._getDirectoryTranslation({file});
 
@@ -169,7 +177,7 @@ class SchemaPreprocessor {
 		);
 
 		if (!refData) throw new Error(`Could not find referenced data for path "${defPath}" in file "${file}"!`);
-		return refData;
+		return this._getResolvedRefJson({root, toMerge: refData, dirSource});
 	}
 }
 SchemaPreprocessor._WALKER = MiscUtil.getWalker();

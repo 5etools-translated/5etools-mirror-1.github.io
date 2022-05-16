@@ -1,0 +1,1090 @@
+{
+	"spell": [
+		{
+			"name": "Dark Star",
+			"source": "EGW",
+			"page": 186,
+			"level": 8,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 150
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a shard of onyx and a drop of the caster's blood, both of which the spell consumes",
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Den här besvärjelsen skapar en sfär centrerad på en punkt du väljer inom räckvidd. Sfären kan ha en radie på upp till 40 fot. Området inom den här sfären är fyllt av magiskt mörker och förkrossande gravitationskraft.",
+				"Under hela tiden är trollformelns område {@quickref difficult terrain||3}. En varelse med mörkerseende kan inte se genom det magiska mörkret, och icke-magiskt ljus kan inte belysa det. Inget ljud kan skapas inom eller passera genom området. Varje varelse eller föremål helt inom sfären är immun mot åskskskador, och varelser är {@condition deafened} medan de är helt inom sfären. Att kasta en besvärjelse som innehåller en verbal komponent är omöjligt där.",
+				"Alla varelser som kommer in i trollformelns område för första gången under en tur eller som börjar sin tur där måste göra ett räddningskast i konstitutionen. Varelsen tar {@damage 8d10} kraftskada vid ett misslyckat räddningsförsök, eller hälften så mycket skada vid ett lyckat räddningsförsök. En varelse som reduceras till 0 träffpunkter av denna skada sönderdelas. En desintegrerad varelse och allt den bär och bär på, utom magiska föremål, reduceras till en hög av fint grått damm."
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"deafened"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Fortune's Favor",
+			"source": "EGW",
+			"page": 186,
+			"level": 2,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a white pearl worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Du ger latent tur till dig själv eller en villig varelse som du kan se inom räckhåll. När den valda varelsen gör en attackrulle, en förmågekontroll eller ett räddningskast innan förtrollningen upphör, kan den avfärda denna förtrollning på sig själv för att kasta ytterligare {@dice d20} och välja vilken av {@dice d20} som ska användas. Alternativt, när en anfallsrulle görs mot den valda varelsen, kan den avfärda denna besvärjelse på sig själv för att kasta en {@dice d20} och välja vilken av de {@dice d20}s som ska användas, den som den själv kastade eller den som angriparen kastade.",
+				"Om det ursprungliga {@dice d20} kastet har en fördel eller nackdel, kastar varelsen ytterligare {@dice d20} efter att fördel eller nackdel har tillämpats på det ursprungliga kastet."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spell slot på 3:e nivå eller högre kan du rikta en ytterligare varelse för varje slot-nivå över 2:a nivån."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gift of Alacrity",
+			"source": "EGW",
+			"page": 186,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Du rör vid en villig varelse. Under hela tiden kan målet lägga till {@dice 1d8} till sina initiativrullningar."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gravity Fissure",
+			"source": "EGW",
+			"page": 187,
+			"level": 6,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "line",
+				"distance": {
+					"type": "feet",
+					"amount": 100
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a fistful of iron filings"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du manifesterar en ravin av gravitationsenergi i en linje som utgår från dig och som är 100 fot lång och 5 fot bred. Varje varelse i den linjen måste göra ett räddningskast i konstitutionen och tar {@damage 8d8} kraftskada vid ett misslyckat räddningskast, eller hälften så mycket skada vid ett lyckat räddningskast.",
+				"Varje varelse som befinner sig inom tre meter från linjen men inte i den måste lyckas med ett räddningskast i konstitutionen eller ta {@damage 8d8} kraftskada och dras mot linjen tills varelsen är i dess område."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spell slot på 7:e nivån eller högre ökar skadan med {@scaledamage 8d8|6-9|1d8} för varje slotnivå över 6:e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"L"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gravity Sinkhole",
+			"source": "EGW",
+			"page": 187,
+			"level": 4,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a black marble"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"En sfär av krossande kraft med en radie på 6 meter bildas vid en punkt som du kan se inom räckvidd och drar till sig varelserna där. Varje varelse i sfären måste göra ett räddningskast för konstitutionen. Vid ett misslyckat räddningsförsök tar varelsen {@damage 5d10} kraftskada och dras i en rak linje mot sfärens centrum och slutar i ett obebott utrymme så nära centrum som möjligt (även om det utrymmet är i luften). Vid en lyckad räddning tar varelsen hälften så mycket skada och dras inte."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spell slot på 5:e nivå eller högre ökar skadan med {@scaledamage 5d10|4-9|1d10} för varje slotnivå över 4:e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Immovable Object",
+			"source": "EGW",
+			"page": 187,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "gold dust worth at least 25 gp, which the spell consumes",
+					"cost": 2500,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Du rör vid ett föremål som inte väger mer än 10 pund och får det att bli magiskt fixerat på plats. Du och de varelser du utser när du uttalar denna besvärjelse kan flytta föremålet normalt. Du kan också ställa in ett lösenord som, när det uttalas inom en radie av 5 fot från föremålet, undertrycker denna besvärjelse i 1 minut.",
+				"Om föremålet är fast i luften kan det hålla upp till 4 000 pund i vikt. Mer vikt får föremålet att falla. Annars kan en varelse använda en handling för att göra en styrkekontroll mot din spellednings räddnings-DC. Om den lyckas kan varelsen flytta föremålet upp till 3 meter."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Om du använder den här besvärjelsen med en spellplats på fjärde eller femte nivån ökar DC för att flytta föremålet med 5, det kan bära upp till 8 000 pund och varaktigheten ökar till 24 timmar. Om du kastar den här besvärjelsen med hjälp av en trollformel på 6:e nivån eller högre, ökar DC för att flytta föremålet med 10, det kan bära upp till 20 000 pund i vikt och effekten är permanent tills den försvinner."
+					]
+				}
+			],
+			"abilityCheck": [
+				"strength"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Magnify Gravity",
+			"source": "EGW",
+			"page": 188,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Gravitationen i en 10-fotssfär med centrum på en punkt som du kan se inom räckhåll ökar för ett ögonblick. Varje varelse i sfären vid den tur då du kastar besvärjelsen måste göra ett räddningskast i konstitutionen. Vid ett misslyckat räddningsförsök tar varelsen {@damage 2d8} kraftskada och dess hastighet halveras fram till slutet av nästa vändning. Vid ett lyckat räddningsförsök tar en varelse hälften så mycket skada och drabbas inte av någon minskning av sin hastighet.",
+				"Fram till början av din nästa vändning kräver alla föremål som inte bärs eller bärs i sfären en lyckad styrkasprov mot din spellednings räddnings-DC för att tas upp eller förflyttas."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spelledare på 2:a nivån eller högre ökar skadan med {@scaledamage 2d8|1-9|1d8} för varje spelledare över 1:a nivån."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Pulse Wave",
+			"source": "EGW",
+			"page": 188,
+			"level": 3,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du skapar ett intensivt tryck, släpper ut det i en 30-fots kon och bestämmer om trycket drar eller trycker på varelser och föremål. Varje varelse i den konen måste göra ett räddningskast i konstitutionen. En varelse tar {@damage 6d6} kraftskada vid ett misslyckat räddningsförsök, eller hälften så mycket skada vid ett lyckat. Och varje varelse som misslyckas med räddningsförsöket dras antingen 15 fot mot dig eller skjuts 15 fot bort från dig, beroende på vilket val du gjorde för besvärjelsen.",
+				"Dessutom dras eller skjuts osäkra föremål som befinner sig helt inom konen på samma sätt 15 fot."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spelledare på 4:e nivå eller högre ökar skadan med {@scaledamage 6d6|3-9|1d6} och avståndet som dras eller skjuts ökar med 5 fot för varje spelledare på högre nivå än 3:e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"FMV"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Ravenous Void",
+			"source": "EGW",
+			"page": 188,
+			"level": 9,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 1000
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a small, nine-pointed star made of iron"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du skapar en sfär av destruktiv gravitationskraft med en radie på 6 meter, centrerad på en punkt som du kan se inom räckhåll. Under trollformelns varaktighet är sfären och alla rum inom 30 meter från den {@quickref difficult terrain||3}, och icke-magiska föremål som är helt inne i sfären förstörs om de inte bärs eller bärs.",
+				"När sfären dyker upp och i början av var och en av dina turer tills trollformeln upphör, dras osäkra föremål inom 30 meter från sfären mot sfärens centrum och hamnar i ett obebott utrymme så nära centrum som möjligt.",
+				"En varelse som börjar sin tur inom 30 meter från sfären måste lyckas med ett räddningskast i styrka eller dras rakt mot sfärens centrum och hamnar i ett obebott utrymme så nära centrum som möjligt. En varelse som går in i sfären för första gången under en tur eller börjar sin tur där tar {@damage 5d10} kraftskada och är {@condition restrained} tills den inte längre befinner sig i sfären. Om sfären är i luften svävar {@condition restrained} varelsen inom sfären. En varelse kan använda sin handling för att göra en styrkekontroll mot din trollformel räddnings-DC, vilket avslutar detta {@condition restrained} tillstånd på sig själv eller en annan varelse i sfären som den kan nå. En varelse som reducerats till 0 träffpunkter av denna besvärjelse förintas, tillsammans med alla icke-magiska föremål som den bär eller bär på."
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"restrained"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"abilityCheck": [
+				"strength"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Reality Break",
+			"source": "EGW",
+			"page": 189,
+			"level": 8,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a crystal prism"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du krossar barriärerna mellan verkligheter och tidslinjer och kastar en varelse in i förvirring och galenskap. Målet måste lyckas med ett Visdoms räddningskast, annars kan det inte ta några reaktioner förrän förtrollningen upphör. Det drabbade målet måste också kasta en {@dice d10} i början av var och en av sina turer; det kastade talet bestämmer vad som händer med målet, vilket visas på tabellen Reality Break Effects.",
+				"I slutet av varje vändning kan det drabbade målet upprepa sitt räddningskast för visdom och avsluta besvärjelsen på sig själv om det lyckas.",
+				{
+					"type": "table",
+					"caption": "Reality Break Effects",
+					"colLabels": [
+						"d10",
+						"Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1-2",
+							"{@b Vision of the Far Realm.} Målet tar {@damage 6d12} psykisk skada och är {@condition stunned} tills turens slut."
+						],
+						[
+							"3-5",
+							"{@b Rending Rift.} Målet måste göra ett räddningskast i Dexterity och tar {@damage 8d12} kraftskada vid ett misslyckat räddningskast, eller hälften så mycket skada vid ett lyckat räddningskast."
+						],
+						[
+							"6-8",
+							"{@b Wormhole.} Målet teleporteras, tillsammans med allt som det bär, upp till 30 fot till en ledig plats som du väljer och som du kan se. Målet tar också {@damage 10d12} kraftskada och slås {@condition prone}."
+						],
+						[
+							"9-10",
+							"{@b Chill of the Dark Void.} Målet tar {@damage 10d12} köldskada och är {@condition blinded} tills turens slut."
+						]
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic",
+				"force",
+				"cold"
+			],
+			"conditionInflict": [
+				"stunned",
+				"prone",
+				"blinded"
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
+			],
+			"miscTags": [
+				"RO",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Sapping Sting",
+			"source": "EGW",
+			"page": 189,
+			"level": 0,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du tar bort livskraften hos en varelse som du kan se inom räckhåll. Målet måste lyckas med ett räddningskast i konstitutionen eller ta {@damage 1d4} nekrotisk skada och falla {@condition prone}.",
+				"Den här besvärjelsens skada ökar med {@dice 1d4} när du når 5:e nivån ({@dice 2d4}), 11:e nivån ({@dice 3d4}) och 17:e nivån ({@dice 4d4})."
+			],
+			"scalingLevelDice": {
+				"label": "necrotic damage",
+				"scaling": {
+					"1": "1d4",
+					"5": "2d4",
+					"11": "3d4",
+					"17": "4d4"
+				}
+			},
+			"damageInflict": [
+				"necrotic"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Temporal Shunt",
+			"source": "EGW",
+			"page": 189,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "taken when a creature you can see makes an attack roll or starts to cast a spell"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Du riktar dig mot den utlösande varelsen, som måste lyckas med ett räddningskast i Visdom eller försvinna, och kastas till en annan tidpunkt i tiden, vilket gör att attacken missar eller att trollformeln är bortkastad. I början av sin nästa vändning dyker målet upp igen där det var eller i det närmaste obefolkade utrymmet. Målet minns inte att du kastade besvärjelsen eller att du påverkades av den."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"När du kastar den här besvärjelsen med hjälp av en spell slot på 6:e nivån eller högre kan du rikta en ytterligare varelse för varje slotnivå över 5:e nivån. Alla mål måste vara inom 30 fot från varandra."
+					]
+				}
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Tether Essence",
+			"source": "EGW",
+			"page": 189,
+			"level": 7,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a spool of platinum cord worth at least 250 gp, which the spell consumes",
+					"cost": 25000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Två varelser som du kan se inom räckhåll måste göra ett räddningskast i konstitutionen, med nackdel om de befinner sig inom 30 fot från varandra. Båda varelserna kan frivilligt misslyckas med räddningsförsöket. Om någon av dem lyckas har besvärjelsen ingen effekt. Om båda räddningarna misslyckas är varelserna magiskt sammanlänkade under hela tiden, oavsett avståndet mellan dem. När en av dem drabbas av skada, drabbas den andra av samma skada. Om träffpunkter återställs till en av dem återställs samma antal träffpunkter till den andra. Om någon av de bundna varelserna reduceras till 0 träffpunkter upphör förtrollningen för båda. Om förtrollningen upphör på en varelse upphör den på båda."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Time Ravage",
+			"source": "EGW",
+			"page": 189,
+			"level": 9,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an hourglass filled with diamond dust worth at least 5,000 gp, which the spell consumes",
+					"cost": 500000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du riktar in dig på en varelse som du kan se inom räckhåll och utsätter dess fysiska form för ett snabbt åldrande. Målet måste göra ett räddningskast med konstitutionen och tar {@damage 10d12} nekrotisk skada om räddningen misslyckas, eller hälften så mycket skada om räddningen lyckas. Om räddningsförsöket misslyckas åldras målet också till den punkt där det bara har 30 dagar kvar innan det dör av ålderdom. I detta åldrade tillstånd har målet nackdel på attackkast, förmågaskontroller och räddningskast, och dess gånghastighet är halverad. Endast {@spell wish}-besvärjelsen eller {@spell greater restoration}-besvärjelsen med en trollformel på 9:e nivån kan avsluta dessa effekter och återställa målet till sin tidigare ålder."
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Wristpocket",
+			"source": "EGW",
+			"page": 190,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Du slår med handleden och får ett föremål i din hand att försvinna. Föremålet, som bara du kan hålla i handen och som inte får väga mer än 5 pund, transporteras till en extradimensionell plats, där det stannar så länge det är kvar.",
+				"Tills förtrollningen upphör kan du använda din handling för att kalla föremålet till din fria hand, och du kan använda din handling för att återföra föremålet till det extradimensionella rummet. Ett föremål som fortfarande befinner sig i fickplanet när förtrollningen upphör visas i ditt utrymme, vid dina fötter."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		}
+	]
+}

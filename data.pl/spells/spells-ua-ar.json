@@ -1,0 +1,69 @@
+{
+	"spell": [
+		{
+			"name": "Arcane Weapon",
+			"source": "UAArtificerRevisited",
+			"page": 10,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przekazujesz energię magiczną do jednej broni prostej lub bojowej, którą trzymasz, i wybierasz jeden rodzaj obrażeń: kwas, zimno, ogień, błyskawice, truciznę lub grzmot. Do końca działania zaklęcia zadajesz dodatkowe {@damage 1d6} obrażeń wybranego typu każdemu celowi, który zostanie trafiony tą bronią. Jeśli broń nie jest magiczna, na czas trwania zaklęcia staje się bronią magiczną.",
+				"Jako dodatkową akcję możesz zmienić typ obrażeń, wybierając jedną z powyższych opcji."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, możesz utrzymać koncentrację na zaklęciu do 8 godzin."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison",
+				"thunder"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer (Revisited)",
+						"source": "UAArtificerRevisited"
+					}
+				]
+			}
+		}
+	]
+}

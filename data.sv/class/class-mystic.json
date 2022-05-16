@@ -1,0 +1,1596 @@
+{
+	"class": [
+		{
+			"name": "Mystic",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"int",
+				"wis"
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple"
+				],
+				"tools": [
+					"None"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"history",
+								"insight",
+								"medicine",
+								"nature",
+								"perception",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item spear|phb} or (b) a {@item mace|phb}",
+					"(a) {@item leather armor|phb} or (b) {@item studded leather armor|phb}",
+					"(a) a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item scholar's pack|phb} or (b) an {@item explorer's pack|phb}"
+				],
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"spear|phb"
+						],
+						"b": [
+							"mace|phb"
+						]
+					},
+					{
+						"a": [
+							"leather armor|phb"
+						],
+						"b": [
+							"studded leather armor|phb"
+						]
+					},
+					{
+						"a": [
+							"light crossbow|phb",
+							"crossbow bolts (20)|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"scholar's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					}
+				]
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"{@filter Talents Known|psionics|type=T}",
+						"{@filter Disciplines Known|psionics|type=D}",
+						"Psi Points",
+						"Psi Limit"
+					],
+					"rows": [
+						[
+							1,
+							1,
+							4,
+							2
+						],
+						[
+							1,
+							1,
+							6,
+							2
+						],
+						[
+							2,
+							2,
+							14,
+							3
+						],
+						[
+							2,
+							2,
+							17,
+							3
+						],
+						[
+							2,
+							3,
+							27,
+							5
+						],
+						[
+							2,
+							3,
+							32,
+							5
+						],
+						[
+							2,
+							4,
+							38,
+							6
+						],
+						[
+							2,
+							4,
+							44,
+							6
+						],
+						[
+							2,
+							5,
+							57,
+							7
+						],
+						[
+							3,
+							5,
+							64,
+							7
+						],
+						[
+							3,
+							5,
+							64,
+							7
+						],
+						[
+							3,
+							6,
+							64,
+							7
+						],
+						[
+							3,
+							6,
+							64,
+							7
+						],
+						[
+							3,
+							6,
+							64,
+							7
+						],
+						[
+							3,
+							7,
+							64,
+							7
+						],
+						[
+							3,
+							7,
+							64,
+							7
+						],
+						[
+							4,
+							7,
+							64,
+							7
+						],
+						[
+							4,
+							8,
+							71,
+							7
+						],
+						[
+							4,
+							8,
+							71,
+							7
+						],
+						[
+							4,
+							8,
+							71,
+							7
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Psionics|Mystic|UATheMysticClass|1",
+				"Psionic Disciplines and Talents|Mystic|UATheMysticClass|1",
+				"Using a Discipline|Mystic|UATheMysticClass|1",
+				{
+					"classFeature": "Mystic Order|Mystic|UATheMysticClass|1",
+					"gainSubclassFeature": true
+				},
+				"Mystical Recovery|Mystic|UATheMysticClass|2",
+				"Telepathy|Mystic|UATheMysticClass|2",
+				{
+					"classFeature": "Mystic Order feature|Mystic|UATheMysticClass|3",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Mystic|UATheMysticClass|4",
+				"Proficiency Versatility|Mystic|UATheMysticClass|4|UAClassFeatureVariants",
+				"Strength of Mind|Mystic|UATheMysticClass|4",
+				{
+					"classFeature": "Mystic Order feature|Mystic|UATheMysticClass|6",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Mystic|UATheMysticClass|8",
+				"Proficiency Versatility|Mystic|UATheMysticClass|8|UAClassFeatureVariants",
+				"Potent Psionics (1d8)|Mystic|UATheMysticClass|8",
+				"Consumptive Power|Mystic|UATheMysticClass|10",
+				"Psionic Mastery (1/Day)|Mystic|UATheMysticClass|11",
+				"Ability Score Improvement|Mystic|UATheMysticClass|12",
+				"Proficiency Versatility|Mystic|UATheMysticClass|12|UAClassFeatureVariants",
+				"Psionic Mastery (2/Day)|Mystic|UATheMysticClass|13",
+				{
+					"classFeature": "Mystic Order feature|Mystic|UATheMysticClass|14",
+					"gainSubclassFeature": true
+				},
+				"Potent Psionics (2d8)|Mystic|UATheMysticClass|14",
+				"Psionic Mastery (3/Day)|Mystic|UATheMysticClass|15",
+				"Ability Score Improvement|Mystic|UATheMysticClass|16",
+				"Proficiency Versatility|Mystic|UATheMysticClass|16|UAClassFeatureVariants",
+				"Psionic Mastery (4/Day)|Mystic|UATheMysticClass|17",
+				"Ability Score Improvement|Mystic|UATheMysticClass|19",
+				"Proficiency Versatility|Mystic|UATheMysticClass|19|UAClassFeatureVariants",
+				"Psionic Body|Mystic|UATheMysticClass|20"
+			],
+			"subclassTitle": "Mystic Order",
+			"fluff": [
+				{
+					"type": "section",
+					"name": "Mystic",
+					"entries": [
+						"En människa klädd i enkla kläder går längs en skogsstig. Ett gäng goblins dyker upp ur buskaget, med pilar riktade mot honom, och deras leenden är breda över att de har tur att hitta ett så lätt byte för legionens slavhagar. Deras leenden förvandlas till skrik av skräck när resenären växer till jättestorlek och hoppar på dem, hans stav är nu en dödlig käpp.",
+						"Milisen ställer upp sig i led för att förbereda sig för orcherna. De grymma bruttorna skriker sina stridsrop och rusar framåt. Till deras förvåning håller den mänskliga pöbeln stånd och kämpar med överraskande grymhet. Plötsligt klamrar sig tanklös rädsla fast vid orcherna och de, trots att de står inför en långt underlägsen fiende, vänder sig om och springer, utan att lägga märke till den lugna halvelfen som står mitt i milisen och leder dess ansträngningar.",
+						"Baron von Ludwig var alltid stolt över sitt stora bibliotek. Han visste inte att varje kväll smög sig en gnom lastad med tomma rullar förbi hans vakter och kopierade pliktskyldigt hans mest välbevakade arkiv. När hertigens män anlände för att arrestera honom för att ha handlat med demoner, anade han aldrig att den gnomskrivare som reste med dem hade tillbringat mer tid i hans slott än han själv under det senaste året.",
+						"Dessa hjältar är alla mystiker, anhängare av en märklig och mystisk form av makt. Mystiker undviker världen för att vända blicken inåt, för att bemästra sin sinnes fulla potential och utforska sitt psyke innan de vänder sig till världen. Mystiker är otroligt sällsynta och de flesta föredrar att hålla sina förmågor hemliga. Med hjälp av sin inre, psykiska styrka kan de läsa tankar, bli osynliga, förvandla sina kroppar till levande järn och ta kontroll över den fysiska världen och böja den till sin vilja.",
+						{
+							"type": "entries",
+							"name": "Hermits and Outcasts",
+							"entries": [
+								"Mystiker är ensamvargar. De flesta upptäcker hemligheterna bakom sin kraft genom vaga referenser i böcker om lärdomar eller genom att smickra in sig hos en mästare av kraften.",
+								"För att behärska sin kraft måste mystiker först behärska sig själva. De tillbringar månader och år i tyst kontemplation, utforskar sina sinnen och lämnar ingenting obearbetat. Under denna tid undviker de samhället och lever vanligtvis som eremiter i samhällets utkant. En mystiker som studerade under en mästare arbetade som en virtuell slav och slet med vardagliga uppgifter i utbyte mot enstaka lektioner eller kryptiska insikter.",
+								"När mystikerna slutligen behärskar sin kraft återvänder de till världen för att vidga sina horisonter och utöva sitt hantverk. Vissa mystiker föredrar att förbli isolerade, men de som blir äventyrare är inte nöjda med att stanna kvar i utkanten av världen."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Eccentric Minds",
+							"entries": [
+								"För att upprätthålla den strikta disciplin och intensiva självkännedom som krävs för att utnyttja sin kraft utvecklar mystiker en mängd olika metoder för att hålla sitt fokus skarpt.",
+								"Dessa metoder återspeglas i tabun och egenheter, märkliga små beteenden som styr en mystikers agerande. Dessa egenheter är eder eller beteendemässiga tics som hjälper till att hålla mystiker i rätt sinnesstämning samtidigt som de behåller perfekt kontroll över sina sinnen och kroppar.",
+								"Även om dessa tabun är ofarliga bidrar de till att göra mystiker till utomstående. Få känner sig accepterade av samhället, och ännu färre bryr sig om att integreras i det. För mystiker är det sinneslivet där de känner sig mest hemma.",
+								{
+									"type": "entries",
+									"name": "Selecting Quirks",
+									"entries": [
+										"För att lägga till lite textur till din mystiker kan du fundera på vilka egenheter din karaktär har fått. Dessa beteenden har ingen effekt på spelet, men din karaktär kan bli irriterad eller upprörd om du tvingas bryta mot dem. De är ett bra rollspelsverktyg för att ge karaktär åt spelet. Du kan rulla på eller välja från tabellen nedan, eller skapa dina egna egenheter. Sträva efter att skapa två quirks, för att ge dem större chans att komma i spel. Tänk slutligen på varför din karaktär valde dessa beteenden. Vad säger de om din karaktärs personlighet eller bakgrund? Är de baserade på en specifik händelse eller en övertygelse?",
+										{
+											"type": "table",
+											"caption": "Mystic Quirks",
+											"colLabels": [
+												"d20",
+												"Quirk"
+											],
+											"colStyles": [
+												"col-2 text-center",
+												"col-10"
+											],
+											"rows": [
+												[
+													1,
+													"Du har aldrig klippt ditt hår."
+												],
+												[
+													2,
+													"Du vägrar att bära kläder av en viss färg."
+												],
+												[
+													3,
+													"Du säger aldrig ditt namn."
+												],
+												[
+													4,
+													"Du har aldrig skor på dig."
+												],
+												[
+													5,
+													"Du bär alltid en mask."
+												],
+												[
+													6,
+													"Du färgar ditt hår ljusblått eller grönt."
+												],
+												[
+													7,
+													"Du väljer ett nytt namn varje dag."
+												],
+												[
+													8,
+													"Du sänker dig aldrig i vatten."
+												],
+												[
+													9,
+													"Du sover på bar jord."
+												],
+												[
+													10,
+													"Du dricker aldrig alkohol."
+												],
+												[
+													11,
+													"Du bär en slöja för att dölja ditt ansikte."
+												],
+												[
+													12,
+													"Du bär alltid ett visst klädesplagg."
+												],
+												[
+													13,
+													"Du vägrar att tända eldar."
+												],
+												[
+													14,
+													"Du vägrar att skriva ner saker och ting och använder istället piktogram."
+												],
+												[
+													15,
+													"Du sitter aldrig på en stol, utan föredrar att stå eller sitta på golvet."
+												],
+												[
+													16,
+													"Du svarar aldrig på något annat namn än ditt eget."
+												],
+												[
+													17,
+													"Du skriver ner namnet på varje varelse som du dödar, och namnger de som inte är namngivna."
+												],
+												[
+													18,
+													"Du äter bara vatten och råa grönsaker."
+												],
+												[
+													19,
+													"Du spenderar alla pengar som du tjänar inom en vecka efter att du har tjänat dem."
+												],
+												[
+													20,
+													"Du talar ofta till en imaginär kamrat och agerar endast med dennes välsignelse."
+												]
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Mystic",
+							"entries": [
+								"När du skapar en mystiker bör du tänka på din karaktärs bakgrund. Hur blev du en mystiker? Vad lockade dig först till denna praktik? Är du självlärd eller hade du en mästare? Om du hade en mästare, hur ser relationen ut?",
+								"Fundera också på varför du återvände till världen från din eremit. Lämnade du någon eller något bakom dig när du började studera? Drivs du av hämnd eller någon annan motivation?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Du kan snabbt bli en mystiker genom att följa de här förslagen. För det första, gör intelligens till din högsta förmågebild, följt av smidighet eller konstitution. För det andra väljer du {@background hermit} bakgrund."
+									]
+								}
+							]
+						}
+					],
+					"source": "UATheMysticClass",
+					"page": 1
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Order of the Avatar",
+			"shortName": "Avatar",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 5,
+			"subclassFeatures": [
+				"Order of the Avatar|Mystic|UATheMysticClass|Avatar|UATheMysticClass|1",
+				"Avatar of Battle|Mystic|UATheMysticClass|Avatar|UATheMysticClass|3",
+				"Avatar of Healing|Mystic|UATheMysticClass|Avatar|UATheMysticClass|6",
+				"Avatar of Speed|Mystic|UATheMysticClass|Avatar|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Awakened",
+			"shortName": "Awakened",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 6,
+			"subclassFeatures": [
+				"Order of the Awakened|Mystic|UATheMysticClass|Awakened|UATheMysticClass|1",
+				"Psionic Investigation|Mystic|UATheMysticClass|Awakened|UATheMysticClass|3",
+				"Psionic Surge|Mystic|UATheMysticClass|Awakened|UATheMysticClass|6",
+				"Spectral Form|Mystic|UATheMysticClass|Awakened|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Immortal",
+			"shortName": "Immortal",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 6,
+			"subclassFeatures": [
+				"Order of the Immortal|Mystic|UATheMysticClass|Immortal|UATheMysticClass|1",
+				"Psionic Resilience|Mystic|UATheMysticClass|Immortal|UATheMysticClass|3",
+				"Surge of Health|Mystic|UATheMysticClass|Immortal|UATheMysticClass|6",
+				"Immortal Will|Mystic|UATheMysticClass|Immortal|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Nomad",
+			"shortName": "Nomad",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 7,
+			"subclassFeatures": [
+				"Order of the Nomad|Mystic|UATheMysticClass|Nomad|UATheMysticClass|1",
+				"Memory of One Thousand Steps|Mystic|UATheMysticClass|Nomad|UATheMysticClass|3",
+				"Superior Teleportation|Mystic|UATheMysticClass|Nomad|UATheMysticClass|6",
+				"Effortless Journey|Mystic|UATheMysticClass|Nomad|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Soul Knife",
+			"shortName": "Soul Knife",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 7,
+			"subclassFeatures": [
+				"Order of the Soul Knife|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|1",
+				"Hone the Blade|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|3",
+				"Consumptive Knife|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|6",
+				"Phantom Knife|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|14"
+			]
+		},
+		{
+			"name": "Order of the Wu Jen",
+			"shortName": "Wu Jen",
+			"source": "UATheMysticClass",
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"page": 8,
+			"subclassFeatures": [
+				"Order of the Wu Jen|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|1",
+				"Elemental Attunement|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|3",
+				"Arcane Dabbler|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|6",
+				"Elemental Mastery|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|14"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Mystic Order",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"På 1:a nivån väljer du en mystisk orden från listan över tillgängliga ordnar. Varje orden specialiserar sig på ett specifikt tillvägagångssätt för psionik.",
+				"Din order ger dig egenskaper när du väljer den på 1:a nivån och ytterligare egenskaper på 3:e, 6:e och 14:e nivån."
+			]
+		},
+		{
+			"name": "Psionic Disciplines and Talents",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Psioniska talanger och discipliner är hjärtat i en mystikers hantverk. De är de mentala övningar och psioniska formler som används för att smida viljan till påtagliga, magiska effekter.",
+				"Psioniska discipliner upptäcktes av olika ordnar och tenderar att återspegla deras skapares specialiteter. En mystiker kan dock lära sig vilken disciplin som helst oavsett vilken ordning den tillhör."
+			]
+		},
+		{
+			"name": "Psionics",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Som elev i psionik kan du behärska och använda psioniska talanger och discipliner, vars regler finns i slutet av det här dokumentet. Psionik är en speciell form av magianvändning som skiljer sig från trollkonst.",
+				{
+					"type": "entries",
+					"name": "Psionic Talents",
+					"entries": [
+						"En psionisk talang är en mindre psionisk effekt som du behärskar. På 1:a nivån kan du en psionisk talang som du väljer. Du lär dig ytterligare talanger av ditt val på högre nivåer. Kolumnen Talents Known i tabellen Mystic visar det totala antalet talanger du känner till på varje nivå; när det antalet ökar för dig väljer du en ny talang."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psionic Disciplines",
+					"entries": [
+						"En psionisk disciplin är en rigid uppsättning mentala övningar som gör det möjligt för en mystiker att manifestera psionisk kraft. En mystiker behärskar endast ett fåtal discipliner åt gången.",
+						"På 1:a nivån kan du en psionisk disciplin som du själv väljer. Kolumnen Disciplines Known i tabellen Mystic visar det totala antalet discipliner du kan på varje nivå; när det antalet ökar för dig väljer du en ny disciplin.",
+						"Dessutom kan du varje gång du vinner en nivå i den här klassen ersätta en disciplin som du kan med en annan disciplin som du själv väljer."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psi Points",
+					"entries": [
+						"Du har en inre reservoar av energi som du kan använda till psioniska discipliner som du känner till. Denna energi representeras av psi-poäng. Varje psionisk disciplin beskriver effekter som du kan skapa med den genom att spendera ett visst antal psi-poäng. En psionisk talang kräver inga psi-poäng.",
+						"Antalet psi-poäng du har är baserat på din mystiska nivå, vilket visas i kolumnen Psi-poäng i tabellen Mystic. Det antal som visas för din nivå är ditt maximala antal psi-poäng. Ditt totala antal psi-poäng återgår till sitt maximum när du avslutar en lång vila. Antalet psi-poäng du har kan inte gå under 0 eller över ditt maximum."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psi Limit",
+					"entries": [
+						"Även om du har tillgång till en stor mängd psionisk energi krävs det träning och övning för att kanalisera den energin. Det finns en gräns för hur många psi-poäng du kan spendera för att aktivera en psionisk disciplin. Begränsningen är baserad på din mystiska nivå, vilket visas i kolumnen Psi Limit i tabellen Mystic. Till exempel kan du som mystiker på 3:e nivån inte spendera mer än 3 psi-poäng på en disciplin varje gång du använder den, oavsett hur många psi-poäng du har."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psychic Focus",
+					"entries": [
+						"Du kan fokusera psionisk energi på en av dina psioniska discipliner för att dra kontinuerliga fördelar av den. Som en bonusåtgärd kan du välja en av dina psioniska discipliner och få dess psykiska fokusfördel, vilket beskrivs i disciplinens beskrivning. Fördelen varar tills du är {@condition incapacitated} eller tills du använder en annan bonusåtgärd för att välja en annan fokusfördel.",
+						"Du kan bara ha en psykisk fokusförmåga åt gången, och att använda den psykiska fokusförmågan i en disciplin begränsar inte din förmåga att använda andra discipliner."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psionic Ability",
+					"entries": [
+						"Intelligens är din psioniska förmåga för dina psioniska discipliner. Du använder din intelligensmodifierare när du fastställer räddningskast DC för en psionisk disciplin eller när du gör en attackrulle med en sådan.",
+						{
+							"type": "abilityDc",
+							"name": "Discipline",
+							"attributes": [
+								"int"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Discipline",
+							"attributes": [
+								"int"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Using a Discipline",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Varje psionisk disciplin har flera olika sätt att använda den på, som alla finns i beskrivningen. Disciplinen anger vilken typ av handling och hur många psi-poäng den kräver. Den beskriver också om du måste koncentrera dig på dess effekter, hur många mål den påverkar, vilka räddningskast den kräver och så vidare.",
+				"I följande avsnitt beskrivs närmare hur du använder en disciplin. Psioniska discipliner är magiska och fungerar på samma sätt som trollformler.",
+				{
+					"type": "entries",
+					"name": "Psychic Focus",
+					"entries": [
+						"Avsnittet Psychic Focus i en disciplin beskriver vilken fördel du får när du väljer den disciplinen som ditt psykiska fokus."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Effect Options and Psi Points",
+					"entries": [
+						"En disciplin ger dig olika alternativ för hur du kan använda den med dina psi-poäng. Varje effektalternativ har ett namn, och kostnaden för psi-poäng för det alternativet visas inom parentes efter namnet. Du måste spendera det antalet psi-poäng för att använda det alternativet, samtidigt som du håller dig till din psi-gräns. Om du inte har tillräckligt med psi-poäng kvar, eller om kostnaden överstiger din psi-gräns, kan du inte använda alternativet.",
+						"Vissa alternativ visar ett intervall av psi-poäng i stället för en specifik kostnad. För att använda det alternativet måste du spendera ett antal poäng inom det intervallet, samtidigt som du håller dig till din psi-gräns. Vissa alternativ låter dig spendera ytterligare psi-poäng för att öka en disciplins styrka. Återigen måste du hålla dig till din psi-gräns, och du måste spendera alla poäng när du använder disciplinen för första gången; du kan inte bestämma dig för att spendera ytterligare poäng när du ser disciplinen i aktion.",
+						"Varje alternativ innehåller specifik information om dess effekt, inklusive åtgärder som krävs för att använda det och dess räckvidd."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Components",
+					"entries": [
+						"Discipliner kräver inte de komponenter som många trollformler kräver. Att använda en disciplin kräver inga talade ord, gester eller material. Psionikens kraft kommer från sinnet."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Duration",
+					"entries": [
+						"Ett effektalternativ i en disciplin anger hur länge dess effekt varar.",
+						{
+							"type": "entries",
+							"name": "Instantaneous",
+							"entries": [
+								"Om ingen varaktighet anges har alternativet omedelbar effekt."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Concentration",
+							"entries": [
+								"Vissa alternativ kräver koncentration för att bibehålla sina effekter. Detta krav anges med \"conc.\" efter alternativets psi-poängkostnad. Noteringen \"conc.\" följs av koncentrationens maximala varaktighet. Om det till exempel står \"conc., 1 min.\" på ett alternativ kan du koncentrera dig på dess effekt i upp till 1 minut.",
+								"Att koncentrera sig på en disciplin följer samma regler som att koncentrera sig på en trollformel. Denna regel innebär att du inte kan koncentrera dig på en besvärjelse och en disciplin samtidigt, och inte heller kan du koncentrera dig på två discipliner samtidigt. Se {@book chapter 10|PHB|10}, \"Spellcasting\" i Spelarhandboken för hur koncentration fungerar."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Targets and Areas of Effect",
+					"entries": [
+						"Psioniska discipliner använder samma regler som trollformler för att bestämma mål och effektområden, som presenteras i {@book chapter 10|PHB|10}, \"Spellcasting\", i Player's Handbook."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Saving Throws and Attack Rolls",
+					"entries": [
+						"Om en disciplin kräver ett räddningskast, anges vilken typ av räddning och resultatet av ett lyckat eller misslyckat räddningskast. DC bestäms av din psioniska förmåga.",
+						"Vissa discipliner kräver att du gör en attackkast för att avgöra om disciplinens effekt träffar sitt mål. Attackkastet använder din psioniska förmåga."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Combining Psionic Effects",
+					"entries": [
+						"Effekterna av olika psioniska discipliner adderas samtidigt som disciplinernas varaktighet överlappar varandra. På samma sätt kombineras olika alternativ från en psionisk disciplin om de är aktiva samtidigt. Ett specifikt alternativ från en psionisk disciplin kombinerar dock inte med sig själv om alternativet används flera gånger. Istället tillämpas den mest potenta effekten - vanligtvis beroende på hur många psi-poäng som användes för att skapa effekten - medan effekternas varaktighet överlappar varandra.",
+						"Psionik och trollformler är separata effekter, och därför överlappar deras fördelar och nackdelar varandra. En psionisk effekt som reproducerar en besvärjelse är ett undantag från denna regel."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mystical Recovery",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 2,
+			"entries": [
+				"Från och med nivå 2 kan du hämta kraft från den psi-energi du använder för att driva dina psioniska discipliner.",
+				"Omedelbart efter att du spenderat psi-poäng på en psionisk disciplin kan du ta en bonusåtgärd för att återfå träffpoäng motsvarande antalet psi-poäng du spenderat."
+			]
+		},
+		{
+			"name": "Telepathy",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 2,
+			"entries": [
+				"På nivå 2 vaknar ditt sinne till förmågan att kommunicera via telepati. Du kan tala telepatiskt med alla varelser som du kan se inom 120 fot från dig på detta sätt. Du behöver inte dela språk med varelsen för att den ska förstå dina telepatiska meddelanden, men varelsen måste kunna förstå minst ett språk eller själv vara telepatisk."
+			]
+		},
+		{
+			"name": "Mystic Order feature",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 3,
+			"entries": [
+				"På 3:e nivån får du ytterligare en egenskap från din Mystic Order."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 4,
+			"entries": [
+				"När du når 4:e nivån, och igen på 8:e, 12:e, 16:e och 19:e nivån, kan du öka en valfri förmågaspoäng med 2, eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Strength of Mind",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 4,
+			"entries": [
+				"Även den enklaste psioniska tekniken kräver en djup förståelse för hur psionisk energi kan förstärka sinne och kropp. Denna förståelse gör det möjligt för dig att ändra dina försvarsmekanismer för att bättre kunna hantera hot.",
+				"Från och med 4:e nivån kan du ersätta din färdighet i visdomssparande kast när du avslutar en kort eller lång vila. För att göra det väljer du styrka, smidighet, konstitution eller karisma. Du får färdighet i räddningsförsök med hjälp av den förmågan, istället för Visdom. Denna förändring varar tills du avslutar din nästa korta eller långa vila."
+			]
+		},
+		{
+			"name": "Mystic Order feature",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 6,
+			"entries": [
+				"På 6:e nivån får du ytterligare en egenskap från din Mystic Order."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 8,
+			"entries": [
+				"När du når 4:e nivån, och igen på 8:e, 12:e, 16:e och 19:e nivån, kan du öka en valfri förmågaspoäng med 2, eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen."
+			]
+		},
+		{
+			"name": "Potent Psionics (1d8)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 8,
+			"entries": [
+				"På 8:e nivån får du förmågan att fylla dina vapenattacker med psykisk energi. En gång i varje tur när du träffar en varelse med ett vapen kan du tillfoga extra {@damage 1d8} psykisk skada till målet. När du når 14:e nivån ökar denna extra skada till {@dice 2d8}.",
+				"Dessutom lägger du till din intelligensmodifierare till varje skaderoll du gör för en psionisk talang."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Consumptive Power",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 10,
+			"entries": [
+				"På 10:e nivån får du förmågan att offra din fysiska hållbarhet i utbyte mot psionisk kraft. När du aktiverar en psionisk disciplin kan du betala dess psi-punktkostnad med dina träffpunkter, istället för att använda psi-punkter. Dina nuvarande träffpunkter och ditt träffpunktsmaximum reduceras båda med det antal träffpunkter du spenderar. Den här minskningen kan inte minskas på något sätt, och minskningen av ditt maximum av träffpunkter varar tills du avslutar en lång vila.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Psionic Mastery (1/Day)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 11,
+			"entries": [
+				"Från och med 11:e nivån kan du med din behärskning av psionisk energi driva ditt sinne bortom dess normala gränser. Som en handling får du 9 speciella psi-poäng som du endast kan använda på discipliner som kräver en handling eller en bonushandling för att använda. Du kan använda alla 9 poäng på en disciplin, eller så kan du sprida dem över flera discipliner. Du kan inte heller spendera dina normala psi-poäng på dessa discipliner; du kan bara spendera de speciella poäng som du får genom den här egenskapen. När du avslutar en lång vila förlorar du alla dessa specialpoäng som du inte har spenderat.",
+				"Om mer än en av de discipliner som du aktiverar med dessa poäng kräver koncentration kan du koncentrera dig på dem alla. Att aktivera en av dem avslutar alla effekter du redan var koncentrerad på, och om du börjar koncentrera dig på en effekt som inte använder dessa specialpoäng avslutas de discipliner som du koncentrerar dig på.",
+				"På 15:e nivån ökar antalet psi-poäng som du får genom den här funktionen till 11.",
+				"Du kan använda den här egenskapen en gång, och du återfår den om du har använt den med en lång vila. Du får ytterligare en användning av denna egenskap på 13:e, 15:e och 17:e nivån."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 12,
+			"entries": [
+				"När du når 4:e nivån, och igen på 8:e, 12:e, 16:e och 19:e nivån, kan du öka en valfri förmågaspoäng med 2, eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Psionic Mastery (2/Day)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 13,
+			"entries": [
+				"På 13:e nivån kan du använda din Psionic Mastery två gånger per dag."
+			]
+		},
+		{
+			"name": "Mystic Order feature",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 14,
+			"entries": [
+				"På 14:e nivån får du ytterligare en egenskap från din Mystic Order."
+			]
+		},
+		{
+			"name": "Potent Psionics (2d8)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 14,
+			"entries": [
+				"På 14:e nivån ökar din potenta psioniska skada till {@dice 2d8}."
+			]
+		},
+		{
+			"name": "Psionic Mastery (3/Day)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 15,
+			"entries": [
+				"På 15:e nivån kan du använda din Psionic Mastery tre gånger per dag."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 16,
+			"entries": [
+				"När du når 4:e nivån, och igen på 8:e, 12:e, 16:e och 19:e nivån, kan du öka en valfri förmågaspoäng med 2, eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Psionic Mastery (4/Day)",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 17,
+			"entries": [
+				"På 17:e nivån kan du använda din Psionic Mastery fyra gånger per dag."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 19,
+			"entries": [
+				"När du når 4:e nivån, och igen på 8:e, 12:e, 16:e och 19:e nivån, kan du öka en valfri förmågaspoäng med 2, eller två valfria förmågor med 1. Som vanligt kan du inte öka en förmågaspoäng över 20 med den här funktionen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"När du får egenskapen Ability Score Improvement från din klass kan du också ersätta en av dina färdighetskompetenser med en färdighetskompetens som erbjuds av din klass på 1:a nivån (den färdighetskompetens du ersätter behöver inte vara från klassen).",
+				"Denna förändring innebär att en av dina färdigheter förtvinar när du fokuserar på en annan färdighet."
+			]
+		},
+		{
+			"name": "Psionic Body",
+			"source": "UATheMysticClass",
+			"page": 1,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"level": 20,
+			"entries": [
+				"På 20:e nivån kan du behärska psioniska krafter som gör att ditt sinne överskrider kroppen. Din fysiska form är genomsyrad av psionisk energi. Du får följande fördelar:",
+				{
+					"type": "list",
+					"items": [
+						"Du blir motståndskraftig mot skador av slag, piercing och slashing.",
+						"Du åldras inte längre.",
+						"Du är immun mot sjukdomar, giftskador och {@condition poisoned} tillstånd.",
+						"Om du dör, kasta en {@dice d20}. Vid en 10 eller högre, förvandlas du med 0 träffpunkter, istället för att dö, och du faller {@condition unconscious}. Du och din utrustning försvinner. Du dyker upp på en plats som du väljer {@dice 1d3} dagar senare på det existensplan där du dog, efter att ha fått fördelarna av en lång vila."
+					]
+				}
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Order of the Avatar",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Mystiker i Avatar-orden fördjupar sig i känslornas värld och behärskar sitt inre liv i en sådan utsträckning att de kan manipulera och förstärka andras känslor med samma lätthet som en konstnär formar lera. Kända som Avatarer varierar dessa mystiker från tyranner till inspirerande ledare som är älskade av sina anhängare.",
+				"Avatarer kan väcka extrema känslor hos människor i deras omgivning. För deras allierade kan de ge hopp, vildhet och mod och förvandla en stridande grupp till en dödlig, enad styrka. För sina fiender ger de rädsla, avsky och bävan som kan få även den mest hårdnackade veteranen att bete sig som en skakig nybörjare.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Avatar|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Armor Training|Mystic|UATheMysticClass|Avatar|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Armor Training",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån får du färdighet med medelstora rustningar och sköldar."
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån lär du dig ytterligare två psioniska discipliner som du själv väljer. De måste väljas bland Avatar-disciplinerna."
+			]
+		},
+		{
+			"name": "Avatar of Battle",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Från och med 3:e nivån kan du projicera en inspirerande aura. Medan du inte är det {@condition incapacitated} får varje allierad inom 30 fot från dig som kan se dig en +2 bonus på initiativkast."
+			]
+		},
+		{
+			"name": "Avatar of Healing",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan du projicera en aura av motståndskraft. Medan du inte är det {@condition incapacitated}, får varje allierad inom 30 fot från dig som kan se dig ytterligare träffpunkter lika med din intelligensmodifierare (minst 0) närhelst de återfår träffpunkter från en psionisk disciplin."
+			]
+		},
+		{
+			"name": "Avatar of Speed",
+			"source": "UATheMysticClass",
+			"page": 5,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Avatar",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån kan du projicera en aura av hastighet. Medan du inte är {@condition incapacitated} kan alla allierade inom 30 fot från dig som kan se dig ta {@action Dash}-åtgärden som en bonusåtgärd."
+			]
+		},
+		{
+			"name": "Order of the Awakened",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Mystiker som är hängivna till de uppvaknas orden försöker frigöra sinnets fulla potential. Genom att överskrida det fysiska hoppas de uppvaknade kunna uppnå ett tillstånd av varande som fokuserar på rent intellekt och mental energi.",
+				"De uppvaknade är skickliga på att bända tankar och släppa loss förödande psioniska attacker, och de kan läsa världens hemligheter genom psionisk energi. Uppvaknade mystiker som ger sig ut på äventyr utmärker sig för att lösa mysterier, lösa pussel och besegra monster genom att förvandla dem till ovilliga brickor.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Awakened|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Awakened Talent|Mystic|UATheMysticClass|Awakened|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Awakened Talent",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån får du färdigheter i två av följande färdigheter efter eget val: {@skill Animal Handling}, {@skill Deception}, {@skill Insight}, {@skill Intimidation}, {@skill Investigation}, {@skill Perception} och {@skill Persuasion}."
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån lär du dig ytterligare två psioniska discipliner som du själv väljer. De måste väljas bland de uppvaknade disciplinerna."
+			]
+		},
+		{
+			"name": "Psionic Investigation",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Från och med 3:e nivån kan du fokusera ditt sinne för att läsa det psioniska avtrycket som lämnats på ett föremål. Om du håller ett föremål och koncentrerar dig på det i 10 minuter (som om du koncentrerar dig på en psionisk disciplin) lär du dig några grundläggande fakta om det. Du får en mental bild från objektets synvinkel, som visar den senaste varelsen som hållit objektet inom de senaste 24 timmarna.",
+				"Du får också veta vilka händelser som har inträffat inom sex meter från objektet under den senaste timmen. De händelser som du uppfattar utspelar sig ur objektets perspektiv. Du ser och hör sådana händelser som om du var där, men kan inte använda andra sinnen.",
+				"Dessutom kan du bädda in en immateriell psionisk sensor i föremålet. Under de kommande 24 timmarna kan du använda en åtgärd för att lära dig objektets position i förhållande till dig (dess avstånd och riktning) och för att titta på objektets omgivning från dess synvinkel som om du vore där. Den här uppfattningen varar fram till början av din nästa vändning.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har avslutat en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Psionic Surge",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan du överbelasta ditt psykiska fokus för att slå ner en motståndares försvar. Du kan ge en måltavla nackdel på ett räddningskast mot en disciplin eller talang som du använder, men till priset av att använda ditt psykiska fokus. Ditt psykiska fokus upphör omedelbart om det är aktivt, och du kan inte använda det förrän du avslutar en kort eller lång vila.",
+				"Du kan inte använda den här funktionen om du inte kan använda ditt psykiska fokus."
+			]
+		},
+		{
+			"name": "Spectral Form",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Awakened",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"På 14:e nivån får du förmågan att bli en spöklik figur av psionisk energi. Som en handling kan du förvandlas till en genomskinlig, spöklik version av dig själv. När du är i den här formen har du motstånd mot all skada, rör dig med halva hastigheten och kan passera genom objekt och varelser medan du rör dig, men kan inte frivilligt avsluta din rörelse i deras utrymmen. Formen varar i 10 minuter eller tills du använder en handling för att avsluta den.",
+				"När du har använt den här funktionen kan du inte använda den igen förrän du har vilat länge."
+			]
+		},
+		{
+			"name": "Order of the Immortal",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Order of the Immortal använder psionisk energi för att förstärka och modifiera den fysiska formen. Anhängare av denna ordning är kända som Immortals. De använder psionisk energi för att modifiera sina kroppar, stärka dem mot attacker och förvandla sig själva till levande vapen.",
+				"Deras behärskning av den fysiska formen ger dem deras namn, för odödliga är notoriskt svåra att döda.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Immortal|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Immortal Durability|Mystic|UATheMysticClass|Immortal|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån lär du dig ytterligare två psioniska discipliner som du själv väljer. De måste väljas bland de odödliga disciplinerna."
+			]
+		},
+		{
+			"name": "Immortal Durability",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Från och med 1:a nivån ökar ditt maximum av träffpunkter med 1 per mystisk nivå.",
+				"När du inte bär rustning eller har en sköld är din bas-AC dessutom lika med 10 + din Dexterity-modifiering + din Constitution-modifiering."
+			]
+		},
+		{
+			"name": "Psionic Resilience",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Från och med 3:e nivån ger din psioniska energi dig extraordinär styrka. I början av varje vändning får du tillfälliga träffpunkter som är lika med din intelligensmodifierare (minst 0) om du har minst 1 träffpunkt."
+			]
+		},
+		{
+			"name": "Surge of Health",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån kan du använda ditt psykiska fokus för att undkomma dödens grepp. Som en reaktion när du tar skada kan du halvera skadan mot dig. Ditt psykiska fokus upphör omedelbart om det är aktivt, och du kan inte använda det förrän du avslutar en kort eller lång vila.",
+				"Du kan inte använda den här funktionen om du inte kan använda ditt psykiska fokus."
+			]
+		},
+		{
+			"name": "Immortal Will",
+			"source": "UATheMysticClass",
+			"page": 6,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Immortal",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån kan du dra nytta av dina reserver av psionisk kraft för att överleva bortom döden. I slutet av din tur medan du har 0 träffpunkter kan du spendera 5 psi-poäng för att omedelbart återfå ett antal träffpunkter som är lika med din mystiska nivå + din konstitutionsmodifierare."
+			]
+		},
+		{
+			"name": "Order of the Nomad",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Mystiker i Nomadorden håller sina sinnen i ett märkligt, sällsynt tillstånd. De försöker samla så mycket kunskap som möjligt, eftersom de strävar efter att lösa multiversums mysterier och söka efter den underliggande strukturen för allting. Samtidigt uppfattar de ett bisarrt, levande nät av kunskap som de kallar noosfären.",
+				"Nomader, som namnet antyder, gillar att resa, utforska och upptäcka. De vill samla på sig så mycket kunskap som möjligt, och jakten på hemligheter och dolda lärdomar kan bli en besatthet för dem.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Nomad|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Breadth of Knowledge|Mystic|UATheMysticClass|Nomad|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån lär du dig ytterligare två psioniska discipliner som du själv väljer. De måste väljas bland Nomaddisciplinerna."
+			]
+		},
+		{
+			"name": "Breadth of Knowledge",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån får du förmågan att utöka din kunskap. När du avslutar en lång vila får du två profileringsförmågor som du väljer: två verktyg, två färdigheter eller en av varje. Du kan ersätta ett eller båda dessa val med språk. Den här fördelen varar tills du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Memory of One Thousand Steps",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"På 3:e nivån får du förmågan att använda psionik för att minnas dina steg. Som en reaktion när du träffas av en attack kan du teleportera dig till ett obebott utrymme som du ockuperat sedan början av din senaste tur, och attacken missar dig. När du använt den här egenskapen kan du inte använda den igen förrän du avslutar en kort eller lång vila."
+			]
+		},
+		{
+			"name": "Superior Teleportation",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån får du en överlägsen talang för teleportering. När du använder en psionisk disciplin för att teleportera någon distans kan du öka den distansen med upp till 10 fot."
+			]
+		},
+		{
+			"name": "Effortless Journey",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Nomad",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med den 14:e nivån kan ditt sinne på ett mystiskt sätt flytta din kropp. En gång under varje tur kan du avstå upp till 30 fot av din rörelse för att teleportera den distans du avstått från. Du måste teleportera dig till ett obebott utrymme som du kan se."
+			]
+		},
+		{
+			"name": "Order of the Soul Knife",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"Order of the Soul Knife offrar den breda kunskap som andra mystiker får för att fokusera på en specifik psionisk teknik. Dessa mystiker lär sig att manifestera ett dödligt vapen av ren psykisk energi som de kan använda för att klyva fiender.",
+				"Själsknivarna varierar mycket i sitt sätt att närma sig denna väg. Vissa följer den på grund av en önskan att uppnå martialisk perfektion. Andra är hänsynslösa lönnmördare som försöker bli den perfekta mördaren.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Martial Training|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Soul Knife|Mystic|UATheMysticClass|Soul Knife|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Martial Training",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån får du färdighet med medium rustning och martialiska vapen."
+			]
+		},
+		{
+			"name": "Soul Knife",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"Från och med 1:a nivån får du förmågan att manifestera ett blad av psykisk energi. Som en bonushandling skapar du gnistrande knivar av energi som skjuter ut från båda dina knytnävar. Du kan inte hålla något i dina händer medan du manifesterar dessa knivar. Du kan avfärda dem som en bonushandling.",
+				"För dig är en själskniv ett martialiskt närstridsvapen med egenskaperna ljus och finess. Det ger {@damage 1d8} psykisk skada vid en träff.",
+				"Som en bonusåtgärd kan du förbereda dig för att använda knivarna för att parera; du får en +2-bonus på AC fram till början av din nästa vändning eller tills du är {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Hone the Blade",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Från och med 3:e nivån kan du använda psi-poäng för att öka din själsknivs attackrullar och skada. Du får en bonus på attack- och skaderullar med dina själsknivar beroende på hur många psi-poäng du spenderat, enligt tabellen nedan. Den här bonusen varar i 10 minuter.",
+				{
+					"type": "table",
+					"colLabels": [
+						"Psi Points",
+						"Attack and Damage Bonus"
+					],
+					"colStyles": [
+						"col-6 text-center",
+						"col-6 text-center"
+					],
+					"rows": [
+						[
+							"2",
+							"+1"
+						],
+						[
+							"5",
+							"+2"
+						],
+						[
+							"7",
+							"+4"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Consumptive Knife",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Från och med 6:e nivån får du omedelbart 2 psi-poäng tillbaka när du dödar en fiendevarelse med en attack med en själskniv när du dödar en fiendevarelse med en själskniv."
+			]
+		},
+		{
+			"name": "Phantom Knife",
+			"source": "UATheMysticClass",
+			"page": 7,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Soul Knife",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån kan du göra en attack som går igenom de flesta försvar. Som en handling kan du göra en attack med din själskniv. Behandla målets AC som 10 mot denna attack, oavsett målets faktiska AC."
+			]
+		},
+		{
+			"name": "Order of the Wu Jen",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"entries": [
+				"I Wu Jen-orden finns några av de mest hängivna mystikerna. Dessa mystiker försöker att stänga in sig själva från världen, förnekar den fysiska världens gränser och ersätter den med en verklighet som de skapar för sig själva. Dessa mystiker, som är kända som Wu Jen, kastar sina sinnen in i världen, tar kontroll över dess grundläggande principer och återuppbygger den.",
+				"I praktiska termer är wu jens utmärkta på att kontrollera naturens krafter. De kan kasta föremål med sina sinnen, kontrollera de fyra elementen och förändra verkligheten så att den passar deras önskemål.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Disciplines|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Hermit's Study|Mystic|UATheMysticClass|Wu Jen|UATheMysticClass|1"
+				}
+			]
+		},
+		{
+			"name": "Bonus Disciplines",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån lär du dig ytterligare två psioniska discipliner som du själv väljer. De måste väljas bland Wu Jen-disciplinerna."
+			]
+		},
+		{
+			"name": "Hermit's Study",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"På 1:a nivån får du färdigheter i två av följande färdigheter efter eget val: {@skill Animal Handling}, {@skill Arcana}, {@skill History}, {@skill Insight}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, {@skill Religion} eller {@skill Survival}."
+			]
+		},
+		{
+			"name": "Elemental Attunement",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Från och med 3:e nivån, när en varelses motstånd minskar skadan som orsakas av en av dina psioniska discipliner, kan du spendera 1 psi-punkt för att få den disciplinen att ignorera varelsens motstånd. Du kan inte spendera den här punkten om det skulle öka disciplinens kostnad över din psi-gräns."
+			]
+		},
+		{
+			"name": "Arcane Dabbler",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"På 6:e nivån lär du dig tre trollformler av ditt val och har dem alltid förberedda. Besvärjelserna måste vara av nivå 1 till 3.",
+				"Som en bonusåtgärd kan du spendera psi-poäng för att skapa trollformelplatser som du kan använda för att kasta dessa trollformler, liksom andra trollformler som du kan kasta. Kostnaden för psi-poäng för varje trollformelplats anges i tabellen nedan.",
+				{
+					"type": "table",
+					"colLabels": [
+						"Spell Slot Level",
+						"Psi Cost"
+					],
+					"colStyles": [
+						"col-6 text-center",
+						"col-6 text-center"
+					],
+					"rows": [
+						[
+							"1st",
+							"2"
+						],
+						[
+							"2nd",
+							"3"
+						],
+						[
+							"3rd",
+							"5"
+						],
+						[
+							"4th",
+							"6"
+						],
+						[
+							"5th",
+							"7"
+						]
+					]
+				},
+				"Besvärjelseplatsen finns kvar tills du använder den eller avslutar en lång vila. Du måste iaktta din psi-gräns när du spenderar psi-poäng för att skapa en trollformelplats.",
+				"När du får en nivå i den här klassen kan du ersätta en av de valda trollformlerna med en annan trollformel på 1:a till 3:e nivå."
+			]
+		},
+		{
+			"name": "Elemental Mastery",
+			"source": "UATheMysticClass",
+			"page": 8,
+			"className": "Mystic",
+			"classSource": "UATheMysticClass",
+			"subclassShortName": "Wu Jen",
+			"subclassSource": "UATheMysticClass",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Från och med 14:e nivån kan du, om du har resistens mot en typ av skada, spendera 2 psi-poäng som en reaktion när du tar skada av den typen för att ignorera den skadan; du får immunitet mot den typen av skada fram till slutet av din nästa vändning."
+			]
+		}
+	]
+}

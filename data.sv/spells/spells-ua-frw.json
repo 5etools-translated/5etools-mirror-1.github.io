@@ -1,0 +1,617 @@
+{
+	"spell": [
+		{
+			"name": "Ego Whip",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du piskar sinnet hos en varelse som du kan se inom räckhåll och fyller den med förtvivlan. Målet måste lyckas med ett räddningskast på intelligens eller drabbas av nackdel på attackkast, förmågekontroller och räddningskast, och det kan inte kasta trollformler. I slutet av var och en av sina turer kan målet göra ett nytt räddningskast med intelligens. Vid ett lyckat försök upphör förtrollningen för målet."
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Id Insinuation",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du släpper lös en ström av motstridiga önskningar i huvudet på en varelse som du kan se inom räckhåll, vilket försämrar dess förmåga att fatta beslut. Målet måste lyckas med ett räddningskast i Visdom eller bli oförmögen att göra det. I slutet av var och en av dess turer tar den {@damage 1d12} psykisk skada, och den kan sedan göra ett nytt räddningskast med visdom. Vid ett lyckat resultat upphör förtrollningen för målet."
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Intellect Fortress",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 5,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Du skapar en svagt skimrande barriär av skyddande psykisk kraft runt dig. Under hela tiden har du fördel på alla räddningskast.",
+				"När en annan varelse som du kan se inom 30 fot från dig misslyckas med ett räddningskast kan du använda din reaktion för att låta dem göra ett nytt räddningskast. De måste använda det nya kastet."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mental Barrier",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when you are forced to make an Intelligence, a Wisdom, or a Charisma saving throw"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Du skyddar ditt sinne med en vägg av upprepade, repetitiva tankar. Fram till början av din nästa vändning har du fördel på räddningskast på intelligens, visdom och karisma, och du har resistens mot psykisk skada."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Sliver",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 0,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Du driver en förvirrande spik av psykisk energi in i sinnet på en varelse som du kan se inom räckhåll. Målet måste göra ett räddningskast med intelligens. Om inte räddningskastet lyckas tar målet {@damage 1d6} psykisk skada, och första gången det gör ett räddningskast innan slutet av din nästa tur måste det kasta en {@dice d4} och dra av det kastade antalet från räddningskastet.",
+				"Den här besvärjelsens skada ökar med {@dice 1d6} när du når vissa nivåer: 5:e nivån ({@damage 2d6}), 11:e nivån ({@damage 3d6}) och 17:e nivån ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Thrust",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Du skickar en lans av psionisk störning in i sinnet på en varelse som du kan se inom räckhåll. Målet måste göra ett räddningskast med intelligens. Vid ett misslyckat räddningsförsök tar målet {@damage 3d6} psykisk skada, och det kan använda sin handling endast till {@action Dash} eller {@action Disengage} på sin nästa tur. Vid ett lyckat räddningsförsök tar målet hälften så mycket skada, och denna besvärjelse begränsar inte dess handlingsalternativ."
+			],
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"type": "entries",
+					"entries": [
+						"När du kastar den här besvärjelsen med hjälp av en spell slot på 3:e nivå eller högre kan du rikta en ytterligare varelse för varje slotnivå över 2:a nivån. Varelserna måste befinna sig inom 30 fot från varandra när du riktar dem."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Psionic Blast",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
+			"level": 3,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Du släpper ut en destruktiv våg av mental kraft i en 30-fots kon. Varje varelse i området måste göra ett räddningskast med Dexterity. Vid ett misslyckat räddningsförsök tar målet {@damage 5d8} kraftskada, skjuts sex meter direkt bort från dig och slås {@condition prone}. Vid ett lyckat räddningsförsök tar ett mål hälften så mycket skada och skjuts eller slås inte omkull."
+			],
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"type": "entries",
+					"entries": [
+						"När du kastar den här besvärjelsen med en spell slot på 4:e nivå eller högre ökar skadan med {@dice 1d8} för varje slotnivå över 3:e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"miscTags": [
+				"FMV"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Psychic Crush",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
+			"level": 6,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Du överbelastar sinnet hos en varelse som du kan se inom räckhåll och fyller dess psyke med ojämna känslor. Målet måste göra ett räddningskast med intelligens. Vid ett misslyckat räddningsförsök tar målet {@damage 12d6} psykisk skada och är {@condition stunned} i 1 minut. Vid ett lyckat räddningsförsök tar målet hälften så mycket skada och är inte bedövad.",
+				"Det bedövade målet kan göra ett räddningskast med intelligens i slutet av varje tur. Vid ett lyckat räddningsförsök upphör förtrollningen för målet."
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"stunned"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Thought Shield",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Du väver en molnig slöja över sinnet på en varelse som du rör vid. Under hela tiden kan målets sinne inte läsas eller upptäckas, varelser kan inte kommunicera telepatiskt med målet om inte målet tillåter det, och målet har fördel på räddningskast mot alla effekter som skulle avgöra om det talar sanning."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

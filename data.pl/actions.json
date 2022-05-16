@@ -1,0 +1,581 @@
+{
+	"action": [
+		{
+			"name": "Activate an Item",
+			"source": "DMG",
+			"page": 141,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Aktywacja niektórych magicznych przedmiotów wymaga od użytkownika wykonania określonych czynności, takich jak trzymanie przedmiotu i wypowiedzenie słowa rozkazu, przeczytanie przedmiotu, jeśli jest to zwój, lub wypicie go, jeśli jest to eliksir. Opis każdej kategorii przedmiotów lub pojedynczego przedmiotu szczegółowo opisuje, w jaki sposób przedmiot jest aktywowany. Niektóre przedmioty wykorzystują jedną lub więcej z poniższych zasad związanych z ich aktywacją.",
+				"Jeśli przedmiot wymaga akcji do aktywacji, to ta akcja nie jest funkcją akcji {@action Use an Object}, więc cecha taka jak {@subclassFeature Fast Hands|Rogue||Thief||3} Łotrzyka nie może być użyta do aktywacji przedmiotu.",
+				{
+					"type": "entries",
+					"name": "Command Word",
+					"entries": [
+						"Słowo rozkazujące to słowo lub wyrażenie, które musi zostać wypowiedziane dźwiękowo, aby przedmiot mógł działać. Przedmiot magiczny, który wymaga od użytkownika wypowiedzenia słowa rozkazu, nie może być aktywowany w obszarze działania efektu, który uniemożliwia emisję dźwięku, np. w obszarze utworzonym przez zaklęcie ciszy."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Consumables",
+					"entries": [
+						"Niektóre przedmioty zużywają się po ich aktywacji. Mikstura lub eliksir muszą zostać połknięte, a olej nałożony na ciało. Pismo znika ze zwoju po jego przeczytaniu. Raz zużyty przedmiot traci swoją magię i przestaje działać."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells",
+					"entries": [
+						"Niektóre magiczne przedmioty pozwalają użytkownikowi rzucić zaklęcie z tego przedmiotu, często po zużyciu ładunków. Zaklęcie jest rzucane na najniższy możliwy poziom zaklęcia i poziom magiczny, nie zużywa żadnego slotu na zaklęcie i nie wymaga żadnych składników, chyba że opis przedmiotu mówi inaczej. Zaklęcie ma swój normalny czas rzucania, zasięg i czas trwania, a użytkownik przedmiotu musi się skoncentrować, jeśli zaklęcie wymaga koncentracji. Niektóre przedmioty czynią wyjątki od tych zasad, zmieniając czas rzucania, czas trwania lub inne elementy zaklęcia.",
+						"Wiele przedmiotów, takich jak eliksiry, omija proces rzucania zaklęcia i nadaje efekty zaklęcia. Taki przedmiot nadal wykorzystuje czas trwania zaklęcia, chyba że jego opis mówi inaczej.",
+						"Magiczne przedmioty, takie jak niektóre laski, mogą wymagać użycia własnej zdolności rzucania zaklęć podczas rzucania zaklęć z tego przedmiotu. Jeśli posiadasz więcej niż jedną umiejętność, wybierasz, której z nich użyjesz z tym przedmiotem. Jeśli nie posiadasz umiejętności rzucania zaklęć - np. jesteś łotrzykiem z cechą Użyj Magicznych Urządzeń - twój modyfikator do umiejętności rzucania zaklęć wynosi +0 do przedmiotu, ale obowiązuje cię premia do biegłości."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Charges",
+					"entries": [
+						"Niektóre magiczne przedmioty mają ładunki, które trzeba zużyć, aby aktywować ich właściwości. Liczba pozostałych ładunków jest ujawniana, gdy na przedmiot zostanie rzucone zaklęcie identyfikujące lub gdy istota dostosuje się do przedmiotu. Dodatkowo, kiedy przedmiot odzyskuje ładunki, istota do niego przywiązana dowiaduje się, ile ładunków odzyskał."
+					]
+				}
+			]
+		},
+		{
+			"name": "Attack",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Najczęstszą akcją w walce jest akcja Atak, niezależnie od tego, czy wymachujesz mieczem, strzelasz z łuku, czy bijesz się na pięści.",
+				"Wykonując tę akcję, wykonujesz jeden atak w walce wręcz lub na dystans. Zasady dotyczące ataków znajdują się w rozdziale \"{@book Making an Attack|phb|9|making an attack}\".",
+				"Niektóre cechy, takie jak dodatkowy atak wojownika, pozwalają na wykonanie więcej niż jednego ataku za pomocą tej akcji."
+			],
+			"seeAlsoAction": [
+				"Disarm|DMG",
+				"Grapple",
+				"Mark|DMG",
+				"Shove",
+				"Shove Aside|DMG",
+				"Two-Weapon Fighting"
+			]
+		},
+		{
+			"name": "Cast a Spell",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				"Varies"
+			],
+			"entries": [
+				"Zaklinacze, tacy jak czarodzieje i klerycy, a także wiele potworów, mają dostęp do zaklęć i mogą z nich korzystać w walce. Każde zaklęcie ma swój czas rzucania, który określa, czy rzucający musi użyć akcji, reakcji, minut, czy nawet godzin, aby rzucić zaklęcie. Rzucenie zaklęcia nie jest więc koniecznie akcją. Większość zaklęć ma czas rzucania równy 1 akcji, więc czarownik często wykorzystuje swoją akcję w walce, aby rzucić takie zaklęcie. Zobacz {@book chapter 10|phb|10|casting a spell}, aby zapoznać się z zasadami rzucania zaklęć."
+			]
+		},
+		{
+			"name": "Climb onto a Bigger Creature",
+			"source": "DMG",
+			"page": 271,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Jeśli jedno stworzenie chce wskoczyć na drugie, może to zrobić o {@action grapple||grappling}. Małe lub średnie stworzenie ma niewielkie szanse na udany chwyt przeciwko ogromnemu lub gargantuicznemu stworzeniu, chyba że magia obdarzyła chwytającego nadnaturalną siłą.",
+				"Alternatywnie, odpowiednio duży przeciwnik może być traktowany jako teren, aby wskoczyć na jego grzbiet lub uczepić się kończyny. Po wykonaniu wszelkich kontroli umiejętności potrzebnych do zajęcia pozycji i wejścia na większe stworzenie, mniejsze stworzenie używa swojej akcji, aby wykonać test Siły ({@skill Athletics}) lub Zręczności ({@skill Acrobatics}), który jest kwestionowany przez test Zręczności ({@skill Acrobatics}) celu. Jeśli wygra, mniejsza istota z powodzeniem porusza się do przestrzeni, w której znajduje się cel, porusza się razem z nim i ma przewagę w rzutach na atak przeciwko niemu.",
+				"Mniejsza istota może poruszać się w obrębie przestrzeni większej istoty, traktując tę przestrzeń jako {@quickref difficult terrain||3}. Zdolność większego stworzenia do atakowania mniejszego zależy od położenia mniejszego stworzenia i jest pozostawiona do twojej decyzji. Większe stworzenie może zrzucić mniejsze stworzenie jako akcję - zrzucając je z siebie, uderzając nim o ścianę lub chwytając i rzucając nim - wykonując test Wytrzymałości ({@skill Athletics}) zakwestionowany przez test Wytrzymałości ({@skill Athletics}) lub Zręczności ({@skill Acrobatics}) mniejszego stworzenia. Mniejsze stworzenie wybiera, z której zdolności chce skorzystać."
+			]
+		},
+		{
+			"name": "Dash",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Kiedy wykonujesz akcję \"Kreska\", zyskujesz dodatkowy ruch na czas bieżącej tury. Wzrost ten jest równy twojej prędkości, po zastosowaniu wszelkich modyfikatorów. Na przykład, mając prędkość 30 stóp, możesz poruszyć się na 60 stóp w swojej turze, jeśli wykonasz akcję Kreska.",
+				"Każde zwiększenie lub zmniejszenie prędkości powoduje zmianę tego dodatkowego ruchu o tę samą wartość. Na przykład, jeśli twoja prędkość 30 stóp zostanie zmniejszona do 15 stóp, możesz w tej turze poruszyć się na odległość do 30 stóp, jeśli zrobisz susa."
+			]
+		},
+		{
+			"name": "Disarm",
+			"source": "DMG",
+			"page": 271,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Istota może użyć ataku bronią, aby wytrącić broń lub inny przedmiot z rąk celu. Atakujący wykonuje rzut na atak, który jest kwestionowany przez cel poprzez sprawdzenie Siły ({@skill Athletics}) lub Zręczności ({@skill Acrobatics}). Jeśli atakujący wygra, atak nie powoduje żadnych obrażeń ani innych złych skutków, ale obrońca upuszcza przedmiot.",
+				"Atakujący ma minus przy rzucie ataku, jeśli cel trzyma przedmiot w dwóch lub więcej rękach. Cel ma przewagę przy sprawdzaniu umiejętności, jeśli jest większy od atakującego stworzenia, lub niekorzyść, jeśli jest mniejszy."
+			],
+			"seeAlsoAction": [
+				"Attack"
+			]
+		},
+		{
+			"name": "Disengage",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Jeśli wykonasz akcję Odłączenie, twój ruch nie będzie prowokował ataków okazjonalnych do końca tury."
+			]
+		},
+		{
+			"name": "Dodge",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Kiedy wykonujesz akcję Unik, skupiasz się całkowicie na unikaniu ataków. Do początku twojej następnej tury, każdy atak na ciebie jest osłabiony, jeśli widzisz atakującego, a rzuty ratunkowe na Zręczność są korzystne. Tracisz tę korzyść, jeśli jesteś niezdolny do działania (jak wyjaśniono w dodatku) lub jeśli twoja prędkość spadnie do 0."
+			]
+		},
+		{
+			"name": "Don or Doff a Shield",
+			"source": "PHB",
+			"page": 146,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Czas potrzebny na założenie lub zdjęcie zbroi {@table Getting Into and Out of Armor; Donning and Doffing Armor|phb|depends on the armor's category}. Pancerz {@item shield|phb} może być założony lub zdjęty jako akcja."
+			]
+		},
+		{
+			"name": "End Concentration",
+			"source": "PHB",
+			"page": 203,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				"Free"
+			],
+			"entries": [
+				"Jeśli zaklęcie wymaga koncentracji, fakt ten pojawia się we wpisie Czas trwania, a zaklęcie określa, jak długo można się na nim skoncentrować. Koncentrację można zakończyć w dowolnym momencie (nie jest wymagana żadna akcja)."
+			]
+		},
+		{
+			"name": "Escape a Grapple",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Stworzenie {@condition grappled} może użyć swojej akcji, aby uciec. Aby to zrobić, musi odnieść sukces w teście Wytrzymałości ({@skill Athletics}) lub Zręczności ({@skill Acrobatics}) zakwestionowanym przez twój test Wytrzymałości ({@skill Athletics})."
+			],
+			"seeAlsoAction": [
+				"Grapple"
+			]
+		},
+		{
+			"name": "Grapple",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Kiedy chcesz chwycić stworzenie lub siłować się z nim, możesz użyć akcji {@action Attack}, aby wykonać specjalny atak w walce wręcz - chwyt. Jeśli możesz wykonać kilka ataków za pomocą akcji {@action Attack}, ten atak zastępuje jeden z nich. Cel twojego chwytu nie może być większy od ciebie o więcej niż jeden rozmiar i musi znajdować się w twoim zasięgu.",
+				"Używając co najmniej jednej wolnej ręki, próbujesz chwycić cel, wykonując test chwytania, test Wytrzymałości ({@skill Athletics}) podważony przez test Wytrzymałości ({@skill Athletics}) lub Zręczności ({@skill Acrobatics}) celu (cel wybiera umiejętność, której chce użyć). Sukces odnosi się automatycznie, jeśli cel ma {@condition incapacitated}. Jeśli ci się powiedzie, poddajesz cel warunkowi {@condition grappled} (patrz dodatek). Warunek określa rzeczy, które go kończą, a ty możesz uwolnić cel kiedy tylko chcesz (nie wymaga to żadnej akcji).",
+				{
+					"type": "entries",
+					"name": "Moving a Grappled Target",
+					"entries": [
+						"Kiedy się poruszasz, możesz ciągnąć lub nieść ze sobą {@condition grappled} stwora, ale twoja prędkość zmniejsza się o połowę, chyba że stwór jest o dwa lub więcej rozmiarów mniejszy od ciebie."
+					]
+				}
+			],
+			"seeAlsoAction": [
+				"Escape a Grapple"
+			]
+		},
+		{
+			"name": "Healing Surge",
+			"source": "DMG",
+			"page": 266,
+			"fromVariant": "Healing",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Jako akcję, postać może użyć Skazy Uzdrowienia i wydać do połowy swoich kości trafień. Za każdą Hit Die wydaną w ten sposób, gracz rzuca kością i dodaje modyfikator Konstytucji postaci. Postać odzyskuje punkty trafień równe sumie. Gracz może zdecydować, czy chce wydać dodatkową Hit Die po każdym rzucie.",
+				"Postać, która użyła Siły Uzdrowienia, nie może tego zrobić ponownie, dopóki nie skończy krótkiego lub długiego odpoczynku. Zgodnie z tą opcjonalną zasadą, postać odzyskuje wszystkie zużyte kości trafień na koniec długiego odpoczynku. Podczas krótkiego odpoczynku postać odzyskuje kostki trafień równe swojemu poziomowi podzielonemu przez cztery (minimum jedna kostka)."
+			]
+		},
+		{
+			"name": "Help",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Możesz udzielić pomocy innemu stworzeniu w wykonaniu zadania. Kiedy wykonujesz akcję Pomoc, istota, której pomagasz, zyskuje przewagę przy następnym sprawdzianie umiejętności, który wykonuje, aby wykonać zadanie, w którym pomagasz, pod warunkiem, że wykona ten test przed rozpoczęciem twojej następnej tury.",
+				"Możesz też pomóc przyjaznej istocie w ataku na stworzenie znajdujące się w promieniu 5 stóp od ciebie. Udajesz, odwracasz uwagę celu lub w inny sposób współpracujesz, aby atak sojusznika był skuteczniejszy. Jeśli twój sojusznik zaatakuje cel przed twoją następną turą, pierwszy rzut ataku jest wykonywany z przewagą."
+			]
+		},
+		{
+			"name": "Hide",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Kiedy wykonujesz akcję Ukrycie, wykonujesz test Zręczności ({@skill Stealth}), próbując się ukryć, zgodnie z zasadami opisanymi w {@book chapter 7 |phb|7|hiding} dotyczącymi ukrywania się. Jeśli ci się powiedzie, zyskujesz pewne korzyści, opisane w sekcji \"{@book Unseen Attackers and Targets|PHB|9|unseen attackers and targets}\" w Podręczniku Gracza."
+			]
+		},
+		{
+			"name": "Identify a Spell",
+			"source": "XGE",
+			"page": 85,
+			"fromVariant": "Spellcasting|XGE",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				},
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Czasami postać chce zidentyfikować zaklęcie, które rzuca ktoś inny lub które zostało już rzucone. Aby to zrobić, postać może użyć swojej reakcji, aby zidentyfikować zaklęcie w trakcie jego rzucania, lub może użyć akcji w swojej turze, aby zidentyfikować zaklęcie na podstawie jego efektu po jego rzuceniu.",
+				"Jeśli postać zauważyła rzucenie, efekt zaklęcia lub jedno i drugie, może wykonać test Inteligencji ({@skill Arcana}) z reakcją lub akcją. DC równa się 15 + poziom zaklęcia. Jeśli zaklęcie jest rzucone jako zaklęcie klasowe, a postać jest członkiem tej klasy, to sprawdzenie jest wykonywane z przewagą. Na przykład, jeśli czarodziej rzuca zaklęcie jako kleryk, to inny kleryk ma przewagę na teście identyfikacji zaklęcia. Niektóre zaklęcia nie są związane z żadną klasą w momencie ich rzucania, np. gdy potwór używa cechy Wrodzone Rzucanie Zaklęć.",
+				"Ta kontrola Inteligencji ({@skill Arcana}) reprezentuje fakt, że rozpoznanie zaklęcia wymaga bystrości umysłu i znajomości teorii i praktyki rzucania zaklęć. Dotyczy to nawet postaci, której zdolność rzucania zaklęć to Mądrość lub Charyzma. Umiejętność rzucania zaklęć nie czyni cię mistrzem w dedukcji tego, co inni robią, rzucając zaklęcia."
+			]
+		},
+		{
+			"name": "Improvising an Action",
+			"source": "PHB",
+			"page": 193,
+			"basicRules": true,
+			"time": [
+				"Varies"
+			],
+			"entries": [
+				"Twoja postać może robić rzeczy nieobjęte akcjami w tym rozdziale, takie jak wyważanie drzwi, zastraszanie wrogów, wyczuwanie słabych punktów w magicznej obronie czy wzywanie wroga na pojedynek. Jedynymi ograniczeniami dla działań, których możesz spróbować, są Twoja wyobraźnia i wyniki umiejętności Twojej postaci. Inspiracji do improwizacji szukaj w opisach wyników umiejętności w {@book chapter 7|phb|7|Ability Scores and Modifiers}.",
+				"Kiedy opisujesz akcję, która nie jest opisana w innych zasadach, DM mówi ci, czy ta akcja jest możliwa i jaki rodzaj rzutu musisz wykonać, jeśli w ogóle, aby określić sukces lub porażkę."
+			]
+		},
+		{
+			"name": "Mark",
+			"source": "DMG",
+			"page": 271,
+			"fromVariant": "Action Options",
+			"entries": [
+				"Ta opcja ułatwia walczącym wręcz nękanie się nawzajem atakami okolicznościowymi.",
+				"Kiedy stworzenie wykonuje atak w walce wręcz, może również oznaczyć swój cel. Do końca następnej tury atakującego, każdy atak z okazji, który wykona przeciwko oznaczonemu celowi, ma przewagę. Atak przy okazji nie zużywa reakcji atakującego, ale atakujący nie może wykonać ataku, jeśli coś, np. warunek {@condition incapacitated} lub zaklęcie {@spell shocking grasp}, uniemożliwia mu wykonanie reakcji. Atakujący jest ograniczony do jednego ataku okazjonalnego na turę."
+			],
+			"seeAlsoAction": [
+				"Attack"
+			]
+		},
+		{
+			"name": "Opportunity Attack",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				}
+			],
+			"entries": [
+				"Podczas walki każdy nieustannie obserwuje, czy przeciwnicy nie opuszczają gardy. Rzadko kiedy można przejść obok przeciwnika bez narażania się na niebezpieczeństwo; takie działanie prowokuje okazję do ataku.",
+				"Możesz wykonać atak okazjonalny, gdy wrogie stworzenie, które widzisz, poruszy się poza twoim zasięgiem. Aby wykonać atak przy nadarzającej się okazji, wykorzystujesz swoją reakcję, aby wykonać jeden atak w walce wręcz przeciwko prowokującemu stworzeniu. Atak przerywa ruch prowokującej istoty i następuje tuż przed tym, jak ta opuści twój zasięg.",
+				"Możesz uniknąć sprowokowania ataku okazjonalnego, wykonując akcję {@action Disengage}. Nie prowokujesz ataku przy okazji, gdy się teleportujesz lub gdy ktoś lub coś poruszy cię bez użycia twojego ruchu, akcji lub reakcji. Na przykład, nie prowokujesz ataku przy okazji, jeśli eksplozja wyrzuci cię poza zasięg przeciwnika lub jeśli grawitacja sprawi, że spadniesz obok wroga."
+			]
+		},
+		{
+			"name": "Other Activity",
+			"source": "PHB",
+			"page": 190,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				"Varies"
+			],
+			"entries": [
+				"Twoja tura może zawierać różne dodatki, które nie wymagają ani twojej akcji, ani ruchu.",
+				"Można komunikować się w dowolny sposób, za pomocą krótkich wypowiedzi i gestów, w miarę upływu czasu.",
+				"Możesz też za darmo wejść w interakcję z jednym obiektem lub elementem otoczenia, zarówno podczas swojego ruchu, jak i akcji. Na przykład, możesz otworzyć drzwi podczas swojego ruchu, podążając w kierunku przeciwnika, lub dobyć broń w ramach tej samej akcji, której używasz do ataku.",
+				"Jeśli chcesz wejść w interakcję z drugim obiektem, musisz użyć swojej akcji. Niektóre magiczne przedmioty i inne specjalne przedmioty zawsze wymagają wykonania akcji, jak podano w ich opisach.",
+				"DM może wymagać, abyś użył akcji do wykonania którejś z tych czynności, jeśli wymaga ona szczególnej uwagi lub gdy stanowi nietypową przeszkodę. Na przykład, DM może racjonalnie oczekiwać, że użyjesz akcji, aby otworzyć zablokowane drzwi lub przekręcić korbę, aby opuścić zwodzony most.",
+				{
+					"type": "inset",
+					"name": "Interacting with Objects Around You",
+					"entries": [
+						"Oto kilka przykładów rzeczy, które można zrobić w połączeniu z ruchem i działaniem:",
+						{
+							"type": "list",
+							"items": [
+								"wyciągnąć lub schować miecz",
+								"otwierać lub zamykać drzwi",
+								"wyjmij eliksir z plecaka",
+								"podnieść upuszczoną siekierę",
+								"wziąć bombkę ze stołu",
+								"zdjąć obrączkę z palca",
+								"włożyć trochę jedzenia do ust",
+								"umieść sztandar w ziemi",
+								"wyłowić kilka monet z torby przy pasku",
+								"wypij całe piwo z flakonu",
+								"rzucać dźwignią lub przełącznikiem",
+								"wyciągnąć latarkę z kinkietu",
+								"weź książkę z półki, do której możesz sięgnąć",
+								"zgasić mały płomień",
+								"założyć maskę",
+								"naciągnij kaptur płaszcza na głowę.",
+								"przyłóż ucho do drzwi",
+								"kopnąć mały kamień",
+								"przekręcić klucz w zamku",
+								"stukanie w podłogę 10-metrowym kijem",
+								"przekazać przedmiot innej postaci"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Overrun",
+			"source": "DMG",
+			"page": 272,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				},
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"entries": [
+				"Kiedy stworzenie próbuje poruszyć się przez przestrzeń wrogiego stworzenia, może spróbować sforsować drogę poprzez przegonienie wrogiego stworzenia. Jako akcję lub akcję dodatkową, poruszający się wykonuje test na Wytrzymałość ({@skill Athletics}), który jest kwestionowany przez test na Wytrzymałość ({@skill Athletics}) wrogiego stworzenia. Stworzenie próbujące najechać ma przewagę w tym teście, jeśli jest większe od wrogiego stworzenia, lub niekorzyść, jeśli jest mniejsze. Jeśli ruchowiec wygra konkurs, może w tej turze raz poruszyć się przez przestrzeń wrogiego stworzenia."
+			],
+			"seeAlsoAction": [
+				"Tumble|DMG"
+			]
+		},
+		{
+			"name": "Ready",
+			"source": "PHB",
+			"page": 193,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Czasami chcesz wyprzedzić przeciwnika lub poczekać na konkretną okoliczność przed podjęciem działania. W tym celu możesz w swojej turze wykonać akcję Gotowość, która pozwala ci działać w oparciu o swoją reakcję przed rozpoczęciem następnej tury.",
+				"Najpierw decydujemy, jaka dostrzegalna okoliczność wywoła naszą reakcję. Następnie wybierasz akcję, którą podejmiesz w odpowiedzi na tę okoliczność, lub decydujesz się zwiększyć swoją prędkość w odpowiedzi na nią. Przykłady to: \"Jeśli kultysta nadepnie na zapadnię, pociągnę za dźwignię, która ją otworzy\" oraz \"Jeśli goblin stanie obok mnie, odsuwam się\".",
+				"Kiedy nastąpi wyzwolenie, możesz wykonać swoją reakcję zaraz po jego zakończeniu lub zignorować wyzwolenie. Pamiętaj, że na rundę możesz wykonać tylko jedną reakcję.",
+				"Kiedy przygotowujesz zaklęcie, rzucasz je tak jak zwykle, ale zatrzymujesz jego energię, którą uwalniasz w reakcji, kiedy następuje wyzwolenie. Aby zaklęcie mogło zostać przygotowane, czas jego rzucenia musi wynosić 1 akcję, a utrzymanie magii zaklęcia wymaga koncentracji (wyjaśnione w {@book chapter 10|phb|10|concentration}). Jeśli twoja koncentracja zostanie przerwana, zaklęcie rozproszy się bez efektu. Na przykład, jeśli koncentrujesz się na zaklęciu Pajęczyna i jesteś gotowy do użycia magicznego pocisku, zaklęcie Pajęczyna kończy się, a jeśli otrzymasz obrażenia, zanim puścisz magiczny pocisk w reakcji, twoja koncentracja może zostać przerwana.",
+				"Masz czas do początku swojej następnej tury, aby użyć przygotowanej akcji."
+			]
+		},
+		{
+			"name": "Search",
+			"source": "PHB",
+			"page": 193,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Kiedy wykonujesz akcję Poszukiwania, poświęcasz swoją uwagę na znalezienie czegoś. W zależności od charakteru poszukiwań, DM może zlecić ci wykonanie testu Mądrości ({@skill Perception}) lub Inteligencji ({@skill Investigation})."
+			]
+		},
+		{
+			"name": "Shove",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Używając akcji {@action Attack}, możesz wykonać specjalny atak w walce wręcz, aby popchnąć istotę, albo ją powalić {@condition prone}, albo odepchnąć od siebie. Jeśli jesteś w stanie wykonać kilka ataków z akcją {@action Attack}, ten atak zastępuje jeden z nich.",
+				"Cel twojego pchnięcia nie może być większy od ciebie o więcej niż jeden rozmiar i musi znajdować się w twoim zasięgu. Wykonujesz test Wytrzymałości ({@skill Athletics}) podważony przez test Wytrzymałości ({@skill Athletics}) lub Zręczności ({@skill Acrobatics}) celu (cel wybiera umiejętność, której chce użyć). Jeśli cel ma {@condition incapacitated}, udaje ci się automatycznie. Jeśli ci się uda, powalasz cel {@condition prone} lub odpychasz go na 5 stóp od siebie."
+			],
+			"seeAlsoAction": [
+				"Attack",
+				"Shove Aside|DMG"
+			]
+		},
+		{
+			"name": "Shove Aside",
+			"source": "DMG",
+			"page": 272,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Dzięki tej opcji, stworzenie używa specjalnego {@action shove} ataku z {@book Player's Handbook|9|Shoving a Creature}, aby odepchnąć cel na bok, a nie na bok. Atakujący ma minus przy kontroli Wytrzymałości ({@skill Athletics}), gdy to robi. Jeśli ten test się powiedzie, atakujący przesuwa cel o 5 stóp na inną przestrzeń w swoim zasięgu."
+			]
+		},
+		{
+			"name": "Tumble",
+			"source": "DMG",
+			"page": 272,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				},
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"entries": [
+				"Stworzenie może spróbować truchtać przez wrogą istotę w przestrzeni, robiąc uniki i omijając przeciwnika. Jako akcję lub akcję dodatkową, potykacz wykonuje test Zręczności ({@skill Acrobatics}), który jest kwestionowany przez test Zręczności ({@skill Acrobatics}) wrogiego stworzenia. Jeśli wygra, może raz w tej turze poruszyć się przez obszar wrogiego stworzenia."
+			],
+			"seeAlsoAction": [
+				"Overrun|DMG"
+			]
+		},
+		{
+			"name": "Two-Weapon Fighting",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"entries": [
+				"Kiedy wykonujesz akcję {@action Attack} i atakujesz lekką bronią do walki wręcz, którą trzymasz w jednej ręce, możesz użyć dodatkowej akcji, aby zaatakować inną lekką bronią do walki wręcz, którą trzymasz w drugiej ręce. Nie dodajesz swojego modyfikatora umiejętności do obrażeń ataku bonusowego, chyba że ten modyfikator jest ujemny.",
+				"Jeśli któraś z broni ma właściwość rzucania, możesz rzucić tą bronią, zamiast atakować nią w walce wręcz."
+			],
+			"seeAlsoAction": [
+				"Attack"
+			]
+		},
+		{
+			"name": "Use an Object",
+			"source": "PHB",
+			"page": 193,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Zazwyczaj wchodzisz w interakcję z obiektem podczas wykonywania innej czynności, np. kiedy dobywa się miecza w ramach ataku. Kiedy obiekt wymaga twojego działania, aby go użyć, wykonujesz akcję Użycie obiektu. Ta akcja jest również przydatna, gdy chcesz wejść w interakcję z więcej niż jednym obiektem w swojej turze."
+			]
+		},
+		{
+			"name": "Waking Someone",
+			"source": "XGE",
+			"page": 77,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Istota, która naturalnie śpi, a nie jest pogrążona w magicznym lub chemicznym śnie, budzi się, jeśli otrzyma jakiekolwiek obrażenia lub jeśli ktoś inny użyje akcji, aby potrząsnąć lub uderzyć istotę. Nagły głośny hałas - np. krzyk, grzmot lub bicie dzwonu - również budzi śpiącego naturalnie stwora.",
+				"Szepty nie zakłócają snu, chyba że pasywny wynik Mądrości ({@skill Perception}) śpiącego wynosi 20 lub więcej, a szepty znajdują się w odległości do 10 stóp od śpiącego. Mowa o normalnej głośności budzi śpiącego, jeśli otoczenie jest poza tym ciche (brak wiatru, śpiewu ptaków, świerszczy, odgłosów ulicy i tym podobnych), a śpiący ma wynik pasywnej Mądrości ({@skill Perception}) równy 15 lub wyższy."
+			]
+		}
+	]
+}

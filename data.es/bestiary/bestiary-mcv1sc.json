@@ -1,0 +1,1276 @@
+{
+	"monster": [
+		{
+			"name": "Asteroid Spider",
+			"source": "MCV1SC",
+			"page": 3,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 348,
+				"formula": "24d20 + 96"
+			},
+			"speed": {
+				"walk": 60,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 26,
+			"dex": 10,
+			"con": 18,
+			"int": 17,
+			"wis": 13,
+			"cha": 12,
+			"save": {
+				"con": "+9",
+				"wis": "+6"
+			},
+			"skill": {
+				"perception": "+11",
+				"stealth": "+5"
+			},
+			"senses": [
+				"blindsight 120 ft. while the spider's eyes are closed",
+				"darkvision 120 ft."
+			],
+			"passive": 21,
+			"cr": "15",
+			"trait": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Si la araña está inmóvil, tiene los ojos y la boca cerrados y tiene las patas enrolladas alrededor de su cuerpo al comienzo del combate, tiene ventaja en su tirada de iniciativa. Además, si una criatura no ha observado a la araña moverse o actuar, esa criatura debe tener éxito en un chequeo de Inteligencia (Investigación) {@dc 18} para discernir que la araña es otra cosa que un asteroide."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"Si la araña falla una tirada de salvación, puede elegir tener éxito en su lugar."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"La araña no necesita aire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"La araña realiza dos ataques de hebras de telaraña, utiliza el carrete y realiza dos ataques de mordedura."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 13} para golpear, alcance de 10 pies, un objetivo. {@h}21 ({@damage 3d8 + 8}) de daño perforante más 10 ({@damage 3d6}) de daño ácido."
+					]
+				},
+				{
+					"name": "Web Strand",
+					"entries": [
+						"{@atk rw} {@hit 13} para golpear, alcance de 120 pies, una criatura. {@h}El objetivo es {@condition grappled} (escapar {@dc 18}). La hebra de telaraña puede ser atacada y destruida (CA 12; 20 puntos de vida; vulnerabilidad al daño por fuego; inmunidad al daño por apaleamiento, veneno y psíquico). La araña puede agarrar hasta seis criaturas a la vez utilizando sus hilos de telaraña."
+					]
+				},
+				{
+					"name": "Reel",
+					"entries": [
+						"La araña arrastra a cada criatura {@condition grappled} por ella hasta 60 pies directamente hacia sí misma."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Snare Ship (1/Day)",
+					"entries": [
+						"La araña teje una telaraña mágica alrededor de un barco de bloqueo de hechizos que pueda ver en un radio de 120 pies. La telaraña dura 1 minuto y suprime la magia de cualquier timón de bloqueo de hechizos a bordo del barco. Las cubiertas y otras superficies del barco que no están encerradas se convierten en terreno difícil hasta que el efecto termina. La red es impermeable al daño, pero se destruye con un lanzamiento exitoso de {@spell dispel magic} ({@dc 18})."
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance",
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"B",
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"A",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Clockwork Horror",
+			"source": "MCV1SC",
+			"page": 4,
+			"size": [
+				"S"
+			],
+			"type": "construct",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "8d6 + 32"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 14,
+			"dex": 14,
+			"con": 18,
+			"int": 13,
+			"wis": 14,
+			"cha": 10,
+			"save": {
+				"str": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 16,
+			"immune": [
+				"lightning",
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"languages": [
+				"Thri-kreen",
+				"Ziklight"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Shutdown",
+					"entries": [
+						"Si el objetivo es {@spell dispel magic}, el horror debe tener éxito en una tirada de salvación de Constitución contra la DC de salvación del hechizo del lanzador o caerá {@condition unconscious} durante 1 minuto o hasta que reciba cualquier daño."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"El horror no requiere aire, comida, bebida o sueño."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"El horror hace un ataque de mordisco y dos ataques de sierra giratoria, o hace dos ataques de sacudida de rayo."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} para golpear, alcance 5 pies, un objetivo. {@h}6 ({@damage 1d8 + 2}) de daño perforante."
+					]
+				},
+				{
+					"name": "Rotating Saw",
+					"entries": [
+						"{@atk mw} {@hit 4} para golpear, alcance 5 pies, un objetivo. {@h}4 ({@damage 1d4 + 2}) de daño cortante."
+					]
+				},
+				{
+					"name": "Lightning Jolt",
+					"entries": [
+						"{@atk rs} {@hit 4} para golpear, alcance 120 pies, un objetivo. {@h}7 ({@damage 1d10 + 2}) de daño por rayo."
+					]
+				},
+				{
+					"name": "Spelljamming Helm Interface",
+					"entries": [
+						"El horror se une a un yelmo de bloqueo de hechizos que pueda ver en un radio de 1,5 metros y se sintoniza con el yelmo al instante. Si otra criatura ya está sintonizada con el yelmo, la sintonía de esa criatura con el yelmo termina cuando comienza la sintonía del horror. El horror puede manejar el yelmo aunque no sea un hechicero. El horror puede desprenderse del yelmo como acción de bonificación, lo que pone fin a su sintonía con el yelmo."
+					]
+				}
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"L",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Eldritch Lich",
+			"source": "MCV1SC",
+			"page": 6,
+			"size": [
+				"M"
+			],
+			"type": "undead",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 165,
+				"formula": "22d8 + 66"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 11,
+			"dex": 18,
+			"con": 16,
+			"int": 19,
+			"wis": 14,
+			"cha": 12,
+			"save": {
+				"int": "+9",
+				"wis": "+7"
+			},
+			"skill": {
+				"arcana": "+14",
+				"perception": "+7"
+			},
+			"senses": [
+				"truesight 120ft."
+			],
+			"passive": 17,
+			"resist": [
+				"necrotic",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned"
+			],
+			"languages": [
+				"Common",
+				"Deep Speech",
+				"telepathy 120 ft."
+			],
+			"cr": "15",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"El liche lanza uno de los siguientes hechizos, utilizando la Inteligencia como habilidad de lanzamiento (salvación de hechizos {@dc 17}): A voluntad: detectar magia, mano de mago, prestidigitación"
+					],
+					"daily": {
+						"2e": [
+							"{@spell dispel magic}",
+							"{@spell hunger of Hadar}",
+							"{@spell lightning bolt}"
+						],
+						"1e": [
+							"{@spell arcane eye}",
+							"{@spell dimension door}",
+							"{@spell plane shift} (self only)"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Far Realm Parasite",
+					"entries": [
+						"En el interior del torso del lich habita un parásito con forma de gusano que contiene el alma del lich. Cuando el liche muere, implosiona en el parásito, que se desvanece en el Reino Lejano. En {@dice 2d4} días, el parásito hace que el liche reaparezca a menos de {@dice 1d4} millas del lugar donde murió. Si el lich murió dentro de un círculo mágico lanzado para contener a los no muertos, el lich reaparece como un otyugh con todos los recuerdos del lich."
+					]
+				},
+				{
+					"name": "Legendary Resistance (4/Day)",
+					"entries": [
+						"Si el liche falla una tirada de salvación, puede elegir tener éxito en su lugar."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"El liche no necesita aire, comida, bebida o sueño."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"El liche realiza un ataque de Tentáculo Parasitario o utiliza Hechizo. El liche también usa Susurro Psíquico dos veces."
+					]
+				},
+				{
+					"name": "Parasitic Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 9} para golpear, alcance de 10 pies, una criatura. {@h}25 ({@damage 6d6 + 4}) de daño perforante más 25 ({@damage 6d6 + 4}) de daño necrótico. El objetivo debe tener éxito en una tirada de salvación de {@dc 17} Constitución o ser {@condition poisoned}. El {@condition poisoned} objetivo puede repetir la salvación al final de cada uno de sus turnos, terminando el efecto sobre sí mismo en caso de éxito. La tercera vez que el objetivo falla la salvación, el objetivo muere y se disuelve en un moco farfullante que obedece al lich y utiliza la iniciativa del objetivo."
+					]
+				},
+				{
+					"name": "Psychic Whisper",
+					"entries": [
+						"El lich tiene como objetivo una criatura que pueda ver en un radio de 120 pies. El objetivo debe tener éxito en una tirada de salvación de Sabiduría {@dc 17} o recibir 25 ({@damage 6d6 + 4}) de daño psíquico y quedar {@condition stunned} hasta el final del siguiente turno del liche mientras susurros incomprensibles llenan la mente del objetivo."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Far Realm Step",
+					"entries": [
+						"Inmediatamente después de recibir el daño, el liche, junto con cualquier equipo que lleve puesto, se teletransporta mágicamente hasta 60 pies a un espacio desocupado que pueda ver."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"U"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DS",
+				"TP"
+			],
+			"damageTags": [
+				"N",
+				"P",
+				"Y"
+			],
+			"damageTagsSpell": [
+				"A",
+				"C",
+				"L",
+				"O"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"poisoned",
+				"stunned"
+			],
+			"conditionInflictSpell": [
+				"blinded"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Fractine",
+			"source": "MCV1SC",
+			"page": 7,
+			"size": [
+				"L"
+			],
+			"type": "construct",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 110,
+				"formula": "13d10 + 39"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 1,
+			"dex": 13,
+			"con": 16,
+			"int": 18,
+			"wis": 18,
+			"cha": 11,
+			"skill": {
+				"perception": "+8"
+			},
+			"senses": [
+				"blindsight 360 ft. (blind beyond this radius)"
+			],
+			"passive": 18,
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained",
+				"stunned"
+			],
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"El fractal tiene ventaja en las tiradas de salvación contra hechizos y otros efectos mágicos."
+					]
+				},
+				{
+					"name": "Scrying Focus",
+					"entries": [
+						"Un lanzador de conjuros puede utilizar el fractal como foco sustitutivo al lanzar el conjuro {@spell scrying} o una magia similar, siempre que el lanzador de conjuros y el fractal estén a menos de 1,5 metros el uno del otro."
+					]
+				},
+				{
+					"name": "Two-Dimensionality",
+					"entries": [
+						"El fractal puede ocupar el espacio de otra criatura y viceversa. Puede moverse a través de otras criaturas y objetos como si fueran terreno difícil, pero recibe 5 ({@damage 1d10}) de daño de fuerza si termina su turno dentro de un objeto."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"El fractal no necesita aire, bebida ni sueño."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Extradimensional Touch",
+					"entries": [
+						"{@atk ms} {@hit 5} para golpear, alcance 5 pies, un objetivo. {@h}24 ({@damage 8d6}) de daño de fuerza."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Imprison",
+					"entries": [
+						"El fractal se dirige a una criatura de su tamaño o menor en su espacio. El objetivo debe tener éxito en una tirada de salvación de Destreza {@dc 16} o ser apresado en un semiplano. Mientras la criatura está aprisionada, puede verse una imagen distorsionada de ella en la superficie bidimensional del fractal.",
+						"El semiplano se mueve con el fractín, tiene paredes indestructibles y opacas, y sólo es tan grande como sea necesario para contener al objetivo, que no sufre hambre ni sed mientras está prisionero. Ninguna otra criatura puede entrar en el semiplano, y el fractín no puede ser dañado desde dentro del semiplano.",
+						"El fractal puede apresar sólo una criatura a la vez y puede liberar a esa criatura como acción adicional. Si el fractal se reduce a 0 puntos de vida, cualquier criatura del semiplano del fractal se libera al instante. Una criatura liberada reaparece en un espacio desocupado lo más cerca posible del fractal (o donde murió). Una criatura puede abandonar el semiplano por sí misma utilizando magia que permita el viaje planar, como el hechizo {@spell plane shift}."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Mirrored Damage",
+					"entries": [
+						"En respuesta a los daños causados por una criatura que pueda ver en un radio de 120 pies, el fractal obliga a esa criatura a realizar una tirada de salvación de Constitución {@dc 16}. Si falla la salvación, la criatura recibe 24 ({@damage 8d6}) de daño de fuerza. Si la salvación tiene éxito, la criatura recibe la mitad de daño."
+					]
+				},
+				{
+					"name": "Split",
+					"entries": [
+						"Cuando una fractura grande a la que le quedan al menos 10 puntos de golpe recibe daño contundente, perforante, cortante o de trueno de cualquier fuente, se divide en dos fracturas medianas. Los nuevos fractinos ocupan el espacio que ocupaba el fractino original, y cada nuevo fractino tiene la mitad de los puntos de vida del original, redondeados hacia abajo. Si el fractal original tenía una criatura atrapada en su semiplano, esa criatura se libera cuando el fractal se divide, reapareciendo en un espacio desocupado lo más cerca posible de los nuevos fractales."
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Resistance"
+			],
+			"senseTags": [
+				"B"
+			],
+			"damageTags": [
+				"O"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Gadabout",
+			"source": "MCV1SC",
+			"page": 8,
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 11,
+				"formula": "2d8 + 2"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 12,
+			"dex": 10,
+			"con": 14,
+			"int": 1,
+			"wis": 6,
+			"cha": 1,
+			"senses": [
+				"blindsight 10 ft. (blind beyond this radius)"
+			],
+			"passive": 8,
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"petrified"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Air Envelope",
+					"entries": [
+						"Si tiene al menos 1 punto de vida, el gañán puede generar una envoltura de aire a su alrededor cuando está en el vacío. Esta envoltura de aire puede sostener al gañán y a otra criatura en su espacio indefinidamente."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"El payaso no necesita comer ni dormir."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"El payaso hace dos ataques de rama."
+					]
+				},
+				{
+					"name": "Branch",
+					"entries": [
+						"{@atk mw} {@hit 3} para golpear, alcance 5 pies, un objetivo. {@h}3 ({@damage 1d4 + 1}) de daño cortante."
+					]
+				},
+				{
+					"name": "Wrap",
+					"entries": [
+						"El payaso entra en el espacio de una criatura mediana o pequeña dispuesta en un radio de 1,5 metros y envuelve suavemente sus ramas alrededor del objetivo. El objetivo es {@condition grappled} (escape {@dc 0}). Cualquier intento por parte del objetivo de escapar del agarre hace que el gadabout utilice su reacción para moverse hacia el espacio desocupado más cercano. Mientras esté {@condition grappled} junto al gañán, el objetivo determina hacia dónde se mueve el gañán en sus giros y lo acompaña allá donde vaya."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Goon Balloon",
+			"source": "MCV1SC",
+			"page": 9,
+			"size": [
+				"M"
+			],
+			"type": "aberration",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				10
+			],
+			"hp": {
+				"average": 6,
+				"formula": "1d8 + 2"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 10,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 14,
+			"cha": 4,
+			"save": {
+				"con": "+4",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 16,
+			"vulnerable": [
+				"piercing"
+			],
+			"languages": [
+				"Deep Speech"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Burst",
+					"entries": [
+						"El globo del matón estalla cuando baja a 0 puntos de vida, liberando un gas nocivo en una esfera de 3 metros de radio centrada en él mismo. Las criaturas en esa área deben tener éxito en una tirada de salvación de Constitución {@dc 12} o quedar {@condition poisoned} durante 1 minuto. Una criatura {@condition poisoned} puede repetir la tirada de salvación al final de cada uno de sus turnos, terminando el efecto sobre sí misma si tiene éxito."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"El globo de los matones no necesita aire, comida ni bebida."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"El globo del matón hace dos ataques de garra."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 2} para golpear, alcance 5 pies, un objetivo. {@h}3 ({@damage 1d6}) de daño cortante."
+					]
+				},
+				{
+					"name": "Scintillating Eye",
+					"entries": [
+						"Una luz mágica y caleidoscópica emana de uno de los ojos del globo, que apunta a una criatura que pueda ver en un radio de 30 pies. El objetivo debe realizar una tirada de salvación de Sabiduría {@dc 12}, recibiendo 6 ({@damage 1d12}) de daño psíquico si falla la tirada de salvación, o la mitad de daño si tiene éxito."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Float",
+					"entries": [
+						"El globo del matón se mueve hasta 6 metros en vertical en una dirección sin provocar ataques de oportunidad. Si termina este movimiento suspendido en el aire, se queda suspendido en el lugar. No puede ser derribado {@condition prone} mientras está en el aire."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DS"
+			],
+			"damageTags": [
+				"S",
+				"Y"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflict": [
+				"poisoned",
+				"prone"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nightmare Beast",
+			"source": "MCV1SC",
+			"page": 10,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 232,
+				"formula": "15d20 + 75"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 26,
+			"dex": 10,
+			"con": 21,
+			"int": 9,
+			"wis": 12,
+			"cha": 15,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 11,
+			"languages": [
+				"understands the languages of its creator but can't speak"
+			],
+			"cr": "16",
+			"trait": [
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"Si la bestia falla una tirada de salvación, puede elegir tener éxito en su lugar."
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"La bestia inflige el doble de daño a objetos y estructuras."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"La bestia hace dos ataques con garras y un ataque con colmillos."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 13} para golpear, alcance de 15 pies, un objetivo. {@h}14 ({@damage 1d12 + 8}) de daño cortante, y si el objetivo es una criatura, debe tener éxito en una tirada de salvación de Fuerza {@dc 21} o ser derribado {@condition prone}."
+					]
+				},
+				{
+					"name": "Tusk",
+					"entries": [
+						"{@atk mw} {@hit 13} para golpear, alcance de 15 pies, un objetivo. {@h}17 ({@damage 2d8 + 8}) de daño cortante."
+					]
+				},
+				{
+					"name": "Disintegration Gaze {@recharge 5}",
+					"entries": [
+						"La bestia tiene como objetivo una criatura que pueda ver en un radio de 60 pies. El objetivo debe realizar una tirada de salvación de Constitución {@dc 18}, recibiendo 70 ({@damage 10d6 + 40}) de daño de fuerza si falla la tirada de salvación, o la mitad de daño si tiene éxito. Si este efecto mágico reduce al objetivo a 0 puntos de vida, el objetivo se desintegra y no deja nada tras de sí, excepto un montón de cenizas más el equipo que llevaba puesto."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Teleport (2/Day)",
+					"entries": [
+						"La bestia se teletransporta por arte de magia, junto con el equipo que lleva puesto o que porta, hasta 120 pies a un espacio desocupado que pueda ver."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Tusk Attack",
+					"entries": [
+						"La bestia hace un ataque con un colmillo."
+					]
+				},
+				{
+					"name": "Charge (Costs 2 Actions)",
+					"entries": [
+						"La bestia se mueve hasta su velocidad sin provocar ataques de oportunidad, y luego hace dos ataques de Colmillo."
+					]
+				},
+				{
+					"name": "Frightful Howl (Costs 2 Actions)",
+					"entries": [
+						"La bestia aúlla mientras exhala una nube de gas mágico del miedo en un cono de 120 pies. Cualquier criatura en esa área debe tener éxito en una tirada de salvación de Sabiduría {@dc 18} o ser {@condition frightened} de la bestia durante 1 minuto. Una criatura puede repetir la tirada de salvación al final de cada uno de sus turnos, terminando el efecto sobre sí misma si tiene éxito."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances",
+				"Siege Monster"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"CS"
+			],
+			"damageTags": [
+				"O",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"frightened",
+				"prone"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Puppeteer Parasite",
+			"source": "MCV1SC",
+			"page": 11,
+			"size": [
+				"T"
+			],
+			"type": "aberration",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 71,
+				"formula": "11d4 + 44"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 2,
+			"dex": 15,
+			"con": 18,
+			"int": 16,
+			"wis": 10,
+			"cha": 3,
+			"save": {
+				"dex": "+4",
+				"con": "+6",
+				"wis": "+2"
+			},
+			"skill": {
+				"stealth": "+4"
+			},
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"fire",
+				"necrotic",
+				"poison"
+			],
+			"vulnerable": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
+			"languages": [
+				"telepathy 30 ft."
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"El parásito no necesita aire ni dormir."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Cling",
+					"entries": [
+						"{@atk mw} {@hit 4} para golpear, alcance de 5 pies, una criatura. {@h}12 ({@damage 3d6 + 2}) de daño necrótico, y el parásito se adhiere al objetivo. Mientras está adherido, el parásito no puede hacer ataques de Agarre. El parásito puede desprenderse gastando 5 pies de su movimiento. Como acción, una criatura al alcance del parásito puede intentar desprenderse de él, haciéndolo con un chequeo de Fuerza exitoso {@dc 14}."
+					]
+				},
+				{
+					"name": "Consume Life",
+					"entries": [
+						"El parásito inflige 12 ({@damage 3d6 + 2}) de daño necrótico a una criatura a la que esté unido físicamente, siempre que esa criatura no sea un constructo o un no muerto. El parásito recupera puntos de golpe iguales al daño recibido."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Suggestion (Psionics; 1/Day)",
+					"entries": [
+						"El parásito lanza el hechizo {@spell suggestion}, que no requiere componentes de hechizo y utiliza la Inteligencia como habilidad de lanzamiento (salvación de hechizo {@dc 13})."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"languageTags": [
+				"TP"
+			],
+			"damageTags": [
+				"N"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Star Lancer",
+			"source": "MCV1SC",
+			"page": 12,
+			"size": [
+				"L"
+			],
+			"type": "celestial",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "8d10 + 16"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 50
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 15,
+			"int": 10,
+			"wis": 13,
+			"cha": 8,
+			"save": {
+				"dex": "+4",
+				"con": "+4"
+			},
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"passive": 13,
+			"resist": [
+				"radiant"
+			],
+			"languages": [
+				"Celestial",
+				"telepathy 120 ft."
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"El lancero estelar no provoca ataques de oportunidad cuando vuela fuera del alcance de un enemigo."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Horn",
+					"entries": [
+						"{@atk mw} {@hit 6} para golpear, alcance 5 pies, un objetivo. {@h}7 ({@damage 1d6 + 4}) de daño perforante. Si el lancero estelar se movió al menos 6 metros en línea recta hacia el objetivo inmediatamente antes del impacto, el objetivo recibe 10 ({@damage 3d6}) de daño perforante adicional."
+					]
+				},
+				{
+					"name": "Invisibility Cloak (3/Day)",
+					"entries": [
+						"El lanzador de estrellas y una criatura que lo monta (elegida por el lanzador de estrellas) giran mágicamente {@condition invisible}. Este efecto dura hasta que el lanzador de estrellas o una criatura que lo monte ataque o lance un hechizo, o hasta que la concentración del lanzador de estrellas termine (como si se concentrara en un hechizo). Cualquier equipo que lleven las criaturas {@condition invisible} también es {@condition invisible} mientras dure la capa de invisibilidad."
+					]
+				}
+			],
+			"traitTags": [
+				"Flyby"
+			],
+			"languageTags": [
+				"CE",
+				"TP"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Yggdrasti",
+			"source": "MCV1SC",
+			"page": 13,
+			"size": [
+				"G"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 112,
+				"formula": "9d20 + 18"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 20,
+			"dex": 10,
+			"con": 15,
+			"int": 3,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 120 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"bludgeoning",
+				"piercing"
+			],
+			"immune": [
+				"lightning"
+			],
+			"vulnerable": [
+				"fire"
+			],
+			"conditionImmune": [
+				"blinded",
+				"deafened",
+				"exhaustion"
+			],
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Cavities",
+					"entries": [
+						"El yggdrasti tiene {@dice 1d4 + 2} cavidades en su tronco. Cada cavidad es lo suficientemente grande como para albergar una criatura mediana, dos criaturas pequeñas u ocho criaturas diminutas. Una criatura dentro de una cavidad tiene tres cuartos de cobertura contra los ataques y otros efectos que se originan fuera de la cavidad. Las cavidades del yggdrasti no están conectadas entre sí."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Si el yggdrasti está inmóvil y enraizado en el suelo al comienzo del combate, parece un árbol muerto y tiene ventaja en su tirada de iniciativa. Además, si una criatura no ha observado al yggdrasti enraizado moverse o actuar, esa criatura debe tener éxito en un chequeo de Inteligencia (Investigación) {@dc 18} para discernir que el yggdrasti está animado."
+					]
+				},
+				{
+					"name": "Lightning Conduit",
+					"entries": [
+						"Si el yggdrasti recibe daño por rayo, sale ileso, y el daño por rayo se divide por igual entre todas las criaturas que esté agarrando. Además, el yggdrasti recupera un uso de Descarga de rayos."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"El yggdrasti no requiere aire ni sueño."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"El yggdrasti realiza dos ataques de Raíz y utiliza Descarga de Rayo (si está disponible)."
+					]
+				},
+				{
+					"name": "Root",
+					"entries": [
+						"{@atk mw} {@hit 8} para golpear, alcance de 20 pies, un objetivo. {@h}12 ({@damage 2d6 + 5}) de daño por apaleamiento, y si el objetivo es una criatura, es {@condition grappled} (escape {@dc 15}). El yggdrasti tiene cuatro raíces, cada una de las cuales puede agarrar a un objetivo."
+					]
+				},
+				{
+					"name": "Lightning Discharge (3/Day)",
+					"entries": [
+						"El yggdrasti dispara un rayo a una criatura en un radio de 120 pies. El objetivo debe realizar una tirada de salvación de {@dc 13} Destreza, recibiendo 31 ({@damage 7d8}) de daño por rayo si falla la tirada de salvación, o la mitad de daño si tiene éxito."
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"L"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

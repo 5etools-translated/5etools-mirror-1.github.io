@@ -1,0 +1,6115 @@
+{
+	"optionalfeature": [
+		{
+			"name": "Absorption",
+			"source": "UAClericDruidWizard",
+			"page": 5,
+			"featureType": [
+				"OR"
+			],
+			"entries": [
+				"Kiedy rzucasz zaklęcie, które zadaje obrażenia wskazanemu celowi, zyskujesz {@dice 3d6} tymczasowych punktów trafienia. Liczba tymczasowych punktów trafienia zwiększa się o {@dice 1d6}, gdy osiągniesz 10. poziom ({@dice 4d6}) i 14. poziom ({@dice 5d6}) w tej klasie."
+			]
+		},
+		{
+			"name": "Agonizing Blast",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Kiedy rzucasz {@spell eldritch blast}, dodaj swój modyfikator Charyzmy do obrażeń, jakie zadaje przy trafieniu."
+			]
+		},
+		{
+			"name": "Alchemical Acid",
+			"source": "UAArtificer",
+			"page": 5,
+			"featureType": [
+				"AF"
+			],
+			"entries": [
+				"Jako akcję, możesz sięgnąć do swojej Torby Alchemika, wyciągnąć fiolkę z kwasem i rzucić ją w kierunku stworzenia lub obiektu w promieniu 30 stóp od ciebie (fiolka i jej zawartość znikają, jeśli nie rzucisz jej do końca bieżącej tury). Fiolka roztrzaskuje się przy uderzeniu. Stworzeniu musi udać się rzut obronny na zręczność lub otrzyma {@damage 1d6} obrażeń od kwasu. Przedmiot automatycznie otrzymuje te obrażenia, a obrażenia są maksymalne. Obrażenia zadawane przez tę formułę wzrastają o {@damage 1d6}, gdy osiągniesz określony poziom w tej klasie: 3. poziom ({@damage 2d6}), 5. poziom ({@damage 3d6}), 7. poziom ({@damage 4d6}), 9. poziom ({@damage 5d6}), 11. poziom ({@damage 6d6}), 13. poziom ({@damage 7d6}), 15. poziom ({@damage 8d6}), 17. poziom ({@damage 9d6}) i 19. poziom ({@damage 10d6})."
+			]
+		},
+		{
+			"name": "Alchemical Fire",
+			"source": "UAArtificer",
+			"page": 5,
+			"featureType": [
+				"AF"
+			],
+			"entries": [
+				"Jako akcję, możesz sięgnąć do swojej Torby Alchemika, wyciągnąć fiolkę z lotną cieczą i rzucić ją w kierunku stworzenia, obiektu lub powierzchni w promieniu 30 stóp od siebie (fiolka i jej zawartość znikają, jeśli nie rzucisz jej do końca bieżącej tury). W momencie uderzenia, fiolka detonuje w promieniu 5 stóp. Każda istota w tym obszarze musi wykonać rzut na Zręczność lub otrzymać {@damage 1d6} obrażeń od ognia. Obrażenia zadawane przez tę formułę wzrastają o {@damage 1d6}, gdy osiągniesz określony poziom w tej klasie: 4. poziom ({@damage 2d6}), 7. poziom ({@damage 3d6}), 10. poziom ({@damage 4d6}), 13. poziom ({@damage 5d6}), 16. poziom ({@damage 6d6}) i 19. poziom ({@damage 7d6})."
+			]
+		},
+		{
+			"name": "Ambush",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy wykonujesz test Zręczności ({@skill Stealth}) lub inicjatywę, możesz wydać jedną kość przewagi i dodać tę kość do rzutu, pod warunkiem, że nie jesteś {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Ambush",
+			"source": "UAClassFeatureVariants",
+			"page": 5,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy wykonujesz test Zręczności ({@skill Stealth}) lub inicjatywę, możesz wydać jedną kość przewagi i dodać tę kość do rzutu."
+			]
+		},
+		{
+			"name": "Arcane Gunslinger",
+			"source": "UAModernMagic",
+			"page": 3,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade"
+				}
+			],
+			"entries": [
+				"Możesz stworzyć broń paktową, która jest bronią boczną lub długą, a także przekształcić magiczną broń boczną lub długą w swoją broń paktową."
+			]
+		},
+		{
+			"name": "Arcane Propulsion Armor",
+			"source": "TCE",
+			"page": 20,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 14,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A suit of armor (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"Osoba nosząca tę zbroję zyskuje następujące korzyści:",
+				{
+					"type": "list",
+					"items": [
+						"Szybkość chodzenia użytkownika zwiększa się o 5 stóp.",
+						"Zbroja zawiera rękawice, z których każda jest magiczną bronią do walki wręcz, którą można posługiwać się tylko wtedy, gdy dłoń nic nie trzyma. Osoba nosząca rękawice jest biegła w posługiwaniu się nimi, a każda z nich zadaje {@damage 1d8} obrażeń od siły przy trafieniu i ma właściwość rzutu o normalnym zasięgu 20 stóp i dużym zasięgu 60 stóp. Po rzuceniu rękawica odłącza się i leci na cel ataku, po czym natychmiast wraca do użytkownika i ponownie się przyczepia.",
+						"Pancerz nie może zostać zdjęty wbrew woli użytkownika.",
+						"Jeśli użytkownikowi brakuje jakichkolwiek kończyn, zbroja zastępuje te kończyny - ręce, ramiona, stopy, nogi lub podobne części ciała. Zastępcze kończyny działają tak samo jak części ciała, które zastępują."
+					]
+				}
+			]
+		},
+		{
+			"name": "Archery",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"otherSources": [
+				{
+					"source": "PHB",
+					"page": 91
+				},
+				{
+					"source": "UATheRangerRevised",
+					"page": 3
+				}
+			],
+			"featureType": [
+				"FS:F",
+				"FS:R"
+			],
+			"entries": [
+				"Otrzymujesz premię +2 do ataków z broni dystansowej."
+			]
+		},
+		{
+			"name": "Armor of Magical Strength",
+			"source": "TCE",
+			"page": 20,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A suit of armor (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"Ta zbroja ma 6 ładunków. Osoba nosząca zbroję może wykorzystać jej ładunki w następujący sposób:",
+				{
+					"type": "list",
+					"items": [
+						"Kiedy użytkownik wykonuje test na Wytrzymałość lub rzut ratunkowy na Wytrzymałość, może wydać 1 ładunek, aby dodać do wyniku premię równą swojemu modyfikatorowi Inteligencji.",
+						"Jeśli stwór zostałby powalony {@condition prone}, może użyć swojej reakcji, aby zużyć 1 ładunek i uniknąć przewrócenia na ziemię."
+					]
+				},
+				"Pancerz odzyskuje {@dice 1d6} zużytych ładunków codziennie o świcie."
+			]
+		},
+		{
+			"name": "Armor of Magical Strength",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 10,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A suit of armor (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"Podczas noszenia tej zbroi istota może używać modyfikatora Inteligencji zamiast modyfikatora Siły podczas wykonywania testów na Siłę i rzutów ratujących przed Siłą.",
+				"Zbroja ma 4 ładunki. Jako reakcję, gdy zostałaby ona przewrócona {@condition prone}, użytkownik może wydać 1 ładunek, aby nie zostać przewróconym {@condition prone}. Zbroja odzyskuje {@dice 1d4} zużytych ładunków codziennie o świcie."
+			]
+		},
+		{
+			"name": "Armor of Shadows",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"mage armor"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucać {@spell mage armor} na siebie do woli, nie zużywając slotu na zaklęcie ani składników materialnych."
+			]
+		},
+		{
+			"name": "Armor of Tools",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A suit of armor"
+					]
+				}
+			],
+			"entries": [
+				"Jako akcję, istota nosząca tę zaklętą zbroję może zintegrować z nią {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan's tools} lub {@item thieves' tools|phb} narzędzi. Narzędzia pozostają zintegrowane z pancerzem przez 8 godzin lub do czasu, aż noszący je usunie je w ramach akcji. W tym samym czasie w zbroi może być zintegrowane tylko jedno narzędzie.",
+				"Użytkownik może dodać swój modyfikator inteligencji do wszystkich testów umiejętności, które wykonuje za pomocą zintegrowanego narzędzia. Użytkownik musi mieć wolną rękę, aby móc używać tego narzędzia."
+			]
+		},
+		{
+			"name": "Ascendant Step",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"levitate"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucać {@spell levitate} na siebie do woli, nie zużywając slotu na zaklęcie ani składników materialnych."
+			]
+		},
+		{
+			"name": "Aspect of the Moon",
+			"source": "UARevisedClassOptions",
+			"page": 5,
+			"previousVersion": {
+				"name": "Aspect of the Moon",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Tome"
+				}
+			],
+			"entries": [
+				"Nie musisz już spać i nie można cię do tego zmusić w żaden sposób. Aby uzyskać korzyści z długiego odpoczynku, możesz spędzić wszystkie 8 godzin na lekkich czynnościach, takich jak czytanie Księgi Cieni czy czuwanie."
+			]
+		},
+		{
+			"name": "Aspect of the Moon",
+			"source": "UAWarlockAndWizard",
+			"page": 3,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Archfey"
+				}
+			],
+			"entries": [
+				"Zyskałeś przychylność Panny z Księżyca. Nie musisz już spać i nie można cię do tego zmusić w żaden sposób. Aby uzyskać korzyści z długiego odpoczynku, możesz spędzić wszystkie 8 godzin na lekkiej aktywności, takiej jak czytanie czy czuwanie."
+			]
+		},
+		{
+			"name": "Aspect of the Moon",
+			"source": "XGE",
+			"page": 56,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Tome"
+				}
+			],
+			"entries": [
+				"Nie musisz już spać i nie można cię do tego zmusić w żaden sposób. Aby uzyskać korzyści z długiego odpoczynku, możesz spędzić wszystkie 8 godzin na lekkich czynnościach, takich jak czytanie Księgi Cieni czy czuwanie."
+			]
+		},
+		{
+			"name": "Bait and Switch",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy w swojej turze znajdujesz się w odległości 5 stóp od istoty, możesz wydać jedną kość przewagi i zamienić się z nią miejscami, pod warunkiem, że poświęcisz na to co najmniej 5 stóp ruchu, a istota jest chętna i nie jest {@condition incapacitated}. Ten ruch nie prowokuje ataków okazjonalnych.",
+				"Rzuć kością wyższości. Do początku swojej następnej tury ty lub inna istota (do wyboru) zyskuje premię do AC równą wyrzuconej liczbie."
+			]
+		},
+		{
+			"name": "Bait and Switch",
+			"source": "UAClassFeatureVariants",
+			"page": 5,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy w swojej turze znajdujesz się w odległości 5 stóp od sojusznika, możesz wydać jedną kość przewagi i zamienić się z nim miejscami, pod warunkiem, że poświęcisz na to co najmniej 5 stóp ruchu. Ten ruch nie prowokuje ataków okazjonalnych.",
+				"Rzuć kością wyższości. Do początku twojej następnej tury sojusznik zyskuje premię do AC równą wyrzuconej liczbie."
+			]
+		},
+		{
+			"name": "Banishing Arrow",
+			"source": "UARevisedSubclasses",
+			"page": 3,
+			"featureType": [
+				"AS:V2-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Używasz magii ablucji, aby tymczasowo wygnać cel do niegroźnego miejsca w Feywildii. Jeśli strzała trafi w istotę, celowi musi się udać rzut na ocalenie z Charyzmy lub zostanie wygnany. Podczas takiego wygnania jego prędkość wynosi 0, a on sam jest {@condition incapacitated}. Na koniec swojej następnej tury cel pojawia się ponownie w miejscu, które opuścił, lub w najbliższym wolnym miejscu, jeśli to miejsce jest zajęte.",
+				"Po osiągnięciu 18. poziomu w tej klasie cel otrzymuje również {@damage 2d6} obrażeń od siły, gdy trafi go strzała."
+			]
+		},
+		{
+			"name": "Banishing Arrow",
+			"source": "XGE",
+			"page": 29,
+			"featureType": [
+				"AS"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Używasz magii abjuracji, aby tymczasowo wygnać cel do niegroźnego miejsca w Feywildii. Istota trafiona strzałą musi również zdać rzut na charyzmę, aby uniknąć wygnania. Podczas takiego wygnania prędkość celu wynosi 0, a jego wartość {@condition incapacitated}. Na koniec swojej następnej tury cel pojawia się ponownie w miejscu, które opuścił lub w najbliższym wolnym miejscu, jeśli to miejsce jest zajęte.",
+				"Po osiągnięciu 18. poziomu w tej klasie cel otrzymuje również {@damage 2d6} obrażeń od siły, gdy trafi go strzała."
+			]
+		},
+		{
+			"name": "Beast Speech",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"speak with animals"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucać {@spell speak with animals} do woli, nie zużywając slotu na zaklęcia."
+			]
+		},
+		{
+			"name": "Beguiling Arrow",
+			"source": "UAFighter",
+			"page": 1,
+			"featureType": [
+				"AS:V1-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Twoja magia sprawia, że ta strzała tymczasowo oszukuje swój cel. Wybierz jednego z sojuszników w promieniu 30 stóp od celu. Jeśli strzała trafi w cel, nie może on atakować wybranego sojusznika ani objąć go szkodliwym efektem do końca twojej następnej tury. Cel ignoruje ten efekt, jeśli jest odporny na warunek {@condition charmed}. Efekt ten kończy się również, jeśli wybrany sojusznik zada celowi jakiekolwiek obrażenia."
+			]
+		},
+		{
+			"name": "Beguiling Arrow",
+			"source": "XGE",
+			"page": 29,
+			"featureType": [
+				"AS"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Twoja magia sprawia, że ta strzała tymczasowo oszukuje swój cel. Istota trafiona strzałą otrzymuje dodatkowe {@damage 2d6} obrażeń psychicznych i wybierze jednego z twoich sojuszników w promieniu 30 stóp od celu. Celowi musi udać się rzut ratunkowy na Mądrość, w przeciwnym razie wybrany sojusznik zadaje mu {@condition charmed} obrażeń do początku twojej następnej tury. Efekt ten kończy się wcześnie, jeśli wybrany sojusznik zaatakuje cel {@condition charmed}, zada mu obrażenia lub zmusi go do wykonania rzutu ratunkowego.",
+				"Obrażenia psychiczne zwiększają się do {@damage 4d6} po osiągnięciu 18. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Beguiling Influence",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"persuasion": true
+				}
+			],
+			"entries": [
+				"Zdobywasz biegłość w umiejętnościach {@skill Deception} i {@skill Persuasion}."
+			]
+		},
+		{
+			"name": "Bewitching Whispers",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"compulsion"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucić {@spell compulsion} raz, używając slotu czaru czarnoksiężnika. Nie możesz tego zrobić ponownie, dopóki nie zakończysz długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Blessed Warrior",
+			"source": "TCE",
+			"page": 52,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:P"
+			],
+			"additionalSpells": [
+				{
+					"ability": "cha",
+					"known": {
+						"_": [
+							{
+								"choose": "level=0|class=cleric",
+								"count": 2
+							}
+						]
+					}
+				}
+			],
+			"entries": [
+				"Uczysz się dwóch dowolnych cantripów z {@filter cleric spell list|spells|level=0|class=Cleric}. Liczą się one dla ciebie jak zaklęcia paladyna, a Charyzma jest dla nich twoją umiejętnością rzucania czarów. Za każdym razem, gdy zdobędziesz poziom w tej klasie, możesz zastąpić jeden z tych cantripów innym cantripem z listy zaklęć kleryka."
+			]
+		},
+		{
+			"name": "Blessed Warrior",
+			"source": "UAClassFeatureVariants",
+			"page": 6,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:P"
+			],
+			"additionalSpells": [
+				{
+					"ability": "cha",
+					"known": {
+						"_": [
+							{
+								"choose": "level=0|class=cleric",
+								"count": 2
+							}
+						]
+					}
+				}
+			],
+			"entries": [
+				"Uczysz się dwóch dowolnych cantripów z {@filter cleric spell list|spells|level=0|class=Cleric}. Liczą się one dla ciebie jak zaklęcia paladyna, a Charyzma jest dla nich twoją umiejętnością rzucania czarów. Za każdym razem, gdy zdobędziesz poziom w tej klasie, możesz zastąpić jeden z tych cantripów innym cantripem z listy zaklęć kleryka."
+			]
+		},
+		{
+			"name": "Blind Fighting",
+			"source": "TCE",
+			"page": 41,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"senses": [
+				{
+					"blindsight": 10
+				}
+			],
+			"entries": [
+				"Posiadasz {@sense blindsight} o zasięgu 10 stóp. W tym zasięgu możesz skutecznie zobaczyć wszystko, co nie jest całkowicie zakryte, nawet jeśli jesteś w {@condition blinded} lub w ciemności. Co więcej, możesz zobaczyć {@condition invisible} stworzeń w tym zasięgu, chyba że te stworzenia skutecznie się przed tobą ukryją."
+			]
+		},
+		{
+			"name": "Blind Fighting",
+			"source": "UAClassFeatureVariants",
+			"page": 12,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"Brak możliwości zobaczenia istoty nie zmniejsza szans na wykonanie ataku przeciwko niej, pod warunkiem, że istota nie jest przed tobą ukryta."
+			]
+		},
+		{
+			"name": "Bond of the Talisman",
+			"source": "TCE",
+			"page": 70,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 12,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Talisman"
+				}
+			],
+			"entries": [
+				"Kiedy ktoś inny nosi twój talizman, możesz użyć swojej akcji, aby teleportować się do najbliższej niezajętej przestrzeni, pod warunkiem, że oboje znajdujecie się na tej samej płaszczyźnie egzystencji. Osoba nosząca twój talizman może zrobić to samo, używając swojej akcji, aby teleportować się do ciebie. Teleportacja może być użyta tyle razy, ile wynosi twoja premia do biegłości, a wszystkie zużyte środki przywracane są po zakończeniu długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Bond of the Talisman",
+			"source": "UAClassFeatureVariants",
+			"page": 11,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 12,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Talisman"
+				}
+			],
+			"entries": [
+				"Kiedy ktoś inny nosi twój talizman, możesz użyć swojej akcji, aby teleportować się do najbliższej niezajętej przestrzeni, pod warunkiem, że oboje znajdujecie się na tej samej płaszczyźnie egzystencji. Osoba nosząca twój talizman może zrobić to samo, używając swojej akcji, aby teleportować się do ciebie."
+			]
+		},
+		{
+			"name": "Book of Ancient Secrets",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Tome"
+				}
+			],
+			"additionalSpells": [
+				{
+					"ability": "cha",
+					"innate": {
+						"_": {
+							"ritual": [
+								{
+									"choose": "Components & Miscellaneous=ritual|level=1",
+									"count": 2
+								}
+							]
+						}
+					}
+				}
+			],
+			"entries": [
+				"Możesz teraz wpisywać magiczne rytuały do swojej Księgi Cieni. Wybierz dwa {@filter 1st-level spells that have the ritual tag from any class's spell list|spells|Components & Miscellaneous=ritual|level=1}. Zaklęcia nie muszą być z tej samej listy zaklęć. Zaklęcia pojawiają się w księdze i nie wliczają się do liczby zaklęć, które znasz. Mając w ręku Księgę Cieni, możesz rzucać wybrane zaklęcia jako rytuały. Nie możesz rzucać zaklęć poza rytuałami, chyba że nauczyłeś się ich w inny sposób. Możesz także rzucić znane ci zaklęcie czarnoksiężnika jako rytuał, jeśli posiada ono znacznik rytuału.",
+				"Podczas swoich przygód możesz dodawać inne rytualne zaklęcia do swojej Księgi Cieni. Gdy znajdziesz takie zaklęcie, możesz je dodać do księgi, jeśli jego poziom jest równy lub niższy od połowy poziomu czarnoksiężnika (zaokrąglając w górę) i jeśli możesz poświęcić czas na przepisanie zaklęcia. Dla każdego poziomu zaklęcia proces przepisywania trwa 2 godziny i kosztuje 50 gp za rzadki atrament potrzebny do jego napisania."
+			]
+		},
+		{
+			"name": "Boots of the Winding Path",
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 6,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A pair of boots (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"Podczas noszenia tych butów, stworzenie może teleportować się na odległość do 15 stóp jako akcję bonusową do niezajętej przestrzeni, którą widzi. Stworzenie musi zajmować tę przestrzeń w pewnym momencie podczas bieżącej tury."
+			]
+		},
+		{
+			"name": "Boots of the Winding Path",
+			"source": "UAArtificerRevisited",
+			"page": 12,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 4,
+						"class": {
+							"name": "Artificer (Revisited)"
+						}
+					},
+					"item": [
+						"A pair of boots (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"Podczas noszenia tych butów, stworzenie może teleportować się na odległość do 15 stóp jako akcję bonusową do niezajętej przestrzeni, którą widzi. Stworzenie musi zajmować tę przestrzeń w pewnym momencie podczas bieżącej tury."
+			]
+		},
+		{
+			"name": "Brace",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy istota, którą widzisz, porusza się w zasięgu broni do walki wręcz, którą władasz, możesz użyć swojej reakcji, aby wydać jedną kość przewagi i wykonać jeden atak przeciwko tej istocie, używając tej broni. Jeśli atak trafi, dodaj liczbę punktów przewagi do wartości obrażeń zadanych przez broń."
+			]
+		},
+		{
+			"name": "Brace",
+			"source": "UAClassFeatureVariants",
+			"page": 5,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy przeciwnik, którego widzisz, porusza się w promieniu 5 stóp od ciebie, możesz użyć swojej reakcji, aby wydać jedną kość przewagi i wykonać jeden atak bronią przeciwko temu stworzeniu. Jeśli atak trafi, dodaj do wyniku obrażeń ataku kość przewagi."
+			]
+		},
+		{
+			"name": "Breath of Winter",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 17,
+						"class": {
+							"name": "Monk"
+						},
+						"subclass": {
+							"name": "Four Elements"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"6": [
+									"cone of cold"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"Możesz wydać 6 punktów ki, aby rzucić {@spell cone of cold}."
+			]
+		},
+		{
+			"name": "Brute Bane Arrow",
+			"source": "UAFighter",
+			"page": 1,
+			"featureType": [
+				"AS:V1-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Wplatasz nekromantyczną magię w swoją strzałę. Jeśli strzałą trafisz stwora, wszelkie obrażenia od ciosów zadawane przez jego ataki są zmniejszone o połowę do końca twojej następnej tury."
+			]
+		},
+		{
+			"name": "Brute Bane Arrow",
+			"source": "UARevisedSubclasses",
+			"page": 3,
+			"featureType": [
+				"AS:V2-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Wplatasz nekromantyczną magię w swoją strzałę. Jeśli twoja strzała trafi stworzenie, otrzyma ono dodatkowe {@damage 2d6} obrażeń nekrotycznych i musi wykonać rzut ratujący przed utratą Konstytucji. W przypadku nieudanego ataku, obrażenia zadawane przez cel są zmniejszone o połowę do następnej tury.",
+				"Obrażenia nekrotyczne zwiększają się do {@damage 4d6} po osiągnięciu 18. poziomu tej klasy."
+			]
+		},
+		{
+			"name": "Burning Hex",
+			"source": "UAWarlockAndWizard",
+			"page": 3,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Hexblade"
+				}
+			],
+			"entries": [
+				"Jako działanie dodatkowe sprawiasz, że cel, na który rzucono Klątwę Sześciokątnego Ostrza, otrzymuje obrażenia od ognia równe twojemu modyfikatorowi Charyzmy (minimum 1)."
+			]
+		},
+		{
+			"name": "Bursting Arrow",
+			"source": "UAFighter",
+			"page": 2,
+			"featureType": [
+				"AS:V1-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Nasączasz swoją strzałę impulsem energii siły zaczerpniętej ze szkoły przywoływania. Jeśli trafisz tą strzałą w stworzenie, każde stworzenie w promieniu 10 stóp od niej otrzymuje {@damage 2d6} obrażeń od siły."
+			]
+		},
+		{
+			"name": "Bursting Arrow",
+			"source": "UARevisedSubclasses",
+			"page": 3,
+			"featureType": [
+				"AS:V2-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Nasączasz swoją strzałę strumieniem energii pochodzącej ze szkoły przywoływania. Jeśli strzała trafi w jakąś istotę, cel i każda istota w promieniu 10 stóp od niego otrzymuje {@damage 2d6} obrażeń od siły.",
+				"Obrażenia od siły wzrastają do {@damage 4d6} po osiągnięciu 18. poziomu tej klasy."
+			]
+		},
+		{
+			"name": "Bursting Arrow",
+			"source": "XGE",
+			"page": 29,
+			"featureType": [
+				"AS"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Nasycasz swoją strzałę energią siły zaczerpniętą ze szkoły przywoływania. Energia eksploduje po twoim ataku. Natychmiast po tym, jak strzała trafi w stworzenie, cel i wszystkie inne stworzenia w promieniu 10 stóp od niego otrzymują {@damage 2d6} obrażeń od siły.",
+				"Obrażenia od siły wzrastają do {@damage 4d6} po osiągnięciu 18. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Caiphon's Beacon",
+			"source": "UAWarlockAndWizard",
+			"page": 3,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Great Old One"
+				}
+			],
+			"skillProficiencies": [
+				{
+					"deception": true,
+					"stealth": true
+				}
+			],
+			"entries": [
+				"Purpurowa gwiazda Caiphon jest zgubą niedoświadczonych żeglarzy. Ci, którzy używają jej zwodniczego światła, by kierować swoją podróżą, zawsze poniosą klęskę. Zdobywasz biegłość w umiejętnościach {@skill Deception} i {@skill Stealth} oraz masz przewagę w atakach przeciwko {@condition charmed} stworzeń."
+			]
+		},
+		{
+			"name": "Careful Spell",
+			"source": "PHB",
+			"page": 102,
+			"srd": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points"
+			},
+			"entries": [
+				"Kiedy rzucasz zaklęcie, które zmusza inne stworzenia do wykonania rzutu ratunkowego, możesz ochronić niektóre z tych stworzeń przed pełną siłą zaklęcia. Aby to zrobić, wydajesz 1 punkt czaru i wybierasz liczbę tych stworzeń równą twojemu modyfikatorowi Charyzmy (minimum jedno stworzenie). Wybranemu stworzeniu automatycznie udaje się rzut na obronę przed zaklęciem."
+			]
+		},
+		{
+			"name": "Chain Master's Fury",
+			"source": "UAClassFeatureVariants",
+			"page": 11,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Chain"
+				}
+			],
+			"entries": [
+				"Jako dodatkową akcję, możesz rozkazać swojemu znajomemu wykonać jeden atak."
+			]
+		},
+		{
+			"name": "Chains of Carceri",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Chain",
+					"level": {
+						"level": 15,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"hold monster"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucić {@spell hold monster} na niebiańskiego, potwora lub żywiołaka, nie zużywając slotu na zaklęcie ani składników materialnych. Musisz zakończyć długi odpoczynek, zanim będziesz mógł ponownie użyć tego zaklęcia na tym samym stworzeniu."
+			]
+		},
+		{
+			"name": "Chilling Hex",
+			"source": "UAWarlockAndWizard",
+			"page": 3,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Hexblade"
+				}
+			],
+			"entries": [
+				"Jako dodatkowe działanie, powodujesz, że wokół celu przeklętego przez Klątwę Sześciokątnego Ostrza pojawia się mróz, zadając obrażenia od zimna każdemu z przeciwników w promieniu 5 stóp od celu. Obrażenia od zimna są równe twojemu modyfikatorowi Charyzmy (minimum 1)."
+			]
+		},
+		{
+			"name": "Chronicle of the Raven Queen",
+			"source": "UAWarlockAndWizard",
+			"page": 3,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Tome",
+					"patron": "The Raven Queen"
+				}
+			],
+			"entries": [
+				"Możesz położyć rękę trupa lub podobną część ciała na swojej Księdze Cieni i zadać jedno pytanie na głos. Po 1 minucie w księdze pojawia się odpowiedź zapisana krwią. Odpowiedzi udziela duch martwej istoty zgodnie ze swoją najlepszą wiedzą i jest ona tłumaczona na wybrany przez ciebie język. Musisz użyć tej umiejętności w ciągu 1 minuty od śmierci stworzenia, a danemu stworzeniu można zadać w ten sposób tylko jedno pytanie."
+			]
+		},
+		{
+			"name": "Claw of Acamar",
+			"source": "UAWarlockAndWizard",
+			"page": 3,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"patron": "The Great Old One"
+				}
+			],
+			"entries": [
+				"Możesz stworzyć czarną, ołowianą bijatykę, używając cechy Pakt Ostrza. Głowica bijaka jest wyrzeźbiona tak, aby przypominała parę chwytnych macek. Broń posiada właściwość zasięgu. Kiedy trafisz nią istotę, możesz wydać slot na zaklęcie, aby zadać jej dodatkowe {@damage 2d8} obrażeń nekrotycznych na poziom zaklęcia i zmniejszyć jej prędkość do 0 stóp do końca swojej następnej tury."
+			]
+		},
+		{
+			"name": "Clench of the North Wind",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 6,
+						"class": {
+							"name": "Monk"
+						},
+						"subclass": {
+							"name": "Four Elements"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"3": [
+									"hold person"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"Możesz wydać 3 punkty ki, aby rzucić {@spell hold person}."
+			]
+		},
+		{
+			"name": "Cloak of Baalzebul",
+			"source": "UAWarlockAndWizard",
+			"page": 3,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Fiend"
+				}
+			],
+			"entries": [
+				"Jako dodatkową akcję możesz wyczarować wokół siebie rój bzyczących much. Rój ten daje ci przewagę w testach Charyzmy ({@skill Intimidation}), ale minus we wszystkich innych testach Charyzmy. Dodatkowo istota, która rozpocznie swoją turę w odległości mniejszej niż 5 stóp od ciebie, otrzymuje obrażenia od trucizny równe twojemu modyfikatorowi Charyzmy. Możesz oddalić rój kolejną akcją bonusową."
+			]
+		},
+		{
+			"name": "Cloak of Flies",
+			"source": "UARevisedClassOptions",
+			"page": 5,
+			"previousVersion": {
+				"name": "Cloak of Baalzebul",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Jako dodatkową akcję, możesz otoczyć się magiczną aurą, która wygląda jak brzęczenie much. Aura obejmuje twoją przestrzeń, rozciąga się na 5 stóp od ciebie w każdym kierunku i jest blokowana przez całkowitą osłonę. Utrzymuje się do momentu, gdy osiągniesz poziom {@condition incapacitated} lub gdy rozproszysz ją akcją bonusową.",
+				"Aura daje ci przewagę w testach na Charyzmę ({@skill Intimidation}), ale minus we wszystkich innych testach na Charyzmę. Każde inne stworzenie, które rozpocznie swoją turę w aurze, otrzymuje obrażenia od trucizny równe twojemu modyfikatorowi Charyzmy (minimalnie 0 obrażeń).",
+				"Po użyciu tej inwokacji nie można jej użyć ponownie, dopóki nie zakończy się krótki lub długi odpoczynek."
+			]
+		},
+		{
+			"name": "Cloak of Flies",
+			"source": "XGE",
+			"page": 56,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Jako działanie dodatkowe możesz otoczyć się magiczną aurą, która wygląda jak brzęczenie much. Aura rozciąga się na 5 stóp od ciebie w każdym kierunku, ale nie przez całe osłony. Utrzymuje się do momentu, gdy osiągniesz poziom {@condition incapacitated} lub gdy ją odrzucisz jako akcję bonusową.",
+				"Aura daje ci przewagę w testach na Charyzmę ({@skill Intimidation}), ale minus we wszystkich innych testach na Charyzmę. Każde inne stworzenie, które rozpocznie swoją turę w aurze, otrzymuje obrażenia od trucizny równe twojemu modyfikatorowi Charyzmy (minimalnie 0 obrażeń).",
+				"Po użyciu tej inwokacji nie można jej użyć ponownie, dopóki nie zakończy się krótki lub długi odpoczynek."
+			]
+		},
+		{
+			"name": "Close Quarters Shooter",
+			"source": "UALightDarkUnderdark",
+			"page": 1,
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"Kiedy wykonujesz atak dystansowy, będąc w odległości do 5 stóp od wrogiego stworzenia, nie masz minusów przy ataku. Twoje ataki dystansowe ignorują zakrycie w połowie i trzech czwartych przeciwko celom znajdującym się w promieniu 30 stóp od ciebie. Masz premię +1 do rolki ataku przy atakach dystansowych."
+			]
+		},
+		{
+			"name": "Cloud Rune",
+			"source": "TCE",
+			"page": 44,
+			"featureType": [
+				"RN"
+			],
+			"entries": [
+				"Ta runa naśladuje zwodniczą magię używaną przez niektórych chmurnych olbrzymów. Nosząc lub dzierżąc przedmiot z tą runą, masz przewagę w testach Zręczności ({@skill Sleight of Hand}) i Charyzmy ({@skill Deception}).",
+				"Dodatkowo, kiedy ty lub istota, którą widzisz w promieniu 30 stóp od ciebie, zostaniesz trafiony rolką ataku, możesz użyć swojej reakcji, aby przywołać runę i wybrać inną istotę w promieniu 30 stóp od ciebie, inną niż atakująca. Wybrana istota staje się celem ataku, przy użyciu tej samej runy. Magia ta może przenieść efekty ataku bez względu na jego zasięg. Po przywołaniu tej runy nie możesz tego zrobić ponownie, dopóki nie zakończysz krótkiego lub długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Commander's Strike",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy wykonujesz akcję {@action Attack} w swojej turze, możesz zrezygnować z jednego ze swoich ataków i użyć dodatkowej akcji, aby skierować jednego ze swoich towarzyszy do ataku. Kiedy to zrobisz, wybierz przyjazną istotę, która cię widzi lub słyszy i wydaj jedną kość przewagi. Stworzenie to może natychmiast użyć swojej reakcji, aby wykonać jeden atak bronią, dodając kość przewagi do rolki obrażeń ataku."
+			]
+		},
+		{
+			"name": "Commanding Presence",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy wykonujesz kontrolę Charyzmy ({@skill Intimidation}), Charyzmy ({@skill Performance}) lub Charyzmy ({@skill Persuasion}), możesz wydać jedną kość przewagi i dodać tę kość przewagi do kontroli umiejętności."
+			]
+		},
+		{
+			"name": "Control Mount",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"featureType": [
+				"MV:C2-UA"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy wykonujesz test Mądrości ({@skill Animal Handling}), aby wpłynąć na stworzenie, na którym jeździsz ty lub twój sojusznik, możesz wydać jedną kość przewagi, rzucić ją i dodać wyliczoną liczbę do wyniku testu. Możesz to zrobić przed lub po wykonaniu {@dice d20}, ale przed zastosowaniem wyników testu."
+			]
+		},
+		{
+			"name": "Curse Bringer",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"patron": "The Hexblade"
+				}
+			],
+			"entries": [
+				"Możesz stworzyć wielki miecz wykuty ze srebra, z czarnymi runami wyrytymi na ostrzu, używając cechy Pakt Ostrza. Jeśli za pomocą tego miecza zredukujesz cel przeklęty Klątwą Sześciokątnego Ostrza do 0 punktów życia, możesz natychmiast zmienić cel klątwy na inną istotę. Zmiana ta nie przedłuża czasu działania klątwy.",
+				"Kiedy trafisz tą bronią istotę, możesz wydać slot zaklęcia, aby zadać jej dodatkowe {@damage 2d8} obrażeń od cięcia na poziom zaklęcia i zmniejszyć jej prędkość do 0 stóp do końca swojej następnej tury."
+			]
+		},
+		{
+			"name": "Defending Arrow",
+			"source": "UAFighter",
+			"page": 2,
+			"featureType": [
+				"AS:V1-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Używasz magii abjuracji, aby rzucić urok, który zakłóca magię przeciwnika. Istota trafiona tą strzałą ponosi minus przy następnym ataku, który wykona przed końcem twojej następnej tury."
+			]
+		},
+		{
+			"name": "Defense",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"otherSources": [
+				{
+					"source": "PHB",
+					"page": 84
+				},
+				{
+					"source": "PHB",
+					"page": 91
+				},
+				{
+					"source": "UATheRangerRevised",
+					"page": 3
+				}
+			],
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"Gdy masz na sobie zbroję, zyskujesz premię +1 do AC."
+			]
+		},
+		{
+			"name": "Devastation",
+			"source": "UAClericDruidWizard",
+			"page": 5,
+			"featureType": [
+				"OR"
+			],
+			"entries": [
+				"Jeśli zaklęcie wymaga od wymienionej istoty wykonania rzutu obronnego, ta istota ma minus przy pierwszym rzucie obronnym przeciwko zaklęciu."
+			]
+		},
+		{
+			"name": "Devil's Sight",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"entries": [
+				"Możesz widzieć normalnie w ciemności, zarówno magicznej, jak i niemagicznej, na odległość 120 stóp."
+			]
+		},
+		{
+			"name": "Disarming Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy trafisz istotę atakiem z bronią, możesz wydać jedną kość przewagi, aby spróbować rozbroić cel, zmuszając go do upuszczenia jednego, wybranego przez ciebie przedmiotu, który trzyma w ręku. Dodajesz tę kość przewagi do obrażeń ataku, a cel musi wykonać rzut ratunkowy na Wytrzymałość. W przypadku niepowodzenia, upuszcza wybrany przez ciebie przedmiot. Przedmiot ląduje u jego stóp."
+			]
+		},
+		{
+			"name": "Dissolution",
+			"source": "UAClericDruidWizard",
+			"page": 5,
+			"featureType": [
+				"OR"
+			],
+			"entries": [
+				"Za pierwszym razem, gdy wymieniona istota otrzyma obrażenia od tego zaklęcia, otrzyma dodatkowe {@damage 2d8} obrażeń od siły. Dodatkowe obrażenia od siły wzrastają o {@damage 1d8} po osiągnięciu 10. poziomu ({@damage 3d8}) i 14. poziomu ({@damage 4d8}) w tej klasie."
+			]
+		},
+		{
+			"name": "Distant Spell",
+			"source": "PHB",
+			"page": 102,
+			"srd": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points"
+			},
+			"entries": [
+				"Kiedy rzucasz zaklęcie o zasięgu 5 stóp lub większym, możesz wydać 1 punkt czarów, aby podwoić zasięg tego zaklęcia.",
+				"Kiedy rzucasz zaklęcie o zasięgu dotyku, możesz wydać 1 punkt czarów, aby zwiększyć zasięg zaklęcia do 30 stóp."
+			]
+		},
+		{
+			"name": "Distracting Strike",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy trafisz stwora atakiem z użyciem broni, możesz wydać jedną kość przewagi, aby odwrócić jego uwagę, dając sojusznikom szansę na otwarcie się. Dodajesz kość przewagi do obrażeń zadanych podczas ataku. Następny atak przeciwko celowi przez atakującego innego niż ty ma przewagę, jeśli atak zostanie wykonany przed rozpoczęciem twojej następnej tury."
+			]
+		},
+		{
+			"name": "Dreadful Word",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"confusion"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucić {@spell confusion} raz, używając slotu czaru czarnoksiężnika. Nie możesz tego zrobić ponownie, dopóki nie zakończysz długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Druidic Warrior",
+			"source": "TCE",
+			"page": 57,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:R"
+			],
+			"additionalSpells": [
+				{
+					"ability": "wis",
+					"known": {
+						"_": [
+							{
+								"choose": "level=0|class=druid",
+								"count": 2
+							}
+						]
+					}
+				}
+			],
+			"entries": [
+				"Uczysz się dwóch dowolnie wybranych czarów z {@filter druid spell list|spells|level=0|class=druid}. Liczą się one dla ciebie jako zaklęcia strażnika, a Mądrość jest dla nich twoją umiejętnością rzucania czarów. Zawsze, gdy zdobędziesz poziom w tej klasie, możesz zastąpić jeden z tych cantripów innym cantripem z listy zaklęć druidów."
+			]
+		},
+		{
+			"name": "Druidic Warrior",
+			"source": "UAClassFeatureVariants",
+			"page": 7,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:R"
+			],
+			"additionalSpells": [
+				{
+					"ability": "wis",
+					"known": {
+						"_": [
+							{
+								"choose": "level=0|class=druid",
+								"count": 2
+							}
+						]
+					}
+				}
+			],
+			"entries": [
+				"Uczysz się dwóch dowolnych cantripów z {@filter druid spell list|spells|level=0|class=druid}. Liczą się one dla ciebie jako zaklęcia druidów, a Mądrość jest dla nich twoją umiejętnością rzucania zaklęć. Zawsze, gdy zdobędziesz poziom w tej klasie, możesz zastąpić jeden z tych cantripów innym cantripem z listy zaklęć druidów."
+			]
+		},
+		{
+			"name": "Dueling",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"otherSources": [
+				{
+					"source": "XGE",
+					"page": 15
+				},
+				{
+					"source": "UARevisedSubclasses",
+					"page": 2
+				},
+				{
+					"source": "PHB",
+					"page": 84
+				},
+				{
+					"source": "PHB",
+					"page": 91
+				},
+				{
+					"source": "UATheRangerRevised",
+					"page": 3
+				}
+			],
+			"featureType": [
+				"FS:F",
+				"FS:B",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"Gdy trzymasz w jednej ręce broń do walki wręcz i nie masz innej broni, zyskujesz premię +2 do obrażeń zadawanych tą bronią."
+			]
+		},
+		{
+			"name": "Eldritch Armor",
+			"source": "UAClassFeatureVariants",
+			"page": 11,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade"
+				}
+			],
+			"entries": [
+				"W ramach akcji możesz dotknąć zbroi, która nie jest noszona przez nikogo i natychmiast ją przywdziać, pod warunkiem, że nie masz już na sobie zbroi. Masz biegłość w tej zbroi, dopóki jej nie zdejmiesz."
+			]
+		},
+		{
+			"name": "Eldritch Mind",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"entries": [
+				"Masz przewagę w rzutach ratunkowych na Konstytucję, które wykonujesz, aby utrzymać koncentrację na zaklęciu."
+			]
+		},
+		{
+			"name": "Eldritch Mind",
+			"source": "UAClassFeatureVariants",
+			"page": 11,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Tome"
+				}
+			],
+			"entries": [
+				"Masz przewagę w rzutach ratunkowych na Konstytucję, które wykonujesz, aby utrzymać koncentrację na zaklęciu."
+			]
+		},
+		{
+			"name": "Eldritch Sight",
+			"source": "PHB",
+			"page": 110,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"detect magic"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucać {@spell detect magic} do woli, nie zużywając slotu na zaklęcia."
+			]
+		},
+		{
+			"name": "Eldritch Smite",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Mace of Dispater",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Raz na turę, kiedy trafisz istotę swoją bronią paktową, możesz wydać slot zaklęcia Czarnoksiężnika, aby zadać celowi dodatkowe {@damage 1d8} obrażeń od siły, plus kolejne {@damage 1d8} na poziom slotu zaklęcia. Jeśli cel otrzyma jakiekolwiek z tych obrażeń, możesz go powalić {@condition prone}, jeśli jest Ogromny lub mniejszy."
+			]
+		},
+		{
+			"name": "Eldritch Smite",
+			"source": "XGE",
+			"page": 56,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Raz na turę, kiedy trafisz istotę bronią paktu, możesz wydać slot czaru czarnoksiężnika, aby zadać celowi dodatkowe {@damage 1d8} obrażeń od siły, plus kolejne {@damage 1d8} na poziom slotu czaru, a także możesz powalić cel {@condition prone}, jeśli jest Ogromny lub mniejszy."
+			]
+		},
+		{
+			"name": "Eldritch Spear",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Kiedy rzucasz {@spell eldritch blast}, jego zasięg wynosi 300 stóp."
+			]
+		},
+		{
+			"name": "Elemental Attunement",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"entries": [
+				"Możesz użyć swojej akcji, aby na krótko kontrolować siły żywiołów w promieniu 30 stóp od ciebie, wywołując jeden z poniższych efektów do wyboru:",
+				{
+					"type": "list",
+					"items": [
+						"Stworzenie nieszkodliwego, natychmiastowego efektu sensorycznego związanego z powietrzem, ziemią, ogniem lub wodą, takiego jak deszcz iskier, powiew wiatru, rozpylenie lekkiej mgły lub delikatne dudnienie kamienia.",
+						"Błyskawicznie zapal lub zgaś świecę, pochodnię lub małe ognisko.",
+						"Schłodzić lub ogrzać do 1 kg materiału nieożywionego przez maksymalnie 1 godzinę.",
+						"Powoduje, że ziemia, ogień, woda lub mgła, które mieszczą się w sześcianie o boku 1 stopy, przybierają surową formę, którą wskażesz na 1 minutę."
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Spell",
+			"source": "UAClassFeatureVariants",
+			"page": 10,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points"
+			},
+			"entries": [
+				"Kiedy rzucasz zaklęcie zadające obrażenia z poniższej listy, możesz wydać 1 punkt czarów, aby zmienić ten rodzaj obrażeń na jeden z wymienionych rodzajów: kwas, zimno, ogień, błyskawica, piorun."
+			]
+		},
+		{
+			"name": "Empowered Spell",
+			"source": "PHB",
+			"page": 102,
+			"srd": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points"
+			},
+			"entries": [
+				"Kiedy rzucasz obrażenia dla zaklęcia, możesz wydać 1 punkt czarów, aby przeliczyć pewną liczbę kostek obrażeń o wartości równej twojemu modyfikatorowi Charyzmy (minimum jeden). Musisz użyć nowych zwojów.",
+				"Możesz użyć Ulepszonego zaklęcia, nawet jeśli podczas rzucania zaklęcia użyłeś już innej opcji metamagicznej."
+			]
+		},
+		{
+			"name": "Enfeebling Arrow",
+			"source": "XGE",
+			"page": 29,
+			"featureType": [
+				"AS"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Wplatasz nekromantyczną magię w swoją strzałę. Istota trafiona strzałą otrzymuje dodatkowe {@damage 2d6} obrażeń nekrotycznych. W przeciwnym razie obrażenia zadawane przez jego ataki z broni zostaną zmniejszone o połowę do początku twojej następnej tury.",
+				"Obrażenia nekrotyczne zwiększają się do {@damage 4d6} po osiągnięciu 18. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Enhanced Arcane Focus",
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A rod, staff, or wand (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"Podczas trzymania tego przedmiotu istota zyskuje premię +1 do ataku zaklęciem. Dodatkowo, podczas ataku zaklęciem, istota ignoruje połowę osłony.",
+				"Premia ta wzrasta do +2 po osiągnięciu 10. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Enhanced Defense",
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A suit of armor or a shield"
+					]
+				}
+			],
+			"entries": [
+				"Istota zyskuje premię +1 do klasy pancerza, nosząc (zbroja) lub dzierżąc (tarcza) zaklęty przedmiot.",
+				"Premia ta wzrasta do +2 po osiągnięciu 10. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Enhanced Defense",
+			"source": "UAArtificerRevisited",
+			"page": 12,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A suit of armor or a shield"
+					]
+				}
+			],
+			"entries": [
+				"Istota zyskuje premię +1 do klasy pancerza, nosząc (zbroja) lub dzierżąc (tarcza) zaklęty przedmiot.",
+				"Premia ta wzrasta do +2 po osiągnięciu 12 poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Enhanced Wand",
+			"source": "UAArtificerRevisited",
+			"page": 12,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A wand (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"Trzymając tę różdżkę, stworzenie zyskuje premię +1 do ataku zaklęciem. Dodatkowo, podczas ataku zaklęciem, istota ignoruje połowę osłony.",
+				"Premia ta wzrasta do +2 po osiągnięciu 12 poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Enhanced Weapon",
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A simple or martial weapon"
+					]
+				}
+			],
+			"entries": [
+				"Ta magiczna broń daje premię +1 do ataku i obrażeń zadawanych za jej pomocą.",
+				"Premia ta wzrasta do +2 po osiągnięciu 10. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Enhanced Weapon",
+			"source": "UAArtificerRevisited",
+			"page": 12,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A simple or martial weapon"
+					]
+				}
+			],
+			"entries": [
+				"Ta magiczna broń daje premię +1 do ataku i obrażeń zadawanych za jej pomocą.",
+				"Premia ta wzrasta do +2 po osiągnięciu 12 poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Eternal Mountain Defense",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 17,
+						"class": {
+							"name": "Monk"
+						},
+						"subclass": {
+							"name": "Four Elements"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"5": [
+									"stoneskin"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"Możesz wydać 5 punktów ki, aby rzucić {@spell stoneskin}, celując w siebie."
+			]
+		},
+		{
+			"name": "Evasive Footwork",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy się poruszasz, możesz wydać jedną kość przewagi, rzucając kością i dodając wyliczoną liczbę do swojego AC, dopóki nie przestaniesz się poruszać."
+			]
+		},
+		{
+			"name": "Extended Spell",
+			"source": "PHB",
+			"page": 102,
+			"srd": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points"
+			},
+			"entries": [
+				"Kiedy rzucasz zaklęcie o czasie trwania 1 minuty lub dłuższym, możesz wydać 1 punkt czarów, aby podwoić czas jego trwania, maksymalnie do 24 godzin."
+			]
+		},
+		{
+			"name": "Eyes of the Rune Keeper",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"entries": [
+				"Można przeczytać wszystkie pisma."
+			]
+		},
+		{
+			"name": "Fangs of the Fire Snake",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"entries": [
+				"Kiedy używasz akcji {@action Attack} w swojej turze, możesz wydać 1 punkt ki, aby sprawić, że z twoich pięści i stóp wyciągną się smugi płomieni. Zasięg twoich uderzeń bez broni zwiększa się o 10 stóp podczas tej akcji, jak i przez resztę tury. Trafienie takim atakiem zadaje obrażenia od ognia zamiast obrażeń od ciosów, a jeśli wydasz 1 punkt ki, gdy atak trafi, zadaje on dodatkowo {@damage 1d10} obrażeń od ognia."
+			]
+		},
+		{
+			"name": "Far Scribe",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Tome"
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"sending"
+						]
+					}
+				}
+			],
+			"entries": [
+				"W twojej Księdze Cieni pojawia się nowa strona. Za twoją zgodą stworzenie może użyć swojej akcji, aby zapisać swoje imię na tej stronie, która może zawierać liczbę imion równą twojej premii do biegłości.",
+				"Możesz rzucić zaklęcie {@spell sending} na istotę, której imię znajduje się na kartce, bez użycia slotu na zaklęcie i bez użycia składników materialnych. Aby to zrobić, musisz napisać wiadomość na kartce. Cel słyszy wiadomość w swoim umyśle, a jeśli cel odpowie, jego wiadomość pojawia się na kartce, a nie w twoim umyśle. Napis znika po 1 minucie.",
+				"W ramach akcji możesz w magiczny sposób wymazać imię na stronie, dotykając go."
+			]
+		},
+		{
+			"name": "Far Scribe",
+			"source": "UAClassFeatureVariants",
+			"page": 11,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Tome"
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"sending"
+						]
+					}
+				}
+			],
+			"entries": [
+				"W twojej Księdze Cieni pojawia się nowa strona. Za twoją zgodą, stworzenie może użyć swojej akcji, aby zapisać swoje imię na tej stronie, która może zawierać liczbę imion równą twojemu modyfikatorowi Charyzmy (minimum 1).",
+				"Możesz rzucić zaklęcie {@spell sending} na istotę, której imię znajduje się na kartce, bez użycia slotu na zaklęcie i bez użycia składników materialnych. Aby to zrobić, musisz napisać wiadomość na kartce. Cel słyszy wiadomość w swoim umyśle, a jeśli cel odpowie, jego wiadomość pojawia się na kartce, a nie w twoim umyśle. Napis znika po 1 minucie.",
+				"W ramach akcji możesz w magiczny sposób wymazać imię na stronie, dotykając go."
+			]
+		},
+		{
+			"name": "Feinting Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Możesz wydać jedną kość przewagi i użyć dodatkowej akcji w swojej turze, aby zrobić unik, wybierając jako cel jedną istotę w promieniu 5 stóp od siebie. Masz przewagę przy następnym ataku przeciwko temu stworzeniu w tej turze. Jeśli ten atak trafi, dodaj do wartości obrażeń w ataku kość przewagi.",
+				"Przewaga przepada, jeśli nie zostanie wykorzystana w turze, w której ją zyskujesz."
+			]
+		},
+		{
+			"name": "Fiendish Vigor",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"false life"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucić na siebie {@spell false life} jako zaklęcie 1. poziomu, nie zużywając slotu na zaklęcie ani składników materialnych."
+			]
+		},
+		{
+			"name": "Fire Rune",
+			"source": "TCE",
+			"page": 44,
+			"featureType": [
+				"RN"
+			],
+			"entries": [
+				"Magia tej runy łączy się z mistrzowskim kunsztem wielkich kowali. Podczas noszenia lub noszenia przedmiotu z tą runą, twoja premia do biegłości jest podwajana do każdego testu umiejętności, który wykorzystuje biegłość w posługiwaniu się narzędziem.",
+				"Dodatkowo, kiedy trafisz stworzenie atakiem z użyciem broni, możesz przywołać runę, aby przywołać Ogniste Kajdany: cel otrzymuje dodatkowe {@damage 2d6} obrażeń od ognia i musi udać mu się rzut na Wytrzymałość, albo zostanie {@condition restrained} na 1 minutę. Podczas gdy {@condition restrained} jest zakuty w kajdany, cel otrzymuje {@damage 2d6} obrażeń od ognia na początku każdej swojej tury. Cel może powtórzyć rzut ratunkowy na koniec każdej swojej tury, a jeśli mu się powiedzie, wypędza kajdany. Po przywołaniu tej runy nie można tego zrobić ponownie, dopóki nie zakończy się krótki lub długi odpoczynek."
+			]
+		},
+		{
+			"name": "Fist of Four Thunders",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"2": [
+									"thunderwave"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"Możesz wydać 2 punkty ki, aby rzucić {@spell thunderwave}."
+			]
+		},
+		{
+			"name": "Flames of the Phoenix",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 11,
+						"class": {
+							"name": "Monk"
+						},
+						"subclass": {
+							"name": "Four Elements"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"4": [
+									"fireball"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"Możesz wydać 4 punkty ki, aby rzucić {@spell fireball}."
+			]
+		},
+		{
+			"name": "Frost Lance",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Frost Lance",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Raz na każdą swoją turę, kiedy trafisz stwora swoim {@spell eldritch blast}, możesz zmniejszyć jego prędkość o 10 stóp do końca swojej następnej tury."
+			]
+		},
+		{
+			"name": "Frost Lance",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Archfey",
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Korzystasz z darów Księcia Mrozu, aby uwięzić wrogów w lodzie. Kiedy trafisz stworzenie swoim {@spell eldritch blast} cantripem jeden lub więcej razy w swojej turze, możesz zmniejszyć jego prędkość o 10 stóp do końca swojej następnej tury."
+			]
+		},
+		{
+			"name": "Frost Rune",
+			"source": "TCE",
+			"page": 45,
+			"featureType": [
+				"RN"
+			],
+			"entries": [
+				"Magia tej runy przywołuje siłę tych, którzy przetrwali w mroźnej dziczy, takich jak mroźne olbrzymy. Nosząc lub dzierżąc przedmiot z tą runą, masz przewagę w testach na Mądrość ({@skill Animal Handling}) i Charyzmę ({@skill Intimidation}).",
+				"Dodatkowo, możesz przywołać runę jako akcję bonusową, aby zwiększyć swoją wytrzymałość. Przez 10 minut otrzymujesz premię +2 do wszystkich testów umiejętności i rzutów na przetrwanie, które wykorzystują siłę lub konstytucję. Po przywołaniu tej runy nie możesz tego zrobić ponownie, dopóki nie zakończysz krótkiego lub długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Gaze of Khirad",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"patron": "The Great Old One"
+				}
+			],
+			"entries": [
+				"Zyskujesz przeszywające spojrzenie błękitnej gwiazdy Khirada. Jako akcję, możesz widzieć przez obiekty stałe w zasięgu 30 stóp do końca bieżącej tury. W tym czasie postrzegasz obiekty jako widmowe, przezroczyste obrazy."
+			]
+		},
+		{
+			"name": "Gaze of Two Minds",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"entries": [
+				"Możesz użyć swojej akcji, aby dotknąć chętnego humanoida i postrzegać za pomocą jego zmysłów do końca swojej następnej tury. Tak długo, jak stworzenie znajduje się na tej samej płaszczyźnie egzystencji co ty, możesz użyć swojej akcji w kolejnych turach, aby utrzymać to połączenie, przedłużając czas jego trwania do końca swojej następnej tury. Podczas postrzegania zmysłami innej istoty, korzystasz z wszelkich specjalnych zmysłów posiadanych przez tę istotę, a także jesteś {@condition blinded} i {@condition deafened} w stosunku do własnego otoczenia."
+			]
+		},
+		{
+			"name": "Ghostly Gaze",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Gaze of Khirad",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Jako akcję, zyskujesz zdolność widzenia przez obiekty stałe w zasięgu 30 stóp. W tym zasięgu masz {@sense darkvision}, jeśli jeszcze jej nie masz. Ten specjalny wzrok trwa do końca bieżącej tury. W tym czasie postrzegasz obiekty jako widmowe, przezroczyste obrazy. Jeśli raz użyjesz tego przywołania, nie możesz go użyć ponownie, dopóki nie zakończysz krótkiego lub długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Ghostly Gaze",
+			"source": "XGE",
+			"page": 56,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Jako akcję, zyskujesz zdolność widzenia przez obiekty stałe w zasięgu 30 stóp. W tym zasięgu masz {@sense darkvision}, jeśli jeszcze jej nie masz. Ten specjalny wzrok trwa przez 1 minutę lub do końca koncentracji (tak jakbyś koncentrował się na zaklęciu). W tym czasie postrzegasz obiekty jako widmowe, przezroczyste obrazy.",
+				"Po użyciu tej inwokacji nie można jej użyć ponownie, dopóki nie zakończy się krótki lub długi odpoczynek."
+			]
+		},
+		{
+			"name": "Gift of the Depths",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Sea Twins' Gift",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"water breathing"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"Możesz oddychać pod wodą i zyskujesz prędkość pływania równą prędkości chodzenia. Możesz także rzucać {@spell water breathing} bez zużywania slotu na zaklęcie. Jeśli raz rzucisz zaklęcie za pomocą tej inwokacji, nie możesz tego zrobić ponownie, dopóki nie zakończysz długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Gift of the Depths",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"water breathing"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"Możesz oddychać pod wodą i zyskujesz prędkość pływania równą prędkości chodzenia.",
+				"Możesz też rzucić {@spell water breathing} raz bez zużywania slotu na zaklęcie. Odzyskujesz tę umiejętność po zakończeniu długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Gift of the Ever-Living Ones",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Green Lord's Gift",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Chain"
+				}
+			],
+			"entries": [
+				"Za każdym razem, gdy odzyskujesz punkty trafienia, a twój znajomy znajduje się w promieniu 100 stóp od ciebie, traktuj wszystkie kości rzucone w celu określenia odzyskanych punktów trafienia jak maksymalne wartości dla ciebie."
+			]
+		},
+		{
+			"name": "Gift of the Ever-Living Ones",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Chain"
+				}
+			],
+			"entries": [
+				"Za każdym razem, gdy odzyskujesz punkty trafienia, a twój znajomy znajduje się w promieniu 100 stóp od ciebie, traktuj wszystkie kości rzucone w celu określenia odzyskanych punktów trafienia jak maksymalne wartości dla ciebie."
+			]
+		},
+		{
+			"name": "Gift of the Protectors",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Tome"
+				}
+			],
+			"entries": [
+				"W twojej Księdze Cieni pojawia się nowa strona. Za twoją zgodą stworzenie może użyć swojej akcji, aby zapisać swoje imię na tej stronie, która może zawierać liczbę imion równą twojej premii do biegłości.",
+				"Kiedy jakakolwiek istota, której imię znajduje się na tej stronie, zostanie zredukowana do 0 punktów życia, ale nie zostanie zabita, magicznie spada do 1 punktu życia. Po uruchomieniu tej magii, żadna istota nie może z niej skorzystać, dopóki nie zakończysz długiego odpoczynku.",
+				"W ramach akcji możesz w magiczny sposób wymazać imię na stronie, dotykając go."
+			]
+		},
+		{
+			"name": "Gift of the Protectors",
+			"source": "UAClassFeatureVariants",
+			"page": 11,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Tome"
+				}
+			],
+			"entries": [
+				"W twojej Księdze Cieni pojawia się nowa strona. Za twoją zgodą, stworzenie może użyć swojej akcji, aby zapisać swoje imię na tej stronie, która może zawierać liczbę imion równą twojemu modyfikatorowi Charyzmy (minimum 1).",
+				"Kiedy jakakolwiek istota, której imię znajduje się na tej stronie, zostanie zredukowana do 0 punktów życia, ale nie zostanie zabita, magicznie spada do 1 punktu życia. Po uruchomieniu tej magii, żadna istota nie może z niej skorzystać, dopóki nie zakończysz długiego odpoczynku.",
+				"W ramach akcji możesz w magiczny sposób wymazać imię na stronie, dotykając go."
+			]
+		},
+		{
+			"name": "Goading Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy trafisz istotę atakiem z użyciem broni, możesz wydać jedną kość przewagi, aby zachęcić cel do zaatakowania ciebie. Dodajesz tę kość przewagi do wartości obrażeń ataku, a cel musi wykonać rzut ratujący mądrość. W przypadku nieudanego ataku, cel ma minus do wszystkich ataków przeciwko celom innym niż ty, aż do końca twojej następnej tury."
+			]
+		},
+		{
+			"name": "Gong of the Summit",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 6,
+						"class": {
+							"name": "Monk"
+						},
+						"subclass": {
+							"name": "Four Elements"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"3": [
+									"shatter"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"Możesz wydać 3 punkty ki, aby rzucić {@spell shatter}."
+			]
+		},
+		{
+			"name": "Grappling Strike",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Natychmiast po tym, jak trafisz stworzenie atakiem w walce wręcz w swojej turze, możesz wydać jedną kość przewagi, a następnie spróbować chwycić cel jako akcję dodatkową (zasady dotyczące chwytania znajdziesz w Podręczniku Gracza). Dodaj kość przewagi do swojego testu Siły ({@skill Athletics})."
+			]
+		},
+		{
+			"name": "Grasp of Hadar",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Grasp of Hadar",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Raz w każdej swojej turze, kiedy trafisz stworzenie za pomocą {@spell eldritch blast} cantry, możesz przesunąć to stworzenie w linii prostej o 10 stóp bliżej siebie."
+			]
+		},
+		{
+			"name": "Grasp of Hadar",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Great Old One",
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Raz w swojej turze, kiedy trafisz stworzenie za pomocą {@spell eldritch blast} cantry, możesz przesunąć to stworzenie w linii prostej o 10 stóp bliżej siebie."
+			]
+		},
+		{
+			"name": "Grasp of Hadar",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Raz w każdej swojej turze, kiedy trafisz stwora swoim {@spell eldritch blast}, możesz przesunąć go w linii prostej o 10 stóp bliżej siebie."
+			]
+		},
+		{
+			"name": "Grasping Arrow",
+			"source": "UAFighter",
+			"page": 2,
+			"featureType": [
+				"AS:V1-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Kiedy ta strzała trafia w cel, magia koniunkcji tworzy chwytne, cierniste krzaki, które owijają się wokół celu. Cel trafiony strzałą otrzymuje karę -10 do prędkości i otrzymuje {@damage 2d6} obrażeń od cięcia, jeśli poruszy się o 1 stopę lub więcej bez teleportacji. Cel lub dowolna istota, która może go dotknąć, może użyć swojej akcji, aby spróbować usunąć krzaki, co wymaga udanego testu Wytrzymałości DC 10. W przeciwnym razie jerzyny utrzymują się przez 1 minutę."
+			]
+		},
+		{
+			"name": "Grasping Arrow",
+			"source": "UARevisedSubclasses",
+			"page": 3,
+			"featureType": [
+				"AS:V2-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Kiedy ta strzała trafia w cel, magia koniunkcji tworzy chwytne, cierniste krzaki, które owijają się wokół celu. Jeśli strzała trafi w istotę, otrzymuje ona dodatkowe {@damage 2d6} obrażeń od trucizny, jej prędkość zmniejsza się o 10 stóp i otrzymuje {@damage 2d6} obrażeń od cięcia za pierwszym razem w każdej turze, w której porusza się o 1 stopę lub więcej bez teleportacji. Cel lub dowolna istota, która może go dosięgnąć, może użyć swojej akcji, aby usunąć krzaki, jeśli wykona udany test Wytrzymałości ({@skill Athletics}) przeciwko DC obrony przed Strzałem z Łuku. W przeciwnym razie, krzaki utrzymują się przez 1 minutę lub do momentu ponownego użycia tej opcji.",
+				"Po osiągnięciu 18. poziomu tej klasy obrażenia od trucizny i od cięć wzrastają do {@damage 4d6}."
+			]
+		},
+		{
+			"name": "Grasping Arrow",
+			"source": "XGE",
+			"page": 29,
+			"featureType": [
+				"AS"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Kiedy ta strzała trafia w cel, magia koniunkcji tworzy chwytne, trujące krzaki, które owijają się wokół celu. Istota trafiona strzałą otrzymuje dodatkowe {@damage 2d6} obrażeń od trucizny, jej prędkość zmniejsza się o 10 stóp, a za pierwszym razem otrzymuje {@damage 2d6} obrażeń od cięcia za każdym razem, gdy porusza się o 1 stopę lub więcej bez teleportacji. Cel lub dowolna istota, która może go dosięgnąć, może użyć swojej akcji, aby usunąć krzaki, wykonując udany test Wytrzymałości ({@skill Athletics}) przeciwko DC obrony przed Strzałem z Łuku. W przeciwnym razie, krzaki utrzymują się przez 1 minutę lub do momentu ponownego użycia tej opcji.",
+				"Obrażenia od trucizny i obrażenia od cięcia zwiększają się do {@damage 4d6} po osiągnięciu 18. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Great Weapon Fighting",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"otherSources": [
+				{
+					"source": "PHB",
+					"page": 84
+				}
+			],
+			"featureType": [
+				"FS:F",
+				"FS:P"
+			],
+			"entries": [
+				"Kiedy wypadnie 1 lub 2 na kości obrażeń przy ataku bronią do walki wręcz, którą władasz dwoma rękami, możesz ponownie rzucić kością i musisz użyć nowego rzutu, nawet jeśli wypadnie on 1 lub 2. Broń musi być dwuręczna lub uniwersalna, abyś mógł skorzystać z tej korzyści."
+			]
+		},
+		{
+			"name": "Green Lord's Gift",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Archfey"
+				}
+			],
+			"entries": [
+				"Zielony Władca nadzoruje zieloną krainę wiecznego lata. Twoja dusza jest połączona z jego mocą. Za każdym razem, gdy odzyskujesz punkty trafień, traktujesz wszystkie kości rzucone w celu określenia odzyskanych punktów trafień jako rzucone z maksymalną wartością."
+			]
+		},
+		{
+			"name": "Haug (Hill Rune)",
+			"source": "UAFighterRangerRogue",
+			"page": 1,
+			"featureType": [
+				"RN"
+			],
+			"entries": [
+				"Magia tej runy obdarza cię odpornością przypominającą odporność olbrzyma z gór. Nosząc lub dzierżąc przedmiot z tą runą, masz przewagę w rzutach ratunkowych przeciwko bytowi {@condition poisoned} i jesteś odporny na obrażenia od trucizny.",
+				"Dodatkowo, możesz przywołać runę jako dodatkową akcję, zyskując odporność na obrażenia od ciosów, przebicia i cięcia na 1 minutę. Po przywołaniu runy nie możesz tego zrobić ponownie, dopóki nie zakończysz krótkiego lub długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Healing Draught",
+			"source": "UAArtificer",
+			"page": 5,
+			"featureType": [
+				"AF"
+			],
+			"entries": [
+				"Jako akcję, możesz sięgnąć do swojej Torby Alchemika i wyciągnąć fiolkę z leczniczym płynem. Stworzenie może ją wypić w ramach akcji, aby odzyskać {@dice 1d8} punktów życia. Następnie fiolka znika. Kiedy stworzenie odzyska punkty życia dzięki tej alchemicznej formule, nie może tego zrobić ponownie, dopóki nie zakończy długiego odpoczynku. Jeśli nie zostanie użyta, fiolka i jej zawartość znikają po 1 godzinie. Dopóki fiolka istnieje, nie można użyć tej formuły. Właściwości lecznicze tej formuły zwiększają się o {@dice 1d8}, gdy osiągniesz określony poziom w tej klasie: 3. poziom ({@dice 2d8}), 5. poziom ({@dice 3d8}), 7. poziom ({@dice 4d8}), 9. poziom ({@dice 5d8}), 11. poziom ({@dice 6d8}), 13. poziom ({@dice 7d8}), 15. poziom ({@dice 8d8}), 17. poziom ({@dice 9d8}) i 19. poziom ({@dice 10d8})."
+			]
+		},
+		{
+			"name": "Heightened Spell",
+			"source": "PHB",
+			"page": 102,
+			"srd": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points",
+				"amount": 3
+			},
+			"entries": [
+				"Kiedy rzucasz zaklęcie, które zmusza istotę do wykonania rzutu obronnego, aby oprzeć się jego efektom, możesz wydać 3 punkty czarów, aby jeden cel zaklęcia otrzymał minus przy pierwszym rzucie obronnym przeciwko zaklęciu."
+			]
+		},
+		{
+			"name": "Helm of Awareness",
+			"source": "TCE",
+			"page": 21,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 10,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A helmet (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"Podczas noszenia tego hełmu stworzenie ma przewagę w rzutach inicjatywnych. Dodatkowo, noszący go nie może zostać zaskoczony, pod warunkiem, że nie jest {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Helm of Awareness",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 10,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A helmet (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"Podczas noszenia tego hełmu stworzenie ma przewagę w rzutach inicjatywnych. Dodatkowo, noszący go nie może zostać zaskoczony, pod warunkiem, że nie jest {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Hill Rune",
+			"source": "TCE",
+			"page": 45,
+			"featureType": [
+				"RN"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Fighter"
+						},
+						"subclass": {
+							"name": "Rune Knight"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Magia tej runy daje odporność przypominającą odporność olbrzyma ze wzgórza. Nosząc lub dzierżąc przedmiot z tą runą, masz przewagę w rzutach ratunkowych przeciwko bytowi {@condition poisoned} i jesteś odporny na obrażenia od trucizny.",
+				"Dodatkowo, możesz przywołać runę jako dodatkową akcję, zyskując odporność na obrażenia od ciosów, przebicia i cięcia na 1 minutę. Po przywołaniu tej runy nie możesz tego zrobić ponownie, dopóki nie zakończysz krótkiego lub długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Homunculus Servant",
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A gem or crystal worth at least 100 gp"
+					]
+				}
+			],
+			"entries": [
+				"Uczysz się skomplikowanych metod magicznego tworzenia specjalnego {@creature Homunculus Servant|TCE|homunculus} stworzenia, które ci służy. Przedmiot, który zalejesz, służy jako serce stworzenia, wokół którego natychmiast formuje się jego ciało.",
+				"Ty określasz wygląd homunkulusa. Niektórzy sztukmistrze wolą mechaniczne ptaki, inni zaś skrzydlate fiolki lub miniaturowe, ożywione kociołki.",
+				"Homunculus jest przyjaźnie nastawiony do ciebie i twoich towarzyszy oraz posłuszny twoim rozkazom. Zobacz statystyki gry tego stworzenia w bloku statystyk sługi homunkulusa, które w kilku miejscach wykorzystują twoją premię do biegłości (PB).",
+				"W walce homunkulus dzieli twoją inicjatywę, ale wykonuje swoją turę zaraz po twojej. Może się poruszać i używać swoich reakcji, ale jedyną akcją, jaką wykonuje w swojej turze, jest akcja {@action Dodge}, chyba że w swojej turze wykonasz akcję bonusową, aby nakazać mu wykonanie innej akcji. Tą akcją może być akcja z jego bloku statystyk lub jakaś inna. Jeśli jesteś {@condition incapacitated}, homunkulus może podjąć dowolną akcję, a nie tylko {@action Dodge}.",
+				"Homunculus odzyskuje {@dice 2d6} punktów życia, jeśli zostanie na niego rzucone zaklęcie {@spell mending}. Jeśli ty lub homunkulus zginiecie, znika, pozostawiając serce w swoim miejscu."
+			]
+		},
+		{
+			"name": "Ild (Fire Rune)",
+			"source": "UAFighterRangerRogue",
+			"page": 1,
+			"featureType": [
+				"RN"
+			],
+			"entries": [
+				"Magia tej runy łączy się z mistrzowskim kunsztem kowali ognistych olbrzymów. Podczas noszenia lub noszenia przedmiotu zapisanego tą runą, twoja premia do biegłości jest podwajana do każdego testu umiejętności, który wykorzystuje biegłość w posługiwaniu się narzędziem.",
+				"Dodatkowo, kiedy trafisz istotę atakiem z broni, możesz przywołać runę, aby przywołać ogniste kajdany: celowi musi się udać rzut ratunkowy na Wytrzymałość albo będzie {@condition restrained} przez 1 minutę. Podczas gdy {@condition restrained} jest zakuty w kajdany, cel otrzymuje {@damage 2d6} obrażeń od ognia na początku każdej swojej tury. Cel może powtórzyć rzut ratunkowy na koniec każdej swojej tury, a jeśli mu się powiedzie, wyrzuca kajdany. Po przywołaniu runy nie można tego zrobić ponownie, dopóki nie zakończy się krótki lub długi odpoczynek."
+			]
+		},
+		{
+			"name": "Improved Pact Weapon",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Improved Pact Weapon",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade"
+				}
+			],
+			"entries": [
+				"Możesz użyć każdej broni, którą przywołasz za pomocą cechy Pakt Ostrza, jako cel zaklęć czarnoksiężnika. Ponadto broń ta liczy się jako broń magiczna z premią +1 do ataku i obrażeń, chyba że jest to już broń magiczna, którą przekształciłeś w broń paktową."
+			]
+		},
+		{
+			"name": "Improved Pact Weapon",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Każda broń, którą stworzysz używając cechy Pakt Ostrza, jest bronią +1. Przywołanie to nie ma wpływu na magiczną broń, którą przekształciłeś w swoją paktową broń."
+			]
+		},
+		{
+			"name": "Improved Pact Weapon",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade"
+				}
+			],
+			"entries": [
+				"Możesz użyć każdej broni, którą przywołasz za pomocą cechy Pakt Ostrza, jako ogniska zaklęć dla zaklęć czarnoksiężnika.",
+				"Ponadto broń zyskuje premię +1 do ataku i obrażeń, chyba że jest to broń magiczna, która ma już premię do tych obrażeń.",
+				"W końcu, wyczarowana broń może być {@item shortbow|phb}, {@item longbow|phb}, {@item light crossbow|phb} lub {@item heavy crossbow|phb}."
+			]
+		},
+		{
+			"name": "Interception",
+			"source": "TCE",
+			"page": 41,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:P"
+			],
+			"entries": [
+				"Kiedy istota, którą widzisz, trafia atakiem cel inny niż ty, znajdujący się w promieniu 5 stóp od ciebie, możesz użyć swojej reakcji, aby zmniejszyć obrażenia zadane celowi o {@dice 1d10} + twój bonus do biegłości (do minimum 0 obrażeń). Aby użyć tej reakcji, musisz posiadać broń {@item shield|phb}, prostą lub bojową."
+			]
+		},
+		{
+			"name": "Interception",
+			"source": "UAClassFeatureVariants",
+			"page": 12,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"Kiedy istota, którą widzisz, uderza atakiem w cel znajdujący się w promieniu 5 stóp od ciebie, możesz użyć swojej reakcji, aby zmniejszyć obrażenia zadane celowi o {@dice 1d10} + twoja premia do biegłości (do minimum 0 obrażeń). Aby użyć tej reakcji, musisz posiadać tarczę lub broń prostą lub bojową."
+			]
+		},
+		{
+			"name": "Investment of the Chain Master",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Chain"
+				}
+			],
+			"entries": [
+				"Kiedy rzucasz {@spell find familiar}, napełniasz przywołanego znajomego miarą swojej eldrycznej mocy, dając mu następujące korzyści:",
+				{
+					"type": "list",
+					"items": [
+						"Znajomy zyskuje prędkość latania lub pływania (do wyboru) wynoszącą 40 stóp.",
+						"Jako dodatkową akcję, możesz nakazać znajomemu wykonanie akcji {@action Attack}.",
+						"Ataki bronią znajomego są uznawane za magiczne do celów pokonania odporności i odporności na ataki niemagiczne.",
+						"Jeśli znajomy zmusza stwora do wykonania rzutu obronnego, używa on twojego DC obrony przed zaklęciem.",
+						"Kiedy znajomy otrzymuje obrażenia, możesz użyć swojej reakcji, aby zapewnić mu odporność na te obrażenia."
+					]
+				}
+			]
+		},
+		{
+			"name": "Investment of the Chain Master",
+			"source": "UAClassFeatureVariants",
+			"page": 11,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Chain"
+				}
+			],
+			"entries": [
+				"Kiedy rzucasz \"Znajdź znajomego\", napełniasz przywołanego znajomego swoją eldrycką mocą, dając mu następujące korzyści:",
+				{
+					"type": "list",
+					"items": [
+						"Znajomy zyskuje prędkość latania lub pływania (do wyboru) wynoszącą 40 stóp.",
+						"To, co znane, nie musi już oddychać.",
+						"Ataki bronią znajomego są uznawane za magiczne do celów pokonania odporności i odporności na ataki niemagiczne.",
+						"Jeśli znajomy zmusza stwora do wykonania rzutu obronnego, używa on twojego DC obrony przed zaklęciem."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ise (Frost Rune)",
+			"source": "UAFighterRangerRogue",
+			"page": 1,
+			"featureType": [
+				"RN"
+			],
+			"entries": [
+				"Magia tej runy przywołuje stoicki spokój mroźnego olbrzyma. Nosząc lub dzierżąc przedmiot z tą runą, masz przewagę w testach na Mądrość ({@skill Animal Handling}) i Charyzmę ({@skill Intimidation}).",
+				"Dodatkowo, możesz przywołać runę jako dodatkową akcję, aby zwiększyć swój wynik Siły o 2 przez 10 minut. Ten wzrost może sprawić, że twój wynik przekroczy 20, ale nie 30 punktów. Po przywołaniu runy nie możesz tego zrobić ponownie, dopóki nie zakończysz krótkiego lub długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Kiss of Mephistopheles",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Kiss of Mephistopheles",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Kiedy trafisz stwora swoim {@spell eldritch blast}, możesz rzucić {@spell fireball} jako akcję dodatkową, używając slotu na zaklęcie Czarnoksiężnika. Zaklęcie musi być wyśrodkowane na stworzeniu, które trafiłeś z {@spell eldritch blast}."
+			]
+		},
+		{
+			"name": "Kiss of Mephistopheles",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"patron": "The Fiend",
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Możesz przenieść ogień Mefistofelesa przez swoje {@spell eldritch blast}. Kiedy trafisz stwora tym cantripem, możesz rzucić {@spell fireball} jako akcję dodatkową, używając slotu czarów Czarnoksiężnika. Zaklęcie to musi być jednak skoncentrowane na stworzeniu, które zostało trafione eldritchowym podmuchem."
+			]
+		},
+		{
+			"name": "Lance of Lethargy",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"Raz na każdą swoją turę, kiedy trafisz stwora swoim {@spell eldritch blast}, możesz zmniejszyć jego prędkość o 10 stóp do końca swojej następnej tury."
+			]
+		},
+		{
+			"name": "Lifedrinker",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 12,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Blade"
+				}
+			],
+			"entries": [
+				"Kiedy trafisz stwora swoją bronią paktową, otrzymuje on dodatkowe obrażenia nekrotyczne równe twojemu modyfikatorowi Charyzmy (minimum 1)."
+			]
+		},
+		{
+			"name": "Lunging Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy w swojej turze wykonujesz atak bronią do walki wręcz, możesz wydać jedną kość przewagi, aby zwiększyć swój zasięg tego ataku o 5 stóp. Jeśli trafisz, dodajesz kość przewagi do wyniku ataku."
+			]
+		},
+		{
+			"name": "Mace of Dispater",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"patron": "The Fiend"
+				}
+			],
+			"entries": [
+				"Kiedy tworzysz swoją broń paktową jako buzdygan, staje się on żelaznym buzdyganem wykutym w Dis, drugim z Dziewięciu Piekieł. Kiedy trafisz nią istotę, możesz wydać slot zaklęcia, aby zadać jej dodatkowe {@damage 2d8} obrażeń od siły na poziom zaklęcia, a także powalić cel {@condition prone}, jeśli jest on Ogromny lub mniejszy."
+			]
+		},
+		{
+			"name": "Maddening Hex",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Chilling Hex",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Jako działanie dodatkowe wywołujesz zaburzenia psychiczne wokół celu przeklętego przez twoje {@spell hex} zaklęcie lub cechę czarnoksiężnika, taką jak Klątwa Sześciokątnego Ostrza czy Znak Złej Wróżby. Kiedy to zrobisz, zadajesz obrażenia psychiczne celowi i każdej wybranej przez ciebie istocie w promieniu 5 stóp od niego. Obrażenia psychiczne są równe twojemu modyfikatorowi Charyzmy (minimalnie 0 obrażeń)."
+			]
+		},
+		{
+			"name": "Maddening Hex",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"spell": [
+						"hex/curse#x"
+					]
+				}
+			],
+			"entries": [
+				"Jako działanie dodatkowe wywołujesz zaburzenia psychiczne wokół celu przeklętego przez twoje {@spell hex} zaklęcie lub cechę czarnoksiężnika, taką jak Klątwa Sześciokątnego Ostrza lub Znak Złej Wróżby. Gdy to zrobisz, zadajesz obrażenia psychiczne przeklętemu celowi i każdej wybranej przez ciebie istocie, którą widzisz w promieniu 5 stóp od niego. Obrażenia psychiczne są równe twojemu modyfikatorowi Charyzmy (minimum 1 obrażenie). Aby użyć tej inwokacji, musisz widzieć przeklęty cel i musi on znajdować się w promieniu 30 stóp od ciebie."
+			]
+		},
+		{
+			"name": "Maneuvering Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy trafisz stwora atakiem z użyciem broni, możesz wydać jedną kość przewagi, aby przesunąć jednego z towarzyszy na korzystniejszą pozycję. Dodajesz tę kość przewagi do wyniku ataku i wybierasz przyjazną istotę, która cię widzi lub słyszy. To stworzenie może wykorzystać swoją reakcję, aby poruszyć się o połowę swojej prędkości bez prowokowania ataku okazjonalnego ze strony celu twojego ataku."
+			]
+		},
+		{
+			"name": "Many-Handed Pouch",
+			"source": "UAArtificerRevisited",
+			"page": 13,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 4,
+						"class": {
+							"name": "Artificer (Revisited)"
+						}
+					},
+					"item": [
+						"2–5 pouches"
+					]
+				}
+			],
+			"entries": [
+				"Wszystkie napełnione woreczki dzielą jedną przestrzeń międzywymiarową o takiej samej pojemności jak pojedynczy woreczek. Sięgając do którejkolwiek z sakiewek, można więc uzyskać dostęp do tej samej przestrzeni. Woreczek działa tak długo, jak długo znajduje się w promieniu 100 mil od innego woreczka; w przeciwnym razie jest pusty i nie przyjmuje żadnej zawartości.",
+				"Jeśli ta infuzja się skończy, przedmioty przechowywane we wspólnej przestrzeni wędrują do jednej z woreczków, wyznaczonej losowo. Pozostałe woreczki stają się puste."
+			]
+		},
+		{
+			"name": "Mariner",
+			"source": "UAWaterborneAdventures",
+			"page": 3,
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"Dopóki nie nosisz ciężkiej zbroi lub nie używasz tarczy, masz prędkość pływania i prędkość wspinaczki równą swojej normalnej prędkości i zyskujesz premię +1 do AC."
+			]
+		},
+		{
+			"name": "Mask of Many Faces",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"disguise self"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucać {@spell disguise self} do woli, nie zużywając slotu na zaklęcia."
+			]
+		},
+		{
+			"name": "Master of Myriad Forms",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 15,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"alter self"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucać {@spell alter self} do woli, nie zużywając slotu na zaklęcia."
+			]
+		},
+		{
+			"name": "Menacing Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Kiedy trafisz istotę atakiem z użyciem broni, możesz wydać jedną kość przewagi, aby spróbować przestraszyć cel. Dodajesz kość przewagi do wartości obrażeń ataku, a cel musi wykonać rzut ratujący mądrość. W przypadku nieudanego ataku, cel jest {@condition frightened} przed tobą do końca twojej następnej tury."
+			]
+		},
+		{
+			"name": "Mind Sharpener",
+			"source": "TCE",
+			"page": 22,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A suit of armor or robes"
+					]
+				}
+			],
+			"entries": [
+				"Przedmiot może wywołać u użytkownika wstrząs, który pozwoli mu skupić umysł. Przedmiot ma 4 ładunki. Kiedy użytkownikowi nie udaje się rzut na utrzymanie koncentracji na zaklęciu, może on użyć swojej reakcji, aby zużyć jeden z ładunków przedmiotu i odnieść sukces. Przedmiot odzyskuje {@dice 1d4} zużytych ładunków codziennie o świcie."
+			]
+		},
+		{
+			"name": "Mind Sharpener",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A suit of armor or robes"
+					]
+				}
+			],
+			"entries": [
+				"Zaklęcie to może wywołać u noszącego wstrząs, który pozwoli mu skupić uwagę. W czasie noszenia tego przedmiotu, gdy istota nie zdoła wykonać rzutu na utrzymanie koncentracji na zaklęciu, może użyć swojej reakcji, aby odnieść sukces."
+			]
+		},
+		{
+			"name": "Mind-Scrambling Arrow",
+			"source": "UARevisedSubclasses",
+			"page": 4,
+			"featureType": [
+				"AS:V2-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Twoja magia sprawia, że ta strzała tymczasowo oszukuje swój cel. Wybierz jednego ze swoich sojuszników w promieniu 30 stóp od celu. Jeśli strzała trafi w stworzenie, cel otrzymuje dodatkowe {@damage 2d6} obrażeń psychicznych i musi udać mu się rzut ratunkowy na mądrość, w przeciwnym razie nie będzie mógł zaatakować wybranego sojusznika ani objąć go szkodliwym efektem do początku twojej następnej tury. Efekt ten kończy się wcześnie, jeśli wybrany sojusznik zada celowi jakiekolwiek obrażenia.",
+				"Obrażenia psychiczne zwiększają się do {@damage 4d6} po osiągnięciu 18. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Minions of Chaos",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"conjure elemental"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucić {@spell conjure elemental} raz, używając slotu czaru czarnoksiężnika. Nie możesz tego zrobić ponownie, dopóki nie zakończysz długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Mire the Mind",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"slow"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucić {@spell slow} raz, używając slotu czaru czarnoksiężnika. Nie możesz tego zrobić ponownie, dopóki nie zakończysz długiego odpoczynku."
+			]
+		},
+		{
+			"name": "Mist Stance",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 11,
+						"class": {
+							"name": "Monk"
+						},
+						"subclass": {
+							"name": "Four Elements"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"4": [
+									"gaseous form"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"Możesz wydać 4 punkty ki, aby rzucić {@spell gaseous form}, celując w siebie."
+			]
+		},
+		{
+			"name": "Misty Visions",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"silent image"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucać {@spell silent image} do woli, nie zużywając slotu na zaklęcie ani składników materialnych."
+			]
+		},
+		{
+			"name": "Moon Bow",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"patron": "The Archfey"
+				}
+			],
+			"entries": [
+				"Możesz stworzyć długi łuk, używając cechy Pakt Ostrza. Po naciągnięciu cięciwy i wystrzeleniu z niej strzały, tworzy ona strzałę z białego drewna, która znika po 1 minucie. Masz przewagę w walce z likantropami przy użyciu łuku. Kiedy trafisz nim istotę, możesz wydać slot na zaklęcie, aby zadać jej dodatkowe {@damage 2d8} obrażeń od promieniowania na poziom zaklęcia."
+			]
+		},
+		{
+			"name": "Nullification",
+			"source": "UAClericDruidWizard",
+			"page": 5,
+			"featureType": [
+				"OR"
+			],
+			"entries": [
+				"Jeśli na wskazany cel działają inne zaklęcia, wiesz, jakie to zaklęcia, i możesz spróbować zakończyć jeden z nich, udanie wykonując test Inteligencji z DC równym 10 + poziom wybranego zaklęcia."
+			]
+		},
+		{
+			"name": "One with Shadows",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Kiedy znajdujesz się w obszarze słabego światła lub ciemności, możesz użyć swojej akcji, aby stać się {@condition invisible}, dopóki się nie poruszysz, nie wykonasz akcji lub reakcji."
+			]
+		},
+		{
+			"name": "Otherworldly Leap",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"jump"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Możesz rzucać {@spell jump} na siebie do woli, nie zużywając slotu na zaklęcie ani składników materialnych."
+			]
+		},
+		{
+			"name": "Pact of the Blade",
+			"source": "PHB",
+			"page": 107,
+			"srd": true,
+			"featureType": [
+				"PB"
+			],
+			"entries": [
+				"Możesz użyć swojej akcji, aby stworzyć broń paktową w swojej pustej dłoni. Za każdym razem, gdy ją tworzysz, możesz wybrać formę, jaką przybierze ta broń do walki wręcz (opcje broni znajdziesz w rozdziale 5). Posiadając ją, jesteś biegły w posługiwaniu się nią. Broń ta liczy się jako magiczna do celów pokonania odporności i immunitetu na niemagiczne ataki i obrażenia.",
+				"Twoja broń paktowa znika, jeśli znajduje się w odległości większej niż 5 stóp od ciebie przez 1 minutę lub dłużej. Znika również, jeśli ponownie użyjesz tej cechy, jeśli odrzucisz broń (nie jest wymagana żadna akcja) lub jeśli umrzesz.",
+				"Możesz przekształcić jedną magiczną broń w swoją broń paktową, wykonując specjalny rytuał podczas trzymania broni. Rytuał trwa 1 godzinę i można go wykonać podczas krótkiego odpoczynku. Następnie możesz odrzucić broń, przenosząc ją do przestrzeni pozawymiarowej, a pojawia się ona za każdym razem, gdy tworzysz broń paktową. Nie możesz w ten sposób wpłynąć na artefakt lub broń czującą. Broń przestaje być twoją bronią paktową, jeśli umrzesz, jeśli przeprowadzisz 1-godzinny rytuał na innej broni lub jeśli użyjesz 1-godzinnego rytuału, by zerwać z nią więź. Broń pojawia się u twoich stóp, jeśli w momencie zerwania więzi znajduje się w przestrzeni pozawymiarowej."
+			]
+		},
+		{
+			"name": "Pact of the Chain",
+			"source": "PHB",
+			"page": 107,
+			"srd": true,
+			"featureType": [
+				"PB"
+			],
+			"additionalSpells": [
+				{
+					"ability": "cha",
+					"innate": {
+						"_": {
+							"ritual": [
+								"find familiar"
+							]
+						}
+					}
+				}
+			],
+			"entries": [
+				"Uczysz się tego {@spell find familiar} zaklęcia i możesz je rzucać jako rytuał. Zaklęcie nie wlicza się do liczby poznanych zaklęć.",
+				"Podczas rzucania zaklęcia możesz wybrać jedną z normalnych form dla swojego znajomego lub jedną z następujących form specjalnych: {@creature imp}, {@creature pseudodragon}, {@creature quasit} lub {@creature sprite}.",
+				"Dodatkowo, kiedy wykonujesz akcję {@action Attack}, możesz zrezygnować z jednego z własnych ataków, aby umożliwić swojemu znajomemu wykorzystanie jego reakcji do wykonania jednego własnego ataku."
+			]
+		},
+		{
+			"name": "Pact of the Star Chain",
+			"source": "UATheFaithful",
+			"page": 1,
+			"featureType": [
+				"PB"
+			],
+			"additionalSpells": [
+				{
+					"ability": "cha",
+					"innate": {
+						"_": {
+							"ritual": [
+								"augury"
+							]
+						}
+					}
+				}
+			],
+			"entries": [
+				"Na 3. poziomie postać poświęcona {@class Warlock|phb|Seeker|Seeker (UA)|UATheFaithful} może wybrać tę opcję zamiast jednej z istniejących opcji Pact Boon czarnoksiężnika.",
+				"Poszukiwacz daje ci łańcuch wykuty z gwiezdnego światła, ozdobiony siedmioma błyszczącymi cętkami jasności. Gdy łańcuch jest na twojej osobie, znasz zaklęcie {@spell augury} i możesz je rzucić jako rytuał. Zaklęcie nie wlicza się do liczby znanych zaklęć.",
+				"Additionally, you can invoke the Seeker's power to gain advantage on an Intelligence check while you carry this item. Once you use this ability, you cannot use it again until you complete a short or long rest.",
+				"If you lose your Star Chain, you can perform a 1-hour ceremony to receive a replacement from the Seeker. The ceremony can be performed during a short or long rest, and it destroys the previous chain. The chain disappears in a flash of light when you die.",
+				"The exact form of this item might be different depending on your patron. The Star Chain is inspired by the Greyhawk deity Celestian."
+			]
+		},
+		{
+			"name": "Pact of the Talisman",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"PB"
+			],
+			"entries": [
+				"Your patron gives you an amulet, a talisman that can aid the wearer when the need is great. When the wearer fails an ability check, they can add a {@dice d4} to the roll, potentially turning the roll into a success. This benefit can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest.",
+				"If you lose the talisman, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous amulet. The talisman turns to ash when you die."
+			]
+		},
+		{
+			"name": "Pact of the Talisman",
+			"source": "UAClassFeatureVariants",
+			"page": 11,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"PB"
+			],
+			"entries": [
+				"Your patron gives you a special amulet, a talisman that can aid you, or anyone else who wears it, when the need is great. When the wearer makes an ability check with a skill in which they lack proficiency, they can add a {@dice d4} to the roll.",
+				"If you lose the talisman, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous amulet.",
+				"The talisman turns to ash when you die."
+			]
+		},
+		{
+			"name": "Pact of the Tome",
+			"source": "PHB",
+			"page": 108,
+			"srd": true,
+			"featureType": [
+				"PB"
+			],
+			"additionalSpells": [
+				{
+					"ability": "cha",
+					"known": {
+						"_": [
+							{
+								"choose": "level=0",
+								"count": 3
+							}
+						]
+					}
+				}
+			],
+			"entries": [
+				"Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three {@filter cantrips|spells|level=0} from any class's spell list. The cantrips do not need to be from the same spell list. While the book is on your person, you can cast those cantrips at will. They don't count against your number of cantrips known. Any cantrip you cast with this feature is considered a warlock cantrip for you. If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die."
+			]
+		},
+		{
+			"name": "Parry",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When another creature damages you with a melee attack, you can use your reaction and expend one superiority die to reduce the damage by the number you roll on your superiority die + your Dexterity modifier."
+			]
+		},
+		{
+			"name": "Path of the Seeker",
+			"source": "UAWarlockAndWizard",
+			"page": 4,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Seeker"
+				}
+			],
+			"entries": [
+				"The Seeker bids you to travel in search of knowledge, and little can prevent you from walking this path. You ignore {@quickref difficult terrain||3}, have advantage on all checks to escape a grapple, manacles, or rope bindings, and advantage on saving throws against being {@condition paralyzed}."
+			]
+		},
+		{
+			"name": "Piercing Arrow",
+			"source": "UAFighter",
+			"page": 2,
+			"featureType": [
+				"AS:V1-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"You use transmutation magic to transform your arrow into an ethereal dart that passes through its targets. When you attack with this arrow, it fires forward in a line that is 1 foot wide and 30 feet long. You make a separate attack using your Arcane Arrow against each creature in that line."
+			]
+		},
+		{
+			"name": "Piercing Arrow",
+			"source": "UARevisedSubclasses",
+			"page": 4,
+			"featureType": [
+				"AS:V2-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"You use transmutation magic to transform your arrow into an ethereal dart that passes through its targets. You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don't make an attack roll for the attack. Instead, the arrow fires forward in a line that is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a target takes damage as if it were hit by the arrow, plus an extra {@damage 1d6} piercing damage. On a successful save, a target takes half as much damage.",
+				"The piercing damage increases to {@damage 2d6} when you reach 18th level in this class."
+			]
+		},
+		{
+			"name": "Piercing Arrow",
+			"source": "XGE",
+			"page": 29,
+			"featureType": [
+				"AS"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"You use transmutation magic to give your arrow an ethereal quality. When you use this option, you don't make an attack roll for the attack. Instead, the arrow shoots forward in a line, which is 1 foot wide and 30 feet long, before disappearing. The arrow passes harmlessly through objects, ignoring cover. Each creature in that line must make a Dexterity saving throw. On a failed save, a creature takes damage as if it were hit by the arrow, plus an extra {@damage 1d6} piercing damage. On a successful save, a target takes half as much damage.",
+				"The piercing damage increases to {@damage 2d6} when you reach 18th level in this class."
+			]
+		},
+		{
+			"name": "Precision Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When you make a weapon attack roll against a creature, you can expend one superiority die to add it to the roll. You can use this maneuver before or after making the attack roll, but before any effects of the attack are applied."
+			]
+		},
+		{
+			"name": "Precision Attack",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"featureType": [
+				"MV:C2-UA"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When you make a weapon attack against a creature, you can expend one superiority die, roll it, and add it to the attack roll. You can use this ability before or after rolling the {@dice d20}, but before any of the effects of the attack are applied."
+			]
+		},
+		{
+			"name": "Protection",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"otherSources": [
+				{
+					"source": "PHB",
+					"page": 84
+				}
+			],
+			"featureType": [
+				"FS:F",
+				"FS:P"
+			],
+			"entries": [
+				"When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield."
+			]
+		},
+		{
+			"name": "Protection of the Talisman",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Talisman"
+				}
+			],
+			"entries": [
+				"When the wearer of your talisman fails a saving throw, they can add a {@dice d4} to the roll, potentially turning the save into a success. This benefit can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest."
+			]
+		},
+		{
+			"name": "Protection of the Talisman",
+			"source": "UAClassFeatureVariants",
+			"page": 12,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Talisman"
+				}
+			],
+			"entries": [
+				"When the wearer of your talisman makes a saving throw in which they lack proficiency, they can add a {@dice d4} to the roll."
+			]
+		},
+		{
+			"name": "Puppetry",
+			"source": "UAClericDruidWizard",
+			"page": 5,
+			"featureType": [
+				"OR"
+			],
+			"entries": [
+				"The first time the named creature takes damage from the spell, you can knock the creature {@condition prone} or move it up to 10 feet, either directly toward you or away from you."
+			]
+		},
+		{
+			"name": "Pushing Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to drive the target back. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you push the target up to 15 feet away from you."
+			]
+		},
+		{
+			"name": "Quick Toss",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"As a bonus action, you can expend one superiority die and make a ranged attack with a weapon that has the thrown property. You can draw the weapon as part of making this attack. If you hit, add the superiority die to the weapon's damage roll."
+			]
+		},
+		{
+			"name": "Quickened Spell",
+			"source": "PHB",
+			"page": 102,
+			"srd": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points",
+				"amount": 2
+			},
+			"entries": [
+				"When you cast a spell that has a casting time of 1 action, you can spend 2 sorcery points to change the casting time to 1 bonus action for this casting."
+			]
+		},
+		{
+			"name": "Radiant Weapon",
+			"source": "TCE",
+			"page": 22,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 6,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A simple or martial weapon (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"This magic weapon grants a +1 bonus to attack and damage rolls made with it. While holding it, the wielder can take a bonus action to cause it to shed bright light in a 30-foot radius and dim light for an additional 30 feet. The wielder can extinguish the light as a bonus action.",
+				"The weapon has 4 charges. As a reaction immediately after being hit by an attack, the wielder can expend 1 charge and cause the attacker to be {@condition blinded} until the end of the attacker's next turn, unless the attacker succeeds on a Constitution saving throw against your spell save DC. The weapon regains {@dice 1d4} expended charges daily at dawn."
+			]
+		},
+		{
+			"name": "Radiant Weapon",
+			"source": "UAArtificerRevisited",
+			"page": 13,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 8,
+						"class": {
+							"name": "Artificer (Revisited)"
+						}
+					},
+					"item": [
+						"A simple or martial weapon (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"This magic weapon grants a +1 bonus to attack and damage rolls made with it. While holding it, the wielder can take a bonus action to cause it to shed bright light in a 30-foot radius and dim light for an additional 30 feet. The wielder can extinguish the light as a bonus action.",
+				"As a reaction immediately after being hit by a melee attack, the wielder can cause the attacker to be {@condition blinded} until the end of the attacker's next turn, unless the attacker succeeds on a Constitution saving throw against your spell save DC. Once used, this reaction can't be used again until the wielder finishes a short or long rest."
+			]
+		},
+		{
+			"name": "Rally",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"On your turn, you can use a bonus action and expend one superiority die to bolster the resolve of one of your companions. When you do so, choose a friendly creature who can see or hear you. That creature gains temporary hit points equal to the superiority die roll + your Charisma modifier."
+			]
+		},
+		{
+			"name": "Raven Queen's Blessing",
+			"source": "UAWarlockAndWizard",
+			"page": 5,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Raven Queen",
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"When you score a critical hit with your {@spell eldritch blast} cantrip, pick yourself or an ally you can see within 30 feet of you. The chosen creature can immediately expend a Hit Die to regain hit points equal to the roll + the creature's Constitution modifier (minimum of 1 hit point)."
+			]
+		},
+		{
+			"name": "Rebuke of the Talisman",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Talisman"
+				}
+			],
+			"entries": [
+				"When the wearer of your talisman is hit by an attacker you can see within 30 feet of you, you can use your reaction to deal psychic damage to the attacker equal to your proficiency bonus and push it up to 10 feet away from the talisman's wearer."
+			]
+		},
+		{
+			"name": "Rebuke of the Talisman",
+			"source": "UAClassFeatureVariants",
+			"page": 12,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Talisman"
+				}
+			],
+			"entries": [
+				"When the wearer of your talisman is hit by an attacker you can see within 30 feet of you, you can use your reaction to deal psychic damage to the attacker equal to your Charisma modifier (minimum of 1 damage) and push it up to 10 feet away from the talisman's wearer."
+			]
+		},
+		{
+			"name": "Relentless Hex",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Relentless Hex",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Your curse creates a temporary bond between you and your target. As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see within 5 feet of the target cursed by your {@spell hex} spell or by a warlock feature of yours, such as Hexblade's Curse and Sign of Ill Omen. To teleport in this way, you must be able to see the cursed target."
+			]
+		},
+		{
+			"name": "Relentless Hex",
+			"source": "UAWarlockAndWizard",
+			"page": 5,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"patron": "The Hexblade"
+				}
+			],
+			"entries": [
+				"Your Hexblade's Curse creates a temporary bond between you and your target. As a bonus action, you can magically teleport to a space you can see within 5 feet of the target cursed by your Hexblade's Curse. To do so, you must be able to see the target and must be within 30 feet of it."
+			]
+		},
+		{
+			"name": "Relentless Hex",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"spell": [
+						"hex/curse#x"
+					]
+				}
+			],
+			"entries": [
+				"Your curse creates a temporary bond between you and your target. As a bonus action, you can magically teleport up to 30 feet to an unoccupied space you can see within 5 feet of the target cursed by your {@spell hex} spell or by a warlock feature of yours, such as Hexblade's Curse or Sign of Ill Omen. To teleport in this way, you must be able to see the cursed target."
+			]
+		},
+		{
+			"name": "Repeating Shot",
+			"source": "TCE",
+			"page": 22,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A simple or martial weapon with the ammunition property (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"This magic weapon grants a +1 bonus to attack and damage rolls made with it when it's used to make a ranged attack, and it ignores the loading property if it has it.",
+				"If the weapon lacks ammunition, it produces its own, automatically creating one piece of magic ammunition when the wielder makes a ranged attack with it. The ammunition created by the weapon vanishes the instant after it hits or misses a target."
+			]
+		},
+		{
+			"name": "Repeating Shot",
+			"source": "UAArtificerRevisited",
+			"page": 13,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A simple or martial weapon with the ammunition property (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"This magic weapon grants a +1 bonus to attack and damage rolls made with it when it's used to make a ranged attack, and it ignores the loading property if it has it.",
+				"The weapon requires no ammunition; it magically produces one piece of ammunition each time you make a ranged attack with it, unless you manually load it. The ammunition produced by the weapon vanishes the instant after the it hits or misses a target."
+			]
+		},
+		{
+			"name": "Repelling Blast",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"spell": [
+						"eldritch blast#c"
+					]
+				}
+			],
+			"entries": [
+				"When you hit a creature with {@spell eldritch blast}, you can push the creature up to 10 feet away from you in a straight line."
+			]
+		},
+		{
+			"name": "Replicate Magic Item",
+			"source": "TCE",
+			"page": 22,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 63
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"entries": [
+				"Using this infusion, you replicate a particular magic item. You can learn this infusion multiple times; each time you do so, choose a magic item that you can make with it, picking from the Replicable Items tables below. A table's title tells you the level you must be in the class to choose an item from the table. Alternatively, you can choose the magic item from among the {@filter common magic items|items|type=!potion;!scroll|rarity=common} in the game, not including potions or scrolls.",
+				"In the tables, an item's entry tells you whether the item requires attunement. See the item's description in the {@book Dungeon Master's Guide|DMG} for more information about it, including the type of object required for its making.",
+				{
+					"type": "table",
+					"caption": "Replicable Items (2nd-Level Artificer)",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-10",
+						"col-2 text-center"
+					],
+					"rows": [
+						[
+							"{@item Alchemy jug}",
+							"No"
+						],
+						[
+							"{@item Bag of holding}",
+							"No"
+						],
+						[
+							"{@item Cap of water breathing}",
+							"No"
+						],
+						[
+							"{@item Goggles of night}",
+							"No"
+						],
+						[
+							"{@item Rope of climbing}",
+							"No"
+						],
+						[
+							"{@item Sending stones}",
+							"No"
+						],
+						[
+							"{@item Wand of magic detection}",
+							"No"
+						],
+						[
+							"{@item Wand of secrets}",
+							"No"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Replicable Items (6th-Level Artificer)",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-10",
+						"col-2 text-center"
+					],
+					"rows": [
+						[
+							"{@item Boots of elvenkind}",
+							"No"
+						],
+						[
+							"{@item Cloak of elvenkind}",
+							"Yes"
+						],
+						[
+							"{@item Cloak of the manta ray}",
+							"No"
+						],
+						[
+							"{@item Eyes of charming}",
+							"Yes"
+						],
+						[
+							"{@item Gloves of thievery}",
+							"No"
+						],
+						[
+							"{@item Lantern of revealing}",
+							"No"
+						],
+						[
+							"{@item Pipes of haunting}",
+							"No"
+						],
+						[
+							"{@item Ring of water walking}",
+							"No"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Replicable Items (10th-Level Artificer)",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-11",
+						"col-2 text-center"
+					],
+					"rows": [
+						[
+							"{@item Boots of striding and springing}",
+							"Yes"
+						],
+						[
+							"{@item Boots of the winterlands}",
+							"Yes"
+						],
+						[
+							"{@item Bracers of archery}",
+							"Yes"
+						],
+						[
+							"{@item Brooch of shielding}",
+							"Yes"
+						],
+						[
+							"{@item Cloak of protection}",
+							"Yes"
+						],
+						[
+							"{@item Eyes of the eagle}",
+							"Yes"
+						],
+						[
+							"{@item Gauntlets of ogre power}",
+							"Yes"
+						],
+						[
+							"{@item Gloves of missile snaring}",
+							"Yes"
+						],
+						[
+							"{@item Gloves of swimming and climbing}",
+							"Yes"
+						],
+						[
+							"{@item Hat of disguise}",
+							"Yes"
+						],
+						[
+							"{@item Headband of intellect}",
+							"Yes"
+						],
+						[
+							"{@item Helm of telepathy}",
+							"Yes"
+						],
+						[
+							"{@item Medallion of thoughts}",
+							"Yes"
+						],
+						[
+							"{@item Necklace of adaptation}",
+							"Yes"
+						],
+						[
+							"{@item Periapt of wound closure}",
+							"Yes"
+						],
+						[
+							"{@item Pipes of the sewers}",
+							"Yes"
+						],
+						[
+							"{@item Quiver of Ehlonna}",
+							"No"
+						],
+						[
+							"{@item Ring of jumping}",
+							"Yes"
+						],
+						[
+							"{@item Ring of mind shielding}",
+							"Yes"
+						],
+						[
+							"{@item Slippers of spider climbing}",
+							"Yes"
+						],
+						[
+							"{@item Ventilating lungs|ERLW} (detailed in {@book chapter 5|ERLW|13})",
+							"Yes"
+						],
+						[
+							"{@item Winged boots}",
+							"Yes"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Replicable Items (14th-Level Artificer)",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-11",
+						"col-1 text-center"
+					],
+					"rows": [
+						[
+							"{@item Amulet of health}",
+							"Yes"
+						],
+						[
+							"{@item Arcane propulsion arm|ERLW} (detailed in {@book chapter 5|ERLW|13})",
+							"Yes"
+						],
+						[
+							"{@item Belt of Hill Giant Strength||Belt of hill giant strength}",
+							"Yes"
+						],
+						[
+							"{@item Boots of levitation}",
+							"Yes"
+						],
+						[
+							"{@item Boots of speed}",
+							"Yes"
+						],
+						[
+							"{@item Bracers of defense}",
+							"Yes"
+						],
+						[
+							"{@item Cloak of the bat}",
+							"Yes"
+						],
+						[
+							"{@item Dimensional shackles}",
+							"No"
+						],
+						[
+							"{@item Gem of seeing}",
+							"Yes"
+						],
+						[
+							"{@item Horn of blasting}",
+							"No"
+						],
+						[
+							"{@item Ring of free action}",
+							"Yes"
+						],
+						[
+							"{@item Ring of protection}",
+							"Yes"
+						],
+						[
+							"{@item Ring of the ram}",
+							"Yes"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Replicate Magic Item",
+			"source": "UAArtificerRevisited",
+			"page": 9,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"otherSummary": {
+						"entry": "See below",
+						"entrySummary": "See text"
+					}
+				}
+			],
+			"entries": [
+				"Using this infusion, you replicate a particular magic item. You can learn this infusion multiple times; each time you do so, choose a different magic item that you can make with it, picking from the Replicable Magic Items tables below. If a table has a level in its title, you must be of at least that level in this class to choose an item from the table.",
+				"In the tables, an item's entry tells you whether the item requires attunement. See the item's description in the Dungeon Master's Guide for more information about it, including the type of object required for its making.",
+				{
+					"type": "table",
+					"caption": "Replicable Magic Items",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-10",
+						"col-2 text-center"
+					],
+					"rows": [
+						[
+							"{@item Alchemy jug}",
+							"No"
+						],
+						[
+							"{@item Bag of holding}",
+							"No"
+						],
+						[
+							"{@item Cap of water breathing}",
+							"No"
+						],
+						[
+							"{@item Cloak of the manta ray}",
+							"No"
+						],
+						[
+							"{@item Goggles of night}",
+							"No"
+						],
+						[
+							"{@item Lantern of revealing}",
+							"No"
+						],
+						[
+							"{@item Rope of climbing}",
+							"No"
+						],
+						[
+							"{@item Sending stones}",
+							"No"
+						],
+						[
+							"{@item Wand of magic detection}",
+							"No"
+						],
+						[
+							"{@item Wand of secrets}",
+							"No"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Replicable Magic Items (12th-Level Artificer)",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-10",
+						"col-2 text-center"
+					],
+					"rows": [
+						[
+							"{@item Boots of elvenkind}",
+							"No"
+						],
+						[
+							"{@item Boots of striding and springing}",
+							"Yes"
+						],
+						[
+							"{@item Boots of the winterlands}",
+							"Yes"
+						],
+						[
+							"{@item Bracers of archery}",
+							"Yes"
+						],
+						[
+							"{@item Brooch of shielding}",
+							"Yes"
+						],
+						[
+							"{@item Cloak of elvenkind}",
+							"Yes"
+						],
+						[
+							"{@item Cloak of protection}",
+							"Yes"
+						],
+						[
+							"{@item Eyes of charming}",
+							"Yes"
+						],
+						[
+							"{@item Eyes of the eagle}",
+							"Yes"
+						],
+						[
+							"{@item Gauntlets of ogre power}",
+							"Yes"
+						],
+						[
+							"{@item Gloves of missile snaring}",
+							"Yes"
+						],
+						[
+							"{@item Gloves of swimming and climbing}",
+							"Yes"
+						],
+						[
+							"{@item Gloves of thievery}",
+							"No"
+						],
+						[
+							"{@item Hat of disguise}",
+							"Yes"
+						],
+						[
+							"{@item Headband of intellect}",
+							"Yes"
+						],
+						[
+							"{@item Helm of telepathy}",
+							"Yes"
+						],
+						[
+							"{@item Medallion of thoughts}",
+							"Yes"
+						],
+						[
+							"{@item Periapt of wound closure}",
+							"Yes"
+						],
+						[
+							"{@item Pipes of haunting}",
+							"No"
+						],
+						[
+							"{@item Pipes of the sewers}",
+							"Yes"
+						],
+						[
+							"{@item Quiver of Ehlonna}",
+							"No"
+						],
+						[
+							"{@item Ring of jumping}",
+							"Yes"
+						],
+						[
+							"{@item Ring of mind shielding}",
+							"Yes"
+						],
+						[
+							"{@item Ring of water walking}",
+							"No"
+						],
+						[
+							"{@item Slippers of spider climbing}",
+							"Yes"
+						],
+						[
+							"{@item Winged boots}",
+							"Yes"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Replicable Magic Items (16th-Level Artificer)",
+					"colLabels": [
+						"Magic Item",
+						"Attunement"
+					],
+					"colStyles": [
+						"col-10",
+						"col-2 text-center"
+					],
+					"rows": [
+						[
+							"{@item Amulet of health}",
+							"Yes"
+						],
+						[
+							"{@item Belt of hill giant strength}",
+							"Yes"
+						],
+						[
+							"{@item Boots of levitation}",
+							"Yes"
+						],
+						[
+							"{@item Boots of speed}",
+							"Yes"
+						],
+						[
+							"{@item Bracers of defense}",
+							"Yes"
+						],
+						[
+							"{@item Cloak of the bat}",
+							"Yes"
+						],
+						[
+							"{@item Dimensional shackles}",
+							"No"
+						],
+						[
+							"{@item Gem of seeing}",
+							"Yes"
+						],
+						[
+							"{@item Horn of blasting}",
+							"No"
+						],
+						[
+							"{@item Ring of free action}",
+							"Yes"
+						],
+						[
+							"{@item Ring of protection}",
+							"Yes"
+						],
+						[
+							"{@item Ring of the ram}",
+							"Yes"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Repulsion Shield",
+			"source": "TCE",
+			"page": 23,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 63
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 6,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A shield (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"A creature gains a +1 bonus to Armor Class while wielding this shield.",
+				"The shield has 4 charges. While holding it, the wielder can use a reaction immediately after being hit by a melee attack to expend 1 of the shield's charges and push the attacker up to 15 feet away. The shield regains {@dice 1d4} expended charges daily at dawn."
+			]
+		},
+		{
+			"name": "Repulsion Shield",
+			"source": "UAArtificerRevisited",
+			"page": 14,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 8,
+						"class": {
+							"name": "Artificer (Revisited)"
+						}
+					},
+					"item": [
+						"A shield (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"A creature gains a +1 bonus to Armor Class while wielding this shield. While holding it, the wielder can use a reaction immediately after being hit by a melee attack to push the attacker up to 15 feet away. Once used, this reaction can't be used again until the wielder finishes a short or long rest."
+			]
+		},
+		{
+			"name": "Resistant Armor",
+			"source": "TCE",
+			"page": 23,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 63
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 6,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A suit of armor (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"While wearing this armor, a creature has resistance to one of the following damage types, which you choose when you infuse the item: acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant, or thunder."
+			]
+		},
+		{
+			"name": "Resistant Armor",
+			"source": "UAArtificerRevisited",
+			"page": 14,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 8,
+						"class": {
+							"name": "Artificer (Revisited)"
+						}
+					},
+					"item": [
+						"A suit of armor (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"While wearing this armor, a creature has resistance to one of the following damage types, which you choose when you infuse the item: acid, cold, fire, force, lightning, necrotic, poison, psychic, radiant, or thunder."
+			]
+		},
+		{
+			"name": "Restraining Strike",
+			"source": "UAClassFeatureVariants",
+			"page": 5,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"Immediately after you hit a creature with a melee weapon attack on your turn, you can expend one superiority die and use a bonus action to grapple the target (see chapter 9 in the Player's Handbook for rules on grappling). Add the superiority die to your Strength ({@skill Athletics}) check. The target is also {@condition restrained} while {@condition grappled} in this way."
+			]
+		},
+		{
+			"name": "Returning Weapon",
+			"source": "TCE",
+			"page": 23,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 63
+				}
+			],
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A simple or martial weapon with the thrown property"
+					]
+				}
+			],
+			"entries": [
+				"This magic weapon grants a +1 bonus to attack and damage rolls made with it, and it returns to the wielder's hand immediately after it is used to make a ranged attack."
+			]
+		},
+		{
+			"name": "Returning Weapon",
+			"source": "UAArtificerRevisited",
+			"page": 10,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"item": [
+						"A simple or martial weapon with the thrown property"
+					]
+				}
+			],
+			"entries": [
+				"This magic weapon grants a +1 bonus to attack and damage rolls made with it, and it returns to the wielder's hand immediately after it is used to make a ranged attack."
+			]
+		},
+		{
+			"name": "Ride the Wind",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 11,
+						"class": {
+							"name": "Monk"
+						},
+						"subclass": {
+							"name": "Four Elements"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"4": [
+									"fly"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"You can spend 4 ki points to cast {@spell fly}, targeting yourself."
+			]
+		},
+		{
+			"name": "Riposte",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When a creature misses you with a melee attack, you can use your reaction and expend one superiority die to make a melee weapon attack against the creature. If you hit, you add the superiority die to the attack's damage roll."
+			]
+		},
+		{
+			"name": "River of Hungry Flame",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 17,
+						"class": {
+							"name": "Monk"
+						},
+						"subclass": {
+							"name": "Four Elements"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"5": [
+									"wall of fire"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"You can spend 5 ki points to cast {@spell wall of fire}."
+			]
+		},
+		{
+			"name": "Rush of the Gale Spirits",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"2": [
+									"gust of wind"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"You can spend 2 ki points to cast {@spell gust of wind}."
+			]
+		},
+		{
+			"name": "Sculptor of Flesh",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"polymorph"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell polymorph} once using a warlock spell slot. You can't do so again until you finish a long rest."
+			]
+		},
+		{
+			"name": "Sea Twins' Gift",
+			"source": "UAWarlockAndWizard",
+			"page": 5,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Archfey"
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"water breathing"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"The Sea Twins rule seas in the Feywild. Their gift allows you to travel through water with ease. You can breathe underwater, and you gain a swimming speed equal to your walking speed.",
+				"You can also cast {@spell water breathing} using a warlock spell slot. Once you cast it using this invocation, you can't do so again until you finish a long rest."
+			]
+		},
+		{
+			"name": "Seeker's Speech",
+			"source": "UAWarlockAndWizard",
+			"page": 5,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Seeker"
+				}
+			],
+			"entries": [
+				"Your quest for knowledge allows you to master any spoken language. When you complete a long rest, you can pick two languages. You gain the ability to speak, read, and write the chosen languages until you finish your next long rest."
+			]
+		},
+		{
+			"name": "Seeking Arrow",
+			"source": "UAFighter",
+			"page": 2,
+			"featureType": [
+				"AS:V1-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Using divination magic, you grant your arrow the ability to seek out your target, allowing the arrow to curve and twist its path in search of its prey. As an action, choose one creature you have seen in the past minute, and make a ranged attack against it, using the Arcane Arrow. The arrow flies around corners if necessary, and this attack ignores three-quarters cover, half cover, and disadvantage caused by the target being out of sight or being at long range. The attack automatically misses if the target is out of the weapon's range or if there is no path large enough for the arrow to travel to the target. If the arrow hits its target, you know it, but you don't learn the target's location unless it's within your line of sight."
+			]
+		},
+		{
+			"name": "Seeking Arrow",
+			"source": "UARevisedSubclasses",
+			"page": 4,
+			"featureType": [
+				"AS:V2-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Using divination magic, you grant your arrow the ability to seek out your target, allowing the arrow to curve and twist its path in search of its prey. When you use this option, you don't make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon's range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. On a failed save, it takes damage as if it were hit by the arrow, plus an extra {@damage 1d6} force damage, and you learn the target's current location. On a successful save, the target takes half as much damage, and you don't learn its location.",
+				"The force damage increases to {@damage 2d6} when you reach 18th level in this class."
+			]
+		},
+		{
+			"name": "Seeking Arrow",
+			"source": "XGE",
+			"page": 30,
+			"featureType": [
+				"AS"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"Using divination magic, you grant your arrow the ability to seek out a target. When you use this option, you don't make an attack roll for the attack. Instead, choose one creature you have seen in the past minute. The arrow flies toward that creature, moving around corners if necessary and ignoring three-quarters cover and half cover. If the target is within the weapon's range and there is a path large enough for the arrow to travel to the target, the target must make a Dexterity saving throw. Otherwise, the arrow disappears after traveling as far as it can. On a failed save, the target takes damage as if it were hit by the arrow, plus an extra {@damage 1d6} force damage, and you learn the target's current location. On a successful save, the target takes half as much damage, and you don't learn its location.",
+				"The force damage increases to {@damage 2d6} when you reach 18th level in this class."
+			]
+		},
+		{
+			"name": "Seeking Spell",
+			"source": "TCE",
+			"page": 66,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points",
+				"amount": 2
+			},
+			"entries": [
+				"If you make an attack roll for a spell and miss, you can spend 2 sorcery points to reroll the {@dice d20}, and you must use the new roll.",
+				"You can use Seeking Spell even if you have already used a different Metamagic option during the casting of the spell."
+			]
+		},
+		{
+			"name": "Seeking Spell",
+			"source": "UAClassFeatureVariants",
+			"page": 10,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points"
+			},
+			"entries": [
+				"When you cast a spell that requires you to make a spell attack roll or that forces a target to make a Dexterity saving throw, you can spend 1 sorcery point to ignore the effects of half- and three-quarters cover against targets of the spell."
+			]
+		},
+		{
+			"name": "Shadow Arrow",
+			"source": "UAFighter",
+			"page": 2,
+			"featureType": [
+				"AS:V1-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"You weave illusion magic into your arrow, causing it to occlude your foe's vision with grasping shadows. Until the end of your next turn, the target hit by the arrow can't see more than 30 feet away."
+			]
+		},
+		{
+			"name": "Shadow Arrow",
+			"source": "UARevisedSubclasses",
+			"page": 4,
+			"featureType": [
+				"AS:V2-UA"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"You weave illusion magic into your arrow, causing it to occlude your foe's vision with grasping shadows. If the arrow hits a creature, the target takes an extra {@damage 2d6} psychic damage, and it must succeed on a Wisdom saving throw or be unable to see anything farther than 5 feet away until the start of your next turn.",
+				"Obrażenia psychiczne zwiększają się do {@damage 4d6} po osiągnięciu 18. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Shadow Arrow",
+			"source": "XGE",
+			"page": 30,
+			"featureType": [
+				"AS"
+			],
+			"consumes": {
+				"name": "Arcane Shot"
+			},
+			"entries": [
+				"You weave illusion magic into your arrow, causing it to occlude your foe's vision with shadows. The creature hit by the arrow takes an extra {@damage 2d6} psychic damage, and it must succeed on a Wisdom saving throw or be unable to see anything farther than 5 feet away until the start of your next turn.",
+				"Obrażenia psychiczne zwiększają się do {@damage 4d6} po osiągnięciu 18. poziomu w tej klasie."
+			]
+		},
+		{
+			"name": "Shape the Flowing River",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"entries": [
+				"As an action, you can spend 1 ki point to choose an area of ice or water no larger than 30 feet on a side within 120 feet of you. You can change water to ice within the area and vice versa, and you can reshape ice in the area in any manner you choose. You can raise or lower the ice's elevation, create or fill in a trench, erect or flatten a wall, or form a pillar. The extent of any such changes can't exceed half the area's largest dimension. For example, if you affect a 30-foot square, you can create a pillar up to 15 feet high. raise or lower the square's elevation by up to 15 feet, dig a trench up to 15 feet deep, and so on. You can't shape the ice to trap or injure a creature in the area."
+			]
+		},
+		{
+			"name": "Shroud of Shadow",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Shroud of Ulban",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 15,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"invisibility"
+						]
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell invisibility} at will, without expending a spell slot."
+			]
+		},
+		{
+			"name": "Shroud of Shadow",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 15,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"invisibility"
+						]
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell invisibility} at will, without expending a spell slot."
+			]
+		},
+		{
+			"name": "Shroud of Ulban",
+			"source": "UAWarlockAndWizard",
+			"page": 5,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 18,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"patron": "The Great Old One"
+				}
+			],
+			"entries": [
+				"The blue-white star Ulban maintains a fickle presence among the stars, fluttering into view only to herald a dire omen. As an action, you can turn {@condition invisible} for 1 minute. If you attack, deal damage, or force a creature to make a saving throw, you become visible at the end of the current turn."
+			]
+		},
+		{
+			"name": "Sign of Ill Omen",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"bestow curse"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell bestow curse} once using a warlock spell slot. You can't do so again until you finish a long rest."
+			]
+		},
+		{
+			"name": "Silver Tongue",
+			"source": "UAClassFeatureVariants",
+			"page": 5,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When you make a Charisma ({@skill Deception}) check or a Charisma ({@skill Persuasion}) check, you can expend one superiority die, and add the superiority die to the ability check."
+			]
+		},
+		{
+			"name": "Skye (Cloud Rune)",
+			"source": "UAFighterRangerRogue",
+			"page": 2,
+			"featureType": [
+				"RN"
+			],
+			"entries": [
+				"This rune's magic emulates the deceptiveness of a cloud giant. While wearing or carrying an object inscribed with this rune, you have advantage on Dexterity ({@skill Sleight of Hand}) checks and Charisma ({@skill Deception}) checks.",
+				"In addition, when you or a creature you can see within 30 feet of you is hit by an attack roll, you can use your reaction to invoke the rune and cause that attack to target a different creature within 30 feet of you (other than the attacker), using the same roll. This magic can transfer the attack regardless of the attack's range. Once you invoke the rune, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Smoke Stick",
+			"source": "UAArtificer",
+			"page": 5,
+			"featureType": [
+				"AF"
+			],
+			"entries": [
+				"As an action, you can reach into your Alchemist's Satchel and pull out a stick that produces a thick plume of smoke. You can hold on to the stick or throw it to a point up to 30 feet away as part of the action used to produce it. The area in a 10-foot radius around the stick is filled with thick smoke that blocks vision, including {@sense darkvision}. The stick and smoke persist for 1 minute and then disappear. After using this formula, you can't do so again for 1 minute."
+			]
+		},
+		{
+			"name": "Snipe",
+			"source": "UAClassFeatureVariants",
+			"page": 5,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"As a bonus action, you can expend one superiority die and make a ranged weapon attack. You can draw a thrown weapon as part of making this attack. If you hit, add the superiority die to the attack's damage roll."
+			]
+		},
+		{
+			"name": "Spell-Refueling Ring",
+			"source": "TCE",
+			"page": 23,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 6,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A ring (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"While wearing this ring, the creature can recover one expended spell slot as an action. The recovered slot can be of 3rd level or lower. Once used, the ring can't be used again until the next dawn."
+			]
+		},
+		{
+			"name": "Spell-Refueling Ring",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"featureType": [
+				"AI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 6,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A ring (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"While wearing this ring, the creature can recover one expended spell slot as an action. The maximum level of the recovered slot is equal to the number of magic items the wearer is currently attuned to. Once used, the ring can't be used again until the next dawn."
+			]
+		},
+		{
+			"name": "Stein (Stone Rune)",
+			"source": "UAFighterRangerRogue",
+			"page": 2,
+			"featureType": [
+				"RN"
+			],
+			"senses": [
+				{
+					"darkvision": 60
+				}
+			],
+			"entries": [
+				"This rune's magic channels the insightfulness of a stone giant. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom ({@skill Insight}) checks, and you have {@sense darkvision} out to a range of 60 feet. If you already have {@sense darkvision}, its range increases by 30 feet.",
+				"In addition, when a creature you can see ends its turn within 30 feet of you, you can use your reaction to invoke the rune and force the creature to make a Wisdom saving throw. Unless the save succeeds, the creature is {@condition charmed} by you for 1 minute. While {@condition charmed} in this way, the creature has a speed of 0 and is {@condition incapacitated}, descending into a dreamy stupor. The effect ends if the {@condition charmed} creature takes any damage or if someone else uses an action to shake the creature out of its haze. Once you invoke the rune, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Stone Rune",
+			"source": "TCE",
+			"page": 45,
+			"featureType": [
+				"RN"
+			],
+			"senses": [
+				{
+					"darkvision": 120
+				}
+			],
+			"entries": [
+				"This rune's magic channels the judiciousness associated with stone giants. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom ({@skill Insight}) checks, and you have {@sense darkvision} out to a range of 120 feet.",
+				"In addition, when a creature you can see ends its turn within 30 feet of you, you can use your reaction to invoke the rune and force the creature to make a Wisdom saving throw. Unless the save succeeds, the creature is {@condition charmed} by you for 1 minute. While {@condition charmed} in this way, the creature has a speed of 0 and is {@condition incapacitated}, descending into a dreamy stupor. The creature repeats the saving throw at the end of each of its turns, ending the effect on a success. Once you invoke this rune, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Storm Rune",
+			"source": "TCE",
+			"page": 45,
+			"featureType": [
+				"RN"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Fighter"
+						},
+						"subclass": {
+							"name": "Rune Knight"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Using this rune, you can glimpse the future like a storm giant seer. While wearing or carrying an object inscribed with this rune, you have advantage on Intelligence ({@skill Arcana}) checks, and you can't be surprised as long as you aren't {@condition incapacitated}.",
+				"In addition, you can invoke the rune as a bonus action to enter a prophetic state for 1 minute or until you're {@condition incapacitated}. Until the state ends, when you or another creature you can see within 60 feet of you makes an attack roll, a saving throw, or an ability check, you can use your reaction to cause the roll to have advantage or disadvantage. Once you invoke this rune, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Studious Eye",
+			"source": "UAClassFeatureVariants",
+			"page": 5,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When you make a Wisdom ({@skill Insight}) check or an Intelligence ({@skill Investigation}) check, you can expend one superiority die, and add the superiority die to the ability check."
+			]
+		},
+		{
+			"name": "Subtle Spell",
+			"source": "PHB",
+			"page": 102,
+			"srd": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points"
+			},
+			"entries": [
+				"When you cast a spell, you can spend 1 sorcery point to cast it without any somatic or verbal components."
+			]
+		},
+		{
+			"name": "Superior Pact Weapon",
+			"source": "UAWarlockAndWizard",
+			"page": 5,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Any weapon you create using your Pact of the Blade feature is a +2 weapon. This invocation doesn't affect a magic weapon you transformed into your pact weapon."
+			]
+		},
+		{
+			"name": "Superior Technique",
+			"source": "TCE",
+			"page": 41,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F"
+			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Maneuvers",
+					"featureType": [
+						"MV:B"
+					],
+					"progression": {
+						"*": 1
+					}
+				}
+			],
+			"entries": [
+				"You learn one {@filter maneuver|optionalfeatures|feature type=MV:B} of your choice from among those available to the {@class fighter|phb|Battle Master|Battle Master|phb|2-0} archetype. If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).",
+				"You gain one superiority die, which is a {@dice d6} (this die is added to any superiority dice you have from another source). This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Superior Technique",
+			"source": "UAClassFeatureVariants",
+			"page": 5,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F"
+			],
+			"optionalfeatureProgression": [
+				{
+					"name": "Maneuvers",
+					"featureType": [
+						"MV:B"
+					],
+					"progression": {
+						"*": 1
+					}
+				}
+			],
+			"entries": [
+				"You learn one {@filter maneuver|optionalfeatures|feature type=MV:B} of your choice from among those available to the Battle Master archetype. If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).",
+				"You gain one superiority die, which is a {@dice d6} (this die is added to any superiority dice you have from another source). This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Sweeping Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When you hit a creature with a melee weapon attack, you can expend one superiority die to attempt to damage another creature with the same attack. Choose another creature within 5 feet of the original target and within your reach. If the original attack roll would hit the second creature, it takes damage equal to the number you roll on your superiority die. The damage is of the same type dealt by the original attack."
+			]
+		},
+		{
+			"name": "Sweeping Cinder Strike",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"2": [
+									"burning hands"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"You can spend 2 ki points to cast {@spell burning hands}."
+			]
+		},
+		{
+			"name": "Swift Step Draught",
+			"source": "UAArtificer",
+			"page": 5,
+			"featureType": [
+				"AF"
+			],
+			"entries": [
+				"As a bonus action, you can reach into your Alchemist's Satchel and pull out a vial filled with a bubbling, brown liquid. As an action, a creature can drink it. Doing so increases the creature's speed by 20 feet for 1 minute, and the vial disappears. If not used, the vial and its contents disappear after 1 minute. After using this formula, you can't do so again for 1 minute."
+			]
+		},
+		{
+			"name": "Sympathy",
+			"source": "UAClericDruidWizard",
+			"page": 5,
+			"featureType": [
+				"OR"
+			],
+			"entries": [
+				"If the named creature is within range of the spell, you can target the creature with the spell even if you can't see the creature or it has total cover against the spell."
+			]
+		},
+		{
+			"name": "Tactical Assessment",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When you make an Intelligence ({@skill Investigation}), an Intelligence ({@skill History}), or a Wisdom ({@skill Insight}) check, you can expend one superiority die and add the superiority die to the ability check."
+			]
+		},
+		{
+			"name": "Tanglefoot",
+			"source": "UAArtificer",
+			"page": 6,
+			"featureType": [
+				"AF"
+			],
+			"entries": [
+				"As an action, you can reach into your Alchemist's Satchel and pull out a bag filled with writhing, sticky black tar and hurl it at a point on the ground within 30 feet of you (the bag and its contents disappear if you don't hurl the bag by the end of the current turn). The bag bursts on impact and covers the ground in a 5-foot radius with sticky goo. That area becomes {@quickref difficult terrain||3} for 1 minute, and any creature that starts its turn on the ground in that area has its speed halved for that turn. After using this formula, you can't do so again for 1 minute."
+			]
+		},
+		{
+			"name": "Thief of Five Fates",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"bane"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell bane} once using a warlock spell slot. You can't do so again until you finish a long rest."
+			]
+		},
+		{
+			"name": "Thirsting Blade",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"You can attack with your pact weapon twice, instead of once, whenever you take the {@action Attack} action on your turn."
+			]
+		},
+		{
+			"name": "Thrown Weapon Fighting",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:R"
+			],
+			"entries": [
+				"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
+				"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +2 bonus to the damage roll."
+			]
+		},
+		{
+			"name": "Thrown Weapon Fighting",
+			"source": "UAClassFeatureVariants",
+			"page": 13,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
+				"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +1 bonus to the damage roll."
+			]
+		},
+		{
+			"name": "Thunderstone",
+			"source": "UAArtificer",
+			"page": 6,
+			"featureType": [
+				"AF"
+			],
+			"entries": [
+				"As an action, you can reach into your Alchemist's Satchel and pull out a crystalline shard and hurl it at a creature, object, or surface within 30 feet of you (the shard disappears if you don't hurl it by the end of the current turn). The shard shatters on impact with a blast of concussive energy. Each creature within 10 feet of the point of impact must succeed on a Constitution saving throw or be knocked {@condition prone} and pushed 10 feet away from that point."
+			]
+		},
+		{
+			"name": "Tomb of Levistus",
+			"source": "UARevisedClassOptions",
+			"page": 6,
+			"previousVersion": {
+				"name": "Tomb of Levistus",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"As a reaction when you take damage, you can entomb yourself in ice, which melts away at the end of your next turn. You gain 10 temporary hit points per warlock level, which take as much of the triggering damage as possible. You also gain vulnerability to fire damage, your speed is reduced to 0, and you are {@condition incapacitated}. These effects all end when the ice melts.",
+				"Po użyciu tej inwokacji nie można jej użyć ponownie, dopóki nie zakończy się krótki lub długi odpoczynek."
+			]
+		},
+		{
+			"name": "Tomb of Levistus",
+			"source": "UAWarlockAndWizard",
+			"page": 5,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"patron": "The Fiend"
+				}
+			],
+			"entries": [
+				"As a reaction when you take damage, you can entomb yourself in ice, which melts away at the end of your next turn. You gain 10 temporary hit points per warlock level, which take as much of the triggering damage as possible. You also gain vulnerability to fire damage, your speed drops to 0, and you are {@condition incapacitated}. All of these effects end when the ice melts.",
+				"Po użyciu tej inwokacji nie można jej użyć ponownie, dopóki nie zakończy się krótki lub długi odpoczynek."
+			]
+		},
+		{
+			"name": "Tomb of Levistus",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"As a reaction when you take damage, you can entomb yourself in ice, which melts away at the end of your next turn. You gain 10 temporary hit points per warlock level, which take as much of the triggering damage as possible. Immediately after you take the damage, you gain vulnerability to fire damage, your speed is reduced to 0, and you are {@condition incapacitated}. These effects, including any remaining temporary hit points, all end when the ice melts.",
+				"Po użyciu tej inwokacji nie można jej użyć ponownie, dopóki nie zakończy się krótki lub długi odpoczynek."
+			]
+		},
+		{
+			"name": "Transmuted Spell",
+			"source": "TCE",
+			"page": 66,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points"
+			},
+			"entries": [
+				"When you cast a spell that deals a type of damage from the following list, you can spend 1 sorcery point to change that damage type to one of the other listed types: acid, cold, fire, lightning, poison, thunder."
+			]
+		},
+		{
+			"name": "Trickster's Escape",
+			"source": "UARevisedClassOptions",
+			"page": 7,
+			"previousVersion": {
+				"name": "Path of the Seeker",
+				"source": "UAWarlockAndWizard"
+			},
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"freedom of movement"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell freedom of movement} once on yourself without expending a spell slot. You regain the ability to do so when you finish a long rest."
+			]
+		},
+		{
+			"name": "Trickster's Escape",
+			"source": "XGE",
+			"page": 57,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"freedom of movement"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell freedom of movement} once on yourself without expending a spell slot. You regain the ability to do so when you finish a long rest."
+			]
+		},
+		{
+			"name": "Trip Attack",
+			"source": "PHB",
+			"page": 74,
+			"featureType": [
+				"MV:B"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. You add the superiority die to the attack's damage roll, and if the target is Large or smaller, it must make a Strength saving throw. On a failed save, you knock the target {@condition prone}."
+			]
+		},
+		{
+			"name": "Trip Attack",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"featureType": [
+				"MV:C2-UA"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"When you hit a creature with a weapon attack, you can expend one superiority die to attempt to knock the target down. Roll the die, and add it to the attack's damage roll. If the target is Large or smaller, it must also succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Strength modifier) or be knocked {@condition prone}."
+			]
+		},
+		{
+			"name": "Tunnel Fighter",
+			"source": "UALightDarkUnderdark",
+			"page": 1,
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"As a bonus action, you can enter a defensive stance that lasts until the start of your next turn. While in your defensive stance, you can make opportunity attacks without using your reaction, and you can use your reaction to make a melee attack against a creature that moves more than 5 feet while within your reach."
+			]
+		},
+		{
+			"name": "Twinned Spell",
+			"source": "PHB",
+			"page": 102,
+			"srd": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points",
+				"amount": 1
+			},
+			"entries": [
+				"When you cast a spell that targets only one creature and doesn't have a range of self, you can spend a number of sorcery points equal to the spell's level to target a second creature in range with the same spell (1 sorcery point if the spell is a cantrip).",
+				"To be eligible, a spell must be incapable of targeting more than one creature at the spell's current level. For example, {@spell magic missile} and {@spell scorching ray} aren't eligible, but {@spell ray of frost} and {@spell chromatic orb} are."
+			]
+		},
+		{
+			"name": "Two-Weapon Fighting",
+			"source": "PHB",
+			"page": 72,
+			"srd": true,
+			"otherSources": [
+				{
+					"source": "XGE",
+					"page": 15
+				},
+				{
+					"source": "UARevisedSubclasses",
+					"page": 2
+				},
+				{
+					"source": "PHB",
+					"page": 91
+				},
+				{
+					"source": "UATheRangerRevised",
+					"page": 3
+				}
+			],
+			"featureType": [
+				"FS:F",
+				"FS:B",
+				"FS:R"
+			],
+			"entries": [
+				"When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."
+			]
+		},
+		{
+			"name": "Ultimate Pact Weapon",
+			"source": "UAWarlockAndWizard",
+			"page": 5,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Blade",
+					"level": {
+						"level": 15,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Any weapon you create using your Pact of the Blade feature is a +3 weapon. This invocation doesn't affect a magic weapon you transformed into your pact weapon."
+			]
+		},
+		{
+			"name": "Unarmed Fighting",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F"
+			],
+			"entries": [
+				"Your unarmed strikes can deal bludgeoning damage equal to {@damage 1d6} + your Strength modifier on a hit. If you aren't wielding any weapons or a {@item shield|phb} when you make the attack roll, the {@damage d6} becomes a {@damage d8}.",
+				"At the start of each of your turns, you can deal {@damage 1d4} bludgeoning damage to one creature {@condition grappled} by you."
+			]
+		},
+		{
+			"name": "Unarmed Fighting",
+			"source": "UAClassFeatureVariants",
+			"page": 13,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"Your unarmed strikes can deal bludgeoning damage equal to {@damage 1d6} + your Strength modifier. If you strike with two free hands, the {@damage d6} becomes a {@damage d8}.",
+				"When you successfully start a grapple, you can deal {@damage 1d4} bludgeoning damage to the {@condition grappled} creature. Until the grapple ends, you can also deal this damage to the creature whenever you hit it with a melee attack."
+			]
+		},
+		{
+			"name": "Unbroken Air",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"entries": [
+				"You can create a blast of compressed air that strikes like a mighty fist. As an action, you can spend 2 ki points and choose a creature within 30 feet of you. That creature must make a Strength saving throw. On a failed save, the creature takes {@damage 3d10} bludgeoning damage, plus an extra {@damage 1d10} bludgeoning damage for each additional ki point you spend, and you can push the creature up to 20 feet away from you and knock it {@condition prone}. On a successful save, the creature takes half as much damage, and you don't push it or knock it {@condition prone}."
+			]
+		},
+		{
+			"name": "Undying Servitude",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"daily": {
+								"1e": [
+									"animate dead"
+								]
+							}
+						}
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell animate dead} without using a spell slot. Once you do so, you can't cast it in this way again until you finish a long rest."
+			]
+		},
+		{
+			"name": "Unerring Spell",
+			"source": "UAClassFeatureVariants",
+			"page": 10,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MM"
+			],
+			"consumes": {
+				"name": "Sorcery Points",
+				"amount": 2
+			},
+			"entries": [
+				"If you make an attack roll for a spell and miss, you can spend 2 sorcery points to reroll the attack roll. You must use the result of the second roll.",
+				"You can use Unerring Spell even if you have already used a different Metamagic option during the casting of the spell."
+			]
+		},
+		{
+			"name": "Uvar (Storm Rune)",
+			"source": "UAFighterRangerRogue",
+			"page": 2,
+			"featureType": [
+				"RN"
+			],
+			"entries": [
+				"Using this rune, you can glimpse the future like a storm giant. While wearing or carrying an object inscribed with this rune, you have advantage on Intelligence ({@skill Arcana}) checks, and you can't be surprised as long as you are not {@condition incapacitated}.",
+				"In addition, you can invoke the rune as a bonus action to enter a prophetic state for 1 minute or until you're {@condition incapacitated}. Until the state ends, when you or another creature you can see within 60 feet of you makes an attack roll, a saving throw, or an ability check, you can use your reaction to cause the roll to have advantage or disadvantage. Once you invoke the rune, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Visions of Distant Realms",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 15,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"arcane eye"
+						]
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell arcane eye} at will, without expending a spell slot."
+			]
+		},
+		{
+			"name": "Voice of the Chain Master",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"pact": "Chain"
+				}
+			],
+			"entries": [
+				"You can communicate telepathically with your familiar and perceive through your familiar's senses as long as you are on the same plane of existence. Additionally, while perceiving through your familiar's senses, you can also speak through your familiar in your own voice, even if your familiar is normally incapable of speech."
+			]
+		},
+		{
+			"name": "Warding Maneuver",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"featureType": [
+				"MV:C2-UA"
+			],
+			"consumes": {
+				"name": "Superiority Dice"
+			},
+			"entries": [
+				"If you or a creature within 5 feet of you is hit by an attack, you can expend one superiority die as a reaction if you're wielding a weapon or a shield. Roll the die, and add the number rolled to the target's AC against that attack. If the attack still hits, the target has resistance against the attack's damage."
+			]
+		},
+		{
+			"name": "Water Whip",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"entries": [
+				"You can spend 2 ki points as an action to create a whip of water that shoves and pulls a creature to unbalance it. A creature that you can see that is within 30 feet of you must make a Dexterity saving throw. On a failed save, the creature takes {@damage 3d10} bludgeoning damage, plus an extra {@damage 1d10} bludgeoning damage for each additional ki point you spend, and you can either knock it {@condition prone} or pull it up to 25 feet closer to you. On a successful save, the creature takes half as much damage, and you don't pull it or knock it {@condition prone}."
+			]
+		},
+		{
+			"name": "Wave of Rolling Earth",
+			"source": "PHB",
+			"page": 81,
+			"featureType": [
+				"ED"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 17,
+						"class": {
+							"name": "Monk"
+						},
+						"subclass": {
+							"name": "Four Elements"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": {
+							"resource": {
+								"6": [
+									"wall of stone"
+								]
+							}
+						}
+					},
+					"resourceName": "Ki"
+				}
+			],
+			"entries": [
+				"You can spend 6 ki points to cast {@spell wall of stone}."
+			]
+		},
+		{
+			"name": "Whispers of the Grave",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"_": [
+							"speak with dead"
+						]
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell speak with dead} at will, without expending a spell slot."
+			]
+		},
+		{
+			"name": "Witch Sight",
+			"source": "PHB",
+			"page": 111,
+			"srd": true,
+			"featureType": [
+				"EI"
+			],
+			"prerequisite": [
+				{
+					"level": {
+						"level": 15,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"You can see the true form of any shapechanger or creature concealed by illusion or transmutation magic while the creature is within 30 feet of you and within line of sight."
+			]
+		}
+	]
+}

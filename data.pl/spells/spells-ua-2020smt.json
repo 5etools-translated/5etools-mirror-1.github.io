@@ -1,0 +1,794 @@
+{
+	"spell": [
+		{
+			"name": "Acid Stream",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "line",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a bit of rotten food"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Strumień kwasu wypływa z ciebie w linii o długości 30 stóp i szerokości 5 stóp w wybranym kierunku. Każda istota w tej linii musi zdać rzut na Zręczność, albo zostanie pokryta kwasem na czas trwania zaklęcia lub do momentu, w którym użyje swojej akcji, aby zdrapać lub zmyć kwas z siebie lub innej istoty. Istota pokryta kwasem otrzymuje {@damage 3d4} obrażeń od kwasu na początku każdej swojej tury."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 2. poziomu lub wyższego, obrażenia zwiększają się o {@scaledamage 3d4|1-9|1d4} za każdy poziom gniazda powyżej 1. poziomu."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"areaTags": [
+				"L"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Otherworldly Form",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 2,
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an object engraved with a symbol of the Outer Planes, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Wypowiadając zaklęcie, korzystasz z magii niższego lub wyższego planu (do wyboru), aby się przemienić. Do końca działania zaklęcia zyskujesz następujące korzyści:",
+				{
+					"type": "list",
+					"items": [
+						"Jesteś odporny na obrażenia od ognia i trucizny (planety dolne) oraz na obrażenia od promieniowania i nekrotyczne (planety górne).",
+						"Jesteś odporny na {@condition poisoned} choroby (Dolne Płaszczyzny) lub {@condition charmed} choroby (Górne Płaszczyzny).",
+						"Na twoich plecach pojawiają się widmowe skrzydła, które dają ci prędkość lotu 40 stóp.",
+						"Masz premię +2 do AC.",
+						"Wszystkie twoje ataki bronią są magiczne, a kiedy wykonujesz atak bronią, możesz użyć modyfikatora zdolności zaklęć, zamiast Siły lub Zręczności, do ataku i zadania obrażeń.",
+						"Możesz zaatakować dwa razy, zamiast raz, kiedy wykonujesz akcję Atak w swojej turze. Ignorujesz tę korzyść, jeśli posiadasz już cechę (np. Dodatkowy Atak), która daje ci dodatkowe ataki."
+					]
+				}
+			],
+			"damageImmune": [
+				"fire",
+				"poison",
+				"radiant",
+				"necrotic"
+			],
+			"conditionImmune": [
+				"poisoned",
+				"charmed"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Spirit Shroud",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 2,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz duchy zmarłych, które krążą wokół ciebie przez cały czas trwania zaklęcia. Duchy są niematerialne i odporne na obrażenia, a także dobre lub złe (do wyboru).",
+				"Do końca działania zaklęcia każdy twój atak zadaje {@damage 1d8} dodatkowych obrażeń, jeśli trafisz istotę znajdującą się w promieniu 10 stóp od ciebie. Obrażenia te są radiacyjne, jeśli duchy są dobre, i nekrotyczne, jeśli są złe. Stworzenie, które otrzyma te obrażenia, nie może odzyskać punktów życia do początku twojej następnej tury.",
+				"Dodatkowo, każde wybrane przez ciebie stworzenie, które widzisz, a które rozpoczyna swoją turę w odległości do 10 stóp od ciebie, ma zmniejszoną prędkość o 10 stóp do początku twojej następnej tury."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 4. poziomu lub wyższego, dodatkowe obrażenia zwiększają się o {@scaledamage 1d8|3-9|1d8} za każdy poziom gniazda powyżej 3."
+					]
+				}
+			],
+			"damageInflict": [
+				"radiant",
+				"necrotic",
+				"cold"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Aberrant Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 3,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a pickled tentacle and an eyeball in a crystal vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha z Dalekiego Królestwa lub innej obcej krainy szaleństwa. Duch manifestuje się fizycznie w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Aberrant Spirit|UA2020SpellsAndMagicTattoos}. Kiedy rzucasz zaklęcie, wybierz Beholderkin, Slaadi lub Star Spawn. Stworzenie fizycznie przypomina wybraną przez ciebie postać, co determinuje także niektóre cechy w jej bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się zakończy.",
+				"Stworzenie jest przyjazne tobie i twoim towarzyszom przez cały czas trwania zaklęcia. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje polecenia słowne, które mu wydajesz (nie wymaga to od ciebie żadnego działania). Jeśli nie wydasz mu żadnego, broni się, ale poza tym nie podejmuje żadnych działań."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 5. poziomu lub wyższego, stworzenie przyjmuje wyższy poziom dla tego zaklęcia, gdziekolwiek używa poziomu zaklęcia w swoim bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Bestial Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 3,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp",
+					"cost": 20000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha bestii. Duch manifestuje się fizycznie w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna forma wykorzystuje blok statystyk {@creature Bestial Spirit|UA2020SpellsAndMagicTattoos}. Kiedy rzucasz zaklęcie, wybierz środowisko: Powietrze, Ląd lub Woda. Stworzenie fizycznie przypomina wybrane przez ciebie zwierzę żyjące w wybranym środowisku, które określa również jeden z trybów ruchu w bloku statystyk stworzenia. Stworzenie znika, gdy spadnie do 0 punktów trafień lub gdy zaklęcie się skończy.",
+				"Stworzenie jest przyjazne tobie i twoim towarzyszom przez cały czas trwania zaklęcia. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje polecenia słowne, które mu wydajesz (nie wymaga to od ciebie żadnego działania). Jeśli nie wydasz mu żadnego, broni się, ale poza tym nie podejmuje żadnych działań."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 3. poziomu lub wyższego, stworzenie przyjmuje wyższy poziom dla tego zaklęcia, gdziekolwiek używa poziomu zaklęcia w swoim bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Celestial Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 4,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a golden reliquary worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha z Górnych Planów. Duch objawia się fizycznie w anielskiej postaci w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Celestial Spirit|UA2020SpellsAndMagicTattoos}. Podczas rzucania zaklęcia wybierz Mściciela lub Obrońcę. Twój wybór decyduje o ataku stworzenia w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów trafień lub gdy zaklęcie się skończy.",
+				"Stworzenie jest przyjazne tobie i twoim towarzyszom przez cały czas trwania zaklęcia. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje polecenia słowne, które mu wydajesz (nie wymaga to od ciebie żadnego działania). Jeśli nie wydasz mu żadnego, broni się, ale poza tym nie podejmuje żadnych działań."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 6. poziomu lub wyższego, stworzenie przyjmuje wyższy poziom dla tego rzucenia, gdziekolwiek używa poziomu zaklęcia w swoim bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Elemental Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 4,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "air, a pebble, ash, and water inside a crystal vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha z Planów Żywiołów. Duch manifestuje się fizycznie w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Elemental Spirit|UA2020SpellsAndMagicTattoos}. Podczas rzucania zaklęcia wybierz jeden z żywiołów: Powietrze, Ziemia, Ogień lub Woda. Stworzenie fizycznie przypomina niewyraźną humanoidalną postać owiniętą w wybrany żywioł, który także określa niektóre cechy w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się skończy.",
+				"Stworzenie jest przyjazne tobie i twoim towarzyszom przez cały czas trwania zaklęcia. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje polecenia słowne, które mu wydajesz (nie wymaga to od ciebie żadnego działania). Jeśli nie wydasz mu żadnego, broni się, ale poza tym nie podejmuje żadnych działań."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 5. poziomu lub wyższego, stworzenie przyjmuje wyższy poziom dla tego zaklęcia, gdziekolwiek używa poziomu zaklęcia w swoim bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fey Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 5,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded flower worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz ducha z Feywildii. Duch manifestuje się fizycznie w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Fey Spirit|UA2020SpellsAndMagicTattoos}. Podczas rzucania zaklęcia wybierz nastrój: Podstępny, Wściekły lub Radosny. Stworzenie fizycznie przypomina satyra, driadę lub elfa (do wyboru) naznaczonego wybranym nastrojem, który określa również jedną z cech w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów trafień lub gdy zaklęcie się skończy.",
+				"Stworzenie jest przyjazne tobie i twoim towarzyszom przez cały czas trwania zaklęcia. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje polecenia słowne, które mu wydajesz (nie wymaga to od ciebie żadnego działania). Jeśli nie wydasz mu żadnego, broni się, ale poza tym nie podejmuje żadnych działań."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć czwartego poziomu lub wyższego, stworzenie przyjmuje wyższy poziom dla tego rzucenia, gdziekolwiek używa poziomu zaklęcia w swoim bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fiendish Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 6,
+			"level": 6,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "humanoid blood inside a ruby vial worth at least 600 gp",
+					"cost": 60000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz potwornego ducha z Niższych Planów. Duch manifestuje się fizycznie w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Fiendish Spirit|UA2020SpellsAndMagicTattoos}. Podczas rzucania zaklęcia wybierz Demon, Diabeł lub Yugoloth. Stworzenie fizycznie przypomina potwora wybranego typu, co determinuje także niektóre cechy w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się zakończy.",
+				"Stworzenie jest przyjazne tobie i twoim towarzyszom przez cały czas trwania zaklęcia. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje polecenia słowne, które mu wydajesz (nie wymaga to od ciebie żadnego działania). Jeśli nie wydasz mu żadnego, broni się, ale poza tym nie podejmuje żadnych działań."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie używając gniazda zaklęć 7. poziomu lub wyższego, stworzenie przyjmuje wyższy poziom dla tego rzucenia, gdziekolwiek używa poziomu zaklęcia w swoim bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Shadow Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 7,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "tears inside a crystal vial worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz cienistego ducha z Krainy Cieni. Duch manifestuje się fizycznie w niezajętej przestrzeni, którą możesz zobaczyć w zasięgu. Ta cielesna postać używa bloku statystyk {@creature Shadow Spirit|UA2020SpellsAndMagicTattoos}. Podczas rzucania zaklęcia wybierz jedną z emocji: Wściekłość, Rozpacz lub Strach. Stworzenie fizycznie przypomina zniekształconego humanoida naznaczonego wybraną emocją, która określa także niektóre cechy w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów trafień lub gdy zaklęcie się skończy.",
+				"Stworzenie jest przyjazne tobie i twoim towarzyszom przez cały czas trwania zaklęcia. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje polecenia słowne, które mu wydajesz (nie wymaga to od ciebie żadnego działania). Jeśli nie wydasz mu żadnego, broni się, ale poza tym nie podejmuje żadnych działań."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć czwartego poziomu lub wyższego, stworzenie przyjmuje wyższy poziom dla tego rzucenia, gdziekolwiek używa poziomu zaklęcia w swoim bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Undead Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 7,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded humanoid skull worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Przywołujesz niespokojnego ducha zza grobu. Duch manifestuje się fizycznie w niezajętej przestrzeni, którą widzisz w zasięgu. Ta cielesna forma używa bloku statystyk {@creature Undead Spirit|UA2020SpellsAndMagicTattoos}. Kiedy rzucasz zaklęcie, wybierz formę stworzenia: Upiorna, Złowroga lub Szkieletowa. Stworzenie fizycznie przypomina humanoida z wybraną formą, która określa również niektóre cechy w jego bloku statystyk. Stworzenie znika, gdy spadnie do 0 punktów życia lub gdy zaklęcie się zakończy.",
+				"Stworzenie jest przyjazne tobie i twoim towarzyszom przez cały czas trwania zaklęcia. W walce dzieli twoją inicjatywę, ale zaczyna swoją turę zaraz po twojej. Wykonuje polecenia słowne, które mu wydajesz (nie wymaga to od ciebie żadnego działania). Jeśli nie wydasz mu żadnego, broni się, ale poza tym nie podejmuje żadnych działań."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć czwartego poziomu lub wyższego, stworzenie przyjmuje wyższy poziom dla tego rzucenia, gdziekolwiek używa poziomu zaklęcia w swoim bloku statystyk."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

@@ -133,6 +133,15 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 			}));
 		}));
 
+		// Add synthetic fluff to subclasses
+		data.class.forEach(cls => {
+			(cls.subclasses || []).forEach(sc => {
+				const fluff = Renderer.findEntry(sc.subclassFeatures);
+				MiscUtil.set(fluff, "data", "isSkipFeature");
+				sc._fluff = MiscUtil.copy(fluff);
+			});
+		});
+
 		return data.class;
 	}
 

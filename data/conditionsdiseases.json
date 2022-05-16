@@ -301,6 +301,17 @@
 	],
 	"disease": [
 		{
+			"name": "Arcane Blight",
+			"source": "IDRotF",
+			"page": 233,
+			"entries": [
+				"Any humanoid that spends 12 hours in the necropolis must succeed on a DC 15 Constitution saving throw or contract an arcane blight. This magical disease transforms the humanoid into a {@creature nothic}, but only after the victim experiences hallucinations and feelings of isolation and paranoia. Other symptoms include clammy skin, hair loss, and myopia (nearsightedness).",
+				"A player character infected with the arcane blight gains the following flaw: \"I don't trust anyone.\" This flaw, which supersedes any conflicting flaw, is fed by delusions that are difficult for the character to distinguish from reality. Common delusions include the belief that that allies are conspiring to steal the victim's riches or otherwise turn against the victim.",
+				"Whenever it finishes a long rest, an infected humanoid must repeat the saving throw. On a successful save, the DC for future saves against the arcane blight drops by {@dice 1d6}. If the saving throw DC drops to 0, the creature overcomes the arcane blight and becomes immune to the effect of further exposure. A creature that fails three of these saving throws transforms into a {@creature nothic} under the DM's control. Only a {@spell wish} spell or divine intervention can undo this transformation.",
+				"A {@spell greater restoration} spell or similar magic ends the infection on the target, removing the flaw and all other symptoms, but this magic doesn't protect the target against further exposure."
+			]
+		},
+		{
 			"name": "Blinding Sickness",
 			"source": "PHB",
 			"page": 227,
@@ -375,12 +386,51 @@
 			]
 		},
 		{
+			"name": "Frigid Woe",
+			"source": "EGW",
+			"page": 125,
+			"entries": [
+				"Frigid woe is a special disease developed by Aeor's mages that cannot be cured by conventional treatment or magic. The only way a creature infected with the disease can be cured is by finding and drinking the manufactured antidote, a milky liquid stored in gold vials found in Eiselcross's ruins. This disease was created to slow down the forces of the gods and get around the healing power of their clerics and angels.",
+				"The disease is transmitted by breathing in blue spores that Aeor's mages created long ago. When a creature comes into contact with these spores, it must succeed on a DC 11 Constitution saving throw or become infected with frigid woe. It takes {@dice 1d4} days for the symptoms to manifest in an infected creature. These symptoms include fatigue, chills, and visible blue veins that appear on the creature's body. The infected creature's speed is reduced by 5 feet as long as it remains infected. Every 10 days after symptoms appear, an infected creature must succeed on a DC 11 Constitution saving throw, or its speed is reduced by another 5 feet. If a creature's speed is reduced to 0 as a result of this disease, the creature dies and its body turns into a statue made of ice.",
+				"A creature can drink the antidote as an action, ending all symptoms and effects of the disease instantly."
+			]
+		},
+		{
+			"name": "Ghoul Gut",
+			"source": "OoW",
+			"page": 111,
+			"entries": [
+				"Water polluted with ghoul parts carries ghoul gut. A creature drinking this tainted water must succeed on a DC 12 Constitution saving throw or contract the disease. Symptoms strike when a victim starts a long rest or next becomes excited, as during combat. A victim suffers severe cramps, and their bowels make sounds like two ghouls fighting. When the symptoms first strike, the victim takes 5 ({@dice 2d4}) necrotic damage. In addition, a diseased victim regains no hit points or Hit Dice from nonmagical sources, including resting or spending Hit Dice. A victim who finishes a long rest can attempt a DC 12 Constitution saving throw. On a successful save, the victim shakes off the disease. Failure deals the character another 5 ({@dice 2d4}) necrotic damage.",
+				"A character who succeeds on a DC 15 Wisdom ({@skill Medicine}) check can also remove the disease from another creature. Doing so requires the character making the check to care for the sick individual during a long rest. The caregiver gains no benefit from that rest."
+			]
+		},
+		{
 			"name": "Mindfire",
 			"source": "PHB",
 			"page": 227,
 			"entries": [
 				"The creature's mind becomes feverish. The creature has disadvantage on Intelligence checks and Intelligence saving throws, and the creature behaves as if under the effects of the {@spell confusion} spell during combat.",
 				"{@note This disease can be inflicted with the {@spell contagion} spell.}"
+			]
+		},
+		{
+			"name": "Redface",
+			"source": "GoS",
+			"page": 168,
+			"entries": [
+				"The effects of redface are identical to those of {@disease sight rot} (see \"{@book Diseases|DMG|8|Diseases}\" in chapter 8 of the {@book Dungeon Master's Guide|DMG}), but it's caused by pollutants in the air rather than contaminated drinking water, making it difficult to avoid."
+			]
+		},
+		{
+			"name": "Saprophytic Plague",
+			"source": "CM",
+			"page": 253,
+			"entries": [
+				"Xanthoria's research into lichdom and her creation of a living phylactery led to the emergence of the plague spreading across the Sword Coast. Any beast or humanoid that comes within 10 feet of a creature infected by the saprophytic plague must succeed on a DC 20 Constitution saving throw or become infected as well. On a successful save, a creature is immune to the plague for 24 hours, and any creature that is immune to disease succeeds on the save automatically.",
+				"After a failed save, a creature experiences the first symptoms\u2014body aches, nausea, slurred speech, and uncontrollable drooling\u2014{@dice 1d4} hours later and gains 1 level of {@condition exhaustion}. Every 24 hours thereafter, the creature automatically gains another level of {@condition exhaustion}. Any creature killed by the saprophytic plague transforms into a lifeless magenta ooze.",
+				"A creature infected by the saprophytic plague for at least 24 hours behaves like a zombie and seems barely aware of its surroundings, as fungal growths sprout from its head, body, and limbs. It feels an overriding urge to be around groups of uninfected creatures so that it can spread the contagion. This is the time when infected humanoids begin speaking the word \"Xanthoria\" over and over, with no understanding of what the word means. This behavior is the result of a mycelial network of spores that forms a tenuous connection between Xanthoria and humanoids that become infected by the plague.",
+				"Foodstuffs that are exposed to the plague's spores decay or go sour within {@dice 2d12} hours, leaving behind a lurid magenta mass of oozing fungi. Eating infected food requires a saving throw as above.",
+				"Any magic that cures a disease can rid a creature of the saprophytic plague. Casting {@spell purify food and drink} destroys the infection in foodstuffs."
 			]
 		},
 		{
@@ -434,6 +484,72 @@
 			"entries": [
 				"The creature begins to bleed uncontrollably. The creature has disadvantage on Constitution checks and Constitution saving throws. In addition, whenever the creature takes damage, it is {@condition stunned} until the end of its next turn.",
 				"{@note This disease can be inflicted with the {@spell contagion} spell.}"
+			]
+		},
+		{
+			"name": "Spider Eggs",
+			"source": "WDMM",
+			"page": 47,
+			"entries": [
+				"If the party is defeated, stabilized characters awaken after {@dice 1d4} hours to find themselves cocooned in sticky webs and suspended 10 feet off the floor, with spider eggs implanted in their bodies. A cocooned character is {@condition restrained} and can use its action to try to escape by making a successful DC 15 Strength check.",
+				"Spider eggs implanted in a host hatch in {@dice 2d12} hours, killing the host as the baby spiders chew their way out. This infestation functions like a disease. A {@spell lesser restoration} spell or similar magic cast upon the host kills the spider eggs, ending the threat."
+			]
+		},
+		{
+			"name": "Super-Tetanus",
+			"source": "TftYP",
+			"page": 104,
+			"entries": [
+				"A creature that contracts the disease of super-tetanus is wracked with pain as its heart races and its muscles spasm hard enough to break its bones. The creature takes 11 ({@dice 2d10}) damage at the start of each of its turns. If a victim is not cured by other means, it can repeat the saving throw at the end of every minute after becoming exposed, ending the effect on itself with a successful save."
+			]
+		},
+		{
+			"name": "The Gnawing Plague",
+			"source": "VRGR",
+			"page": 153,
+			"entries": [
+				"The Gnawing Plague, also known as \"the Gnaws,\" is known in every corner of Richemulot.",
+				{
+					"type": "entries",
+					"name": "Transmission",
+					"page": 153,
+					"entries": [
+						"The Gnaws is spread when a creature is bitten by a {@creature rat}, {@creature giant rat}, {@creature swarm of rats}, or {@creature wererat} that carries the disease, or by coming into physical contact with an infected creature."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Infection",
+					"page": 153,
+					"entries": [
+						"Creatures exposed to the disease must succeed on a DC 10 Constitution saving throw or become infected. The DC of this saving throw can increase depending on the severity of the plague's spread (see \"{@book Cycle of the Plague|VRGR|3|Cycle of the Plague}\" below)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Symptoms",
+					"page": 153,
+					"entries": [
+						"It takes {@dice 1d2} days for the Gnawing Plague's symptoms to manifest in an infected creature. The infected creature then gains 1 level of {@condition exhaustion}, regains only half the normal number of hit points from spending Hit Dice, and regains no hit points from finishing a long rest.",
+						"The plague's symptoms include buboes, fatigue, splotchy rashes, sweats, and shaking, particularly facial tremors. Locals liken these twitches to the sniffing of rats. Sufferers often have scraps of leather placed in their mouths to prevent their teeth from clattering, though they inevitably gnaw through these scraps."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Recovery",
+					"page": 154,
+					"entries": [
+						"At the end of each long rest, an infected creature must make a DC 10 Constitution saving throw. On a failed save, the creature gains 1 level of {@condition exhaustion}. On a successful save, the creature's {@condition exhaustion} level decreases by 1. If a successful saving throw reduces the infected creature's level of {@condition exhaustion} below 1, the creature recovers from the disease."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Immunity",
+					"page": 154,
+					"entries": [
+						"All forms of rats and wererats are immune to the Gnawing Plague."
+					]
+				}
 			]
 		},
 		{
