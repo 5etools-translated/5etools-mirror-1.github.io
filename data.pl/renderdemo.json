@@ -4,75 +4,75 @@
 			"type": "section",
 			"name": "Renderer Demo",
 			"entries": [
-				"(This is a section heading. This is mainly used in Adventures, for the header of entire chapters. The root entry does {@b not} need have the 'section' type, 'entries' is generally used instead. The 'section' produces a {@bold level -1} header; the 'basement' level, if you will.)",
+				"(Jest to nagłówek rozdziału. Jest on używany głównie w Przygodach, jako nagłówek całych rozdziałów. Wpis główny nie musi {@b not} mieć nagłówka typu \"sekcja\", zamiast tego zwykle używa się \"wpisy\". Sekcja\" tworzy nagłówek {@bold level -1}; jest to poziom \"piwnicy\", jeśli chcesz).",
 				{
 					"type": "quote",
 					"entries": [
-						"Look, don't quote me on this, but"
+						"Nie cytuj mnie w tej kwestii, ale"
 					],
 					"by": "Anon",
 					"from": "Archive of Lost Chats"
 				},
-				"This is a demo of the JSON format, and how it (usually) gets rendered. You can edit this text, and it will reset on refresh.",
+				"Jest to demonstracja formatu JSON i sposobu, w jaki (zazwyczaj) jest on renderowany. Możesz edytować ten tekst, a przy odświeżaniu zostanie on zresetowany.",
 				"{@b If a JSON property is described as 'optional,' the property may be excluded, unless otherwise noted.}",
-				"The goal of this system is to emulate the look and feel of the books, while maintaining a convenient and consistent data structure that can be re-used.",
-				"The general format is to nest multiple levels of 'entries'-typed objects, with other specific types (described in detail below) used as needed.",
-				"String entries can contain tags, and these work when nested in most other structures. These will eventually all work with the hover-to-view feature. They are case-insensitive, unless otherwise noted. These are:",
+				"Celem tego systemu jest naśladowanie wyglądu i sposobu działania książek, przy jednoczesnym zachowaniu wygodnej i spójnej struktury danych, którą można ponownie wykorzystać.",
+				"Ogólny format polega na zagnieżdżaniu wielu poziomów obiektów typu \"entries\", przy czym w razie potrzeby stosuje się inne typy specjalne (opisane szczegółowo poniżej).",
+				"Wpisy łańcuchowe mogą zawierać znaczniki, które działają, gdy są zagnieżdżone w większości innych struktur. Docelowo wszystkie będą działały z funkcją \"hover-to-view\". Nie jest rozróżniana wielkość liter, chyba że zaznaczono inaczej. Są to:",
 				{
 					"type": "list",
 					"items": [
-						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@underline some text to be underlined} (alternative {@u shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand}), {@color color|e40707} tags, {@code print(&quot;hello world&quot;)} tags",
-						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes.\"",
-						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls ({@dice 1d6;2d6} for multiple options; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} for input prompts), with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on shift-click, disadvantage on alt-click). There's also {@damage 1d12+3} which will roll critical hits on shift-click and half damage (rounding down) on alt-click, and {@d20 -4} which will also roll advantage/disadvantage, although @hit tags are preferred where appropriate. Spells can have scaling-dice tags, (damage of 2d6 or 3d6 at level 1, add an extra {@scaledice 2d6;3d6|2-9|1d6} for each level beyond 2nd), for when a spell effect scales at higher levels. {@ability str 20}, {@savingThrow str 5}, and {@skillCheck animal_handling 5} are used as internal shorthand, but may be useful elsewhere.",
-						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}, {@chance 50|display text}, and {@chance 50|display text|rolled by name}.",
-						"Recharge tags; output success/failure for ability recharge. {@recharge} in an ability title for '(Recharge 6)', {@recharge 4} for '(Recharge 4-6)'.",
-						"Skill and sense tags; {@skill Athletics}/{@skill Perception} (case sensitive) and {@sense Truesight}/{@sense darkvision} (case insensitive) which provide tooltips on hover.",
-						"Footnote tags; allows a footnote to be embedded {@footnote directly in text|This is primarily for homebrew purposes, as the official texts (so far) avoid using footnotes}, with {@footnote optional reference information|This is the footnote. References are free text.|Footnote 1, page 20}.",
-						"The homebrew tag; can show {@homebrew changes|modifications}, {@homebrew additions} or {@homebrew |removals}.",
-						"Content tags:",
+						"Znaczniki stylu; {@bold some text to be bolded} (alternatywa {@b shorthand}), {@italic some text to be italicised} (alternatywa {@i shorthand}), {@underline some text to be underlined} (alternatywa {@u shorthand}), {@strike some text to strike-through}, (alternatywa {@s shorthand}), {@color color|e40707} znaczniki, {@code print(&quot;hello world&quot;)} znaczniki",
+						"Dodatkowo, {@note note tags}, używany do dodawania erraty lub Twittera \"przypisy projektanta\".",
+						"Znaczniki rolek kości; {@dice 1d2-2+2d3+5} do zwykłego rzucania kośćmi ({@dice 1d6;2d6} dla wielu opcji; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} dla podpowiedzi), z rozszerzonymi {@dice 1d20+2|display text} i {@dice 1d20+2|display text|rolled by name} oraz specjalną wersją \"hit\", która zakłada, że ma być rzucona kość d20 {@hit +7} (i rzuca korzyść po kliknięciu z shiftem i niekorzyść po kliknięciu z alt-clickiem). Jest też {@damage 1d12+3}, które wylicza trafienia krytyczne po kliknięciu z shiftem i połowę obrażeń (zaokrąglając w dół) po kliknięciu z alt-clickiem, oraz {@d20 -4}, które również wylicza przewagę/dyskwalifikację, choć w razie potrzeby preferowane są znaczniki @hit. Zaklęcia mogą mieć znaczniki skalowania kostek (obrażenia 2d6 lub 3d6 na 1. poziomie, dodają dodatkowe {@scaledice 2d6;3d6|2-9|1d6} na każdy kolejny poziom), gdy efekt zaklęcia skaluje się na wyższych poziomach. {@ability str 20}, {@savingThrow str 5} i {@skillCheck animal_handling 5} są używane jako wewnętrzne skróty, ale mogą być przydatne w innych miejscach.",
+						"Znaczniki szansy; podobne do znaczników rolek kości, ale podają wartość sukces/porażka. Składnia podobna jak w przypadku znaczników kości: {@chance 50}, {@chance 50|display text} i {@chance 50|display text|rolled by name}.",
+						"Znaczniki doładowania; informacja o powodzeniu/niepowodzeniu doładowania umiejętności. {@recharge} w nazwie umiejętności dla \"(Doładowanie 6)\", {@recharge 4} dla \"(Doładowanie 4-6)\".",
+						"Znaczniki umiejętności i sensu; {@skill Athletics}/{@skill Perception} (wielkość liter ma znaczenie) i {@sense Truesight}/{@sense darkvision} (wielkość liter nie ma znaczenia), które wyświetlają etykiety narzędzi po najechaniu kursorem.",
+						"Znaczniki przypisów; umożliwiają osadzenie przypisu {@footnote directly in text|This is primarily for homebrew purposes, as the official texts (so far) avoid using footnotes}, z {@footnote optional reference information|This is the footnote. References are free text.|Footnote 1, page 20}.",
+						"Znacznik homebrew; może zawierać {@homebrew changes|modifications}, {@homebrew additions} lub {@homebrew |removals}.",
+						"Znaczniki treści:",
 						{
 							"type": "list",
 							"items": [
-								"Spells: {@spell acid splash} assumes PHB by default, {@spell tiny servant|xge} can have sources added with a pipe, {@spell tiny servant|xge|and optional link text added with another pipe}.",
-								"Items: {@item alchemy jug} assumes DMG by default, {@item longsword|phb} can have sources added with a pipe, {@item longsword|phb|and optional link text added with another pipe}.",
-								"Creatures: {@creature goblin} assumes MM by default, {@creature cow|vgm} can have sources added with a pipe, {@creature cow|vgm|and optional link text added with another pipe}.",
-								"Backgrounds: {@background Charlatan} assumes PHB by default, {@background Anthropologist|toa} can have sources added with a pipe, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
-								"Races: {@race Human} assumes PHB by default, {@race Aarakocra|eepc} can have sources added with a pipe, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
-								"Invocations and Other Optional Features: {@optfeature Agonizing Blast} assumes PHB by default, {@optfeature Aspect of the Moon|xge} can have sources added with a pipe, {@optfeature Aspect of the Moon|xge|and optional link text added with another pipe}.",
-								"Classes: {@class fighter} assumes PHB by default, {@class artificer|uaartificer} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} with another pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|2-0} with another pipe (first number is level index (0-19), second number is feature index (0-n)).",
-								"Class Features: {@classFeature Rage|Barbarian||1}, {@classFeature Infuse Item|Artificer|TCE|2}, {@classFeature Survival Instincts|Barbarian||2|UAClassFeatureVariants}, {@classFeature Rage|Barbarian||1||optional display text}. Class source is assumed to be PHB. Class feature source is assumed to be the same as class source.",
-								"Subclass Features: {@subclassFeature Path of the Berserker|Barbarian||Berserker||3}, {@subclassFeature Alchemist|Artificer|TCE|Alchemist|TCE|3}, {@subclassFeature Path of the Battlerager|Barbarian||Battlerager|SCAG|3}, {@subclassFeature Blessed Strikes|Cleric||Life||8|UAClassFeatureVariants}, {@subclassFeature Path of the Berserker|Barbarian||Berserker||3||optional display text}. Class source is assumed to be PHB. Subclass source is assumed to be PHB. Subclass feature source is assumed to be the same as subclass source.",
-								"Conditions: {@condition stunned} assumes PHB by default, {@condition stunned|PHB} can have sources added with a pipe (not that it's ever useful), {@condition stunned|PHB|and optional link text added with another pipe}.",
-								"Diseases: {@disease cackle fever} assumes DMG by default, {@disease cackle fever} can have sources added with a pipe, {@disease cackle fever|DMG|and optional link text added with another pipe}.",
-								"Other Rewards: {@reward Blessing of Health} assumes DMG by default, {@reward Blessing of Health} can have sources added with a pipe, {@reward Blessing of Health|DMG|and optional link text added with another pipe}.",
-								"Feats: {@feat Alert} assumes PHB by default, {@feat Elven Accuracy|xge} can have sources added with a pipe, {@feat Elven Accuracy|xge|and optional link text added with another pipe}.",
-								"Psionics: {@psionic Mastery of Force} assumes UATheMysticClass by default, {@psionic Mastery of Force|UATheMysticClass} can have sources added with a pipe, {@psionic Mastery of Force|UATheMysticClass|and optional link text added with another pipe}.",
-								"Objects: {@object Ballista} assumes DMG by default, {@object Ballista} can have sources added with a pipe, {@object Ballista|DMG|and optional link text added with another pipe}.",
-								"Boons: {@boon Demonic Boon of Demogorgon} assumes MTF by default, {@boon Demonic Boon of Demogorgon} can have sources added with a pipe, {@boon Demonic Boon of Demogorgon|MTF|and optional link text added with another pipe}.",
-								"Cults: {@cult Cult of Asmodeus} assumes MTF by default, {@cult Cult of Asmodeus} can have sources added with a pipe, {@cult Cult of Asmodeus|MTF|and optional link text added with another pipe}.",
-								"Traps: {@trap falling net} assumes DMG by default, {@trap falling portcullis|xge} can have sources added with a pipe, {@trap falling portcullis|xge|and optional link text added with another pipe}.",
-								"Hazards: {@hazard brown mold} assumes DMG by default, {@hazard russet mold|vgm} can have sources added with a pipe, {@hazard russet mold|vgm|and optional link text added with another pipe}.",
-								"Deities: {@deity Gond} assumes PHB Forgotten Realms pantheon by default, {@deity Gruumsh|nonhuman} can have pantheons added with a pipe, {@deity Ioun|dawn war|dmg} can have sources added with another pipe, {@deity Ioun|dawn war|dmg|and optional link text added with another pipe}.",
-								"Variant rules: {@variantrule Diagonals} assumes DMG by default, {@variantrule Multiclassing|phb} can have sources added with a pipe, {@variantrule Multiclassing|phb|and optional link text added with another pipe}.",
-								"Vehicles: {@vehicle Galley} assumes GoS by default, {@vehicle Galley|UAOfShipsAndSea} can have sources added with a pipe, {@vehicle Galley|GoS|and optional link text added with another pipe}.",
-								"Vehicle upgrades: {@vehupgrade Guardian Figurehead} assumes GoS by default, {@vehicle Gilded Death Armor|BGDIA} can have sources added with a pipe, {@vehicle Guardian Figurehead|GoS|and optional link text added with another pipe}.",
-								"Tables: {@table 25 gp Art Objects} assumes DMG by default, {@table Adventuring Gear|phb} can have sources added with a pipe, {@table Adventuring Gear|phb|and optional link text added with another pipe}.",
-								"Actions: {@action Attack} assumes PHB by default, {@action Tumble|DMG} can have sources added with a pipe, {@action Tumble|DMG|and optional link text added with another pipe}.",
-								"Languages: {@language common} assumes PHB by default, {@language Dambrathan|SCAG} can have sources added with a pipe, {@language Dambrathan|SCAG|and optional link text added with another pipe}.",
-								"Other Character Creation Options: {@charoption Anvilwrought} assumes MOT by default, {@charoption Hollow One|EGW} can have sources added with a pipe, {@charoption Hollow One|EGW|and optional link text added with another pipe}.",
-								"Recipes: {@recipe Elven Bread} assumes Heroes' Feast by default, {@recipe Elven Bread|HF} can have sources added with a pipe, {@recipe Elven Bread|HF|and optional link text added with another pipe}."
+								"Zaklęcia: {@spell acid splash} domyślnie przyjmuje PHB, {@spell tiny servant|xge} może mieć źródła dodane za pomocą rury, {@spell tiny servant|xge|and optional link text added with another pipe}.",
+								"Przedmioty: {@item alchemy jug} domyślnie przyjmuje DMG, {@item longsword|phb} może mieć źródła dodane za pomocą rury, {@item longsword|phb|and optional link text added with another pipe}.",
+								"Stworzenia: {@creature goblin} domyślnie przyjmuje MM, {@creature cow|vgm} może mieć źródła dodane za pomocą rury, {@creature cow|vgm|and optional link text added with another pipe}.",
+								"Tła: {@background Charlatan} domyślnie zakłada PHB, {@background Anthropologist|toa} może mieć źródła dodane za pomocą rurki, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
+								"Rasy: {@race Human} domyślnie przyjmuje PHB, {@race Aarakocra|eepc} może mieć źródła dodane za pomocą rurki, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
+								"Inwokacje i inne cechy opcjonalne: {@optfeature Agonizing Blast} domyślnie przyjmuje PHB, {@optfeature Aspect of the Moon|xge} może mieć źródła dodane za pomocą potoku, {@optfeature Aspect of the Moon|xge|and optional link text added with another pipe}.",
+								"Klasy: {@class fighter} domyślnie przyjmuje PHB, {@class artificer|uaartificer} może mieć dodane źródła za pomocą rurki, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} za pomocą innej rurki, {@class fighter|phb|and class feature added|Eldritch Knight|phb|2-0} za pomocą innej rurki (pierwsza liczba to indeks poziomu (0-19), druga liczba to indeks cechy (0-n)).",
+								"Cechy klasy: {@classFeature Rage|Barbarian||1}, {@classFeature Infuse Item|Artificer|TCE|2}, {@classFeature Survival Instincts|Barbarian||2|UAClassFeatureVariants}, {@classFeature Rage|Barbarian||1||optional display text}. Przyjmuje się, że źródłem klasy jest PHB. Przyjmuje się, że źródło cech klasy jest takie samo jak źródło klasy.",
+								"Cechy podklasy: {@subclassFeature Path of the Berserker|Barbarian||Berserker||3}, {@subclassFeature Alchemist|Artificer|TCE|Alchemist|TCE|3}, {@subclassFeature Path of the Battlerager|Barbarian||Battlerager|SCAG|3}, {@subclassFeature Blessed Strikes|Cleric||Life||8|UAClassFeatureVariants}, {@subclassFeature Path of the Berserker|Barbarian||Berserker||3||optional display text}. Przyjmuje się, że źródłem klasy jest PHB. Zakłada się, że źródłem podklasy jest PHB. Zakłada się, że źródło cech podklasy jest takie samo jak źródło podklasy.",
+								"Warunki: {@condition stunned} domyślnie zakłada PHB, {@condition stunned|PHB} może mieć źródła dodane za pomocą fajki (nie żeby to było kiedykolwiek przydatne), {@condition stunned|PHB|and optional link text added with another pipe}.",
+								"Choroby: {@disease cackle fever} domyślnie przyjmuje DMG, {@disease cackle fever} może mieć źródła dodane za pomocą rury, {@disease cackle fever|DMG|and optional link text added with another pipe}.",
+								"Inne nagrody: {@reward Blessing of Health} domyślnie przyjmuje DMG, {@reward Blessing of Health} może mieć źródła dodane za pomocą potoku, {@reward Blessing of Health|DMG|and optional link text added with another pipe}.",
+								"Feats: {@feat Alert} domyślnie przyjmuje PHB, {@feat Elven Accuracy|xge} może mieć źródła dodane za pomocą fajki, {@feat Elven Accuracy|xge|and optional link text added with another pipe}.",
+								"Psionika: {@psionic Mastery of Force} domyślnie przyjmuje UATheMysticClass, {@psionic Mastery of Force|UATheMysticClass} może mieć źródła dodane za pomocą rury, {@psionic Mastery of Force|UATheMysticClass|and optional link text added with another pipe}.",
+								"Obiekty: {@object Ballista} domyślnie przyjmuje DMG, {@object Ballista} może mieć źródła dodane za pomocą rury, {@object Ballista|DMG|and optional link text added with another pipe}.",
+								"Korzyści: {@boon Demonic Boon of Demogorgon} domyślnie przyjmuje MTF, {@boon Demonic Boon of Demogorgon} może mieć źródła dodane za pomocą rury, {@boon Demonic Boon of Demogorgon|MTF|and optional link text added with another pipe}.",
+								"Kulty: {@cult Cult of Asmodeus} domyślnie przyjmuje MTF, {@cult Cult of Asmodeus} może mieć źródła dodane za pomocą rury, {@cult Cult of Asmodeus|MTF|and optional link text added with another pipe}.",
+								"Pułapki: {@trap falling net} domyślnie przyjmuje DMG, {@trap falling portcullis|xge} może mieć źródła dodane za pomocą rury, {@trap falling portcullis|xge|and optional link text added with another pipe}.",
+								"Zagrożenia: {@hazard brown mold} domyślnie przyjmuje DMG, {@hazard russet mold|vgm} może mieć źródła dodane za pomocą rury, {@hazard russet mold|vgm|and optional link text added with another pipe}.",
+								"Bóstwa: {@deity Gond} domyślnie przyjmuje panteon PHB Forgotten Realms, {@deity Gruumsh|nonhuman} może mieć panteony dodane za pomocą rurki, {@deity Ioun|dawn war|dmg} może mieć źródła dodane za pomocą innej rurki, {@deity Ioun|dawn war|dmg|and optional link text added with another pipe}.",
+								"Reguły wariantowe: {@variantrule Diagonals} domyślnie przyjmuje DMG, {@variantrule Multiclassing|phb} może mieć źródła dodane za pomocą potoku, {@variantrule Multiclassing|phb|and optional link text added with another pipe}.",
+								"Pojazdy: {@vehicle Galley} domyślnie zakłada GoS, {@vehicle Galley|UAOfShipsAndSea} może mieć dodane źródła za pomocą rury, {@vehicle Galley|GoS|and optional link text added with another pipe}.",
+								"Ulepszenia pojazdów: {@vehupgrade Guardian Figurehead} domyślnie zakłada GoS, {@vehicle Gilded Death Armor|BGDIA} może mieć dodane źródła za pomocą rury, {@vehicle Guardian Figurehead|GoS|and optional link text added with another pipe}.",
+								"Tablice: {@table 25 gp Art Objects} domyślnie przyjmuje DMG, {@table Adventuring Gear|phb} może mieć źródła dodane za pomocą potoku, {@table Adventuring Gear|phb|and optional link text added with another pipe}.",
+								"Akcje: {@action Attack} domyślnie zakłada PHB, {@action Tumble|DMG} może mieć źródła dodane za pomocą rury, {@action Tumble|DMG|and optional link text added with another pipe}.",
+								"Języki: {@language common} domyślnie przyjmuje PHB, {@language Dambrathan|SCAG} może mieć źródła dodane za pomocą rurki, {@language Dambrathan|SCAG|and optional link text added with another pipe}.",
+								"Inne opcje tworzenia postaci: {@charoption Anvilwrought} domyślnie zakłada MOT, {@charoption Hollow One|EGW} może mieć źródła dodane za pomocą rurki, {@charoption Hollow One|EGW|and optional link text added with another pipe}.",
+								"Receptury: {@recipe Elven Bread} domyślnie zakłada Ucztę Bohaterów, {@recipe Elven Bread|HF} może mieć źródła dodane za pomocą fajki, {@recipe Elven Bread|HF|and optional link text added with another pipe}."
 							]
 						},
 						{
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/5etools} and ask questions.",
-								"The syntax for the @filter tag is as follows:",
+								"Innym znacznikiem, który od czasu do czasu pojawia się w danych, jest znacznik @filter. Ten znacznik może być trudny w użyciu i generalnie wymaga wiedzy na temat wnętrza każdej strony. W związku z tym należy używać go z rozwagą, a jeśli nie jesteś czegoś pewien, nie bój się wpaść na naszą stronę {@link Discord|https://discord.gg/5etools} i zadać pytanie.",
+								"Składnia znacznika @filter jest następująca:",
 								"(open curly brace)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
-								"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts—the filter values use the {@i internal} version, as you'd find in the data. So, for example, ..|school=D|.. would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ..|school=Divination|.. will not work.",
-								"The 'filter_name_X' here matches the literal text name of the filter, as displayed in the dropdown.",
-								"Some examples of the tag in action:",
+								"Zadaniem tego znacznika jest otwarcie podanej strony, wstępnie przefiltrowanej przy użyciu określonych opcji filtrowania. Jest jedno poważne zastrzeżenie, które sprawia, że jest on trudny w użyciu dla aspirujących entuzjastów JSONtranauts - wartości filtrów używają wersji {@i internal} takiej, jaką można znaleźć w danych. Tak więc na przykład ..|school=D|... będzie filtrować zaklęcia do zaklęć ze szkoły Wróżbiarstwa, ponieważ 'D' jest identyfikatorem Wróżbiarstwa w danych. Próba użycia np. ..|school=Divination|... nie zadziała.",
+								"W tym miejscu \"filter_name_X\" odpowiada dosłownej nazwie tekstowej filtra, wyświetlanej w oknie rozwijanym.",
+								"Kilka przykładów zastosowania tego znacznika w praktyce:",
 								"{@filter Races that have a bonus to Intelligence|races|Ability Bonus (Including Subrace)=Intelligence +any}",
 								"{@filter Bard cantrips and first-level spells|spells|level=0;1|class=bard}",
 								"{@filter Beast with challenge rating 1 or lower|bestiary|challenge rating=[&0;&1]|type=beast}",
@@ -80,15 +80,15 @@
 								"{@filter Divination and Evocation spells|spells|school=D;V}",
 								"{@filter All uncommon magic items|items|source=|type=|rarity=uncommon|miscellaneous=Magic}",
 								"{@filter Simple melee weapons|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
-								"Meta-options can be set; inline for individual filters, and using 'fbmt' for filtering meta-options {@filter filter meta example|spells|level=1;2=sor~sand~b1|fbmt=sor|fbmh=source}",
-								"Search can be set; {@filter view dinosaurs|bestiary|search=dinosaur}",
-								"An exact starting entity; {@filter filter for beasts and show cat|bestiary|type=beast|hash=cat_mm} where 'hash' is the part after a '#' and before any commas which appears in the URL bar when viewing the entity.",
+								"Można ustawić meta-opcje; inline dla poszczególnych filtrów i przy użyciu 'fbmt' dla meta-opcji filtrowania {@filter filter meta example|spells|level=1;2=sor~sand~b1|fbmt=sor|fbmh=source}",
+								"Można ustawić wyszukiwanie; {@filter view dinosaurs|bestiary|search=dinosaur}",
+								"Dokładny początek encji; {@filter filter for beasts and show cat|bestiary|type=beast|hash=cat_mm} gdzie \"hash\" to część po \"#\" i przed przecinkami, która pojawia się w pasku adresu URL podczas przeglądania encji.",
 								{
 									"type": "entries",
 									"name": "Note",
 									"entries": [
-										"Setting a filter to \"no value\", i.e. ..|school=|.. is equivalent to 'clear the filter,' resetting it to all-white.",
-										"The pages that support this functionality are those with the 'magnet' button; the link this button exports will give clues as to what one could do with the filter tag."
+										"Ustawienie filtru na \"brak wartości\", tzn. ..|school=|..., jest równoważne z \"wyczyść filtr\", czyli przywróceniem filtru jako całkowicie białego.",
+										"Strony, które obsługują tę funkcję, to strony z przyciskiem \"magnes\"; łącze, które ten przycisk eksportuje, daje wskazówki, co można zrobić z tagiem filtra."
 									]
 								}
 							]
@@ -97,21 +97,21 @@
 							"type": "inset",
 							"name": "Area Tags and IDs",
 							"entries": [
-								"Adventure and book content supports \"area\" tags, which have the form `@area [area name]|[entry id]` or `@area [area name]|[entry id]|[modifiers]` where [modifiers] is a combination of \"x\" for e[x]act text, and \"u\" for [u]ppercase. The \"exact\" modifier removes the leading \"area \" which is prepended to the area name, and the \"uppercase\" modifier causes the prepended text to \"Area \".",
-								"A variety of entries blocks can have \"id\" fields (and may therefore be linked to with \"area\" tags), notable \"entries\"-type, \"section\"-type, and \"inset\"-type. These IDs are conventionally 3-digit hexadecimal numbers (allowing for a total of 4096 IDs per adventure/book), but any string which is unique within the document will suffice."
+								"Treść przygód i książek obsługuje znaczniki \"area\", które mają postać `@area [area name]|[entry id]` lub `@area [area name]|[entry id]|[modifiers]`, gdzie [modifiers] jest kombinacją \"x\" dla tekstu pisanego e[x]act i \"u\" dla [u]ppercase. Modyfikator \"exact\" usuwa początkowe \"area \", które jest dodawane do nazwy obszaru, a modyfikator \"uppercase\" powoduje, że tekst dodawany do nazwy obszaru ma postać \"Area \".",
+								"Różne bloki wpisów mogą mieć pola \"id\" (i dlatego mogą być powiązane ze znacznikami \"area\"), w szczególności typu \"entries\", \"section\" i \"inset\". Identyfikatory te są standardowo trzycyfrowymi liczbami szesnastkowymi (co pozwala na uzyskanie łącznie 4096 identyfikatorów na przygodę/książkę), ale wystarczy dowolny ciąg znaków, który jest unikalny w obrębie dokumentu."
 							]
 						},
 						{
 							"type": "inset",
 							"name": "Book/Reference Tags",
 							"entries": [
-								"The following tags can be used to link specific sections of adventures/books. Note that chapters and headers are indexed from zero.",
+								"Poniższych znaczników można użyć do umieszczania odnośników do konkretnych rozdziałów przygód/książek. Należy pamiętać, że rozdziały i nagłówki są indeksowane od zera.",
 								{
 									"type": "list",
 									"items": [
-										"Adventure tags: link to an adventure {@adventure display text|CoS}; a chapter in an adventure {@adventure display text|CoS|2}; a heading in a chapter in an adventure {@adventure display text|CoS|2|Treasure}; or the Nth heading of a given name in a chapter in an adventure {@adventure display text|CoS|2|Treasure|1}",
-										"Book tags: link to a book {@book display text|PHB}; a chapter in a book {@book display text|PHB|2}; a heading in a chapter in a book {@book display text|PHB|2|Age}; or the Nth heading of a given name in a chapter in a book {@book display text|PHB|2|Age|0} (although this is generally unnecessary as, unlike adventures, books don't repeat their headings very often.",
-										"Quick Reference tags; {@code &lt;name&gt;|&lt;source&gt;|&lt;chapterIndex&gt;|&lt;headerIndex&gt;|&lt;displayText&gt;}: {@quickref Multiclassing}, {@quickref Multiclassing|PHB}, {@quickref Adventuring Gear|PHB|1}, {@quickref Adventuring Gear|PHB|1|0}, {@quickref Adventuring Gear|PHB|1|0|Display Text}."
+										"Znaczniki przygód: łącze do przygody {@adventure display text|CoS}; rozdział w przygodzie {@adventure display text|CoS|2}; nagłówek w rozdziale w przygodzie {@adventure display text|CoS|2|Treasure}; lub N-ty nagłówek danej nazwy w rozdziale w przygodzie {@adventure display text|CoS|2|Treasure|1}",
+										"Znaczniki książki: łącze do książki {@book display text|PHB}; rozdział w książce {@book display text|PHB|2}; nagłówek w rozdziale w książce {@book display text|PHB|2|Age}; lub N-ty nagłówek danego imienia w rozdziale w książce {@book display text|PHB|2|Age|0} (choć na ogół nie jest to konieczne, ponieważ w przeciwieństwie do przygód, książki nie powtarzają swoich nagłówków zbyt często.",
+										"Znaczniki szybkiego dostępu; {@code &lt;name&gt;|&lt;source&gt;|&lt;chapterIndex&gt;|&lt;headerIndex&gt;|&lt;displayText&gt;}: {@quickref Multiclassing}, {@quickref Multiclassing|PHB}, {@quickref Adventuring Gear|PHB|1}, {@quickref Adventuring Gear|PHB|1|0}, {@quickref Adventuring Gear|PHB|1|0|Display Text}."
 									]
 								}
 							]
@@ -120,15 +120,15 @@
 							"type": "inset",
 							"name": "Other Tags",
 							"entries": [
-								"Links:",
+								"Linki:",
 								{
 									"type": "list",
 									"items": [
-										"Internal links: {@5etools This Is Your Life|lifegen.html}",
-										"External links: {@link https://discord.gg/5etools} or {@link Discord|https://discord.gg/5etools}"
+										"Linki wewnętrzne: {@5etools This Is Your Life|lifegen.html}",
+										"Linki zewnętrzne: {@link https://discord.gg/5etools} lub {@link Discord|https://discord.gg/5etools}"
 									]
 								},
-								"Page specific/other tags:",
+								"Tagi specyficzne dla strony/inne:",
 								{
 									"type": "list",
 									"items": [
