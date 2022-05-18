@@ -132,32 +132,32 @@
 								{
 									"type": "list",
 									"items": [
-										"Bestiary 'attack' tags: {@atk m}, {@atk r}, {@atk m,r}, {@atk mw}, {@atk rw}, {@atk ms}, {@atk rs}; (homebrew only) {@atk a}, {@atk aw}. Commas separate or'd attack types; the general form is: '@atk &lt;m|r|a&gt;[&lt;w|s&gt;][,&lt;m|r|a&gt;[&lt;w|s&gt;][,...]]'"
+										"Znaczniki \"ataku\" w bestiariuszu: {@atk m}, {@atk r}, {@atk m,r}, {@atk mw}, {@atk rw}, {@atk ms}, {@atk rs}; (tylko homebrew) {@atk a}, {@atk aw}. Przecinki oddzielają typy ataków or'd; ogólna forma to: '@atk &lt;m|r|a&gt;[&lt;w|s&gt;][,&lt;m|r|a&gt;[&lt;w|s&gt;][,...]]'."
 									]
 								},
-								"Homebrew loading tags: {@loader Tome of Beasts|creature/Kobold Press; Tome of Beasts.json}. The URL after the pipe is assumed to be from the root of the homebrew repository, unless it starts with a \"...://\" prefix (i.e., any link should work, but there's a shorthand for homebrew repository links)."
+								"Znaczniki ładowania homebrew: {@loader Tome of Beasts|creature/Kobold Press; Tome of Beasts.json}. Przyjmuje się, że adres URL po potoku pochodzi z głównego katalogu repozytorium homebrew, chyba że zaczyna się od prefiksu \"...://\" (tzn. powinien działać każdy link, ale istnieje skrót dla linków do repozytorium homebrew)."
 							]
 						}
 					]
 				},
-				"These tags may be {@b {@i {@spell fireball|phb|nested}}}, although there are often better ways to get the combination of bold and italic that you're probably going to use this for; consider using one of the properly typed objects below (such as level 2 headers).",
+				"Znaczniki te mogą mieć postać {@b {@i {@spell fireball|phb|nested}}}, chociaż często istnieją lepsze sposoby uzyskania kombinacji pogrubienia i kursywy, do której prawdopodobnie będziesz tego używać; rozważ użycie jednego z poniższych prawidłowo wpisanych obiektów (takich jak nagłówki poziomu 2).",
 				{
 					"type": "entries",
 					"name": "A Subclass Name, For Example",
 					"entries": [
-						"The above is a 'level 0' header.",
-						"The 'name' property is optional",
+						"Powyżej znajduje się nagłówek \"poziomu 0\".",
+						"Właściwość \"name\" jest opcjonalna.",
 						{
 							"type": "entries",
 							"name": "A Subclass Feature Name",
 							"entries": [
-								"The above is a 'level 1' header.",
+								"Powyżej przedstawiono nagłówek \"poziomu 1\".",
 								{
 									"type": "entries",
 									"name": "A Subclass Feature Inline Header",
 									"entries": [
-										"This bold-italic inline header is a 'level 2' header, please use this as opposed to nesting tags. You can make a chain of empty entry objects with no names to get to this header level, if required.",
-										"Note that the period in the inline name is added automagically."
+										"Ten pogrubiony nagłówek inline jest nagłówkiem \"poziomu 2\", należy go używać zamiast zagnieżdżania znaczników. W razie potrzeby można utworzyć łańcuch pustych obiektów wejściowych bez nazw, aby dostać się do tego poziomu nagłówka.",
+										"Należy zauważyć, że kropka w nazwie inline jest dodawana automatycznie."
 									]
 								}
 							]
@@ -174,7 +174,7 @@
 									"type": "entries",
 									"name": "This is an example of a level 2 header with no real parents",
 									"entries": [
-										"This technique can be useful, sometimes."
+										"Ta technika może być czasem przydatna."
 									]
 								}
 							]
@@ -184,7 +184,7 @@
 				{
 					"type": "inline",
 					"entries": [
-						"Entries can be inlined, useful for e.g. links beyond the tags listed above, ",
+						"Wpisy można umieszczać w liniach, co jest przydatne np. w przypadku odnośników wykraczających poza znaczniki wymienione powyżej,",
 						{
 							"type": "link",
 							"href": {
@@ -193,13 +193,13 @@
 							},
 							"text": "such as a link to the homepage"
 						},
-						" but you can see why the tags are preferable."
+						" ale można zrozumieć, dlaczego preferowane są znaczniki."
 					]
 				},
 				{
 					"type": "inlineBlock",
 					"entries": [
-						"Similar to the above, but keeps the paragraph/etc tags around the inlined children, ",
+						"Podobne do powyższego, ale zachowuje znaczniki akapitu/etc. wokół podkreślonych dzieci,",
 						{
 							"type": "link",
 							"href": {
@@ -208,7 +208,7 @@
 							},
 							"text": "such as a link to the homepage"
 						},
-						" so can easily be mixed with lines of text."
+						" dzięki czemu można je łatwo łączyć z wierszami tekstu."
 					]
 				},
 				{
@@ -218,14 +218,14 @@
 							"type": "entries",
 							"name": "Option B",
 							"entries": [
-								"Sometimes useful, e.g. for Fighting Styles on a class. (Note that this option is rendered second, when it's listed first in the data.)"
+								"Czasami przydatne, np. w przypadku stylów walki dla danej klasy. (Zwróć uwagę, że ta opcja jest wyświetlana jako druga, podczas gdy w danych jest wymieniona jako pierwsza)."
 							]
 						},
 						{
 							"type": "entries",
 							"name": "Option A",
 							"entries": [
-								"The 'options' type is very similar to a list of entries, but it alphabetically sorts the list of options by name, before displaying them."
+								"Typ \"opcje\" jest bardzo podobny do listy wpisów, ale przed wyświetleniem opcji sortuje je alfabetycznie według nazw."
 							]
 						}
 					]
@@ -245,21 +245,21 @@
 					],
 					"rows": [
 						[
-							"This is a table row",
-							"The number of entries should match the number of columns, naturally*",
+							"To jest wiersz tabeli",
+							"Liczba wpisów powinna odpowiadać liczbie kolumn, naturalnie*.",
 							""
 						],
 						[
-							"The 'colStyles' list is literally used as CSS classes",
-							"Column widths can be specified in 12ths, as `col-[1 to 12]` (e.g. col-12 is 100% width, and col-6 is 50% width)",
+							"Lista 'colStyles' jest dosłownie używana jako klasy CSS",
+							"Szerokość kolumn można określić w 12-stkach, jako `col-[1 do 12]` (np. col-12 ma szerokość 100%, a col-6 ma szerokość 50%).",
 							"**"
 						],
 						[
 							{
 								"type": "list",
 								"items": [
-									"Nested entries (generally) work, too.",
-									"Although why you would put a list in a table is beyond me."
+									"Działają także wpisy zagnieżdżone (na ogół).",
+									"Chociaż nie wiem, po co umieszczać listę w tabeli."
 								]
 							},
 							"{@spell bless||Spells, on the other hand, make sense.}",
@@ -280,7 +280,7 @@
 						"** As an extension to Bootstrap's 1-to-12 system, 1/10th subdivisions can be used, e.g. col-1-5 for 1.5/12. The total column widths should still sum to exactly 12; enjoy doing the math."
 					]
 				},
-				"Rollable tables can be made like so (note the 'pad' to format single digit numbers e.g. '01' for tables with >10 rows):",
+				"Tabele zwijane można tworzyć w następujący sposób (zwróć uwagę na \"pad\" służący do formatowania liczb jednocyfrowych, np. \"01\" dla tabel o >10 wierszach):",
 				{
 					"type": "table",
 					"caption": "Rollable Table Caption",
@@ -301,7 +301,7 @@
 									"pad": true
 								}
 							},
-							"First Item"
+							"Pierwsza pozycja"
 						],
 						[
 							{
@@ -310,7 +310,7 @@
 									"exact": 2
 								}
 							},
-							"Item the Second"
+							"Pozycja druga"
 						],
 						[
 							{
@@ -320,7 +320,7 @@
 									"max": 4
 								}
 							},
-							"Three of Four Items"
+							"Trzy z czterech elementów"
 						],
 						[
 							{
@@ -329,7 +329,7 @@
 									"exact": 5
 								}
 							},
-							"Item V: The Item Items Back"
+							"Punkt V: Powrót przedmiotów"
 						],
 						[
 							{
@@ -338,19 +338,19 @@
 									"exact": 6
 								}
 							},
-							"Item for Lucky Winners"
+							"Nagroda dla szczęśliwych zwycięzców"
 						]
 					]
 				},
 				{
 					"type": "list",
 					"items": [
-						"A basic list of items",
-						"As usual, nested entries work",
+						"Podstawowa lista przedmiotów",
+						"Jak zwykle, działają wpisy zagnieżdżone",
 						{
 							"type": "list",
 							"items": [
-								"Such as a nested list"
+								"Na przykład lista zagnieżdżona"
 							]
 						}
 					]
@@ -359,19 +359,19 @@
 					"type": "list",
 					"columns": 3,
 					"items": [
-						"A list of items with wrapping columns",
-						"Which will wrap",
-						"Up to a maximum number of times as specified by the 'columns' field",
-						"And will attempt to balance content between each column"
+						"Lista elementów z kolumnami do zawijania",
+						"Który będzie owijał",
+						"Maksymalnie tyle razy, ile określono w polu \"kolumny\".",
+						"I będzie starał się zrównoważyć zawartość każdej kolumny"
 					]
 				},
-				"There's also:",
+				"Jest także:",
 				{
 					"type": "list",
 					"style": "list-no-bullets",
 					"items": [
-						"A list of items without bullets",
-						"Used very rarely"
+						"Lista elementów bez punktorów",
+						"Używane bardzo rzadko"
 					]
 				},
 				{
@@ -379,8 +379,8 @@
 					"style": "list-hang",
 					"name": "Hanging List",
 					"items": [
-						"A hanging items list",
-						"Which has a 'name'/title, and will hang below that title"
+						"Lista przedmiotów wiszących",
+						"Który ma \"nazwę\"/tytuł i będzie wisiał poniżej tego tytułu"
 					]
 				},
 				{
@@ -391,9 +391,9 @@
 						{
 							"type": "item",
 							"name": "An extension of the hanging list",
-							"entry": "Which has bold inline titles -- note that this only allows {@i one} entry per item (it's 'entry' and not 'entries')"
+							"entry": "Który ma pogrubione tytuły w wierszu -- zauważ, że pozwala to tylko na {@i one} wpisów w każdym elemencie (chodzi o \"wpis\", a nie \"wpisy\")"
 						},
-						"Can be mixed with regular strings"
+						"Można je mieszać ze zwykłymi sznurkami"
 					]
 				},
 				{
@@ -403,22 +403,22 @@
 						{
 							"type": "item",
 							"name": "A similar story here",
-							"entry": "The 'item' is an entry as above, but there's no 'name' for the entire list, so this has no left inset. Some long text to show what happens when the lines wrap around, it should continue but be indented after the first line. Some example of this in the source books can be found in Metalic Dragon breath weapons in the Monster Manual."
+							"entry": "Element\" jest wpisem, tak jak powyżej, ale nie ma \"nazwy\" dla całej listy, więc nie ma lewej wstawki. Długi tekst, aby pokazać, co się dzieje, gdy wiersze zawijają się dookoła, powinien być kontynuowany, ale wcięty po pierwszym wierszu. Przykładem tego w podręcznikach źródłowych może być metaliczna smocza broń oddechowa w Podręczniku potworów."
 						},
 						{
 							"type": "itemSub",
 							"name": "A sub-item used in some places",
-							"entry": "For example, XGE's complex traps"
+							"entry": "Na przykład, złożone pułapki XGE"
 						},
 						{
 							"type": "item",
 							"name": "Multiple entry version",
 							"entries": [
-								"This was, again, required specifically for XGE's complex traps, which can have multiple lines of text; due to their large and complex nature, one would have to presume.",
-								"Speaking of lines, this one is very long (much like the one above, which was specifically packed with superfluous information to pad it out to a decent word count) to hopefully demonstrate the effects of having to wrap a paragraph into the column, which should indent the first line of the paragraph only. Of course, if you're viewing this on an obscenely wide monitor, this will have little or no effect, so if you're in the future where 10k monitors are standard, then congratulations. Otherwise, like the rest of us plebs, you should see the desired layout.",
-								"For most uses, the single-entry version is preferred.",
-								"And here's another really long run-on sentence, just to really hammer home the effects of {@s drugs} excessive text, something I'm sure my English teacher would have a few comments about; thankfully, they're not much of a fan of Dungeons & Dragons, or even fantasy in general (needless to say, they were at best ambivalent towards the vast majority of my literary interests as a teenager; at least, as much as an English teacher can be towards a student who enjoys reading and who would choose to do it of their own volition).",
-								"What on earth did I just write"
+								"To również było wymagane specjalnie dla złożonych pułapek XGE, które mogą mieć wiele wierszy tekstu; należy przypuszczać, że ze względu na ich dużą i złożoną naturę.",
+								"Skoro już mowa o wierszach, ten jest bardzo długi (podobnie jak powyższy, który został specjalnie naszpikowany zbędnymi informacjami, aby nadać mu przyzwoitą liczbę słów), aby zademonstrować efekty konieczności zawijania akapitu w kolumnę, co powinno powodować wcięcie tylko pierwszego wiersza akapitu. Oczywiście, jeśli oglądasz to na nieprzyzwoicie szerokim monitorze, będzie to miało niewielki lub żaden efekt, więc jeśli jesteś w przyszłości, w której standardem będą monitory 10-kilogramowe, to gratuluję. W przeciwnym razie, podobnie jak reszta plebsu, powinieneś zobaczyć pożądany układ.",
+								"Do większości zastosowań preferowana jest wersja jednokrotnego zapisu.",
+								"A tu jeszcze jedno naprawdę długie, ciągnące się zdanie, tylko po to, żeby naprawdę uwypuklić skutki {@s drugs} nadmiaru tekstu, o czym na pewno mój nauczyciel angielskiego miałby kilka uwag; na szczęście nie jest on wielkim fanem Dungeons & Dragons ani nawet fantastyki w ogóle (nie trzeba dodawać, że miał w najlepszym razie ambiwalentny stosunek do zdecydowanej większości moich zainteresowań literackich jako nastolatka; przynajmniej na tyle, na ile nauczyciel angielskiego może mieć stosunek do ucznia, który lubi czytać i który robi to z własnej woli).",
+								"Co ja, u licha, właśnie napisałem"
 							]
 						}
 					]
@@ -427,22 +427,22 @@
 					"type": "list",
 					"style": "list-decimal",
 					"items": [
-						"A decimal-numbered list. Alternatively, 'list-lower-roman' can be used for lowercase Roman numerals.",
-						"So far only seen in homebrew."
+						"Lista numerowana dziesiętnie. Alternatywnie można użyć opcji \"list-lower-roman\" dla małych liter rzymskich.",
+						"Jak na razie tylko w wersji homebrew."
 					]
 				},
-				"The 'bonus' type just sticks a + in front of things",
+				"Typ \"bonusowy\" po prostu wstawia znak + przed rzeczami",
 				{
 					"type": "bonus",
 					"value": 3
 				},
-				"We don't use that one much. It's useful because it allows us to store the data as a number, and render it with a plus sign as required, but it's mostly just forgotten about.",
-				"Similar story with 'bonusSpeed' type (these 'bonus' flavors are mainly used in the class tables)",
+				"Tego elementu nie używamy zbyt często. Jest przydatny, ponieważ umożliwia przechowywanie danych w postaci liczby i renderowanie jej ze znakiem plusa w razie potrzeby, ale w większości przypadków po prostu się o nim zapomina.",
+				"Podobna historia z typem \"bonusSpeed\" (te \"bonusowe\" smaki są głównie używane w tabelach klas)",
 				{
 					"type": "bonusSpeed",
 					"value": 100
 				},
-				"The 'dice' type is rarely used, since the shorthand tag exists, but it looks like this:",
+				"Typ \"kostka\" jest rzadko używany, ponieważ istnieje znacznik skrótu, ale wygląda on następująco:",
 				{
 					"type": "dice",
 					"toRoll": [
@@ -464,7 +464,7 @@
 					],
 					"rollable": true
 				},
-				"The 'abilityDc' type is more helpful:",
+				"Typ \"abilityDc\" jest bardziej pomocny:",
 				{
 					"type": "abilityDc",
 					"name": "Buggy Code",
@@ -473,7 +473,7 @@
 						"int"
 					]
 				},
-				"As is the 'abilityAttackMod' type:",
+				"Podobnie jak typ \"abilityAttackMod\":",
 				{
 					"type": "abilityAttackMod",
 					"name": "Killing Things",
@@ -481,7 +481,7 @@
 						"str"
 					]
 				},
-				"There's also a generic version that allows more text customisation; 'abilityGeneric':",
+				"Istnieje również wersja ogólna, która pozwala na większe dostosowanie tekstu; 'abilityGeneric':",
 				{
 					"type": "abilityGeneric",
 					"name": "Initiative",
@@ -495,7 +495,7 @@
 					"type": "abilityGeneric",
 					"text": "leave out the 'name' and 'attributes' properties as required"
 				},
-				"External links using 'link':",
+				"Łącza zewnętrzne z użyciem 'link':",
 				{
 					"type": "link",
 					"href": {
@@ -504,53 +504,53 @@
 					},
 					"text": "The full 'entry' schema."
 				},
-				"Internal links are also possible, but generally covered by @tags. Check out the schema linked above for the full usage; it's massive and horrible so I'm not going to go into detail here.",
-				"Invocations/Other Optional Features:",
+				"Możliwe są również linki wewnętrzne, ale zazwyczaj są one objęte przez @tagi. Sprawdź schemat, do którego link podano powyżej, aby zapoznać się z jego pełnym zastosowaniem; jest on ogromny i okropny, więc nie będę się tutaj zagłębiał w szczegóły.",
+				"Inwokacje/inne funkcje fakultatywne:",
 				{
 					"type": "optfeature",
 					"name": "Optional Feature Name",
 					"prerequisite": "Optional prerequisite, which can include tags {@spell eldritch blast}",
 					"entries": [
-						"Optional feature text."
+						"Tekst funkcji opcjonalnych."
 					]
 				},
-				"Patrons:",
+				"Patroni:",
 				{
 					"type": "inset",
 					"name": "Inset Title (Optional)",
 					"entries": [
-						"This is a text inset/insert/sidebar/etc."
+						"Jest to wstawka tekstowa/wstawka/sidebar itp."
 					]
 				},
 				{
 					"type": "insetReadaloud",
 					"name": "Same As Above",
 					"entries": [
-						"But a different color."
+						"Ale innego koloru."
 					]
 				},
 				{
 					"type": "variant",
 					"name": "Better Monster",
 					"entries": [
-						"Some variant monster text",
+						"Niektóre warianty tekstu o potworach",
 						{
 							"type": "entries",
 							"name": "Inline Header",
 							"entries": [
-								"Text text text",
+								"Tekst tekst tekst tekst",
 								{
 									"type": "variantSub",
 									"name": "These can have child items",
 									"entries": [
-										"And the header style for them is unique, so this exists to cope with that."
+										"A styl nagłówka dla nich jest unikalny, więc ten dokument został stworzony, aby temu zaradzić."
 									]
 								}
 							]
 						}
 					]
 				},
-				"Images (similar to the structure of the 'link' type):",
+				"Obrazy (o strukturze podobnej do struktury typu \"łącze\"):",
 				{
 					"type": "image",
 					"href": {
@@ -559,7 +559,7 @@
 					},
 					"title": "Optional Title"
 				},
-				"Creatures; format based on Bestiary data, with added type (note that a proper Bestiary entry and a link to the entry is the preferred method of adding creatures, this functionality exists primarily for homebrew data):",
+				"Stworzenia; format oparty na danych z Bestiariusza, z dodanym typem (należy pamiętać, że preferowaną metodą dodawania stworzeń jest prawidłowy wpis w Bestiariuszu i link do niego, ta funkcjonalność istnieje głównie dla danych homebrew):",
 				{
 					"type": "dataCreature",
 					"dataCreature": {
@@ -612,19 +612,19 @@
 							{
 								"name": "Charge",
 								"entries": [
-									"If the unicorn moves at least 20 ft. straight toward a target and then hits it with a horn attack on the same turn, the target takes an extra 9 ({@dice 2d8}) piercing damage. If the target is a creature, it must succeed on a {@dc 15} Strength saving throw or be knocked prone."
+									"Jeśli jednorożec poruszy się na odległość co najmniej 20 stóp prosto w kierunku celu, a następnie trafi go atakiem rogowym w tej samej turze, cel otrzymuje dodatkowe 9 ({@dice 2d8}) obrażeń od przebicia. Jeśli celem jest stworzenie, musi udać mu się {@dc 15} rzut ratunkowy na Wytrzymałość albo zostanie powalony na ziemię."
 								]
 							},
 							{
 								"name": "Magic Resistance",
 								"entries": [
-									"The unicorn has advantage on saving throws against spells and other magical effects."
+									"Jednorożec ma przewagę w rzutach ratunkowych przeciwko zaklęciom i innym magicznym efektom."
 								]
 							},
 							{
 								"name": "Magic Weapons",
 								"entries": [
-									"The unicorn's weapon attacks are magical."
+									"Ataki bronią jednorożca są magiczne."
 								]
 							}
 						],
@@ -632,31 +632,31 @@
 							{
 								"name": "Multiattack",
 								"entries": [
-									"The unicorn makes two attacks: one with its hooves and one with its horn."
+									"Jednorożec wykonuje dwa ataki: jeden kopytem, a drugi rogiem."
 								]
 							},
 							{
 								"name": "Hooves",
 								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@damage 2d6 + 4}) bludgeoning damage."
+									"{@atk mw} {@hit 7} do trafienia, zasięg 5 stóp, jeden cel. Trafienie: 11 ({@damage 2d6 + 4}) obrażeń od obrażeń tępych."
 								]
 							},
 							{
 								"name": "Horn",
 								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) piercing damage."
+									"{@atk mw} {@hit 7} do trafienia, zasięg 5 stóp, jeden cel. Trafienie: 8 ({@damage 1d8 + 4}) obrażeń od przebicia."
 								]
 							},
 							{
 								"name": "Healing Touch (3/Day)",
 								"entries": [
-									"The unicorn touches another creature with its horn. The target magically regains 11 ({@dice 2d8 + 2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
+									"Jednorożec dotyka rogiem inną istotę. Cel w magiczny sposób odzyskuje 11 ({@dice 2d8 + 2}) punktów życia. Dodatkowo, dotyk usuwa wszystkie choroby i neutralizuje wszystkie trucizny dotykające cel."
 								]
 							},
 							{
 								"name": "Teleport (1/Day)",
 								"entries": [
-									"The unicorn magically teleports itself and up to three willing creatures it can see within 5 feet of it, along with any equipment they are wearing or carrying, to a location the unicorn is familiar with, up to 1 mile away."
+									"Jednorożec magicznie teleportuje siebie i do trzech chętnych stworzeń, które widzi w promieniu 5 stóp od siebie, wraz z ich wyposażeniem, które mają na sobie lub niosą, w znane mu miejsce, oddalone maksymalnie o 1 milę."
 								]
 							}
 						],
@@ -668,19 +668,19 @@
 							{
 								"name": "Hooves",
 								"entries": [
-									"The unicorn makes one attack with its hooves."
+									"Jednorożec wykonuje jeden atak kopytami."
 								]
 							},
 							{
 								"name": "Shimmering Shield (Costs 2 Actions)",
 								"entries": [
-									"The unicorn creates a shimmering, magical field around itself or another creature it can see within 60 feet of it. The target gains a +2 bonus to AC until the end of the unicorn's next turn."
+									"Jednorożec tworzy wokół siebie lub innej istoty, którą widzi w promieniu 60 stóp, mieniące się, magiczne pole. Cel zyskuje premię +2 do AC do końca następnej tury jednorożca."
 								]
 							},
 							{
 								"name": "Heal Self (Costs 3 Actions)",
 								"entries": [
-									"The unicorn magically regains 11 ({@dice 2d8 + 2}) hit points."
+									"Jednorożec w magiczny sposób odzyskuje 11 ({@dice 2d8 + 2}) punktów życia."
 								]
 							}
 						],
@@ -689,7 +689,7 @@
 							{
 								"name": "Innate Spellcasting",
 								"headerEntries": [
-									"The unicorn's innate spellcasting ability is Charisma (spell save {@dc 14}). The unicorn can innately cast the following spells, requiring no components:"
+									"Wrodzona zdolność jednorożca do rzucania czarów to Charyzma (odporność na czary {@dc 14}). Jednorożec może rzucać następujące zaklęcia, nie wymagające żadnych składników:"
 								],
 								"will": [
 									"{@spell detect evil and good}",
@@ -723,7 +723,7 @@
 						]
 					}
 				},
-				"Spells; as above:",
+				"Zaklęcia; jak wyżej:",
 				{
 					"type": "dataSpell",
 					"dataSpell": {
@@ -799,15 +799,15 @@
 						},
 						"source": "PHB",
 						"entries": [
-							"A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot-radius sphere centered on that point must make a Dexterity saving throw. A target takes {@dice 8d6} fire damage on a failed save, or half as much damage on a successful one.",
-							"The fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried."
+							"Z palca wskazującego do wybranego punktu w zasięgu błyska jasna smuga, a następnie z niskim rykiem przekształca się w eksplozję płomieni. Każda istota w promieniu 20 stóp od tego punktu musi wykonać rzut na zręczność. Cel otrzymuje {@dice 8d6} obrażeń od ognia przy nieudanym rzucie lub połowę tych obrażeń przy udanym rzucie.",
+							"Ogień rozprzestrzenia się po kątach. Zapalają się znajdujące się w pobliżu łatwopalne przedmioty, które nie są noszone lub przewożone."
 						],
 						"entriesHigherLevel": [
 							{
 								"type": "entries",
 								"name": "At Higher Levels",
 								"entries": [
-									"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@scaledice 8d6|3-9|1d6} for each slot level above 3rd."
+									"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 4. poziomu lub wyższego, obrażenia zwiększają się o {@scaledice 8d6|3-9|1d6} za każdy poziom gniazda powyżej 3."
 								]
 							}
 						],
