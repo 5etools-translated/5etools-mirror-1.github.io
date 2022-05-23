@@ -87,7 +87,7 @@ class ModalFilterBackgrounds extends ModalFilter {
 	}
 
 	async _pLoadAllData () {
-		const brew = await BrewUtil.pAddBrewData();
+		const brew = await BrewUtil2.pGetBrewProcessed();
 		const fromData = (await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/backgrounds.json`)).background;
 		const fromBrew = brew.background || [];
 		return [...fromData, ...fromBrew];
@@ -109,7 +109,7 @@ class ModalFilterBackgrounds extends ModalFilter {
 
 			<div class="col-4 ${this._getNameStyle()}">${bg.name}</div>
 			<div class="col-6">${bg._skillDisplay}</div>
-			<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)}" ${BrewUtil.sourceJsonToStyle(bg.source)}>${source}</div>
+			<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(bg.source)}" title="${Parser.sourceJsonToFull(bg.source)}" ${BrewUtil2.sourceJsonToStyle(bg.source)}>${source}</div>
 		</div>`;
 
 		const btnShowHidePreview = eleRow.firstElementChild.children[1].firstElementChild;

@@ -29,25 +29,6 @@ class RacesPage extends ListPage {
 		if (nxtData.length) this._addData({race: Renderer.race.mergeSubraces(nxtData)});
 	}
 
-	async _pHandleBrew (homebrew) {
-		if (homebrew.race) {
-			homebrew = MiscUtil.copy(homebrew);
-			homebrew.race = Renderer.race.mergeSubraces(homebrew.race, {isAddBaseRaces: true});
-		}
-		return super._pHandleBrew(homebrew);
-	}
-
-	/**
-	 * For a given homebrew race, fetch entries that have been expanded from its "subraces" array.
-	 * @param uniqueId
-	 */
-	getMergedSubraces (uniqueId) {
-		const race = this._dataList.find(it => it.uniqueId === uniqueId);
-		if (!race || !race._isBaseRace) return [];
-		// Note that this may include other subraces which were not on the original
-		return this._dataList.filter(it => it._baseName === race.name && it._baseSource === race.source);
-	}
-
 	getListItem (race, rcI, isExcluded) {
 		const hash = UrlUtil.autoEncodeHash(race);
 		if (this._seenHashes.has(hash)) return null;
@@ -65,7 +46,7 @@ class RacesPage extends ListPage {
 			<span class="bold col-4 pl-0">${race.name}</span>
 			<span class="col-4 ${race._slAbility === "Lineage (choose)" ? "italic" : ""}">${race._slAbility}</span>
 			<span class="col-2 text-center">${size}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(race.source)} pr-0" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil.sourceJsonToStyle(race.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(race.source)} pr-0" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil2.sourceJsonToStyle(race.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -81,7 +62,6 @@ class RacesPage extends ListPage {
 				alias: PageFilterRaces.getListAliases(race),
 			},
 			{
-				uniqueId: race.uniqueId ? race.uniqueId : rcI,
 				isExcluded,
 			},
 		);

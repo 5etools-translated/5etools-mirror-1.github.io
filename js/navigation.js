@@ -110,7 +110,7 @@ class NavBar {
 		this._addElement_divider(NavBar._CAT_UTILITIES);
 		this._addElement_li(NavBar._CAT_UTILITIES, "plutonium.html", "Plutonium (Foundry Module) Features");
 		this._addElement_divider(NavBar._CAT_UTILITIES);
-		this._addElement_li(NavBar._CAT_UTILITIES, "https://wiki.tercept.net/en/betteR20", "Roll20 Script Help");
+		this._addElement_li(NavBar._CAT_UTILITIES, "https://wiki.tercept.net/en/betteR20", "Roll20 Script Help", {isExternal: true});
 		this._addElement_divider(NavBar._CAT_UTILITIES);
 		this._addElement_li(NavBar._CAT_UTILITIES, "changelog.html", "Changelog");
 		this._addElement_li(NavBar._CAT_UTILITIES, `https://wiki.tercept.net/en/5eTools/HelpPages/${NavBar._getCurrentPage().replace(/.html$/i, "")}`, "Help", {isExternal: true});
@@ -205,11 +205,12 @@ class NavBar {
 	 * - The user's Blacklist.
 	 */
 	static async _initAdventureBookElements () {
+		await BrewUtil2.pInit();
 		const [adventureBookIndex] = await Promise.all([
 			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/generated/gendata-nav-adventure-book-index.json`),
 			ExcludeUtil.pInitialise(),
 		]);
-		const brew = await BrewUtil.pAddBrewData();
+		const brew = await BrewUtil2.pGetBrewProcessed();
 
 		[
 			{
@@ -418,7 +419,7 @@ class NavBar {
 	}
 
 	static _addElement_getDatePrefix ({date, isAddDateSpacer}) { return `${(date != null || isAddDateSpacer) ? `<div class="ve-muted ve-small mr-2 page__nav-date inline-block text-right inline-block">${date || ""}</div>` : ""}`; }
-	static _addElement_getSourcePrefix ({source}) { return `${source != null ? `<div class="nav2-list__disp-source ${Parser.sourceJsonToColor(source)}" ${BrewUtil.sourceJsonToStyle(source)}></div>` : ""}`; }
+	static _addElement_getSourcePrefix ({source}) { return `${source != null ? `<div class="nav2-list__disp-source ${Parser.sourceJsonToColor(source)}" ${BrewUtil2.sourceJsonToStyle(source)}></div>` : ""}`; }
 
 	static _addElement_divider (parentCategory) {
 		const parentNode = this._getNode(parentCategory);

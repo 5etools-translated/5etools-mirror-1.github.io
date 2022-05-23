@@ -61,9 +61,9 @@ class Omnidexer {
 	 * Compute and add an index item.
 	 * @param arbiter The indexer arbiter.
 	 * @param json A raw JSON object of a file, typically containing an array to be indexed.
-	 * @param options Options object.
-	 * @param options.isNoFilter If filtering rules are to be ignored (e.g. for tests).
-	 * @param options.alt Sub-options for alternate indices.
+	 * @param [options] Options object.
+	 * @param [options.isNoFilter] If filtering rules are to be ignored (e.g. for tests).
+	 * @param [options.alt] Sub-options for alternate indices.
 	 */
 	async pAddToIndex (arbiter, json, options) {
 		options = options || {};
@@ -442,7 +442,7 @@ class IndexableFileMagicVariants extends IndexableFile {
 						else {
 							const baseItemJson = await DataUtil.loadJSON(`data/items-base.json`);
 							const rawBaseItems = {...baseItemJson, baseitem: [...baseItemJson.baseitem]};
-							const brew = await BrewUtil.pAddBrewData();
+							const brew = await BrewUtil2.pGetBrewProcessed();
 							if (brew.baseitem) rawBaseItems.baseitem.push(...brew.baseitem);
 							return Renderer.item.getAllIndexableItems(rawVariants, rawBaseItems);
 						}

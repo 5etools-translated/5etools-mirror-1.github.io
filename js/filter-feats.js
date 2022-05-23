@@ -134,7 +134,7 @@ class ModalFilterFeats extends ModalFilter {
 	}
 
 	async _pLoadAllData () {
-		const brew = await BrewUtil.pAddBrewData();
+		const brew = await BrewUtil2.pGetBrewProcessed();
 		const fromData = (await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/feats.json`)).feat;
 		const fromBrew = brew.feat || [];
 		return [...fromData, ...fromBrew];
@@ -157,7 +157,7 @@ class ModalFilterFeats extends ModalFilter {
 			<div class="col-4 ${this._getNameStyle()}">${feat.name}</div>
 			<span class="col-3 ${feat._slAbility === VeCt.STR_NONE ? "italic" : ""}">${feat._slAbility}</span>
 				<span class="col-3 ${feat._slPrereq === VeCt.STR_NONE ? "italic" : ""}">${feat._slPrereq}</span>
-			<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(feat.source)}" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</div>
+			<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(feat.source)}" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil2.sourceJsonToStyle(feat.source)}>${source}</div>
 		</div>`;
 
 		const btnShowHidePreview = eleRow.firstElementChild.children[1].firstElementChild;

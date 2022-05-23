@@ -52,6 +52,12 @@ class BaseConverter extends BaseComponent {
 	get canSaveLocal () { return this._canSaveLocal; }
 	get prop () { return this._prop; }
 
+	get source () { return this._hasSource ? this._state.source : null; }
+	set source (val) {
+		if (!this._hasSource) return;
+		this._state.source = val;
+	}
+
 	renderSidebar (parent, $parent) {
 		const $wrpSidebar = $(`<div class="w-100 ve-flex-col"/>`).appendTo($parent);
 		const hkShowSidebar = () => $wrpSidebar.toggleClass("hidden", parent.get("converter") !== this._converterId);
@@ -123,13 +129,13 @@ class BaseConverter extends BaseComponent {
 			SourceUiUtil.render({
 				...options,
 				$parent: $wrpSourceOverlay,
-				cbConfirm: (source) => {
+				cbConfirm: async (source) => {
 					const isNewSource = options.mode !== "edit";
 
-					if (isNewSource) BrewUtil.addSource(source);
-					else BrewUtil.updateSource(source);
+					if (isNewSource) await BrewUtil2.pAddSource(source);
+					else await BrewUtil2.pEditSource(source);
 
-					if (isNewSource) parent.set("availableSources", [...parent.get("availableSources"), source.json]);
+					if (isNewSource) parent.doRefreshAvailableSources();
 					this._state.source = source.json;
 
 					if (modalMeta) modalMeta.doClose();
@@ -154,10 +160,6 @@ class BaseConverter extends BaseComponent {
 		Object.keys(Parser.SOURCE_JSON_TO_FULL)
 			.forEach(src => $(`<option/>`, {val: src, text: Parser.sourceJsonToFull(src)}).appendTo($selSource));
 
-		const hkSource = () => $selSource.val(this._state.source);
-		hkSource();
-		this._addHookBase("source", hkSource);
-
 		const hkAvailSources = () => {
 			const curSources = new Set($selSource.find(`option`).map((i, e) => $(e).val()));
 			curSources.add("");
@@ -178,7 +180,7 @@ class BaseConverter extends BaseComponent {
 			if (optionsToAdd.length) {
 				const $optBrewLast = $selSource.find(`option[disabled]`).prev();
 				optionsToAdd.forEach(source => {
-					const fullSource = BrewUtil.sourceJsonToSource(source);
+					const fullSource = BrewUtil2.sourceJsonToSource(source);
 					$(`<option/>`, {val: fullSource.json, text: fullSource.full}).insertAfter($optBrewLast);
 				});
 			}
@@ -188,6 +190,10 @@ class BaseConverter extends BaseComponent {
 		};
 		parent.addHook("availableSources", hkAvailSources);
 		hkAvailSources();
+
+		const hkSource = () => $selSource.val(this._state.source);
+		this._addHookBase("source", hkSource);
+		hkSource();
 
 		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Source</div>${$selSource}</div>`.appendTo($wrpSidebar);
 
@@ -199,7 +205,7 @@ class BaseConverter extends BaseComponent {
 					return;
 				}
 
-				const curSource = BrewUtil.sourceJsonToSource(curSourceJson);
+				const curSource = BrewUtil2.sourceJsonToSource(curSourceJson);
 				if (!curSource) return;
 				rebuildStageSource({mode: "edit", source: MiscUtil.copy(curSource)});
 				modalMeta = UiUtil.getShowModal({
@@ -725,6 +731,18 @@ class ConverterUi extends BaseComponent {
 		};
 	}
 
+	getPod () {
+		return {
+			...super.getPod(),
+			doRefreshAvailableSources: this._doRefreshAvailableSources.bind(this),
+		};
+	}
+
+	_doRefreshAvailableSources () {
+		this._state.availableSources = BrewUtil2.getSources().sort((a, b) => SortUtil.ascSortLower(a.full, b.full))
+			.map(it => it.json);
+	}
+
 	async pInit () {
 		// region load state
 		const savedState = await StorageUtil.pGetForPage(ConverterUi.STORAGE_STATE);
@@ -736,8 +754,10 @@ class ConverterUi extends BaseComponent {
 		}
 
 		// forcibly overwrite available sources with fresh data
-		this._state.availableSources = (BrewUtil.homebrewMeta.sources || []).sort((a, b) => SortUtil.ascSortLower(a.full, b.full))
-			.map(it => it.json);
+		this._doRefreshAvailableSources();
+		Object.values(this._converters)
+			.filter(it => it.source && !this._state.availableSources.includes(it.source))
+			.forEach(it => it.source = "");
 
 		// reset this temp flag
 		this._state.hasAppended = false;
@@ -768,24 +788,32 @@ class ConverterUi extends BaseComponent {
 
 		const $btnSaveLocal = $(`#save_local`).click(async () => {
 			const output = this._outText;
-			if (output && output.trim()) {
-				try {
-					const prop = this.activeConverter.prop;
-					const entries = JSON.parse(`[${output}]`);
 
-					const invalidSources = entries.map(it => !it.source || !BrewUtil.hasSourceJson(it.source) ? (it.name || it.caption || "(Unnamed)").trim() : false).filter(Boolean);
-					if (invalidSources.length) {
-						JqueryUtil.doToast({
-							content: `One or more entries have missing or unknown sources: ${invalidSources.join(", ")}`,
-							type: "danger",
-						});
-						return;
-					}
+			if (!(output || "").trim()) {
+				return JqueryUtil.doToast({
+					content: "Nothing to save!",
+					type: "warning",
+				});
+			}
 
-					// ignore duplicates
-					const _dupes = {};
-					const dupes = [];
-					const dedupedEntries = entries.map(it => {
+			try {
+				const prop = this.activeConverter.prop;
+				const entries = JSON.parse(`[${output}]`);
+
+				const invalidSources = entries.map(it => !it.source || !BrewUtil2.hasSourceJson(it.source) ? (it.name || it.caption || "(Unnamed)").trim() : false).filter(Boolean);
+				if (invalidSources.length) {
+					JqueryUtil.doToast({
+						content: `One or more entries have missing or unknown sources: ${invalidSources.join(", ")}`,
+						type: "danger",
+					});
+					return;
+				}
+
+				// ignore duplicates
+				const _dupes = {};
+				const dupes = [];
+				const dedupedEntries = entries
+					.map(it => {
 						const lSource = it.source.toLowerCase();
 						const lName = it.name.toLowerCase();
 						_dupes[lSource] = _dupes[lSource] || {};
@@ -796,56 +824,66 @@ class ConverterUi extends BaseComponent {
 							_dupes[lSource][lName] = true;
 							return it;
 						}
-					}).filter(Boolean);
-					if (dupes.length) {
-						JqueryUtil.doToast({
-							type: "warning",
-							content: `Ignored ${dupes.length} duplicate entr${dupes.length === 1 ? "y" : "ies"}`,
-						});
-					}
+					})
+					.filter(Boolean);
 
-					// handle overwrites
-					const overwriteMeta = dedupedEntries.map(it => {
-						const ix = (BrewUtil.homebrew[prop] || []).findIndex(bru => bru.name.toLowerCase() === it.name.toLowerCase() && bru.source.toLowerCase() === it.source.toLowerCase());
-						if (~ix) {
-							return {
-								isOverwrite: true,
-								ix,
-								entry: it,
-							};
-						} else return {entry: it, isOverwrite: false};
-					}).filter(Boolean);
-					const willOverwrite = overwriteMeta.map(it => it.isOverwrite).filter(Boolean);
-					if (willOverwrite.length && !confirm(`This will overwrite ${willOverwrite.length} entr${willOverwrite.length === 1 ? "y" : "ies"}. Are you sure?`)) {
-						return;
-					}
-
-					await Promise.all(overwriteMeta.map(meta => {
-						if (meta.isOverwrite) {
-							return BrewUtil.pUpdateEntryByIx(prop, meta.ix, MiscUtil.copy(meta.entry));
-						} else {
-							return BrewUtil.pAddEntry(prop, MiscUtil.copy(meta.entry));
-						}
-					}));
-
+				if (dupes.length) {
 					JqueryUtil.doToast({
-						type: "success",
-						content: `Saved!`,
+						type: "warning",
+						content: `Ignored ${dupes.length} duplicate entr${dupes.length === 1 ? "y" : "ies"}`,
 					});
-
-					Omnisearch.pAddToIndex("monster", overwriteMeta.filter(meta => !meta.isOverwrite).map(meta => meta.entry));
-				} catch (e) {
-					JqueryUtil.doToast({
-						content: `Current output was not valid JSON!`,
-						type: "danger",
-					});
-					setTimeout(() => { throw e; });
 				}
-			} else {
+
+				if (!dedupedEntries.length) {
+					return JqueryUtil.doToast({
+						content: "Nothing to save!",
+						type: "warning",
+					});
+				}
+
+				// handle overwrites
+				const brewDoc = await BrewUtil2.pGetOrCreateEditableBrewDoc();
+				const overwriteMeta = dedupedEntries
+					.map(it => {
+						if (!brewDoc?.body?.[prop]) return {entry: it, isOverwrite: false};
+
+						const ix = brewDoc.body[prop].findIndex(bru => bru.name.toLowerCase() === it.name.toLowerCase() && bru.source.toLowerCase() === it.source.toLowerCase());
+						if (!~ix) return {entry: it, isOverwrite: false};
+
+						return {
+							isOverwrite: true,
+							ix,
+							entry: it,
+						};
+					})
+					.filter(Boolean);
+
+				const willOverwrite = overwriteMeta.map(it => it.isOverwrite).filter(Boolean);
+				if (
+					willOverwrite.length
+					&& !await InputUiUtil.pGetUserBoolean({title: "Overwrite Entries", htmlDescription: `This will overwrite ${willOverwrite.length} entr${willOverwrite.length === 1 ? "y" : "ies"}. Are you sure?`, textYes: "Yes", textNo: "Cancel"})
+				) {
+					return;
+				}
+
+				const cpyBrewDoc = MiscUtil.copy(brewDoc);
+				overwriteMeta.forEach(meta => {
+					if (meta.isOverwrite) return cpyBrewDoc.body[prop][meta.ix] = MiscUtil.copy(meta.entry);
+					(cpyBrewDoc.body[prop] = cpyBrewDoc.body[prop] || []).push(MiscUtil.copy(meta.entry));
+				});
+
+				await BrewUtil2.pSetEditableBrewDoc(cpyBrewDoc);
+
 				JqueryUtil.doToast({
-					content: "Nothing to save!",
+					type: "success",
+					content: `Saved!`,
+				});
+			} catch (e) {
+				JqueryUtil.doToast({
+					content: `Current output was not valid JSON!`,
 					type: "danger",
 				});
+				setTimeout(() => { throw e; });
 			}
 		});
 		const hkConverter = () => {
@@ -1006,14 +1044,15 @@ ConverterUi._DEFAULT_STATE = {
 };
 
 async function doPageInit () {
-	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+	await BrewUtil2.pInit();
+	ExcludeUtil.pInitialise().then(null); // don't await, as this is only used for search
 	const [spells, items, itemsRaw, legendaryGroups, classes] = await Promise.all([
 		DataUtil.spell.pLoadAll(),
 		Renderer.item.pBuildList(),
 		DataUtil.item.loadRawJSON(),
 		DataUtil.legendaryGroup.pLoadAll(),
 		DataUtil.class.loadJSON(),
-		BrewUtil.pAddBrewData(), // init homebrew
+		BrewUtil2.pGetBrewProcessed(), // init homebrew
 	]);
 	SpellcastingTraitConvert.init(spells);
 	ItemParser.init(items, classes);

@@ -44,12 +44,12 @@ class OptionalFeaturesPage extends ListPage {
 		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border lst__row-inner">
-			<span class="col-0-3 px-0 ve-flex-vh-center lst__btn-toggle-expand self-ve-flex-stretch">[+]</span>
+			<span class="col-0-3 px-0 ve-flex-vh-center lst__btn-toggle-expand ve-self-flex-stretch">[+]</span>
 			<span class="bold col-3 px-1">${it.name}</span>
 			<span class="col-1-5 text-center" title="${it._dFeatureType}">${it._lFeatureType}</span>
 			<span class="col-4-7 text-center">${prerequisite}</span>
 			<span class="col-1 text-center">${level}</span>
-			<span class="col-1-5 ${Parser.sourceJsonToColor(it.source)} text-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-1-5 ${Parser.sourceJsonToColor(it.source)} text-center pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil2.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>
 		<div class="ve-flex ve-hidden relative lst__wrp-preview">
 			<div class="vr-0 absolute lst__vr-preview"></div>
@@ -68,7 +68,6 @@ class OptionalFeaturesPage extends ListPage {
 				type: it._lFeatureType,
 			},
 			{
-				uniqueId: it.uniqueId ? it.uniqueId : ivI,
 				isExcluded,
 			},
 		);

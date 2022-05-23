@@ -1,7 +1,8 @@
 "use strict";
 
-window.addEventListener("load", () => {
-	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+window.addEventListener("load", async () => {
+	await BrewUtil2.pInit();
+	ExcludeUtil.pInitialise().then(null); // don't await, as this is only used for search
 
 	const hash = window.location.hash.slice(1);
 
@@ -19,10 +20,7 @@ class InitTrackerPlayerViews extends BaseComponent {
 	constructor () {
 		super();
 
-		TabUiUtil.decorate(this);
-
-		this.__meta = {};
-		this._meta = this._getProxy("meta", this.__meta);
+		TabUiUtil.decorate(this, {isInitMeta: true});
 	}
 
 	init ({hash}) {

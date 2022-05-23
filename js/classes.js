@@ -65,6 +65,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 	async pOnLoad () {
 		this._$pgContent = $(`#pagecontent`);
 
+		await BrewUtil2.pInit();
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.class.loadJSON();
@@ -81,19 +82,12 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 
 		this._addData(data);
 
-		BrewUtil.bind({
-			filterBox: this.filterBox,
-			sourceFilter: this._pageFilter.sourceFilter,
-			list: this._list,
-			pHandleBrew: this._pHandleBrew.bind(this),
-		});
-
-		const homebrew = await BrewUtil.pAddBrewData();
+		const homebrew = await BrewUtil2.pGetBrewProcessed();
 		await this._pHandleBrew(homebrew);
 
 		this._pageFilter.trimState();
 
-		BrewUtil.makeBrewButton("manage-brew");
+		ManageBrewUi.bindBtnOpen($(`#manage-brew`));
 		await ListUtil.pLoadState();
 		RollerUtil.addListRollButton(true);
 
@@ -150,7 +144,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 			this._pageFilter.constructor.mutateForFilters(cls);
 
 			// Force data on any classes with unusual sources to behave as though they have normal sources
-			if (SourceUtil.isNonstandardSource(cls.source) || BrewUtil.hasSourceJson(cls.source)) {
+			if (SourceUtil.isNonstandardSource(cls.source) || BrewUtil2.hasSourceJson(cls.source)) {
 				if (cls.fluff) cls.fluff.filter(f => f.source === cls.source).forEach(f => f._isStandardSource = true);
 				cls.subclasses.filter(sc => sc.source === cls.source).forEach(sc => sc._isStandardSource = true);
 			}
@@ -230,10 +224,6 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 				});
 				return;
 			}
-
-			// Avoid re-adding existing brew subclasses
-			const existingBrewSc = sc.uniqueId ? (cls.subclasses || []).find(it => it.uniqueId === sc.uniqueId) : null;
-			if (existingBrewSc) return;
 
 			const isExcludedClass = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls), "class", cls.source);
 
@@ -471,7 +461,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 
 		const $lnk = $(`<a href="#${hash}" class="lst--border lst__row-inner">
 			<span class="bold col-8 pl-0">${cls.name}</span>
-			<span class="col-4 text-center ${Parser.sourceJsonToColor(cls.source)} pr-0" title="${Parser.sourceJsonToFull(cls.source)}" ${BrewUtil.sourceJsonToStyle(cls.source)}>${source}</span>
+			<span class="col-4 text-center ${Parser.sourceJsonToColor(cls.source)} pr-0" title="${Parser.sourceJsonToFull(cls.source)}" ${BrewUtil2.sourceJsonToStyle(cls.source)}>${source}</span>
 		</a>`);
 
 		const $ele = $$`<li class="lst__row ve-flex-col ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
@@ -487,7 +477,6 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 			{
 				$lnk,
 				entity: cls,
-				uniqueId: cls.uniqueId ? cls.uniqueId : clsI,
 				isExcluded,
 			},
 		);
@@ -1482,7 +1471,6 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 			{
 				isExcluded,
 				entity: sc,
-				uniqueId: sc.uniqueId ? sc.uniqueId : ix,
 			},
 		);
 	}
@@ -1954,7 +1942,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 
 	static getSubclassCssMod (cls, sc) {
 		if (sc.source !== cls.source) {
-			return BrewUtil.hasSourceJson(sc.source)
+			return BrewUtil2.hasSourceJson(sc.source)
 				? "brew"
 				: SourceUtil.isNonstandardSource(sc.source)
 					? sc.isReprinted ? "stale" : "spicy"
@@ -1966,29 +1954,29 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 	_getColorStyleClasses (entry, {isForceStandardSource, prefix, isSubclass} = {}) {
 		if (isSubclass) {
 			if (entry.isClassFeatureVariant) {
-				if (entry.source && !isForceStandardSource && BrewUtil.hasSourceJson(entry.source)) return [`${prefix}feature-variant-brew-subclass`];
+				if (entry.source && !isForceStandardSource && BrewUtil2.hasSourceJson(entry.source)) return [`${prefix}feature-variant-brew-subclass`];
 				if (entry.source && !isForceStandardSource && SourceUtil.isNonstandardSource(entry.source)) return [`${prefix}feature-variant-ua-subclass`];
 				return [`${prefix}feature-variant-subclass`];
 			}
 
 			if (entry.isReprinted) {
-				if (entry.source && !isForceStandardSource && BrewUtil.hasSourceJson(entry.source)) return [`${prefix}feature-brew-subclass-reprint`];
+				if (entry.source && !isForceStandardSource && BrewUtil2.hasSourceJson(entry.source)) return [`${prefix}feature-brew-subclass-reprint`];
 				if (entry.source && !isForceStandardSource && SourceUtil.isNonstandardSource(entry.source)) return [`${prefix}feature-ua-subclass-reprint`];
 				return [`${prefix}feature-subclass-reprint`];
 			}
 
-			if (entry.source && !isForceStandardSource && BrewUtil.hasSourceJson(entry.source)) return [`${prefix}feature-brew-subclass`];
+			if (entry.source && !isForceStandardSource && BrewUtil2.hasSourceJson(entry.source)) return [`${prefix}feature-brew-subclass`];
 			if (entry.source && !isForceStandardSource && SourceUtil.isNonstandardSource(entry.source)) return [`${prefix}feature-ua-subclass`];
 			return [`${prefix}feature-subclass`];
 		}
 
 		if (entry.isClassFeatureVariant) {
-			if (entry.source && !isForceStandardSource && BrewUtil.hasSourceJson(entry.source)) return [`${prefix}feature-variant-brew`];
+			if (entry.source && !isForceStandardSource && BrewUtil2.hasSourceJson(entry.source)) return [`${prefix}feature-variant-brew`];
 			if (entry.source && !isForceStandardSource && SourceUtil.isNonstandardSource(entry.source)) return [`${prefix}feature-variant-ua`];
 			return [`${prefix}feature-variant`];
 		}
 
-		if (entry.source && !isForceStandardSource && BrewUtil.hasSourceJson(entry.source)) return [`${prefix}feature-brew`];
+		if (entry.source && !isForceStandardSource && BrewUtil2.hasSourceJson(entry.source)) return [`${prefix}feature-brew`];
 		if (entry.source && !isForceStandardSource && SourceUtil.isNonstandardSource(entry.source)) return [`${prefix}feature-ua`];
 		return [];
 	}
@@ -2138,7 +2126,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 				const depthArr = [];
 
 				const ptDate = ptrIsFirstSubclassLevel._ === true && SourceUtil.isNonstandardSource(sc.source) && Parser.sourceJsonToDate(sc.source)
-					? Renderer.get().render(`{@note This subclass was published on ${DatetimeUtil.getDateStr(new Date(Parser.sourceJsonToDate(sc.source)))}.}`)
+					? Renderer.get().render(`{@note This subclass was published on ${DatetimeUtil.getDateStr({date: new Date(Parser.sourceJsonToDate(sc.source))})}.}`)
 					: "";
 				const ptSources = ptrIsFirstSubclassLevel._ === true && sc.otherSources ? `{@note {@b Subclass source:} ${Renderer.utils.getSourceAndPageHtml(sc)}}` : "";
 				const toRender = (ptDate || ptSources) && scFeature.entries ? MiscUtil.copy(scFeature) : scFeature;
@@ -2184,24 +2172,6 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 		});
 
 		ptrIsFirstSubclassLevel._ = false;
-	}
-
-	async pDeleteSubclassBrew (uniqueId, sc) {
-		sc.classSource = sc.classSource || SRC_PHB;
-		const cls = this._dataList.find(c => c.name.toLowerCase() === sc.className.toLowerCase() && c.source.toLowerCase() === sc.classSource.toLowerCase());
-
-		if (!cls) {
-			setTimeout(() => { throw new Error(`Could not find class "${sc.className}" with source "${sc.classSource}" to delete subclass "${sc.name}" from!`); });
-			return;
-		}
-
-		const ixSc = cls.subclasses.findIndex(it => it.uniqueId === uniqueId);
-		if (~ixSc) {
-			cls.subclasses.splice(ixSc, 1);
-			if (this._listSubclass) this._listSubclass.removeItemByData("uniqueId", uniqueId);
-			const stateKey = UrlUtil.getStateKeySubclass(sc);
-			this._state[stateKey] = false;
-		}
 	}
 
 	static isSubclassExcluded_ (cls, sc) {

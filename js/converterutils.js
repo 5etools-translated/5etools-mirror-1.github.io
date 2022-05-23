@@ -135,7 +135,7 @@ class TaggerUtils {
 
 		const doFind = arr => arr.find(it => it.name.toLowerCase() === name && it.source.toLowerCase() === source);
 
-		const fromBrew = typeof BrewUtil !== "undefined" && BrewUtil.homebrew?.legendaryGroup?.length ? doFind(BrewUtil.homebrew.legendaryGroup) : null;
+		const fromBrew = typeof BrewUtil2 !== "undefined" ? doFind(BrewUtil2.getBrewProcessedFromCache("legendaryGroup")) : null;
 		if (fromBrew) return fromBrew;
 
 		return doFind(this._ALL_LEGENDARY_GROUPS);
@@ -147,7 +147,7 @@ class TaggerUtils {
 
 		const doFind = arr => arr.find(s => (s.name.toLowerCase() === name || (typeof s.srd === "string" && s.srd.toLowerCase() === name)) && s.source.toLowerCase() === source);
 
-		const fromBrew = typeof BrewUtil !== "undefined" && BrewUtil.homebrew?.spell?.length ? doFind(BrewUtil.homebrew.spell) : null;
+		const fromBrew = typeof BrewUtil2 !== "undefined" ? doFind(BrewUtil2.getBrewProcessedFromCache("spell")) : null;
 		if (fromBrew) return fromBrew;
 
 		return doFind(this._ALL_SPELLS);

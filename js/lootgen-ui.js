@@ -4,10 +4,7 @@ class LootGenUi extends BaseComponent {
 	constructor ({spells, items, ClsLootGenOutput}) {
 		super();
 
-		TabUiUtil.decorate(this);
-
-		this.__meta = {};
-		this._meta = this._getProxy("meta", this.__meta);
+		TabUiUtil.decorate(this, {isInitMeta: true});
 
 		this._ClsLootGenOutput = ClsLootGenOutput || LootGenOutput;
 

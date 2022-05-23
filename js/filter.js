@@ -41,7 +41,7 @@ class PageFilter {
 	static _getClassFilterItem ({className, classSource, isVariantClass, definedInSource}) {
 		const nm = className.split("(")[0].trim();
 		const variantSuffix = isVariantClass ? ` [${definedInSource ? Parser.sourceJsonToAbv(definedInSource) : "Unknown"}]` : "";
-		const sourceSuffix = (SourceUtil.isNonstandardSource(classSource || SRC_PHB) || BrewUtil.hasSourceJson(classSource || SRC_PHB))
+		const sourceSuffix = (SourceUtil.isNonstandardSource(classSource || SRC_PHB) || BrewUtil2.hasSourceJson(classSource || SRC_PHB))
 			? ` (${Parser.sourceJsonToAbv(classSource)})` : "";
 		const name = `${nm}${variantSuffix}${sourceSuffix}`;
 
@@ -570,7 +570,7 @@ class FilterBox extends ProxyBase {
 
 		const sourceFilter = this._filters.find(it => it.header === FilterBox.SOURCE_HEADER);
 		if (sourceFilter) {
-			const selFnAlt = (val) => !SourceUtil.isNonstandardSource(val) && !BrewUtil.hasSourceJson(val);
+			const selFnAlt = (val) => !SourceUtil.isNonstandardSource(val) && !BrewUtil2.hasSourceJson(val);
 			const hkSelFn = () => {
 				if (this._meta.isBrewDefaultHidden) sourceFilter.setTempFnSel(selFnAlt);
 				else sourceFilter.setTempFnSel(null);
@@ -2216,14 +2216,14 @@ class SourceFilter extends Filter {
 	static _SORT_ITEMS_MINI (a, b) {
 		a = a.item ?? a;
 		b = b.item ?? b;
-		const valA = BrewUtil.hasSourceJson(a) ? 2 : SourceUtil.isNonstandardSource(a) ? 1 : 0;
-		const valB = BrewUtil.hasSourceJson(b) ? 2 : SourceUtil.isNonstandardSource(b) ? 1 : 0;
+		const valA = BrewUtil2.hasSourceJson(a) ? 2 : SourceUtil.isNonstandardSource(a) ? 1 : 0;
+		const valB = BrewUtil2.hasSourceJson(b) ? 2 : SourceUtil.isNonstandardSource(b) ? 1 : 0;
 		return SortUtil.ascSort(valA, valB) || SortUtil.ascSortLower(Parser.sourceJsonToFull(a), Parser.sourceJsonToFull(b));
 	}
 
 	static _getDisplayHtmlMini (item) {
 		item = item.item || item;
-		const isBrewSource = BrewUtil.hasSourceJson(item);
+		const isBrewSource = BrewUtil2.hasSourceJson(item);
 		const isNonStandardSource = !isBrewSource && SourceUtil.isNonstandardSource(item);
 		return `<span ${isBrewSource ? `title="(Homebrew)"` : isNonStandardSource ? `title="(UA/Etc.)"` : ""} class="glyphicon ${isBrewSource ? `glyphicon-glass` : isNonStandardSource ? `glyphicon-file` : `glyphicon-book`}"></span> ${Parser.sourceJsonToAbv(item)}`;
 	}

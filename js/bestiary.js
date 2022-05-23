@@ -242,7 +242,7 @@ class BestiaryPage extends ListPageMultiSource {
 						e_({
 							tag: "span",
 							clazz: `col-2 text-center ${Parser.sourceJsonToColor(mon.source)} pr-0`,
-							style: BrewUtil.sourceJsonToStylePart(mon.source),
+							style: BrewUtil2.sourceJsonToStylePart(mon.source),
 							title: `${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}`,
 							text: source,
 						}),
@@ -265,7 +265,6 @@ class BestiaryPage extends ListPageMultiSource {
 				page: mon.page,
 			},
 			{
-				uniqueId: mon.uniqueId ? mon.uniqueId : mI,
 				isExcluded,
 			},
 		);
@@ -538,15 +537,6 @@ class BestiaryPage extends ListPageMultiSource {
 
 	async _pOnLoad_pPreHashInit () {
 		this._encounterBuilder.initState();
-	}
-
-	_pHandleBrew (homebrew) {
-		try {
-			DataUtil.monster.populateMetaReference(homebrew);
-			this._addData(homebrew);
-		} catch (e) {
-			BrewUtil.pPurgeBrew(e);
-		}
 	}
 
 	_handleBestiaryLiClick (evt, listItem) {

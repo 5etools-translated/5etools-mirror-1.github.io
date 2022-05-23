@@ -64,7 +64,7 @@ class PsionicsPage extends ListPage {
 			<span class="bold col-6 pl-0">${p.name}</span>
 			<span class="col-2 text-center">${typeMeta.short}</span>
 			<span class="col-2 text-center ${p._fOrder === VeCt.STR_NONE ? "list-entry-none" : ""}">${p._fOrder}</span>
-			<span class="col-2 text-center pr-0" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil.sourceJsonToStyle(p.source)}>${source}</span>
+			<span class="col-2 text-center pr-0" title="${Parser.sourceJsonToFull(p.source)}" ${BrewUtil2.sourceJsonToStyle(p.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -79,7 +79,6 @@ class PsionicsPage extends ListPage {
 				searchModeList: getHiddenModeList(p),
 			},
 			{
-				uniqueId: p.uniqueId ? p.uniqueId : psI,
 				isExcluded,
 			},
 		);

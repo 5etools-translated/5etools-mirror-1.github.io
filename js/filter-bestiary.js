@@ -101,7 +101,7 @@ class PageFilterBestiary extends PageFilter {
 			displayFn: StrUtil.toTitleCase,
 			itemSortFn: SortUtil.ascSortLower,
 		});
-		this._tagFilter = new Filter({header: "Tag", displayFn: StrUtil.uppercaseFirst});
+		this._tagFilter = new Filter({header: "Tag", displayFn: StrUtil.toTitleCase});
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
 			items: ["L", "NX", "C", "G", "NY", "E", "N", "U", "A", "No Alignment"],
@@ -567,7 +567,7 @@ class ModalFilterBestiary extends ModalFilter {
 	}
 
 	async _pLoadAllData () {
-		const brew = await BrewUtil.pAddBrewData();
+		const brew = await BrewUtil2.pGetBrewProcessed();
 		const fromData = await DataUtil.monster.pLoadAll();
 		const fromBrew = brew.monster || [];
 		return [...fromData, ...fromBrew];
@@ -595,7 +595,7 @@ class ModalFilterBestiary extends ModalFilter {
 			<div class="col-4 ${this._getNameStyle()}">${mon.name}</div>
 			<div class="col-4">${type}</div>
 			<div class="col-2 text-center">${cr}</div>
-			<div class="col-1 text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" title="${Parser.sourceJsonToFull(mon.source)}" ${BrewUtil.sourceJsonToStyle(mon.source)}>${source}</div>
+			<div class="col-1 text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" title="${Parser.sourceJsonToFull(mon.source)}" ${BrewUtil2.sourceJsonToStyle(mon.source)}>${source}</div>
 		</div>`;
 
 		const btnShowHidePreview = eleRow.firstElementChild.children[1].firstElementChild;

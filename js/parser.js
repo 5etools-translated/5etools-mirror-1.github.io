@@ -554,7 +554,7 @@ Parser.hasSourceDate = function (source) {
 Parser.sourceJsonToFull = function (source) {
 	source = Parser._getSourceStringFromSource(source);
 	if (Parser.hasSourceFull(source)) return Parser._sourceFullCache[source.toLowerCase()].replace(/'/g, "\u2019");
-	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToFull(source).replace(/'/g, "\u2019");
+	if (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(source)) return BrewUtil2.sourceJsonToFull(source).replace(/'/g, "\u2019");
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, "\u2019");
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
@@ -566,13 +566,13 @@ Parser.sourceJsonToFullCompactPrefix = function (source) {
 Parser.sourceJsonToAbv = function (source) {
 	source = Parser._getSourceStringFromSource(source);
 	if (Parser.hasSourceAbv(source)) return Parser._sourceAbvCache[source.toLowerCase()];
-	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToAbv(source);
+	if (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(source)) return BrewUtil2.sourceJsonToAbv(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_ABV, source);
 };
 Parser.sourceJsonToDate = function (source) {
 	source = Parser._getSourceStringFromSource(source);
 	if (Parser.hasSourceDate(source)) return Parser._sourceDateCache[source.toLowerCase()];
-	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToDate(source);
+	if (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(source)) return BrewUtil2.sourceJsonToDate(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_DATE, source, null);
 };
 
@@ -679,7 +679,7 @@ Parser.FULL_CURRENCY_CONVERSION_TABLE = [
 	},
 ];
 Parser.getCurrencyConversionTable = function (currencyConversionId) {
-	const fromBrew = currencyConversionId ? MiscUtil.get(BrewUtil.homebrewMeta, "currencyConversions", currencyConversionId) : null;
+	const fromBrew = currencyConversionId ? BrewUtil2.getMetaLookup("currencyConversions")?.[currencyConversionId] : null;
 	const conversionTable = fromBrew && fromBrew.length ? fromBrew : Parser.DEFAULT_CURRENCY_CONVERSION_TABLE;
 	if (conversionTable !== Parser.DEFAULT_CURRENCY_CONVERSION_TABLE) conversionTable.sort((a, b) => SortUtil.ascSort(b.mult, a.mult));
 	return conversionTable;
@@ -806,14 +806,14 @@ Parser.dmgTypeToFull = function (dmgType) {
 };
 
 Parser.skillToExplanation = function (skillType) {
-	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "skills", skillType);
+	const fromBrew = typeof BrewUtil2 !== "undefined" ? BrewUtil2.getMetaLookup("skills")?.[skillType] : null;
 	if (fromBrew) return fromBrew;
 	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType);
 };
 
 Parser.senseToExplanation = function (senseType) {
 	senseType = senseType.toLowerCase();
-	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "senses", senseType);
+	const fromBrew = BrewUtil2.getMetaLookup("senses")?.[senseType];
 	if (fromBrew) return fromBrew;
 	return Parser._parse_aToB(Parser.SENSE_JSON_TO_FULL, senseType, ["No explanation available."]);
 };
@@ -864,7 +864,7 @@ Parser.spSchoolAndSubschoolsAbvsToFull = function (school, subschools) {
 Parser.spSchoolAbvToFull = function (schoolOrSubschool) {
 	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, schoolOrSubschool);
 	if (Parser.SP_SCHOOL_ABV_TO_FULL[schoolOrSubschool]) return out;
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[schoolOrSubschool]) return BrewUtil.homebrewMeta.spellSchools[schoolOrSubschool].full;
+	if (BrewUtil2.getMetaLookup("spellSchools")?.[schoolOrSubschool]) return BrewUtil2.getMetaLookup("spellSchools")?.[schoolOrSubschool].full;
 	return out;
 };
 
@@ -876,7 +876,7 @@ Parser.spSchoolAndSubschoolsAbvsShort = function (school, subschools) {
 Parser.spSchoolAbvToShort = function (school) {
 	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_SHORT, school);
 	if (Parser.SP_SCHOOL_ABV_TO_SHORT[school]) return out;
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[school]) return BrewUtil.homebrewMeta.spellSchools[school].short;
+	if (BrewUtil2.getMetaLookup("spellSchools")?.[school]) return BrewUtil2.getMetaLookup("spellSchools")?.[school].short;
 	return out;
 };
 
@@ -887,9 +887,9 @@ Parser.spSchoolAbvToStyle = function (school) { // For homebrew
 };
 
 Parser.spSchoolAbvToStylePart = function (school) { // For homebrew
-	const rawColor = MiscUtil.get(BrewUtil, "homebrewMeta", "spellSchools", school, "color");
+	const rawColor = BrewUtil2.getMetaLookup("spellSchools")?.[school]?.color;
 	if (!rawColor || !rawColor.trim()) return "";
-	const validColor = BrewUtil.getValidColor(rawColor);
+	const validColor = BrewUtil2.getValidColor(rawColor);
 	if (validColor.length) return `color: #${validColor};`;
 	return "";
 };
@@ -1121,7 +1121,7 @@ Parser.getSingletonUnit = function (unit, isShort) {
 		case UNT_MILES:
 			return isShort ? "mi." : "mile";
 		default: {
-			const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", unit, "singular");
+			const fromBrew = BrewUtil2.getMetaLookup("spellDistanceUnits")?.[unit]?.["singular"];
 			if (fromBrew) return fromBrew;
 			if (unit.charAt(unit.length - 1) === "s") return unit.slice(0, -1);
 			return unit;
@@ -1240,32 +1240,34 @@ Parser.spSubclassesToFull = function (fromSubclassList, {isTextOnly = false, sub
 			if (!ExcludeUtil.isInitialised) return true;
 			const excludeClass = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](mt.class), "class", mt.class.source);
 			if (excludeClass) return false;
-			const fromLookup = MiscUtil.get(subclassLookup, mt.class.source, mt.class.name, mt.subclass.source, mt.subclass.name);
-			if (!fromLookup) return true;
-			const excludeSubclass = ExcludeUtil.isExcluded(
-				UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: fromLookup.name || mt.subclass.name, source: mt.subclass.source}),
+
+			return !ExcludeUtil.isExcluded(
+				UrlUtil.URL_TO_HASH_BUILDER["subclass"]({
+					shortName: mt.subclass.name,
+					source: mt.subclass.source,
+					className: mt.class.name,
+					classSource: mt.class.source,
+				}),
 				"subclass",
 				mt.subclass.source,
+				{isNoCount: true},
 			);
-			return !excludeSubclass;
 		})
 		.sort((a, b) => {
 			const byName = SortUtil.ascSort(a.class.name, b.class.name);
 			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
-		.map(c => Parser._spSubclassItem({fromSubclass: c, isTextOnly, subclassLookup}))
+		.map(c => Parser._spSubclassItem({fromSubclass: c, isTextOnly}))
 		.join(", ") || "";
 };
 
-Parser._spSubclassItem = function ({fromSubclass, isTextOnly, subclassLookup}) {
+Parser._spSubclassItem = function ({fromSubclass, isTextOnly}) {
 	const c = fromSubclass.class;
 	const sc = fromSubclass.subclass;
 	const text = `${sc.name}${sc.subSubclass ? ` (${sc.subSubclass})` : ""}`;
 	if (isTextOnly) return text;
 	const classPart = `<a href="${Renderer.get().baseUrl}${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}" title="Source: ${Parser.sourceJsonToFull(c.source)}${c.definedInSource ? ` From a class spell list defined in: ${Parser.sourceJsonToFull(c.definedInSource)}` : ""}">${c.name}</a>`;
-	const fromLookup = subclassLookup ? MiscUtil.get(subclassLookup, c.source, c.name, sc.source, sc.name) : null;
-	if (fromLookup) return `<a class="italic" href="${Renderer.get().baseUrl}${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: {shortName: sc.name, source: sc.source}})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
-	else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
+	return `<a class="italic" href="${Renderer.get().baseUrl}${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: {shortName: sc.name, source: sc.source}})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
 };
 
 Parser.SPELL_ATTACK_TYPE_TO_FULL = {};
@@ -1338,11 +1340,11 @@ Parser.monTypeToFullObj = function (type) {
 		for (const tag of type.tags) {
 			if (typeof tag === "string") {
 				// handles e.g. "fiend (devil)"
-				out.tags.push(tag);
+				out.tags.push(tag.toLowerCase());
 				tempTags.push(tag);
 			} else {
 				// handles e.g. "humanoid (Chondathan human)"
-				out.tags.push(tag.tag);
+				out.tags.push(tag.tag.toLowerCase());
 				tempTags.push(`${tag.prefix} ${tag.tag}`);
 			}
 		}
@@ -1531,7 +1533,7 @@ Parser.psiTypeToMeta = type => {
 	let out = {};
 	if (type === Parser.PSI_ABV_TYPE_TALENT) out = {hasOrder: false, full: "Talent"};
 	else if (type === Parser.PSI_ABV_TYPE_DISCIPLINE) out = {hasOrder: true, full: "Discipline"};
-	else if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.psionicTypes && BrewUtil.homebrewMeta.psionicTypes[type]) out = BrewUtil.homebrewMeta.psionicTypes[type];
+	else if (BrewUtil2.getMetaLookup("psionicTypes")?.[type]) out = MiscUtil.copy(BrewUtil2.getMetaLookup("psionicTypes")[type]);
 	out.full = out.full || "Unknown";
 	out.short = out.short || out.full;
 	return out;
@@ -1590,7 +1592,7 @@ Parser.OPT_FEATURE_TYPE_TO_FULL = {
 
 Parser.optFeatureTypeToFull = function (type) {
 	if (Parser.OPT_FEATURE_TYPE_TO_FULL[type]) return Parser.OPT_FEATURE_TYPE_TO_FULL[type];
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.optionalFeatureTypes && BrewUtil.homebrewMeta.optionalFeatureTypes[type]) return BrewUtil.homebrewMeta.optionalFeatureTypes[type];
+	if (BrewUtil2.getMetaLookup("optionalFeatureTypes")?.[type]) return BrewUtil2.getMetaLookup("optionalFeatureTypes")[type];
 	return type;
 };
 
@@ -1604,7 +1606,7 @@ Parser.CHAR_OPTIONAL_FEATURE_TYPE_TO_FULL = {
 
 Parser.charCreationOptionTypeToFull = function (type) {
 	if (Parser.CHAR_OPTIONAL_FEATURE_TYPE_TO_FULL[type]) return Parser.CHAR_OPTIONAL_FEATURE_TYPE_TO_FULL[type];
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.charOption && BrewUtil.homebrewMeta.charOption[type]) return BrewUtil.homebrewMeta.charOption[type];
+	if (BrewUtil2.getMetaLookup("charOption")?.[type]) return BrewUtil2.getMetaLookup("charOption")[type];
 	return type;
 };
 
@@ -1897,9 +1899,13 @@ Parser._spSubclassesToCurrentAndLegacyFull = ({sp, subclassLookup, prop}) => {
 			);
 			if (excludeClass) return false;
 
-			const fromLookup = MiscUtil.get(subclassLookup, c.class.source, c.class.name, c.subclass.source, c.subclass.name);
 			const excludeSubclass = ExcludeUtil.isExcluded(
-				UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: (fromLookup || {}).name || c.subclass.name, source: c.subclass.source}),
+				UrlUtil.URL_TO_HASH_BUILDER["subclass"]({
+					shortName: c.subclass.name,
+					source: c.subclass.source,
+					className: c.class.name,
+					classSource: c.class.source,
+				}),
 				"subclass",
 				c.subclass.source,
 				{isNoCount: true},
@@ -1916,7 +1922,7 @@ Parser._spSubclassesToCurrentAndLegacyFull = ({sp, subclassLookup, prop}) => {
 			const nm = c.subclass.name;
 			const src = c.subclass.source;
 
-			const toAdd = Parser._spSubclassItem({fromSubclass: c, isTextOnly: false, subclassLookup});
+			const toAdd = Parser._spSubclassItem({fromSubclass: c, isTextOnly: false});
 
 			const fromLookup = MiscUtil.get(
 				subclassLookup,
@@ -3399,14 +3405,13 @@ Parser.PROP_TO_DISPLAY_NAME = {
 	"bookData": "Book Text",
 	"itemProperty": "Item Property",
 	"itemEntry": "Item Entry",
-	"monsterFluff": "Monster Fluff",
-	"itemFluff": "Item Fluff",
 	"makebrewCreatureTrait": "Homebrew Builder Creature Trait",
 	"charoption": "Other Character Creation Option",
 	"vehicleUpgrade": "Vehicle Upgrade",
 };
 Parser.getPropDisplayName = function (prop) {
 	if (Parser.PROP_TO_DISPLAY_NAME[prop]) return Parser.PROP_TO_DISPLAY_NAME[prop];
+	prop = prop.replace(/Fluff$/, " Fluff");
 	return prop.uppercaseFirst();
 };
 

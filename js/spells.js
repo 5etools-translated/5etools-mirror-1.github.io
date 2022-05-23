@@ -228,7 +228,7 @@ class SpellsPage extends ListPageMultiSource {
 						e_({
 							tag: "span",
 							clazz: `col-1-7 text-center ${Parser.sourceJsonToColor(spell.source)} pr-0`,
-							style: BrewUtil.sourceJsonToStylePart(spell.source),
+							style: BrewUtil2.sourceJsonToStylePart(spell.source),
 							title: `${Parser.sourceJsonToFull(spell.source)}${Renderer.utils.getSourceSubText(spell)}`,
 							text: source,
 						}),
@@ -253,7 +253,6 @@ class SpellsPage extends ListPageMultiSource {
 				normalisedRange: spell._normalisedRange,
 			},
 			{
-				uniqueId: spell.uniqueId ? spell.uniqueId : spI,
 				isExcluded,
 			},
 		);
@@ -400,17 +399,8 @@ class SpellsPage extends ListPageMultiSource {
 		};
 	}
 
-	_pHandleBrew (homebrew) {
-		try {
-			DataUtil.class.mergeHomebrewSubclassLookup(this._subclassLookup, homebrew);
-			this._addData(homebrew);
-		} catch (e) {
-			BrewUtil.pPurgeBrew(e);
-		}
-	}
-
 	async _pOnLoad_pPreDataAdd () {
-		const homebrew = await BrewUtil.pAddBrewData();
+		const homebrew = await BrewUtil2.pGetBrewProcessed();
 		Renderer.spell.populateHomebrewLookup(homebrew);
 	}
 

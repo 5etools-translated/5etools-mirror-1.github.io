@@ -16,10 +16,7 @@ class StatGenUi extends BaseComponent {
 		super();
 		opts = opts || {};
 
-		TabUiUtilSide.decorate(this);
-
-		this.__meta = {};
-		this._meta = this._getProxy("meta", this.__meta);
+		TabUiUtilSide.decorate(this, {isInitMeta: true});
 
 		this._races = opts.races;
 		this._feats = opts.feats;

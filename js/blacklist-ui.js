@@ -44,9 +44,12 @@ class BlacklistUtil {
 		this._addData(out, MiscUtil.copy(await DataUtil.race.loadJSON()));
 
 		const jsons = await Promise.all(this._BASIC_FILES.map(url => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/${url}`)));
-		for (const json of jsons) {
-			if (json.variant) json.variant.forEach(it => it.source = it.source || it.inherits.source);
-			this._addData(out, await json);
+		for (let json of jsons) {
+			if (json.variant) {
+				json = MiscUtil.copy(json);
+				json.variant.forEach(it => it.source = SourceUtil.getEntitySource(it));
+			}
+			this._addData(out, json);
 		}
 
 		return out;
@@ -202,7 +205,7 @@ class BlacklistUi {
 
 			<hr class="${this._isCompactUi ? "hr-2" : "hr-5"}">
 
-			<h4 class="my-0">Exclusion List</h4>
+			<h4 class="my-0">Blacklist</h4>
 			<div class="text-muted ${this._isCompactUi ? "mb-2" : "mb-3"}"><i>Rows marked with an asterisk (*) in a field match everything in that field.</i></div>
 
 			<div class="ve-flex-col min-h-0">
@@ -293,7 +296,7 @@ class BlacklistUi {
 		this._$wrpSelName = $(`<div class="w-100 ve-flex"></div>`);
 		this._doHandleSourceCategorySelChange();
 
-		const $btnAddExclusion = $(`<button class="btn btn-default btn-xs">Add Exclusion</button>`)
+		const $btnAddExclusion = $(`<button class="btn btn-default btn-xs">Add to Blacklist</button>`)
 			.click(() => this._pAdd());
 		// endregion
 

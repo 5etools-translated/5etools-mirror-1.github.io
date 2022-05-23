@@ -114,6 +114,8 @@ class ListPageMultiSource extends ListPage {
 			.map(src => new FilterItem({item: src, pFnChange: this._pLoadSource.bind(this)}))
 			.forEach(fi => this._pageFilter.sourceFilter.addItem(fi));
 
-		return toAdd;
+		const homebrew = await (this._brewDataSource ? this._brewDataSource() : BrewUtil2.pGetBrewProcessed());
+
+		return BrewUtil2.getMergedData(toAdd, homebrew);
 	}
 }

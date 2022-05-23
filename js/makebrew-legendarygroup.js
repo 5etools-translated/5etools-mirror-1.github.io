@@ -33,7 +33,7 @@ class LegendaryGroupBuilder extends Builder {
 
 		delete legGroup.uniqueId;
 
-		const meta = {...(opts.meta || {}), ...this.getInitialMetaState()};
+		const meta = {...(opts.meta || {}), ...this._getInitialMetaState()};
 
 		this.setStateFromLoaded({s: legGroup, m: meta});
 
@@ -43,6 +43,7 @@ class LegendaryGroupBuilder extends Builder {
 
 	_getInitialState () {
 		return {
+			...super._getInitialState(),
 			name: "New Legendary Group",
 			lairActions: [],
 			regionalEffects: [],
@@ -52,15 +53,20 @@ class LegendaryGroupBuilder extends Builder {
 	}
 
 	setStateFromLoaded (state) {
-		if (state && state.s && state.m) {
-			this.__state = state.s;
-			this.__meta = state.m;
-		}
+		if (!state?.s || !state?.m) return;
+
+		this._doResetProxies();
+
+		if (!state.s.uniqueId) state.s.uniqueId = CryptUtil.uid();
+
+		this.__state = state.s;
+		this.__meta = state.m;
 	}
 
 	doHandleSourcesAdd () { /* No-op */ }
 
 	_renderInputImpl () {
+		this.doCreateProxies();
 		this.renderInputControls();
 		this._renderInputMain();
 	}
@@ -68,7 +74,6 @@ class LegendaryGroupBuilder extends Builder {
 	_renderInputMain () {
 		this._sourcesCache = MiscUtil.copy(this._ui.allSources);
 		const $wrp = this._ui.$wrpInput.empty();
-		this.doCreateProxies();
 
 		const _cb = () => {
 			// Prefer numerical pages if possible
@@ -79,8 +84,7 @@ class LegendaryGroupBuilder extends Builder {
 
 			this.renderOutput();
 			this.doUiSave();
-			this.isEntrySaved = false;
-			this.mutSavedButtonText();
+			this._meta.isModified = true;
 		};
 		const cb = MiscUtil.debounce(_cb, 33);
 		this._cbCache = cb; // cache for use when updating sources
@@ -105,7 +109,7 @@ class LegendaryGroupBuilder extends Builder {
 		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
 
 		// INFO
-		BuilderUi.$getStateIptString("Name", cb, this._state, {nullable: false, callback: () => this.renderSideMenu()}, "name").appendTo(infoTab.$wrpTab);
+		BuilderUi.$getStateIptString("Name", cb, this._state, {nullable: false, callback: () => this.pRenderSideMenu()}, "name").appendTo(infoTab.$wrpTab);
 		this._$selSource = this.$getSourceInput(cb).appendTo(infoTab.$wrpTab);
 
 		// LAIR ACTIONS
@@ -132,7 +136,6 @@ class LegendaryGroupBuilder extends Builder {
 
 	renderOutput () {
 		this._renderOutputDebounced();
-		this.mutSavedButtonText();
 	}
 
 	_renderOutput () {
@@ -175,8 +178,8 @@ class LegendaryGroupBuilder extends Builder {
 		$tblData.append(Renderer.utils.getBorderTr());
 	}
 
-	async pDoPostSave () { ui.creatureBuilder.updateLegendaryGroups(); }
-	async pDoPostDelete () { ui.creatureBuilder.updateLegendaryGroups(); }
+	async pDoPostSave () { await ui.creatureBuilder.pUpdateLegendaryGroups(); }
+	async pDoPostDelete () { await ui.creatureBuilder.pUpdateLegendaryGroups(); }
 }
 
 const legendaryGroupBuilder = new LegendaryGroupBuilder();

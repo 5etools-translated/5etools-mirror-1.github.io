@@ -13,6 +13,13 @@ class ListItem {
 		this.values = values || {};
 		this.data = data || {};
 
+		this.searchText = null;
+		this.mutRegenSearchText();
+
+		this._isSelected = false;
+	}
+
+	mutRegenSearchText () {
 		let searchText = `${this.name} - `;
 		for (const k in this.values) {
 			const v = this.values[k]; // unsafe for performance
@@ -20,8 +27,6 @@ class ListItem {
 			searchText += `${v} - `;
 		}
 		this.searchText = searchText.toAscii().toLowerCase();
-
-		this._isSelected = false;
 	}
 
 	set isSelected (val) {
@@ -53,6 +58,7 @@ class List {
 	 * @param [opts.sortDirInitial] Initial sortDir.
 	 * @param [opts.syntax] A dictionary of search syntax prefixes, each with an item "to display" checker function.
 	 * @param [opts.isFuzzy]
+	 * @param [opts.isSkipSearchKeybindingEnter]
 	 */
 	constructor (opts) {
 		if (opts.fnSearch && opts.isFuzzy) throw new Error(`The options "fnSearch" and "isFuzzy" are mutually incompatible!`);
@@ -63,6 +69,7 @@ class List {
 		this._fnSearch = opts.fnSearch;
 		this._syntax = opts.syntax;
 		this._isFuzzy = !!opts.isFuzzy;
+		this._isSkipSearchKeybindingEnter = !!opts.isSkipSearchKeybindingEnter;
 
 		this._items = [];
 		this._eventHandlers = {};
@@ -142,7 +149,10 @@ class List {
 	}
 
 	_handleKeydown_enter (evt) {
+		if (this._isSkipSearchKeybindingEnter) return;
+
 		if (IS_VTT) return;
+		if (!EventUtil.noModifierKeys(evt)) return;
 
 		const firstVisibleItem = this.visibleItems[0];
 		if (!firstVisibleItem) return;
@@ -162,8 +172,8 @@ class List {
 		SearchUtil.removeStemmer(this._fuzzySearch);
 	}
 
-	update () {
-		if (!this._isInit || !this._isDirty) return;
+	update ({isForce = false} = {}) {
+		if (!this._isInit || !this._isDirty || isForce) return;
 		this._doSearch();
 	}
 

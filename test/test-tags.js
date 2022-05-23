@@ -1057,7 +1057,7 @@ class DuplicateEntityCheck {
 		const keyIx = [ixArray, ixVersion].filter(it => it != null).join("-v");
 
 		const name = ent.name;
-		const source = ent.source ? ent.source : (ent.inherits && ent.inherits.source) ? ent.inherits.source : null;
+		const source = SourceUtil.getEntitySource(ent);
 
 		switch (prop) {
 			case "deity": {

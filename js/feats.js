@@ -28,11 +28,11 @@ class FeatsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(feat);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border lst__row-inner">
-			<span class="col-0-3 px-0 ve-flex-vh-center lst__btn-toggle-expand self-ve-flex-stretch">[+]</span>
+			<span class="col-0-3 px-0 ve-flex-vh-center lst__btn-toggle-expand ve-self-flex-stretch">[+]</span>
 			<span class="bold col-3-5 px-1">${feat.name}</span>
 			<span class="col-3-5 ${feat._slAbility === VeCt.STR_NONE ? "list-entry-none " : ""}">${feat._slAbility}</span>
 			<span class="col-3 ${feat._slPrereq === VeCt.STR_NONE ? "list-entry-none " : ""}">${feat._slPrereq}</span>
-			<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
+			<span class="source col-1-7 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil2.sourceJsonToStyle(feat.source)}>${source}</span>
 		</a>
 		<div class="ve-flex ve-hidden relative lst__wrp-preview">
 			<div class="vr-0 absolute lst__vr-preview"></div>
@@ -50,7 +50,6 @@ class FeatsPage extends ListPage {
 				prerequisite: feat._slPrereq,
 			},
 			{
-				uniqueId: feat.uniqueId ? feat.uniqueId : ftI,
 				isExcluded,
 			},
 		);

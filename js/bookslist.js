@@ -4,7 +4,7 @@ class AdventuresBooksList {
 	static _getDateStr (advBook) {
 		if (!advBook.published) return "\u2014";
 		const date = new Date(advBook.published);
-		return DatetimeUtil.getDateStr(date);
+		return DatetimeUtil.getDateStr({date, isShort: true, isPad: true});
 	}
 
 	static _getGroupStr (advBook) {
@@ -54,6 +54,8 @@ class AdventuresBooksList {
 	}
 
 	async pOnPageLoad () {
+		await BrewUtil2.pInit();
+
 		const [data] = await Promise.all([
 			await DataUtil.loadJSON(`${Renderer.get().baseUrl}${this._contentsUrl}`),
 			await ExcludeUtil.pInitialise(),
@@ -91,10 +93,9 @@ class AdventuresBooksList {
 		});
 
 		this.addData(data);
-		const brewData = await BrewUtil.pAddBrewData();
+		const brewData = await BrewUtil2.pGetBrewProcessed();
 		await handleBrew(brewData);
-		BrewUtil.bind({lists: [this._list, this._listAlt]});
-		BrewUtil.makeBrewButton("manage-brew");
+		ManageBrewUi.bindBtnOpen($(`#manage-brew`));
 		this._list.init();
 		this._listAlt.init();
 
@@ -164,13 +165,13 @@ class AdventuresBooksList {
 				$eleLi,
 				it.name,
 				{source: it.id},
-				{uniqueId: it.uniqueId, $btnToggleExpand},
+				{$btnToggleExpand},
 			);
 
 			this._list.addItem(listItem);
 
 			// region Alt list (covers/thumbnails)
-			const eleLiAlt = $(`<a href="${this._rootPage}#${UrlUtil.encodeForHash(it.id)}" class="ve-flex-col ve-flex-v-center m-3 bks__wrp-bookshelf-item ${isExcluded ? `bks__wrp-bookshelf-item--blacklisted` : ""} py-3 px-2 ${Parser.sourceJsonToColor(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>
+			const eleLiAlt = $(`<a href="${this._rootPage}#${UrlUtil.encodeForHash(it.id)}" class="ve-flex-col ve-flex-v-center m-3 bks__wrp-bookshelf-item ${isExcluded ? `bks__wrp-bookshelf-item--blacklisted` : ""} py-3 px-2 ${Parser.sourceJsonToColor(it.source)}" ${BrewUtil2.sourceJsonToStyle(it.source)}>
 				<img src="${it.coverUrl || `${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/covers/blank.png`}" class="mb-2 bks__bookshelf-image" loading="lazy" alt="Cover Image: ${(it.name || "").qq()}">
 				<div class="bks__bookshelf-item-name ve-flex-vh-center text-center">${it.name}</div>
 			</a>`)[0];
@@ -179,7 +180,6 @@ class AdventuresBooksList {
 				eleLiAlt,
 				it.name,
 				{source: it.id},
-				{uniqueId: it.uniqueId},
 			);
 			this._listAlt.addItem(listItemAlt);
 			// endregion

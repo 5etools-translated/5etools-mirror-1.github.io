@@ -62,7 +62,7 @@ function run (isModificationMode) {
 					const data = json[k];
 					if (data instanceof Array) {
 						const noPage = data
-							.filter(it => !BLACKLIST_SOURCES.has((it.inherits ? it.inherits.source : it.source) || it.source))
+							.filter(it => !BLACKLIST_SOURCES.has(SourceUtil.getEntitySource(it)))
 							.filter(it => !(it.inherits ? it.inherits.page : it.page))
 							.filter(it => !it._copy?._preserve?.page);
 
@@ -90,7 +90,7 @@ function run (isModificationMode) {
 						}
 						noPage
 							.forEach(it => {
-								const ident = `${k.padEnd(20, " ")} ${(it.source || (it.inherits && it.inherits.source)).padEnd(32, " ")} ${it.name}`;
+								const ident = `${k.padEnd(20, " ")} ${SourceUtil.getEntitySource(it).padEnd(32, " ")} ${it.name}`;
 								if (isModificationMode) {
 									console.log(`  ${ident}`);
 									const page = rl.questionInt("  - Page = ");

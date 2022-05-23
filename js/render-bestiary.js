@@ -39,6 +39,7 @@ class RenderBestiary {
 	 * @param [options.$btnResetScaleCr] CR scaler reset button.
 	 * @param [options.selSummonSpellLevel] Summon spell level selector.
 	 * @param [options.selSummonClassLevel] Summon spell level selector.
+	 * @param [options.isSkipExcludesRender] If the "this entity is blacklisted" display should be skipped.
 	 */
 	static $getRenderedCreature (mon, options) {
 		const renderer = Renderer.get();
@@ -62,12 +63,12 @@ class RenderBestiary {
 
 		const htmlSourceAndEnvironment = this._$getRenderedCreature_getHtmlSourceAndEnvironment(mon, legGroup);
 
-		const hasToken = (mon.tokenUrl && mon.uniqueId) || mon.hasToken;
+		const hasToken = mon.tokenUrl || mon.hasToken;
 		const extraThClasses = hasToken ? ["mon__name--token"] : null;
 
 		return $$`
 		${Renderer.utils.getBorderTr()}
-		${Renderer.utils.getExcludedTr({entity: mon, dataProp: "monster", page: UrlUtil.PG_BESTIARY})}
+		${!options.isSkipExcludesRender ? Renderer.utils.getExcludedTr({entity: mon, dataProp: "monster", page: UrlUtil.PG_BESTIARY}) : null}
 		${Renderer.utils.getNameTr(mon, {controlRhs: mon.soundClip ? RenderBestiary._getPronunciationButton(mon) : "", extraThClasses, page: UrlUtil.PG_BESTIARY, extensionData: {_scaledCr: mon._scaledCr, _scaledSpellSummonLevel: mon._scaledSpellSummonLevel, _scaledClassSummonLevel: mon._scaledClassSummonLevel}})}
 		<tr><td colspan="6">
 			<div ${hasToken ? `class="mon__wrp-size-type-align--token"` : ""}><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></div>

@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "psionics.json",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"type": "object",
 	"properties": {
 		"psionic": {
@@ -150,9 +150,10 @@
 						}
 					},
 					"$$ifBrew": {
-						"foundryImg": {
-							"$ref": "util.json#/definitions/foundryImg"
-						}
+						"foundryData": {"$ref": "util.json#/definitions/foundryDataObject"},
+						"foundryFlags": {"$ref": "util.json#/definitions/foundryFlagsObject"},
+						"foundryEffects": {"$ref": "util.json#/definitions/foundryEffectsArray"},
+						"foundryImg": {"$ref": "util.json#/definitions/foundryImg"}
 					}
 				},
 				"required": [

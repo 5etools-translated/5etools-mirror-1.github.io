@@ -2,7 +2,8 @@
 
 class SearchPage {
 	static async pInit () {
-		ExcludeUtil.pInitialise(); // don't await, as this is only used for search
+		await BrewUtil2.pInit();
+		ExcludeUtil.pInitialise().then(null); // don't await, as this is only used for search
 
 		SearchPage._isAllExpanded = (await StorageUtil.pGetForPage(SearchPage._STORAGE_KEY_IS_EXPANDED)) || false;
 		SearchPage._$wrp = $(`#main_content`).empty();
@@ -143,7 +144,7 @@ class SearchPage {
 						? `<a href="${adventureBookSourceHref}">${ptPageInner}</a>`
 						: ptPageInner;
 
-					const ptSourceInner = source ? `<i>${Parser.sourceJsonToFull(source)}</i> (<span class="${Parser.sourceJsonToColor(source)}" ${BrewUtil.sourceJsonToStyle(source)}>${Parser.sourceJsonToAbv(source)}</span>)${isSrd ? `<span class="ve-muted relative help-subtle pg-search__disp-srd" title="Available in the Systems Reference Document">[SRD]</span>` : ""}` : `<span></span>`;
+					const ptSourceInner = source ? `<i>${Parser.sourceJsonToFull(source)}</i> (<span class="${Parser.sourceJsonToColor(source)}" ${BrewUtil2.sourceJsonToStyle(source)}>${Parser.sourceJsonToAbv(source)}</span>)${isSrd ? `<span class="ve-muted relative help-subtle pg-search__disp-srd" title="Available in the Systems Reference Document">[SRD]</span>` : ""}` : `<span></span>`;
 					const ptSource = ptPage || !adventureBookSourceHref
 						? ptSourceInner
 						: `<a href="${adventureBookSourceHref}">${ptSourceInner}</a>`;
@@ -197,7 +198,7 @@ class SearchPage {
 										// region Render tokens, where available
 										let isImagePopulated = false;
 										if (category === Parser.CAT_ID_CREATURE) {
-											const hasToken = (ent.tokenUrl && ent.uniqueId) || ent.hasToken;
+											const hasToken = ent.tokenUrl || ent.hasToken;
 											if (hasToken) {
 												isImagePopulated = true;
 												const tokenUrl = Renderer.monster.getTokenUrl(ent);

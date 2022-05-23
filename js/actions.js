@@ -29,10 +29,10 @@ class ActionsPage extends ListPage {
 		const time = it.time ? it.time.map(tm => PageFilterActions.getTimeText(tm)).join("/") : "\u2014";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border lst__row-inner">
-			<span class="col-0-3 px-0 ve-flex-vh-center lst__btn-toggle-expand self-ve-flex-stretch">[+]</span>
+			<span class="col-0-3 px-0 ve-flex-vh-center lst__btn-toggle-expand ve-self-flex-stretch">[+]</span>
 			<span class="col-5-7 px-1 bold">${it.name}</span>
 			<span class="col-4 text-center">${time}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil2.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>
 		<div class="ve-flex ve-hidden relative lst__wrp-preview">
 			<div class="vr-0 absolute lst__vr-preview"></div>
@@ -49,7 +49,6 @@ class ActionsPage extends ListPage {
 				time,
 			},
 			{
-				uniqueId: it.uniqueId ? it.uniqueId : anI,
 				isExcluded,
 			},
 		);

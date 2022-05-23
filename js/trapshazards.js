@@ -29,7 +29,7 @@ class TrapsHazardsPage extends ListPage {
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border lst__row-inner">
 			<span class="col-3 pl-0 text-center">${trapType}</span>
 			<span class="bold col-7">${it.name}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil2.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -42,7 +42,6 @@ class TrapsHazardsPage extends ListPage {
 				trapType,
 			},
 			{
-				uniqueId: it.uniqueId ? it.uniqueId : thI,
 				isExcluded,
 			},
 		);

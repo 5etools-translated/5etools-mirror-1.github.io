@@ -508,19 +508,20 @@ class BookUtil {
 		}
 
 		const fromIndex = BookUtil.bookIndex.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
-		if (fromIndex && !fromIndex.uniqueId) {
+		if (fromIndex) {
 			return this._booksHashChange_pHandleFound({fromIndex, bookId, hashParts, $contents, isNewBook});
 		}
 
 		// if it's homebrew
-		if (fromIndex && fromIndex.uniqueId) {
-			const brew = await BrewUtil.pAddBrewData();
-			if (!brew[BookUtil.homebrewData]) return this._booksHashChange_handleNotFound({$contents, bookId});
+		const fromIndexBrew = BookUtil.bookIndexBrew.find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
+		if (fromIndexBrew) {
+			const brew = await BrewUtil2.pGetBrewProcessed();
+			if (!brew[BookUtil.propHomebrewData]) return this._booksHashChange_handleNotFound({$contents, bookId});
 
-			const bookData = (brew[BookUtil.homebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
+			const bookData = (brew[BookUtil.propHomebrewData] || []).find(bk => UrlUtil.encodeForHash(bk.id) === UrlUtil.encodeForHash(bookId));
 
 			if (!bookData) return this._booksHashChange_handleNotFound({$contents, bookId});
-			return this._booksHashChange_pHandleFound({fromIndex, homebrewData: bookData, bookId, hashParts, $contents, isNewBook});
+			return this._booksHashChange_pHandleFound({fromIndex: fromIndexBrew, homebrewData: bookData, bookId, hashParts, $contents, isNewBook});
 		}
 
 		return this._booksHashChange_handleNotFound({$contents, bookId});
@@ -868,8 +869,8 @@ BookUtil._isNarrow = null;
 // region Hashchange
 BookUtil.baseDataUrl = "";
 BookUtil.bookIndex = [];
-BookUtil.homebrewIndex = null;
-BookUtil.homebrewData = null;
+BookUtil.bookIndexBrew = [];
+BookUtil.propHomebrewData = null;
 BookUtil.$dispBook = null;
 BookUtil.referenceId = false;
 BookUtil.isHashReload = false;

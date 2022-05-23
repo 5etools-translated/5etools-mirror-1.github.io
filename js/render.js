@@ -1350,7 +1350,7 @@ function Renderer () {
 
 		if (!pluginResults.some(it => it.isSkip)) {
 			if (SourceUtil.isNonstandardSource(entry.source)) outList.push("spicy-sauce");
-			if (BrewUtil.hasSourceJson(entry.source)) outList.push("refreshing-brew");
+			if (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(entry.source)) outList.push("refreshing-brew");
 		}
 
 		if (this._extraSourceClasses) outList.push(...this._extraSourceClasses);
@@ -1434,7 +1434,7 @@ function Renderer () {
 				break;
 			case "@color": {
 				const [toDisplay, color] = Renderer.splitTagByPipe(text);
-				const scrubbedColor = BrewUtil.getValidColor(color);
+				const scrubbedColor = BrewUtil2.getValidColor(color);
 
 				textStack[0] += `<span class="rd__color" style="color: #${scrubbedColor}">`;
 				this._recursiveRender(toDisplay, textStack, meta);
@@ -1443,7 +1443,7 @@ function Renderer () {
 			}
 			case "@highlight": {
 				const [toDisplay, color] = Renderer.splitTagByPipe(text);
-				const scrubbedColor = color ? BrewUtil.getValidColor(color) : null;
+				const scrubbedColor = color ? BrewUtil2.getValidColor(color) : null;
 
 				textStack[0] += scrubbedColor ? `<span style="background-color: #${scrubbedColor}">` : `<span class="rd__highlight">`;
 				textStack[0] += toDisplay;
@@ -1671,7 +1671,7 @@ function Renderer () {
 			// HOMEBREW LOADING ////////////////////////////////////////////////////////////////////////////////
 			case "@loader": {
 				const {name, path} = this._renderString_getLoaderTagMeta(text);
-				textStack[0] += `<span onclick="BrewUtil.handleLoadbrewClick(this)" data-rd-loader-path="${path.escapeQuotes()}" data-rd-loader-name="${name.escapeQuotes()}" class="rd__wrp-loadbrew--ready" title="Click to install homebrew">${name}<span class="glyphicon glyphicon-download-alt rd__loadbrew-icon rd__loadbrew-icon"></span></span>`;
+				textStack[0] += `<span onclick="BrewUtil2.pAddBrewFromLoaderTag(this)" data-rd-loader-path="${path.escapeQuotes()}" data-rd-loader-name="${name.escapeQuotes()}" class="rd__wrp-loadbrew--ready" title="Click to install homebrew">${name}<span class="glyphicon glyphicon-download-alt rd__loadbrew-icon rd__loadbrew-icon"></span></span>`;
 				break;
 			}
 
@@ -1744,7 +1744,7 @@ function Renderer () {
 
 	this._renderString_getLoaderTagMeta = function (text) {
 		const [name, file] = Renderer.splitTagByPipe(text);
-		const path = /^.*?:\/\//.test(file) ? file : `https://raw.githubusercontent.com/TheGiddyLimit/homebrew/master/${file}`;
+		const path = /^.*?:\/\//.test(file) ? file : `${VeCt.URL_ROOT_BREW}${file}`;
 		return {name, path};
 	};
 
@@ -2520,8 +2520,8 @@ Renderer.utils = {
 		const tagPartSourceStart = `<${pageLinkPart ? `a href="${Renderer.get().baseUrl}${pageLinkPart}"` : "span"}`;
 		const tagPartSourceEnd = `</${pageLinkPart ? "a" : "span"}>`;
 
-		const ptBrewSourceLink = BrewUtil.hasSourceJson(it.source) && BrewUtil.sourceJsonToSource(it.source)?.url
-			? `<a href="${BrewUtil.sourceJsonToSource(it.source).url}" title="View Homebrew Source" class="self-ve-flex-center ml-2 ve-muted rd__stats-name-brew-link" target="_blank" rel="noopener noreferrer"><span class="	glyphicon glyphicon-share"></span></a>`
+		const ptBrewSourceLink = BrewUtil2.hasSourceJson(it.source) && BrewUtil2.sourceJsonToSource(it.source)?.url
+			? `<a href="${BrewUtil2.sourceJsonToSource(it.source).url}" title="View Homebrew Source" class="ve-self-flex-center ml-2 ve-muted rd__stats-name-brew-link" target="_blank" rel="noopener noreferrer"><span class="	glyphicon glyphicon-share"></span></a>`
 			: "";
 
 		// Add data-page/source/hash attributes for external script use (e.g. Rivet)
@@ -2534,7 +2534,7 @@ Renderer.utils = {
 						${!IS_VTT && ExtensionUtil.ACTIVE && opts.page ? Renderer.utils.getBtnSendToFoundryHtml() : ""}
 					</div>
 					<div class="stats-source ve-flex-v-baseline">
-						${tagPartSourceStart} class="help-subtle ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" ${BrewUtil.sourceJsonToStyle(it.source)}>${it.source ? Parser.sourceJsonToAbv(it.source) : ""}${tagPartSourceEnd}
+						${tagPartSourceStart} class="help-subtle ${it.source ? `${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)}${Renderer.utils.getSourceSubText(it)}` : ""}" ${BrewUtil2.sourceJsonToStyle(it.source)}>${it.source ? Parser.sourceJsonToAbv(it.source) : ""}${tagPartSourceEnd}
 
 						${Renderer.utils.isDisplayPage(it.page) ? ` ${tagPartSourceStart} class="rd__stats-name-page ml-1" title="Page ${it.page}">p${it.page}${tagPartSourceEnd}` : ""}
 
@@ -2762,7 +2762,7 @@ Renderer.utils = {
 		assignPropsIfExist(entry.fluff, "name", "type", "entries", "images");
 
 		if (entry.fluff[mappedProp]) {
-			const fromList = (BrewUtil.homebrew[prop] || []).find(it =>
+			const fromList = (BrewUtil2.getBrewProcessedFromCache(prop) || []).find(it =>
 				it.name === entry.fluff[mappedProp].name
 				&& it.source === entry.fluff[mappedProp].source,
 			);
@@ -2772,7 +2772,7 @@ Renderer.utils = {
 		}
 
 		if (entry.fluff[mappedPropAppend]) {
-			const fromList = (BrewUtil.homebrew[prop] || []).find(it => it.name === entry.fluff[mappedPropAppend].name && it.source === entry.fluff[mappedPropAppend].source);
+			const fromList = (BrewUtil2.getBrewProcessedFromCache(prop) || []).find(it => it.name === entry.fluff[mappedPropAppend].name && it.source === entry.fluff[mappedPropAppend].source);
 			if (fromList) {
 				if (fromList.entries) {
 					fluff.entries = MiscUtil.copy(fluff.entries || []);
@@ -4931,7 +4931,7 @@ Renderer.race = {
 			(_baseRace._seenSubraces = _baseRace._seenSubraces || []).push({name: sr.name, source: sr.source});
 
 			// If this is a homebrew "base race" which is not marked as such, upgrade it to a base race
-			if (!_baseRace._isBaseRace && BrewUtil.hasSourceJson(_baseRace.source)) {
+			if (!_baseRace._isBaseRace && BrewUtil2.hasSourceJson(_baseRace.source)) {
 				Renderer.race._mutMakeBaseRace(_baseRace);
 			}
 
@@ -5917,7 +5917,7 @@ Renderer.monster = {
 	getRenderedSenses (senses, isPlainText) {
 		if (typeof senses === "string") senses = [senses]; // handle legacy format
 		if (isPlainText) return senses.join(", ");
-		const reSenses = new RegExp(`(^| |\\()(${["tremorsense", "blindsight", "truesight", "darkvision", ...Object.keys(BrewUtil.homebrewMeta?.senses || []).map(it => it.escapeRegexp())].join("|")})(\\)| |$)`, "gi");
+		const reSenses = new RegExp(`(^| |\\()(${["tremorsense", "blindsight", "truesight", "darkvision", ...Object.keys(BrewUtil2.getMetaLookup("senses") || []).map(it => it.escapeRegexp())].join("|")})(\\)| |$)`, "gi");
 		const senseStr = senses
 			.join(", ")
 			.replace(reSenses, (...m) => `${m[1]}{@sense ${m[2]}}${m[3]}`)
@@ -6550,7 +6550,8 @@ Renderer.item = {
 		Renderer.item._additionalEntriesMap[e.appliesTo] = MiscUtil.copy(e.entries);
 	},
 	async _pAddBrewPropertiesAndTypes () {
-		const brew = await BrewUtil.pAddBrewData();
+		if (typeof BrewUtil2 === "undefined") return;
+		const brew = await BrewUtil2.pGetBrewProcessed();
 		(brew.itemProperty || []).forEach(p => Renderer.item._addProperty(p));
 		(brew.itemType || []).forEach(t => Renderer.item._addType(t));
 		(brew.itemEntry || []).forEach(t => Renderer.item._addEntry(t));
@@ -6812,17 +6813,6 @@ Renderer.item = {
 					[VeCt.ENTDATA_ITEM_MERGED_ENTRY_TAG]: "note",
 				},
 			});
-		}
-
-		// Create a uniqueId for this specific variant if the "parent" generic variant has one (i.e., if it's homebrew),
-		//   using only the name/source and the parent UID. This avoids changes to the base item from affecting the UID
-		//   of the specific variant.
-		if (genericVariant.uniqueId) {
-			specificVariant.uniqueId = CryptUtil.md5(JSON.stringify({
-				name: specificVariant.name,
-				source: specificVariant.source,
-				genericVariantUniqueId: genericVariant.uniqueId,
-			}));
 		}
 
 		return specificVariant;
@@ -9133,9 +9123,8 @@ Renderer.hover = {
 		const sourceJsonCorrectCase = Renderer.hover._pDoLoadFromBrew_cachedSources[source];
 		if (!sourceJsonCorrectCase) return false;
 
-		// This loads the brew as a side effect
-		const brewJson = await DataUtil.pLoadBrewBySource(sourceJsonCorrectCase);
-		return !!brewJson;
+		const brewJson = await DataUtil.pAddBrewBySource(sourceJsonCorrectCase);
+		return brewJson?.length;
 	},
 
 	_psCacheLoading: {},
@@ -9300,9 +9289,11 @@ Renderer.hover = {
 			hash,
 			loadKey,
 			async () => {
-				const brewData = await BrewUtil.pAddBrewData();
-				if (fnPrePopulate) fnPrePopulate(brewData, {isBrew: true});
-				if (brewData[listProp]) Renderer.hover._pCacheAndGet_populate(page, brewData, listProp, {fnGetHash: opts.fnGetHash});
+				if (typeof BrewUtil2 !== "undefined") {
+					const brewData = await BrewUtil2.pGetBrewProcessed();
+					if (fnPrePopulate) fnPrePopulate(brewData, {isBrew: true});
+					if (brewData[listProp]) Renderer.hover._pCacheAndGet_populate(page, brewData, listProp, {fnGetHash: opts.fnGetHash});
+				}
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${baseUrl}${opts.isFluff ? "fluff-" : ""}index.json`);
 				const officialSources = {};
 				Object.entries(index).forEach(([k, v]) => officialSources[k.toLowerCase()] = v);
@@ -9329,7 +9320,7 @@ Renderer.hover = {
 	},
 
 	async _pCacheAndGet_pLoadSingleBrew (page, opts, listProps, fnMutateItem) {
-		const brewData = await BrewUtil.pAddBrewData();
+		const brewData = typeof BrewUtil2 !== "undefined" ? await BrewUtil2.pGetBrewProcessed() : {};
 		Renderer.hover._pCacheAndGet_doCacheBrewData(brewData, page, opts, listProps, fnMutateItem);
 	},
 
@@ -9415,7 +9406,7 @@ Renderer.hover = {
 					isAddGroups: true,
 				});
 				// populate brew once the main item properties have been loaded
-				const brewData = await BrewUtil.pAddBrewData();
+				const brewData = await BrewUtil2.pGetBrewProcessed();
 				const itemList = await Renderer.item.pGetItemsFromHomebrew(brewData);
 				itemList.forEach(it => {
 					const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
@@ -9493,7 +9484,7 @@ Renderer.hover = {
 			loadKey,
 			async () => {
 				// region Brew
-				const brew = await BrewUtil.pAddBrewData();
+				const brew = await BrewUtil2.pGetBrewProcessed();
 
 				// Get only the ids that exist in both data + contents
 				const brewDataIds = (brew[propData] || []).filter(it => it.id).map(it => it.id);
@@ -9543,7 +9534,7 @@ Renderer.hover = {
 			loadKey,
 			async () => {
 				const classData = await DataUtil.class.loadJSON();
-				const brewData = await BrewUtil.pAddBrewData();
+				const brewData = await BrewUtil2.pGetBrewProcessed();
 				await Promise.all((brewData.class || []).map(cc => Renderer.hover._pCacheAndGet_pLoadClasses_addToIndex(cc)));
 				for (const sc of (brewData.subclass || [])) await Renderer.hover._pCacheAndGet_pLoadClasses_addSubclassToIndex(sc);
 				await Promise.all(classData.class.map(cc => Renderer.hover._pCacheAndGet_pLoadClasses_addToIndex(cc)));
@@ -9618,7 +9609,7 @@ Renderer.hover = {
 			loadKey,
 			async () => {
 				const classData = await DataUtil.class.loadRawJSON();
-				const brewData = await BrewUtil.pAddBrewData();
+				const brewData = await BrewUtil2.pGetBrewProcessed();
 				await Promise.all((brewData.class || []).map(cc => Renderer.hover._pCacheAndGet_pLoadClasses_addToIndex(cc, {isRaw: true})));
 				for (const sc of (brewData.subclass || [])) await Renderer.hover._pCacheAndGet_pLoadClasses_addSubclassToIndex(sc, {isRaw: true});
 				await Promise.all(classData.class.map(cc => Renderer.hover._pCacheAndGet_pLoadClasses_addToIndex(cc, {isRaw: true})));
@@ -9645,7 +9636,7 @@ Renderer.hover = {
 			hash,
 			loadKey,
 			async () => {
-				const brewData = await BrewUtil.pAddBrewData();
+				const brewData = typeof BrewUtil2 !== "undefined" ? await BrewUtil2.pGetBrewProcessed() : {};
 				await Renderer.hover.pDoDereferenceNestedAndCache(brewData.classFeature, "classFeature", UrlUtil.URL_TO_HASH_BUILDER["classFeature"]);
 				await Renderer.hover._pCacheAndGet_pLoadOfficialClassAndSubclassFeatures();
 			},
@@ -9664,7 +9655,7 @@ Renderer.hover = {
 			hash,
 			loadKey,
 			async () => {
-				const brewData = await BrewUtil.pAddBrewData();
+				const brewData = await BrewUtil2.pGetBrewProcessed();
 				await Renderer.hover.pDoDereferenceNestedAndCache(brewData.subclassFeature, "subclassFeature", UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"]);
 				await Renderer.hover._pCacheAndGet_pLoadOfficialClassAndSubclassFeatures();
 			},
@@ -10099,10 +10090,10 @@ Renderer.hover = {
 		return $$`<table class="stats ${opts.isBookContent ? `stats--book` : ""}">${Renderer.generic.getCompactRenderedString(toRender, renderFnOpts)}</table>`;
 	},
 
-	$getHoverContent_statsCode (toRender) {
-		const cleanCopy = DataUtil.cleanJson(MiscUtil.copy(toRender));
+	$getHoverContent_statsCode (toRender, {isSkipClean = false, title = null} = {}) {
+		const cleanCopy = isSkipClean ? toRender : DataUtil.cleanJson(MiscUtil.copy(toRender));
 		return Renderer.hover.$getHoverContent_miscCode(
-			`${cleanCopy.name} \u2014 Source Data`,
+			title || [cleanCopy.name, "Source Data"].filter(Boolean).join(" \u2014 "),
 			JSON.stringify(cleanCopy, null, "\t"),
 		);
 	},

@@ -7,6 +7,7 @@ class StatGenPage {
 	}
 
 	async pInit () {
+		await BrewUtil2.pInit();
 		await ExcludeUtil.pInitialise();
 		const [races, feats] = await Promise.all([
 			await this._pLoadRaces(),
@@ -117,7 +118,7 @@ class StatGenPage {
 	async _pLoadFeats () {
 		const data = await DataUtil.loadJSON("data/feats.json");
 
-		const brew = await BrewUtil.pAddBrewData();
+		const brew = await BrewUtil2.pGetBrewProcessed();
 
 		let feats = data.feat;
 		if (brew.feat) feats = [...feats, ...brew.feat];

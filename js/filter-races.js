@@ -1007,7 +1007,7 @@ class ModalFilterRaces extends ModalFilter {
 			<div class="col-4 ${this._getNameStyle()}">${race.name}</div>
 			<div class="col-4">${ability.asTextShort}</div>
 			<div class="col-2 text-center">${size}</div>
-			<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil.sourceJsonToStyle(race.source)}>${source}</div>
+			<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil2.sourceJsonToStyle(race.source)}>${source}</div>
 		</div>`;
 
 		const btnShowHidePreview = eleRow.firstElementChild.children[1].firstElementChild;

@@ -29,10 +29,10 @@ class ConditionsDiseasesPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border lst__row-inner">
-			<span class="col-0-3 px-0 ve-flex-vh-center lst__btn-toggle-expand self-ve-flex-stretch">[+]</span>
+			<span class="col-0-3 px-0 ve-flex-vh-center lst__btn-toggle-expand ve-self-flex-stretch">[+]</span>
 			<span class="col-3 text-center">${PageFilterConditionsDiseases.getDisplayProp(it.__prop)}</span>
 			<span class="bold col-6-7 px-1">${it.name}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil2.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>
 		<div class="ve-flex ve-hidden relative lst__wrp-preview">
 			<div class="vr-0 absolute lst__vr-preview"></div>
@@ -49,7 +49,6 @@ class ConditionsDiseasesPage extends ListPage {
 				type: it.__prop,
 			},
 			{
-				uniqueId: it.uniqueId ? it.uniqueId : cdI,
 				isExcluded,
 			},
 		);

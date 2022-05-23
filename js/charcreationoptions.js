@@ -29,7 +29,7 @@ class CharCreationOptionsPage extends ListPage {
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border lst__row-inner">
 			<span class="col-5 text-center pl-0">${it._fOptionType}</span>
 			<span class="bold col-5">${it.name}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)} pr-0" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)}" title="${Parser.sourceJsonToFull(it.source)} pr-0" ${BrewUtil2.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -42,7 +42,6 @@ class CharCreationOptionsPage extends ListPage {
 				type: it._fOptionType,
 			},
 			{
-				uniqueId: it.uniqueId || itI,
 				isExcluded,
 			},
 		);

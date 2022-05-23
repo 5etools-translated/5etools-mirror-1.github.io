@@ -624,6 +624,8 @@ UiUtil._MODAL_STACK = null;
 UiUtil._MODAL_LAST_MOUSEDOWN = null;
 
 class ListUiUtil {
+	static _EVT_PASS_THOUGH_TAGS = new Set(["A", "BUTTON"]);
+
 	/**
 	 * (Public method for Plutonium use)
 	 * Handle doing a checkbox-based selection toggle on a list.
@@ -634,9 +636,16 @@ class ListUiUtil {
 	 * @param [opts.isNoHighlightSelection] If highlighting selected rows should be skipped.
 	 * @param [opts.fnOnSelectionChange] Function to call when selection status of an item changes.
 	 * @param [opts.fnGetCb] Function which gets the checkbox from a list item.
+	 * @param [opts.isPassThroughEvents] If e.g. click events to links/buttons in the list item should be allowed/ignored.
 	 */
 	static handleSelectClick (list, item, evt, opts) {
 		opts = opts || {};
+
+		if (opts.isPassThroughEvents) {
+			const subEles = evt.path.slice(0, evt.path.indexOf(evt.currentTarget));
+			if (subEles.some(ele => ListUiUtil._EVT_PASS_THOUGH_TAGS.has(ele?.tagName))) return;
+		}
+
 		evt.preventDefault();
 		evt.stopPropagation();
 
@@ -932,7 +941,12 @@ ProfUiUtil.PROF_TO_FULL = {
 };
 
 class TabUiUtilBase {
-	static decorate (obj) {
+	static decorate (obj, {isInitMeta = false} = {}) {
+		if (isInitMeta) {
+			obj.__meta = {};
+			obj._meta = obj._getProxy("meta", obj.__meta);
+		}
+
 		obj.__tabState = {};
 
 		obj._getTabProps = function ({propProxy = TabUiUtilBase._DEFAULT_PROP_PROXY, tabGroup = TabUiUtilBase._DEFAULT_TAB_GROUP} = {}) {
@@ -1097,8 +1111,8 @@ TabUiUtilBase.TabMeta = class {
 };
 
 class TabUiUtil extends TabUiUtilBase {
-	static decorate (obj) {
-		super.decorate(obj);
+	static decorate (obj, {isInitMeta = false} = {}) {
+		super.decorate(obj, {isInitMeta});
 
 		obj.__$getBtnTab = function ({tabMeta, _propProxy, propActive, ixTab}) {
 			return $(`<button class="btn btn-default ui-tab__btn-tab-head ${tabMeta.isHeadHidden ? "ve-hidden" : ""}">${tabMeta.name.qq()}</button>`)
@@ -1146,8 +1160,8 @@ TabUiUtil.TabMeta = class extends TabUiUtilBase.TabMeta {
 };
 
 class TabUiUtilSide extends TabUiUtilBase {
-	static decorate (obj) {
-		super.decorate(obj);
+	static decorate (obj, {isInitMeta = false} = {}) {
+		super.decorate(obj, {isInitMeta});
 
 		obj.__$getBtnTab = function ({isSingleTab, tabMeta, _propProxy, propActive, ixTab}) {
 			return isSingleTab ? null : $(`<button class="btn btn-default btn-sm ui-tab-side__btn-tab mb-2 br-0 btr-0 bbr-0 text-left ve-flex-v-center" title="${tabMeta.name.qq()}"><div class="${tabMeta.icon} ui-tab-side__icon-tab mr-2 mobile-ish__mr-0 text-center"></div><div class="mobile-ish__hidden">${tabMeta.name.qq()}</div></button>`)
@@ -1228,7 +1242,7 @@ class SearchUiUtil {
 			await Promise.all(options.additionalIndices.map(async add => {
 				additionalData[add] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`${Renderer.get().baseUrl}search/index-${add}.json`));
 				const maxId = additionalData[add].last().id;
-				const brewIndex = await BrewUtil.pGetAdditionalSearchIndices(maxId, add);
+				const brewIndex = await BrewUtil2.pGetAdditionalSearchIndices(maxId, add);
 				if (brewIndex.length) additionalData[add] = additionalData[add].concat(brewIndex);
 			}));
 		}
@@ -1238,7 +1252,7 @@ class SearchUiUtil {
 			await Promise.all(options.alternateIndices.map(async alt => {
 				alternateData[alt] = Omnidexer.decompressIndex(await DataUtil.loadJSON(`${Renderer.get().baseUrl}search/index-alt-${alt}.json`));
 				const maxId = alternateData[alt].last().id;
-				const brewIndex = await BrewUtil.pGetAlternateSearchIndices(maxId, alt);
+				const brewIndex = await BrewUtil2.pGetAlternateSearchIndices(maxId, alt);
 				if (brewIndex.length) alternateData[alt] = alternateData[alt].concat(brewIndex);
 			}));
 		}
@@ -1284,10 +1298,7 @@ class SearchUiUtil {
 		Object.values(additionalData).forEach(arr => arr.forEach(d => handleDataItem(d)));
 		Object.values(alternateData).forEach(arr => arr.forEach(d => handleDataItem(d, true)));
 
-		// Add homebrew
-		Omnisearch.highestId = Math.max(ixMax, Omnisearch.highestId);
-
-		const brewIndex = await BrewUtil.pGetSearchIndex();
+		const brewIndex = await BrewUtil2.pGetSearchIndex({id: availContent.ALL.documentStore.length});
 
 		brewIndex.forEach(d => {
 			if (SearchUiUtil._isNoHoverCat(d.c) || fromDeepIndex(d)) return;
@@ -2022,7 +2033,7 @@ class SearchWidget {
 				typeof subSpec.dataSource === "string"
 					? DataUtil.loadJSON(subSpec.dataSource)
 					: subSpec.dataSource(),
-				BrewUtil.pAddBrewData(),
+				BrewUtil2.pGetBrewProcessed(),
 			]);
 
 			await [...json[subSpec.prop], ...(homebrew[subSpec.prop] || [])]
@@ -2284,6 +2295,8 @@ class InputUiUtil {
 	 * @param [opts.fnDisplay] Function which takes a value and returns display text.
 	 * @param [opts.modalOpts] Options to pass through to the underlying modal class.
 	 * @param [opts.isSkippable] If the prompt is skippable.
+	 * @param [opts.isSearchable] If a search input should be created.
+	 * @param [opts.fnGetSearchText] Function which takes a value and returns search text.
 	 * @return {Promise} A promise which resolves to the indices of the items the user selected, or null otherwise.
 	 */
 	static async pGetUserMultipleChoice (opts) {
@@ -2315,7 +2328,7 @@ class InputUiUtil {
 			else title = `Choose At Most ${Parser.numberToText(opts.max).uppercaseFirst()}`;
 		}
 
-		const {$ele: $wrpList, propIsAcceptable} = ComponentUiUtil.getMetaWrpMultipleChoice(comp, prop, opts);
+		const {$ele: $wrpList, $iptSearch, propIsAcceptable} = ComponentUiUtil.getMetaWrpMultipleChoice(comp, prop, opts);
 		$wrpList.addClass(`mb-1`);
 
 		const hkIsAcceptable = () => $btnOk.attr("disabled", !comp._state[propIsAcceptable]);
@@ -2329,6 +2342,11 @@ class InputUiUtil {
 			isUncappedHeight: true,
 		});
 		if (opts.htmlDescription) $modalInner.append(opts.htmlDescription);
+		if ($iptSearch) {
+			$$`<label class="mb-1">
+				${$iptSearch}
+			</label>`.appendTo($modalInner);
+		}
 		$wrpList.appendTo($modalInner);
 		$$`<div class="ve-flex-v-center ve-flex-h-right no-shrink pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 
@@ -2428,7 +2446,8 @@ class InputUiUtil {
 	 * @param [opts.isSkippable] If the prompt is skippable.
 	 * @param [opts.fnIsValid] A function which checks if the current input is valid, and prevents the user from
 	 *        submitting the value if it is.
-	 * @param [opts.$elePost] Element to add below the input.
+	 * @param [opts.$elePre] Element to add before the input.
+	 * @param [opts.$elePost] Element to add after the input.
 	 * @param [opts.cbPostRender] Callback to call after rendering the modal
 	 * @return {Promise<String>} A promise which resolves to the string if the user entered one, or null otherwise.
 	 */
@@ -2486,6 +2505,7 @@ class InputUiUtil {
 			title: opts.title || "Enter Text",
 			isMinHeight0: true,
 		});
+		if (opts.$elePre) opts.$elePre.appendTo($modalInner);
 		$iptStr.appendTo($modalInner);
 		if (opts.$elePost) opts.$elePost.appendTo($modalInner);
 		$$`<div class="ve-flex-v-center ve-flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
@@ -2997,7 +3017,7 @@ class SourceUiUtil {
 		if (options.source) $iptConverters.val((options.source.convertedBy || []).join(", "));
 
 		const $btnOk = $(`<button class="btn btn-primary">OK</button>`)
-			.click(() => {
+			.click(async () => {
 				let incomplete = false;
 				[$iptName, $iptAbv, $iptJson].forEach($ipt => {
 					const val = $ipt.val();
@@ -3006,7 +3026,7 @@ class SourceUiUtil {
 				if (incomplete) return;
 
 				const jsonVal = $iptJson.val().trim();
-				if (!isEditMode && BrewUtil.hasSourceJson(jsonVal)) {
+				if (!isEditMode && BrewUtil2.hasSourceJson(jsonVal)) {
 					$iptJson.addClass("form-control--error");
 					JqueryUtil.doToast({content: `The JSON identifier "${jsonVal}" already exists!`, type: "danger"});
 					return;
@@ -3021,7 +3041,7 @@ class SourceUiUtil {
 					convertedBy: $iptConverters.val().trim().split(",").map(it => it.trim()).filter(Boolean),
 				};
 
-				options.cbConfirm(source, options.mode !== "edit");
+				await options.cbConfirm(source, options.mode !== "edit");
 			});
 
 		const $btnCancel = options.isRequired && !isEditMode
@@ -3065,28 +3085,31 @@ class SourceUiUtil {
 			</div></div>
 			<div class="text-center mb-2">${$btnOk}${$btnCancel}</div>
 
-			${!isEditMode && BrewUtil.homebrewMeta.sources && BrewUtil.homebrewMeta.sources.length ? $$`<div class="ve-flex-vh-center mb-3 mt-3"><span class="ui-source__divider"></span>or<span class="ui-source__divider"></span></div>
+			${!isEditMode && BrewUtil2.getMetaLookup("sources")?.length ? $$`<div class="ve-flex-vh-center mb-3 mt-3"><span class="ui-source__divider"></span>or<span class="ui-source__divider"></span></div>
 			<div class="ve-flex-vh-center">${$btnUseExisting}</div>` : ""}
 		</div></div>`.appendTo(options.$parent);
 
 		const $selExisting = $$`<select class="form-control input-sm">
 			<option disabled>Select</option>
-			${(BrewUtil.homebrewMeta.sources || []).sort((a, b) => SortUtil.ascSortLower(a.full, b.full)).map(s => `<option value="${s.json.escapeQuotes()}">${s.full.escapeQuotes()}</option>`)}
+			${(BrewUtil2.getMetaLookup("sources") || []).sort((a, b) => SortUtil.ascSortLower(a.full, b.full)).map(s => `<option value="${s.json.escapeQuotes()}">${s.full.escapeQuotes()}</option>`)}
 		</select>`.change(() => $selExisting.removeClass("form-control--error"));
 		$selExisting[0].selectedIndex = 0;
 
 		const $btnConfirmExisting = $(`<button class="btn btn-default btn-sm">Confirm</button>`)
-			.click(() => {
-				if ($selExisting[0].selectedIndex !== 0) {
-					const sourceJson = $selExisting.val();
-					const source = BrewUtil.sourceJsonToSource(sourceJson);
-					options.cbConfirmExisting(source);
+			.click(async () => {
+				if ($selExisting[0].selectedIndex === 0) {
+					$selExisting.addClass("form-control--error");
+					return;
+				}
 
-					// cleanup
-					$selExisting[0].selectedIndex = 0;
-					$stageExisting.hideVe();
-					$stageInitial.showVe();
-				} else $selExisting.addClass("form-control--error");
+				const sourceJson = $selExisting.val();
+				const source = BrewUtil2.sourceJsonToSource(sourceJson);
+				await options.cbConfirmExisting(source);
+
+				// cleanup
+				$selExisting[0].selectedIndex = 0;
+				$stageExisting.hideVe();
+				$stageInitial.showVe();
 			});
 
 		const $btnBackExisting = $(`<button class="btn btn-default btn-sm mr-2">Back</button>`)

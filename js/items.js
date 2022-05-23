@@ -54,7 +54,7 @@ class ItemsPage extends ListPage {
 							e_({
 								tag: "span",
 								clazz: `col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0`,
-								style: BrewUtil.sourceJsonToStylePart(item.source),
+								style: BrewUtil2.sourceJsonToStylePart(item.source),
 								title: `${Parser.sourceJsonToFull(item.source)}${Renderer.utils.getSourceSubText(item)}`,
 								text: source,
 							}),
@@ -75,7 +75,6 @@ class ItemsPage extends ListPage {
 					weight: Parser.weightValueToNumber(item.weight),
 				},
 				{
-					uniqueId: item.uniqueId ? item.uniqueId : itI,
 					isExcluded,
 				},
 			);
@@ -101,7 +100,7 @@ class ItemsPage extends ListPage {
 							e_({
 								tag: "span",
 								clazz: `col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0`,
-								style: BrewUtil.sourceJsonToStylePart(item.source),
+								style: BrewUtil2.sourceJsonToStylePart(item.source),
 								title: `${Parser.sourceJsonToFull(item.source)}${Renderer.utils.getSourceSubText(item)}`,
 								text: source,
 							}),
@@ -122,7 +121,6 @@ class ItemsPage extends ListPage {
 					attunement: item._attunementCategory !== VeCt.STR_NO_ATTUNEMENT,
 					weight: Parser.weightValueToNumber(item.weight),
 				},
-				{uniqueId: item.uniqueId ? item.uniqueId : itI},
 			);
 
 			return {magic: listItem};
@@ -299,6 +297,8 @@ class ItemsPage extends ListPage {
 	async pOnLoad () {
 		this._$pgContent = $(`#pagecontent`);
 
+		await BrewUtil2.pInit();
+
 		window.loadHash = this.doLoadHash.bind(this);
 		window.loadSubHash = this.pDoLoadSubHash.bind(this);
 
@@ -394,14 +394,13 @@ class ItemsPage extends ListPage {
 		ListUtil.initGenericAddable();
 
 		this._addItems(data);
-		BrewUtil.pAddBrewData()
+		BrewUtil2.pGetBrewProcessed()
 			.then(this._pHandleBrew.bind(this))
-			.then(() => BrewUtil.bind({lists: [this._mundaneList, this._magicList], pHandleBrew: this._pHandleBrew.bind(this)}))
 			.then(async () => {
 				this._pageFilter.trimState();
 
-				BrewUtil.makeBrewButton("manage-brew");
-				BrewUtil.bind({lists: [this._mundaneList, this._magicList], filterBox: this._pageFilter.filterBox, sourceFilter: this._pageFilter.sourceFilter});
+				ManageBrewUi.bindBtnOpen($(`#manage-brew`));
+
 				await ListUtil.pLoadState();
 				RollerUtil.addListRollButton();
 				ListUtil.addListShowHide();
@@ -479,20 +478,6 @@ class ItemsPage extends ListPage {
 			upload: true,
 		});
 	}
-
-	// region TODO(Future) Homebrew deletion; refactor
-	getSpecificVariantsByBaseItemBrewUid (uniqueId) {
-		const item = this._dataList.find(it => it.uniqueId === uniqueId);
-		if (!item) return [];
-		return this._dataList.filter(it => it._baseName === item.name && (it._baseSource || it.source) === item.source);
-	}
-
-	getSpecificVariantsByGenericVariantBrewUid (uniqueId) {
-		const item = this._dataList.find(it => it.uniqueId === uniqueId);
-		if (!item) return [];
-		return item.variants.map(it => it.specificVariant);
-	}
-	// endregion
 }
 
 const itemsPage = new ItemsPage();

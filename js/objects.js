@@ -31,7 +31,7 @@ class ObjectsPage extends ListPage {
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border lst__row-inner">
 			<span class="bold col-8 pl-0">${obj.name}</span>
 			<span class="col-2 text-center">${size}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(obj.source)} pr-0" title="${Parser.sourceJsonToFull(obj.source)}" ${BrewUtil.sourceJsonToStyle(obj.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(obj.source)} pr-0" title="${Parser.sourceJsonToFull(obj.source)}" ${BrewUtil2.sourceJsonToStyle(obj.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -44,7 +44,6 @@ class ObjectsPage extends ListPage {
 				size,
 			},
 			{
-				uniqueId: obj.uniqueId ? obj.uniqueId : obI,
 				isExcluded,
 			},
 		);

@@ -352,7 +352,7 @@ class ModalFilterItems extends ModalFilter {
 	}
 
 	async _pLoadAllData () {
-		const brew = await BrewUtil.pAddBrewData();
+		const brew = await BrewUtil2.pGetBrewProcessed();
 		const fromData = await Renderer.item.pBuildList({isAddGroups: true});
 		const fromBrew = await Renderer.item.pGetItemsFromHomebrew(brew);
 		return [...fromData, ...fromBrew];
@@ -380,7 +380,7 @@ class ModalFilterItems extends ModalFilter {
 
 			<div class="col-5 ${this._getNameStyle()}">${item.name}</div>
 			<div class="col-5">${type.uppercaseFirst()}</div>
-			<div class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</div>
+			<div class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil2.sourceJsonToStyle(item.source)}>${source}</div>
 		</div>`;
 
 		const btnShowHidePreview = eleRow.firstElementChild.children[1].firstElementChild;

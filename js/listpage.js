@@ -103,6 +103,7 @@ class ListPage {
 	async pOnLoad () {
 		this._$pgContent = $(`#pagecontent`);
 
+		await BrewUtil2.pInit();
 		await ExcludeUtil.pInitialise();
 
 		let data;
@@ -160,19 +161,9 @@ class ListPage {
 
 		this._addData(data);
 
-		BrewUtil.bind({
-			filterBox: this._filterBox,
-			sourceFilter: this._pageFilter ? this._pageFilter.sourceFilter : this._filterSource,
-			list: this._list,
-			pHandleBrew: this._pHandleBrew.bind(this),
-		});
-
-		const homebrew = await (this._brewDataSource ? this._brewDataSource() : BrewUtil.pAddBrewData());
-		await this._pHandleBrew(homebrew);
-
 		this._pageFilter.trimState();
 
-		BrewUtil.makeBrewButton("manage-brew");
+		ManageBrewUi.bindBtnOpen($(`#manage-brew`));
 		await ListUtil.pLoadState();
 		RollerUtil.addListRollButton();
 		ListUtil.addListShowHide();
@@ -202,8 +193,11 @@ class ListPage {
 
 	_pOnLoad_pPreDataLoad () { /* Implement as required */ }
 
-	_pOnLoad_pGetData () {
-		return typeof this._dataSource === "string" ? DataUtil.loadJSON(this._dataSource) : this._dataSource();
+	async _pOnLoad_pGetData () {
+		const data = await (typeof this._dataSource === "string" ? DataUtil.loadJSON(this._dataSource) : this._dataSource());
+		const homebrew = await (this._brewDataSource ? this._brewDataSource() : BrewUtil2.pGetBrewProcessed());
+
+		return BrewUtil2.getMergedData(data, homebrew);
 	}
 
 	_pOnLoad_bookView () {
@@ -234,14 +228,6 @@ class ListPage {
 
 	async _pOnLoad_pPreDataAdd () { /* Implement as required */ }
 	async _pOnLoad_pPreHashInit () { /* Implement as required */ }
-
-	async _pHandleBrew (homebrew) {
-		try {
-			this._addData(homebrew);
-		} catch (e) {
-			BrewUtil.pPurgeBrew(e);
-		}
-	}
 
 	_addData (data) {
 		if (!this._dataProps.some(prop => data[prop] && data[prop].length)) return;

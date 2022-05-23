@@ -3,7 +3,7 @@
 class PageFilterConditionsDiseases extends PageFilter {
 	// region static
 	static getDisplayProp (prop) {
-		return prop === "status" ? "Other" : prop.uppercaseFirst();
+		return prop === "status" ? "Other" : Parser.getPropDisplayName(prop);
 	}
 	// endregion
 
