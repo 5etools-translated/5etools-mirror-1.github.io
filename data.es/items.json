@@ -1942,10 +1942,14 @@
 		{
 			"name": "Ascendant Dragon Vessel",
 			"source": "FTD",
-			"page": 27,
+			"_copy": {
+				"name": "Wakened Dragon Vessel",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
+				}
+			},
 			"rarity": "legendary",
-			"reqAttune": true,
-			"wondrous": true,
 			"entries": [
 				"Este recipiente puede ser una botella de poción, un cuerno para beber o cualquier otro recipiente destinado a contener un líquido.",
 				"Como acción de bonificación, si el recipiente está vacío, puedes pronunciar la palabra de mando para llenar el recipiente con uno de los siguientes elementos (a tu elección): cerveza, aceite de oliva, hidromiel, vino, whisky, un {@item potion of healing}, un {@item potion of greater healing}, un {@item potion of superior healing}, un {@item potion of supreme healing}, un {@item potion of climbing}, un {@item potion of fire breath}, un {@item potion of flying} o un {@item potion of dragon's majesty|FTD}. Una vez que se utiliza esta propiedad, no se puede utilizar hasta el siguiente amanecer. Una poción creada de este modo pierde sus propiedades mágicas si no se bebe en 24 horas."
@@ -1954,26 +1958,14 @@
 		{
 			"name": "Ascendant Dragon-Touched Focus",
 			"source": "FTD",
-			"page": 26,
-			"rarity": "legendary",
-			"reqAttune": "by a spellcaster",
-			"reqAttuneTags": [
-				{
-					"spellcasting": true
+			"_copy": {
+				"name": "Wakened Dragon-Touched Focus",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
-			],
-			"wondrous": true,
-			"focus": [
-				"Artificer",
-				"Bard",
-				"Cleric",
-				"Druid",
-				"Paladin",
-				"Ranger",
-				"Sorcerer",
-				"Warlock",
-				"Wizard"
-			],
+			},
+			"rarity": "legendary",
 			"entries": [
 				"Este maravilloso objeto puede ser un cetro, un orbe, un amuleto, un cristal o cualquier otro objeto finamente elaborado. Suele incorporar imágenes de alas, garras, dientes o escamas de dragón.",
 				"Tienes ventaja en las tiradas de iniciativa. Mientras tengas el foco, puede funcionar como un foco de conjuro para todos tus hechizos.",
@@ -2039,16 +2031,14 @@
 		{
 			"name": "Ascendant Scaled Ornament",
 			"source": "FTD",
-			"page": 27,
-			"rarity": "legendary",
-			"reqAttune": true,
-			"wondrous": true,
-			"bonusAc": "+1",
-			"modifySpeed": {
-				"equal": {
-					"fly": "walk"
+			"_copy": {
+				"name": "Wakened Scaled Ornament",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
 			},
+			"rarity": "legendary",
 			"entries": [
 				"Este ornamento puede ser una joya, una capa u otro accesorio para llevar. Parece estar formado por una escama, un diente o una garra de dragón, o incorpora imágenes con esas formas.",
 				"Obtienes un bonificador +1 a la CA, y no puedes ser {@condition charmed} o {@condition frightened}. Además, cada criatura que elijas en un radio de 30 pies de ti tiene ventaja en las tiradas de salvación que haga para evitar ser {@condition charmed} o {@condition frightened} o para acabar con esas condiciones sobre sí misma.",
@@ -7796,7 +7786,7 @@
 					"type": "entries",
 					"name": "Failing Matrix",
 					"entries": [
-						"Cada vez que se utiliza la propiedad Destierro Absoluto del Crook of Rao, o cuando se gasta su última carga, tira en la tabla de Reversión Extraplanar. Cualquier criatura conjurada como resultado de este efecto aparece en espacios desocupados al azar en un radio de 60 pies de ti y no está bajo tu control."
+						"Siempre que se utilice la propiedad Destierro Absoluto del Crook of Rao, o cuando se gaste su última carga, tira en la tabla de Reversión Extraplanar. Cualquier criatura conjurada como resultado de este efecto aparece en espacios desocupados al azar en un radio de 60 pies de ti y no está bajo tu control."
 					]
 				},
 				{
@@ -8332,7 +8322,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Danoth's Visor (Dormant)",
@@ -8386,7 +8377,8 @@
 			},
 			"attachedSpells": [
 				"antimagic field"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Dark Shard Amulet",
@@ -14572,7 +14564,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grimoire Infinitus (Dormant)",
@@ -14630,7 +14623,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grovelthrash (Awakened)",
@@ -14669,7 +14663,8 @@
 				"equal": {
 					"burrow": "walk"
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grovelthrash (Dormant)",
@@ -14769,7 +14764,8 @@
 				"earthquake",
 				"meld into stone",
 				"stone shape"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Gruul Guild Signet",
@@ -17155,7 +17151,8 @@
 				"invisibility",
 				"knock",
 				"pass without trace"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Infiltrator's Key (Dormant)",
@@ -17225,7 +17222,8 @@
 				"dimension door",
 				"gaseous form",
 				"mislead"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ingot of the Skold Rune",
@@ -19391,7 +19389,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+2"
+			"bonusWeapon": "+2",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Lash of Shadows (Dormant)",
@@ -19502,7 +19501,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+3"
+			"bonusWeapon": "+3",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Leather Golem Armor",
@@ -20439,7 +20439,7 @@
 			"entries": [
 				"Obtienes un bonificador de +1 a las tiradas de ataque y daño realizadas con esta arma mágica. La bonificación aumenta a +3 cuando usas la maza para atacar a un constructo.",
 				"Cuando obtienes un 20 en una tirada de ataque realizada con esta arma, el objetivo recibe 7 puntos de daño contundente adicionales, o 14 puntos de daño contundente adicionales si se trata de un constructo. Si un constructo tiene 25 puntos de vida o menos tras recibir este daño, queda destruido.",
-				"{@note Note: According to the SRD, it is an extra {@dice 2d6} y {@damage 4d6} de daño por apaleamiento, aunque {@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}."
+				"{@nota Nota: Según el SRD, es un extra {@note Note: According to the SRD, it is an extra {@dice 2d6} y {@damage 4d6} de daño por apaleamiento, aunque {@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}."
 			],
 			"lootTables": [
 				"Magic Item Table G"
@@ -20503,7 +20503,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+2"
+			"bonusWeapon": "+2",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Mace of the Black Crown (Dormant)",
@@ -20599,7 +20600,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+3"
+			"bonusWeapon": "+3",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Macuahuitl",
@@ -25951,7 +25953,7 @@
 				"source": "WDMM"
 			},
 			"entries": [
-				"El {@item professor orb|WDMM} propiedad de Vellynne Harpell y robado por Nass Lantomir se hace llamar Profesor Skant. Es bueno de derecho, y tiene una Sabiduría de 11 y un Carisma de 9 {@note (as a professor orb, it has an Intelligence of 18)}. Habla y lee común, dracónico, élfico y loross (la lengua muerta del Imperio de Netheril). El Profesor Skant es un parlanchín y asume que todos los humanoides son tontos. Cuando se explaya en sus áreas de especialización, adopta un tono involuntariamente condescendiente. Tiene las siguientes cuatro áreas de especialización:",
+				"El {@item professor orb|WDMM} propiedad de Vellynne Harpell y robado por Nass Lantomir se autodenomina Profesor Skant. Es bueno de ley, y tiene una Sabiduría de 11 y un Carisma de 9 {@nota (como profesor orbe, tiene una Inteligencia de 18)}. Habla y lee común, dracónico, élfico y loross (la lengua muerta del Imperio de Netheril). El profesor Skant es un parlanchín y asume que todos los humanoides son tontos. Cuando se explaya en sus áreas de especialización, adopta un tono involuntariamente condescendiente. Tiene las siguientes cuatro áreas de especialización:",
 				{
 					"type": "list",
 					"items": [
@@ -28428,7 +28430,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+2"
+			"bonusWeapon": "+2",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ruin's Wake (Dormant)",
@@ -28525,7 +28528,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+3"
+			"bonusWeapon": "+3",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ruinblade",
@@ -32639,10 +32643,14 @@
 		{
 			"name": "Stirring Dragon Vessel",
 			"source": "FTD",
-			"page": 27,
+			"_copy": {
+				"name": "Slumbering Dragon Vessel",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
+				}
+			},
 			"rarity": "rare",
-			"reqAttune": true,
-			"wondrous": true,
 			"entries": [
 				"Este recipiente puede ser una botella de poción, un cuerno para beber o cualquier otro recipiente destinado a contener un líquido.",
 				"Como acción adicional, si la vasija está vacía, puedes pronunciar la palabra de mando para llenar la vasija con uno de los siguientes elementos (a tu elección): cerveza, aceite de oliva, hidromiel, un {@item potion of healing}, un {@item potion of greater healing}, un {@item potion of climbing} o un {@item potion of fire breath}. Una vez que se utiliza esta propiedad, no se puede usar hasta el siguiente amanecer. Una poción creada de este modo pierde sus propiedades mágicas si no se bebe en 24 horas."
@@ -32651,26 +32659,14 @@
 		{
 			"name": "Stirring Dragon-Touched Focus",
 			"source": "FTD",
-			"page": 26,
-			"rarity": "rare",
-			"reqAttune": "by a spellcaster",
-			"reqAttuneTags": [
-				{
-					"spellcasting": true
+			"_copy": {
+				"name": "Slumbering Dragon-Touched Focus",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
-			],
-			"wondrous": true,
-			"focus": [
-				"Artificer",
-				"Bard",
-				"Cleric",
-				"Druid",
-				"Paladin",
-				"Ranger",
-				"Sorcerer",
-				"Warlock",
-				"Wizard"
-			],
+			},
+			"rarity": "rare",
 			"entries": [
 				"Este maravilloso objeto puede ser un cetro, un orbe, un amuleto, un cristal o cualquier otro objeto finamente elaborado. Suele incorporar imágenes de alas, garras, dientes o escamas de dragón.",
 				"Tienes ventaja en las tiradas de iniciativa. Mientras tengas el foco, puede funcionar como un foco de conjuro para todos tus hechizos.",
@@ -32707,16 +32703,14 @@
 		{
 			"name": "Stirring Scaled Ornament",
 			"source": "FTD",
-			"page": 27,
-			"rarity": "rare",
-			"reqAttune": true,
-			"wondrous": true,
-			"bonusAc": "+1",
-			"modifySpeed": {
-				"equal": {
-					"fly": "walk"
+			"_copy": {
+				"name": "Slumbering Scaled Ornament",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
 			},
+			"rarity": "rare",
 			"entries": [
 				"Este ornamento puede ser una joya, una capa u otro accesorio para llevar. Parece estar formado por una escama, un diente o una garra de dragón, o incorpora imágenes con esas formas.",
 				"Obtienes un bonificador +1 a la CA, y no puedes ser {@condition charmed} o {@condition frightened}. Además, cada criatura que elijas en un radio de 30 pies de ti tiene ventaja en las tiradas de salvación que haga para evitar ser {@condition charmed} o {@condition frightened} o para acabar con esas condiciones sobre sí misma."
@@ -34105,7 +34099,7 @@
 				},
 				"Cuando atacas un objeto con esta espada mágica y aciertas, maximizas tus dados de daño de arma contra el objetivo.",
 				"Cuando atacas a una criatura con esta arma y sacas un 20 en la tirada de ataque, ese objetivo recibe 14 de daño cortante adicional. Luego tira otro {@dice d20}. Si sacas un 20, cortas uno de los miembros del objetivo, con el efecto de dicha pérdida determinado por el DM. Si la criatura no tiene ningún miembro que cortar, le cortas una parte del cuerpo.",
-				"{@note Note: According to the SRD, it is an extra {@damage 4d6} de daño cortante, aunque {@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}.",
+				"{@nota Nota: Según el SRD, es un {@note Note: According to the SRD, it is an extra {@damage 4d6} extra de daño cortante, aunque {@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}.",
 				"Además, puedes pronunciar la orden de la espada para hacer que la hoja arroje luz brillante en un radio de 3 metros y luz tenue durante otros 3 metros. Si vuelves a pronunciar la palabra de mando o envainas la espada, la luz se apaga."
 			],
 			"attachedSpells": [
@@ -37703,10 +37697,14 @@
 		{
 			"name": "Wakened Dragon Vessel",
 			"source": "FTD",
-			"page": 27,
+			"_copy": {
+				"name": "Stirring Dragon Vessel",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
+				}
+			},
 			"rarity": "very rare",
-			"reqAttune": true,
-			"wondrous": true,
 			"entries": [
 				"Este recipiente puede ser una botella de poción, un cuerno para beber o cualquier otro recipiente destinado a contener un líquido.",
 				"Como acción adicional, si el recipiente está vacío, puedes pronunciar la palabra de mando para llenar el recipiente con uno de los siguientes elementos (a tu elección): cerveza, aceite de oliva, hidromiel, vino, un {@item potion of healing}, un {@item potion of greater healing}, un {@item potion of superior healing}, un {@item potion of climbing}, un {@item potion of fire breath} o un {@item potion of flying}. Una vez que se utiliza esta propiedad, no se puede utilizar hasta el siguiente amanecer. Una poción creada de este modo pierde sus propiedades mágicas si no se bebe en 24 horas."
@@ -37715,26 +37713,14 @@
 		{
 			"name": "Wakened Dragon-Touched Focus",
 			"source": "FTD",
-			"page": 26,
-			"rarity": "very rare",
-			"reqAttune": "by a spellcaster",
-			"reqAttuneTags": [
-				{
-					"spellcasting": true
+			"_copy": {
+				"name": "Stirring Dragon-Touched Focus",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
-			],
-			"wondrous": true,
-			"focus": [
-				"Artificer",
-				"Bard",
-				"Cleric",
-				"Druid",
-				"Paladin",
-				"Ranger",
-				"Sorcerer",
-				"Warlock",
-				"Wizard"
-			],
+			},
+			"rarity": "very rare",
 			"entries": [
 				"Este maravilloso objeto puede ser un cetro, un orbe, un amuleto, un cristal o cualquier otro objeto finamente elaborado. Suele incorporar imágenes de alas, garras, dientes o escamas de dragón.",
 				"Tienes ventaja en las tiradas de iniciativa. Mientras tengas el foco, puede funcionar como un foco de conjuro para todos tus hechizos.",
@@ -37807,16 +37793,14 @@
 		{
 			"name": "Wakened Scaled Ornament",
 			"source": "FTD",
-			"page": 27,
-			"rarity": "very rare",
-			"reqAttune": true,
-			"wondrous": true,
-			"bonusAc": "+1",
-			"modifySpeed": {
-				"equal": {
-					"fly": "walk"
+			"_copy": {
+				"name": "Stirring Scaled Ornament",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
 			},
+			"rarity": "very rare",
 			"entries": [
 				"Este ornamento puede ser una joya, una capa u otro accesorio para llevar. Parece estar formado por una escama, un diente o una garra de dragón, o incorpora imágenes con esas formas.",
 				"Obtienes un bonificador +1 a la CA, y no puedes ser {@condition charmed} o {@condition frightened}. Además, cada criatura que elijas en un radio de 30 pies de ti tiene ventaja en las tiradas de salvación que haga para evitar ser {@condition charmed} o {@condition frightened} o para acabar con esas condiciones sobre sí misma.",
@@ -38457,7 +38441,7 @@
 						],
 						[
 							"88-90",
-							"Una corriente de {@dice 1d4 × 10} gemas, cada una de las cuales vale 1 gp, sale disparada de la punta de la varita en una línea de 30 pies de largo y 5 pies de ancho. Cada gema inflige 1 de daño contundente, y el daño total de las gemas se divide por igual entre todas las criaturas de la línea."
+							"Un chorro de {@dice 1d4 × 10} gemas, cada una de las cuales vale 1 gp, sale disparado de la punta de la varita en una línea de 30 pies de largo y 5 pies de ancho. Cada gema inflige 1 de daño contundente, y el daño total de las gemas se divide por igual entre todas las criaturas de la línea."
 						],
 						[
 							"91-95",
@@ -39753,7 +39737,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Wreath of the Prism (Dormant)",
@@ -39808,7 +39793,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Wukka Nut",
@@ -41209,7 +41195,7 @@
 			"type": "P",
 			"rarity": "varies",
 			"entries": [
-				"{@note * This item group has the same name and source as the item {@item potion of healing}}."
+				"{@note * Este grupo de artículos tiene el mismo nombre y origen que el artículo {@note * This item group has the same name and source as the item {@item potion of healing}}."
 			],
 			"items": [
 				"Potion of Healing",

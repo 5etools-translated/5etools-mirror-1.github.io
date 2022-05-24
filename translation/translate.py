@@ -42,6 +42,9 @@ class Translator:
 	def __init__(self, language: str, cacheFile: str, useDeepl: bool, glossary_file: str, recheckWords: list):
 		self._language = language
 
+		#self._tag_regex = '{(?!(@i )|(@italic )|(@b )|(@bold )|(@u )|(@underline )|(@s )|(@strike )|(@color )|(@note )|(@footnote )).*?}'
+		self._tag_regex = '{(?!(@note )|(@footnote )).*?}'
+
 		self._cacheFile = cacheFile
 		self._cacheDirty = False
 		self._cacheData = {}
@@ -166,7 +169,7 @@ class Translator:
 	def _needsRecheck(self, text: str) -> bool:
 		for word in self._recheckWords:
 			# ignore vars and case
-			checkText = re.sub('{.*?}', '', text.lower())
+			checkText = re.sub(self._tag_regex, '', text.lower())
 			if word.lower() in checkText:
 				return True
 
@@ -179,9 +182,9 @@ class Translator:
 		link = re.search("{.*?}", text)
 		while link is not None:
 			links.append(link.group(0))
-			text = re.sub("{.*?}", f"(%{count}%)", text, 1)
+			text = re.sub(self._tag_regex, f"(%{count}%)", text, 1)
 			count += 1
-			link = re.search("{.*?}", text)
+			link = re.search(self._tag_regex, text)
 
 		return text, links
 
@@ -195,7 +198,7 @@ class Translator:
 
 	def translate(self, text: str) -> str:
 		# Do not translate variable only and very short or non alpha texts
-		noVars = re.sub('{.*?}', '', text)
+		noVars = re.sub(self._tag_regex, '', text)
 		if len(re.sub('[\d\s()\[\].,_-]+', '', noVars)) < 5:
 			return text
 

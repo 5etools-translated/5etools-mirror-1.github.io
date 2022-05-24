@@ -1942,10 +1942,14 @@
 		{
 			"name": "Ascendant Dragon Vessel",
 			"source": "FTD",
-			"page": 27,
+			"_copy": {
+				"name": "Wakened Dragon Vessel",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
+				}
+			},
 			"rarity": "legendary",
-			"reqAttune": true,
-			"wondrous": true,
 			"entries": [
 				"这个容器可以是一个药水瓶、饮水喇叭或其他用于盛放液体的容器。",
 				"作为一个额外的动作，如果容器是空的，你可以说出命令语，将容器装入以下其中一种（你选择）：麦芽酒、橄榄油、蜂蜜酒、葡萄酒、威士忌、一（%0%）、一（%1%）、一（%2%）、一（%3%）、一（%4%）、一（%5%）、一（6%）或一（%7%）。一旦这个属性被使用，在下一个黎明前就不能再使用了。你以这种方式创造的药水如果在24小时内没有饮用，就会失去它的魔法属性。"
@@ -1954,26 +1958,14 @@
 		{
 			"name": "Ascendant Dragon-Touched Focus",
 			"source": "FTD",
-			"page": 26,
-			"rarity": "legendary",
-			"reqAttune": "by a spellcaster",
-			"reqAttuneTags": [
-				{
-					"spellcasting": true
+			"_copy": {
+				"name": "Wakened Dragon-Touched Focus",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
-			],
-			"wondrous": true,
-			"focus": [
-				"Artificer",
-				"Bard",
-				"Cleric",
-				"Druid",
-				"Paladin",
-				"Ranger",
-				"Sorcerer",
-				"Warlock",
-				"Wizard"
-			],
+			},
+			"rarity": "legendary",
 			"entries": [
 				"这个神奇的物品可以是权杖、球体、护身符、水晶或其他精巧的物品。它通常包含了龙的翅膀、爪子、牙齿或鳞片的图像。",
 				"你在主动性卷轴上有优势。当你持有这个焦点时，它可以作为你所有法术的施法焦点。",
@@ -2039,16 +2031,14 @@
 		{
 			"name": "Ascendant Scaled Ornament",
 			"source": "FTD",
-			"page": 27,
-			"rarity": "legendary",
-			"reqAttune": true,
-			"wondrous": true,
-			"bonusAc": "+1",
-			"modifySpeed": {
-				"equal": {
-					"fly": "walk"
+			"_copy": {
+				"name": "Wakened Scaled Ornament",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
 			},
+			"rarity": "legendary",
 			"entries": [
 				"这种装饰品可以是珠宝、斗篷或其他可佩戴的配件。它似乎是由龙的鳞片、牙齿或爪子制成的，或者它包含了这些形状的图像。",
 				"你获得一个+1的AC奖励，并且你不能被（%0%）或（%1%）。此外，在你30英尺范围内的每一个你选择的生物在避免被{@condition charmed}或{@condition frightened}或结束自己身上的这些条件时都有优势。",
@@ -8332,7 +8322,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Danoth's Visor (Dormant)",
@@ -8386,7 +8377,8 @@
 			},
 			"attachedSpells": [
 				"antimagic field"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Dark Shard Amulet",
@@ -14572,7 +14564,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grimoire Infinitus (Dormant)",
@@ -14630,7 +14623,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grovelthrash (Awakened)",
@@ -14669,7 +14663,8 @@
 				"equal": {
 					"burrow": "walk"
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grovelthrash (Dormant)",
@@ -14769,7 +14764,8 @@
 				"earthquake",
 				"meld into stone",
 				"stone shape"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Gruul Guild Signet",
@@ -17155,7 +17151,8 @@
 				"invisibility",
 				"knock",
 				"pass without trace"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Infiltrator's Key (Dormant)",
@@ -17225,7 +17222,8 @@
 				"dimension door",
 				"gaseous form",
 				"mislead"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ingot of the Skold Rune",
@@ -19391,7 +19389,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+2"
+			"bonusWeapon": "+2",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Lash of Shadows (Dormant)",
@@ -19502,7 +19501,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+3"
+			"bonusWeapon": "+3",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Leather Golem Armor",
@@ -20439,7 +20439,7 @@
 			"entries": [
 				"你在使用该魔法武器进行的攻击和伤害卷中获得+1的奖励。当你使用该法器攻击一个建筑时，该奖励会增加到+3。",
 				"当你用此武器的攻击卷轴掷出20分时，目标会受到额外的7点重击伤害，如果是建筑体，则会受到额外的14点重击伤害。如果构造体在受到这种伤害后还有25点或更少的命中率，它将被摧毁。",
-				"{@note Note: According to the SRD, it is an extra {@dice 2d6}和{@damage 4d6}重击伤害，尽管{@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}。"
+				"{@注意：根据SRD，这是一个额外的{@note Note: According to the SRD, it is an extra {@dice 2d6}和{@damage 4d6}重击伤害，虽然{@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}。"
 			],
 			"lootTables": [
 				"Magic Item Table G"
@@ -20503,7 +20503,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+2"
+			"bonusWeapon": "+2",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Mace of the Black Crown (Dormant)",
@@ -20599,7 +20600,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+3"
+			"bonusWeapon": "+3",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Macuahuitl",
@@ -25951,7 +25953,7 @@
 				"source": "WDMM"
 			},
 			"entries": [
-				"薇琳-哈佩尔拥有的、被纳斯-兰托米尔偷走的{@item professor orb|WDMM}自称为斯坎特教授。它是合法的好人，它的智慧为11，魅力为9（%1%）。它能说和读普通话、德拉康语、精灵语和洛罗斯语（尼瑟尔帝国的死语言）。斯坎特教授是个话痨，认为所有的人类都是笨蛋。在阐述其专业领域时，它采用了一种无意中的爱理不理的语气。它有以下四个专业领域。",
+				"薇琳-哈佩尔拥有的、被纳斯-兰托米尔偷走的{@item professor orb|WDMM}自称为斯坎特教授。它是合法的好人，它的智慧为11，魅力为9{@注（作为一个教授球体，它的智力为18）}。它能说和读普通话、德拉康语、精灵语和洛洛斯语（尼瑟尔帝国的死语言）。斯坎特教授是个话痨，认为所有人类都是笨蛋。在阐述其专业领域时，它采用了一种无意中的爱理不理的语气。它有以下四个专业领域。",
 				{
 					"type": "list",
 					"items": [
@@ -28428,7 +28430,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+2"
+			"bonusWeapon": "+2",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ruin's Wake (Dormant)",
@@ -28525,7 +28528,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+3"
+			"bonusWeapon": "+3",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ruinblade",
@@ -32639,10 +32643,14 @@
 		{
 			"name": "Stirring Dragon Vessel",
 			"source": "FTD",
-			"page": 27,
+			"_copy": {
+				"name": "Slumbering Dragon Vessel",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
+				}
+			},
 			"rarity": "rare",
-			"reqAttune": true,
-			"wondrous": true,
 			"entries": [
 				"这个容器可以是一个药水瓶、饮水喇叭或其他用于盛放液体的容器。",
 				"作为一个额外的动作，如果容器是空的，你可以说出命令语，用以下其中一种填充容器（你选择）：麦芽酒、橄榄油、蜂蜜酒、一（%0%）、一（%1%）、一（%2%）或一（%3%）。一旦这个属性被使用，在下一个黎明前都不能再使用。你以这种方式创造的药水，如果在24小时内没有饮用，就会失去其魔法属性。"
@@ -32651,26 +32659,14 @@
 		{
 			"name": "Stirring Dragon-Touched Focus",
 			"source": "FTD",
-			"page": 26,
-			"rarity": "rare",
-			"reqAttune": "by a spellcaster",
-			"reqAttuneTags": [
-				{
-					"spellcasting": true
+			"_copy": {
+				"name": "Slumbering Dragon-Touched Focus",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
-			],
-			"wondrous": true,
-			"focus": [
-				"Artificer",
-				"Bard",
-				"Cleric",
-				"Druid",
-				"Paladin",
-				"Ranger",
-				"Sorcerer",
-				"Warlock",
-				"Wizard"
-			],
+			},
+			"rarity": "rare",
 			"entries": [
 				"这个神奇的物品可以是权杖、球体、护身符、水晶或其他精巧的物品。它通常包含了龙的翅膀、爪子、牙齿或鳞片的图像。",
 				"你在主动性卷轴上有优势。当你持有这个焦点时，它可以作为你所有法术的施法焦点。",
@@ -32707,16 +32703,14 @@
 		{
 			"name": "Stirring Scaled Ornament",
 			"source": "FTD",
-			"page": 27,
-			"rarity": "rare",
-			"reqAttune": true,
-			"wondrous": true,
-			"bonusAc": "+1",
-			"modifySpeed": {
-				"equal": {
-					"fly": "walk"
+			"_copy": {
+				"name": "Slumbering Scaled Ornament",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
 			},
+			"rarity": "rare",
 			"entries": [
 				"这种装饰品可以是珠宝、斗篷或其他可佩戴的配件。它似乎是由龙的鳞片、牙齿或爪子制成的，或者它包含了这些形状的图像。",
 				"你获得一个+1的AC奖励，并且你不能被（%0%）或（%1%）。此外，在你30英尺范围内的每一个你选择的生物在避免被{@condition charmed}或{@condition frightened}或结束自己身上的这些条件时都有优势。"
@@ -34105,7 +34099,7 @@
 				},
 				"当你用这把魔剑攻击一个物体并击中时，使你对目标的武器伤害骰子最大化。",
 				"当你用此武器攻击一个生物，并在攻击卷轴上掷出20分时，该目标会受到额外的14次砍击伤害。然后再掷一次（%0%）。如果你掷出20分，你会砍掉目标的一个肢体，这种损失的效果由DM决定。如果该生物没有肢体可供砍伐，你就砍掉它身体的一部分。",
-				"{@note Note: According to the SRD, it is an extra {@damage 4d6}切割伤害，虽然{@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}。",
+				"{@注意：根据SRD，这是一个额外的{@note Note: According to the SRD, it is an extra {@damage 4d6}砍击伤害，虽然是{@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}。",
 				"此外，你可以说出剑的命令，使剑在10英尺范围内发出亮光，并在另外10英尺范围内发出暗光。再次说出指令词或将剑出鞘，就会熄灭光芒。"
 			],
 			"attachedSpells": [
@@ -37703,10 +37697,14 @@
 		{
 			"name": "Wakened Dragon Vessel",
 			"source": "FTD",
-			"page": 27,
+			"_copy": {
+				"name": "Stirring Dragon Vessel",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
+				}
+			},
 			"rarity": "very rare",
-			"reqAttune": true,
-			"wondrous": true,
 			"entries": [
 				"这个容器可以是一个药水瓶、饮水喇叭或其他用于盛放液体的容器。",
 				"作为一个额外的动作，如果容器是空的，你可以说出命令语，用以下其中一种填充容器（你选择）：麦芽酒、橄榄油、蜂蜜酒、葡萄酒、一个（%0%）、一个（%1%）、一个（%2%）、一个（%3%）、一个（%4%）或一个（%5%）。一旦这个属性被使用，在下一个黎明前就不能再使用了。你以这种方式创造的药水如果在24小时内没有饮用，就会失去它的魔法属性。"
@@ -37715,26 +37713,14 @@
 		{
 			"name": "Wakened Dragon-Touched Focus",
 			"source": "FTD",
-			"page": 26,
-			"rarity": "very rare",
-			"reqAttune": "by a spellcaster",
-			"reqAttuneTags": [
-				{
-					"spellcasting": true
+			"_copy": {
+				"name": "Stirring Dragon-Touched Focus",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
-			],
-			"wondrous": true,
-			"focus": [
-				"Artificer",
-				"Bard",
-				"Cleric",
-				"Druid",
-				"Paladin",
-				"Ranger",
-				"Sorcerer",
-				"Warlock",
-				"Wizard"
-			],
+			},
+			"rarity": "very rare",
 			"entries": [
 				"这个神奇的物品可以是权杖、球体、护身符、水晶或其他精巧的物品。它通常包含了龙的翅膀、爪子、牙齿或鳞片的图像。",
 				"你在主动性卷轴上有优势。当你持有这个焦点时，它可以作为你所有法术的施法焦点。",
@@ -37807,16 +37793,14 @@
 		{
 			"name": "Wakened Scaled Ornament",
 			"source": "FTD",
-			"page": 27,
-			"rarity": "very rare",
-			"reqAttune": true,
-			"wondrous": true,
-			"bonusAc": "+1",
-			"modifySpeed": {
-				"equal": {
-					"fly": "walk"
+			"_copy": {
+				"name": "Stirring Scaled Ornament",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
 			},
+			"rarity": "very rare",
 			"entries": [
 				"这种装饰品可以是珠宝、斗篷或其他可佩戴的配件。它似乎是由龙的鳞片、牙齿或爪子制成的，或者它包含了这些形状的图像。",
 				"你获得一个+1的AC奖励，并且你不能被（%0%）或（%1%）。此外，在你30英尺范围内的每一个你选择的生物在避免被{@condition charmed}或{@condition frightened}或结束自己身上的这些条件时都有优势。",
@@ -39753,7 +39737,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Wreath of the Prism (Dormant)",
@@ -39808,7 +39793,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Wukka Nut",
@@ -41209,7 +41195,7 @@
 			"type": "P",
 			"rarity": "varies",
 			"entries": [
-				"{@note * This item group has the same name and source as the item {@item potion of healing}}."
+				"{@注意 *这个项目组与项目的名称和来源相同{@note * This item group has the same name and source as the item {@item potion of healing}}。"
 			],
 			"items": [
 				"Potion of Healing",

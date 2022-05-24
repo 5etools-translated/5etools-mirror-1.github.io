@@ -6,7 +6,7 @@ IS_NODE = typeof module !== "undefined";
 if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
-IS_DEPLOYED="v1.152.4.1653304402";
+IS_DEPLOYED="v1.152.4.1653352269";
 VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.155.2"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
@@ -2697,10 +2697,9 @@ DataUtil = {
 		}
 
 		if (DataUtil._loading[id] && !isBustCache) {
-			await DataUtil._loading[url];
-			return DataUtil._loaded[url];
+			await DataUtil._loading[id];
+			return DataUtil._loaded[id];
 		}
-		console.log("loading " + url);
 
 		DataUtil._loading[id] = new Promise((resolve, reject) => {
 			const request = new XMLHttpRequest();

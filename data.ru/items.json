@@ -1942,10 +1942,14 @@
 		{
 			"name": "Ascendant Dragon Vessel",
 			"source": "FTD",
-			"page": 27,
+			"_copy": {
+				"name": "Wakened Dragon Vessel",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
+				}
+			},
 			"rarity": "legendary",
-			"reqAttune": true,
-			"wondrous": true,
 			"entries": [
 				"Этим сосудом может быть бутылка для зелья, рог для питья или другая емкость, предназначенная для хранения жидкости.",
 				"В качестве бонусного действия, если сосуд пуст, вы можете произнести командное слово, чтобы наполнить сосуд одним из следующих напитков (на ваш выбор): эль, оливковое масло, медовуха, вино, виски, а {@item potion of healing}, а {@item potion of greater healing}, а {@item potion of superior healing}, а {@item potion of supreme healing}, а {@item potion of climbing}, а {@item potion of fire breath}, а {@item potion of flying} или а {@item potion of dragon's majesty|FTD}. После использования этого свойства оно не может быть использовано до следующего рассвета. Зелье, созданное таким образом, теряет свои магические свойства, если его не выпить в течение 24 часов."
@@ -1954,26 +1958,14 @@
 		{
 			"name": "Ascendant Dragon-Touched Focus",
 			"source": "FTD",
-			"page": 26,
-			"rarity": "legendary",
-			"reqAttune": "by a spellcaster",
-			"reqAttuneTags": [
-				{
-					"spellcasting": true
+			"_copy": {
+				"name": "Wakened Dragon-Touched Focus",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
-			],
-			"wondrous": true,
-			"focus": [
-				"Artificer",
-				"Bard",
-				"Cleric",
-				"Druid",
-				"Paladin",
-				"Ranger",
-				"Sorcerer",
-				"Warlock",
-				"Wizard"
-			],
+			},
+			"rarity": "legendary",
 			"entries": [
 				"Этот чудесный предмет может быть скипетром, сферой, амулетом, кристаллом или другим предметом тонкой работы. Обычно на нем изображены крылья, когти, зубы или чешуя дракона.",
 				"У вас есть преимущество при бросках инициативы. Пока вы держите фокус, он может работать как фокус заклинания для всех ваших заклинаний.",
@@ -2039,16 +2031,14 @@
 		{
 			"name": "Ascendant Scaled Ornament",
 			"source": "FTD",
-			"page": 27,
-			"rarity": "legendary",
-			"reqAttune": true,
-			"wondrous": true,
-			"bonusAc": "+1",
-			"modifySpeed": {
-				"equal": {
-					"fly": "walk"
+			"_copy": {
+				"name": "Wakened Scaled Ornament",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
 			},
+			"rarity": "legendary",
 			"entries": [
 				"Это украшение может быть ювелирным изделием, плащом или другим носимым аксессуаром. Оно может быть сделано из чешуи, зуба или когтя дракона или включать в себя изображения этих форм.",
 				"Вы получаете бонус +1 к AC, и вы не можете быть {@condition charmed} или {@condition frightened}. Более того, каждое существо по вашему выбору в радиусе 30 футов от вас имеет преимущество при бросках спасбросков, которые оно делает, чтобы избежать {@condition charmed} или {@condition frightened} или прекратить действие этих условий на себя.",
@@ -8332,7 +8322,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Danoth's Visor (Dormant)",
@@ -8386,7 +8377,8 @@
 			},
 			"attachedSpells": [
 				"antimagic field"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Dark Shard Amulet",
@@ -14572,7 +14564,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grimoire Infinitus (Dormant)",
@@ -14630,7 +14623,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grovelthrash (Awakened)",
@@ -14669,7 +14663,8 @@
 				"equal": {
 					"burrow": "walk"
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grovelthrash (Dormant)",
@@ -14769,7 +14764,8 @@
 				"earthquake",
 				"meld into stone",
 				"stone shape"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Gruul Guild Signet",
@@ -17155,7 +17151,8 @@
 				"invisibility",
 				"knock",
 				"pass without trace"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Infiltrator's Key (Dormant)",
@@ -17225,7 +17222,8 @@
 				"dimension door",
 				"gaseous form",
 				"mislead"
-			]
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ingot of the Skold Rune",
@@ -19391,7 +19389,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+2"
+			"bonusWeapon": "+2",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Lash of Shadows (Dormant)",
@@ -19502,7 +19501,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+3"
+			"bonusWeapon": "+3",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Leather Golem Armor",
@@ -20439,7 +20439,7 @@
 			"entries": [
 				"Вы получаете бонус +1 к броскам атаки и урона, сделанным этим магическим оружием. Бонус увеличивается до +3, если вы используете булаву для атаки конструкта.",
 				"Когда вы выбиваете 20 при броске атаки этим оружием, цель получает дополнительные 7 повреждений от удара, или дополнительные 14 повреждений от удара, если она является конструктом. Если после получения этого урона конструкция имеет 25 хит-поинтов или меньше, она уничтожается.",
-				"{@note Note: According to the SRD, it is an extra {@dice 2d6} и {@damage 4d6} колющего урона, хотя {@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}."
+				"{@note Примечание: Согласно SRD, это дополнительный {@note Note: According to the SRD, it is an extra {@dice 2d6} и {@damage 4d6} урон от удара, хотя {@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}."
 			],
 			"lootTables": [
 				"Magic Item Table G"
@@ -20503,7 +20503,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+2"
+			"bonusWeapon": "+2",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Mace of the Black Crown (Dormant)",
@@ -20599,7 +20600,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+3"
+			"bonusWeapon": "+3",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Macuahuitl",
@@ -25951,7 +25953,7 @@
 				"source": "WDMM"
 			},
 			"entries": [
-				"{@item professor orb|WDMM}, принадлежащий Веллинн Харпелл и украденный Нассом Лантомиром, называет себя профессором Скантом. Он законно добрый, имеет Мудрость 11 и Харизму 9 {@note (as a professor orb, it has an Intelligence of 18)}. Он говорит и читает на общем, драконьем, эльфийском и лороссском (мертвый язык империи Незерил). Профессор Скант - болтун и считает, что все гуманоиды - тупицы. Когда он рассказывает о своих областях знаний, то непреднамеренно использует покровительственный тон. У него есть следующие четыре области знаний:",
+				"Сфера {@item professor orb|WDMM}, принадлежащая Веллинн Харпелл и украденная Нассом Лантомиром, называет себя профессором Скантом. Он законно добрый, имеет Мудрость 11 и Харизму 9 {@note (как профессор Сферы, он имеет Интеллект 18)}. Он говорит и читает на общем, драконьем, эльфийском и лороссском (мертвый язык империи Незерил). Профессор Скант - болтун и считает, что все гуманоиды - тупицы. Когда он подробно рассказывает о своих областях знаний, то непреднамеренно использует покровительственный тон. У него есть следующие четыре области знаний:",
 				{
 					"type": "list",
 					"items": [
@@ -28428,7 +28430,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+2"
+			"bonusWeapon": "+2",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ruin's Wake (Dormant)",
@@ -28525,7 +28528,8 @@
 					"hasFluffImages": true
 				}
 			},
-			"bonusWeapon": "+3"
+			"bonusWeapon": "+3",
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ruinblade",
@@ -32639,10 +32643,14 @@
 		{
 			"name": "Stirring Dragon Vessel",
 			"source": "FTD",
-			"page": 27,
+			"_copy": {
+				"name": "Slumbering Dragon Vessel",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
+				}
+			},
 			"rarity": "rare",
-			"reqAttune": true,
-			"wondrous": true,
 			"entries": [
 				"Этим сосудом может быть бутылка для зелья, рог для питья или другая емкость, предназначенная для хранения жидкости.",
 				"В качестве бонусного действия, если сосуд пуст, вы можете произнести командное слово, чтобы наполнить сосуд одним из следующих веществ (на ваш выбор): эль, оливковое масло, медовуха, а {@item potion of healing}, а {@item potion of greater healing}, а {@item potion of climbing} или а {@item potion of fire breath}. После использования этого свойства оно не может быть использовано до следующего рассвета. Зелье, созданное таким образом, теряет свои магические свойства, если его не выпить в течение 24 часов."
@@ -32651,26 +32659,14 @@
 		{
 			"name": "Stirring Dragon-Touched Focus",
 			"source": "FTD",
-			"page": 26,
-			"rarity": "rare",
-			"reqAttune": "by a spellcaster",
-			"reqAttuneTags": [
-				{
-					"spellcasting": true
+			"_copy": {
+				"name": "Slumbering Dragon-Touched Focus",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
-			],
-			"wondrous": true,
-			"focus": [
-				"Artificer",
-				"Bard",
-				"Cleric",
-				"Druid",
-				"Paladin",
-				"Ranger",
-				"Sorcerer",
-				"Warlock",
-				"Wizard"
-			],
+			},
+			"rarity": "rare",
 			"entries": [
 				"Этот чудесный предмет может быть скипетром, сферой, амулетом, кристаллом или другим предметом тонкой работы. Обычно на нем изображены крылья, когти, зубы или чешуя дракона.",
 				"У вас есть преимущество при бросках инициативы. Пока вы держите фокус, он может работать как фокус заклинания для всех ваших заклинаний.",
@@ -32707,16 +32703,14 @@
 		{
 			"name": "Stirring Scaled Ornament",
 			"source": "FTD",
-			"page": 27,
-			"rarity": "rare",
-			"reqAttune": true,
-			"wondrous": true,
-			"bonusAc": "+1",
-			"modifySpeed": {
-				"equal": {
-					"fly": "walk"
+			"_copy": {
+				"name": "Slumbering Scaled Ornament",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
 			},
+			"rarity": "rare",
 			"entries": [
 				"Это украшение может быть ювелирным изделием, плащом или другим носимым аксессуаром. Оно может быть сделано из чешуи, зуба или когтя дракона или включать в себя изображения этих форм.",
 				"Вы получаете бонус +1 к AC, и вы не можете быть {@condition charmed} или {@condition frightened}. Более того, каждое существо по вашему выбору в радиусе 30 футов от вас имеет преимущество при бросках спасбросков, которые оно делает, чтобы избежать {@condition charmed} или {@condition frightened} или прекратить действие этих условий на себя."
@@ -34105,7 +34099,7 @@
 				},
 				"Когда вы атакуете объект этим волшебным мечом и попадаете, вы увеличиваете количество кубиков урона, наносимого оружием, против цели.",
 				"Когда вы атакуете существо этим оружием и бросаете 20 при броске атаки, цель получает дополнительные 14 единиц колющего урона. Затем сделайте еще один бросок {@dice d20}. Если выпадет 20, вы отрубаете одну из конечностей цели, эффект от потери определяется DM. Если у существа нет конечности, которую можно отрубить, вы отрубаете часть его тела.",
-				"{@note Note: According to the SRD, it is an extra {@damage 4d6} колющего урона, хотя {@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}.",
+				"{@note Примечание: Согласно SRD, это дополнительный {@note Note: According to the SRD, it is an extra {@damage 4d6} косой урон, хотя {@link this is incorrect|https://rpg.stackexchange.com/a/174522/53884}}.",
 				"Кроме того, вы можете произнести команду меча, чтобы заставить клинок пролить яркий свет в радиусе 10 футов и тусклый свет еще на 10 футов. Повторное произнесение командного слова или убирание меча в ножны гасит свет."
 			],
 			"attachedSpells": [
@@ -37703,10 +37697,14 @@
 		{
 			"name": "Wakened Dragon Vessel",
 			"source": "FTD",
-			"page": 27,
+			"_copy": {
+				"name": "Stirring Dragon Vessel",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
+				}
+			},
 			"rarity": "very rare",
-			"reqAttune": true,
-			"wondrous": true,
 			"entries": [
 				"Этим сосудом может быть бутылка для зелья, рог для питья или другая емкость, предназначенная для хранения жидкости.",
 				"В качестве бонусного действия, если сосуд пуст, вы можете произнести командное слово, чтобы наполнить сосуд одним из следующих веществ (на ваш выбор): эль, оливковое масло, медовуха, вино, а {@item potion of healing}, а {@item potion of greater healing}, а {@item potion of superior healing}, а {@item potion of climbing}, а {@item potion of fire breath} или а {@item potion of flying}. После использования этого свойства оно не может быть использовано до следующего рассвета. Зелье, созданное таким образом, теряет свои магические свойства, если его не выпить в течение 24 часов."
@@ -37715,26 +37713,14 @@
 		{
 			"name": "Wakened Dragon-Touched Focus",
 			"source": "FTD",
-			"page": 26,
-			"rarity": "very rare",
-			"reqAttune": "by a spellcaster",
-			"reqAttuneTags": [
-				{
-					"spellcasting": true
+			"_copy": {
+				"name": "Stirring Dragon-Touched Focus",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
-			],
-			"wondrous": true,
-			"focus": [
-				"Artificer",
-				"Bard",
-				"Cleric",
-				"Druid",
-				"Paladin",
-				"Ranger",
-				"Sorcerer",
-				"Warlock",
-				"Wizard"
-			],
+			},
+			"rarity": "very rare",
 			"entries": [
 				"Этот чудесный предмет может быть скипетром, сферой, амулетом, кристаллом или другим предметом тонкой работы. Обычно на нем изображены крылья, когти, зубы или чешуя дракона.",
 				"У вас есть преимущество при бросках инициативы. Пока вы держите фокус, он может работать как фокус заклинания для всех ваших заклинаний.",
@@ -37807,16 +37793,14 @@
 		{
 			"name": "Wakened Scaled Ornament",
 			"source": "FTD",
-			"page": 27,
-			"rarity": "very rare",
-			"reqAttune": true,
-			"wondrous": true,
-			"bonusAc": "+1",
-			"modifySpeed": {
-				"equal": {
-					"fly": "walk"
+			"_copy": {
+				"name": "Stirring Scaled Ornament",
+				"source": "FTD",
+				"_preserve": {
+					"page": true
 				}
 			},
+			"rarity": "very rare",
 			"entries": [
 				"Это украшение может быть ювелирным изделием, плащом или другим носимым аксессуаром. Оно может быть сделано из чешуи, зуба или когтя дракона или включать в себя изображения этих форм.",
 				"Вы получаете бонус +1 к AC, и вы не можете быть {@condition charmed} или {@condition frightened}. Более того, каждое существо по вашему выбору в радиусе 30 футов от вас имеет преимущество при бросках спасбросков, которые оно делает, чтобы избежать {@condition charmed} или {@condition frightened} или прекратить действие этих условий на себя.",
@@ -39753,7 +39737,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Wreath of the Prism (Dormant)",
@@ -39808,7 +39793,8 @@
 					"page": true,
 					"hasFluffImages": true
 				}
-			}
+			},
+			"hasFluffImages": true
 		},
 		{
 			"name": "Wukka Nut",
@@ -41209,7 +41195,7 @@
 			"type": "P",
 			"rarity": "varies",
 			"entries": [
-				"{@note * This item group has the same name and source as the item {@item potion of healing}}."
+				"{@note * Эта группа элементов имеет то же имя и источник, что и элемент {@note * This item group has the same name and source as the item {@item potion of healing}}."
 			],
 			"items": [
 				"Potion of Healing",
