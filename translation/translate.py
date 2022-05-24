@@ -43,7 +43,8 @@ class Translator:
 		self._language = language
 
 		#self._tag_regex = '{(?!(@i )|(@italic )|(@b )|(@bold )|(@u )|(@underline )|(@s )|(@strike )|(@color )|(@note )|(@footnote )).*?}'
-		self._tag_regex = '{(?!(@note )|(@footnote )).*?}'
+		#self._tag_regex = '{(?!(@note )|(@footnote )).*?}'
+		self._tag_regex = '{.*?}'
 
 		self._cacheFile = cacheFile
 		self._cacheDirty = False
