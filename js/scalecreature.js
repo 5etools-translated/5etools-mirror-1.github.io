@@ -2236,7 +2236,7 @@
 	async scale (mon, toSpellLevel) {
 		mon = MiscUtil.copy(mon);
 
-		if (!mon.summonedBySpell || mon._summonedBySpell_levelBase == null) return mon;
+		if (!mon.summonedBySpell || mon.summonedBySpellLevel == null) return mon;
 
 		ScaleSpellSummonedCreature._WALKER = ScaleSpellSummonedCreature._WALKER || MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
 

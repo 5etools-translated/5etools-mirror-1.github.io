@@ -821,6 +821,20 @@
 				"Unstable Backlash|Barbarian||Wild Magic|TCE|10",
 				"Controlled Surge|Barbarian||Wild Magic|TCE|14"
 			]
+		},
+		{
+			"name": "Path of the Giant (UA)",
+			"shortName": "Giant (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"subclassFeatures": [
+				"Path of the Giant|Barbarian||Giant (UA)|UA2022GiantOptions|3",
+				"Elemental Cleaver|Barbarian||Giant (UA)|UA2022GiantOptions|6",
+				"Mighty Impel|Barbarian||Giant (UA)|UA2022GiantOptions|10",
+				"Demiurgic Colossus|Barbarian||Giant (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -2155,6 +2169,125 @@
 			"entries": [
 				"{@i 14th-level Path of the Beast feature}",
 				"Odjuret inom dig blir så kraftfullt att du kan sprida dess grymhet till dina allierade. När du börjar rasa kan du välja ett antal villiga varelser som du kan se inom 30 fot från dig som är lika med din konstitutionsmodifierare (minst en varelse). Tills ditt raseri slutar får de valda varelserna egenskapen Reckless {@action Attack} och du har fördel på räddningskast mot att vara {@condition frightened}. Du får också 5 tillfälliga träffpunkter för varje varelse som accepterar förmånen. Du kan använda den här egenskapen ett antal gånger som är lika med din konstitutionsmodifierare (minst en gång). Du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Giant Power",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"När du väljer den här vägen lär du dig att tala, läsa och skriva Giant eller ett annat valfritt språk om du redan kan Giant. Dessutom lär du dig antingen druidcraft eller {@spell thaumaturgy} cantrip (ditt val). Visdom är din trollkonstförmåga för den här besvärjelsen."
+			]
+		},
+		{
+			"name": "Giant's Havoc",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"Dina raserier hämtar styrka från jättarnas urkraft och förvandlar dig till en enorm kraft av förstörelse. När du rasar får du följande fördelar:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Crushing Hurl",
+							"entries": [
+								"När du gör en lyckad distansattack med ett kastvapen med hjälp av styrka kan du lägga till din Rage Damage-bonus till attackens skaderoll."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Giant Stature",
+							"entries": [
+								"Din räckvidd ökar med 1,5 meter, och om du är mindre än Large blir du Large, tillsammans med allt du har på dig. Om det inte finns tillräckligt med utrymme för att du ska kunna bli Large ändras din storlek inte."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Giant",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"Barbarer som vandrar på Giant's Path hämtar sin styrka från de urkrafter som Giants och deras elementära släktingar utgör. Deras raseri svämmar över av elementär kraft och får dessa barbarer att växa i storlek, vilket förvandlar dem till avatarer av urkraft.",
+				"Under sitt raseri kan en barbar ta efter en legendarisk stormjätte, håret blir vitt och ögonen sprakar av blixtar. Andra antar de apokalyptiska titanernas monstruösa drag och sliter sönder världen runt omkring dem så att den kan skapas på nytt.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant Power|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant's Havoc|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				}
+			]
+		},
+		{
+			"name": "Elemental Cleaver",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Path of the Giant Feature}",
+				"Ditt band med den elementära kraften hos jättar och deras likar växer och du lär dig att ge vapen urkraft.",
+				"När du blir rasande kan du ge ett valfritt vapen som du håller i handen en av följande skadetyper: syra, kyla, eld, åska eller blixtnedslag. Medan du använder det infunderade vapnet under ditt raseri ändras vapnets skadetyp till den valda typen, det ger extra {@damage 1d6} skada av den valda typen när det träffar, och det får egenskapen kastad, med en normal räckvidd på 20 fot och en lång räckvidd på 60 fot. Om du kastar vapnet dyker det upp igen i din hand omedelbart efter att det träffar eller missar ett mål. Det infunderade vapnets fördelar undertrycks när en annan varelse än du använder det.",
+				"När du är rasande och håller i det infunderade vapnet kan du använda en bonusåtgärd för att ändra det infunderade vapnets nuvarande skadetyp till en annan av ovanstående skadetyper."
+			]
+		},
+		{
+			"name": "Mighty Impel",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Path of the Giant Feature}",
+				"Din koppling till jättestyrka gör att du nu kan kasta både allierade och fiender på slagfältet. Som en bonushandling när du är rasande kan du välja en medium eller mindre varelse inom din räckvidd och flytta den till ett obebott utrymme som du kan se inom 30 fot från dig själv. En ovillig varelse måste lyckas med ett räddningskast i styrka (DC är lika med 8 + din kompetensbonus + din styrka-modifierare) för att undvika effekten.",
+				"Om den kastade varelsen i slutet av denna rörelse inte befinner sig på en yta eller vätska som kan stödja den, faller varelsen och tar skada som normalt och landar {@condition prone}."
+			]
+		},
+		{
+			"name": "Demiurgic Colossus",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Path of the Giant Feature}",
+				"Den primordiala kraften i din vrede intensifieras. När du rasar ökar din räckvidd nu med 3 meter, din storlek kan öka till Huge och du kan nu använda din Mighty Impel för att flytta varelser som är Large eller mindre.",
+				"Dessutom ökar den extra skadan som din Elemental Cleaver-funktion ger till {@dice 2d6}."
 			]
 		},
 		{

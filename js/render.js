@@ -5570,7 +5570,7 @@ Renderer.monster = {
 	},
 
 	getSelSummonSpellLevel (mon) {
-		if (mon._summonedBySpell_levelBase == null) return;
+		if (mon.summonedBySpellLevel == null) return;
 
 		return e_({
 			tag: "select",
@@ -5578,10 +5578,10 @@ Renderer.monster = {
 			name: "mon__sel-summon-spell-level",
 			children: [
 				e_({tag: "option", val: "-1", text: "\u2014"}),
-				...[...new Array(VeCt.SPELL_LEVEL_MAX + 1 - mon._summonedBySpell_levelBase)].map((_, i) => e_({
+				...[...new Array(VeCt.SPELL_LEVEL_MAX + 1 - mon.summonedBySpellLevel)].map((_, i) => e_({
 					tag: "option",
-					val: i + mon._summonedBySpell_levelBase,
-					text: i + mon._summonedBySpell_levelBase,
+					val: i + mon.summonedBySpellLevel,
+					text: i + mon.summonedBySpellLevel,
 				})),
 			],
 		});
@@ -5632,7 +5632,7 @@ Renderer.monster = {
 				"dice",
 			],
 			fnPlugin: () => {
-				if (mon._summonedBySpell_levelBase == null && mon._summonedByClass_level == null) return null;
+				if (mon.summonedBySpellLevel == null && mon._summonedByClass_level == null) return null;
 				if (mon._summonedByClass_level) {
 					return {
 						additionalData: {
@@ -5642,7 +5642,7 @@ Renderer.monster = {
 				}
 				return {
 					additionalData: {
-						"data-summoned-by-spell-level": mon._summonedBySpell_level ?? mon._summonedBySpell_levelBase,
+						"data-summoned-by-spell-level": mon._summonedBySpell_level ?? mon.summonedBySpellLevel,
 					},
 				};
 			},
@@ -5680,7 +5680,7 @@ Renderer.monster = {
 		const extraThClasses = !opts.isCompact && hasToken ? ["mon__name--token"] : null;
 
 		const isCr = Parser.crToNumber(mon.cr) !== VeCt.CR_UNKNOWN;
-		const isShowSpellLevelScaler = opts.isShowScalers && !isCr && mon._summonedBySpell_levelBase != null;
+		const isShowSpellLevelScaler = opts.isShowScalers && !isCr && mon.summonedBySpellLevel != null;
 		const isShowClassLevelScaler = opts.isShowScalers && !isShowSpellLevelScaler && mon.summonedByClass != null;
 
 		const fnGetSpellTraits = Renderer.monster.getSpellcastingRenderedTraits.bind(Renderer.monster, renderer);
@@ -7759,6 +7759,10 @@ Renderer.adventureBook = {
 
 		return out;
 	},
+
+	getCoverUrl (contents) {
+		return contents.coverUrl || `${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/covers/blank.png`;
+	},
 };
 
 Renderer.charoption = {
@@ -8799,7 +8803,7 @@ Renderer.hover = {
 						<title>${opts.title}</title>
 						${$(`link[rel="stylesheet"][href]`).map((i, e) => e.outerHTML).get().join("\n")}
 						<!-- Favicons -->
-						<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
+						<link rel="icon" type="image/svg+xml" href="favicon.svg">
 						<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
 						<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
 						<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
@@ -9772,10 +9776,6 @@ Renderer.hover = {
 
 							if (cpy) {
 								cntReplaces++;
-								delete cpy.className;
-								delete cpy.classSource;
-								delete cpy.subclassShortName;
-								delete cpy.subclassSource;
 								delete cpy.level;
 								delete cpy.header;
 								if (toReplaceMeta.name) cpy.name = toReplaceMeta.name;

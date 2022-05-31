@@ -112,7 +112,7 @@ class CreatureBuilder extends Builder {
 				delete scaled._displayName;
 				this.setStateFromLoaded({s: scaled, m: meta});
 			} else this.setStateFromLoaded({s: creature, m: meta});
-		} else if (creature._summonedBySpell_levelBase && !opts.isForce) {
+		} else if (creature.summonedBySpellLevel && !opts.isForce) {
 			const fauxSel = Renderer.monster.getSelSummonSpellLevel(creature);
 			const values = [...fauxSel.options].map(it => it.value === "-1" ? "\u2014" : Number(it.value));
 			const scaleTo = await InputUiUtil.pGetUserEnum({values: values, title: "At Spell Level...", default: values[0], isResolveItem: true});

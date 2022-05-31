@@ -1166,6 +1166,20 @@
 					"page": true
 				}
 			}
+		},
+		{
+			"name": "Runecrafter (UA)",
+			"shortName": "Runecrafter (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"page": 3,
+			"subclassFeatures": [
+				"Runecrafter|Wizard||Runecrafter (UA)|UA2022GiantOptions|2",
+				"Sigils of Warding|Wizard||Runecrafter (UA)|UA2022GiantOptions|6",
+				"Rune Maven|Wizard||Runecrafter (UA)|UA2022GiantOptions|10",
+				"Engraved Enmity|Wizard||Runecrafter (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -3029,6 +3043,160 @@
 				"Din koppling till din uppvaknade trollbok har blivit så djupgående att din själ har blivit sammanflätad med den. Medan du håller boken och dess spektrala sinne är manifest kan du göra en handling för att få er två att teleportera och byta plats. Du kan teleportera på detta sätt ett antal gånger som är lika med din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila.",
 				"Om du dör men minst en trollformel finns kvar i din Awakened Spellbook kan du dessutom återvända till livet en minut senare inom en radie på 1,5 meter från boken. Du återuppstår med 1 träffpunkt. Slå sedan {@dice 3d6}. Boken förlorar trollformler av ditt val som har en kombinerad trollformelnivå som är lika med den kasten eller högre. Till exempel, om rollens totalsumma är 9, försvinner trollformler från boken som har en kombinerad nivå på minst 9, vilket kan innebära en trollformel på 9:e nivån, tre trollformler på 3:e nivån eller någon annan kombination.",
 				"Därefter är du oförmögen att kasta de förlorade trollformlerna, även om du hittar dem på en skriftrulle eller i en annan trollformelbok. Det enda sättet att återställa din förmåga att kasta en av de förlorade trollformlerna är genom {@spell wish}-besvärjelsen, som kan återställa en trollformel i boken per kast."
+			]
+		},
+		{
+			"name": "Runecrafter",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"entries": [
+				"Runecrafter-wizards förbättrar sin trollkonst genom runornas urgamla kraft. Även om traditionen har sitt ursprung i gamla tiders jättelika runkastare har runemagi expanderat till att omfatta oräkneliga språk och utövare i olika världar.",
+				"För många runekonstnärer är runorna de använder lika unika och personliga som deras trollbok. Vissa strävar efter att hedra bruket från jättarnas ursprung och graverar sina runor på dekorativa stenar som pryder deras trollformleringsredskap, medan andra klottrar sina runor på pappersrester.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runes of Understanding|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runic Empowerment|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Runes of Understanding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"Ditt studium av runekraft har låst upp förmågan att avkoda runor och språk, oavsett deras ursprung; du har alltid comprehend languages förberett, du kan kasta den utan att använda en trollformelplats och trollformeln räknas inte mot det antal trollformler du har förberett."
+			]
+		},
+		{
+			"name": "Runic Empowerment",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"När du väljer den här underklassen lär du dig att förstärka din magi genom att använda olika runor. Din kunskap om dessa runor lagras i din trollformelbok, även om du bestämmer runornas kosmetiska utseende. Dina runor kan till exempel graveras in i omslaget på din trollformelbok och lysa upp när du uttalar en trollformel, eller så kan du arbeta in runornas form och betydelse direkt i trollformelns somatiska och verbala komponenter. När du kastar en trollformel med hjälp av en trollformelplats kan du åberopa en av följande runor:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Life Rune",
+							"entries": [
+								"När du åberopar den här runan väljer du en varelse som du kan se inom 30 fot från dig (du kan välja dig själv). Den valda varelsen får tillfälliga träffpoäng lika med 5 gånger nivån på den spelledningsplats som använts."
+							]
+						},
+						{
+							"type": "item",
+							"name": "War Rune",
+							"entries": [
+								"När du åberopar den här runan väljer du en varelse som du kan se inom 30 fot från dig. Fram till slutet av din nästa vändning får attackkast som riktar sig mot den valda varelsen en bonus som är lika med halva nivån på den spelledslot som du använt (avrundat uppåt, minst +1)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Wind Rune",
+							"entries": [
+								"När du åberopar den här runan ökar din hastighet med ett antal fot som är lika med 5 gånger nivån på den spelledsloten som du använder, och din rörelse ger inte upphov till tillfälliga attacker. Dessa fördelar varar fram till början av din nästa tur."
+							]
+						}
+					]
+				},
+				"Du kan inte åberopa mer än en runa per trollformel. Du kan använda den här egenskapen ett antal gånger som är lika med din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
+			"name": "Sigils of Warding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Runecrafter Feature}",
+				"Du kan åberopa en skyddsruna för att skydda dig mot hot. När du misslyckas med ett räddningskast för styrka, smidighet eller konstitution kan du använda din reaktion för att använda en användning av din Runic Empowerment och lyckas med räddningskastet istället."
+			]
+		},
+		{
+			"name": "Rune Maven",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Runecrafter Feature}",
+				"Din förståelse för runecraft har ökat enormt. När du använder din Arcane Recovery-funktion får du också tillbaka ett antal av dina förbrukade användningar av Runic Empowerment. Antalet användningar du återfår kan inte vara mer än hälften av din intelligensmodifierare, avrundat uppåt (minst 1)."
+			]
+		},
+		{
+			"name": "Engraved Enmity",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Runecrafter Feature}",
+				"Du har bemästrat konsten att använda dina runor direkt mot dina fiender. Som en bonusåtgärd kan du rikta in dig på en varelse som du kan se inom 60 fot från dig själv. Varelsen måste lyckas med ett Visdoms räddningskast mot din trollformel räddnings DC eller vara magiskt märkt av en fiendskapsruna.",
+				"Fientlighetsrunan visas som en svagt glödande energispets som svävar över den markerade varelsen, som drabbas av följande effekter:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Runecraft's Bane",
+							"entries": [
+								"Varelsen har nackdel på räddningskast mot trollformler som du kastar."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Unveiled Enemy",
+							"entries": [
+								"Den glödande runans utstrålning gör varelsen synlig om den är {@condition invisible}, och varelsen kan inte bli {@condition invisible} så länge runan finns kvar."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Woeful Curse",
+							"entries": [
+								"När du markerar varelsen, och som en bonusåtgärd vid efterföljande vändningar under hela tiden, kan du åberopa enmity rune för att förbanna varelsen tills början av din nästa vändning. Nästa gång en av dina allierade träffar den förbannade varelsen med en attackrulle tar målet också {@damage 1d8} kraftskada och förbannelsen upphör."
+							]
+						}
+					]
+				},
+				"Fientlighetens runa varar i 1 minut eller tills du tappar koncentrationen (som om du koncentrerade dig på en trollformel). När du har markerat en varelse på detta sätt kan du inte göra det igen förrän du avslutar en lång vila, såvida du inte förbrukar en trollformelplats på 3:e nivån eller högre för att använda denna egenskap igen."
 			]
 		},
 		{

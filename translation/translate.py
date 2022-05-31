@@ -205,7 +205,7 @@ class Translator:
 
 
 		# Serve from cache if present
-		if text in self._cacheData:
+		if text in self._cacheData and len(self._cacheData[text]) > 0:
 			if self._needsRecheck(text):
 				print(text)
 				print(self.cacheGet(text))

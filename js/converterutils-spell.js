@@ -86,7 +86,7 @@ class MiscTagsTagger {
 					if (/when you reach/ig.test(str)) tags.add("SCL");
 					if ((/regain|restore/ig.test(str) && /hit point/ig.test(str)) || /heal/ig.test(str)) tags.add("HL");
 					if (/temporary hit points/ig.test(str)) tags.add("THP");
-					if (/you summon/ig.test(str)) tags.add("SMN");
+					if (/you summon/ig.test(str) || /creature shares your initiative count/ig.test(str)) tags.add("SMN");
 					if (/you can see/ig.test(str)) tags.add("SGT");
 					if (/you (?:can then )?teleport/i.test(str) || /instantly (?:transports you|teleport)/i.test(str) || /enters(?:[^.]+)portal instantly/i.test(str) || /entering the portal exits from the other portal/i.test(str)) tags.add("TP");
 

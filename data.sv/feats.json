@@ -547,7 +547,7 @@
 					"items": [
 						"Du får färdighet i {@item alchemist's supplies|phb}. Om du redan är duktig på dem lägger du till dubbla din kompetensbonus på kontroller som du gör med dem.",
 						"Som en handling kan du identifiera en dryck inom en radie av 1,5 meter, som om du hade smakat den. Du måste se vätskan för att denna fördel ska fungera.",
-						"Under en kort vila kan du tillfälligt förbättra styrkan hos en läkningsdryck av valfri sällsynthet. För att använda denna förmån måste du ha {@item alchemist's supplies|phb} med dig och drycken måste vara inom räckhåll. Om drycken dricks högst 1 timme efter att den korta vilan avslutas kan den varelse som dricker drycken avstå från dryckens tärningskast och återfår det maximala antalet träffpunkter som drycken kan återställa."
+						"Under en kort vila kan du tillfälligt förbättra styrkan hos en {@item potion of healing} av vilken sällsynthet som helst. För att använda den här fördelen måste du ha {@item alchemist's supplies|phb} med dig, och drycken måste vara inom räckhåll. Om drycken dricks högst 1 timme efter att den korta vilan avslutas kan den varelse som dricker drycken avstå från dryckens tärningskast och återfår det maximala antalet träffpunkter som drycken kan återställa."
 					]
 				}
 			]
@@ -631,7 +631,7 @@
 					"type": "list",
 					"items": [
 						"Du får en färdighet i {@skill Arcana}. Om du redan är duktig i färdigheten lägger du till dubbla din färdighetsbonus på kontroller som du gör med den.",
-						"Du lär dig trollformlerna {@spell prestidigitation} och {@spell detect magic}. Du kan kasta detect magic en gång utan att förbruka en spell slot, och du återfår förmågan att göra det när du avslutar en lång vila."
+						"Du lär dig trollformlerna {@spell prestidigitation} och {@spell detect magic}. Du kan kasta {@spell detect magic} en gång utan att förbruka en trollformelplats, och du återfår förmågan att göra det när du avslutar en lång vila."
 					]
 				}
 			]
@@ -1177,7 +1177,7 @@
 							"type": "item",
 							"name": "Divine Omens",
 							"entries": [
-								"Du kan kasta augur- och kommunalbesvärjelsen utan en spellplats, och du måste avsluta {@dice 1d4} långa vilor innan du kan kasta den på det här sättet igen. Du kan också kasta trollformeln med hjälp av trollformelplatser som du har på lämplig nivå. Besvärjelsens förtrollningsförmåga är den som du valde när du fick egenskapen Divinely Favored (gudomligt gynnad)."
+								"Du kan kasta {@spell augury} och {@spell commune} besvärjelsen utan en spell slot, och du måste avsluta {@dice 1d4} långa vilor innan du kan kasta den på detta sätt igen. Du kan också kasta trollformeln med hjälp av trollformelplatser som du har av lämplig nivå. Besvärjelsens förtrollningsförmåga är den som du valde när du fick egenskapen Divinely Favored (Gudomligt gynnad)."
 							]
 						}
 					]
@@ -2691,6 +2691,50 @@
 			]
 		},
 		{
+			"name": "Elemental Touched",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"entries": [
+				"Du har blivit utsatt för den ursprungliga magin i elementarplanerna, vilket ger dig en viss kontroll över den naturliga världen runt omkring dig. Du lär dig antingen druidcraft eller {@spell thaumaturgy} cantrip, och använder Intelligence, Wisdom eller Charisma som trollkonstförmåga (välj när du får den här bedriften).",
+				"När du avslutar en lång vila kan du välja vilket element du är inställd på: Luft, Jord, Eld eller Vatten. Beroende på ditt val kan du använda en bonushandling för att orsaka en av följande effekter:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Air",
+							"entries": [
+								"Du får en flyghastighet som är lika stor som din gånghastighet fram till slutet av din tur. Om du är luftburen i slutet av din tur efter att ha använt den här rörelsen och inte hålls uppe på annat sätt faller du."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Earth",
+							"entries": [
+								"Du får marken inom 30 fot från dig att bli {@quickref difficult terrain||3} i 1 minut eller tills du skapar den här effekten igen. Under den tiden kan du förflytta dig över mark som är {@quickref difficult terrain||3} utan att använda extra rörelse."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Fire",
+							"entries": [
+								"Du omger dig själv med ett moln av aska och rök. Fram till slutet av din tur kan din rörelse inte provocera fram tillfälliga attacker."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Water",
+							"entries": [
+								"Du kan skapa en kraftig vattenvåg som riktas mot en varelse inom 15 fot från dig som du kan se. Varelsen måste lyckas med ett räddningskast i styrka (som den kan välja att misslyckas med) mot ett DC lika med 8 + din modifikation av trollkonstförmåga + din kompetensbonus, eller så drivs den upp till 10 fot bort från dig. Vattnet försvinner omedelbart efter att varelsen lyckas eller misslyckas."
+							]
+						}
+					]
+				},
+				"Du kan skapa den här effekten ett antal gånger som är lika med din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+			]
+		},
+		{
 			"name": "Elven Accuracy",
 			"source": "UAFeatsForRaces",
 			"page": 2,
@@ -2756,6 +2800,42 @@
 					"type": "list",
 					"items": [
 						"När du har fördel på en attackrulle med hjälp av Dexterity, Intelligence, Wisdom eller Charisma kan du omkasta en av tärningarna en gång."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ember of the Fire Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"resist": [
+				"fire"
+			],
+			"entries": [
+				"Du har manifesterat den eldiga strid som är typisk för eldjättar, vilket ger dig följande fördelar:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Flame",
+							"entries": [
+								"Du är motståndskraftig mot brandskador."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Searing Ignition",
+							"entries": [
+								"När du gör en {@action Attack} handling på din tur kan du ersätta en av dina attacker med en magisk flammanfall. Varje varelse av ditt val inom 15 fot från dig som kan se dig måste göra ett Dexterity saving throw (DC är lika med 8 + din kompetensbonus + din konstitutionsmodifierare). Vid ett misslyckat räddningsförsök tar varelsen brandskada lika med {@dice 2d6} + din kompetensbonus och är {@condition blinded} tills början av din nästa tur; vid ett lyckat räddningsförsök tar varelsen hälften så mycket skada utan ytterligare effekter. Du kan använda din Searing Ignition ett antal gånger som är lika med din färdighetsbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+							]
+						}
 					]
 				}
 			]
@@ -3216,6 +3296,42 @@
 			]
 		},
 		{
+			"name": "Fury of the Frost Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"resist": [
+				"cold"
+			],
+			"entries": [
+				"Du har manifesterat den isiga kraften som är typisk för frostjättar, vilket ger dig följande fördelar:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Ice",
+							"entries": [
+								"Du är motståndskraftig mot kall skada."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Frigid Vengeance",
+							"entries": [
+								"När en varelse träffar dig med en attack kan du använda din reaktion för att slå tillbaka med en skur av magisk ilska. Varelsen måste lyckas med ett Visdomsbesparingskast (DC är lika med 8 + din kompetensbonus + din Konstitutionsmodifierare) eller vara {@condition frightened} av dig tills början av dess nästa tur. Du kan använda din reaktion på detta sätt ett antal gånger som är lika med din färdighetsbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Gift of the Chromatic Dragon",
 			"source": "FTD",
 			"page": 17,
@@ -3499,6 +3615,39 @@
 						"Under den första rundan av en strid mot dina utvalda fiender har dina anfallsrullar mot någon av dem fördel.",
 						"När någon av dina utvalda fiender gör en tillfällig attack mot dig, gör den attackkastet med nackdel.",
 						"När du gör en intelligenskontroll ({@skill Arcana}, {@skill History}, {@skill Nature} eller {@skill Religion}) för att minnas information om dina valda fiender, lägger du till dubbla din kompetensbonus till kontrollen, även om du normalt sett inte är duktig."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guile of the Cloud Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Du har manifesterat det luftiga talet och den magi som kännetecknar molnjättar, vilket ger dig följande fördelar:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Misty Form",
+							"entries": [
+								"Du kan kasta {@spell blur} besvärjelsen utan att använda en spell slot eller materiella komponenter. När du kastar besvärjelsen på det här sättet kräver inte besvärjelsen att du håller koncentrationen på den. När du väl har kastat besvärjelsen på det här sättet kan du inte göra det igen förrän du avslutar en lång vila. Du kan också kasta den här besvärjelsen på det normala sättet med hjälp av besvärjelseplatser som du har av lämplig nivå. Intelligens, Visdom eller Charisma är din förtrollningsförmåga för den här funktionen (välj när du får den här bedriften)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Silver Tongue",
+							"entries": [
+								"Du får färdighet i antingen {@skill Deception} eller {@skill Persuasion}. Din kompetensbonus fördubblas för varje förmågekontroll som du gör med hjälp av den här färdigheten."
+							]
+						}
 					]
 				}
 			]
@@ -4112,6 +4261,39 @@
 						"Du vet alltid vilket håll som är norr.",
 						"Du vet alltid hur många timmar det är kvar till nästa soluppgång eller solnedgång.",
 						"Du kan minnas allt du har sett eller hört under den senaste månaden."
+					]
+				}
+			]
+		},
+		{
+			"name": "Keenness of the Stone Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Du har manifesterat det skydd och den trollkonst som är kännetecknande för stenjättar, vilket ger dig följande fördelar:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Dreamer's Magic",
+							"entries": [
+								"Du lär dig {@spell detect thoughts} besvärjelsen och en {@filter 1st-level spell|spells|level=1|school=A;D} av ditt val. Besvärjelsen på 1:a nivån måste vara från den magiska skolan abjuration eller divination. Du kan kasta var och en av dessa trollformler utan att använda en trollformelplats. När du väl har kastat någon av dessa trollformler på det här sättet kan du inte kasta den trollformeln på det här sättet igen förrän du avslutar en lång vila. Du kan också kasta dessa trollformler med hjälp av trollformelplatser som du har av lämplig nivå. Intelligens, Visdom eller Charisma är din förtrollningsförmåga för den här funktionen (välj när du får den här bedriften)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Mountain Sight",
+							"entries": [
+								"Du får {@sense darkvision} upp till en räckvidd på 60 fot. Om du redan har {@sense darkvision} från en annan källa ökar dess räckvidd med 30 fot."
+							]
+						}
 					]
 				}
 			]
@@ -5107,6 +5289,41 @@
 			]
 		},
 		{
+			"name": "Outsized Might",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Du har absorberat urtidsmagi som gör att du, trots din relativt lilla storlek, kan förkroppsliga kraften hos titaniska varelser. Detta ger dig följande fördelar:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Little but Mighty",
+							"entries": [
+								"Du får färdighet i antingen {@skill Athletics} eller {@skill Acrobatics}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Powerful Build",
+							"entries": [
+								"Du räknas som en storlek större när du fastställer din bärförmåga och hur mycket du kan skjuta, dra eller lyfta."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Stalwart",
+							"entries": [
+								"Du har fördel på räddningskast mot att flyttas eller slås {@condition prone}."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Perceptive",
 			"source": "UAFeatsForSkills",
 			"page": 3,
@@ -5689,7 +5906,125 @@
 			"entries": [
 				"Du har lärt dig ett antal trollformler som du kan använda som ritualer. Dessa trollformler är skrivna i en ritualbok, som du måste ha i handen när du utför en av dem.",
 				"När du väljer den här förmågan får du en ritualbok med två trollformler på 1:a nivån som du själv väljer. Välj en av följande klasser: {@filter bard|spells|level=1|class=bard|components & miscellaneous=ritual}, {@filter cleric|spells|level=1|class=cleric|components & miscellaneous=ritual}, {@filter druid|spells|level=1|class=druid|components & miscellaneous=ritual}, {@filter sorcerer|spells|level=1|class=sorcerer|components & miscellaneous=ritual}, {@filter warlock|spells|level=1|class=warlock|components & miscellaneous=ritual} eller {@filter wizard|spells|level=1|class=wizard|components & miscellaneous=ritual}. Du måste välja dina trollformler från den klassens trollformellista, och de trollformler du väljer måste ha ritualmärket. Den klass du väljer bestämmer också din trollformelseförmåga för dessa trollformler: Charisma för bard, trollkarl eller trollkarl, Visdom för präst eller druid eller Intelligens för trollkarl.",
-				"Om du stöter på en trollformel i skriftlig form, t.ex. en magisk trollformelrulle eller en trollkarls trollbok, kan du kanske lägga till den i din ritualbok. Besvärjelsen måste finnas på besvärjelselistan för den klass du valt, besvärjelsens nivå kan inte vara högre än halva din nivå (avrundat uppåt) och den måste ha ritualmärket. Processen att kopiera besvärjelsen till din ritualbok tar 2 timmar per nivå av besvärjelsen och kostar 50 gp per nivå. Kostnaden representerar materiella komponenter som du använder när du experimenterar med besvärjelsen för att behärska den, samt de fina bläck som du behöver för att registrera den."
+				"Om du stöter på en trollformel i skriftlig form, t.ex. en magisk {@item spell scroll} eller en trollkarls trollformelbok, kan du kanske lägga till den i din ritualbok. Besvärjelsen måste finnas på besvärjelselistan för den klass du valt, besvärjelsens nivå kan inte vara högre än halva din nivå (avrundat uppåt) och den måste ha ritualmärket. Processen att kopiera besvärjelsen till din ritualbok tar 2 timmar per nivå av besvärjelsen och kostar 50 gp per nivå. Kostnaden representerar materiella komponenter som du använder när du experimenterar med besvärjelsen för att behärska den, samt de fina bläck som du behöver för att registrera den."
+			]
+		},
+		{
+			"name": "Rune Carver Adept",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4,
+					"feat": [
+						"rune carver apprentice|ua2022giantoptions"
+					]
+				}
+			],
+			"entries": [
+				"Din skicklighet i runecraft-konsten har ökat.",
+				"När du avslutar en lång vila kan du nu märka ett antal föremål som är lika med din kompetensbonus med en runa från Rune Carver Apprentice-feat. Ett föremål kan bara ha en runa åt gången, och du måste skriva in en annan runa på varje föremål."
+			]
+		},
+		{
+			"name": "Rune Carver Apprentice",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Du har börjat studera runekraft, som gör att du tillfälligt kan märka dina föremål och ge dem magi.",
+				"När du avslutar en lång vila kan du märka ett icke-magiskt vapen, en rustning, ett klädesplagg eller ett annat föremål som du kan röra vid med en valfri runa. Du lär dig tillfälligt en trollformel på 1:a nivån baserad på den runa du väljer, enligt vad som anges i tabellen Rune Spells, och du kan trollformeln tills du avslutar en lång vila, då runan bleknar.",
+				{
+					"type": "table",
+					"caption": "Rune Spells",
+					"colLabels": [
+						"Rune",
+						"Spell"
+					],
+					"colStyles": [
+						"col-2",
+						"col-10"
+					],
+					"rows": [
+						[
+							"Blod",
+							"{@spell False life}"
+						],
+						[
+							"Moln",
+							"{@spell Fog cloud}"
+						],
+						[
+							"Död",
+							"{@spell Ray of sickness}"
+						],
+						[
+							"Drake",
+							"{@spell Chromatic orb}"
+						],
+						[
+							"Fiende",
+							"{@spell Bane}"
+						],
+						[
+							"Fire",
+							"{@spell Burning hands}"
+						],
+						[
+							"Vän",
+							"{@spell Bless}"
+						],
+						[
+							"Frost",
+							"{@spell Armor of Agathys}"
+						],
+						[
+							"Hill",
+							"{@spell Goodberry}"
+						],
+						[
+							"Resa",
+							"{@spell Longstrider}"
+						],
+						[
+							"King",
+							"{@spell Command}"
+						],
+						[
+							"Ljus",
+							"{@spell Guiding bolt}"
+						],
+						[
+							"Life",
+							"{@spell Cure wounds}"
+						],
+						[
+							"Berg",
+							"{@spell Jump}"
+						],
+						[
+							"Sköld",
+							"{@spell Shield}"
+						],
+						[
+							"Sten",
+							"{@spell Sanctuary}"
+						],
+						[
+							"Storm",
+							"{@spell Thunderwave}"
+						],
+						[
+							"War",
+							"{@spell Heroism}"
+						],
+						[
+							"Wind",
+							"{@spell Feather fall}"
+						]
+					]
+				},
+				"När du bär det runmärkta föremålet kan du kasta den valda besvärjelsen som är associerad med runan en gång utan att använda en spell slot eller materialkomponenter, och du kan också kasta besvärjelsen genom att använda alla spell slots du har.",
+				"Din trollkonstförmåga för den här bedriften är intelligens, visdom eller karisma (välj när du får den här bedriften)."
 			]
 		},
 		{
@@ -6037,6 +6372,11 @@
 					}
 				}
 			],
+			"expertise": [
+				{
+					"anyProficientSkill": 2
+				}
+			],
 			"entries": [
 				"Du har förbättrat dina kunskaper i vissa färdigheter, vilket ger dig följande fördelar:",
 				{
@@ -6142,6 +6482,39 @@
 					"items": [
 						"En gång per vändning när du träffar en varelse med en attack som ger slashing damage kan du minska målets hastighet med 10 fot fram till början av din nästa vändning.",
 						"När du får en kritisk träff som ger en varelse snittskada sårar du den svårt. Fram till början av din nästa vändning har målet nackdel på alla attackkast."
+					]
+				}
+			]
+		},
+		{
+			"name": "Soul of the Storm Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Du har manifesterat spådomsförmågor och storm magi som är typiska för stormjättar, vilket ger dig följande fördelar:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Maelstrom Aura",
+							"entries": [
+								"Som en bonusåtgärd omger du dig själv med en aura av magisk vind och blixtar som sträcker sig 3 meter från dig i alla riktningar, men inte genom totalt skydd. Auran varar i 1 minut eller tills du är {@condition incapacitated}. Medan auran är aktiv har attackkast mot dig nackdel, och närhelst en varelse börjar sin tur inom sfären kan du tvinga varelsens hastighet att halveras fram till början av nästa tur. När du väl har använt denna bonushandling kan du inte göra det igen förrän du avslutar en lång vila."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Storm's Oracle",
+							"entries": [
+								"Du kan kasta {@spell divination} besvärjelsen som en ritual, utan att behöva materiella komponenter. Intelligens, visdom eller karisma är din trollformelseförmåga för denna egenskap (välj när du får den här bedriften). När du väl har kastat besvärjelsen på det här sättet kan du inte göra det igen förrän du avslutar en lång vila."
+							]
+						}
 					]
 				}
 			]
@@ -7462,6 +7835,39 @@
 			]
 		},
 		{
+			"name": "Vigor of the Hill Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Du har manifesterat den motståndskraft som är typisk för bergsjättar, vilket ger dig följande fördelar:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bulwark",
+							"entries": [
+								"När du utsätts för en effekt som skulle förflytta dig minst 5 fot eller slå dig {@condition prone} kan du använda din reaktion för att stabilisera dig. Du blir då varken förflyttad eller knockad {@condition prone}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Hearty Health",
+							"entries": [
+								"När du utsätts för en besvärjelse som återställer dina träffpoäng kan du återfå ytterligare träffpoäng motsvarande din konstitutionsmodifierare. Du kan återfå dessa extra träffpoäng ett antal gånger lika med din färdighetsbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "War Caster",
 			"source": "PHB",
 			"page": 170,
@@ -7639,7 +8045,7 @@
 							"type": "entries",
 							"name": "Lifter",
 							"entries": [
-								"Den här anordningen kan användas som ett block och tackling och gör det möjligt för användaren att lyfta fem gånger den vikt som han eller hon normalt kan lyfta."
+								"Denna anordning kan användas som en {@item block and tackle|PHB}, vilket gör det möjligt för användaren att lyfta fem gånger den vikt som användaren normalt kan lyfta."
 							]
 						},
 						{

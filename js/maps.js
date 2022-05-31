@@ -39,6 +39,7 @@ class MapsPage extends BaseComponent {
 		Renderer.get().setLazyImages(true);
 		this._renderContent({mapData});
 		Renderer.initLazyImageLoaders();
+		Renderer.get().setLazyImages(false);
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
