@@ -547,7 +547,7 @@
 					"items": [
 						"Zdobywasz biegłość z {@item alchemist's supplies|phb}. Jeśli jesteś już biegły w posługiwaniu się nimi, dodajesz podwójną premię do biegłości do testów wykonywanych za ich pomocą.",
 						"Jako akcję, możesz rozpoznać jeden eliksir w promieniu 5 stóp od siebie, tak jakbyś go spróbował. Aby ta umiejętność zadziałała, musisz widzieć płyn.",
-						"W trakcie krótkiego odpoczynku możesz tymczasowo zwiększyć moc jednej mikstury leczniczej dowolnego rodzaju. Aby skorzystać z tej umiejętności, musisz mieć przy sobie {@item alchemist's supplies|phb}, a mikstura musi być w zasięgu ręki. Jeśli mikstura zostanie wypita nie później niż godzinę po zakończeniu krótkiego odpoczynku, istota pijąca miksturę może zrezygnować z rzutu kostką mikstury i odzyskuje maksymalną liczbę punktów życia, jaką może przywrócić mikstura."
+						"W trakcie krótkiego odpoczynku możesz tymczasowo poprawić moc jednej {@item potion of healing} dowolnej rzadkości. Aby skorzystać z tego przywileju, musisz mieć przy sobie {@item alchemist's supplies|phb}, a eliksir musi być w zasięgu ręki. Jeśli mikstura zostanie wypita nie później niż godzinę po zakończeniu krótkiego odpoczynku, istota pijąca miksturę może zrezygnować z rzutu kostką mikstury i odzyskuje maksymalną liczbę punktów życia, jaką może przywrócić mikstura."
 					]
 				}
 			]
@@ -631,7 +631,7 @@
 					"type": "list",
 					"items": [
 						"Zdobywasz biegłość w umiejętności {@skill Arcana}. Jeśli jesteś już biegły w tej umiejętności, dodajesz podwójną premię do biegłości do kontroli, które wykonujesz za jej pomocą.",
-						"Uczysz się zaklęć {@spell prestidigitation} i {@spell detect magic}. Możesz rzucić Wykrycie magii raz, nie zużywając slotu na zaklęcie, a odzyskujesz tę umiejętność po zakończeniu długiego odpoczynku."
+						"Uczysz się zaklęć {@spell prestidigitation} i {@spell detect magic}. Możesz rzucić {@spell detect magic} raz, nie zużywając slotu na zaklęcie, a zdolność tę odzyskujesz po zakończeniu długiego odpoczynku."
 					]
 				}
 			]
@@ -1177,7 +1177,7 @@
 							"type": "item",
 							"name": "Divine Omens",
 							"entries": [
-								"Możesz rzucić zaklęcie Augurii i Komunii bez slotu na zaklęcie, ale musisz zakończyć {@dice 1d4} długich odpoczynków, zanim będziesz mógł je rzucić ponownie w ten sposób. Możesz również rzucić to zaklęcie, używając slotów na zaklęcia odpowiedniego poziomu. Zdolność rzucania zaklęć to ta, którą wybrano podczas zdobywania wyczynu Boski faworyt."
+								"Możesz rzucić zaklęcie {@spell augury} i {@spell commune} bez slotu na zaklęcie, ale musisz zakończyć {@dice 1d4} długich odpoczynków, zanim będziesz mógł rzucić je ponownie w ten sposób. Możesz też rzucić to zaklęcie, używając slotów na zaklęcia odpowiedniego poziomu. Zdolność rzucania zaklęć to ta, którą wybrano podczas zdobywania wyczynu Boska łaska."
 							]
 						}
 					]
@@ -2691,6 +2691,50 @@
 			]
 		},
 		{
+			"name": "Elemental Touched",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"entries": [
+				"Zostałeś wystawiony na działanie pierwotnej magii Planów Żywiołów, co daje ci pewną kontrolę nad otaczającym cię światem przyrody. Uczysz się czarów druidów lub {@spell thaumaturgy} kantry, używając Inteligencji, Mądrości lub Charyzmy jako zdolności rzucania czarów (wybierz, kiedy zdobędziesz ten wyczyn).",
+				"Za każdym razem, gdy kończysz długi odpoczynek, możesz wybrać żywioł, do którego jesteś dostrojony: Powietrza, Ziemi, Ognia lub Wody. W zależności od wyboru, możesz użyć dodatkowej akcji, aby wywołać jeden z poniższych efektów:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Air",
+							"entries": [
+								"Do końca swojej tury zyskujesz prędkość lotu równą prędkości chodzenia. Jeśli na koniec swojej tury po użyciu tego ruchu znajdujesz się w powietrzu i nie jesteś utrzymywany w górze przez inne środki, spadasz."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Earth",
+							"entries": [
+								"Sprawiasz, że ziemia w promieniu 30 stóp od ciebie staje się {@quickref difficult terrain||3} na 1 minutę lub do czasu, aż ponownie wywołasz ten efekt. W tym czasie możesz poruszać się po ziemi, która jest w {@quickref difficult terrain||3} bez dodatkowego ruchu."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Fire",
+							"entries": [
+								"Otaczasz się chmurą popiołu i dymu. Do końca swojej tury twój ruch nie prowokuje ataków okazjonalnych."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Water",
+							"entries": [
+								"Możesz stworzyć potężną falę wody skierowaną na istotę znajdującą się w promieniu 15 stóp od ciebie, którą widzisz. Stworzeniu musi udać się rzut na Wytrzymałość (który może oblać) z DC równym 8 + twój modyfikator zdolności zaklęć + premia do biegłości lub zostanie odepchnięte na odległość do 10 stóp od ciebie. Woda znika natychmiast po tym, jak stworowi się powiedzie lub nie powiedzie."
+							]
+						}
+					]
+				},
+				"Możesz stworzyć ten efekt tyle razy, ile wynosi twoja premia do biegłości, a wszystkie zużyte środki odzyskujesz po zakończeniu długiego odpoczynku."
+			]
+		},
+		{
 			"name": "Elven Accuracy",
 			"source": "UAFeatsForRaces",
 			"page": 2,
@@ -2756,6 +2800,42 @@
 					"type": "list",
 					"items": [
 						"Zawsze, gdy masz przewagę w ataku przy użyciu Zręczności, Inteligencji, Mądrości lub Charyzmy, możesz raz przeliczyć jedną z kości."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ember of the Fire Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"resist": [
+				"fire"
+			],
+			"entries": [
+				"Zamanifestowałeś ognistą walkę, charakterystyczną dla ognistych olbrzymów, co daje ci następujące korzyści:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Flame",
+							"entries": [
+								"Masz odporność na obrażenia od ognia."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Searing Ignition",
+							"entries": [
+								"Kiedy wykonujesz akcję {@action Attack} w swojej turze, możesz zastąpić jeden ze swoich ataków magicznym wybuchem płomienia. Każde wybrane przez ciebie stworzenie w promieniu 15 stóp od ciebie, które cię widzi, musi wykonać rzut ratujący zręczność (DC równa się 8 + premia do biegłości + modyfikator konstytucji). W przypadku nieudanego ataku, stworzenie otrzymuje obrażenia od ognia równe {@dice 2d6} + twoja premia do biegłości i jest {@condition blinded} do początku twojej następnej tury; w przypadku udanego ataku, stworzenie otrzymuje o połowę mniejsze obrażenia bez dodatkowych efektów. Możesz użyć Rozżarzonego Zapłonu tyle razy, ile wynosi twoja premia do biegłości, a wszystkie zużyte zasoby odzyskujesz po zakończeniu długiego odpoczynku."
+							]
+						}
 					]
 				}
 			]
@@ -3216,6 +3296,42 @@
 			]
 		},
 		{
+			"name": "Fury of the Frost Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"resist": [
+				"cold"
+			],
+			"entries": [
+				"Zamanifestowałeś lodowatą moc charakterystyczną dla mroźnych olbrzymów, co daje ci następujące korzyści:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Ice",
+							"entries": [
+								"Masz odporność na obrażenia od zimna."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Frigid Vengeance",
+							"entries": [
+								"Kiedy stwór trafia cię rolką ataku, możesz użyć swojej reakcji, aby odpowiedzieć wybuchem magicznego gniewu. Stworzeniu musi udać się rzut ratunkowy na Mądrość (DC równe 8 + twoja premia do biegłości + twój modyfikator Konstytucji) lub być {@condition frightened} od ciebie do początku swojej następnej tury. Możesz użyć swojej reakcji w ten sposób tyle razy, ile wynosi twoja premia do biegłości, a wszystkie zużyte środki odzyskujesz po zakończeniu długiego odpoczynku."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Gift of the Chromatic Dragon",
 			"source": "FTD",
 			"page": 17,
@@ -3499,6 +3615,39 @@
 						"Podczas pierwszej rundy walki z wybranymi przez ciebie przeciwnikami, twoje ataki na dowolnego z nich mają przewagę.",
 						"Kiedy któryś z wybranych przez ciebie przeciwników atakuje cię przy nadarzającej się okazji, wykonuje rzut na atak z minusem.",
 						"Ilekroć wykonujesz test na inteligencję ({@skill Arcana}, {@skill History}, {@skill Nature} lub {@skill Religion}), aby przypomnieć sobie informacje o wybranych przez siebie wrogach, dodajesz do tego testu podwójną premię do biegłości, nawet jeśli normalnie nie jesteś biegły."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guile of the Cloud Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Zamanifestowałeś zwiewną mowę i magię charakterystyczną dla gigantów chmur, co daje ci następujące korzyści:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Misty Form",
+							"entries": [
+								"Możesz rzucić zaklęcie {@spell blur} bez użycia slotu na zaklęcie lub składników materialnych. Kiedy rzucasz zaklęcie w ten sposób, nie wymaga ono od ciebie utrzymania koncentracji. Jeśli raz rzucisz zaklęcie w ten sposób, nie możesz tego zrobić ponownie, dopóki nie zakończysz długiego odpoczynku. Możesz też rzucić to zaklęcie w normalny sposób, używając slotów na zaklęcia odpowiedniego poziomu. Inteligencja, Mądrość lub Charyzma to twoje zdolności rzucania zaklęć dla tej cechy (wybierz je, gdy zdobędziesz ten wyczyn)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Silver Tongue",
+							"entries": [
+								"Zdobywasz biegłość w umiejętności {@skill Deception} lub {@skill Persuasion}. Twoja premia do biegłości jest podwajana za każdy test umiejętności, który wykonujesz używając tej umiejętności."
+							]
+						}
 					]
 				}
 			]
@@ -4112,6 +4261,39 @@
 						"Zawsze wiesz, która droga jest północna.",
 						"Zawsze wiadomo, ile godzin pozostało do następnego wschodu lub zachodu słońca.",
 						"Potrafisz dokładnie przypomnieć sobie wszystko, co widziałeś lub słyszałeś w ciągu ostatniego miesiąca."
+					]
+				}
+			]
+		},
+		{
+			"name": "Keenness of the Stone Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Zamanifestowałeś ochronę i zaklęcia charakterystyczne dla kamiennych olbrzymów, co daje ci następujące korzyści:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Dreamer's Magic",
+							"entries": [
+								"Uczysz się {@spell detect thoughts} zaklęcia i jednego {@filter 1st-level spell|spells|level=1|school=A;D} wybranego przez siebie. Zaklęcie pierwszego poziomu musi należeć do szkoły magii abdykacji lub wróżbiarstwa. Każde z tych zaklęć można rzucić bez konieczności wykorzystania slotu na zaklęcie. Jeśli raz rzucisz któreś z tych zaklęć w ten sposób, nie możesz go rzucić ponownie, dopóki nie zakończysz długiego odpoczynku. Możesz również rzucać te zaklęcia, używając slotów na zaklęcia odpowiedniego poziomu. Inteligencja, Mądrość lub Charyzma to twoje zdolności rzucania czarów dla tej cechy (wybierz je, gdy zdobywasz ten wyczyn)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Mountain Sight",
+							"entries": [
+								"Zyskujesz {@sense darkvision} w zasięgu do 60 stóp. Jeśli posiadasz już {@sense darkvision} z innego źródła, jego zasięg zwiększa się o 30 stóp."
+							]
+						}
 					]
 				}
 			]
@@ -5107,6 +5289,41 @@
 			]
 		},
 		{
+			"name": "Outsized Might",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Wchłonąłeś pierwotną magię, która pozwala ci, mimo stosunkowo niewielkiej postury, wcielić się w potęgę tytanicznych stworzeń. Daje ci to następujące korzyści:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Little but Mighty",
+							"entries": [
+								"Zdobywasz biegłość w umiejętności {@skill Athletics} lub {@skill Acrobatics}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Powerful Build",
+							"entries": [
+								"Liczony jest jako jeden rozmiar większy przy określaniu nośności oraz ilości, jaką można pchać, ciągnąć lub podnosić."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Stalwart",
+							"entries": [
+								"Masz przewagę w rzutach ratunkowych przeciwko byciu poruszonym lub powalonym {@condition prone}."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Perceptive",
 			"source": "UAFeatsForSkills",
 			"page": 3,
@@ -5689,7 +5906,125 @@
 			"entries": [
 				"Nauczyłeś się pewnej liczby zaklęć, które możesz rzucać jako rytuały. Zaklęcia te są zapisane w księdze rytuałów, którą musisz mieć w ręku podczas rzucania jednego z nich.",
 				"Kiedy wybierasz to wyczyn, otrzymujesz księgę rytuałów, w której znajdują się dwa wybrane przez ciebie zaklęcia pierwszego poziomu. Wybierz jedną z następujących klas: {@filter bard|spells|level=1|class=bard|components & miscellaneous=ritual}, {@filter cleric|spells|level=1|class=cleric|components & miscellaneous=ritual}, {@filter druid|spells|level=1|class=druid|components & miscellaneous=ritual}, {@filter sorcerer|spells|level=1|class=sorcerer|components & miscellaneous=ritual}, {@filter warlock|spells|level=1|class=warlock|components & miscellaneous=ritual} lub {@filter wizard|spells|level=1|class=wizard|components & miscellaneous=ritual}. Musisz wybrać zaklęcia z listy zaklęć tej klasy, a zaklęcia, które wybierzesz, muszą mieć znacznik rytuału. Wybrana klasa określa również twoją zdolność rzucania zaklęć dla tych zaklęć: Charyzma dla barda, czarodzieja lub czarnoksiężnika; Mądrość dla kleryka lub druida; lub Inteligencja dla czarodzieja.",
-				"Jeśli natrafisz na zaklęcie w formie pisemnej, takie jak magiczny zwój z zaklęciami lub księga zaklęć czarodzieja, możesz dodać je do swojej księgi rytuałów. Zaklęcie musi znajdować się na liście zaklęć wybranej przez ciebie klasy, jego poziom nie może być wyższy niż połowa twojego poziomu (zaokrąglając w górę) i musi posiadać znacznik rytuału. Proces kopiowania zaklęcia do księgi rytuałów trwa 2 godziny na każdy poziom zaklęcia i kosztuje 50 gp na poziom. Koszt ten obejmuje składniki materialne, które zużywasz podczas eksperymentowania z zaklęciem, aby je opanować, a także drobny tusz potrzebny do jego zapisania."
+				"Jeśli natrafisz na zaklęcie w formie pisemnej, np. w magicznej {@item spell scroll} lub czarodziejskiej księdze zaklęć, możesz dodać je do swojej księgi rytuałów. Zaklęcie musi znajdować się na liście zaklęć wybranej przez ciebie klasy, jego poziom nie może być wyższy niż połowa twojego poziomu (zaokrąglając w górę) i musi posiadać znacznik rytuału. Proces kopiowania zaklęcia do księgi rytuałów trwa 2 godziny na każdy poziom zaklęcia i kosztuje 50 gp na poziom. Koszt ten obejmuje składniki materialne, które zużywasz podczas eksperymentowania z zaklęciem, aby je opanować, a także drobny tusz potrzebny do jego zapisania."
+			]
+		},
+		{
+			"name": "Rune Carver Adept",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4,
+					"feat": [
+						"rune carver apprentice|ua2022giantoptions"
+					]
+				}
+			],
+			"entries": [
+				"Twoja umiejętność posługiwania się sztuką runiczną wzrosła.",
+				"Za każdym razem, gdy kończysz długi odpoczynek, możesz oznaczyć runą z wyczynu Rune Carver Apprentice liczbę przedmiotów równą twojej premii do biegłości. Na jednym przedmiocie może znajdować się tylko jedna runa i na każdym przedmiocie musisz umieścić inną runę."
+			]
+		},
+		{
+			"name": "Rune Carver Apprentice",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Zacząłeś studiować sztukę runicznego rzemiosła, która pozwala na tymczasowe oznaczanie przedmiotów i nasycanie ich magią.",
+				"Za każdym razem, gdy kończysz długi odpoczynek, możesz oznaczyć jedną niemagiczną broń, zbroję, ubranie lub inny przedmiot, którego możesz dotknąć, wybraną przez siebie runą. Tymczasowo uczysz się jednego zaklęcia 1. poziomu opartego na wybranej runie, zgodnie z tabelą zaklęć runicznych, i znasz to zaklęcie aż do zakończenia długiego odpoczynku, kiedy to runa zniknie.",
+				{
+					"type": "table",
+					"caption": "Rune Spells",
+					"colLabels": [
+						"Rune",
+						"Spell"
+					],
+					"colStyles": [
+						"col-2",
+						"col-10"
+					],
+					"rows": [
+						[
+							"Krew",
+							"{@spell False life}"
+						],
+						[
+							"Chmura",
+							"{@spell Fog cloud}"
+						],
+						[
+							"Śmierć",
+							"{@spell Ray of sickness}"
+						],
+						[
+							"Smok",
+							"{@spell Chromatic orb}"
+						],
+						[
+							"Wróg",
+							"{@spell Bane}"
+						],
+						[
+							"Fire",
+							"{@spell Burning hands}"
+						],
+						[
+							"Przyjaciel",
+							"{@spell Bless}"
+						],
+						[
+							"Mróz",
+							"{@spell Armor of Agathys}"
+						],
+						[
+							"Hill",
+							"{@spell Goodberry}"
+						],
+						[
+							"Podróż",
+							"{@spell Longstrider}"
+						],
+						[
+							"King",
+							"{@spell Command}"
+						],
+						[
+							"Światło",
+							"{@spell Guiding bolt}"
+						],
+						[
+							"Life",
+							"{@spell Cure wounds}"
+						],
+						[
+							"Góra",
+							"{@spell Jump}"
+						],
+						[
+							"Tarcza",
+							"{@spell Shield}"
+						],
+						[
+							"Kamień",
+							"{@spell Sanctuary}"
+						],
+						[
+							"Burza",
+							"{@spell Thunderwave}"
+						],
+						[
+							"War",
+							"{@spell Heroism}"
+						],
+						[
+							"Wind",
+							"{@spell Feather fall}"
+						]
+					]
+				},
+				"Podczas noszenia lub noszenia przedmiotu oznaczonego runą, możesz rzucić wybrane zaklęcie związane z runą raz bez użycia slotu na zaklęcie lub składników materialnych, a także możesz rzucić zaklęcie używając slotów na zaklęcia, które posiadasz.",
+				"Twoja zdolność rzucania zaklęć dla tego wyczynu to Inteligencja, Mądrość lub Charyzma (wybierz, kiedy zdobywasz ten wyczyn)."
 			]
 		},
 		{
@@ -6037,6 +6372,11 @@
 					}
 				}
 			],
+			"expertise": [
+				{
+					"anyProficientSkill": 2
+				}
+			],
 			"entries": [
 				"Doskonalisz się w poszczególnych umiejętnościach, co daje ci następujące korzyści:",
 				{
@@ -6142,6 +6482,39 @@
 					"items": [
 						"Raz na turę, kiedy trafisz istotę atakiem zadającym obrażenia od cięcia, możesz zmniejszyć prędkość celu o 10 stóp do początku swojej następnej tury.",
 						"Kiedy uzyskasz trafienie krytyczne, które zadaje obrażenia od cięcia, poważnie ranisz stworzenie. Do początku twojej następnej tury cel ma minusy we wszystkich rolkach ataku."
+					]
+				}
+			]
+		},
+		{
+			"name": "Soul of the Storm Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Posiadasz zdolności wróżbiarskie i magię burzową charakterystyczną dla gigantów burzy, co daje ci następujące korzyści:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Maelstrom Aura",
+							"entries": [
+								"Jako akcja dodatkowa otaczasz się aurą magicznego wiatru i błyskawic, która rozciąga się na 10 stóp od ciebie w każdym kierunku, ale nie przez całą osłonę. Aura utrzymuje się przez 1 minutę lub do momentu, gdy osiągniesz {@condition incapacitated}. Kiedy aura jest aktywna, ataki przeciwko tobie mają minusy, a kiedy jakaś istota zaczyna swoją turę w obrębie sfery, możesz sprawić, że jej prędkość zostanie zmniejszona o połowę do początku jej następnej tury. Jeśli raz użyjesz tej dodatkowej akcji, nie możesz tego zrobić ponownie, dopóki nie zakończysz długiego odpoczynku."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Storm's Oracle",
+							"entries": [
+								"Możesz rzucić zaklęcie {@spell divination} jako rytuał, bez potrzeby korzystania z materialnych składników. Inteligencja, Mądrość lub Charyzma to twoje zdolności rzucania zaklęć dla tej cechy (wybierz, kiedy zdobywasz ten wyczyn). Jeśli raz rzucisz zaklęcie w ten sposób, nie możesz tego zrobić ponownie, dopóki nie zakończysz długiego odpoczynku."
+							]
+						}
 					]
 				}
 			]
@@ -7462,6 +7835,39 @@
 			]
 		},
 		{
+			"name": "Vigor of the Hill Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Zamanifestowałeś odporność charakterystyczną dla olbrzymów górskich, co daje ci następujące korzyści:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bulwark",
+							"entries": [
+								"Kiedy jesteś poddany efektowi, który poruszyłby cię o co najmniej 5 stóp lub powalił {@condition prone}, możesz użyć swojej reakcji, aby się ustabilizować. Nie zostaniesz wtedy ani przesunięty, ani powalony {@condition prone}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Hearty Health",
+							"entries": [
+								"Kiedy zostaniesz poddany zaklęciu przywracającemu punkty trafień, możesz odzyskać dodatkowe punkty trafień równe twojemu modyfikatorowi Konstytucji. Możesz odzyskać te dodatkowe punkty trafień tyle razy, ile wynosi twoja premia do biegłości, a wszystkie zużyte punkty trafień odzyskujesz po zakończeniu długiego odpoczynku."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "War Caster",
 			"source": "PHB",
 			"page": 170,
@@ -7639,7 +8045,7 @@
 							"type": "entries",
 							"name": "Lifter",
 							"entries": [
-								"Urządzenie to może być używane jako blok i chwytak, umożliwiając użytkownikowi podnoszenie pięciokrotnie większego ciężaru niż normalnie."
+								"To urządzenie może być używane jako {@item block and tackle|PHB}, pozwalając użytkownikowi na podniesienie pięciokrotności ciężaru, który normalnie jest w stanie podnieść."
 							]
 						},
 						{

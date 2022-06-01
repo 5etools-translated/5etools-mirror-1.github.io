@@ -1166,6 +1166,20 @@
 					"page": true
 				}
 			}
+		},
+		{
+			"name": "Runecrafter (UA)",
+			"shortName": "Runecrafter (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"page": 3,
+			"subclassFeatures": [
+				"Runecrafter|Wizard||Runecrafter (UA)|UA2022GiantOptions|2",
+				"Sigils of Warding|Wizard||Runecrafter (UA)|UA2022GiantOptions|6",
+				"Rune Maven|Wizard||Runecrafter (UA)|UA2022GiantOptions|10",
+				"Engraved Enmity|Wizard||Runecrafter (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -3029,6 +3043,160 @@
 				"Tu conexión con tu Libro de Hechizos Despertado se ha vuelto tan profunda que tu alma se ha entrelazado con él. Mientras tengas el libro en tus manos y su mente espectral se manifieste, puedes realizar una acción para que los dos os teletransportéis, intercambiando lugares. Puedes teletransportarte de este modo un número de veces igual a tu bonificación de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo.",
 				"Además, si mueres pero queda al menos un hechizo en tu Libro de Hechizos Despertado, puedes volver a la vida 1 minuto después a menos de 1,5 metros del libro. Revives con 1 punto de vida. Entonces tira {@dice 3d6}. El libro pierde los hechizos de tu elección que tengan un nivel de hechizo combinado igual a esa tirada o superior. Por ejemplo, si el total de la tirada es 9, desaparecen del libro los conjuros que tengan un nivel combinado de al menos 9, lo que podría significar un conjuro de nivel 9, tres conjuros de nivel 3 o alguna otra combinación.",
 				"A partir de entonces, eres incapaz de lanzar los hechizos perdidos, incluso si los encuentras en un pergamino o en otro libro de hechizos. La única manera de restaurar tu capacidad de lanzar uno de los hechizos perdidos es a través del hechizo {@spell wish}, que puede restaurar un hechizo en el libro por lanzamiento."
+			]
+		},
+		{
+			"name": "Runecrafter",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"entries": [
+				"Los magos rúnicos mejoran sus hechizos mediante el antiguo poder de las runas. Aunque la tradición se originó con los gigantescos lanzadores de runas de antaño, la magia rúnica se ha expandido hasta abarcar innumerables idiomas y practicantes en diferentes mundos.",
+				"Para muchos artesanos rúnicos, las runas que manejan son tan únicas y personales como su libro de hechizos. Algunos se esfuerzan por honrar los orígenes de la práctica entre los gigantes, grabando sus runas en piedras decorativas que adornan sus utensilios de hechicería, mientras que otros garabatean desordenadamente sus runas en trozos de papel.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runes of Understanding|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runic Empowerment|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Runes of Understanding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"Tu estudio de la artesanía rúnica ha desbloqueado la capacidad de descifrar runas e idiomas, independientemente de su origen; siempre tienes preparado comprender idiomas, puedes lanzarlo sin gastar una ranura de hechizo y el hechizo no cuenta contra el número de hechizos que tienes preparados."
+			]
+		},
+		{
+			"name": "Runic Empowerment",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"Cuando eliges esta subclase, aprendes a amplificar tu magia mediante la aplicación de varias runas. Tu conocimiento de estas runas se almacena en tu libro de hechizos, aunque tú determinas la apariencia de las runas. Por ejemplo, tus runas pueden estar grabadas en la tapa de tu libro de hechizos, brillando cada vez que lanzas un hechizo, o puedes trabajar la forma y el significado de las runas directamente en los componentes somáticos y verbales de un hechizo. Cuando lanzas un hechizo utilizando una ranura de hechizo, puedes invocar una de las siguientes runas:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Life Rune",
+							"entries": [
+								"Cuando invocas esta runa, elige una criatura que puedas ver en un radio de 30 pies (puedes elegirte a ti mismo). La criatura elegida gana puntos de golpe temporales iguales a 5 veces el nivel de la ranura de hechizo gastada."
+							]
+						},
+						{
+							"type": "item",
+							"name": "War Rune",
+							"entries": [
+								"Cuando invocas esta runa, elige una criatura que puedas ver en un radio de 30 pies de ti. Hasta el final de tu siguiente turno, las tiradas de ataque que tengan como objetivo a la criatura elegida ganan una bonificación igual a la mitad del nivel de la ranura de hechizo gastada (redondeado hacia arriba, mínimo +1)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Wind Rune",
+							"entries": [
+								"Cuando invocas esta runa, tu velocidad aumenta en un número de pies igual a 5 veces el nivel de la ranura de hechizo gastada, y tu movimiento no provoca ataques de oportunidad. Estos beneficios duran hasta el inicio de tu siguiente turno."
+							]
+						}
+					]
+				},
+				"No puedes invocar más de una runa por hechizo. Puedes usar este rasgo un número de veces igual a tu bonificación de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo."
+			]
+		},
+		{
+			"name": "Sigils of Warding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Runecrafter Feature}",
+				"Puedes invocar una runa de protección para protegerte de las amenazas. Cuando fallas una tirada de salvación de Fuerza, Destreza o Constitución, puedes usar tu reacción para gastar un uso de tu Poder Rúnico y tener éxito en la tirada de salvación en su lugar."
+			]
+		},
+		{
+			"name": "Rune Maven",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Runecrafter Feature}",
+				"Tu comprensión de la magia rúnica ha crecido enormemente. Cada vez que usas tu rasgo de Recuperación Arcana, también recuperas un número de tus usos gastados de Potenciación Rúnica. El número de usos que recuperas no puede ser superior a la mitad de tu modificador de Inteligencia, redondeado hacia arriba (mínimo 1)."
+			]
+		},
+		{
+			"name": "Engraved Enmity",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Runecrafter Feature}",
+				"Has dominado el arte de blandir tus runas directamente contra tus enemigos. Como acción adicional, puedes apuntar a una criatura que puedas ver en un radio de 60 pies de ti. La criatura debe tener éxito en una tirada de salvación de Sabiduría contra tu DC de salvación de hechizo o ser marcada mágicamente por una runa de enemistad.",
+				"La runa de la enemistad aparece como una mota de energía que brilla débilmente y se cierne sobre la criatura marcada, que sufre los siguientes efectos:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Runecraft's Bane",
+							"entries": [
+								"La criatura tiene desventaja en las tiradas de salvación realizadas contra los hechizos que lanzas."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Unveiled Enemy",
+							"entries": [
+								"El resplandor de la runa resplandeciente hace que la criatura sea visible si es {@condition invisible}, y la criatura no puede convertirse en {@condition invisible} mientras la runa persiste."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Woeful Curse",
+							"entries": [
+								"Cuando marcas a la criatura, y como acción adicional en los turnos siguientes mientras dure, puedes invocar la runa de enemistad para maldecir a la criatura hasta el inicio de tu siguiente turno. La próxima vez que uno de tus aliados golpee a la criatura maldita con una tirada de ataque, el objetivo también recibe {@damage 1d8} de daño de fuerza, y la maldición termina."
+							]
+						}
+					]
+				},
+				"La runa de enemistad dura 1 minuto o hasta que pierdas la concentración (como si estuvieras concentrado en un hechizo). Una vez que hayas marcado a una criatura de este modo, no podrás volver a hacerlo hasta que termines un descanso largo, a menos que gastes una ranura de conjuro de 3er nivel o superior para volver a usar este rasgo."
 			]
 		},
 		{

@@ -1166,6 +1166,20 @@
 					"page": true
 				}
 			}
+		},
+		{
+			"name": "Runecrafter (UA)",
+			"shortName": "Runecrafter (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"page": 3,
+			"subclassFeatures": [
+				"Runecrafter|Wizard||Runecrafter (UA)|UA2022GiantOptions|2",
+				"Sigils of Warding|Wizard||Runecrafter (UA)|UA2022GiantOptions|6",
+				"Rune Maven|Wizard||Runecrafter (UA)|UA2022GiantOptions|10",
+				"Engraved Enmity|Wizard||Runecrafter (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -3029,6 +3043,160 @@
 				"Il tuo legame con il tuo libro degli incantesimi risvegliato è diventato così profondo che la tua anima si è intrecciata con esso. Mentre hai in mano il libro e la sua mente spettrale è manifesta, puoi compiere un'azione per farvi teletrasportare, scambiandovi di posto. Puoi teletrasportarti in questo modo un numero di volte pari al tuo bonus di competenza, e riacquisti tutti gli usi consumati quando finisci un lungo riposo.",
 				"Inoltre, se muori ma rimane almeno un incantesimo nel tuo libro degli incantesimi risvegliato, puoi tornare in vita 1 minuto dopo entro 5 piedi dal libro. Rivivi con 1 punto ferita. Poi tira {@dice 3d6}. Il libro perde gli incantesimi a tua scelta che hanno un livello di incantesimo combinato uguale o superiore a quel tiro. Ad esempio, se il totale del tiro è 9, gli incantesimi che hanno un livello combinato di almeno 9 spariscono dal libro, il che potrebbe significare un incantesimo di 9° livello, tre incantesimi di 3° livello o qualche altra combinazione.",
 				"Dopodiché, sei incapace di lanciare gli incantesimi persi, anche se li trovi su una pergamena o in un altro libro degli incantesimi. L'unico modo per ripristinare la capacità di lanciare uno degli incantesimi persi è l'incantesimo {@spell wish}, che può ripristinare un incantesimo nel libro per ogni lancio."
+			]
+		},
+		{
+			"name": "Runecrafter",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"entries": [
+				"I maghi runecraft migliorano il loro incantesimo attraverso l'antico potere delle rune. Sebbene la tradizione abbia avuto origine dai giganteschi incantatori di rune di un tempo, la magia runica si è espansa fino a comprendere innumerevoli lingue e praticanti in diversi mondi.",
+				"Per molti runecrafter, le rune che impugnano sono uniche e personali come il loro libro degli incantesimi. Alcuni si sforzano di onorare le origini della pratica tra i giganti, incidendo le loro rune su pietre decorative che adornano i loro strumenti di incantesimo, mentre altri scarabocchiano disordinatamente le loro rune su pezzi di carta.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runes of Understanding|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runic Empowerment|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Runes of Understanding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"Lo studio della runecraft ha sbloccato la capacità di decodificare le rune e i linguaggi, indipendentemente dalla loro origine; si ha sempre la capacità di comprendere i linguaggi pronta, si può lanciare senza spendere uno slot incantesimo e l'incantesimo non viene conteggiato nel numero di incantesimi preparati."
+			]
+		},
+		{
+			"name": "Runic Empowerment",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"Quando si sceglie questa sottoclasse, si impara ad amplificare la propria magia attraverso l'applicazione di varie rune. La conoscenza di queste rune è memorizzata nel proprio libro degli incantesimi, anche se è l'incantatore a determinare l'aspetto estetico delle rune. Ad esempio, le rune possono essere incise sulla copertina del libro degli incantesimi e brillare ogni volta che si lancia un incantesimo, oppure si possono inserire la forma e il significato delle rune direttamente nelle componenti somatiche e verbali di un incantesimo. Quando si lancia un incantesimo utilizzando uno slot incantesimo, si può invocare una delle seguenti rune:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Life Rune",
+							"entries": [
+								"Quando si invoca questa runa, si sceglie una creatura visibile entro 9 metri da noi (si può scegliere se stessi). La creatura scelta guadagna punti ferita temporanei pari a 5 volte il livello dell'incantesimo speso."
+							]
+						},
+						{
+							"type": "item",
+							"name": "War Rune",
+							"entries": [
+								"Quando si invoca questa runa, si sceglie una creatura visibile nel raggio di 9 piedi. Fino alla fine del vostro prossimo turno, i tiri di attacco che hanno come bersaglio la creatura scelta ottengono un bonus pari alla metà del livello dell'incantesimo speso (arrotondato per eccesso, minimo +1)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Wind Rune",
+							"entries": [
+								"Quando si invoca questa runa, la velocità aumenta di un numero di piedi pari a 5 volte il livello dell'incantesimo speso e il movimento non provoca attacchi di opportunità. Questi benefici durano fino all'inizio del turno successivo."
+							]
+						}
+					]
+				},
+				"Si può invocare non più di una runa per incantesimo. Si può usare questa caratteristica un numero di volte pari al proprio bonus di competenza, e si recuperano tutti gli usi spesi al termine di un riposo lungo."
+			]
+		},
+		{
+			"name": "Sigils of Warding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Runecrafter Feature}",
+				"Si può invocare una runa di protezione per proteggersi dalle minacce. Quando si fallisce un tiro salvezza di Forza, Destrezza o Costituzione, si può usare la propria reazione per spendere un uso del proprio Potenziamento runico e riuscire invece nel tiro salvezza."
+			]
+		},
+		{
+			"name": "Rune Maven",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Runecrafter Feature}",
+				"La tua conoscenza della runecraft è cresciuta immensamente. Ogni volta che si utilizza la caratteristica Recupero Arcano, si recupera anche un certo numero di utilizzi di Potenziamento Runico. Il numero di utilizzi recuperati non può essere superiore alla metà del proprio modificatore di Intelligenza, arrotondato per eccesso (minimo 1)."
+			]
+		},
+		{
+			"name": "Engraved Enmity",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Runecrafter Feature}",
+				"Avete imparato l'arte di brandire le rune direttamente contro i vostri nemici. Come azione bonus, potete bersagliare una creatura visibile entro 60 piedi da voi. La creatura deve riuscire a superare un tiro salvezza di Saggezza contro la vostra D.C. di tiro salvezza per incantesimi o essere segnata magicamente da una runa di inimicizia.",
+				"La runa dell'inimicizia si presenta come una debole macchia di energia incandescente che aleggia sulla creatura segnata, la quale subisce i seguenti effetti:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Runecraft's Bane",
+							"entries": [
+								"La creatura ha svantaggio sui tiri salvezza effettuati contro gli incantesimi lanciati dall'utente."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Unveiled Enemy",
+							"entries": [
+								"La radiosità della runa luminosa rende visibile la creatura se è {@condition invisible} e la creatura non può diventare {@condition invisible} finché la runa persiste."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Woeful Curse",
+							"entries": [
+								"Quando si marca la creatura, e come azione bonus nei turni successivi per tutta la durata, si può invocare la runa dell'inimicizia per maledire la creatura fino all'inizio del proprio turno successivo. La volta successiva che uno dei vostri alleati colpisce la creatura maledetta con un tiro di attacco, il bersaglio subisce anche {@damage 1d8} danni da forza e la maledizione termina."
+							]
+						}
+					]
+				},
+				"La runa di inimicizia dura per 1 minuto o finché non si perde la concentrazione (come se ci si stesse concentrando su un incantesimo). Una volta che si è marcata una creatura in questo modo, non è possibile farlo di nuovo fino al termine di un riposo lungo, a meno che non si spenda uno slot incantesimo di 3° livello o superiore per usare di nuovo questa caratteristica."
 			]
 		},
 		{

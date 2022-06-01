@@ -374,7 +374,7 @@
 							"equipped": true,
 							"damage.parts": [
 								[
-									"1d@(scale.monk.die) + @mod",
+									"1d(@scale.monk.die) + @mod",
 									"bludgeoning"
 								]
 							],
@@ -4344,6 +4344,42 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Radiant Sun Bolt",
+			"source": "XGE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 3,
+			"subEntities": {
+				"item": [
+					{
+						"name": "Radiant Sun Bolt",
+						"source": "XGE",
+						"page": 35,
+						"type": "R",
+						"range": "30",
+						"rarity": "none",
+						"weaponCategory": "simple",
+						"entries": [
+							"Dieser Spezialangriff ist ein Fernkampf-Zauberangriff mit einer Reichweite von 30 Fuß. Du beherrschst ihn und addierst deinen Geschicklichkeitsmodifikator zu seinen Angriffs- und Schadenswürfen.",
+							"Wenn du die {@action Attack}-Aktion in deinem Zug ausführst und diesen Spezialangriff als Teil davon verwendest, kannst du 1 Ki-Punkt ausgeben, um diesen Spezialangriff zweimal als Bonusaktion auszuführen. Wenn du die Eigenschaft Extra-Angriff erhältst, kann diese Spezialattacke für jede der Attacken verwendet werden, die du als Teil der {@action Attack}-Aktion ausführst."
+						],
+						"foundryData": {
+							"equipped": true,
+							"damage.parts": [
+								[
+									"1d(@scale.monk.die) + @mod",
+									"radiant"
+								]
+							],
+							"ability": "dex"
+						}
+					}
+				]
+			}
 		}
 	]
 }

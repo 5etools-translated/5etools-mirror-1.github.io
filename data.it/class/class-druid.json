@@ -2490,6 +2490,20 @@
 					"page": true
 				}
 			}
+		},
+		{
+			"name": " Circle of the Primeval (UA)",
+			"shortName": "Primeval (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 2,
+			"subclassFeatures": [
+				"Circle of the Primeval|Druid||Primeval (UA)|UA2022GiantOptions|2",
+				"Prehistoric Conduit|Druid||Primeval (UA)|UA2022GiantOptions|6",
+				"Titanic Bond|Druid||Primeval (UA)|UA2022GiantOptions|10",
+				"Scourge of the Ancients|Druid||Primeval (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -4158,6 +4172,136 @@
 				"{@i 14th-level Circle of the Stars feature}",
 				"La tua connessione con il cosmo ti permette di evocare una brillante luce stellare. Come azione, puoi evocare un'esplosione di luce in una sfera di 30 piedi di raggio centrata su un punto che puoi vedere entro 120 piedi da te. Puoi immediatamente teletrasportare ogni creatura volenterosa nella sfera in uno spazio non occupato entro 30 piedi da essa. Ogni creatura rimasta nella sfera deve riuscire in un tiro salvezza di Costituzione contro la tua CD di salvataggio dell'incantesimo o subire {@damage 4d10} danni radianti e subire {@condition blinded} fino alla fine del tuo prossimo turno.",
 				"Una volta che hai usato questa azione, non puoi usarla di nuovo finché non finisci un riposo lungo o finché non spendi uno slot incantesimo di 5° livello o superiore per usarla di nuovo."
+			]
+		},
+		{
+			"name": "Circle of the Primeval",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"entries": [
+				"Il Cerchio del Primordiale insegna che, sebbene la terra possa cambiare nel tempo, non dimentica mai veramente. Attingendo alla memoria del tempo della terra, questi druidi evocano e si legano allo spirito di un colosso primordiale, una creatura imponente che un tempo governava il mondo antico insieme ai giganti. I colossi primordiali più noti sono i dinosauri, ma gli spiriti legati ai membri del Circolo del Primordiale hanno assunto anche la forma di antichi predecessori delle bestie comuni di oggi e di altre fantastiche creature titaniche.",
+				"Lavorando al fianco del proprio spirito compagno, la maggior parte dei druidi del Circolo del Primordiale trascorre la propria vita scavando in luoghi a lungo dimenticati e preservando i resti di epoche passate. Man mano che il potere di un druido cresce, cresce anche il suo compagno: la bestia inizia ad avere dimensioni quasi uguali a quelle del suo compagno druido, per poi aumentare di statura fino a sovrastare anch'essa la terra.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Keeper of Old|Druid||Primeval (UA)|UA2022GiantOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Primeval Companion|Druid||Primeval (UA)|UA2022GiantOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Keeper of Old",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Circle of the Primeval Feature}",
+				"Il tuo legame con i possenti bestioni primordiali ti permette di avere una nuova visione del mondo antico. Si ottiene una competenza nell'abilità {@skill History}. Quando si effettua una prova di Intelligenza ({@skill History}), si può tirare un {@dice d4} e aggiungere il numero tirato alla prova di abilità."
+			]
+		},
+		{
+			"name": "Primeval Companion",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Circle of the Primeval Feature}",
+				"A partire da quando si sceglie questo circolo, si può invocare la creatura primordiale il cui spirito è legato a noi. Come azione, potete spendere un uso della vostra caratteristica Forma selvatica per evocare il vostro compagno primordiale, invece di assumere una forma di bestia. Il compagno appare in uno spazio non occupato a scelta entro 9 metri da voi.",
+				"Il compagno primordiale è amichevole con voi e con i vostri compagni e obbedisce ai vostri comandi. Le statistiche di gioco di questa creatura sono riportate nel blocco delle statistiche {@creature Primeval Companion|UA2022GiantOptions}, che utilizza il bonus di competenza (PB) in diversi punti. È possibile determinare l'aspetto estetico del compagno; ad esempio, il compagno può evocare antichi predatori come rapaci o tigri dai denti a sciabola, oppure può essere più propenso alla difesa, apparendo come un anchilosauro corazzato o un rinoceronte lanoso. Queste scelte non hanno alcun effetto sulle statistiche di gioco del compagno.",
+				"In combattimento, il compagno condivide il vostro conteggio dell'iniziativa, ma prende il suo turno immediatamente dopo il vostro. Può muoversi e usare le sue reazioni da solo, ma l'unica azione che compie nel suo turno è l'azione {@action Dodge}, a meno che non si compia un'azione bonus nel proprio turno per ordinargli di compiere un'altra azione. Tale azione può essere una delle azioni del suo blocco di statistiche o un'altra azione. Se siete {@condition incapacitated}, il compagno può compiere qualsiasi azione a sua scelta, non solo {@action Dodge}.",
+				"Il compagno rimane finché non viene ridotto a 0 punti ferita o finché non si muore, a quel punto il compagno scompare. Se si utilizza questa caratteristica per evocare nuovamente il compagno e si ha già un compagno presente, il primo compagno scompare immediatamente. Tutto ciò che il compagno indossava o trasportava viene lasciato indietro quando il compagno scompare."
+			]
+		},
+		{
+			"name": "Prehistoric Conduit",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Circle of the Primeval Feature}",
+				"Si impara a canalizzare la magia attraverso il proprio compagno primordiale. Quando si lancia un incantesimo con un raggio d'azione diverso da sé, l'incantesimo può provenire da sé o dal compagno primordiale.",
+				"Inoltre, se il compagno primordiale viene colpito da un incantesimo lanciato dall'incantatore che consente alle creature di effettuare un tiro salvezza contro i suoi effetti, il compagno primordiale ha un vantaggio sul tiro salvezza. Se normalmente il compagno primordiale subisce metà danno con un tiro salvezza riuscito contro questo incantesimo, non subisce alcun danno con un tiro salvezza riuscito e subisce metà danno senza effetti aggiuntivi con un tiro salvezza fallito."
+			]
+		},
+		{
+			"name": "Titanic Bond",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Circle of the Primeval Feature}",
+				"Il compagno primordiale cresce fino a raggiungere la taglia Grande e, quando lo si evoca, gli si può concedere una velocità di arrampicata o una velocità di nuoto pari alla sua velocità di cammino.",
+				"A sua volta, il compagno primordiale vi presta un po' della sua terrificante forza. Una volta per turno, mentre il compagno primordiale è evocato, quando si colpisce una creatura con un attacco o si infligge danno a una creatura visibile con un incantesimo lanciato, si può costringere la creatura in questione a effettuare un tiro salvezza di Saggezza contro la propria DC di salvataggio dell'incantesimo; in caso di fallimento, la creatura è {@condition frightened} di voi fino alla fine del vostro prossimo turno."
+			]
+		},
+		{
+			"name": "Scourge of the Ancients",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Circle of the Primeval Feature}",
+				"Avete imparato a sfruttare appieno l'eredità titanica del vostro compagno. Come parte dell'azione bonus che utilizzate per comandare il vostro compagno, potete spendere uno slot incantesimo di qualsiasi livello per aumentare la forza del vostro compagno primordiale, garantendogli i seguenti benefici:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Hulking Behemoth",
+							"entries": [
+								"Il compagno diventa Enorme e guadagna punti ferita temporanei pari a 10 volte il livello dell'incantesimo speso. Se non c'è abbastanza spazio per il compagno per diventare Enorme, raggiunge la dimensione massima possibile nello spazio disponibile."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Mauler",
+							"entries": [
+								"Se viene colpito, il Colpo del compagno infligge danni aggiuntivi pari a {@dice 1d8} più il livello dell'incantesimo speso."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Titanic Stride",
+							"entries": [
+								"La velocità di marcia del compagno aumenta di un numero di piedi pari a 5 volte il livello dell'incantesimo speso."
+							]
+						}
+					]
+				},
+				"Questi benefici durano per 1 ora, finché il compagno non scompare o finché non si spende nuovamente uno slot incantesimo per questa caratteristica."
 			]
 		},
 		{

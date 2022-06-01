@@ -374,7 +374,7 @@
 							"equipped": true,
 							"damage.parts": [
 								[
-									"1d@(scale.monk.die) + @mod",
+									"1d(@scale.monk.die) + @mod",
 									"bludgeoning"
 								]
 							],
@@ -4344,6 +4344,42 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Radiant Sun Bolt",
+			"source": "XGE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 3,
+			"subEntities": {
+				"item": [
+					{
+						"name": "Radiant Sun Bolt",
+						"source": "XGE",
+						"page": 35,
+						"type": "R",
+						"range": "30",
+						"rarity": "none",
+						"weaponCategory": "simple",
+						"entries": [
+							"这种特殊攻击是一种范围性的法术攻击，范围为30英尺。你精通它，你在它的攻击和伤害卷上加上你的灵巧修正值。",
+							"当你在你的回合中采取{@action Attack}行动并使用这个特殊攻击作为其中的一部分时，你可以花费1个基点，作为额外行动进行这个特殊攻击两次。当你获得额外攻击功能时，这个特殊攻击可以用于你作为{@action Attack}行动的一部分所进行的任何攻击。"
+						],
+						"foundryData": {
+							"equipped": true,
+							"damage.parts": [
+								[
+									"1d(@scale.monk.die) + @mod",
+									"radiant"
+								]
+							],
+							"ability": "dex"
+						}
+					}
+				]
+			}
 		}
 	]
 }

@@ -1166,6 +1166,20 @@
 					"page": true
 				}
 			}
+		},
+		{
+			"name": "Runecrafter (UA)",
+			"shortName": "Runecrafter (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"page": 3,
+			"subclassFeatures": [
+				"Runecrafter|Wizard||Runecrafter (UA)|UA2022GiantOptions|2",
+				"Sigils of Warding|Wizard||Runecrafter (UA)|UA2022GiantOptions|6",
+				"Rune Maven|Wizard||Runecrafter (UA)|UA2022GiantOptions|10",
+				"Engraved Enmity|Wizard||Runecrafter (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -3029,6 +3043,160 @@
 				"你和你的觉醒法术书的联系已经变得如此深刻，以至于你的灵魂已经和它缠绕在一起。当你拿着这本书并且它的幽灵之心显现时，你可以采取一个行动，使你们两个人进行传送，交换位置。你可以用这种方式传送的次数与你的熟练度加成相等，当你完成长时间的休息时，你会恢复所有消耗的次数。",
 				"此外，如果你死亡，但你的觉醒法术书中至少还有一个法术，你可以在1分钟后在书的5英尺范围内复活。你以1点生命值复活。然后滚动（%0%）。这本书会失去你所选择的、综合法术等级等于该卷的法术，或者更高。例如，如果卷轴的总数是9，那么书中的法术就会消失，这些法术的综合等级至少是9，这可能意味着一个9级法术，三个3级法术，或者其他组合。",
 				"此后，你就不能再施放那些丢失的法术了，即使你在卷轴上或其他法术书中找到它们。恢复你施放其中一个丢失的法术的能力的唯一方法是通过{@spell wish}法术，该法术每次施放可以恢复一个法术到书中。"
+			]
+		},
+		{
+			"name": "Runecrafter",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"entries": [
+				"符文魔法师通过古老的符文力量来加强他们的法术攻击。虽然这一传统起源于古老的巨型符文施法者，但符文魔法已经扩展到包括无数的语言和不同世界的从业者。",
+				"对于许多符文师来说，他们所使用的符文和他们的魔法书一样，都是独一无二的、个人的。有些人努力尊重这种做法在巨人中的起源，将他们的符文刻在装饰他们的法术工具的石头上，而其他人则在废纸上混乱地涂抹他们的符文。",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runes of Understanding|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runic Empowerment|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Runes of Understanding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"你对符文术的研究已经解锁了解码符文和语言的能力，无论其来源如何；你总是准备好理解语言，你可以在不消耗法术槽的情况下施放它，而且该法术不计入你所准备的法术数量。"
+			]
+		},
+		{
+			"name": "Runic Empowerment",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"当你选择这个子类时，你学会了如何通过应用各种符文来放大你的魔法。你对这些符文的了解存储在你的法术书中，不过你决定符文的外观。例如，你的符文可以被刻在你的法术书的封面上，每当你施法时就会发光，或者你可以将符文的形状和含义直接运用到法术的身体和语言部分。当你使用一个法术槽施法时，你可以调用以下符文之一。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Life Rune",
+							"entries": [
+								"当你调用这个符文时，在你30英尺范围内选择一个你能看到的生物（你可以选择自己）。被选择的生物获得相当于所耗费的法术槽等级5倍的临时打击点数。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "War Rune",
+							"entries": [
+								"当你调用这个符文时，在你30英尺内选择一个你能看到的生物。直到你的下一回合结束，以所选生物为目标的攻击卷获得相当于所耗费的法术槽等级一半的奖励（四舍五入，最小为+1）。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Wind Rune",
+							"entries": [
+								"当你调用这个符文时，你的速度会增加相当于所消耗的法术槽等级的5倍，而且你的移动不会引起机会攻击。这些好处一直持续到你下一个回合的开始。"
+							]
+						}
+					]
+				},
+				"你每次施法可以调用不超过一个符文。你可以使用这个功能的次数等于你的熟练度加成，当你完成一个长时间的休息时，你会恢复所有消耗的使用。"
+			]
+		},
+		{
+			"name": "Sigils of Warding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Runecrafter Feature}",
+				"你可以召唤一个保护符文来保护自己免受威胁。当你的力量、灵巧或体质救赎失败时，你可以用你的反应来消耗你的符文赋能的一次使用，并在救赎中取得成功。"
+			]
+		},
+		{
+			"name": "Rune Maven",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Runecrafter Feature}",
+				"你对符文技术的理解有了很大的提高。每当你使用你的奥术恢复功能时，你也会恢复一定数量的符文赋能的消耗次数。你恢复的使用次数不能超过你智力修正值的一半，四舍五入（最小为1）。"
+			]
+		},
+		{
+			"name": "Engraved Enmity",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Runecrafter Feature}",
+				"你已经掌握了直接对你的敌人挥舞符文的艺术。作为一个额外的行动，你可以在自己的60英尺范围内瞄准一个你能看到的生物。该生物必须对你的法术救赎DC进行智慧救赎成功，否则就会被敌意符文所标记。",
+				"敌意符文显示为一个微弱发光的能量斑点，盘旋在被标记的生物上，该生物会受到以下影响。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Runecraft's Bane",
+							"entries": [
+								"该生物对你所施展的法术的蓄力攻击有劣势。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Unveiled Enemy",
+							"entries": [
+								"发光符文的光芒使生物可见，如果它是{@condition invisible}，并且在符文持续存在时，生物不能变成{@condition invisible}。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Woeful Curse",
+							"entries": [
+								"当你标记该生物时，以及作为持续时间内后续回合的额外行动，你可以调用敌意符文来诅咒该生物，直到你下一回合开始。下一次你的盟友用攻击卷击中被诅咒的生物时，目标也会受到（%0%）武力伤害，并且诅咒结束。"
+							]
+						}
+					]
+				},
+				"敌意符文持续1分钟或直到你失去注意力（就像你在集中精力施法一样）。一旦你以这种方式标记了一个生物，你就不能再这样做了，直到你完成一个长时间的休息，除非你消耗一个3级以上的法术槽来再次使用这个特性。"
 			]
 		},
 		{

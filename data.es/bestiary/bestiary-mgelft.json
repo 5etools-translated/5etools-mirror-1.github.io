@@ -1,0 +1,612 @@
+{
+	"monster": [
+		{
+			"name": "Dankwood Duergar",
+			"source": "MGELFT",
+			"page": 32,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Dwarf"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"Plate Mail"
+					]
+				}
+			],
+			"hp": {
+				"formula": "4d8 + 8",
+				"average": 26
+			},
+			"speed": {
+				"walk": 25
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 10,
+			"cha": 9,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"poison"
+			],
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Duergar Resilience",
+					"entries": [
+						"El duergar de dankwood tiene ventaja en las tiradas de salvación contra el veneno, los hechizos y las ilusiones, así como para resistirse a ser {@condition charmed} o {@condition paralyzed}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"Mientras está a la luz del sol, el duergar de Dankwood tiene desventaja en las tiradas de ataque, así como en los chequeos de Sabiduría ({@skill Perception}) que dependen de la vista."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Verbal Jab",
+					"entries": [
+						"El duergar suelta una retahíla de insultos con sutiles encantamientos a una criatura que pueda ver en un radio de 60 pies. Si la criatura puede oírlos (no es necesario que los entienda), debe tener éxito en una tirada de salvación de Sabiduría {@dc 12} o recibir {@damage 1d4} de daño psíquico y tener desventaja en la siguiente tirada de ataque que haga antes del final de su siguiente turno."
+					]
+				},
+				{
+					"name": "Haymaker",
+					"entries": [
+						"{@atk mw} {@hit 5} para golpear, alcance 5 pies, un objetivo. {@h}9 ({@damage 1d6 + 6}) de daño por apaleamiento. Si el duergar se agranda, aumenta su daño a 10 ({@dice 2d6 + 3}) de daño contundente."
+					]
+				}
+			],
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Dankwood Grung",
+			"source": "MGELFT",
+			"page": 31,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Grung"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "5d6 + 10",
+				"average": 27
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"str": 7,
+			"dex": 16,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"dex": "+5"
+			},
+			"skill": {
+				"athletics": "+2",
+				"intimidation": "+4",
+				"perception": "+2",
+				"stealth": "+5"
+			},
+			"passive": 12,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"languages": [
+				"Grung"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"El grung puede respirar aire y agua."
+					]
+				},
+				{
+					"name": "Poisonous Skin",
+					"entries": [
+						"Cualquier criatura que agarre al grung o que entre en contacto directo con su piel debe tener éxito en una tirada de salvación de Constitución {@dc 12} o quedar {@condition poisoned} durante 1 minuto. Una criatura {@condition poisoned} que ya no esté en contacto indirecto con el grung puede repetir la tirada de salvación al final de cada uno de sus turnos, terminando el efecto sobre sí misma si tiene éxito."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"El salto de longitud del grung es de hasta 25 pies y su salto de altura es de hasta 15 pies, con o sin salida en carrera."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Grumpy Grung Growl.",
+					"entries": [
+						"Un feroz gorgoteo sale de la garganta del grung de Dankwood, advirtiendo a los que están en un radio de 15 pies de que está realmente malhumorado. Las criaturas que se encuentren en esa zona deben tener éxito en una tirada de salvación de Carisma {@dc 12} o quedar {@condition frightened} hasta el final de su siguiente turno."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 0} para golpear, alcance 5 pies o rango 20/60 pies, un objetivo. {@h}3 ({@damage 1d4 + 1}) de daño penetrante en el cuerpo a cuerpo, o 3 ({@damage 1d4 + 1}) de daño penetrante a distancia. El objetivo debe tener éxito en una tirada de salvación de {@dc 12} Constitución o recibir 5 ({@damage 2d4}) de daño de veneno."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "King Robbit the Slimy",
+			"source": "MGELFT",
+			"page": 32,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Grung"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "5d6 + 10",
+				"average": 27
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"str": 7,
+			"dex": 16,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"dex": "+5"
+			},
+			"skill": {
+				"athletics": "+2",
+				"intimidation": "+4",
+				"perception": "+2",
+				"stealth": "+5"
+			},
+			"passive": 12,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"poisoned"
+			],
+			"languages": [
+				"Grung"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"El grung puede respirar aire y agua."
+					]
+				},
+				{
+					"name": "Poisonous Skin",
+					"entries": [
+						"Cualquier criatura que agarre al grung o que entre en contacto directo con su piel debe tener éxito en una tirada de salvación de Constitución {@dc 12} o quedar {@condition poisoned} durante 1 minuto. Una criatura {@condition poisoned} que ya no esté en contacto directo con el grung puede repetir la tirada de salvación al final de cada uno de sus turnos, terminando el efecto sobre sí misma si tiene éxito."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"El salto de longitud del grung es de hasta 25 pies y su salto de altura es de hasta 15 pies, con o sin salida en carrera."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Grumpy Grung Growl.",
+					"entries": [
+						"Un feroz gorgoteo sale de la garganta del grung de Dankwood, advirtiendo a los que están en un radio de 15 pies que está realmente malhumorado. Las criaturas que se encuentren en esa zona deben tener éxito en una tirada de salvación de Carisma {@dc 12} o quedar {@condition frightened} hasta el final de su siguiente turno."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 0} para golpear, alcance 5 pies o rango 20/60 pies, un objetivo. {@h}3 ({@damage 1d4 + 1}) de daño penetrante en el cuerpo a cuerpo, o 3 ({@damage 1d4 + 1}) de daño penetrante a distancia. El objetivo debe tener éxito en una tirada de salvación de {@dc 12} Constitución o recibir 5 ({@damage 2d4}) de daño de veneno."
+					]
+				},
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk rw} {@hit 5} para golpear, alcance 80/320 pies, un objetivo. {@h}9 ({@damage 1d6 + 6}) de daño perforante. El objetivo debe tener éxito en una tirada de salvación de {@dc 12} Constitución o recibir 5 ({@damage 2d4}) de daño por veneno."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Sludge Hag",
+			"source": "MGELFT",
+			"page": 33,
+			"size": [
+				"M"
+			],
+			"type": "fey",
+			"alignment": [
+				{
+					"special": "neutral oozy"
+				}
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "11d8 + 33",
+				"average": 82
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 12,
+			"con": 16,
+			"int": 13,
+			"wis": 14,
+			"cha": 14,
+			"skill": {
+				"arcana": "+3",
+				"deception": "+4",
+				"perception": "+4",
+				"stealth": "+3"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"Common",
+				"Draconic",
+				"Sylvan"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"footerEntries": [
+						"The hag's innate spellcasting ability is Charisma (spell save {@dc 12}). She can innately cast the following spells, requiring no material components. "
+					],
+					"will": [
+						"{@spell acid splash}",
+						"{@spell dancing lights}",
+						"{@spell minor illusion}"
+					]
+				}
+			],
+			"trait": [
+				{
+					"name": "Amorphous",
+					"entries": [
+						"La bruja de los lodos puede moverse por un espacio tan estrecho como una pulgada de ancho sin apretarse."
+					]
+				},
+				{
+					"name": "Amphibious",
+					"entries": [
+						"La bruja del lodo puede respirar aire y agua."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"La bruja del lodo se desploma en un charco aceitoso de lodo. Mientras está inmóvil, la bruja del lodo no se distingue de cualquier otro charco aceitoso de goteo."
+					]
+				},
+				{
+					"name": "Sludge Slap",
+					"entries": [
+						"{@atk mw} {@hit 6} para golpear, alcance 5 pies, un objetivo. {@h}12 ({@damage 1d8 + 8}) de daño por apaleamiento, más 4 ({@damage 1d8}) de daño por ácido. Sludge Slap hace tanto daño de azote como de ácido"
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous",
+				"Amphibious"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"S"
+			],
+			"damageTags": [
+				"A",
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Spiderfrog",
+			"source": "MGELFT",
+			"page": 33,
+			"size": [
+				"S"
+			],
+			"type": "beast",
+			"alignment": [
+				{
+					"special": "chaotic sticky"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "2d8 + 4",
+				"average": 13
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 10,
+			"dex": 16,
+			"con": 14,
+			"int": 3,
+			"wis": 12,
+			"cha": 4,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+7"
+			},
+			"senses": [
+				"blindsight 10 ft.",
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"La rana araña puede respirar aire y agua."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"La rana araña puede trepar por superficies difíciles, incluso por los techos, sin necesidad de hacer un chequeo de habilidad."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"El salto de longitud de la rana araña es de hasta 6 metros y su salto de altura es de hasta 3 metros, con o sin arranque."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 2} para golpear, alcance 5 pies, un objetivo. {@h}4 ({@damage 1d6 + 1}) de daño perforante. El objetivo es {@condition grappled} (escapar {@dc 11}). Hasta que este agarre termine, el objetivo es {@condition restrained}, y la rana araña no puede morder a otro objetivo."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious",
+				"Spider Climb"
+			],
+			"senseTags": [
+				"B",
+				"D"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled",
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Yeti Tyke",
+			"source": "MGELFT",
+			"page": 34,
+			"size": [
+				"S"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				{
+					"special": "chaotic silly"
+				}
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "2d6 + 2",
+				"average": 9
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 10,
+			"dex": 11,
+			"con": 12,
+			"int": 6,
+			"wis": 8,
+			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 9,
+			"immune": [
+				"cold"
+			],
+			"languages": [
+				"understands Yeti but can't speak"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"El yeti tiene ventaja en los chequeos de Sabiduría ({@skill Perception}) que dependen del olfato."
+					]
+				},
+				{
+					"name": "Snow Camouflage",
+					"entries": [
+						"El yeti tiene ventaja en los chequeos de Destreza ({@skill Stealth}) realizados para esconderse en terreno nevado."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 2} para golpear, alcance 5 pies, un objetivo. {@h}3 ({@damage 1d4 + 1}) de daño cortante, más 2 ({@damage 1d4}) de daño de frío. La garra hace tanto daño cortante como frío."
+					]
+				}
+			],
+			"traitTags": [
+				"Keen Senses"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"C",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

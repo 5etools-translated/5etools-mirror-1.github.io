@@ -1166,6 +1166,20 @@
 					"page": true
 				}
 			}
+		},
+		{
+			"name": "Runecrafter (UA)",
+			"shortName": "Runecrafter (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Wizard",
+			"classSource": "PHB",
+			"page": 3,
+			"subclassFeatures": [
+				"Runecrafter|Wizard||Runecrafter (UA)|UA2022GiantOptions|2",
+				"Sigils of Warding|Wizard||Runecrafter (UA)|UA2022GiantOptions|6",
+				"Rune Maven|Wizard||Runecrafter (UA)|UA2022GiantOptions|10",
+				"Engraved Enmity|Wizard||Runecrafter (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -3029,6 +3043,160 @@
 				"Deine Verbindung zu deinem Erwachten Zauberbuch ist so tief, dass deine Seele mit ihm verwoben ist. Während du das Buch in der Hand hältst und sein spektraler Geist manifestiert ist, kannst du eine Aktion ausführen, um euch beide zu teleportieren und die Plätze zu tauschen. Du kannst dich auf diese Weise so oft teleportieren, wie es deinem Fertigkeitsbonus entspricht, und du erhältst alle verbrauchten Einsätze zurück, wenn du eine lange Pause machst.",
 				"Außerdem kannst du, wenn du stirbst, aber mindestens ein Zauber in deinem Erwachten Zauberbuch verbleibt, 1 Minute später in einem Umkreis von 1 Meter um das Buch wieder ins Leben zurückkehren. Du wirst mit 1 Trefferpunkt wiederbelebt. Dann würfelst du {@dice 3d6}. Das Buch verliert Zauber deiner Wahl, die eine kombinierte Zauberstufe haben, die diesem Wurf entspricht oder höher ist. Wenn die Summe des Wurfs zum Beispiel 9 ist, verschwinden Zauber aus dem Buch, die eine kombinierte Stufe von mindestens 9 haben, was einen Zauber der Stufe 9, drei Zauber der Stufe 3 oder eine andere Kombination bedeuten könnte.",
 				"Danach ist man nicht mehr in der Lage, die verlorenen Zauber zu wirken, selbst wenn man sie auf einer Schriftrolle oder in einem anderen Zauberbuch wiederfindet. Die einzige Möglichkeit, die Fähigkeit, einen der verlorenen Zauber zu wirken, wiederherzustellen, ist der Zauber {@spell wish}, der einen Zauber pro Zauberspruch wieder in das Buch einfügen kann."
+			]
+		},
+		{
+			"name": "Runecrafter",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"entries": [
+				"Runenmagier verstärken ihre Zauberei durch die uralte Macht der Runen. Obwohl die Tradition ihren Ursprung bei den riesigen Runenwirkern der Antike hat, hat sich die Runenmagie auf unzählige Sprachen und Praktiker in verschiedenen Welten ausgeweitet.",
+				"Für viele Runenfertiger sind die Runen, die sie benutzen, genauso einzigartig und persönlich wie ihr Zauberbuch. Einige sind bestrebt, die Ursprünge dieser Praxis bei den Riesen zu ehren, indem sie ihre Runen in dekorative Steine gravieren, die ihre Zauberwerkzeuge schmücken, während andere ihre Runen unordentlich auf Papierschnipsel kritzeln.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runes of Understanding|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Runic Empowerment|Wizard||Runecrafter (UA)|UA2022GiantOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Runes of Understanding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"Durch dein Studium der Runenkunst hast du die Fähigkeit erlangt, Runen und Sprachen zu entschlüsseln, unabhängig von ihrem Ursprung; du hast immer \"Sprachen verstehen\" parat, kannst den Zauber wirken, ohne einen Zauberslot zu verbrauchen, und der Zauber zählt nicht zu der Anzahl der Zauber, die du vorbereitet hast."
+			]
+		},
+		{
+			"name": "Runic Empowerment",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Runecrafter Feature}",
+				"Wenn du diese Unterklasse wählst, lernst du, wie du deine Magie durch die Anwendung verschiedener Runen verstärken kannst. Dein Wissen über diese Runen wird in deinem Zauberbuch gespeichert, wobei du das Aussehen der Runen bestimmst. Deine Runen können zum Beispiel in den Einband deines Zauberbuchs eingraviert sein und leuchten, wenn du einen Zauber sprichst, oder du kannst die Form und Bedeutung der Runen direkt in die körperlichen und verbalen Komponenten eines Zaubers einarbeiten. Wenn du einen Zauberspruch mit einem Zauberspruchplatz wirkst, kannst du eine der folgenden Runen beschwören:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Life Rune",
+							"entries": [
+								"Wenn du diese Rune beschwörst, wähle eine Kreatur, die du im Umkreis von 30 Fuß sehen kannst (du kannst dich selbst wählen). Die gewählte Kreatur erhält vorübergehend Trefferpunkte in Höhe der 5-fachen Stufe des verbrauchten Zauberslots."
+							]
+						},
+						{
+							"type": "item",
+							"name": "War Rune",
+							"entries": [
+								"Wenn du diese Rune beschwörst, wähle eine Kreatur, die du im Umkreis von 30 Fuß sehen kannst. Bis zum Ende deines nächsten Zuges erhalten Angriffswürfe, die auf die gewählte Kreatur abzielen, einen Bonus in Höhe der halben Stufe des verbrauchten Zauberslots (aufgerundet, mindestens +1)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Wind Rune",
+							"entries": [
+								"Wenn du diese Rune beschwörst, erhöht sich deine Geschwindigkeit um eine Anzahl von Füßen, die dem Fünffachen der Stufe des verbrauchten Zauberslots entspricht, und deine Bewegung provoziert keine Gelegenheitsangriffe. Diese Vorteile halten bis zum Beginn deines nächsten Zuges an."
+							]
+						}
+					]
+				},
+				"Du kannst nicht mehr als eine Rune pro Zauberspruch beschwören. Du kannst diese Eigenschaft so oft benutzen, wie es deinem Fertigkeitsbonus entspricht, und du erhältst alle verbrauchten Verwendungen zurück, wenn du eine lange Pause beendest."
+			]
+		},
+		{
+			"name": "Sigils of Warding",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Runecrafter Feature}",
+				"Du kannst eine Schutzrune anrufen, um dich vor Bedrohungen zu schützen. Wenn dir ein Schutzwurf in Stärke, Geschicklichkeit oder Konstitution misslingt, kannst du deine Reaktion nutzen, um einen Einsatz deiner Runenmacht zu verbrauchen und stattdessen den Schutzwurf zu bestehen."
+			]
+		},
+		{
+			"name": "Rune Maven",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Runecrafter Feature}",
+				"Dein Verständnis der Runenkunst hat sich immens erweitert. Jedes Mal, wenn du deine Fähigkeit Arkane Erholung einsetzt, erhältst du auch eine Anzahl deiner verbrauchten Anwendungen von Runenmacht zurück. Die Anzahl der wiedergewonnenen Verwendungen darf nicht mehr als die Hälfte deines Intelligenzmodifikators betragen, aufgerundet (mindestens 1)."
+			]
+		},
+		{
+			"name": "Engraved Enmity",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Wizard",
+			"classSource": "PHB",
+			"subclassShortName": "Runecrafter (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Runecrafter Feature}",
+				"Du beherrschst die Kunst, deine Runen direkt gegen deine Feinde einzusetzen. Als Bonusaktion kannst du eine Kreatur anvisieren, die du im Umkreis von 60 Fuß um dich herum sehen kannst. Die Kreatur muss einen Weisheitswurf gegen den Schutz-DC deines Zaubers bestehen oder durch eine Feindschaftsrune magisch markiert werden.",
+				"Die Feindschaftsrune erscheint als schwach glühender Energiefleck, der über der markierten Kreatur schwebt, die folgende Effekte erleidet:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Runecraft's Bane",
+							"entries": [
+								"Die Kreatur hat einen Nachteil bei Schutzwürfen gegen von dir gewirkte Zaubersprüche."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Unveiled Enemy",
+							"entries": [
+								"Die Ausstrahlung der glühenden Rune macht die Kreatur sichtbar, wenn sie {@condition invisible} ist, und die Kreatur kann nicht {@condition invisible} werden, solange die Rune besteht."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Woeful Curse",
+							"entries": [
+								"Wenn du die Kreatur markierst und als Bonusaktion in den folgenden Zügen, kannst du die Feindschaftsrune beschwören, um die Kreatur bis zum Beginn deines nächsten Zuges zu verfluchen. Wenn einer deiner Verbündeten die verfluchte Kreatur das nächste Mal mit einem Angriffswurf trifft, erleidet das Ziel ebenfalls {@damage 1d8} Kraftschaden, und der Fluch endet."
+							]
+						}
+					]
+				},
+				"Die Feindschaftsrune hält 1 Minute lang an oder bis du deine Konzentration verlierst (als würdest du dich auf einen Zauberspruch konzentrieren). Wenn du eine Kreatur einmal auf diese Weise markiert hast, kannst du dies erst wieder nach einer langen Pause tun, es sei denn, du verbrauchst einen Zauberslot der Stufe 3 oder höher, um diese Eigenschaft erneut zu verwenden."
 			]
 		},
 		{

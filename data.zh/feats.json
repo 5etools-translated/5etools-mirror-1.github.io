@@ -547,7 +547,7 @@
 					"items": [
 						"你获得对（%0%）的熟练度。如果你已经精通它们，你会在使用它们进行检查时增加双倍的精通度。",
 						"作为一项行动，你可以在你5英尺范围内识别一种药水，就像你尝过它一样。你必须看到液体，这个好处才会起作用。",
-						"在任何短暂的休息过程中，你可以暂时提高一种任何稀有的治疗药水的效力。要使用这个好处，你必须带着{@item alchemist's supplies|phb}，而且药水必须在你的手边。如果在短暂休息结束后不超过1小时内喝下药水，喝下药水的生物可以放弃药水的掷骰子，并恢复药水所能恢复的最大命中数。"
+						"在任何短暂的休息过程中，你可以暂时提高一种{@item potion of healing}的任何稀有物的效力。要使用这个好处，你必须带着（%1%），而且药水必须在你的手边。如果在短时休息结束后不超过1小时内喝下药水，喝下药水的生物可以放弃药水的掷骰子，并恢复药水所能恢复的最大命中数。"
 					]
 				}
 			]
@@ -631,7 +631,7 @@
 					"type": "list",
 					"items": [
 						"你获得对{@skill Arcana}技能的熟练度。如果你已经精通该技能，你在使用该技能进行检查时将获得双倍的精通奖励。",
-						"你学会了（%0%）和（%1%）的法术。你可以在不消耗法术槽的情况下施展一次侦测魔法，当你完成一次长时间的休息时，你会重新获得施展的能力。"
+						"你学会了（%0%）和（%1%）的法术。你可以在不消耗法术槽的情况下施放（%2%）一次，当你完成长时间休息时，你会重新获得施放能力。"
 					]
 				}
 			]
@@ -1177,7 +1177,7 @@
 							"type": "item",
 							"name": "Divine Omens",
 							"entries": [
-								"你可以在没有法术槽的情况下施放预言和共鸣法术，你必须在完成{@dice 1d4}长时间休息后才能再次以这种方式施放。你也可以使用你所拥有的相应等级的法术槽来施展该法术。该法术的施法能力是你在获得神佑特技时选择的。"
+								"你可以在没有法术槽的情况下施放{@spell augury}和{@spell commune}的法术，你必须完成{@dice 1d4}的长时间休息才能再次以这种方式施放。你也可以使用你所拥有的相应等级的法术槽来施展该法术。该法术的施法能力是你获得神佑特技时选择的。"
 							]
 						}
 					]
@@ -2691,6 +2691,50 @@
 			]
 		},
 		{
+			"name": "Elemental Touched",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"entries": [
+				"你已经接触到了元素界的原始魔法，使你对周围的自然世界有了一定程度的控制。你学会了德鲁伊术或（%0%）咒语，使用智力、智慧或魅力作为施法能力（在你获得此特技时选择）。",
+				"每当你完成一个长时间的休息，你可以选择你所适应的元素。空气、地球、火、或水。根据你的选择，你可以使用一个额外的行动来造成下列效果之一。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Air",
+							"entries": [
+								"你获得与你的步行速度相等的飞行速度，直到你的回合结束。如果你在使用这个动作后，在你的回合结束时是在空中，并且没有被其他方式固定在高空，你就会坠落。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Earth",
+							"entries": [
+								"你使你30英尺内的地面变得（%0%），持续1分钟或直到你再次创造这个效果。在这段时间内，你可以在{@quickref difficult terrain||3}的地面上移动，而不需要花费额外的移动。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Fire",
+							"entries": [
+								"你将自己包围在一片灰烬和烟雾中。直到你的回合结束，你的行动不会引发机会攻击。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Water",
+							"entries": [
+								"你可以对你周围15英尺范围内你能看到的生物产生一股强大的水涌。该生物必须成功地进行一次力量救赎（它可以选择失败），其DC等于8+你的法术能力修饰+你的熟练度加成，或者被推到离你10英尺远的地方。在该生物成功或失败后，水会立即消失。"
+							]
+						}
+					]
+				},
+				"你可以创造这个效果的次数与你的熟练度加成相等，当你完成一个长时间的休息时，你会恢复所有消耗的使用。"
+			]
+		},
+		{
 			"name": "Elven Accuracy",
 			"source": "UAFeatsForRaces",
 			"page": 2,
@@ -2756,6 +2800,42 @@
 					"type": "list",
 					"items": [
 						"每当你在使用灵巧、智力、智慧或魅力的攻击卷中获得优势时，你可以重新掷出一个骰子一次。"
+					]
+				}
+			]
+		},
+		{
+			"name": "Ember of the Fire Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"resist": [
+				"fire"
+			],
+			"entries": [
+				"你展现了火巨人的火热战斗力，使你获得以下好处。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Flame",
+							"entries": [
+								"你对火灾伤害有抵抗力。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Searing Ignition",
+							"entries": [
+								"当你在你的回合中采取{@action Attack}行动时，你可以用一个神奇的火焰爆裂来代替你的一次攻击。在你15英尺范围内，你选择的每个生物如果能看到你，就必须做一个灵巧的蓄力动作（DC等于8+你的熟练度加成+你的宪法修改器）。拯救失败时，生物会受到相当于{@dice 2d6}+你的熟练度加成的火焰伤害，并且是{@condition blinded}直到你下一回合开始；拯救成功时，生物会受到一半的伤害，并且没有额外的效果。你可以使用你的灼热之火的次数等于你的熟练度加成，当你完成一个长时间的休息时，你会恢复所有消耗的使用。"
+							]
+						}
 					]
 				}
 			]
@@ -3216,6 +3296,42 @@
 			]
 		},
 		{
+			"name": "Fury of the Frost Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"resist": [
+				"cold"
+			],
+			"entries": [
+				"你展现了冰霜巨人的冰冷力量，使你获得以下好处。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Ice",
+							"entries": [
+								"你对寒冷伤害有抵抗力。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Frigid Vengeance",
+							"entries": [
+								"当一个生物用攻击卷击中你时，你可以用你的反应来报复，用一阵神奇的愤怒来报复。该生物必须在智慧救赎中成功（DC等于8+你的熟练度加成+你的宪法修改器），或者在下一回合开始前被你（%0%）。你可以以这种方式使用你的反应，次数等于你的熟练度加成，当你完成一个长时间的休息时，你会恢复所有消耗的使用。"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Gift of the Chromatic Dragon",
 			"source": "FTD",
 			"page": 17,
@@ -3499,6 +3615,39 @@
 						"在与你选择的敌人的任何战斗的第一轮中，你对他们中的任何一个人的攻击卷都有优势。",
 						"当你选择的任何一个敌人对你进行机会攻击时，它的攻击卷轴会处于劣势。",
 						"每当你进行智力（{@skill Arcana}, {@skill History}, {@skill Nature}, 或{@skill Religion}）检查以回忆你所选择的敌人的信息时，你会在检查中加入双倍的熟练度加成，即使你通常不熟练。"
+					]
+				}
+			]
+		},
+		{
+			"name": "Guile of the Cloud Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"你表现出了云端巨人所特有的空中演讲和魔法，使你获得了以下好处。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Misty Form",
+							"entries": [
+								"你可以在不使用法术槽或材料组件的情况下施放（%0%）的法术。当你以这种方式施法时，该法术不需要你对它保持注意力。一旦你以这种方式施法，你就不能再这样做了，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽以正常的方式施放这个法术。智力、智慧或魅力是你施展此功能的能力（在你获得此特技时选择）。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Silver Tongue",
+							"entries": [
+								"你获得对{@skill Deception}或{@skill Persuasion}技能的熟练度。在你使用该技能进行任何能力检查时，你的熟练度加成会翻倍。"
+							]
+						}
 					]
 				}
 			]
@@ -4112,6 +4261,39 @@
 						"你总是知道哪条路是北。",
 						"你总是知道离下一次日出或日落还有多少个小时。",
 						"你能准确地回忆起过去一个月内看到或听到的任何事情。"
+					]
+				}
+			]
+		},
+		{
+			"name": "Keenness of the Stone Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"你已经显现出石巨人的保护和法术的象征，赋予你以下的好处。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Dreamer's Magic",
+							"entries": [
+								"你学会了{@spell detect thoughts}的法术和一个你选择的{@filter 1st-level spell|spells|level=1|school=A;D}。一级法术必须是来自咒语学或占卜学的魔法。你可以在不耗费法术槽的情况下施展这些法术中的每一个。一旦你以这种方式施放了这些法术中的任何一个，你就不能再以这种方式施放该法术，直到你完成一个长时间的休息。你也可以用你拥有的相应等级的法术槽来施展这些法术。智力、智慧或魅力是你施放此功能的能力（在你获得此特技时选择）。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Mountain Sight",
+							"entries": [
+								"你获得{@sense darkvision}，范围为60英尺。如果你已经从其他来源获得{@sense darkvision}，其范围增加30英尺。"
+							]
+						}
 					]
 				}
 			]
@@ -5107,6 +5289,41 @@
 			]
 		},
 		{
+			"name": "Outsized Might",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"你吸收了原始魔法，尽管你的身材相对较小，却能体现出泰坦生物的力量。这给你带来了以下好处。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Little but Mighty",
+							"entries": [
+								"你获得对{@skill Athletics}或{@skill Acrobatics}技能的熟练度。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Powerful Build",
+							"entries": [
+								"在确定你的运载能力和你可以推、拖、举的数量时，你算大一码。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Stalwart",
+							"entries": [
+								"你对被移动或撞倒的救赎有优势（%0%）。"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Perceptive",
 			"source": "UAFeatsForSkills",
 			"page": 3,
@@ -5689,7 +5906,125 @@
 			"entries": [
 				"你已经学会了一些咒语，你可以作为仪式来施展这些咒语。这些法术都写在一本仪式书中，你在施放其中一个法术时必须拿着它。",
 				"当你选择这项特技时，你会获得一本装有两个你选择的一级法术的仪式书。从以下类别中选择一个。{@filter bard|spells|level=1|class=bard|components & miscellaneous=ritual}, {@filter cleric|spells|level=1|class=cleric|components & miscellaneous=ritual}, {@filter druid|spells|level=1|class=druid|components & miscellaneous=ritual}, {@filter sorcerer|spells|level=1|class=sorcerer|components & miscellaneous=ritual}, {@filter warlock|spells|level=1|class=warlock|components & miscellaneous=ritual} 或 {@filter wizard|spells|level=1|class=wizard|components & miscellaneous=ritual}。你必须从该等级的法术列表中选择你的法术，而且你选择的法术必须有仪式标签。你选择的类别也决定了你对这些法术的施法能力。吟游诗人、巫师或术士的魅力；牧师或德鲁伊的智慧；或巫师的智力。",
-				"如果你遇到一个书面形式的咒语，比如一个神奇的咒语卷轴或一个巫师的咒语书，你也许可以把它加入你的仪式书。该咒语必须在你选择的等级的咒语列表上，咒语的等级不能高于你等级的一半（四舍五入），并且必须有仪式标签。将咒语复制到你的仪式书中的过程中，每一级的咒语需要2小时，每一级需要花费50金币。这笔费用代表了你在试验该咒语以掌握它时所消耗的材料成分，以及你记录它所需要的精细墨水。"
+				"如果你遇到一个书面形式的咒语，例如魔法（%0%）或巫师的法术书，你也许可以把它加入你的仪式书。该咒语必须在你选择的等级的咒语列表上，咒语的等级不能高于你等级的一半（四舍五入），并且必须有仪式标签。将咒语复制到你的仪式书中的过程中，每一级的咒语需要2小时，每一级需要花费50金币。这笔费用代表了你在试验该咒语以掌握它时所消耗的材料成分，以及你记录它所需要的精细墨水。"
+			]
+		},
+		{
+			"name": "Rune Carver Adept",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4,
+					"feat": [
+						"rune carver apprentice|ua2022giantoptions"
+					]
+				}
+			],
+			"entries": [
+				"你对符文艺术的技能有所提高。",
+				"每当你完成一个长时间的休息，你现在可以用符文雕刻师学徒特技中的符文标记与你熟练度加成相等数量的物体。一个物体一次只能有一个符文，而且你必须在每个物体上刻下不同的符文。"
+			]
+		},
+		{
+			"name": "Rune Carver Apprentice",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"你已经开始学习符文之术，它允许你在你的物品上做临时标记，并给它们注入魔法。",
+				"每当你完成一次长时休息，你可以在一件非魔法武器、盔甲、衣服或其他你可以触摸到的物体上标记一个你选择的符文。你会根据你选择的符文暂时学习一个一级法术，如符文法术表中所规定的，并且你会知道这个法术，直到你完成一次长时休息，当符文消退时。",
+				{
+					"type": "table",
+					"caption": "Rune Spells",
+					"colLabels": [
+						"Rune",
+						"Spell"
+					],
+					"colStyles": [
+						"col-2",
+						"col-10"
+					],
+					"rows": [
+						[
+							"血液",
+							"{@spell False life}"
+						],
+						[
+							"云",
+							"{@spell Fog cloud}"
+						],
+						[
+							"死亡",
+							"{@spell Ray of sickness}"
+						],
+						[
+							"蜻蜓点水",
+							"{@spell Chromatic orb}"
+						],
+						[
+							"敌人",
+							"{@spell Bane}"
+						],
+						[
+							"Fire",
+							"{@spell Burning hands}"
+						],
+						[
+							"朋友",
+							"{@spell Bless}"
+						],
+						[
+							"霜冻",
+							"{@spell Armor of Agathys}"
+						],
+						[
+							"Hill",
+							"{@spell Goodberry}"
+						],
+						[
+							"旅程",
+							"{@spell Longstrider}"
+						],
+						[
+							"King",
+							"{@spell Command}"
+						],
+						[
+							"亮度",
+							"{@spell Guiding bolt}"
+						],
+						[
+							"Life",
+							"{@spell Cure wounds}"
+						],
+						[
+							"山地",
+							"{@spell Jump}"
+						],
+						[
+							"盾牌",
+							"{@spell Shield}"
+						],
+						[
+							"石头",
+							"{@spell Sanctuary}"
+						],
+						[
+							"风暴",
+							"{@spell Thunderwave}"
+						],
+						[
+							"War",
+							"{@spell Heroism}"
+						],
+						[
+							"Wind",
+							"{@spell Feather fall}"
+						]
+					]
+				},
+				"当你佩戴或携带符文标记的物品时，你可以在不使用法术槽或材料组件的情况下施放一次与符文相关的所选法术，你也可以使用你拥有的任何法术槽施放该法术。",
+				"你對此壯舉的施法能力是智力、智慧或魅力（在你獲得此壯舉時選擇）。"
 			]
 		},
 		{
@@ -6037,6 +6372,11 @@
 					}
 				}
 			],
+			"expertise": [
+				{
+					"anyProficientSkill": 2
+				}
+			],
 			"entries": [
 				"你已经磨练了你对特定技能的熟练程度，赋予你以下好处。",
 				{
@@ -6142,6 +6482,39 @@
 					"items": [
 						"每回合一次，当你用攻击击中一个生物并造成砍击伤害时，你可以将目标的速度降低10英尺，直到你下一回合开始。",
 						"当你的关键一击对一个生物造成砍击伤害时，你会使它严重受伤。在你下一个回合开始之前，目标在所有攻击卷轴上都处于劣势。"
+					]
+				}
+			]
+		},
+		{
+			"name": "Soul of the Storm Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"你已经显现出占卜能力和象征风暴巨人的暴风魔法，赋予你以下好处。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Maelstrom Aura",
+							"entries": [
+								"作为一个额外的行动，你将自己包围在一个神奇的风和闪电的光环中，这个光环从你的各个方向延伸到10英尺，但不能穿过全部的掩护。光环持续1分钟，或直到你的状态为（%0%）。当光环激活时，对你的攻击卷有劣势，而且每当一个生物在球体内开始其回合时，你可以迫使该生物的速度减半，直到其下一回合开始。一旦你使用这个奖励动作，你就不能再这样做，直到你完成一个长时间的休息。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Storm's Oracle",
+							"entries": [
+								"你可以将（%0%）的法术作为一种仪式来施展，而不需要物质成分。智力、智慧或魅力是你施展此功能的能力（在你获得此特技时选择）。一旦你以这种方式施法，你就不能再这样做了，直到你完成一个长时间的休息。"
+							]
+						}
 					]
 				}
 			]
@@ -7462,6 +7835,39 @@
 			]
 		},
 		{
+			"name": "Vigor of the Hill Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"你已经表现出山丘巨人的弹性，赋予你以下的好处。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bulwark",
+							"entries": [
+								"当你受到一个会使你移动至少5英尺或击倒你（%0%）的影响时，你可以用你的反应来稳定自己。然后你既不会被移动也不会被撞倒（%1%）。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Hearty Health",
+							"entries": [
+								"当你受到恢复命中率的咒语时，你可以重新获得相当于你的体质修正值的额外命中率。你可以恢复这些额外的命中率，次数与你的熟练度加成相等，当你完成一个长时间的休息时，你会恢复所有消耗的使用。"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "War Caster",
 			"source": "PHB",
 			"page": 170,
@@ -7639,7 +8045,7 @@
 							"type": "entries",
 							"name": "Lifter",
 							"entries": [
-								"这个装置可以作为阻断器使用，使其使用者能够吊起使用者通常能够举起的五倍重量。"
+								"这个装置可以作为{@item block and tackle|PHB}使用，使其使用者可以举起使用者通常可以举起的五倍重量。"
 							]
 						},
 						{

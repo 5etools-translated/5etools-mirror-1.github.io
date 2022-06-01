@@ -74,7 +74,7 @@ class PageFilterEquipment extends PageFilter {
 			}
 		}
 
-		item._fValue = item.value || 0;
+		item._fValue = Math.round(item.value || 0);
 	}
 
 	addToFilters (item, isExcluded) {

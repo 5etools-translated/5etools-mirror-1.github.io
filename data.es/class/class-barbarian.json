@@ -821,6 +821,20 @@
 				"Unstable Backlash|Barbarian||Wild Magic|TCE|10",
 				"Controlled Surge|Barbarian||Wild Magic|TCE|14"
 			]
+		},
+		{
+			"name": "Path of the Giant (UA)",
+			"shortName": "Giant (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"subclassFeatures": [
+				"Path of the Giant|Barbarian||Giant (UA)|UA2022GiantOptions|3",
+				"Elemental Cleaver|Barbarian||Giant (UA)|UA2022GiantOptions|6",
+				"Mighty Impel|Barbarian||Giant (UA)|UA2022GiantOptions|10",
+				"Demiurgic Colossus|Barbarian||Giant (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -2155,6 +2169,125 @@
 			"entries": [
 				"{@i 14th-level Path of the Beast feature}",
 				"La bestia que llevas dentro se vuelve tan poderosa que puedes contagiar su ferocidad a tus aliados. Cuando entras en tu furia, puedes elegir un número de criaturas dispuestas que puedas ver en un radio de 30 pies igual a tu modificador de Constitución (mínimo una criatura). Hasta que tu furia termine, las criaturas elegidas ganan el rasgo Temerario {@action Attack} y tienes ventaja en las tiradas de salvación contra ser {@condition frightened}. También ganas 5 puntos de golpe temporales por cada criatura que acepte el beneficio. Puedes usar este rasgo un número de veces igual a tu modificador de Constitución (un mínimo de una vez). Recuperas todos los usos gastados cuando terminas un descanso largo."
+			]
+		},
+		{
+			"name": "Giant Power",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"Cuando eliges esta senda, aprendes a hablar, leer y escribir en Gigante o en otro idioma de tu elección si ya conoces el Gigante. Además, aprendes el cantrip druidcraft o {@spell thaumaturgy} (a tu elección). La sabiduría es tu habilidad de lanzamiento de conjuros para este hechizo."
+			]
+		},
+		{
+			"name": "Giant's Havoc",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"Tu furia extrae la fuerza del poder primitivo de los gigantes, transformándote en una enorme fuerza de destrucción. Cuando te enfureces, obtienes los siguientes beneficios:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Crushing Hurl",
+							"entries": [
+								"Cuando realizas un ataque a distancia con éxito con un arma arrojadiza usando Fuerza, puedes añadir tu bonificación de Daño de Furia a la tirada de daño del ataque."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Giant Stature",
+							"entries": [
+								"Tu alcance aumenta en 1,5 metros, y si eres más pequeño que Large, te conviertes en Large, junto con cualquier cosa que lleves puesta. Si no hay suficiente espacio para que te conviertas en Large, tu tamaño no cambia."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Giant",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"Los bárbaros que caminan por la Senda del Gigante obtienen su fuerza de las fuerzas primarias que son los Gigantes y su clase elemental. Su furia está llena de poder elemental y hace que estos bárbaros crezcan en tamaño, transformándolos en avatares del poder primordial.",
+				"Durante su furia, un bárbaro puede adoptar el aspecto de un legendario gigante de las tormentas, con el pelo volviéndose blanco y los ojos crepitando con un rayo. Otros adoptan los rasgos monstruosos de los titanes apocalípticos, desgarrando el mundo que les rodea para que pueda ser renovado.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant Power|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant's Havoc|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				}
+			]
+		},
+		{
+			"name": "Elemental Cleaver",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Path of the Giant Feature}",
+				"Tu vínculo con el poder elemental de los gigantes y sus congéneres crece, y aprendes a infundir armas con energía primordial.",
+				"Cuando entras en tu furia, puedes infundir un arma a tu elección que tengas en la mano con uno de los siguientes tipos de daño: ácido, frío, fuego, trueno o rayo. Mientras empuñas el arma infundida durante tu furia, el tipo de daño del arma cambia al tipo elegido, inflige un {@damage 1d6} de daño adicional del tipo elegido cuando impacta, y gana la propiedad de ser lanzada, con un alcance normal de 20 pies y un alcance largo de 60 pies. Si lanzas el arma, vuelve a aparecer en tu mano al instante de impactar o fallar un objetivo. Los beneficios del arma infundida se suprimen mientras una criatura que no seas tú la empuña.",
+				"Mientras estás enfadado y sostienes el arma infundida, puedes usar una acción de bonificación para cambiar el tipo de daño actual del arma infundida a uno diferente de los tipos de daño anteriores."
+			]
+		},
+		{
+			"name": "Mighty Impel",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Path of the Giant Feature}",
+				"Tu conexión con la fuerza de los gigantes te permite ahora lanzar tanto a aliados como a enemigos en el campo de batalla. Como acción de bonificación mientras estás enfurecido, puedes elegir una criatura mediana o más pequeña que esté a tu alcance y trasladarla a un espacio desocupado que puedas ver en un radio de 30 pies de ti. Una criatura que no esté dispuesta debe tener éxito en una tirada de salvación de Fuerza (la DC es igual a 8 + tu bono de competencia + tu modificador de Fuerza) para evitar el efecto.",
+				"Si, al final de este movimiento, la criatura lanzada no está sobre una superficie o líquido que pueda soportarla, la criatura cae, recibiendo el daño normal y aterrizando {@condition prone}."
+			]
+		},
+		{
+			"name": "Demiurgic Colossus",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Path of the Giant Feature}",
+				"El poder primordial de tu rabia se intensifica. Cuando te enfureces, tu alcance aumenta en 3 metros, tu tamaño puede aumentar a Enorme y ahora puedes usar tu Impulso Poderoso para mover criaturas que sean Grandes o más pequeñas.",
+				"Además, el daño extra infligido por tu rasgo Cuchilla elemental aumenta a {@dice 2d6}."
 			]
 		},
 		{

@@ -2490,6 +2490,20 @@
 					"page": true
 				}
 			}
+		},
+		{
+			"name": " Circle of the Primeval (UA)",
+			"shortName": "Primeval (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 2,
+			"subclassFeatures": [
+				"Circle of the Primeval|Druid||Primeval (UA)|UA2022GiantOptions|2",
+				"Prehistoric Conduit|Druid||Primeval (UA)|UA2022GiantOptions|6",
+				"Titanic Bond|Druid||Primeval (UA)|UA2022GiantOptions|10",
+				"Scourge of the Ancients|Druid||Primeval (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -4158,6 +4172,136 @@
 				"{@i 14th-level Circle of the Stars feature}",
 				"Twoje połączenie z kosmosem pozwala ci wyczarować blask gwiazd. Jako akcję, wyczarowujesz wybuch światła w kuli o promieniu 30 stóp, skupionej na punkcie, który widzisz w promieniu 120 stóp od siebie. Możesz natychmiast teleportować każdą chętną istotę znajdującą się w kuli do niezajętej przestrzeni w promieniu 30 stóp od niej. Każda istota pozostająca w sferze musi wykonać rzut na Konstytucję przeciwko twojemu DC obrony przed zaklęciem lub otrzyma {@damage 4d10} obrażeń od promieniowania i będzie {@condition blinded} do końca twojej następnej tury.",
 				"Po użyciu tej akcji nie można jej użyć ponownie, dopóki nie zakończy się długi odpoczynek lub dopóki nie wyda się slotu zaklęcia 5. poziomu lub wyższego, aby użyć jej ponownie."
+			]
+		},
+		{
+			"name": "Circle of the Primeval",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"entries": [
+				"Krąg Pierwotnych uczy, że choć ziemia zmienia się z biegiem czasu, nigdy tak naprawdę nie zapomina. Sięgając do pamięci ziemi, druidzi ci przywołują i łączą się z duchem pierwotnego behemota - potężnego stworzenia, które niegdyś rządziło starożytnym światem wraz z olbrzymami. Najbardziej znanymi pradawnymi behemotami są dinozaury, ale duchy związane z członkami Kręgu Pradawnych przybierały również postać pradawnych poprzedników dzisiejszych pospolitych bestii i innych fantastycznych tytanicznych stworzeń.",
+				"Pracując u boku swojego ducha-towarzysza, większość druidów z Kręgu Pierwotności spędza życie, zagłębiając się w dawno zapomniane miejsca i chroniąc pozostałości po minionych epokach. W miarę jak rośnie moc druida, rośnie też jego towarzysz. Bestia zaczyna być niemal równej wielkości co jego druidzki partner, a potem rośnie w siłę, aż w końcu sama góruje nad ziemią.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Keeper of Old|Druid||Primeval (UA)|UA2022GiantOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Primeval Companion|Druid||Primeval (UA)|UA2022GiantOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Keeper of Old",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Circle of the Primeval Feature}",
+				"Twoje połączenie z potężnymi pradawnymi behemotami pozwala ci uzyskać nowy wgląd w starożytny świat. Zyskujesz biegłość w umiejętności {@skill History}. Kiedy wykonujesz test Inteligencji ({@skill History}), możesz rzucić {@dice d4} i dodać wyliczoną liczbę do testu umiejętności."
+			]
+		},
+		{
+			"name": "Primeval Companion",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Circle of the Primeval Feature}",
+				"Począwszy od momentu wybrania tego kręgu, możesz wezwać pierwotne stworzenie, którego duch jest z tobą związany. Jako akcję, możesz użyć jednej cechy Dzikiego Kształtu, aby przywołać swojego pierwotnego towarzysza, zamiast przybierać postać bestii. Towarzysz pojawia się w wybranej przez ciebie niezajętej przestrzeni w promieniu 30 stóp od ciebie.",
+				"Pradawny towarzysz jest przyjaźnie nastawiony do ciebie i twoich towarzyszy, i słucha twoich rozkazów. Zobacz statystyki gry tego stworzenia w bloku statystyk {@creature Primeval Companion|UA2022GiantOptions}, które w kilku miejscach wykorzystują twoją premię do biegłości (PB). Możesz określić wygląd kosmetyczny towarzysza; na przykład, twój towarzysz może przywodzić na myśl pradawne drapieżniki, takie jak raptory czy tygrysy szablozębne, albo może być bardziej nastawiony na obronę, wyglądając jak opancerzony ankylozaur lub nosorożec wełnisty. Te wybory nie mają wpływu na statystyki gry towarzysza.",
+				"W walce towarzysz dzieli twoją liczbę inicjatywy, ale wykonuje swoją turę zaraz po twojej. Może się poruszać i używać swoich reakcji, ale jedyną akcją, jaką wykonuje w swojej turze, jest akcja {@action Dodge}, chyba że w swojej turze wykonasz akcję bonusową, aby nakazać mu wykonanie innej akcji. Tą akcją może być akcja z jego bloku statystyk lub jakaś inna. Jeśli jesteś {@condition incapacitated}, towarzysz może wykonać dowolną akcję, a nie tylko {@action Dodge}.",
+				"Towarzysz pozostaje do momentu, gdy jego liczba punktów życia spadnie do 0 lub do momentu twojej śmierci, po czym znika. Jeśli użyjesz tej cechy, aby ponownie przywołać towarzysza, a masz już obecnego towarzysza, pierwszy towarzysz natychmiast znika. Wszystko, co towarzysz miał na sobie lub niósł, pozostaje po jego zniknięciu."
+			]
+		},
+		{
+			"name": "Prehistoric Conduit",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Circle of the Primeval Feature}",
+				"Uczysz się przekazywać swoją magię poprzez swojego pierwotnego towarzysza. Kiedy rzucasz zaklęcie o zasięgu innym niż ja, może ono pochodzić od ciebie lub twojego pierwotnego towarzysza.",
+				"Dodatkowo, jeśli na pierwotnego towarzysza działa rzucone przez ciebie zaklęcie, które pozwala stworzeniom na wykonanie rzutu ratującego przeciwko jego efektom, pierwotny towarzysz ma przewagę w rzucie ratującym. Jeśli przy udanym rzucie na to zaklęcie pierwotny towarzysz otrzymałby połowę obrażeń, to przy udanym rzucie nie otrzymuje żadnych obrażeń, a przy nieudanym rzucie otrzymuje połowę obrażeń bez dodatkowych efektów."
+			]
+		},
+		{
+			"name": "Titanic Bond",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Circle of the Primeval Feature}",
+				"Pierwotny towarzysz rośnie do dużych rozmiarów, a kiedy go przywołujesz, możesz nadać mu prędkość wspinaczki lub prędkość pływania równą jego prędkości chodzenia.",
+				"W zamian, pierwotny towarzysz użycza ci swojej przerażającej siły. Raz na turę, kiedy twój pierwotny towarzysz jest przywołany, kiedy trafisz stworzenie atakiem lub zadasz obrażenia stworzeniu, które widzisz, rzuconym przez siebie zaklęciem, możesz zmusić to stworzenie do wykonania rzutu na mądrość przeciwko DC obrony przed zaklęciem; w przypadku porażki stworzenie jest {@condition frightened} od ciebie do końca twojej następnej tury."
+			]
+		},
+		{
+			"name": "Scourge of the Ancients",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Circle of the Primeval Feature}",
+				"Nauczyłeś się w pełni wykorzystywać tytaniczne dziedzictwo swojego towarzysza. W ramach dodatkowej akcji, której używasz, aby dowodzić swoim towarzyszem, możesz wydać slot zaklęcia dowolnego poziomu, aby zwiększyć potęgę swojego pierwotnego towarzysza, zapewniając mu następujące korzyści:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Hulking Behemoth",
+							"entries": [
+								"Towarzysz staje się Ogromny i zyskuje tymczasowo punkty trafień równe 10-krotności poziomu wykorzystanego slotu zaklęcia. Jeśli nie ma wystarczająco dużo miejsca, aby towarzysz stał się Ogromny, osiąga maksymalny możliwy rozmiar w dostępnym miejscu."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Mauler",
+							"entries": [
+								"Przy trafieniu Cios Towarzysza zadaje dodatkowe obrażenia równe {@dice 1d8} plus poziom wykorzystanego slotu na zaklęcie."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Titanic Stride",
+							"entries": [
+								"Prędkość chodzenia towarzysza zwiększa się o liczbę stóp równą pięciokrotności poziomu wykorzystanego slotu na zaklęcie."
+							]
+						}
+					]
+				},
+				"Korzyści te trwają przez 1 godzinę, dopóki towarzysz nie zniknie lub dopóki ponownie nie wydasz slotu zaklęcia na tę cechę."
 			]
 		},
 		{

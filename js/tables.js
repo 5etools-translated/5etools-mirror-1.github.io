@@ -19,7 +19,32 @@ class TablesPage extends ListPage {
 			},
 
 			dataProps: ["table", "tableGroup"],
+
+			bindOtherButtonsOptions: {
+				other: [
+					{
+						name: "Copy as CSV",
+						pFn: () => this._pCopyRenderedAsCsv(),
+					},
+				],
+			},
 		});
+	}
+
+	async _pCopyRenderedAsCsv () {
+		const ent = this._dataList[Hist.lastLoadedId];
+
+		const tbls = ent.tables || [ent];
+		const txt = tbls
+			.map(tbl => {
+				const parser = new DOMParser();
+				const rows = tbl.rows.map(row => row.map(cell => parser.parseFromString(`<div>${Renderer.get().render(cell)}</div>`, "text/html").documentElement.textContent));
+				return DataUtil.getCsv((tbl.colLabels || []).map(it => Renderer.stripTags(it)), rows);
+			})
+			.join("\n\n");
+
+		await MiscUtil.pCopyTextToClipboard(txt);
+		JqueryUtil.doToast("Copied!");
 	}
 
 	getListItem (it, tbI, isExcluded) {

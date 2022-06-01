@@ -1,0 +1,612 @@
+{
+	"monster": [
+		{
+			"name": "Dankwood Duergar",
+			"source": "MGELFT",
+			"page": 32,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Dwarf"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"Plate Mail"
+					]
+				}
+			],
+			"hp": {
+				"formula": "4d8 + 8",
+				"average": 26
+			},
+			"speed": {
+				"walk": 25
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 10,
+			"cha": 9,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"poison"
+			],
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Duergar Resilience",
+					"entries": [
+						"Данквудский дуэргар имеет преимущество при бросках спасбросков против яда, заклинаний и иллюзий, а также при сопротивлении быть {@condition charmed} или {@condition paralyzed}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"Находясь под солнечным светом, данквудский дуэргар имеет недостаток при бросках атаки, а также при проверках мудрости ({@skill Perception}), которые зависят от зрения."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Verbal Jab",
+					"entries": [
+						"Дуэргар обрушивает на существо, которое он видит в радиусе 60 футов, серию оскорблений, подкрепленных тонкими чарами. Если существо слышит их (понимать их не обязательно), оно должно успешно выполнить {@dc 12} бросок спасения по Мудрости или получить {@damage 1d4} психического урона и получить недостаток при следующем броске атаки, который оно сделает до конца своего следующего хода."
+					]
+				},
+				{
+					"name": "Haymaker",
+					"entries": [
+						"{@atk mw} {@hit 5} попадание, радиус действия 5 футов, одна цель. {@h}9 ({@damage 1d6 + 6}) повреждений от удара. Если дуэргар увеличен, его урон увеличивается до 10 ({@dice 2d6 + 3}) ед. урона."
+					]
+				}
+			],
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Dankwood Grung",
+			"source": "MGELFT",
+			"page": 31,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Grung"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "5d6 + 10",
+				"average": 27
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"str": 7,
+			"dex": 16,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"dex": "+5"
+			},
+			"skill": {
+				"athletics": "+2",
+				"intimidation": "+4",
+				"perception": "+2",
+				"stealth": "+5"
+			},
+			"passive": 12,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"languages": [
+				"Grung"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Гринг может дышать воздухом и водой."
+					]
+				},
+				{
+					"name": "Poisonous Skin",
+					"entries": [
+						"Любое существо, схватившее гринг или иным образом вступившее в прямой контакт с кожей гринга, должно успешно выполнить бросок спасброска на {@dc 12} конституцию или стать {@condition poisoned} на 1 минуту. Существо {@condition poisoned}, больше не находящееся в непрямом контакте с гринггом, может повторить бросок спасброска в конце каждого своего хода, прекратив эффект на себя в случае успеха."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"Прыжки в длину достигают 25 футов, а в высоту - 15 футов, с разбега или без него."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Grumpy Grung Growl.",
+					"entries": [
+						"Из горла данквудского грифа вырывается свирепое бульканье, предупреждая тех, кто находится в радиусе 15 футов, что он действительно ворчлив. Существа в этой области должны успешно пройти {@dc 12} бросок спасброска на харизму или быть {@condition frightened} до конца своего следующего хода."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 0} попадание, радиус действия 5 футов или дальность 20/60 футов, одна цель. {@h}3 ({@damage 1d4 + 1}) колющего урона в ближнем бою или 3 ({@damage 1d4 + 1}) колющего урона на расстоянии. Цель должна успешно пройти бросок на спасбросок по конституции {@dc 12} или получить 5 ({@damage 2d4}) урона ядом."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "King Robbit the Slimy",
+			"source": "MGELFT",
+			"page": 32,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Grung"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "5d6 + 10",
+				"average": 27
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"str": 7,
+			"dex": 16,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"dex": "+5"
+			},
+			"skill": {
+				"athletics": "+2",
+				"intimidation": "+4",
+				"perception": "+2",
+				"stealth": "+5"
+			},
+			"passive": 12,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"poisoned"
+			],
+			"languages": [
+				"Grung"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Гринг может дышать воздухом и водой."
+					]
+				},
+				{
+					"name": "Poisonous Skin",
+					"entries": [
+						"Любое существо, схватившее гринг или иным образом вступившее в прямой контакт с кожей гринга, должно успешно выполнить бросок на спасбросок {@dc 12} конституции или стать {@condition poisoned} на 1 минуту. Существо {@condition poisoned}, больше не находящееся в прямом контакте с гринггом, может повторить бросок спасброска в конце каждого своего хода, прекратив эффект на себя в случае успеха."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"Прыжки в длину достигают 25 футов, а в высоту - 15 футов, с разбега или без него."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Grumpy Grung Growl.",
+					"entries": [
+						"Из горла данквудского ворчуна вырывается свирепое бульканье, предупреждая тех, кто находится в радиусе 15 шагов, о том, что он действительно ворчит. Существа в этой области должны успешно пройти {@dc 12} бросок спасброска на харизму или быть {@condition frightened} до конца своего следующего хода."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 0} попадание, радиус действия 5 футов или дальность 20/60 футов, одна цель. {@h}3 ({@damage 1d4 + 1}) колющего урона в ближнем бою или 3 ({@damage 1d4 + 1}) колющего урона на расстоянии. Цель должна успешно пройти бросок на спасбросок по конституции {@dc 12} или получить 5 ({@damage 2d4}) урона ядом."
+					]
+				},
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk rw} {@hit 5} попадание, дальность 80/320 футов, одна цель. {@h}9 ({@damage 1d6 + 6}) колющего урона. Цель должна успешно выполнить бросок спасброска по конституции {@dc 12} или получить 5 ({@damage 2d4}) урона ядом."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Sludge Hag",
+			"source": "MGELFT",
+			"page": 33,
+			"size": [
+				"M"
+			],
+			"type": "fey",
+			"alignment": [
+				{
+					"special": "neutral oozy"
+				}
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "11d8 + 33",
+				"average": 82
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 12,
+			"con": 16,
+			"int": 13,
+			"wis": 14,
+			"cha": 14,
+			"skill": {
+				"arcana": "+3",
+				"deception": "+4",
+				"perception": "+4",
+				"stealth": "+3"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"Common",
+				"Draconic",
+				"Sylvan"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"footerEntries": [
+						"The hag's innate spellcasting ability is Charisma (spell save {@dc 12}). She can innately cast the following spells, requiring no material components. "
+					],
+					"will": [
+						"{@spell acid splash}",
+						"{@spell dancing lights}",
+						"{@spell minor illusion}"
+					]
+				}
+			],
+			"trait": [
+				{
+					"name": "Amorphous",
+					"entries": [
+						"Шламовая карга может перемещаться по узкому пространству шириной до 1 дюйма без сдавливания."
+					]
+				},
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Шламовая карга может дышать воздухом и водой."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Осадочная карга рушится в маслянистую лужу осадка. В неподвижном состоянии шламовая карга неотличима от любой другой маслянистой капли."
+					]
+				},
+				{
+					"name": "Sludge Slap",
+					"entries": [
+						"{@atk mw} {@hit 6} попадание, радиус действия 5 футов, одна цель. {@h}12 ({@damage 1d8 + 8}) повреждений от удара, плюс 4 ({@damage 1d8}) повреждения кислотой. Sludge Slap наносит урон и от удара, и от кислоты."
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous",
+				"Amphibious"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"S"
+			],
+			"damageTags": [
+				"A",
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Spiderfrog",
+			"source": "MGELFT",
+			"page": 33,
+			"size": [
+				"S"
+			],
+			"type": "beast",
+			"alignment": [
+				{
+					"special": "chaotic sticky"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "2d8 + 4",
+				"average": 13
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 10,
+			"dex": 16,
+			"con": 14,
+			"int": 3,
+			"wis": 12,
+			"cha": 4,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+7"
+			},
+			"senses": [
+				"blindsight 10 ft.",
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Лягушка-паук может дышать воздухом и водой."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"Лягушка-паук может лазать по сложным поверхностям, в том числе вверх ногами по потолку, без необходимости делать проверку способностей."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"Длинный прыжок лягушки-паука достигает 20 футов, а высокий прыжок - 10 футов, с разбега или без него."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 2} попадание, радиус действия 5 футов, одна цель. {@h}4 ({@damage 1d6 + 1}) колющего урона. Цель {@condition grappled} (побег {@dc 11}). Пока этот захват не закончится, цель находится на {@condition restrained}, и лягушка-паук не может укусить другую цель."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious",
+				"Spider Climb"
+			],
+			"senseTags": [
+				"B",
+				"D"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled",
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Yeti Tyke",
+			"source": "MGELFT",
+			"page": 34,
+			"size": [
+				"S"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				{
+					"special": "chaotic silly"
+				}
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "2d6 + 2",
+				"average": 9
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 10,
+			"dex": 11,
+			"con": 12,
+			"int": 6,
+			"wis": 8,
+			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 9,
+			"immune": [
+				"cold"
+			],
+			"languages": [
+				"understands Yeti but can't speak"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"Тайк йети имеет преимущество при проверках мудрости ({@skill Perception}), которые полагаются на обоняние."
+					]
+				},
+				{
+					"name": "Snow Camouflage",
+					"entries": [
+						"Тайк йети имеет преимущество при проверке ловкости ({@skill Stealth}), чтобы спрятаться в заснеженной местности."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 2} попадание, радиус действия 5 футов, одна цель. {@h}3 ({@damage 1d4 + 1}) колющего урона, плюс 2 ({@damage 1d4}) урона холодом. Коготь наносит как косой, так и холодный урон."
+					]
+				}
+			],
+			"traitTags": [
+				"Keen Senses"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"C",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

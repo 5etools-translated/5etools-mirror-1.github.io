@@ -1,0 +1,612 @@
+{
+	"monster": [
+		{
+			"name": "Dankwood Duergar",
+			"source": "MGELFT",
+			"page": 32,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Dwarf"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"Plate Mail"
+					]
+				}
+			],
+			"hp": {
+				"formula": "4d8 + 8",
+				"average": 26
+			},
+			"speed": {
+				"walk": 25
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 10,
+			"cha": 9,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"poison"
+			],
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Duergar Resilience",
+					"entries": [
+						"dankwood duergar对毒药、法术和幻觉的救赎有优势，同时也能抵抗{@condition charmed}或{@condition paralyzed}。"
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"当在阳光下时，丹克伍德duergar在攻击卷上有劣势，在依赖视觉的智慧（（%0%））检查上也是如此。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Verbal Jab",
+					"entries": [
+						"二人组向60英尺内他们能看到的生物发出一串带有微妙魔法的侮辱。如果该生物能听到这些话（它不需要理解这些话），它必须在一个{@dc 12}智慧救赎中成功，否则就会受到{@damage 1d4}精神伤害，并且在下一回合结束前进行的下一次攻击中处于劣势。"
+					]
+				},
+				{
+					"name": "Haymaker",
+					"entries": [
+						"{@atk mw} {@hit 5}击中，到达5英尺，一个目标。{@h}9 ({@damage 1d6 + 6})重击伤害。如果杜尔加被放大，将其伤害增加到10({@dice 2d6 + 3})重击伤害。"
+					]
+				}
+			],
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Dankwood Grung",
+			"source": "MGELFT",
+			"page": 31,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Grung"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "5d6 + 10",
+				"average": 27
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"str": 7,
+			"dex": 16,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"dex": "+5"
+			},
+			"skill": {
+				"athletics": "+2",
+				"intimidation": "+4",
+				"perception": "+2",
+				"stealth": "+5"
+			},
+			"passive": 12,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"languages": [
+				"Grung"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"格隆可以呼吸空气和水。"
+					]
+				},
+				{
+					"name": "Poisonous Skin",
+					"entries": [
+						"任何抓住格陵花的生物或以其他方式直接接触到格陵花的皮肤的生物，必须成功地做一个{@dc 12}宪法救赎动作，否则会变成{@condition poisoned}，持续1分钟。不再与格陵花间接接触的{@condition poisoned}生物可以在其每个回合结束时重复蓄力，如果成功则结束对自己的影响。"
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"Grung的跳远高度为25英尺，跳高高度为15英尺，无论是否有跑步起步。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Grumpy Grung Growl.",
+					"entries": [
+						"凶猛的咕噜声从丹克伍德的喉咙里发出，警告15英尺内的人他们确实很暴躁。该区域内的生物必须成功地进行 \"魅力拯救\"，否则会被\"%1%\"，直到他们下一个回合结束。"
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw}{@hit 0}击中，距离5英尺或范围20/60英尺，一个目标。近战时造成{@h}3({@damage 1d4 + 1})穿刺伤害，或在范围内造成3({@damage 1d4 + 1})穿刺伤害。目标必须在{@dc 12}体质测试中成功，否则会受到5({@damage 2d4}的中毒伤害。"
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "King Robbit the Slimy",
+			"source": "MGELFT",
+			"page": 32,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Grung"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "5d6 + 10",
+				"average": 27
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"str": 7,
+			"dex": 16,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"dex": "+5"
+			},
+			"skill": {
+				"athletics": "+2",
+				"intimidation": "+4",
+				"perception": "+2",
+				"stealth": "+5"
+			},
+			"passive": 12,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"poisoned"
+			],
+			"languages": [
+				"Grung"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"格隆可以呼吸空气和水。"
+					]
+				},
+				{
+					"name": "Poisonous Skin",
+					"entries": [
+						"任何抓住格陵的生物或以其他方式直接接触到格陵的皮肤的生物，必须成功地做一个{@dc 12}体质测试，否则会变成{@condition poisoned}，持续1分钟。不再与格陵花直接接触的{@condition poisoned}生物可以在其每个回合结束时重复蓄力，如果成功则结束对自己的影响。"
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"Grung的跳远高度为25英尺，跳高高度为15英尺，无论是否有跑步起步。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Grumpy Grung Growl.",
+					"entries": [
+						"凶猛的咕噜声从丹克伍德的喉咙里发出，警告15范围内的人，他们的确很暴躁。该区域内的生物必须成功地进行 \"魅力储蓄\"，否则会被\"%1%\"，直到他们下一回合结束。"
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw}{@hit 0}击中，距离5英尺或范围20/60英尺，一个目标。近战时造成{@h}3({@damage 1d4 + 1})穿刺伤害，或在范围内造成3({@damage 1d4 + 1})穿刺伤害。目标必须在{@dc 12}体质测试中成功，否则会受到5({@damage 2d4}的中毒伤害。"
+					]
+				},
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk rw} {@hit 5}击中，范围80/320英尺，一个目标。{@h}9 ({@damage 1d6 + 6})穿刺伤害。目标必须在{@dc 12}体质测试中成功，否则会受到5({@damage 2d4})的中毒伤害。"
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Sludge Hag",
+			"source": "MGELFT",
+			"page": 33,
+			"size": [
+				"M"
+			],
+			"type": "fey",
+			"alignment": [
+				{
+					"special": "neutral oozy"
+				}
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "11d8 + 33",
+				"average": 82
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 12,
+			"con": 16,
+			"int": 13,
+			"wis": 14,
+			"cha": 14,
+			"skill": {
+				"arcana": "+3",
+				"deception": "+4",
+				"perception": "+4",
+				"stealth": "+3"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"Common",
+				"Draconic",
+				"Sylvan"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"footerEntries": [
+						"The hag's innate spellcasting ability is Charisma (spell save {@dc 12}). She can innately cast the following spells, requiring no material components. "
+					],
+					"will": [
+						"{@spell acid splash}",
+						"{@spell dancing lights}",
+						"{@spell minor illusion}"
+					]
+				}
+			],
+			"trait": [
+				{
+					"name": "Amorphous",
+					"entries": [
+						"污泥哈格可以在1英寸宽的狭窄空间内移动而不被挤压。"
+					]
+				},
+				{
+					"name": "Amphibious",
+					"entries": [
+						"泥鳅可以呼吸空气和水。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"污泥女郎倒在了一个油腻的污泥池里。在一动不动的情况下，污泥女与任何其他油腻的油池都没有区别。"
+					]
+				},
+				{
+					"name": "Sludge Slap",
+					"entries": [
+						"{@atk mw} {@hit 6}击中，到达5英尺，一个目标。{@h}12 ({@damage 1d8 + 8})重击伤害，外加4 ({@damage 1d8})酸伤害。淤泥拍击同时造成淤血和酸液伤害"
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous",
+				"Amphibious"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"S"
+			],
+			"damageTags": [
+				"A",
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Spiderfrog",
+			"source": "MGELFT",
+			"page": 33,
+			"size": [
+				"S"
+			],
+			"type": "beast",
+			"alignment": [
+				{
+					"special": "chaotic sticky"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "2d8 + 4",
+				"average": 13
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 10,
+			"dex": 16,
+			"con": 14,
+			"int": 3,
+			"wis": 12,
+			"cha": 4,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+7"
+			},
+			"senses": [
+				"blindsight 10 ft.",
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"蜘蛛蛙可以呼吸空气和水。"
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"蜘蛛蛙可以爬上困难的表面，包括倒立在天花板上，而不需要进行能力检查。"
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"蜘蛛蛙的跳远可达20英尺，跳高可达10英尺，无论是否有跑步起步。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 2}击中，到达5英尺，一个目标。{@h}4 ({@damage 1d6 + 1})穿刺伤害。目标是{@condition grappled}（逃跑{@dc 11}）。直到这个抓捕结束，目标是{@condition restrained}，蜘蛛蛙不能咬到其他目标。"
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious",
+				"Spider Climb"
+			],
+			"senseTags": [
+				"B",
+				"D"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled",
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Yeti Tyke",
+			"source": "MGELFT",
+			"page": 34,
+			"size": [
+				"S"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				{
+					"special": "chaotic silly"
+				}
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "2d6 + 2",
+				"average": 9
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 10,
+			"dex": 11,
+			"con": 12,
+			"int": 6,
+			"wis": 8,
+			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 9,
+			"immune": [
+				"cold"
+			],
+			"languages": [
+				"understands Yeti but can't speak"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"雪人小子在依靠嗅觉的智慧（（%0%））检查中具有优势。"
+					]
+				},
+				{
+					"name": "Snow Camouflage",
+					"entries": [
+						"雪人小子在雪地上躲藏时，在灵巧性（（%0%））的检查上有优势。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 2}击中，到达5英尺，一个目标。{@h}3 ({@damage 1d4 + 1})的砍击伤害，加上2 ({@damage 1d4})的寒冷伤害。爪子同时造成砍击和寒冷伤害。"
+					]
+				}
+			],
+			"traitTags": [
+				"Keen Senses"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"C",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

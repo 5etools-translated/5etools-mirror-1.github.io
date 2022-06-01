@@ -821,6 +821,20 @@
 				"Unstable Backlash|Barbarian||Wild Magic|TCE|10",
 				"Controlled Surge|Barbarian||Wild Magic|TCE|14"
 			]
+		},
+		{
+			"name": "Path of the Giant (UA)",
+			"shortName": "Giant (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"subclassFeatures": [
+				"Path of the Giant|Barbarian||Giant (UA)|UA2022GiantOptions|3",
+				"Elemental Cleaver|Barbarian||Giant (UA)|UA2022GiantOptions|6",
+				"Mighty Impel|Barbarian||Giant (UA)|UA2022GiantOptions|10",
+				"Demiurgic Colossus|Barbarian||Giant (UA)|UA2022GiantOptions|14"
+			]
 		}
 	],
 	"classFeature": [
@@ -2155,6 +2169,125 @@
 			"entries": [
 				"{@i 14th-level Path of the Beast feature}",
 				"内心的野兽变得如此强大，以至于你可以将它的凶猛传播给你的盟友。当你进入愤怒状态时，你可以选择30英尺范围内你能看到的自愿的生物，其数量等于你的体质修正值（至少一个生物）。在你的愤怒结束之前，被选择的生物会获得鲁莽（%0%）的特性，并且你在对被攻击者的救赎中具有优势（%1%）。每一个接受该利益的生物，你也会获得5个临时的命中率。你可以使用这个特征的次数等于你的体质修改器（最少一次）。当你完成一个长时间的休息时，你会重新获得所有已消耗的使用次数。"
+			]
+		},
+		{
+			"name": "Giant Power",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"当你选择这条道路时，你将学会说、读、写巨人语，或者如果你已经懂得巨人语，则可选择其他一种语言。此外，你还学会了德鲁伊术或（%0%）咒语（你选择）。智慧是你对这个法术的施法能力。"
+			]
+		},
+		{
+			"name": "Giant's Havoc",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"你的愤怒从巨人的原始力量中汲取力量，将你转化为一个巨大的破坏力。愤怒时，你会获得以下好处。",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Crushing Hurl",
+							"entries": [
+								"当你使用力量的投掷武器进行成功的远程攻击时，你可以在攻击的伤害卷上加上你的狂暴伤害奖励。"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Giant Stature",
+							"entries": [
+								"你的触角会增加5英尺，如果你比大号小，你就会变成大号，连同你穿的任何东西一起。如果没有足够的空间让你变成大号，你的尺寸就不会改变。"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Giant",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"走巨人之路的野蛮人从巨人和他们的元素同类的原始力量中汲取力量。他们的怒火涌动着元素的力量，使这些野蛮人的体型越来越大，将他们变成原始力量的化身。",
+				"在他们的愤怒中，野蛮人可能会效仿传说中的风暴巨人，头发变成白色，眼睛里闪烁着闪电。其他人则采用世界末日巨头的畸形特征，撕裂他们周围的世界，使之重新焕发生机。",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant Power|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant's Havoc|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				}
+			]
+		},
+		{
+			"name": "Elemental Cleaver",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Path of the Giant Feature}",
+				"你与巨人及其同类的元素力量的联系不断增强，你学会了用原始的能量注入武器。",
+				"当你进入愤怒状态时，你可以为你所持有的一件武器注入以下一种伤害类型：酸、冷、火、雷或闪电。当你在愤怒中挥舞被注入的武器时，武器的伤害类型会变为所选择的类型，当它击中时，会造成所选择类型的额外（%0%）伤害，并获得投掷属性，普通范围为20英尺，远程范围为60英尺。如果你投掷武器，它在击中或未击中目标的瞬间会重新出现在你手中。当你以外的生物持有该武器时，该武器的益处会被抑制。",
+				"在愤怒并持有被注入的武器时，你可以使用一个额外的动作来改变被注入的武器的当前伤害类型，使其与上述伤害类型不同。"
+			]
+		},
+		{
+			"name": "Mighty Impel",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Path of the Giant Feature}",
+				"你与巨人力量的联系现在允许你在战场上同时投掷盟友和敌人。愤怒时的额外行动，你可以在你的范围内选择一个中等或较小的生物，并将它移动到你能看到的30英尺范围内的无人空间。不情愿的生物必须成功地进行力量救赎（DC等于8+你的熟练度加成+你的力量修饰）以避免这种效果。",
+				"如果在这个动作结束时，被投掷的生物不在可以支撑它的表面或液体上，该生物就会坠落，受到正常的伤害并落地（%0%）。"
+			]
+		},
+		{
+			"name": "Demiurgic Colossus",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Path of the Giant Feature}",
+				"你愤怒的原始力量增强了。当你愤怒的时候，你的范围现在增加了10英尺，你的体型可以增加到巨大，而且你现在可以使用你的强大推动力来移动大型或小型生物。",
+				"此外，你的元素劈刀功能造成的额外伤害增加到（%0%）。"
 			]
 		},
 		{

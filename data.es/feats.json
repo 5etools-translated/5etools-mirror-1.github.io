@@ -547,7 +547,7 @@
 					"items": [
 						"Ganas competencia con {@item alchemist's supplies|phb}. Si ya eres competente con ellos, añades el doble de tu bonificación de competencia a los chequeos que hagas con ellos.",
 						"Como acción, puedes identificar una poción a 5 pies de ti, como si la hubieras probado. Debes ver el líquido para que este beneficio funcione.",
-						"En el transcurso de cualquier descanso corto, puedes mejorar temporalmente la potencia de una poción de curación de cualquier rareza. Para utilizar este beneficio, debes tener {@item alchemist's supplies|phb} contigo y la poción debe estar a tu alcance. Si la poción se bebe antes de que transcurra 1 hora desde el final del descanso corto, la criatura que la bebe puede renunciar a la tirada de la poción y recupera el número máximo de puntos de golpe que la poción puede restaurar."
+						"En el transcurso de cualquier descanso corto, puedes mejorar temporalmente la potencia de un {@item potion of healing} de cualquier rareza. Para utilizar este beneficio, debes tener {@item alchemist's supplies|phb} contigo y la poción debe estar a tu alcance. Si la poción se bebe no más de 1 hora después de que termine el descanso corto, la criatura que la bebe puede renunciar a la tirada de la poción y recupera el número máximo de puntos de golpe que la poción puede restaurar."
 					]
 				}
 			]
@@ -631,7 +631,7 @@
 					"type": "list",
 					"items": [
 						"Ganas competencia en la habilidad {@skill Arcana}. Si ya eres competente en la habilidad, añades el doble de tu bonificación de competencia a los chequeos que hagas con ella.",
-						"Aprendes los hechizos {@spell prestidigitation} y {@spell detect magic}. Puedes lanzar detectar magia una vez sin gastar una ranura de conjuro, y recuperas la capacidad de hacerlo cuando terminas un descanso largo."
+						"Aprendes los hechizos {@spell prestidigitation} y {@spell detect magic}. Puedes lanzar {@spell detect magic} una vez sin gastar una ranura de conjuro, y recuperas la capacidad de hacerlo cuando terminas un descanso largo."
 					]
 				}
 			]
@@ -1177,7 +1177,7 @@
 							"type": "item",
 							"name": "Divine Omens",
 							"entries": [
-								"Puedes lanzar el hechizo de augurio y comunión sin una ranura de hechizo, y debes terminar {@dice 1d4} los descansos largos antes de poder volver a lanzarlo de esta manera. También puedes lanzar el hechizo utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento del hechizo es la elegida cuando obtuviste la hazaña Divinamente Favorecido."
+								"Puedes lanzar el hechizo de {@spell augury} y {@spell commune} sin una ranura de hechizo, y debes terminar {@dice 1d4} de descansos largos antes de poder lanzarlo de nuevo de esta manera. También puedes lanzar el hechizo utilizando las ranuras de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento del hechizo es la elegida cuando obtuviste la hazaña Divinamente Favorecido."
 							]
 						}
 					]
@@ -2691,6 +2691,50 @@
 			]
 		},
 		{
+			"name": "Elemental Touched",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"entries": [
+				"Has estado expuesto a la magia primordial de los Planos Elementales, lo que te otorga una medida de control sobre el mundo natural que te rodea. Aprendes el cantrip druidcraft o {@spell thaumaturgy}, utilizando Inteligencia, Sabiduría o Carisma como habilidad de lanzamiento de conjuros (elige cuando obtengas esta hazaña).",
+				"Cada vez que terminas un descanso largo, puedes elegir el elemento con el que estás sintonizado: Aire, Tierra, Fuego o Agua. Dependiendo de tu elección, puedes usar una acción de bonificación para causar uno de los siguientes efectos:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Air",
+							"entries": [
+								"Ganas una velocidad de vuelo igual a tu velocidad de marcha hasta el final de tu turno. Si estás en el aire al final de tu turno después de usar este movimiento y no te mantienes en el aire por otros medios, caes."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Earth",
+							"entries": [
+								"Haces que el suelo en un radio de 30 pies se convierta en {@quickref difficult terrain||3} durante 1 minuto o hasta que vuelvas a crear este efecto. Durante ese tiempo, puedes moverte por un terreno que esté {@quickref difficult terrain||3} sin gastar movimiento extra."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Fire",
+							"entries": [
+								"Te rodeas de una nube de ceniza y humo. Hasta el final de tu turno, tu movimiento no provoca ataques de oportunidad."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Water",
+							"entries": [
+								"Puedes crear una fuerte oleada de agua dirigida a una criatura que esté a 15 pies de ti y que puedas ver. La criatura debe tener éxito en una tirada de salvación de Fuerza (que puede elegir fallar) contra una DC igual a 8 + tu modificador de habilidad de lanzamiento de conjuros + tu bonificación de competencia o ser empujada hasta 10 pies de distancia de ti. El agua desaparece inmediatamente después de que la criatura tenga éxito o falle."
+							]
+						}
+					]
+				},
+				"Puedes crear este efecto un número de veces igual a tu bonificación de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo."
+			]
+		},
+		{
 			"name": "Elven Accuracy",
 			"source": "UAFeatsForRaces",
 			"page": 2,
@@ -2756,6 +2800,42 @@
 					"type": "list",
 					"items": [
 						"Siempre que tengas ventaja en una tirada de ataque usando Destreza, Inteligencia, Sabiduría o Carisma, puedes volver a tirar uno de los dados una vez."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ember of the Fire Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"resist": [
+				"fire"
+			],
+			"entries": [
+				"Has manifestado el combate ardiente emblemático de los gigantes de fuego, lo que te otorga los siguientes beneficios:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Flame",
+							"entries": [
+								"Tienes resistencia al daño por fuego."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Searing Ignition",
+							"entries": [
+								"Cuando realizas la acción {@action Attack} en tu turno, puedes sustituir uno de tus ataques por una ráfaga mágica de llamas. Cada criatura que elijas en un radio de 15 pies que pueda verte debe hacer una tirada de salvación de Destreza (la DC es igual a 8 + tu bono de competencia + tu modificador de Constitución). Si fallas la tirada de salvación, la criatura recibe un daño de fuego igual a {@dice 2d6} + tu bonificador de competencia y es {@condition blinded} hasta el comienzo de tu siguiente turno; si la tirada de salvación tiene éxito, la criatura recibe la mitad de daño sin efectos adicionales. Puedes usar tu Ignición abrasadora un número de veces igual a tu bonificación de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo."
+							]
+						}
 					]
 				}
 			]
@@ -3216,6 +3296,42 @@
 			]
 		},
 		{
+			"name": "Fury of the Frost Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"resist": [
+				"cold"
+			],
+			"entries": [
+				"Has manifestado el poder gélido emblemático de los gigantes de la escarcha, lo que te otorga los siguientes beneficios:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Ice",
+							"entries": [
+								"Tienes resistencia al daño por frío."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Frigid Vengeance",
+							"entries": [
+								"Cuando una criatura te golpea con una tirada de ataque, puedes usar tu reacción para contraatacar con una ráfaga de ira mágica. La criatura debe tener éxito en una tirada de salvación de Sabiduría (la DC es igual a 8 + tu bonificador de competencia + tu modificador de Constitución) o ser {@condition frightened} de ti hasta el comienzo de su siguiente turno. Puedes usar tu reacción de esta manera un número de veces igual a tu bonificador de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Gift of the Chromatic Dragon",
 			"source": "FTD",
 			"page": 17,
@@ -3499,6 +3615,39 @@
 						"Durante la primera ronda de cualquier combate contra tus enemigos elegidos, tus tiradas de ataque contra cualquiera de ellos tienen ventaja.",
 						"Cuando cualquiera de tus enemigos elegidos hace un ataque de oportunidad contra ti, realiza la tirada de ataque con desventaja.",
 						"Siempre que hagas un chequeo de Inteligencia ({@skill Arcana}, {@skill History}, {@skill Nature} o {@skill Religion}) para recordar información sobre tus enemigos elegidos, añades el doble de tu bono de competencia al chequeo, incluso si no eres normalmente competente."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guile of the Cloud Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Has manifestado el discurso aéreo y la magia emblemática de los gigantes de las nubes, lo que te otorga los siguientes beneficios:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Misty Form",
+							"entries": [
+								"Puedes lanzar el hechizo {@spell blur} sin usar una ranura de hechizo o componentes materiales. Cuando lanzas el hechizo de esta manera, el hechizo no requiere que mantengas la concentración en él. Una vez que lanzas el hechizo de esta manera, no puedes volver a hacerlo hasta que termines un descanso largo. También puedes lanzar este conjuro de forma normal utilizando las ranuras de conjuro que tengas del nivel apropiado. Inteligencia, Sabiduría o Carisma es tu capacidad de lanzamiento de conjuros para esta característica (elige cuando obtengas esta hazaña)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Silver Tongue",
+							"entries": [
+								"Ganas competencia en la habilidad {@skill Deception} o {@skill Persuasion}. Tu bonificación de competencia se duplica para cualquier chequeo de habilidad que realices utilizando esta habilidad."
+							]
+						}
 					]
 				}
 			]
@@ -4112,6 +4261,39 @@
 						"Siempre se sabe hacia dónde va el norte.",
 						"Siempre se sabe el número de horas que faltan para el próximo amanecer o atardecer.",
 						"Puede recordar con precisión cualquier cosa que haya visto u oído en el último mes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Keenness of the Stone Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Has manifestado la protección y el hechizo emblemáticos de los gigantes de piedra, lo que te otorga los siguientes beneficios:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Dreamer's Magic",
+							"entries": [
+								"Aprendes el hechizo {@spell detect thoughts} y uno {@filter 1st-level spell|spells|level=1|school=A;D} de tu elección. El hechizo de primer nivel debe ser de la escuela de magia de abjuración o de adivinación. Puedes lanzar cada uno de estos conjuros sin gastar una ranura de conjuro. Una vez que lances cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso largo. También puedes lanzar estos conjuros utilizando las ranuras de conjuro que tengas del nivel apropiado. Inteligencia, Sabiduría o Carisma es tu habilidad de lanzamiento de conjuros para esta característica (elige cuando obtengas esta hazaña)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Mountain Sight",
+							"entries": [
+								"Ganas {@sense darkvision} hasta un alcance de 60 pies. Si ya tienes {@sense darkvision} de otra fuente, su alcance aumenta en 30 pies."
+							]
+						}
 					]
 				}
 			]
@@ -5107,6 +5289,41 @@
 			]
 		},
 		{
+			"name": "Outsized Might",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Has absorbido la magia primigenia que te permite, a pesar de tu estatura relativamente pequeña, encarnar el poder de criaturas titánicas. Esto te otorga los siguientes beneficios:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Little but Mighty",
+							"entries": [
+								"Ganas competencia en la habilidad {@skill Athletics} o {@skill Acrobatics}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Powerful Build",
+							"entries": [
+								"Cuenta como una talla más a la hora de determinar su capacidad de carga y la cantidad que puede empujar, arrastrar o levantar."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Stalwart",
+							"entries": [
+								"Tienes ventaja en las tiradas de salvación contra el desplazamiento o el derribo {@condition prone}."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Perceptive",
 			"source": "UAFeatsForSkills",
 			"page": 3,
@@ -5689,7 +5906,125 @@
 			"entries": [
 				"Has aprendido una serie de hechizos que puedes lanzar como rituales. Estos hechizos están escritos en un libro de rituales, que debes tener en la mano mientras lanzas uno de ellos.",
 				"Cuando eliges esta proeza, adquieres un libro de rituales que contiene dos conjuros de 1er nivel a tu elección. Elige una de las siguientes clases: {@filter bard|spells|level=1|class=bard|components & miscellaneous=ritual}, {@filter cleric|spells|level=1|class=cleric|components & miscellaneous=ritual}, {@filter druid|spells|level=1|class=druid|components & miscellaneous=ritual}, {@filter sorcerer|spells|level=1|class=sorcerer|components & miscellaneous=ritual}, {@filter warlock|spells|level=1|class=warlock|components & miscellaneous=ritual} o {@filter wizard|spells|level=1|class=wizard|components & miscellaneous=ritual}. Debes elegir tus hechizos de la lista de hechizos de esa clase, y los hechizos que elijas deben tener la etiqueta ritual. La clase que elijas también determina tu habilidad de lanzamiento de conjuros para estos hechizos: Carisma para bardo, brujo o hechicero; Sabiduría para clérigo o druida; o Inteligencia para mago.",
-				"Si encuentras un hechizo en forma escrita, como un pergamino de hechizos mágicos o un libro de hechizos de un mago, podrías añadirlo a tu libro de rituales. El hechizo debe estar en la lista de hechizos de la clase que has elegido, el nivel del hechizo no puede ser superior a la mitad de tu nivel (redondeado hacia arriba), y debe tener la etiqueta de ritual. El proceso de copiar el hechizo en tu libro de rituales lleva 2 horas por nivel del hechizo, y cuesta 50 gp por nivel. El coste representa los componentes materiales que gastas mientras experimentas con el hechizo para dominarlo, así como las tintas finas que necesitas para grabarlo."
+				"Si encuentras un hechizo en forma escrita, como un libro de hechizos mágicos {@item spell scroll} o de un mago, podrías añadirlo a tu libro de rituales. El hechizo debe estar en la lista de hechizos de la clase que elegiste, el nivel del hechizo no puede ser superior a la mitad de tu nivel (redondeado hacia arriba), y debe tener la etiqueta de ritual. El proceso de copiar el hechizo en tu libro de rituales lleva 2 horas por nivel del hechizo, y cuesta 50 gp por nivel. El coste representa los componentes materiales que gastas mientras experimentas con el hechizo para dominarlo, así como las tintas finas que necesitas para grabarlo."
+			]
+		},
+		{
+			"name": "Rune Carver Adept",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4,
+					"feat": [
+						"rune carver apprentice|ua2022giantoptions"
+					]
+				}
+			],
+			"entries": [
+				"Tu habilidad con el arte del runecraft ha aumentado.",
+				"Cada vez que terminas un descanso largo, ahora puedes marcar un número de objetos igual a tu bonificación de competencia con una runa de la hazaña Aprendiz de escultor de runas. Un objeto sólo puede tener una runa a la vez, y debes inscribir una runa diferente en cada objeto."
+			]
+		},
+		{
+			"name": "Rune Carver Apprentice",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Has empezado a estudiar el arte del runecraft, que te permite marcar temporalmente tus objetos e imbuirlos de magia.",
+				"Siempre que termines un descanso largo, puedes marcar un arma no mágica, armadura, pieza de ropa u otro objeto que puedas tocar con una runa de tu elección. Aprendes temporalmente un conjuro de 1er nivel basado en la runa que elijas, como se especifica en la tabla de conjuros de runa, y conoces el conjuro hasta que termines un descanso largo, cuando la runa se desvanece.",
+				{
+					"type": "table",
+					"caption": "Rune Spells",
+					"colLabels": [
+						"Rune",
+						"Spell"
+					],
+					"colStyles": [
+						"col-2",
+						"col-10"
+					],
+					"rows": [
+						[
+							"Sangre",
+							"{@spell False life}"
+						],
+						[
+							"Nube",
+							"{@spell Fog cloud}"
+						],
+						[
+							"Muerte",
+							"{@spell Ray of sickness}"
+						],
+						[
+							"Dragón",
+							"{@spell Chromatic orb}"
+						],
+						[
+							"Enemigo",
+							"{@spell Bane}"
+						],
+						[
+							"Fire",
+							"{@spell Burning hands}"
+						],
+						[
+							"Amigo",
+							"{@spell Bless}"
+						],
+						[
+							"Escarcha",
+							"{@spell Armor of Agathys}"
+						],
+						[
+							"Hill",
+							"{@spell Goodberry}"
+						],
+						[
+							"Viaje",
+							"{@spell Longstrider}"
+						],
+						[
+							"King",
+							"{@spell Command}"
+						],
+						[
+							"Luz",
+							"{@spell Guiding bolt}"
+						],
+						[
+							"Life",
+							"{@spell Cure wounds}"
+						],
+						[
+							"Montaña",
+							"{@spell Jump}"
+						],
+						[
+							"Escudo",
+							"{@spell Shield}"
+						],
+						[
+							"Piedra",
+							"{@spell Sanctuary}"
+						],
+						[
+							"Tormenta",
+							"{@spell Thunderwave}"
+						],
+						[
+							"War",
+							"{@spell Heroism}"
+						],
+						[
+							"Wind",
+							"{@spell Feather fall}"
+						]
+					]
+				},
+				"Mientras lleves el objeto marcado con la runa, puedes lanzar el hechizo elegido asociado a la runa una vez sin usar una ranura de hechizo o componentes materiales, y también puedes lanzar el hechizo usando cualquier ranura de hechizo que tengas.",
+				"Tu habilidad de lanzamiento de hechizos para esta hazaña es la Inteligencia, la Sabiduría o el Carisma (elige cuando obtengas esta hazaña)"
 			]
 		},
 		{
@@ -6037,6 +6372,11 @@
 					}
 				}
 			],
+			"expertise": [
+				{
+					"anyProficientSkill": 2
+				}
+			],
 			"entries": [
 				"Has perfeccionado tu destreza con determinadas habilidades, lo que te otorga los siguientes beneficios:",
 				{
@@ -6142,6 +6482,39 @@
 					"items": [
 						"Una vez por turno, cuando golpeas a una criatura con un ataque que inflige daño cortante, puedes reducir la velocidad del objetivo en 3 metros hasta el inicio de tu siguiente turno.",
 						"Cuando consigues un golpe crítico que inflige daño cortante a una criatura, la hieres gravemente. Hasta el comienzo de tu siguiente turno, el objetivo tiene desventaja en todas las tiradas de ataque."
+					]
+				}
+			]
+		},
+		{
+			"name": "Soul of the Storm Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Has manifestado habilidades de adivinación y magia de tempestad emblemáticas de los gigantes de la tormenta, lo que te otorga los siguientes beneficios:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Maelstrom Aura",
+							"entries": [
+								"Como acción de bonificación, te rodeas de un aura de viento y relámpagos mágicos que se extiende a 3 metros de ti en todas las direcciones, pero no a través de la cobertura total. El aura dura 1 minuto o hasta que estés {@condition incapacitated}. Mientras el aura está activa, las tiradas de ataque contra ti tienen desventaja, y siempre que una criatura comience su turno dentro de la esfera, puedes forzar que la velocidad de la criatura se reduzca a la mitad hasta el comienzo de su siguiente turno. Una vez que usas esta acción de bonificación, no puedes volver a hacerlo hasta que termines un descanso largo."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Storm's Oracle",
+							"entries": [
+								"Puedes lanzar el hechizo {@spell divination} como un ritual, sin necesidad de componentes materiales. Inteligencia, Sabiduría o Carisma es tu habilidad de lanzamiento de conjuros para esta característica (elige cuando obtengas esta hazaña). Una vez que lances el conjuro de esta forma, no podrás volver a hacerlo hasta que termines un descanso largo."
+							]
+						}
 					]
 				}
 			]
@@ -7462,6 +7835,39 @@
 			]
 		},
 		{
+			"name": "Vigor of the Hill Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Has manifestado la resistencia emblemática de los gigantes de las colinas, lo que te otorga los siguientes beneficios:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bulwark",
+							"entries": [
+								"Cuando estás sometido a un efecto que te movería al menos 1,5 metros o te derribaría {@condition prone}, puedes usar tu reacción para estabilizarte. En ese caso, no serás movido ni derribado {@condition prone}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Hearty Health",
+							"entries": [
+								"Cuando eres sometido a un hechizo que restaura tus puntos de golpe, puedes recuperar puntos de golpe adicionales iguales a tu modificador de Constitución. Puedes recuperar estos puntos de golpe adicionales un número de veces igual a tu bonificador de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "War Caster",
 			"source": "PHB",
 			"page": 170,
@@ -7639,7 +8045,7 @@
 							"type": "entries",
 							"name": "Lifter",
 							"entries": [
-								"Este dispositivo puede utilizarse como bloque y aparejo, lo que permite a su usuario elevar cinco veces el peso que normalmente puede levantar."
+								"Este dispositivo puede utilizarse como {@item block and tackle|PHB}, permitiendo a su usuario levantar cinco veces el peso que normalmente puede levantar."
 							]
 						},
 						{

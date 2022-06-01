@@ -547,7 +547,7 @@
 					"items": [
 						"Du erlangst die Beherrschung von {@item alchemist's supplies|phb}. Wenn du sie bereits beherrschst, erhältst du den doppelten Beherrschungsbonus auf Checks, die du mit ihnen machst.",
 						"Als Aktion kannst du einen Trank im Umkreis von 5 Fuß identifizieren, so als hättest du ihn gekostet. Du musst die Flüssigkeit sehen, damit dieser Vorteil wirkt.",
-						"Während einer kurzen Ruhepause kannst du vorübergehend die Wirkung eines Heiltranks beliebiger Seltenheit verbessern. Um diesen Vorteil zu nutzen, musst du {@item alchemist's supplies|phb} bei dir haben und der Trank muss in Reichweite sein. Wenn der Trank spätestens 1 Stunde nach Ende der kurzen Ruhepause getrunken wird, kann die Kreatur, die den Trank trinkt, auf den Würfelwurf des Trankes verzichten und erhält die maximale Anzahl an Trefferpunkten zurück, die der Trank wiederherstellen kann."
+						"Während einer kurzen Pause kannst du die Wirkung eines {@item potion of healing} einer beliebigen Seltenheit vorübergehend verbessern. Um diesen Vorteil zu nutzen, musst du {@item alchemist's supplies|phb} bei dir haben, und der Trank muss in Reichweite sein. Wenn der Trank spätestens 1 Stunde nach Ende der kurzen Rast getrunken wird, kann die Kreatur, die den Trank trinkt, auf den Würfelwurf des Trankes verzichten und erhält die maximale Anzahl an Trefferpunkten zurück, die der Trank wiederherstellen kann."
 					]
 				}
 			]
@@ -631,7 +631,7 @@
 					"type": "list",
 					"items": [
 						"Du erlangst die Fertigkeit {@skill Arcana}. Wenn du diese Fertigkeit bereits beherrschst, erhältst du den doppelten Bonus auf deine Fertigkeitsprüfungen.",
-						"Du erlernst die Zauber {@spell prestidigitation} und {@spell detect magic}. Du kannst einmal Magie entdecken, ohne einen Zauberslot zu verbrauchen, und du erlangst die Fähigkeit dazu wieder, wenn du eine lange Pause beendet hast."
+						"Du lernst die Zauber {@spell prestidigitation} und {@spell detect magic}. Du kannst {@spell detect magic} einmal wirken, ohne einen Zauberslot zu verbrauchen, und du erlangst die Fähigkeit wieder, dies zu tun, wenn du eine lange Pause beendet hast."
 					]
 				}
 			]
@@ -1177,7 +1177,7 @@
 							"type": "item",
 							"name": "Divine Omens",
 							"entries": [
-								"Du kannst den Zauber \"Augury and Commune\" auch ohne einen Zauberspruch wirken, und du musst {@dice 1d4} lange Pausen einlegen, bevor du ihn wieder auf diese Weise wirken kannst. Du kannst den Zauber auch mit Zaubersprüchen der entsprechenden Stufe wirken, die du besitzt. Die Zauberfähigkeit des Zaubers ist diejenige, die du gewählt hast, als du die Fertigkeit \"Göttlich begünstigt\" erhalten hast."
+								"Du kannst den {@spell augury}- und {@spell commune}-Zauber ohne einen Zauberspruchplatz wirken, und du musst {@dice 1d4} lange Pausen einlegen, bevor du ihn erneut auf diese Weise wirken kannst. Du kannst den Zauber auch mit Zauberslots der entsprechenden Stufe wirken, die du besitzt. Die Zauberfähigkeit des Zaubers ist diejenige, die du beim Erwerb der Fähigkeit Göttlich begünstigt gewählt hast."
 							]
 						}
 					]
@@ -2691,6 +2691,50 @@
 			]
 		},
 		{
+			"name": "Elemental Touched",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"entries": [
+				"Du bist der ursprünglichen Magie der Elementarebenen ausgesetzt, die dir ein gewisses Maß an Kontrolle über die natürliche Welt um dich herum verleiht. Du erlernst entweder die Druidenfertigkeit oder den {@spell thaumaturgy} Zaubertrick, wobei du Intelligenz, Weisheit oder Charisma als Zauberfertigkeit verwendest (wähle, wann du diese Fähigkeit erhältst).",
+				"Jedes Mal, wenn du eine lange Pause beendest, kannst du wählen, auf welches Element du eingestimmt bist: Luft, Erde, Feuer oder Wasser. Abhängig von deiner Wahl kannst du eine Bonusaktion einsetzen, um einen der folgenden Effekte zu bewirken:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Air",
+							"entries": [
+								"Du erhältst bis zum Ende deines Zuges eine Fluggeschwindigkeit, die deiner Gehgeschwindigkeit entspricht. Wenn du dich am Ende deines Zuges in der Luft befindest, nachdem du diese Bewegung benutzt hast, und nicht durch andere Mittel in der Luft gehalten wirst, fällst du."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Earth",
+							"entries": [
+								"Du verursachst, dass der Boden im Umkreis von 30 Fuß für 1 Minute oder bis du diesen Effekt erneut erzeugst, {@quickref difficult terrain||3} wird. Während dieser Zeit kannst du dich über {@quickref difficult terrain||3} Boden bewegen, ohne zusätzliche Bewegung zu verbrauchen."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Fire",
+							"entries": [
+								"Du hüllst dich in eine Wolke aus Asche und Rauch. Bis zum Ende deines Zuges provozierst du mit deiner Bewegung keine Gelegenheitsangriffe."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Water",
+							"entries": [
+								"Du kannst einen gewaltigen Wasserschwall erzeugen, der auf eine Kreatur im Umkreis von 15 Fuß um dich gerichtet ist, die du sehen kannst. Die Kreatur muss einen Schutzwurf gegen einen Gleichheitswert von 8 + Modifikator für Zauberei + Bonus auf deine Fertigkeiten bestehen (den sie auch misslingen lassen kann) oder sie wird bis zu 10 Fuß von dir weggestoßen. Das Wasser verschwindet sofort, wenn die Kreatur erfolgreich ist oder scheitert."
+							]
+						}
+					]
+				},
+				"Du kannst diesen Effekt so oft erzeugen, wie es deinem Fertigkeitsbonus entspricht, und du erhältst alle verbrauchten Einsätze zurück, wenn du eine lange Pause beendest."
+			]
+		},
+		{
 			"name": "Elven Accuracy",
 			"source": "UAFeatsForRaces",
 			"page": 2,
@@ -2756,6 +2800,42 @@
 					"type": "list",
 					"items": [
 						"Immer wenn du bei einem Angriffswurf mit Geschicklichkeit, Intelligenz, Weisheit oder Charisma einen Vorteil hast, kannst du einen der Würfel einmal wiederholen."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ember of the Fire Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"resist": [
+				"fire"
+			],
+			"entries": [
+				"Du hast den feurigen Kampf manifestiert, der für Feuerriesen typisch ist und dir die folgenden Vorteile gewährt:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Flame",
+							"entries": [
+								"Du hast Widerstand gegen Feuerschaden."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Searing Ignition",
+							"entries": [
+								"Wenn du die Aktion {@action Attack} in deinem Zug ausführst, kannst du einen deiner Angriffe durch einen magischen Flammenstoß ersetzen. Jede Kreatur deiner Wahl im Umkreis von 15 Fuß um dich, die dich sehen kann, muss einen Rettungswurf in Geschicklichkeit ablegen (DC gleich 8 + dein Fertigkeitsbonus + dein Konstitutionsmodifikator). Bei einem misslungenen Schutzwurf erleidet die Kreatur Feuerschaden in Höhe von {@dice 2d6} + deinem Fertigkeitsbonus und ist {@condition blinded} bis zum Beginn deines nächsten Zuges inaktiv; bei einem erfolgreichen Schutzwurf erleidet die Kreatur nur halb so viel Schaden ohne zusätzliche Effekte. Du kannst deine Versengende Entzündung so oft einsetzen, wie es deinem Fertigkeitsbonus entspricht, und du erhältst alle verbrauchten Einsätze zurück, wenn du eine lange Pause beendest."
+							]
+						}
 					]
 				}
 			]
@@ -3216,6 +3296,42 @@
 			]
 		},
 		{
+			"name": "Fury of the Frost Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"resist": [
+				"cold"
+			],
+			"entries": [
+				"Du hast die eisige Macht der Frostriesen manifestiert, die dir die folgenden Vorteile gewährt:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Ice",
+							"entries": [
+								"Du hast eine Resistenz gegen Kälteschaden."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Frigid Vengeance",
+							"entries": [
+								"Wenn dich eine Kreatur mit einem Angriffswurf trifft, kannst du deine Reaktion nutzen, um mit einem Ausbruch von magischem Zorn zu kontern. Die Kreatur muss einen Rettungswurf in Weisheit bestehen (DC gleich 8 + dein Fertigkeitsbonus + dein Konstitutionsmodifikator) oder sich bis zum Beginn ihres nächsten Zuges {@condition frightened} von dir entfernen. Du kannst deine Reaktion auf diese Weise so oft einsetzen, wie es deinem Fertigkeitsbonus entspricht, und du erhältst alle verbrauchten Einsätze zurück, wenn du eine lange Pause beendet hast."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Gift of the Chromatic Dragon",
 			"source": "FTD",
 			"page": 17,
@@ -3499,6 +3615,39 @@
 						"In der ersten Runde eines Kampfes gegen die von dir gewählten Feinde haben deine Angriffswürfe gegen jeden von ihnen einen Vorteil.",
 						"Wenn ein von dir gewählter Feind einen Gelegenheitsangriff gegen dich ausführt, macht er den Angriffswurf mit Nachteil.",
 						"Immer wenn du eine Intelligenzüberprüfung ({@skill Arcana}, {@skill History}, {@skill Nature} oder {@skill Religion}) machst, um dich an Informationen über deine gewählten Feinde zu erinnern, fügst du das Doppelte deines Fertigkeitsbonus zu der Überprüfung hinzu, auch wenn du normalerweise nicht geübt bist."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guile of the Cloud Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Du hast die luftige Sprache und Magie der Wolkenriesen manifestiert, was dir die folgenden Vorteile gewährt:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Misty Form",
+							"entries": [
+								"Du kannst den {@spell blur}-Zauber wirken, ohne einen Zauberplatz oder materielle Komponenten zu verwenden. Wenn du den Zauber auf diese Weise wirkst, musst du dich nicht mehr auf den Zauber konzentrieren. Wenn du den Zauber einmal auf diese Weise gewirkt hast, kannst du ihn erst nach einer langen Ruhepause wiederholen. Du kannst diesen Zauber auch auf normale Weise wirken, indem du Zauberslots der entsprechenden Stufe benutzt. Intelligenz, Weisheit oder Charisma ist deine Zauberfertigkeit für diese Eigenschaft (wähle sie, wenn du diese Fähigkeit erhältst)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Silver Tongue",
+							"entries": [
+								"Du erlangst die Beherrschung einer der beiden Fertigkeiten {@skill Deception} oder {@skill Persuasion}. Dein Fertigkeitsbonus verdoppelt sich bei jeder Fähigkeitsüberprüfung, die du mit dieser Fertigkeit durchführst."
+							]
+						}
 					]
 				}
 			]
@@ -4112,6 +4261,39 @@
 						"Sie wissen immer, in welcher Richtung Norden liegt.",
 						"Sie wissen immer, wie viele Stunden bis zum nächsten Sonnenaufgang oder Sonnenuntergang verbleiben.",
 						"Sie können sich genau an alles erinnern, was Sie im letzten Monat gesehen oder gehört haben."
+					]
+				}
+			]
+		},
+		{
+			"name": "Keenness of the Stone Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Du hast den Schutz und die Zauberei manifestiert, die für Steinriesen typisch sind und dir die folgenden Vorteile gewähren:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Dreamer's Magic",
+							"entries": [
+								"Du lernst den {@spell detect thoughts} Zauberspruch und einen {@filter 1st-level spell|spells|level=1|school=A;D} deiner Wahl. Der Zauber der 1. Stufe muss aus der Schule der Abjuration oder der Wahrsagerei sein. Du kannst jeden dieser Zauber wirken, ohne einen Zauberslot zu verbrauchen. Sobald du einen dieser Zauber auf diese Weise gewirkt hast, kannst du diesen Zauber erst wieder nach einer langen Ruhepause auf diese Weise wirken. Du kannst diese Zauber auch mit Hilfe von Zauberfeldern der entsprechenden Stufe wirken, die du besitzt. Intelligenz, Weisheit oder Charisma ist deine Zauberfertigkeit für diese Eigenschaft (wähle sie, wenn du diese Fähigkeit erhältst)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Mountain Sight",
+							"entries": [
+								"Du erhältst {@sense darkvision} bis zu einer Reichweite von 60 Fuß. Wenn du bereits {@sense darkvision} aus einer anderen Quelle hast, erhöht sich ihre Reichweite um 30 Fuß."
+							]
+						}
 					]
 				}
 			]
@@ -5107,6 +5289,41 @@
 			]
 		},
 		{
+			"name": "Outsized Might",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Du hast urzeitliche Magie in dich aufgenommen, die es dir erlaubt, trotz deiner relativ kleinen Statur die Macht titanischer Kreaturen zu verkörpern. Dies gewährt dir die folgenden Vorteile:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Little but Mighty",
+							"entries": [
+								"Du erlangst entweder die Fähigkeit {@skill Athletics} oder {@skill Acrobatics}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Powerful Build",
+							"entries": [
+								"Bei der Bestimmung der Tragfähigkeit und der Menge, die Sie schieben, ziehen oder heben können, gelten Sie als eine Nummer größer."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Stalwart",
+							"entries": [
+								"Du hast einen Vorteil bei Rettungswürfen gegen Bewegen oder Stoßen {@condition prone}."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Perceptive",
 			"source": "UAFeatsForSkills",
 			"page": 3,
@@ -5689,7 +5906,125 @@
 			"entries": [
 				"Du hast eine Reihe von Zaubern gelernt, die du als Rituale wirken kannst. Diese Zauber sind in einem Ritualbuch niedergeschrieben, das du in der Hand halten musst, wenn du einen dieser Zauber wirkst.",
 				"Wenn du diese Fähigkeit wählst, erhältst du ein Ritualbuch mit zwei Zaubern der 1. Stufe deiner Wahl. Wähle eine der folgenden Klassen: {@filter bard|spells|level=1|class=bard|components & miscellaneous=ritual}, {@filter cleric|spells|level=1|class=cleric|components & miscellaneous=ritual}, {@filter druid|spells|level=1|class=druid|components & miscellaneous=ritual}, {@filter sorcerer|spells|level=1|class=sorcerer|components & miscellaneous=ritual}, {@filter warlock|spells|level=1|class=warlock|components & miscellaneous=ritual} oder {@filter wizard|spells|level=1|class=wizard|components & miscellaneous=ritual}. Du musst deine Zauber aus der Zauberliste dieser Klasse wählen, und die gewählten Zauber müssen das Ritualkennzeichen haben. Die gewählte Klasse bestimmt auch deine Zauberfähigkeit für diese Zauber: Charisma für Barde, Zauberer oder Hexenmeister; Weisheit für Kleriker oder Druide; oder Intelligenz für Zauberer.",
-				"Wenn du auf einen Zauber in schriftlicher Form stößt, wie z.B. eine magische Schriftrolle oder das Zauberbuch eines Zauberers, kannst du ihn vielleicht in dein Ritualbuch aufnehmen. Der Zauber muss auf der Zauberliste der von dir gewählten Klasse stehen, die Stufe des Zaubers darf nicht höher sein als die Hälfte deiner Stufe (aufgerundet) und er muss das Ritualetikett tragen. Das Kopieren des Zaubers in dein Ritualbuch dauert 2 Stunden pro Stufe des Zaubers und kostet 50 gp pro Stufe. Die Kosten stellen die materiellen Komponenten dar, die du verbrauchst, wenn du mit dem Zauber experimentierst, um ihn zu meistern, sowie die feine Tinte, die du zum Aufzeichnen brauchst."
+				"Wenn du auf einen Zauber in schriftlicher Form stößt, wie z.B. ein Zauberbuch {@item spell scroll} oder ein Zauberbuch eines Zauberers, kannst du ihn vielleicht zu deinem Ritualbuch hinzufügen. Der Zauber muss auf der Zauberliste der von dir gewählten Klasse stehen, die Stufe des Zaubers darf nicht höher sein als die Hälfte deiner Stufe (aufgerundet) und er muss das Ritualetikett tragen. Das Kopieren des Zaubers in dein Ritualbuch dauert 2 Stunden pro Stufe des Zaubers und kostet 50 Gp pro Stufe. Die Kosten entsprechen den materiellen Komponenten, die du beim Experimentieren mit dem Zauber verbrauchst, um ihn zu meistern, sowie der feinen Tinte, die du für die Aufzeichnung brauchst."
+			]
+		},
+		{
+			"name": "Rune Carver Adept",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4,
+					"feat": [
+						"rune carver apprentice|ua2022giantoptions"
+					]
+				}
+			],
+			"entries": [
+				"Deine Fertigkeit in der Kunst des Runenhandwerks hat sich verbessert.",
+				"Immer wenn du eine lange Ruhepause beendest, kannst du nun eine Anzahl von Gegenständen, die deinem Fertigkeitsbonus entspricht, mit einer Rune aus der Fertigkeit Runenschnitzer-Lehrling markieren. Ein Gegenstand kann jeweils nur eine Rune tragen, und du musst jedem Gegenstand eine andere Rune aufprägen."
+			]
+		},
+		{
+			"name": "Rune Carver Apprentice",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Du hast begonnen, die Kunst der Runenschmiedekunst zu studieren, die es dir erlaubt, deine Gegenstände vorübergehend zu markieren und sie mit Magie zu versehen.",
+				"Immer wenn du eine lange Pause beendest, kannst du eine nichtmagische Waffe, Rüstung, ein Kleidungsstück oder einen anderen Gegenstand, den du berühren kannst, mit einer Rune deiner Wahl markieren. Du lernst vorübergehend einen Zauber der 1. Stufe, der auf der gewählten Rune basiert, wie in der Tabelle der Runenzauber angegeben, und du kennst den Zauber bis zum Ende einer langen Ruhepause, wenn die Rune verblasst.",
+				{
+					"type": "table",
+					"caption": "Rune Spells",
+					"colLabels": [
+						"Rune",
+						"Spell"
+					],
+					"colStyles": [
+						"col-2",
+						"col-10"
+					],
+					"rows": [
+						[
+							"Blut",
+							"{@spell False life}"
+						],
+						[
+							"Wolke",
+							"{@spell Fog cloud}"
+						],
+						[
+							"Tod",
+							"{@spell Ray of sickness}"
+						],
+						[
+							"Drache",
+							"{@spell Chromatic orb}"
+						],
+						[
+							"Feindliche",
+							"{@spell Bane}"
+						],
+						[
+							"Fire",
+							"{@spell Burning hands}"
+						],
+						[
+							"Freund",
+							"{@spell Bless}"
+						],
+						[
+							"Frost",
+							"{@spell Armor of Agathys}"
+						],
+						[
+							"Hill",
+							"{@spell Goodberry}"
+						],
+						[
+							"Reise",
+							"{@spell Longstrider}"
+						],
+						[
+							"King",
+							"{@spell Command}"
+						],
+						[
+							"Licht",
+							"{@spell Guiding bolt}"
+						],
+						[
+							"Life",
+							"{@spell Cure wounds}"
+						],
+						[
+							"Berg",
+							"{@spell Jump}"
+						],
+						[
+							"Schild",
+							"{@spell Shield}"
+						],
+						[
+							"Stein",
+							"{@spell Sanctuary}"
+						],
+						[
+							"Sturm",
+							"{@spell Thunderwave}"
+						],
+						[
+							"War",
+							"{@spell Heroism}"
+						],
+						[
+							"Wind",
+							"{@spell Feather fall}"
+						]
+					]
+				},
+				"Während du den mit der Rune gekennzeichneten Gegenstand trägst oder bei dir hast, kannst du den gewählten Zauber, der mit der Rune verbunden ist, einmal wirken, ohne einen Zauberplatz oder materielle Komponenten zu verwenden, und du kannst den Zauber auch mit allen Zauberplätzen wirken, die du hast.",
+				"Deine Zauberfähigkeit für diese Fähigkeit ist Intelligenz, Weisheit oder Charisma (wähle, wenn du diese Fähigkeit erhältst)"
 			]
 		},
 		{
@@ -6037,6 +6372,11 @@
 					}
 				}
 			],
+			"expertise": [
+				{
+					"anyProficientSkill": 2
+				}
+			],
 			"entries": [
 				"Du hast deine Fähigkeiten in bestimmten Fertigkeiten verfeinert, was dir die folgenden Vorteile verschafft:",
 				{
@@ -6142,6 +6482,39 @@
 					"items": [
 						"Wenn du einmal pro Zug eine Kreatur mit einem Angriff triffst, der Hiebschaden verursacht, kannst du die Geschwindigkeit des Ziels bis zum Beginn deines nächsten Zuges um 10 Fuß verringern.",
 						"Wenn du einen kritischen Treffer erzielst, der einer Kreatur Hiebschaden zufügt, verwundest du sie schwer. Bis zum Beginn deines nächsten Zuges hat das Ziel Nachteil bei allen Angriffswürfen."
+					]
+				}
+			]
+		},
+		{
+			"name": "Soul of the Storm Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Du hast Wahrsagefähigkeiten und Sturmmagie manifestiert, die für Sturmriesen typisch sind und dir die folgenden Vorteile gewähren:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Maelstrom Aura",
+							"entries": [
+								"Als Bonusaktion umgibst du dich mit einer Aura aus magischem Wind und Blitz, die sich 10 Fuß von dir entfernt in alle Richtungen ausbreitet, jedoch nicht durch vollständige Deckung hindurch. Die Aura hält 1 Minute lang an oder bis du {@condition incapacitated} bist. Solange die Aura aktiv ist, haben Angriffswürfe gegen dich einen Nachteil, und immer wenn eine Kreatur ihren Zug innerhalb der Sphäre beginnt, kannst du die Geschwindigkeit der Kreatur bis zum Beginn ihres nächsten Zuges halbieren lassen. Wenn du diese Bonusaktion einmal benutzt hast, kannst du sie erst wieder nach einer langen Ruhepause einsetzen."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Storm's Oracle",
+							"entries": [
+								"Du kannst den {@spell divination}-Zauber als Ritual wirken, ohne materielle Komponenten zu benötigen. Intelligenz, Weisheit oder Charisma ist deine Zauberfertigkeit für diese Eigenschaft (wähle sie, wenn du diese Fähigkeit erhältst). Wenn du den Zauber einmal auf diese Weise gewirkt hast, kannst du ihn erst wieder nach einer langen Pause wirken."
+							]
+						}
 					]
 				}
 			]
@@ -7462,6 +7835,39 @@
 			]
 		},
 		{
+			"name": "Vigor of the Hill Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Du hast die für Bergriesen typische Widerstandsfähigkeit manifestiert, die dir die folgenden Vorteile gewährt:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bulwark",
+							"entries": [
+								"Wenn du einem Effekt ausgesetzt bist, der dich um mindestens 5 Fuß bewegen oder umstoßen würde {@condition prone}, kannst du deine Reaktion nutzen, um dich zu stabilisieren. Du wirst dann weder bewegt noch umgestoßen {@condition prone}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Hearty Health",
+							"entries": [
+								"Wenn du einem Zauber unterliegst, der deine Trefferpunkte wiederherstellt, kannst du zusätzliche Trefferpunkte in Höhe deines Konstitutionsmodifikators zurückgewinnen. Du kannst diese zusätzlichen Trefferpunkte so oft wiederherstellen, wie es deinem Fertigkeitsbonus entspricht, und du erhältst alle verbrauchten Trefferpunkte zurück, wenn du eine lange Pause beendet hast."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "War Caster",
 			"source": "PHB",
 			"page": 170,
@@ -7639,7 +8045,7 @@
 							"type": "entries",
 							"name": "Lifter",
 							"entries": [
-								"Dieses Gerät kann als Flaschenzug verwendet werden und ermöglicht es seinem Benutzer, das Fünffache des Gewichts zu heben, das er normalerweise heben kann."
+								"Dieses Gerät kann als {@item block and tackle|PHB} verwendet werden und ermöglicht es seinem Benutzer, das Fünffache des Gewichts zu heben, das er normalerweise heben kann."
 							]
 						},
 						{

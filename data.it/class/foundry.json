@@ -374,7 +374,7 @@
 							"equipped": true,
 							"damage.parts": [
 								[
-									"1d@(scale.monk.die) + @mod",
+									"1d(@scale.monk.die) + @mod",
 									"bludgeoning"
 								]
 							],
@@ -4344,6 +4344,42 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Radiant Sun Bolt",
+			"source": "XGE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 3,
+			"subEntities": {
+				"item": [
+					{
+						"name": "Radiant Sun Bolt",
+						"source": "XGE",
+						"page": 35,
+						"type": "R",
+						"range": "30",
+						"rarity": "none",
+						"weaponCategory": "simple",
+						"entries": [
+							"Questo attacco speciale è un attacco a distanza con una gittata di 9 metri. Si è abili con esso e si aggiunge il proprio modificatore di Destrezza ai tiri di attacco e di danno.",
+							"Quando si effettua l'azione {@action Attack} nel proprio turno e si usa questo attacco speciale come parte di essa, si può spendere 1 punto ki per effettuare questo attacco speciale due volte come azione bonus. Quando si ottiene la caratteristica Attacco extra, questo attacco speciale può essere utilizzato per qualsiasi attacco effettuato nell'ambito dell'azione {@action Attack}."
+						],
+						"foundryData": {
+							"equipped": true,
+							"damage.parts": [
+								[
+									"1d(@scale.monk.die) + @mod",
+									"radiant"
+								]
+							],
+							"ability": "dex"
+						}
+					}
+				]
+			}
 		}
 	]
 }

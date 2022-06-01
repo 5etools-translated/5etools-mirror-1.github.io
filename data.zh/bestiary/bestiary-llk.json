@@ -2,7 +2,8 @@
 	"_meta": {
 		"dependencies": {
 			"monster": [
-				"MM"
+				"MM",
+				"VGM"
 			]
 		}
 	},
@@ -251,6 +252,68 @@
 			"miscTags": [
 				"MW"
 			]
+		},
+		{
+			"name": "East Wind",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LLK",
+			"page": 14,
+			"_copy": {
+				"name": "Martial Arts Adept",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the adept",
+						"with": "East Wind"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"东风的武器是一把长剑，这把长剑是（%0%）。"
+							]
+						}
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Polymorph Blade",
+							"entries": [
+								"{@atk mw,rw} {@hit 5}击中，到达5英尺，一个生物。{@h}7 ({@damage 1d8 + 3})穿刺伤害。如果东风在攻击卷上掷出20分，目标必须成功进行{@dc 15}智慧救赎，否则会受到{@spell polymorph}法术的影响。"
+							]
+						}
+					}
+				}
+			}
+		},
+		{
+			"name": "Elder Monastery of the Distressed Body Monk",
+			"source": "LLK",
+			"page": 12,
+			"_copy": {
+				"name": "Cult Fanatic",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "fanatic",
+						"with": "monk"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Dagger",
+						"items": {
+							"name": "Force Pike",
+							"entries": [
+								"{@atk mw,rw}{@hit 4}击中，达到5英尺或范围40/100英尺，一个生物。{@h}7 ({@damage 1d10 + 2})武力伤害。攻击对任何有抛光金属盔甲或盾牌的目标都是不利的，当通过烟雾或雾气射击时，其范围减半。"
+							]
+						}
+					}
+				}
+			}
 		},
 		{
 			"name": "Garret Levistusson",
@@ -583,6 +646,68 @@
 			]
 		},
 		{
+			"name": "Monastery of the Distressed Body Grand Master",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LLK",
+			"page": 14,
+			"_copy": {
+				"name": "Bone Devil",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "devil",
+						"with": "Grand Master"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": [
+							{
+								"name": "Vorpal Claws",
+								"entries": [
+									"Shards of a {@item vorpal sword} once broken against the devil replace its claws. A successful {@dc 12} Intelligence ({@skill Arcana}) or Wisdom ({@skill Perception}) check identifies them as such. When the devil rolls a 20 on an attack roll with a claw, the target is decapitated. (At your option, the attack can instead deal an extra {@damage 6d8} slashing damage.) A target is immune to this effect if it is immune to slashing damage, has legendary actions, doesn't have or need a head, or if you decide that the target is too large for its head to be cut off by the devil's claws. If removed, the shards lose their magical powers."
+								]
+							},
+							{
+								"name": "Teleportation Bracelets",
+								"entries": [
+									"Local teleportation-field bracelets encircle the devil's arms and tail. These devices allow the Grand Master to make its claw and sting attacks remotely, though still on the devil's turn and using its actions."
+								]
+							}
+						]
+					}
+				}
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Monastery of the Distressed Body Monk",
+			"source": "LLK",
+			"page": 12,
+			"_copy": {
+				"name": "Cultist",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "cultist",
+						"with": "monk"
+					},
+					"action": {
+						"mode": "replaceArr",
+						"replace": "Scimitar",
+						"items": {
+							"name": "Hooked Polearm",
+							"entries": [
+								"{@atk mw} {@hit 3}击中，到达5英尺，一个目标。{@h}4 ({@damage 1d6 + 1})穿刺伤害。如果目标是中型或小型生物，则是{@condition grappled}(逃跑{@dc 10})。在这个抓取动作结束之前，僧侣不能对另一个目标使用它的杆状武器。"
+							]
+						}
+					}
+				}
+			}
+		},
+		{
 			"name": "Ooze-Folk",
 			"source": "LLK",
 			"page": 46,
@@ -674,6 +799,42 @@
 			"miscTags": [
 				"MW"
 			]
+		},
+		{
+			"name": "West Wind",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LLK",
+			"page": 14,
+			"_copy": {
+				"name": "Martial Arts Adept",
+				"source": "VGM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the adept",
+						"with": "West Wind"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Special Equipment",
+							"entries": [
+								"西风的武器是一把长剑，是（%0%）的长剑。"
+							]
+						}
+					},
+					"action": {
+						"mode": "appendArr",
+						"items": {
+							"name": "Blade of the Medusa",
+							"entries": [
+								"{@atk mw,rw} {@hit 5}击中，到达5英尺，一个生物。{@h}7 ({@damage 1d8 + 3})穿刺伤害。如果西风在攻击卷上掷出20分，目标必须成功进行{@dc 15}宪法救赎，否则会受到{@spell flesh to stone}法术的影响。"
+							]
+						}
+					}
+				}
+			}
 		}
 	]
 }

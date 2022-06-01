@@ -266,11 +266,25 @@ const ListUtil = {
 	},
 
 	getOrTabRightButton: (id, icon) => {
-		let $btn = $(`#${id}`);
-		if (!$btn.length) {
-			$btn = $(`<button class="ui-tab__btn-tab-head btn btn-default" id="${id}"><span class="glyphicon glyphicon-${icon}"></span></button>`).appendTo($(`#tabs-right`));
-		}
-		return $btn;
+		const btnExisting = document.getElementById(id);
+		if (btnExisting) return $(btnExisting);
+
+		const btn = e_({
+			tag: "button",
+			clazz: "ui-tab__btn-tab-head btn btn-default",
+			id,
+			children: [
+				e_({
+					tag: "span",
+					clazz: `glyphicon glyphicon-${icon}`,
+				}),
+			],
+		});
+
+		const wrpBtns = document.getElementById("tabs-right");
+		wrpBtns.appendChild(btn);
+
+		return $(btn);
 	},
 
 	/**
@@ -386,6 +400,18 @@ const ListUtil = {
 				},
 			);
 			contextOptions.push(action);
+		}
+
+		if (opts.other) {
+			if (contextOptions.length) contextOptions.push(null); // Add a spacer after the previous group
+
+			opts.other.forEach(oth => {
+				const action = new ContextUtil.Action(
+					oth.name,
+					oth.pFn,
+				);
+				contextOptions.push(action);
+			});
 		}
 
 		const menu = ContextUtil.getMenu(contextOptions);

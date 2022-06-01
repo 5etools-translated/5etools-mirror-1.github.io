@@ -1,0 +1,612 @@
+{
+	"monster": [
+		{
+			"name": "Dankwood Duergar",
+			"source": "MGELFT",
+			"page": 32,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Dwarf"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"Plate Mail"
+					]
+				}
+			],
+			"hp": {
+				"formula": "4d8 + 8",
+				"average": 26
+			},
+			"speed": {
+				"walk": 25
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 14,
+			"int": 11,
+			"wis": 10,
+			"cha": 9,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"poison"
+			],
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Duergar Resilience",
+					"entries": [
+						"Der Dankwood-Duergar hat einen Vorteil bei Schutzwürfen gegen Gift, Zauber und Illusionen sowie bei der Resistenz gegen {@condition charmed} oder {@condition paralyzed}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"Solange er sich im Sonnenlicht befindet, hat der Dankwood-Duergar einen Nachteil bei Angriffswürfen und bei Weisheitsprüfungen ({@skill Perception}), die sich auf das Sehen beziehen."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Verbal Jab",
+					"entries": [
+						"Der Duergar stößt eine Reihe von Beleidigungen, die mit subtilen Verzauberungen versehen sind, auf eine Kreatur im Umkreis von 60 Fuß aus, die er sehen kann. Wenn die Kreatur sie hören kann (sie muss sie nicht verstehen), muss sie einen {@dc 12} Weisheitswurf bestehen oder {@damage 1d4} psychischen Schaden erleiden und beim nächsten Angriffswurf, den sie vor dem Ende ihrer nächsten Runde macht, einen Nachteil haben."
+					]
+				},
+				{
+					"name": "Haymaker",
+					"entries": [
+						"{@atk mw} {@hit 5} bis zum Treffer, Reichweite 5 ft., ein Ziel. {@h}9 ({@damage 1d6 + 6}) Schaden durch Wucht. Wenn der Duergar vergrößert ist, erhöht sich sein Schaden auf 10 ({@dice 2d6 + 3}) Wuchtschaden."
+					]
+				}
+			],
+			"traitTags": [
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Dankwood Grung",
+			"source": "MGELFT",
+			"page": 31,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Grung"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "5d6 + 10",
+				"average": 27
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"str": 7,
+			"dex": 16,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"dex": "+5"
+			},
+			"skill": {
+				"athletics": "+2",
+				"intimidation": "+4",
+				"perception": "+2",
+				"stealth": "+5"
+			},
+			"passive": 12,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"languages": [
+				"Grung"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Der Grung kann Luft und Wasser atmen."
+					]
+				},
+				{
+					"name": "Poisonous Skin",
+					"entries": [
+						"Jede Kreatur, die den Grung packt oder anderweitig in direkten Kontakt mit der Haut des Grungs kommt, muss einen {@dc 12} Konstitutionsschutzwurf bestehen oder wird 1 Minute lang {@condition poisoned}. Eine {@condition poisoned} Kreatur, die nicht mehr in indirektem Kontakt mit dem Grung steht, kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"Der Weitsprung des Grung beträgt bis zu 25 Fuß und der Hochsprung bis zu 15 Fuß, mit oder ohne Anlauf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Grumpy Grung Growl.",
+					"entries": [
+						"Aus der Kehle des Dankwood Grung ertönt ein wildes Glucksen, das alle im Umkreis von 15 Fuß warnt, dass er tatsächlich mürrisch ist. Kreaturen in diesem Gebiet müssen einen {@dc 12} Charisma-Sicherungswurf bestehen oder bis zum Ende ihres nächsten Zuges {@condition frightened} sein."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 0} Treffer, Reichweite 5 ft. oder 20/60 ft., ein Ziel. {@h}3 ({@damage 1d4 + 1}) Stich-Schaden im Nahkampf oder 3 ({@damage 1d4 + 1}) Stich-Schaden auf Distanz. Das Ziel muss einen {@dc 12} Konstitutionsschutzwurf bestehen oder 5 ({@damage 2d4}) Giftschaden erleiden."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "King Robbit the Slimy",
+			"source": "MGELFT",
+			"page": 32,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Grung"
+				]
+			},
+			"alignment": [
+				{
+					"special": "lawful grumpy"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "5d6 + 10",
+				"average": 27
+			},
+			"speed": {
+				"walk": 25,
+				"climb": 25
+			},
+			"str": 7,
+			"dex": 16,
+			"con": 15,
+			"int": 10,
+			"wis": 11,
+			"cha": 15,
+			"save": {
+				"dex": "+5"
+			},
+			"skill": {
+				"athletics": "+2",
+				"intimidation": "+4",
+				"perception": "+2",
+				"stealth": "+5"
+			},
+			"passive": 12,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"poisoned"
+			],
+			"languages": [
+				"Grung"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Der Grung kann Luft und Wasser atmen."
+					]
+				},
+				{
+					"name": "Poisonous Skin",
+					"entries": [
+						"Jede Kreatur, die den Grung packt oder anderweitig in direkten Kontakt mit der Haut des Grungs kommt, muss einen {@dc 12} Konstitutionsschutzwurf bestehen oder wird 1 Minute lang {@condition poisoned}. Eine {@condition poisoned} Kreatur, die nicht mehr in direktem Kontakt mit dem Grung steht, kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"Der Weitsprung des Grung beträgt bis zu 25 Fuß und der Hochsprung bis zu 15 Fuß, mit oder ohne Anlauf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Grumpy Grung Growl.",
+					"entries": [
+						"Aus der Kehle des Dankwood Grung ertönt ein wildes Glucksen, das alle im Umkreis von 15 Fee warnt, dass er tatsächlich mürrisch ist. Kreaturen in diesem Gebiet müssen einen {@dc 12} Charisma-Erhaltungswurf bestehen oder bis zum Ende ihres nächsten Zuges {@condition frightened} sein."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 0} Treffer, Reichweite 5 ft. oder 20/60 ft., ein Ziel. {@h}3 ({@damage 1d4 + 1}) Stich-Schaden im Nahkampf oder 3 ({@damage 1d4 + 1}) Stich-Schaden auf Distanz. Das Ziel muss einen {@dc 12} Konstitutionsschutzwurf bestehen oder 5 ({@damage 2d4}) Giftschaden erleiden."
+					]
+				},
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk rw} {@hit 5} bis Treffer, Reichweite 80/320 Fuß, ein Ziel. {@h}9 ({@damage 1d6 + 6}) Stich-Schaden. Das Ziel muss einen {@dc 12} Konstitutionsschutzwurf bestehen oder 5 ({@damage 2d4}) Giftschaden erleiden."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Sludge Hag",
+			"source": "MGELFT",
+			"page": 33,
+			"size": [
+				"M"
+			],
+			"type": "fey",
+			"alignment": [
+				{
+					"special": "neutral oozy"
+				}
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "11d8 + 33",
+				"average": 82
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 12,
+			"con": 16,
+			"int": 13,
+			"wis": 14,
+			"cha": 14,
+			"skill": {
+				"arcana": "+3",
+				"deception": "+4",
+				"perception": "+4",
+				"stealth": "+3"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"Common",
+				"Draconic",
+				"Sylvan"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"footerEntries": [
+						"The hag's innate spellcasting ability is Charisma (spell save {@dc 12}). She can innately cast the following spells, requiring no material components. "
+					],
+					"will": [
+						"{@spell acid splash}",
+						"{@spell dancing lights}",
+						"{@spell minor illusion}"
+					]
+				}
+			],
+			"trait": [
+				{
+					"name": "Amorphous",
+					"entries": [
+						"Der Schlammsauger kann sich durch einen bis zu 1 Zoll breiten Raum bewegen, ohne sich zu quetschen."
+					]
+				},
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Die Schlammhexe kann Luft und Wasser atmen."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Die Schlammhexe bricht in eine ölige Schlammpfütze zusammen. Solange sie sich nicht bewegt, ist die Schlammschlampe nicht von einer anderen öligen Lache zu unterscheiden."
+					]
+				},
+				{
+					"name": "Sludge Slap",
+					"entries": [
+						"{@atk mw} {@hit 6} Treffer, Reichweite 5 ft., ein Ziel. {@h}12 ({@damage 1d8 + 8}) Schaden durch Wucht, plus 4 ({@damage 1d8}) Säureschaden. Sludge Slap verursacht sowohl Wucht- als auch Säureschaden."
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous",
+				"Amphibious"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"S"
+			],
+			"damageTags": [
+				"A",
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Spiderfrog",
+			"source": "MGELFT",
+			"page": 33,
+			"size": [
+				"S"
+			],
+			"type": "beast",
+			"alignment": [
+				{
+					"special": "chaotic sticky"
+				}
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"formula": "2d8 + 4",
+				"average": 13
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 10,
+			"dex": 16,
+			"con": 14,
+			"int": 3,
+			"wis": 12,
+			"cha": 4,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+7"
+			},
+			"senses": [
+				"blindsight 10 ft.",
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Der Spinnenfrosch kann Luft und Wasser atmen."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"Der Spinnenfrosch kann auf schwierige Oberflächen klettern, auch kopfüber an der Decke, ohne eine Fähigkeitsprobe ablegen zu müssen."
+					]
+				},
+				{
+					"name": "Standing Leap",
+					"entries": [
+						"Der Weitsprung von Spiderfrog beträgt bis zu 20 Fuß und der Hochsprung bis zu 10 Fuß, mit oder ohne Anlauf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 2} bis zum Treffer, Reichweite 5 ft., ein Ziel. {@h}4 ({@damage 1d6 + 1}) Stich-Schaden. Ziel ist {@condition grappled} (Flucht {@dc 11}). Bis zum Ende des Haltegriffs ist das Ziel {@condition restrained} und Spinnenfrosch kann kein anderes Ziel beißen."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious",
+				"Spider Climb"
+			],
+			"senseTags": [
+				"B",
+				"D"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled",
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Yeti Tyke",
+			"source": "MGELFT",
+			"page": 34,
+			"size": [
+				"S"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				{
+					"special": "chaotic silly"
+				}
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "2d6 + 2",
+				"average": 9
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 10,
+			"dex": 11,
+			"con": 12,
+			"int": 6,
+			"wis": 8,
+			"cha": 5,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 9,
+			"immune": [
+				"cold"
+			],
+			"languages": [
+				"understands Yeti but can't speak"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Keen Smell",
+					"entries": [
+						"Der Yeti hat einen Vorteil bei Weisheitsprüfungen ({@skill Perception}), die auf Geruch basieren."
+					]
+				},
+				{
+					"name": "Snow Camouflage",
+					"entries": [
+						"Der Yeti hat einen Vorteil bei Geschicklichkeitsproben ({@skill Stealth}), um sich in verschneitem Gelände zu verstecken."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 2} bis zum Treffer, Reichweite 5 Fuß, ein Ziel. {@h}3 ({@damage 1d4 + 1}) Hiebschaden, plus 2 ({@damage 1d4}) Kälteschaden. Die Klaue verursacht sowohl Hieb- als auch Kälteschaden."
+					]
+				}
+			],
+			"traitTags": [
+				"Keen Senses"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"OTH"
+			],
+			"damageTags": [
+				"C",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

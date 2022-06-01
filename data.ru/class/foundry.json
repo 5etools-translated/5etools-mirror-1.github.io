@@ -374,7 +374,7 @@
 							"equipped": true,
 							"damage.parts": [
 								[
-									"1d@(scale.monk.die) + @mod",
+									"1d(@scale.monk.die) + @mod",
 									"bludgeoning"
 								]
 							],
@@ -4344,6 +4344,42 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Radiant Sun Bolt",
+			"source": "XGE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 3,
+			"subEntities": {
+				"item": [
+					{
+						"name": "Radiant Sun Bolt",
+						"source": "XGE",
+						"page": 35,
+						"type": "R",
+						"range": "30",
+						"rarity": "none",
+						"weaponCategory": "simple",
+						"entries": [
+							"Эта особая атака - дальняя атака заклинанием с радиусом действия 30 футов. Вы владеете ею на высоком уровне и добавляете свой модификатор ловкости к броскам атаки и урона.",
+							"Когда вы выполняете действие {@action Attack} в свой ход и используете эту специальную атаку в качестве его части, вы можете потратить 1 очко ки, чтобы выполнить эту специальную атаку дважды в качестве бонусного действия. Когда вы получаете способность \"Дополнительная атака\", эта особая атака может быть использована для любой из атак, которые вы совершаете в рамках действия {@action Attack}."
+						],
+						"foundryData": {
+							"equipped": true,
+							"damage.parts": [
+								[
+									"1d(@scale.monk.die) + @mod",
+									"radiant"
+								]
+							],
+							"ability": "dex"
+						}
+					}
+				]
+			}
 		}
 	]
 }

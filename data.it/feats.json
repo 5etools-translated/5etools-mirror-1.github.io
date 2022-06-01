@@ -547,7 +547,7 @@
 					"items": [
 						"Guadagni competenza con {@item alchemist's supplies|phb}. Se sei già abile con esse, aggiungerai il doppio del tuo bonus di competenza alle prove che effettui con esse.",
 						"Come azione, puoi identificare una pozione entro 5 piedi da te, come se l'avessi assaggiata. Devi vedere il liquido perché questo beneficio funzioni.",
-						"Nel corso di un qualsiasi riposo breve, puoi migliorare temporaneamente la potenza di una pozione di guarigione di qualsiasi rarità. Per utilizzare questo beneficio, devi avere con te {@item alchemist's supplies|phb} e la pozione deve essere a portata di mano. Se la pozione viene bevuta non più di 1 ora dopo la fine del breve riposo, la creatura che la beve può rinunciare al tiro di dado della pozione e recupera il numero massimo di punti ferita che la pozione può ripristinare."
+						"Nel corso di un breve riposo, è possibile migliorare temporaneamente la potenza di una pozione {@item potion of healing} di qualsiasi rarità. Per utilizzare questo beneficio, è necessario avere con sé {@item alchemist's supplies|phb} e la pozione deve essere a portata di mano. Se la pozione viene bevuta non più di 1 ora dopo il termine del riposo breve, la creatura che la beve può rinunciare al tiro di dado della pozione e riacquista il numero massimo di punti ferita che la pozione può ripristinare."
 					]
 				}
 			]
@@ -631,7 +631,7 @@
 					"type": "list",
 					"items": [
 						"Ottieni competenza nell'abilità {@skill Arcana}. Se sei già abile nell'abilità, aggiungerai il doppio del tuo bonus di competenza alle prove che effettui con essa.",
-						"Impari gli incantesimi {@spell prestidigitation} e {@spell detect magic}. Puoi lanciare rilevare la magia una volta senza spendere uno slot incantesimo e riacquisti la capacità di farlo quando finisci un riposo lungo."
+						"Si imparano gli incantesimi {@spell prestidigitation} e {@spell detect magic}. Si può lanciare {@spell detect magic} una volta senza spendere uno slot incantesimi e si riacquista la capacità di farlo al termine di un riposo lungo."
 					]
 				}
 			]
@@ -1177,7 +1177,7 @@
 							"type": "item",
 							"name": "Divine Omens",
 							"entries": [
-								"Puoi lanciare l'incantesimo augure e comune senza uno slot incantesimo, e devi finire {@dice 1d4} i riposi lunghi prima di poterlo lanciare di nuovo in questo modo. Puoi anche lanciare l'incantesimo usando gli slot incantesimo che hai del livello appropriato. L'abilità di lancio dell'incantesimo è quella scelta quando hai ottenuto il talento Divinely Favored."
+								"È possibile lanciare l'incantesimo {@spell augury} e {@spell commune} senza uno slot incantesimo, ma è necessario terminare {@dice 1d4} lunghi riposi prima di poterlo lanciare nuovamente in questo modo. L'incantesimo può essere lanciato anche utilizzando gli slot incantesimo del livello appropriato. La capacità di incantesimo dell'incantesimo è quella scelta quando si è ottenuto il talento Divinamente Favorito."
 							]
 						}
 					]
@@ -2691,6 +2691,50 @@
 			]
 		},
 		{
+			"name": "Elemental Touched",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"entries": [
+				"Siete stati esposti alla magia primordiale dei piani elementali, che vi garantisce un certo controllo sul mondo naturale che vi circonda. Si apprende il cantrip druidico o il cantrip {@spell thaumaturgy}, usando Intelligenza, Saggezza o Carisma come capacità di incantesimo (si sceglie quando si ottiene questo talento).",
+				"Ogni volta che si termina un riposo lungo, si può scegliere l'elemento a cui si è sintonizzati: Aria, Terra, Fuoco o Acqua. A seconda della scelta, si può usare un'azione bonus per provocare uno dei seguenti effetti:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Air",
+							"entries": [
+								"Si guadagna una velocità di volo pari alla propria velocità di camminata fino alla fine del proprio turno. Se si è in volo alla fine del proprio turno dopo aver usato questo movimento e non si è tenuti in volo da altri mezzi, si cade."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Earth",
+							"entries": [
+								"Il terreno nel raggio di 9 metri diventa {@quickref difficult terrain||3} per 1 minuto o finché non si crea di nuovo questo effetto. Durante questo periodo, potete muovervi su un terreno che è {@quickref difficult terrain||3} senza spendere movimento extra."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Fire",
+							"entries": [
+								"Ci si circonda di una nube di cenere e fumo. Fino alla fine del tuo turno, il tuo movimento non provoca attacchi di opportunità."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Water",
+							"entries": [
+								"Si può creare un forte getto d'acqua diretto a una creatura entro 3 metri da voi che potete vedere. La creatura deve riuscire a effettuare un tiro salvezza di Forza (che può scegliere di fallire) con una D.C. pari a 8 + il vostro modificatore di capacità incantatoria + il vostro bonus di competenza o essere spinta fino a 3 metri di distanza da voi. L'acqua svanisce immediatamente dopo che la creatura ha successo o fallito."
+							]
+						}
+					]
+				},
+				"Si può creare questo effetto un numero di volte pari al proprio bonus di competenza, e si recuperano tutti gli usi spesi al termine di un riposo lungo."
+			]
+		},
+		{
 			"name": "Elven Accuracy",
 			"source": "UAFeatsForRaces",
 			"page": 2,
@@ -2756,6 +2800,42 @@
 					"type": "list",
 					"items": [
 						"Ogni volta che hai vantaggio su un tiro di attacco usando Destrezza, Intelligenza, Saggezza o Carisma, puoi ritirare un dado una volta."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ember of the Fire Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"resist": [
+				"fire"
+			],
+			"entries": [
+				"Avete manifestato il combattimento infuocato emblematico dei giganti del fuoco, che vi garantisce i seguenti benefici:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Flame",
+							"entries": [
+								"Si ha resistenza ai danni da fuoco."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Searing Ignition",
+							"entries": [
+								"Quando si effettua l'azione {@action Attack} nel proprio turno, si può sostituire uno dei propri attacchi con un'esplosione magica di fiamme. Ogni creatura a vostra scelta entro 15 piedi da voi e che può vedervi deve effettuare un tiro salvezza di Destrezza (la DC è pari a 8 + il vostro bonus di competenza + il vostro modificatore di Costituzione). Se il tiro salvezza fallisce, la creatura subisce danni da fuoco pari a {@dice 2d6} + il vostro bonus di competenza e subisce {@condition blinded} fino all'inizio del vostro prossimo turno; se il tiro salvezza riesce, la creatura subisce la metà dei danni senza effetti aggiuntivi. Si può usare l'Accensione Ardente un numero di volte pari al proprio bonus di competenza, e si recuperano tutti gli usi effettuati al termine di un riposo lungo."
+							]
+						}
 					]
 				}
 			]
@@ -3216,6 +3296,42 @@
 			]
 		},
 		{
+			"name": "Fury of the Frost Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"resist": [
+				"cold"
+			],
+			"entries": [
+				"Hai manifestato la forza gelida emblematica dei giganti del gelo, che ti garantisce i seguenti benefici:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Born of Ice",
+							"entries": [
+								"Si ha resistenza ai danni da freddo."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Frigid Vengeance",
+							"entries": [
+								"Quando una creatura vi colpisce con un tiro di attacco, potete usare la vostra reazione per rispondere con una scarica di ira magica. La creatura deve riuscire in un tiro salvezza di Saggezza (la cui DC è pari a 8 + il vostro bonus di competenza + il vostro modificatore di Costituzione) o allontanarsi {@condition frightened} da voi fino all'inizio del suo prossimo turno. Si può usare la reazione in questo modo un numero di volte pari al proprio bonus di competenza, e si recuperano tutti gli usi spesi al termine di un riposo lungo."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Gift of the Chromatic Dragon",
 			"source": "FTD",
 			"page": 17,
@@ -3499,6 +3615,39 @@
 						"Durante il primo round di qualsiasi combattimento contro i tuoi nemici scelti, i tuoi tiri di attacco contro uno qualsiasi di loro hanno vantaggio.",
 						"Quando uno dei tuoi nemici scelti effettua un attacco di opportunità contro di te, effettua il tiro di attacco con svantaggio.",
 						"Ogni volta che effettui una prova di Intelligenza ({@skill Arcana}, {@skill History}, {@skill Nature} o {@skill Religion}) per ricordare informazioni sui tuoi nemici scelti, aggiungi il doppio del tuo bonus di competenza alla prova, anche se non sei normalmente abile."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guile of the Cloud Giant",
+			"source": "UA2022GiantOptions",
+			"page": 4,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Hai manifestato il linguaggio arioso e la magia emblematica dei giganti delle nuvole, che ti garantiscono i seguenti benefici:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Misty Form",
+							"entries": [
+								"È possibile lanciare l'incantesimo {@spell blur} senza utilizzare uno slot incantesimo o componenti materiali. Quando si lancia l'incantesimo in questo modo, non è necessario mantenere la concentrazione su di esso. Una volta lanciato l'incantesimo in questo modo, non è possibile farlo di nuovo fino al termine di un lungo riposo. Si può anche lanciare questo incantesimo in modo normale utilizzando gli slot incantesimi di cui si dispone del livello appropriato. Intelligenza, Saggezza o Carisma sono le capacità di incantesimo per questa caratteristica (da scegliere quando si ottiene questa caratteristica)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Silver Tongue",
+							"entries": [
+								"Si ottiene una competenza nell'abilità {@skill Deception} o {@skill Persuasion}. Il bonus di competenza è raddoppiato per qualsiasi prova di abilità effettuata con questa abilità."
+							]
+						}
 					]
 				}
 			]
@@ -4112,6 +4261,39 @@
 						"Si sa sempre da che parte è il nord.",
 						"Si conosce sempre il numero di ore che mancano alla prossima alba o al prossimo tramonto.",
 						"Puoi ricordare accuratamente qualsiasi cosa tu abbia visto o sentito nell'ultimo mese."
+					]
+				}
+			]
+		},
+		{
+			"name": "Keenness of the Stone Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Hai manifestato la protezione e l'incantesimo emblematici dei giganti di pietra, che ti garantiscono i seguenti benefici:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Dreamer's Magic",
+							"entries": [
+								"Si impara l'incantesimo {@spell detect thoughts} e uno {@filter 1st-level spell|spells|level=1|school=A;D} a scelta. L'incantesimo di 1° livello deve appartenere alla scuola di magia dell'abiurazione o della divinazione. È possibile lanciare ciascuno di questi incantesimi senza spendere uno slot incantesimo. Una volta lanciato uno di questi incantesimi in questo modo, non è possibile lanciarlo di nuovo fino al termine di un lungo riposo. Si possono lanciare questi incantesimi anche utilizzando gli slot incantesimo del livello appropriato. Intelligenza, Saggezza o Carisma sono le capacità di incantesimo per questa caratteristica (da scegliere quando si ottiene questa caratteristica)."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Mountain Sight",
+							"entries": [
+								"Si guadagna {@sense darkvision} fino a una portata di 60 piedi. Se si dispone già di {@sense darkvision} da un'altra fonte, la sua portata aumenta di 9 metri."
+							]
+						}
 					]
 				}
 			]
@@ -5107,6 +5289,41 @@
 			]
 		},
 		{
+			"name": "Outsized Might",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Hai assorbito una magia primordiale che ti permette, nonostante la tua statura relativamente piccola, di incarnare la forza di creature titaniche. Questo vi garantisce i seguenti benefici:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Little but Mighty",
+							"entries": [
+								"Si ottiene una competenza nell'abilità {@skill Athletics} o {@skill Acrobatics}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Powerful Build",
+							"entries": [
+								"Per determinare la propria capacità di carico e la quantità che si può spingere, trascinare o sollevare, si considera una taglia in più."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Stalwart",
+							"entries": [
+								"Si ha un vantaggio nei tiri salvezza contro lo spostamento o l'urto {@condition prone}."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Perceptive",
 			"source": "UAFeatsForSkills",
 			"page": 3,
@@ -5689,7 +5906,125 @@
 			"entries": [
 				"Hai imparato un certo numero di incantesimi che puoi lanciare come rituali. Questi incantesimi sono scritti in un libro di rituali, che devi avere in mano mentre lanci uno di essi.",
 				"Quando scegli questa impresa, acquisisci un libro rituale contenente due incantesimi di 1° livello a tua scelta. Scegli una delle seguenti classi: {@filter bard|spells|level=1|class=bard|components & miscellaneous=ritual}, {@filter cleric|spells|level=1|class=cleric|components & miscellaneous=ritual}, {@filter druid|spells|level=1|class=druid|components & miscellaneous=ritual}, {@filter sorcerer|spells|level=1|class=sorcerer|components & miscellaneous=ritual}, {@filter warlock|spells|level=1|class=warlock|components & miscellaneous=ritual} o {@filter wizard|spells|level=1|class=wizard|components & miscellaneous=ritual}. Devi scegliere i tuoi incantesimi dalla lista degli incantesimi di quella classe e gli incantesimi che scegli devono avere il tag rituale. La classe scelta determina anche la tua capacità di incantatore per questi incantesimi: Carisma per il bardo, lo stregone o il warlock; Saggezza per il chierico o il druido o Intelligenza per il mago.",
-				"Se ti imbatti in un incantesimo in forma scritta, come una pergamena magica o il libro degli incantesimi di un mago, potresti aggiungerlo al tuo libro dei rituali. L'incantesimo deve essere presente nella lista degli incantesimi della classe che hai scelto, il livello dell'incantesimo non può essere superiore alla metà del tuo livello (arrotondato per eccesso) e deve avere il tag rituale. Il processo di copia dell'incantesimo nel tuo libro dei rituali richiede 2 ore per livello dell'incantesimo e costa 50 gp per livello. Il costo rappresenta i componenti materiali che spendi mentre sperimenti l'incantesimo per padroneggiarlo, così come gli inchiostri fini di cui hai bisogno per registrarlo."
+				"Se vi imbattete in un incantesimo in forma scritta, come un libro di incantesimi magici {@item spell scroll} o di un mago, potreste aggiungerlo al vostro libro dei rituali. L'incantesimo deve essere presente nella lista degli incantesimi della classe scelta, il suo livello non può essere superiore alla metà del proprio livello (arrotondato per eccesso) e deve avere il marchio del rituale. Il processo di copiatura dell'incantesimo nel libro dei rituali richiede 2 ore per ogni livello dell'incantesimo e costa 50 gp per livello. Il costo rappresenta i componenti materiali che si spendono mentre si sperimenta l'incantesimo per padroneggiarlo, oltre agli inchiostri pregiati necessari per registrarlo."
+			]
+		},
+		{
+			"name": "Rune Carver Adept",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4,
+					"feat": [
+						"rune carver apprentice|ua2022giantoptions"
+					]
+				}
+			],
+			"entries": [
+				"La tua abilità nell'arte del runecraft è aumentata.",
+				"Ogni volta che si termina un riposo lungo, è possibile contrassegnare un numero di oggetti pari al proprio bonus di competenza con una runa del talento Apprendista scultore di rune. Un oggetto può avere una sola runa alla volta e deve essere incisa una runa diversa su ogni oggetto."
+			]
+		},
+		{
+			"name": "Rune Carver Apprentice",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"entries": [
+				"Hai iniziato a studiare l'arte del runecraft, che ti permette di contrassegnare temporaneamente i tuoi oggetti e di impregnarli di magia.",
+				"Ogni volta che si termina un riposo lungo, si può marcare un'arma non magica, un'armatura, un capo di abbigliamento o un altro oggetto che si può toccare con una runa a scelta. Si impara temporaneamente un incantesimo di 1° livello basato sulla runa scelta, come specificato nella tabella Incantesimi con rune, e si conosce l'incantesimo fino al termine di un riposo lungo, quando la runa svanisce.",
+				{
+					"type": "table",
+					"caption": "Rune Spells",
+					"colLabels": [
+						"Rune",
+						"Spell"
+					],
+					"colStyles": [
+						"col-2",
+						"col-10"
+					],
+					"rows": [
+						[
+							"Sangue",
+							"{@spell False life}"
+						],
+						[
+							"Nuvola",
+							"{@spell Fog cloud}"
+						],
+						[
+							"La morte",
+							"{@spell Ray of sickness}"
+						],
+						[
+							"Drago",
+							"{@spell Chromatic orb}"
+						],
+						[
+							"Nemico",
+							"{@spell Bane}"
+						],
+						[
+							"Fire",
+							"{@spell Burning hands}"
+						],
+						[
+							"Amico",
+							"{@spell Bless}"
+						],
+						[
+							"Gelo",
+							"{@spell Armor of Agathys}"
+						],
+						[
+							"Hill",
+							"{@spell Goodberry}"
+						],
+						[
+							"Viaggio",
+							"{@spell Longstrider}"
+						],
+						[
+							"King",
+							"{@spell Command}"
+						],
+						[
+							"Luce",
+							"{@spell Guiding bolt}"
+						],
+						[
+							"Life",
+							"{@spell Cure wounds}"
+						],
+						[
+							"Montagna",
+							"{@spell Jump}"
+						],
+						[
+							"Scudo",
+							"{@spell Shield}"
+						],
+						[
+							"Pietra",
+							"{@spell Sanctuary}"
+						],
+						[
+							"Tempesta",
+							"{@spell Thunderwave}"
+						],
+						[
+							"War",
+							"{@spell Heroism}"
+						],
+						[
+							"Wind",
+							"{@spell Feather fall}"
+						]
+					]
+				},
+				"Mentre si indossa o si porta con sé l'oggetto con il marchio della runa, si può lanciare l'incantesimo scelto associato alla runa una volta senza utilizzare uno slot incantesimo o componenti materiali, e si può anche lanciare l'incantesimo utilizzando tutti gli slot incantesimo di cui si dispone.",
+				"L'abilità di incantesimo per questa prodezza è Intelligenza, Saggezza o Carisma (scegliere quando si ottiene questa prodezza)."
 			]
 		},
 		{
@@ -6037,6 +6372,11 @@
 					}
 				}
 			],
+			"expertise": [
+				{
+					"anyProficientSkill": 2
+				}
+			],
 			"entries": [
 				"Hai affinato la tua competenza con particolari abilità, concedendoti i seguenti benefici:",
 				{
@@ -6142,6 +6482,39 @@
 					"items": [
 						"Una volta per turno, quando colpisci una creatura con un attacco che infligge danni da taglio, puoi ridurre la velocità del bersaglio di 10 piedi fino all'inizio del tuo prossimo turno.",
 						"Quando ottieni un colpo critico che infligge danni da taglio a una creatura, la ferisci gravemente. Fino all'inizio del tuo prossimo turno, il bersaglio ha svantaggio su tutti i tiri per colpire."
+					]
+				}
+			]
+		},
+		{
+			"name": "Soul of the Storm Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 8
+				}
+			],
+			"entries": [
+				"Hai manifestato capacità divinatorie e la magia della tempesta, emblematica dei giganti della tempesta, che ti garantisce i seguenti benefici:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Maelstrom Aura",
+							"entries": [
+								"Come azione bonus, ci si circonda di un'aura di vento e fulmini magici che si estende a 3 metri da noi in ogni direzione, ma non attraverso una copertura totale. L'aura dura per 1 minuto o finché non si è {@condition incapacitated}. Mentre l'aura è attiva, i tiri di attacco contro di voi hanno svantaggio e ogni volta che una creatura inizia il suo turno all'interno della sfera, potete costringerla a dimezzare la sua velocità fino all'inizio del suo turno successivo. Una volta utilizzata questa azione bonus, non è possibile ripeterla fino al termine di un riposo lungo."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Storm's Oracle",
+							"entries": [
+								"Si può lanciare l'incantesimo {@spell divination} come un rituale, senza bisogno di componenti materiali. Intelligenza, Saggezza o Carisma sono le capacità di incantesimo per questa caratteristica (da scegliere quando si ottiene questa caratteristica). Una volta lanciato l'incantesimo in questo modo, non è possibile farlo di nuovo fino al termine di un riposo lungo."
+							]
+						}
 					]
 				}
 			]
@@ -7462,6 +7835,39 @@
 			]
 		},
 		{
+			"name": "Vigor of the Hill Giant",
+			"source": "UA2022GiantOptions",
+			"page": 5,
+			"prerequisite": [
+				{
+					"level": 4
+				}
+			],
+			"entries": [
+				"Hai manifestato la resilienza emblematica dei giganti delle colline, che ti garantisce i seguenti benefici:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bulwark",
+							"entries": [
+								"Quando si subisce un effetto che potrebbe spostare l'individuo di almeno un metro e mezzo o farlo cadere {@condition prone}, si può usare la propria reazione per stabilizzarsi. In questo modo non si viene né spostati né colpiti {@condition prone}."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Hearty Health",
+							"entries": [
+								"Quando si subisce un incantesimo che ripristina i punti ferita, si possono recuperare punti ferita aggiuntivi pari al proprio modificatore di Costituzione. Si possono riacquistare questi punti ferita aggiuntivi un numero di volte pari al proprio bonus di competenza, e si riacquistano tutti gli usi spesi al termine di un riposo lungo."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "War Caster",
 			"source": "PHB",
 			"page": 170,
@@ -7639,7 +8045,7 @@
 							"type": "entries",
 							"name": "Lifter",
 							"entries": [
-								"Questo dispositivo può essere usato come un blocco e un paranco, permettendo al suo utente di sollevare cinque volte il peso che l'utente può normalmente sollevare."
+								"Questo dispositivo può essere utilizzato come {@item block and tackle|PHB}, consentendo all'utente di sollevare un peso cinque volte superiore a quello normalmente sollevabile."
 							]
 						},
 						{
