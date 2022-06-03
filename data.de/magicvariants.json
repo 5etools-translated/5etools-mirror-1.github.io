@@ -397,7 +397,7 @@
 						"type": "entries",
 						"name": "Disheartening Strike",
 						"entries": [
-							"Wenn du eine Kreatur mit einem Angriff mit dieser Waffe triffst, kannst du das Ziel mit beunruhigendem Schrecken erfüllen: Das Ziel hat beim nächsten Rettungswurf, den es vor dem Ende deines nächsten Zuges macht, einen Nachteil. Die Kreatur ignoriert diesen Effekt, wenn sie immun gegen den Zustand {@condition frightened} ist. Wenn du diese Eigenschaft einmal benutzt hast, kannst du sie bis zur nächsten Abenddämmerung nicht wieder benutzen."
+							"Wenn du eine Kreatur mit einem Angriff mit dieser Waffe triffst, kannst du das Ziel mit beunruhigendem Schrecken erfüllen: Das Ziel hat beim nächsten Rettungswurf, den es vor dem Ende deines nächsten Zuges macht, Nachteil. Die Kreatur ignoriert diesen Effekt, wenn sie gegen den Zustand {@condition frightened} immun ist. Wenn du diese Eigenschaft einmal benutzt hast, kannst du sie bis zur nächsten Abenddämmerung nicht wieder benutzen."
 						]
 					}
 				]
@@ -810,7 +810,7 @@
 			"ammo": true,
 			"entries": [
 				"{@note * This generic variant has the same name and source as the item {@item arrow of slaying}}.",
-				"Eine {@italic arrow of slaying} ist eine magische Waffe, mit der eine bestimmte Art von Kreatur getötet werden kann. Einige sind stärker fokussiert als andere; zum Beispiel gibt es sowohl {@italic arrows of dragon slaying} als auch {@italic arrows of blue dragon slaying}. Wenn eine Kreatur, die dem Typ, der Rasse oder der Gruppe angehört, die mit einem {@italic arrow of slaying} assoziiert ist, durch den Pfeil Schaden erleidet, muss die Kreatur einen Gleichheitswert von 17 für einen Konstitutionsschutzwurf ablegen und erleidet bei einem misslungenen Schutz einen zusätzlichen Stichschaden von {@dice 6d10} oder bei einem erfolgreichen Schutz die Hälfte des zusätzlichen Schadens.",
+				"Eine {@italic arrow of slaying} ist eine magische Waffe, mit der eine bestimmte Art von Kreatur getötet werden kann. Einige sind stärker fokussiert als andere; zum Beispiel gibt es sowohl {@italic arrows of dragon slaying} als auch {@italic arrows of blue dragon slaying}. Wenn eine Kreatur, die dem Typ, der Rasse oder der Gruppe angehört, die mit einem {@italic arrow of slaying} assoziiert ist, durch den Pfeil Schaden erleidet, muss die Kreatur einen Rettungswurf der Konstitution DC 17 ablegen und erleidet bei einem misslungenen Rettungswurf zusätzlich {@dice 6d10} Stichschaden, bei einem erfolgreichen Rettungswurf die Hälfte des zusätzlichen Schadens.",
 				"Sobald ein {@italic arrow of slaying} einer Kreatur seinen zusätzlichen Schaden zufügt, wird er zu einem nichtmagischen Pfeil.",
 				"Es gibt auch andere Arten von magischer Munition dieser Art, wie z. B. Tötungsbolzen für eine Armbrust, aber am häufigsten sind Pfeile."
 			],
@@ -822,7 +822,7 @@
 				"tier": "minor",
 				"rarity": "very rare",
 				"entries": [
-					"{=baseName/at} {=baseName/l} des Tötens ist eine magische Waffe, mit der man eine bestimmte Art von Kreatur tötet. Einige sind stärker fokussiert als andere; zum Beispiel gibt es sowohl {@i {=baseName/l}s der Drachentötung} als auch {@i {=baseName/l}s der blauen Drachentötung}. Wenn eine Kreatur, die dem Typ, der Rasse oder der Gruppe angehört, der/die mit {=baseName/a} {=baseName/l} der Tötung assoziiert ist, durch den {=baseName/l} Schaden erleidet, muss die Kreatur einen Konstitutionsschutzwurf von DC 17 ablegen und erleidet bei einem misslungenen Schutzwurf einen zusätzlichen Stichschaden von {@dice 6d10} oder bei einem erfolgreichen Schutzwurf die Hälfte des zusätzlichen Schadens.",
+					"{=baseName/at} {=baseName/l} des Tötens ist eine magische Waffe, die zum Töten einer bestimmten Art von Kreatur bestimmt ist. Einige sind stärker fokussiert als andere; zum Beispiel gibt es sowohl {@i {=baseName/l}s der Drachentötung} als auch {@i {=baseName/l}s der blauen Drachentötung}. Wenn eine Kreatur, die dem Typ, der Rasse oder der Gruppe angehört, die mit {=baseName/a} {=baseName/l} der Tötung assoziiert ist, durch den {=baseName/l} Schaden erleidet, muss die Kreatur einen Rettungswurf der Konstitution von DC 17 ablegen, wobei sie bei einem misslungenen Rettungswurf zusätzlich {@dice 6d10} Stichschaden erleidet, bei einem erfolgreichen Rettungswurf halb so viel zusätzlichen Schaden.",
 					"Sobald {=baseName/a} {=baseName/l} des Tötens einer Kreatur ihren zusätzlichen Schaden zufügt, wird sie zu einem nichtmagischen {=baseName/l}."
 				]
 			},
@@ -847,7 +847,7 @@
 					"Diese Waffe ist mit Drachenköpfen, -klauen, -flügeln, -schuppen oder drakonischen Schriftzeichen verziert. Wenn sie in einen Drachenhort eindringt, absorbiert sie die Energie der Atemwaffe des Drachens und verursacht mit ihren besonderen Eigenschaften Schaden dieses Typs.",
 					"Immer wenn du bei deinem Angriffswurf mit dieser Waffe eine 20 würfelst, erleidet jede Kreatur deiner Wahl im Umkreis von 5 Fuß um das Ziel 5 Schadenspunkte des Typs, der von der Atemwaffe des Drachens verursacht wird.",
 					"Du erhältst einen Bonus von {=bonusWeapon} auf Angriffs- und Schadenswürfe mit dieser Waffe. Bei einem Treffer verursacht die Waffe zusätzlich {@damage 3d6} Schaden des Typs, der von der Atemwaffe des Drachens verursacht wird.",
-					"Als Aktion kannst du mit dieser Waffe einen Kegel von 60 Fuß zerstörerischer Energie entfesseln. Jede Kreatur in diesem Bereich muss einen Schutzwurf von DC 18 auf Geschicklichkeit ablegen. Bei einem misslungenen Schutzwurf erleidet sie {@damage 12d6} des Schadens, den die Atemwaffe des Drachens verursacht, bei einem erfolgreichen Schutzwurf halb so viel Schaden. Sobald diese Aktion eingesetzt wurde, kann sie bis zur nächsten Morgendämmerung nicht mehr verwendet werden."
+					"Als Aktion kannst du mit dieser Waffe einen Kegel von 60 Fuß zerstörerischer Energie entfesseln. Jede Kreatur in diesem Bereich muss einen Rettungswurf von DC 18 in Geschicklichkeit ablegen. Bei einem misslungenen Rettungswurf erleidet sie {@damage 12d6} Schaden des Typs, den die Atemwaffe des Drachens verursacht, bei einem erfolgreichen Rettungswurf halb so viel Schaden. Sobald diese Aktion eingesetzt wurde, kann sie bis zur nächsten Morgendämmerung nicht mehr verwendet werden."
 				]
 			}
 		},
@@ -905,7 +905,7 @@
 							"Diese Axt ist verflucht, und wenn du dich auf sie einstimmst, überträgt sich der Fluch auf dich. Solange du verflucht bist, willst du dich nicht von der Axt trennen und hältst sie immer in Reichweite. Du hast außerdem einen Nachteil bei Angriffswürfen mit anderen Waffen als dieser, es sei denn, es befindet sich kein Feind im Umkreis von 60 Fuß, den du sehen oder hören kannst."
 						]
 					},
-					"Immer wenn eine feindliche Kreatur dir Schaden zufügt, während die Axt in deinem Besitz ist, musst du einen DC 15 Weisheitswurf bestehen oder du wirst berserkerhaft. Während du im Berserker bist, musst du jede Runde deine Aktion nutzen, um die Kreatur, die dir am nächsten ist, mit der Axt anzugreifen. Wenn du als Teil der {@action Attack}-Aktion zusätzliche Angriffe durchführen kannst, nutzt du diese zusätzlichen Angriffe und greifst die nächstgelegene Kreatur an, nachdem du dein aktuelles Ziel gefällt hast. Wenn du mehrere mögliche Ziele hast, greifst du eines nach dem Zufallsprinzip an. Du bist berserkerhaft, bis du deinen Zug ohne Kreaturen im Umkreis von 60 Fuß beginnst, die du sehen oder hören kannst."
+					"Immer wenn eine feindliche Kreatur dir Schaden zufügt, während die Axt in deinem Besitz ist, musst du einen Rettungswurf der Weisheit mit DC 15 bestehen oder du wirst berserkerhaft. Während du im Berserker bist, musst du jede Runde deine Aktion nutzen, um die Kreatur, die dir am nächsten ist, mit der Axt anzugreifen. Wenn du im Rahmen der {@action Attack}-Aktion zusätzliche Angriffe durchführen kannst, nutzt du diese zusätzlichen Angriffe und greifst die nächstgelegene Kreatur an, nachdem du dein aktuelles Ziel gefällt hast. Wenn du mehrere mögliche Ziele hast, greifst du eines nach dem Zufallsprinzip an. Du bist so lange berserkerhaft, bis du deinen Zug ohne Kreaturen im Umkreis von 60 Fuß beginnst, die du sehen oder hören kannst."
 				],
 				"lootTables": [
 					"Magic Item Table G"
@@ -929,13 +929,13 @@
 				"reqAttune": true,
 				"curse": true,
 				"entries": [
-					"Wenn du eine Kreatur mit dieser magischen Waffe angreifst und beim Angriffswurf eine 20 würfelst, muss die Kreatur zusätzlich zu den normalen Effekten des Angriffs einen Konstitutionsschutzwurf von DC 15 ablegen. Bei einem misslungenen Schutzwurf ist die Kreatur gefesselt und muss am Ende jeder ihrer Runden einen weiteren Konstitutionsschutzwurf ablegen. Wenn sie dreimal erfolgreich gegen diesen Effekt rettet, endet der Effekt. Gelingt der Schutz dreimal nicht, wird die Kreatur zu Stein verwandelt und erleidet 1 Stunde lang den Zustand {@condition petrified}.",
+					"Wenn du eine Kreatur mit dieser magischen Waffe angreifst und beim Angriffswurf eine 20 würfelst, muss die Kreatur zusätzlich zu den normalen Effekten des Angriffs einen Rettungswurf von DC 15 auf ihre Konstitution ablegen. Bei einem misslungenen Rettungswurf ist die Kreatur gefesselt und muss am Ende jeder ihrer Runden einen weiteren Rettungswurf auf die Konstitution machen. Wenn sie dreimal erfolgreich gegen diesen Effekt rettet, endet der Effekt. Gelingt der Schutz dreimal nicht, wird die Kreatur zu Stein verwandelt und erleidet 1 Stunde lang den Zustand {@condition petrified}.",
 					"Eine Kreatur ist gegen diesen Effekt immun, wenn sie gegen Schaden des Waffentyps immun ist, keinen Körper aus Fleisch hat oder über legendäre Aktionen verfügt.",
 					{
 						"name": "Curse",
 						"type": "entries",
 						"entries": [
-							"Diese Waffe ist verflucht, und wenn du dich auf sie einstimmst, überträgt sich der Fluch auf dich. Solange der Fluch nicht durch einen {@spell remove curse} Zauber oder ähnliche Magie gebrochen ist, bist du nicht bereit, dich von der Waffe zu trennen. Immer wenn du eine Kreatur mit dieser Waffe angreifst und beim Angriffswurf eine 1 würfelst, musst du einen Konstitutionsschutzwurf von DC 15 bestehen oder {@condition restrained} werden und gezwungen sein, zusätzliche Schutzwürfe gegen {@condition petrified} zu machen, wie oben beschrieben."
+							"Diese Waffe ist verflucht, und wenn du dich auf sie einstimmst, überträgt sich der Fluch auf dich. Solange der Fluch nicht durch einen {@spell remove curse}-Zauber oder ähnliche Magie gebrochen wird, bist du nicht bereit, dich von der Waffe zu trennen. Immer wenn du eine Kreatur mit dieser Waffe angreifst und beim Angriffswurf eine 1 würfelst, musst du einen Rettungswurf von DC 15 auf die Konstitution bestehen oder du wirst {@condition restrained} und bist gezwungen, zusätzliche Rettungswürfe gegen {@condition petrified} zu machen, wie oben beschrieben."
 						]
 					}
 				]
@@ -977,7 +977,7 @@
 				"bonusWeapon": "+1",
 				"entries": [
 					"Du erhältst einen Bonus von {=bonusWeapon} auf Angriffs- und Schadenswürfe mit dieser magischen Waffe.",
-					"Wenn du eine untote Kreatur mit einem Angriff mit dieser Waffe triffst, fügt der Angriff zusätzliche {@damage 1d8} Schaden des Waffentyps zu, und die Kreatur hat bis zum Beginn deines nächsten Zuges Nachteil bei Schutzwürfen gegen Effekte, die Untote verwandeln."
+					"Wenn du eine untote Kreatur mit einem Angriff mit dieser Waffe triffst, fügt der Angriff zusätzlichen {@damage 1d8} Schaden des Waffentyps zu, und die Kreatur hat bis zum Beginn deines nächsten Zuges Nachteil bei Rettungswürfen gegen Effekte, die Untote verwandeln."
 				]
 			}
 		},
@@ -1359,7 +1359,7 @@
 				"bonusWeapon": "+1",
 				"entries": [
 					"Du erhältst einen Bonus von +1 auf Angriffs- und Schadenswürfe mit dieser magischen Waffe.",
-					"Wenn du einen Giganten damit triffst, erleidet dieser zusätzlich {@dice 2d6} Schaden des Waffentyps und muss einen DC 15 Stärkeschutzwurf bestehen oder {@condition prone} fallen. Für die Zwecke dieser Waffe bezieht sich \"Riese\" auf jede Kreatur mit dem Typ Riese, einschließlich Ettins und Trolle."
+					"Wenn du damit einen Riesen triffst, erleidet dieser einen zusätzlichen {@dice 2d6} Schaden des Waffentyps und muss einen Rettungswurf von DC 15 Stärke bestehen oder er fällt {@condition prone}. Für die Zwecke dieser Waffe bezieht sich \"Riese\" auf jede Kreatur mit dem Typ Riese, einschließlich Ettins und Trolle."
 				],
 				"lootTables": [
 					"Magic Item Table G"
@@ -1411,7 +1411,7 @@
 				"bonusWeapon": "+3",
 				"entries": [
 					"Du erhältst einen Bonus von +3 auf Angriffs- und Schadenswürfe mit dieser magischen Waffe. Wenn du damit einen Unhold oder einen Untoten triffst, erleidet diese Kreatur zusätzlich {@dice 2d10} Strahlenschaden.",
-					"Während du das gezogene Schwert hältst, erzeugt es eine Aura in einem Radius von 10 Fuß um dich herum. Du und alle dir freundlich gesinnten Kreaturen in der Aura haben Vorteil bei Schutzwürfen gegen Zauber und andere magische Effekte. Wenn du 17 oder mehr Stufen in der Paladinklasse hast, erhöht sich der Radius der Aura auf 30 Fuß."
+					"Während du das gezogene Schwert hältst, erzeugt es eine Aura in einem Radius von 10 Fuß um dich herum. Du und alle dir freundlich gesinnten Kreaturen in der Aura haben Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte. Wenn du 17 oder mehr Stufen in der Paladinklasse hast, erhöht sich der Radius der Aura auf 30 Fuß."
 				],
 				"lootTables": [
 					"Magic Item Table I"
@@ -1715,7 +1715,7 @@
 				"bonusAc": "+1",
 				"entries": [
 					"Du hast einen Bonus von {=bonusAc} auf deinen AC, wenn du diese Rüstung trägst, die sanft schimmert.",
-					"Wenn du stirbst, während du die Rüstung trägst, wird sie zerstört und jeder Himmlische, jede Fee und jeder Unhold im Umkreis von 30 Fuß um dich muss einen DC 15 Charisma-Wettkampf bestehen oder wird in seine Heimatdimension verbannt, sofern er nicht bereits dort ist."
+					"Wenn du stirbst, während du die Rüstung trägst, wird sie zerstört und jeder Himmlische, jede Fee und jeder Unhold im Umkreis von 30 Fuß um dich muss einen Rettungswurf mit Charisma DC 15 bestehen oder wird in seine Heimatdimension verbannt, es sei denn, er ist bereits dort."
 				]
 			}
 		},
@@ -1767,7 +1767,7 @@
 					"type": "entries",
 					"name": "Luck",
 					"entries": [
-						"Wenn du das Schwert bei dir trägst, kannst du dich auf sein Glück verlassen (keine Aktion erforderlich), um einen Angriffswurf, eine Fähigkeitsprüfung oder einen Rettungswurf zu wiederholen, der dir nicht gefällt. Du musst den zweiten Wurf verwenden. Diese Eigenschaft kann erst bei der nächsten Morgendämmerung wieder verwendet werden."
+						"Wenn du das Schwert bei dir trägst, kannst du sein Glück nutzen (keine Aktion erforderlich), um einen Angriffswurf, eine Fähigkeitsprüfung oder einen Rettungswurf, der dir nicht gefällt, zu wiederholen. Du musst den zweiten Wurf verwenden. Diese Eigenschaft kann erst bei der nächsten Morgendämmerung wieder verwendet werden."
 					]
 				},
 				{
@@ -1795,7 +1795,7 @@
 						"type": "entries",
 						"name": "Luck",
 						"entries": [
-							"Wenn du das Schwert bei dir trägst, kannst du dich auf sein Glück verlassen (keine Aktion erforderlich), um einen Angriffswurf, eine Fähigkeitsprüfung oder einen Rettungswurf zu wiederholen, der dir nicht gefällt. Du musst den zweiten Wurf verwenden. Diese Eigenschaft kann erst bei der nächsten Morgendämmerung wieder verwendet werden."
+							"Wenn du das Schwert bei dir trägst, kannst du sein Glück nutzen (keine Aktion erforderlich), um einen Angriffswurf, eine Fähigkeitsprüfung oder einen Rettungswurf, der dir nicht gefällt, zu wiederholen. Du musst den zweiten Wurf verwenden. Diese Eigenschaft kann erst bei der nächsten Morgendämmerung wieder verwendet werden."
 						]
 					},
 					{
@@ -1876,7 +1876,7 @@
 				"rarity": "uncommon",
 				"reqAttune": "by a specific individual",
 				"entries": [
-					"Jede nichtmagische schwere Rüstung kann von Mind Flayern in einen Mind Carapace verwandelt werden. Nur eine Kreatur kann sich darauf einstellen: entweder ein bestimmter Gedankenschinder oder einer seiner Sklaven. Wenn sie von einer anderen Kreatur getragen wird, funktioniert die Rüstung wie eine normale Rüstung ihrer Art. Die Rüstung gewährt ihrem Träger einen Vorteil auf Intelligenz-, Weisheits- und Charisma-Würfe und macht ihn immun gegen den Zustand {@condition frightened}."
+					"Jede nichtmagische schwere Rüstung kann von Mind Flayern in einen Mind Carapace verwandelt werden. Nur eine Kreatur kann sich darauf einstellen: entweder ein bestimmter Gedankenschinder oder einer seiner Sklaven. Wenn sie von einer anderen Kreatur getragen wird, funktioniert die Rüstung wie eine normale Rüstung ihrer Art. Die Rüstung gewährt ihrem Träger einen Vorteil bei Rettungswürfen auf Intelligenz, Weisheit und Charisma und macht ihn immun gegen den Zustand {@condition frightened}."
 				]
 			}
 		},
@@ -1959,7 +1959,7 @@
 				"page": 179,
 				"rarity": "rare",
 				"entries": [
-					"Diese Rüstung ist mit einer magisch verstärkten Metalllegierung namens Mizzium verstärkt, die in den Gießereien der Izzet hergestellt wird. Während du die Rüstung trägst, wird jeder kritische Treffer gegen dich zu einem normalen Treffer. Wenn du außerdem einem magischen Effekt ausgesetzt bist, der es dir erlaubt, einen Schutzwurf auf Stärke oder Konstitution zu machen, um nur halben Schaden zu erleiden, erleidest du stattdessen keinen Schaden, wenn du den Schutzwurf schaffst."
+					"Diese Rüstung ist mit einer magisch verbesserten Metalllegierung namens Mizzium verstärkt, die in Izzet-Gießereien hergestellt wird. Während du die Rüstung trägst, wird jeder kritische Treffer gegen dich zu einem normalen Treffer. Wenn du einem magischen Effekt ausgesetzt bist, der es dir erlaubt, einen Rettungswurf auf Stärke oder Konstitution zu machen, um nur die Hälfte des Schadens zu erleiden, erleidest du keinen Schaden, wenn du den Rettungswurf erfolgreich absolvierst."
 				]
 			}
 		},
@@ -2035,7 +2035,7 @@
 				"charges": "{@dice 1d8 + 1}",
 				"entries": [
 					"Du erhältst einen Bonus von +2 auf Angriffs- und Schadenswürfe mit dieser magischen Waffe.",
-					"Das Schwert hat {@dice 1d8 + 1} Ladungen. Wenn du einen kritischen Treffer gegen eine Kreatur erzielst, die weniger als 100 Trefferpunkte hat, muss sie einen Konstitutionsschutzwurf von DC 15 bestehen oder sie wird sofort getötet, da das Schwert ihre Lebenskraft aus ihrem Körper reißt (ein Konstrukt oder ein Untoter ist immun). Das Schwert verliert 1 Ladung, wenn die Kreatur getötet wird. Wenn das Schwert keine Ladung mehr hat, verliert es diese Eigenschaft."
+					"Das Schwert hat {@dice 1d8 + 1} Ladungen. Wenn du einen kritischen Treffer gegen eine Kreatur erzielst, die weniger als 100 Trefferpunkte hat, muss diese einen Rettungswurf von DC 15 auf Konstitution bestehen oder sie wird sofort getötet, da das Schwert ihre Lebenskraft aus ihrem Körper reißt (ein Konstrukt oder ein Untoter ist immun). Das Schwert verliert 1 Ladung, wenn die Kreatur getötet wird. Wenn das Schwert keine Ladung mehr hat, verliert es diese Eigenschaft."
 				],
 				"lootTables": [
 					"Magic Item Table H"
@@ -2339,7 +2339,7 @@
 				"reqAttune": true,
 				"curse": true,
 				"entries": [
-					"Wenn du eine Kreatur mit dieser magischen Waffe angreifst und beim Angriffswurf eine 20 würfelst, muss die Kreatur zusätzlich zu den normalen Effekten des Angriffs einen Weisheitswurf von DC 15 machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur zusätzlich die Effekte eines {@spell polymorph}-Zaubers. Wirf einen Würfel und ziehe die folgende Tabelle zu Rate, um die Form zu bestimmen, in die sich die Zielkreatur verwandelt.",
+					"Wenn du eine Kreatur mit dieser magischen Waffe angreifst und beim Angriffswurf eine 20 würfelst, muss die Kreatur zusätzlich zu den normalen Effekten des Angriffs einen Rettungswurf der Weisheit von DC 15 ablegen. Bei einem misslungenen Schutzwurf erleidet die Kreatur zusätzlich die Effekte eines {@spell polymorph} Zaubers. Wirf einen Würfelwurf und ziehe die folgende Tabelle zu Rate, um die Form zu bestimmen, in die sich die Zielkreatur verwandelt.",
 					{
 						"type": "table",
 						"caption": "",
@@ -2488,7 +2488,7 @@
 						"type": "entries",
 						"name": "Ruidium Corruption",
 						"entries": [
-							"Wenn du eine 1 bei einem Rettungswurf würfelst, während du diese Rüstung trägst, musst du einen DC 15 Charisma Rettungswurf machen. Bei einem misslungenen Schutzwurf erhältst du 1 Stufe von {@condition exhaustion}. Wenn du nicht bereits an Ruidium-Korruption leidest, wirst du korrumpiert, wenn du diesen Schutzwurf nicht schaffst."
+							"Wenn du bei einem Rettungswurf eine 1 würfelst, während du diese Rüstung trägst, musst du einen DC 15 Charisma-Rettungswurf machen. Bei einem misslungenen Schutzwurf erhältst du 1 Stufe {@condition exhaustion}. Wenn du nicht bereits an Ruidium-Korruption leidest, wirst du korrumpiert, wenn du diesen Schutzwurf nicht schaffst."
 						]
 					},
 					{
@@ -2541,7 +2541,7 @@
 						"type": "entries",
 						"name": "Ruidium Corruption",
 						"entries": [
-							"Wenn du bei einem Angriffswurf mit dieser Waffe eine 1 würfelst, musst du einen DC 20 Charisma-Wettkampf machen. Bei einem misslungenen Schutzwurf erhältst du 1 Stufe von {@condition exhaustion}. Wenn du nicht bereits an Ruidium-Korruption leidest, wirst du korrumpiert, wenn du diesen Schutzwurf nicht schaffst."
+							"Wenn du bei einem Angriffswurf mit dieser Waffe eine 1 würfelst, musst du einen DC 20 Charisma-Rettungswurf machen. Bei einem misslungenen Schutzwurf erhältst du 1 Stufe von {@condition exhaustion}. Wenn du nicht bereits an Ruidium-Korruption leidest, wirst du korrumpiert, wenn du diesen Schutzwurf nicht schaffst."
 						]
 					},
 					{
@@ -2747,7 +2747,7 @@
 						"type": "entries",
 						"entries": [
 							"Dieses Schwert ist verflucht und von einem rachsüchtigen Geist besessen. Wenn du dich auf das Schwert einstimmst, wird der Fluch auf dich übertragen. Solange du verflucht bist, willst du dich nicht von dem Schwert trennen und trägst es immer bei dir. Solange du auf diese Waffe eingestimmt bist, hast du einen Nachteil bei Angriffswürfen mit anderen Waffen als dieser Waffe.",
-							"Solange du das Schwert bei dir trägst, musst du außerdem einen Weisheitswurf von DC 15 bestehen, wenn du im Kampf Schaden nimmst. Bei einem fehlgeschlagenen Schutzwurf musst du die Kreatur angreifen, die dir Schaden zugefügt hat, bis du auf 0 Trefferpunkte fällst oder sie es tut, oder bis du die Kreatur nicht mehr erreichen kannst, um einen Nahkampfangriff gegen sie auszuführen.",
+							"Solange du das Schwert bei dir trägst, musst du außerdem einen Rettungswurf der Weisheit (DC 15) bestehen, wenn du im Kampf Schaden nimmst. Bei einem fehlgeschlagenen Schutzwurf musst du die Kreatur angreifen, die dir Schaden zugefügt hat, bis du auf 0 Trefferpunkte fällst oder sie es tut, oder bis du die Kreatur nicht mehr erreichen kannst, um einen Nahkampfangriff gegen sie auszuführen.",
 							"Sie können den Fluch auf die übliche Weise brechen. Alternativ kannst du auch {@spell banishment} auf das Schwert wirken, um den rachsüchtigen Geist zu zwingen, es zu verlassen. Das Schwert wird dann zu einer +1-Waffe ohne weitere Eigenschaften."
 						]
 					}
@@ -2775,7 +2775,7 @@
 				"reqAttune": true,
 				"entries": [
 					"Trefferpunkte, die durch den Schaden dieser Waffe verloren gehen, können nur durch eine kurze oder lange Pause wiedergewonnen werden, nicht aber durch Regeneration, Magie oder andere Mittel.",
-					"Einmal pro Runde, wenn du eine Kreatur mit einem Angriff mit dieser magischen Waffe triffst, kannst du das Ziel verwunden. Zu Beginn jeder Runde der verwundeten Kreatur erleidet sie {@dice 1d4} nekrotischen Schaden für jede Verwundung, die du ihr zugefügt hast, und kann dann einen Rettungswurf von DC 15 auf Konstitution machen, der bei einem Erfolg die Wirkung all dieser Verwundungen auf sie selbst beendet. Alternativ kann die verwundete Kreatur oder eine Kreatur im Umkreis von 5 Fuß eine Aktion nutzen, um eine DC 15 Weisheitsprüfung ({@skill Medicine}) zu machen, die bei Erfolg die Wirkung solcher Wunden auf sie beendet."
+					"Wenn du einmal pro Runde eine Kreatur mit einem Angriff mit dieser magischen Waffe triffst, kannst du das Ziel verwunden. Zu Beginn jeder Runde der verwundeten Kreatur erleidet sie {@dice 1d4} nekrotischen Schaden für jede Verwundung, die du ihr zugefügt hast, und kann dann einen Rettungswurf der Konstitution (DC 15) machen, der bei einem Erfolg die Wirkung all dieser Verwundungen auf sie selbst beendet. Alternativ kann die verwundete Kreatur oder eine Kreatur im Umkreis von 5 Fuß eine Aktion nutzen, um eine DC 15 Weisheitsprüfung ({@skill Medicine}) zu machen, die bei Erfolg die Wirkung solcher Wunden auf sie beendet."
 				],
 				"lootTables": [
 					"Magic Item Table G"
@@ -2889,7 +2889,7 @@
 					"Diese Waffe ist mit Drachenköpfen, -klauen, -flügeln, -schuppen oder drakonischen Schriftzeichen verziert. Wenn sie in einen Drachenhort eindringt, absorbiert sie die Energie der Atemwaffe des Drachens und verursacht mit ihren besonderen Eigenschaften Schaden dieses Typs.",
 					"Immer wenn du bei deinem Angriffswurf mit dieser Waffe eine 20 würfelst, erleidet jede Kreatur deiner Wahl im Umkreis von 5 Fuß um das Ziel 5 Schadenspunkte des Typs, der von der Atemwaffe des Drachens verursacht wird.",
 					"Du erhältst einen Bonus von {=bonusWeapon} auf Angriffs- und Schadenswürfe mit dieser Waffe. Bei einem Treffer verursacht die Waffe zusätzlich {@damage 2d6} Schaden des Typs, der von der Atemwaffe des Drachens verursacht wird.",
-					"Als Aktion kannst du mit dieser Waffe einen Kegel von 30 Fuß zerstörerischer Energie entfesseln. Jede Kreatur in diesem Bereich muss einen Schutzwurf von DC 16 auf Geschicklichkeit ablegen und erleidet bei einem misslungenen Schutzwurf {@damage 8d6} Schaden des Typs, der von der Atemwaffe des Drachen verursacht wird, oder bei einem erfolgreichen Schutzwurf die Hälfte des Schadens. Wenn diese Aktion einmal benutzt wurde, kann sie bis zur nächsten Morgendämmerung nicht wieder benutzt werden."
+					"Als Aktion kannst du mit dieser Waffe einen Kegel von 30 Fuß zerstörerischer Energie entfesseln. Jede Kreatur in diesem Bereich muss einen Rettungswurf von DC 16 in Geschicklichkeit ablegen. Bei einem misslungenen Rettungswurf erleidet sie {@damage 8d6} Schaden des Typs, den die Atemwaffe des Drachens verursacht, bei einem erfolgreichen Rettungswurf halb so viel Schaden. Sobald diese Aktion eingesetzt wurde, kann sie bis zur nächsten Morgendämmerung nicht mehr verwendet werden."
 				]
 			}
 		},
@@ -2912,7 +2912,7 @@
 				"tier": "minor",
 				"rarity": "common",
 				"entries": [
-					" Diese Munition hat eine enorme Durchschlagskraft. Eine Kreatur, die von der Munition getroffen wird, muss einen DC 10 Stärkewurf bestehen oder {@condition prone} umgeworfen werden."
+					" Diese Munition hat es in sich. Eine Kreatur, die von der Munition getroffen wird, muss einen Rettungswurf der Stärke DC 10 bestehen oder wird umgeworfen {@condition prone}."
 				]
 			}
 		},

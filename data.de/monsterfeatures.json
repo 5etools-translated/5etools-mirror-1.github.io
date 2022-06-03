@@ -54,7 +54,7 @@
 		{
 			"name": "Frightful Presence",
 			"example": "Ancient Gold Dragon",
-			"effect": "Jede Kreatur nach Wahl der Kreatur in Reichweite muss einen Weisheitswurf machen oder 1 Minute lang verängstigt sein.",
+			"effect": "Jede Kreatur nach Wahl der Kreatur in Reichweite muss einen Rettungswurf in Weisheit ablegen oder wird 1 Minute lang verängstigt.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
@@ -67,13 +67,13 @@
 		{
 			"name": "Horrifying Visage",
 			"example": "Banshee",
-			"effect": "Jede nicht untote Kreatur nach Wahl der Kreatur in Reichweite muss einen Weisheitswurf machen oder 1 Minute lang verängstigt werden.",
+			"effect": "Jede nicht untote Kreatur nach Wahl der Kreatur in Reichweite muss einen Rettungswurf in Weisheit ablegen oder wird 1 Minute lang erschreckt.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Legendary Resistance",
 			"example": "Tarrasque",
-			"effect": "Wenn der Kreatur ein Rettungswurf misslingt, kann sie stattdessen einen erfolgreichen Wurf wählen. Gib die Anzahl der Anwendungen pro Tag ein.",
+			"effect": "Wenn der Kreatur ein Rettungswurf misslingt, kann sie stattdessen einen Erfolg wählen. Gib die Anzahl der Anwendungen pro Tag ein.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 10*trait : ((expectedCr >= 5 && expectedCr <= 10) ? 20*trait : ((expectedCr >= 11) ? 30*trait : 0)))",
 			"hasNumberParam": true
 		},

@@ -31,7 +31,7 @@
 				"Der Stolperdraht befindet sich 5 cm über dem Boden und spannt sich zwischen zwei Stützbalken. Der DC zum Aufspüren des Stolperdrahtes beträgt 10. Ein erfolgreicher DC 15 Geschicklichkeits-Check mit {@item thieves' tools|phb} schaltet den Stolperdraht harmlos aus. Ein Charakter ohne {@item thieves' tools|phb} kann diesen Check mit einer beliebigen scharfen Waffe oder einem scharfen Werkzeug mit Nachteil durchführen. Bei einer misslungenen Probe wird die Falle ausgelöst.",
 				"Jeder, der die Balken inspiziert, kann leicht feststellen, dass sie lediglich verkeilt sind. Mit einer Aktion kann ein Charakter einen Balken umstoßen, wodurch die Falle ausgelöst wird.",
 				"Die Decke über dem Stolperdraht ist in schlechtem Zustand, und jeder, der sie sieht, kann erkennen, dass sie einsturzgefährdet ist.",
-				"Wenn die Falle ausgelöst wird, stürzt die instabile Decke ein. Jede Kreatur, die sich in dem Bereich unter dem instabilen Abschnitt befindet, muss einen Rettungswurf von DC 15 auf Geschicklichkeit bestehen und erleidet bei einem misslungenen Rettungswurf 22 ({@dice 4d10}) Wuchtschaden, bei einem erfolgreichen Wuchtschaden die Hälfte. Sobald die Falle ausgelöst wird, füllt sich der Boden des Bereichs mit Schutt und wird {@quickref difficult terrain||3}."
+				"Wenn die Falle ausgelöst wird, stürzt die instabile Decke ein. Jede Kreatur im Bereich unter dem instabilen Abschnitt muss einen Rettungswurf von DC 15 in Geschicklichkeit bestehen und erleidet bei einem misslungenen Rettungswurf 22 ({@dice 4d10}) Wucht-Schaden, bei einem erfolgreichen Rettungswurf die Hälfte davon. Sobald die Falle ausgelöst wird, füllt sich der Boden des Bereichs mit Schutt und wird {@quickref difficult terrain||3}."
 			]
 		},
 		{
@@ -83,7 +83,7 @@
 			"entries": [
 				"Bei dieser Falle wird über einen Stolperdraht ein von der Decke hängendes Netz ausgelöst.",
 				"Der Stolperdraht befindet sich 15 cm über dem Boden und wird zwischen zwei Säulen oder Bäumen gespannt. Das Netz ist durch Spinnweben oder Laub verdeckt. Der DC, um den Stolperdraht und das Netz zu entdecken, beträgt 10. Ein erfolgreicher DC 15 Geschicklichkeits-Check mit Diebeswerkzeug durchbricht den Stolperdraht harmlos. Ein Charakter, der kein Diebeswerkzeug besitzt, kann diese Prüfung mit einer beliebigen scharfen Waffe oder einem scharfen Werkzeug mit Nachteil durchführen. Bei einer misslungenen Probe wird die Falle ausgelöst.",
-				"Wenn die Falle ausgelöst wird, wird das Netz freigegeben und deckt einen Bereich von 10 Fuß im Quadrat ab. Diejenigen, die sich in diesem Bereich aufhalten, werden unter dem Netz gefangen und {@condition restrained}, und diejenigen, die einen DC 10 Stärkeschutzwurf nicht bestehen, werden ebenfalls {@condition prone} niedergeschlagen.",
+				"Wenn die Falle ausgelöst wird, wird das Netz losgelassen und bedeckt einen Bereich von 10 Fuß im Quadrat. Diejenigen, die sich in diesem Bereich befinden, sind unter dem Netz gefangen und {@condition restrained}, und diejenigen, die einen Rettungswurf der Stärke DC 10 nicht bestehen, werden ebenfalls niedergeschlagen {@condition prone}.",
 				"Eine Kreatur kann ihre Aktion nutzen, um eine DC 10 Stärkeüberprüfung zu machen und sich selbst oder eine andere Kreatur in ihrer Reichweite bei einem Erfolg zu befreien. Das Netz hat AC 10 und 20 Trefferpunkte.",
 				"Wenn du dem Netz 5 Hiebschaden zufügst (AC 10), wird ein 5-Fuß-Quadratmeter großer Teil des Netzes zerstört und jede darin gefangene Kreatur befreit."
 			]
@@ -137,7 +137,7 @@
 			"entries": [
 				"Diese Falle wird aktiviert, wenn ein Eindringling auf eine versteckte Druckplatte tritt, die einen magischen Flammenstrahl aus einer nahe gelegenen Statue freisetzt. Die Statue kann alles Mögliche darstellen, einschließlich eines Drachens oder eines Zauberers, der einen Zauber wirkt.",
 				"Der DC liegt bei 15, um die Druckplatte sowie schwache Brandspuren auf dem Boden und an den Wänden zu erkennen. Ein Zauber oder ein anderer Effekt, der das Vorhandensein von Magie wahrnehmen kann, wie z.B. Magie erkennen, enthüllt eine Aura von Beschwörungsmagie um die Statue.",
-				"Die Falle wird aktiviert, wenn ein Gewicht von mehr als 20 Pfund auf die Druckplatte gelegt wird, wodurch die Statue einen 30 Fuß langen Feuerkegel auslöst. Jede Kreatur, die sich in dem Feuer befindet, muss einen Rettungswurf von DC 13 auf Geschicklichkeit ablegen und erleidet bei einem misslungenen Rettungswurf 22 ({@dice 4d10}) Feuerschaden, bei einem erfolgreichen die Hälfte.",
+				"Die Falle wird aktiviert, wenn mehr als 20 Pfund Gewicht auf die Druckplatte gelegt werden, wodurch die Statue einen 30 Fuß großen Feuerkegel freisetzt. Jede Kreatur, die sich in dem Feuer befindet, muss einen Rettungswurf mit DC 13 Geschicklichkeit absolvieren und erleidet bei einem misslungenen Rettungswurf 22 ({@dice 4d10}) Feuerschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden.",
 				"Das Verkeilen eines Eisenspießes oder eines anderen Gegenstandes unter der Druckplatte verhindert, dass die Falle aktiviert wird. Ein erfolgreicher {@spell dispel magic} (DC 13) Zauber auf die Statue zerstört die Falle."
 			]
 		},
@@ -161,12 +161,12 @@
 						{
 							"type": "item",
 							"name": "Phase Beam (Initiative 20)",
-							"entry": "Der Phasenstrahl schießt auf eine zufällige Kreatur im Raum. Der Strahl hat einen Bonus von {@hit +5} auf den Angriffswurf. Bei einem Treffer werden das Ziel und seine gesamte Ausrüstung für eine Minute sowohl {@condition invisible} als auch körperlos. Die einzige Bewegungsmöglichkeit des Ziels ist eine Fluggeschwindigkeit von 10 Fuß. Das Ziel ist resistent gegen nichtmagischen Schaden und hat einen Vorteil bei Schutzwürfen auf Stärke, Geschicklichkeit und Konstitution. Das Ziel kann durch feste Oberflächen und Flüssigkeiten hindurchgehen. Das Ziel kann nicht fallen und bleibt in der Luft schweben, auch wenn es {@condition stunned} oder anderweitig {@condition incapacitated} ist. Solange der Phasenstrahl auf das Ziel einwirkt, kann es Objekte und Kreaturen, die nicht vom Phasenstrahl betroffen sind, nicht manipulieren, physisch angreifen oder mit ihnen interagieren. Das Ziel kann immer noch sprechen und zaubern."
+							"entry": "Der Phasenstrahl schießt auf eine zufällige Kreatur innerhalb des Raumes. Der Strahl hat einen {@hit +5} Bonus auf den Angriffswurf. Bei einem Treffer werden das Ziel und seine gesamte Ausrüstung für eine Minute sowohl {@condition invisible} als auch körperlos. Die einzige Bewegungsmöglichkeit des Ziels ist eine Fluggeschwindigkeit von 10 Fuß. Das Ziel ist resistent gegen nichtmagischen Schaden und hat einen Vorteil bei Rettungswürfen auf Stärke, Geschicklichkeit und Konstitution. Das Ziel kann durch feste Oberflächen und Flüssigkeiten hindurchgehen. Das Ziel kann nicht fallen und schwebt in der Luft, auch wenn {@condition stunned} oder sonst {@condition incapacitated}. Solange der Phasenstrahl auf das Ziel einwirkt, kann es Objekte und Kreaturen, die nicht von dem Phasenstrahl betroffen sind, nicht manipulieren, physisch angreifen oder mit ihnen interagieren. Das Ziel kann jedoch weiterhin sprechen und zaubern."
 						},
 						{
 							"type": "item",
 							"name": "Coil Discharge (Initiative 10)",
-							"entry": "Lichtbögen aus Elektrizität blitzen aus der Matrix. Jede Kreatur im Umkreis von 30 Fuß um die Energiematrix muss einen Rettungswurf von DC 11 auf Geschicklichkeit machen oder 10 ({@damage 3d6}) Blitzschaden erleiden."
+							"entry": "Lichtbögen aus Elektrizität blitzen aus der Matrix. Jede Kreatur im Umkreis von 30 Fuß um die Energiematrix muss einen Rettungswurf von DC 11 in Geschicklichkeit ablegen oder 10 ({@damage 3d6}) Blitzschaden erleiden."
 						}
 					]
 				}
@@ -185,7 +185,7 @@
 						{
 							"type": "item",
 							"name": "Room Heats Up",
-							"entry": "Die Wärme des Strahlers bringt den Raum auf unerträgliche Temperaturen. Zu Beginn des dritten Zuges der Falle ist die Temperatur des Raumes spürbar höher. Zu Beginn der sechsten Runde der Falle auf Initiative 20 müssen alle Kreaturen einen Konstitutionsschutzwurf mit DC 10 bestehen oder eine Stufe von {@condition exhaustion} gewinnen. Kreaturen, die eine mittlere oder schwere Rüstung tragen, haben bei diesem Rettungswurf einen Nachteil, und Kreaturen mit Feuerimmunität oder -resistenz müssen diesen Rettungswurf nicht machen. Dieser Rettungswurf wird zu Beginn der neunten Runde der Falle auf Initiative 20 mit DC 13 wiederholt."
+							"entry": "Die Wärme des Strahlers bringt den Raum auf unerträgliche Temperaturen. Zu Beginn des dritten Zuges der Falle ist die Temperatur des Raumes spürbar höher. Zu Beginn der sechsten Runde der Falle auf Initiative 20 müssen alle Kreaturen einen Rettungswurf der Konstitution DC 10 bestehen oder eine Stufe von {@condition exhaustion} gewinnen. Kreaturen, die eine mittlere oder schwere Rüstung tragen, haben bei diesem Rettungswurf einen Nachteil, und Kreaturen mit Feuerimmunität oder -resistenz müssen diesen Rettungswurf nicht machen. Dieser Rettungswurf wird zu Beginn der neunten Runde der Falle auf Initiative 20 mit DC 13 wiederholt."
 						},
 						{
 							"type": "item",
@@ -204,7 +204,7 @@
 						{
 							"type": "item",
 							"name": "Coil Discharge",
-							"entry": "Jede Kreatur, die ihren Zug in einem Umkreis von 5 Fuß um die Energiematrix beendet, muss einen Rettungswurf von DC 11 auf Geschicklichkeit machen oder 7 ({@damage 2d6}) Blitzschaden erleiden. Kreaturen, die eine Metallrüstung tragen, haben einen Nachteil bei diesem Rettungswurf."
+							"entry": "Jede Kreatur, die ihren Zug im Umkreis von 5 Fuß um die Energiematrix beendet, muss einen Rettungswurf von DC 11 in Geschicklichkeit ablegen oder 7 ({@damage 2d6}) Blitzschaden erleiden. Kreaturen, die eine Metallrüstung tragen, haben bei diesem Rettungswurf einen Nachteil."
 						},
 						{
 							"type": "item",
@@ -307,12 +307,12 @@
 						{
 							"type": "item",
 							"name": "Crushing Pillars (Initiative 10)",
-							"entry": "Jede Kreatur, die sich in dem 50 Fuß langen Bereich jenseits der ersten 80 Fuß des Ganges befindet, muss einen Rettungswurf von DC 15 in Geschicklichkeit ablegen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 11 ({@dice 2d10}) Wuchtschaden und wird umgeworfen {@condition prone}. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur halb so viel Schaden und wird nicht umgeworfen {@condition prone}."
+							"entry": "Jede Kreatur in dem 50 Fuß langen Bereich jenseits der ersten 80 Fuß des Ganges muss einen Rettungswurf von DC 15 in Geschicklichkeit ablegen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 11 ({@dice 2d10}) Wuchtschaden und wird umgeworfen {@condition prone}. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur halb so viel Schaden und wird nicht umgeworfen {@condition prone}."
 						},
 						{
 							"type": "item",
 							"name": "Rune of Fear (Initiative 10)",
-							"entry": "Jede Kreatur in dem 30 Fuß langen Bereich jenseits der Zermalmenden Säulen muss einen Weisheitswurf von DC 15 machen. Bei einem misslungenen Rettungswurf wird die Kreatur durch die Rune zu {@condition frightened} und muss sofort ihre Reaktion nutzen, um ihre Geschwindigkeit in Richtung der Säulen zu erhöhen. Die {@condition frightened} Kreatur kann sich nicht näher an das andere Ende des Ganges heranbewegen, bis sie ihre Aktion nutzt, um einen DC 15 Weisheitswurf zu machen, der bei einem Erfolg den {@condition frightened} Zustand für sie selbst beendet."
+							"entry": "Jede Kreatur, die sich in dem 30 Fuß langen Bereich jenseits der Zermalmenden Säulen befindet, muss einen Rettungswurf von DC 15 in Weisheit ablegen. Bei einem misslungenen Rettungswurf wird die Kreatur durch die Rune zu {@condition frightened}, und sie muss sofort ihre Reaktion nutzen, um ihre Geschwindigkeit in Richtung der Säulen zu erhöhen. Die {@condition frightened}-Kreatur kann sich nicht näher an das Ende des Ganges heranbewegen, bis sie ihre Aktion nutzt, um einen Rettungswurf mit DC 15 Weisheit zu machen, der bei einem Erfolg den {@condition frightened}-Zustand für sie selbst beendet."
 						}
 					]
 				}
@@ -331,7 +331,7 @@
 						{
 							"type": "item",
 							"name": "Rune's Defense",
-							"entry": "Durch die Manipulation der Rune der Angst wird die Kraft der Falle erhöht. Jede erfolgreiche Probe auf einen Versuch, die Rune zu deaktivieren, erhöht den Schaden der Klingen und der Zermalmungssäulen um 5 ({@dice 1d10}) und erhöht den Schutzwurf-DC der Rune um 1."
+							"entry": "Die Manipulation der Rune der Angst erhöht die Macht der Falle. Jede erfolgreiche Probe auf einen Versuch, die Rune zu deaktivieren, erhöht den Schaden der Klingen und der Zermalmungssäulen um 5 ({@dice 1d10}) und erhöht den DC des Rettungswurfs der Rune um 1."
 						}
 					]
 				}
@@ -350,7 +350,7 @@
 						{
 							"type": "item",
 							"name": "Rune of Fear",
-							"entry": "Jede Kreatur, die ihren Zug innerhalb von 30 Fuß vom Ende des Korridors beendet, muss einen Rettungswurf gegen den Effekt der Rune der Angst machen."
+							"entry": "Jede Kreatur, die ihren Zug innerhalb von 30 Fuß vom anderen Ende des Korridors beendet, muss einen Rettungswurf gegen den Effekt der Rune der Angst machen."
 						}
 					]
 				}
@@ -455,7 +455,7 @@
 					"type": "entries",
 					"name": "Spiked Pit",
 					"entries": [
-						"Diese Grubenfalle ist eine einfache, versteckte oder verschließbare Grubenfalle mit geschärften Holz- oder Eisendornen am Boden. Eine Kreatur, die in die Grube fällt, erleidet 11 ({@dice 2d10}) Stich-Schaden durch die Stacheln, zusätzlich zu dem Fallschaden. Noch fiesere Versionen haben Gift auf die Stacheln geschmiert. In diesem Fall muss jeder, der von den Stacheln Stichschaden erleidet, zusätzlich einen DC 13 Konstitutionsschutzwurf ablegen. Bei einem misslungenen Schutzwurf erleidet er 22 ({@dice 4d10}) Giftschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden."
+						"Diese Grubenfalle ist eine einfache, versteckte oder verschließbare Grubenfalle mit geschärften Holz- oder Eisendornen am Boden. Eine Kreatur, die in die Falle fällt, erleidet 11 ({@dice 2d10}) Stich-Schaden durch die Stacheln, zusätzlich zu dem Fallschaden. Noch fiesere Versionen haben Gift auf die Stacheln geschmiert. In diesem Fall muss jeder, der von den Stacheln Stichschaden erleidet, zusätzlich einen Rettungswurf mit DC 13 Konstitution ablegen. Bei einem misslungenen Rettungswurf erleidet er 22 ({@dice 4d10}) Giftschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden."
 					]
 				}
 			]
@@ -469,7 +469,7 @@
 			"entries": [
 				"Wenn eine Kreatur auf eine versteckte Druckplatte tritt, schießen Giftpfeile aus federbelasteten oder unter Druck stehenden Röhren, die geschickt in die umgebenden Wände eingelassen sind. Ein Gebiet kann mehrere Druckplatten umfassen, von denen jede mit einem eigenen Satz Pfeile ausgestattet ist.",
 				"Die winzigen Löcher in den Wänden sind durch Staub und Spinnweben verdeckt oder geschickt zwischen Flachreliefs, Wandmalereien oder Fresken versteckt, die die Wände schmücken. Der DC, um sie zu entdecken, beträgt 15. Mit einem erfolgreichen DC 15 Intelligenz ({@skill Investigation}) kann ein Charakter das Vorhandensein der Druckplatte aus den Unterschieden zwischen dem Mörtel und dem Stein, mit dem sie hergestellt wurde, und dem umgebenden Boden ableiten. Das Verkeilen eines Eisenspießes oder eines anderen Gegenstandes unter der Druckplatte verhindert, dass die Falle aktiviert wird. Das Ausstopfen der Löcher mit Stoff oder Wachs verhindert, dass die darin enthaltenen Pfeile abgeschossen werden können.",
-				"Die Falle wird aktiviert, wenn ein Gewicht von mehr als 20 Pfund auf die Druckplatte gelegt wird und vier Pfeile freigesetzt werden. Jeder Pfeil führt einen Fernkampfangriff mit einem Bonus von +8 gegen ein zufälliges Ziel im Umkreis von 10 Fuß um die Druckplatte aus (die Sicht ist für diesen Angriffswurf irrelevant). (Ein getroffenes Ziel erleidet 2 ({@dice 1d4}) Stichschaden und muss einen Konstitutionsschutzwurf von DC 15 bestehen. Bei einem misslungenen Schutzwurf erleidet es 11 ({@dice 2d10}) Giftschaden, bei einem erfolgreichen Schutzwurf die Hälfte des Schadens."
+				"Die Falle wird aktiviert, wenn ein Gewicht von mehr als 20 Pfund auf die Druckplatte gelegt wird und vier Pfeile freigesetzt werden. Jeder Pfeil führt einen Fernkampfangriff mit einem Bonus von +8 gegen ein zufälliges Ziel im Umkreis von 10 Fuß um die Druckplatte aus (die Sicht ist für diesen Angriffswurf irrelevant). (Ein getroffenes Ziel erleidet 2 ({@dice 1d4}) Stichschaden und muss einen Rettungswurf von DC 15 auf Konstitution bestehen. Bei einem misslungenen Rettungswurf erleidet es 11 ({@dice 2d10}) Giftschaden, bei einem erfolgreichen Rettungswurf halb so viel."
 			]
 		},
 		{
@@ -480,7 +480,7 @@
 			"trapHazType": "MECH",
 			"entries": [
 				"Eine vergiftete Nadel ist im Schloss einer Schatztruhe oder in einem anderen Gegenstand versteckt, den eine Kreatur öffnen könnte. Wird die Truhe ohne den richtigen Schlüssel geöffnet, springt die Nadel heraus und gibt eine Dosis Gift ab.",
-				"Wenn die Falle ausgelöst wird, ragt die Nadel 3 Zoll gerade aus dem Schloss heraus. Eine Kreatur in Reichweite erleidet 1 Stichschaden und 11 ({@dice 2d10}) Giftschaden und muss einen Konstitutionsschutzwurf von DC 15 bestehen oder 1 Stunde lang {@condition poisoned} sein.",
+				"Wenn die Falle ausgelöst wird, ragt die Nadel 3 Zoll gerade aus dem Schloss heraus. Eine Kreatur in Reichweite erleidet 1 Stichschaden und 11 ({@dice 2d10}) Giftschaden und muss einen Rettungswurf von DC 15 Konstitution bestehen oder 1 Stunde lang {@condition poisoned} sein.",
 				"Eine erfolgreiche DC 20 Intelligenzüberprüfung ({@skill Investigation}) erlaubt es einem Charakter, das Vorhandensein der Falle aus den Veränderungen zu schließen, die am Schloss vorgenommen wurden, um die Nadel unterzubringen.",
 				"Eine erfolgreiche DC 15 Geschicklichkeitsüberprüfung mit {@item thieves' tools|phb} entschärft die Falle und entfernt die Nadel aus dem Schloss. Ein erfolgloser Versuch, das Schloss zu knacken, löst die Falle aus."
 			]
@@ -530,7 +530,7 @@
 						{
 							"type": "item",
 							"name": "Poison Gas (Initiative 20)",
-							"entry": "Giftgas flutet den Raum. Jede Kreatur im Raum muss einen Konstitutionsschutzwurf von DC 20 ablegen und erleidet bei einem misslungenen Schutzwurf 33 ({@dice 6d10}) Giftschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden."
+							"entry": "Giftgas überflutet den Raum. Jede Kreatur im Raum muss einen Rettungswurf der Konstitution DC 20 machen und erleidet bei einem misslungenen Rettungswurf 33 ({@dice 6d10}) Giftschaden, bei einem erfolgreichen Rettungswurf halb so viel."
 						},
 						{
 							"type": "item",
@@ -555,7 +555,7 @@
 										],
 										[
 											"2",
-											"Explosives Gas füllt den Raum. Wenn jemand eine offene Flamme in die Hand nimmt, verursacht dies eine Explosion. Alle Kreaturen in dem Bereich müssen einen Rettungswurf mit DC 20 Geschicklichkeit ablegen und erleiden bei einem misslungenen Rettungswurf 22 ({@dice 4d10}) Feuerschaden, bei einem erfolgreichen Versuch halb so viel Schaden. Die Flamme wird dann gelöscht."
+											"Explosives Gas füllt den Raum. Wenn jemand eine offene Flamme in die Hand nimmt, verursacht dies eine Explosion. Alle Kreaturen in dem Bereich müssen einen Rettungswurf mit DC 20 Geschicklichkeit ablegen. Bei einem misslungenen Rettungswurf erleiden sie 22 ({@dice 4d10}) Feuerschaden, bei einem erfolgreichen Rettungswurf die Hälfte des Schadens. Die Flamme wird dann gelöscht."
 										],
 										[
 											"3",
@@ -563,7 +563,7 @@
 										],
 										[
 											"4",
-											"Buffende Winde zwingen jede Kreatur im Raum dazu, einen DC 20 Stärkewurf zu bestehen oder um {@condition prone} geschwächt zu werden."
+											"Schwächende Winde zwingen jede Kreatur im Raum, einen Rettungswurf der Stärke DC 20 zu bestehen oder umgeworfen zu werden {@condition prone}."
 										],
 										[
 											"5",
@@ -628,7 +628,7 @@
 				"Mit einer erfolgreichen DC 15 Weisheitsprüfung ({@skill Perception}) kann ein Charakter die Falltür und die Druckplatte entdecken.",
 				"Eine Durchsuchung des Bodens mit einer erfolgreichen DC 15 Intelligenzprüfung ({@skill Investigation}) offenbart Variationen im Mörtel und Stein, die das Vorhandensein der Druckplatte verraten. Die gleiche Prüfung, die bei der Inspektion der Decke durchgeführt wird, zeigt Variationen im Mauerwerk, die die Falltür verraten. Das Verkeilen eines Eisenspießes oder eines anderen Gegenstandes unter der Druckplatte verhindert, dass die Falle aktiviert wird.",
 				"Um die Sphäre zu aktivieren, müssen alle anwesenden Kreaturen die Initiative würfeln. Die Kugel würfelt die Initiative mit einem Bonus von {@hit +8}. Wenn sie an der Reihe ist, bewegt sie sich 60 Fuß in einer geraden Linie.",
-				"Die Kugel kann sich durch die Räume von Kreaturen bewegen, und Kreaturen können sich durch ihren Raum bewegen, indem sie ihn als {@quickref difficult terrain||3} behandeln. Immer wenn die Kugel den Raum einer Kreatur betritt oder eine Kreatur ihren Raum betritt, während sie rollt, muss diese Kreatur einen Rettungswurf von DC 15 auf Geschicklichkeit bestehen, oder sie erleidet 55 ({@dice 10d10}) Wuchtschaden und wird {@condition prone} umgestoßen.",
+				"Die Kugel kann sich durch die Räume von Kreaturen bewegen, und Kreaturen können sich durch ihren Raum bewegen, indem sie ihn als {@quickref difficult terrain||3} behandeln. Immer wenn die Kugel den Raum einer Kreatur betritt oder eine Kreatur ihren Raum betritt, während sie rollt, muss diese Kreatur einen Rettungswurf von DC 15 in Geschicklichkeit bestehen oder 55 ({@dice 10d10}) Wuchtschaden erleiden und {@condition prone} umgeworfen werden.",
 				"Die Kugel bleibt stehen, wenn sie auf eine Wand oder ein ähnliches Hindernis trifft. Sie kann nicht um Ecken gehen, aber clevere Kerkerbauer bauen sanfte, kurvige Kurven in nahegelegene Passagen ein, die es der Kugel ermöglichen, sich weiter zu bewegen.",
 				"Als Aktion kann eine Kreatur im Umkreis von 5 Fuß um die Sphäre versuchen, sie mit einer Stärkeprüfung von DC 20 zu verlangsamen. Bei einem erfolgreichen Check wird die Geschwindigkeit der Kugel um 15 Fuß reduziert. Wenn die Geschwindigkeit der Kugel auf 0 sinkt, hört sie auf, sich zu bewegen und stellt keine Bedrohung mehr dar."
 			]
@@ -706,7 +706,7 @@
 						{
 							"type": "item",
 							"name": "Sphere of Crushing Doom (Initiative 10)",
-							"entry": "Das aktive Element der Falle ist eine Stahlkugel, die fast die gesamte Breite des Ganges ausfüllt und in ihrem Zug bis zum unteren Ende des Abhangs rollt. Jede Kreatur, die sich im Weg der Kugel befindet, muss einen DC-20-Stärkewurf ablegen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 22 ({@dice 4d10}) Wuchtschaden und wird umgeworfen {@condition prone}. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur halb so viel Schaden und wird nicht umgeworfen {@condition prone}. Objekte, die die Kugel blockieren, wie z.B. eine beschworene Wand, erleiden durch den Aufprall maximalen Schaden."
+							"entry": "Das aktive Element der Falle ist eine Stahlkugel, die fast die gesamte Breite des Ganges ausfüllt und in ihrem Zug bis zum unteren Ende des Hanges rollt. Jede Kreatur im Weg der Kugel muss einen Rettungswurf der Stärke DC 20 ablegen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 22 ({@dice 4d10}) Wuchtschaden und wird umgeworfen {@condition prone}. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur halb so viel Schaden und wird nicht umgeworfen {@condition prone}. Objekte, die die Kugel blockieren, wie z.B. eine beschworene Wand, erleiden durch den Aufprall maximalen Schaden."
 						}
 					]
 				}
@@ -762,7 +762,7 @@
 			"entries": [
 				"Die folgenden Regeln können sowohl für Steinschlag als auch für Lawinen angewendet werden.",
 				"Eine Lawine ist eine Masse aus Schnee und Geröll, die schnell einen Berghang hinunterstürzt. Eine typische Lawine ist 300 Fuß breit, 150 Fuß lang und 30 Fuß dick. Lebewesen im Pfad einer Lawine können ihr ausweichen oder entkommen, wenn sie sich in der Nähe des Randes befinden, aber einer Lawine zu entkommen ist fast unmöglich.",
-				"Wenn eine Lawine ausgelöst wird, müssen alle Kreaturen in der Nähe die Initiative würfeln. Zweimal pro Runde, bei Initiative 10 und 0, bewegt sich die Lawine 300 Fuß weit, bis sie sich nicht mehr bewegen kann. Wenn sich eine Lawine bewegt, bewegt sich jede Kreatur in ihrem Raum mit und fällt {@condition prone}, und die Kreatur muss einen Schutzwurf auf Stärke DC 15 ablegen. Bei einem misslungenen Schutzwurf erleidet sie {@dice 1d10} Wuchtschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden.",
+				"Wenn eine Lawine ausgelöst wird, müssen alle Kreaturen in der Nähe die Initiative würfeln. Zweimal pro Runde, bei Initiative 10 und 0, bewegt sich die Lawine 300 Fuß weit, bis sie sich nicht mehr bewegen kann. Wenn sich eine Lawine bewegt, bewegt sich jede Kreatur in ihrem Raum mit und fällt {@condition prone}. Die Kreatur muss einen Rettungswurf der Stärke DC 15 ablegen und erleidet bei einem misslungenen Rettungswurf {@dice 1d10} Wuchtschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden.",
 				"Wenn eine Lawine zum Stillstand kommt, setzt sich der Schnee ab und begräbt Lebewesen unter sich. Eine auf diese Weise begrabene Kreatur ist {@condition blinded} und {@condition restrained} und hat totale Deckung. Die Kreatur gewinnt eine Stufe von {@condition exhaustion} für alle 5 Minuten, die sie im Schnee begraben ist. Sie kann versuchen, sich als Aktion auszugraben, indem sie die Oberfläche durchbricht und den Zustand der Blindheit und Fesselung mit einem erfolgreichen DC 15 Stärke ({@skill Athletics}) Check beendet. Eine Kreatur, die diese Prüfung dreimal nicht besteht, kann nicht mehr versuchen, sich selbst auszugraben.",
 				"Eine Kreatur, die nicht gefesselt oder {@condition incapacitated} ist, kann 1 Minute damit verbringen, eine andere Kreatur zu befreien, die im Schnee begraben ist. Sobald die Kreatur befreit ist, ist sie nicht mehr von der Lawine geblendet oder gefesselt."
 			]
@@ -774,7 +774,7 @@
 			"trapHazType": "WLD",
 			"entries": [
 				"Eine typische Lawine (oder ein Bergsturz) ist 300 Fuß breit, 150 Fuß lang und 30 Fuß dick. Kreaturen im Pfad einer Lawine können ihr ausweichen oder entkommen, wenn sie sich in der Nähe des Randes befinden, aber es ist fast unmöglich, ihr zu entkommen.",
-				"Wenn eine Lawine ausgelöst wird, müssen alle Kreaturen in der Nähe die Initiative würfeln. Zweimal pro Runde, bei Initiative 10 und 0, bewegt sich die Lawine 300 Fuß weit, bis sie sich nicht mehr bewegen kann. Wenn sich eine Lawine bewegt, bewegt sich jede Kreatur in ihrem Raum mit und fällt {@condition prone}, und die Kreatur muss einen Schutzwurf auf Stärke DC 15 ablegen. Bei einem misslungenen Schutzwurf erleidet sie {@dice 1d10} Wuchtschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden.",
+				"Wenn eine Lawine ausgelöst wird, müssen alle Kreaturen in der Nähe die Initiative würfeln. Zweimal pro Runde, bei Initiative 10 und 0, bewegt sich die Lawine 300 Fuß weit, bis sie sich nicht mehr bewegen kann. Wenn sich eine Lawine bewegt, bewegt sich jede Kreatur in ihrem Raum mit und fällt {@condition prone}. Die Kreatur muss einen Rettungswurf der Stärke DC 15 ablegen und erleidet bei einem misslungenen Rettungswurf {@dice 1d10} Wuchtschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden.",
 				"Wenn eine Lawine zum Stillstand kommt, setzen sich der Schnee und andere Trümmer ab und begraben Lebewesen. Eine auf diese Weise verschüttete Kreatur ist {@condition blinded} und {@condition restrained}, und sie hat totale Deckung. Die Kreatur gewinnt 1 Stufe von {@condition exhaustion} für alle 5 Minuten, die sie verschüttet ist. Sie kann versuchen, sich als Aktion auszugraben, indem sie die Oberfläche durchbricht und die {@condition blinded} und {@condition restrained} Zustände mit einem erfolgreichen DC 15 Stärke ({@skill Athletics}) Check beendet. Eine Kreatur, die diese Prüfung dreimal nicht besteht, kann nicht mehr versuchen, sich selbst auszugraben.",
 				"Eine Kreatur, die nicht {@condition restrained} oder {@condition incapacitated} ist, kann 1 Minute damit verbringen, eine verschüttete Kreatur zu befreien. Sobald die Kreatur befreit ist, wird sie nicht mehr {@condition blinded} oder {@condition restrained} von der Lawine erfasst."
 			]
@@ -788,7 +788,7 @@
 				"Die Schneestürme, die Icewind Dale verwüsten und die Reisenden auf dem Gebirgspass heimsuchen, sind ein Spiegelbild von Aurils selbst auferlegter Isolation. Ein Schneesturm in Icewind Dale dauert in der Regel {@dice 2d4} Stunden, und wann immer die Charaktere in einen solchen geraten, gelten die folgenden Regeln, bis er endet.",
 				"Der heulende Wind eines Schneesturms schränkt das Gehör auf eine Reichweite von 100 Fuß ein und führt zu Nachteilen bei Angriffswürfen mit Fernkampfwaffen. Er verursacht außerdem einen Nachteil bei Weisheitswürfen ({@skill Perception}), die sich auf das Gehör verlassen. Der Wind löscht offene Flammen, vertreibt Nebel, verwischt Spuren im Schnee und macht das Fliegen mit nichtmagischen Mitteln fast unmöglich. Eine Kreatur fällt am Ende ihrer Runde, wenn sie mit nichtmagischen Mitteln fliegt und nicht schweben kann.",
 				"Die Sichtweite in einem Schneesturm ist auf 30 Fuß reduziert. Kreaturen ohne Schutzbrille oder anderen Augenschutz haben aufgrund des Schneetreibens einen Nachteil bei Weisheitsprüfungen ({@skill Perception}), die sich auf die Sicht verlassen.",
-				"Jede Kreatur, die sich in einem Schneesturm auf einen Zauber konzentriert, muss am Ende ihres Zuges einen Schutzwurf der Konstitution (DC 10) bestehen oder ihre Konzentration auf den Zauber verlieren, es sei denn, die Kreatur ist vor den Elementen geschützt (z.B. in einem Iglu).",
+				"Jede Kreatur, die sich in einem Schneesturm auf einen Zauber konzentriert, muss am Ende ihres Zuges einen Rettungswurf der Konstitution DC 10 bestehen oder sie verliert ihre Konzentration auf den Zauber, es sei denn, die Kreatur ist vor den Elementen geschützt (z.B. in einem Iglu).",
 				{
 					"type": "entries",
 					"name": "Veering Off Course",
@@ -806,7 +806,7 @@
 			"page": 105,
 			"entries": [
 				"Brauner Schimmel ernährt sich von Wärme und entzieht allem, was ihn umgibt, Wärme. Ein Fleck mit braunem Schimmel bedeckt in der Regel ein 10-Fuß-Quadrat, und die Temperatur im Umkreis von 30 Fuß ist immer eisig.",
-				"Wenn sich eine Kreatur zum ersten Mal in einem Zug innerhalb von 5 Fuß um die Form bewegt oder ihren Zug dort beginnt, muss sie einen DC 12 Konstitutionsschutzwurf machen und erleidet bei einem Fehlversuch 22 ({@dice 4d10}) Kälteschaden.",
+				"Wenn sich eine Kreatur zum ersten Mal in einem Zug in einen Umkreis von 5 Fuß um die Form bewegt oder ihren Zug dort beginnt, muss sie einen Rettungswurf der Konstitution DC 12 ablegen und erleidet bei einem misslungenen Rettungswurf 22 ({@dice 4d10}) Kälteschaden, bei einem erfolgreichen Rettungswurf halb so viel.",
 				"Brauner Schimmel ist immun gegen Feuer, und jede Feuerquelle, die sich in einem Umkreis von 5 Fuß um einen Fleck befindet, bewirkt, dass er sich sofort in Richtung des Feuers ausdehnt und einen Bereich von 10 Fuß im Quadrat abdeckt (wobei sich die Feuerquelle in der Mitte dieses Bereichs befindet). Ein Fleck mit braunem Schimmel, der einem Effekt ausgesetzt ist, der Kälteschaden verursacht, wird sofort zerstört."
 			]
 		},
@@ -817,12 +817,12 @@
 			"entries": [
 				"Dämonischer Speichel ist das, was nach dem Tod eines Dämons zurückbleibt. Es ist eine Reduktion von dämonischem Blut, Eingeweiden und Körperflüssigkeiten mit der Konsistenz und dem Geruch von Galle.",
 				"In Avernus sterben so viele Dämonen, dass sich aus ihrem Ichor Tümpel und kleine Seen bilden. Obwohl der Ichor auf den meisten Dimensionen der Existenz harmlos ist, kann er Kreaturen in den unteren Dimensionen verderben. Teufel und andere Kreaturen haben Wege gefunden, den Dämonensaft in Ritualen zu verwenden und die Leistung von höllischen Kriegsmaschinen zu verbessern (wie in {@adventure appendix B|BGDIA|11} beschrieben).",
-				"Wenn eine Kreatur in Avernus direkt mit Dämonensaft in Berührung kommt, muss sie einen Konstitutionsschutzwurf von DC 10 ablegen. Unholde, Säufer, Pflanzen und Untote schaffen diesen Rettungswurf automatisch. Bei einem misslungenen Schutzwurf wird die Kreatur durch den Ichor magisch verformt, was durch Würfeln auf der Tabelle Fleischverformung bestimmt wird. Ein Zauber, der einen Fluch aufhebt, beendet alle mit dem Ichor zusammenhängenden Verformungseffekte auf eine Kreatur.",
+				"Wenn eine Kreatur in Avernus in direkten Kontakt mit Dämonensaft kommt, muss sie einen Rettungswurf der Konstitution DC 10 ablegen. Unholde, Säufer, Pflanzen und Untote schaffen diesen Rettungswurf automatisch. Bei einem misslungenen Schutzwurf wird die Kreatur durch den Ichor magisch verformt, was durch Würfeln auf der Tabelle Fleischverformung bestimmt wird. Ein Zauber, der einen Fluch aufhebt, beendet alle mit dem Ichor zusammenhängenden Verformungseffekte auf eine Kreatur.",
 				{
 					"type": "entries",
 					"name": "Ichor-Coated Weapons",
 					"entries": [
-						"Dämonischer Speichel ist klebrig genug, um an den meisten Waffen zu haften. Eine Kreatur in Avernus, die durch eine mit Dämonensaft beschichtete Waffe Schaden erleidet, erleidet eine fleischzerstörende Verwandlung, wenn ihr der Rettungswurf (wie oben beschrieben) misslingt. Nachdem die Waffe ihr Ziel getroffen hat, ist sie nicht mehr mit Dämonenschorf überzogen."
+						"Dämonischer Ichor ist klebrig genug, um an den meisten Waffen zu haften. Eine Kreatur in Avernus, die durch eine mit Dämonensaft beschichtete Waffe Schaden erleidet, erleidet eine fleischfressende Verwandlung, wenn ihr Rettungswurf (wie oben beschrieben) misslingt. Nachdem die Waffe ihr Ziel getroffen hat, ist sie nicht mehr mit Dämonenschorf überzogen."
 					]
 				},
 				{
@@ -915,7 +915,7 @@
 						],
 						[
 							"96–00",
-							"Dem Ziel wächst ein weiterer Kopf, wodurch es einen Vorteil bei Schutzwürfen gegen {@condition charmed}, {@condition frightened} oder {@condition stunned} hat."
+							"Dem Ziel wächst ein weiterer Kopf, wodurch es einen Vorteil bei Rettungswürfen gegen {@condition charmed}, {@condition frightened} oder {@condition stunned} hat."
 						]
 					]
 				}
@@ -938,7 +938,7 @@
 			"page": 110,
 			"trapHazType": "WTH",
 			"entries": [
-				"Immer wenn die Temperatur bei oder unter 0 Grad Fahrenheit liegt, muss eine Kreatur, die der Kälte ausgesetzt ist, am Ende jeder Stunde einen Rettungswurf der Konstitution DC 10 bestehen oder eine Stufe von {@condition exhaustion} gewinnen. Kreaturen mit einer Resistenz oder Immunität gegen Kälteschaden gelingt der Rettungswurf automatisch, ebenso wie Kreaturen, die Kleidung für kaltes Wetter tragen (dicke Mäntel, Handschuhe und dergleichen) und Kreaturen, die von Natur aus an kaltes Klima angepasst sind."
+				"Immer wenn die Temperatur bei oder unter 0 Grad Fahrenheit liegt, muss eine Kreatur, die der Kälte ausgesetzt ist, am Ende jeder Stunde einen Rettungswurf der Konstitution (DC 10) bestehen oder eine Stufe von {@condition exhaustion} gewinnen. Kreaturen mit einer Resistenz oder Immunität gegen Kälteschaden gelingt der Rettungswurf automatisch, ebenso wie Kreaturen, die Kältekleidung (dicke Mäntel, Handschuhe und dergleichen) tragen, und Kreaturen, die von Natur aus an kaltes Klima angepasst sind."
 			]
 		},
 		{
@@ -947,8 +947,8 @@
 			"page": 110,
 			"trapHazType": "WTH",
 			"entries": [
-				"Wenn die Temperatur bei oder über 100 Grad Fahrenheit liegt, muss eine Kreatur, die der Hitze ausgesetzt ist und keinen Zugang zu trinkbarem Wasser hat, am Ende jeder Stunde einen Konstitutionsrettungswurf bestehen oder eine Stufe von {@condition exhaustion} gewinnen. Der DC beträgt 5 für die erste Stunde und erhöht sich um 1 für jede weitere Stunde.",
-				"Kreaturen, die eine mittelschwere oder schwere Rüstung tragen oder in schwere Kleidung gekleidet sind, haben einen Nachteil bei diesem Rettungswurf. Kreaturen mit Resistenz oder Immunität gegen Feuerschaden gelingt der Rettungswurf automatisch, ebenso wie Kreaturen, die von Natur aus an heißes Klima angepasst sind."
+				"Wenn die Temperatur bei oder über 100 Grad Fahrenheit liegt, muss eine Kreatur, die der Hitze ausgesetzt ist und keinen Zugang zu trinkbarem Wasser hat, am Ende jeder Stunde einen Rettungswurf der Konstitution bestehen oder eine Stufe von {@condition exhaustion} gewinnen. Der DC beträgt 5 für die erste Stunde und erhöht sich um 1 für jede weitere Stunde.",
+				"Kreaturen, die eine mittelschwere oder schwere Rüstung tragen oder in schwere Kleidung gekleidet sind, haben bei diesem Rettungswurf einen Nachteil. Kreaturen mit Resistenz oder Immunität gegen Feuerschaden gelingt der Rettungswurf automatisch, ebenso wie Kreaturen, die von Natur aus an heißes Klima angepasst sind."
 			]
 		},
 		{
@@ -966,7 +966,7 @@
 			"page": 170,
 			"trapHazType": "WLD",
 			"entries": [
-				"Wenn eine Kreatur in den Raum einer zweiten Kreatur fällt und keiner von beiden ein Winzling ist, muss die zweite Kreatur einen Rettungswurf von DC 15 auf Geschicklichkeit bestehen oder von der fallenden Kreatur getroffen werden, und jeglicher Schaden, der aus dem Fall resultiert, wird gleichmäßig zwischen ihnen aufgeteilt. Die getroffene Kreatur wird ebenfalls um {@condition prone} gestoßen, es sei denn, sie ist zwei oder mehr Größen größer als die fallende Kreatur."
+				"Wenn eine Kreatur in den Raum einer zweiten Kreatur fällt und keiner von beiden ein Winzling ist, muss die zweite Kreatur einen Rettungswurf von DC 15 in Geschicklichkeit bestehen oder von der fallenden Kreatur getroffen werden, und der durch den Sturz verursachte Schaden wird gleichmäßig zwischen ihnen aufgeteilt. Die getroffene Kreatur wird ebenfalls umgestoßen {@condition prone}, es sei denn, sie ist zwei oder mehr Größen größer als die fallende Kreatur."
 			]
 		},
 		{
@@ -995,7 +995,7 @@
 			"page": 110,
 			"trapHazType": "WLD",
 			"entries": [
-				"Eine Kreatur kann für eine Anzahl von Minuten, die ihrem Konstitutionswert entspricht, in eiskaltes Wasser getaucht werden, bevor sie irgendwelche negativen Auswirkungen erleidet. Für jede weitere Minute, die die Kreatur in eiskaltem Wasser verbringt, muss sie einen Konstitutions-Erhaltungswurf von DC 10 bestehen oder eine Stufe von {@condition exhaustion} gewinnen. Kreaturen mit Resistenz oder Immunität gegen Kälteschaden bestehen den Rettungswurf automatisch, ebenso wie Kreaturen, die von Natur aus an das Leben in eiskaltem Wasser angepasst sind."
+				"Eine Kreatur kann für eine Anzahl von Minuten, die ihrer Konstitutionszahl entspricht, in eiskaltes Wasser getaucht werden, bevor sie irgendwelche negativen Auswirkungen erleidet. Für jede weitere Minute, die die Kreatur in eiskaltem Wasser verbringt, muss sie einen Rettungswurf der Konstitution DC 10 bestehen oder eine Stufe von {@condition exhaustion} gewinnen. Kreaturen mit Resistenz oder Immunität gegen Kälteschaden bestehen den Rettungswurf automatisch, ebenso wie Kreaturen, die von Natur aus an das Leben in eiskaltem Wasser angepasst sind."
 			]
 		},
 		{
@@ -1004,7 +1004,7 @@
 			"page": 105,
 			"entries": [
 				"Dieser säurehaltige Schleim verschlingt Fleisch, organisches Material und Metall bei Kontakt. Er ist leuchtend grün, nass und klebrig und haftet in Flecken an Wänden, Böden und Decken.",
-				"Ein Fleck aus grünem Schleim bedeckt ein 5-Fuß-Quadrat, hat {@sense blindsight} bis zu einer Reichweite von 30 Fuß und fällt von Wänden und Decken, wenn er eine Bewegung unter sich entdeckt. Darüber hinaus hat er keine Fähigkeit, sich zu bewegen. Eine Kreatur, die sich der Anwesenheit des Schleims bewusst ist, kann vermeiden, von ihm getroffen zu werden, indem sie einen erfolgreichen Rettungswurf mit DC 10 Geschicklichkeit absolviert. Andernfalls kann dem Schleim nicht ausgewichen werden, wenn er fällt.",
+				"Ein Fleck aus grünem Schleim bedeckt ein 5-Fuß-Quadrat, hat {@sense blindsight} bis zu einer Reichweite von 30 Fuß und lässt sich von Wänden und Decken fallen, wenn er eine Bewegung unter sich entdeckt. Darüber hinaus hat er keine Fähigkeit, sich zu bewegen. Eine Kreatur, die sich der Anwesenheit des Schleims bewusst ist, kann vermeiden, von ihm getroffen zu werden, indem sie einen erfolgreichen Rettungswurf mit DC 10 Geschicklichkeit absolviert. Andernfalls kann dem Schleim nicht ausgewichen werden, wenn er fällt.",
 				"Eine Kreatur, die mit dem grünen Schleim in Berührung kommt, erleidet 5 ({@dice 1d10}) Säureschaden. Die Kreatur erleidet diesen Schaden zu Beginn jeder ihrer Runden erneut, bis der Schleim abgekratzt oder zerstört wird. Gegen Holz oder Metall verursacht grüner Schleim jede Runde 11 ({@dice 2d10}) Säureschaden, und jede nichtmagische Waffe oder jedes nichtmagische Werkzeug aus Holz oder Metall, das zum Abkratzen des Schleims verwendet wird, wird effektiv zerstört.",
 				"Sonnenlicht, jeder Effekt, der Krankheiten heilt, und jeder Effekt, der Kälte-, Feuer- oder Strahlungsschaden verursacht, zerstört einen Fleck grünen Schleims."
 			]
@@ -1127,7 +1127,7 @@
 			"page": 163,
 			"trapHazType": "EST",
 			"entries": [
-				"Stürme, die von der Essenz des Todes durchdrungen sind, ziehen mit dunklen Wolken auf, in denen sich grinsende Totenköpfe und knochenweiße Blitze zeigen. Jede Kreatur, die dem Sturm ausgesetzt ist und kein Konstrukt oder Untoter ist, muss am Ende jeder Minute einen Konstitutionswettkampf mit DC 13 bestehen oder {@dice 3d6} nekrotischen Schaden erleiden.",
+				"Stürme, die von der Essenz des Todes durchdrungen sind, wirbeln mit dunklen Wolken, die grinsende Schädel und knochenweiße Blitze manifestieren. Jede Kreatur, die dem Sturm ausgesetzt ist und kein Konstrukt oder Untoter ist, muss am Ende jeder Minute einen Rettungswurf der Konstitution DC 13 bestehen oder erleidet {@dice 3d6} nekrotischen Schaden.",
 				"Eine Kreatur, die in einem nekrotischen Sturm stirbt, erhebt sich als {@creature skeleton} oder {@creature zombie} (deine Wahl) {@dice 1d10} Minuten später.",
 				" Ein nekrotischer Sturm dauert {@dice 1d4} Stunden und lässt die Ernte verdorren und die Brunnen für {@dice 1d4} Tage nach seinem Vorbeiziehen ungenießbar."
 			]
@@ -1149,7 +1149,7 @@
 			"trapHazType": "WLD",
 			"entries": [
 				"Die Razorvine ist eine Pflanze, die in wilden Knäueln und Hecken wächst. Es klammert sich auch an den Seiten von Gebäuden und anderen Oberflächen wie Efeu. Eine 10 Fuß hohe, 10 Fuß breite und 5 Fuß dicke Wand oder Hecke aus Razorvine hat AC 11, 25 Trefferpunkte und ist immun gegen Wucht-, Stich- und psychischen Schaden.",
-				"Wenn eine Kreatur zum ersten Mal in einer Runde direkt mit Rasierklinge in Berührung kommt, muss die Kreatur einen Rettungswurf von DC 10 auf Geschicklichkeit bestehen oder 5 ({@dice 1d10}) Hiebschaden durch die blasenartigen Dornen der Rasierklinge erleiden."
+				"Wenn eine Kreatur zum ersten Mal in einer Runde direkt mit Rasierklinge in Berührung kommt, muss sie einen Rettungswurf von DC 10 auf Geschicklichkeit bestehen oder 5 ({@dice 1d10}) Hiebschaden durch die blasenartigen Dornen der Rasierklinge erleiden."
 			]
 		},
 		{
@@ -1171,7 +1171,7 @@
 					"page": 237,
 					"entries": [
 						"Die Engerlinge stellen sowohl einzeln als auch in Schwärmen eine Gefahr dar. Siehe {@creature swarm of rot grubs|MPMM|stat block} für die Mechanik eines Schwarmes von Fäulnismaden. Eine einzelne Fäulnismotte hat keinen Stat-Block.",
-						"Jede Kreatur, die mit einer einzelnen Fäulnisraupe in Berührung kommt, muss einen {@dc 10} Konstitutionsschutzwurf bestehen oder {@condition poisoned} sein, da sich die Raupe in die Kreatur eingräbt. Die {@condition poisoned} Kreatur erleidet am Ende jeder ihrer Runden 3 ({@damage 1d6}) Giftschaden. Immer wenn die {@condition poisoned} Kreatur Feuerschaden erleidet, kann sie den Rettungswurf wiederholen und bei einem Erfolg den Effekt für sich selbst beenden. Wenn die {@condition poisoned} Kreatur ihren Zug mit 0 Trefferpunkten beendet, stirbt sie, da die Fäulnismotte sie tötet."
+						"Jede Kreatur, die mit einer einzelnen Fäulnismotte in Berührung kommt, muss einen {@dc 10} Rettungswurf auf die Konstitution bestehen oder {@condition poisoned} leiden, da sich die Fäulnismotte in die Kreatur eingräbt. Die {@condition poisoned} Kreatur erleidet am Ende jeder ihrer Runden 3 ({@damage 1d6}) Giftschaden. Immer wenn die {@condition poisoned} Kreatur Feuerschaden erleidet, kann sie den Rettungswurf wiederholen und bei einem Erfolg den Effekt für sich selbst beenden. Wenn die {@condition poisoned} Kreatur ihren Zug mit 0 Trefferpunkten beendet, stirbt sie, da die Fäulnismotte sie tötet."
 					]
 				}
 			]
@@ -1193,7 +1193,7 @@
 					"type": "entries",
 					"name": "Effects of the Mold",
 					"entries": [
-						"Jede Kreatur, die sich dem Rotbraunen Schimmel auf weniger als 5 Fuß nähert, muss einen {@dc 13} Konstitutionsschutzwurf machen, da der Schimmel einen Schwall Sporen ausstößt. Bei einem misslungenen Schutzwurf ist die Kreatur {@condition poisoned}. Solange sie auf diese Weise {@condition poisoned} ist, erleidet die Kreatur zu Beginn jeder ihrer Runden 7 ({@damage 2d6}) Giftschaden. Die Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Jede Magie, die Gift neutralisiert oder Krankheit heilt, tötet den Befall. Eine Kreatur, die durch den Schimmelpilz auf 0 Trefferpunkte reduziert wurde, stirbt. Wenn es sich bei der toten Kreatur um eine Bestie, einen Riesen oder einen Humanoiden handelt, schlüpfen 24 Stunden später ein oder mehrere Vegepygmäen aus ihrem Körper: einer aus einem kleinen Leichnam, zwei aus einem mittleren Leichnam, vier aus einem großen Leichnam, acht aus einem riesigen Leichnam oder sechzehn aus einem gargantuanischen Leichnam."
+						"Jede Kreatur, die sich im Umkreis von 5 Fuß um den Rotbraunen Schimmelpilz befindet, muss einen {@dc 13} Rettungswurf auf Konstitution machen, wenn der Schimmelpilz einen Hauch von Sporen ausstößt. Bei einem misslungenen Schutzwurf ist die Kreatur {@condition poisoned}. Solange sie auf diese Weise {@condition poisoned} ist, erleidet die Kreatur zu Beginn jeder ihrer Runden 7 ({@damage 2d6}) Giftschaden. Die Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Jede Magie, die Gift neutralisiert oder Krankheit heilt, tötet den Befall. Eine Kreatur, die durch den Schimmelpilz auf 0 Trefferpunkte reduziert wurde, stirbt. Handelt es sich bei der toten Kreatur um eine Bestie, einen Riesen oder einen Humanoiden, schlüpfen 24 Stunden später ein oder mehrere Vegepygmäen aus ihrem Körper: einer aus einer kleinen Leiche, zwei aus einer mittleren Leiche, vier aus einer großen Leiche, acht aus einer riesigen Leiche oder sechzehn aus einer gargantuanischen Leiche."
 					]
 				},
 				{
@@ -1249,7 +1249,7 @@
 			"source": "DMG",
 			"page": 105,
 			"entries": [
-				"Riesenspinnen weben dicke, klebrige Netze über Gänge und auf dem Boden von Gruben, um Beute zu fangen. Diese mit Netzen gefüllten Bereiche sind {@quickref difficult terrain||3}. Außerdem muss eine Kreatur, die einen mit Spinnennetzen gefüllten Bereich zum ersten Mal in ihrem Zug betritt oder ihren Zug dort beginnt, einen Rettungswurf der Stärke DC 12 bestehen oder wird von den Spinnennetzen {@condition restrained}. Eine {@condition restrained} Kreatur kann mit ihrer Aktion versuchen zu entkommen, indem sie eine erfolgreiche DC 12-Überprüfung auf Stärke ({@skill Athletics}) oder Geschicklichkeit ({@skill Acrobatics}) ablegt.",
+				"Riesenspinnen weben dicke, klebrige Netze über Gänge und auf dem Boden von Gruben, um Beute zu fangen. Diese mit Netzen gefüllten Bereiche sind {@quickref difficult terrain||3}. Außerdem muss eine Kreatur, die einen mit Spinnennetzen gefüllten Bereich zum ersten Mal in einem Zug betritt oder ihren Zug dort beginnt, einen Rettungswurf von DC 12 Geschicklichkeit bestehen oder wird von den Spinnennetzen {@condition restrained}. Eine {@condition restrained} Kreatur kann mit ihrer Aktion versuchen zu entkommen, indem sie eine erfolgreiche DC 12-Überprüfung auf Stärke ({@skill Athletics}) oder Geschicklichkeit ({@skill Acrobatics}) ablegt.",
 				"Jeder 10-Fuß-Würfel aus riesigen Spinnweben hat AC 10, 15 Trefferpunkte, Verwundbarkeit gegen Feuer und Immunität gegen Wucht-, Stich- und psychischen Schaden."
 			]
 		},
@@ -1258,7 +1258,7 @@
 			"source": "DMG",
 			"page": 105,
 			"entries": [
-				"Der gelbe Schimmel wächst an dunklen Stellen, und ein Fleck bedeckt ein Quadrat von 5 Fuß. Bei Berührung stößt der Schimmelpilz eine Sporenwolke aus, die einen 10-Fuß-Würfel ausfüllt, der vom Schimmelpilz ausgeht. Jede Kreatur in diesem Gebiet muss einen Konstitutionsschutzwurf von DC 15 bestehen oder 11 ({@dice 2d10}) Giftschaden erleiden und 1 Minute lang {@condition poisoned} werden. Solange sie auf diese Weise {@condition poisoned} ist, erleidet die Kreatur zu Beginn jeder ihrer Runden 5 ({@dice 1d10}) Giftschaden. Die Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem erfolgreichen Rettungswurf für sie selbst endet.",
+				"Der gelbe Schimmelpilz wächst an dunklen Orten, und ein Fleck bedeckt ein Quadrat von 5 Fuß. Bei Berührung stößt der Schimmelpilz eine Sporenwolke aus, die einen 10-Fuß-Würfel ausfüllt, der vom Schimmelpilz ausgeht. Jede Kreatur in diesem Gebiet muss einen Rettungswurf auf Konstitution DC 15 bestehen oder 11 ({@dice 2d10}) Giftschaden erleiden und 1 Minute lang {@condition poisoned} werden. Während die Kreatur auf diese Weise {@condition poisoned} wird, erleidet sie zu Beginn jeder ihrer Runden 5 ({@dice 1d10}) Giftschaden. Die Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem erfolgreichen Rettungswurf für sie selbst endet.",
 				"Sonnenlicht oder Brandschäden jeglicher Art zerstören einen Fleck mit gelbem Schimmel sofort."
 			]
 		}

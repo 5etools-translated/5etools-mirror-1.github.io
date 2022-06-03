@@ -43,7 +43,7 @@
 					"items": [
 						"Du hast {@sense blindsight} mit einer Reichweite von 30 Fuß. Innerhalb dieser Reichweite kannst du effektiv alles sehen, was sich nicht in völliger Deckung befindet, selbst wenn du {@condition blinded} oder in der Dunkelheit bist. Außerdem kannst du eine {@condition invisible} Kreatur sehen, es sei denn, die Kreatur versteckt sich erfolgreich vor dir.",
 						"Unkörperliche Flügel wachsen aus deinem Rücken und verleihen dir eine Fluggeschwindigkeit von 40 Fuß.",
-						"Wenn du diesen Zauber sprichst und als Bonusaktion in den folgenden Runden für die Dauer des Zaubers, kannst du einen Atemzug schimmernder Energie in einem Kegel von 30 Fuß ausatmen. Jede Kreatur in diesem Bereich muss einen Schutzwurf auf Geschicklichkeit machen und erleidet bei einem misslungenen Schutzwurf {@damage 3d8} Kraftschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden."
+						"Wenn du diesen Zauber sprichst und als Bonusaktion in den folgenden Runden für die Dauer des Zaubers, kannst du einen Atemzug schimmernder Energie in einem Kegel von 30 Fuß ausatmen. Jede Kreatur in diesem Bereich muss einen Rettungswurf in Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf {@damage 3d8} Kraftschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden."
 					]
 				}
 			],
@@ -123,7 +123,7 @@
 					"items": [
 						"Die Kreatur hat eine halbe Deckung.",
 						"Die Kreatur ist resistent gegen Säure-, Kälte-, Feuer-, Blitz- und Giftschaden.",
-						"Wenn die Kreatur einem Effekt ausgesetzt ist, der es ihr erlaubt, einen Rettungswurf auf Geschicklichkeit zu machen, um nur halben Schaden zu erleiden, erleidet die Kreatur keinen Schaden, wenn ihr der Rettungswurf gelingt, und nur halben Schaden, wenn er misslingt."
+						"Wenn die Kreatur einem Effekt ausgesetzt ist, der es ihr erlaubt, einen Rettungswurf in Geschicklichkeit zu machen, um nur halben Schaden zu erleiden, erleidet die Kreatur keinen Schaden, wenn der Rettungswurf gelingt, und nur halben Schaden, wenn er misslingt."
 					]
 				}
 			],
@@ -248,7 +248,7 @@
 				}
 			],
 			"entries": [
-				"Ein Ausbruch eiskalter Energie geht von dir in einem 30-Fuß-Kegel aus. Jede Kreatur in diesem Bereich muss einen Konstitutions-Erhaltungswurf machen. Bei einem misslungenen Rettungswurf erleidet eine Kreatur {@damage 3d8} Kälteschaden und ist 1 Minute lang mit Eis bedeckt oder bis eine Kreatur ihre Aktion nutzt, um das Eis von sich selbst oder einer anderen Kreatur zu brechen. Die Geschwindigkeit einer mit Eis bedeckten Kreatur wird auf 0 reduziert. Bei einem erfolgreichen Rettungswurf erleidet eine Kreatur nur halb so viel Schaden ohne zusätzliche Effekte."
+				"Ein Ausbruch von eiskalter Energie geht von dir in einem Kegel von 30 Fuß aus. Jede Kreatur in diesem Bereich muss einen Rettungswurf auf Konstitution machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur {@damage 3d8} Kälteschaden und ist 1 Minute lang oder so lange, bis eine Kreatur ihre Aktion nutzt, um das Eis von sich oder einer anderen Kreatur zu brechen, mit Eis bedeckt. Die Geschwindigkeit einer mit Eis bedeckten Kreatur wird auf 0 reduziert. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur nur halb so viel Schaden, ohne zusätzliche Effekte."
 			],
 			"entriesHigherLevel": [
 				{
@@ -327,15 +327,15 @@
 					"rows": [
 						[
 							"1",
-							"Der Geruch von Apfelkuchen erfüllt die Luft, und jede Kreatur in dem Würfel muss einen Weisheitswurf bestehen oder wird von dir bis zum Beginn deines nächsten Zuges {@condition charmed}. "
+							"Der Geruch von Apfelkuchen erfüllt die Luft, und jede Kreatur in dem Würfel muss einen Rettungswurf in Weisheit bestehen oder wird bis zum Beginn deines nächsten Zuges von dir {@condition charmed}."
 						],
 						[
 							"2",
-							"Blumensträuße erscheinen rundherum, und jede Kreatur in dem Würfel muss einen Schutzwurf auf Geschicklichkeit bestehen oder bis zum Beginn deines nächsten Zuges {@condition blinded} sein, während die Blumen ihnen Wasser ins Gesicht spritzen."
+							"Blumensträuße erscheinen rundherum, und jede Kreatur im Würfel muss einen Rettungswurf in Geschicklichkeit bestehen oder bis zum Beginn deines nächsten Zuges {@condition blinded} leiden, da die Blumen ihnen Wasser ins Gesicht spritzen."
 						],
 						[
 							"3",
-							"Jede Kreatur in dem Würfel muss einen Weisheitswurf bestehen oder sie fängt bis zum Beginn deines nächsten Zuges an zu kichern. Eine kichernde Kreatur ist {@condition incapacitated} und nutzt ihre gesamte Bewegung, um sich in eine zufällige Richtung zu bewegen."
+							"Jede Kreatur in dem Würfel muss einen Rettungswurf in Weisheit bestehen oder bis zum Beginn deines nächsten Zuges anfangen zu kichern. Eine kichernde Kreatur ist {@condition incapacitated} und nutzt ihre gesamte Bewegung, um sich in eine zufällige Richtung zu bewegen."
 						],
 						[
 							"4",
@@ -402,7 +402,7 @@
 			],
 			"entries": [
 				"Du entlässt eine schimmernde Lanze psychischer Kraft aus deiner Stirn auf eine Kreatur, die du in Reichweite sehen kannst. Alternativ kannst du den Namen der Kreatur aussprechen. Wenn sich das benannte Ziel in Reichweite befindet, erhält es keinen Vorteil durch Deckung oder Unsichtbarkeit, während die Lanze auf es zusteuert. Wenn sich das benannte Ziel nicht in Reichweite befindet, löst sich die Lanze auf, und der Zauberslot wird nicht verbraucht.",
-				"Das Ziel muss einen Intelligenz-Sicherungswurf bestehen oder {@damage 10d6} psychischen Schaden erleiden und bis zum Beginn deines nächsten Zuges {@condition incapacitated} sein."
+				"Das Ziel muss einen Rettungswurf der Intelligenz bestehen oder erleidet {@damage 10d6} psychischen Schaden und ist {@condition incapacitated} bis zum Beginn deines nächsten Zuges."
 			],
 			"entriesHigherLevel": [
 				{

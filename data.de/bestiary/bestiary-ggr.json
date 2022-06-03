@@ -184,7 +184,7 @@
 				{
 					"name": "Mount",
 					"entries": [
-						"Wenn der Archon nicht auf einem Reittier sitzt, kann er sich mit einer Bonusaktion auf magische Weise auf die Kreatur teleportieren, die ihm als Reittier dient, vorausgesetzt, der Archon und sein Reittier befinden sich in derselben Dimension der Existenz. Bei der Teleportation erscheint der Archon rittlings auf dem Reittier, zusammen mit jeglicher Ausrüstung, die er trägt oder mit sich führt. Solange er auf einem Reittier sitzt und nicht {@condition incapacitated}, kann der Archon nicht überrascht werden, und sowohl er als auch sein Reittier haben einen Vorteil bei Rettungswürfen auf Geschicklichkeit. Wenn der Archon auf 0 Trefferpunkte reduziert wird, während er auf seinem Reittier reitet, wird auch das Reittier auf 0 Trefferpunkte reduziert."
+						"Wenn der Archon nicht auf einem Reittier sitzt, kann er sich mit einer Bonusaktion auf magische Weise auf die Kreatur teleportieren, die ihm als Reittier dient, vorausgesetzt, der Archon und sein Reittier befinden sich in derselben Dimension der Existenz. Bei der Teleportation erscheint der Archon rittlings auf dem Reittier, zusammen mit jeglicher Ausrüstung, die er trägt oder mit sich führt. Solange er beritten ist und nicht {@condition incapacitated}, kann der Archon nicht überrascht werden und sowohl er als auch sein Reittier haben einen Vorteil bei Rettungswürfen in Geschicklichkeit. Wenn der Archon auf 0 Trefferpunkte reduziert wird, während er auf seinem Reittier reitet, wird auch das Reittier auf 0 Trefferpunkte reduziert."
 					]
 				}
 			],
@@ -198,13 +198,13 @@
 				{
 					"name": "Hammer of Justice",
 					"entries": [
-						"{@atk mw} {@hit 10} bis zum Treffer, Reichweite 5 Fuß, ein Ziel. {@h}12 ({@damage 2d6 + 5}) Schaden durch Wucht plus 18 ({@damage 4d8}) Kraftschaden. Handelt es sich bei dem Ziel um eine Kreatur, muss diese einen {@dc 18} Stärkeschutzwurf bestehen oder wird {@condition prone} umgestoßen."
+						"{@atk mw} {@hit 10} bis zum Treffer, Reichweite 5 Fuß, ein Ziel. {@h}12 ({@damage 2d6 + 5}) Schaden durch Wucht plus 18 ({@damage 4d8}) Kraftschaden. Handelt es sich bei dem Ziel um eine Kreatur, muss sie einen {@dc 18} Rettungswurf auf Stärke bestehen oder wird {@condition prone} umgestoßen."
 					]
 				},
 				{
 					"name": "Pacifying Presence",
 					"entries": [
-						"Jede Kreatur nach Wahl des Archons, die der Archon im Umkreis von 120 Fuß sehen kann, muss einen {@dc 18} Weisheitswurf bestehen, sonst lässt das Ziel alle Waffen fallen, die es in der Hand hält, beendet seine Konzentration auf Zauber oder andere Effekte und wird für 1 Minute vom Archon {@condition charmed}. Die {@condition charmed} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Wenn der Rettungswurf einer Kreatur erfolgreich ist oder der Effekt für sie endet, ist die Kreatur für die nächsten 24 Stunden immun gegen die Beruhigende Präsenz des Archons."
+						"Jede Kreatur nach Wahl des Archons, die der Archon im Umkreis von 120 Fuß sehen kann, muss einen {@dc 18} Rettungswurf in Weisheit bestehen, andernfalls lässt das Ziel alle Waffen fallen, die es in der Hand hält, beendet seine Konzentration auf Zauber oder andere Effekte und wird für 1 Minute vom Archon {@condition charmed}. Die {@condition charmed} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Wenn der Rettungswurf einer Kreatur erfolgreich ist oder der Effekt für sie endet, ist die Kreatur für die nächsten 24 Stunden immun gegen die Beruhigende Präsenz des Archons."
 					]
 				}
 			],
@@ -224,7 +224,7 @@
 				{
 					"name": "Detention (Costs 3 Actions)",
 					"entries": [
-						"Der Archon zielt auf eine Kreatur, die er im Umkreis von 60 Fuß sehen kann. Das Ziel muss einen {@dc 18} Charisma-Wahlwurf bestehen oder wird bis zum Ende der nächsten Runde des Archons auf magische Weise in eine harmlose Dämmebene teleportiert, woraufhin das Ziel wieder in dem Raum erscheint, den es verlassen hat, oder im nächsten unbesetzten Raum, falls dieser besetzt ist."
+						"Der Archon zielt auf eine Kreatur, die er im Umkreis von 60 Fuß sehen kann. Das Ziel muss einen {@dc 18} Charisma-Rettungswurf bestehen oder wird bis zum Ende der nächsten Runde des Archons auf magische Weise in eine harmlose Dämmebene teleportiert, woraufhin das Ziel wieder in dem Raum erscheint, den es verlassen hat, oder im nächstgelegenen unbesetzten Raum, falls dieser besetzt ist."
 					]
 				}
 			],
@@ -345,7 +345,7 @@
 				{
 					"name": "Crackling Death",
 					"entries": [
-						"Wenn der Phönix des Bogenschützen stirbt, explodiert er. Jede Kreatur im Umkreis von 30 Fuß muss einen {@dc 18} Schutzwurf auf Geschicklichkeit machen und erleidet bei einem misslungenen Schutzwurf 36 ({@damage 8d8}) Blitzschaden, bei einem erfolgreichen Schutzwurf die Hälfte des Schadens. Die Explosion zerstört den Phönix, hinterlässt aber ein winziges, warmes Ei mit einer Mizzium-Schale. Das Ei enthält den Embryo eines neuen Arclight-Phönix. Er schlüpft, wenn er sich im Wirkungsbereich eines Zaubers befindet, der Blitzschaden verursacht, oder wenn eine Kreatur das Ei berührt und Zauberplätze verbraucht, deren Stufen zusammen 13 oder mehr betragen. Wenn das Ei schlüpft, setzt es einen neuen Arclight-Phönix frei, der an der Stelle des Eies erscheint."
+						"Wenn der Arclight-Phönix stirbt, explodiert er. Jede Kreatur im Umkreis von 30 Fuß muss einen {@dc 18} Rettungswurf in Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf 36 ({@damage 8d8}) Blitzschaden, bei einem erfolgreichen Rettungswurf die Hälfte des Schadens. Die Explosion zerstört den Phönix, hinterlässt aber ein winziges, warmes Ei mit einer Mizzium-Schale. Das Ei enthält den Embryo eines neuen Arclight-Phönix. Er schlüpft, wenn er sich im Wirkungsbereich eines Zaubers befindet, der Blitzschaden verursacht, oder wenn eine Kreatur das Ei berührt und Zauberplätze verbraucht, deren Stufen zusammen 13 oder mehr betragen. Wenn das Ei schlüpft, setzt es einen neuen Arclight-Phönix frei, der auf dem Platz des Eies erscheint."
 					]
 				}
 			],
@@ -353,7 +353,7 @@
 				{
 					"name": "Arclight Touch",
 					"entries": [
-						"{@atk mw} {@hit 10} auf Treffer, Reichweite 5 Fuß, ein Ziel. {@h}27 ({@damage 6d8}) Blitzschaden, und der Blitz springt vom Ziel zu einer Kreatur nach Wahl des Phönix, die er im Umkreis von 30 Fuß um das Ziel sehen kann. Diese zweite Kreatur muss einen {@dc 18} Schutzwurf auf Geschicklichkeit bestehen oder 27 ({@damage 6d8}) Blitzschaden erleiden."
+						"{@atk mw} {@hit 10} auf Treffer, Reichweite 5 Fuß, ein Ziel. {@h}27 ({@damage 6d8}) Blitzschaden, und der Blitz springt vom Ziel zu einer Kreatur nach Wahl des Phönix, die er im Umkreis von 30 Fuß um das Ziel sehen kann. Diese zweite Kreatur muss einen {@dc 18} Rettungswurf auf Geschicklichkeit bestehen oder 27 ({@damage 6d8}) Blitzschaden erleiden."
 					]
 				}
 			],
@@ -486,7 +486,7 @@
 				{
 					"name": "Leadership",
 					"entries": [
-						"Aurelia spricht ein paar inspirierende Worte zu einer Kreatur, die sie im Umkreis von 30 Fuß sieht. Wenn die Kreatur sie hören kann, kann sie einen {@dice d10} zu einem Angriffswurf oder Rettungswurf addieren, den sie vor Beginn von Aurelias nächstem Zug macht."
+						"Aurelia spricht ein paar inspirierende Worte zu einer Kreatur, die sie im Umkreis von 30 Fuß sehen kann. Wenn die Kreatur sie hören kann, kann sie einen {@dice d10} zu einem Angriffswurf oder Rettungswurf addieren, den sie vor Beginn von Aurelias nächstem Zug macht."
 					]
 				},
 				{
@@ -526,7 +526,7 @@
 				{
 					"name": "Frighten Foes (Costs 3 Actions)",
 					"entries": [
-						"Aurelia zielt auf bis zu fünf Kreaturen, die sie im Umkreis von 30 Fuß sehen kann. Jedes Ziel muss einen {@dc 25} Weisheitswurf bestehen oder bis zum Ende ihrer nächsten Runde {@condition frightened} von ihr entfernt sein. Jedes Ziel in einem Umkreis von 5 Fuß um Aurelia hat einen Nachteil bei diesem Rettungswurf."
+						"Aurelia zielt auf bis zu fünf Kreaturen, die sie im Umkreis von 30 Fuß sehen kann. Jedes Ziel muss einen {@dc 25} Rettungswurf in Weisheit bestehen oder bis zum Ende ihres nächsten Zuges {@condition frightened} von ihr entfernt sein. Jedes Ziel im Umkreis von 5 Fuß um Aurelia hat einen Nachteil bei diesem Rettungswurf."
 					]
 				}
 			],
@@ -648,7 +648,7 @@
 				{
 					"name": "Battlefield Inspiration",
 					"entries": [
-						"Der Engel wählt bis zu drei Kreaturen, die er im Umkreis von 30 Fuß sehen kann. Bis zum Ende des nächsten Zuges des Engels kann jedes Ziel einen {@dice d4} auf seine Angriffswürfe und Schutzwürfe addieren."
+						"Der Engel wählt bis zu drei Kreaturen aus, die er im Umkreis von 30 Fuß sehen kann. Bis zum Ende des nächsten Zuges des Engels kann jedes Ziel einen {@dice d4} auf seine Angriffswürfe und Rettungswürfe addieren."
 					]
 				}
 			],
@@ -928,7 +928,7 @@
 				{
 					"name": "Feed on Fire",
 					"entries": [
-						"Wenn der Unheimliche durch einen Zauber oder einen anderen magischen Effekt Feuerschaden erleidet, erhöht sich seine Größe um eine Kategorie. Wenn nicht genug Platz für die Vergrößerung des Unheimlichen vorhanden ist, erreicht er die maximal mögliche Größe in dem verfügbaren Raum. Solange der Unheimliche groß oder größer ist, macht er Stärkeproben und Rettungswürfe mit Vorteil. Wenn das Unheimliche seinen Zug mit Gargantuan-Größe beginnt, setzt es Energie in einer Explosion frei. Jede Kreatur im Umkreis von 30 Fuß um den Unheimlichen muss einen {@dc 12} Schutzwurf auf Geschicklichkeit machen und erleidet bei einem misslungenen Schutzwurf 28 ({@damage 8d6}) Feuerschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden. Die Explosion entzündet brennbare Gegenstände in der Umgebung, die nicht getragen werden. Die Größe des Unheimlichen wird dann mittelgroß."
+						"Wenn der Unheimliche durch einen Zauber oder einen anderen magischen Effekt Feuerschaden erleidet, vergrößert er sich um eine Kategorie. Wenn nicht genug Platz für die Vergrößerung des Unheimlichen vorhanden ist, erreicht er die maximal mögliche Größe in dem verfügbaren Raum. Solange der Unheimliche groß oder größer ist, macht er Stärkeproben und Rettungswürfe mit Vorteil. Wenn das Unheimliche seinen Zug mit Gargantuan-Größe beginnt, setzt es Energie in einer Explosion frei. Jede Kreatur im Umkreis von 30 Fuß um den Unheimlichen muss einen {@dc 12} Rettungswurf auf Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf 28 ({@damage 8d6}) Feuerschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden. Die Explosion entzündet brennbare Gegenstände in der Umgebung, die nicht getragen werden. Die Größe des Unheimlichen wird dann mittelgroß."
 					]
 				},
 				{
@@ -1057,7 +1057,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 7} auf Treffer, Reichweite 5 ft., eine willige Kreatur oder eine Kreatur, die {@condition grappled} vom Vampir, {@condition incapacitated} oder {@condition restrained} ist. {@h}7 ({@damage 1d6 + 4}) Stichschaden plus 7 ({@damage 2d6}) nekrotischer Schaden. Wenn das Ziel humanoid ist, muss es einen {@dc 15} Charisma-Sicherungswurf bestehen oder 1 Minute lang von dem Vampir {@condition charmed} angegriffen werden. Solange das Ziel auf diese Weise {@condition charmed} ist, ist es in den Vampir vernarrt. Die maximale Trefferpunktzahl des Ziels wird um einen Betrag reduziert, der dem erlittenen nekrotischen Schaden entspricht, und der Vampir erhält Trefferpunkte in Höhe dieses Betrags zurück. Die Verringerung hält an, bis das Ziel eine lange Ruhepause beendet hat. Das Ziel stirbt, wenn sein Trefferpunktemaximum auf 0 reduziert ist."
+						"{@atk mw} {@hit 7} auf Treffer, Reichweite 5 ft., eine willige Kreatur oder eine Kreatur, die {@condition grappled} vom Vampir, {@condition incapacitated} oder {@condition restrained} ist. {@h}7 ({@damage 1d6 + 4}) Stichschaden plus 7 ({@damage 2d6}) nekrotischer Schaden. Ist das Ziel humanoid, muss es einen {@dc 15} Charisma-Rettungswurf bestehen oder wird 1 Minute lang von dem Vampir {@condition charmed} angegriffen. Solange das Ziel auf diese Weise {@condition charmed} ist, ist es in den Vampir vernarrt. Die maximale Trefferpunktzahl des Ziels wird um einen Betrag reduziert, der dem erlittenen nekrotischen Schaden entspricht, und der Vampir erhält Trefferpunkte in Höhe dieses Betrags zurück. Die Verringerung hält an, bis das Ziel eine lange Ruhepause beendet hat. Das Ziel stirbt, wenn sein Trefferpunktemaximum auf 0 reduziert ist."
 					]
 				},
 				{
@@ -1198,7 +1198,7 @@
 				{
 					"name": "Blood Witch Dance",
 					"entries": [
-						"Die Hexe kann eine Bonusaktion nutzen, um die Bewegung einer durch ihren {@spell hex} Zauber verfluchten Kreatur zu kontrollieren, die sie im Umkreis von 30 Fuß sehen kann. Die Kreatur muss einen {@dc 15} Charisma-Sicherheitswurf bestehen oder ihre Reaktion nutzen, um sich bis zu 30 Fuß in eine Richtung ihrer Wahl zu bewegen."
+						"Die Hexe kann eine Bonusaktion nutzen, um die Bewegung einer durch ihren {@spell hex} Zauber verfluchten Kreatur zu kontrollieren, die sie im Umkreis von 30 Fuß sehen kann. Die Kreatur muss einen {@dc 15} Charisma-Rettungswurf bestehen oder ihre Reaktion nutzen, um sich bis zu 30 Fuß in eine Richtung ihrer Wahl zu bewegen."
 					]
 				},
 				{
@@ -1417,7 +1417,7 @@
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"entries": [
-						"Wenn Borborygmos ein Rettungswurf misslingt, kann er stattdessen einen Erfolg wählen."
+						"Wenn Borborygmos ein Rettungswurf misslingt, kann er stattdessen einen erfolgreichen Rettungswurf wählen."
 					]
 				},
 				{
@@ -1443,7 +1443,7 @@
 				{
 					"name": "Maul",
 					"entries": [
-						"{@atk mw} {@hit 13} Treffer, Reichweite 10 ft., ein Ziel. {@h}28 ({@damage 6d6 + 7}) Schaden durch Wucht. Handelt es sich bei dem Ziel um eine Kreatur, muss diese einen {@dc 21} Stärkeschutzwurf bestehen oder wird {@condition prone} umgestoßen."
+						"{@atk mw} {@hit 13} Treffer, Reichweite 10 ft., ein Ziel. {@h}28 ({@damage 6d6 + 7}) Schaden durch Wucht. Handelt es sich bei dem Ziel um eine Kreatur, muss sie einen {@dc 21} Rettungswurf auf Stärke bestehen oder wird {@condition prone} niedergeschlagen."
 					]
 				},
 				{
@@ -1461,7 +1461,7 @@
 				{
 					"name": "Frightful Presence",
 					"entries": [
-						"Jede Kreatur von Borborygmos' Wahl, die sich im Umkreis von 60 Fuß von ihm befindet und ihn sehen oder hören kann, muss einen {@dc 17} Weisheitsschutzwurf bestehen oder wird 1 Minute lang {@condition frightened} von ihm beeinflusst. Die {@condition frightened} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Wenn der Rettungswurf einer Kreatur erfolgreich ist oder der Effekt für sie endet, ist die Kreatur für die nächsten 24 Stunden immun gegen Borborygmos' Schreckliche Gegenwart."
+						"Jede Kreatur von Borborygmos' Wahl, die sich im Umkreis von 60 Fuß von ihm befindet und ihn sehen oder hören kann, muss einen {@dc 17} Rettungswurf in Weisheit bestehen oder wird 1 Minute lang {@condition frightened} von ihm angegriffen. Die {@condition frightened} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Wenn der Rettungswurf einer Kreatur erfolgreich ist oder der Effekt für sie endet, ist die Kreatur für die nächsten 24 Stunden immun gegen Borborygmos' Schreckliche Gegenwart."
 					]
 				}
 			],
@@ -1475,13 +1475,13 @@
 				{
 					"name": "Bellow (Costs 2 Actions)",
 					"entries": [
-						"Borborygmos schreit eine Kreatur, die er im Umkreis von 60 Fuß sehen kann, bedrohlich an. Diese Kreatur muss einen {@dc 17} Weisheitswurf bestehen oder wird 1 Minute lang zu {@condition frightened} von ihm. Wenn die Kreatur bereits {@condition frightened} ist, wird sie stattdessen {@condition stunned}. Eine Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Wenn der Rettungswurf einer Kreatur erfolgreich ist oder der Effekt für sie endet, ist die Kreatur für die nächsten 24 Stunden immun gegen Borborygmos' Brüllen."
+						"Borborygmos schreit eine Kreatur, die er im Umkreis von 60 Fuß sehen kann, bedrohlich an. Diese Kreatur muss einen {@dc 17} Rettungswurf in Weisheit bestehen oder wird 1 Minute lang {@condition frightened} von ihm angegriffen. Wenn die Kreatur bereits {@condition frightened} ist, wird sie stattdessen {@condition stunned}. Eine Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Wenn der Rettungswurf einer Kreatur erfolgreich ist oder der Effekt für sie endet, ist die Kreatur für die nächsten 24 Stunden immun gegen Borborygmos' Brüllen."
 					]
 				},
 				{
 					"name": "Wide Berth (Costs 3 Actions)",
 					"entries": [
-						"Borborygmos bewegt sich bis zur Hälfte seiner Geschwindigkeit und kann sich durch den Raum eines jeden Wesens bewegen, das kleiner ist als \"Riesig\". Wenn Borborygmos während dieser Bewegung zum ersten Mal den Raum einer Kreatur betritt, muss die Kreatur einen {@dc 21} Schutzwurf auf Geschicklichkeit ablegen. Wenn der Rettungswurf gelingt, wird die Kreatur 5 Fuß von Borborygmos weggeschoben. Misslingt der Rettungswurf, wird die Kreatur um {@condition prone} gestoßen, und Borborygmos kann eine Stampfattacke gegen sie durchführen."
+						"Borborygmos bewegt sich bis zur Hälfte seiner Geschwindigkeit und kann sich durch den Raum jeder Kreatur bewegen, die kleiner als Riesig ist. Wenn Borborygmos während dieser Bewegung zum ersten Mal den Raum einer Kreatur betritt, muss die Kreatur einen {@dc 21} Rettungswurf auf Geschicklichkeit machen. Wenn der Rettungswurf gelingt, wird die Kreatur 5 Fuß von Borborygmos weggeschoben. Misslingt der Rettungswurf, wird die Kreatur um {@condition prone} gestoßen, und Borborygmos kann eine Stampfattacke gegen sie ausführen."
 					]
 				}
 			],
@@ -1609,7 +1609,7 @@
 				{
 					"name": "Last Laugh",
 					"entries": [
-						"Wenn der Gackler stirbt, stößt er ein sterbendes Lachen aus, das andere Kreaturen in der Nähe in den Wahnsinn treibt. Jede Kreatur im Umkreis von 10 Fuß um den Gackler muss einen {@dc 11} Weisheitswurf bestehen oder 2 ({@damage 1d4}) psychischen Schaden erleiden."
+						"Wenn der Gacker stirbt, stößt er ein sterbendes Lachen aus, das die Seelen anderer Kreaturen in der Nähe erschüttert. Jede Kreatur im Umkreis von 10 Fuß um den Gackler muss einen {@dc 11} Rettungswurf in Weisheit bestehen oder 2 ({@damage 1d4}) psychischen Schaden erleiden."
 					]
 				},
 				{
@@ -1881,7 +1881,7 @@
 				{
 					"name": "Tail",
 					"entries": [
-						"{@atk mw} {@hit 11} bis zum Treffer, Reichweite 15 Fuß, ein Ziel. {@h}33 ({@damage 6d8 + 6}) Schaden durch Wucht. Handelt es sich bei dem Ziel um eine Kreatur, muss sie einen {@dc 19} Stärkeschutzwurf bestehen oder wird {@condition prone} umgestoßen."
+						"{@atk mw} {@hit 11} bis zum Treffer, Reichweite 15 Fuß, ein Ziel. {@h}33 ({@damage 6d8 + 6}) Schaden durch Wucht. Handelt es sich bei dem Ziel um eine Kreatur, muss sie einen {@dc 19} Rettungswurf auf Stärke bestehen oder wird {@condition prone} niedergeschlagen."
 					]
 				}
 			],
@@ -2010,7 +2010,7 @@
 				{
 					"name": "Vine Staff",
 					"entries": [
-						"{@atk mw} {@hit 9} Treffer, Reichweite 5 ft., ein Ziel. {@h}12 ({@damage 2d6 + 5}) Schaden durch Wucht. Handelt es sich bei dem Ziel um eine Kreatur, muss sie einen {@dc 17} Geschicklichkeits-Sicherungswurf bestehen oder wird 1 Minute lang von {@condition restrained} sich windenden Ranken umschlungen. Ein Ziel {@condition restrained} auf diese Weise kann eine Aktion nutzen, um einen {@dc 17} Stärke- (Athletik) oder Geschicklichkeits- (Akrobatik) Check zu machen, der bei Erfolg den Effekt auf sich selbst beendet."
+						"{@atk mw} {@hit 9} Treffer, Reichweite 5 ft., ein Ziel. {@h}12 ({@damage 2d6 + 5}) Schaden durch Wucht. Handelt es sich bei dem Ziel um eine Kreatur, muss sie einen {@dc 17} Rettungswurf in Geschicklichkeit bestehen oder wird 1 Minute lang von {@condition restrained} Ranken umschlungen. Ein Ziel {@condition restrained} auf diese Weise kann eine Aktion nutzen, um einen {@dc 17} Stärke- (Athletik) oder Geschicklichkeits- (Akrobatik) Check zu machen, der bei Erfolg den Effekt auf sich selbst beendet."
 					]
 				},
 				{
@@ -2262,7 +2262,7 @@
 				{
 					"name": "Counterflux Overcast {@recharge 5}",
 					"entries": [
-						"Der Sprengstoffsucher kann unmittelbar nach dem Wirken eines Zaubers einen zusätzlichen Effekt erzeugen. Wirf einen {@dice d6}, um den Effekt zu bestimmen: 1-3. Der Sprengstoffsucher erschafft eine Sphäre mit einem Radius von 15 Fuß {@condition invisible} um sich herum, die bis zum Ende seines nächsten Zuges anhält. Kreaturen, die sich in der Sphäre befinden, haben einen Nachteil bei Schutzwürfen gegen Zaubersprüche und andere magische Effekte. 4-6. Der Sprengstoffsucher erschafft eine Sphäre mit einem Radius von 15 Fuß {@condition invisible}, die auf ihn selbst zentriert ist und bis zum Ende seines nächsten Zuges anhält. Kreaturen in dieser Sphäre haben einen Vorteil bei Schutzwürfen gegen Zauber und andere magische Effekte."
+						"Der Sprengstoffsucher kann unmittelbar nach dem Wirken eines Zaubers einen zusätzlichen Effekt erzeugen. Wirf einen {@dice d6}, um den Effekt zu bestimmen: 1-3. Der Sprengstoffsucher erschafft eine Sphäre mit einem Radius von 15 Fuß {@condition invisible} um sich herum, die bis zum Ende seines nächsten Zuges anhält. Kreaturen in dieser Sphäre haben einen Nachteil bei Rettungswürfen gegen Zauber und andere magische Effekte. 4-6. Der Sprengstoffsucher erschafft eine Sphäre mit einem Radius von 15 Fuß {@condition invisible}, die auf ihn selbst zentriert ist und bis zum Ende seines nächsten Zuges bestehen bleibt. Kreaturen in dieser Sphäre haben einen Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte."
 					]
 				}
 			],
@@ -2425,7 +2425,7 @@
 				{
 					"name": "Chains of Obligation",
 					"entries": [
-						"Der Engel zielt auf eine Kreatur {@condition charmed}, die er im Umkreis von 90 Fuß um sich herum sehen kann. Das Ziel muss einen {@dc 19} Charisma-Sicherheitswurf bestehen oder wird {@condition paralyzed} für 1 Minute oder bis es Schaden nimmt."
+						"Der Engel zielt auf eine Kreatur {@condition charmed}, die er im Umkreis von 90 Fuß sehen kann. Das Ziel muss einen {@dc 19} Charisma-Rettungswurf bestehen oder wird 1 Minute lang oder bis es Schaden erleidet {@condition paralyzed}."
 					]
 				}
 			],
@@ -2616,7 +2616,7 @@
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"entries": [
-						"Wenn dem Lich ein Rettungswurf misslingt, kann er stattdessen wählen, ob er erfolgreich ist."
+						"Wenn dem Lich ein Rettungswurf misslingt, kann er stattdessen einen erfolgreichen Rettungswurf wählen."
 					]
 				},
 				{
@@ -2634,7 +2634,7 @@
 				{
 					"name": "Undead Fortitude",
 					"entries": [
-						"Wenn der Schaden den Lich auf 0 Trefferpunkte reduziert, muss er einen Konstitutions-Erhaltungswurf mit einem DC von 5 + dem erlittenen Schaden machen, es sei denn, der Schaden ist strahlend oder stammt von einem kritischen Treffer. Bei einem Erfolg sinkt der Lich stattdessen auf 1 Trefferpunkt."
+						"Wenn der Schaden den Lich auf 0 Trefferpunkte reduziert, muss er einen Rettungswurf auf Konstitution mit einem DC von 5 + dem erlittenen Schaden machen, es sei denn, der Schaden ist strahlend oder stammt von einem kritischen Treffer. Bei einem Erfolg sinkt der Lich stattdessen auf 1 Trefferpunkt."
 					]
 				}
 			],
@@ -2642,7 +2642,7 @@
 				{
 					"name": "Noxious Touch",
 					"entries": [
-						"{@atk ms} {@hit 9} Treffer, Reichweite 5 ft., eine Kreatur. {@h}14 ({@damage 4d6}) Giftschaden, und das Ziel muss einen {@dc 17} Konstitutionsschutzwurf bestehen oder 1 Minute lang {@condition poisoned} sein. Das {@condition poisoned} Ziel kann den Rettungswurf am Ende jeder seiner Runden wiederholen, wobei der Effekt bei einem Erfolg für es selbst endet."
+						"{@atk ms} {@hit 9} Treffer, Reichweite 5 ft., eine Kreatur. {@h}14 ({@damage 4d6}) Giftschaden, und das Ziel muss einen {@dc 17} Rettungswurf auf Konstitution bestehen oder 1 Minute lang {@condition poisoned} sein. Das {@condition poisoned} Ziel kann den Rettungswurf am Ende jeder seiner Runden wiederholen, wobei der Effekt bei einem Erfolg für es selbst endet."
 					]
 				}
 			],
@@ -2662,7 +2662,7 @@
 				{
 					"name": "Disrupt Life (Costs 3 Actions)",
 					"entries": [
-						"Jede Kreatur im Umkreis von 30 Fuß um den Lich muss einen {@dc 17} Konstitutionsschutzwurf machen und erleidet bei einem misslungenen Schutzwurf 21 ({@damage 6d6}) nekrotischen Schaden, bei einem erfolgreichen Schutzwurf halb so viel."
+						"Jede Kreatur im Umkreis von 30 Fuß um den Lich muss einen {@dc 17} Rettungswurf auf Konstitution machen und erleidet bei einem misslungenen Rettungswurf 21 ({@damage 6d6}) nekrotischen Schaden, bei einem erfolgreichen Rettungswurf halb so viel."
 					]
 				}
 			],
@@ -2944,7 +2944,7 @@
 				{
 					"name": "Pounce",
 					"entries": [
-						"Wenn sich der Felidar mindestens 20 Fuß geradeaus auf eine Kreatur zubewegt und sie im selben Zug mit einem Klauenangriff trifft, muss das Ziel einen {@dc 15} Stärkeschutzwurf bestehen oder wird {@condition prone} niedergeschlagen. Wenn das Ziel {@condition prone} groß ist, kann der Felidar eine Klauenattacke gegen es als Bonusaktion durchführen."
+						"Wenn sich der Felidar mindestens 20 Fuß geradeaus auf eine Kreatur zubewegt und sie im selben Zug mit einem Klauenangriff trifft, muss das Ziel einen {@dc 15} Stärke-Rettungswurf bestehen oder wird {@condition prone} niedergeschlagen. Wenn das Ziel {@condition prone} groß ist, kann der Felidar eine Klauenattacke gegen es als Bonusaktion durchführen."
 					]
 				}
 			],
@@ -3401,7 +3401,7 @@
 				{
 					"name": "Fluxbending Overcast {@recharge 5}",
 					"entries": [
-						"Der Sprengstoffsucher kann unmittelbar nach dem Wirken eines Zaubers einen zusätzlichen Effekt erzeugen. Wirf einen {@dice d6}, um den Effekt zu bestimmen: 1-3. Der Sprengstoffsucher teleportiert sich und tauscht den Platz mit einer Kreatur, die er im Umkreis von 30 Fuß sehen kann. 4-6. Der Sprengstoffsucher und jede Kreatur im Umkreis von 10 Fuß müssen einen {@dc 16} Konstitutionsschutzwurf bestehen oder 11 ({@damage 2d10}) Donnerschaden erleiden."
+						"Der Sprengstoffsucher kann unmittelbar nach dem Wirken eines Zaubers einen zusätzlichen Effekt erzeugen. Wirf einen {@dice d6}, um den Effekt zu bestimmen: 1-3. Der Sprengstoffsucher teleportiert sich und tauscht den Platz mit einer Kreatur, die er im Umkreis von 30 Fuß sehen kann. 4-6. Der Sprengstoffsucher und jede Kreatur im Umkreis von 10 Fuß müssen einen {@dc 16} Rettungswurf auf Konstitution bestehen oder 11 ({@damage 2d10}) Donnerschaden erleiden."
 					]
 				}
 			],
@@ -3528,7 +3528,7 @@
 				{
 					"name": "Arc Lightning",
 					"entries": [
-						"{@atk rs} {@hit 7} auf Treffer, Reichweite 30 Fuß, ein Ziel. {@h}16 ({@damage 3d10}) Blitzschaden, und der Blitz springt vom Ziel zu einer Kreatur nach Wahl des Fluxchargers, die er im Umkreis von 30 Fuß vom Ziel sehen kann. Diese zweite Kreatur muss einen {@dc 15} Schutzwurf auf Geschicklichkeit bestehen oder 13 ({@damage 3d8}) Blitzschaden erleiden. Treffer oder Fehlschuss: Der Fluxcharger erleidet 5 ({@damage 1d10}) Kraftschaden, nachdem er den Angriff aufgelöst hat."
+						"{@atk rs} {@hit 7} auf Treffer, Reichweite 30 Fuß, ein Ziel. {@h}16 ({@damage 3d10}) Blitzschaden, und der Blitz springt vom Ziel zu einer Kreatur nach Wahl des Fluxchargers, die er im Umkreis von 30 Fuß vom Ziel sehen kann. Diese zweite Kreatur muss einen {@dc 15} Rettungswurf auf Geschicklichkeit bestehen oder 13 ({@damage 3d8}) Blitzschaden erleiden. Treffer oder Fehlschuss: Der Fluxcharger erleidet 5 ({@damage 1d10}) Kraftschaden, nachdem er den Angriff aufgelöst hat."
 					]
 				}
 			],
@@ -3628,7 +3628,7 @@
 				{
 					"name": "Frightening Screech {@recharge 5}",
 					"entries": [
-						"Der Schrecken kreischt. Jede Kreatur im Umkreis von 30 Fuß, die es hören kann, muss einen {@dc 13} Weisheitssparwurf bestehen oder 1 Minute lang {@condition frightened} von ihm umgeben sein. Die {@condition frightened} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Wenn der Rettungswurf einer Kreatur erfolgreich ist oder der Effekt für sie endet, ist die Kreatur für die nächsten 24 Stunden immun gegen den Schreckensschrei des Grauens."
+						"Der Schrecken kreischt. Jede Kreatur im Umkreis von 30 Fuß, die es hören kann, muss einen {@dc 13} Rettungswurf in Weisheit bestehen oder 1 Minute lang {@condition frightened} von ihm entfernt sein. Die {@condition frightened} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet. Wenn der Rettungswurf einer Kreatur erfolgreich ist oder der Effekt für sie endet, ist die Kreatur für die nächsten 24 Stunden immun gegen den Schreckensschrei des Grauens."
 					]
 				}
 			],
@@ -3832,7 +3832,7 @@
 				{
 					"name": "Galvanic Overcast {@recharge 5}",
 					"entries": [
-						"Wenn der Sprengstoffsucher {@spell lightning bolt} oder Donnerwelle wirft, kann er einen Würfel werfen. Bei einer ungeraden Zahl erleidet der Sprengstoffsucher 9 ({@damage 2d8}) Kraftschaden. Bei einer geraden Zahl verursacht der Zauber außerdem 9 ({@damage 2d8}) Blitzschaden an jedem Ziel, das seinen Schutzwurf nicht besteht."
+						"Wenn der Sprengstoffsucher {@spell lightning bolt} oder Donnerwelle wirkt, kann er einen Würfel werfen. Bei einer ungeraden Zahl erleidet der Sprengstoffsucher 9 ({@damage 2d8}) Kraftschaden. Bei einer geraden Zahl verursacht der Zauber außerdem 9 ({@damage 2d8}) Blitzschaden an jedem Ziel, das seinen Rettungswurf nicht besteht."
 					]
 				},
 				{
@@ -3949,7 +3949,7 @@
 				{
 					"name": "Death Burst",
 					"entries": [
-						"Wenn der Galvaniseur stirbt, explodiert er in einer Explosion aus Eis und Blitzen. Jede Kreatur im Umkreis von 10 Fuß um den explodierenden Unheimlichen muss einen {@dc 13} Schutzwurf auf Geschicklichkeit machen und erleidet bei einem misslungenen Schutzwurf 7 ({@damage 2d6}) Blitzschaden, bei einem erfolgreichen Schutzwurf halb so viel."
+						"Wenn der Galaktische Unheimliche stirbt, explodiert er in einem Schwall aus Eis und Blitzen. Jede Kreatur im Umkreis von 10 Fuß um den explodierenden Unheimlichen muss einen {@dc 13} Rettungswurf in Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf 7 ({@damage 2d6}) Blitzschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden."
 					]
 				}
 			],
@@ -3957,7 +3957,7 @@
 				{
 					"name": "Slam",
 					"entries": [
-						"{@atk mw} {@hit 4} Treffer, Reichweite 5 ft., ein Ziel. {@h}5 ({@damage 1d6 + 2}) Schaden durch Wucht plus 5 ({@damage 2d4}) Blitzschaden. Handelt es sich bei dem Ziel um eine Kreatur, muss diese einen {@dc 13} Konstitutionsschutzwurf bestehen oder verliert die Fähigkeit, Reaktionen zu benutzen, bis zum Beginn des nächsten Zuges des Unheimlichen."
+						"{@atk mw} {@hit 4} bis zum Treffer, Reichweite 5 Fuß, ein Ziel. {@h}5 ({@damage 1d6 + 2}) Schaden durch Wucht plus 5 ({@damage 2d4}) Blitzschaden. Handelt es sich bei dem Ziel um eine Kreatur, muss diese einen {@dc 13} Rettungswurf auf Konstitution bestehen oder sie verliert die Fähigkeit, Reaktionen einzusetzen, bis zum Beginn des nächsten Zuges des Unheimlichen."
 					]
 				}
 			],
@@ -4237,7 +4237,7 @@
 				{
 					"name": "Fungal Rot",
 					"entries": [
-						"{@atk ms} {@hit 6} Treffer, Reichweite 5 ft., ein Ziel. {@h}9 ({@damage 2d8}) nekrotischer Schaden. Das Ziel muss einen {@dc 14} Konstitutionsschutzwurf machen und erleidet bei einem misslungenen Schutz 18 ({@damage 4d8}) Giftschaden, bei einem erfolgreichen Schutz halb so viel Schaden."
+						"{@atk ms} {@hit 6} Treffer, Reichweite 5 ft., ein Ziel. {@h}9 ({@damage 2d8}) nekrotischer Schaden. Das Ziel muss einen {@dc 14} Rettungswurf auf Konstitution machen und erleidet bei einem misslungenen Rettungswurf 18 ({@damage 4d8}) Giftschaden, bei einem erfolgreichen Rettungswurf halb so viel."
 					]
 				}
 			],
@@ -4731,7 +4731,7 @@
 				{
 					"name": "Toxic Touch",
 					"entries": [
-						"{@atk mw} {@hit 6} Treffer, Reichweite 5 ft., ein Ziel. {@h}7 ({@damage 2d6}) Wuchtschaden, und das Ziel muss einen {@dc 12} Konstitutions-Sicherungswurf bestehen oder wird 1 Minute lang {@condition poisoned}. Am Ende jeder Runde des {@condition poisoned} Ziels muss es den Schutzwurf wiederholen, wobei es bei einem misslungenen Schutzwurf 3 ({@damage 1d6}) Giftschaden erleidet oder bei einem erfolgreichen Schutzwurf den Effekt für sich selbst beendet."
+						"{@atk mw} {@hit 6} Treffer, Reichweite 5 ft., ein Ziel. {@h}7 ({@damage 2d6}) Wucht-Schaden, und das Ziel muss einen {@dc 12} Rettungswurf auf die Konstitution bestehen oder wird 1 Minute lang {@condition poisoned}. Am Ende jeder Runde des {@condition poisoned} Ziels muss es den Schutzwurf wiederholen, wobei es bei einem misslungenen Schutzwurf 3 ({@damage 1d6}) Giftschaden erleidet oder bei einem erfolgreichen Schutzwurf den Effekt für sich selbst beendet."
 					]
 				}
 			],
@@ -5233,7 +5233,7 @@
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"entries": [
-						"Wenn Isperia ein Rettungswurf misslingt, kann sie stattdessen einen erfolgreichen Wurf wählen."
+						"Wenn Isperia ein Rettungswurf misslingt, kann sie stattdessen einen Erfolg wählen."
 					]
 				},
 				{
@@ -5253,13 +5253,13 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 12} bis zum Treffer, Reichweite 5 ft., ein Ziel. {@h}21 ({@damage 3d10 + 5}) Hiebschaden. Handelt es sich bei dem Ziel um eine Kreatur, muss diese einen {@dc 23} Weisheitswurf bestehen oder 14 ({@damage 4d6}) psychischen Schaden nach jedem Angriff gegen Isperia erleiden, bevor sie ihren nächsten Zug beginnt."
+						"{@atk mw} {@hit 12} Treffer, Reichweite 5 ft., ein Ziel. {@h}21 ({@damage 3d10 + 5}) Hiebschaden. Handelt es sich bei dem Ziel um eine Kreatur, muss sie einen {@dc 23} Rettungswurf in Weisheit bestehen oder 14 ({@damage 4d6}) psychischen Schaden nach jedem Angriff gegen Isperia erleiden, bevor sie ihren nächsten Zug beginnt."
 					]
 				},
 				{
 					"name": "Supreme Legal Authority",
 					"entries": [
-						"Isperia wählt bis zu drei Kreaturen, die sie im Umkreis von 90 Fuß sehen kann. Jedes Ziel muss einen {@dc 23} Intelligenzschutzwurf bestehen oder Isperia wählt eine Aktion für dieses Ziel: Angreifen, Zaubern, Hetzen, Ausweichen, Helfen, Verstecken, Bereitmachen, Suchen oder Einen Gegenstand benutzen. Das betroffene Ziel kann diese Aktion 1 Minute lang nicht ausführen. Am Ende jeder Runde des Ziels kann es den Effekt für sich selbst mit einem erfolgreichen {@dc 23} Intelligenz-Sparwurf beenden. Ein Ziel, dem der Rettungswurf gelingt, wird für 24 Stunden immun gegen Isperias Oberste Rechtsgewalt."
+						"Isperia wählt bis zu drei Kreaturen, die sie im Umkreis von 90 Fuß sehen kann. Jedes Ziel muss einen {@dc 23} Intelligenz-Rettungswurf bestehen oder Isperia wählt eine Aktion für dieses Ziel: Angreifen, Zaubern, Hetzen, Ausweichen, Helfen, Verstecken, Bereitmachen, Suchen oder Einen Gegenstand benutzen. Das betroffene Ziel kann diese Aktion 1 Minute lang nicht ausführen. Am Ende jeder Runde des Ziels kann es den Effekt für sich selbst mit einem erfolgreichen {@dc 23} Intelligenz-Rettungswurf beenden. Ein Ziel, dem der Rettungswurf gelingt, wird für 24 Stunden immun gegen Isperias Oberste Rechtsgewalt."
 					]
 				}
 			],
@@ -5471,7 +5471,7 @@
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"entries": [
-						"Wenn Jarad ein Rettungswurf misslingt, kann er stattdessen einen Erfolg wählen."
+						"Wenn Jarad ein Rettungswurf misslingt, kann er stattdessen einen erfolgreichen Rettungswurf wählen."
 					]
 				},
 				{
@@ -5501,7 +5501,7 @@
 				{
 					"name": "Undead Fortitude",
 					"entries": [
-						"Wenn der Schaden Jarad auf 0 Trefferpunkte reduziert, muss er einen Konstitutions-Erhaltungswurf mit einem DC von 5 + dem erlittenen Schaden machen, es sei denn, der Schaden ist strahlend oder stammt von einem kritischen Treffer. Bei einem Erfolg sinkt er stattdessen auf 1 Trefferpunkt."
+						"Wenn Schaden Jarad auf 0 Trefferpunkte reduziert, muss er einen Rettungswurf auf Konstitution mit einem DC von 5 + dem erlittenen Schaden machen, es sei denn, der Schaden ist strahlend oder stammt von einem kritischen Treffer. Bei einem Erfolg sinkt er stattdessen auf 1 Trefferpunkt."
 					]
 				}
 			],
@@ -5515,7 +5515,7 @@
 				{
 					"name": "Noxious Touch",
 					"entries": [
-						"{@atk ms} {@hit 12} Treffer, Reichweite 5 ft., eine Kreatur. {@h}28 ({@damage 8d6}) Giftschaden, und das Ziel muss einen {@dc 20} Konstitutions-Sicherungswurf bestehen oder 1 Minute lang {@condition poisoned} sein. Das Ziel kann den Rettungswurf am Ende jeder seiner Runden wiederholen, wobei der Effekt bei einem Erfolg für es selbst endet."
+						"{@atk ms} {@hit 12} Treffer, Reichweite 5 ft., eine Kreatur. {@h}28 ({@damage 8d6}) Giftschaden, und das Ziel muss einen {@dc 20} Rettungswurf auf die Konstitution bestehen oder 1 Minute lang {@condition poisoned} sein. Das Ziel kann den Rettungswurf am Ende jeder seiner Runden wiederholen, wobei der Effekt bei einem Erfolg für es selbst endet."
 					]
 				},
 				{
@@ -5541,7 +5541,7 @@
 				{
 					"name": "Disrupt Life (Costs 3 Actions)",
 					"entries": [
-						"Jede Kreatur im Umkreis von 30 Fuß um Jarad muss einen {@dc 20} Konstitutionsschutzwurf machen und erleidet bei einem misslungenen Schutzwurf 35 ({@damage 10d6}) nekrotischen Schaden, bei einem erfolgreichen Schutzwurf halb so viel."
+						"Jede Kreatur im Umkreis von 30 Fuß um Jarad muss einen {@dc 20} Rettungswurf auf Konstitution machen und erleidet bei einem misslungenen Rettungswurf 35 ({@damage 10d6}) nekrotischen Schaden, bei einem erfolgreichen Rettungswurf halb so viel."
 					]
 				}
 			],
@@ -6104,7 +6104,7 @@
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"entries": [
-						"Wenn Lazav ein Rettungswurf misslingt, kann er stattdessen einen Erfolg wählen."
+						"Wenn Lazav ein Rettungswurf misslingt, kann er stattdessen einen erfolgreichen Rettungswurf wählen."
 					]
 				},
 				{
@@ -6150,7 +6150,7 @@
 				{
 					"name": "Shifting Nightmare (Costs 3 Actions)",
 					"entries": [
-						"Lazav nimmt schnell die Gestalt mehrerer albtraumhafter Kreaturen an und stürzt sich auf alle in der Nähe. Jede Kreatur im Umkreis von 10 Fuß um Lazav muss einen {@dc 21} Schutzwurf auf Geschicklichkeit bestehen oder 18 ({@dice 4d8}) Schaden eines von Lazav gewählten Typs erleiden: Säure, Kälte, Feuer, Blitz oder Nekrotisch."
+						"Lazav nimmt schnell die Form mehrerer alptraumhafter Kreaturen an und stürzt sich auf alle in der Nähe. Jede Kreatur im Umkreis von 10 Fuß um Lazav muss einen {@dc 21} Rettungswurf auf Geschicklichkeit bestehen oder 18 ({@dice 4d8}) Schaden eines von Lazav gewählten Typs erleiden: Säure, Kälte, Feuer, Blitz oder Nekrotisch."
 					]
 				}
 			],
@@ -6289,19 +6289,19 @@
 				{
 					"name": "Aura of Blood Lust",
 					"entries": [
-						"Wenn eine andere Kreatur ihren Zug innerhalb von 30 Fuß um den Meister beginnt, muss diese Kreatur einen {@dc 17} Weisheitswurf bestehen, oder sie muss sofort die Aktion Angriff ausführen und einen Nahkampfangriff gegen eine zufällige Kreatur in Reichweite durchführen. Wenn sich keine Kreaturen in Reichweite befinden, führt er einen Fernkampfangriff gegen eine zufällige Kreatur in Reichweite aus und wirft dabei gegebenenfalls seine Waffe."
+						"Wenn eine andere Kreatur ihren Zug innerhalb von 30 Fuß um den Meister beginnt, muss diese Kreatur einen {@dc 17} Rettungswurf in Weisheit bestehen, oder sie muss sofort die Aktion Angriff ausführen und einen Nahkampfangriff gegen eine zufällige Kreatur in Reichweite durchführen. Wenn sich keine Kreaturen in Reichweite befinden, führt er einen Fernkampfangriff gegen eine zufällige Kreatur in Reichweite aus und wirft dabei gegebenenfalls seine Waffe."
 					]
 				},
 				{
 					"name": "Feed on the Crowd",
 					"entries": [
-						"Immer wenn eine Kreatur im Umkreis von 60 Fuß um den Meister stirbt, erhält der Meister 15 temporäre Trefferpunkte und hat bis zum Ende seiner nächsten Runde Vorteil bei allen Angriffswürfen, Fähigkeitsprüfungen und Schutzwürfen."
+						"Immer wenn eine Kreatur im Umkreis von 60 Fuß um den Meister stirbt, erhält der Meister 15 temporäre Trefferpunkte und hat bis zum Ende seiner nächsten Runde Vorteil bei allen Angriffswürfen, Fähigkeitsprüfungen und Rettungswürfen."
 					]
 				},
 				{
 					"name": "Magic Resistance",
 					"entries": [
-						"Der Meister hat einen Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte."
+						"Der Meister ist bei Rettungswürfen gegen Zauber und andere magische Effekte im Vorteil."
 					]
 				}
 			],
@@ -6321,7 +6321,7 @@
 				{
 					"name": "Captivating Presence {@recharge}",
 					"entries": [
-						"Jede Kreatur im Umkreis von 120 Fuß um den Meister muss einen {@dc 17} Weisheitswurf bestehen oder 1 Stunde lang {@condition charmed} vom Meister beeinflusst werden. Solange die Kreatur auf diese Weise {@condition charmed} ist, ist ihre Geschwindigkeit 0. Wenn die Kreatur {@condition charmed} Schaden erleidet, kann sie den Rettungswurf wiederholen und den Effekt bei einem Erfolg für sich selbst beenden. Ein Ziel, dem der Rettungswurf gelingt, ist für die nächsten 24 Stunden immun gegen die fesselnde Präsenz aller Meister der Grausamkeit."
+						"Jede Kreatur, die sich im Umkreis von 120 Fuß um den Meister befindet, muss einen {@dc 17} Rettungswurf in Weisheit bestehen oder wird vom Meister 1 Stunde lang {@condition charmed} angegriffen. Solange die Kreatur auf diese Weise {@condition charmed} unterworfen ist, beträgt ihre Geschwindigkeit 0. Wenn die Kreatur {@condition charmed} Schaden erleidet, kann sie den Rettungswurf wiederholen und bei einem Erfolg den Effekt auf sich selbst beenden. Ein Ziel, dem der Rettungswurf gelingt, ist für die nächsten 24 Stunden immun gegen die fesselnde Präsenz aller Meister der Grausamkeit."
 					]
 				}
 			],
@@ -6476,7 +6476,7 @@
 				{
 					"name": "Mind Siphon {@recharge 5}",
 					"entries": [
-						"Der Vampir zielt auf eine Kreatur, die er im Umkreis von 30 Fuß sehen kann. Das Ziel muss einen {@dc 14} Intelligenz-Sparwurf machen, mit Nachteil, wenn der Vampir zuvor das Blut des Ziels getrunken hat. Bei einem misslungenen Schutzwurf erleidet das Ziel 28 ({@damage 8d6}) psychischen Schaden, und der Vampir kann die oberflächlichen Emotionen und Gedanken des Ziels erkennen. Bei einem erfolgreichen Schutzwurf erleidet das Ziel nur halb so viel Schaden, und der Vampir erkennt den allgemeinen emotionalen Zustand des Ziels, aber nicht seine Gedanken."
+						"Der Vampir zielt auf eine Kreatur, die er im Umkreis von 30 Fuß sehen kann. Das Ziel muss einen {@dc 14} Intelligenz-Rettungswurf machen, mit Nachteil, wenn der Vampir zuvor das Blut des Ziels getrunken hat. Bei einem misslungenen Schutzwurf erleidet das Ziel 28 ({@damage 8d6}) psychischen Schaden, und der Vampir kann die oberflächlichen Emotionen und Gedanken des Ziels erkennen. Bei einem erfolgreichen Schutzwurf erleidet das Ziel nur halb so viel Schaden, und der Vampir kann den allgemeinen emotionalen Zustand des Ziels erkennen, nicht aber seine Gedanken."
 					]
 				}
 			],
@@ -6704,7 +6704,7 @@
 				{
 					"name": "Mount",
 					"entries": [
-						"Wenn das Gespenst nicht beritten ist, kann es eine Bonusaktion nutzen, um sich auf magische Weise auf sein Gloamwing-Reittier zu teleportieren, vorausgesetzt, das Gespenst und der Gloamwing befinden sich in der gleichen Dimension. Wenn es sich teleportiert, erscheint das Gespenst rittlings auf dem Gloamwing, zusammen mit jeglicher Ausrüstung, die es trägt oder mit sich führt. Solange es beritten ist und nicht {@condition incapacitated}, kann das Gespenst nicht überrascht werden, und sowohl es als auch sein Reittier haben einen Vorteil bei Rettungswürfen auf Geschicklichkeit."
+						"Wenn das Gespenst nicht beritten ist, kann es eine Bonusaktion nutzen, um sich auf magische Weise auf sein Gloamwing-Reittier zu teleportieren, vorausgesetzt, das Gespenst und der Gloamwing befinden sich in der gleichen Dimension. Wenn es sich teleportiert, erscheint das Gespenst rittlings auf dem Gloamwing, zusammen mit jeglicher Ausrüstung, die es trägt oder mit sich führt. Solange es beritten ist und nicht {@condition incapacitated}, kann das Gespenst nicht überrascht werden, und sowohl es als auch sein Reittier haben einen Vorteil auf Rettungswürfe in Geschicklichkeit."
 					]
 				}
 			],
@@ -6724,13 +6724,13 @@
 				{
 					"name": "Mind Twist {@recharge 5}",
 					"entries": [
-						"Das Gespenst strahlt auf magische Weise psychische Energie in einem 60 Fuß großen Kegel aus. Jede Kreatur in diesem Bereich muss einen {@dc 15} Weisheitswurf bestehen oder 22 ({@damage 5d8}) psychischen Schaden erleiden und 1 Minute lang {@condition stunned} sein. Die {@condition stunned} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet."
+						"Das Gespenst strahlt auf magische Weise psychische Energie in einem 60 Fuß großen Kegel aus. Jede Kreatur in diesem Bereich muss einen {@dc 15} Rettungswurf in Weisheit bestehen oder 22 ({@damage 5d8}) psychischen Schaden erleiden und 1 Minute lang {@condition stunned} sein. Die {@condition stunned} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet."
 					]
 				},
 				{
 					"name": "Reap Memory (3/Day)",
 					"entries": [
-						"Das Gespenst berührt eine {@condition incapacitated} Kreatur und wählt 1 Stunde aus den vergangenen 24 aus. Wenn die Kreatur keinen {@dc 15} Intelligenzschutzwurf besteht, verliert sie alle Erinnerungen an diese Stunde. Die Kreatur erhält die Erinnerung nur zurück, wenn das Gespenst innerhalb der nächsten 24 Stunden stirbt."
+						"Das Gespenst berührt eine {@condition incapacitated} Kreatur und wählt 1 Stunde aus den vergangenen 24 Stunden. Wenn die Kreatur keinen {@dc 15} Intelligenz-Rettungswurf schafft, verliert die Kreatur alle Erinnerungen an diese Stunde. Die Kreatur erhält die Erinnerung nur zurück, wenn das Gespenst innerhalb der nächsten 24 Stunden stirbt."
 					]
 				}
 			],
@@ -6928,19 +6928,19 @@
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"entries": [
-						"Wenn Niv-Mizzet ein Rettungswurf misslingt, kann er stattdessen wählen, ob er erfolgreich ist."
+						"Wenn Niv-Mizzet ein Rettungswurf misslingt, kann er stattdessen einen erfolgreichen Rettungswurf wählen."
 					]
 				},
 				{
 					"name": "Locus of the Firemind",
 					"entries": [
-						"Niv-Mizzet kann sich gleichzeitig auf zwei verschiedene Zaubersprüche konzentrieren. Außerdem hat er einen Vorteil bei Rettungswürfen, um die Konzentration auf Zauber aufrechtzuerhalten."
+						"Niv-Mizzet kann die Konzentration auf zwei verschiedene Zauber gleichzeitig aufrechterhalten. Außerdem hat er einen Vorteil bei Rettungswürfen, um die Konzentration auf Zauber aufrechtzuerhalten."
 					]
 				},
 				{
 					"name": "Magic Resistance",
 					"entries": [
-						"Niv-Mizzet hat einen Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte."
+						"Niv-Mizzet ist bei Rettungswürfen gegen Zauber und andere magische Effekte im Vorteil."
 					]
 				},
 				{
@@ -6978,7 +6978,7 @@
 				{
 					"name": "Fire Breath {@recharge 5}",
 					"entries": [
-						"Niv-Mizzet stößt Feuer in einem 90 Fuß hohen Kegel aus. Jede Kreatur in diesem Bereich muss einen {@dc 25} Schutzwurf auf Geschicklichkeit machen und erleidet bei einem misslungenen Schutzwurf 91 ({@damage 26d6}) Feuerschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden."
+						"Niv-Mizzet stößt Feuer in einem Kegel von 90 Fuß aus. Jede Kreatur in diesem Bereich muss einen {@dc 25} Rettungswurf in Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf 91 ({@damage 26d6}) Feuerschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden."
 					]
 				}
 			],
@@ -6998,7 +6998,7 @@
 				{
 					"name": "Wing Attack (Costs 2 Actions)",
 					"entries": [
-						"Niv-Mizzet schlägt mit den Flügeln. Jede Kreatur im Umkreis von 15 Fuß um ihn muss einen {@dc 25} Schutzwurf auf Geschicklichkeit bestehen oder 14 ({@damage 2d4 + 9}) Wuchtschaden erleiden und {@condition prone} umgeworfen werden. Niv-Mizzet kann dann bis zur Hälfte seiner Fluggeschwindigkeit fliegen."
+						"Niv-Mizzet schlägt mit den Flügeln. Jede Kreatur im Umkreis von 15 Fuß um ihn muss einen {@dc 25} Rettungswurf auf Geschicklichkeit bestehen oder 14 ({@damage 2d4 + 9}) Wuchtschaden erleiden und {@condition prone} umgeworfen werden. Niv-Mizzet kann dann bis zur Hälfte seiner Fluggeschwindigkeit fliegen."
 					]
 				},
 				{
@@ -7293,7 +7293,7 @@
 								{
 									"type": "item",
 									"name": "Fautomni: Undead Fortitude",
-									"entry": "Wenn der Schaden Fautomni auf 0 Trefferpunkte reduziert, muss er einen Konstitutions-Erhaltungswurf mit einem DC von 5 + dem erlittenen Schaden machen, es sei denn, der Schaden ist strahlend oder stammt von einem kritischen Treffer. Bei einem Erfolg sinkt Fautomni stattdessen auf 1 Trefferpunkt."
+									"entry": "Wenn Schaden Fautomni auf 0 Trefferpunkte reduziert, muss er einen Rettungswurf auf Konstitution mit einem DC von 5 + dem erlittenen Schaden machen, es sei denn, der Schaden ist strahlend oder stammt von einem kritischen Treffer. Bei einem Erfolg fällt Fautomni stattdessen auf 1 Trefferpunkt."
 								},
 								{
 									"type": "item",
@@ -7308,7 +7308,7 @@
 								{
 									"type": "item",
 									"name": "Xil Xaxosz: Lingering Spite",
-									"entry": "Wenn Xil Xaxosz auf 0 Trefferpunkte reduziert ist, explodiert seine körperlose Gestalt in einem Ausbruch nekrotischer Energie. Jede Kreatur im Umkreis von 5 Fuß um ihn muss einen {@dc 16} Konstitutionsschutzwurf ablegen und erleidet bei einem misslungenen Schutzwurf 14 ({@damage 4d6}) nekrotischen Schaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden."
+									"entry": "Wenn Xil Xaxosz auf 0 Trefferpunkte reduziert ist, explodiert seine körperlose Gestalt in einem Ausbruch nekrotischer Energie. Jede Kreatur im Umkreis von 5 Fuß um ihn muss einen {@dc 16} Rettungswurf auf Konstitution machen und erleidet bei einem misslungenen Rettungswurf 14 ({@damage 4d6}) nekrotischen Schaden, bei einem erfolgreichen Rettungswurf die Hälfte des Schadens."
 								}
 							]
 						}
@@ -7329,7 +7329,7 @@
 				{
 					"name": "Legendary Resistance (1/Day)",
 					"entries": [
-						"Wenn dem Geist ein Rettungswurf misslingt, kann er stattdessen wählen, ob er erfolgreich ist."
+						"Wenn dem Geist ein Rettungswurf misslingt, kann er stattdessen einen erfolgreichen Rettungswurf wählen."
 					]
 				}
 			],
@@ -7337,7 +7337,7 @@
 				{
 					"name": "Life Drain",
 					"entries": [
-						"{@atk mw} {@hit 8} Treffer, Reichweite 5 ft., eine Kreatur. {@h}18 ({@damage 4d8}) nekrotischer Schaden, und der Geist erhält Trefferpunkte in Höhe der Hälfte des Schadens, den das Ziel erleidet, zurück. Das Ziel muss einen {@dc 13} Konstitutionsschutzwurf bestehen, oder sein Trefferpunktemaximum wird um den erlittenen Schaden reduziert. Das Ziel stirbt, wenn sein Trefferpunktemaximum auf 0 reduziert wird. Diese Reduzierung des Trefferpunktemaximums des Ziels hält an, bis das Ziel eine lange Pause beendet."
+						"{@atk mw} {@hit 8} Treffer, Reichweite 5 ft., eine Kreatur. {@h}18 ({@damage 4d8}) nekrotischen Schaden, und der Geist erhält Trefferpunkte in Höhe der Hälfte des Schadens, den das Ziel erleidet, zurück. Das Ziel muss einen {@dc 13} Rettungswurf auf Konstitution bestehen oder sein Trefferpunktemaximum wird um den erlittenen Schaden reduziert. Das Ziel stirbt, wenn sein Trefferpunktemaximum auf 0 reduziert wird. Diese Reduzierung des Trefferpunktemaximums des Ziels hält an, bis das Ziel eine lange Pause beendet."
 					]
 				},
 				{
@@ -7354,7 +7354,7 @@
 				{
 					"name": "Forced Obedience",
 					"entries": [
-						"Ein Ziel, das alle Obzedat-Geister sehen können, muss bis zum Ende seines nächsten Zuges einen {@dc 16} Weisheitswurf bestehen oder sich verbeugen. Bis zum Ende dieser Verbeugung kann das Ziel keine Aktionen oder Reaktionen ausführen, und seine Geschwindigkeit ist 0 und kann nicht erhöht werden."
+						"Ein Ziel, das alle Obzedat-Geister sehen können, muss einen {@dc 16} Rettungswurf in Weisheit bestehen oder sich bis zum Ende seiner nächsten Runde verbeugen. Bis zum Ende dieser Verbeugung kann das Ziel keine Aktionen oder Reaktionen ausführen, und seine Geschwindigkeit ist 0 und kann nicht erhöht werden."
 					]
 				},
 				{
@@ -7572,7 +7572,7 @@
 				{
 					"name": "Glimpse the Temporal Flood {@recharge 5}",
 					"entries": [
-						"Der Magier zielt auf eine Kreatur im Umkreis von 120 Fuß, die er sehen kann. Das Ziel erleidet 18 ({@damage 4d8}) psychischen Schaden und muss einen {@dc 14} Intelligenzschutzwurf bestehen oder bis zum Ende seiner nächsten Runde {@condition stunned} sein."
+						"Der Magier zielt auf eine Kreatur im Umkreis von 120 Fuß, die er sehen kann. Das Ziel erleidet 18 ({@damage 4d8}) psychischen Schaden und muss einen {@dc 14} Intelligenz-Rettungswurf bestehen oder bis zum Ende seiner nächsten Runde {@condition stunned} sein."
 					]
 				}
 			],
@@ -7709,7 +7709,7 @@
 				{
 					"name": "Captivating Presence",
 					"entries": [
-						"Jede Kreatur, die ihren Zug im Umkreis von 30 Fuß von Rakdos beginnt, muss einen {@dc 25} Weisheitswurf machen. Bei einem misslungenen Schutzwurf wird die Kreatur für 1 Minute oder bis die Kreatur weiter als 30 Fuß von Rakdos entfernt ist, zu {@condition charmed} Rakdos. Bei einem erfolgreichen Schutzwurf wird die Kreatur für 24 Stunden immun gegen Rakdos' Fesselnde Präsenz."
+						"Jede Kreatur, die sich zu Beginn ihres Zuges in einem Umkreis von 30 Fuß von Rakdos befindet, muss einen {@dc 25} Rettungswurf in Weisheit ablegen. Bei einem misslungenen Schutzwurf wird die Kreatur für 1 Minute oder bis die Kreatur weiter als 30 Fuß von Rakdos entfernt ist, zu {@condition charmed} Rakdos. Bei einem erfolgreichen Schutzwurf wird die Kreatur für 24 Stunden immun gegen Rakdos' Fesselnde Präsenz."
 					]
 				},
 				{
@@ -7721,13 +7721,13 @@
 				{
 					"name": "Legendary Resistance (3/Day)",
 					"entries": [
-						"Wenn Rakdos ein Rettungswurf misslingt, kann er stattdessen einen Erfolg wählen."
+						"Wenn Rakdos ein Rettungswurf misslingt, kann er stattdessen einen erfolgreichen Rettungswurf wählen."
 					]
 				},
 				{
 					"name": "Magic Resistance",
 					"entries": [
-						"Rakdos hat einen Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte."
+						"Rakdos ist bei Rettungswürfen gegen Zauber und andere magische Effekte im Vorteil."
 					]
 				},
 				{
@@ -7773,7 +7773,7 @@
 				{
 					"name": "Touch of Pain (Costs 3 Actions)",
 					"entries": [
-						"Rakdos führt einen Klauenangriff gegen eine Kreatur im Umkreis von 10 Fuß um ihn aus. Das Ziel muss einen {@dc 25} Konstitutionsschutzwurf bestehen oder 1 Minute lang {@condition poisoned} sein. Solange die Kreatur auf diese Weise {@condition poisoned} ist, kann sie sich nicht auf einen Zauber oder einen anderen Effekt konzentrieren, der Konzentration erfordert. Die {@condition poisoned} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet."
+						"Rakdos führt einen Klauenangriff gegen eine Kreatur im Umkreis von 10 Fuß um ihn herum aus. Das Ziel muss einen {@dc 25} Rettungswurf auf die Konstitution bestehen oder 1 Minute lang {@condition poisoned} sein. Solange die Kreatur auf diese Weise {@condition poisoned} ist, kann sie sich nicht auf einen Zauber oder einen anderen Effekt konzentrieren, der Konzentration erfordert. Die {@condition poisoned} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet."
 					]
 				}
 			],
@@ -8085,7 +8085,7 @@
 				{
 					"name": "Spew Flame {@recharge 4}",
 					"entries": [
-						"Der Feuerschlucker stößt Flammen aus. Jede Kreatur im Umkreis von 15 Fuß muss einen {@dc 13} Schutzwurf auf Geschicklichkeit machen und erleidet bei einem misslungenen Schutzwurf 9 ({@damage 2d8}) Feuerschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden."
+						"Der Feuerschlucker stößt Flammen aus. Jede Kreatur in einem Umkreis von 15 Fuß muss einen {@dc 13} Rettungswurf in Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf 9 ({@damage 2d8}) Feuerschaden, bei einem erfolgreichen Rettungswurf halb so viel."
 					]
 				}
 			],
@@ -8483,7 +8483,7 @@
 				{
 					"name": "Explosive Tank",
 					"entries": [
-						"Wenn der Wächter stirbt oder wenn er bei der Überprüfung, ob seine Scorchbringer-Aktion wieder aufgeladen wird, eine 1 würfelt, explodiert der Panzer auf seinem Rücken in einer Kugel mit einem Radius von 10 Fuß. Jede Kreatur in diesem Bereich muss einen {@dc 12} Schutzwurf auf Geschicklichkeit ablegen und erleidet bei einem misslungenen Schutzwurf 7 ({@damage 2d6}) Feuerschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden. Die Explosion entzündet brennbare Gegenstände, die nicht getragen werden, und sie zerstört den Brandstifter."
+						"Wenn der Wächter stirbt oder wenn er bei der Überprüfung, ob seine Scorchbringer-Aktion wieder aufgeladen wird, eine 1 würfelt, explodiert der Panzer auf seinem Rücken in einer Kugel mit einem Radius von 10 Fuß. Jede Kreatur in diesem Bereich muss einen {@dc 12} Rettungswurf in Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf 7 ({@damage 2d6}) Feuerschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden. Die Explosion entzündet brennbare Gegenstände, die nicht getragen werden, und sie zerstört den Brandstifter."
 					]
 				}
 			],
@@ -8497,7 +8497,7 @@
 				{
 					"name": "Scorchbringer {@recharge 4}",
 					"entries": [
-						"Der Scorchbringer der Wache spuckt einen Flammenstrahl in einer Linie aus, die 30 Fuß lang und 5 Fuß breit ist. Jede Kreatur in der Reihe muss einen {@dc 12} Schutzwurf auf Geschicklichkeit ablegen und erleidet bei einem misslungenen Schutzwurf 7 ({@damage 2d6}) Feuerschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden."
+						"Der Scorchbringer der Wache spuckt einen Flammenstrahl in einer Linie aus, die 30 Fuß lang und 5 Fuß breit ist. Jede Kreatur in der Reihe muss einen {@dc 12} Rettungswurf in Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf 7 ({@damage 2d6}) Feuerschaden, bei einem erfolgreichen Rettungswurf halb so viel."
 					]
 				}
 			],
@@ -8678,13 +8678,13 @@
 				{
 					"name": "Claw",
 					"entries": [
-						"{@atk mw} {@hit 7} Treffer, Reichweite 5 ft., ein Ziel. {@h}13 ({@damage 3d6 + 3}) Hiebschaden, und das Ziel muss einen {@dc 16} Weisheitssicherungswurf bestehen oder bis zum Ende der nächsten Runde des Ziels {@condition frightened} des Grauens ausgesetzt sein."
+						"{@atk mw} {@hit 7} Treffer, Reichweite 5 ft., ein Ziel. {@h}13 ({@damage 3d6 + 3}) Hiebschaden, und das Ziel muss einen {@dc 16} Rettungswurf in Weisheit bestehen oder bis zum Ende des nächsten Zuges des Ziels {@condition frightened} des Grauens ausgesetzt sein."
 					]
 				},
 				{
 					"name": "Lashing Shadows {@recharge 5}",
 					"entries": [
-						"Jede Kreatur im Umkreis von 60 Fuß um den Schrecken, ausgenommen andere Schrecken, muss einen {@dc 16} Geschicklichkeitswurf bestehen oder erleidet 27 ({@damage 6d8}) nekrotischen Schaden."
+						"Jede Kreatur im Umkreis von 60 Fuß um den Schrecken, mit Ausnahme anderer Schrecken, muss einen Rettungswurf in Geschicklichkeit {@dc 16} bestehen oder erleidet 27 ({@damage 6d8}) nekrotischen Schaden."
 					]
 				}
 			],
@@ -8838,13 +8838,13 @@
 				{
 					"name": "Aura of Mind Erosion",
 					"entries": [
-						"Jede Kreatur, die ihren Zug im Umkreis von 30 Fuß um den Erschaffer beginnt, muss einen {@dc 18} Weisheitswurf machen. Bei einem erfolgreichen Schutzwurf ist die Kreatur für die nächsten 24 Stunden immun gegen diese Aura. Bei einem misslungenen Schutzwurf hat die Kreatur 1 Minute lang einen Nachteil bei Weisheits- und Charismaüberprüfungen und bei Schutzwürfen auf Weisheit und Charisma. Zu Beginn jeder seiner Runden kann der Erschaffer diese Aura bis zum Beginn seiner nächsten Runde unterdrücken."
+						"Jede Kreatur, die sich zu Beginn ihres Zuges im Umkreis von 30 Fuß um den Erschaffer befindet, muss einen {@dc 18} Rettungswurf in Weisheit ablegen. Bei einem erfolgreichen Schutzwurf ist die Kreatur für die nächsten 24 Stunden immun gegen diese Aura. Bei einem misslungenen Schutzwurf hat die Kreatur 1 Minute lang einen Nachteil bei Weisheits- und Charismaüberprüfungen und bei Schutzwürfen auf Weisheit und Charisma. Zu Beginn jeder seiner Runden kann der Erschaffer diese Aura bis zum Beginn seiner nächsten Runde unterdrücken."
 					]
 				},
 				{
 					"name": "Magic Resistance",
 					"entries": [
-						"Der Sire hat einen Vorteil bei Schutzwürfen gegen Zauber und andere magische Effekte."
+						"Der Vater hat einen Vorteil bei Rettungswürfen gegen Zaubersprüche und andere magische Effekte."
 					]
 				}
 			],
@@ -8983,7 +8983,7 @@
 				{
 					"name": "Maddening Presence",
 					"entries": [
-						"Der Schrecken zielt auf eine Kreatur, die er im Umkreis von 30 Fuß sehen kann. Wenn das Ziel den Schrecken sehen oder hören kann, muss es einen {@dc 17} Weisheitssparwurf ablegen. Bei einem misslungenen Rettungswurf wird das Ziel bis zum Ende seiner nächsten Runde zu {@condition paralyzed}. Gelingt der Rettungswurf einer Kreatur, ist sie für die nächsten 24 Stunden immun gegen die wahnsinnige Präsenz des Grauens."
+						"Der Schrecken zielt auf eine Kreatur im Umkreis von 30 Fuß, die er sehen kann. Wenn das Ziel den Schrecken sehen oder hören kann, muss das Ziel einen {@dc 17} Rettungswurf in Weisheit ablegen. Bei einem misslungenen Rettungswurf wird das Ziel bis zum Ende seines nächsten Zuges zu {@condition paralyzed}. Gelingt der Rettungswurf einer Kreatur, ist sie für die nächsten 24 Stunden immun gegen die wahnsinnige Präsenz des Grauens."
 					]
 				}
 			],
@@ -9158,7 +9158,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 11} Treffer, Reichweite 10 ft., ein Ziel. {@h}22 ({@damage 3d10 + 6}) Stich-Schaden. Wenn das Ziel eine große oder kleinere Kreatur ist, muss es einen {@dc 19} Schutzwurf auf Geschicklichkeit bestehen oder vom Himmelsschwimmer verschluckt werden. Eine verschluckte Kreatur ist {@condition blinded} und {@condition restrained}, sie hat totale Deckung vor Angriffen und anderen Effekten außerhalb des Himmelsschwimmers und erleidet zu Beginn jeder Runde des Himmelsschwimmers 21 ({@damage 6d6}) Säureschaden. Wenn der Himmelsschwimmer in einem einzigen Zug 30 Schadenspunkte oder mehr durch die verschluckte Kreatur erleidet, muss der Himmelsschwimmer am Ende dieses Zuges einen {@dc 18} Konstitutionswettkampf bestehen oder die Kreatur wieder auswürgen, die dann {@condition prone} in einen Raum innerhalb von 10 Fuß um den Himmelsschwimmer fällt. Wenn der Himmelsschwimmer stirbt, wird eine verschluckte Kreatur nicht mehr {@condition restrained} von ihm festgehalten und kann dem Leichnam entkommen, indem sie 15 Fuß Bewegung benötigt und {@condition prone} verlässt."
+						"{@atk mw} {@hit 11} Treffer, Reichweite 10 ft., ein Ziel. {@h}22 ({@damage 3d10 + 6}) Stich-Schaden. Wenn das Ziel eine große oder kleinere Kreatur ist, muss es einen {@dc 19} Rettungswurf in Geschicklichkeit bestehen oder vom Himmelsschwimmer verschluckt werden. Eine verschluckte Kreatur ist {@condition blinded} und {@condition restrained}, sie hat totale Deckung vor Angriffen und anderen Effekten außerhalb des Himmelsschwimmers und erleidet zu Beginn jeder Runde des Himmelsschwimmers 21 ({@damage 6d6}) Säureschaden. Wenn der Himmelsschwimmer in einem einzigen Zug 30 Schadenspunkte oder mehr durch die verschluckte Kreatur erleidet, muss der Himmelsschwimmer am Ende dieses Zuges einen {@dc 18} Rettungswurf auf Konstitution bestehen oder die Kreatur wieder auswürgen, die dann {@condition prone} in einen Raum innerhalb von 10 Fuß um den Himmelsschwimmer fällt. Wenn der Himmelsschwimmer stirbt, wird eine verschluckte Kreatur nicht länger {@condition restrained} von ihm gehalten und kann dem Leichnam entkommen, indem sie 15 Fuß Bewegung verwendet und {@condition prone} verlässt."
 					]
 				},
 				{
@@ -9248,7 +9248,7 @@
 				{
 					"name": "Formation Tactics",
 					"entries": [
-						"Der Soldat ist im Vorteil bei Schutzwürfen gegen {@condition charmed}, {@condition frightened}, {@condition grappled} oder {@condition restrained}, solange er sich innerhalb von 5 Fuß um mindestens einen Verbündeten befindet."
+						"Der Soldat ist im Vorteil bei Rettungswürfen gegen {@condition charmed}, {@condition frightened}, {@condition grappled} oder {@condition restrained}, solange er sich innerhalb von 5 Fuß um mindestens einen Verbündeten befindet."
 					]
 				}
 			],
@@ -9437,7 +9437,7 @@
 				{
 					"name": "Rock",
 					"entries": [
-						"{@atk rw} {@hit 10} bis Treffer, Reichweite 60/240 Fuß, ein Ziel. {@h}28 ({@damage 4d10 + 6}) Schaden durch Wucht. Handelt es sich bei dem Ziel um eine Kreatur, muss diese einen {@dc 18} Stärkeschutzwurf bestehen oder wird {@condition prone} umgestoßen."
+						"{@atk rw} {@hit 10} bis Treffer, Reichweite 60/240 Fuß, ein Ziel. {@h}28 ({@damage 4d10 + 6}) Schaden durch Wucht. Handelt es sich bei dem Ziel um eine Kreatur, muss sie einen {@dc 18} Rettungswurf auf Stärke bestehen oder wird {@condition prone} niedergeschlagen."
 					]
 				}
 			],
@@ -9696,7 +9696,7 @@
 				{
 					"name": "Magic Resistance",
 					"entries": [
-						"Trostani hat einen Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte."
+						"Trostani ist bei Rettungswürfen gegen Zauber und andere magische Effekte im Vorteil."
 					]
 				},
 				{
@@ -9740,7 +9740,7 @@
 				{
 					"name": "Wrath of Mat'Selesnya {@recharge 5}",
 					"entries": [
-						"Trostani beschwört einen kurzzeitigen Wirbel aus Ästen und Ranken an einem Punkt, den sie im Umkreis von 60 Fuß von sich aus sehen kann. Jede Kreatur in einem Umkreis von 30 Fuß um diesen Punkt muss einen {@dc 24} Schutzwurf auf Geschicklichkeit machen und erleidet bei einem misslungenen Schutzwurf 21 ({@damage 6d6}) Wucht- und 21 ({@damage 6d6}) Hiebschaden, bei einem erfolgreichen Schutzwurf halb so viel Schaden."
+						"Trostani beschwört einen kurzzeitigen Wirbel aus Ästen und Ranken an einem Punkt, den sie im Umkreis von 60 Fuß um sich herum sehen kann. Jede Kreatur in einem Umkreis von 30 Fuß um diesen Punkt muss einen {@dc 24} Rettungswurf in Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf 21 ({@damage 6d6}) Wucht- und 21 ({@damage 6d6}) Hiebschaden, bei einem erfolgreichen Rettungswurf halb so viel Schaden."
 					]
 				}
 			],
@@ -9886,7 +9886,7 @@
 				{
 					"name": "Magic Resistance",
 					"entries": [
-						"Die Medusa hat einen Vorteil bei Rettungswürfen gegen Zauber und andere magische Effekte."
+						"Die Medusa ist bei Rettungswürfen gegen Zauber und andere magische Effekte im Vorteil."
 					]
 				},
 				{
@@ -9912,7 +9912,7 @@
 				{
 					"name": "Petrifying Gaze",
 					"entries": [
-						"Die Medusa richtet ihren Blick auf eine Kreatur im Umkreis von 60 Fuß, die sie sehen kann und die ihre Augen sehen kann. Das Ziel muss einen {@dc 14} Konstitutionsschutzwurf ablegen. Wenn der Rettungswurf um 5 oder mehr misslingt, ist die Kreatur sofort {@condition petrified}. Andernfalls beginnt eine Kreatur, die den Schutzwurf nicht besteht, sich in Stein zu verwandeln und ist {@condition restrained}. Die {@condition restrained} Kreatur muss den Rettungswurf am Ende ihrer nächsten Runde wiederholen und wird bei einem Fehlschlag zu {@condition petrified} oder beendet den Effekt bei einem Erfolg. Die Versteinerung hält an, bis die Kreatur durch einen {@spell greater restoration}-Zauber oder ähnliche Magie befreit wird."
+						"Die Medusa richtet ihren Blick auf eine Kreatur im Umkreis von 60 Fuß, die sie sehen kann und die ihre Augen sehen kann. Das Ziel muss einen {@dc 14} Rettungswurf auf Konstitution machen. Wenn der Rettungswurf um 5 oder mehr misslingt, ist die Kreatur sofort {@condition petrified}. Andernfalls beginnt eine Kreatur, die den Schutzwurf nicht besteht, sich in Stein zu verwandeln und ist {@condition restrained}. Die {@condition restrained} Kreatur muss den Rettungswurf am Ende ihrer nächsten Runde wiederholen, wobei sie bei einem Fehlschlag zu {@condition petrified} wird oder der Effekt bei einem Erfolg endet. Die Versteinerung hält an, bis die Kreatur durch einen {@spell greater restoration}-Zauber oder ähnliche Magie befreit wird."
 					]
 				}
 			],
@@ -10086,7 +10086,7 @@
 				{
 					"name": "Earth Tremors",
 					"entries": [
-						"Der Wurm erzeugt Erdstöße, wenn er sich über Land oder unter der Erde bewegt. Jede Kreatur, die sich zum ersten Mal in einem Zug dem sich bewegenden Wurm auf weniger als 30 Fuß nähert, muss einen {@dc 20} Geschicklichkeitswurf bestehen oder erleidet 10 ({@damage 3d6}) Wuchtschaden und fällt {@condition prone}. Jedes am Boden verankerte Gebäude oder Objekt, das sich dem sich bewegenden Wurm zum ersten Mal in einem Zug auf weniger als 30 Fuß nähert, erleidet 10 ({@damage 3d6}) Kraftschaden."
+						"Der Wurm erzeugt Erdstöße, wenn er sich über Land oder unter der Erde bewegt. Jede Kreatur, die sich dem sich bewegenden Wurm zum ersten Mal in einem Zug auf weniger als 30 Fuß nähert, muss einen Rettungswurf in Geschicklichkeit {@dc 20} bestehen oder erleidet 10 ({@damage 3d6}) Wuchtschaden und fällt {@condition prone}. Jedes am Boden verankerte Gebäude oder Objekt, das sich dem sich bewegenden Wurm zum ersten Mal in einem Zug auf weniger als 30 Fuß nähert, erleidet 10 ({@damage 3d6}) Kraftschaden."
 					]
 				},
 				{
@@ -10100,7 +10100,7 @@
 				{
 					"name": "Bite",
 					"entries": [
-						"{@atk mw} {@hit 12} Treffer, Reichweite 10 ft., ein Ziel. {@h}24 ({@damage 5d6 + 7}) Stich-Schaden. Handelt es sich bei dem Ziel um eine Kreatur mittlerer Größe oder kleiner, muss es einen {@dc 20} Schutzwurf auf Geschicklichkeit bestehen oder vom Wurm verschluckt werden. Eine verschluckte Kreatur ist {@condition blinded} und {@condition restrained}, hat totalen Schutz vor Angriffen und anderen Effekten außerhalb des Wurms und erleidet zu Beginn jeder Runde des Wurms 17 ({@damage 5d6}) Säureschaden. Erleidet der Wurm in einem einzigen Zug 30 Schadenspunkte oder mehr durch eine Kreatur in seinem Inneren, muss er am Ende dieses Zuges einen {@dc 21} Konstitutionsschutzwurf bestehen oder alle verschluckten Kreaturen erbrechen, die dann {@condition prone} in einem Umkreis von 10 Fuß um den Wurm fallen. Wenn der Wurm stirbt, wird eine verschluckte Kreatur nicht länger {@condition restrained} von ihm gehalten und kann dem Leichnam entkommen, indem sie 20 Fuß Bewegung verwendet und {@condition prone} verlässt."
+						"{@atk mw} {@hit 12} Treffer, Reichweite 10 ft., ein Ziel. {@h}24 ({@damage 5d6 + 7}) Stich-Schaden. Handelt es sich bei dem Ziel um eine Kreatur mittlerer Größe oder kleiner, muss es einen {@dc 20} Rettungswurf auf Geschicklichkeit bestehen oder vom Wurm verschluckt werden. Eine verschluckte Kreatur ist {@condition blinded} und {@condition restrained}, hat totalen Schutz vor Angriffen und anderen Effekten außerhalb des Wurms und erleidet zu Beginn jeder Runde des Wurms 17 ({@damage 5d6}) Säureschaden. Erleidet der Wurm in einem einzigen Zug 30 Schadenspunkte oder mehr durch eine Kreatur in seinem Inneren, muss er am Ende dieses Zuges einen {@dc 21} Rettungswurf auf die Konstitution bestehen oder alle verschluckten Kreaturen wieder auswürgen, die dann {@condition prone} in einem Umkreis von 10 Fuß um den Wurm fallen. Wenn der Wurm stirbt, wird eine verschluckte Kreatur nicht länger {@condition restrained} von ihm gehalten und kann dem Leichnam entkommen, indem sie 20 Fuß Bewegung verwendet und {@condition prone} verlässt."
 					]
 				}
 			],
@@ -10298,13 +10298,13 @@
 				{
 					"name": "Prime Speaker's Trident",
 					"entries": [
-						"{@atk mw,rw} {@hit 10} Treffer, Reichweite 5 ft. oder 20/60 ft., ein Ziel. {@h}12 ({@damage 2d6 + 5}) Stich-Schaden, und der Dreizack gibt einen donnernden Knall ab. Jede Kreatur in einem 15-Fuß-Würfel, der von den Zinken des Dreizacks ausgeht, muss einen {@dc 18} Konstitutionsschutzwurf machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 9 ({@damage 2d8}) Donnerschaden und wird 10 Fuß von Zegana weggestoßen. Befindet sich die Kreatur unter Wasser, erhöht sich der Schaden auf 13 ({@dice 3d8}). Bei einem erfolgreichen Schutz erleidet die Kreatur nur halb so viel Schaden und wird nicht weggestoßen."
+						"{@atk mw,rw} {@hit 10} Treffer, Reichweite 5 ft. oder 20/60 ft., ein Ziel. {@h}12 ({@damage 2d6 + 5}) Stich-Schaden, und der Dreizack gibt einen donnernden Knall ab. Jede Kreatur in einem 15-Fuß-Würfel, der von den Zacken des Dreizacks ausgeht, muss einen {@dc 18} Rettungswurf auf Konstitution machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 9 ({@damage 2d8}) Donnerschaden und wird 10 Fuß von Zegana weggestoßen. Befindet sich die Kreatur unter Wasser, erhöht sich der Schaden auf 13 ({@dice 3d8}). Bei einem erfolgreichen Schutz erleidet die Kreatur nur halb so viel Schaden und wird nicht weggestoßen."
 					]
 				},
 				{
 					"name": "Deluge {@recharge 4}",
 					"entries": [
-						"Zegana beschwört eine Wasserwelle herauf, die in einem Umkreis von 120 Fuß auf sie niederprasselt. Das Gebiet kann bis zu 30 Fuß lang, bis zu 10 Fuß breit und bis zu 10 Fuß hoch sein. Jede Kreatur in diesem Gebiet muss einen {@dc 18} Schutzwurf auf Geschicklichkeit ablegen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 18 ({@damage 4d8}) Wucht-Schaden und wird umgeworfen {@condition prone}. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur halb so viel Schaden und wird nicht umgeworfen {@condition prone}. Das Wasser breitet sich auf dem Boden aus, löscht ungeschützte Flammen, mit denen es in Berührung kommt, und verschwindet dann."
+						"Zegana beschwört eine Wasserwelle herauf, die in einem Umkreis von 120 Fuß auf sie niederprasselt. Das Gebiet kann bis zu 30 Fuß lang, bis zu 10 Fuß breit und bis zu 10 Fuß hoch sein. Jede Kreatur in diesem Gebiet muss einen {@dc 18} Rettungswurf auf Geschicklichkeit machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 18 ({@damage 4d8}) Wucht-Schaden und wird umgeworfen {@condition prone}. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur halb so viel Schaden und wird nicht umgeworfen {@condition prone}. Das Wasser breitet sich auf dem Boden aus, löscht ungeschützte Flammen, mit denen es in Berührung kommt, und verschwindet dann."
 					]
 				}
 			],

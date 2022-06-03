@@ -38,7 +38,7 @@
 				"AF"
 			],
 			"entries": [
-				"Als Aktion kannst du in deine Alchemistentasche greifen, eine Phiole mit Säure herausziehen und sie auf eine Kreatur oder ein Objekt im Umkreis von 30 Fuß schleudern (die Phiole und ihr Inhalt verschwinden, wenn du die Phiole nicht bis zum Ende des aktuellen Zuges geschleudert hast). Die Phiole zerspringt beim Aufprall. Eine Kreatur muss einen Schutzwurf auf Geschicklichkeit bestehen oder erleidet {@damage 1d6} Säureschaden. Ein Objekt erleidet diesen Schaden automatisch, und der Schaden wird maximiert. Der Schaden dieser Formel erhöht sich um {@damage 1d6}, wenn du bestimmte Stufen dieser Klasse erreichst: 3. Stufe ({@damage 2d6}), 5. Stufe ({@damage 3d6}), 7. Stufe ({@damage 4d6}), 9. Stufe ({@damage 5d6}), 11. Stufe ({@damage 6d6}), 13. Stufe ({@damage 7d6}), 15. Stufe ({@damage 8d6}), 17. Stufe ({@damage 9d6}) und 19. Stufe ({@damage 10d6})."
+				"Als Aktion kannst du in deine Alchemistentasche greifen, eine Phiole mit Säure herausziehen und sie auf eine Kreatur oder ein Objekt in einem Umkreis von 30 Fuß schleudern (die Phiole und ihr Inhalt verschwinden, wenn du sie nicht bis zum Ende der aktuellen Runde schleuderst). Die Phiole zerspringt beim Aufprall. Eine Kreatur muss einen Rettungswurf auf Geschicklichkeit bestehen oder erleidet {@damage 1d6} Säureschaden. Ein Objekt erleidet automatisch diesen Schaden, und der Schaden wird maximiert. Der Schaden dieser Formel erhöht sich um {@damage 1d6}, wenn du bestimmte Stufen in dieser Klasse erreichst: Stufe ({@damage 2d6}), 5. Stufe ({@damage 3d6}), 7. Stufe ({@damage 4d6}), 9. Stufe ({@damage 5d6}), 11. Stufe ({@damage 6d6}), 13. Stufe ({@damage 7d6}), 15. Stufe ({@damage 8d6}), 17. Stufe ({@damage 9d6}) und 19."
 			]
 		},
 		{
@@ -49,7 +49,7 @@
 				"AF"
 			],
 			"entries": [
-				"Als Aktion kannst du in deine Alchemistentasche greifen, eine Phiole mit einer flüchtigen Flüssigkeit herausziehen und sie auf eine Kreatur, ein Objekt oder eine Oberfläche im Umkreis von 30 Fuß schleudern (die Phiole und ihr Inhalt verschwinden, wenn du die Phiole nicht bis zum Ende des aktuellen Zuges geschleudert hast). Beim Aufprall explodiert die Phiole in einem Radius von 5 Fuß. Jede Kreatur in diesem Bereich muss einen Rettungswurf auf Geschicklichkeit bestehen oder {@damage 1d6} Feuerschaden erleiden. Der Schaden dieser Formel erhöht sich um {@damage 1d6}, wenn du bestimmte Stufen dieser Klasse erreichst: 4. Stufe ({@damage 2d6}), 7. Stufe ({@damage 3d6}), 10. Stufe ({@damage 4d6}), 13. Stufe ({@damage 5d6}), 16. Stufe ({@damage 6d6}) und 19. Stufe ({@damage 7d6})."
+				"Als Aktion kannst du in deinen Alchemistenbeutel greifen, eine Phiole mit einer flüchtigen Flüssigkeit herausziehen und sie auf eine Kreatur, ein Objekt oder eine Oberfläche im Umkreis von 30 Fuß schleudern (die Phiole und ihr Inhalt verschwinden, wenn du sie nicht bis zum Ende der aktuellen Runde schleuderst). Beim Aufprall explodiert die Phiole in einem Radius von 5 Fuß. Jede Kreatur in diesem Bereich muss einen Rettungswurf in Geschicklichkeit bestehen oder erleidet {@damage 1d6} Feuerschaden. Der Schaden dieser Formel erhöht sich um {@damage 1d6}, wenn du bestimmte Stufen in dieser Klasse erreichst: Stufe 4 ({@damage 2d6}), 7. Stufe ({@damage 3d6}), 10. Stufe ({@damage 4d6}), 13. Stufe ({@damage 5d6}), 16. Stufe ({@damage 6d6}) und 19."
 			]
 		},
 		{
@@ -173,7 +173,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Wenn der Träger eine Stärkeüberprüfung oder einen Stärkewurf macht, kann er 1 Ladung ausgeben, um einen Bonus auf den Wurf in Höhe seines Intelligenzmodifikators zu erhalten.",
+						"Wenn der Träger eine Stärkeprüfung oder einen Rettungswurf macht, kann er 1 Ladung ausgeben, um einen Bonus auf den Wurf in Höhe seines Intelligenzmodifikators zu erhalten.",
 						"Wenn die Kreatur niedergeschlagen werden würde {@condition prone}, kann sie ihre Reaktion nutzen, um 1 Aufladung auszugeben, damit sie nicht am Boden liegt."
 					]
 				},
@@ -201,7 +201,7 @@
 				}
 			],
 			"entries": [
-				"Wenn eine Kreatur diese Rüstung trägt, kann sie ihren Intelligenzmodifikator anstelle ihres Stärkemodifikators für Stärkeprüfungen und Schutzwürfe verwenden.",
+				"Wenn eine Kreatur diese Rüstung trägt, kann sie bei Stärkeproben und Rettungswürfen ihren Intelligenzmodifikator anstelle ihres Stärkemodifikators verwenden.",
 				"Die Rüstung hat 4 Ladungen. Als Reaktion auf einen Schlag {@condition prone} kann der Träger 1 Ladung ausgeben, um nicht geschlagen zu werden {@condition prone}. Die Rüstung erhält täglich im Morgengrauen {@dice 1d4} verbrauchte Ladungen zurück."
 			]
 		},
@@ -371,7 +371,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Du versuchst mit Beschwörungsmagie, dein Ziel vorübergehend an einen harmlosen Ort im Feenreich zu verbannen. Wenn der Pfeil eine Kreatur trifft, muss das Ziel ebenfalls einen Charisma-Probeversuch bestehen oder verbannt werden. Während es auf diese Weise verbannt ist, beträgt seine Geschwindigkeit 0 und es ist {@condition incapacitated}. Am Ende seines nächsten Zuges erscheint das Ziel wieder in dem Raum, den es verlassen hat, oder im nächstgelegenen unbesetzten Raum, wenn dieser besetzt ist.",
+				"Du versuchst mit Beschwörungsmagie, dein Ziel vorübergehend an einen harmlosen Ort im Feenreich zu verbannen. Wenn der Pfeil eine Kreatur trifft, muss das Ziel ebenfalls einen Rettungswurf in Charisma bestehen oder verbannt werden. Während es auf diese Weise verbannt ist, beträgt seine Geschwindigkeit 0 und es ist {@condition incapacitated}. Am Ende seines nächsten Zuges erscheint das Ziel wieder in dem Raum, den es verlassen hat, oder im nächstgelegenen unbesetzten Raum, wenn dieser besetzt ist.",
 				"Nach Erreichen der 18. Stufe in dieser Klasse erleidet ein Ziel auch {@damage 2d6} Kraftschaden, wenn der Pfeil es trifft."
 			]
 		},
@@ -386,7 +386,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Du versuchst mit Beschwörungsmagie, dein Ziel vorübergehend an einen harmlosen Ort im Feenreich zu verbannen. Die vom Pfeil getroffene Kreatur muss ebenfalls einen Charisma-Probeversuch bestehen, sonst wird sie verbannt. Während es auf diese Weise verbannt ist, beträgt die Geschwindigkeit des Ziels 0 und es ist {@condition incapacitated}. Am Ende seines nächsten Zuges erscheint das Ziel wieder in dem Raum, den es verlassen hat, oder im nächstgelegenen unbesetzten Raum, wenn dieser besetzt ist.",
+				"Du versuchst mit Beschwörungsmagie, dein Ziel vorübergehend an einen harmlosen Ort im Feenreich zu verbannen. Die vom Pfeil getroffene Kreatur muss ebenfalls einen Rettungswurf in Charisma bestehen oder verbannt werden. Während es auf diese Weise verbannt ist, beträgt die Geschwindigkeit des Ziels 0 und es ist {@condition incapacitated}. Am Ende seines nächsten Zuges erscheint das Ziel wieder in dem Raum, den es verlassen hat, oder im nächstgelegenen unbesetzten Raum, wenn dieser besetzt ist.",
 				"Nach Erreichen der 18. Stufe in dieser Klasse erleidet ein Ziel auch {@damage 2d6} Kraftschaden, wenn der Pfeil es trifft."
 			]
 		},
@@ -436,7 +436,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Deine Verzauberungsmagie bewirkt, dass dieser Pfeil sein Ziel vorübergehend betört. Die Kreatur, die von dem Pfeil getroffen wird, erleidet zusätzlichen {@damage 2d6} psychischen Schaden und wählt einen deiner Verbündeten im Umkreis von 30 Fuß um das Ziel. Das Ziel muss einen Weisheitswurf bestehen, oder es wird von dem gewählten Verbündeten bis zum Beginn deines nächsten Zuges {@condition charmed}. Dieser Effekt endet vorzeitig, wenn der gewählte Verbündete das {@condition charmed} Ziel angreift, ihm Schaden zufügt oder es zu einem Rettungswurf zwingt.",
+				"Deine Verzauberungsmagie bewirkt, dass dieser Pfeil sein Ziel vorübergehend betört. Die vom Pfeil getroffene Kreatur erleidet zusätzlichen {@damage 2d6} psychischen Schaden, und du wählst einen deiner Verbündeten innerhalb von 30 Fuß um das Ziel. Das Ziel muss einen Rettungswurf in Weisheit bestehen, oder es wird bis zum Beginn deines nächsten Zuges von dem gewählten Verbündeten {@condition charmed}. Dieser Effekt endet vorzeitig, wenn der gewählte Verbündete das {@condition charmed} Ziel angreift, ihm Schaden zufügt oder es zu einem Rettungswurf zwingt.",
 				"Der psychische Schaden erhöht sich auf {@damage 4d6}, wenn du die 18. Stufe in dieser Klasse erreichst."
 			]
 		},
@@ -802,7 +802,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Du webst nekromantische Magie in deinen Pfeil. Wenn dein Pfeil eine Kreatur trifft, erleidet das Ziel zusätzlichen {@damage 2d6} nekrotischen Schaden und muss einen Konstitutionsschutzwurf machen. Bei einem misslungenen Schutzwurf wird der Schaden der Angriffe des Ziels bis zur nächsten Runde halbiert.",
+				"Du webst nekromantische Magie in deinen Pfeil. Wenn dein Pfeil eine Kreatur trifft, erleidet das Ziel einen zusätzlichen {@damage 2d6} nekrotischen Schaden und muss einen Rettungswurf auf Konstitution machen. Bei einem misslungenen Schutzwurf wird der Schaden der Angriffe des Ziels bis zur nächsten Runde halbiert.",
 				"Der nekrotische Schaden erhöht sich auf {@damage 4d6}, wenn du die 18. Stufe dieser Klasse erreichst."
 			]
 		},
@@ -900,7 +900,7 @@
 				"name": "Sorcery Points"
 			},
 			"entries": [
-				"Wenn du einen Zauber wirkst, der andere Kreaturen dazu zwingt, einen Rettungswurf zu machen, kannst du einige dieser Kreaturen vor der vollen Kraft des Zaubers schützen. Dazu gibst du 1 Zauberpunkt aus und wählst eine Anzahl dieser Kreaturen bis zu deinem Charisma-Modifikator (mindestens eine Kreatur). Eine gewählte Kreatur schafft automatisch ihren Rettungswurf gegen den Spruch."
+				"Wenn du einen Zauber sprichst, der andere Kreaturen zu einem Rettungswurf zwingt, kannst du einige dieser Kreaturen vor der vollen Kraft des Zaubers schützen. Um dies zu tun, gibst du 1 Zauberpunkt aus und wählst eine Anzahl dieser Kreaturen bis zu deinem Charisma-Modifikator (mindestens eine Kreatur). Eine gewählte Kreatur schafft automatisch ihren Rettungswurf gegen den Zauber."
 			]
 		},
 		{
@@ -1252,7 +1252,7 @@
 				"OR"
 			],
 			"entries": [
-				"Wenn der Zauber von der benannten Kreatur einen Schutzwurf verlangt, hat diese Kreatur beim ersten Schutzwurf, den sie gegen den Zauber macht, einen Nachteil."
+				"Wenn der Zauber von der benannten Kreatur einen Rettungswurf verlangt, hat diese Kreatur beim ersten Rettungswurf, den sie gegen den Zauber macht, einen Nachteil."
 			]
 		},
 		{
@@ -1278,7 +1278,7 @@
 				"name": "Superiority Dice"
 			},
 			"entries": [
-				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel zu entwaffnen, indem du es zwingst, einen Gegenstand deiner Wahl, den es in der Hand hält, fallen zu lassen. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und das Ziel muss einen Schutzwurf auf Stärke machen. Bei einem misslungenen Schutzwurf lässt es den von dir gewählten Gegenstand fallen. Der Gegenstand landet zu seinen Füßen."
+				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel zu entwaffnen und es zu zwingen, einen Gegenstand deiner Wahl, den es in der Hand hält, fallen zu lassen. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und das Ziel muss einen Rettungswurf auf Stärke machen. Bei einem misslungenen Schutzwurf lässt es den von dir gewählten Gegenstand fallen. Der Gegenstand landet zu seinen Füßen."
 			]
 		},
 		{
@@ -1470,7 +1470,7 @@
 				"EI"
 			],
 			"entries": [
-				"Du hast einen Vorteil bei Konstitutionsschutzwürfen, die du machst, um deine Konzentration auf einen Zauber aufrechtzuerhalten."
+				"Du hast einen Vorteil bei Rettungswürfen auf Konstitution, die du machst, um deine Konzentration auf einen Zauber aufrechtzuerhalten."
 			]
 		},
 		{
@@ -1487,7 +1487,7 @@
 				}
 			],
 			"entries": [
-				"Du hast einen Vorteil bei Konstitutionsschutzwürfen, die du machst, um deine Konzentration auf einen Zauber aufrechtzuerhalten."
+				"Du hast einen Vorteil bei Rettungswürfen auf Konstitution, die du machst, um deine Konzentration auf einen Zauber aufrechtzuerhalten."
 			]
 		},
 		{
@@ -1640,7 +1640,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Du webst nekromantische Magie in deinen Pfeil. Die Kreatur, die von dem Pfeil getroffen wird, erleidet zusätzlichen {@damage 2d6} nekrotischen Schaden. Das Ziel muss außerdem einen Konstitutions-Sicherungswurf bestehen, sonst wird der durch seine Waffenangriffe verursachte Schaden bis zum Beginn deines nächsten Zuges halbiert.",
+				"Du webst nekromantische Magie in deinen Pfeil. Die vom Pfeil getroffene Kreatur erleidet einen zusätzlichen {@damage 2d6} nekrotischen Schaden. Das Ziel muss außerdem einen Rettungswurf auf die Konstitution bestehen, sonst wird der durch seine Waffenangriffe verursachte Schaden bis zum Beginn deines nächsten Zuges halbiert.",
 				"Der nekrotische Schaden erhöht sich auf {@damage 4d6}, wenn du die 18. Stufe dieser Klasse erreichst."
 			]
 		},
@@ -1979,7 +1979,7 @@
 			],
 			"entries": [
 				"Die Magie dieser Rune kanalisiert die meisterhafte Handwerkskunst großer Schmiede. Wenn du einen Gegenstand mit dieser Rune trägst oder bei dir hast, verdoppelt sich dein Fertigkeitsbonus für jede Fähigkeitsüberprüfung, bei der du deine Fertigkeit im Umgang mit einem Werkzeug einsetzt.",
-				"Wenn du eine Kreatur mit einem Angriff mit einer Waffe triffst, kannst du die Rune außerdem beschwören, um feurige Fesseln zu beschwören: Das Ziel erleidet zusätzlichen {@damage 2d6} Feuerschaden und muss einen Stärkewurf bestehen oder 1 Minute lang {@condition restrained} sein. Solange {@condition restrained} von den Fesseln getroffen wird, erleidet das Ziel zu Beginn jeder seiner Runden {@damage 2d6} Feuerschaden. Das Ziel kann den Rettungswurf am Ende jeder seiner Runden wiederholen, um die Fesseln bei einem Erfolg zu verbannen. Wenn du diese Rune einmal beschworen hast, kannst du dies erst wieder tun, wenn du eine kurze oder lange Pause machst."
+				"Wenn du eine Kreatur mit einem Angriff mit einer Waffe triffst, kannst du die Rune außerdem beschwören, um feurige Fesseln zu beschwören: Das Ziel erleidet zusätzlichen {@damage 2d6} Feuerschaden und muss einen Rettungswurf auf Stärke bestehen oder 1 Minute lang {@condition restrained} leiden. Solange es {@condition restrained} von den Fesseln gehalten wird, erleidet das Ziel zu Beginn jeder seiner Runden {@damage 2d6} Feuerschaden. Das Ziel kann den Rettungswurf am Ende jeder seiner Runden wiederholen und die Fesseln bei einem Erfolg bannen. Wenn du diese Rune einmal beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
 			]
 		},
 		{
@@ -2095,7 +2095,7 @@
 			],
 			"entries": [
 				"Die Magie dieser Rune beschwört die Macht derer herauf, die in der winterlichen Wildnis überleben, wie z.B. Frostriesen. Wenn du einen mit dieser Rune beschrifteten Gegenstand trägst oder bei dir hast, hast du einen Vorteil bei Weisheits- ({@skill Animal Handling}) und Charisma- ({@skill Intimidation}) Überprüfungen.",
-				"Außerdem kannst du die Rune als Bonusaktion beschwören, um deine Widerstandsfähigkeit zu erhöhen. 10 Minuten lang erhältst du einen Bonus von +2 auf alle Fähigkeitsprüfungen und Schutzwürfe, die Stärke oder Konstitution erfordern. Wenn du diese Rune beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
+				"Darüber hinaus kannst du die Rune als Bonusaktion beschwören, um deine Widerstandsfähigkeit zu erhöhen. 10 Minuten lang erhältst du einen Bonus von +2 auf alle Fähigkeitsprüfungen und Rettungswürfe, die Stärke oder Konstitution verwenden. Wenn du diese Rune beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
 			]
 		},
 		{
@@ -2349,7 +2349,7 @@
 				"name": "Superiority Dice"
 			},
 			"entries": [
-				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel dazu zu bringen, dich anzugreifen. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und das Ziel muss einen Weisheitswurf machen. Bei einem misslungenen Schutzwurf hat das Ziel bis zum Ende deines nächsten Zuges Nachteil bei allen Angriffswürfen gegen andere Ziele als dich."
+				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel dazu zu bringen, dich anzugreifen. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und das Ziel muss einen Rettungswurf in Weisheit machen. Bei einem misslungenen Schutzwurf hat das Ziel bis zum Ende deines nächsten Zuges Nachteil bei allen Angriffswürfen gegen andere Ziele als dich."
 			]
 		},
 		{
@@ -2551,7 +2551,7 @@
 				"RN"
 			],
 			"entries": [
-				"Die Magie dieser Rune verleiht dir eine Widerstandsfähigkeit, die an einen Bergriesen erinnert. Wenn du einen Gegenstand mit dieser Rune trägst oder bei dir hast, hast du einen Vorteil bei Schutzwürfen gegen {@condition poisoned} und bist resistent gegen Giftschaden.",
+				"Die Magie dieser Rune verleiht dir eine Widerstandsfähigkeit, die an einen Bergriesen erinnert. Wenn du einen mit dieser Rune beschrifteten Gegenstand trägst, hast du einen Vorteil bei Rettungswürfen gegen Wesen {@condition poisoned} und bist resistent gegen Giftschaden.",
 				"Außerdem kannst du die Rune als Bonusaktion beschwören und erhältst 1 Minute lang Widerstand gegen Wucht-, Stich- und Hiebschaden. Sobald du die Rune beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
 			]
 		},
@@ -2579,7 +2579,7 @@
 				"amount": 3
 			},
 			"entries": [
-				"Wenn du einen Zauber wirkst, der eine Kreatur dazu zwingt, einen Rettungswurf zu machen, um seinen Effekten zu widerstehen, kannst du 3 Zauberpunkte ausgeben, um einem Ziel des Zaubers einen Nachteil bei seinem ersten Rettungswurf gegen den Zauber zu geben."
+				"Wenn du einen Zauber wirkst, der eine Kreatur dazu zwingt, einen Rettungswurf zu machen, um seinen Effekten zu widerstehen, kannst du 3 Zauberpunkte ausgeben, um einem Ziel des Zaubers bei seinem ersten Rettungswurf gegen den Zauber einen Nachteil zu geben."
 			]
 		},
 		{
@@ -2651,7 +2651,7 @@
 				}
 			],
 			"entries": [
-				"Die Magie dieser Rune verleiht dir eine Widerstandsfähigkeit, die an einen Bergriesen erinnert. Wenn du einen Gegenstand trägst, der diese Rune trägt, hast du einen Vorteil bei Schutzwürfen gegen {@condition poisoned} und bist resistent gegen Giftschaden.",
+				"Die Magie dieser Rune verleiht dir eine Widerstandsfähigkeit, die an einen Bergriesen erinnert. Wenn du einen Gegenstand trägst, der diese Rune trägt, hast du einen Vorteil bei Rettungswürfen gegen Wesen {@condition poisoned} und bist resistent gegen Giftschaden.",
 				"Außerdem kannst du die Rune als Bonusaktion beschwören und erhältst 1 Minute lang Widerstand gegen Wucht-, Stich- und Hiebschaden. Sobald du diese Rune beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
 			]
 		},
@@ -2692,7 +2692,7 @@
 			],
 			"entries": [
 				"Die Magie dieser Rune kanalisiert die meisterhafte Handwerkskunst von Feuerriesenschmieden. Wenn du einen Gegenstand mit dieser Rune trägst oder bei dir hast, verdoppelt sich dein Fertigkeitsbonus für jede Fähigkeitsprüfung, bei der du deine Fertigkeit im Umgang mit einem Werkzeug einsetzt.",
-				"Außerdem kannst du, wenn du eine Kreatur mit einem Waffenangriff triffst, die Rune beschwören, um feurige Fesseln zu beschwören: Das Ziel muss einen Stärkewurf bestehen oder 1 Minute lang {@condition restrained} sein. Solange {@condition restrained} von den Fesseln getroffen wird, erleidet das Ziel zu Beginn jeder seiner Runden {@damage 2d6} Feuerschaden. Das Ziel kann den Rettungswurf am Ende jeder seiner Runden wiederholen und die Fesseln bei einem Erfolg verbannen. Wenn du die Rune einmal beschworen hast, kannst du dies erst wieder tun, wenn du eine kurze oder lange Pause machst."
+				"Außerdem kannst du, wenn du eine Kreatur mit einem Waffenangriff triffst, die Rune beschwören, um feurige Fesseln zu beschwören: Das Ziel muss einen Rettungswurf auf Stärke bestehen oder 1 Minute lang {@condition restrained} leiden. Solange es {@condition restrained} von den Fesseln gehalten wird, erleidet das Ziel zu Beginn jeder seiner Runden {@damage 2d6} Feuerschaden. Das Ziel kann den Rettungswurf am Ende jeder seiner Runden wiederholen und die Fesseln bei einem Erfolg verbannen. Wenn du die Rune einmal beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
 			]
 		},
 		{
@@ -2803,7 +2803,7 @@
 						"Der Vertraute erhält entweder eine Fluggeschwindigkeit oder eine Schwimmgeschwindigkeit von 40 Fuß (nach Wahl).",
 						"Als Bonusaktion kannst du dem Vertrauten befehlen, die Aktion {@action Attack} auszuführen.",
 						"Die Waffenangriffe des Vertrauten gelten als magisch, um Immunität und Widerstand gegen nichtmagische Angriffe zu überwinden.",
-						"Wenn der Vertraute eine Kreatur dazu zwingt, einen Schutzwurf zu machen, verwendet er den Schutz-DC deines Zaubers.",
+						"Wenn der Vertraute eine Kreatur zu einem Rettungswurf zwingt, verwendet er den Schutz-DC deines Zaubers.",
 						"Wenn der Vertraute Schaden erleidet, kannst du deine Reaktion nutzen, um ihm Widerstand gegen diesen Schaden zu gewähren."
 					]
 				}
@@ -2830,7 +2830,7 @@
 						"Der Vertraute erhält entweder eine Fluggeschwindigkeit oder eine Schwimmgeschwindigkeit von 40 Fuß (nach Wahl).",
 						"Das Vertraute braucht nicht mehr zu atmen.",
 						"Die Waffenangriffe des Vertrauten gelten als magisch, um Immunität und Widerstand gegen nichtmagische Angriffe zu überwinden.",
-						"Wenn der Vertraute eine Kreatur dazu zwingt, einen Schutzwurf zu machen, verwendet er den Schutz-DC deines Zaubers."
+						"Wenn der Vertraute eine Kreatur zu einem Rettungswurf zwingt, verwendet er den Schutz-DC deines Zaubers."
 					]
 				}
 			]
@@ -3136,7 +3136,7 @@
 				"name": "Superiority Dice"
 			},
 			"entries": [
-				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel zu verängstigen. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und das Ziel muss einen Weisheitswurf machen. Bei einem misslungenen Schutzwurf ist es bis zum Ende deines nächsten Zuges {@condition frightened} vor dir."
+				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel zu erschrecken. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und das Ziel muss einen Rettungswurf in Weisheit machen. Bei einem misslungenen Schutzwurf ist es {@condition frightened} von dir bis zum Ende deines nächsten Zuges."
 			]
 		},
 		{
@@ -3154,7 +3154,7 @@
 				}
 			],
 			"entries": [
-				"Der durchdrungene Gegenstand kann dem Träger einen Ruck geben, um seinen Geist neu zu fokussieren. Der Gegenstand hat 4 Ladungen. Wenn dem Träger ein Konstitutionsschutzwurf misslingt, um die Konzentration auf einen Zauber aufrechtzuerhalten, kann er seine Reaktion nutzen, um 1 der Ladungen des Gegenstands zu verbrauchen, um stattdessen erfolgreich zu sein. Der Gegenstand erhält {@dice 1d4} verbrauchte Ladungen täglich im Morgengrauen wieder."
+				"Der durchdrungene Gegenstand kann dem Träger einen Ruck geben, um seinen Geist neu zu fokussieren. Der Gegenstand hat 4 Ladungen. Wenn dem Träger ein Rettungswurf der Konstitution misslingt, um die Konzentration auf einen Zauber aufrechtzuerhalten, kann er seine Reaktion nutzen, um 1 der Ladungen des Gegenstandes zu verbrauchen, um stattdessen erfolgreich zu sein. Der Gegenstand erhält täglich bei Tagesanbruch {@dice 1d4} verbrauchte Ladungen zurück."
 			]
 		},
 		{
@@ -3172,7 +3172,7 @@
 				}
 			],
 			"entries": [
-				"Wenn eine Kreatur, die diesen Gegenstand trägt, einen Konstitutionswurf zur Aufrechterhaltung der Konzentration auf einen Zauber misslingt, kann sie stattdessen ihre Reaktion einsetzen, um erfolgreich zu sein."
+				"Der durchdrungene Gegenstand kann dem Träger einen Ruck geben, um seinen Geist neu zu fokussieren. Wenn die Kreatur, die diesen Gegenstand trägt, einen Rettungswurf der Konstitution misslingt, um die Konzentration auf einen Zauber aufrechtzuerhalten, kann sie stattdessen ihre Reaktion einsetzen, um erfolgreich zu sein."
 			]
 		},
 		{
@@ -3186,7 +3186,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Deine Verzauberungsmagie bewirkt, dass dieser Pfeil sein Ziel vorübergehend betört. Wähle einen deiner Verbündeten im Umkreis von 30 Fuß um das Ziel. Wenn der Pfeil eine Kreatur trifft, erleidet das Ziel zusätzlichen {@damage 2d6} psychischen Schaden und muss einen Weisheitswurf bestehen, sonst kann es den gewählten Verbündeten nicht angreifen oder in einen schädlichen Wirkungsbereich einschließen, bis du deinen nächsten Zug beginnst. Dieser Effekt endet vorzeitig, wenn der gewählte Verbündete dem Ziel Schaden zufügt.",
+				"Deine Verzauberungsmagie bewirkt, dass dieser Pfeil sein Ziel vorübergehend betört. Wähle einen deiner Verbündeten im Umkreis von 30 Fuß um das Ziel. Wenn der Pfeil eine Kreatur trifft, erleidet das Ziel zusätzlichen {@damage 2d6} psychischen Schaden und muss einen Rettungswurf in Weisheit bestehen, um den gewählten Verbündeten nicht anzugreifen oder ihn bis zum Beginn deines nächsten Zuges in einen schädlichen Wirkungsbereich einzuschließen. Dieser Effekt endet vorzeitig, wenn der gewählte Verbündete dem Ziel irgendwelchen Schaden zufügt.",
 				"Der psychische Schaden erhöht sich auf {@damage 4d6}, wenn du die 18. Stufe in dieser Klasse erreichst."
 			]
 		},
@@ -3546,7 +3546,7 @@
 				}
 			],
 			"entries": [
-				"Der Sucher befiehlt dir, auf der Suche nach Wissen zu reisen, und wenig kann dich davon abhalten, diesen Weg zu gehen. Du ignorierst {@quickref difficult terrain||3}, hast einen Vorteil bei allen Checks, um einem Griff, einer Fessel oder einem Seil zu entkommen, und einen Vorteil bei Rettungswürfen gegen ein Wesen {@condition paralyzed}."
+				"Der Sucher befiehlt dir, auf der Suche nach Wissen zu reisen, und wenig kann dich davon abhalten, diesen Weg zu gehen. Du ignorierst {@quickref difficult terrain||3}, hast Vorteil bei allen Checks, um einem Haltegriff, einer Fessel oder einem Seil zu entkommen, und Vorteil bei Rettungswürfen gegen das Wesen {@condition paralyzed}."
 			]
 		},
 		{
@@ -3589,7 +3589,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Du benutzt Transmutationsmagie, um deinem Pfeil eine ätherische Qualität zu verleihen. Wenn du diese Option nutzt, machst du keinen Angriffswurf für den Angriff. Stattdessen schießt der Pfeil in einer Linie vorwärts, die 1 Fuß breit und 30 Fuß lang ist, bevor er verschwindet. Der Pfeil geht harmlos durch Gegenstände hindurch und ignoriert Deckung. Jede Kreatur in dieser Linie muss einen Rettungswurf in Geschicklichkeit machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur Schaden, als wäre sie vom Pfeil getroffen worden, plus einen zusätzlichen {@damage 1d6} Stichschaden. Bei einem erfolgreichen Schutzwurf erleidet das Ziel nur halb so viel Schaden.",
+				"Du benutzt Transmutationsmagie, um deinem Pfeil eine ätherische Qualität zu verleihen. Wenn du diese Option nutzt, machst du keinen Angriffswurf für den Angriff. Stattdessen schießt der Pfeil in einer Linie vorwärts, die 1 Fuß breit und 30 Fuß lang ist, bevor er verschwindet. Der Pfeil geht harmlos durch Gegenstände hindurch und ignoriert Deckung. Jede Kreatur in dieser Linie muss einen Rettungswurf auf Geschicklichkeit machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur Schaden, als wäre sie vom Pfeil getroffen worden, plus einen zusätzlichen {@damage 1d6} Stichschaden. Bei einem erfolgreichen Schutzwurf erleidet das Ziel nur halb so viel Schaden.",
 				"Der Stichschaden erhöht sich auf {@damage 2d6}, wenn du die 18. Stufe dieser Klasse erreichst."
 			]
 		},
@@ -3660,7 +3660,7 @@
 				}
 			],
 			"entries": [
-				"Wenn dem Träger deines Talismans ein Rettungswurf misslingt, kann er {@dice d4} zu dem Wurf hinzufügen, wodurch der Rettungswurf möglicherweise zum Erfolg wird. Dieser Vorteil kann so oft genutzt werden, wie es deinem Fertigkeitsbonus entspricht, und alle verbrauchten Nutzungen werden wiederhergestellt, wenn du eine lange Pause beendest."
+				"Wenn dem Träger deines Talismans ein Rettungswurf misslingt, kann er einen {@dice d4} zum Wurf addieren, wodurch der Rettungswurf möglicherweise zum Erfolg wird. Dieser Vorteil kann so oft genutzt werden, wie es deinem Fertigkeitsbonus entspricht, und alle verbrauchten Vorteile werden wiederhergestellt, wenn du eine lange Pause beendest."
 			]
 		},
 		{
@@ -3683,7 +3683,7 @@
 				}
 			],
 			"entries": [
-				"Wenn der Träger deines Talismans einen Rettungswurf macht, den er nicht beherrscht, kann er {@dice d4} zu seinem Wurf hinzufügen."
+				"Wenn der Träger deines Talismans einen Rettungswurf macht, den er nicht beherrscht, kann er einen {@dice d4} zu dem Wurf hinzufügen."
 			]
 		},
 		{
@@ -3708,7 +3708,7 @@
 				"name": "Superiority Dice"
 			},
 			"entries": [
-				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel zurückzutreiben. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und wenn das Ziel groß oder kleiner ist, muss es einen Stärkewurf machen. Bei einem misslungenen Schutzwurf stößt du das Ziel bis zu 15 Fuß von dir weg."
+				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel zurückzutreiben. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und wenn das Ziel groß oder kleiner ist, muss es einen Rettungswurf auf Stärke machen. Bei einem misslungenen Schutzwurf stößt du das Ziel bis zu 15 Fuß weit von dir weg."
 			]
 		},
 		{
@@ -3770,7 +3770,7 @@
 			],
 			"entries": [
 				"Diese magische Waffe gewährt einen Bonus von +1 auf Angriffs- und Schadenswürfe, die mit ihr durchgeführt werden. Während der Anwender sie in der Hand hält, kann er mit einer Bonusaktion bewirken, dass sie in einem Radius von 30 Fuß helles Licht und in einem weiteren Radius von 30 Fuß gedämpftes Licht ausstrahlt. Der Anwender kann das Licht als Bonusaktion wieder löschen.",
-				"Die Waffe hat 4 Ladungen. Als Reaktion, unmittelbar nachdem er von einem Angriff getroffen wurde, kann der Träger 1 Ladung verbrauchen und den Angreifer bis zum Ende seines nächsten Zuges auf {@condition blinded} stellen, es sei denn, der Angreifer schafft einen Konstitutions-Sicherungswurf gegen deinen Zauber-Save-DC. Die Waffe erhält täglich bei Sonnenaufgang {@dice 1d4} verbrauchte Ladungen zurück."
+				"Die Waffe hat 4 Ladungen. Als Reaktion, unmittelbar nachdem er von einem Angriff getroffen wurde, kann der Träger der Waffe 1 Ladung verbrauchen und den Angreifer bis zum Ende seines nächsten Zuges {@condition blinded} schwächen, es sei denn, der Angreifer schafft einen Rettungswurf gegen den Schutz-DC deines Zaubers. Die Waffe erhält täglich bei Tagesanbruch {@dice 1d4} verbrauchte Ladungen zurück."
 			]
 		},
 		{
@@ -3795,7 +3795,7 @@
 			],
 			"entries": [
 				"Diese magische Waffe gewährt einen Bonus von +1 auf Angriffs- und Schadenswürfe, die mit ihr durchgeführt werden. Während der Anwender sie in der Hand hält, kann er mit einer Bonusaktion bewirken, dass sie in einem Radius von 30 Fuß helles Licht und in einem weiteren Radius von 30 Fuß gedämpftes Licht ausstrahlt. Der Anwender kann das Licht als Bonusaktion wieder löschen.",
-				"Als Reaktion, unmittelbar nachdem er von einem Nahkampfangriff getroffen wurde, kann der Anwender den Angreifer bis zum Ende seines nächsten Zuges in den Zustand {@condition blinded} versetzen, es sei denn, dem Angreifer gelingt ein Konstitutions-Sicherungswurf gegen deinen Zauber-Save-DC. Einmal eingesetzt, kann diese Reaktion erst dann wieder eingesetzt werden, wenn der Anwender eine kurze oder lange Pause beendet hat."
+				"Als Reaktion, unmittelbar nachdem er von einem Nahkampfangriff getroffen wurde, kann der Anwender den Angreifer bis zum Ende seines nächsten Zuges in einen Zustand von {@condition blinded} versetzen, es sei denn, dem Angreifer gelingt ein Rettungswurf gegen den Schutz-DC des Zaubers. Einmal eingesetzt, kann diese Reaktion erst wieder eingesetzt werden, wenn der Anwender eine kurze oder lange Pause beendet hat."
 			]
 		},
 		{
@@ -4918,7 +4918,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Mit Hilfe von Wahrsagemagie kannst du deinem Pfeil die Fähigkeit verleihen, dein Ziel zu finden, indem du ihm erlaubst, seinen Weg auf der Suche nach seiner Beute zu krümmen und zu verdrehen. Wenn du diese Option verwendest, machst du keinen Angriffswurf für den Angriff. Stattdessen wählst du eine Kreatur aus, die du in der letzten Minute gesehen hast. Der Pfeil fliegt auf diese Kreatur zu, wobei er, falls nötig, um Ecken herumfliegt und Dreiviertel- und Halbdeckung ignoriert. Wenn sich das Ziel innerhalb der Reichweite der Waffe befindet und es einen Weg gibt, der groß genug für den Pfeil ist, um zum Ziel zu gelangen, muss das Ziel einen Rettungswurf in Geschicklichkeit machen. Bei einem fehlgeschlagenen Rettungswurf erleidet es so viel Schaden, als ob es vom Pfeil getroffen worden wäre, plus einen zusätzlichen {@damage 1d6} Kraftschaden, und du erfährst den aktuellen Aufenthaltsort des Ziels. Bei einem erfolgreichen Rettungswurf erleidet das Ziel nur halb so viel Schaden, und du erfährst seinen Aufenthaltsort nicht.",
+				"Mit Hilfe von Wahrsagemagie kannst du deinem Pfeil die Fähigkeit verleihen, dein Ziel zu finden, indem du ihm erlaubst, sich auf der Suche nach seiner Beute zu krümmen und seinen Weg zu verdrehen. Wenn du diese Option nutzt, machst du keinen Angriffswurf für den Angriff. Stattdessen wählst du eine Kreatur, die du in der letzten Minute gesehen hast. Der Pfeil fliegt auf diese Kreatur zu, wobei er, falls nötig, um Ecken herumfliegt und Dreiviertel- und Halbdeckung ignoriert. Wenn sich das Ziel innerhalb der Reichweite der Waffe befindet und eine ausreichend große Flugbahn für den Pfeil vorhanden ist, muss das Ziel einen Rettungswurf auf Geschicklichkeit machen. Bei einem misslungenen Schutzwurf erleidet es Schaden, als wäre es vom Pfeil getroffen worden, plus einen zusätzlichen {@damage 1d6} Kraftschaden, und du erfährst den aktuellen Standort des Ziels. Bei einem erfolgreichen Schutzwurf erleidet das Ziel nur halb so viel Schaden, und du erfährst seinen Standort nicht.",
 				"Der Kraftschaden erhöht sich auf {@damage 2d6}, wenn du die 18. Stufe dieser Klasse erreichst."
 			]
 		},
@@ -4933,7 +4933,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Mit Hilfe von Wahrsagemagie kannst du deinem Pfeil die Fähigkeit verleihen, ein Ziel aufzuspüren. Wenn du diese Option nutzt, machst du keinen Angriffswurf für den Angriff. Stattdessen wählst du eine Kreatur aus, die du in der letzten Minute gesehen hast. Der Pfeil fliegt auf diese Kreatur zu, wobei er um Ecken herumfliegt und Dreiviertel- und Halbdeckung ignoriert. Wenn sich das Ziel innerhalb der Reichweite der Waffe befindet und es einen Weg gibt, der groß genug für den Pfeil ist, um zum Ziel zu gelangen, muss das Ziel einen Rettungswurf in Geschicklichkeit absolvieren. Andernfalls verschwindet der Pfeil, nachdem er so weit wie möglich geflogen ist. Bei einem misslungenen Rettungswurf erleidet das Ziel so viel Schaden, als ob es vom Pfeil getroffen worden wäre, plus einen zusätzlichen {@damage 1d6} Kraftschaden, und du erfährst den aktuellen Aufenthaltsort des Ziels. Bei einem erfolgreichen Rettungswurf erleidet das Ziel nur halb so viel Schaden, und du erfährst seinen Aufenthaltsort nicht.",
+				"Mit Hilfe von Wahrsagemagie kannst du deinem Pfeil die Fähigkeit verleihen, ein Ziel zu finden. Wenn du diese Option nutzt, machst du keinen Angriffswurf für den Angriff. Stattdessen wählst du eine Kreatur, die du in der letzten Minute gesehen hast. Der Pfeil fliegt auf diese Kreatur zu, wobei er, falls nötig, um Ecken herumfliegt und Dreiviertel- und Halbdeckung ignoriert. Wenn sich das Ziel innerhalb der Reichweite der Waffe befindet und der Weg, den der Pfeil bis zum Ziel zurücklegen kann, groß genug ist, muss das Ziel einen Rettungswurf in Geschicklichkeit machen. Andernfalls verschwindet der Pfeil, nachdem er so weit gereist ist, wie er kann. Bei einem misslungenen Rettungswurf erleidet das Ziel den gleichen Schaden wie bei einem Pfeiltreffer, plus einen zusätzlichen {@damage 1d6} Kraftschaden, und du erfährst den aktuellen Standort des Ziels. Bei einer erfolgreichen Rettung erleidet das Ziel nur halb so viel Schaden, und du erfährst seinen Standort nicht.",
 				"Der Kraftschaden erhöht sich auf {@damage 2d6}, wenn du die 18. Stufe dieser Klasse erreichst."
 			]
 		},
@@ -4966,7 +4966,7 @@
 				"name": "Sorcery Points"
 			},
 			"entries": [
-				"Wenn du einen Zauber wirkst, der einen Zauberangriffswurf erfordert oder ein Ziel zu einem Rettungswurf zwingt, kannst du 1 Zauberpunkt ausgeben, um die Effekte von Halb- und Dreivierteldeckung gegen Ziele des Zaubers zu ignorieren."
+				"Wenn du einen Zauber wirkst, der einen Zauberangriffswurf erfordert oder ein Ziel zu einem Rettungswurf in Geschicklichkeit zwingt, kannst du 1 Zauberpunkt ausgeben, um die Effekte von Halb- und Dreivierteldeckung gegen Ziele des Zaubers zu ignorieren."
 			]
 		},
 		{
@@ -4994,7 +4994,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Du webst Illusionsmagie in deinen Pfeil, so dass er die Sicht deines Gegners mit greifenden Schatten verdeckt. Wenn der Pfeil eine Kreatur trifft, erleidet das Ziel zusätzlichen {@damage 2d6} psychischen Schaden und muss einen Weisheitswurf bestehen, sonst kann es bis zum Beginn deines nächsten Zuges nichts sehen, das weiter als 5 Fuß entfernt ist.",
+				"Du webst Illusionsmagie in deinen Pfeil, wodurch er die Sicht deines Gegners mit greifenden Schatten verdeckt. Wenn der Pfeil eine Kreatur trifft, erleidet das Ziel einen zusätzlichen {@damage 2d6} psychischen Schaden und muss einen Rettungswurf in Weisheit bestehen oder kann bis zum Beginn deines nächsten Zuges nichts sehen, das weiter als 5 Fuß entfernt ist.",
 				"Der psychische Schaden erhöht sich auf {@damage 4d6}, wenn du die 18. Stufe in dieser Klasse erreichst."
 			]
 		},
@@ -5009,7 +5009,7 @@
 				"name": "Arcane Shot"
 			},
 			"entries": [
-				"Du webst Illusionsmagie in deinen Pfeil, so dass er die Sicht deines Gegners mit Schatten verdeckt. Die Kreatur, die von dem Pfeil getroffen wird, erleidet zusätzlichen {@damage 2d6} psychischen Schaden und muss einen Weisheitswurf bestehen, sonst kann sie bis zum Beginn deines nächsten Zuges nichts sehen, das weiter als 5 Fuß entfernt ist.",
+				"Du webst Illusionsmagie in deinen Pfeil, so dass er die Sicht deines Gegners mit Schatten verdeckt. Die vom Pfeil getroffene Kreatur erleidet zusätzlichen {@damage 2d6} psychischen Schaden und muss einen Rettungswurf in Weisheit bestehen, sonst kann sie bis zum Beginn deines nächsten Zuges nichts sehen, das weiter als 5 Fuß entfernt ist.",
 				"Der psychische Schaden erhöht sich auf {@damage 4d6}, wenn du die 18. Stufe in dieser Klasse erreichst."
 			]
 		},
@@ -5107,7 +5107,7 @@
 				}
 			],
 			"entries": [
-				"Der blau-weiße Stern Ulban ist ein unbeständiges Wesen, das nur dann in Erscheinung tritt, wenn es ein böses Omen ankündigt. Als Aktion kannst du dich 1 Minute lang in {@condition invisible} verwandeln. Wenn du angreifst, Schaden zufügst oder eine Kreatur zu einem Schutzwurf zwingst, wirst du am Ende der aktuellen Runde sichtbar."
+				"Der blau-weiße Stern Ulban ist eine unbeständige Erscheinung unter den Sternen, die nur dann ins Blickfeld gerät, wenn sie ein böses Omen ankündigt. Als Aktion kannst du dich 1 Minute lang um {@condition invisible} drehen. Wenn du angreifst, Schaden zufügst oder eine Kreatur zu einem Rettungswurf zwingst, wirst du am Ende der aktuellen Runde sichtbar."
 			]
 		},
 		{
@@ -5260,7 +5260,7 @@
 			],
 			"entries": [
 				"Die Magie dieser Rune kanalisiert die Einsicht eines Steinriesen. Wenn du einen mit dieser Rune beschrifteten Gegenstand trägst oder bei dir hast, bist du bei Weisheitsprüfungen ({@skill Insight}) im Vorteil und hast {@sense darkvision} mit einer Reichweite von 60 Fuß. Wenn du bereits {@sense darkvision} hast, erhöht sich die Reichweite um 30 Fuß.",
-				"Außerdem kannst du, wenn eine Kreatur, die du sehen kannst, ihren Zug in einem Umkreis von 30 Fuß von dir beendet, deine Reaktion nutzen, um die Rune zu beschwören und die Kreatur zu einem Weisheitswurf zu zwingen. Wenn die Rettung nicht gelingt, wird die Kreatur 1 Minute lang von dir {@condition charmed}. Während {@condition charmed} auf diese Weise, hat die Kreatur eine Geschwindigkeit von 0 und ist {@condition incapacitated} und fällt in einen träumerischen Stupor. Der Effekt endet, wenn die {@condition charmed} Kreatur Schaden erleidet oder wenn jemand anderes eine Aktion nutzt, um die Kreatur aus ihrem Dunst zu schütteln. Wenn du die Rune einmal beschworen hast, kannst du dies erst wieder tun, wenn du eine kurze oder lange Ruhepause beendet hast."
+				"Außerdem kannst du, wenn eine Kreatur, die du sehen kannst, ihren Zug in einem Umkreis von 30 Fuß von dir beendet, deine Reaktion nutzen, um die Rune zu beschwören und die Kreatur zu einem Rettungswurf in Weisheit zu zwingen. Wenn der Schutzwurf nicht gelingt, ist die Kreatur 1 Minute lang {@condition charmed} in deiner Nähe. Solange die Kreatur auf diese Weise {@condition charmed} ist, hat sie eine Geschwindigkeit von 0, ist {@condition incapacitated} und verfällt in einen traumartigen Stupor. Der Effekt endet, wenn die {@condition charmed} Kreatur Schaden erleidet oder wenn jemand anderes eine Aktion einsetzt, um die Kreatur aus ihrem Dunst zu schütteln. Wenn du die Rune einmal beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
 			]
 		},
 		{
@@ -5277,7 +5277,7 @@
 			],
 			"entries": [
 				"Die Magie dieser Rune kanalisiert die Klugheit, die mit Steinriesen assoziiert wird. Wenn du einen Gegenstand trägst, der mit dieser Rune beschriftet ist, hast du einen Vorteil bei Weisheitsprüfungen ({@skill Insight}), und du hast {@sense darkvision} in einer Reichweite von 120 Fuß.",
-				"Außerdem kannst du, wenn eine Kreatur, die du sehen kannst, ihren Zug innerhalb von 30 Fuß von dir beendet, deine Reaktion nutzen, um die Rune zu beschwören und die Kreatur zu einem Weisheitswurf zu zwingen. Wenn der Schutzwurf nicht gelingt, wird die Kreatur 1 Minute lang von dir {@condition charmed}. Während {@condition charmed} auf diese Weise, hat die Kreatur eine Geschwindigkeit von 0 und ist {@condition incapacitated} und verfällt in einen träumerischen Stupor. Die Kreatur wiederholt den Schutzwurf am Ende jedes ihrer Züge, wobei der Effekt bei einem Erfolg endet. Wenn du diese Rune einmal beschworen hast, kannst du dies erst wieder tun, wenn du eine kurze oder lange Pause machst."
+				"Außerdem kannst du, wenn eine Kreatur, die du sehen kannst, ihren Zug in einem Umkreis von 30 Fuß von dir beendet, deine Reaktion nutzen, um die Rune zu beschwören und die Kreatur zu einem Rettungswurf in Weisheit zu zwingen. Wenn der Schutzwurf nicht gelingt, ist die Kreatur 1 Minute lang {@condition charmed} in deiner Nähe. Solange die Kreatur auf diese Weise {@condition charmed} ist, hat sie eine Geschwindigkeit von 0, ist {@condition incapacitated} und verfällt in einen traumartigen Stupor. Die Kreatur wiederholt den Rettungswurf am Ende jeder ihrer Runden, wobei der Effekt bei einem Erfolg beendet wird. Wenn du diese Rune einmal beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
 			]
 		},
 		{
@@ -5302,7 +5302,7 @@
 			],
 			"entries": [
 				"Mit dieser Rune kannst du wie ein Sturmriese in die Zukunft blicken. Wenn du einen Gegenstand mit dieser Rune trägst oder bei dir hast, hast du einen Vorteil bei Intelligenzprüfungen ({@skill Arcana}) und kannst nicht überrascht werden, solange du nicht {@condition incapacitated} bist.",
-				"Außerdem kannst du die Rune als Bonusaktion beschwören, um für 1 Minute oder bis du {@condition incapacitated} bist, in einen prophetischen Zustand einzutreten. Wenn du oder eine andere Kreatur, die du im Umkreis von 60 Fuß sehen kannst, bis zum Ende des Zustands einen Angriffswurf, einen Rettungswurf oder eine Fähigkeitsprüfung durchführst, kannst du deine Reaktion nutzen, um zu bewirken, dass der Wurf einen Vorteil oder Nachteil hat. Wenn du diese Rune einmal beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
+				"Außerdem kannst du die Rune als Bonusaktion beschwören, um für 1 Minute oder bis du {@condition incapacitated} bist, in einen prophetischen Zustand zu gelangen. Bis der Zustand endet, kannst du, wenn du oder eine andere Kreatur, die du im Umkreis von 60 Fuß sehen kannst, einen Angriffswurf, einen Rettungswurf oder eine Fähigkeitsprüfung durchführst, deine Reaktion nutzen, um dem Wurf einen Vorteil oder Nachteil zu verschaffen. Wenn du diese Rune einmal beschworen hast, kannst du dies erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
 			]
 		},
 		{
@@ -5377,7 +5377,7 @@
 				}
 			],
 			"entries": [
-				"Du erlernst ein {@filter maneuver|optionalfeatures|feature type=MV:B} deiner Wahl aus den für den Archetyp {@class fighter|phb|Battle Master|Battle Master|phb|2-0} verfügbaren Manövern. Wenn ein von dir verwendetes Manöver von deinem Ziel einen Rettungswurf verlangt, um den Effekten des Manövers zu widerstehen, ist der Rettungswurf-DC gleich 8 + dein Fertigkeitsbonus + dein Stärke- oder Geschicklichkeitsmodifikator (deiner Wahl).",
+				"Du erlernst eine {@filter maneuver|optionalfeatures|feature type=MV:B} deiner Wahl aus denen, die dem {@class fighter|phb|Battle Master|Battle Master|phb|2-0} Archetyp zur Verfügung stehen. Wenn ein Manöver, das du benutzt, von deinem Ziel einen Rettungswurf verlangt, um den Effekten des Manövers zu widerstehen, ist der Rettungswurf-DC gleich 8 + dein Beherrschungsbonus + dein Stärke- oder Geschicklichkeitsmodifikator (deiner Wahl).",
 				"Du erhältst einen Überlegenheits-Würfel, der {@dice d6} ist (dieser Würfel wird zu allen Überlegenheits-Würfeln addiert, die du aus einer anderen Quelle hast). Dieser Würfel wird für deine Manöver verwendet. Ein Überlegenheits-Würfel wird verbraucht, wenn du ihn benutzt. Du erhältst deine verbrauchten Überlegenheits-Würfel zurück, wenn du eine kurze oder lange Pause beendest."
 			]
 		},
@@ -5401,7 +5401,7 @@
 				}
 			],
 			"entries": [
-				"Du erlernst ein {@filter maneuver|optionalfeatures|feature type=MV:B} Manöver deiner Wahl aus den Manövern, die dem Archetyp des Kampfmeisters zur Verfügung stehen. Wenn ein Manöver, das du benutzt, von deinem Ziel einen Rettungswurf verlangt, um den Effekten des Manövers zu widerstehen, ist der Rettungswurf-DC gleich 8 + dein Beherrschungsbonus + dein Stärke- oder Geschicklichkeitsmodifikator (deiner Wahl).",
+				"Du erlernst ein {@filter maneuver|optionalfeatures|feature type=MV:B} Manöver deiner Wahl aus den Manövern, die dem Archetyp des Kampfmeisters zur Verfügung stehen. Wenn ein Manöver, das du benutzt, von deinem Ziel einen Rettungswurf verlangt, um den Effekten des Manövers zu widerstehen, ist der Rettungswurf-DC gleich 8 + dein Fertigkeitsbonus + dein Stärke- oder Geschicklichkeitsmodifikator (deiner Wahl).",
 				"Du erhältst einen Überlegenheits-Würfel, der {@dice d6} ist (dieser Würfel wird zu allen Überlegenheits-Würfeln addiert, die du aus einer anderen Quelle hast). Dieser Würfel wird für deine Manöver verwendet. Ein Überlegenheits-Würfel wird verbraucht, wenn du ihn benutzt. Du erhältst deine verbrauchten Überlegenheits-Würfel zurück, wenn du eine kurze oder lange Pause beendest."
 			]
 		},
@@ -5577,7 +5577,7 @@
 				"AF"
 			],
 			"entries": [
-				"Als Aktion kannst du in deine Alchemistentasche greifen, einen Kristallsplitter herausziehen und ihn auf eine Kreatur, ein Objekt oder eine Oberfläche im Umkreis von 30 Fuß schleudern (der Splitter verschwindet, wenn du ihn nicht bis zum Ende des aktuellen Zuges schleuderst). Der Splitter zerbricht beim Aufprall mit einer Explosion aus erschütternder Energie. Jede Kreatur im Umkreis von 10 Fuß um den Aufprallpunkt muss einen Konstitutions-Erhaltungswurf bestehen, oder sie wird umgestoßen {@condition prone} und 10 Fuß von diesem Punkt weggestoßen."
+				"Als Aktion kannst du in deinen Alchemistenbeutel greifen, einen Kristallsplitter herausziehen und ihn auf eine Kreatur, ein Objekt oder eine Oberfläche im Umkreis von 30 Fuß schleudern (der Splitter verschwindet, wenn du ihn nicht bis zum Ende der aktuellen Runde schleuderst). Der Splitter zerbricht beim Aufprall mit einer Explosion aus erschütternder Energie. Jede Kreatur im Umkreis von 10 Fuß um den Aufprallpunkt muss einen Rettungswurf auf Konstitution bestehen oder wird umgestoßen {@condition prone} und 10 Fuß von diesem Punkt weggeschoben."
 			]
 		},
 		{
@@ -5743,7 +5743,7 @@
 				"name": "Superiority Dice"
 			},
 			"entries": [
-				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel niederzuschlagen. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und wenn das Ziel groß oder kleiner ist, muss es einen Stärkewurf machen. Bei einem misslungenen Schutzwurf schlägst du das Ziel {@condition prone}."
+				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel niederzuschlagen. Du addierst den Überlegenheitswürfel zum Schadenswurf des Angriffs, und wenn das Ziel groß oder kleiner ist, muss es einen Rettungswurf auf Stärke machen. Bei einem misslungenen Schutzwurf wirfst du das Ziel um {@condition prone}."
 			]
 		},
 		{
@@ -5757,7 +5757,7 @@
 				"name": "Superiority Dice"
 			},
 			"entries": [
-				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel umzuwerfen. Wirf den Würfel und addiere ihn zum Schadenswurf des Angriffs. Wenn das Ziel groß oder kleiner ist, muss es außerdem einen Rettungswurf in Stärke bestehen (DC 8 + dein Fertigkeitsbonus + dein Stärkemodifikator) oder es wird umgeworfen {@condition prone}."
+				"Wenn du eine Kreatur mit einem Waffenangriff triffst, kannst du einen Überlegenheitswürfel ausgeben, um zu versuchen, das Ziel niederzuschlagen. Wirf den Würfel und addiere ihn zum Schadenswurf des Angriffs. Wenn das Ziel groß oder kleiner ist, muss es außerdem einen Rettungswurf in Stärke bestehen (DC 8 + dein Fertigkeitsbonus + dein Stärkemodifikator) oder umgeworfen werden {@condition prone}."
 			]
 		},
 		{
@@ -5880,7 +5880,7 @@
 				"ED"
 			],
 			"entries": [
-				"Du kannst einen Luftstoß erzeugen, der wie eine mächtige Faust zuschlägt. Als Aktion kannst du 2 Ki-Punkte ausgeben und eine Kreatur im Umkreis von 30 Fuß um dich wählen. Diese Kreatur muss einen Schutzwurf auf Stärke machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur {@damage 3d10} Wuchtschaden und zusätzlich {@damage 1d10} Wuchtschaden für jeden zusätzlichen Ki-Punkt, den du ausgibst, und du kannst die Kreatur bis zu 20 Fuß von dir wegstoßen und sie {@condition prone} umwerfen. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur nur halb so viel Schaden, und du stößt oder stößt sie nicht {@condition prone}."
+				"Du kannst einen Luftstoß erzeugen, der wie eine mächtige Faust zuschlägt. Als Aktion kannst du 2 Ki-Punkte ausgeben und eine Kreatur im Umkreis von 30 Fuß um dich wählen. Diese Kreatur muss einen Rettungswurf auf Stärke machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur {@damage 3d10} Wuchtschaden und zusätzlich {@damage 1d10} Wuchtschaden für jeden zusätzlichen Ki-Punkt, den du ausgibst, und du kannst die Kreatur bis zu 20 Fuß von dir wegstoßen und sie {@condition prone} umwerfen. Bei einem erfolgreichen Schutzwurf erleidet die Kreatur nur halb so viel Schaden, und du stößt oder stößt sie nicht {@condition prone}."
 			]
 		},
 		{
@@ -5944,7 +5944,7 @@
 			],
 			"entries": [
 				"Mit dieser Rune kannst du wie ein Sturmriese in die Zukunft blicken. Wenn du einen Gegenstand trägst, der mit dieser Rune beschriftet ist, hast du einen Vorteil bei Intelligenzprüfungen ({@skill Arcana}) und kannst nicht überrascht werden, solange du nicht {@condition incapacitated} bist.",
-				"Außerdem kannst du die Rune als Bonusaktion beschwören, um für 1 Minute oder bis du {@condition incapacitated} bist, in einen prophetischen Zustand einzutreten. Wenn du oder eine andere Kreatur, die du im Umkreis von 60 Fuß sehen kannst, bis zum Ende des Zustands einen Angriffswurf, einen Rettungswurf oder eine Fähigkeitsprüfung durchführst, kannst du deine Reaktion nutzen, um zu bewirken, dass der Wurf einen Vorteil oder Nachteil hat. Wenn du die Rune einmal beschworen hast, kannst du dies erst wieder nach einer kurzen oder langen Ruhepause tun."
+				"Außerdem kannst du die Rune als Bonusaktion beschwören, um für 1 Minute oder bis du {@condition incapacitated} bist, in einen prophetischen Zustand zu gelangen. Bis der Zustand endet, kannst du, wenn du oder eine andere Kreatur, die du im Umkreis von 60 Fuß sehen kannst, einen Angriffswurf, einen Rettungswurf oder eine Fähigkeitsprüfung durchführst, deine Reaktion nutzen, um dem Wurf einen Vorteil oder Nachteil zu verschaffen. Wenn du die Rune einmal beschworen hast, kannst du das erst wieder tun, wenn du eine kurze oder lange Pause gemacht hast."
 			]
 		},
 		{
