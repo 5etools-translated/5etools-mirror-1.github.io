@@ -559,260 +559,277 @@
 					},
 					"title": "Optional Title"
 				},
-				"Creatures; format based on Bestiary data, with added type (note that a proper Bestiary entry and a link to the entry is the preferred method of adding creatures, this functionality exists primarily for homebrew data):",
 				{
-					"type": "dataCreature",
-					"dataCreature": {
-						"name": "Unicorn",
-						"size": [
-							"L"
-						],
-						"type": "celestial",
-						"source": "MM",
-						"alignment": [
-							"L",
-							"G"
-						],
-						"ac": [
-							12
-						],
-						"hp": {
-							"average": 67,
-							"formula": "9d10 + 18"
-						},
-						"speed": {
-							"walk": 50
-						},
-						"str": 18,
-						"dex": 14,
-						"con": 15,
-						"int": 11,
-						"wis": 17,
-						"cha": 16,
-						"immune": [
-							"poison"
-						],
-						"conditionImmune": [
-							"charmed",
-							"paralyzed",
-							"poisoned"
-						],
-						"senses": [
-							"darkvision 60 ft."
-						],
-						"passive": 13,
-						"languages": [
-							"Celestial",
-							"Elvish",
-							"Sylvan",
-							"telepathy 60 ft."
-						],
-						"cr": "5",
-						"trait": [
-							{
-								"name": "Charge",
-								"entries": [
-									"If the unicorn moves at least 20 ft. straight toward a target and then hits it with a horn attack on the same turn, the target takes an extra 9 ({@dice 2d8}) piercing damage. If the target is a creature, it must succeed on a {@dc 15} Strength saving throw or be knocked prone."
-								]
-							},
-							{
-								"name": "Magic Resistance",
-								"entries": [
-									"The unicorn has advantage on saving throws against spells and other magical effects."
-								]
-							},
-							{
-								"name": "Magic Weapons",
-								"entries": [
-									"The unicorn's weapon attacks are magical."
-								]
-							}
-						],
-						"action": [
-							{
-								"name": "Multiattack",
-								"entries": [
-									"The unicorn makes two attacks: one with its hooves and one with its horn."
-								]
-							},
-							{
-								"name": "Hooves",
-								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@damage 2d6 + 4}) bludgeoning damage."
-								]
-							},
-							{
-								"name": "Horn",
-								"entries": [
-									"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) piercing damage."
-								]
-							},
-							{
-								"name": "Healing Touch (3/Day)",
-								"entries": [
-									"The unicorn touches another creature with its horn. The target magically regains 11 ({@dice 2d8 + 2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
-								]
-							},
-							{
-								"name": "Teleport (1/Day)",
-								"entries": [
-									"The unicorn magically teleports itself and up to three willing creatures it can see within 5 feet of it, along with any equipment they are wearing or carrying, to a location the unicorn is familiar with, up to 1 mile away."
-								]
-							}
-						],
-						"legendaryGroup": {
-							"name": "Unicorn",
-							"source": "MM"
-						},
-						"legendary": [
-							{
-								"name": "Hooves",
-								"entries": [
-									"The unicorn makes one attack with its hooves."
-								]
-							},
-							{
-								"name": "Shimmering Shield (Costs 2 Actions)",
-								"entries": [
-									"The unicorn creates a shimmering, magical field around itself or another creature it can see within 60 feet of it. The target gains a +2 bonus to AC until the end of the unicorn's next turn."
-								]
-							},
-							{
-								"name": "Heal Self (Costs 3 Actions)",
-								"entries": [
-									"The unicorn magically regains 11 ({@dice 2d8 + 2}) hit points."
-								]
-							}
-						],
-						"page": 294,
-						"spellcasting": [
-							{
-								"name": "Innate Spellcasting",
-								"headerEntries": [
-									"The unicorn's innate spellcasting ability is Charisma (spell save {@dc 14}). The unicorn can innately cast the following spells, requiring no components:"
+					"type": "entries",
+					"name": "Data Embeds",
+					"entries": [
+						"Creatures; format based on Bestiary data, with added type (note that a proper Bestiary entry and a link to the entry is the preferred method of adding creatures, this functionality exists primarily for homebrew data):",
+						{
+							"type": "dataCreature",
+							"dataCreature": {
+								"name": "Unicorn",
+								"size": [
+									"L"
 								],
-								"will": [
-									"{@spell detect evil and good}",
-									"{@spell druidcraft}",
-									"{@spell pass without trace}"
+								"type": "celestial",
+								"source": "MM",
+								"alignment": [
+									"L",
+									"G"
 								],
-								"daily": {
-									"1e": [
-										"{@spell calm emotions}",
-										"{@spell dispel evil and good}",
-										"{@spell entangle}"
+								"ac": [
+									12
+								],
+								"hp": {
+									"average": 67,
+									"formula": "9d10 + 18"
+								},
+								"speed": {
+									"walk": 50
+								},
+								"str": 18,
+								"dex": 14,
+								"con": 15,
+								"int": 11,
+								"wis": 17,
+								"cha": 16,
+								"immune": [
+									"poison"
+								],
+								"conditionImmune": [
+									"charmed",
+									"paralyzed",
+									"poisoned"
+								],
+								"senses": [
+									"darkvision 60 ft."
+								],
+								"passive": 13,
+								"languages": [
+									"Celestial",
+									"Elvish",
+									"Sylvan",
+									"telepathy 60 ft."
+								],
+								"cr": "5",
+								"trait": [
+									{
+										"name": "Charge",
+										"entries": [
+											"If the unicorn moves at least 20 ft. straight toward a target and then hits it with a horn attack on the same turn, the target takes an extra 9 ({@dice 2d8}) piercing damage. If the target is a creature, it must succeed on a {@dc 15} Strength saving throw or be knocked prone."
+										]
+									},
+									{
+										"name": "Magic Resistance",
+										"entries": [
+											"The unicorn has advantage on saving throws against spells and other magical effects."
+										]
+									},
+									{
+										"name": "Magic Weapons",
+										"entries": [
+											"The unicorn's weapon attacks are magical."
+										]
+									}
+								],
+								"action": [
+									{
+										"name": "Multiattack",
+										"entries": [
+											"The unicorn makes two attacks: one with its hooves and one with its horn."
+										]
+									},
+									{
+										"name": "Hooves",
+										"entries": [
+											"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 11 ({@damage 2d6 + 4}) bludgeoning damage."
+										]
+									},
+									{
+										"name": "Horn",
+										"entries": [
+											"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. Hit: 8 ({@damage 1d8 + 4}) piercing damage."
+										]
+									},
+									{
+										"name": "Healing Touch (3/Day)",
+										"entries": [
+											"The unicorn touches another creature with its horn. The target magically regains 11 ({@dice 2d8 + 2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target."
+										]
+									},
+									{
+										"name": "Teleport (1/Day)",
+										"entries": [
+											"The unicorn magically teleports itself and up to three willing creatures it can see within 5 feet of it, along with any equipment they are wearing or carrying, to a location the unicorn is familiar with, up to 1 mile away."
+										]
+									}
+								],
+								"legendaryGroup": {
+									"name": "Unicorn",
+									"source": "MM"
+								},
+								"legendary": [
+									{
+										"name": "Hooves",
+										"entries": [
+											"The unicorn makes one attack with its hooves."
+										]
+									},
+									{
+										"name": "Shimmering Shield (Costs 2 Actions)",
+										"entries": [
+											"The unicorn creates a shimmering, magical field around itself or another creature it can see within 60 feet of it. The target gains a +2 bonus to AC until the end of the unicorn's next turn."
+										]
+									},
+									{
+										"name": "Heal Self (Costs 3 Actions)",
+										"entries": [
+											"The unicorn magically regains 11 ({@dice 2d8 + 2}) hit points."
+										]
+									}
+								],
+								"page": 294,
+								"spellcasting": [
+									{
+										"name": "Innate Spellcasting",
+										"headerEntries": [
+											"The unicorn's innate spellcasting ability is Charisma (spell save {@dc 14}). The unicorn can innately cast the following spells, requiring no components:"
+										],
+										"will": [
+											"{@spell detect evil and good}",
+											"{@spell druidcraft}",
+											"{@spell pass without trace}"
+										],
+										"daily": {
+											"1e": [
+												"{@spell calm emotions}",
+												"{@spell dispel evil and good}",
+												"{@spell entangle}"
+											]
+										},
+										"ability": "cha"
+									}
+								],
+								"environment": [
+									"forest"
+								],
+								"soundClip": {
+									"type": "internal",
+									"path": "bestiary/unicorn.mp3"
+								},
+								"traitTags": [
+									"Charge",
+									"Magic Resistance",
+									"Magic Weapons"
+								],
+								"actionTags": [
+									"Multiattack"
+								]
+							}
+						},
+						"Spells; as above:",
+						{
+							"type": "dataSpell",
+							"dataSpell": {
+								"name": "Fireball",
+								"level": 3,
+								"school": "V",
+								"time": [
+									{
+										"number": 1,
+										"unit": "action"
+									}
+								],
+								"range": {
+									"type": "point",
+									"distance": {
+										"type": "feet",
+										"amount": 150
+									}
+								},
+								"components": {
+									"v": true,
+									"s": true,
+									"m": "a tiny ball of bat guano and sulfur"
+								},
+								"duration": [
+									{
+										"type": "instant"
+									}
+								],
+								"classes": {
+									"fromClassList": [
+										{
+											"name": "Sorcerer",
+											"source": "PHB"
+										},
+										{
+											"name": "Wizard",
+											"source": "PHB"
+										}
+									],
+									"fromSubclass": [
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Light",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Warlock",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Fiend",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Zeal (PSA)",
+												"source": "PSA"
+											}
+										}
 									]
 								},
-								"ability": "cha"
-							}
-						],
-						"environment": [
-							"forest"
-						],
-						"soundClip": {
-							"type": "internal",
-							"path": "bestiary/unicorn.mp3"
-						},
-						"traitTags": [
-							"Charge",
-							"Magic Resistance",
-							"Magic Weapons"
-						],
-						"actionTags": [
-							"Multiattack"
-						]
-					}
-				},
-				"Spells; as above:",
-				{
-					"type": "dataSpell",
-					"dataSpell": {
-						"name": "Fireball",
-						"level": 3,
-						"school": "V",
-						"time": [
-							{
-								"number": 1,
-								"unit": "action"
-							}
-						],
-						"range": {
-							"type": "point",
-							"distance": {
-								"type": "feet",
-								"amount": 150
-							}
-						},
-						"components": {
-							"v": true,
-							"s": true,
-							"m": "a tiny ball of bat guano and sulfur"
-						},
-						"duration": [
-							{
-								"type": "instant"
-							}
-						],
-						"classes": {
-							"fromClassList": [
-								{
-									"name": "Sorcerer",
-									"source": "PHB"
-								},
-								{
-									"name": "Wizard",
-									"source": "PHB"
-								}
-							],
-							"fromSubclass": [
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Light",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Warlock",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Fiend",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Zeal (PSA)",
-										"source": "PSA"
-									}
-								}
-							]
-						},
-						"source": "PHB",
-						"entries": [
-							"A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot-radius sphere centered on that point must make a Dexterity saving throw. A target takes {@dice 8d6} fire damage on a failed save, or half as much damage on a successful one.",
-							"The fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried."
-						],
-						"entriesHigherLevel": [
-							{
-								"type": "entries",
-								"name": "At Higher Levels",
+								"source": "PHB",
 								"entries": [
-									"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@scaledice 8d6|3-9|1d6} for each slot level above 3rd."
-								]
+									"A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot-radius sphere centered on that point must make a Dexterity saving throw. A target takes {@dice 8d6} fire damage on a failed save, or half as much damage on a successful one.",
+									"The fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried."
+								],
+								"entriesHigherLevel": [
+									{
+										"type": "entries",
+										"name": "At Higher Levels",
+										"entries": [
+											"When you cast this spell using a spell slot of 4th level or higher, the damage increases by {@scaledice 8d6|3-9|1d6} for each slot level above 3rd."
+										]
+									}
+								],
+								"page": 241
 							}
-						],
-						"page": 241
-					}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reference Embeds",
+					"entries": [
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Goblin"
+						}
+					]
 				}
 			]
 		}

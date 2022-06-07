@@ -404,6 +404,9 @@ function Renderer () {
 				case "dataItem": this._renderDataItem(entry, textStack, meta, options); break;
 				case "dataLegendaryGroup": this._renderDataLegendaryGroup(entry, textStack, meta, options); break;
 
+				// embedded entities
+				case "statblock": this._renderStatblock(entry, textStack, meta, options); break;
+
 				// images
 				case "image": this._renderImage(entry, textStack, meta, options); break;
 				case "gallery": this._renderGallery(entry, textStack, meta, options); break;
@@ -649,7 +652,7 @@ function Renderer () {
 				} else {
 					toRenderCell = roRender[ixCell];
 				}
-				bodyStack[0] += `<td ${this._renderTable_makeTableTdClassText(entry, ixCell)} ${this._renderTable_getCellDataStr(roRender[ixCell])} ${roRender[ixCell].width ? `colspan="${roRender[ixCell].width}"` : ""}>`;
+				bodyStack[0] += `<td ${this._renderTable_makeTableTdClassText(entry, ixCell)} ${this._renderTable_getCellDataStr(roRender[ixCell])} ${roRender[ixCell].type === "cell" && roRender[ixCell].width ? `colspan="${roRender[ixCell].width}"` : ""}>`;
 				if (r.style === "row-indent-first" && ixCell === 0) bodyStack[0] += `<div class="rd__tab-indent"></div>`;
 				const cacheDepth = this._adjustDepth(meta, 1);
 				this._recursiveRender(toRenderCell, bodyStack, meta);
@@ -1233,12 +1236,29 @@ function Renderer () {
 	};
 
 	this._renderDataHeader = function (textStack, name) {
-		textStack[0] += `<table class="rd__b-special rd__b-data">`;
-		textStack[0] += `<thead><tr><th class="rd__data-embed-header" colspan="6" data-rd-data-embed-header="true"><span style="display: none;" class="rd__data-embed-name">${name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
+		textStack[0] += Renderer.utils.getEmbeddedDataHeader(name);
 	};
 
 	this._renderDataFooter = function (textStack) {
-		textStack[0] += `</tbody></table>`;
+		textStack[0] += Renderer.utils.getEmbeddedDataFooter();
+	};
+
+	this._renderStatblock = function (entry, textStack, meta, options) {
+		this._renderPrefix(entry, textStack, meta, options);
+
+		const page = Renderer.hover.TAG_TO_PAGE[entry.tag];
+		const source = entry.source || Parser.TAG_TO_DEFAULT_SOURCE[entry.tag];
+		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page]({name: entry.name, source});
+
+		this._renderDataHeader(textStack, entry.name);
+		textStack[0] += `<tr>
+			<td colspan="6" data-rd-tag="${entry.tag.qq()}" data-rd-page="${page.qq()}" data-rd-source="${(source || "").qq()}" data-rd-hash="${hash.qq()}" data-rd-name="${(entry.name || "").qq()}">
+				<i>Loading ${Renderer.get().render(`{@${entry.tag} ${entry.name}|${entry.source}}`)}...</i>
+				<style onload="Renderer.events.handleLoad_inlineStatblock(this)"></style>
+			</td>
+		</tr>`;
+		this._renderDataFooter(textStack);
+		this._renderSuffix(entry, textStack, meta, options);
 	};
 
 	this._renderGallery = function (entry, textStack, meta, options) {
@@ -1936,6 +1956,45 @@ Renderer.events = {
 		if (childNodes.length !== 1) return eleNxt;
 		if (childNodes[0].classList.contains("rd__b")) return Renderer.events._handleClick_headerToggleButton_getEleToCheck(childNodes[0]);
 		return eleNxt;
+	},
+
+	handleLoad_inlineStatblock (ele) {
+		const observer = Renderer.utils.lazy.getCreateObserver({
+			observerId: "inlineStatblock",
+			fnOnObserve: Renderer.events._handleLoad_inlineStatblock_fnOnObserve.bind(Renderer.events),
+		});
+
+		observer.track(ele.parentNode);
+	},
+
+	_handleLoad_inlineStatblock_fnOnObserve ({entry}) {
+		const ele = entry.target;
+
+		const tag = ele.dataset.rdTag.uq();
+		const page = ele.dataset.rdPage.uq();
+		const source = ele.dataset.rdSource.uq();
+		const name = ele.dataset.rdName.uq();
+		const hash = ele.dataset.rdHash.uq();
+
+		Renderer.hover.pCacheAndGet(page, source || Parser.TAG_TO_DEFAULT_SOURCE[tag], hash)
+			.then(toRender => {
+				const tr = ele.closest("tr");
+
+				if (!toRender) {
+					tr.innerHTML = `<td colspan="6"><i>Failed to load ${Renderer.get().render(`{@${tag} ${name}|${source}}`)}!</i></td>`;
+					throw new Error(`Could not find ${tag} ${hash}`);
+				}
+
+				const tbl = tr.closest("table");
+				tbl.parentNode.replaceChild(
+					e_({
+						html: Renderer.utils.getEmbeddedDataHeader(toRender.name)
+							+ Renderer.monster.getCompactRenderedString(toRender, Renderer.get(), {isEmbeddedEntity: true})
+							+ Renderer.utils.getEmbeddedDataFooter(),
+					}),
+					tbl,
+				);
+			});
 	},
 };
 
@@ -2639,6 +2698,15 @@ Renderer.utils = {
 	getAbilityRoller (statblock, ability) {
 		if (statblock[ability] == null) return "\u2014";
 		return Renderer.get().render(`{@ability ${ability} ${statblock[ability]}}`);
+	},
+
+	getEmbeddedDataHeader (name) {
+		return `<table class="rd__b-special rd__b-data">
+		<thead><tr><th class="rd__data-embed-header" colspan="6" data-rd-data-embed-header="true"><span style="display: none;" class="rd__data-embed-name">${name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
+	},
+
+	getEmbeddedDataFooter () {
+		return `</tbody></table>`;
 	},
 
 	TabButton: function ({label, fnChange, fnPopulate, isVisible}) {
@@ -3592,6 +3660,86 @@ Renderer.utils = {
 
 	initFullEntries_ (ent, {propEntries = "entries", propFullEntries = "_fullEntries"} = {}) {
 		ent[propFullEntries] = ent[propFullEntries] || (ent[propEntries] ? MiscUtil.copy(ent[propEntries]) : []);
+	},
+
+	lazy: {
+		_getIntersectionConfig () {
+			return {
+				rootMargin: "150px 0px", // if the element gets within 150px of the viewport
+				threshold: 0.01,
+			};
+		},
+
+		_OBSERVERS: {},
+		getCreateObserver ({observerId, fnOnObserve}) {
+			if (!Renderer.utils.lazy._OBSERVERS[observerId]) {
+				const observer = Renderer.utils.lazy._OBSERVERS[observerId] = new IntersectionObserver(
+					Renderer.utils.lazy.getFnOnIntersect({
+						observerId,
+						fnOnObserve,
+					}),
+					Renderer.utils.lazy._getIntersectionConfig(),
+				);
+
+				observer._TRACKED = new Set();
+
+				observer.track = it => {
+					observer._TRACKED.add(it);
+					return observer.observe(it);
+				};
+
+				observer.untrack = it => {
+					observer._TRACKED.delete(it);
+					return observer.unobserve(it);
+				};
+
+				// If we try to print a page with e.g. un-loaded images, attempt to load them all first
+				observer._printListener = evt => {
+					if (!observer._TRACKED.size) return;
+
+					// region Sadly we cannot cancel or delay the print event, so, show a blocking alert
+					[...observer._TRACKED].forEach(it => {
+						observer.untrack(it);
+						fnOnObserve({
+							observer,
+							entry: {
+								target: it,
+							},
+						});
+					});
+
+					alert(`All content must be loaded prior to printing. Please cancel the print and wait a few moments for loading to complete!`);
+					// endregion
+				};
+				window.addEventListener("beforeprint", observer._printListener);
+			}
+			return Renderer.utils.lazy._OBSERVERS[observerId];
+		},
+
+		destroyObserver ({observerId}) {
+			const observer = Renderer.utils.lazy._OBSERVERS[observerId];
+			if (!observer) return;
+
+			observer.disconnect();
+			window.removeEventListener("beforeprint", observer._printListener);
+		},
+
+		getFnOnIntersect ({observerId, fnOnObserve}) {
+			return obsEntries => {
+				const observer = Renderer.utils.lazy._OBSERVERS[observerId];
+
+				obsEntries.forEach(entry => {
+					// filter observed entries for those that intersect
+					if (entry.intersectionRatio <= 0) return;
+
+					observer.untrack(entry.target);
+					fnOnObserve({
+						observer,
+						entry,
+					});
+				});
+			};
+		},
 	},
 };
 
@@ -8088,6 +8236,7 @@ Renderer.hover = {
 		"creature": UrlUtil.PG_BESTIARY,
 		"condition": UrlUtil.PG_CONDITIONS_DISEASES,
 		"disease": UrlUtil.PG_CONDITIONS_DISEASES,
+		"status": UrlUtil.PG_CONDITIONS_DISEASES,
 		"background": UrlUtil.PG_BACKGROUNDS,
 		"race": UrlUtil.PG_RACES,
 		"optfeature": UrlUtil.PG_OPT_FEATURES,
@@ -8109,6 +8258,7 @@ Renderer.hover = {
 		"language": UrlUtil.PG_LANGUAGES,
 		"classFeature": UrlUtil.PG_CLASSES,
 		"subclassFeature": UrlUtil.PG_CLASSES,
+		"table": UrlUtil.PG_TABLES,
 		"recipe": UrlUtil.PG_RECIPES,
 		"quickref": UrlUtil.PG_QUICKREF,
 	},
@@ -10499,43 +10649,20 @@ Renderer.getRollableRow._handleInfiniteOpts = function (row, opts) {
 };
 
 Renderer.initLazyImageLoaders = function () {
-	function onIntersection (obsEntries) {
-		obsEntries.forEach(entry => {
-			if (entry.intersectionRatio > 0) { // filter observed entries for those that intersect
-				Renderer._imageObserver.unobserve(entry.target);
-				const $img = $(entry.target);
-				$img.attr("src", $img.attr("data-src")).removeAttr("data-src");
-			}
-		});
-	}
+	const images = document.querySelectorAll(`img[data-src]`);
 
-	let printListener = null;
-	const $images = $(`img[data-src]`);
-	const config = {
-		rootMargin: "150px 0px", // if the image gets within 150px of the viewport
-		threshold: 0.01,
-	};
+	Renderer.utils.lazy.destroyObserver({observerId: "images"});
 
-	if (Renderer._imageObserver) {
-		Renderer._imageObserver.disconnect();
-		window.removeEventListener("beforeprint", printListener);
-	}
-
-	Renderer._imageObserver = new IntersectionObserver(onIntersection, config);
-	$images.each((i, image) => Renderer._imageObserver.observe(image));
-
-	// If we try to print a page with un-loaded images, attempt to load them all first
-	printListener = () => {
-		alert(`All images in the page will now be loaded. This may take a while.`);
-		$images.each((i, image) => {
-			Renderer._imageObserver.unobserve(image);
-			const $img = $(image);
+	const observer = Renderer.utils.lazy.getCreateObserver({
+		observerId: "images",
+		fnOnObserve: ({entry}) => {
+			const $img = $(entry.target);
 			$img.attr("src", $img.attr("data-src")).removeAttr("data-src");
-		});
-	};
-	window.addEventListener("beforeprint", printListener);
+		},
+	});
+
+	images.forEach(img => observer.track(img));
 };
-Renderer._imageObserver = null;
 
 Renderer.HEAD_NEG_1 = "rd__b--0";
 Renderer.HEAD_0 = "rd__b--1";

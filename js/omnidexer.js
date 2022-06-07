@@ -507,6 +507,18 @@ class IndexableFileDiseases extends IndexableFile {
 	}
 }
 
+class IndexableFileStatuses extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_STATUS,
+			file: "conditionsdiseases.json",
+			listProp: "status",
+			baseUrl: "conditionsdiseases.html",
+			isHover: true,
+		});
+	}
+}
+
 class IndexableFileFeats extends IndexableFile {
 	constructor () {
 		super({
@@ -1117,6 +1129,7 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileBackgrounds(),
 	new IndexableFileConditions(),
 	new IndexableFileDiseases(),
+	new IndexableFileStatuses(),
 	new IndexableFileFeats(),
 
 	new IndexableFileOptFeatures_EldritchInvocations(),

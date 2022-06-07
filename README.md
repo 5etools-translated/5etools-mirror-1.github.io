@@ -124,6 +124,19 @@ It will first run the tests and fail to increase the version if the tests fail.
 It will then automatically replace the version in the files where it needs to be replaced, create a commit with the message `chore(version): bump` and create a tag (in the form `v1.2.3`) at the commit.
 This feature can be easily disabled by doing `npm config set git-tag-version false`.
 
+### Service Worker
+
+The service worker--which adds a client-side network caching layer, improving performance and allowing offline use--is not committed to the repository, and so must (optionally) be built locally. This can be done using either:
+
+- `npm run build:sw`, to build a development version which outputs useful log messages
+- `npm run build:sw:prod`, to build a production version
+
+Both versions handle caching for the same files, which is an index of your local files on disk.
+
+Note that building the service worker is optional.
+
+Note that while using the service worker, some files are served cache-first (see the comments in the service worker files for more information). Care should be taken to either disable or work around the service worker when developing locally, as local changes may not otherwise be visible when refreshing a page.
+
 ---
 
 ## License

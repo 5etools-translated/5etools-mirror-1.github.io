@@ -1157,9 +1157,10 @@ class TabUiUtil extends TabUiUtilBase {
 TabUiUtil.TabMeta = class extends TabUiUtilBase.TabMeta {
 	constructor (opts) {
 		super(opts);
-		this.hasBorder = opts.hasBorder;
-		this.hasBackground = opts.hasBackground;
-		this.isHeadHidden = opts.isHeadHidden;
+		this.hasBorder = !!opts.hasBorder;
+		this.hasBackground = !!opts.hasBackground;
+		this.isHeadHidden = !!opts.isHeadHidden;
+		this.isNoPadding = !!opts.isNoPadding;
 	}
 };
 
@@ -1172,8 +1173,8 @@ class TabUiUtilSide extends TabUiUtilBase {
 				.click(() => this[_propProxy][propActive] = ixTab);
 		};
 
-		obj.__$getWrpTab = function () {
-			return $(`<div class="ve-flex-col w-100 h-100 ui-tab-side__wrp-tab px-3 py-2 overflow-y-auto"></div>`);
+		obj.__$getWrpTab = function ({tabMeta}) {
+			return $(`<div class="ve-flex-col w-100 h-100 ui-tab-side__wrp-tab ${tabMeta.isNoPadding ? "" : "px-3 py-2"} overflow-y-auto"></div>`);
 		};
 
 		obj.__renderTabs_addToParent = function ({$dispTabTitle, $parent, tabMetasOut}) {

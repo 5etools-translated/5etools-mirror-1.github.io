@@ -474,9 +474,9 @@ class CreatureParser extends BaseParser {
 					while (block.entries.length) {
 						let nxtLine = block.entries[i + offset];
 
-						if (typeof nxtLine !== "string" || !nxtLine.trim().startsWith("•")) break;
+						if (typeof nxtLine !== "string" || !/^[•●]/.test(nxtLine.trim())) break;
 
-						nxtLine = nxtLine.replace(/^•\s*/, "");
+						nxtLine = nxtLine.replace(/^[•●]\s*/, "");
 
 						if (!lst) {
 							lst = {type: "list", items: [nxtLine]};

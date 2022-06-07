@@ -163,8 +163,11 @@ class SpellParser extends BaseParser {
 		if (!school) return cbMan ? cbMan(s.school, "Spell school requires manual conversion") : null;
 
 		const out = SpellParser._RES_SCHOOL.find(it => it.regex.test(school));
-		if (out) s.school = out.output;
-		else cbMan(s.school, "Spell school requires manual conversion");
+		if (out) {
+			s.school = out.output;
+			return;
+		}
+		if (cbMan) cbMan(s.school, "Spell school requires manual conversion");
 	}
 
 	static _doSpellPostProcess (stats, options) {
@@ -231,7 +234,7 @@ class SpellParser extends BaseParser {
 
 			this._tryConvertSchool(stats);
 		} else if (mSpellLevel) {
-			line = line.slice(mSpellLevel.index + mSpellLevel[1].length);
+			line = line.slice(mSpellLevel.index + mSpellLevel[0].length);
 
 			let isRitual = false;
 			line = line.replace(/\((.*?)(?:[,;]\s*)?ritual(?:[,;]\s*)?(.*?)\)/i, (...m) => {
@@ -290,6 +293,11 @@ class SpellParser extends BaseParser {
 
 		const mSelfHemisphere = /^self \((\d+)-(foot|mile)-radius hemisphere\)$/i.exec(cleanRange);
 		if (mSelfHemisphere) return stats.range = {type: "hemisphere", distance: {type: getUnit(mSelfHemisphere[2]), amount: Number(mSelfHemisphere[1])}};
+
+		// region Homebrew
+		const mPointCube = /^(?<point>\d+) (?<unit>feet|foot|miles?) \((\d+)-(foot|mile) cube\)$/i.exec(cleanRange);
+		if (mPointCube) return stats.range = {type: "point", distance: {type: getUnit(mPointCube.groups.unit), amount: Number(mPointCube.groups.point)}};
+		// endregion
 
 		options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Range part "${range}" requires manual conversion`);
 	}

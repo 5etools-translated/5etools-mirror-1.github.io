@@ -133,14 +133,14 @@ class StatGenPage {
 
 	_setTabFromHash (tabName) {
 		this._isIgnoreHashChanges = true;
-		const ixTab = StatGenUi.MODES.indexOf(tabName);
+		const ixTab = this._statGenUi.MODES.indexOf(tabName);
 		this._statGenUi.ixActiveTab = ~ixTab ? ixTab : 0;
 		this._isIgnoreHashChanges = false;
 	}
 
 	_setHashFromTab () {
 		this._isIgnoreHashChanges = true;
-		window.location.hash = StatGenUi.MODES[this._statGenUi.ixActiveTab];
+		window.location.hash = this._statGenUi.MODES[this._statGenUi.ixActiveTab];
 		this._isIgnoreHashChanges = false;
 	}
 
@@ -150,12 +150,12 @@ class StatGenPage {
 		const hash = (window.location.hash.slice(1) || "").trim().toLowerCase();
 		const [mode, state] = (hash.split(HASH_PART_SEP) || [""]);
 
-		if (!StatGenUi.MODES.includes(mode)) {
-			this._doSilentHashChange(StatGenUi.MODES[0]);
+		if (!this._statGenUi.MODES.includes(mode)) {
+			this._doSilentHashChange(this._statGenUi.MODES[0]);
 			window.history.replaceState(
 				{},
 				document.title,
-				`${location.origin}${location.pathname}#${StatGenUi.MODES[0]}`,
+				`${location.origin}${location.pathname}#${this._statGenUi.MODES[0]}`,
 			);
 			return this._handleHashChange();
 		}

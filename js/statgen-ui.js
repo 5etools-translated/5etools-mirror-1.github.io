@@ -1,6 +1,12 @@
 "use strict";
 
 class StatGenUi extends BaseComponent {
+	static _PROPS_POINT_BUY_CUSTOM = [
+		"pb_rules",
+		"pb_budget",
+		"pb_isCustom",
+	];
+
 	/**
 	 * @param opts
 	 * @param opts.races
@@ -24,6 +30,23 @@ class StatGenUi extends BaseComponent {
 		this._isCharacterMode = opts.isCharacterMode;
 		this._isFvttMode = opts.isFvttMode;
 
+		this._MODES = this._isFvttMode ? StatGenUi.MODES_FVTT : StatGenUi.MODES;
+		if (this._isFvttMode) {
+			let cnt = 0;
+			this._IX_TAB_NONE = cnt++;
+			this._IX_TAB_ROLLED = cnt++;
+			this._IX_TAB_ARRAY = cnt++;
+			this._IX_TAB_PB = cnt++;
+			this._IX_TAB_MANUAL = cnt;
+		} else {
+			this._IX_TAB_NONE = -1;
+			let cnt = 0;
+			this._IX_TAB_ROLLED = cnt++;
+			this._IX_TAB_ARRAY = cnt++;
+			this._IX_TAB_PB = cnt++;
+			this._IX_TAB_MANUAL = cnt;
+		}
+
 		this._modalFilterRaces = opts.modalFilterRaces || new ModalFilterRaces({namespace: "statgen.races", isRadio: true, allData: this._races});
 		this._modalFilterFeats = opts.modalFilterFeats || new ModalFilterFeats({namespace: "statgen.feats", isRadio: true, allData: this._feats});
 
@@ -40,10 +63,14 @@ class StatGenUi extends BaseComponent {
 		// endregion
 	}
 
+	get MODES () { return this._MODES; }
+
 	get ixActiveTab () { return this._getIxActiveTab(); }
 	set ixActiveTab (ix) { this._setIxActiveTab({ixActiveTab: ix}); }
 
 	// region Expose for external use
+	addHookPointBuyCustom (hook) { this.constructor._PROPS_POINT_BUY_CUSTOM.forEach(prop => this._addHookBase(prop, hook)); }
+
 	addHookAbilityScores (hook) { Parser.ABIL_ABVS.forEach(ab => this._addHookBase(`common_export_${ab}`, hook)); }
 	addHookPulseAsi (hook) { this._addHookBase("common_pulseAsi", hook); }
 	getFormDataAsi () { return this._compAsi.getFormData(); }
@@ -112,7 +139,7 @@ class StatGenUi extends BaseComponent {
 		}
 
 		return {
-			mode: StatGenUi.MODES[this.ixActiveTab || 0],
+			mode: this._MODES[this.ixActiveTab || 0],
 			totals: {
 				rolled: this._getTotals_rolled(),
 				array: this._getTotals_array(),
@@ -192,12 +219,13 @@ class StatGenUi extends BaseComponent {
 				...this._tabMetasAdditional || [],
 			]
 			: [
-				new TabUiUtil.TabMeta({name: "Roll", icon: this._isFvttMode ? `fas fa-fw fa-dice` : `far fa-fw fa-dice`, hasBorder: true}),
-				new TabUiUtil.TabMeta({name: "Standard Array", icon: this._isFvttMode ? `fas fa-fw fa-signal` : `far fa-fw fa-signal-alt`, hasBorder: true}),
-				new TabUiUtil.TabMeta({name: "Point Buy", icon: this._isFvttMode ? `fas fa-fw fa-chart-bar` : `far fa-fw fa-chart-bar`, hasBorder: true}),
-				new TabUiUtil.TabMeta({name: "Manual", icon: this._isFvttMode ? `fas fa-fw fa-tools` : `far fa-fw fa-tools`, hasBorder: true}),
+				this._isFvttMode ? new TabUiUtil.TabMeta({name: "Select...", icon: this._isFvttMode ? `fas fa-fw fa-square` : `far fa-fw fa-square`, hasBorder: true, isNoPadding: this._isFvttMode}) : null,
+				new TabUiUtil.TabMeta({name: "Roll", icon: this._isFvttMode ? `fas fa-fw fa-dice` : `far fa-fw fa-dice`, hasBorder: true, isNoPadding: this._isFvttMode}),
+				new TabUiUtil.TabMeta({name: "Standard Array", icon: this._isFvttMode ? `fas fa-fw fa-signal` : `far fa-fw fa-signal-alt`, hasBorder: true, isNoPadding: this._isFvttMode}),
+				new TabUiUtil.TabMeta({name: "Point Buy", icon: this._isFvttMode ? `fas fa-fw fa-chart-bar` : `far fa-fw fa-chart-bar`, hasBorder: true, isNoPadding: this._isFvttMode}),
+				new TabUiUtil.TabMeta({name: "Manual", icon: this._isFvttMode ? `fas fa-fw fa-tools` : `far fa-fw fa-tools`, hasBorder: true, isNoPadding: this._isFvttMode}),
 				...this._tabMetasAdditional || [],
-			];
+			].filter(Boolean);
 
 		const tabMetas = this._renderTabs(iptTabMetas, {$parent: this._isFvttMode ? null : $parent});
 		if (this._isFvttMode) {
@@ -325,10 +353,11 @@ class StatGenUi extends BaseComponent {
 		const nxtState = this._getDefaultStateCommonResettable();
 
 		switch (this.ixActiveTab) {
-			case StatGenUi._IX_TAB_ROLLED: Object.assign(nxtState, this._getDefaultStateRolledResettable()); break;
-			case StatGenUi._IX_TAB_ARRAY: Object.assign(nxtState, this._getDefaultStateArrayResettable()); break;
-			case StatGenUi._IX_TAB_PB: Object.assign(nxtState, this._getDefaultStatePointBuyResettable()); break;
-			case StatGenUi._IX_TAB_MANUAL: Object.assign(nxtState, this._getDefaultStateManualResettable()); break;
+			case this._IX_TAB_NONE: Object.assign(nxtState, this._getDefaultStateNoneResettable()); break;
+			case this._IX_TAB_ROLLED: Object.assign(nxtState, this._getDefaultStateRolledResettable()); break;
+			case this._IX_TAB_ARRAY: Object.assign(nxtState, this._getDefaultStateArrayResettable()); break;
+			case this._IX_TAB_PB: Object.assign(nxtState, this._getDefaultStatePointBuyResettable()); break;
+			case this._IX_TAB_MANUAL: Object.assign(nxtState, this._getDefaultStateManualResettable()); break;
 		}
 
 		this._proxyAssignSimple("state", nxtState);
@@ -534,6 +563,8 @@ class StatGenUi extends BaseComponent {
 	}
 
 	_render_isLevelOne ($wrpTab) {
+		let $stgNone;
+		let $stgMain;
 		const $elesRolled = [];
 		const $elesArray = [];
 		const $elesPb = [];
@@ -541,7 +572,7 @@ class StatGenUi extends BaseComponent {
 
 		// region Rolled header
 		const $stgRolledHeader = this._render_$getStgRolledHeader();
-		const hkStgRolled = () => $stgRolledHeader.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_ROLLED);
+		const hkStgRolled = () => $stgRolledHeader.toggleVe(this.ixActiveTab === this._IX_TAB_ROLLED);
 		this._addHookActiveTab(hkStgRolled);
 		hkStgRolled();
 		// endregion
@@ -552,10 +583,10 @@ class StatGenUi extends BaseComponent {
 		const $vrPbCustom = $(`<div class="vr-5 mobile-ish__hidden"></div>`);
 		const $hrPbCustom = $(`<hr class="hr-5 mobile-ish__visible">`);
 		const hkStgPb = () => {
-			$stgPbHeader.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_PB);
-			$stgPbCustom.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_PB);
-			$vrPbCustom.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_PB);
-			$hrPbCustom.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_PB);
+			$stgPbHeader.toggleVe(this.ixActiveTab === this._IX_TAB_PB);
+			$stgPbCustom.toggleVe(this.ixActiveTab === this._IX_TAB_PB);
+			$vrPbCustom.toggleVe(this.ixActiveTab === this._IX_TAB_PB);
+			$hrPbCustom.toggleVe(this.ixActiveTab === this._IX_TAB_PB);
 		};
 		this._addHookActiveTab(hkStgPb);
 		hkStgPb();
@@ -563,31 +594,34 @@ class StatGenUi extends BaseComponent {
 
 		// region Array header
 		const $stgArrayHeader = this._render_$getStgArrayHeader();
-		const hkStgArray = () => $stgArrayHeader.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_ARRAY);
+		const hkStgArray = () => $stgArrayHeader.toggleVe(this.ixActiveTab === this._IX_TAB_ARRAY);
 		this._addHookActiveTab(hkStgArray);
 		hkStgArray();
 		// endregion
 
 		// region Manual header
 		const $stgManualHeader = this._render_$getStgManualHeader();
-		const hkStgManual = () => $stgManualHeader.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_MANUAL);
+		const hkStgManual = () => $stgManualHeader.toggleVe(this.ixActiveTab === this._IX_TAB_MANUAL);
 		this._addHookActiveTab(hkStgManual);
 		hkStgManual();
 		// endregion
 
 		// region Other elements
 		const hkElesMode = () => {
-			$elesRolled.forEach($ele => $ele.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_ROLLED));
-			$elesArray.forEach($ele => $ele.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_ARRAY));
-			$elesPb.forEach($ele => $ele.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_PB));
-			$elesManual.forEach($ele => $ele.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_MANUAL));
+			$stgNone.toggleVe(this.ixActiveTab === this._IX_TAB_NONE);
+			$stgMain.toggleVe(this.ixActiveTab !== this._IX_TAB_NONE);
+
+			$elesRolled.forEach($ele => $ele.toggleVe(this.ixActiveTab === this._IX_TAB_ROLLED));
+			$elesArray.forEach($ele => $ele.toggleVe(this.ixActiveTab === this._IX_TAB_ARRAY));
+			$elesPb.forEach($ele => $ele.toggleVe(this.ixActiveTab === this._IX_TAB_PB));
+			$elesManual.forEach($ele => $ele.toggleVe(this.ixActiveTab === this._IX_TAB_MANUAL));
 		};
 		this._addHookActiveTab(hkElesMode);
 		// endregion
 
 		const $btnResetRolledOrArrayOrManual = $(`<button class="btn btn-default btn-xxs relative statgen-shared__btn-reset" title="Reset"><span class="glyphicon glyphicon-refresh"></span></button>`)
 			.click(() => this._doReset());
-		const hkRolledOrArray = () => $btnResetRolledOrArrayOrManual.toggleVe(this.ixActiveTab === StatGenUi._IX_TAB_ROLLED || this.ixActiveTab === StatGenUi._IX_TAB_ARRAY || this.ixActiveTab === StatGenUi._IX_TAB_MANUAL);
+		const hkRolledOrArray = () => $btnResetRolledOrArrayOrManual.toggleVe(this.ixActiveTab === this._IX_TAB_ROLLED || this.ixActiveTab === this._IX_TAB_ARRAY || this.ixActiveTab === this._IX_TAB_MANUAL);
 		this._addHookActiveTab(hkRolledOrArray);
 		hkRolledOrArray();
 
@@ -821,9 +855,11 @@ class StatGenUi extends BaseComponent {
 
 		const $wrpAsi = this._render_$getWrpAsi();
 
-		hkElesMode();
+		$stgNone = $$`<div class="ve-flex-col w-100 h-100">
+			<div class="ve-flex-v-center"><i>Please select a mode.</i></div>
+		</div>`;
 
-		$$($wrpTab)`
+		$stgMain = $$`<div class="ve-flex-col w-100 h-100">
 			${$stgRolledHeader}
 			${$stgArrayHeader}
 			${$stgManualHeader}
@@ -898,7 +934,13 @@ class StatGenUi extends BaseComponent {
 			${$dispTashas}
 
 			${$wrpAsi}
-		`;
+		</div>`;
+
+		hkElesMode();
+
+		$wrpTab
+			.append($stgMain)
+			.append($stgNone);
 	}
 
 	_render_isLevelUp ($wrpTab) {
@@ -982,16 +1024,19 @@ class StatGenUi extends BaseComponent {
 
 			const exportedStateProp = `common_export_${ab}`;
 
+			const getTotalScore = () => {
+				if (this._isLevelUp) return this._levelUp_getTotalScore(ab);
+				switch (this.ixActiveTab) {
+					case this._IX_TAB_ROLLED: return this._rolled_getTotalScore(ab);
+					case this._IX_TAB_ARRAY: return this._array_getTotalScore(ab);
+					case this._IX_TAB_PB: return this._pb_getTotalScore(ab);
+					case this._IX_TAB_MANUAL: return this._manual_getTotalScore(ab);
+					default: return 0;
+				}
+			};
+
 			const hk = () => {
-				const totalScore = this._isLevelUp
-					? this._levelUp_getTotalScore(ab)
-					: this.ixActiveTab === StatGenUi._IX_TAB_ROLLED
-						? this._rolled_getTotalScore(ab)
-						: this.ixActiveTab === StatGenUi._IX_TAB_ARRAY
-							? this._array_getTotalScore(ab)
-							: this.ixActiveTab === StatGenUi._IX_TAB_PB
-								? this._pb_getTotalScore(ab)
-								: this._manual_getTotalScore(ab);
+				const totalScore = getTotalScore();
 
 				const isOverLimit = totalScore > 20;
 				$iptTotal
@@ -1286,6 +1331,15 @@ class StatGenUi extends BaseComponent {
 		return out;
 	}
 
+	// region External use
+	getSaveableStatePointBuyCustom () {
+		const base = this.getSaveableState();
+		return {
+			state: this.constructor._PROPS_POINT_BUY_CUSTOM.mergeMap(k => ({[k]: base.state[k]})),
+		};
+	}
+	// endregion
+
 	setStateFrom (saved, isOverwrite = false) {
 		saved = MiscUtil.copy(saved);
 
@@ -1339,6 +1393,8 @@ class StatGenUi extends BaseComponent {
 			common_raceChoiceMetasWeighted: [],
 		};
 	}
+
+	_getDefaultStateNoneResettable () { return {}; }
 
 	_getDefaultStateRolledResettable () {
 		return {
@@ -1451,13 +1507,17 @@ StatGenUi._PROP_PREFIX_COMMON = "common_";
 StatGenUi._PROP_PREFIX_ROLLED = "rolled_";
 StatGenUi._PROP_PREFIX_ARRAY = "array_";
 StatGenUi._PROP_PREFIX_MANUAL = "manual_";
+StatGenUi.MODE_NONE = "none";
 StatGenUi.MODES = [
 	"rolled",
 	"array",
 	"pointbuy",
 	"manual",
 ];
-[StatGenUi._IX_TAB_ROLLED, StatGenUi._IX_TAB_ARRAY, StatGenUi._IX_TAB_PB, StatGenUi._IX_TAB_MANUAL] = StatGenUi.MODES.map((_, i) => i);
+StatGenUi.MODES_FVTT = [
+	StatGenUi.MODE_NONE,
+	...StatGenUi.MODES,
+];
 StatGenUi._MAX_CUSTOM_FEATS = 20;
 
 class UtilAdditionalFeats {
