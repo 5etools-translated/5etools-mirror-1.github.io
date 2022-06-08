@@ -559,260 +559,277 @@
 					},
 					"title": "Optional Title"
 				},
-				"生物；格式基于兽皮书数据，并添加了类型（注意，适当的兽皮书条目和条目链接是添加生物的首选方法，此功能主要为自制数据而存在）。",
 				{
-					"type": "dataCreature",
-					"dataCreature": {
-						"name": "Unicorn",
-						"size": [
-							"L"
-						],
-						"type": "celestial",
-						"source": "MM",
-						"alignment": [
-							"L",
-							"G"
-						],
-						"ac": [
-							12
-						],
-						"hp": {
-							"average": 67,
-							"formula": "9d10 + 18"
-						},
-						"speed": {
-							"walk": 50
-						},
-						"str": 18,
-						"dex": 14,
-						"con": 15,
-						"int": 11,
-						"wis": 17,
-						"cha": 16,
-						"immune": [
-							"poison"
-						],
-						"conditionImmune": [
-							"charmed",
-							"paralyzed",
-							"poisoned"
-						],
-						"senses": [
-							"darkvision 60 ft."
-						],
-						"passive": 13,
-						"languages": [
-							"Celestial",
-							"Elvish",
-							"Sylvan",
-							"telepathy 60 ft."
-						],
-						"cr": "5",
-						"trait": [
-							{
-								"name": "Charge",
-								"entries": [
-									"如果独角兽向一个目标移动至少20英尺，然后在同一回合用角攻击击中它，目标会受到额外的9（（%0%））穿刺伤害。如果目标是一个生物，它必须在一个{@dc 15}力量救赎中成功，否则就会被击倒在地。"
-								]
-							},
-							{
-								"name": "Magic Resistance",
-								"entries": [
-									"独角兽在面对法术和其他魔法效果时，在蓄力攻击方面有优势。"
-								]
-							},
-							{
-								"name": "Magic Weapons",
-								"entries": [
-									"独角兽的武器攻击是神奇的。"
-								]
-							}
-						],
-						"action": [
-							{
-								"name": "Multiattack",
-								"entries": [
-									"独角兽进行两次攻击：一次用蹄子，一次用角。"
-								]
-							},
-							{
-								"name": "Hooves",
-								"entries": [
-									"{@atk mw} {@hit 7}击中，到达5英尺，一个目标。命中：11({@damage 2d6 + 4})重击伤害。"
-								]
-							},
-							{
-								"name": "Horn",
-								"entries": [
-									"{@atk mw} {@hit 7}击中，到达5英尺，一个目标。命中：8 ({@damage 1d8 + 4})穿刺伤害。"
-								]
-							},
-							{
-								"name": "Healing Touch (3/Day)",
-								"entries": [
-									"独角兽用它的角触碰另一个生物。目标会神奇地恢复11({@dice 2d8 + 2})点的生命值。此外，触碰可以消除所有疾病，并中和所有折磨目标的毒药。"
-								]
-							},
-							{
-								"name": "Teleport (1/Day)",
-								"entries": [
-									"独角兽用魔法将自己和它周围5英尺范围内的最多三个自愿的生物，以及他们所穿戴或携带的任何装备，传送到独角兽熟悉的地方，最多可以传送1英里远。"
-								]
-							}
-						],
-						"legendaryGroup": {
-							"name": "Unicorn",
-							"source": "MM"
-						},
-						"legendary": [
-							{
-								"name": "Hooves",
-								"entries": [
-									"独角兽用它的蹄子进行一次攻击。"
-								]
-							},
-							{
-								"name": "Shimmering Shield (Costs 2 Actions)",
-								"entries": [
-									"独角兽在它自己或它能看到的60英尺范围内的其他生物周围创造一个闪亮的魔法场。目标在独角兽的下一回合结束前，会获得+2的攻击力加成。"
-								]
-							},
-							{
-								"name": "Heal Self (Costs 3 Actions)",
-								"entries": [
-									"独角兽神奇地恢复了11({@dice 2d8 + 2})点生命值。"
-								]
-							}
-						],
-						"page": 294,
-						"spellcasting": [
-							{
-								"name": "Innate Spellcasting",
-								"headerEntries": [
-									"独角兽与生俱来的法术能力是魅力（法术保存（%0%））。独角兽可以天生施展以下法术，不需要任何组件。"
+					"type": "entries",
+					"name": "Data Embeds",
+					"entries": [
+						"生物；格式基于兽皮书数据，并添加了类型（注意，适当的兽皮书条目和条目链接是添加生物的首选方法，此功能主要为自制数据而存在）。",
+						{
+							"type": "dataCreature",
+							"dataCreature": {
+								"name": "Unicorn",
+								"size": [
+									"L"
 								],
-								"will": [
-									"{@spell detect evil and good}",
-									"{@spell druidcraft}",
-									"{@spell pass without trace}"
+								"type": "celestial",
+								"source": "MM",
+								"alignment": [
+									"L",
+									"G"
 								],
-								"daily": {
-									"1e": [
-										"{@spell calm emotions}",
-										"{@spell dispel evil and good}",
-										"{@spell entangle}"
+								"ac": [
+									12
+								],
+								"hp": {
+									"average": 67,
+									"formula": "9d10 + 18"
+								},
+								"speed": {
+									"walk": 50
+								},
+								"str": 18,
+								"dex": 14,
+								"con": 15,
+								"int": 11,
+								"wis": 17,
+								"cha": 16,
+								"immune": [
+									"poison"
+								],
+								"conditionImmune": [
+									"charmed",
+									"paralyzed",
+									"poisoned"
+								],
+								"senses": [
+									"darkvision 60 ft."
+								],
+								"passive": 13,
+								"languages": [
+									"Celestial",
+									"Elvish",
+									"Sylvan",
+									"telepathy 60 ft."
+								],
+								"cr": "5",
+								"trait": [
+									{
+										"name": "Charge",
+										"entries": [
+											"如果独角兽向一个目标移动至少20英尺，然后在同一回合用角攻击击中它，目标会受到额外的9（（%0%））穿刺伤害。如果目标是一个生物，它必须在一个{@dc 15}力量救赎中成功，否则就会被击倒在地。"
+										]
+									},
+									{
+										"name": "Magic Resistance",
+										"entries": [
+											"独角兽在面对法术和其他魔法效果时，在蓄力攻击方面有优势。"
+										]
+									},
+									{
+										"name": "Magic Weapons",
+										"entries": [
+											"独角兽的武器攻击是神奇的。"
+										]
+									}
+								],
+								"action": [
+									{
+										"name": "Multiattack",
+										"entries": [
+											"独角兽进行两次攻击：一次用蹄子，一次用角。"
+										]
+									},
+									{
+										"name": "Hooves",
+										"entries": [
+											"{@atk mw} {@hit 7}击中，到达5英尺，一个目标。命中：11({@damage 2d6 + 4})重击伤害。"
+										]
+									},
+									{
+										"name": "Horn",
+										"entries": [
+											"{@atk mw} {@hit 7}击中，到达5英尺，一个目标。命中：8 ({@damage 1d8 + 4})穿刺伤害。"
+										]
+									},
+									{
+										"name": "Healing Touch (3/Day)",
+										"entries": [
+											"独角兽用它的角触碰另一个生物。目标会神奇地恢复11({@dice 2d8 + 2})点的生命值。此外，触碰可以消除所有疾病，并中和所有折磨目标的毒药。"
+										]
+									},
+									{
+										"name": "Teleport (1/Day)",
+										"entries": [
+											"独角兽用魔法将自己和它周围5英尺范围内的最多三个自愿的生物，以及他们所穿戴或携带的任何装备，传送到独角兽熟悉的地方，最多可以传送1英里远。"
+										]
+									}
+								],
+								"legendaryGroup": {
+									"name": "Unicorn",
+									"source": "MM"
+								},
+								"legendary": [
+									{
+										"name": "Hooves",
+										"entries": [
+											"独角兽用它的蹄子进行一次攻击。"
+										]
+									},
+									{
+										"name": "Shimmering Shield (Costs 2 Actions)",
+										"entries": [
+											"独角兽在它自己或它能看到的60英尺范围内的其他生物周围创造一个闪亮的魔法场。目标在独角兽的下一回合结束前，会获得+2的攻击力加成。"
+										]
+									},
+									{
+										"name": "Heal Self (Costs 3 Actions)",
+										"entries": [
+											"独角兽神奇地恢复了11({@dice 2d8 + 2})点生命值。"
+										]
+									}
+								],
+								"page": 294,
+								"spellcasting": [
+									{
+										"name": "Innate Spellcasting",
+										"headerEntries": [
+											"独角兽与生俱来的法术能力是魅力（法术保存（%0%））。独角兽可以天生施展以下法术，不需要任何组件。"
+										],
+										"will": [
+											"{@spell detect evil and good}",
+											"{@spell druidcraft}",
+											"{@spell pass without trace}"
+										],
+										"daily": {
+											"1e": [
+												"{@spell calm emotions}",
+												"{@spell dispel evil and good}",
+												"{@spell entangle}"
+											]
+										},
+										"ability": "cha"
+									}
+								],
+								"environment": [
+									"forest"
+								],
+								"soundClip": {
+									"type": "internal",
+									"path": "bestiary/unicorn.mp3"
+								},
+								"traitTags": [
+									"Charge",
+									"Magic Resistance",
+									"Magic Weapons"
+								],
+								"actionTags": [
+									"Multiattack"
+								]
+							}
+						},
+						"法术；同上。",
+						{
+							"type": "dataSpell",
+							"dataSpell": {
+								"name": "Fireball",
+								"level": 3,
+								"school": "V",
+								"time": [
+									{
+										"number": 1,
+										"unit": "action"
+									}
+								],
+								"range": {
+									"type": "point",
+									"distance": {
+										"type": "feet",
+										"amount": 150
+									}
+								},
+								"components": {
+									"v": true,
+									"s": true,
+									"m": "a tiny ball of bat guano and sulfur"
+								},
+								"duration": [
+									{
+										"type": "instant"
+									}
+								],
+								"classes": {
+									"fromClassList": [
+										{
+											"name": "Sorcerer",
+											"source": "PHB"
+										},
+										{
+											"name": "Wizard",
+											"source": "PHB"
+										}
+									],
+									"fromSubclass": [
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Light",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Warlock",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Fiend",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Zeal (PSA)",
+												"source": "PSA"
+											}
+										}
 									]
 								},
-								"ability": "cha"
-							}
-						],
-						"environment": [
-							"forest"
-						],
-						"soundClip": {
-							"type": "internal",
-							"path": "bestiary/unicorn.mp3"
-						},
-						"traitTags": [
-							"Charge",
-							"Magic Resistance",
-							"Magic Weapons"
-						],
-						"actionTags": [
-							"Multiattack"
-						]
-					}
-				},
-				"法术；同上。",
-				{
-					"type": "dataSpell",
-					"dataSpell": {
-						"name": "Fireball",
-						"level": 3,
-						"school": "V",
-						"time": [
-							{
-								"number": 1,
-								"unit": "action"
-							}
-						],
-						"range": {
-							"type": "point",
-							"distance": {
-								"type": "feet",
-								"amount": 150
-							}
-						},
-						"components": {
-							"v": true,
-							"s": true,
-							"m": "a tiny ball of bat guano and sulfur"
-						},
-						"duration": [
-							{
-								"type": "instant"
-							}
-						],
-						"classes": {
-							"fromClassList": [
-								{
-									"name": "Sorcerer",
-									"source": "PHB"
-								},
-								{
-									"name": "Wizard",
-									"source": "PHB"
-								}
-							],
-							"fromSubclass": [
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Light",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Warlock",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Fiend",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Zeal (PSA)",
-										"source": "PSA"
-									}
-								}
-							]
-						},
-						"source": "PHB",
-						"entries": [
-							"一道亮光从你的指尖闪到你选择的范围内的一个点上，然后伴随着低沉的吼声绽放出火焰的爆炸。以该点为中心的20英尺半径范围内的每个生物都必须做一个灵巧的蓄力动作。蓄力失败时，目标会受到{@dice 8d6}的火焰伤害，蓄力成功则受到一半的伤害。",
-							"火焰在角落里蔓延。它点燃了该地区未被穿戴或携带的易燃物品。"
-						],
-						"entriesHigherLevel": [
-							{
-								"type": "entries",
-								"name": "At Higher Levels",
+								"source": "PHB",
 								"entries": [
-									"当你使用四级以上的法术槽施放此法术时，每超过三级的法术槽等级，伤害就会增加（%0%）。"
-								]
+									"一道亮光从你的指尖闪到你选择的范围内的一个点上，然后伴随着低沉的吼声绽放出火焰的爆炸。以该点为中心的20英尺半径范围内的每个生物都必须做一个灵巧的蓄力动作。蓄力失败时，目标会受到{@dice 8d6}的火焰伤害，蓄力成功则受到一半的伤害。",
+									"火焰在角落里蔓延。它点燃了该地区未被穿戴或携带的易燃物品。"
+								],
+								"entriesHigherLevel": [
+									{
+										"type": "entries",
+										"name": "At Higher Levels",
+										"entries": [
+											"当你使用四级以上的法术槽施放此法术时，每超过三级的法术槽等级，伤害就会增加（%0%）。"
+										]
+									}
+								],
+								"page": 241
 							}
-						],
-						"page": 241
-					}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reference Embeds",
+					"entries": [
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Goblin"
+						}
+					]
 				}
 			]
 		}

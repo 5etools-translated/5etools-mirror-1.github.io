@@ -559,260 +559,277 @@
 					},
 					"title": "Optional Title"
 				},
-				"Существа; формат основан на данных Бестиария, с добавлением типа (обратите внимание, что предпочтительным способом добавления существ является соответствующая запись в Бестиарии и ссылка на запись, эта функциональность существует в основном для доморощенных данных):",
 				{
-					"type": "dataCreature",
-					"dataCreature": {
-						"name": "Unicorn",
-						"size": [
-							"L"
-						],
-						"type": "celestial",
-						"source": "MM",
-						"alignment": [
-							"L",
-							"G"
-						],
-						"ac": [
-							12
-						],
-						"hp": {
-							"average": 67,
-							"formula": "9d10 + 18"
-						},
-						"speed": {
-							"walk": 50
-						},
-						"str": 18,
-						"dex": 14,
-						"con": 15,
-						"int": 11,
-						"wis": 17,
-						"cha": 16,
-						"immune": [
-							"poison"
-						],
-						"conditionImmune": [
-							"charmed",
-							"paralyzed",
-							"poisoned"
-						],
-						"senses": [
-							"darkvision 60 ft."
-						],
-						"passive": 13,
-						"languages": [
-							"Celestial",
-							"Elvish",
-							"Sylvan",
-							"telepathy 60 ft."
-						],
-						"cr": "5",
-						"trait": [
-							{
-								"name": "Charge",
-								"entries": [
-									"Если единорог движется прямо к цели на расстояние не менее 20 футов, а затем поражает ее атакой рога в тот же ход, цель получает дополнительные 9 ({@dice 2d8}) колющих повреждений. Если цель - существо, оно должно успешно выполнить {@dc 15} бросок на спасбросок силы или быть сбито с ног."
-								]
-							},
-							{
-								"name": "Magic Resistance",
-								"entries": [
-									"Единорог имеет преимущество при бросках спасбросков против заклинаний и других магических эффектов."
-								]
-							},
-							{
-								"name": "Magic Weapons",
-								"entries": [
-									"Атаки оружия единорога являются магическими."
-								]
-							}
-						],
-						"action": [
-							{
-								"name": "Multiattack",
-								"entries": [
-									"Единорог делает две атаки: одну копытами, другую рогом."
-								]
-							},
-							{
-								"name": "Hooves",
-								"entries": [
-									"{@atk mw} {@hit 7} для попадания, радиус действия 5 футов, одна цель. Попадание: 11 ({@damage 2d6 + 4}) повреждений от удара."
-								]
-							},
-							{
-								"name": "Horn",
-								"entries": [
-									"{@atk mw} {@hit 7} для попадания, радиус действия 5 футов, одна цель. Попадание: 8 ({@damage 1d8 + 4}) колющих повреждений."
-								]
-							},
-							{
-								"name": "Healing Touch (3/Day)",
-								"entries": [
-									"Единорог касается своим рогом другого существа. Цель магическим образом восстанавливает 11 ({@dice 2d8 + 2}) хит-пойнтов. Кроме того, прикосновение снимает все болезни и нейтрализует все яды, поразившие цель."
-								]
-							},
-							{
-								"name": "Teleport (1/Day)",
-								"entries": [
-									"Единорог магически телепортирует себя и до трех желающих существ, которых он может видеть в радиусе 5 футов от себя, вместе с любым снаряжением, которое они носят или несут, в знакомое единорогу место на расстояние до 1 мили."
-								]
-							}
-						],
-						"legendaryGroup": {
-							"name": "Unicorn",
-							"source": "MM"
-						},
-						"legendary": [
-							{
-								"name": "Hooves",
-								"entries": [
-									"Единорог делает одну атаку своими копытами."
-								]
-							},
-							{
-								"name": "Shimmering Shield (Costs 2 Actions)",
-								"entries": [
-									"Единорог создает мерцающее магическое поле вокруг себя или другого существа, которое он видит в радиусе 60 футов от себя. Цель получает бонус +2 к AC до конца следующего хода единорога."
-								]
-							},
-							{
-								"name": "Heal Self (Costs 3 Actions)",
-								"entries": [
-									"Единорог магическим образом восстанавливает 11 ({@dice 2d8 + 2}) хит-пойнтов."
-								]
-							}
-						],
-						"page": 294,
-						"spellcasting": [
-							{
-								"name": "Innate Spellcasting",
-								"headerEntries": [
-									"Врожденная способность единорога к заклинаниям - Харизма (спасбросок от заклинаний {@dc 14}). Единорог может произносить следующие заклинания, не требующие компонентов:"
+					"type": "entries",
+					"name": "Data Embeds",
+					"entries": [
+						"Существа; формат основан на данных Бестиария, с добавлением типа (обратите внимание, что предпочтительным способом добавления существ является соответствующая запись в Бестиарии и ссылка на запись, эта функциональность существует в основном для доморощенных данных):",
+						{
+							"type": "dataCreature",
+							"dataCreature": {
+								"name": "Unicorn",
+								"size": [
+									"L"
 								],
-								"will": [
-									"{@spell detect evil and good}",
-									"{@spell druidcraft}",
-									"{@spell pass without trace}"
+								"type": "celestial",
+								"source": "MM",
+								"alignment": [
+									"L",
+									"G"
 								],
-								"daily": {
-									"1e": [
-										"{@spell calm emotions}",
-										"{@spell dispel evil and good}",
-										"{@spell entangle}"
+								"ac": [
+									12
+								],
+								"hp": {
+									"average": 67,
+									"formula": "9d10 + 18"
+								},
+								"speed": {
+									"walk": 50
+								},
+								"str": 18,
+								"dex": 14,
+								"con": 15,
+								"int": 11,
+								"wis": 17,
+								"cha": 16,
+								"immune": [
+									"poison"
+								],
+								"conditionImmune": [
+									"charmed",
+									"paralyzed",
+									"poisoned"
+								],
+								"senses": [
+									"darkvision 60 ft."
+								],
+								"passive": 13,
+								"languages": [
+									"Celestial",
+									"Elvish",
+									"Sylvan",
+									"telepathy 60 ft."
+								],
+								"cr": "5",
+								"trait": [
+									{
+										"name": "Charge",
+										"entries": [
+											"Если единорог движется прямо к цели на расстояние не менее 20 футов, а затем поражает ее атакой рога в тот же ход, цель получает дополнительные 9 ({@dice 2d8}) колющих повреждений. Если цель - существо, оно должно успешно выполнить {@dc 15} бросок на спасбросок силы или быть сбито с ног."
+										]
+									},
+									{
+										"name": "Magic Resistance",
+										"entries": [
+											"Единорог имеет преимущество при бросках спасбросков против заклинаний и других магических эффектов."
+										]
+									},
+									{
+										"name": "Magic Weapons",
+										"entries": [
+											"Атаки оружия единорога являются магическими."
+										]
+									}
+								],
+								"action": [
+									{
+										"name": "Multiattack",
+										"entries": [
+											"Единорог делает две атаки: одну копытами, другую рогом."
+										]
+									},
+									{
+										"name": "Hooves",
+										"entries": [
+											"{@atk mw} {@hit 7} для попадания, радиус действия 5 футов, одна цель. Попадание: 11 ({@damage 2d6 + 4}) повреждений от удара."
+										]
+									},
+									{
+										"name": "Horn",
+										"entries": [
+											"{@atk mw} {@hit 7} для попадания, радиус действия 5 футов, одна цель. Попадание: 8 ({@damage 1d8 + 4}) колющих повреждений."
+										]
+									},
+									{
+										"name": "Healing Touch (3/Day)",
+										"entries": [
+											"Единорог касается своим рогом другого существа. Цель магическим образом восстанавливает 11 ({@dice 2d8 + 2}) хит-пойнтов. Кроме того, прикосновение снимает все болезни и нейтрализует все яды, поразившие цель."
+										]
+									},
+									{
+										"name": "Teleport (1/Day)",
+										"entries": [
+											"Единорог магически телепортирует себя и до трех желающих существ, которых он может видеть в радиусе 5 футов от себя, вместе с любым снаряжением, которое они носят или несут, в знакомое единорогу место на расстояние до 1 мили."
+										]
+									}
+								],
+								"legendaryGroup": {
+									"name": "Unicorn",
+									"source": "MM"
+								},
+								"legendary": [
+									{
+										"name": "Hooves",
+										"entries": [
+											"Единорог делает одну атаку своими копытами."
+										]
+									},
+									{
+										"name": "Shimmering Shield (Costs 2 Actions)",
+										"entries": [
+											"Единорог создает мерцающее магическое поле вокруг себя или другого существа, которое он видит в радиусе 60 футов от себя. Цель получает бонус +2 к AC до конца следующего хода единорога."
+										]
+									},
+									{
+										"name": "Heal Self (Costs 3 Actions)",
+										"entries": [
+											"Единорог магическим образом восстанавливает 11 ({@dice 2d8 + 2}) хит-пойнтов."
+										]
+									}
+								],
+								"page": 294,
+								"spellcasting": [
+									{
+										"name": "Innate Spellcasting",
+										"headerEntries": [
+											"Врожденная способность единорога к заклинаниям - Харизма (спасбросок от заклинаний {@dc 14}). Единорог может произносить следующие заклинания, не требующие компонентов:"
+										],
+										"will": [
+											"{@spell detect evil and good}",
+											"{@spell druidcraft}",
+											"{@spell pass without trace}"
+										],
+										"daily": {
+											"1e": [
+												"{@spell calm emotions}",
+												"{@spell dispel evil and good}",
+												"{@spell entangle}"
+											]
+										},
+										"ability": "cha"
+									}
+								],
+								"environment": [
+									"forest"
+								],
+								"soundClip": {
+									"type": "internal",
+									"path": "bestiary/unicorn.mp3"
+								},
+								"traitTags": [
+									"Charge",
+									"Magic Resistance",
+									"Magic Weapons"
+								],
+								"actionTags": [
+									"Multiattack"
+								]
+							}
+						},
+						"Заклинания; как указано выше:",
+						{
+							"type": "dataSpell",
+							"dataSpell": {
+								"name": "Fireball",
+								"level": 3,
+								"school": "V",
+								"time": [
+									{
+										"number": 1,
+										"unit": "action"
+									}
+								],
+								"range": {
+									"type": "point",
+									"distance": {
+										"type": "feet",
+										"amount": 150
+									}
+								},
+								"components": {
+									"v": true,
+									"s": true,
+									"m": "a tiny ball of bat guano and sulfur"
+								},
+								"duration": [
+									{
+										"type": "instant"
+									}
+								],
+								"classes": {
+									"fromClassList": [
+										{
+											"name": "Sorcerer",
+											"source": "PHB"
+										},
+										{
+											"name": "Wizard",
+											"source": "PHB"
+										}
+									],
+									"fromSubclass": [
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Light",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Warlock",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Fiend",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Zeal (PSA)",
+												"source": "PSA"
+											}
+										}
 									]
 								},
-								"ability": "cha"
-							}
-						],
-						"environment": [
-							"forest"
-						],
-						"soundClip": {
-							"type": "internal",
-							"path": "bestiary/unicorn.mp3"
-						},
-						"traitTags": [
-							"Charge",
-							"Magic Resistance",
-							"Magic Weapons"
-						],
-						"actionTags": [
-							"Multiattack"
-						]
-					}
-				},
-				"Заклинания; как указано выше:",
-				{
-					"type": "dataSpell",
-					"dataSpell": {
-						"name": "Fireball",
-						"level": 3,
-						"school": "V",
-						"time": [
-							{
-								"number": 1,
-								"unit": "action"
-							}
-						],
-						"range": {
-							"type": "point",
-							"distance": {
-								"type": "feet",
-								"amount": 150
-							}
-						},
-						"components": {
-							"v": true,
-							"s": true,
-							"m": "a tiny ball of bat guano and sulfur"
-						},
-						"duration": [
-							{
-								"type": "instant"
-							}
-						],
-						"classes": {
-							"fromClassList": [
-								{
-									"name": "Sorcerer",
-									"source": "PHB"
-								},
-								{
-									"name": "Wizard",
-									"source": "PHB"
-								}
-							],
-							"fromSubclass": [
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Light",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Warlock",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Fiend",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Zeal (PSA)",
-										"source": "PSA"
-									}
-								}
-							]
-						},
-						"source": "PHB",
-						"entries": [
-							"Яркая полоса вспыхивает от вашего указующего перста до выбранной вами точки в пределах досягаемости, а затем с низким ревом превращается во взрыв пламени. Каждое существо в сфере радиусом 20 футов, сосредоточенное на этой точке, должно сделать бросок на ловкость. При неудачном броске цель получает {@dice 8d6} урона от огня, при удачном - в два раза меньше.",
-							"Огонь распространяется по углам. Он воспламеняет легковоспламеняющиеся предметы в зоне, которые не носят или не переносят."
-						],
-						"entriesHigherLevel": [
-							{
-								"type": "entries",
-								"name": "At Higher Levels",
+								"source": "PHB",
 								"entries": [
-									"Когда вы произносите это заклинание, используя слот заклинания 4-го уровня или выше, урон увеличивается на {@scaledice 8d6|3-9|1d6} за каждый уровень слота выше 3-го."
-								]
+									"Яркая полоса вспыхивает от вашего указующего перста до выбранной вами точки в пределах досягаемости, а затем с низким ревом превращается во взрыв пламени. Каждое существо в сфере радиусом 20 футов, сосредоточенное на этой точке, должно сделать бросок на ловкость. При неудачном броске цель получает {@dice 8d6} урона от огня, при удачном - в два раза меньше.",
+									"Огонь распространяется по углам. Он воспламеняет легковоспламеняющиеся предметы в зоне, которые не носят или не переносят."
+								],
+								"entriesHigherLevel": [
+									{
+										"type": "entries",
+										"name": "At Higher Levels",
+										"entries": [
+											"Когда вы произносите это заклинание, используя слот заклинания 4-го уровня или выше, урон увеличивается на {@scaledice 8d6|3-9|1d6} за каждый уровень слота выше 3-го."
+										]
+									}
+								],
+								"page": 241
 							}
-						],
-						"page": 241
-					}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reference Embeds",
+					"entries": [
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Goblin"
+						}
+					]
 				}
 			]
 		}

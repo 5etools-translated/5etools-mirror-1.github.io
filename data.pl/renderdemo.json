@@ -559,260 +559,277 @@
 					},
 					"title": "Optional Title"
 				},
-				"Stworzenia; format oparty na danych z Bestiariusza, z dodanym typem (należy pamiętać, że preferowaną metodą dodawania stworzeń jest prawidłowy wpis w Bestiariuszu i link do niego, ta funkcjonalność istnieje głównie dla danych homebrew):",
 				{
-					"type": "dataCreature",
-					"dataCreature": {
-						"name": "Unicorn",
-						"size": [
-							"L"
-						],
-						"type": "celestial",
-						"source": "MM",
-						"alignment": [
-							"L",
-							"G"
-						],
-						"ac": [
-							12
-						],
-						"hp": {
-							"average": 67,
-							"formula": "9d10 + 18"
-						},
-						"speed": {
-							"walk": 50
-						},
-						"str": 18,
-						"dex": 14,
-						"con": 15,
-						"int": 11,
-						"wis": 17,
-						"cha": 16,
-						"immune": [
-							"poison"
-						],
-						"conditionImmune": [
-							"charmed",
-							"paralyzed",
-							"poisoned"
-						],
-						"senses": [
-							"darkvision 60 ft."
-						],
-						"passive": 13,
-						"languages": [
-							"Celestial",
-							"Elvish",
-							"Sylvan",
-							"telepathy 60 ft."
-						],
-						"cr": "5",
-						"trait": [
-							{
-								"name": "Charge",
-								"entries": [
-									"Jeśli jednorożec poruszy się na odległość co najmniej 20 stóp prosto w kierunku celu, a następnie trafi go atakiem rogowym w tej samej turze, cel otrzymuje dodatkowe 9 ({@dice 2d8}) obrażeń od przebicia. Jeśli celem jest stworzenie, musi udać mu się {@dc 15} rzut ratunkowy na Wytrzymałość albo zostanie powalony na ziemię."
-								]
-							},
-							{
-								"name": "Magic Resistance",
-								"entries": [
-									"Jednorożec ma przewagę w rzutach ratunkowych przeciwko zaklęciom i innym magicznym efektom."
-								]
-							},
-							{
-								"name": "Magic Weapons",
-								"entries": [
-									"Ataki bronią jednorożca są magiczne."
-								]
-							}
-						],
-						"action": [
-							{
-								"name": "Multiattack",
-								"entries": [
-									"Jednorożec wykonuje dwa ataki: jeden kopytem, a drugi rogiem."
-								]
-							},
-							{
-								"name": "Hooves",
-								"entries": [
-									"{@atk mw} {@hit 7} do trafienia, zasięg 5 stóp, jeden cel. Trafienie: 11 ({@damage 2d6 + 4}) obrażeń od obrażeń tępych."
-								]
-							},
-							{
-								"name": "Horn",
-								"entries": [
-									"{@atk mw} {@hit 7} do trafienia, zasięg 5 stóp, jeden cel. Trafienie: 8 ({@damage 1d8 + 4}) obrażeń od przebicia."
-								]
-							},
-							{
-								"name": "Healing Touch (3/Day)",
-								"entries": [
-									"Jednorożec dotyka rogiem inną istotę. Cel w magiczny sposób odzyskuje 11 ({@dice 2d8 + 2}) punktów życia. Dodatkowo, dotyk usuwa wszystkie choroby i neutralizuje wszystkie trucizny dotykające cel."
-								]
-							},
-							{
-								"name": "Teleport (1/Day)",
-								"entries": [
-									"Jednorożec magicznie teleportuje siebie i do trzech chętnych stworzeń, które widzi w promieniu 5 stóp od siebie, wraz z ich wyposażeniem, które mają na sobie lub niosą, w znane mu miejsce, oddalone maksymalnie o 1 milę."
-								]
-							}
-						],
-						"legendaryGroup": {
-							"name": "Unicorn",
-							"source": "MM"
-						},
-						"legendary": [
-							{
-								"name": "Hooves",
-								"entries": [
-									"Jednorożec wykonuje jeden atak kopytami."
-								]
-							},
-							{
-								"name": "Shimmering Shield (Costs 2 Actions)",
-								"entries": [
-									"Jednorożec tworzy wokół siebie lub innej istoty, którą widzi w promieniu 60 stóp, mieniące się, magiczne pole. Cel zyskuje premię +2 do AC do końca następnej tury jednorożca."
-								]
-							},
-							{
-								"name": "Heal Self (Costs 3 Actions)",
-								"entries": [
-									"Jednorożec w magiczny sposób odzyskuje 11 ({@dice 2d8 + 2}) punktów życia."
-								]
-							}
-						],
-						"page": 294,
-						"spellcasting": [
-							{
-								"name": "Innate Spellcasting",
-								"headerEntries": [
-									"Wrodzona zdolność jednorożca do rzucania czarów to Charyzma (odporność na czary {@dc 14}). Jednorożec może rzucać następujące zaklęcia, nie wymagające żadnych składników:"
+					"type": "entries",
+					"name": "Data Embeds",
+					"entries": [
+						"Stworzenia; format oparty na danych z Bestiariusza, z dodanym typem (należy pamiętać, że preferowaną metodą dodawania stworzeń jest prawidłowy wpis w Bestiariuszu i link do niego, ta funkcjonalność istnieje głównie dla danych homebrew):",
+						{
+							"type": "dataCreature",
+							"dataCreature": {
+								"name": "Unicorn",
+								"size": [
+									"L"
 								],
-								"will": [
-									"{@spell detect evil and good}",
-									"{@spell druidcraft}",
-									"{@spell pass without trace}"
+								"type": "celestial",
+								"source": "MM",
+								"alignment": [
+									"L",
+									"G"
 								],
-								"daily": {
-									"1e": [
-										"{@spell calm emotions}",
-										"{@spell dispel evil and good}",
-										"{@spell entangle}"
+								"ac": [
+									12
+								],
+								"hp": {
+									"average": 67,
+									"formula": "9d10 + 18"
+								},
+								"speed": {
+									"walk": 50
+								},
+								"str": 18,
+								"dex": 14,
+								"con": 15,
+								"int": 11,
+								"wis": 17,
+								"cha": 16,
+								"immune": [
+									"poison"
+								],
+								"conditionImmune": [
+									"charmed",
+									"paralyzed",
+									"poisoned"
+								],
+								"senses": [
+									"darkvision 60 ft."
+								],
+								"passive": 13,
+								"languages": [
+									"Celestial",
+									"Elvish",
+									"Sylvan",
+									"telepathy 60 ft."
+								],
+								"cr": "5",
+								"trait": [
+									{
+										"name": "Charge",
+										"entries": [
+											"Jeśli jednorożec poruszy się na odległość co najmniej 20 stóp prosto w kierunku celu, a następnie trafi go atakiem rogowym w tej samej turze, cel otrzymuje dodatkowe 9 ({@dice 2d8}) obrażeń od przebicia. Jeśli celem jest stworzenie, musi udać mu się {@dc 15} rzut ratunkowy na Wytrzymałość albo zostanie powalony na ziemię."
+										]
+									},
+									{
+										"name": "Magic Resistance",
+										"entries": [
+											"Jednorożec ma przewagę w rzutach ratunkowych przeciwko zaklęciom i innym magicznym efektom."
+										]
+									},
+									{
+										"name": "Magic Weapons",
+										"entries": [
+											"Ataki bronią jednorożca są magiczne."
+										]
+									}
+								],
+								"action": [
+									{
+										"name": "Multiattack",
+										"entries": [
+											"Jednorożec wykonuje dwa ataki: jeden kopytem, a drugi rogiem."
+										]
+									},
+									{
+										"name": "Hooves",
+										"entries": [
+											"{@atk mw} {@hit 7} do trafienia, zasięg 5 stóp, jeden cel. Trafienie: 11 ({@damage 2d6 + 4}) obrażeń od obrażeń tępych."
+										]
+									},
+									{
+										"name": "Horn",
+										"entries": [
+											"{@atk mw} {@hit 7} do trafienia, zasięg 5 stóp, jeden cel. Trafienie: 8 ({@damage 1d8 + 4}) obrażeń od przebicia."
+										]
+									},
+									{
+										"name": "Healing Touch (3/Day)",
+										"entries": [
+											"Jednorożec dotyka rogiem inną istotę. Cel w magiczny sposób odzyskuje 11 ({@dice 2d8 + 2}) punktów życia. Dodatkowo, dotyk usuwa wszystkie choroby i neutralizuje wszystkie trucizny dotykające cel."
+										]
+									},
+									{
+										"name": "Teleport (1/Day)",
+										"entries": [
+											"Jednorożec magicznie teleportuje siebie i do trzech chętnych stworzeń, które widzi w promieniu 5 stóp od siebie, wraz z ich wyposażeniem, które mają na sobie lub niosą, w znane mu miejsce, oddalone maksymalnie o 1 milę."
+										]
+									}
+								],
+								"legendaryGroup": {
+									"name": "Unicorn",
+									"source": "MM"
+								},
+								"legendary": [
+									{
+										"name": "Hooves",
+										"entries": [
+											"Jednorożec wykonuje jeden atak kopytami."
+										]
+									},
+									{
+										"name": "Shimmering Shield (Costs 2 Actions)",
+										"entries": [
+											"Jednorożec tworzy wokół siebie lub innej istoty, którą widzi w promieniu 60 stóp, mieniące się, magiczne pole. Cel zyskuje premię +2 do AC do końca następnej tury jednorożca."
+										]
+									},
+									{
+										"name": "Heal Self (Costs 3 Actions)",
+										"entries": [
+											"Jednorożec w magiczny sposób odzyskuje 11 ({@dice 2d8 + 2}) punktów życia."
+										]
+									}
+								],
+								"page": 294,
+								"spellcasting": [
+									{
+										"name": "Innate Spellcasting",
+										"headerEntries": [
+											"Wrodzona zdolność jednorożca do rzucania czarów to Charyzma (odporność na czary {@dc 14}). Jednorożec może rzucać następujące zaklęcia, nie wymagające żadnych składników:"
+										],
+										"will": [
+											"{@spell detect evil and good}",
+											"{@spell druidcraft}",
+											"{@spell pass without trace}"
+										],
+										"daily": {
+											"1e": [
+												"{@spell calm emotions}",
+												"{@spell dispel evil and good}",
+												"{@spell entangle}"
+											]
+										},
+										"ability": "cha"
+									}
+								],
+								"environment": [
+									"forest"
+								],
+								"soundClip": {
+									"type": "internal",
+									"path": "bestiary/unicorn.mp3"
+								},
+								"traitTags": [
+									"Charge",
+									"Magic Resistance",
+									"Magic Weapons"
+								],
+								"actionTags": [
+									"Multiattack"
+								]
+							}
+						},
+						"Zaklęcia; jak wyżej:",
+						{
+							"type": "dataSpell",
+							"dataSpell": {
+								"name": "Fireball",
+								"level": 3,
+								"school": "V",
+								"time": [
+									{
+										"number": 1,
+										"unit": "action"
+									}
+								],
+								"range": {
+									"type": "point",
+									"distance": {
+										"type": "feet",
+										"amount": 150
+									}
+								},
+								"components": {
+									"v": true,
+									"s": true,
+									"m": "a tiny ball of bat guano and sulfur"
+								},
+								"duration": [
+									{
+										"type": "instant"
+									}
+								],
+								"classes": {
+									"fromClassList": [
+										{
+											"name": "Sorcerer",
+											"source": "PHB"
+										},
+										{
+											"name": "Wizard",
+											"source": "PHB"
+										}
+									],
+									"fromSubclass": [
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Light",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Warlock",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Fiend",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Zeal (PSA)",
+												"source": "PSA"
+											}
+										}
 									]
 								},
-								"ability": "cha"
-							}
-						],
-						"environment": [
-							"forest"
-						],
-						"soundClip": {
-							"type": "internal",
-							"path": "bestiary/unicorn.mp3"
-						},
-						"traitTags": [
-							"Charge",
-							"Magic Resistance",
-							"Magic Weapons"
-						],
-						"actionTags": [
-							"Multiattack"
-						]
-					}
-				},
-				"Zaklęcia; jak wyżej:",
-				{
-					"type": "dataSpell",
-					"dataSpell": {
-						"name": "Fireball",
-						"level": 3,
-						"school": "V",
-						"time": [
-							{
-								"number": 1,
-								"unit": "action"
-							}
-						],
-						"range": {
-							"type": "point",
-							"distance": {
-								"type": "feet",
-								"amount": 150
-							}
-						},
-						"components": {
-							"v": true,
-							"s": true,
-							"m": "a tiny ball of bat guano and sulfur"
-						},
-						"duration": [
-							{
-								"type": "instant"
-							}
-						],
-						"classes": {
-							"fromClassList": [
-								{
-									"name": "Sorcerer",
-									"source": "PHB"
-								},
-								{
-									"name": "Wizard",
-									"source": "PHB"
-								}
-							],
-							"fromSubclass": [
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Light",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Warlock",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Fiend",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Zeal (PSA)",
-										"source": "PSA"
-									}
-								}
-							]
-						},
-						"source": "PHB",
-						"entries": [
-							"Z palca wskazującego do wybranego punktu w zasięgu błyska jasna smuga, a następnie z niskim rykiem przekształca się w eksplozję płomieni. Każda istota w promieniu 20 stóp od tego punktu musi wykonać rzut na zręczność. Cel otrzymuje {@dice 8d6} obrażeń od ognia przy nieudanym rzucie lub połowę tych obrażeń przy udanym rzucie.",
-							"Ogień rozprzestrzenia się po kątach. Zapalają się znajdujące się w pobliżu łatwopalne przedmioty, które nie są noszone lub przewożone."
-						],
-						"entriesHigherLevel": [
-							{
-								"type": "entries",
-								"name": "At Higher Levels",
+								"source": "PHB",
 								"entries": [
-									"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 4. poziomu lub wyższego, obrażenia zwiększają się o {@scaledice 8d6|3-9|1d6} za każdy poziom gniazda powyżej 3."
-								]
+									"Z palca wskazującego do wybranego punktu w zasięgu błyska jasna smuga, a następnie z niskim rykiem przekształca się w eksplozję płomieni. Każda istota w promieniu 20 stóp od tego punktu musi wykonać rzut na zręczność. Cel otrzymuje {@dice 8d6} obrażeń od ognia przy nieudanym rzucie lub połowę tych obrażeń przy udanym rzucie.",
+									"Ogień rozprzestrzenia się po kątach. Zapalają się znajdujące się w pobliżu łatwopalne przedmioty, które nie są noszone lub przewożone."
+								],
+								"entriesHigherLevel": [
+									{
+										"type": "entries",
+										"name": "At Higher Levels",
+										"entries": [
+											"Kiedy rzucasz to zaklęcie, używając gniazda zaklęć 4. poziomu lub wyższego, obrażenia zwiększają się o {@scaledice 8d6|3-9|1d6} za każdy poziom gniazda powyżej 3."
+										]
+									}
+								],
+								"page": 241
 							}
-						],
-						"page": 241
-					}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reference Embeds",
+					"entries": [
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Goblin"
+						}
+					]
 				}
 			]
 		}

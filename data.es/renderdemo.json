@@ -559,260 +559,277 @@
 					},
 					"title": "Optional Title"
 				},
-				"Criaturas; formato basado en los datos del Bestiario, con tipo añadido (ten en cuenta que una entrada propia del Bestiario y un enlace a la entrada es el método preferido para añadir criaturas, esta funcionalidad existe principalmente para los datos homebrew):",
 				{
-					"type": "dataCreature",
-					"dataCreature": {
-						"name": "Unicorn",
-						"size": [
-							"L"
-						],
-						"type": "celestial",
-						"source": "MM",
-						"alignment": [
-							"L",
-							"G"
-						],
-						"ac": [
-							12
-						],
-						"hp": {
-							"average": 67,
-							"formula": "9d10 + 18"
-						},
-						"speed": {
-							"walk": 50
-						},
-						"str": 18,
-						"dex": 14,
-						"con": 15,
-						"int": 11,
-						"wis": 17,
-						"cha": 16,
-						"immune": [
-							"poison"
-						],
-						"conditionImmune": [
-							"charmed",
-							"paralyzed",
-							"poisoned"
-						],
-						"senses": [
-							"darkvision 60 ft."
-						],
-						"passive": 13,
-						"languages": [
-							"Celestial",
-							"Elvish",
-							"Sylvan",
-							"telepathy 60 ft."
-						],
-						"cr": "5",
-						"trait": [
-							{
-								"name": "Charge",
-								"entries": [
-									"Si el unicornio se mueve al menos 20 pies en línea recta hacia un objetivo y luego lo golpea con un ataque de cuerno en el mismo turno, el objetivo recibe 9 ({@dice 2d8}) de daño perforante adicional. Si el objetivo es una criatura, debe tener éxito en una tirada de salvación de Fuerza {@dc 15} o ser derribado."
-								]
-							},
-							{
-								"name": "Magic Resistance",
-								"entries": [
-									"El unicornio tiene ventaja en las tiradas de salvación contra hechizos y otros efectos mágicos."
-								]
-							},
-							{
-								"name": "Magic Weapons",
-								"entries": [
-									"Los ataques con armas del unicornio son mágicos."
-								]
-							}
-						],
-						"action": [
-							{
-								"name": "Multiattack",
-								"entries": [
-									"El unicornio realiza dos ataques: uno con las pezuñas y otro con el cuerno."
-								]
-							},
-							{
-								"name": "Hooves",
-								"entries": [
-									"{@atk mw} {@hit 7} para golpear, alcance 5 pies, un objetivo. Impacto: 11 ({@damage 2d6 + 4}) de daño por apaleamiento."
-								]
-							},
-							{
-								"name": "Horn",
-								"entries": [
-									"{@atk mw} {@hit 7} para golpear, alcance 5 pies, un objetivo. Impacto: 8 ({@damage 1d8 + 4}) de daño perforante."
-								]
-							},
-							{
-								"name": "Healing Touch (3/Day)",
-								"entries": [
-									"El unicornio toca a otra criatura con su cuerno. El objetivo recupera mágicamente 11 ({@dice 2d8 + 2}) puntos de vida. Además, el toque elimina todas las enfermedades y neutraliza todos los venenos que afecten al objetivo."
-								]
-							},
-							{
-								"name": "Teleport (1/Day)",
-								"entries": [
-									"El unicornio se teletransporta mágicamente a sí mismo y a un máximo de tres criaturas dispuestas que pueda ver en un radio de 1,5 metros, junto con cualquier equipo que lleven puesto o que lleven consigo, a un lugar que el unicornio conozca, hasta 1 milla de distancia."
-								]
-							}
-						],
-						"legendaryGroup": {
-							"name": "Unicorn",
-							"source": "MM"
-						},
-						"legendary": [
-							{
-								"name": "Hooves",
-								"entries": [
-									"El unicornio hace un ataque con sus pezuñas."
-								]
-							},
-							{
-								"name": "Shimmering Shield (Costs 2 Actions)",
-								"entries": [
-									"El unicornio crea un campo mágico y brillante alrededor de sí mismo o de otra criatura que pueda ver en un radio de 60 pies. El objetivo obtiene un bonificador +2 a la CA hasta el final del siguiente turno del unicornio."
-								]
-							},
-							{
-								"name": "Heal Self (Costs 3 Actions)",
-								"entries": [
-									"El unicornio recupera mágicamente 11 ({@dice 2d8 + 2}) puntos de vida."
-								]
-							}
-						],
-						"page": 294,
-						"spellcasting": [
-							{
-								"name": "Innate Spellcasting",
-								"headerEntries": [
-									"La habilidad innata de lanzamiento de hechizos del unicornio es Carisma (salvación de hechizos {@dc 14}). El unicornio puede lanzar de forma innata los siguientes hechizos, que no requieren componentes:"
+					"type": "entries",
+					"name": "Data Embeds",
+					"entries": [
+						"Criaturas; formato basado en los datos del Bestiario, con tipo añadido (ten en cuenta que una entrada propia del Bestiario y un enlace a la entrada es el método preferido para añadir criaturas, esta funcionalidad existe principalmente para los datos homebrew):",
+						{
+							"type": "dataCreature",
+							"dataCreature": {
+								"name": "Unicorn",
+								"size": [
+									"L"
 								],
-								"will": [
-									"{@spell detect evil and good}",
-									"{@spell druidcraft}",
-									"{@spell pass without trace}"
+								"type": "celestial",
+								"source": "MM",
+								"alignment": [
+									"L",
+									"G"
 								],
-								"daily": {
-									"1e": [
-										"{@spell calm emotions}",
-										"{@spell dispel evil and good}",
-										"{@spell entangle}"
+								"ac": [
+									12
+								],
+								"hp": {
+									"average": 67,
+									"formula": "9d10 + 18"
+								},
+								"speed": {
+									"walk": 50
+								},
+								"str": 18,
+								"dex": 14,
+								"con": 15,
+								"int": 11,
+								"wis": 17,
+								"cha": 16,
+								"immune": [
+									"poison"
+								],
+								"conditionImmune": [
+									"charmed",
+									"paralyzed",
+									"poisoned"
+								],
+								"senses": [
+									"darkvision 60 ft."
+								],
+								"passive": 13,
+								"languages": [
+									"Celestial",
+									"Elvish",
+									"Sylvan",
+									"telepathy 60 ft."
+								],
+								"cr": "5",
+								"trait": [
+									{
+										"name": "Charge",
+										"entries": [
+											"Si el unicornio se mueve al menos 20 pies en línea recta hacia un objetivo y luego lo golpea con un ataque de cuerno en el mismo turno, el objetivo recibe 9 ({@dice 2d8}) de daño perforante adicional. Si el objetivo es una criatura, debe tener éxito en una tirada de salvación de Fuerza {@dc 15} o ser derribado."
+										]
+									},
+									{
+										"name": "Magic Resistance",
+										"entries": [
+											"El unicornio tiene ventaja en las tiradas de salvación contra hechizos y otros efectos mágicos."
+										]
+									},
+									{
+										"name": "Magic Weapons",
+										"entries": [
+											"Los ataques con armas del unicornio son mágicos."
+										]
+									}
+								],
+								"action": [
+									{
+										"name": "Multiattack",
+										"entries": [
+											"El unicornio realiza dos ataques: uno con las pezuñas y otro con el cuerno."
+										]
+									},
+									{
+										"name": "Hooves",
+										"entries": [
+											"{@atk mw} {@hit 7} para golpear, alcance 5 pies, un objetivo. Impacto: 11 ({@damage 2d6 + 4}) de daño por apaleamiento."
+										]
+									},
+									{
+										"name": "Horn",
+										"entries": [
+											"{@atk mw} {@hit 7} para golpear, alcance 5 pies, un objetivo. Impacto: 8 ({@damage 1d8 + 4}) de daño perforante."
+										]
+									},
+									{
+										"name": "Healing Touch (3/Day)",
+										"entries": [
+											"El unicornio toca a otra criatura con su cuerno. El objetivo recupera mágicamente 11 ({@dice 2d8 + 2}) puntos de vida. Además, el toque elimina todas las enfermedades y neutraliza todos los venenos que afecten al objetivo."
+										]
+									},
+									{
+										"name": "Teleport (1/Day)",
+										"entries": [
+											"El unicornio se teletransporta mágicamente a sí mismo y a un máximo de tres criaturas dispuestas que pueda ver en un radio de 1,5 metros, junto con cualquier equipo que lleven puesto o que lleven consigo, a un lugar que el unicornio conozca, hasta 1 milla de distancia."
+										]
+									}
+								],
+								"legendaryGroup": {
+									"name": "Unicorn",
+									"source": "MM"
+								},
+								"legendary": [
+									{
+										"name": "Hooves",
+										"entries": [
+											"El unicornio hace un ataque con sus pezuñas."
+										]
+									},
+									{
+										"name": "Shimmering Shield (Costs 2 Actions)",
+										"entries": [
+											"El unicornio crea un campo mágico y brillante alrededor de sí mismo o de otra criatura que pueda ver en un radio de 60 pies. El objetivo obtiene un bonificador +2 a la CA hasta el final del siguiente turno del unicornio."
+										]
+									},
+									{
+										"name": "Heal Self (Costs 3 Actions)",
+										"entries": [
+											"El unicornio recupera mágicamente 11 ({@dice 2d8 + 2}) puntos de vida."
+										]
+									}
+								],
+								"page": 294,
+								"spellcasting": [
+									{
+										"name": "Innate Spellcasting",
+										"headerEntries": [
+											"La habilidad innata de lanzamiento de hechizos del unicornio es Carisma (salvación de hechizos {@dc 14}). El unicornio puede lanzar de forma innata los siguientes hechizos, que no requieren componentes:"
+										],
+										"will": [
+											"{@spell detect evil and good}",
+											"{@spell druidcraft}",
+											"{@spell pass without trace}"
+										],
+										"daily": {
+											"1e": [
+												"{@spell calm emotions}",
+												"{@spell dispel evil and good}",
+												"{@spell entangle}"
+											]
+										},
+										"ability": "cha"
+									}
+								],
+								"environment": [
+									"forest"
+								],
+								"soundClip": {
+									"type": "internal",
+									"path": "bestiary/unicorn.mp3"
+								},
+								"traitTags": [
+									"Charge",
+									"Magic Resistance",
+									"Magic Weapons"
+								],
+								"actionTags": [
+									"Multiattack"
+								]
+							}
+						},
+						"Hechizos; como en el caso anterior:",
+						{
+							"type": "dataSpell",
+							"dataSpell": {
+								"name": "Fireball",
+								"level": 3,
+								"school": "V",
+								"time": [
+									{
+										"number": 1,
+										"unit": "action"
+									}
+								],
+								"range": {
+									"type": "point",
+									"distance": {
+										"type": "feet",
+										"amount": 150
+									}
+								},
+								"components": {
+									"v": true,
+									"s": true,
+									"m": "a tiny ball of bat guano and sulfur"
+								},
+								"duration": [
+									{
+										"type": "instant"
+									}
+								],
+								"classes": {
+									"fromClassList": [
+										{
+											"name": "Sorcerer",
+											"source": "PHB"
+										},
+										{
+											"name": "Wizard",
+											"source": "PHB"
+										}
+									],
+									"fromSubclass": [
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Light",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Warlock",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Fiend",
+												"source": "PHB"
+											}
+										},
+										{
+											"class": {
+												"name": "Cleric",
+												"source": "PHB"
+											},
+											"subclass": {
+												"name": "Zeal (PSA)",
+												"source": "PSA"
+											}
+										}
 									]
 								},
-								"ability": "cha"
-							}
-						],
-						"environment": [
-							"forest"
-						],
-						"soundClip": {
-							"type": "internal",
-							"path": "bestiary/unicorn.mp3"
-						},
-						"traitTags": [
-							"Charge",
-							"Magic Resistance",
-							"Magic Weapons"
-						],
-						"actionTags": [
-							"Multiattack"
-						]
-					}
-				},
-				"Hechizos; como en el caso anterior:",
-				{
-					"type": "dataSpell",
-					"dataSpell": {
-						"name": "Fireball",
-						"level": 3,
-						"school": "V",
-						"time": [
-							{
-								"number": 1,
-								"unit": "action"
-							}
-						],
-						"range": {
-							"type": "point",
-							"distance": {
-								"type": "feet",
-								"amount": 150
-							}
-						},
-						"components": {
-							"v": true,
-							"s": true,
-							"m": "a tiny ball of bat guano and sulfur"
-						},
-						"duration": [
-							{
-								"type": "instant"
-							}
-						],
-						"classes": {
-							"fromClassList": [
-								{
-									"name": "Sorcerer",
-									"source": "PHB"
-								},
-								{
-									"name": "Wizard",
-									"source": "PHB"
-								}
-							],
-							"fromSubclass": [
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Light",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Warlock",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Fiend",
-										"source": "PHB"
-									}
-								},
-								{
-									"class": {
-										"name": "Cleric",
-										"source": "PHB"
-									},
-									"subclass": {
-										"name": "Zeal (PSA)",
-										"source": "PSA"
-									}
-								}
-							]
-						},
-						"source": "PHB",
-						"entries": [
-							"Un rayo brillante parpadea desde el dedo que señalas hasta un punto que eliges dentro del alcance y luego florece con un rugido bajo en una explosión de llamas. Cada criatura en una esfera de 20 pies de radio centrada en ese punto debe hacer una tirada de salvación de Destreza. El objetivo recibe {@dice 8d6} de daño por fuego si falla la tirada de salvación, o la mitad de daño si tiene éxito.",
-							"El fuego se propaga por las esquinas. Enciende los objetos inflamables de la zona que no se llevan puestos ni se transportan."
-						],
-						"entriesHigherLevel": [
-							{
-								"type": "entries",
-								"name": "At Higher Levels",
+								"source": "PHB",
 								"entries": [
-									"Cuando lanzas este hechizo utilizando una ranura de hechizo de 4º nivel o superior, el daño aumenta un {@scaledice 8d6|3-9|1d6} por cada nivel de ranura superior al 3º."
-								]
+									"Un rayo brillante parpadea desde el dedo que señalas hasta un punto que eliges dentro del alcance y luego florece con un rugido bajo en una explosión de llamas. Cada criatura en una esfera de 20 pies de radio centrada en ese punto debe hacer una tirada de salvación de Destreza. El objetivo recibe {@dice 8d6} de daño por fuego si falla la tirada de salvación, o la mitad de daño si tiene éxito.",
+									"El fuego se propaga por las esquinas. Enciende los objetos inflamables de la zona que no se llevan puestos ni se transportan."
+								],
+								"entriesHigherLevel": [
+									{
+										"type": "entries",
+										"name": "At Higher Levels",
+										"entries": [
+											"Cuando lanzas este hechizo utilizando una ranura de hechizo de 4º nivel o superior, el daño aumenta un {@scaledice 8d6|3-9|1d6} por cada nivel de ranura superior al 3º."
+										]
+									}
+								],
+								"page": 241
 							}
-						],
-						"page": 241
-					}
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Reference Embeds",
+					"entries": [
+						{
+							"type": "statblock",
+							"tag": "creature",
+							"name": "Goblin"
+						}
+					]
 				}
 			]
 		}
