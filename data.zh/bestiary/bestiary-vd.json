@@ -1,0 +1,246 @@
+{
+	"monster": [
+		{
+			"name": "Vecna the Archlich",
+			"shortName": "Vecna",
+			"isNamedCreature": true,
+			"source": "VD",
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "undead",
+				"tags": [
+					"Wizard"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "32d8 + 128",
+				"average": 272
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 16,
+			"con": 18,
+			"int": 22,
+			"wis": 24,
+			"cha": 16,
+			"save": {
+				"con": "+12",
+				"int": "+14",
+				"wis": "+15"
+			},
+			"skill": {
+				"arcana": "+22",
+				"history": "+14",
+				"insight": "+15",
+				"perception": "+15"
+			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"passive": 25,
+			"resist": [
+				"cold",
+				"lightning",
+				"necrotic"
+			],
+			"immune": [
+				{
+					"immune": [
+						"poison"
+					]
+				},
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned",
+				"stunned"
+			],
+			"languages": [
+				"Common",
+				"Draconic",
+				"Elvish",
+				"Infernal"
+			],
+			"cr": "26",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Vecna施展以下一种法术，不需要任何材料成分，并使用智力作为施法能力（法术保存（%0%））。"
+					],
+					"will": [
+						"{@spell animate dead} (as an action)",
+						"{@spell detect magic}",
+						"{@spell dispel magic}",
+						"{@spell fly}",
+						"{@spell lightning bolt}",
+						"{@spell mage hand}",
+						"{@spell prestidigitation}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell dimension door}",
+							"{@spell invisibility}",
+							"{@spell scrying} (as an action)"
+						],
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell globe of invulnerability}",
+							"{@spell plane shift} (self only)"
+						]
+					},
+					"ability": "int",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Legendary Resistance (5/Day)",
+					"entries": [
+						"如果Vecna的拯救动作失败，他可以选择成功。"
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Vecna携带一把名为Afterthought的魔法匕首。在Vecna以外的人手中，Afterthought是一个（%0%）。"
+					]
+				},
+				{
+					"name": "Undying",
+					"entries": [
+						"如果Vecna被杀，他的灵魂拒绝接受自己的命运，并作为一个没有实体的灵魂继续生存，在{@dice 1d100}年后为自己塑造一个新的身体。Vecna的灵魂可以塑造一个新的身体，即使它的旧身体被烧成灰烬或以其他方式被抹去。当新的身体完成后，Vecna恢复了他所有的命中率并再次变得活跃。Vecna的新身体会出现在Vecna被杀死的地方100英里范围内。"
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Vecna不需要空气、食物、饮料或睡眠。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"维克纳使用 \"诅咒者的飞行\"（如果有的话）、\"腐烂的命运 \"或 \"咒语\"。然后他用（%0%）进行两次攻击。"
+					]
+				},
+				{
+					"name": "Afterthought",
+					"entries": [
+						"{@atk mw} {@hit 13}击中，到达5英尺，一个目标。{@h}7 ({@damage 1d4 + 5})穿刺伤害，加上9 ({@damage 2d8})坏死伤害。如果目标是生物，它将受到熵魔法的影响，在其每个回合开始时受到9({@damage 2d8})坏死伤害。在它的回合中受到这种伤害后，目标可以立即做一个{@dc 20}宪法救赎动作，如果成功，则结束对它的影响。在救赎成功之前，受影响的目标不能恢复生命值。"
+					]
+				},
+				{
+					"name": "Flight of the Damned {@recharge 5}",
+					"entries": [
+						"Vecna 召唤出一股飞行的幽灵实体的洪流，填满一个120英尺的圆锥体，在消散前穿过该区域的所有生物。该区域内的每个生物都必须做一个{@dc 22}宪法规定的投掷。如果救赎失败，该生物会受到36({@damage 8d8})的坏死伤害，并在1分钟内被Vecna{@condition frightened}。拯救失败时，该生物会受到一半的伤害，并且不属于{@condition frightened}。一个{@condition frightened}的生物可以在它的每个回合结束时重复蓄力，成功时结束对它的影响。"
+					]
+				},
+				{
+					"name": "Rotten Fate",
+					"entries": [
+						"Vecna使坏死的魔法吞噬他能看到的120英尺内的一个生物。目标必须做一个{@dc 22}宪法救赎，如果救赎失败，将受到96({@damage 8d8 + 60})的坏死伤害，如果救赎成功，将受到一半的伤害。被这个魔法杀死的人形生物会在Vecna的下一个回合开始时上升为{@creature zombie}，并在主动权顺序中紧随Vecna之后行动。这个{@creature zombie}是在Vecna的控制之下。"
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Vile Teleport",
+					"entries": [
+						"Vecna将他和他所穿戴或携带的任何装备一起传送到一个他能看到的未被占用的空间，最远可达30英尺。他可以使目的地空间15英尺内的每个生物受到10（（%0%））的精神伤害。如果至少有一个生物受到这种伤害，Vecna会重新获得80点生命值。"
+					]
+				}
+			],
+			"reactionHeader": [
+				"Vecna can take up to three reactions per round but only one per turn."
+			],
+			"reaction": [
+				{
+					"name": "Dread Counterspell",
+					"entries": [
+						"Vecna说出一个可怕的词来打断他能看到的正在施法的生物。如果该咒语是4级或更低级的，它就会失败，并且没有效果。如果咒语是5级或更高，Vecna会进行智力检查（（%0%）+咒语等级）。如果成功，该咒语就会失败并且没有效果。无论该咒语的等级如何，如果咒语失败，施法者将受到10（（%1%））的精神伤害。"
+					]
+				},
+				{
+					"name": "Fell Rebuke",
+					"entries": [
+						"在被攻击击中时，Vecna会说出一个倒下的词，对攻击者造成10（（%0%））的坏死伤害，并且Vecna会将他和他所穿戴或携带的任何装备一起传送到他能看到的一个无人的空间，最远可达30英尺。"
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Vecna",
+				"source": "VD"
+			},
+			"altArt": [
+				{
+					"name": "Vecna the Archlich (Alt)",
+					"source": "VD"
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"U"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"E",
+				"I"
+			],
+			"damageTags": [
+				"N",
+				"P",
+				"Y"
+			],
+			"damageTagsSpell": [
+				"L",
+				"O"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}
