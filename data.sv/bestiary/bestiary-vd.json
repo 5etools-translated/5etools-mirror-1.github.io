@@ -1,0 +1,246 @@
+{
+	"monster": [
+		{
+			"name": "Vecna the Archlich",
+			"shortName": "Vecna",
+			"isNamedCreature": true,
+			"source": "VD",
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "undead",
+				"tags": [
+					"Wizard"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "32d8 + 128",
+				"average": 272
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 16,
+			"con": 18,
+			"int": 22,
+			"wis": 24,
+			"cha": 16,
+			"save": {
+				"con": "+12",
+				"int": "+14",
+				"wis": "+15"
+			},
+			"skill": {
+				"arcana": "+22",
+				"history": "+14",
+				"insight": "+15",
+				"perception": "+15"
+			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"passive": 25,
+			"resist": [
+				"cold",
+				"lightning",
+				"necrotic"
+			],
+			"immune": [
+				{
+					"immune": [
+						"poison"
+					]
+				},
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned",
+				"stunned"
+			],
+			"languages": [
+				"Common",
+				"Draconic",
+				"Elvish",
+				"Infernal"
+			],
+			"cr": "26",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Vecna kastar en av följande trollformler som inte kräver några materiella komponenter och använder intelligens som trollformelförmåga (räddning av trollformeln {@dc 22}):"
+					],
+					"will": [
+						"{@spell animate dead} (as an action)",
+						"{@spell detect magic}",
+						"{@spell dispel magic}",
+						"{@spell fly}",
+						"{@spell lightning bolt}",
+						"{@spell mage hand}",
+						"{@spell prestidigitation}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell dimension door}",
+							"{@spell invisibility}",
+							"{@spell scrying} (as an action)"
+						],
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell globe of invulnerability}",
+							"{@spell plane shift} (self only)"
+						]
+					},
+					"ability": "int",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Legendary Resistance (5/Day)",
+					"entries": [
+						"Om Vecna misslyckas med ett räddningskast kan han välja att lyckas istället."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Vecna bär en magisk dolk som heter Afterthought. I händerna på någon annan än Vecna är Afterthought en {@item +2 dagger}."
+					]
+				},
+				{
+					"name": "Undying",
+					"entries": [
+						"Om Vecna dödas vägrar hans själ att acceptera sitt öde och lever vidare som en obestämd ande som skapar en ny kropp efter {@dice 1d100} år. Vecnas själ kan skapa en ny kropp även om dess gamla kropp brändes till aska eller på annat sätt utplånades. När den nya kroppen är färdigställd återfår Vecna alla sina träffpunkter och blir aktiv igen. Vecnas nya kropp dyker upp var som helst inom en radie av 160 mil från den plats där Vecna dödades."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Vecna behöver varken luft, mat, dryck eller sömn."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Vecna använder Flight of the Damned (om tillgängligt), Rotten Fate eller Spellcasting. Han gör sedan två attacker med {@i Afterthought}."
+					]
+				},
+				{
+					"name": "Afterthought",
+					"entries": [
+						"{@atk mw} {@hit 13} för att träffa, räckvidd 1,5 m, ett mål. {@h}7 ({@damage 1d4 + 5}) stickande skada, plus 9 ({@damage 2d8}) nekrotisk skada. Om målet är en varelse drabbas den av entropisk magi och tar 9 ({@damage 2d8}) nekrotisk skada i början av varje tur. Omedelbart efter att ha tagit denna skada på sin tur kan målet göra ett {@dc 20} Konstitutions räddningskast, vilket avslutar effekten på sig själv vid en framgång. Tills det lyckas med detta räddningsförsök kan det drabbade målet inte återfå sina träffpunkter."
+					]
+				},
+				{
+					"name": "Flight of the Damned {@recharge 5}",
+					"entries": [
+						"Vecna trollar fram en ström av flygande, spektrala varelser som fyller en 120 fot lång kon och passerar genom alla varelser i området innan de försvinner. Varje varelse i det området måste göra ett {@dc 22} räddningskast för konstitutionen. Vid ett misslyckat räddningsförsök tar varelsen 36 ({@damage 8d8}) nekrotisk skada och är {@condition frightened} av Vecna i 1 minut. Vid ett misslyckat räddningsförsök tar varelsen hälften så mycket skada och är inte {@condition frightened}. En {@condition frightened} varelse kan upprepa räddningskastet i slutet av var och en av sina vändor, och avslutar effekten på sig själv vid ett lyckat resultat."
+					]
+				},
+				{
+					"name": "Rotten Fate",
+					"entries": [
+						"Vecna orsakar nekrotisk magi för att uppsluka en varelse som han kan se inom 120 fot från sig själv. Målet måste göra ett {@dc 22} räddningskast för konstitutionen och tar 96 ({@damage 8d8 + 60}) nekrotisk skada om räddningen misslyckas, eller hälften så mycket skada om räddningen lyckas. En Humanoid som dödas av denna magi stiger upp som en {@creature zombie} i början av Vecnas nästa tur och agerar omedelbart efter Vecna i initiativordningen. Den {@creature zombie} är under Vecnas kontroll."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Vile Teleport",
+					"entries": [
+						"Vecna teleporterar, tillsammans med all utrustning han bär eller bär på, upp till 30 fot till ett obebott utrymme han kan se. Han kan få varje varelse av hans val inom 15 fot från hans destinationsutrymme att ta 10 ({@damage 3d6}) psykisk skada. Om minst en varelse tar denna skada får Vecna tillbaka 80 träffpunkter."
+					]
+				}
+			],
+			"reactionHeader": [
+				"Vecna can take up to three reactions per round but only one per turn."
+			],
+			"reaction": [
+				{
+					"name": "Dread Counterspell",
+					"entries": [
+						"Vecna uttalar ett fruktansvärt ord för att avbryta en varelse som han kan se och som kastar en trollformel. Om besvärjelsen är på fjärde nivån eller lägre misslyckas den och har ingen effekt. Om besvärjelsen är av 5:e nivå eller högre gör Vecna en intelligenskontroll ({@dc 10} + besvärjelsens nivå). Om den lyckas misslyckas förtrollningen och har ingen effekt. Oavsett trollformelns nivå tar kastaren 10 ({@damage 3d6}) psykisk skada om trollformeln misslyckas."
+					]
+				},
+				{
+					"name": "Fell Rebuke",
+					"entries": [
+						"Som svar på att bli träffad av en attack yttrar Vecna ett fallord som orsakar 10 ({@damage 3d6}) nekrotisk skada för angriparen, och Vecna teleporterar sig, tillsammans med all utrustning som han har på sig eller bär, upp till 30 fot till ett obebott utrymme som han kan se."
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Vecna",
+				"source": "VD"
+			},
+			"altArt": [
+				{
+					"name": "Vecna the Archlich (Alt)",
+					"source": "VD"
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"U"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"E",
+				"I"
+			],
+			"damageTags": [
+				"N",
+				"P",
+				"Y"
+			],
+			"damageTagsSpell": [
+				"L",
+				"O"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

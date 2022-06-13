@@ -269,7 +269,7 @@ class NavBar {
 				fnSort: SortUtil.ascSortAdventure.bind(SortUtil),
 			},
 		].forEach(({prop, parentCategory, page, fnSort}) => {
-			const formBrew = MiscUtil.copy(brew[prop] || []);
+			const formBrew = MiscUtil.copy(brew?.[prop] || []);
 			formBrew.forEach(it => {
 				if (it.parentSource) it.parentName = Parser.sourceJsonToFull(it.parentSource);
 			});

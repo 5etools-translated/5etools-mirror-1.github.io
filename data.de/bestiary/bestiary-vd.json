@@ -1,0 +1,246 @@
+{
+	"monster": [
+		{
+			"name": "Vecna the Archlich",
+			"shortName": "Vecna",
+			"isNamedCreature": true,
+			"source": "VD",
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "undead",
+				"tags": [
+					"Wizard"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"formula": "32d8 + 128",
+				"average": 272
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 16,
+			"con": 18,
+			"int": 22,
+			"wis": 24,
+			"cha": 16,
+			"save": {
+				"con": "+12",
+				"int": "+14",
+				"wis": "+15"
+			},
+			"skill": {
+				"arcana": "+22",
+				"history": "+14",
+				"insight": "+15",
+				"perception": "+15"
+			},
+			"senses": [
+				"truesight 120 ft."
+			],
+			"passive": 25,
+			"resist": [
+				"cold",
+				"lightning",
+				"necrotic"
+			],
+			"immune": [
+				{
+					"immune": [
+						"poison"
+					]
+				},
+				{
+					"immune": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks"
+				}
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"paralyzed",
+				"poisoned",
+				"stunned"
+			],
+			"languages": [
+				"Common",
+				"Draconic",
+				"Elvish",
+				"Infernal"
+			],
+			"cr": "26",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Vecna wirkt einen der folgenden Zauber, die keine materiellen Komponenten benötigen und Intelligenz als Zauberfähigkeit verwenden (Zauberschutz {@dc 22}):"
+					],
+					"will": [
+						"{@spell animate dead} (as an action)",
+						"{@spell detect magic}",
+						"{@spell dispel magic}",
+						"{@spell fly}",
+						"{@spell lightning bolt}",
+						"{@spell mage hand}",
+						"{@spell prestidigitation}"
+					],
+					"daily": {
+						"2e": [
+							"{@spell dimension door}",
+							"{@spell invisibility}",
+							"{@spell scrying} (as an action)"
+						],
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell globe of invulnerability}",
+							"{@spell plane shift} (self only)"
+						]
+					},
+					"ability": "int",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Legendary Resistance (5/Day)",
+					"entries": [
+						"Wenn Vecna ein Rettungswurf misslingt, kann er stattdessen einen erfolgreichen Rettungswurf wählen."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Vecna trägt einen magischen Dolch namens Afterthought. In den Händen von jemand anderem als Vecna ist Afterthought ein {@item +2 dagger}."
+					]
+				},
+				{
+					"name": "Undying",
+					"entries": [
+						"Wenn Vecna getötet wird, weigert sich seine Seele, ihr Schicksal zu akzeptieren und lebt als körperloser Geist weiter, der sich nach {@dice 1d100} Jahren einen neuen Körper erschafft. Vecnas Seele kann auch dann einen neuen Körper erschaffen, wenn ihr alter Körper zu Asche verbrannt oder auf andere Weise ausgelöscht wurde. Wenn der neue Körper fertig ist, erhält Vecna alle seine Trefferpunkte zurück und wird wieder aktiv. Vecnas neuer Körper erscheint überall im Umkreis von 100 Meilen um den Ort, an dem Vecna erschlagen wurde."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Vecna braucht weder Luft, Essen, Trinken noch Schlaf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Vecna setzt \"Flug der Verdammten\" (falls verfügbar), \"Verdorbenes Schicksal\" oder \"Zauberei\" ein. Er führt dann zwei Angriffe mit {@i Afterthought} aus."
+					]
+				},
+				{
+					"name": "Afterthought",
+					"entries": [
+						"{@atk mw} {@hit 13} Treffer, Reichweite 5 ft., ein Ziel. {@h}7 ({@damage 1d4 + 5}) Stichschaden, plus 9 ({@damage 2d8}) nekrotischer Schaden. Handelt es sich bei dem Ziel um eine Kreatur, wird diese von entropischer Magie heimgesucht und erleidet zu Beginn jeder ihrer Runden 9 ({@damage 2d8}) nekrotischen Schaden. Unmittelbar nachdem es diesen Schaden in seinem Zug erlitten hat, kann das Ziel einen {@dc 20} Rettungswurf auf Konstitution machen, der bei Erfolg den Effekt für es beendet. Solange dieser Schutzwurf nicht gelingt, kann das befallene Ziel keine Trefferpunkte zurückgewinnen."
+					]
+				},
+				{
+					"name": "Flight of the Damned {@recharge 5}",
+					"entries": [
+						"Vecna beschwört einen Sturzbach aus fliegenden, geisterhaften Wesen, die einen Kegel von 120 Fuß füllen und durch alle Kreaturen in diesem Gebiet hindurchgehen, bevor sie sich auflösen. Jede Kreatur in diesem Gebiet muss einen {@dc 22} Rettungswurf auf Konstitution machen. Bei einem misslungenen Schutzwurf erleidet die Kreatur 36 ({@damage 8d8}) nekrotischen Schaden und ist 1 Minute lang {@condition frightened} von Vecna. Bei einem misslungenen Schutzwurf erleidet die Kreatur halb so viel Schaden und ist nicht {@condition frightened}. Eine {@condition frightened} Kreatur kann den Rettungswurf am Ende jeder ihrer Runden wiederholen, wobei der Effekt bei einem Erfolg für sie selbst endet."
+					]
+				},
+				{
+					"name": "Rotten Fate",
+					"entries": [
+						"Vecna verursacht nekrotische Magie, um eine Kreatur im Umkreis von 120 Fuß zu verschlingen, die er sehen kann. Das Ziel muss einen {@dc 22} Rettungswurf auf die Konstitution machen und erleidet bei einem misslungenen Rettungswurf 96 ({@damage 8d8 + 60}) nekrotischen Schaden, bei einem erfolgreichen Rettungswurf die Hälfte des Schadens. Ein durch diese Magie getöteter Humanoid erhebt sich zu Beginn von Vecnas nächstem Zug als {@creature zombie} und agiert in der Reihenfolge der Initiative unmittelbar nach Vecna. Der {@creature zombie} steht unter Vecnas Kontrolle."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Vile Teleport",
+					"entries": [
+						"Vecna teleportiert sich zusammen mit der Ausrüstung, die er trägt, bis zu 30 Fuß weit in einen unbesetzten Raum, den er sehen kann. Er kann jede Kreatur seiner Wahl im Umkreis von 15 Fuß von seinem Zielort 10 ({@damage 3d6}) psychischen Schaden erleiden lassen. Wenn mindestens eine Kreatur diesen Schaden erleidet, erhält Vecna 80 Trefferpunkte zurück."
+					]
+				}
+			],
+			"reactionHeader": [
+				"Vecna can take up to three reactions per round but only one per turn."
+			],
+			"reaction": [
+				{
+					"name": "Dread Counterspell",
+					"entries": [
+						"Vecna spricht ein Schreckenswort, um eine Kreatur zu unterbrechen, die er sehen kann und die gerade einen Zauber wirkt. Wenn der Zauber auf Stufe 4 oder niedriger ist, schlägt er fehl und hat keine Wirkung. Ist der Zauber auf Stufe 5 oder höher, macht Vecna eine Intelligenzprüfung ({@dc 10} + Stufe des Zaubers). Bei einem Erfolg scheitert der Zauber und hat keine Wirkung. Unabhängig von der Stufe des Zaubers erleidet der Zaubernde 10 ({@damage 3d6}) psychischen Schaden, wenn der Zauber fehlschlägt."
+					]
+				},
+				{
+					"name": "Fell Rebuke",
+					"entries": [
+						"Wenn er von einem Angriff getroffen wird, spricht Vecna ein Fällwort, das dem Angreifer 10 ({@damage 3d6}) nekrotischen Schaden zufügt, und Vecna teleportiert sich mitsamt der Ausrüstung, die er trägt oder mit sich führt, bis zu 30 Fuß in einen unbesetzten Raum, den er sehen kann."
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Vecna",
+				"source": "VD"
+			},
+			"altArt": [
+				{
+					"name": "Vecna the Archlich (Alt)",
+					"source": "VD"
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"senseTags": [
+				"U"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"E",
+				"I"
+			],
+			"damageTags": [
+				"N",
+				"P",
+				"Y"
+			],
+			"damageTagsSpell": [
+				"L",
+				"O"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

@@ -35,6 +35,13 @@ class BrewDoc {
 		return this;
 	}
 
+	// region Conditions
+	static isOperationPermitted_moveToEditable ({brew, isAllowLocal = false} = {}) {
+		return !brew.head.isEditable
+			&& (isAllowLocal || !brew.head.isLocal);
+	}
+	// endregion
+
 	// region Merging
 	mutMerge ({json, isLazy = false}) {
 		this.body = this.constructor.mergeObjects({isCopy: !isLazy, isMutMakeCompatible: false}, this.body, json);
@@ -862,6 +869,53 @@ class BrewUtil2 {
 
 		await this.pUpdateBrew(nxt);
 	}
+
+	static async pIsEditableSourceJson (sourceJson) {
+		const brew = await this.pGetEditableBrewDoc();
+		if (!brew) return false;
+
+		const sources = MiscUtil.get(brew.body, "_meta", "sources") || [];
+		return sources.some(it => it.json === sourceJson);
+	}
+
+	/**
+	 * Move the brews containing a given source to the editable document. If a brew cannot be moved to the editable
+	 *   document, copy the source to the editable document instead.
+	 */
+	static async pMoveOrCopyToEditableBySourceJson (sourceJson) {
+		if (await this.pIsEditableSourceJson(sourceJson)) return;
+
+		// Fetch all candidate brews
+		const brews = (await this._pGetBrewRaw()).filter(brew => (brew.body._meta?.sources || []).some(src => src.json === sourceJson));
+		const brewsLocal = (await this._pGetBrew_pGetLocalBrew()).filter(brew => (brew.body._meta?.sources || []).some(src => src.json === sourceJson));
+
+		// Arbitrarily select one, preferring non-local
+		let brew = brews.find(brew => BrewDoc.isOperationPermitted_moveToEditable({brew}));
+		if (!brew) brew = brewsLocal.find(brew => BrewDoc.isOperationPermitted_moveToEditable({brew, isAllowLocal: true}));
+
+		if (!brew) return;
+
+		if (brew.head.isLocal) return this.pCopyToEditable({brews: [brew]});
+
+		return this.pMoveToEditable({brews: [brew]});
+	}
+
+	static async pMoveToEditable ({brews}) {
+		const out = await this.pCopyToEditable({brews});
+		await BrewUtil2.pDeleteBrews(brews);
+		return out;
+	}
+
+	static async pCopyToEditable ({brews}) {
+		const brewEditable = await BrewUtil2.pGetOrCreateEditableBrewDoc();
+
+		const cpyBrewEditableDoc = BrewDoc.fromObject(brewEditable, {isCopy: true});
+		brews.forEach((brew, i) => cpyBrewEditableDoc.mutMerge({json: brew.body, isLazy: i !== brews.length - 1}));
+
+		await BrewUtil2.pSetEditableBrewDoc(cpyBrewEditableDoc.toObject());
+
+		return cpyBrewEditableDoc;
+	}
 	// endregion
 
 	// region Rendering/etc.
@@ -1473,7 +1527,7 @@ class ManageBrewUi {
 	}
 
 	static _isBrewOperationPermitted_update (brew) { return !brew.head.isEditable && BrewUtil2.isPullable(brew); }
-	static _isBrewOperationPermitted_moveToEditable (brew) { return !brew.head.isEditable && !brew.head.isLocal; }
+	static _isBrewOperationPermitted_moveToEditable (brew) { return BrewDoc.isOperationPermitted_moveToEditable({brew}); }
 	static _isBrewOperationPermitted_delete (brew) { return !brew.head.isLocal; }
 
 	async _pHandleClick_btnListMass ({evt, rdState}) {
@@ -1922,14 +1976,7 @@ class ManageBrewUi {
 
 		if (!await this.constructor._pGetUserBoolean_isMoveBrewsToEditable({brews})) return;
 
-		const brewEditable = await BrewUtil2.pGetOrCreateEditableBrewDoc();
-
-		const cpyBrewEditableDoc = BrewDoc.fromObject(brewEditable, {isCopy: true});
-		brews.forEach((brew, i) => cpyBrewEditableDoc.mutMerge({json: brew.body, isLazy: i !== brews.length - 1}));
-
-		await BrewUtil2.pSetEditableBrewDoc(cpyBrewEditableDoc.toObject());
-
-		await BrewUtil2.pDeleteBrews(brews);
+		await BrewUtil2.pMoveToEditable({brews});
 
 		await this._pRender_pBrewList(rdState);
 

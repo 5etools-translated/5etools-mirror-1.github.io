@@ -363,6 +363,18 @@ class Builder extends ProxyBase {
 
 	get prop () { return this._prop; }
 
+	prepareExistingEditableBrew ({brew}) {
+		let isAnyMod = false;
+		if (!brew.body[this.prop]?.length) return;
+
+		brew.body[this.prop].forEach(ent => {
+			if (ent.uniqueId) return;
+			ent.uniqueId = CryptUtil.uid();
+			isAnyMod = true;
+		});
+		return isAnyMod;
+	}
+
 	getSaveableState () {
 		return {
 			s: this.__state,
@@ -669,13 +681,48 @@ class Builder extends ProxyBase {
 	}
 
 	async _pHandleClick_pSaveBrew () {
-		if (!this._state.source) throw new Error(`Current state has no "source"!`);
+		const source = this._state.source;
+		if (!source) throw new Error(`Current state has no "source"!`);
 
 		const clean = DataUtil.cleanJson(MiscUtil.copy(this.__state), {isDeleteUniqueId: false});
 		if (this._meta.isPersisted) {
 			await BrewUtil2.pPersistEditableBrewEntity(this._prop, clean);
 			await this.pRenderSideMenu();
 		} else {
+			// If we are e.g. editing a copy of a non-editable brew's entity, we need to first convert the parent brew
+			//   to "editable."
+			if (
+				BrewUtil2.sourceJsonToSource(source)
+				&& !await BrewUtil2.pIsEditableSourceJson(source)
+			) {
+				const isMove = await InputUiUtil.pGetUserBoolean({
+					title: "Move to Editable Homebrew Document",
+					htmlDescription: `<div>Saving "${this._state.name}" with source "${this._state.source}" will move all homebrew from that source to the editable homebrew document.<br>Moving homebrew to the editable document will prevent it from being automatically updated in future.<br>Do you wish to proceed?<br><i class="ve-muted">Giving "${this._state.name}" an editable source will avoid this issue.</i></div>`,
+					textYes: "Yes",
+					textNo: "Cancel",
+				});
+				if (!isMove) return;
+
+				const brew = await BrewUtil2.pMoveOrCopyToEditableBySourceJson(source);
+				if (!brew) throw new Error(`Failed to make brew for source "${source}" editable!`);
+
+				const nxtBrew = MiscUtil.copy(brew);
+				// Ensure everything has a `uniqueId`
+				let isAnyMod = this.prepareExistingEditableBrew({brew: nxtBrew});
+
+				// We then need to attempt a find-replace on the hash of our current entity, as we may be trying to update
+				//   one exact entity. This is not needed if e.g. a renamed copy of an existing entity is being made.
+				const hash = UrlUtil.URL_TO_HASH_BUILDER[this._prop](clean);
+				const ixExisting = (brew.body[this._prop] || []).findIndex(it => UrlUtil.URL_TO_HASH_BUILDER[this._prop](it) === hash);
+				if (~ixExisting) {
+					clean.uniqueId = clean.uniqueId || nxtBrew.body[this._prop][ixExisting].uniqueId;
+					nxtBrew.body[this._prop][ixExisting] = clean;
+					isAnyMod = true;
+				}
+
+				if (isAnyMod) await BrewUtil2.pSetEditableBrewDoc(nxtBrew);
+			}
+
 			await BrewUtil2.pPersistEditableBrewEntity(this._prop, clean);
 			this._meta.isPersisted = true;
 			await SearchWidget.P_LOADING_CONTENT;
@@ -1254,7 +1301,7 @@ class Makebrew {
 		// generic init
 		await BrewUtil2.pInit();
 		ExcludeUtil.pInitialise().then(null); // don't await, as this is only used for search
-		await this._pPrepareExistingEditableBrew();
+		await this.pPrepareExistingEditableBrew();
 		await BrewUtil2.pGetBrewProcessed();
 		await SearchUiUtil.pDoGlobalInit();
 		// Do this asynchronously, to avoid blocking the load
@@ -1277,19 +1324,14 @@ class Makebrew {
 	 * The editor requires that each entity has a `uniqueId`, as e.g. hashing the entity does not produce a
 	 * stable ID (since there may be duplicates, or the name may change).
 	 */
-	static async _pPrepareExistingEditableBrew () {
+	static async pPrepareExistingEditableBrew () {
 		const brew = MiscUtil.copy(await BrewUtil2.pGetOrCreateEditableBrewDoc());
 
 		let isAnyMod = false;
 		Object.values(ui.builders)
 			.forEach(builder => {
-				if (!brew.body[builder.prop]?.length) return;
-
-				brew.body[builder.prop].forEach(ent => {
-					if (ent.uniqueId) return;
-					ent.uniqueId = CryptUtil.uid();
-					isAnyMod = true;
-				});
+				const isAnyModBuilder = builder.prepareExistingEditableBrew({brew});
+				isAnyMod = isAnyMod || isAnyModBuilder;
 			});
 
 		if (!isAnyMod) return;

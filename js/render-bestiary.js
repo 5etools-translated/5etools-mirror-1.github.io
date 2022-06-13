@@ -1,37 +1,4 @@
 class RenderBestiary {
-	static _getRenderedSection (sectionTrClass, sectionEntries, sectionLevel) {
-		const renderer = Renderer.get();
-		const renderStack = [];
-		if (sectionTrClass === "lairaction" || sectionTrClass === "regionaleffect") {
-			renderer.setFirstSection(true).recursiveRender({entries: sectionEntries}, renderStack, {depth: sectionLevel + 1});
-		} else if (sectionTrClass === "legendary" || sectionTrClass === "mythic") {
-			const cpy = MiscUtil.copy(sectionEntries).map(it => {
-				if (it.name && it.entries) {
-					it.name = `${it.name}.`;
-					it.type = it.type || "item";
-				}
-				return it;
-			});
-			const toRender = {type: "list", style: "list-hang-notitle", items: cpy};
-			renderer.setFirstSection(true).recursiveRender(toRender, renderStack, {depth: sectionLevel});
-		} else {
-			sectionEntries.forEach(e => {
-				if (e.rendered) renderStack.push(e.rendered);
-				else renderer.setFirstSection(true).recursiveRender(e, renderStack, {depth: sectionLevel + 1});
-			});
-		}
-		return `<tr class="${sectionTrClass}"><td colspan="6" class="mon__sect-row-inner">${renderStack.join("")}</td></tr>`;
-	}
-
-	static _getPronunciationButton (mon) {
-		return `<button class="btn btn-xs btn-default btn-name-pronounce ml-2 mb-2 ve-self-flex-end">
-			<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
-			<audio class="name-pronounce" preload="none">
-			   <source src="${Renderer.utils.getMediaUrl(mon, "soundClip", "audio")}" type="audio/mpeg">
-			</audio>
-		</button>`;
-	}
-
 	/**
 	 * @param mon Creature data.
 	 * @param [options]
@@ -108,24 +75,22 @@ class RenderBestiary {
 		<tr>${options.selSummonSpellLevel ? $$`<td colspan="6"><strong>Spell Level</strong> ${options.selSummonSpellLevel}</td>` : ""}</tr>
 		<tr>${options.selSummonClassLevel ? $$`<td colspan="6"><strong>Class Level</strong> ${options.selSummonClassLevel}</td>` : ""}</tr>
 
-		${allTraits ? `<tr><td class="divider" colspan="6"><div></div></td></tr>${RenderBestiary._getRenderedSection("trait", allTraits, 1)}` : ""}
-		${allActions ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Actions${mon.actionNote ? ` (<span class="small">${mon.actionNote}</span>)` : ""}</h3></td></tr>
-		${RenderBestiary._getRenderedSection("action", allActions, 1)}` : ""}
-		${mon.bonus ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Bonus Actions</h3></td></tr>
-		${RenderBestiary._getRenderedSection("bonus", mon.bonus, 1)}` : ""}
-		${mon.reaction ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Reactions</h3></td></tr>
-		${RenderBestiary._getRenderedSection("reaction", mon.reaction, 1)}` : ""}
-		${mon.legendary ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Legendary Actions</h3></td></tr>
-		<tr class="legendary"><td colspan="6"><span class="name"></span> <span>${Renderer.monster.getLegendaryActionIntro(mon)}</span></td></tr>
-		${RenderBestiary._getRenderedSection("legendary", mon.legendary, 1)}` : ""}
-		${mon.mythic ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Mythic Actions</h3></td></tr>
-		<tr class="mythic"><td colspan="6"><span class="name"></span> <span>${Renderer.monster.getMythicActionIntro(mon)}</span></td></tr>
-		${RenderBestiary._getRenderedSection("mythic", mon.mythic, 1)}` : ""}
+		${allTraits ? `<tr><td class="divider" colspan="6"><div></div></td></tr>${RenderBestiary._getRenderedSection({prop: "trait", entries: allTraits})}` : ""}
+		${allActions ? `${this._getRenderedSectionHeader({mon, title: "Actions", prop: "action"})}
+		${RenderBestiary._getRenderedSection({mon, prop: "action", entries: allActions})}` : ""}
+		${mon.bonus ? `${this._getRenderedSectionHeader({mon, title: "Bonus Actions", prop: "bonus"})}
+		${RenderBestiary._getRenderedSection({mon, prop: "bonus", entries: mon.bonus})}` : ""}
+		${mon.reaction ? `${this._getRenderedSectionHeader({mon, title: "Reactions", prop: "reaction"})}
+		${RenderBestiary._getRenderedSection({mon, prop: "reaction", entries: mon.reaction})}` : ""}
+		${mon.legendary ? `${this._getRenderedSectionHeader({mon, title: "Legendary Actions", prop: "legendary", fnGetHeader: Renderer.monster.getLegendaryActionIntro.bind(Renderer.monster)})}
+		${RenderBestiary._getRenderedSection({mon, prop: "legendary", entries: mon.legendary})}` : ""}
+		${mon.mythic ? `${this._getRenderedSectionHeader({mon, title: "Mythic Actions", prop: "mythic"})}
+		${RenderBestiary._getRenderedSection({mon, prop: "mythic", entries: mon.mythic})}` : ""}
 
 		${legGroup && legGroup.lairActions ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Lair Actions</h3></td></tr>
-		${RenderBestiary._getRenderedSection("lairaction", legGroup.lairActions, -1)}` : ""}
+		${RenderBestiary._getRenderedSection({prop: "lairaction", entries: legGroup.lairActions, depth: -1})}` : ""}
 		${legGroup && legGroup.regionalEffects ? `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">Regional Effects</h3></td></tr>
-		${RenderBestiary._getRenderedSection("regionaleffect", legGroup.regionalEffects, -1)}` : ""}
+		${RenderBestiary._getRenderedSection({prop: "regionaleffect", entries: legGroup.regionalEffects, depth: -1})}` : ""}
 
 		${renderedVariants ? `<tr><td colspan=6>${renderedVariants}</td></tr>` : ""}
 		${mon.footer ? `<tr><td colspan=6 class="mon__sect-row-inner">${renderer.render({entries: mon.footer})}</td></tr>` : ""}
@@ -133,6 +98,61 @@ class RenderBestiary {
 		${htmlSourceAndEnvironment.length === 2 ? `<tr><td colspan="6">${htmlSourceAndEnvironment[1]}</td></tr>` : ""}
 		<tr><td colspan="6">${htmlSourceAndEnvironment[0]}</td></tr>
 		${Renderer.utils.getBorderTr()}`;
+	}
+
+	static _getRenderedSectionHeader ({mon, title, prop}) {
+		const noteKey = `${prop}Note`;
+		return `<tr><td colspan="6" class="mon__stat-header-underline"><h3 class="mon__sect-header-inner">${title}${mon[noteKey] ? ` (<span class="small">${mon[noteKey]}</span>)` : ""}</h3></td></tr>`;
+	}
+
+	static _getRenderedSection ({mon = null, prop, entries, depth = 1, fnGetHeader = null}) {
+		const renderer = Renderer.get();
+		const renderStack = [];
+
+		switch (prop) {
+			case "lairaction":
+			case "regionaleffect": {
+				renderer.setFirstSection(true).recursiveRender({entries: entries}, renderStack, {depth: depth + 1});
+				break;
+			}
+
+			case "legendary":
+			case "mythic": {
+				const cpy = MiscUtil.copy(entries).map(it => {
+					if (it.name && it.entries) {
+						it.name = `${it.name}.`;
+						it.type = it.type || "item";
+					}
+					return it;
+				});
+				const toRender = {type: "list", style: "list-hang-notitle", items: cpy};
+				renderer.setFirstSection(true).recursiveRender(toRender, renderStack, {depth: depth});
+				break;
+			}
+
+			default: {
+				entries.forEach(e => {
+					if (e.rendered) renderStack.push(e.rendered);
+					else renderer.setFirstSection(true).recursiveRender(e, renderStack, {depth: depth + 1});
+				});
+			}
+		}
+
+		const ptHeader = mon
+			? (fnGetHeader ? fnGetHeader(mon) : Renderer.monster.getSectionIntro(mon, {prop}))
+			: "";
+
+		return `${ptHeader ? `<tr><td colspan="6">${ptHeader}</td></tr>` : ""}
+			<tr><td colspan="6" class="mon__sect-row-inner">${renderStack.join("")}</td></tr>`;
+	}
+
+	static _getPronunciationButton (mon) {
+		return `<button class="btn btn-xs btn-default btn-name-pronounce ml-2 mb-2 ve-self-flex-end">
+			<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
+			<audio class="name-pronounce" preload="none">
+			   <source src="${Renderer.utils.getMediaUrl(mon, "soundClip", "audio")}" type="audio/mpeg">
+			</audio>
+		</button>`;
 	}
 
 	static _$getRenderedCreature_getHtmlSourceAndEnvironment (mon, legGroup) {

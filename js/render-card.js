@@ -354,6 +354,12 @@ class RendererCard {
 	}
 	// endregion
 
+	// region embedded entities
+	_renderStatblock (entry, textStack, meta, options) {
+		textStack[0] += `text | (Inline statblock rendering within cards is not supported.)\n`;
+	}
+	// endregion
+
 	// region images
 	_renderImage (entry, textStack, meta, options) {
 		textStack[0] += `text | (Image rendering within cards is not supported.)\n`;
