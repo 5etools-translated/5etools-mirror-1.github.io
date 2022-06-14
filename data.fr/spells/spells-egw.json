@@ -1,0 +1,1090 @@
+{
+	"spell": [
+		{
+			"name": "Dark Star",
+			"source": "EGW",
+			"page": 186,
+			"level": 8,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 150
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a shard of onyx and a drop of the caster's blood, both of which the spell consumes",
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Ce sort crée une sphère centrée sur un point de votre choix à portée. La sphère peut avoir un rayon allant jusqu'à 12 mètres. La zone située dans cette sphère est remplie de ténèbres magiques et d'une force gravitationnelle écrasante.",
+				"Pour la durée du sort, la zone est de {@quickref difficult terrain||3}. Une créature avec une vision sombre ne peut pas voir à travers l'obscurité magique, et la lumière non magique ne peut pas l'éclairer. Aucun son ne peut être créé dans la zone ou la traverser. Toute créature ou objet entièrement à l'intérieur de la sphère est immunisé contre les dégâts du tonnerre, et les créatures sont {@condition deafened} tant qu'elles sont entièrement à l'intérieur. Lancer un sort qui comporte une composante verbale y est impossible.",
+				"Toute créature qui entre dans la zone du sort pour la première fois lors d'un tour ou qui commence son tour à cet endroit doit effectuer un jet de sauvegarde de Constitution. La créature subit {@damage 8d10} de dégâts de force en cas d'échec, ou la moitié des dégâts en cas de réussite. Une créature réduite à 0 point de vie par ces dégâts est désintégrée. Une créature désintégrée et tout ce qu'elle porte et transporte, à l'exception des objets magiques, sont réduits en un tas de fine poussière grise."
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"deafened"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Fortune's Favor",
+			"source": "EGW",
+			"page": 186,
+			"level": 2,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a white pearl worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous communiquez une chance latente à vous-même ou à une créature volontaire que vous pouvez voir à portée. Lorsque la créature choisie effectue un jet d'attaque, un test de capacité ou un jet de sauvegarde avant que le sort ne prenne fin, elle peut annuler ce sort sur elle-même pour lancer un {@dice d20} supplémentaire et choisir lequel des {@dice d20} à utiliser. Alternativement, lorsqu'un jet d'attaque est effectué contre la créature choisie, elle peut annuler ce sort sur elle-même pour effectuer un jet de {@dice d20} et choisir lequel des {@dice d20}s utiliser, celui qu'elle a obtenu ou celui de l'attaquant.",
+				"Si le jet initial {@dice d20} présente un avantage ou un désavantage, la créature effectue le jet supplémentaire {@dice d20} après que l'avantage ou le désavantage ait été appliqué au jet initial."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, vous pouvez cibler une créature supplémentaire pour chaque niveau d'emplacement supérieur au 2e."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gift of Alacrity",
+			"source": "EGW",
+			"page": 186,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Vous touchez une créature consentante. Pour la durée, la cible peut ajouter {@dice 1d8} à ses jets d'initiative."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gravity Fissure",
+			"source": "EGW",
+			"page": 187,
+			"level": 6,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "line",
+				"distance": {
+					"type": "feet",
+					"amount": 100
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a fistful of iron filings"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous manifestez un ravin d'énergie gravitationnelle dans une ligne partant de vous qui fait 100 pieds de long et 5 pieds de large. Chaque créature de cette ligne doit effectuer un jet de sauvegarde de Constitution, subissant {@damage 8d8} de dégâts de force en cas d'échec, ou la moitié des dégâts en cas de réussite.",
+				"Chaque créature située à moins de 3 mètres de la ligne mais pas dans celle-ci doit réussir un jet de sauvegarde de Constitution ou subir {@damage 8d8} de dégâts de force et être tirée vers la ligne jusqu'à ce que la créature soit dans sa zone."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 7e niveau ou plus, les dégâts augmentent de {@scaledamage 8d8|6-9|1d8} pour chaque niveau d'emplacement supérieur au 6e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"L"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gravity Sinkhole",
+			"source": "EGW",
+			"page": 187,
+			"level": 4,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a black marble"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Une sphère de force écrasante de 20 pieds de rayon se forme à un point que vous pouvez voir à portée et tire sur les créatures qui s'y trouvent. Chaque créature dans la sphère doit effectuer un jet de sauvegarde de Constitution. En cas d'échec, la créature subit {@damage 5d10} de dégâts de force et est tirée en ligne droite vers le centre de la sphère, pour finir dans un espace inoccupé aussi proche du centre que possible (même si cet espace est en l'air). En cas de sauvegarde réussie, la créature subit la moitié des dégâts et n'est pas tirée."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5e niveau ou plus, les dégâts augmentent de {@scaledamage 5d10|4-9|1d10} pour chaque niveau d'emplacement supérieur au 4e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Immovable Object",
+			"source": "EGW",
+			"page": 187,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "gold dust worth at least 25 gp, which the spell consumes",
+					"cost": 2500,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous touchez un objet qui ne pèse pas plus de 10 livres et le faites devenir magiquement fixe en place. Vous et les créatures que vous désignez lorsque vous lancez ce sort pouvez déplacer l'objet normalement. Vous pouvez également définir un mot de passe qui, lorsqu'il est prononcé à moins de 1,5 mètre de l'objet, supprime ce sort pendant 1 minute.",
+				"Si l'objet est fixé en l'air, il peut supporter jusqu'à 4 000 livres de poids. Un poids supérieur entraîne la chute de l'objet. Sinon, une créature peut utiliser une action pour faire un test de Force contre le DC de sauvegarde de votre sort. En cas de succès, la créature peut déplacer l'objet jusqu'à 10 pieds."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Si vous lancez ce sort en utilisant un emplacement de 4ème ou 5ème niveau, le DC pour déplacer l'objet augmente de 5, il peut porter jusqu'à 8 000 livres de poids, et la durée augmente à 24 heures. Si vous lancez ce sort en utilisant un emplacement de 6e niveau ou plus, la capacité de déplacement de l'objet est augmentée de 10, il peut porter jusqu'à 10 000 kg et l'effet est permanent jusqu'à ce qu'il soit dissipé."
+					]
+				}
+			],
+			"abilityCheck": [
+				"strength"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Magnify Gravity",
+			"source": "EGW",
+			"page": 188,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"La gravité dans une sphère de 10 pieds de rayon centrée sur un point que vous pouvez voir à portée augmente pendant un moment. Chaque créature présente dans la sphère au tour où vous lancez le sort doit effectuer un jet de sauvegarde de Constitution. En cas d'échec, la créature subit {@damage 2d8} de dégâts de force, et sa vitesse est réduite de moitié jusqu'à la fin de son prochain tour. En cas de sauvegarde réussie, la créature subit deux fois moins de dégâts et ne subit aucune réduction de sa vitesse.",
+				"Jusqu'au début de votre prochain tour, tout objet qui n'est pas porté ou transporté dans la sphère doit réussir un test de Force contre votre DC de sauvegarde contre les sorts pour être ramassé ou déplacé."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 2e niveau ou plus, les dégâts augmentent de {@scaledamage 2d8|1-9|1d8} pour chaque niveau d'emplacement supérieur au 1er."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Pulse Wave",
+			"source": "EGW",
+			"page": 188,
+			"level": 3,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous créez une pression intense, la libérez dans un cône de 30 pieds, et décidez si la pression tire ou pousse les créatures et les objets. Chaque créature dans ce cône doit effectuer un jet de sauvegarde de Constitution. Une créature subit {@damage 6d6} de dégâts de force en cas d'échec, ou la moitié des dégâts en cas de réussite. Et chaque créature qui échoue à la sauvegarde est soit tirée à 15 pieds vers vous, soit repoussée à 15 pieds de vous, selon le choix que vous avez fait pour le sort.",
+				"De plus, les objets non sécurisés qui se trouvent complètement à l'intérieur du cône sont également tirés ou poussés de 15 pieds."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, les dégâts augmentent de {@scaledamage 6d6|3-9|1d6} et la distance tirée ou poussée augmente de 5 pieds pour chaque niveau d'emplacement supérieur au 3e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"FMV"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Ravenous Void",
+			"source": "EGW",
+			"page": 188,
+			"level": 9,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 1000
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a small, nine-pointed star made of iron"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous créez une sphère de force gravitationnelle destructrice de 20 pieds de rayon centrée sur un point que vous pouvez voir à portée. Pendant la durée du sort, la sphère et tout espace situé dans un rayon de 30 mètres autour d'elle subissent une perte de {@quickref difficult terrain||3}, et les objets non magiques se trouvant entièrement à l'intérieur de la sphère sont détruits s'ils ne sont pas portés ou transportés.",
+				"Lorsque la sphère apparaît et au début de chacun de vos tours jusqu'à la fin du sort, les objets non sécurisés se trouvant à moins de 100 pieds de la sphère sont tirés vers le centre de la sphère, pour finir dans un espace inoccupé aussi proche du centre que possible.",
+				"Une créature qui commence son tour à moins de 100 pieds de la sphère doit réussir un jet de sauvegarde de Force ou être tirée directement vers le centre de la sphère, pour finir dans un espace inoccupé aussi proche du centre que possible. Une créature qui entre dans la sphère pour la première fois lors d'un tour ou qui y commence son tour subit {@damage 5d10} de dégâts de force et est {@condition restrained} jusqu'à ce qu'elle ne soit plus dans la sphère. Si la sphère est en l'air, la créature {@condition restrained} plane à l'intérieur de la sphère. Une créature peut utiliser son action pour faire un test de Force contre votre DC de sauvegarde contre les sorts, mettant fin à cette condition de {@condition restrained} sur elle-même ou sur une autre créature dans la sphère qu'elle peut atteindre. Une créature réduite à 0 point de vie par ce sort est anéantie, ainsi que les objets non magiques qu'elle porte ou transporte."
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"restrained"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"abilityCheck": [
+				"strength"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Reality Break",
+			"source": "EGW",
+			"page": 189,
+			"level": 8,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a crystal prism"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous brisez les barrières entre les réalités et les lignes temporelles, plongeant une créature dans la tourmente et la folie. La cible doit réussir un jet de sauvegarde de Sagesse, sinon elle ne peut pas réagir avant la fin du sort. La cible affectée doit également effectuer un jet de {@dice d10} au début de chacun de ses tours ; le nombre obtenu détermine ce qui arrive à la cible, comme indiqué sur la table des effets de rupture de la réalité.",
+				"À la fin de chacun de ses tours, la cible affectée peut répéter le jet de sauvegarde de Sagesse, mettant fin au sort sur elle-même en cas de réussite.",
+				{
+					"type": "table",
+					"caption": "Reality Break Effects",
+					"colLabels": [
+						"d10",
+						"Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1-2",
+							"{@b Vision of the Far Realm.} La cible subit {@damage 6d12} de dégâts psychiques, et elle est {@condition stunned} jusqu'à la fin du tour."
+						],
+						[
+							"3-5",
+							"{@b Rending Rift.} La cible doit effectuer un jet de sauvegarde de Dextérité, subissant {@damage 8d12} de dégâts de force en cas d'échec, ou la moitié des dégâts en cas de réussite."
+						],
+						[
+							"6-8",
+							"{@b Wormhole.} La cible est téléportée, ainsi que tout ce qu'elle porte, jusqu'à 30 pieds dans un espace inoccupé de votre choix que vous pouvez voir. La cible subit également {@damage 10d12} de dégâts de force et est assommée {@condition prone}."
+						],
+						[
+							"9-10",
+							"{@b Chill of the Dark Void.} La cible subit {@damage 10d12} de dégâts de froid, et elle est {@condition blinded} jusqu'à la fin du tour."
+						]
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic",
+				"force",
+				"cold"
+			],
+			"conditionInflict": [
+				"stunned",
+				"prone",
+				"blinded"
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
+			],
+			"miscTags": [
+				"RO",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Sapping Sting",
+			"source": "EGW",
+			"page": 189,
+			"level": 0,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous sapez la vitalité d'une créature que vous pouvez voir à portée. La cible doit réussir un jet de sauvegarde de Constitution ou subir {@damage 1d4} de dégâts nécrotiques et tomber {@condition prone}.",
+				"Les dégâts de ce sort augmentent de {@dice 1d4} lorsque vous atteignez le 5e niveau ({@dice 2d4}), le 11e niveau ({@dice 3d4}) et le 17e niveau ({@dice 4d4})."
+			],
+			"scalingLevelDice": {
+				"label": "necrotic damage",
+				"scaling": {
+					"1": "1d4",
+					"5": "2d4",
+					"11": "3d4",
+					"17": "4d4"
+				}
+			},
+			"damageInflict": [
+				"necrotic"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Temporal Shunt",
+			"source": "EGW",
+			"page": 189,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "taken when a creature you can see makes an attack roll or starts to cast a spell"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous ciblez la créature déclencheuse, qui doit réussir un jet de sauvegarde de Sagesse ou disparaître, étant projetée à un autre moment dans le temps et faisant rater l'attaque ou gaspillant le sort. Au début de son prochain tour, la cible réapparaît là où elle était ou dans l'espace inoccupé le plus proche. La cible ne se souvient pas que vous avez lancé le sort ou que vous avez été affecté par celui-ci."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 6e niveau ou plus, vous pouvez cibler une créature supplémentaire pour chaque niveau d'emplacement supérieur au 5e. Toutes les cibles doivent se trouver à moins de 30 pieds les unes des autres."
+					]
+				}
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Tether Essence",
+			"source": "EGW",
+			"page": 189,
+			"level": 7,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a spool of platinum cord worth at least 250 gp, which the spell consumes",
+					"cost": 25000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Deux créatures que vous pouvez voir à portée doivent effectuer un jet de sauvegarde de Constitution, avec un désavantage si elles sont à moins de 30 pieds l'une de l'autre. L'une ou l'autre des créatures peut volontairement échouer à ce jet. Si l'une des deux réussit, le sort n'a aucun effet. Si les deux jets de sauvegarde échouent, les créatures sont magiquement liées pour la durée du sort, quelle que soit la distance qui les sépare. Lorsque des dégâts sont infligés à l'une d'entre elles, les mêmes dégâts sont infligés à l'autre. Si des points de vie sont restaurés à l'une d'entre elles, le même nombre de points de vie est restauré à l'autre. Si l'une des créatures attachées est réduite à 0 point de vie, le sort se termine sur les deux. Si le sort se termine sur une créature, il se termine sur les deux."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Time Ravage",
+			"source": "EGW",
+			"page": 189,
+			"level": 9,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an hourglass filled with diamond dust worth at least 5,000 gp, which the spell consumes",
+					"cost": 500000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous ciblez une créature que vous pouvez voir à portée, en soumettant sa forme physique aux ravages du vieillissement rapide. La cible doit effectuer un jet de sauvegarde de Constitution, subissant {@damage 10d12} de dégâts nécrotiques en cas d'échec, ou la moitié des dégâts en cas de réussite. Si la sauvegarde échoue, la cible vieillit également jusqu'à ce qu'il ne lui reste que 30 jours avant de mourir de vieillesse. Dans cet état de vieillesse, la cible a un désavantage aux jets d'attaque, aux tests d'aptitude et aux jets de sauvegarde, et sa vitesse de marche est réduite de moitié. Seul le sort {@spell wish} ou le {@spell greater restoration} lancé avec un emplacement de sort de 9e niveau peut mettre fin à ces effets et ramener la cible à son âge précédent."
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Wristpocket",
+			"source": "EGW",
+			"page": 190,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Vous donnez un coup de poignet, faisant disparaître un objet dans votre main. L'objet, que vous seul pouvez tenir et qui ne doit pas peser plus de 2,5 kg, est transporté dans un espace extradimensionnel, où il reste pour la durée de l'opération.",
+				"Jusqu'à la fin du sort, vous pouvez utiliser votre action pour invoquer l'objet dans votre main libre, et vous pouvez utiliser votre action pour ramener l'objet dans l'espace extradimensionnel. Un objet qui se trouve encore dans le plan de poche lorsque le sort prend fin apparaît dans votre espace, à vos pieds."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		}
+	]
+}

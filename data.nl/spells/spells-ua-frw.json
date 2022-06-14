@@ -1,0 +1,617 @@
+{
+	"spell": [
+		{
+			"name": "Ego Whip",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je slaat de geest van een wezen dat je kunt zien binnen bereik en vult het met wanhoop. Het doelwit moet slagen op een intelligentie saving throw of nadeel ondervinden bij aanvalsrollen, ability checks en saving throws, en het kan geen spreuken uitspreken. Aan het eind van elke beurt kan het doelwit opnieuw een intelligentie-opofferingsworp doen. Als de worp slaagt, eindigt de spreuk voor het doelwit."
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Id Insinuation",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je ontketent een stortvloed van tegenstrijdige verlangens in de geest van één wezen dat je binnen bereik kunt zien, waardoor zijn vermogen om beslissingen te nemen wordt belemmerd. Het doelwit moet slagen op een Wisdom saving throw of niet meer in staat zijn beslissingen te nemen. Aan het eind van elke beurt neemt het {@damage 1d12} psychische schade op en kan dan opnieuw een Wijsheidspoging doen. Bij succes eindigt de spreuk voor het doelwit."
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Intellect Fortress",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 5,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je creëert een vaag glinsterende barrière van beschermende psychische kracht om je heen. Voor de duur, heb je voordeel op alle reddingsslagen.",
+				"Wanneer een ander schepsel dat je kunt zien binnen een straal van 30 meter van jou faalt in een reddingsworp, kun je je reactie gebruiken om hem toe te staan de reddingsworp opnieuw te doen. Ze moeten de nieuwe worp gebruiken."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mental Barrier",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when you are forced to make an Intelligence, a Wisdom, or a Charisma saving throw"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Je beschermt je geest met een muur van lusvormige, repetitieve gedachten. Tot het begin van je volgende beurt heb je voordeel op Intelligentie, Wijsheid en Charisma saving throws, en je hebt weerstand tegen psychische schade."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Sliver",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 0,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Je drijft een desoriënterende piek van psychische energie in de geest van één wezen dat je binnen bereik kunt zien. Het doelwit moet een intelligentie-redding doen. Tenzij de worp succesvol is, loopt het doelwit {@damage 1d6} psychische schade op en de eerste keer dat het een reddingsworp doet voor het einde van je volgende beurt, moet het een {@dice d4} gooien en het gegooide getal van de reddingsworp aftrekken.",
+				"De schade van deze spreuk neemt toe met {@dice 1d6} wanneer je bepaalde levels bereikt: 5e level ({@damage 2d6}), 11e level ({@damage 3d6}), en 17e level ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Thrust",
+			"source": "UAFighterRogueWizard",
+			"page": 7,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Je stuurt een lans van psionische verstoring in de geest van een wezen dat je binnen bereik kunt zien. Het doelwit moet een intelligentie-redding doen. Als hij niet slaagt, loopt het doelwit {@damage 3d6} psychische schade op en kan hij zijn actie alleen gebruiken om {@action Dash} of {@action Disengage} in zijn volgende beurt. Bij een succesvolle save, neemt het doelwit de helft van de schade op, en deze spreuk beperkt zijn actiemogelijkheden niet."
+			],
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"type": "entries",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van 3de niveau of hoger, kun je een extra wezen als doelwit nemen voor elk slotniveau boven 2de. De wezens moeten zich binnen 30 voet van elkaar bevinden als je ze aanvalt."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Psionic Blast",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
+			"level": 3,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je ontketent een vernietigende golf van mentale kracht in een kegel van 30 voet. Elk wezen in het gebied moet een Dexterity saving throw doen. Als je niet slaagt, loopt het doelwit {@damage 5d8} krachtschade op, wordt het 20 voet van je vandaan geduwd en {@condition prone} neergeslagen. Bij een succesvolle save, neemt een doelwit de helft van de schade op en wordt niet geduwd of neergeklopt."
+			],
+			"entriesHigherLevel": [
+				{
+					"name": "At Higher Levels",
+					"type": "entries",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een slot van 4e niveau of hoger, neemt de schade toe met {@dice 1d8} voor elk slotniveau boven 3e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"miscTags": [
+				"FMV"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Psychic Crush",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
+			"level": 6,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Je overbelast de geest van een wezen dat je kunt zien binnen bereik, waardoor zijn psyche gevuld wordt met disharmonische emoties. Het doelwit moet een Intelligentie-redding doen. Als hij niet slaagt, loopt hij {@damage 12d6} psychische schade op en is hij {@condition stunned} 1 minuut weg. Bij een succesvolle redding, neemt het doelwit de helft van de schade op en is niet verdoofd.",
+				"Het verdoofde doelwit kan aan het eind van elke beurt een intelligentie saving throw doen. Bij een succesvolle redding eindigt de betovering van het doelwit."
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"stunned"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Thought Shield",
+			"source": "UAFighterRogueWizard",
+			"page": 8,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Je weeft een sluier over de geest van één van de wezens die je aanraakt. Voor de duur van de sluier kan de geest van het doelwit niet worden gelezen of gedetecteerd, kunnen wezens niet telepathisch communiceren met het doelwit tenzij het doelwit dit toestaat, en heeft het doelwit voordeel bij het redden van fouten tegen elk effect dat zou bepalen of het de waarheid vertelt."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

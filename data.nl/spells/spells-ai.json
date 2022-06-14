@@ -1,0 +1,469 @@
+{
+	"spell": [
+		{
+			"name": "Distort Value",
+			"source": "AI",
+			"page": 75,
+			"level": 1,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Moet je een paar goudstukken meer uit een koopman persen als je dat rare octopusbeeldje probeert te verkopen dat je uit de chaostempel hebt bevrijd? Moet je de waarde van magische bezittingen bagatelliseren als de belastingontvanger langskomt? Distort value heeft je gedekt.",
+				"Je kunt de waarde van het voorwerp verdubbelen door er illusoire versieringen of glans aan toe te voegen, of de waargenomen waarde met de helft verminderen met behulp van illusoire krassen, deuken en andere onooglijke kenmerken. Iedereen die het voorwerp onderzoekt kan de werkelijke waarde ervan vaststellen met een geslaagde Intelligentie ({@skill Investigation}) check tegen je spell save DC."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van het 2e niveau of hoger, neemt de maximale grootte van het voorwerp toe met 1 voet voor elk sleufniveau boven het 1e."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Fast Friends",
+			"source": "AI",
+			"page": 75,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Als je iets gedaan moet krijgen, kun je niet vertrouwen op vage beloften, gezworen eden, of bindende arbeidscontracten. Als je deze spreuk uitspreekt, kies dan een mensachtige binnen bereik die je kan zien en horen, en die je kan verstaan. Het wezen moet slagen op een Wisdom saving throw of {@condition charmed} door jou worden voor de duur. Terwijl het wezen {@condition charmed} op deze manier is, verplicht het zich om alle diensten of activiteiten die je van hem vraagt op een vriendelijke manier uit te voeren, naar zijn beste vermogen.",
+				"Je kunt het wezen nieuwe taken geven als een vorige taak voltooid is, of als je besluit zijn huidige taak te beëindigen. Als de dienst of activiteit het wezen schade kan berokkenen, of als het in strijd is met de normale activiteiten en verlangens van het wezen, kan het wezen nog een Wisdom saving throw doen om te proberen het effect te beëindigen. Deze redding is in het voordeel als jij of je metgezellen tegen het wezen vechten. Als de activiteit zou resulteren in een zekere dood voor het wezen, eindigt de betovering.",
+				"Als de spreuk eindigt, weet het wezen dat het {@condition charmed} door jou was."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van niveau 4 of hoger, kun je een extra wezen als doelwit nemen voor elk sleufniveau hoger dan 3."
+					]
+				}
+			],
+			"conditionInflict": [
+				"charmed"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"affectsCreatureType": [
+				"humanoid"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Gift of Gab",
+			"source": "AI",
+			"page": 76,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when you speak to another creature"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"r": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Toen ik Jim Darkmagic ontmoette, vroeg ik me af hoe hij iets gedaan kreeg in dat pak. Sindsdien heb ik geleerd dat de meeste van zijn talenten staan en praten inhouden. Zijn outfit is daar perfect voor."
+					],
+					"by": "Môrgæn"
+				},
+				"Jim Darkmagic zou deze spreuk hebben uitgevonden en noemde hem oorspronkelijk {@i I said what?!} Heb je ooit met de plaatselijke monarch gepraat en per ongeluk gezegd hoe hun zoon lijkt op je favoriete varken van toen je opgroeide op de familieboerderij? Dat hebben we allemaal wel eens meegemaakt! Maar in plaats van onthoofd te worden voor een eerlijke verspreking, kun je doen alsof het nooit gebeurd is door ervoor te zorgen dat niemand weet dat het gebeurd is.",
+				"Als je deze spreuk uitspreekt, vervorm je vakkundig het geheugen van de luisteraars in je onmiddellijke omgeving, zodat elk wezen van je keuze binnen een straal van 5 meter van je alles vergeet wat je in de laatste 6 seconden hebt gezegd. Die wezens herinneren zich dan dat je de woorden die je spreekt als de verbale component van de spreuk ook daadwerkelijk hebt gezegd."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Incite Greed",
+			"source": "AI",
+			"page": 76,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gem worth at least 50 gp",
+					"cost": 5000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Als je deze spreuk uitspreekt, toon je de edelsteen die als materiële component wordt gebruikt en kies je een willekeurig aantal wezens binnen bereik die jou kunnen zien. Elk doelwit moet slagen op een Wisdom saving throw of {@condition charmed} door jou gezien worden totdat de spreuk eindigt, of totdat jij of je metgezellen het iets schadelijks aandoen. Terwijl {@condition charmed} een wezen zich op deze manier bevindt, kan het niets anders doen dan zijn beweging gebruiken om je op een veilige manier te naderen. Terwijl een getroffen wezen zich binnen 5 voet van je bevindt, kan het zich niet bewegen, maar staart het gewoon gulzig naar de edelsteen die je presenteert.",
+				"Aan het eind van elke beurt kan een getroffen doelwit een Wijsheid-reddingsworp doen. Als hij slaagt, eindigt dit effect voor dat doelwit."
+			],
+			"conditionInflict": [
+				"charmed"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Jim's Glowing Coin",
+			"source": "AI",
+			"page": 76,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true,
+				"m": "a coin",
+				"r": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Van de vele tactieken die meester-goochelaar en vermaard avonturier Jim Darkmagic toepast, is de oude gloeiende munttruc een aloude klassieker. Als je de spreuk uitspreekt, gooi je de munt, die het materiële bestanddeel van de spreuk is, naar elke plek binnen bereik. De munt licht op alsof hij onder het effect van een {@spell light} spreuk staat. Elk wezen naar keuze dat je kunt zien binnen een straal van 30 meter van de munt moet slagen op een Wisdom saving throw of afgeleid worden voor de duur van de spreuk. Als een wezen is afgeleid, heeft het nadeel bij het doen van wijsheids- ({@skill Perception}) controles en initiatiefrollen."
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Jim's Magic Missile",
+			"source": "AI",
+			"page": 76,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"r": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Jim's magische raket is een oude en krachtige spreuk, en het is ook de naam van mijn band in Wizard Academy."
+					],
+					"by": "Jim Darkmagic"
+				},
+				"Elke tovenaarsleerling kan een saaie oude magische raket afvuren. Tuurlijk, het raakt altijd zijn doel. Geeuw. Maak een einde aan het gezwoeg van je opa's magie met deze verbeterde versie van de spreuk, zoals gebruikt door Jim Darkmagic!",
+				"Je creëert drie draaiende, fluitende, hypoallergene, glutenvrije dartpijlen van magische kracht. Elke dart richt op een wezen naar keuze dat je binnen bereik kunt zien. Doe een spreukaanval voor elke raket. Bij een treffer, richt een raket {@damage 2d4} krachtschade aan zijn doelwit.",
+				"Als de aanvalsworp een kritieke treffer oplevert, loopt het doelwit van die raket {@damage 5d4} krachtschade op in plaats van dat jij twee keer schade oploopt voor een kritieke treffer. Als de aanvalsworp voor een raket een 1 is, missen alle raketten hun doel en worden ze in je gezicht opgeblazen, waarbij je per raket 1 krachtschade oploopt."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van het 2e niveau of hoger, creëert de spreuk een extra dart, en de royalty-component neemt toe met 1 gp, voor elk slotniveau boven het 1e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Motivational Speech",
+			"source": "AI",
+			"page": 77,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Ik heb ooit een motiverende toespraak van Jim gehoord en het waren de ergste negentig seconden van mijn leven. Wat ziet Omin eigenlijk in hem?"
+					],
+					"by": "Walnut Dankgrass"
+				},
+				"Je spreekt bondgenoten, medewerkers of onschuldige omstanders aan om hen aan te sporen en te inspireren tot grootsheid, of ze nu iets hebben om enthousiast over te worden of niet. Kies tot vijf wezens binnen bereik die je kunnen horen. Voor de duur van de aanval krijgt elk getroffen wezen 5 tijdelijke hitpoints en heeft voordeel op Wisdom saving throws. Als een getroffen wezen door een aanval wordt geraakt, heeft het voordeel bij de volgende aanvalsrol die het maakt. Zodra een getroffen wezen de tijdelijke hit points verliest die door deze spreuk worden toegekend, eindigt de spreuk voor dat wezen."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van het 4e niveau of hoger, nemen de tijdelijke hit points toe met 5 voor elk slotniveau boven het 3e."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"THP"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,316 @@
+{
+	"spell": [
+		{
+			"name": "Borrowed Knowledge",
+			"source": "SCC",
+			"page": 37,
+			"level": 2,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a book worth at least 25 gp",
+					"cost": 2500
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Je put uit kennis van geesten uit het verleden. Kies een vaardigheid waarin je geen vaardigheid hebt. Voor de duur van de spreuk, heb je vaardigheid in de gekozen vaardigheid. De spreuk eindigt voortijdig als je hem opnieuw uitspreekt."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Kinetic Jaunt",
+			"source": "SCC",
+			"page": 37,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je mag je beweging op magische wijze kracht bijzetten met dansachtige passen.",
+				{
+					"type": "list",
+					"items": [
+						"Je loopsnelheid neemt toe met 10 voet.",
+						"Je lokt geen gelegenheidsaanvallen uit.",
+						"Je kunt door de ruimte van een ander wezen bewegen, en het telt niet als {@quickref difficult terrain||3}. Als je je beurt eindigt in de ruimte van een ander wezen, word je gerangeerd naar de laatste onbezette ruimte die je bezette, en neem je {@damage 1d8} krachtschade."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Silvery Barbs",
+			"source": "SCC",
+			"page": 38,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when a creature you can see within 60 feet of yourself succeeds on an attack roll, an ability check, or a saving throw"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je leidt op magische wijze het wezen af dat de trigger is en verandert zijn tijdelijke onzekerheid in een aanmoediging voor een ander wezen. Het veroorzakende wezen moet de {@dice d20} opnieuw gooien en de lagere worp gebruiken.",
+				"Je mag dan een ander wezen kiezen dat je binnen bereik kunt zien (je mag jezelf kiezen). Het gekozen wezen heeft voordeel bij de volgende aanvalsrol, ability check, of saving throw die het binnen 1 minuut doet. Een wezen kan maar één keer per keer door deze spreuk gemachtigd worden."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Vortex Warp",
+			"source": "SCC",
+			"page": 38,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je verdraait op magische wijze de ruimte rond een ander wezen dat je binnen bereik kunt zien. Het doelwit moet slagen bij een constitutionele reddingsworp (het doelwit kan ervoor kiezen te falen), of het doelwit wordt geteleporteerd naar een onbezette ruimte van jouw keuze die je binnen bereik kunt zien. De gekozen ruimte moet zich op een oppervlak bevinden of in een vloeistof die het doelwit kan dragen zonder dat het doelwit hoeft te knijpen."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van het 3e niveau of hoger, neemt het bereik van de spreuk toe met 30 voet voor elk slotniveau boven het 2e."
+					]
+				}
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT",
+				"TP"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Wither and Bloom",
+			"source": "SCC",
+			"page": 38,
+			"level": 2,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a withered vine twisted into a loop"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je roept zowel dood als leven op in een gebied met een straal van 3 meter, gecentreerd op een punt binnen bereik. Elk wezen van je keuze in dat gebied moet een grondwettelijke reddingsworp doen, waarbij het {@damage 2d6} necrotische schade oploopt als het niet slaagt, of half zo veel schade als het wel slaagt. Niet-magische vegetatie in dat gebied verdort.",
+				"Bovendien kan een schepsel naar keuze in dat gebied een van zijn ongebruikte Hit Dice inzetten en gooien en een aantal hit points terugkrijgen dat gelijk is aan de worp plus je spellcasting ability modifier."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van niveau 3 of hoger, neemt de schade toe met {@scaledamage 2d6|2-9|1d6} voor elk slot boven het 2e, en het aantal Hit Dice dat kan worden uitgegeven en toegevoegd aan de helende worp neemt toe met één voor elk slot boven het 2e."
+					]
+				}
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"HL"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,522 @@
+{
+	"spell": [
+		{
+			"name": "Draconic Transformation",
+			"source": "UA2021DraconicOptions",
+			"page": 5,
+			"level": 7,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a statuette of a dragon, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Avec un rugissement, vous puisez dans la magie des dragons pour vous transformer, prenant diverses caractéristiques draconiques. Vous bénéficiez des avantages suivants jusqu'à la fin du sort :",
+				{
+					"type": "list",
+					"items": [
+						"Vous disposez de {@sense blindsight} avec une portée de 30 pieds. Dans ce rayon, vous pouvez effectivement voir tout ce qui n'est pas totalement couvert, même si vous êtes à {@condition blinded} ou dans l'obscurité. De plus, vous pouvez voir une créature de {@condition invisible}, à moins qu'elle ne réussisse à se cacher de vous.",
+						"Des ailes incorporelles jaillissent de votre dos, vous donnant une vitesse de vol de 40 pieds.",
+						"Lorsque vous lancez ce sort, et comme action bonus aux tours suivants pendant toute la durée du sort, vous pouvez expirer un souffle d'énergie chatoyante dans un cône de 30 pieds. Chaque créature dans la zone doit effectuer un jet de sauvegarde de Dextérité, subissant {@damage 3d8} de dégâts de force en cas d'échec ou la moitié des dégâts en cas de réussite."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"blinded",
+				"invisible"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Fizban's Platinum Shield",
+			"source": "UA2021DraconicOptions",
+			"page": 5,
+			"level": 6,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a platinum-plated dragon scale, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous créez un champ de lumière argentée qui entoure une créature de votre choix à portée (vous pouvez vous choisir). Le champ diffuse une faible lumière jusqu'à 1,5 mètre.",
+				"Comme action bonus aux tours suivants, vous pouvez déplacer le champ vers une autre créature située à moins de 60 pieds du champ.",
+				"La créature protégée par le champ gagne les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"La créature est à moitié couverte.",
+						"La créature a une résistance aux dégâts d'acide, de froid, de feu, de foudre et de poison.",
+						"Si la créature est soumise à un effet qui lui permet de faire un jet de sauvegarde de Dextérité pour ne subir que la moitié des dégâts, elle ne subit aucun dégât si elle réussit son jet de sauvegarde, et seulement la moitié des dégâts si elle échoue."
+					]
+				}
+			],
+			"damageResist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Flame Stride",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 3,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Les flammes ondulantes d'un dragon recouvrent vos pieds et vous confèrent une vitesse explosive. Pour la durée de l'opération, votre vitesse augmente de 6 mètres et vos déplacements ne provoquent pas d'attaques d'opportunité.",
+				"Lorsque vous vous déplacez à moins de 1,5 mètre d'une créature ou d'un objet qui n'est pas porté, il subit {@damage 1d6} de dégâts de feu dus à votre traînée de chaleur. Une créature ou un objet ne peut subir ces dégâts qu'une seule fois par tour."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, augmentez votre vitesse de 5 pieds pour chaque niveau d'emplacement de sort supérieur au 3e. De plus, le sort inflige {@damage 1d6} de dégâts de feu supplémentaires pour chaque niveau d'emplacement supérieur au 3ème."
+					]
+				}
+			],
+			"damageInflict": [
+				"fire"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Icingdeath's Frost",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 2,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"s": true,
+				"m": "a vial of meltwater"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Une explosion d'énergie froide et glacée émane de vous dans un cône de 30 pieds. Chaque créature dans cette zone doit effectuer un jet de sauvegarde de Constitution. En cas d'échec, la créature subit {@damage 3d8} de dégâts de froid et est couverte de glace pendant 1 minute ou jusqu'à ce qu'une créature utilise son action pour briser la glace sur elle-même ou une autre créature. Une créature couverte de glace voit sa vitesse réduite à 0. En cas de sauvegarde réussie, la créature subit des dégâts réduits de moitié, sans effets supplémentaires."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, augmentez les dégâts de froid de {@dice 1d8} pour chaque niveau d'emplacement supérieur au 2e."
+					]
+				}
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Nathair's Mischief",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 2,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true,
+				"m": "a piece of crust from an apple pie"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous remplissez de magie féerique et draconique un cube de 6 mètres de côté centré sur un point que vous choisissez à portée. Effectuez un jet sur la table de déferlement espiègle pour déterminer l'effet magique produit. Au début de chacun de vos tours, vous pouvez déplacer le cube jusqu'à 3 mètres et effectuer un nouveau jet sur la table.",
+				{
+					"type": "table",
+					"caption": "Mischievous Surge",
+					"colLabels": [
+						"d4",
+						"Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-12"
+					],
+					"rows": [
+						[
+							"1",
+							"L'odeur de la tarte aux pommes emplit l'air, et chaque créature dans le cube doit réussir un jet de sauvegarde de Sagesse ou devenir {@condition charmed} par vous jusqu'au début de votre prochain tour."
+						],
+						[
+							"2",
+							"Des bouquets de fleurs apparaissent tout autour, et chaque créature dans le cube doit réussir un jet de sauvegarde de Dextérité ou être {@condition blinded} jusqu'au début de votre prochain tour alors que les fleurs leur pulvérisent de l'eau au visage."
+						],
+						[
+							"3",
+							"Chaque créature dans le cube doit réussir un jet de sauvegarde de Sagesse ou se mettre à ricaner jusqu'au début de votre prochain tour. Une créature ricanante est {@condition incapacitated} et utilise tout son mouvement pour se déplacer dans une direction aléatoire."
+						],
+						[
+							"4",
+							"Des gouttes de mélasse apparaissent et planent dans le cube, le transformant en {@quickref difficult terrain||3} jusqu'au début de votre prochain tour."
+						]
+					]
+				}
+			],
+			"conditionInflict": [
+				"blinded",
+				"charmed",
+				"incapacitated"
+			],
+			"savingThrow": [
+				"dexterity",
+				"wisdom"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Raulothim's Psychic Lance",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous déchaînez une lance chatoyante de puissance psychique depuis votre front sur une créature que vous pouvez voir à portée. Vous pouvez également prononcer le nom de la créature. Si la cible nommée est à portée, elle ne bénéficie d'aucun avantage de couverture ou d'invisibilité lorsque la lance se dirige vers elle. Si la cible nommée n'est pas à portée, la lance se dissipe, et l'emplacement de sort n'est pas dépensé.",
+				"La cible doit réussir un jet de sauvegarde d'Intelligence ou subir {@damage 10d6} de dégâts psychiques et être {@condition incapacitated} jusqu'au début de votre prochain tour."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5e niveau ou plus, les dégâts augmentent de {@dice 1d6} pour chaque niveau d'emplacement supérieur au 4e."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Draconic Spirit",
+			"source": "UA2021DraconicOptions",
+			"page": 7,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an art object from a dragon's hoard, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit draconique. Il se manifeste dans un espace inoccupé que vous pouvez voir à portée.",
+				"Cette forme corporelle utilise le bloc de stat {@creature Draconic Spirit|UA2021DraconicOptions}. Lorsque vous lancez ce sort, choisissez une famille de dragon : Chromatique, Gemme, ou Métallique. La créature ressemble à un dragon de la famille choisie, ce qui détermine certains traits dans son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 6e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

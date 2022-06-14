@@ -1,0 +1,794 @@
+{
+	"spell": [
+		{
+			"name": "Acid Stream",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "line",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a bit of rotten food"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Un jet d'acide émane de vous en une ligne de 30 pieds de long et 5 pieds de large dans la direction de votre choix. Chaque créature de la ligne doit réussir un jet de sauvegarde de Dextérité ou être couverte d'acide pendant la durée du sort ou jusqu'à ce qu'une créature utilise son action pour gratter ou laver l'acide sur elle-même ou une autre créature. Une créature couverte d'acide subit {@damage 3d4} de dégâts d'acide au début de chacun de ses tours."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 2e niveau ou plus, les dégâts augmentent de {@scaledamage 3d4|1-9|1d4} pour chaque niveau d'emplacement supérieur au 1er."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"areaTags": [
+				"L"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Otherworldly Form",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 2,
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an object engraved with a symbol of the Outer Planes, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"En prononçant une incantation, vous faites appel à la magie des plans inférieurs ou supérieurs (à votre choix) pour vous transformer. Vous bénéficiez des avantages suivants jusqu'à la fin du sort :",
+				{
+					"type": "list",
+					"items": [
+						"Vous êtes immunisé contre les dégâts de feu et de poison (plans inférieurs) ou les dégâts radiants et nécrotiques (plans supérieurs).",
+						"Vous êtes immunisé contre la condition {@condition poisoned} (plans inférieurs) ou la condition {@condition charmed} (plans supérieurs).",
+						"Des ailes spectrales apparaissent sur votre dos, vous donnant une vitesse de vol de 40 pieds.",
+						"Vous avez un bonus de +2 à la CA.",
+						"Toutes vos attaques d'armes sont magiques, et lorsque vous effectuez une attaque d'arme, vous pouvez utiliser votre modificateur de capacité de lanceur de sorts, au lieu de la Force ou de la Dextérité, pour les jets d'attaque et de dégâts.",
+						"Vous pouvez attaquer deux fois, au lieu d'une, lorsque vous effectuez l'action Attaque à votre tour. Vous ignorez cet avantage si vous avez déjà une caractéristique, comme Attaque supplémentaire, qui vous donne des attaques supplémentaires."
+					]
+				}
+			],
+			"damageImmune": [
+				"fire",
+				"poison",
+				"radiant",
+				"necrotic"
+			],
+			"conditionImmune": [
+				"poisoned",
+				"charmed"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Spirit Shroud",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 2,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez les esprits des morts, qui volent autour de vous pendant la durée du sort. Les esprits sont intangibles et invulnérables, et ils sont bons ou mauvais (à votre choix).",
+				"Jusqu'à la fin du sort, toute attaque que vous effectuez inflige {@damage 1d8} de dégâts supplémentaires lorsque vous touchez une créature située à moins de 3 mètres de vous. Ces dégâts sont rayonnants si les esprits sont bons et nécrotiques s'ils sont mauvais. Toute créature qui subit ces dégâts ne peut pas regagner de points de vie avant le début de votre prochain tour.",
+				"De plus, toute créature de votre choix que vous pouvez voir et qui commence son tour à moins de 3 mètres de vous voit sa vitesse réduite de 3 mètres jusqu'au début de votre prochain tour."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, les dégâts supplémentaires augmentent de {@scaledamage 1d8|3-9|1d8} pour chaque niveau d'emplacement supérieur au 3e."
+					]
+				}
+			],
+			"damageInflict": [
+				"radiant",
+				"necrotic",
+				"cold"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Aberrant Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 3,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a pickled tentacle and an eyeball in a crystal vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous invoquez un esprit du royaume lointain ou d'un autre royaume de folie étranger. L'esprit se manifeste physiquement dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Aberrant Spirit|UA2020SpellsAndMagicTattoos}. Lorsque vous lancez le sort, choisissez Beholderkin, Slaadi ou Star Spawn. La créature ressemble physiquement à votre choix, ce qui détermine également certaines des caractéristiques de son bloc de statistiques. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est amicale envers vous et vos compagnons pendant la durée du sort. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit aux ordres verbaux que vous lui donnez (aucune action requise de votre part). Si vous n'en donnez pas, elle se défend mais ne fait rien d'autre."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5ème niveau ou plus, la créature assume le niveau le plus élevé pour ce lancer partout où elle utilise le niveau du sort dans son bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Bestial Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 3,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp",
+					"cost": 20000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous invoquez l'esprit d'une bête. L'esprit se manifeste physiquement dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Bestial Spirit|UA2020SpellsAndMagicTattoos}. Lorsque vous lancez le sort, choisissez un environnement : Air, Terre, ou Eau. La créature ressemble physiquement à un animal de votre choix originaire de l'environnement choisi, qui détermine également l'un des modes de déplacement du bloc de stat de la créature. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est amicale envers vous et vos compagnons pendant la durée du sort. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit aux ordres verbaux que vous lui donnez (aucune action requise de votre part). Si vous n'en donnez pas, elle se défend mais ne fait rien d'autre."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, la créature assume le niveau le plus élevé pour ce lancer, où qu'elle utilise le niveau du sort dans son bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Celestial Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 4,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a golden reliquary worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit des plans supérieurs. L'esprit se manifeste physiquement sous une forme angélique dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Celestial Spirit|UA2020SpellsAndMagicTattoos}. Lorsque vous lancez le sort, choisissez Vengeur ou Défenseur. Votre choix détermine l'attaque de la créature dans son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est amicale envers vous et vos compagnons pendant la durée du sort. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit aux ordres verbaux que vous lui donnez (aucune action requise de votre part). Si vous n'en donnez pas, elle se défend mais ne fait rien d'autre."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 6e niveau ou plus, la créature assume le niveau le plus élevé pour ce lancer, où qu'elle utilise le niveau du sort dans son bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Elemental Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 4,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "air, a pebble, ash, and water inside a crystal vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit des plans élémentaires. L'esprit se manifeste physiquement dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Elemental Spirit|UA2020SpellsAndMagicTattoos}. Lorsque vous lancez le sort, choisissez un élément : Air, Terre, Feu ou Eau. La créature ressemble physiquement à une forme vaguement humanoïde enveloppée de l'élément choisi, qui détermine également certaines des caractéristiques de son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est amicale envers vous et vos compagnons pendant la durée du sort. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit aux ordres verbaux que vous lui donnez (aucune action requise de votre part). Si vous n'en donnez pas, elle se défend mais ne fait rien d'autre."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5ème niveau ou plus, la créature assume le niveau le plus élevé pour ce lancer partout où elle utilise le niveau du sort dans son bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fey Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 5,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded flower worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous invoquez un esprit du monde féerique. L'esprit se manifeste physiquement dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Fey Spirit|UA2020SpellsAndMagicTattoos}. Lorsque vous lancez le sort, choisissez une humeur : Trompeur, Furieux, ou Joyeux. La créature ressemble physiquement à un satyre, une dryade ou un elfe (de votre choix) marqué par l'humeur choisie, qui détermine également l'un des traits de son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est amicale envers vous et vos compagnons pendant la durée du sort. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit aux ordres verbaux que vous lui donnez (aucune action requise de votre part). Si vous n'en donnez pas, elle se défend mais ne fait rien d'autre."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, la créature assume le niveau le plus élevé pour ce lancer, où qu'elle utilise le niveau du sort dans son bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fiendish Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 6,
+			"level": 6,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "humanoid blood inside a ruby vial worth at least 600 gp",
+					"cost": 60000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit diabolique des plans inférieurs. L'esprit se manifeste physiquement dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Fiendish Spirit|UA2020SpellsAndMagicTattoos}. Lorsque vous lancez le sort, choisissez Démon, Diable ou Yugoloth. La créature ressemble physiquement à un démon du type choisi, qui détermine également certains des traits de son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est amicale envers vous et vos compagnons pendant la durée du sort. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit aux ordres verbaux que vous lui donnez (aucune action requise de votre part). Si vous n'en donnez pas, elle se défend mais ne fait rien d'autre."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 7e niveau ou plus, la créature assume le niveau le plus élevé pour ce lancer, où qu'elle utilise le niveau du sort dans son bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Shadow Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 7,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "tears inside a crystal vial worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit de l'ombre depuis le Shadowfell. L'esprit se manifeste physiquement dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Shadow Spirit|UA2020SpellsAndMagicTattoos}. Lorsque vous lancez le sort, choisissez une émotion : Fureur, Désespoir, ou Peur. La créature ressemble physiquement à un humanoïde difforme marqué par l'émotion choisie, qui détermine également certains des traits de son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est amicale envers vous et vos compagnons pendant la durée du sort. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit aux ordres verbaux que vous lui donnez (aucune action requise de votre part). Si vous n'en donnez pas, elle se défend mais ne fait rien d'autre."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, la créature assume le niveau le plus élevé pour ce lancer, où qu'elle utilise le niveau du sort dans son bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Undead Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 7,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded humanoid skull worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit agité d'outre-tombe. L'esprit se manifeste physiquement dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Undead Spirit|UA2020SpellsAndMagicTattoos}. Lorsque vous lancez le sort, choisissez la forme de la créature : Fantomatique, Putride, ou Squelettique. La créature ressemble physiquement à un humanoïde avec la forme choisie, qui détermine également certaines des caractéristiques de son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est amicale envers vous et vos compagnons pendant la durée du sort. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit aux ordres verbaux que vous lui donnez (aucune action requise de votre part). Si vous n'en donnez pas, elle se défend mais ne fait rien d'autre."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, la créature assume le niveau le plus élevé pour ce lancer, où qu'elle utilise le niveau du sort dans son bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

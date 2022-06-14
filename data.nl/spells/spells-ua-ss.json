@@ -1,0 +1,1176 @@
+{
+	"spell": [
+		{
+			"name": "Cause Fear (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je wekt het gevoel van sterfelijkheid op bij één wezen dat je binnen bereik kunt zien. Het doelwit moet slagen op een wijze reddingsworp of {@condition frightened} worden voor de duur. Een doelwit met 25 of minder hit points moet de worp met nadeel doen. De spreuk heeft geen effect op constructies of ondoden."
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Ceremony (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "25 gp worth of powdered silver",
+					"cost": 2500
+				}
+			},
+			"duration": [
+				{
+					"type": "instant",
+					"condition": "see text"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Je voert een van de vele religieuze ceremonies uit. Als je de spreuk uitspreekt, kies je een van de volgende ceremonies, waarvan het doelwit zich gedurende de hele spreuk binnen een straal van 10 meter van je moet bevinden.",
+				{
+					"type": "entries",
+					"name": "Atonement",
+					"entries": [
+						"Je raakt een gewillig wezen aan waarvan de uitlijning is veranderd, en je doet een DC 20 Wisdom ({@skill Insight}) check. Als je slaagt, is het doelwit weer de oorspronkelijke groepering."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Bless Water",
+					"entries": [
+						"Je raakt een {@item vial|phb} water aan en veroorzaakt dat het {@item Holy Water (flask)|phb|holy water} wordt."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Coming of Age",
+					"entries": [
+						"Je raakt één humanoïde aan die oud genoeg is om een jongvolwassene te zijn. De volgende 24 uur, telkens wanneer het doelwit een vaardigheidscontrole doet, kan het een {@dice d4} gooien en het gerolde getal bij de vaardigheidscontrole optellen. Een wezen kan slechts eenmaal van deze ceremonie profiteren."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dedication",
+					"entries": [
+						"Je raakt één mensachtige aan die zich vrijwillig tot jouw religie wil bekeren of die toegewijd wil worden aan de dienst van jouw god. De komende 24 uur, telkens wanneer het doelwit een reddingsworp doet, kan het een {@dice d4} gooien en het gerolde getal bij de redding optellen. Een wezen kan maar één keer van deze ceremonie profiteren."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Funeral Rite",
+					"entries": [
+						"Je zegent één lijk in een straal van 2 meter. Voor de komende 24 uur, kan het doelwit op geen enkele manier ondood worden, behalve door een {@spell wish} spreuk."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Investiture",
+					"entries": [
+						"Je raakt één gewillige mensachtige aan. Kies een spreuk van het eerste niveau die je hebt voorbereid en gebruik een spell slot en eventuele materiële componenten alsof je die spreuk uitspreekt. De spreuk heeft geen effect. In plaats daarvan kan het doelwit deze spreuk eenmalig uitspreken zonder een spell slot te gebruiken of materiële componenten te gebruiken. Als het doelwit de spreuk niet binnen 1 uur uitspreekt, gaat de geïnvesteerde spreuk verloren."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Marriage",
+					"entries": [
+						"Je raakt volwassen mensen aan die bereid zijn om met elkaar te trouwen. Voor de volgende 24 uur, krijgt elk doelwit een +2 bonus op AC en saving throws als ze binnen 30 voet van elkaar zijn. Een wezen kan maar één keer van deze ceremonie profiteren."
+					]
+				}
+			],
+			"affectsCreatureType": [
+				"humanoid"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Chaos Bolt (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je slingert een golvende, gonzende massa chaotische energie naar één wezen in de buurt. Doe een spreukaanval van een afstand op het doelwit. Bij een treffer loopt het doelwit {@damage 2d8} schade op. Kies een van de {@dice d8}s. Het gegooide getal bepaalt het type schade, zoals hieronder.",
+				{
+					"type": "table",
+					"caption": "Chaos Bolt",
+					"colLabels": [
+						"{@dice d8}",
+						"Damage Type"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"Acid"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								}
+							},
+							"Cold"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 3
+								}
+							},
+							"Fire"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 4
+								}
+							},
+							"Kracht"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Lightning"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Gif"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 7
+								}
+							},
+							"Helderziende"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 8
+								}
+							},
+							"Donder"
+						]
+					]
+				},
+				"Als je op beide {@dice d8}s hetzelfde getal gooit, springt de chaotische energie van het doelwit naar een ander wezen van jouw keuze binnen een straal van 30 meter ervan. Doe een nieuwe aanvalsrol tegen het nieuwe doelwit, en doe een nieuwe schade-rol, waardoor de chaotische energie opnieuw zou kunnen springen. Een wezen kan maar één keer het doelwit zijn van deze massa chaotische energie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van 2e niveau of hoger, loopt elk doelwit extra schade op van het gerolde type. De extra schade is gelijk aan {@scaledamage 2d8|1-9|1d6} voor elk slotniveau boven het 1e."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"force",
+				"lightning",
+				"poison",
+				"psychic",
+				"thunder"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Guiding Hand (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Je creëert een Kleine onstoffelijke hand van glinsterend licht in een onbezette ruimte die je binnen bereik kunt zien. De hand bestaat voor de duur, maar verdwijnt als je teleporteert of als je naar een ander bestaansvlak reist.",
+				"Als de hand verschijnt, noem je één belangrijk oriëntatiepunt, zoals een stad, berg, kasteel of slagveld op hetzelfde bestaansvlak als jij. Iemand in de geschiedenis moet de plaats bezocht en in kaart gebracht hebben. Als het oriëntatiepunt op geen enkele kaart voorkomt, mislukt de spreuk. In alle andere gevallen, wanneer je naar de hand toe beweegt, beweegt deze van je weg met dezelfde snelheid als jij bewoog, en beweegt in de richting van het oriëntatiepunt, waarbij hij altijd 5 voet van je vandaan blijft.",
+				"Als je niet naar de hand toe beweegt, blijft hij op zijn plaats totdat je dat wel doet en wenkt hij je om hem te volgen, eens in de {@dice 1d4} minuten."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Hand of Radiance (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je heft je hand op, en er komt een brandende straling uit. Elk wezen naar keuze dat je kunt zien binnen een straal van 2 meter, moet slagen op een grondwettelijke saving throw of {@damage 1d6} stralingsschade oplopen.",
+				"De schade van de spreuk neemt toe met {@dice 1d6} als je 5e level bent ({@damage 2d6}), 11e level ({@damage 3d6}), en 17e level ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "radiant damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"radiant"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Healing Elixir (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "alchemist's supplies"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"Je creëert een genezend elixer in een eenvoudige flacon die in je hand verschijnt. Het elixer behoudt zijn kracht voor de duur of totdat het wordt geconsumeerd, waarna het flesje verdwijnt.",
+				"Als actie kan een wezen het elixer drinken of het toedienen aan een ander wezen. De drinker krijgt {@dice 2d4 + 2} hit points terug."
+			],
+			"miscTags": [
+				"HL"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Infestation (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a living flea"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je veroorzaakt mijten, vlooien en andere parasieten die kortstondig verschijnen op één wezen dat je binnen je bereik kunt zien. Het doelwit moet slagen op een Constitution saving throw of {@damage 1d6} doordringende schade oplopen. Als het doelwit een van deze schade oploopt, beweegt het 5 voet in een willekeurige richting. Rol een {@dice d8} voor de richting: 1, noord; 2, noordoost; 3, oost; 4, zuidoost; 5, zuid; 6, zuidwest; 7, west; of 8, noordwest.",
+				"De schade van de spreuk neemt toe met {@dice 1d6} als je 5e level bent ({@damage 2d6}), 11e level ({@damage 3d6}), en 17e level ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "piercing damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"piercing"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Primal Savagery (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je tanden of vingernagels worden langer en scherper. Jij kiest welke. Doe een vloekaanval tegen één wezen binnen een straal van 2 meter. Als je hem raakt, loopt hij {@damage 1d10} schade op door een piercing of een hakbijl (jouw keuze). Nadat je de aanval hebt gedaan, worden je tanden of vingernagels weer normaal.",
+				"De schade van de spreuk neemt toe met {@dice 1d10} als je 5e level bent ({@damage 2d10}), 11e level ({@damage 3d10}), en 17e level ({@damage 4d10})."
+			],
+			"scalingLevelDice": {
+				"label": "piercing damage",
+				"scaling": {
+					"1": "1d10",
+					"5": "2d10",
+					"11": "3d10",
+					"17": "4d10"
+				}
+			},
+			"damageInflict": [
+				"piercing",
+				"slashing"
+			],
+			"spellAttack": [
+				"M"
+			],
+			"miscTags": [
+				"SCL"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Puppet (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je gebaar dwingt een mensachtige die je kunt zien binnen bereik om een grondwettelijke reddingsworp te doen. Als je niet slaagt, moet het doelwit zich tot zijn snelheid in een door jou gekozen richting bewegen. Bovendien kun je ervoor zorgen dat het doelwit alles laat vallen wat hij vasthoudt. Deze spreuk heeft geen effect op een mensachtige die immuun is voor het zijn {@condition charmed}."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"affectsCreatureType": [
+				"aberration",
+				"beast",
+				"celestial",
+				"construct",
+				"dragon",
+				"elemental",
+				"fey",
+				"fiend",
+				"giant",
+				"monstrosity",
+				"ooze",
+				"plant",
+				"undead"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sense Emotion (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je stemt je zintuigen af om de emoties van anderen op te pikken voor de duur van de betovering. Wanneer je de betovering uitspreekt, en als actie bij elke beurt totdat de betovering eindigt, kun je je zintuigen richten op een mensachtige die je kunt zien binnen een straal van 30 meter van je. Je leert onmiddellijk de overheersende emotie van het doelwit kennen, of het nu liefde, woede, pijn, angst, kalmte of iets anders is. Als het doelwit niet echt een mensachtige is of er immuun voor is {@condition charmed}, voel je dat het kalm is."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Snare (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "30 feet of cord or rope, which is consumed by the spell",
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "permanent",
+					"ends": [
+						"dispel",
+						"trigger"
+					]
+				}
+			],
+			"entries": [
+				"Terwijl je deze spreuk uitspreekt, gebruik je het koord of touw om een cirkel te maken met een straal van 5 voet op een vlak oppervlak binnen je bereik. Als je klaar bent met de spreuk, verdwijnt het koord of touw en wordt het een magische val.",
+				"De val is bijna onzichtbaar en vereist een succesvolle Intelligentie ({@skill Investigation}) check tegen je spell save DC om gevonden te worden. De val wordt geactiveerd als een klein of groter wezen zich in het door de spreuk beschermde gebied begeeft.",
+				"Het triggerende wezen moet slagen op een Dexterity saving throw of vallen {@condition prone} en wordt in de lucht gehesen tot het ondersteboven hangt 3 voet boven het beschermde oppervlak, waar het zich bevindt {@condition restrained}.",
+				"Het {@condition restrained} wezen kan aan het eind van elke beurt een Dexterity saving throw doen met nadeel en beëindigt het {@condition restrained} effect als hij slaagt. Als alternatief kan een ander wezen dat het {@condition restrained} wezen kan bereiken een actie gebruiken om een intelligentietest ({@skill Arcana}) te doen tegen jouw spell save DC. Als je slaagt, stopt het {@condition restrained} effect ook."
+			],
+			"conditionInflict": [
+				"prone",
+				"restrained"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"abilityCheck": [
+				"intelligence"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sudden Awakening (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Elk slapend wezen dat je kiest binnen bereik ontwaakt, en dan kan elk {@condition prone} wezen binnen bereik opstaan zonder een beweging te verbruiken."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Toll the Dead (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 0,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je richt op een wezen dat je kunt zien binnen bereik, en het geluid van een dolorische bel vult de lucht eromheen voor een moment. Het doelwit moet slagen op een Wisdom saving throw of {@damage 1d8} necrotische schade oplopen. Als het doelwit een van zijn hit points mist, loopt het in plaats daarvan {@damage 1d12} necrotische schade op.",
+				"De schade van de spreuk neemt met één dobbelsteen toe bij het bereiken van het 5e niveau ({@damage 2d8} of {@damage 2d12}), het 11e niveau ({@damage 3d8} of {@damage 3d12}), en het 17e niveau ({@damage 4d8} of {@damage 4d12})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "necrotic damage",
+					"scaling": {
+						"1": "1d8",
+						"5": "2d8",
+						"11": "3d8",
+						"17": "4d8"
+					}
+				},
+				{
+					"label": "necrotic damage to wounded creature",
+					"scaling": {
+						"1": "1d12",
+						"5": "2d12",
+						"11": "3d12",
+						"17": "4d12"
+					}
+				}
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Unearthly Chorus (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Muziek in de stijl van uw keuze vult de lucht rondom u in een straal van 30 voet. De muziek verspreidt zich rond hoeken en kan gehoord worden tot op 100 voet afstand. De muziek beweegt met je mee, gecentreerd op jou voor de duur.",
+				"Totdat de betovering eindigt, doe je Charisma ({@skill Performance}) checks met voordeel. Bovendien kun je in elke beurt een bonusactie gebruiken om een wezen naar keuze binnen een straal van 30 meter dat jou kan zien en de muziek kan horen, te betoveren. Het wezen moet een Charisma saving throw doen. Als jij of je medespelers het wezen aanvallen, slaagt het wezen automatisch voor de reddingsworp. Als de worp niet slaagt, wordt het wezen vriendelijk voor je zolang het de muziek kan horen en tot 1 uur daarna. Je doet Charisma ({@skill Deception}) checks en Charisma ({@skill Persuasion}) checks tegen wezens die door deze spreuk bevriend zijn geraakt met voordeel."
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Virtue (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 0,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Je raakt één wezen aan en doordrenkt het met levenskracht. Als het doelwit ten minste 1 hit point heeft, krijgt het een aantal tijdelijke hit points gelijk aan {@dice 1d4} + je spellcasting ability modifier. De tijdelijke hit points gaan verloren als de spreuk eindigt."
+			],
+			"miscTags": [
+				"THP"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Wild Cunning (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Je roept de geesten van de natuur op om je te helpen. Wanneer je deze spreuk uitspreekt, kies dan een van de volgende effecten:",
+				{
+					"type": "list",
+					"items": [
+						"Als er sporen op de grond zijn binnen bereik, weet je waar ze zijn, en je maakt Wisdom ({@skill Survival}) checks om deze sporen te volgen met voordeel voor 1 uur of totdat je deze spreuk opnieuw uitspreekt.",
+						"Als er eetbaar voedsel binnen bereik is, weet je het en waar het te vinden is.",
+						"Als er schoon drinkwater binnen bereik is, weet je dat en waar je het kunt vinden.",
+						"Als er een geschikt onderkomen is voor u en uw metgezellen met bereik, weet u het en waar u het kunt vinden.",
+						"Stuur de geesten terug om hout te brengen voor een vuur en om een kamp op te zetten in het gebied met behulp van je voorraden. De geesten bouwen het vuur in een cirkel van stenen, zetten tenten op, rollen beddengoed uit, en zetten rantsoenen en water klaar voor consumptie.",
+						"Laat de geesten onmiddellijk een kampeerterrein afbreken, wat onder meer inhoudt dat een vuur wordt gedoofd, tenten worden afgebroken, tassen worden ingepakt en afval wordt begraven."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Zephyr Strike (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je beweegt als de wind. Voor de duur, lokt je beweging geen gelegenheidsaanvallen uit.",
+				"Bovendien, de eerste keer dat je een wapenaanval doet in je beurt voordat de spreuk eindigt, maak je de aanvalsrol met voordeel, en je snelheid neemt toe met 30 voet tot het einde van die beurt."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

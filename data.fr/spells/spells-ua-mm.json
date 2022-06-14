@@ -1,0 +1,1101 @@
+{
+	"spell": [
+		{
+			"name": "Arcane Hacking (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "hacking tools"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Vous gagnez un avantage sur tous les tests d'Intelligence utilisant des outils de piratage pour briser le cryptage des logiciels ou la sécurité en ligne lorsque vous utilisez un système étranger. Ce sort vous permet également de briser des sorts de protection de 2e niveau ou moins, tels que verrou arcanique ou glyphe de protection, en effectuant un test d'Intelligence à l'aide d'outils de piratage contre le DC de sauvegarde du lanceur du sort."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, vous pouvez tenter de contrer un sort destiné à sécuriser le système étranger si le niveau du sort est égal ou inférieur au niveau de l'emplacement de sort que vous avez utilisé."
+					]
+				}
+			],
+			"abilityCheck": [
+				"intelligence"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Commune with City (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 5,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Vous faites brièvement corps avec la ville et gagnez des connaissances sur les environs. En surface, ce sort vous permet de connaître la zone située dans un rayon de 1 mile autour de vous. Dans les égouts et autres environnements souterrains, vous gagnez la connaissance de la zone située dans un rayon de 600 pieds autour de vous.",
+				"Vous acquérez instantanément des connaissances sur un maximum de trois faits de votre choix concernant l'un des sujets suivants, en rapport avec la région :",
+				{
+					"type": "list",
+					"items": [
+						"Terrain et plans d'eau",
+						"Les bâtiments, les plantes, les animaux ou les créatures intelligentes les plus répandus.",
+						"Célestes puissants (CR 1 ou plus), fey, démons, élémentaires ou morts-vivants.",
+						"Influences d'autres plans d'existence",
+						"Courants électriques, signaux sans fil, lignes et voies de transport actif"
+					]
+				},
+				"Par exemple, vous pouvez déterminer l'emplacement des morts-vivants puissants dans la région, l'emplacement des principales sources d'énergie électrique ou d'interférences, et l'emplacement de tout parc à proximité."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Knowbot (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					}
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Vous touchez un seul appareil informatique ou système informatique pour conjurer un knowbot - un logiciel partiellement sensible, imprégné des vestiges de vos propres compétences et capacités informatiques. Pendant la durée du sort, vous pouvez utiliser une action bonus pour que le knowbot exécute une tâche informatique qui nécessiterait normalement une action. Le knowbot effectue des tests de capacité d'intelligence en utilisant votre score de capacité et vos bonus de compétence (y compris votre compétence en matière d'outils de piratage, le cas échéant).",
+				"Vous avez un lien télépathique limité avec le knowbot, jusqu'à une portée de 500 pieds de l'appareil ou du système où le knowbot a été conjuré. Si vous vous déplacez au-delà de cette portée, le knowbot disparaît en {@dice 2d4} rounds, comme si la durée du sort avait expiré. Si vous vous déplacez à nouveau à portée, le lien est immédiatement rétabli.",
+				"Le knowbot est lié au système dans lequel il a été créé, et il y reste jusqu'à ce qu'il soit renvoyé ou que la durée du sort expire."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5e niveau ou plus, la durée du sort augmente à 1 heure. De plus, votre lien télépathique avec le robot-savant est efficace jusqu'à une portée de 1 000 pieds, et si vous quittez la portée du lien, le robot-savant continue d'exécuter sa dernière tâche dirigée jusqu'à l'expiration du sort."
+					]
+				}
+			],
+			"miscTags": [
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Digital Phantom (UA)",
+			"source": "UAModernMagic",
+			"page": 6,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a small piece of copper wire"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Ce sort permet de dissimuler activement votre présence dans un système informatique. Pendant la durée du sort, vous et tous les autres utilisateurs de votre réseau local gagnez un bonus de +10 aux tests d'Intelligence pour éviter d'être détecté par les administrateurs, les robots, les logiciels de traçage, etc. Lorsque vous et les utilisateurs de votre choix quittez un système informatique dans lequel vous travaillez alors que ce sort est en vigueur, toute trace de votre présence antérieure dans ce système est effacée."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Find Vehicle (UA)",
+			"source": "UAModernMagic",
+			"page": 6,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 10,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Vous invoquez un esprit qui prend la forme d'un véhicule terrestre non militaire de votre choix, apparaissant dans un espace inoccupé à portée. Le véhicule possède les statistiques d'un véhicule normal de son genre, bien qu'il soit céleste, féerique ou diabolique (origine de votre choix). Les caractéristiques physiques du véhicule reflètent son origine dans une certaine mesure. Par exemple, un SUV diabolique peut être de couleur noir de jais, avec des vitres teintées et une calandre sinistre.",
+				"Vous avez un lien surnaturel avec le véhicule conjuré qui vous permet de conduire au-delà de votre capacité normale. Lorsque vous conduisez le véhicule conjuré, vous êtes considéré comme compétent pour les véhicules de son type, et vous ajoutez le double de votre bonus de compétence aux tests d'aptitude liés à la conduite du véhicule. Lorsque vous conduisez le véhicule, vous pouvez faire en sorte que tout sort que vous lancez et qui ne vise que vous vise également le véhicule.",
+				"Si le véhicule tombe à 0 point de vie, il disparaît, sans laisser de forme physique. Vous pouvez également congédier le véhicule à tout moment en tant qu'action, ce qui le fait disparaître.",
+				"Vous ne pouvez pas avoir plus d'un véhicule lié par ce sort à la fois. Comme une action, vous pouvez libérer le véhicule de son lien à tout moment, le faisant disparaître."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, vous pouvez conjurer un véhicule aquatique non militaire assez grand pour transporter six créatures moyennes. Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5e niveau ou plus, vous pouvez conjurer un véhicule aérien non militaire suffisamment grand pour transporter dix créatures moyennes. Lorsque vous lancez ce sort en utilisant un emplacement de sort de 7ème niveau ou plus, vous pouvez conjurer n'importe quel type de véhicule, sous réserve de l'approbation du DM."
+					]
+				}
+			],
+			"miscTags": [
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Haywire (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Ce sort perturbe les appareils électroniques, rendant l'utilisation de ces appareils quasiment impossible. Chaque appareil électronique dans une sphère de 10 pieds de rayon centrée sur un point que vous choisissez à portée est soumis à un comportement aléatoire tant qu'il reste dans la zone. Un appareil qui n'est pas tenu par une créature est automatiquement affecté. Si un appareil électronique est tenu par une créature, celle-ci doit réussir un jet de sauvegarde de Sagesse ou voir son appareil affecté par le sort.",
+				"Au début de chacun de vos tours, lancez un {@dice d6} pour chaque dispositif affecté afin de déterminer son comportement. Sauf indication contraire, ce comportement dure jusqu'au début de votre prochain tour tant que ce sort est en vigueur.",
+				{
+					"type": "table",
+					"colLabels": [
+						"{@dice d6}",
+						"Effect"
+					],
+					"colStyles": [
+						"col-1 text-center no-wrap",
+						"col-11"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"L'appareil s'arrête et doit être redémarré. Ne roulez pas à nouveau pour ce dispositif tant qu'il n'a pas été redémarré."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"min": 2,
+									"max": 4
+								}
+							},
+							"L'appareil ne fonctionne pas."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"L'appareil subit une surtension, provoquant un choc électrique au porteur (le cas échéant) et à une créature aléatoire dans un rayon de 1,5 m de l'appareil. Chaque créature affectée doit effectuer un jet de sauvegarde de Dextérité contre le DC de sauvegarde de votre sort, subissant {@damage 6d6} de dégâts de foudre en cas d'échec, ou la moitié des dégâts en cas de réussite."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"L'appareil est utilisable normalement."
+						]
+					]
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, le rayon de la sphère affectée par le sort augmente de 1,5 m pour chaque niveau d'emplacement supérieur au 3e."
+					]
+				}
+			],
+			"damageInflict": [
+				"lightning"
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Infallible Relay (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a mobile phone"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Avec ce sort, vous pouvez cibler n'importe quelle créature avec laquelle vous avez déjà parlé, à condition que vous soyez tous deux sur le même plan d'existence. Lorsque vous lancez le sort, le téléphone en état de marche le plus proche ou un appareil de communication similaire dans un rayon de 30 mètres de la cible se met à sonner. S'il n'y a pas d'appareil adéquat suffisamment proche de la cible, le sort échoue.",
+				"La cible doit réussir un jet de sauvegarde de Charisme ou être contrainte de répondre à votre appel. Une fois la connexion établie, l'appel est clair comme de l'eau de roche et ne peut être interrompu avant la fin de la conversation ou la fin de la durée du sort. Vous pouvez mettre fin à la conversation à tout moment, mais la cible doit réussir un jet de sauvegarde de Charisme pour mettre fin à la conversation."
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Invisibility to Cameras (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 3,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a scrap of black paper"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Quatre créatures de votre choix à portée deviennent indétectables par les capteurs électroniques et les caméras pour la durée du sort. Tout ce que la cible porte ou transporte est également indétectable tant qu'il est sur elle. Les cibles restent visibles à la vue."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "On/Off (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Ce cantrip vous permet d'activer ou de désactiver tout appareil électronique à portée de main, à condition que l'appareil ait une fonction d'activation ou de désactivation clairement définie et facilement accessible depuis l'extérieur de l'appareil. Tout appareil qui nécessite une séquence d'arrêt logicielle pour être activé ou désactivé ne peut être affecté par le cantrip."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Protection from Ballistics (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a shell casing"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Ce sort enchante la chair de la cible contre l'impact des balles. Jusqu'à la fin du sort, la cible a une résistance aux dégâts balistiques non magiques."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Remote Access (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					}
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Vous pouvez utiliser tout appareil électronique à portée comme s'il était dans vos mains. Il ne s'agit pas d'un effet de télékinésie. Ce sort vous permet plutôt de simuler électroniquement les fonctions mécaniques d'un appareil. Vous ne pouvez accéder qu'aux fonctions auxquelles une personne utilisant l'appareil manuellement aurait accès. Vous ne pouvez utiliser l'accès à distance qu'avec un seul appareil à la fois."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Shutdown (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Ce sort éteint tous les appareils électroniques à portée qui ne sont pas maniés par ou sous le contrôle direct d'une créature. Si un appareil électronique à portée est utilisé par une créature, cette dernière doit réussir un jet de sauvegarde de Constitution pour empêcher l'arrêt de l'appareil. Tant que le sort reste actif, aucun appareil électronique à portée ne peut être démarré ou redémarré."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Synchronicity (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"La créature que vous touchez sent la réalité se déplacer subtilement en sa faveur pendant que ce sort est en vigueur. La cible n'est pas incommodée par les retards de toutes sortes. Les feux de circulation sont toujours verts, il y a toujours un ascenseur qui attend, et un taxi est toujours au coin de la rue. La cible peut courir à toute vitesse à travers une foule dense, et les attaques d'opportunité provoquées par le mouvement de la cible sont faites avec un désavantage.",
+				"La synchronicité confère un avantage aux tests de Dextérité ({@skill Stealth}), car la cible trouve toujours un élément de couverture pratique disponible. De plus, la cible bénéficie d'un avantage sur tous les tests d'aptitude effectués pour conduire un véhicule.",
+				"Dans le cas où deux créatures ou plus sous l'effet de la synchronicité tentent d'éviter d'être incommodées l'une par l'autre, les créatures engagent un concours de Charisme chaque fois que les effets des sorts s'opposeraient les uns aux autres."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "System Backdoor (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 4,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "hacking tools"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Ce sort vous permet de contourner la sécurité du système afin de créer un login sécurisé sur un système étranger. Le login que vous créez vous donne des privilèges de niveau administrateur dans tout système informatique non amélioré par la technomagie. Le login annule tous les sorts de technomagie de niveau 3 ou inférieur.",
+				"Une fois la durée du sort expirée, le login et tous les privilèges sont effacés du système. Les journaux du système montrent toujours l'activité de l'utilisateur, mais l'identification de l'utilisateur ne peut être trouvée ou tracée."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5e niveau ou plus, vous êtes capable de contourner les sorts technomagiques si le niveau du sort est égal ou inférieur au niveau de l'emplacement de sort utilisé."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		}
+	]
+}

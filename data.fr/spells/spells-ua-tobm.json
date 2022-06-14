@@ -1,0 +1,311 @@
+{
+	"spell": [
+		{
+			"name": "Conjure Barlgura (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					}
+				}
+			],
+			"entries": [
+				"Vous invoquez un {@creature barlgura} qui apparaît dans un espace inoccupé que vous pouvez voir à portée. Le {@creature barlgura} disparaît lorsqu'il tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"Le {@creature barlgura} est hostile à tous les non-démons. Lancez l'initiative pour le {@creature barlgura}, qui dispose de ses propres tours. Au début de son tour, il se déplace vers le non-démon le plus proche qu'il peut percevoir et l'attaque. Si deux créatures ou plus sont également proches, il en choisit une au hasard. S'il ne voit aucun ennemi potentiel, le {@creature barlgura} se déplace dans une direction aléatoire à la recherche d'ennemis.",
+				"Lorsque vous lancez le sort, vous pouvez tracer un cercle sur le sol en utilisant le sang d'un humanoïde intelligent tué au cours des dernières 24 heures. Le cercle est suffisamment grand pour englober votre espace. L'invoqué {@creature barlgura} ne peut pas traverser le cercle ni cibler qui que ce soit à l'intérieur tant que le sort dure."
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Hezrou (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 7,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "food worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous invoquez un {@creature hezrou} qui apparaît dans un espace inoccupé que vous pouvez voir à portée. Le {@creature hezrou} disparaît lorsqu'il tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"L'attitude du {@creature hezrou} dépend de la valeur de la nourriture utilisée comme composant matériel de ce sort. Faites un jet d'initiative pour le {@creature hezrou}, qui a ses propres tours. Au début du tour du {@creature hezrou}, le DM effectue un test de Charisme secret en votre nom, avec un bonus égal à la valeur de la nourriture divisée par 20. Le DC du test commence à 10 et augmente de 2 à chaque tour. Vous pouvez donner des ordres au {@creature hezrou} et le faire obéir tant que vous réussissez le test de Charisme.",
+				"Si le test échoue, le sort ne nécessite plus de concentration et le démon n'est plus sous votre contrôle. Le {@creature hezrou} se concentre alors sur la dévoration de tous les cadavres qu'il peut voir. S'il n'y a pas de tels repas à portée de main, il attaque les créatures les plus proches et mange tout ce qu'il tue. Si ses points de vie sont réduits à moins de la moitié de son maximum, il retourne dans les Abysses.",
+				"Lorsque vous lancez le sort, vous pouvez tracer un cercle sur le sol en utilisant le sang d'un humanoïde intelligent tué au cours des dernières 24 heures. Le cercle est suffisamment grand pour englober votre espace. L'invoqué {@creature hezrou} ne peut pas traverser le cercle ni cibler qui que ce soit à l'intérieur tant que le sort dure."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Lesser Demon (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a vial of blood from an intelligent humanoid killed within the past 24 hours"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous invoquez jusqu'à huit {@creature manes} ou {@creature dretch||dretches} au total qui apparaissent dans des espaces inoccupés que vous pouvez voir à portée. Un {@creature manes} ou {@creature dretch} disparaît lorsqu'il tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"Les démons sont hostiles à toutes les créatures. Lancez l'initiative pour les démons invoqués en tant que groupe, qui a ses propres tours. Les démons attaquent les non-démons les plus proches au mieux de leurs capacités.",
+				"Lors du lancement du sort, vous pouvez tracer un cercle sur le sol avec le sang utilisé comme composant matériel. Le cercle est suffisamment grand pour englober votre espace. Les démons invoqués ne peuvent pas traverser le cercle ni cibler qui que ce soit à l'intérieur tant que le sort dure. L'utilisation du composant matériel de cette manière le consomme."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 6e ou 7e niveau, vous invoquez seize démons. Si vous le lancez en utilisant un emplacement de sort de 8e ou 9e niveau, vous invoquez trente-deux démons."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Shadow Demon (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 3,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a vial of blood from an intelligent humanoid killed within the past 24 hours"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous invoquez un {@creature shadow demon} qui apparaît dans un espace inoccupé que vous pouvez voir à portée. Le {@creature shadow demon} disparaît lorsqu'il tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"Faites un jet d'initiative pour le {@creature shadow demon}, qui a ses propres tours. Vous pouvez donner des ordres au {@creature shadow demon}, et il vous obéit tant qu'il peut attaquer une créature à chacun de ses tours et qu'il ne commence pas son tour dans une zone de lumière vive. Si l'une de ces conditions n'est pas remplie, le {@creature shadow demon} effectue immédiatement un test de Charisme contesté par votre test de Charisme. Si vous échouez à ce test, le sort ne nécessite plus de concentration et le démon n'est plus sous votre contrôle. Le démon réussit automatiquement son test s'il se trouve à plus de 30 mètres de vous.",
+				"Lorsque vous lancez le sort, vous pouvez tracer un cercle sur le sol en utilisant le sang d'un humanoïde intelligent tué au cours des dernières 24 heures. Le cercle est suffisamment grand pour englober votre espace. L'invoqué {@creature shadow demon} ne peut pas traverser le cercle ni cibler qui que ce soit à l'intérieur tant que le sort dure."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Vrock (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 3,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gem worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous invoquez un {@creature vrock} qui apparaît dans un espace inoccupé que vous pouvez voir à portée. Le {@creature vrock} disparaît lorsqu'il tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"L'attitude du {@creature vrock} dépend de la valeur de la gemme utilisée comme composant matériel pour ce sort. Faites un jet d'initiative pour le {@creature vrock}, qui a ses propres tours. Au début du tour du {@creature vrock}, le DM effectue un test de Charisme secret en votre nom, avec un bonus égal à la valeur de la gemme divisée par 20. Le DC du test commence à 10 et augmente de 2 à chaque tour. Vous pouvez donner des ordres au {@creature vrock} et le faire obéir tant que vous réussissez le test de Charisme.",
+				"Si le test échoue, le sort ne nécessite plus de concentration et le {@creature vrock} n'est plus sous votre contrôle. Le {@creature vrock} ne fait aucune action à son prochain tour et utilise sa télépathie pour dire à toute créature qu'il peut voir qu'il se battra en échange d'un trésor. La créature qui donne au {@creature vrock} la gemme la plus chère peut le commander pendant les {@dice 1d6} rounds suivants. A la fin de cette période, elle offre à nouveau le marché. Si personne n'offre le {@creature vrock} trésor avant le début de son prochain tour, il attaque les créatures les plus proches pendant {@dice 1d6} rounds avant de retourner dans les Abysses.",
+				"Lorsque vous lancez le sort, vous pouvez tracer un cercle sur le sol en utilisant le sang d'un humanoïde intelligent tué au cours des dernières 24 heures. Le cercle est suffisamment grand pour englober votre espace. L'invoqué {@creature vrock} ne peut pas traverser le cercle ni cibler qui que ce soit à l'intérieur tant que le sort dure."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

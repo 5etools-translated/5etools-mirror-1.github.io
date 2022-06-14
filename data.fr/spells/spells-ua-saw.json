@@ -1,0 +1,78 @@
+{
+	"spell": [
+		{
+			"name": "Mind Sliver",
+			"source": "UASorcererAndWarlock",
+			"page": 4,
+			"level": 0,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous envoyez un pic d'énergie psychique désorientant dans l'esprit d'une créature que vous pouvez voir à portée. La cible doit effectuer un jet de sauvegarde d'Intelligence. Si le jet de sauvegarde n'est pas réussi, la cible subit {@damage 1d6} de dégâts psychiques, et la première fois qu'elle effectue un jet de sauvegarde avant la fin de votre prochain tour, elle doit lancer un {@dice d4} et soustraire le nombre obtenu du jet de sauvegarde.",
+				"Les dégâts de ce sort augmentent de {@dice 1d6} lorsque vous atteignez certains niveaux : 5e niveau ({@damage 2d6}), 11e niveau ({@damage 3d6}), et 17e niveau ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

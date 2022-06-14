@@ -1,0 +1,1090 @@
+{
+	"spell": [
+		{
+			"name": "Dark Star",
+			"source": "EGW",
+			"page": 186,
+			"level": 8,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 150
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a shard of onyx and a drop of the caster's blood, both of which the spell consumes",
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Deze spreuk creëert een bol met het middelpunt op een door jou gekozen punt binnen bereik. De bol kan een straal hebben van maximaal 40 voet. Het gebied binnen deze bol is gevuld met magische duisternis en verpletterende zwaartekracht.",
+				"Voor de duur van de spreuk is het gebied {@quickref difficult terrain||3}. Een wezen met donkerzicht kan niet door de magische duisternis heen kijken, en niet-magisch licht kan het niet verlichten. Er kan geen geluid worden gemaakt binnen het gebied of er doorheen gaan. Elk wezen of voorwerp dat zich volledig binnen de sfeer bevindt, is immuun voor donderschade, en wezens zijn {@condition deafened} terwijl ze zich volledig binnen de sfeer bevinden. Een spreuk uitspreken die een verbale component bevat is er onmogelijk.",
+				"Elk wezen dat tijdens een beurt voor het eerst in het gebied van de spreuk komt of er zijn beurt begint, moet een grondwetsredding doen. Het wezen krijgt {@damage 8d10} krachtschade als de reddingspoging mislukt, of half zoveel schade als de reddingspoging slaagt. Een schepsel dat door deze schade tot 0 hit points is gereduceerd, wordt gedesintegreerd. Een gedesintegreerd wezen en alles wat het draagt, behalve magische voorwerpen, wordt gereduceerd tot een hoopje fijn grijs stof."
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"deafened"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Fortune's Favor",
+			"source": "EGW",
+			"page": 186,
+			"level": 2,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a white pearl worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Je brengt latent geluk over op jezelf of op een gewillig wezen dat je binnen bereik kunt zien. Als het gekozen wezen een aanvalsworp, een ability check of een saving throw doet voordat de spreuk eindigt, kan het deze spreuk op zichzelf afwijzen om een extra {@dice d20} te gooien en te kiezen welke van de {@dice d20}s het wil gebruiken. Als er een aanvalsworp tegen het gekozen wezen wordt gedaan, kan het deze spreuk op zichzelf afwijzen om een {@dice d20} te gooien en te kiezen welke van de {@dice d20} te gebruiken, degene die het zelf heeft gegooid of degene die de aanvaller heeft gegooid.",
+				"Als de oorspronkelijke worp {@dice d20} voordeel of nadeel heeft, gooit het wezen de extra worp {@dice d20} nadat voordeel of nadeel is toegepast op de oorspronkelijke worp."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van 3de niveau of hoger, kun je een extra wezen als doelwit nemen voor elk slotniveau boven 2de."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gift of Alacrity",
+			"source": "EGW",
+			"page": 186,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Je raakt een gewillig wezen aan. Voor de duur kan het doelwit {@dice 1d8} toevoegen aan zijn initiatiefrollen."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gravity Fissure",
+			"source": "EGW",
+			"page": 187,
+			"level": 6,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "line",
+				"distance": {
+					"type": "feet",
+					"amount": 100
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a fistful of iron filings"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je manifesteert een ravijn van gravitatie-energie in een lijn die van jou uitgaat en 100 voet lang en 5 voet breed is. Elk wezen in die lijn moet een grondwettelijke test doen en krijgt {@damage 8d8} krachtschade als hij faalt, of half zoveel schade als hij slaagt.",
+				"Elk wezen binnen 10 voet van de lijn, maar niet in de lijn, moet slagen op een Constitution saving throw of {@damage 8d8} krachtschade nemen en naar de lijn getrokken worden tot het wezen in het gebied is."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van 7e niveau of hoger, neemt de schade toe met {@scaledamage 8d8|6-9|1d8} voor elk sleufniveau hoger dan 6e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"L"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Gravity Sinkhole",
+			"source": "EGW",
+			"page": 187,
+			"level": 4,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a black marble"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Een bol van verpletterende kracht vormt zich binnen een straal van 3 meter op een punt dat je kunt zien en trekt aan de wezens daar. Elk wezen in de bol moet een grondwettelijke reddingsworp doen. Als de reddingspoging mislukt, loopt het wezen {@damage 5d10} krachtschade op en wordt het in een rechte lijn naar het middelpunt van de bol getrokken, eindigend in een onbezette ruimte zo dicht mogelijk bij het middelpunt (zelfs als die ruimte in de lucht is). Bij een succesvolle save, neemt het wezen de helft van de schade op en wordt niet getrokken."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een slot van 5e niveau of hoger, neemt de schade toe met {@scaledamage 5d10|4-9|1d10} voor elk slotniveau boven 4e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Immovable Object",
+			"source": "EGW",
+			"page": 187,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "gold dust worth at least 25 gp, which the spell consumes",
+					"cost": 2500,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Je raakt een voorwerp aan dat niet meer weegt dan 10 pond en zorgt ervoor dat het op magische wijze op zijn plaats wordt vastgezet. Jij en de wezens die je aanwijst als je deze spreuk doet, kunnen het voorwerp normaal bewegen. Je kunt ook een wachtwoord instellen dat, wanneer je het uitspreekt binnen een straal van 5 meter van het voorwerp, deze spreuk gedurende 1 minuut onderdrukt.",
+				"Als het voorwerp vast in de lucht hangt, kan het tot 4.000 pond aan gewicht houden. Meer gewicht doet het voorwerp vallen. Anders kan een wezen een actie gebruiken om een Strength check te doen tegen jouw spell save DC. Als je slaagt, kan het wezen het voorwerp tot 3 meter verplaatsen."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van 4e of 5e niveau, wordt de DC om het voorwerp te verplaatsen verhoogd met 5, kan het tot 8.000 pond aan gewicht dragen, en wordt de duur verlengd tot 24 uur. Als je deze spreuk uitspreekt met een spreukslot van 6e niveau of hoger, wordt de DC om het voorwerp te verplaatsen verhoogd met 10, kan het tot 20.000 pond aan gewicht dragen, en is het effect permanent totdat het wordt ontkracht."
+					]
+				}
+			],
+			"abilityCheck": [
+				"strength"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Magnify Gravity",
+			"source": "EGW",
+			"page": 188,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"De zwaartekracht in een bol met een straal van 10 voet, gecentreerd op een punt dat je binnen bereik kunt zien, neemt voor een moment toe. Elk wezen in de sfeer tijdens de beurt dat je de spreuk doet, moet een grondwetsredding doen. Als de reddingspoging mislukt, loopt het wezen {@damage 2d8} krachtschade op en wordt zijn snelheid gehalveerd tot het einde van zijn volgende beurt. Bij een succesvolle redding krijgt het wezen half zoveel schade en wordt zijn snelheid niet verminderd.",
+				"Tot aan het begin van je volgende beurt moet je elk voorwerp dat je niet draagt in de bol, oppakken of verplaatsen met een succesvolle Strength check tegen je spell save DC."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukengroef van het 2e niveau of hoger, neemt de schade toe met {@scaledamage 2d8|1-9|1d8} voor elk groefniveau boven het 1e."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Pulse Wave",
+			"source": "EGW",
+			"page": 188,
+			"level": 3,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je creëert intense druk, laat die los in een kegel van 30 voet, en beslist of de druk wezens en voorwerpen trekt of duwt. Elk wezen in die kegel moet een grondwettelijke test doen. Een schepsel krijgt {@damage 6d6} krachtschade als hij niet slaagt, of half zoveel als hij wel slaagt. En elk wezen dat niet slaagt, wordt 15 meter naar je toe getrokken of 15 meter van je vandaan geduwd, afhankelijk van de keuze die je voor de spreuk hebt gemaakt.",
+				"Bovendien worden onbeveiligde voorwerpen die zich volledig binnen de kegel bevinden, eveneens 15 voet verder getrokken of geduwd."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van niveau 4 of hoger, neemt de schade toe met {@scaledamage 6d6|3-9|1d6} en de afstand die je trekt of duwt met 5 voet voor elk slotniveau hoger dan 3."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"FMV"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Ravenous Void",
+			"source": "EGW",
+			"page": 188,
+			"level": 9,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 1000
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a small, nine-pointed star made of iron"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je creëert een bol van destructieve zwaartekracht met een straal van 20 voet, gecentreerd op een punt dat je binnen bereik kunt zien. Voor de duur van de spreuk zijn de bol en elke ruimte binnen 100 voet van de bol {@quickref difficult terrain||3}, en niet-magische voorwerpen die zich volledig binnen de bol bevinden worden vernietigd als ze niet worden gedragen of gedragen.",
+				"Wanneer de bol verschijnt en aan het begin van elke beurt totdat de spreuk eindigt, worden onbeveiligde voorwerpen binnen 100 voet van de bol naar het middelpunt van de bol getrokken, eindigend in een onbezette ruimte zo dicht mogelijk bij het middelpunt.",
+				"Een wezen dat zijn beurt begint binnen 100 voet van de bol moet slagen op een Strength saving throw of recht naar het middelpunt van de bol worden getrokken en eindigen in een onbezette ruimte zo dicht mogelijk bij het middelpunt. Een wezen dat tijdens een beurt voor het eerst in de bol komt of er zijn beurt begint, loopt {@damage 5d10} krachtschade op en blijft {@condition restrained} tot het zich niet meer in de bol bevindt. Als de bol zich in de lucht bevindt, zweeft het {@condition restrained} wezen in de bol. Een wezen kan zijn actie gebruiken om een Strength check te doen tegen jouw spell save DC, waardoor deze {@condition restrained} conditie wordt beëindigd bij zichzelf of bij een ander wezen in de sfeer dat het kan bereiken. Een wezen dat door deze spreuk tot 0 hit points is gereduceerd, wordt vernietigd, samen met alle niet-magische voorwerpen die het draagt of bij zich heeft."
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"restrained"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"abilityCheck": [
+				"strength"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Reality Break",
+			"source": "EGW",
+			"page": 189,
+			"level": 8,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a crystal prism"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je verbrijzelt de barrières tussen realiteiten en tijdlijnen en drijft een wezen in verwarring en waanzin. Het doelwit moet slagen op een Wisdom saving throw, of het kan geen reacties uitvoeren totdat de spreuk eindigt. Het getroffen doelwit moet ook een {@dice d10} gooien aan het begin van elke beurt; het gerolde getal bepaalt wat er met het doelwit gebeurt, zoals aangegeven op de tabel Reality Break Effects.",
+				"Aan het eind van elke beurt kan het getroffen doelwit de Wijsheidsparende worp herhalen, waarbij de betovering op zichzelf eindigt als hij slaagt.",
+				{
+					"type": "table",
+					"caption": "Reality Break Effects",
+					"colLabels": [
+						"d10",
+						"Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1-2",
+							"{@b Vision of the Far Realm.} Het doelwit neemt {@damage 6d12} psychische schade, en het is {@condition stunned} tot het einde van de beurt."
+						],
+						[
+							"3-5",
+							"{@b Rending Rift.} Het doelwit moet een Dexterity-krachtworp doen, waarbij hij {@damage 8d12} krachtschade oploopt als hij niet slaagt, of half zoveel als hij wel slaagt."
+						],
+						[
+							"6-8",
+							"{@b Wormhole.} Het doelwit wordt geteleporteerd, samen met alles wat het draagt en bij zich draagt, tot 30 voet naar een onbezette ruimte van jouw keuze die je kunt zien. Het doelwit loopt ook {@damage 10d12} krachtschade op en wordt {@condition prone} neergeslagen."
+						],
+						[
+							"9-10",
+							"{@b Chill of the Dark Void.} Het doelwit neemt {@damage 10d12} koude schade, en het is {@condition blinded} tot het einde van de beurt."
+						]
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic",
+				"force",
+				"cold"
+			],
+			"conditionInflict": [
+				"stunned",
+				"prone",
+				"blinded"
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
+			],
+			"miscTags": [
+				"RO",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Sapping Sting",
+			"source": "EGW",
+			"page": 189,
+			"level": 0,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je zuigt de levenskracht weg van één wezen dat je in de buurt kunt zien. Het doelwit moet slagen op een grondwettelijke reddingsworp of {@damage 1d4} necrotische schade oplopen en {@condition prone} vallen.",
+				"De schade van deze spreuk neemt toe met {@dice 1d4} als je 5e level bent ({@dice 2d4}), 11e level ({@dice 3d4}), en 17e level ({@dice 4d4})."
+			],
+			"scalingLevelDice": {
+				"label": "necrotic damage",
+				"scaling": {
+					"1": "1d4",
+					"5": "2d4",
+					"11": "3d4",
+					"17": "4d4"
+				}
+			},
+			"damageInflict": [
+				"necrotic"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Temporal Shunt",
+			"source": "EGW",
+			"page": 189,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "taken when a creature you can see makes an attack roll or starts to cast a spell"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Je richt je op het wezen dat de betovering veroorzaakt, dat moet slagen op een wijze reddingsworp of verdwijnen, waardoor het naar een ander punt in de tijd wordt geslingerd en de aanval mist of de betovering verspild wordt. Aan het begin van zijn volgende beurt verschijnt het doelwit weer waar het was of in de dichtstbijzijnde onbezette ruimte. Het doelwit herinnert zich niet dat je de spreuk hebt uitgesproken of dat je erdoor bent beïnvloed."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van 6e niveau of hoger, kun je een extra wezen als doelwit nemen voor elk slotniveau boven de 5e. Alle doelwitten moeten zich binnen 30 meter van elkaar bevinden."
+					]
+				}
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Tether Essence",
+			"source": "EGW",
+			"page": 189,
+			"level": 7,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a spool of platinum cord worth at least 250 gp, which the spell consumes",
+					"cost": 25000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Twee wezens die je binnen bereik kunt zien moeten een grondwettelijke reddingsworp doen, met nadeel als ze binnen 30 meter van elkaar zijn. Beide wezens kunnen vrijwillig falen. Als een van beide reddingen slaagt, heeft de spreuk geen effect. Als beide reddingen mislukken, zijn de wezens voor de duur van de spreuk magisch met elkaar verbonden, ongeacht de afstand tussen hen. Als er schade wordt toegebracht aan een van de wezens, wordt dezelfde schade toegebracht aan de andere. Als een van de wezens weer hit points krijgt, krijgt de ander evenveel hit points. Als een van de vastgebonden wezens wordt gereduceerd tot 0 hit points, eindigt de betovering voor beiden. Als de betovering eindigt bij één van de wezens, eindigt hij bij beide."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Time Ravage",
+			"source": "EGW",
+			"page": 189,
+			"level": 9,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an hourglass filled with diamond dust worth at least 5,000 gp, which the spell consumes",
+					"cost": 500000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je richt je op een wezen dat je binnen bereik kunt zien, en laat zijn fysieke vorm de verwoesting van snelle veroudering ondergaan. Het doelwit moet een grondwettelijke reddingsworp doen, waarbij hij {@damage 10d12} necrotische schade oploopt als hij faalt, of half zoveel schade als hij slaagt. Als de redding faalt, veroudert het doelwit ook tot het punt waarop het nog maar 30 dagen heeft voordat het sterft van ouderdom. In deze verouderde staat heeft het doelwit nadeel bij aanvalsrollen, vaardigheidscontroles en saving throws, en is zijn loopsnelheid gehalveerd. Alleen de {@spell wish} spreuk of de {@spell greater restoration} spreuk met een 9e level spreukgleuf kan deze effecten beëindigen en het doelwit zijn oude leeftijd teruggeven."
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Wristpocket",
+			"source": "EGW",
+			"page": 190,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Je zwaait met je pols, waardoor een voorwerp in je hand verdwijnt. Het voorwerp, dat alleen jij kunt vasthouden en niet meer dan 5 pond mag wegen, wordt getransporteerd naar een extradimensionale ruimte, waar het blijft voor de duur.",
+				"Totdat de betovering eindigt, kun je je actie gebruiken om het voorwerp op te roepen in je vrije hand, en je kunt je actie gebruiken om het voorwerp terug te brengen naar de extradimensionale ruimte. Een voorwerp dat zich nog in het zakvlak bevindt wanneer de betovering eindigt, verschijnt in jouw ruimte, aan je voeten."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Chronurgy",
+							"source": "EGW"
+						}
+					},
+					{
+						"class": {
+							"name": "Wizard",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Graviturgy",
+							"source": "EGW"
+						}
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,316 @@
+{
+	"spell": [
+		{
+			"name": "Borrowed Knowledge",
+			"source": "SCC",
+			"page": 37,
+			"level": 2,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a book worth at least 25 gp",
+					"cost": 2500
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous puisez dans les connaissances des esprits du passé. Choisissez une compétence que vous ne maîtrisez pas. Pendant la durée du sort, vous maîtrisez la compétence choisie. Le sort se termine prématurément si vous le lancez à nouveau."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Kinetic Jaunt",
+			"source": "SCC",
+			"page": 37,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous renforcez magiquement vos mouvements par des pas de danse, en vous offrant les avantages suivants pendant toute la durée de l'opération.",
+				{
+					"type": "list",
+					"items": [
+						"Votre vitesse de marche augmente de 10 pieds.",
+						"Vous ne provoquez pas d'attaques d'opportunité.",
+						"Vous pouvez vous déplacer dans l'espace d'une autre créature, et cela ne compte pas pour {@quickref difficult terrain||3}. Si vous terminez votre tour dans l'espace d'une autre créature, vous êtes déplacé vers le dernier espace inoccupé que vous avez occupé, et vous subissez {@damage 1d8} de dégâts de force."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Silvery Barbs",
+			"source": "SCC",
+			"page": 38,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when a creature you can see within 60 feet of yourself succeeds on an attack roll, an ability check, or a saving throw"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous distrayez magiquement la créature déclencheuse et transformez son incertitude momentanée en encouragement pour une autre créature. La créature déclencheuse doit relancer le jet de {@dice d20} et utiliser le jet le plus faible.",
+				"Vous pouvez ensuite choisir une créature différente que vous pouvez voir à portée (vous pouvez vous choisir vous-même). La créature choisie bénéficie d'un avantage sur le prochain jet d'attaque, test de capacité ou jet de sauvegarde qu'elle effectue dans un délai de 1 minute. Une créature ne peut être renforcée que par une seule utilisation de ce sort à la fois."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Vortex Warp",
+			"source": "SCC",
+			"page": 38,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous tordez magiquement l'espace autour d'une autre créature que vous pouvez voir à portée. La cible doit réussir un jet de sauvegarde de Constitution (la cible peut choisir d'échouer), ou la cible est téléportée dans un espace inoccupé de votre choix que vous pouvez voir à portée. L'espace choisi doit être sur une surface ou dans un liquide qui peut supporter la cible sans qu'elle ait à se serrer."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, la portée du sort augmente de 10 mètres pour chaque niveau d'emplacement supérieur au 2e."
+					]
+				}
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SGT",
+				"TP"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Wither and Bloom",
+			"source": "SCC",
+			"page": 38,
+			"level": 2,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a withered vine twisted into a loop"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous invoquez à la fois la mort et la vie sur une sphère de 3 mètres de rayon centrée sur un point à portée. Chaque créature de votre choix dans cette zone doit effectuer un jet de sauvegarde de Constitution, subissant {@damage 2d6} de dégâts nécrotiques en cas d'échec, ou la moitié des dégâts en cas de réussite. La végétation non magique dans cette zone se fane.",
+				"De plus, une créature de votre choix dans cette zone peut dépenser et lancer un de ses dés de points de vie non dépensés et regagner un nombre de points de vie égal au résultat du lancer plus votre modificateur de capacité de lanceur de sorts."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, les dégâts augmentent de {@scaledamage 2d6|2-9|1d6} pour chaque emplacement supérieur au 2e, et le nombre de dés de points de vie qui peuvent être dépensés et ajoutés au jet de guérison augmente de un pour chaque emplacement supérieur au 2e."
+					]
+				}
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"HL"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

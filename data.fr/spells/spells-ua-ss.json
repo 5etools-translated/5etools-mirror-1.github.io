@@ -1,0 +1,1176 @@
+{
+	"spell": [
+		{
+			"name": "Cause Fear (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous éveillez le sens de la mortalité chez une créature que vous pouvez voir à portée. La cible doit réussir un jet de sauvegarde de Sagesse ou devenir {@condition frightened} pour la durée du sort. Une cible ayant 25 points de vie ou moins fait le jet de sauvegarde avec un désavantage. Ce sort n'a aucun effet sur les constructions ou les morts-vivants."
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Ceremony (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "25 gp worth of powdered silver",
+					"cost": 2500
+				}
+			},
+			"duration": [
+				{
+					"type": "instant",
+					"condition": "see text"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Vous réalisez une des nombreuses cérémonies religieuses. Lorsque vous lancez le sort, choisissez l'une des cérémonies suivantes, dont la cible doit se trouver à moins de 3 mètres de vous pendant toute la durée du sort.",
+				{
+					"type": "entries",
+					"name": "Atonement",
+					"entries": [
+						"Vous touchez une créature consentante dont l'alignement a changé, et vous effectuez un test de Sagesse ({@skill Insight}) DC 20. En cas de réussite, vous redonnez à la cible son alignement d'origine."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Bless Water",
+					"entries": [
+						"Vous touchez un {@item vial|phb} d'eau et le faites devenir {@item Holy Water (flask)|phb|holy water}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Coming of Age",
+					"entries": [
+						"Vous touchez un humanoïde suffisamment âgé pour être un jeune adulte. Pendant les 24 heures suivantes, chaque fois que la cible effectue un test de capacité, elle peut lancer un {@dice d4} et ajouter le nombre obtenu au test de capacité. Une créature ne peut bénéficier de cette cérémonie qu'une seule fois."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dedication",
+					"entries": [
+						"Vous touchez un humanoïde qui se convertirait volontiers à votre religion ou qui souhaite se consacrer au service de votre dieu. Pendant les 24 heures suivantes, chaque fois que la cible effectue un jet de sauvegarde, elle peut lancer un {@dice d4} et ajouter le nombre obtenu à la sauvegarde. Une créature ne peut bénéficier de cette cérémonie qu'une seule fois."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Funeral Rite",
+					"entries": [
+						"Vous bénissez un cadavre dans un rayon de 1,5 mètre autour de vous. Pendant les 24 heures suivantes, la cible ne peut pas devenir mort-vivant par quelque moyen que ce soit, à l'exception d'un sort {@spell wish}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Investiture",
+					"entries": [
+						"Vous touchez un humanoïde consentant. Choisissez un sort de 1er niveau que vous avez préparé et dépensez un emplacement de sort et toute composante matérielle comme si vous lanciez ce sort. Le sort n'a aucun effet. Au lieu de cela, la cible peut lancer ce sort une fois sans avoir à dépenser un emplacement de sort ou à utiliser des composants matériels. Si la cible ne lance pas le sort dans un délai de 1 heure, le sort investi est perdu."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Marriage",
+					"entries": [
+						"Vous touchez des humanoïdes adultes désireux de s'unir par le mariage. Pendant les 24 heures suivantes, chaque cible gagne un bonus de +2 à la CA et aux jets de sauvegarde lorsqu'elles se trouvent à moins de 30 pieds l'une de l'autre. Une créature ne peut bénéficier de cette cérémonie qu'une seule fois."
+					]
+				}
+			],
+			"affectsCreatureType": [
+				"humanoid"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Chaos Bolt (UA)",
+			"source": "UAStarterSpells",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous lancez une masse d'énergie chaotique ondulante et bruyante sur une créature à portée. Effectuez une attaque de sort à distance contre la cible. En cas de succès, la cible subit {@damage 2d8} de dégâts. Choisissez l'un des {@dice d8}s. Le nombre obtenu détermine le type de dégâts, comme indiqué ci-dessous.",
+				{
+					"type": "table",
+					"caption": "Chaos Bolt",
+					"colLabels": [
+						"{@dice d8}",
+						"Damage Type"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"Acid"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 2
+								}
+							},
+							"Cold"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 3
+								}
+							},
+							"Fire"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 4
+								}
+							},
+							"Force"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Éclairage"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Poison"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 7
+								}
+							},
+							"Médium"
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 8
+								}
+							},
+							"Tonnerre"
+						]
+					]
+				},
+				"Si vous obtenez le même chiffre sur les deux {@dice d8}s, l'énergie chaotique bondit de la cible vers une autre créature de votre choix dans un rayon de 30 pieds autour d'elle. Faites un nouveau jet d'attaque contre la nouvelle cible, et effectuez un nouveau jet de dégâts, ce qui pourrait faire bondir à nouveau l'énergie chaotique. Une créature ne peut être ciblée qu'une seule fois par cette masse d'énergie chaotique."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 2e niveau ou plus, chaque cible subit des dégâts supplémentaires du type obtenu. Les dégâts supplémentaires sont égaux à {@scaledamage 2d8|1-9|1d6} pour chaque niveau d'emplacement supérieur au 1er."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid",
+				"cold",
+				"fire",
+				"force",
+				"lightning",
+				"poison",
+				"psychic",
+				"thunder"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Guiding Hand (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Vous créez une minuscule main incorporelle de lumière chatoyante dans un espace inoccupé que vous pouvez voir à portée. La main existe pour la durée, mais elle disparaît si vous vous téléportez ou si vous voyagez dans un autre plan d'existence.",
+				"Lorsque la main apparaît, vous devez nommer un point de repère important, tel qu'une ville, une montagne, un château ou un champ de bataille situé sur le même plan d'existence que vous. Quelqu'un dans l'histoire doit avoir visité le site et l'avoir cartographié. Si le point de repère ne figure sur aucune carte existante, le sort échoue. Sinon, chaque fois que vous vous déplacez vers la main, celle-ci s'éloigne de vous à la même vitesse que vous vous êtes déplacé, et elle se déplace dans la direction du point de repère, en restant toujours à 1,5 mètre de vous.",
+				"Si vous ne vous approchez pas de la main, elle reste en place jusqu'à ce que vous le fassiez et vous invite à la suivre une fois toutes les {@dice 1d4} minutes."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Hand of Radiance (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous levez votre main, et une radiance brûlante en jaillit. Chaque créature de votre choix que vous pouvez voir dans un rayon de 1,5 m autour de vous doit réussir un jet de sauvegarde de Constitution ou subir {@damage 1d6} de dégâts radiants.",
+				"Les dégâts de ce sort augmentent de {@dice 1d6} lorsque vous atteignez le 5e niveau ({@damage 2d6}), le 11e niveau ({@damage 3d6}) et le 17e niveau ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "radiant damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"radiant"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Healing Elixir (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "alchemist's supplies"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"Vous créez un élixir de guérison dans une simple fiole qui apparaît dans votre main. L'élixir conserve sa puissance pour la durée ou jusqu'à ce qu'il soit consommé, auquel cas la fiole disparaît.",
+				"En tant qu'action, une créature peut boire l'élixir ou l'administrer à une autre créature. Le buveur regagne {@dice 2d4 + 2} de points de vie."
+			],
+			"miscTags": [
+				"HL"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Infestation (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a living flea"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous faites apparaître momentanément des mites, des puces et d'autres parasites sur une créature que vous pouvez voir à portée. La cible doit réussir un jet de sauvegarde de Constitution ou subir {@damage 1d6} de dégâts perforants. Si la cible subit une partie de ces dégâts, elle se déplace de 5 pieds dans une direction aléatoire. Lancez un {@dice d8} pour la direction : 1, nord ; 2, nord-est ; 3, est ; 4, sud-est ; 5, sud ; 6, sud-ouest ; 7, ouest ; ou 8, nord-ouest.",
+				"Les dégâts de ce sort augmentent de {@dice 1d6} lorsque vous atteignez le 5e niveau ({@damage 2d6}), le 11e niveau ({@damage 3d6}) et le 17e niveau ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "piercing damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"piercing"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Primal Savagery (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vos dents ou vos ongles s'allongent et s'aiguisent. Vous choisissez lesquelles. Effectuez une attaque de sort en mêlée contre une créature située à moins de 1,5 mètre de vous. En cas de succès, la cible subit {@damage 1d10} de dégâts perforants ou tranchants (votre choix). Après avoir effectué l'attaque, vos dents ou vos ongles redeviennent normaux.",
+				"Les dégâts de ce sort augmentent de {@dice 1d10} lorsque vous atteignez le 5e niveau ({@damage 2d10}), le 11e niveau ({@damage 3d10}) et le 17e niveau ({@damage 4d10})."
+			],
+			"scalingLevelDice": {
+				"label": "piercing damage",
+				"scaling": {
+					"1": "1d10",
+					"5": "2d10",
+					"11": "3d10",
+					"17": "4d10"
+				}
+			},
+			"damageInflict": [
+				"piercing",
+				"slashing"
+			],
+			"spellAttack": [
+				"M"
+			],
+			"miscTags": [
+				"SCL"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Puppet (UA)",
+			"source": "UAStarterSpells",
+			"page": 3,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Votre geste oblige un humanoïde que vous pouvez voir à portée à effectuer un jet de sauvegarde de Constitution. En cas d'échec, la cible doit se déplacer à sa vitesse dans la direction de votre choix. De plus, vous pouvez faire en sorte que la cible laisse tomber ce qu'elle tient. Ce sort n'a aucun effet sur un humanoïde qui est immunisé contre le fait d'être {@condition charmed}."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"affectsCreatureType": [
+				"aberration",
+				"beast",
+				"celestial",
+				"construct",
+				"dragon",
+				"elemental",
+				"fey",
+				"fiend",
+				"giant",
+				"monstrosity",
+				"ooze",
+				"plant",
+				"undead"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sense Emotion (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous accordez vos sens pour capter les émotions des autres pour la durée du sort. Lorsque vous lancez le sort, et comme action à chaque tour jusqu'à la fin du sort, vous pouvez concentrer vos sens sur un humanoïde que vous pouvez voir dans un rayon de 30 pieds autour de vous. Vous apprenez instantanément l'émotion dominante de la cible, qu'il s'agisse d'amour, de colère, de douleur, de peur, de calme ou d'autre chose. Si la cible n'est pas réellement humanoïde ou si elle est immunisée contre l'être {@condition charmed}, vous sentez qu'elle est calme."
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Snare (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "30 feet of cord or rope, which is consumed by the spell",
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "permanent",
+					"ends": [
+						"dispel",
+						"trigger"
+					]
+				}
+			],
+			"entries": [
+				"Pendant que vous lancez ce sort, vous utilisez la corde ou le cordon pour créer un cercle de 1,5 m de rayon sur une surface plane à votre portée. Lorsque vous terminez le sort, la corde ou le cordon disparaît pour devenir un piège magique.",
+				"Le piège est presque invisible et nécessite un test d'Intelligence ({@skill Investigation}) réussi contre votre DC de sauvegarde contre les sorts pour être trouvé. Le piège se déclenche lorsqu'une créature de petite taille ou plus grande se déplace dans la zone protégée par le sort.",
+				"La créature déclencheuse doit réussir un jet de sauvegarde de Dextérité ou tomber {@condition prone} et être hissée dans les airs jusqu'à ce qu'elle soit suspendue à l'envers à 3 pieds au-dessus de la surface protégée, où elle se trouve {@condition restrained}.",
+				"La créature {@condition restrained} peut effectuer un jet de sauvegarde de Dextérité avec désavantage à la fin de chacun de ses tours et met fin à l'effet {@condition restrained} en cas de réussite. Sinon, une autre créature qui peut atteindre la créature {@condition restrained} peut utiliser une action pour faire un test d'Intelligence ({@skill Arcana}) contre le DC de sauvegarde de votre sort. En cas de succès, l'effet {@condition restrained} prend également fin."
+			],
+			"conditionInflict": [
+				"prone",
+				"restrained"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"abilityCheck": [
+				"intelligence"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sudden Awakening (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Chaque créature endormie que vous choisissez à portée se réveille, puis chaque {@condition prone} créature à portée peut se lever sans dépenser de mouvement."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Toll the Dead (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 0,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous pointez une créature que vous pouvez voir à portée, et le son d'une cloche doloriste emplit l'air autour d'elle pendant un instant. La cible doit réussir un jet de sauvegarde de Sagesse ou subir {@damage 1d8} de dégâts nécrotiques. S'il manque à la cible l'un de ses points de vie, elle subit à la place {@damage 1d12} de dégâts nécrotiques.",
+				"Les dégâts du sort augmentent d'un dé lorsque vous atteignez le 5e niveau ({@damage 2d8} ou {@damage 2d12}), le 11e niveau ({@damage 3d8} ou {@damage 3d12}) et le 17e niveau ({@damage 4d8} ou {@damage 4d12})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "necrotic damage",
+					"scaling": {
+						"1": "1d8",
+						"5": "2d8",
+						"11": "3d8",
+						"17": "4d8"
+					}
+				},
+				{
+					"label": "necrotic damage to wounded creature",
+					"scaling": {
+						"1": "1d12",
+						"5": "2d12",
+						"11": "3d12",
+						"17": "4d12"
+					}
+				}
+			],
+			"damageInflict": [
+				"necrotic"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Unearthly Chorus (UA)",
+			"source": "UAStarterSpells",
+			"page": 4,
+			"level": 1,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"La musique du style que vous choisissez remplit l'air autour de vous dans un rayon de 30 pieds. La musique se propage dans les coins et peut être entendue jusqu'à 100 pieds de distance. La musique se déplace avec vous, centrée sur vous pour la durée.",
+				"Jusqu'à la fin du sort, vous effectuez des tests de Charisme ({@skill Performance}) avec avantage. De plus, vous pouvez utiliser une action bonus à chacun de vos tours pour séduire une créature de votre choix située à moins de 30 pieds de vous, qui peut vous voir et entendre la musique. La créature doit effectuer un jet de sauvegarde de Charisme. Si vous ou vos compagnons l'attaquez, la créature réussit automatiquement son jet de sauvegarde. En cas d'échec, la créature devient amie avec vous tant qu'elle peut entendre la musique et pendant 1 heure par la suite. Vous effectuez des contrôles de Charisme ({@skill Deception}) et de Charisme ({@skill Persuasion}) contre les créatures rendues amicales par ce sort avec un avantage."
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Virtue (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 0,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous touchez une créature, l'imprégnant de vitalité. Si la cible a au moins 1 point de vie, elle gagne un nombre de points de vie temporaires égal à {@dice 1d4} + votre modificateur de capacité de lanceur de sorts. Les points de vie temporaires sont perdus lorsque le sort prend fin."
+			],
+			"miscTags": [
+				"THP"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Wild Cunning (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Vous appelez les esprits de la nature à vous aider. Lorsque vous lancez ce sort, choisissez l'un des effets suivants :",
+				{
+					"type": "list",
+					"items": [
+						"S'il y a des traces au sol à portée, vous savez où elles se trouvent et vous effectuez des tests de Sagesse ({@skill Survival}) pour suivre ces traces avec avantage pendant 1 heure ou jusqu'à ce que vous lanciez à nouveau ce sort.",
+						"S'il y a du fourrage comestible à portée de main, vous le connaissez et savez où le trouver.",
+						"S'il y a de l'eau potable à portée de main, vous la connaissez et savez où la trouver.",
+						"S'il existe un abri approprié pour vous et vos compagnons à portée, vous le connaissez et savez où le trouver.",
+						"Envoyez les esprits rapporter du bois pour un feu et installer un campement dans la région en utilisant vos provisions. Les esprits font le feu dans un cercle de pierres, montent les tentes, déroulent les sacs de couchage et sortent les rations et l'eau pour la consommation.",
+						"Demandez aux esprits de démonter instantanément un site de camping, ce qui implique d'éteindre un feu, de démonter les tentes, d'emballer les sacs et d'enterrer les déchets."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Zephyr Strike (UA)",
+			"source": "UAStarterSpells",
+			"page": 5,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous vous déplacez comme le vent. Pour la durée, votre mouvement ne provoque pas d'attaques d'opportunité.",
+				"De plus, la première fois que vous effectuez une attaque d'arme à votre tour avant que le sort ne prenne fin, vous effectuez le jet d'attaque avec avantage, et votre vitesse augmente de 10 mètres jusqu'à la fin de ce tour."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

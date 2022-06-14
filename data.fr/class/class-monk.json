@@ -1,0 +1,3909 @@
+{
+	"class": [
+		{
+			"name": "Monk",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"str",
+				"dex"
+			],
+			"startingProficiencies": {
+				"weapons": [
+					"simple",
+					"{@item shortsword|phb|shortswords}"
+				],
+				"tools": [
+					"any one type of {@item artisan's tools|PHB} or any one {@item musical instrument|PHB} of your choice"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"acrobatics",
+								"athletics",
+								"history",
+								"insight",
+								"religion",
+								"stealth"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item shortsword|phb} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
+					"10 {@item dart|phb|darts}"
+				],
+				"goldAlternative": "{@dice 5d4|5d4|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"shortsword|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"dungeoneer's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					},
+					{
+						"_": [
+							{
+								"item": "dart|phb",
+								"quantity": 10
+							}
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"dex": 13,
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"weapons": [
+						"simple",
+						"{@item shortsword|phb|shortswords}"
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Martial Arts",
+						"Ki Points",
+						"Unarmored Movement"
+					],
+					"rows": [
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 4
+									}
+								]
+							},
+							0,
+							{
+								"type": "bonusSpeed",
+								"value": 0
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 4
+									}
+								]
+							},
+							2,
+							{
+								"type": "bonusSpeed",
+								"value": 10
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 4
+									}
+								]
+							},
+							3,
+							{
+								"type": "bonusSpeed",
+								"value": 10
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 4
+									}
+								]
+							},
+							4,
+							{
+								"type": "bonusSpeed",
+								"value": 10
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							5,
+							{
+								"type": "bonusSpeed",
+								"value": 10
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							6,
+							{
+								"type": "bonusSpeed",
+								"value": 15
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							7,
+							{
+								"type": "bonusSpeed",
+								"value": 15
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							8,
+							{
+								"type": "bonusSpeed",
+								"value": 15
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							9,
+							{
+								"type": "bonusSpeed",
+								"value": 15
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 6
+									}
+								]
+							},
+							10,
+							{
+								"type": "bonusSpeed",
+								"value": 20
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							11,
+							{
+								"type": "bonusSpeed",
+								"value": 20
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							12,
+							{
+								"type": "bonusSpeed",
+								"value": 20
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							13,
+							{
+								"type": "bonusSpeed",
+								"value": 20
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							14,
+							{
+								"type": "bonusSpeed",
+								"value": 25
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							15,
+							{
+								"type": "bonusSpeed",
+								"value": 25
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 8
+									}
+								]
+							},
+							16,
+							{
+								"type": "bonusSpeed",
+								"value": 25
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 10
+									}
+								]
+							},
+							17,
+							{
+								"type": "bonusSpeed",
+								"value": 25
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 10
+									}
+								]
+							},
+							18,
+							{
+								"type": "bonusSpeed",
+								"value": 30
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 10
+									}
+								]
+							},
+							19,
+							{
+								"type": "bonusSpeed",
+								"value": 30
+							}
+						],
+						[
+							{
+								"type": "dice",
+								"toRoll": [
+									{
+										"number": 1,
+										"faces": 10
+									}
+								]
+							},
+							20,
+							{
+								"type": "bonusSpeed",
+								"value": 30
+							}
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Unarmored Defense|Monk||1",
+				"Martial Arts|Monk||1",
+				"Monk Weapons|Monk||1|UAClassFeatureVariants",
+				"Ki|Monk||2",
+				"Ki-Fueled Strike|Monk||2|UAClassFeatureVariants",
+				"Ki Features|Monk||2|UAClassFeatureVariants",
+				"Dedicated Weapon|Monk||2|TCE",
+				"Unarmored Movement|Monk||2",
+				"Deflect Missiles|Monk||3",
+				{
+					"classFeature": "Monastic Tradition|Monk||3",
+					"gainSubclassFeature": true
+				},
+				"Ki-Fueled Attack|Monk||3|TCE",
+				"Ability Score Improvement|Monk||4",
+				"Proficiency Versatility|Monk||4|UAClassFeatureVariants",
+				"Slow Fall|Monk||4",
+				"Quickened Healing|Monk||4|TCE",
+				"Extra Attack|Monk||5",
+				"Stunning Strike|Monk||5",
+				"Focused Aim|Monk||5|TCE",
+				"Ki-Empowered Strikes|Monk||6",
+				{
+					"classFeature": "Monastic Tradition feature|Monk||6",
+					"gainSubclassFeature": true
+				},
+				"Evasion|Monk||7",
+				"Stillness of Mind|Monk||7",
+				"Ability Score Improvement|Monk||8",
+				"Proficiency Versatility|Monk||8|UAClassFeatureVariants",
+				"Unarmored Movement improvement|Monk||9",
+				"Purity of Body|Monk||10",
+				{
+					"classFeature": "Monastic Tradition feature|Monk||11",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Monk||12",
+				"Proficiency Versatility|Monk||12|UAClassFeatureVariants",
+				"Tongue of the Sun and Moon|Monk||13",
+				"Diamond Soul|Monk||14",
+				"Timeless Body|Monk||15",
+				"Ability Score Improvement|Monk||16",
+				"Proficiency Versatility|Monk||16|UAClassFeatureVariants",
+				{
+					"classFeature": "Monastic Tradition feature|Monk||17",
+					"gainSubclassFeature": true
+				},
+				"Empty Body|Monk||18",
+				"Ability Score Improvement|Monk||19",
+				"Proficiency Versatility|Monk||19|UAClassFeatureVariants",
+				"Perfect Self|Monk||20"
+			],
+			"subclassTitle": "Monastic Tradition",
+			"fluff": [
+				{
+					"name": "Monk",
+					"type": "section",
+					"entries": [
+						"Ses poings sont flous alors qu'ils dévient une grêle de flèches, un demi-elfe saute par-dessus une barricade et se jette dans les rangs des hobgobelins de l'autre côté. Elle tourbillonne parmi eux, repoussant leurs coups et les faisant vaciller, jusqu'à ce qu'elle se retrouve enfin seule.",
+						"Prenant une profonde inspiration, un humain couvert de tatouages se met en position de combat. Lorsque les premiers orcs qui chargent l'atteignent, il expire et une explosion de feu jaillit de sa bouche, engloutissant ses ennemis.",
+						"Se mouvant dans le silence de la nuit, un halfling vêtu de noir se glisse dans une ombre sous une arche et émerge d'une autre ombre sombre sur un balcon à quelques pas de là. Elle fait glisser sa lame hors de son fourreau de tissu et regarde par la fenêtre ouverte le prince tyran, si vulnérable sous l'emprise du sommeil.",
+						"Quelle que soit leur discipline, les moines sont unis par leur capacité à maîtriser magiquement l'énergie qui circule dans leur corps. Qu'elle soit canalisée sous la forme d'une démonstration saisissante de prouesses au combat ou d'une concentration plus subtile de capacités défensives et de vitesse, cette énergie infuse tout ce que fait un moine.",
+						{
+							"type": "entries",
+							"name": "The Magic of Ki",
+							"entries": [
+								"Les moines étudient attentivement une énergie magique que la plupart des traditions monastiques appellent ki. Cette énergie est un élément de la magie qui imprègne le multivers - plus précisément, l'élément qui circule dans les corps vivants. Les moines exploitent ce pouvoir en eux pour créer des effets magiques et dépasser les capacités physiques de leur corps, et certaines de leurs attaques spéciales peuvent entraver la circulation du ki chez leurs adversaires. En utilisant cette énergie, les moines canalisent une vitesse et une force étonnantes dans leurs frappes à mains nues. Au fur et à mesure qu'ils acquièrent de l'expérience, leur entraînement martial et leur maîtrise du ki leur confèrent davantage de pouvoir sur leur corps et celui de leurs adversaires."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Training and Asceticism",
+							"entries": [
+								"De petits cloîtres murés parsèment les paysages des mondes de D&D, minuscules refuges du flux de la vie ordinaire, où le temps semble s'arrêter. Les moines qui y vivent recherchent la perfection personnelle par la contemplation et un entraînement rigoureux. Beaucoup sont entrés dans le monastère lorsqu'ils étaient enfants, envoyés pour y vivre à la mort de leurs parents, lorsqu'ils ne trouvaient pas de nourriture pour subvenir à leurs besoins, ou en retour d'une quelconque gentillesse que les moines avaient accomplie pour leurs familles.",
+								"Certains moines vivent entièrement à l'écart de la population environnante, isolés de tout ce qui pourrait entraver leur progression spirituelle. D'autres ont juré de s'isoler, ne sortant que pour servir d'espions ou d'assassins sur ordre de leur chef, d'un noble patron ou d'une autre puissance mortelle ou divine.",
+								"La majorité des moines n'évitent pas leurs voisins, se rendant fréquemment dans les villes ou villages voisins et échangeant leurs services contre de la nourriture et d'autres biens. Guerriers polyvalents, les moines finissent souvent par protéger leurs voisins des monstres ou des tyrans.",
+								"Pour un moine, devenir un aventurier signifie quitter un mode de vie structuré et communautaire pour devenir un vagabond. Cette transition peut être difficile, et les moines ne l'entreprennent pas à la légère. Ceux qui quittent leur cloître prennent leur travail au sérieux et considèrent leurs aventures comme des tests personnels de leur croissance physique et spirituelle. En règle générale, les moines se soucient peu de la richesse matérielle et sont animés par le désir d'accomplir une mission plus importante que de simplement tuer des monstres et piller leurs trésors."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Monk",
+							"entries": [
+								"Lorsque vous créez votre personnage de moine, pensez à votre lien avec le monastère où vous avez acquis vos compétences et passé vos années de formation. Étiez-vous un orphelin ou un enfant abandonné sur le seuil du monastère ? Vos parents vous ont-ils promis au monastère en remerciement d'un service rendu par les moines ? Êtes-vous entré dans cette vie retirée pour vous cacher d'un crime que vous avez commis ? Ou avez-vous choisi la vie monastique pour vous-même ?",
+								"Réfléchissez aux raisons de votre départ. Le chef de votre monastère vous a-t-il choisi pour une mission particulièrement importante au-delà du cloître ? Peut-être avez-vous été chassé pour avoir enfreint les règles de la communauté ? Redoutiez-vous de partir, ou étiez-vous heureux de le faire ? Y a-t-il quelque chose que vous espérez accomplir en dehors du monastère ? Êtes-vous impatient de retourner chez vous ?",
+								"En raison de la vie structurée d'une communauté monastique et de la discipline requise pour maîtriser le ki, les moines sont presque toujours d'alignement légal.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Vous pouvez faire un moine rapidement en suivant ces suggestions. Premièrement, faites de la Dextérité votre meilleur score de capacité, suivi de la Sagesse. Ensuite, choisissez le fond {@background hermit}."
+									]
+								}
+							]
+						}
+					],
+					"source": "PHB",
+					"page": 76
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"Ne prends pas mon silence pour une acceptation de ta méchanceté. Pendant que vous fanfaronniez et menaciez, j'ai prévu quatre façons différentes de vous briser le cou à mains nues."
+							],
+							"by": "Ember, grand master of flowers"
+						},
+						"Les moines suivent un chemin de contradiction. Ils étudient leur art comme un sorcier, et comme un sorcier, ils ne portent pas d'armure et évitent généralement les armes. Pourtant, ils sont des combattants mortels, leurs capacités étant comparables à celles d'un barbare enragé ou d'un combattant superbement entraîné. Les moines acceptent cette contradiction apparente, car elle est au cœur de toute étude monastique. En apprenant à se connaître complètement, on apprend beaucoup du monde extérieur.",
+						"L'accent mis par les moines sur la maîtrise intérieure conduit beaucoup d'entre eux à se détacher de la société, plus préoccupés par leur expérience personnelle que par ce qui se passe ailleurs. Les moines aventuriers sont une race rare d'un type de personnage déjà rare. Ils portent leur quête de perfection au-delà des murs du monastère, dans le monde en général.",
+						"Jouer un personnage de moine offre de nombreuses possibilités intrigantes pour essayer quelque chose de différent. Pour distinguer encore plus votre personnage de moine, considérez les options des sections qui suivent.",
+						{
+							"type": "entries",
+							"name": "Monastery",
+							"entries": [
+								"Un moine étudie dans un monastère pour se préparer à une vie d'ascétisme. La plupart de ceux qui entrent dans un monastère y restent pour le reste de leur vie, à l'exception des aventuriers et de ceux qui ont des raisons de partir. Pour ces personnes, un monastère peut servir de refuge entre deux excursions dans le monde ou de source de soutien en cas de besoin.",
+								"Quel genre de lieu était votre monastère, et où est-il situé ? Le fait de le fréquenter a-t-il contribué à votre expérience d'une manière inhabituelle ou distinctive ?",
+								{
+									"type": "table",
+									"caption": "Monastery",
+									"colLabels": [
+										"{@dice d6}",
+										"Monastery"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Votre monastère est taillé dans le flanc d'une montagne, où il surplombe un col dangereux."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Votre monastère se trouve dans les branches d'un immense arbre dans le monde féerique."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Votre monastère a été fondé il y a longtemps par un géant des nuages et se trouve à l'intérieur d'un château des nuages qui ne peut être atteint qu'en volant."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Votre monastère est construit à côté d'un système volcanique de sources chaudes, de geysers et de piscines sulfureuses. Vous recevez régulièrement la visite de commerçants azer."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Votre monastère a été fondé par des gnomes et est un labyrinthe souterrain de tunnels et de pièces."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Votre monastère a été taillé dans un iceberg aux confins gelés du monde."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Icon",
+							"entries": [
+								"Même dans le style de vie monastique, qui évite le matérialisme et les possessions personnelles, le symbolisme joue un rôle important dans la définition de l'identité d'un ordre. Certains ordres monastiques traitent certaines créatures avec une attention particulière, soit parce que la créature est liée à l'histoire de l'ordre, soit parce qu'elle sert d'exemple d'une qualité que les moines cherchent à imiter.",
+								"Si le monastère de votre personnage possède une icône spéciale, vous pouvez porter une image grossière de la créature à un endroit discret de vos vêtements pour servir de marque d'identification. Ou peut-être que l'icône de votre ordre n'a pas de forme physique mais s'exprime par un geste ou une posture que vous adoptez, et que les autres moines peuvent savoir interpréter.",
+								{
+									"type": "table",
+									"caption": "Icon",
+									"colLabels": [
+										"{@dice d6}",
+										"Icon"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Le singe. Ses réflexes rapides et sa capacité à se déplacer à la cime des arbres sont deux des raisons pour lesquelles votre ordre admire le singe."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Tortue Dragon. Les moines de votre monastère de bord de mer vénèrent la tortue dragon, récitant d'anciennes prières et offrant des guirlandes de fleurs pour honorer cet esprit vivant de la mer."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Ki-rin. Votre monastère considère que son objectif principal est de surveiller et de protéger la terre à la manière des ki-rin."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Owlbear. Les moines de votre monastère vénèrent une famille de hiboux et coexistent avec eux depuis des générations."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Hydre. Votre ordre a choisi l'hydre pour sa capacité à lancer plusieurs attaques simultanément."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Un dragon. Un dragon a jadis séjourné dans votre monastère. Son influence demeure longtemps après son départ."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Master",
+							"entries": [
+								"Pendant vos études, vous étiez probablement sous la tutelle d'un maître qui vous a transmis les préceptes de l'ordre. Votre maître était la personne la plus responsable de la formation de votre compréhension des arts martiaux et de votre attitude envers le monde. Quel genre de personne était votre maître, et comment votre relation avec lui vous a-t-elle affecté ?",
+								{
+									"type": "table",
+									"caption": "Master",
+									"colLabels": [
+										"{@dice d6}",
+										"Master"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Votre maître était un tyran que vous deviez vaincre en combat singulier pour compléter votre instruction."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Ton maître était bienveillant et t'a appris à poursuivre la cause de la paix."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Votre maître était impitoyable en vous poussant à vos limites. Vous avez failli perdre un œil lors d'une séance d'entraînement particulièrement brutale."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Votre maître semblait avoir bon cœur pendant qu'il vous enseignait, mais il a fini par trahir votre monastère."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Votre maître était froid et distant. Vous soupçonnez que vous êtes peut-être parents."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Votre maître était gentil et généreux, et ne critiquait jamais vos progrès. Néanmoins, vous avez le sentiment de n'avoir jamais été à la hauteur des attentes placées en vous."
+										]
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 32
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Way of Shadow",
+			"shortName": "Shadow",
+			"source": "PHB",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 80,
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"minor illusion#c"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Way of Shadow|Monk||Shadow||3",
+				"Shadow Step|Monk||Shadow||6",
+				"Cloak of Shadows|Monk||Shadow||11",
+				"Opportunist|Monk||Shadow||17"
+			]
+		},
+		{
+			"name": "Way of the Four Elements",
+			"shortName": "Four Elements",
+			"source": "PHB",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 80,
+			"spellcastingAbility": "wis",
+			"optionalfeatureProgression": [
+				{
+					"name": "Elemental Disciplines",
+					"featureType": [
+						"ED"
+					],
+					"progression": {
+						"3": 2,
+						"6": 3,
+						"11": 4,
+						"17": 5
+					},
+					"required": {
+						"3": [
+							"Elemental Attunement|PHB"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Way of the Four Elements|Monk||Four Elements||3",
+				"Extra Elemental Discipline|Monk||Four Elements||6",
+				"Extra Elemental Discipline|Monk||Four Elements||11",
+				"Extra Elemental Discipline|Monk||Four Elements||17"
+			]
+		},
+		{
+			"name": "Way of the Open Hand",
+			"shortName": "Open Hand",
+			"source": "PHB",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 79,
+			"srd": true,
+			"subclassFeatures": [
+				"Way of the Open Hand|Monk||Open Hand||3",
+				"Wholeness of Body|Monk||Open Hand||6",
+				"Tranquility|Monk||Open Hand||11",
+				"Quivering Palm|Monk||Open Hand||17"
+			]
+		},
+		{
+			"name": "Way of the Long Death",
+			"shortName": "Long Death",
+			"source": "SCAG",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 130,
+			"subclassFeatures": [
+				"Way of the Long Death|Monk||Long Death|SCAG|3",
+				"Hour of Reaping|Monk||Long Death|SCAG|6",
+				"Mastery of Death|Monk||Long Death|SCAG|11",
+				"Touch of the Long Death|Monk||Long Death|SCAG|17"
+			]
+		},
+		{
+			"name": "Way of the Kensei (UA)",
+			"shortName": "Kensei (UA)",
+			"source": "UAMonk",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Way of the Kensei|Monk||Kensei (UA)|UAMonk|3",
+				"One with the Blade|Monk||Kensei (UA)|UAMonk|6",
+				"Sharpen the Blade|Monk||Kensei (UA)|UAMonk|11",
+				"Unerring Accuracy|Monk||Kensei (UA)|UAMonk|17"
+			]
+		},
+		{
+			"name": "Way of Tranquility (UA)",
+			"shortName": "Tranquility (UA)",
+			"source": "UAMonk",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 1,
+			"subclassFeatures": [
+				"Way of Tranquility|Monk||Tranquility (UA)|UAMonk|3",
+				"Emissary of Peace|Monk||Tranquility (UA)|UAMonk|6",
+				"Douse the Flames of War|Monk||Tranquility (UA)|UAMonk|11",
+				"Anger of a Gentle Soul|Monk||Tranquility (UA)|UAMonk|17"
+			]
+		},
+		{
+			"name": "Way of the Drunken Master (UA)",
+			"shortName": "Drunken Master (UA)",
+			"source": "UAATrioOfSubclasses",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Way of the Drunken Master|Monk||Drunken Master (UA)|UAATrioOfSubclasses|3",
+				"Tipsy Sway|Monk||Drunken Master (UA)|UAATrioOfSubclasses|6",
+				"Drunkard's Luck|Monk||Drunken Master (UA)|UAATrioOfSubclasses|11",
+				"Intoxicated Frenzy|Monk||Drunken Master (UA)|UAATrioOfSubclasses|17"
+			]
+		},
+		{
+			"name": "Way of the Kensei v2 (UA)",
+			"shortName": "Kensei v2 (UA)",
+			"source": "UARevisedSubclasses",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 4,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Way of the Kensei v2|Monk||Kensei v2 (UA)|UARevisedSubclasses|3",
+				"One with the Blade|Monk||Kensei v2 (UA)|UARevisedSubclasses|6",
+				"Sharpen the Blade|Monk||Kensei v2 (UA)|UARevisedSubclasses|11",
+				"Unerring Accuracy|Monk||Kensei v2 (UA)|UARevisedSubclasses|17"
+			]
+		},
+		{
+			"name": "Way of the Drunken Master",
+			"shortName": "Drunken Master",
+			"source": "XGE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 33,
+			"subclassFeatures": [
+				"Way of the Drunken Master|Monk||Drunken Master|XGE|3",
+				"Tipsy Sway|Monk||Drunken Master|XGE|6",
+				"Drunkard's Luck|Monk||Drunken Master|XGE|11",
+				"Intoxicated Frenzy|Monk||Drunken Master|XGE|17"
+			]
+		},
+		{
+			"name": "Way of the Kensei",
+			"shortName": "Kensei",
+			"source": "XGE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 34,
+			"subclassFeatures": [
+				"Way of the Kensei|Monk||Kensei|XGE|3",
+				"One with the Blade|Monk||Kensei|XGE|6",
+				"Sharpen the Blade|Monk||Kensei|XGE|11",
+				"Unerring Accuracy|Monk||Kensei|XGE|17"
+			]
+		},
+		{
+			"name": "Way of the Sun Soul",
+			"shortName": "Sun Soul",
+			"source": "XGE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 35,
+			"otherSources": [
+				{
+					"source": "SCAG",
+					"page": 131
+				}
+			],
+			"subclassFeatures": [
+				"Way of the Sun Soul|Monk||Sun Soul|XGE|3",
+				"Searing Arc Strike|Monk||Sun Soul|XGE|6",
+				"Searing Sunburst|Monk||Sun Soul|XGE|11",
+				"Sun Shield|Monk||Sun Soul|XGE|17"
+			]
+		},
+		{
+			"name": "Way of the Astral Self (UA)",
+			"shortName": "Astral Self (UA)",
+			"source": "UABarbarianAndMonk",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Way of the Astral Self|Monk||Astral Self (UA)|UABarbarianAndMonk|3",
+				"Visage of the Astral Self|Monk||Astral Self (UA)|UABarbarianAndMonk|6",
+				"Awakening of the Astral Self|Monk||Astral Self (UA)|UABarbarianAndMonk|11",
+				"Improved Arms of the Astral Self|Monk||Astral Self (UA)|UABarbarianAndMonk|11",
+				"Complete Astral Self|Monk||Astral Self (UA)|UABarbarianAndMonk|17",
+				"Improved Arms of the Astral Self|Monk||Astral Self (UA)|UABarbarianAndMonk|17"
+			]
+		},
+		{
+			"name": "Way of Mercy (UA)",
+			"shortName": "Mercy (UA)",
+			"source": "UA2020SubclassesPt1",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Way of Mercy|Monk||Mercy (UA)|UA2020SubclassesPt1|3",
+				"Noxious Aura|Monk||Mercy (UA)|UA2020SubclassesPt1|6",
+				"Healing Technique|Monk||Mercy (UA)|UA2020SubclassesPt1|11",
+				"Hand of Mercy|Monk||Mercy (UA)|UA2020SubclassesPt1|17"
+			]
+		},
+		{
+			"name": "Way of the Ascendant Dragon (UA)",
+			"shortName": "Ascendant Dragon (UA)",
+			"source": "UA2020SubclassesPt5",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Way of the Ascendant Dragon|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|3",
+				"Wings Unfurled|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|6",
+				"Aspect of the Wyrm|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|11",
+				"Ascendant Aspect|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|17"
+			]
+		},
+		{
+			"name": "Way of Mercy",
+			"shortName": "Mercy",
+			"source": "TCE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 49,
+			"subclassFeatures": [
+				"Way of Mercy|Monk||Mercy|TCE|3",
+				"Physician's Touch|Monk||Mercy|TCE|6",
+				"Flurry of Healing and Harm|Monk||Mercy|TCE|11",
+				"Hand of Ultimate Mercy|Monk||Mercy|TCE|17"
+			]
+		},
+		{
+			"name": "Way of the Astral Self",
+			"shortName": "Astral Self",
+			"source": "TCE",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 50,
+			"subclassFeatures": [
+				"Way of the Astral Self|Monk||Astral Self|TCE|3",
+				"Visage of the Astral Self|Monk||Astral Self|TCE|6",
+				"Body of the Astral Self|Monk||Astral Self|TCE|11",
+				"Awakened Astral Self|Monk||Astral Self|TCE|17"
+			]
+		},
+		{
+			"name": "Way of the Ascendant Dragon",
+			"shortName": "Ascendant Dragon",
+			"source": "FTD",
+			"className": "Monk",
+			"classSource": "PHB",
+			"page": 13,
+			"subclassFeatures": [
+				"Way of the Ascendant Dragon|Monk||Ascendant Dragon|FTD|3",
+				"Wings Unfurled|Monk||Ascendant Dragon|FTD|6",
+				"Aspect of the Wyrm|Monk||Ascendant Dragon|FTD|11",
+				"Ascendant Aspect|Monk||Ascendant Dragon|FTD|17"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Martial Arts",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Votre pratique des arts martiaux vous confère la maîtrise des styles de combat qui utilisent des frappes sans arme et des armes de moine, qui sont des épées courtes et toute arme de mêlée simple qui n'a pas la propriété à deux mains ou lourde.",
+				"Vous bénéficiez des avantages suivants lorsque vous êtes désarmé ou que vous ne maniez que des armes de moine et que vous ne portez pas d'armure ou ne brandissez pas de bouclier.",
+				{
+					"type": "list",
+					"items": [
+						"Vous pouvez utiliser la Dextérité au lieu de la Force pour les jets d'attaque et de dégâts de vos frappes à mains nues et de vos armes de moine.",
+						"Vous pouvez lancer un {@dice d4} à la place des dégâts normaux de votre frappe sans arme ou de votre arme de moine. Ce dé change au fur et à mesure que vous gagnez des niveaux de moine, comme indiqué dans la colonne Arts martiaux de la table des moines.",
+						"Lorsque vous utilisez l'action {@action Attack} avec une frappe sans arme ou une arme de moine à votre tour, vous pouvez effectuer une frappe sans arme comme action bonus. Par exemple, si vous utilisez l'action {@action Attack} et que vous attaquez avec une quarterstaff, vous pouvez également effectuer une frappe à mains nues comme action bonus, en supposant que vous n'ayez pas déjà effectué une action bonus ce tour-ci."
+					]
+				},
+				"Certains monastères utilisent des formes spécialisées des armes des moines. Par exemple, vous pouvez utiliser une massue constituée de deux morceaux de bois reliés par une courte chaîne (appelée nunchaku) ou une faucille à la lame plus courte et plus droite (appelée kama)."
+			]
+		},
+		{
+			"name": "Monk Weapons",
+			"source": "UAClassFeatureVariants",
+			"page": 6,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level monk feature (enhances Martial Arts)}",
+				"Vous pouvez utiliser cette caractéristique pour définir vos armes de moine, plutôt que d'utiliser la définition dans Arts Martiaux.",
+				"Vous pratiquez vos arts martiaux avec des armes spécialement choisies, qui deviennent pour vous des armes de moine. Vous pouvez choisir un nombre d'armes pour être vos armes de moine égal à 5 + votre modificateur de Sagesse (minimum de cinq armes). Les armes choisies doivent chacune répondre aux critères suivants :",
+				{
+					"type": "list",
+					"items": [
+						"L'arme doit être une arme simple ou martiale.",
+						"Vous devez être compétent avec l'arme.",
+						"L'arme doit être dépourvue des propriétés suivantes : lourde, spéciale ou à deux mains."
+					]
+				}
+			]
+		},
+		{
+			"name": "Unarmored Defense",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"À partir du 1er niveau, si vous ne portez pas d'armure et ne maniez pas de bouclier, votre CA est égale à 10 + votre modificateur de Dextérité + votre modificateur de Sagesse."
+			]
+		},
+		{
+			"name": "Dedicated Weapon",
+			"source": "TCE",
+			"page": 48,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level monk {@variantrule optional class features|tce|optional feature}}",
+				"Vous vous entraînez à utiliser une variété d'armes comme armes de moine, et pas seulement les armes de mêlée simples et les épées courtes. Chaque fois que vous terminez un repos court ou long, vous pouvez toucher une arme, concentrer votre ki sur elle, et ensuite compter cette arme comme une arme de moine jusqu'à ce que vous utilisiez à nouveau cette caractéristique.",
+				"L'arme choisie doit répondre à ces critères :",
+				{
+					"type": "list",
+					"items": [
+						"L'arme doit être une arme simple ou martiale.",
+						"Vous devez le maîtriser.",
+						"Il doit manquer les propriétés lourdes et spéciales."
+					]
+				}
+			]
+		},
+		{
+			"name": "Flurry of Blows",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 2,
+			"header": 2,
+			"consumes": {
+				"name": "Ki"
+			},
+			"entries": [
+				"Immédiatement après avoir effectué l'action {@action Attack} à votre tour, vous pouvez dépenser 1 point de ki pour effectuer deux frappes à mains nues comme action bonus."
+			]
+		},
+		{
+			"name": "Ki",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"À partir du 2e niveau, votre formation vous permet d'exploiter l'énergie mystique du ki. Votre accès à cette énergie est représenté par un certain nombre de points de ki. Votre niveau de moine détermine le nombre de points dont vous disposez, comme indiqué dans la colonne Points de ki de la table des moines.",
+				"Vous pouvez dépenser ces points pour alimenter diverses fonctionnalités du ki. Vous commencez à connaître trois de ces caractéristiques : Rafale de coups, Défense patiente, et Pas du vent. Vous apprenez plus de caractéristiques ki en gagnant des niveaux dans cette classe.",
+				"Lorsque vous dépensez un point de ki, il est indisponible jusqu'à la fin d'un repos court ou long, à la fin duquel vous réinjectez tout le ki dépensé en vous. Vous devez passer au moins 30 minutes de ce repos à méditer pour regagner vos points de ki.",
+				"Certaines de vos caractéristiques ki nécessitent que votre cible fasse un jet de sauvegarde pour résister aux effets de la caractéristique. Le DC du jet de sauvegarde est calculé comme suit :",
+				{
+					"type": "abilityDc",
+					"name": "Ki",
+					"attributes": [
+						"wis"
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "refClassFeature",
+							"classFeature": "Flurry of Blows|Monk||2"
+						},
+						{
+							"type": "refClassFeature",
+							"classFeature": "Patient Defense|Monk||2"
+						},
+						{
+							"type": "refClassFeature",
+							"classFeature": "Step of the Wind|Monk||2"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ki Features",
+			"source": "UAClassFeatureVariants",
+			"page": 6,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level monk feature (enhances Ki)}",
+				"Lorsque vous gagnez la caractéristique Ki au 2ème niveau, vous avez accès aux caractéristiques suivantes.",
+				{
+					"type": "entries",
+					"name": "Distant Eye",
+					"entries": [
+						"Lorsque vous effectuez une attaque à l'aide d'une arme à distance, vous pouvez dépenser 1 point de ki pour empêcher les attaques à longue portée d'imposer un désavantage sur vos jets d'attaque jusqu'à la fin du tour en cours."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Quickened Healing",
+					"entries": [
+						"Comme action, vous pouvez dépenser 2 points de ki et lancer un dé d'arts martiaux. Vous regagnez un nombre de points de vie égal au nombre obtenu."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ki-Fueled Strike",
+			"source": "UAClassFeatureVariants",
+			"page": 6,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level monk feature (enhances Ki)}",
+				"Si vous dépensez 1 ki ou plus dans le cadre de votre action à votre tour, vous pouvez alors immédiatement effectuer une frappe à mains nues comme action bonus."
+			]
+		},
+		{
+			"name": "Patient Defense",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 2,
+			"header": 2,
+			"consumes": {
+				"name": "Ki"
+			},
+			"entries": [
+				"Vous pouvez dépenser 1 point de ki pour effectuer l'action {@action Dodge} comme action bonus à votre tour."
+			]
+		},
+		{
+			"name": "Step of the Wind",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 2,
+			"header": 2,
+			"consumes": {
+				"name": "Ki"
+			},
+			"entries": [
+				"Vous pouvez dépenser 1 point de ki pour effectuer l'action {@action Disengage} ou {@action Dash} comme action bonus à votre tour, et votre distance de saut est doublée pour le tour."
+			]
+		},
+		{
+			"name": "Unarmored Movement",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"À partir du 2e niveau, votre vitesse augmente de 3 mètres lorsque vous ne portez pas d'armure ou ne brandissez pas de bouclier. Ce bonus augmente lorsque vous atteignez certains niveaux de moine, comme indiqué dans la table des moines.",
+				"Au 9ème niveau, vous gagnez la capacité de vous déplacer sur des surfaces verticales et à travers des liquides à votre tour sans tomber pendant le mouvement."
+			]
+		},
+		{
+			"name": "Deflect Missiles",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"À partir du 3e niveau, vous pouvez utiliser votre réaction pour dévier ou attraper le projectile lorsque vous êtes touché par une attaque d'arme à distance. Dans ce cas, les dégâts que vous subissez sont réduits de {@dice 1d10} + votre modificateur de Dextérité + votre niveau de moine.",
+				"Si vous réduisez les dégâts à 0, vous pouvez attraper le missile s'il est suffisamment petit pour que vous puissiez le tenir dans une main et que vous avez au moins une main libre. Si vous attrapez un missile de cette manière, vous pouvez dépenser 1 point de ki pour effectuer une attaque à distance (portée de 20/60 pieds) avec l'arme ou la munition que vous venez d'attraper, dans le cadre de la même réaction. Vous effectuez cette attaque avec compétence, indépendamment de vos compétences en matière d'armes, et le missile compte comme une arme de moine pour l'attaque."
+			]
+		},
+		{
+			"name": "Ki-Fueled Attack",
+			"source": "TCE",
+			"page": 48,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 3rd-level monk {@variantrule optional class features|tce|optional feature}}",
+				"Si vous dépensez 1 point de ki ou plus dans le cadre de votre action à votre tour, vous pouvez effectuer une attaque avec une frappe sans arme ou une arme de moine comme action bonus avant la fin du tour."
+			]
+		},
+		{
+			"name": "Monastic Tradition",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Lorsque vous atteignez le 3e niveau, vous vous engagez dans une tradition monastique, choisie dans la liste des traditions disponibles. Votre tradition vous accorde des caractéristiques au 3e niveau, puis au 6e, 11e et 17e niveau."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"Lorsque vous atteignez le 4ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Quickened Healing",
+			"source": "TCE",
+			"page": 48,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level monk {@variantrule optional class features|tce|optional feature}}",
+				"Comme action, vous pouvez dépenser 2 points de ki et lancer un dé d'arts martiaux. Vous regagnez un nombre de points de vie égal au nombre obtenu plus votre bonus de compétence."
+			]
+		},
+		{
+			"name": "Slow Fall",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"À partir du 4e niveau, vous pouvez utiliser votre réaction lorsque vous tombez pour réduire les dégâts de chute que vous subissez d'un montant égal à cinq fois votre niveau de moine."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"À partir du 5e niveau, vous pouvez attaquer deux fois, au lieu d'une, lorsque vous effectuez l'action {@action Attack} à votre tour."
+			]
+		},
+		{
+			"name": "Focused Aim",
+			"source": "TCE",
+			"page": 48,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 5,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 5th-level monk {@variantrule optional class features|tce|optional feature}}",
+				"Lorsque vous ratez un jet d'attaque, vous pouvez dépenser de 1 à 3 points de ki pour augmenter votre jet d'attaque de 2 pour chacun de ces points de ki dépensés, transformant potentiellement le raté en réussite."
+			]
+		},
+		{
+			"name": "Stunning Strike",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"À partir du 5e niveau, vous pouvez interférer avec le flux de ki dans le corps d'un adversaire. Lorsque vous touchez une autre créature avec une attaque d'arme de mêlée, vous pouvez dépenser 1 point de ki pour tenter une frappe étourdissante. La cible doit réussir un jet de sauvegarde de Constitution ou être {@condition stunned} jusqu'à la fin de votre prochain tour."
+			]
+		},
+		{
+			"name": "Ki-Empowered Strikes",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"À partir du 6e niveau, vos frappes à mains nues sont considérées comme magiques lorsqu'il s'agit de surmonter la résistance et l'immunité aux attaques et dégâts non magiques."
+			]
+		},
+		{
+			"name": "Monastic Tradition feature",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Au 6ème niveau, vous gagnez une caractéristique accordée par votre Tradition Monastique."
+			]
+		},
+		{
+			"name": "Evasion",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 7,
+			"entries": [
+				"Au 7e niveau, votre agilité instinctive vous permet d'esquiver la trajectoire de certains effets de zone, comme le souffle de foudre d'un dragon bleu ou un sort de {@spell fireball}. Lorsque vous êtes soumis à un effet qui vous permet de faire un jet de sauvegarde de Dextérité pour ne subir que la moitié des dégâts, vous ne subissez à la place aucun dégât si vous réussissez le jet de sauvegarde, et seulement la moitié des dégâts si vous échouez."
+			]
+		},
+		{
+			"name": "Stillness of Mind",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 7,
+			"entries": [
+				"À partir du 7e niveau, vous pouvez utiliser votre action pour mettre fin à un effet sur vous-même qui vous fait perdre {@condition charmed} ou {@condition frightened}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"Lorsque vous atteignez le 8e niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Unarmored Movement improvement",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 9,
+			"entries": [
+				"Au 9ème niveau, vous gagnez la capacité de vous déplacer sur des surfaces verticales et à travers des liquides à votre tour sans tomber pendant le mouvement."
+			]
+		},
+		{
+			"name": "Purity of Body",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Au 10e niveau, votre maîtrise du ki qui vous traverse vous rend immunisé contre les maladies et le poison."
+			]
+		},
+		{
+			"name": "Monastic Tradition feature",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 11,
+			"entries": [
+				"Au 11ème niveau, vous gagnez une caractéristique accordée par votre Tradition Monastique."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"Lorsque vous atteignez le 12ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Tongue of the Sun and Moon",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 13,
+			"entries": [
+				"À partir du 13e niveau, vous apprenez à toucher le ki des autres esprits afin de comprendre toutes les langues parlées. De plus, toute créature capable de comprendre une langue peut comprendre ce que vous dites."
+			]
+		},
+		{
+			"name": "Diamond Soul",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"À partir du 14e niveau, votre maîtrise du ki vous confère une compétence à tous les jets de sauvegarde.",
+				"De plus, lorsque vous faites un jet de sauvegarde et que vous échouez, vous pouvez dépenser 1 point de ki pour le relancer et prendre le second résultat."
+			]
+		},
+		{
+			"name": "Timeless Body",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 15,
+			"entries": [
+				"Au 15ème niveau, votre ki vous soutient de sorte que vous ne souffrez pas de la fragilité de la vieillesse, et vous ne pouvez pas être vieilli magiquement. Cependant, vous pouvez toujours mourir de vieillesse. De plus, vous n'avez plus besoin de nourriture ni d'eau."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"Lorsque vous atteignez le 16ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Monastic Tradition feature",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 17,
+			"entries": [
+				"Au 17ème niveau, vous gagnez une caractéristique accordée par votre tradition monastique."
+			]
+		},
+		{
+			"name": "Empty Body",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"À partir du 18e niveau, vous pouvez utiliser votre action pour dépenser 4 points de ki pour devenir {@condition invisible} pendant 1 minute. Pendant cette période, vous bénéficiez également d'une résistance à tous les dégâts, à l'exception des dégâts de force.",
+				"De plus, vous pouvez dépenser 8 points de ki pour lancer le sort {@spell astral projection}, sans avoir besoin de composants matériels. Lorsque vous le faites, vous ne pouvez pas emmener d'autres créatures avec vous."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"Lorsque vous atteignez le 19ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Perfect Self",
+			"source": "PHB",
+			"page": 76,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"Au 20e niveau, lorsque vous effectuez un jet d'initiative et qu'il ne vous reste plus de points de ki, vous regagnez 4 points de ki."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Way of the Ascendant Dragon",
+			"source": "FTD",
+			"page": 13,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon",
+			"subclassSource": "FTD",
+			"level": 3,
+			"entries": [
+				"Le dieu dragon Bahamut est connu pour voyager sur le plan matériel sous l'apparence d'un jeune moine, et la légende dit qu'il a fondé le premier monastère de la Voie du Dragon Ascendant sous cette apparence. L'enseignement fondamental de cette tradition veut qu'en imitant les dragons, un moine devienne une partie plus intégrée du monde et de sa magie. En modifiant leur esprit pour qu'il résonne avec la puissance draconique, les moines qui suivent cette tradition augmentent leurs prouesses au combat, renforcent leurs alliés et peuvent même s'élever dans les airs grâce à leurs ailes draconiques. Mais toute cette puissance est au service d'un objectif plus grand : atteindre une unité spirituelle avec l'essence du plan matériel.",
+				"En tant qu'adepte de la Voie du Dragon Ascendant, c'est vous qui décidez comment vous avez débloqué le pouvoir des dragons en vous. Le tableau des origines du dragon ascendant offre un certain nombre de possibilités.",
+				{
+					"type": "table",
+					"caption": "Ascendant Dragon Origin",
+					"colLabels": [
+						"d6",
+						"Origin"
+					],
+					"colStyles": [
+						"col-1 text-center",
+						"col-11"
+					],
+					"rows": [
+						[
+							"1",
+							"Vous avez perfectionné vos capacités en alignant votre esprit avec le pouvoir de changer le monde d'un dragon."
+						],
+						[
+							"2",
+							"Un dragon a personnellement joué un rôle actif dans la formation de votre énergie intérieure."
+						],
+						[
+							"3",
+							"Vous avez étudié dans un monastère dont les enseignements remontent à des siècles ou plus, grâce à l'instruction d'un seul dragon, ou dans un monastère consacré à un dieu dragon."
+						],
+						[
+							"4",
+							"Vous avez passé de longs moments à méditer dans la région entourant le repaire d'un ancien dragon, absorbant la magie ambiante de ce repaire."
+						],
+						[
+							"5",
+							"Vous avez trouvé un parchemin écrit en draconique qui contient de nouvelles techniques inspirantes."
+						],
+						[
+							"6",
+							"Après un rêve mettant en scène un dragonborn à cinq mains, vous vous êtes réveillé avec le souffle mystique des dragons."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Draconic Disciple|Monk||Ascendant Dragon|FTD|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Breath of the Dragon|Monk||Ascendant Dragon|FTD|3"
+				}
+			]
+		},
+		{
+			"name": "Breath of the Dragon",
+			"source": "FTD",
+			"page": 13,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon",
+			"subclassSource": "FTD",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of the Ascendant Dragon feature}",
+				"Vous pouvez canaliser des vagues d'énergie destructrices, comme celles créées par les dragons que vous émulez. Lorsque vous effectuez l'action {@action Attack} à votre tour, vous pouvez remplacer l'une des attaques par une exhalaison d'énergie draconique dans un cône de 20 pieds ou une ligne de 30 pieds de large de 5 pieds (au choix). Choisissez un type de dégâts : acide, froid, feu, foudre ou poison. Chaque créature dans cette zone doit effectuer un jet de sauvegarde de Dextérité contre votre DC de sauvegarde ki, subissant des dégâts du type choisi égaux à deux jets de votre dé d'arts martiaux en cas d'échec, ou à la moitié des dégâts en cas de réussite.",
+				"Au 11e niveau, les dégâts de cette caractéristique passent à trois jets de votre dé d'arts martiaux.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos. Tant que vous n'avez pas d'utilisations disponibles, vous pouvez dépenser 2 points de ki pour utiliser à nouveau cette caractéristique."
+			]
+		},
+		{
+			"name": "Draconic Disciple",
+			"source": "FTD",
+			"page": 13,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon",
+			"subclassSource": "FTD",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of the Ascendant Dragon feature}",
+				"Vous pouvez canaliser la puissance draconique pour magnifier votre présence et imprégner vos frappes à mains nues de l'essence du souffle d'un dragon. Vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Draconic Presence",
+							"entry": "Si vous échouez à un test de Charisme ({@skill Intimidation}) ou de Charisme ({@skill Persuasion}), vous pouvez utiliser votre réaction pour relancer le test, tout en puisant dans la puissante présence des dragons. Une fois que cette caractéristique a transformé un échec en succès, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+						},
+						{
+							"type": "item",
+							"name": "Draconic Strike",
+							"entry": "Lorsque vous endommagez une cible avec une frappe sans arme, vous pouvez changer le type de dégâts en acide, froid, feu, foudre ou poison."
+						},
+						{
+							"type": "item",
+							"name": "Tongue of Dragons",
+							"entry": "Vous apprenez à parler, lire et écrire {@language Draconic} ou une autre langue de votre choix."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Wings Unfurled",
+			"source": "FTD",
+			"page": 13,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon",
+			"subclassSource": "FTD",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Way of the Ascendant Dragon feature}",
+				"Lorsque vous utilisez votre Pas du vent, vous pouvez déployer des ailes draconiques spectrales dans votre dos qui disparaissent à la fin de votre tour. Tant que les ailes existent, vous avez une vitesse de vol égale à votre vitesse de marche.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Aspect of the Wyrm",
+			"source": "FTD",
+			"page": 13,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon",
+			"subclassSource": "FTD",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"{@i 11th-level Way of the Ascendant Dragon feature}",
+				"La puissance de votre esprit draconique irradie désormais de vous, parant vos alliés ou inspirant la peur à vos ennemis. Comme une action bonus, vous pouvez créer une aura de puissance draconique qui rayonne à 10 pieds de vous pendant 1 minute. Pendant cette durée, vous bénéficiez d'un des effets suivants de votre choix :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Frightful Presence",
+							"entry": "Lorsque vous créez cette aura, et comme action bonus aux tours suivants, vous pouvez choisir une créature dans l'aura. La cible doit réussir un jet de sauvegarde de Sagesse contre votre DC de sauvegarde ki ou devenir {@condition frightened} de vous pendant 1 minute. La cible peut répéter le jet de sauvegarde à la fin de chacun de ses tours, mettant fin à l'effet sur elle-même en cas de sauvegarde réussie."
+						},
+						{
+							"type": "item",
+							"name": "Resistance",
+							"entry": "Choisissez un type de dégâts lorsque vous activez cette aura : acide, froid, feu, foudre ou poison. Vous et vos alliés au sein de l'aura ont une résistance à ces dégâts."
+						}
+					]
+				},
+				"Une fois que vous avez créé cette aura, vous ne pouvez pas la recréer avant la fin d'un long repos, à moins de dépenser 3 points de ki pour la recréer."
+			]
+		},
+		{
+			"name": "Ascendant Aspect",
+			"source": "FTD",
+			"page": 13,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon",
+			"subclassSource": "FTD",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"{@i 17th-level Way of the Ascendant Dragon feature}",
+				"Votre esprit draconique atteint son apogée. Vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Augment Breath",
+							"entry": "Lorsque vous utilisez votre Souffle du dragon, vous pouvez dépenser 1 point de ki pour en augmenter la forme et la puissance. L'exhalation d'énergie draconique devient soit un cône de 60 pieds, soit une ligne de 90 pieds et de 5 pieds de large (à votre choix), et chaque créature dans cette zone subit des dégâts égaux à quatre jets de votre dé d'arts martiaux en cas de sauvegarde ratée, ou la moitié des dégâts en cas de réussite."
+						},
+						{
+							"type": "item",
+							"name": "Blindsight",
+							"entry": "Vous gagnez {@sense blindsight} jusqu'à 3 mètres. Dans ce rayon, vous pouvez effectivement voir tout ce qui n'est pas à couvert, même si vous êtes {@condition blinded} ou dans l'obscurité. De plus, vous pouvez voir une créature de {@condition invisible} dans ce rayon, à moins que la créature ne réussisse à se cacher de vous."
+						},
+						{
+							"type": "item",
+							"name": "Explosive Fury",
+							"entry": "Lorsque vous activez votre Aspect du Wyrm, une fureur draconique explose de vous. Choisissez un nombre quelconque de créatures que vous pouvez voir dans votre aura. Chacune de ces créatures doit réussir un jet de sauvegarde de Dextérité contre votre DC de sauvegarde ki ou subir {@damage 3d10} de dégâts d'acide, de froid, de feu, de foudre ou de poison (au choix)."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Way of the Four Elements",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Four Elements",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Vous suivez une tradition monastique qui vous apprend à maîtriser les éléments. Lorsque vous concentrez votre ki, vous pouvez vous aligner sur les forces de la création et plier les quatre éléments à votre volonté, en les utilisant comme une extension de votre corps. Certains membres de cette tradition se consacrent à un seul élément, mais d'autres tissent les éléments ensemble.",
+				"De nombreux moines de cette tradition se tatouent le corps avec des représentations de leurs pouvoirs ki, généralement sous la forme de dragons enroulés, mais aussi de phénix, de poissons, de plantes, de montagnes et de vagues en crête.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Disciple of the Elements|Monk||Four Elements||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Elemental Disciplines|Monk||Four Elements||3"
+				}
+			]
+		},
+		{
+			"name": "Disciple of the Elements",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Four Elements",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous apprenez des disciplines magiques qui exploitent le pouvoir des quatre éléments. Une discipline vous demande de dépenser des points de ki à chaque fois que vous l'utilisez.",
+				"Vous connaissez la discipline d'harmonisation élémentaire et une autre discipline élémentaire de votre choix. Vous apprenez une discipline élémentaire supplémentaire de votre choix au 6e, 11e et 17e niveau.",
+				"Chaque fois que vous apprenez une nouvelle discipline élémentaire, vous pouvez également remplacer une discipline élémentaire que vous connaissez déjà par une discipline différente.",
+				{
+					"type": "entries",
+					"name": "Casting Elemental Spells",
+					"entries": [
+						"Certaines disciplines élémentaires vous permettent de lancer des sorts. Voir {@book chapter 10|PHB|10} du Manuel du joueur pour les règles générales de lancement de sorts. Pour lancer un de ces sorts, vous utilisez son temps d'incantation et ses autres règles, mais vous n'avez pas besoin de fournir de composants matériels pour le lancer.",
+						"Une fois que vous avez atteint le 5e niveau dans cette classe, vous pouvez dépenser des points de ki supplémentaires pour augmenter le niveau d'un sort de discipline élémentaire que vous lancez, à condition que le sort ait un effet amélioré à un niveau supérieur, comme le fait {@spell burning hands}. Le niveau du sort augmente de 1 pour chaque point de ki supplémentaire que vous dépensez. Par exemple, si vous êtes un moine de 5e niveau et que vous utilisez Frappe de cendres balayée pour lancer {@spell burning hands}, vous pouvez dépenser 3 points de ki pour le lancer comme un sort de 2e niveau (le coût de base de la discipline est de 2 points de ki plus 1).",
+						"Le nombre maximum de points de ki que vous pouvez dépenser pour lancer un sort de cette manière (y compris son coût de base en points de ki et tous les points de ki supplémentaires que vous dépensez pour augmenter son niveau) est déterminé par votre niveau de moine, comme indiqué dans la table Sorts et points de ki. Au 5e niveau, vous pouvez dépenser jusqu'à 3 points de ki ; cela passe à 4 points de ki au 9e niveau, 5 au 13e niveau et 6 au 17e niveau.",
+						{
+							"type": "table",
+							"caption": "Spells and Ki Points",
+							"colLabels": [
+								"Monk Levels",
+								"Maximum Ki Points for a Spell"
+							],
+							"colStyles": [
+								"col-5 text-center",
+								"col-7 text-center"
+							],
+							"rows": [
+								[
+									"5th-8th",
+									3
+								],
+								[
+									"9th-12th",
+									4
+								],
+								[
+									"13th-16th",
+									5
+								],
+								[
+									"17th-20th",
+									6
+								]
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Elemental Disciplines",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Four Elements",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Les disciplines élémentaires sont présentées par ordre alphabétique. Si une discipline requiert un niveau, vous devez avoir le niveau de cette classe pour apprendre la discipline.",
+				{
+					"type": "options",
+					"count": 2,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Breath of Winter",
+							"name": "Breath of Winter (17th Level Required)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Clench of the North Wind",
+							"name": "Clench of the North Wind (6th Level Required)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Elemental Attunement",
+							"data": {
+								"isRequiredOption": true
+							}
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Eternal Mountain Defense",
+							"name": "Eternal Mountain Defense (17th Level Required)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Fangs of the Fire Snake"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Fist of Four Thunders"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unbroken Air"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Flames of the Phoenix",
+							"name": "Flames of the Phoenix (11th Level Required)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Gong of the Summit",
+							"name": "Gong of the Summit (6th Level Required)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mist Stance",
+							"name": "Mist Stance (11th Level Required)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Ride the Wind",
+							"name": "Ride the Wind (11th Level Required)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "River of Hungry Flame",
+							"name": "River of Hungry Flame (17th Level Required)"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Rush of the Gale Spirits"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Shape the Flowing River"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Sweeping Cinder Strike"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Water Whip"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Wave of Rolling Earth",
+							"name": "Wave of Rolling Earth (17th Level Required)"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Extra Elemental Discipline",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Four Elements",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vous apprenez une discipline élémentaire supplémentaire de votre choix. Vous devriez connaître 2 disciplines élémentaires, ainsi que l'accordage élémentaire.",
+				"Chaque fois que vous apprenez une nouvelle discipline élémentaire, vous pouvez également remplacer une discipline élémentaire que vous connaissez déjà par une discipline différente."
+			]
+		},
+		{
+			"name": "Extra Elemental Discipline",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Four Elements",
+			"subclassSource": "PHB",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"Vous apprenez une discipline élémentaire supplémentaire de votre choix. Vous devriez connaître 3 disciplines élémentaires, ainsi que l'accordage élémentaire.",
+				"Chaque fois que vous apprenez une nouvelle discipline élémentaire, vous pouvez également remplacer une discipline élémentaire que vous connaissez déjà par une discipline différente."
+			]
+		},
+		{
+			"name": "Extra Elemental Discipline",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Four Elements",
+			"subclassSource": "PHB",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Vous apprenez une discipline élémentaire supplémentaire de votre choix. Vous devriez connaître 4 disciplines élémentaires, ainsi que l'accordage élémentaire.",
+				"Chaque fois que vous apprenez une nouvelle discipline élémentaire, vous pouvez également remplacer une discipline élémentaire que vous connaissez déjà par une discipline différente."
+			]
+		},
+		{
+			"name": "Way of the Open Hand",
+			"source": "PHB",
+			"page": 79,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Open Hand",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Les moines de la Voie de la main ouverte sont les maîtres ultimes du combat en arts martiaux, qu'ils soient armés ou non. Ils apprennent des techniques pour pousser et faire trébucher leurs adversaires, manipulent le ki pour soigner les dommages subis par leur corps, et pratiquent une méditation avancée qui peut les protéger du mal.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Open Hand Technique|Monk||Open Hand||3"
+				}
+			]
+		},
+		{
+			"name": "Open Hand Technique",
+			"source": "PHB",
+			"page": 79,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Open Hand",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous pouvez manipuler le ki de votre ennemi lorsque vous maîtrisez le vôtre. Chaque fois que vous touchez une créature avec l'une des attaques accordées par votre rafale de coups, vous pouvez imposer à cette cible l'un des effets suivants.",
+				{
+					"type": "list",
+					"items": [
+						"Il doit réussir un jet de sauvegarde de Dextérité ou être assommé {@condition prone}.",
+						"Il doit faire un jet de sauvegarde de Force. S'il échoue, vous pouvez le pousser jusqu'à 15 pieds de vous.",
+						"Il ne peut pas prendre de réactions jusqu'à la fin de votre prochain tour."
+					]
+				}
+			]
+		},
+		{
+			"name": "Wholeness of Body",
+			"source": "PHB",
+			"page": 79,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Open Hand",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vous gagnez la capacité de vous guérir. En tant qu'action, vous pouvez regagner un nombre de points de vie égal à trois fois votre niveau de moine. Vous devez terminer un long repos avant de pouvoir utiliser à nouveau cette caractéristique."
+			]
+		},
+		{
+			"name": "Tranquility",
+			"source": "PHB",
+			"page": 79,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Open Hand",
+			"subclassSource": "PHB",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"À partir du 11e niveau, vous pouvez entrer dans une méditation spéciale qui vous entoure d'une aura de paix. À la fin d'un long repos, vous obtenez l'effet d'un sort {@spell sanctuary} qui dure jusqu'au début de votre prochain long repos (le sort peut se terminer plus tôt que d'habitude). Le jet de sauvegarde pour ce sort est égal à 8 + votre modificateur de sagesse + votre bonus de compétence."
+			]
+		},
+		{
+			"name": "Quivering Palm",
+			"source": "PHB",
+			"page": 79,
+			"srd": true,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Open Hand",
+			"subclassSource": "PHB",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Vous gagnez la capacité d'installer des vibrations mortelles dans le corps de quelqu'un. Lorsque vous touchez une créature avec une frappe sans arme, vous pouvez dépenser 3 points de ki pour déclencher ces vibrations imperceptibles, qui durent pendant un nombre de jours égal à votre niveau de moine. Les vibrations sont inoffensives, sauf si vous utilisez votre action pour y mettre fin. Pour ce faire, vous et la cible devez vous trouver sur le même plan d'existence. Lorsque vous utilisez cette action, la créature doit effectuer un jet de sauvegarde de Constitution. Si elle échoue, elle est réduite à 0 point de vie. Si elle réussit, elle subit {@damage 10d10} de dégâts nécrotiques.",
+				"Vous ne pouvez avoir qu'une seule créature sous l'effet de cette caractéristique à la fois. Vous pouvez choisir de mettre fin aux vibrations de manière inoffensive sans utiliser d'action."
+			]
+		},
+		{
+			"name": "Way of Shadow",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Shadow",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Les moines de la Voie de l'ombre suivent une tradition qui valorise la furtivité et le subterfuge. Ces moines peuvent être appelés ninjas ou danseurs de l'ombre, et ils servent d'espions et d'assassins. Parfois, les membres d'un monastère de ninjas sont des membres de la famille, formant un clan qui a juré de garder le secret sur ses arts et ses missions. D'autres monastères ressemblent davantage à des guildes de voleurs, louant leurs services à des nobles, de riches marchands ou toute autre personne pouvant payer leurs honoraires. Quelles que soient leurs méthodes, les chefs de ces monastères attendent de leurs élèves une obéissance sans faille.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Shadow Arts|Monk||Shadow||3"
+				}
+			]
+		},
+		{
+			"name": "Shadow Arts",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Shadow",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous pouvez utiliser votre ki pour dupliquer les effets de certains sorts. Comme action, vous pouvez dépenser 2 points de ki pour lancer {@spell darkness}, {@spell darkvision}, {@spell pass without trace}, ou {@spell silence}, sans fournir de composants matériels. De plus, vous gagnez le cantrip {@spell minor illusion} si vous ne le connaissez pas déjà."
+			]
+		},
+		{
+			"name": "Shadow Step",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Shadow",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vous gagnez la capacité de passer d'une ombre à une autre. Lorsque vous êtes dans une lumière tamisée ou dans l'obscurité, vous pouvez, comme action bonus, vous téléporter jusqu'à 60 pieds dans un espace inoccupé que vous pouvez voir et qui est également dans une lumière tamisée ou dans l'obscurité. Vous avez alors l'avantage sur la première attaque de mêlée que vous effectuez avant la fin du tour."
+			]
+		},
+		{
+			"name": "Cloak of Shadows",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Shadow",
+			"subclassSource": "PHB",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"Au 11e niveau, vous avez appris à ne faire qu'un avec les ombres. Lorsque vous vous trouvez dans une zone de faible lumière ou d'obscurité, vous pouvez utiliser votre action pour devenir {@condition invisible}. Vous restez {@condition invisible} jusqu'à ce que vous fassiez une attaque, lanciez un sort ou soyez dans une zone de lumière vive."
+			]
+		},
+		{
+			"name": "Opportunist",
+			"source": "PHB",
+			"page": 80,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Shadow",
+			"subclassSource": "PHB",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Au 17e niveau, vous pouvez exploiter la distraction momentanée d'une créature lorsqu'elle est touchée par une attaque. Chaque fois qu'une créature située à 1,5 mètre de vous est touchée par une attaque portée par une créature autre que vous, vous pouvez utiliser votre réaction pour porter une attaque de mêlée contre cette créature."
+			]
+		},
+		{
+			"name": "Way of the Long Death",
+			"source": "SCAG",
+			"page": 130,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Long Death",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"entries": [
+				"Les moines de la Voie de la longue mort sont obsédés par la signification et les mécanismes de la mort. Ils capturent des créatures et préparent des expériences élaborées pour saisir, enregistrer et comprendre les moments de leur mort. Ils utilisent ces connaissances pour guider leur compréhension des arts martiaux, ce qui leur donne un style de combat mortel.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Touch of Death|Monk||Long Death|SCAG|3"
+				}
+			]
+		},
+		{
+			"name": "Touch of Death",
+			"source": "SCAG",
+			"page": 130,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Long Death",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du moment où vous choisissez cette tradition au 3e niveau, votre étude de la mort vous permet d'extraire la vitalité d'une autre créature à l'approche de sa mort. Lorsque vous réduisez à 0 point de vie une créature située à 1,5 mètre de vous, vous gagnez des points de vie temporaires égaux à votre modificateur de Sagesse + votre niveau de moine (minimum de 1 point de vie temporaire)."
+			]
+		},
+		{
+			"name": "Hour of Reaping",
+			"source": "SCAG",
+			"page": 130,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Long Death",
+			"subclassSource": "SCAG",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité de déstabiliser ou de terrifier ceux qui vous entourent en tant qu'action, car votre âme a été touchée par l'ombre de la mort. Lorsque vous effectuez cette action, chaque créature située à 30 pieds de vous et pouvant vous voir doit réussir un jet de sauvegarde de Sagesse ou être {@condition frightened} de vous jusqu'à la fin de votre prochain tour."
+			]
+		},
+		{
+			"name": "Mastery of Death",
+			"source": "SCAG",
+			"page": 130,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Long Death",
+			"subclassSource": "SCAG",
+			"level": 11,
+			"header": 2,
+			"consumes": {
+				"name": "Ki"
+			},
+			"entries": [
+				"À partir du 11e niveau, vous utilisez votre familiarité avec la mort pour échapper à son emprise. Lorsque vous êtes réduit à 0 point de vie, vous pouvez dépenser 1 point de ki (aucune action requise) pour avoir 1 point de vie à la place."
+			]
+		},
+		{
+			"name": "Touch of the Long Death",
+			"source": "SCAG",
+			"page": 130,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Long Death",
+			"subclassSource": "SCAG",
+			"level": 17,
+			"header": 2,
+			"consumes": {
+				"name": "Ki"
+			},
+			"entries": [
+				"À partir du 17e niveau, votre toucher peut canaliser l'énergie de la mort dans une créature. Comme action, vous touchez une créature dans un rayon de 1,5 m de vous, et vous dépensez de 1 à 10 points de ki. La cible doit effectuer un jet de sauvegarde de Constitution, et elle subit {@damage 2d10} de dégâts nécrotiques par point de ki dépensé en cas d'échec, ou la moitié des dégâts en cas de réussite."
+			]
+		},
+		{
+			"name": "Way of the Astral Self",
+			"source": "TCE",
+			"page": 50,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Un moine qui suit la Voie du Soi Astral croit que son corps est une illusion. Ils voient leur ki comme une représentation de leur véritable forme, un soi astral. Ce soi astral a la capacité d'être une force d'ordre ou de désordre, certains monastères formant les étudiants à utiliser leur pouvoir pour protéger les faibles et d'autres instruisant les aspirants sur la façon de manifester leur vrai soi au service des puissants.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Forms of Your Astral Self|Monk||Astral Self|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Arms of the Astral Self|Monk||Astral Self|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Arms of the Astral Self",
+			"source": "TCE",
+			"page": 50,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of the Astral Self feature}",
+				"Votre maîtrise de votre ki vous permet d'invoquer une partie de votre moi astral. Comme action bonus, vous pouvez dépenser 1 point de ki pour invoquer les bras de votre moi astral. Lorsque vous faites cela, chaque créature de votre choix que vous pouvez voir dans un rayon de 3 mètres autour de vous doit réussir un jet de sauvegarde de Dextérité ou subir des dégâts de force égaux à deux jets de votre dé d'arts martiaux.",
+				"Pendant 10 minutes, ces bras spectraux planent près de vos épaules ou entourent vos bras (à votre choix). Vous déterminez l'apparence des bras, et ils disparaissent prématurément si vous êtes {@condition incapacitated} ou mourrez.",
+				"Tant que les bras spectraux sont présents, vous bénéficiez des avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Vous pouvez utiliser votre modificateur de sagesse à la place de votre modificateur de force pour effectuer des tests de force et des jets de sauvegarde de force.",
+						"Vous pouvez utiliser les bras spectraux pour effectuer des frappes sans arme.",
+						"Lorsque vous effectuez une frappe sans arme avec les bras à votre tour, votre portée est supérieure de 5 pieds à la normale.",
+						"Les frappes sans arme que vous effectuez avec les bras peuvent utiliser votre modificateur de Sagesse à la place de votre modificateur de Force ou de Dextérité pour les jets d'attaque et de dégâts, et leur type de dégâts est la force."
+					]
+				}
+			]
+		},
+		{
+			"name": "Forms of Your Astral Self",
+			"source": "TCE",
+			"page": 50,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"type": "inset",
+			"entries": [
+				"Le soi astral est une incarnation translucide de l'âme du moine. Par conséquent, un soi astral peut refléter certains aspects du passé, des idéaux, des défauts et des liens du moine, et un soi astral ne ressemble pas nécessairement au moine. Par exemple, le moi astral d'un humain longiligne peut faire penser à un minotaure, dont le moine ressent la force en lui. De même, un moine orc peut avoir des bras en soie et un visage délicat, représentant la douce beauté de l'âme de l'orc. Chaque moi astral est unique, et certains des moines de cette tradition monastique sont plus connus pour l'apparence de leur moi astral que pour leur apparence physique.",
+				"Lorsque vous choisissez cette voie, considérez les bizarreries qui définissent votre moine. Êtes-vous obsédé par quelque chose ? Êtes-vous guidé par la justice ou par un désir égoïste ? Chacune de ces motivations pourrait se manifester sous la forme de votre moi astral."
+			]
+		},
+		{
+			"name": "Visage of the Astral Self",
+			"source": "TCE",
+			"page": 50,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Way of the Astral Self feature}",
+				"Vous pouvez invoquer le visage de votre moi astral. En tant qu'action bonus, ou dans le cadre de l'action bonus que vous prenez pour activer Armes du soi astral, vous pouvez dépenser 1 point de ki pour invoquer ce visage pendant 10 minutes. Il disparaît prématurément si vous êtes {@condition incapacitated} ou mourrez.",
+				"Le visage spectral couvre votre visage comme un casque ou un masque. Vous déterminez son apparence.",
+				"Tant que le visage spectral est présent, vous gagnez les avantages suivants.",
+				{
+					"type": "entries",
+					"name": "Astral Sight",
+					"entries": [
+						"Vous pouvez voir normalement dans l'obscurité, à la fois magique et non-magique, jusqu'à une distance de 120 pieds."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Wisdom of the Spirit",
+					"entries": [
+						"Vous avez un avantage sur les contrôles de Sagesse ({@skill Insight}) et de Charisme ({@skill Intimidation})."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Word of the Spirit",
+					"entries": [
+						"Lorsque vous parlez, vous pouvez diriger vos mots vers une créature de votre choix que vous pouvez voir à moins de 60 pieds de vous, de sorte que seule cette créature puisse vous entendre. Vous pouvez également amplifier votre voix pour que toutes les créatures situées dans un rayon de 600 pieds puissent vous entendre."
+					]
+				}
+			]
+		},
+		{
+			"name": "Body of the Astral Self",
+			"source": "TCE",
+			"page": 50,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self",
+			"subclassSource": "TCE",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"{@i 11th-level Way of the Astral Self feature}",
+				"Lorsque vous avez invoqué vos bras et votre visage astraux, vous pouvez faire apparaître le corps de votre moi astral (aucune action requise). Ce corps spectral recouvre votre forme physique comme une armure, se connectant avec les bras et le visage. Vous déterminez son apparence.",
+				"Tant que le corps spectral est présent, vous bénéficiez des avantages suivants.",
+				{
+					"type": "entries",
+					"name": "Deflect Energy",
+					"entries": [
+						"Lorsque vous subissez des dégâts d'acide, de froid, de feu, de force, de foudre ou de tonnerre, vous pouvez utiliser votre réaction pour les dévier. Dans ce cas, les dégâts que vous subissez sont réduits de {@dice 1d10} + votre modificateur de Sagesse (réduction minimale de 1)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Empowered Arms",
+					"entries": [
+						"Une fois à chacun de vos tours, lorsque vous touchez une cible avec les bras du soi astral, vous pouvez lui infliger des dégâts supplémentaires égaux à votre dé d'arts martiaux."
+					]
+				}
+			]
+		},
+		{
+			"name": "Awakened Astral Self",
+			"source": "TCE",
+			"page": 50,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self",
+			"subclassSource": "TCE",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"{@i 17th-level Way of the Astral Self feature}",
+				"Votre connexion à votre moi astral est complète, ce qui vous permet de libérer tout son potentiel. Comme action bonus, vous pouvez dépenser 5 points de ki pour invoquer les bras, le visage et le corps de votre moi astral et l'éveiller pendant 10 minutes. Cet éveil prend fin prématurément si vous êtes {@condition incapacitated} ou si vous mourez.",
+				"Pendant que votre moi astral est éveillé, vous gagnez les avantages suivants.",
+				{
+					"type": "entries",
+					"name": "Armor of the Spirit",
+					"entries": [
+						"Vous gagnez un bonus de +2 à la classe d'armure."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Astral Barrage",
+					"entries": [
+						"Lorsque vous utilisez la caractéristique Attaque supplémentaire pour attaquer deux fois, vous pouvez attaquer trois fois si toutes les attaques sont effectuées avec vos bras astraux."
+					]
+				}
+			]
+		},
+		{
+			"name": "Way of Mercy",
+			"source": "TCE",
+			"page": 49,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Les moines de la voie de la miséricorde apprennent à manipuler la force vitale des autres pour apporter de l'aide à ceux qui en ont besoin. Ils sont des médecins errants pour les pauvres et les blessés. Cependant, pour ceux qui n'ont pas droit à leur aide, ils apportent une fin rapide comme un acte de miséricorde.",
+				"Ceux qui suivent la voie de la miséricorde peuvent être membres d'un ordre religieux, administrant les nécessiteux et faisant des choix sinistres ancrés dans la réalité plutôt que dans l'idéalisme. Certains peuvent être des guérisseurs à la voix douce, appréciés par leur communauté, tandis que d'autres peuvent être des porteurs masqués de miséricorde macabre.",
+				"Les marcheurs de cette voie portent généralement des robes avec de profondes capes, et ils dissimulent souvent leur visage avec des masques, se présentant comme les porteurs sans visage de la vie et de la mort.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Implements of Mercy|Monk||Mercy|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Hand of Healing|Monk||Mercy|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Hand of Harm|Monk||Mercy|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Hand of Harm",
+			"source": "TCE",
+			"page": 49,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of Mercy feature}",
+				"Vous utilisez votre ki pour infliger des blessures. Lorsque vous touchez une créature avec une frappe sans arme, vous pouvez dépenser 1 point de ki pour infliger des dégâts nécrotiques supplémentaires égaux à un jet de votre dé d'arts martiaux + votre modificateur de sagesse. Vous ne pouvez utiliser cette caractéristique qu'une fois par tour."
+			]
+		},
+		{
+			"name": "Hand of Healing",
+			"source": "TCE",
+			"page": 49,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of Mercy feature}",
+				"Votre toucher mystique peut réparer les blessures. En tant qu'action, vous pouvez dépenser 1 point de ki pour toucher une créature et lui rendre un nombre de points de vie égal à un jet de votre dé d'arts martiaux + votre modificateur de sagesse.",
+				"Lorsque vous utilisez votre rafale de coups, vous pouvez remplacer une des frappes à mains nues par une utilisation de cette caractéristique sans dépenser un point de ki pour la guérison."
+			]
+		},
+		{
+			"name": "Implements of Mercy",
+			"source": "TCE",
+			"page": 49,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of Mercy feature}",
+				"Vous gagnez la maîtrise des compétences {@skill Insight} et {@skill Medicine}, et vous gagnez la maîtrise de la {@item herbalism kit|PHB}.",
+				"Vous gagnez également un masque spécial, que vous portez souvent lorsque vous utilisez les caractéristiques de cette sous-classe. Vous déterminez son apparence, ou le générez aléatoirement en faisant un jet sur la table Masque miséricordieux.",
+				{
+					"type": "table",
+					"caption": "Merciful Mask",
+					"colLabels": [
+						"d6",
+						"Mask Appearance"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Raven"
+						],
+						[
+							"2",
+							"Blanc et blanc"
+						],
+						[
+							"3",
+							"Visage en pleurs"
+						],
+						[
+							"4",
+							"Visage rieur"
+						],
+						[
+							"5",
+							"Crâne"
+						],
+						[
+							"6",
+							"Papillon"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Physician's Touch",
+			"source": "TCE",
+			"page": 49,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Way of Mercy feature}",
+				"Vous pouvez administrer des remèdes encore plus grands d'un simple toucher, et si vous le jugez nécessaire, vous pouvez utiliser vos connaissances pour causer du tort.",
+				"Lorsque vous utilisez Main de guérison sur une créature, vous pouvez également mettre fin à une maladie ou à l'une des conditions suivantes affectant la créature : {@condition blinded}, {@condition deafened}, {@condition paralyzed}, {@condition poisoned} ou {@condition stunned}.",
+				"Lorsque vous utilisez Main de malheur sur une créature, vous pouvez soumettre cette créature à la condition {@condition poisoned} jusqu'à la fin de votre prochain tour."
+			]
+		},
+		{
+			"name": "Flurry of Healing and Harm",
+			"source": "TCE",
+			"page": 49,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy",
+			"subclassSource": "TCE",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"{@i 11th-level Way of Mercy feature}",
+				"Vous pouvez maintenant distribuer une rafale de réconfort et de blessures. Lorsque vous utilisez Flurry of Blows, vous pouvez désormais remplacer chacune des frappes sans arme par une utilisation de votre Hand of Healing, sans dépenser de points de ki pour les soins.",
+				"De plus, lorsque vous effectuez une frappe sans arme avec Flurry of Blows, vous pouvez utiliser Hand of Harm avec cette frappe sans dépenser le point de ki pour Hand of Harm. Vous ne pouvez toujours utiliser Hand of Harm qu'une fois par tour."
+			]
+		},
+		{
+			"name": "Hand of Ultimate Mercy",
+			"source": "TCE",
+			"page": 49,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy",
+			"subclassSource": "TCE",
+			"level": 17,
+			"header": 2,
+			"consumes": {
+				"name": "Ki",
+				"amount": 5
+			},
+			"entries": [
+				"{@i 17th-level Way of Mercy feature}",
+				"Votre maîtrise de l'énergie vitale vous ouvre la porte de la miséricorde ultime. En tant qu'action, vous pouvez toucher le cadavre d'une créature morte dans les dernières 24 heures et dépenser 5 points de ki. La créature revient alors à la vie, regagnant un nombre de points de vie égal à {@dice 4d10} + votre modificateur de Sagesse. Si la créature est morte alors qu'elle était soumise à l'une des conditions suivantes, elle revient à la vie avec celles-ci supprimées : {@condition blinded}, {@condition deafened}, {@condition paralyzed}, {@condition poisoned} et {@condition stunned}.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Way of Mercy",
+			"source": "UA2020SubclassesPt1",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"entries": [
+				"Les moines de la voie de la miséricorde apprennent à manipuler la force vitale des autres pour apporter de l'aide à ceux qui en ont besoin. Ils sont des médecins errants pour les pauvres et les blessés. Cependant, pour ceux qui n'ont pas droit à leur aide, qu'ils soient malades ou maléfiques, ils apportent une fin rapide en guise d'acte de miséricorde.",
+				"Ceux qui suivent la voie de la miséricorde peuvent être d'humbles membres d'un ordre religieux, administrant les personnes les plus démunies, faisant des choix sinistres ancrés dans la réalité plutôt que dans l'idéalisme. Certains peuvent être des guérisseurs à la voix douce, aimés par leur communauté, tandis que d'autres peuvent être des porteurs masqués de miséricorde macabre. Les marcheurs de cette voie portent généralement des robes simples avec de profondes cagoules, et ils dissimulent souvent leur visage avec des masques, se présentant comme les porteurs sans visage de la vie et de la mort. Si vous portez un masque, choisissez son apparence, ou déterminez-la au hasard en faisant un jet sur la table Masque miséricordieux.",
+				{
+					"type": "table",
+					"caption": "Merciful Mask",
+					"colLabels": [
+						"d6",
+						"Mask Appearance"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Raven"
+						],
+						[
+							"2",
+							"Blanc et blanc"
+						],
+						[
+							"3",
+							"Visage en pleurs"
+						],
+						[
+							"4",
+							"Visage rieur"
+						],
+						[
+							"5",
+							"Crâne"
+						],
+						[
+							"6",
+							"Papillon"
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Implements of Mercy|Monk||Mercy (UA)|UA2020SubclassesPt1|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Hands of Healing|Monk||Mercy (UA)|UA2020SubclassesPt1|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Hands of Harm|Monk||Mercy (UA)|UA2020SubclassesPt1|3"
+				}
+			]
+		},
+		{
+			"name": "Hands of Harm",
+			"source": "UA2020SubclassesPt1",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of Mercy feature}",
+				"Vous utilisez votre ki pour infliger des blessures. Lorsque vous touchez une créature avec une frappe sans arme, vous pouvez dépenser 1 point de ki pour infliger des dégâts nécrotiques supplémentaires égaux à un jet de votre dé d'arts martiaux. Si la créature est {@condition incapacitated} ou {@condition poisoned}, elle subit à la place des dégâts nécrotiques égaux à trois jets de votre dé d'arts martiaux. Vous ne pouvez utiliser cette caractéristique qu'une seule fois à chacun de vos tours."
+			]
+		},
+		{
+			"name": "Hands of Healing",
+			"source": "UA2020SubclassesPt1",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of Mercy feature}",
+				"Votre toucher mystique peut réparer les blessures. En tant qu'action, vous pouvez dépenser 1 point de ki pour toucher une créature et lui rendre un nombre de points de vie égal à un jet de votre dé d'arts martiaux + votre modificateur de sagesse.",
+				"Lorsque vous utilisez votre rafale de coups, vous pouvez remplacer une des frappes sans arme par une utilisation de cette caractéristique sans dépenser son coût en ki."
+			]
+		},
+		{
+			"name": "Implements of Mercy",
+			"source": "UA2020SubclassesPt1",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of Mercy feature}",
+				"Vous gagnez la maîtrise de la compétence {@skill Insight} ou {@skill Medicine} (au choix), et vous gagnez la maîtrise du {@item herbalism kit|phb} et du {@item poisoner's kit|phb}."
+			]
+		},
+		{
+			"name": "Noxious Aura",
+			"source": "UA2020SubclassesPt1",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Way of Mercy feature}",
+				"Comme action bonus, vous dépensez 1 point de ki pour transformer votre ki en une aura de miasme toxique. L'aura s'étend à 1,5 mètre de vous dans toutes les directions, mais pas à travers une couverture totale. Elle dure 1 minute, jusqu'à ce que vous soyez {@condition incapacitated}, ou que vous la dissipiez (aucune action requise).",
+				"Tant que votre aura est active, les attaques à distance ont un désavantage contre vous. Toute autre créature qui commence son tour dans l'aura doit réussir un jet de sauvegarde de Constitution ou devenir {@condition poisoned} jusqu'à la fin de votre prochain tour et subir des dégâts de poison égaux à votre modificateur de Sagesse (minimum de 0 dégât)."
+			]
+		},
+		{
+			"name": "Healing Technique",
+			"source": "UA2020SubclassesPt1",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"{@i 11th-level Way of Mercy feature}",
+				"Votre compétence à manipuler votre ki pour guérir augmente. Lorsque vous redonnez des points de vie à une créature à l'aide de vos mains de guérison, vous pouvez également mettre fin à une maladie ou à une condition de la liste suivante affectant la cible : {@condition blinded}, {@condition deafened}, {@condition paralyzed}, ou {@condition poisoned}."
+			]
+		},
+		{
+			"name": "Hand of Mercy",
+			"source": "UA2020SubclassesPt1",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Mercy (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 17,
+			"header": 2,
+			"consumes": {
+				"name": "Ki",
+				"amount": 4
+			},
+			"entries": [
+				"{@i 17th-level Way of Mercy feature}",
+				"Votre maîtrise de l'énergie vitale vous ouvre les portes de l'ultime technique de répit. En tant qu'action, vous pouvez toucher une créature, dépenser 4 points de ki et forcer la créature à effectuer un jet de sauvegarde de Constitution (une créature peut volontairement échouer ce jet). Si la sauvegarde ne réussit pas, la créature entre dans un état d'animation suspendue pendant un nombre de jours égal à votre niveau de moine ou jusqu'à ce que vous mettiez fin à l'effet de manière anticipée (aucune action requise). Pendant ce temps, la créature est {@condition paralyzed}, est immunisée contre tous les dégâts, et toute malédiction, maladie ou poison l'affectant est suspendu. La créature semble morte à toute inspection extérieure et aux sorts utilisés pour déterminer l'état de la créature.",
+				"Vous ne pouvez avoir qu'une seule créature sous l'effet de cette caractéristique à la fois."
+			]
+		},
+		{
+			"name": "Way of the Ascendant Dragon",
+			"source": "UA2020SubclassesPt5",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"entries": [
+				"Les moines qui suivent la voie du dragon ascendant vénèrent la puissance et la grandeur des dragons. Ils modifient leur propre ki pour qu'il résonne avec la puissance draconique, le canalisant pour augmenter leurs prouesses au combat, s'élever dans les airs et soutenir leurs alliés.",
+				"En tant qu'adepte de cette tradition monastique, c'est vous qui décidez comment vous avez débloqué le pouvoir des dragons à travers votre ki. Le tableau des origines des dragons ascendants offre quelques possibilités.",
+				{
+					"type": "table",
+					"caption": "Ascendant Dragon Origin",
+					"colLabels": [
+						"d6",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Vous avez perfectionné vos capacités en observant un dragon et en alignant votre ki sur son pouvoir de transformation du monde."
+						],
+						[
+							"2",
+							"Un dragon a personnellement joué un rôle actif dans la formation de votre énergie intérieure."
+						],
+						[
+							"3",
+							"Vous avez étudié dans un monastère dont les enseignements remontent à plusieurs siècles, voire plus, grâce aux instructions d'un seul dragon."
+						],
+						[
+							"4",
+							"Vous avez passé de longs moments à méditer dans la région d'influence d'un ancien repaire de dragons, absorbant sa magie ambiante."
+						],
+						[
+							"5",
+							"Vous avez trouvé un parchemin écrit en {@language Draconic} qui contient de nouvelles techniques inspirantes."
+						],
+						[
+							"6",
+							"Après un rêve qui mettait en scène un dragonborn à cinq mains, vous vous êtes réveillé avec un ki modifié, reflétant les souffles des dragons."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Draconic Disciple|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Breath of the Dragon|Monk||Ascendant Dragon (UA)|UA2020SubclassesPt5|3"
+				}
+			]
+		},
+		{
+			"name": "Breath of the Dragon",
+			"source": "UA2020SubclassesPt5",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of the Ascendant Dragon feature}",
+				"Vous pouvez canaliser votre ki en vagues d'énergie destructrices comme les dragons que vous émulez. Lorsque vous effectuez l'action {@action Attack} à votre tour, vous pouvez remplacer l'une des attaques par une exhalaison d'énergie draconique dans un cône de 20 pieds ou une ligne de 30 pieds de large de 5 pieds (au choix). Choisissez un type de dégâts : acide, froid, feu, foudre ou poison. Chaque créature dans la zone doit effectuer un jet de sauvegarde de Dextérité contre votre DC de sauvegarde ki, subissant des dégâts du type choisi égaux à deux jets de votre dé d'arts martiaux en cas d'échec, ou à la moitié des dégâts en cas de réussite.",
+				"Au 11e niveau, les dégâts de votre souffle augmentent à trois jets de votre dé d'arts martiaux.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos. Tant que vous n'avez pas d'utilisations disponibles, vous pouvez dépenser 1 point de ki pour utiliser à nouveau cette caractéristique."
+			]
+		},
+		{
+			"name": "Draconic Disciple",
+			"source": "UA2020SubclassesPt5",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Way of the Ascendant Dragon feature}",
+				"Vous pouvez canaliser votre ki draconique pour imprégner vos frappes sans arme de l'essence du souffle d'un dragon et utiliser votre connexion avec les créatures draconiques pour magnifier votre présence. Vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Lorsque vous endommagez une cible avec une frappe sans arme, vous pouvez changer le type de dégâts en acide, froid, feu, foudre ou poison.",
+						"Si vous ne le savez pas déjà, vous apprenez à parler, à lire et à écrire {@language Draconic}.",
+						"Si vous échouez à un test de Charisme ({@skill Intimidation}) ou de Charisme ({@skill Persuasion}), vous pouvez utiliser votre réaction pour relancer le test, tout en puisant dans la puissante présence des dragons. Une fois que cette caractéristique a transformé un échec en succès, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+					]
+				}
+			]
+		},
+		{
+			"name": "Wings Unfurled",
+			"source": "UA2020SubclassesPt5",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Way of the Ascendant Dragon feature}",
+				"Lorsque vous utilisez votre Pas du vent, vous pouvez déployer des ailes draconiques spectrales dans votre dos qui disparaissent à la fin de votre tour. Tant que les ailes existent, vous avez une vitesse de vol égale à votre vitesse de marche.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos. Tant que vous n'avez pas d'utilisations disponibles, vous pouvez dépenser 1 point de ki supplémentaire lorsque vous activez le Pas du vent pour utiliser à nouveau cette caractéristique."
+			]
+		},
+		{
+			"name": "Aspect of the Wyrm",
+			"source": "UA2020SubclassesPt5",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"{@i 11th-level Way of the Ascendant Dragon feature}",
+				"La puissance de votre ki draconique irradie désormais de vous, protégeant vos alliés du mal et punissant ceux qui lèvent les armes contre eux. Comme une action bonus, vous pouvez créer une aura de puissance draconique qui rayonne à 30 pieds de vous pendant 1 minute. Choisissez des dégâts d'acide, de froid, de feu, de foudre ou de poison, et pour la durée, vous gagnez les effets suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Vous et vos alliés dans votre aura gagnez une résistance au type de dégâts choisi.",
+						"Des vagues d'énergie destructrice jaillissent de vous et de vos alliés lorsque l'un d'entre vous est attaqué. Lorsque vous ou l'un de vos alliés dans l'aura est touché par une attaque d'une autre créature dans l'aura, la cible touchée peut utiliser sa réaction pour infliger à l'attaquant une quantité de dégâts du type choisi égale à un jet de votre dé d'arts martiaux."
+					]
+				},
+				"Une fois que vous avez utilisé cette action bonus, vous ne pouvez pas la réutiliser avant d'avoir terminé un long repos, à moins de dépenser 4 points de ki pour la réutiliser."
+			]
+		},
+		{
+			"name": "Ascendant Aspect",
+			"source": "UA2020SubclassesPt5",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Ascendant Dragon (UA)",
+			"subclassSource": "UA2020SubclassesPt5",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"{@i 17th-level Way of the Ascendant Dragon feature}",
+				"Votre ki draconique atteint son apogée. Vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Vous gagnez {@sense blindsight} jusqu'à 30 pieds. Dans ce rayon d'action, vous pouvez effectivement voir tout ce qui n'est pas à couvert, même si vous êtes à {@condition blinded} ou dans l'obscurité. De plus, vous pouvez voir une créature de {@condition invisible} dans ce rayon, à moins que la créature ne réussisse à se cacher de vous.",
+						"Lorsque vous infligez des dégâts à une créature avec votre Souffle du dragon, l'énergie s'accroche à la cible. Au début de chacun de ses tours, la créature subit des dégâts du type de ceux infligés par votre souffle, égaux à un jet de votre dé d'arts martiaux. À la fin de son tour, la créature peut répéter la sauvegarde, mettant fin à l'effet sur elle-même en cas de réussite.",
+						"Lorsque vous activez votre Aspect du Wyrm, une fureur draconique explose de vous. Choisissez un nombre quelconque de créatures que vous pouvez voir dans votre aura. Ces créatures subissent chacune {@damage 4d10} de dégâts d'acide, de froid, de feu, de foudre ou de poison (au choix)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Way of the Drunken Master",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"entries": [
+				"La voie du maître ivre enseigne à ses élèves à se déplacer avec les mouvements saccadés et imprévisibles d'un ivrogne. Un maître ivre se balance, chancelant sur des pieds instables, pour présenter ce qui semble être un combattant incompétent mais qui s'avère frustrant à engager. Les trébuchements erratiques du maître ivre cachent une danse soigneusement exécutée de blocages, de parades, d'avancées, d'attaques et de retraites. Les guerriers rusés peuvent voir à travers l'apparente incompétence du maître ivre pour reconnaître la technique magistrale employée.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Drunken Technique|Monk||Drunken Master (UA)|UAATrioOfSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Drunken Technique",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous choisissez cette tradition au 3e niveau, vous gagnez la compétence {@skill Performance} si vous ne la possédez pas déjà ; votre technique d'arts martiaux mélange l'entraînement martial avec la précision d'un danseur et les pitreries d'un bouffon.",
+				"Vous apprenez également à vous tordre et à tourner rapidement dans le cadre de votre rafale de coups. Chaque fois que vous utilisez Flurry of Blows, vous bénéficiez de l'action {@action Disengage}, et votre vitesse de marche augmente de 10 pieds jusqu'à la fin du tour en cours."
+			]
+		},
+		{
+			"name": "Tipsy Sway",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, votre balancement en combat devient follement imprévisible. En réaction lorsqu'un ennemi vous rate avec un jet d'attaque de mêlée, vous pouvez faire en sorte que cette attaque touche une créature de votre choix, autre que l'attaquant, que vous pouvez voir dans un rayon de 1,5 mètre autour de vous. Une fois que vous avez utilisé cette caractéristique, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Drunkard's Luck",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"À partir du 11e niveau, vous semblez toujours avoir un rebond chanceux au bon moment pour vous sauver du destin. Lorsque vous faites un jet de sauvegarde, vous pouvez dépenser 1 point de ki pour vous donner un avantage sur ce jet. Vous devez décider d'utiliser cette caractéristique avant de faire le jet."
+			]
+		},
+		{
+			"name": "Intoxicated Frenzy",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Au 17e niveau, vous gagnez la capacité d'effectuer un nombre écrasant d'attaques contre un groupe d'ennemis. Lorsque vous utilisez votre rafale de coups, vous pouvez effectuer jusqu'à trois attaques supplémentaires avec elle (jusqu'à un total de cinq attaques), à condition que chaque attaque de rafale de coups cible une créature différente ce tour-ci."
+			]
+		},
+		{
+			"name": "Way of the Astral Self",
+			"source": "UABarbarianAndMonk",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"entries": [
+				"Les moines de la Voie du Soi Astral ont une lutte interne avec leur ki. Ils considèrent leur énergie mystique comme une représentation de leur véritable forme, un soi astral. Cette forme a la capacité d'être une force de bien ou de destruction, certains monastères formant les étudiants à tempérer leur nature ou à embrasser leurs impulsions.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Forms of Your Astral Self|Monk||Astral Self (UA)|UABarbarianAndMonk|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Arms of the Astral Self|Monk||Astral Self (UA)|UABarbarianAndMonk|3"
+				}
+			]
+		},
+		{
+			"name": "Arms of the Astral Self",
+			"source": "UABarbarianAndMonk",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, votre maîtrise de votre ki vous permet d'invoquer une partie de votre moi astral. À votre tour, vous pouvez dépenser 2 points de ki comme action bonus pour invoquer les bras de votre moi astral pendant 10 minutes. Ces bras spectraux planent près de vos épaules. Vous déterminez l'apparence des bras en fonction des qualités de votre personnage.",
+				"Lorsque vos bras astraux sont invoqués, vous obtenez les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Vous pouvez utiliser votre modificateur de sagesse à la place de votre modificateur de force pour effectuer des tests de force et des jets de sauvegarde de force.",
+						"Les bras sont des armes de moine et ont une portée de 10 pieds. Les bras infligent des dégâts radiants ou nécrotiques (au choix). Lorsque vous attaquez avec les bras, vous pouvez utiliser votre modificateur de Sagesse au lieu de votre modificateur de Force ou de Dextérité pour les jets d'attaque et de dégâts.",
+						"Immédiatement après avoir utilisé l'action {@action Attack} avec vos bras astraux à votre tour, vous pouvez effectuer une attaque supplémentaire avec vos bras astraux comme action bonus. Le nombre d'attaques supplémentaires augmente lorsque vous atteignez certains niveaux dans cette classe, passant à deux au 11e niveau et à trois au 17e niveau."
+					]
+				}
+			]
+		},
+		{
+			"name": "Forms of Your Astral Self",
+			"source": "UABarbarianAndMonk",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"header": 1,
+			"type": "inset",
+			"entries": [
+				"Le soi astral est une incarnation translucide de la psyché et de l'âme du moine. Par conséquent, la forme d'un soi astral reflète l'esprit du moine qui le manifeste. Votre moi astral peut être un chevalier humanoïde avec un visage casqué et de grands bras musclés, ou une forme métallique dorée avec des bras fins comme un modron.",
+				"Lorsque vous choisissez cette voie, réfléchissez aux particularités qui définissent votre moine. Sont-ils obsédés par quelque chose ? Êtes-vous animé par la justice ou par un désir égoïste ? Chacune de ces motivations pourrait se manifester sous la forme de votre moi astral."
+			]
+		},
+		{
+			"name": "Visage of the Astral Self",
+			"source": "UABarbarianAndMonk",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, vous pouvez invoquer le visage de votre moi astral. À votre tour, vous pouvez dépenser 1 point de ki comme action bonus, ou dans le cadre de l'invocation de vos bras astraux, pour invoquer ce visage pendant 10 minutes. Le visage spectral couvre votre visage comme un casque ou un masque. Vous déterminez son apparence en fonction des qualités de votre personnage.",
+				"Pendant que votre visage est invoqué, vous gagnez les avantages suivants.",
+				{
+					"type": "entries",
+					"name": "Wisdom of the Spirit",
+					"entries": [
+						"Vous avez un avantage sur les contrôles de Sagesse ({@skill Insight}) et de Charisme ({@skill Intimidation})."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Astral Sight",
+					"entries": [
+						"Vous pouvez voir normalement dans l'obscurité, à la fois magique et non-magique, jusqu'à une distance de 120 pieds."
+					]
+				}
+			]
+		},
+		{
+			"name": "Awakening of the Astral Self",
+			"source": "UABarbarianAndMonk",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"À partir du 11e niveau, vous exploitez la grande puissance de votre moi astral. Lorsque vos bras et votre visage astraux sont invoqués, vous obtenez les avantages suivants.",
+				{
+					"type": "entries",
+					"name": "Deflect Energy",
+					"entries": [
+						"Lorsque vous subissez des dégâts d'acide, de froid, de feu, de foudre ou de force, vous pouvez utiliser votre réaction pour les dévier. Dans ce cas, les dégâts subis sont réduits de {@dice 1d10} + votre modificateur de sagesse + votre niveau de moine."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Empowered Arms",
+					"entries": [
+						"Une fois à chacun de vos tours, lorsque vous touchez une cible avec vos bras astraux, vous pouvez lui infliger des dégâts supplémentaires égaux à votre dé d'arts martiaux."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Word of the Spirit",
+					"entries": [
+						"Lorsque vous parlez à travers votre visage, vous pouvez diriger vos mots vers une créature de votre choix que vous pouvez voir à moins de 30 pieds de vous, de sorte que seule cette créature puisse vous entendre. Vous pouvez également amplifier votre voix afin que toutes les créatures situées dans un rayon de 600 pieds puissent vous entendre."
+					]
+				}
+			]
+		},
+		{
+			"name": "Improved Arms of the Astral Self",
+			"source": "UABarbarianAndMonk",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"Au 11e niveau, vous effectuez deux attaques supplémentaires au lieu d'une lorsque vous attaquez avec vos bras astraux comme action bonus."
+			]
+		},
+		{
+			"name": "Complete Astral Self",
+			"source": "UABarbarianAndMonk",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"À partir du 17e niveau, votre connexion à votre moi astral est complète, ce qui vous permet de l'invoquer entièrement. À votre tour, vous pouvez dépenser 10 points de ki comme action bonus pour invoquer les bras, le visage et le corps de votre moi astral pendant 10 minutes. Ce corps spectral recouvre votre forme physique comme une armure, se connectant avec les bras et le visage. Vous déterminez son apparence en fonction des qualités de votre personnage. Pendant que votre moi astral est invoqué, vous bénéficiez des avantages suivants.",
+				{
+					"type": "entries",
+					"name": "Armor of the Spirit",
+					"entries": [
+						"Vous gagnez un bonus de +2 à la CA tant que vous ne l'êtes pas {@condition incapacitated}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Astral Barrage",
+					"entries": [
+						"Lorsque vous utilisez la caractéristique Attaque supplémentaire pour attaquer deux fois, vous pouvez à la place attaquer trois fois en utilisant vos bras astraux."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ki Consumption",
+					"entries": [
+						"Lorsqu'une créature située à 3 mètres de vous est réduite à 0 point de vie, vous pouvez utiliser votre réaction pour regagner un nombre de points de ki égal à votre modificateur de Sagesse (minimum 1)."
+					]
+				}
+			]
+		},
+		{
+			"name": "Improved Arms of the Astral Self",
+			"source": "UABarbarianAndMonk",
+			"page": 2,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Astral Self (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Au 17e niveau, vous effectuez trois attaques supplémentaires au lieu d'une lorsque vous attaquez avec vos bras astraux comme action bonus."
+			]
+		},
+		{
+			"name": "Way of the Kensei",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei (UA)",
+			"subclassSource": "UAMonk",
+			"level": 3,
+			"entries": [
+				"Les moines de la voie du Kensei s'entraînent sans relâche avec leurs armes, au point que l'arme devient comme une extension du corps. Un kensei voit une arme de la même manière qu'un peintre considère un pinceau ou qu'un écrivain voit un parchemin, de l'encre et une plume. Un sabre ou un arc est un outil utilisé pour exprimer la beauté et l'élégance des arts martiaux. Une telle maîtrise fait d'un kensei un guerrier hors pair et n'est que l'effet secondaire d'une dévotion, d'une pratique et d'une étude intenses.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Path of the Kensei|Monk||Kensei (UA)|UAMonk|3"
+				}
+			]
+		},
+		{
+			"name": "Path of the Kensei",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei (UA)",
+			"subclassSource": "UAMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous choisissez cette tradition au 3e niveau, vous apprenez à étendre votre connaissance des arts martiaux au-delà de l'éventail standard des armes de moine.",
+				"Vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Vous gagnez la compétence avec trois armes martiales de votre choix. Une arme martiale est considérée comme une arme kensei pour vous si vous la maîtrisez.",
+						"Lorsque vous maniez une arme kensei, vous choisissez d'utiliser la Dextérité ou la Force pour les jets d'attaque et de dégâts de l'arme, et vous choisissez d'utiliser votre dé de dégâts d'arts martiaux à la place du dé de dégâts de l'arme.",
+						"Lorsque vous effectuez l'action {@action Attack} à votre tour et que vous touchez une cible avec une arme kensei, vous pouvez utiliser une action bonus pour assommer la cible, infligeant {@damage 1d4} de dégâts de matraquage supplémentaires à cette cible et à toute autre cible que vous touchez avec l'arme dans le cadre du {@action Attack}.",
+						"Si vous effectuez une frappe sans arme dans le cadre de l'action {@action Attack} de votre tour et que vous tenez une arme kensei, vous pouvez utiliser cette arme pour vous défendre. Vous gagnez un bonus de +2 à la CA jusqu'au début de votre prochain tour tant que vous n'êtes pas {@condition incapacitated} et que l'arme est dans votre main."
+					]
+				}
+			]
+		},
+		{
+			"name": "One with the Blade",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei (UA)",
+			"subclassSource": "UAMonk",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous étendez votre ki dans les armes que vous tenez, ce qui vous confère les avantages suivants :",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Magic Weapons",
+							"entries": [
+								"Vos attaques avec vos armes kensei comptent comme magiques dans le but de surmonter la résistance et l'immunité aux attaques et dommages non magiques."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Precise Strike",
+							"entries": [
+								"Vous pouvez concentrer votre attention sur une seule cible au combat pour comprendre et surmonter ses défenses. Comme action bonus, choisissez une créature que vous pouvez voir dans un rayon de 30 pieds autour de vous. La prochaine attaque d'arme que vous effectuez contre cette créature pendant le tour en cours ajoute le double de votre bonus de compétence au jet d'attaque, au lieu de votre bonus de compétence normal. Une fois que vous avez utilisé cette capacité, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un repos court ou long."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sharpen the Blade",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei (UA)",
+			"subclassSource": "UAMonk",
+			"level": 11,
+			"header": 2,
+			"consumes": {
+				"name": "Ki",
+				"amount": 3
+			},
+			"entries": [
+				"Au 11ème niveau, vous gagnez la capacité d'augmenter vos armes avec la force de votre ki. Comme action bonus, vous pouvez dépenser jusqu'à 3 points de ki pour accorder à une arme que vous touchez un bonus aux jets d'attaque et de dégâts lorsque vous la maniez. Le bonus est égal au nombre de points de ki que vous avez dépensé. Ce bonus dure 1 minute."
+			]
+		},
+		{
+			"name": "Unerring Accuracy",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei (UA)",
+			"subclassSource": "UAMonk",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Au 17e niveau, votre maîtrise des armes vous confère une précision extraordinaire. À chacun de vos tours, vous pouvez relancer un jet d'attaque d'arme raté."
+			]
+		},
+		{
+			"name": "Way of Tranquility",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Tranquility (UA)",
+			"subclassSource": "UAMonk",
+			"level": 3,
+			"entries": [
+				"Les moines de la Voie de la Tranquillité considèrent la violence comme un dernier recours. Ils utilisent la diplomatie, la pitié et la compréhension pour résoudre les conflits. Cependant, s'ils y sont poussés, ce sont des guerriers capables de mettre fin à l'injustice ou à la cruauté des gens qui refusent d'entendre la raison. Lorsqu'ils partent à l'aventure, ces moines font d'excellents diplomates. Ils sont également compétents dans les arts de la guérison, et peuvent préserver leurs alliés face à des ennemis redoutables.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Path of Tranquility|Monk||Tranquility (UA)|UAMonk|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Healing Hands|Monk||Tranquility (UA)|UAMonk|3"
+				}
+			]
+		},
+		{
+			"name": "Healing Hands",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Tranquility (UA)",
+			"subclassSource": "UAMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Votre toucher mystique peut soigner les blessures. À partir du 3e niveau, vous disposez d'une réserve de pouvoir de guérison magique qui se reconstitue lorsque vous prenez un long repos. Avec cette réserve, vous pouvez restaurer un nombre total de points de vie égal à votre niveau de moine × 10.",
+				"En tant qu'action, vous pouvez toucher une créature et puiser de l'énergie dans le pool pour restaurer un certain nombre de points de vie à cette créature, jusqu'au montant maximum restant dans le pool.",
+				"Au lieu de soigner la créature, vous pouvez dépenser 5 points de vie de votre pool de soins pour guérir la cible d'une maladie ou neutraliser un poison l'affectant. Vous pouvez guérir plusieurs maladies et neutraliser plusieurs poisons avec une seule utilisation de Mains guérisseuses, en dépensant des points de vie séparément pour chacune d'elles.",
+				"Lorsque vous utilisez votre rafale de coups, vous pouvez remplacer une des frappes à mains nues par une utilisation de cette caractéristique.",
+				"Cette caractéristique n'a aucun effet sur les morts-vivants et les constructions."
+			]
+		},
+		{
+			"name": "Path of Tranquility",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Tranquility (UA)",
+			"subclassSource": "UAMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous choisissez cette tradition au 3e niveau, vous pouvez devenir un îlot de calme dans les situations les plus chaotiques. Avec cette caractéristique, vous pouvez lancer le sort {@spell sanctuary} sur vous-même, sans composant matériel requis, et il dure jusqu'à 8 heures. Le jet de sauvegarde est égal à 8 + votre bonus de compétence + votre modificateur de sagesse. Une créature qui réussit le jet de sauvegarde est immunisée contre cet effet pendant 1 heure.",
+				"Une fois que vous avez lancé le sort de cette manière, vous ne pouvez plus le faire pendant 1 minute."
+			]
+		},
+		{
+			"name": "Emissary of Peace",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Tranquility (UA)",
+			"subclassSource": "UAMonk",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6ème niveau, vous gagnez la capacité de désamorcer les situations violentes. Chaque fois que vous faites un test de Charisme pour calmer des émotions violentes ou pour conseiller la paix, vous avez l'avantage sur le jet. Vous devez faire cette supplique de bonne foi ; elle ne s'applique pas si la compétence {@skill Deception} ou {@skill Intimidation} s'applique à votre test.",
+				"Vous gagnez également la compétence {@skill Performance} ou {@skill Persuasion} (choisissez-en une)."
+			]
+		},
+		{
+			"name": "Douse the Flames of War",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Tranquility (UA)",
+			"subclassSource": "UAMonk",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"Au 11e niveau, vous gagnez la capacité d'éteindre temporairement les impulsions violentes d'une créature. En tant qu'action, vous pouvez toucher une créature, et celle-ci doit effectuer un jet de sauvegarde de Sagesse avec un DC égal à 8 + votre bonus de compétence + votre modificateur de Sagesse. La cible réussit automatiquement s'il lui manque des points de vie. Si la cible échoue au jet de sauvegarde, elle ne peut pas attaquer pendant 1 minute. Pendant ce temps, elle ne peut pas non plus lancer de sorts qui infligent des dégâts ou qui obligent quelqu'un à faire un jet de sauvegarde.",
+				"Cet effet prend fin si la cible est attaquée, subit des dégâts ou est obligée de faire un jet de sauvegarde ou si la cible est témoin de l'une de ces choses qui arrive à ses alliés."
+			]
+		},
+		{
+			"name": "Anger of a Gentle Soul",
+			"source": "UAMonk",
+			"page": 1,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Tranquility (UA)",
+			"subclassSource": "UAMonk",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Au 17e niveau, vous gagnez la capacité de visiter la vengeance sur quelqu'un qui abat les autres. Si vous voyez une créature réduire une autre créature à 0 point de vie, vous pouvez utiliser votre réaction pour vous accorder un bonus à tous les jets de dégâts contre l'agresseur jusqu'à la fin de votre prochain tour. Le bonus est égal à votre niveau de moine.",
+				"Une fois que vous avez utilisé cette capacité, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Way of the Kensei v2",
+			"source": "UARevisedSubclasses",
+			"page": 4,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"entries": [
+				"Les moines de la voie du Kensei s'entraînent sans relâche avec leurs armes, au point que l'arme devient comme une extension du corps. Un kensei voit une arme de la même manière qu'un peintre considère un pinceau ou qu'un écrivain voit un parchemin, de l'encre et une plume. Un sabre ou un arc est un outil utilisé pour exprimer la beauté et l'élégance des arts martiaux. Le fait qu'une telle maîtrise fasse d'un kensei un guerrier hors pair n'est qu'un effet secondaire d'une dévotion, d'une pratique et d'une étude intenses.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Path of the Kensei|Monk||Kensei v2 (UA)|UARevisedSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Path of the Kensei",
+			"source": "UARevisedSubclasses",
+			"page": 4,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous choisissez cette tradition au 3e niveau, vous apprenez à étendre votre connaissance des arts martiaux au-delà de l'éventail standard des armes de moine.",
+				"Vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Choisissez deux types d'armes pour être vos armes de kensei : une arme de mêlée et une arme à distance. Chacune de ces armes peut être n'importe quelle arme simple ou martiale qui ne possède pas les propriétés lourdes et spéciales. L'arc long est également un choix valable. Vous gagnez la compétence avec ces armes si vous ne l'avez pas déjà. Les armes des types choisis sont des armes de moine pour vous. De nombreuses caractéristiques de cette tradition ne fonctionnent qu'avec vos armes kensei. Lorsque vous atteignez les 6e, 11e et 17e niveaux de cette classe, vous pouvez choisir un autre type d'arme - de mêlée ou à distance - comme arme de kensei pour vous, en suivant les critères ci-dessus.",
+						"Si vous effectuez une frappe sans arme dans le cadre de l'action {@action Attack} de votre tour et que vous tenez une arme kensei, vous pouvez l'utiliser pour vous défendre si c'est une arme de mêlée. Vous gagnez un bonus de +2 à la CA jusqu'au début de votre prochain tour, tant que l'arme est dans votre main et que vous n'êtes pas {@condition incapacitated}.",
+						"Vous pouvez utiliser une action bonus à votre tour pour rendre vos attaques à distance avec une arme kensei plus mortelles. Lorsque vous le faites, toute cible que vous touchez avec une attaque à distance utilisant une arme kensei subit {@damage 1d4} de dégâts supplémentaires du type de l'arme. Vous conservez cet avantage jusqu'à la fin du tour en cours."
+					]
+				}
+			]
+		},
+		{
+			"name": "One with the Blade",
+			"source": "UARevisedSubclasses",
+			"page": 4,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous étendez votre ki dans les armes que vous tenez, ce qui vous confère les avantages suivants.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Magic Kensei Weapons",
+							"entries": [
+								"Vos attaques avec vos armes kensei comptent comme magiques dans le but de surmonter la résistance et l'immunité aux attaques et dommages non magiques."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Precise Strike",
+							"entries": [
+								"Lorsque vous touchez une cible avec une arme kensei, vous pouvez dépenser 1 point de ki pour que l'arme inflige à la cible des dégâts supplémentaires égaux à votre dé d'arts martiaux. Vous ne pouvez utiliser cette caractéristique qu'une seule fois à chacun de vos tours."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sharpen the Blade",
+			"source": "UARevisedSubclasses",
+			"page": 4,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 11,
+			"header": 2,
+			"consumes": {
+				"name": "Ki",
+				"amount": 3
+			},
+			"entries": [
+				"Au 11ème niveau, vous gagnez la capacité d'augmenter vos armes avec la force de votre ki. Comme action bonus, vous pouvez dépenser jusqu'à 3 points de ki pour accorder à une arme kensei que vous touchez un bonus aux jets d'attaque et de dégâts lorsque vous la maniez. Le bonus est égal au nombre de points de ki que vous avez dépensé. Ce bonus dure 1 minute ou jusqu'à ce que vous utilisiez à nouveau cette caractéristique."
+			]
+		},
+		{
+			"name": "Unerring Accuracy",
+			"source": "UARevisedSubclasses",
+			"page": 4,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Au 17e niveau, votre maîtrise des armes vous confère une précision extraordinaire. Si vous effectuez un jet d'attaque avec une arme de moine et que vous le ratez, vous pouvez le relancer. Vous ne pouvez utiliser cette caractéristique qu'une seule fois à chacun de vos tours."
+			]
+		},
+		{
+			"name": "Way of the Drunken Master",
+			"source": "XGE",
+			"page": 33,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"La voie du maître ivre enseigne à ses élèves à se déplacer avec les mouvements saccadés et imprévisibles d'un ivrogne. Un maître ivre se balance, chancelant sur des pieds instables, pour présenter ce qui semble être un combattant incompétent qui s'avère frustrant à engager. Les trébuchements erratiques du maître ivre cachent une danse soigneusement exécutée de blocages, de parades, d'avancées, d'attaques et de retraites.",
+				"Un maître ivre aime souvent jouer les imbéciles pour apporter de la joie à ceux qui sont découragés ou pour démontrer son humilité à ceux qui sont arrogants, mais lorsque la bataille est engagée, le maître ivre peut être un ennemi redoutable et magistral.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Monk||Drunken Master|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Drunken Technique|Monk||Drunken Master|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "XGE",
+			"page": 33,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous choisissez cette tradition au 3e niveau, vous gagnez la compétence {@skill Performance} si vous ne la possédez pas déjà. Votre technique d'arts martiaux mélange l'entraînement au combat avec la précision d'un danseur et les pitreries d'un bouffon. Vous gagnez également la compétence {@item brewer's supplies|phb} si vous ne l'avez pas déjà."
+			]
+		},
+		{
+			"name": "Drunken Technique",
+			"source": "XGE",
+			"page": 33,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, vous apprenez à vous tordre et à tourner rapidement dans le cadre de votre rafale de coups. Chaque fois que vous utilisez Flurry of Blows, vous bénéficiez de l'action {@action Disengage}, et votre vitesse de marche augmente de 10 pieds jusqu'à la fin du tour en cours."
+			]
+		},
+		{
+			"name": "Tipsy Sway",
+			"source": "XGE",
+			"page": 33,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, vous pouvez vous déplacer de manière soudaine et chaloupée. Vous gagnez les avantages suivants.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Leap to Your Feet|Monk|XGE|Drunken Master|XGE|6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Redirect Attack|Monk|XGE|Drunken Master|XGE|6"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Drunkard's Luck",
+			"source": "XGE",
+			"page": 33,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master",
+			"subclassSource": "XGE",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"À partir du 11e niveau, vous semblez toujours avoir un rebond chanceux au bon moment. Lorsque vous effectuez un test de capacité, un jet d'attaque ou un jet de sauvegarde et que vous êtes désavantagé sur ce jet, vous pouvez dépenser 2 points de ki pour annuler le désavantage pour ce jet."
+			]
+		},
+		{
+			"name": "Intoxicated Frenzy",
+			"source": "XGE",
+			"page": 33,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Drunken Master",
+			"subclassSource": "XGE",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Au 17e niveau, vous gagnez la capacité d'effectuer un nombre écrasant d'attaques contre un groupe d'ennemis. Lorsque vous utilisez votre rafale de coups, vous pouvez effectuer jusqu'à trois attaques supplémentaires avec elle (jusqu'à un total de cinq attaques de rafale de coups), à condition que chaque attaque de rafale de coups cible une créature différente ce tour-ci."
+			]
+		},
+		{
+			"name": "Way of the Kensei",
+			"source": "XGE",
+			"page": 34,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Les moines de la voie du Kensei s'entraînent sans relâche avec leurs armes, au point que l'arme devient une extension du corps. Fondée sur la maîtrise du combat au sabre, la tradition s'est étendue à de nombreuses armes différentes.",
+				"Un kensei considère une arme de la même façon qu'un calligraphe ou un peintre considère un stylo ou un pinceau. Quelle que soit l'arme, le kensei la considère comme un outil utilisé pour exprimer la beauté et la précision des arts martiaux. Le fait qu'une telle maîtrise fasse d'un kensei un guerrier hors pair n'est qu'un effet secondaire d'une dévotion, d'une pratique et d'une étude intenses.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Path of the Kensei|Monk||Kensei|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Path of the Kensei",
+			"source": "XGE",
+			"page": 34,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous choisissez cette tradition au 3e niveau, votre formation spéciale en arts martiaux vous amène à maîtriser l'utilisation de certaines armes. Cette voie comprend également l'apprentissage des traits habiles de la calligraphie ou de la peinture. Vous gagnez les avantages suivants.",
+				{
+					"type": "entries",
+					"name": "Kensei Weapons",
+					"entries": [
+						"Choisissez deux types d'armes pour être vos armes de kensei : une arme de mêlée et une arme à distance. Chacune de ces armes peut être n'importe quelle arme simple ou martiale qui ne possède pas les propriétés lourdes et spéciales. L'arc long est également un choix valable. Vous gagnez la compétence avec ces armes si vous ne l'avez pas déjà. Les armes des types choisis sont des armes de moine pour vous. De nombreuses caractéristiques de cette tradition ne fonctionnent qu'avec vos armes kensei. Lorsque vous atteignez les 6e, 11e et 17e niveaux de cette classe, vous pouvez choisir un autre type d'arme (de mêlée ou à distance) comme arme de kensei pour vous, en suivant les critères ci-dessus."
+					]
+				},
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Agile Parry|Monk|XGE|Kensei|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Kensei's Shot|Monk|XGE|Kensei|XGE|3"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Way of the Brush",
+					"entries": [
+						"Vous gagnez la compétence avec votre choix de {@item calligrapher's supplies|phb} ou {@item painter's supplies|phb}."
+					]
+				}
+			]
+		},
+		{
+			"name": "One with the Blade",
+			"source": "XGE",
+			"page": 34,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous étendez votre ki dans vos armes kensei, ce qui vous confère les avantages suivants.",
+				{
+					"type": "entries",
+					"name": "Magic Kensei Weapons",
+					"entries": [
+						"Vos attaques avec vos armes kensei comptent comme magiques dans le but de surmonter la résistance et l'immunité aux attaques et dommages non magiques."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Deft Strike",
+					"entries": [
+						"Lorsque vous touchez une cible avec une arme kensei, vous pouvez dépenser 1 point de ki pour que l'arme inflige à la cible des dégâts supplémentaires égaux à votre dé d'arts martiaux. Vous ne pouvez utiliser cette caractéristique qu'une seule fois à chacun de vos tours."
+					]
+				}
+			]
+		},
+		{
+			"name": "Sharpen the Blade",
+			"source": "XGE",
+			"page": 34,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei",
+			"subclassSource": "XGE",
+			"level": 11,
+			"header": 2,
+			"consumes": {
+				"name": "Ki",
+				"amount": 3
+			},
+			"entries": [
+				"Au 11e niveau, vous gagnez la capacité d'augmenter davantage vos armes avec votre ki. Comme action bonus, vous pouvez dépenser jusqu'à 3 points de ki pour accorder à une arme kensei que vous touchez un bonus aux jets d'attaque et de dégâts lorsque vous attaquez avec elle. Le bonus est égal au nombre de points de ki que vous avez dépensé. Ce bonus dure 1 minute ou jusqu'à ce que vous utilisiez à nouveau cette caractéristique. Cette caractéristique n'a aucun effet sur une arme magique qui bénéficie déjà d'un bonus aux jets d'attaque et de dégâts."
+			]
+		},
+		{
+			"name": "Unerring Accuracy",
+			"source": "XGE",
+			"page": 34,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Kensei",
+			"subclassSource": "XGE",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Au 17e niveau, votre maîtrise des armes vous confère une précision extraordinaire. Si vous ratez un jet d'attaque avec une arme de moine à votre tour, vous pouvez le relancer. Vous ne pouvez utiliser cette caractéristique qu'une seule fois à chacun de vos tours."
+			]
+		},
+		{
+			"name": "Way of the Sun Soul",
+			"source": "XGE",
+			"page": 35,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Les moines de la Voie de l'âme solaire apprennent à canaliser leur énergie vitale en des éclairs de lumière fulgurants. Ils enseignent que la méditation peut débloquer la capacité de libérer la lumière indomptable que répand l'âme de chaque créature vivante.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Radiant Sun Bolt|Monk||Sun Soul|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Radiant Sun Bolt",
+			"source": "XGE",
+			"page": 35,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du moment où vous choisissez cette tradition au 3e niveau, vous pouvez lancer des éclairs fulgurants de rayonnement magique.",
+				"Vous gagnez une nouvelle option d'attaque que vous pouvez utiliser avec l'action {@action Attack}. L'attaque spéciale est une attaque de sort à distance avec une portée de 30 pieds. Vous la maîtrisez, et vous ajoutez votre modificateur de Dextérité à ses jets d'attaque et de dégâts. Ses dégâts sont rayonnants, et son dé de dégâts est de {@dice d4}. Ce dé change lorsque vous gagnez des niveaux de moine, comme indiqué dans la colonne Arts martiaux de la table des moines.",
+				"Lorsque vous effectuez l'action {@action Attack} à votre tour et que vous utilisez cette attaque spéciale dans le cadre de celle-ci, vous pouvez dépenser 1 point de ki pour effectuer l'attaque spéciale deux fois comme action bonus. Lorsque vous obtenez la caractéristique Attaque supplémentaire, cette attaque spéciale peut être utilisée pour n'importe laquelle des attaques que vous effectuez dans le cadre de l'action {@action Attack}."
+			]
+		},
+		{
+			"name": "Searing Arc Strike",
+			"source": "XGE",
+			"page": 35,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité de canaliser votre ki en vagues d'énergie fulgurantes. Immédiatement après avoir effectué l'action {@action Attack} à votre tour, vous pouvez dépenser 2 points de ki pour lancer le sort {@spell burning hands} comme action bonus.",
+				"Vous pouvez dépenser des points de ki supplémentaires pour lancer {@spell burning hands} comme un sort de niveau supérieur. Chaque point de ki supplémentaire que vous dépensez augmente le niveau du sort de 1. Le nombre maximum de points de ki (2 plus tout point supplémentaire) que vous pouvez dépenser pour le sort est égal à la moitié de votre niveau de moine."
+			]
+		},
+		{
+			"name": "Searing Sunburst",
+			"source": "XGE",
+			"page": 35,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 11,
+			"header": 2,
+			"entries": [
+				"Au 11e niveau, vous gagnez la capacité de créer un orbe de lumière qui éclate en une explosion dévastatrice. En tant qu'action, vous créez magiquement un orbe et le lancez sur un point de votre choix dans un rayon de 150 pieds, où il éclate en une sphère de lumière rayonnante pendant un bref instant mais mortel.",
+				"Chaque créature dans cette sphère de 20 pieds de rayon doit réussir un jet de sauvegarde de Constitution ou subir {@damage 2d6} de dégâts radiants. Une créature n'a pas besoin de faire ce jet de sauvegarde si elle se trouve derrière une couverture totale qui est opaque.",
+				"Vous pouvez augmenter les dégâts de la sphère en dépensant des points de ki. Chaque point dépensé, jusqu'à un maximum de 3, augmente les dégâts de {@dice 2d6}."
+			]
+		},
+		{
+			"name": "Sun Shield",
+			"source": "XGE",
+			"page": 35,
+			"className": "Monk",
+			"classSource": "PHB",
+			"subclassShortName": "Sun Soul",
+			"subclassSource": "XGE",
+			"level": 17,
+			"header": 2,
+			"entries": [
+				"Au 17ème niveau, vous êtes enveloppé d'une aura lumineuse et magique. Vous diffusez une lumière vive dans un rayon de 30 pieds et une lumière tamisée sur 30 pieds supplémentaires. Vous pouvez éteindre ou restaurer la lumière comme une action bonus.",
+				"Si une créature vous touche avec une attaque de mêlée alors que cette lumière brille, vous pouvez utiliser votre réaction pour lui infliger des dégâts radiants. Les dégâts radiants sont égaux à 5 + votre modificateur de sagesse."
+			]
+		},
+		{
+			"name": "Leap to Your Feet",
+			"source": "XGE",
+			"page": 34,
+			"className": "Monk",
+			"classSource": "XGE",
+			"subclassShortName": "Drunken Master",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Lorsque vous êtes {@condition prone}, vous pouvez vous lever en dépensant 5 pieds de mouvement, plutôt que la moitié de votre vitesse."
+			]
+		},
+		{
+			"name": "Redirect Attack",
+			"source": "XGE",
+			"page": 34,
+			"className": "Monk",
+			"classSource": "XGE",
+			"subclassShortName": "Drunken Master",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Lorsqu'une créature vous rate avec un jet d'attaque de mêlée, vous pouvez dépenser 1 point de ki en réaction pour que cette attaque touche une créature de votre choix, autre que l'attaquant, que vous pouvez voir dans un rayon de 1,5 m autour de vous."
+			]
+		},
+		{
+			"name": "Agile Parry",
+			"source": "XGE",
+			"page": 34,
+			"className": "Monk",
+			"classSource": "XGE",
+			"subclassShortName": "Kensei",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Si vous effectuez une frappe sans arme dans le cadre de l'action {@action Attack} de votre tour et que vous tenez une arme kensei, vous pouvez l'utiliser pour vous défendre si c'est une arme de mêlée. Vous gagnez un bonus de +2 à la CA jusqu'au début de votre prochain tour, tant que l'arme est dans votre main et que vous n'êtes pas {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Kensei's Shot",
+			"source": "XGE",
+			"page": 34,
+			"className": "Monk",
+			"classSource": "XGE",
+			"subclassShortName": "Kensei",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Vous pouvez utiliser une action bonus à votre tour pour rendre vos attaques à distance avec une arme kensei plus mortelles. Lorsque vous le faites, toute cible que vous touchez avec une attaque à distance utilisant une arme kensei subit {@damage 1d4} de dégâts supplémentaires du type de l'arme. Vous conservez cet avantage jusqu'à la fin du tour en cours."
+			]
+		}
+	]
+}

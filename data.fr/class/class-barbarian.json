@@ -1,0 +1,3323 @@
+{
+	"class": [
+		{
+			"name": "Barbarian",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 12
+			},
+			"proficiency": [
+				"str",
+				"con"
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"{@item shield|phb|shields}"
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"animal handling",
+								"athletics",
+								"intimidation",
+								"nature",
+								"perception",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item greataxe|phb} or (b) any {@filter martial melee weapon|items|source=phb|category=basic|type=martial weapon;melee weapon=sand}",
+					"(a) two {@item handaxe|phb|handaxes} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"An {@item explorer's pack|phb}, and four {@item javelin|phb|javelins}"
+				],
+				"goldAlternative": "{@dice 2d4 × 10|2d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"greataxe|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponMartialMelee"
+							}
+						]
+					},
+					{
+						"a": [
+							{
+								"item": "handaxe|phb",
+								"quantity": 2
+							}
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"_": [
+							"explorer's pack|phb",
+							{
+								"item": "javelin|phb",
+								"quantity": 4
+							}
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"str": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"{@item shield|phb|shields}"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Rages",
+						"Rage Damage"
+					],
+					"rows": [
+						[
+							"2",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"2",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"3",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"3",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"3",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"6",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"6",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"6",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"Illimité",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Rage|Barbarian||1",
+				"Unarmored Defense|Barbarian||1",
+				"Danger Sense|Barbarian||2",
+				"Survival Instincts|Barbarian||2|UAClassFeatureVariants",
+				"Reckless Attack|Barbarian||2",
+				{
+					"classFeature": "Primal Path|Barbarian||3",
+					"gainSubclassFeature": true
+				},
+				"Primal Knowledge|Barbarian||3|TCE",
+				"Ability Score Improvement|Barbarian||4",
+				"Proficiency Versatility|Barbarian||4|UAClassFeatureVariants",
+				"Extra Attack|Barbarian||5",
+				"Fast Movement|Barbarian||5",
+				"Instinctive Pounce|Barbarian||5|UAClassFeatureVariants",
+				{
+					"classFeature": "Path Feature|Barbarian||6",
+					"gainSubclassFeature": true
+				},
+				"Feral Instinct|Barbarian||7",
+				"Instinctive Pounce|Barbarian||7|TCE",
+				"Ability Score Improvement|Barbarian||8",
+				"Proficiency Versatility|Barbarian||8|UAClassFeatureVariants",
+				"Brutal Critical (1 die)|Barbarian||9",
+				{
+					"classFeature": "Path feature|Barbarian||10",
+					"gainSubclassFeature": true
+				},
+				"Relentless Rage|Barbarian||11",
+				"Ability Score Improvement|Barbarian||12",
+				"Proficiency Versatility|Barbarian||12|UAClassFeatureVariants",
+				"Brutal Critical (2 dice)|Barbarian||13",
+				{
+					"classFeature": "Path feature|Barbarian||14",
+					"gainSubclassFeature": true
+				},
+				"Persistent Rage|Barbarian||15",
+				"Ability Score Improvement|Barbarian||16",
+				"Proficiency Versatility|Barbarian||16|UAClassFeatureVariants",
+				"Brutal Critical (3 dice)|Barbarian||17",
+				"Indomitable Might|Barbarian||18",
+				"Ability Score Improvement|Barbarian||19",
+				"Proficiency Versatility|Barbarian||19|UAClassFeatureVariants",
+				"Primal Champion|Barbarian||20"
+			],
+			"subclassTitle": "Primal Path",
+			"fluff": [
+				{
+					"name": "Barbarian",
+					"type": "section",
+					"entries": [
+						"Un grand membre de la tribu humaine avance dans le blizzard, drapé dans sa fourrure et tenant sa hache. Il rit en fonçant vers le géant des glaces qui a osé braconner le troupeau d'élans de son peuple.",
+						"Une demi-orque grogne contre le dernier challenger à son autorité sur leur tribu sauvage, prête à lui briser le cou à mains nues comme elle l'a fait pour les six derniers rivaux.",
+						"La bouche pleine d'écume, un nain envoie son casque dans le visage de son ennemi drow, puis se retourne pour enfoncer son coude blindé dans l'estomac d'un autre.",
+						"Ces barbares, aussi différents soient-ils, se définissent par leur rage : une fureur débridée, inextinguible et irréfléchie. Plus qu'une simple émotion, leur colère est la férocité d'un prédateur acculé, l'assaut incessant d'une tempête, le tourbillon de la mer.",
+						"Pour certains, la rage naît d'une communion avec des esprits animaux féroces. D'autres puisent dans un réservoir bouillonnant de colère contre un monde plein de douleur. Pour chaque barbare, la rage est un pouvoir qui alimente non seulement une frénésie de combat, mais aussi des réflexes étranges, de la résistance et des tours de force.",
+						{
+							"type": "entries",
+							"name": "Primal Instinct",
+							"entries": [
+								"Les habitants des villes et des villages sont fiers de la façon dont leurs manières civilisées les distinguent des animaux, comme si le fait de nier sa propre nature était une marque de supériorité. Pour un barbare, cependant, la civilisation n'est pas une vertu, mais un signe de faiblesse. Les forts embrassent leur nature animale - instincts pervers, physicalité primitive et rage féroce. Les barbares ne sont pas à l'aise lorsqu'ils sont entourés de murs et de foules. Ils s'épanouissent dans les régions sauvages de leur patrie : la toundra, la jungle ou les prairies où vivent et chassent leurs tribus.",
+								"Les barbares prennent vie dans le chaos du combat. Ils peuvent entrer dans un état berserk où la rage prend le dessus, leur donnant une force et une résistance surhumaines. Un barbare ne peut puiser dans ce réservoir de fureur que quelques fois sans se reposer, mais ces quelques rages sont généralement suffisantes pour vaincre toute menace."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "A Life of Danger",
+							"entries": [
+								"Tous les membres des tribus considérées comme \"barbares\" par les descendants de la société civilisée ne possèdent pas la classe des barbares. Un vrai barbare parmi ces peuples est aussi rare qu'un combattant habile dans une ville, et il joue un rôle similaire en tant que protecteur du peuple et chef en temps de guerre. La vie dans les régions sauvages du monde est semée d'embûches : tribus rivales, climat mortel et monstres terrifiants. Les barbares foncent tête baissée dans ce danger pour que leur peuple n'ait pas à le faire.",
+								"Leur courage face au danger rend les barbares parfaitement adaptés à l'aventure. L'errance est souvent un mode de vie pour leurs tribus d'origine, et la vie sans racines de l'aventurier n'est guère difficile pour un barbare. Certains barbares regrettent les structures familiales étroites de la tribu, mais ils finissent par les remplacer par les liens formés entre les membres de leurs groupes d'aventuriers."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Barbarian",
+							"entries": [
+								"Lorsque vous créez un personnage barbare, pensez à l'origine de votre personnage et à sa place dans le monde. Discutez avec votre DM d'une origine appropriée pour votre barbare. Venez-vous d'un pays lointain, faisant de vous un étranger dans la région de la campagne ? Ou bien la campagne se déroule-t-elle dans une région frontalière rude et agitée où les barbares sont courants ?",
+								"Qu'est-ce qui vous a poussé à prendre la route de l'aventure ? Avez-vous été attiré vers des terres colonisées par la promesse de richesses ? Avez-vous joint vos forces à celles des soldats de ces terres pour faire face à une menace commune ? Des monstres ou une horde d'envahisseurs vous ont-ils chassé de votre patrie, faisant de vous un réfugié sans racines ? Vous avez peut-être été prisonnier de guerre, enchaîné dans des pays \"civilisés\" et ne parvenez que maintenant à gagner votre liberté. Ou bien vous avez été chassé de votre peuple à cause d'un crime que vous avez commis, d'un tabou que vous avez violé ou d'un coup d'État qui vous a écarté d'une position d'autorité.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Vous pouvez créer un barbare rapidement en suivant ces suggestions. Premièrement, mettez votre score de capacité le plus élevé en Force, suivi de la Constitution. Deuxièmement, choisissez le fond {@background outlander}."
+									]
+								}
+							]
+						}
+					],
+					"source": "PHB",
+					"page": 46
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"J'ai été témoin de l'indomptable performance des barbares sur le champ de bataille, et cela me pousse à me demander quelle force se trouve au cœur de leur rage."
+							],
+							"by": "Seret, archwizard"
+						},
+						"La colère ressentie par une personne normale ressemble à la rage d'un barbare de la même manière qu'une brise légère est apparentée à un orage furieux. La force motrice du barbare vient d'un endroit qui transcende la simple émotion, ce qui rend sa manifestation d'autant plus terrible. Que l'impulsion de la fureur vienne entièrement de l'intérieur ou d'un lien avec un animal spirituel, un barbare enragé devient capable d'accomplir des exploits surnaturels de force et d'endurance. Le déchaînement est temporaire, mais tant qu'il dure, il s'empare du corps et de l'esprit, poussant le barbare à continuer malgré les périls et les blessures, jusqu'à ce que le dernier ennemi tombe.",
+						"Il peut être tentant de jouer un personnage de barbare qui est une application directe de l'archétype classique - une brute, et généralement un imbécile, qui se précipite là où les autres ont peur de marcher. Mais tous les barbares du monde ne sont pas taillés dans cette étoffe, et vous pouvez certainement donner votre propre tournure aux choses. Dans tous les cas, pensez à ajouter quelques fioritures pour que votre barbare se distingue de tous les autres ; consultez les sections suivantes pour trouver quelques idées.",
+						{
+							"type": "entries",
+							"name": "Personal Totems",
+							"entries": [
+								"Les barbares ont tendance à voyager léger, en transportant peu d'effets personnels ou d'autres équipements inutiles. Les quelques possessions qu'ils transportent comprennent souvent de petits objets qui ont une signification particulière. Un totem personnel est significatif parce qu'il a une origine mystique ou est lié à un moment important de la vie du personnage - peut-être un souvenir du passé du barbare ou un présage de ce qui l'attend.",
+								"Un tel totem personnel peut être associé à l'animal spirituel d'un barbare ou être l'objet totem de cet animal, mais ce lien n'est pas essentiel. Une personne qui a un esprit totem d'ours, par exemple, peut toujours porter une plume d'aigle comme totem personnel.",
+								"Envisagez de créer un ou plusieurs totems personnels pour votre personnage - des objets qui ont un lien particulier avec le passé ou l'avenir de votre personnage. Réfléchissez à la façon dont un totem pourrait affecter les actions de votre personnage.",
+								{
+									"type": "table",
+									"caption": "Personal Totems",
+									"colLabels": [
+										"{@dice d6}",
+										"Totem"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Une touffe de fourrure d'un loup solitaire avec lequel vous vous êtes lié d'amitié lors d'une chasse."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Trois plumes d'aigle offertes par un sage chaman, qui vous a dit qu'elles joueraient un rôle dans la détermination de votre destin."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Un collier fait à partir des griffes d'un jeune ours des cavernes que vous avez tué tout seul quand vous étiez enfant."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Une petite pochette en cuir contenant trois pierres qui représentent vos ancêtres."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Quelques petits os de la première bête que vous avez tuée, attachés ensemble avec de la laine colorée."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Une pierre de la taille d'un œuf, ayant la forme de votre animal spirituel, qui est apparue un jour dans la poche de votre ceinture."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Tattoos",
+							"entries": [
+								"Les membres de nombreux clans barbares décorent leur corps de tatouages, dont chacun représente un moment important de la vie du porteur ou de ses ancêtres, ou symbolise un sentiment ou une attitude. Comme pour les totems personnels, les tatouages d'un barbare peuvent être liés ou non à un esprit animal.",
+								"Chaque tatouage qu'arbore un barbare contribue à l'identité de cet individu. Si votre personnage porte des tatouages, à quoi ressemblent-ils et que représentent-ils ?",
+								{
+									"type": "table",
+									"caption": "Tattoos",
+									"colLabels": [
+										"{@dice d6}",
+										"Tattoo"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Les ailes d'un aigle sont déployées sur le haut de votre dos."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Les pattes d'un ours des cavernes sont gravées sur le dos de vos mains."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Les symboles de votre clan sont affichés dans des motifs en vinyle le long de vos bras."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Les bois d'un élan sont encrés sur votre dos."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Les images de votre animal spirituel sont tatouées le long de votre bras et de votre main armés."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Les yeux d'un loup sont marqués sur votre dos pour vous aider à voir et à éloigner les mauvais esprits."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Superstitions",
+							"entries": [
+								"La façon dont les barbares comprennent la vie varie énormément. Certains suivent des dieux et cherchent des conseils auprès de ces divinités dans les cycles de la nature et des animaux qu'ils rencontrent. Ces barbares croient que des esprits habitent les plantes et les animaux du monde, et les barbares se tournent vers eux pour obtenir des présages et du pouvoir.",
+								"D'autres barbares n'ont confiance que dans le sang qui coule dans leurs veines et l'acier qu'ils tiennent dans leurs mains. Ils n'ont que faire du monde invisible, se fiant à leurs sens pour chasser et survivre comme les bêtes sauvages qu'ils imitent.",
+								"Ces deux attitudes peuvent donner lieu à des superstitions. Ces croyances sont souvent transmises au sein d'une famille ou partagées entre les membres d'un clan ou d'un groupe de chasseurs.",
+								"Si votre personnage barbare a des superstitions, celles-ci vous ont-elles été inculquées par votre famille ou sont-elles le résultat d'une expérience personnelle ?",
+								{
+									"type": "table",
+									"caption": "Superstition",
+									"colLabels": [
+										"{@dice d6}",
+										"Superstition"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Si vous dérangez les os des morts, vous héritez de tous les problèmes qui les ont affligés de leur vivant."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Ne jamais faire confiance à un sorcier. Ce sont tous des démons déguisés, surtout les plus amicaux."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Les nains ont perdu leur esprit, et sont presque comme des morts-vivants. C'est pourquoi ils vivent sous terre."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Les objets magiques apportent des ennuis. Ne dormez jamais avec un objet magique à moins de trois mètres de vous."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Lorsque vous traversez un cimetière, assurez-vous de porter de l'argent, ou un fantôme pourrait sauter dans votre corps."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Si une elfe vous regarde dans les yeux, elle essaie de lire dans vos pensées."
+										]
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 8
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Path of the Berserker",
+			"shortName": "Berserker",
+			"source": "PHB",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 49,
+			"srd": true,
+			"subclassFeatures": [
+				"Path of the Berserker|Barbarian||Berserker||3",
+				"Mindless Rage|Barbarian||Berserker||6",
+				"Intimidating Presence|Barbarian||Berserker||10",
+				"Retaliation|Barbarian||Berserker||14"
+			]
+		},
+		{
+			"name": "Path of the Totem Warrior",
+			"shortName": "Totem Warrior",
+			"source": "PHB",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 50,
+			"additionalSpells": [
+				{
+					"innate": {
+						"3": {
+							"ritual": [
+								"beast sense",
+								"speak with animals"
+							]
+						},
+						"10": {
+							"ritual": [
+								"commune with nature"
+							]
+						}
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Path of the Totem Warrior|Barbarian||Totem Warrior||3",
+				"Aspect of the Beast|Barbarian||Totem Warrior||6",
+				"Spirit Walker|Barbarian||Totem Warrior||10",
+				"Totemic Attunement|Barbarian||Totem Warrior||14"
+			]
+		},
+		{
+			"name": "Path of the Battlerager",
+			"shortName": "Battlerager",
+			"source": "SCAG",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 121,
+			"subclassFeatures": [
+				"Path of the Battlerager|Barbarian||Battlerager|SCAG|3",
+				"Reckless Abandon|Barbarian||Battlerager|SCAG|6",
+				"Battlerager Charge|Barbarian||Battlerager|SCAG|10",
+				"Spiked Retribution|Barbarian||Battlerager|SCAG|14"
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian (UA)",
+			"shortName": "Ancestral Guardian (UA)",
+			"source": "UABarbarianPrimalPaths",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Ancestral Guardian|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|3",
+				"Ancestral Shield|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|6",
+				"Consult the Spirits|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|10",
+				"Vengeful Ancestors|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|14"
+			]
+		},
+		{
+			"name": "Path of the Storm Herald (UA)",
+			"shortName": "Storm Herald (UA)",
+			"source": "UABarbarianPrimalPaths",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Storm Herald|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|3",
+				"Storm Soul|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|6",
+				"Shield of the Storm|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|10",
+				"Raging Storm|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|14"
+			]
+		},
+		{
+			"name": "Path of the Zealot (UA)",
+			"shortName": "Zealot (UA)",
+			"source": "UABarbarianPrimalPaths",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Zealot|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|3",
+				"Zealous Focus|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|6",
+				"Zealous Presence|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|10",
+				"Rage Beyond Death|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|14"
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian v2 (UA)",
+			"shortName": "Ancestral Guardian v2 (UA)",
+			"source": "UARevisedSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"spellcastingAbility": "wis",
+			"subclassFeatures": [
+				"Path of the Ancestral Guardian v2|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|3",
+				"Ancestral Shield|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|6",
+				"Consult the Spirits|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|10",
+				"Vengeful Ancestors|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|14"
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian",
+			"shortName": "Ancestral Guardian",
+			"source": "XGE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 9,
+			"spellcastingAbility": "wis",
+			"additionalSpells": [
+				{
+					"innate": {
+						"10": [
+							"augury",
+							"clairvoyance"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Path of the Ancestral Guardian|Barbarian||Ancestral Guardian|XGE|3",
+				"Spirit Shield|Barbarian||Ancestral Guardian|XGE|6",
+				"Consult the Spirits|Barbarian||Ancestral Guardian|XGE|10",
+				"Vengeful Ancestors|Barbarian||Ancestral Guardian|XGE|14"
+			]
+		},
+		{
+			"name": "Path of the Storm Herald",
+			"shortName": "Storm Herald",
+			"source": "XGE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 10,
+			"subclassFeatures": [
+				"Path of the Storm Herald|Barbarian||Storm Herald|XGE|3",
+				"Storm Soul|Barbarian||Storm Herald|XGE|6",
+				"Shielding Storm|Barbarian||Storm Herald|XGE|10",
+				"Raging Storm|Barbarian||Storm Herald|XGE|14"
+			]
+		},
+		{
+			"name": "Path of the Zealot",
+			"shortName": "Zealot",
+			"source": "XGE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 11,
+			"subclassFeatures": [
+				"Path of the Zealot|Barbarian||Zealot|XGE|3",
+				"Fanatical Focus|Barbarian||Zealot|XGE|6",
+				"Zealous Presence|Barbarian||Zealot|XGE|10",
+				"Rage beyond Death|Barbarian||Zealot|XGE|14"
+			]
+		},
+		{
+			"name": "Path of the Wild Soul (UA)",
+			"shortName": "Wild Soul (UA)",
+			"source": "UABarbarianAndMonk",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Wild Soul|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|3",
+				"Magic Reserves|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|6",
+				"Arcane Rebuke|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|10",
+				"Chaotic Fury|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|14",
+				"Improved Magic Reserves|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|14"
+			]
+		},
+		{
+			"name": "Path of the Beast (UA)",
+			"shortName": "Beast (UA)",
+			"source": "UA2020SubclassesPt1",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Beast|Barbarian||Beast (UA)|UA2020SubclassesPt1|3",
+				"Bestial Soul|Barbarian||Beast (UA)|UA2020SubclassesPt1|6",
+				"Infectious Fury|Barbarian||Beast (UA)|UA2020SubclassesPt1|10",
+				"Call the Hunt|Barbarian||Beast (UA)|UA2020SubclassesPt1|14"
+			]
+		},
+		{
+			"name": "Path of the Beast",
+			"shortName": "Beast",
+			"source": "TCE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 24,
+			"subclassFeatures": [
+				"Path of the Beast|Barbarian||Beast|TCE|3",
+				"Bestial Soul|Barbarian||Beast|TCE|6",
+				"Infectious Fury|Barbarian||Beast|TCE|10",
+				"Call the Hunt|Barbarian||Beast|TCE|14"
+			]
+		},
+		{
+			"name": "Path of Wild Magic",
+			"shortName": "Wild Magic",
+			"source": "TCE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 25,
+			"subclassFeatures": [
+				"Path of Wild Magic|Barbarian||Wild Magic|TCE|3",
+				"Bolstering Magic|Barbarian||Wild Magic|TCE|6",
+				"Unstable Backlash|Barbarian||Wild Magic|TCE|10",
+				"Controlled Surge|Barbarian||Wild Magic|TCE|14"
+			]
+		},
+		{
+			"name": "Path of the Giant (UA)",
+			"shortName": "Giant (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"subclassFeatures": [
+				"Path of the Giant|Barbarian||Giant (UA)|UA2022GiantOptions|3",
+				"Elemental Cleaver|Barbarian||Giant (UA)|UA2022GiantOptions|6",
+				"Mighty Impel|Barbarian||Giant (UA)|UA2022GiantOptions|10",
+				"Demiurgic Colossus|Barbarian||Giant (UA)|UA2022GiantOptions|14"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Rage",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Au combat, vous vous battez avec une férocité primitive. A votre tour, vous pouvez entrer en rage comme une action bonus.",
+				"Lorsque vous êtes en colère, vous gagnez les avantages suivants si vous ne portez pas d'armure lourde :",
+				{
+					"type": "list",
+					"items": [
+						"Vous avez l'avantage sur les tests de Force et les jets de sauvegarde de Force.",
+						"Lorsque vous effectuez une attaque à l'arme de mêlée en utilisant la Force, vous gagnez un bonus de +2 au jet de dégâts. Ce bonus augmente avec votre niveau.",
+						"Vous avez une résistance aux dégâts de matraquage, de perçage et d'entaille."
+					]
+				},
+				"Si vous êtes capable de lancer des sorts, vous ne pouvez pas les lancer ou vous concentrer sur eux lorsque vous êtes en colère.",
+				"Votre rage dure 1 minute. Elle se termine prématurément si vous êtes assommé {@condition unconscious} ou si votre tour se termine et que vous n'avez pas attaqué une créature hostile depuis votre dernier tour ou subi de dégâts depuis. Vous pouvez également mettre fin à votre rage à votre tour en tant qu'action bonus.",
+				"Une fois que vous avez ragé le nombre maximum de fois pour votre niveau de barbare, vous devez terminer un long repos avant de pouvoir rager à nouveau. Vous pouvez vous mettre en rage 2 fois au 1er niveau, 3 au 3ème, 4 au 6ème, 5 au 12ème et 6 au 17ème."
+			]
+		},
+		{
+			"name": "Unarmored Defense",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Lorsque vous ne portez pas d'armure, votre classe d'armure est égale à 10 + votre modificateur de Dextérité + votre modificateur de Constitution. Vous pouvez utiliser un bouclier et bénéficier de cet avantage."
+			]
+		},
+		{
+			"name": "Danger Sense",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Au 2e niveau, vous obtenez un sens inné de l'anomalie des choses à proximité, ce qui vous donne un avantage lorsque vous esquivez le danger. Vous avez un avantage sur les jets de sauvegarde de Dextérité contre les effets que vous pouvez voir, comme les pièges et les sorts. Pour bénéficier de cet avantage, vous ne pouvez pas être {@condition blinded}, {@condition deafened}, ou {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Reckless Attack",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"À partir du 2e niveau, vous pouvez mettre de côté tout souci de défense pour attaquer avec un désespoir féroce. Lorsque vous effectuez votre première attaque à votre tour, vous pouvez décider d'attaquer avec témérité. Faire cela vous donne l'avantage sur les jets d'attaque d'armes de mêlée utilisant la Force pendant ce tour, mais les jets d'attaque contre vous ont l'avantage jusqu'à votre prochain tour."
+			]
+		},
+		{
+			"name": "Survival Instincts",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level barbarian feature (replaces Danger Sense)}",
+				"Vous devenez compétent dans deux des compétences suivantes, au choix : {@skill Animal Handling}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, ou {@skill Survival}.",
+				"Votre bonus de compétence est doublé pour tout test d'aptitude que vous effectuez et qui utilise l'une ou l'autre de ces compétences."
+			]
+		},
+		{
+			"name": "Primal Knowledge",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 3rd-level barbarian {@variantrule optional class features|tce|optional feature}}",
+				"Lorsque vous atteignez le 3e niveau et de nouveau au 10e niveau, vous gagnez la maîtrise d'une compétence de votre choix dans la liste des compétences disponibles pour les barbares au 1er niveau."
+			]
+		},
+		{
+			"name": "Primal Path",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Au 3e niveau, vous choisissez une voie qui façonne la nature de votre rage dans la liste des voies disponibles. Votre choix vous confère des caractéristiques au 3e niveau et à nouveau aux 6e, 10e et 14e niveaux."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"Lorsque vous atteignez le 4ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"À partir du 5e niveau, vous pouvez attaquer deux fois, au lieu d'une, lorsque vous effectuez l'action {@action Attack} à votre tour."
+			]
+		},
+		{
+			"name": "Fast Movement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"À partir du 5e niveau, votre vitesse augmente de 10 pieds lorsque vous ne portez pas d'armure lourde."
+			]
+		},
+		{
+			"name": "Instinctive Pounce",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 5,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 5th-level barbarian feature (replaces Fast Movement)}",
+				"Lorsqu'une créature termine son tour à moins de 15 pieds de vous, vous pouvez utiliser votre réaction pour vous déplacer jusqu'à la moitié de votre vitesse vers un espace plus proche de la créature. Ce mouvement ne provoque pas d'attaque d'opportunité."
+			]
+		},
+		{
+			"name": "Path Feature",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Au 6ème niveau, vous gagnez une caractéristique de votre voie primitive."
+			]
+		},
+		{
+			"name": "Feral Instinct",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 7,
+			"entries": [
+				"Au 7ème niveau, votre instinct est si aiguisé que vous avez un avantage sur les jets d'initiative.",
+				"De plus, si vous êtes surpris au début du combat et que vous n'êtes pas {@condition incapacitated}, vous pouvez agir normalement à votre premier tour, mais seulement si vous entrez dans votre rage avant de faire quoi que ce soit d'autre à ce tour."
+			]
+		},
+		{
+			"name": "Instinctive Pounce",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 7,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 7th-level barbarian {@variantrule optional class features|tce|optional feature}}",
+				"Dans le cadre de l'action bonus que vous prenez pour entrer dans votre rage, vous pouvez vous déplacer jusqu'à la moitié de votre vitesse."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"Lorsque vous atteignez le 8e niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Brutal Critical (1 die)",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 9,
+			"entries": [
+				"À partir du 9e niveau, vous pouvez lancer un dé de dégâts d'arme supplémentaire pour déterminer les dégâts supplémentaires pour un coup critique avec une attaque de mêlée.",
+				"Cela passe à deux dés supplémentaires au 13ème niveau et à trois dés supplémentaires au 17ème niveau."
+			]
+		},
+		{
+			"name": "Path feature",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Au 10ème niveau, vous gagnez une caractéristique de votre voie primitive."
+			]
+		},
+		{
+			"name": "Relentless Rage",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 11,
+			"entries": [
+				"À partir du 11e niveau, votre rage peut vous permettre de continuer à vous battre malgré des blessures graves. Si vous tombez à 0 point de vie pendant que vous êtes en rage et que vous ne mourez pas tout de suite, vous pouvez effectuer un jet de sauvegarde de Constitution DC 10. Si vous réussissez, vous tombez à 1 point de vie à la place.",
+				"Chaque fois que vous utilisez cette fonction après la première, le DC augmente de 5. Lorsque vous terminez un repos court ou long, le DC se réinitialise à 10."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"Lorsque vous atteignez le 12ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Brutal Critical (2 dice)",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 13,
+			"entries": [
+				"Au 13e niveau, vous pouvez lancer deux dés de dégâts d'arme supplémentaires pour déterminer les dégâts supplémentaires pour un coup critique avec une attaque de mêlée.",
+				"Cela passe à trois dés supplémentaires au 17ème niveau."
+			]
+		},
+		{
+			"name": "Path feature",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Au 14ème niveau, vous gagnez une caractéristique de votre voie primitive."
+			]
+		},
+		{
+			"name": "Persistent Rage",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 15,
+			"entries": [
+				"À partir du 15e niveau, votre rage est si féroce qu'elle ne se termine prématurément que si vous tombez {@condition unconscious} ou si vous choisissez d'y mettre fin."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"Lorsque vous atteignez le 16ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Brutal Critical (3 dice)",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 17,
+			"entries": [
+				"Au 17e niveau, vous pouvez lancer trois dés de dégâts d'arme supplémentaires pour déterminer les dégâts supplémentaires pour un coup critique avec une attaque de mêlée."
+			]
+		},
+		{
+			"name": "Indomitable Might",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"À partir du 18e niveau, si votre total pour un test de Force est inférieur à votre score de Force, vous pouvez utiliser ce score à la place du total."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"Lorsque vous atteignez le 19e niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Primal Champion",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"Au 20e niveau, vous incarnez la puissance des espaces sauvages. Vos scores de Force et de Constitution augmentent de 4. Votre maximum pour ces scores est maintenant de 24."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Path of the Berserker",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Pour certains barbares, la rage est un moyen d'arriver à une fin - cette fin étant la violence. Le chemin du berserker est un chemin de fureur sans limites, couvert de sang. Lorsque vous entrez dans la rage du berserker, vous vibrez dans le chaos de la bataille, sans vous soucier de votre santé ou de votre bien-être.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Frenzy|Barbarian||Berserker||3"
+				}
+			]
+		},
+		{
+			"name": "Frenzy",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du moment où vous choisissez cette voie au 3e niveau, vous pouvez entrer dans une frénésie lorsque vous êtes en rage. Si vous le faites, pendant la durée de votre rage, vous pouvez effectuer une seule attaque d'arme de mêlée comme action bonus à chacun de vos tours après celui-ci. Lorsque votre rage prend fin, vous subissez un niveau de {@condition exhaustion}."
+			]
+		},
+		{
+			"name": "Mindless Rage",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, vous ne pouvez pas être {@condition charmed} ou {@condition frightened} pendant votre rage. Si vous êtes {@condition charmed} ou {@condition frightened} lorsque vous entrez en rage, l'effet est suspendu pour la durée de la rage."
+			]
+		},
+		{
+			"name": "Intimidating Presence",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"À partir du 10e niveau, vous pouvez utiliser votre action pour effrayer quelqu'un avec votre présence menaçante. Pour ce faire, choisissez une créature que vous pouvez voir dans un rayon de 30 pieds autour de vous. Si la créature peut vous voir ou vous entendre, elle doit réussir un jet de sauvegarde de Sagesse (DC égal à 8 + votre bonus de compétence + votre modificateur de Charisme) ou être {@condition frightened} de vous jusqu'à la fin de votre prochain tour. Aux tours suivants, vous pouvez utiliser votre action pour prolonger la durée de cet effet sur la créature {@condition frightened} jusqu'à la fin de votre prochain tour. Cet effet prend fin si la créature termine son tour hors de sa ligne de vue ou à plus de 60 pieds de vous.",
+				"Si la créature réussit son jet de sauvegarde, vous ne pouvez plus utiliser cette caractéristique sur cette créature pendant 24 heures."
+			]
+		},
+		{
+			"name": "Retaliation",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, lorsque vous subissez des dégâts d'une créature située à moins de 1,5 mètre de vous, vous pouvez utiliser votre réaction pour effectuer une attaque d'arme de mêlée contre cette créature."
+			]
+		},
+		{
+			"name": "Bear",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Lorsque vous êtes en rage, vous avez une résistance à tous les dégâts, sauf les dégâts psychiques. L'esprit de l'ours vous rend suffisamment résistant pour supporter n'importe quelle punition."
+			]
+		},
+		{
+			"name": "Eagle",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Tant que vous êtes en furie et que vous ne portez pas d'armure lourde, les autres créatures ont un désavantage sur les jets d'attaque d'opportunité contre vous, et vous pouvez utiliser l'action {@action Dash} comme action bonus à votre tour. L'esprit de l'aigle fait de vous un prédateur qui peut se faufiler dans la mêlée avec facilité."
+			]
+		},
+		{
+			"name": "Path of the Totem Warrior",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"La voie du guerrier totem est un voyage spirituel, car le barbare accepte un animal spirituel comme guide, protecteur et source d'inspiration. Au combat, votre esprit totem vous remplit d'une puissance surnaturelle, ajoutant un carburant magique à votre rage barbare.",
+				"La plupart des tribus barbares considèrent qu'un animal totem est apparenté à un clan particulier. Dans ce cas, il est inhabituel pour un individu d'avoir plus d'un esprit d'animal totem, bien que des exceptions existent.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spirit Seeker|Barbarian||Totem Warrior||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Totem Spirit|Barbarian||Totem Warrior||3"
+				}
+			]
+		},
+		{
+			"name": "Wolf",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Pendant que vous êtes enragé, vos amis ont l'avantage sur les jets d'attaque de mêlée contre toute créature à moins de 1,5 mètre de vous qui vous est hostile. L'esprit du loup fait de vous un chef des chasseurs."
+			]
+		},
+		{
+			"name": "Spirit Seeker",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"La vôtre est une voie qui cherche à s'accorder avec le monde naturel, vous donnant une parenté avec les bêtes. Au 3e niveau, lorsque vous adoptez cette voie, vous gagnez la capacité de lancer les sorts {@spell beast sense} et {@spell speak with animals}, mais uniquement sous forme de rituels, comme décrit dans {@book chapter 10|PHB|10|rituals}."
+			]
+		},
+		{
+			"name": "Totem Spirit",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, lorsque vous adoptez cette voie, vous choisissez un esprit totem et gagnez sa caractéristique. Vous devez fabriquer ou acquérir un objet totem physique - une amulette ou un ornement similaire - qui incorpore de la fourrure ou des plumes, des griffes, des dents ou des os de l'animal totem. Au choix, vous gagnez également des attributs physiques mineurs qui rappellent l'esprit de votre totem. Par exemple, si vous avez un esprit totem d'ours, vous pouvez être inhabituellement poilu et avoir la peau épaisse, ou si votre totem est l'aigle, vos yeux deviennent jaune vif.",
+				"Votre animal totem pourrait être un animal apparenté à ceux énumérés ici, mais plus approprié à votre pays d'origine. Par exemple, vous pourriez choisir un faucon ou un vautour à la place de l'aigle.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bear|Barbarian||Totem Warrior||3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Eagle|Barbarian||Totem Warrior||3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Elk|Barbarian|SCAG|Totem Warrior||3|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tiger|Barbarian|SCAG|Totem Warrior||3|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Wolf|Barbarian||Totem Warrior||3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bear",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Vous gagnez la force d'un ours. Votre capacité de charge (y compris la charge maximale et le soulèvement maximal) est doublée, et vous avez un avantage sur les tests de Force effectués pour pousser, tirer, soulever ou briser des objets."
+			]
+		},
+		{
+			"name": "Eagle",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Vous gagnez la vue d'un aigle. Vous pouvez voir jusqu'à 1 mile de distance sans difficulté, capable de discerner les détails les plus fins comme si vous regardiez quelque chose à moins de 100 pieds de vous. De plus, la faible luminosité n'impose pas de désavantage à vos tests de Sagesse ({@skill Perception})."
+			]
+		},
+		{
+			"name": "Wolf",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Vous gagnez la sensibilité de chasseur d'un loup. Vous pouvez suivre d'autres créatures tout en vous déplaçant à un rythme rapide, et vous pouvez vous déplacer furtivement tout en vous déplaçant à un rythme normal."
+			]
+		},
+		{
+			"name": "Aspect of the Beast",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6ème niveau, vous gagnez un avantage magique basé sur l'animal totem de votre choix. Vous pouvez choisir le même animal que vous avez sélectionné au 3e niveau ou un autre.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bear|Barbarian||Totem Warrior||6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Eagle|Barbarian||Totem Warrior||6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Elk|Barbarian|SCAG|Totem Warrior||6|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tiger|Barbarian|SCAG|Totem Warrior||6|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Wolf|Barbarian||Totem Warrior||6"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Walker",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous pouvez lancer le sort {@spell commune with nature}, mais uniquement sous forme de rituel. Lorsque vous le faites, une version spirituelle de l'un des animaux que vous avez choisis pour Esprit Totem ou Aspect de la Bête vous apparaît pour vous transmettre les informations que vous recherchez."
+			]
+		},
+		{
+			"name": "Bear",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Pendant que vous êtes enragé, toute créature située à 1,5 mètre de vous et qui vous est hostile a un désavantage aux jets d'attaque contre des cibles autres que vous ou un autre personnage possédant cette caractéristique. Un ennemi est immunisé à cet effet s'il ne peut pas vous voir ou vous entendre ou s'il ne peut pas être {@condition frightened}."
+			]
+		},
+		{
+			"name": "Eagle",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Lorsque vous êtes en colère, vous avez une vitesse de vol égale à votre vitesse de marche actuelle. Cet avantage ne fonctionne que sur de courtes périodes ; vous tombez si vous terminez votre tour en l'air et que rien d'autre ne vous maintient en l'air."
+			]
+		},
+		{
+			"name": "Wolf",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Lorsque vous êtes en rage, vous pouvez utiliser une action bonus à votre tour pour assommer une créature de grande taille ou plus petite {@condition prone} lorsque vous la touchez avec une attaque d'arme de mêlée."
+			]
+		},
+		{
+			"name": "Totemic Attunement",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, vous gagnez un avantage magique basé sur un animal totem de votre choix. Vous pouvez choisir le même animal que vous avez sélectionné précédemment ou un animal différent.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bear|Barbarian||Totem Warrior||14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Eagle|Barbarian||Totem Warrior||14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Elk|Barbarian|SCAG|Totem Warrior||14|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tiger|Barbarian|SCAG|Totem Warrior||14|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Wolf|Barbarian||Totem Warrior||14"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Battlerager",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"entries": [
+				"Connus sous le nom de Kuldjargh (littéralement \"idiot de la hache\") en nain, les batteurs sont des nains adeptes des dieux de la guerre et empruntent la Voie du batailleur. Ils se spécialisent dans le port de vêtements encombrants, {@item spiked armor|scag} et se jettent dans le combat, frappant avec leur corps même et se livrant à la fureur de la bataille.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Restriction—Dwarves Only|Barbarian||Battlerager|SCAG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Battlerager Armor|Barbarian||Battlerager|SCAG|3"
+				}
+			]
+		},
+		{
+			"name": "Battlerager Armor",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous choisissez cette voie au 3e niveau, vous gagnez la capacité d'utiliser {@item spiked armor|scag} comme arme.",
+				"Lorsque vous portez {@item spiked armor|scag} et que vous êtes en rage, vous pouvez utiliser une action bonus pour effectuer une attaque de mêlée avec vos pointes d'armure sur une cible située à moins de 1,5 mètre de vous. Si l'attaque touche, les pointes infligent {@damage 1d4} de dégâts perforants. Vous utilisez votre modificateur de Force pour les jets d'attaque et de dégâts.",
+				"De plus, lorsque vous utilisez l'action {@action Attack} pour agripper une créature, la cible subit 3 dégâts perforants si vous réussissez votre test de grappin."
+			]
+		},
+		{
+			"name": "Restriction—Dwarves Only",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Seuls les nains peuvent suivre la voie du batailleur. Le batailleur remplit une niche particulière dans la société et la culture naines.",
+				"Votre DM peut lever cette restriction pour mieux s'adapter à la campagne. Cette restriction existe pour les Royaumes oubliés. Elle peut ne pas s'appliquer au cadre ou à la version des Royaumes de votre DM."
+			]
+		},
+		{
+			"name": "Reckless Abandon",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, lorsque vous utilisez Attaque téméraire pendant votre rage, vous gagnez également des points de vie temporaires égaux à votre modificateur de Constitution (minimum de 1). Ils disparaissent s'il en reste à la fin de votre rage."
+			]
+		},
+		{
+			"name": "Battlerager Charge",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"À partir du 10e niveau, vous pouvez effectuer l'action {@action Dash} comme action bonus lorsque vous êtes en rage."
+			]
+		},
+		{
+			"name": "Spiked Retribution",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, lorsqu'une créature située à 1,5 mètre de vous vous frappe avec une attaque de mêlée, l'attaquant subit 3 dégâts perforants si vous êtes en rage, n'êtes pas {@condition incapacitated} et portez {@item spiked armor|scag}."
+			]
+		},
+		{
+			"name": "Path of the Beast",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Les barbares qui empruntent la voie de la bête puisent leur rage dans une étincelle bestiale qui brûle dans leur âme. Cette bête éclate dans les affres de la rage, transformant physiquement le barbare.",
+				"Un tel barbare peut être habité par un esprit primitif ou descendre de métamorphes. Vous pouvez choisir l'origine de votre force sauvage ou la déterminer en faisant un jet sur la table Origine de la bête.",
+				{
+					"type": "table",
+					"caption": "Origin of the Beast",
+					"colLabels": [
+						"d4",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Un de vos parents est un lycanthrope, et vous avez hérité d'une partie de leur malédiction."
+						],
+						[
+							"2",
+							"Vous descendez d'un archidruide et avez hérité de la capacité de changer partiellement de forme."
+						],
+						[
+							"3",
+							"Un esprit féerique vous a donné la capacité d'adopter différents aspects bestiaux."
+						],
+						[
+							"4",
+							"Un ancien esprit animal habite en vous, vous permettant de suivre ce chemin."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Form of the Beast|Barbarian||Beast|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Form of the Beast",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of the Beast feature}",
+				"Lorsque vous entrez dans votre rage, vous pouvez vous transformer, révélant la puissance bestiale qui est en vous. Jusqu'à ce que la rage prenne fin, vous manifestez une arme naturelle. Elle compte pour vous comme une arme de mêlée simple, et vous ajoutez votre modificateur de Force aux jets d'attaque et de dégâts lorsque vous attaquez avec elle, comme d'habitude.",
+				"Vous choisissez la forme de l'arme à chaque fois que vous faites rage :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bite",
+							"entry": "Votre bouche se transforme en un museau bestial ou en de grandes mandibules (au choix). Elle inflige {@damage 1d8} de dégâts perforants en cas de succès. Une fois à chacun de vos tours où vous endommagez une créature avec cette morsure, vous regagnez un nombre de points de vie égal à votre bonus de compétence, à condition d'avoir moins de la moitié de vos points de vie au moment de la touche."
+						},
+						{
+							"type": "item",
+							"name": "Claws",
+							"entry": "Chacune de vos mains se transforme en une griffe, que vous pouvez utiliser comme une arme si elle est vide. Elle inflige {@damage 1d6} de dégâts de coupe sur une touche. Une fois à chacun de vos tours, lorsque vous attaquez avec une griffe en utilisant l'action {@action Attack}, vous pouvez effectuer une attaque de griffe supplémentaire dans le cadre de la même action."
+						},
+						{
+							"type": "item",
+							"name": "Tail",
+							"entry": "Vous faites pousser une queue piquante et épineuse, qui inflige {@damage 1d8} de dégâts perforants en cas de succès et possède la propriété de portée. Si une créature que vous pouvez voir à moins de 3 mètres de vous vous frappe avec un jet d'attaque, vous pouvez utiliser votre réaction pour balayer votre queue et obtenir un {@dice d8}, appliquant un bonus à votre CA égal au nombre obtenu, ce qui fait que l'attaque peut vous manquer."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bestial Soul",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Path of the Beast feature}",
+				"La puissance féroce qui est en vous augmente, ce qui fait que les armes naturelles de votre Forme de la Bête comptent comme magiques dans le but de surmonter la résistance et l'immunité aux attaques et dégâts non magiques.",
+				"Vous pouvez également modifier votre forme pour vous adapter à votre environnement. Lorsque vous terminez un repos court ou long, choisissez l'un des avantages suivants, qui dure jusqu'à la fin de votre prochain repos court ou long :",
+				{
+					"type": "list",
+					"items": [
+						"Vous gagnez une vitesse de nage égale à votre vitesse de marche, et vous pouvez respirer sous l'eau.",
+						"Vous gagnez une vitesse d'escalade égale à votre vitesse de marche, et vous pouvez grimper sur des surfaces difficiles, y compris la tête en bas sur les plafonds, sans avoir besoin de faire un test d'aptitude.",
+						"Lorsque vous sautez, vous pouvez effectuer un test de Force ({@skill Athletics}) et prolonger votre saut d'un nombre de pieds égal au total du test. Vous ne pouvez effectuer ce test spécial qu'une fois par tour."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infectious Fury",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Path of the Beast feature}",
+				"Lorsque vous touchez une créature avec vos armes naturelles alors que vous êtes en furie, la bête qui est en vous peut maudire votre cible avec une fureur enragée. La cible doit réussir un jet de sauvegarde de Sagesse (DC égal à 8 + votre modificateur de Constitution + votre bonus de compétence) ou subir l'un des effets suivants (à votre choix) :",
+				{
+					"type": "list",
+					"items": [
+						"La cible doit utiliser sa réaction pour effectuer une attaque de mêlée contre une autre créature de votre choix que vous pouvez voir.",
+						"La cible subit {@damage 2d12} de dégâts psychiques."
+					]
+				},
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Call the Hunt",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Path of the Beast feature}",
+				"La bête en vous devient si puissante que vous pouvez propager sa férocité à d'autres personnes et gagner en résilience en les faisant rejoindre votre chasse. Lorsque vous entrez dans votre rage, vous pouvez choisir un nombre d'autres créatures consentantes que vous pouvez voir dans un rayon de 30 pieds égal à votre modificateur de Constitution (au minimum une créature).",
+				"Vous gagnez 5 points de vie temporaires pour chaque créature qui accepte cette caractéristique. Jusqu'à la fin de la rage, les créatures choisies peuvent chacune utiliser l'avantage suivant une fois à chacun de leurs tours : lorsque la créature touche une cible avec un jet d'attaque et lui inflige des dégâts, elle peut lancer un {@dice d6} et gagner un bonus aux dégâts égal au nombre obtenu.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Path of Wild Magic",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"De nombreux endroits dans le multivers regorgent de beauté, d'émotions intenses et de magie effrénée ; la Féerie, les Plans Supérieurs et d'autres royaumes de pouvoir surnaturel rayonnent de telles forces et peuvent influencer profondément les gens. En tant que personnes aux sentiments profonds, les barbares sont particulièrement sensibles à ces influences sauvages, et certains d'entre eux sont transformés par la magie. Ces barbares imprégnés de magie suivent le chemin de la magie sauvage. Les barbares elfes, tieflings, aasimars et genasi suivent souvent cette voie, désireux de manifester la magie de l'autre monde de leurs ancêtres.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Magic Awareness|Barbarian||Wild Magic|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Wild Surge|Barbarian||Wild Magic|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Magic Awareness",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of Wild Magic feature}",
+				"En tant qu'action, vous pouvez ouvrir votre conscience à la présence de magie concentrée. Jusqu'à la fin de votre prochain tour, vous connaissez l'emplacement de tout sort ou objet magique situé à moins de 60 pieds de vous et qui n'est pas totalement couvert. Lorsque vous sentez un sort, vous apprenez à quelle école de magie il appartient.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Wild Surge",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of Wild Magic feature}",
+				"L'énergie magique qui bouillonne en vous jaillit parfois de vous. Lorsque vous entrez dans votre rage, faites un jet sur la table de magie sauvage pour déterminer l'effet magique produit.",
+				"Si l'effet nécessite un jet de sauvegarde, le DC est égal à 8 + votre bonus de compétence + votre modificateur de Constitution.",
+				{
+					"type": "table",
+					"caption": "Wild Magic",
+					"colLabels": [
+						"d8",
+						"Magical Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Des vrilles d'ombre s'enroulent autour de vous. Chaque créature de votre choix que vous pouvez voir à moins de 30 pieds de vous doit réussir un jet de sauvegarde de Constitution ou subir {@damage 1d12} de dégâts nécrotiques. Vous gagnez également {@dice 1d12} de points de vie temporaires."
+						],
+						[
+							"2",
+							"Vous vous téléportez jusqu'à 30 pieds dans un espace inoccupé que vous pouvez voir. Jusqu'à la fin de votre rage, vous pouvez utiliser cet effet à nouveau à chacun de vos tours comme une action bonus."
+						],
+						[
+							"3",
+							"Un esprit intangible, qui ressemble à un {@creature flumph} ou un {@creature pixie} (au choix), apparaît à moins de 1,5 mètre d'une créature de votre choix que vous pouvez voir dans un rayon de 30 mètres autour de vous. À la fin du tour en cours, l'esprit explose, et chaque créature située à moins de 1,5 mètre de lui doit réussir un jet de sauvegarde de Dextérité ou subir {@damage 1d6} de dégâts de force. Jusqu'à la fin de votre rage, vous pouvez utiliser cet effet à nouveau, en invoquant un autre esprit, à chacun de vos tours comme une action bonus."
+						],
+						[
+							"4",
+							"La magie infuse une arme de votre choix que vous tenez. Jusqu'à la fin de votre rage, le type de dégâts de l'arme passe à force, et elle gagne les propriétés de lumière et de jet, avec une portée normale de 20 pieds et une portée longue de 60 pieds. Si l'arme quitte votre main, elle réapparaît dans votre main à la fin du tour en cours."
+						],
+						[
+							"5",
+							"Chaque fois qu'une créature vous touche avec un jet d'attaque avant que votre rage ne prenne fin, cette créature subit {@damage 1d6} de dégâts de force, la magie se déchaînant en représailles."
+						],
+						[
+							"6",
+							"Jusqu'à ce que votre rage prenne fin, vous êtes entouré de lumières multicolores et protectrices ; vous bénéficiez d'un bonus de +1 à la CA, et tant que vous êtes dans un rayon de 3 mètres, vos alliés bénéficient du même bonus."
+						],
+						[
+							"7",
+							"Des fleurs et des vignes poussent temporairement autour de vous. Jusqu'à la fin de votre rage, le sol dans un rayon de 15 pieds autour de vous est {@quickref difficult terrain||3} pour vos ennemis."
+						],
+						[
+							"8",
+							"Un éclair de lumière jaillit de votre poitrine. Une autre créature de votre choix que vous pouvez voir à moins de 30 pieds de vous doit réussir un jet de sauvegarde de Constitution ou subir {@damage 1d6} de dégâts radiants et être {@condition blinded} jusqu'au début de votre prochain tour. Jusqu'à la fin de votre rage, vous pouvez utiliser à nouveau cet effet à chacun de vos tours comme une action bonus."
+						]
+					],
+					"data": {
+						"tableInclude": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Bolstering Magic",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Path of Wild Magic feature}",
+				"Vous pouvez exploiter votre magie sauvage pour vous soutenir ou soutenir un compagnon. Comme action, vous pouvez toucher une créature (qui peut être vous-même) et lui conférer l'un des avantages suivants de votre choix :",
+				{
+					"type": "list",
+					"items": [
+						"Pendant 10 minutes, la créature peut effectuer un jet de {@dice d3} chaque fois qu'elle effectue un jet d'attaque ou un test de capacité et ajouter le nombre obtenu au jet de {@dice d20}.",
+						"Lancez un {@dice d3}. La créature regagne un emplacement de sort dépensé, dont le niveau est égal au nombre obtenu au jet ou inférieur (au choix de la créature). Une fois qu'une créature reçoit cet avantage, elle ne peut le recevoir à nouveau qu'après un long repos."
+					]
+				},
+				"Vous pouvez effectuer cette action un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Unstable Backlash",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Path of Wild Magic feature}",
+				"Lorsque vous êtes mis en danger pendant votre rage, la magie qui est en vous peut se déchaîner ; immédiatement après avoir subi des dégâts ou avoir raté un jet de sauvegarde pendant votre rage, vous pouvez utiliser votre réaction pour faire un jet sur la table de magie sauvage et produire immédiatement l'effet obtenu. Cet effet remplace votre effet de magie sauvage actuel."
+			]
+		},
+		{
+			"name": "Controlled Surge",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Path of Wild Magic feature}",
+				"Chaque fois que vous obtenez un résultat sur la table Magie sauvage, vous pouvez lancer le dé deux fois et choisir lequel des deux effets vous souhaitez déclencher. Si vous obtenez le même chiffre sur les deux dés, vous pouvez ignorer ce chiffre et choisir n'importe quel effet sur la table."
+			]
+		},
+		{
+			"name": "Path of the Beast",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"entries": [
+				"Les barbares qui suivent la voie de la Bête puisent leur rage dans une étincelle bestiale qui brûle dans leur âme. Cette bête hurle pour être libérée et éclate dans les affres de la rage.",
+				"Ceux qui empruntent cette voie peuvent être habités par un esprit primitif ou descendre de métamorphes. Vous pouvez choisir l'origine de votre force sauvage ou la déterminer au hasard en faisant un jet sur la table Origine de la bête.",
+				{
+					"type": "table",
+					"caption": "Origin of the Beast",
+					"colLabels": [
+						"d4",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Un de vos parents est un lycanthrope, et vous avez hérité d'une partie de la malédiction."
+						],
+						[
+							"2",
+							"Vous descendez d'un druide légendaire, ce qui se manifeste par votre capacité à changer partiellement de forme."
+						],
+						[
+							"3",
+							"Un esprit féerique vous a donné la capacité d'adopter différents aspects bestiaux."
+						],
+						[
+							"4",
+							"Un ancien esprit animal habite en vous, vous permettant de suivre ce chemin."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Form of the Beast|Barbarian||Beast (UA)|UA2020SubclassesPt1|3"
+				}
+			]
+		},
+		{
+			"name": "Form of the Beast",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of the Beast feature}",
+				"Lorsque vous entrez dans votre rage, vous pouvez vous transformer, révélant la puissance bestiale qui est en vous. Jusqu'à la fin de votre rage, vous manifestez une arme de mêlée naturelle, en choisissant l'une des options suivantes à chaque fois que vous vous emportez :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bite",
+							"entry": "Votre bouche se transforme en un museau bestial ou en de grandes mandibules (au choix). Votre morsure inflige {@damage 1d8} de dégâts perforants en cas de succès. Une fois à chacun de vos tours où vous endommagez une créature avec votre morsure, vous regagnez un nombre de points de vie égal à votre modificateur de Constitution (minimum de 1 point de vie)."
+						},
+						{
+							"type": "item",
+							"name": "Claws",
+							"entry": "Vos mains se transforment en griffes, qui infligent {@damage 1d6} de dégâts tranchants en cas de succès. Lorsque vous effectuez l'action {@action Attack} à votre tour et effectuez une attaque avec vos griffes, vous pouvez effectuer une attaque supplémentaire avec vos griffes dans le cadre de la même action."
+						},
+						{
+							"type": "item",
+							"name": "Tail",
+							"entry": "Vous faites pousser une queue piquante et épineuse, qui inflige {@damage 1d12} de dégâts perforants en cas de succès et possède la propriété de portée."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bestial Soul",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Path of the Beast feature}",
+				"L'esprit féroce qui est en vous gagne en puissance, et les armes naturelles de votre Forme de la Bête sont considérées comme magiques pour surmonter la résistance et l'immunité aux attaques et dégâts non magiques.",
+				"Vous pouvez également faire appel à l'esprit féroce pour vous aider à vous adapter à votre environnement. Lorsque vous terminez un repos court ou long, choisissez l'un des avantages suivants, qui dure jusqu'à ce que vous terminiez un repos court ou long :",
+				{
+					"type": "list",
+					"items": [
+						"Vous gagnez une vitesse de nage égale à votre vitesse de marche, et vous pouvez respirer sous l'eau.",
+						"Vous gagnez une vitesse d'escalade égale à votre vitesse de marche, et vous pouvez grimper sur des surfaces difficiles, y compris la tête en bas sur les plafonds, sans avoir besoin de faire un test d'aptitude.",
+						"Lorsque vous sautez, vous pouvez effectuer un test de Force ({@skill Athletics}) et prolonger votre saut d'un nombre de pieds égal au total du test. Vous ne pouvez effectuer ce test spécial qu'une fois par tour."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infectious Fury",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Path of the Beast feature}",
+				"Lorsque vous touchez une créature avec vos armes naturelles alors que vous êtes enragé, l'esprit qui vous habite peut maudire votre cible avec une fureur enragée. La cible doit réussir un jet de sauvegarde de Sagesse (DC égal à 8 + votre modificateur de Constitution + votre bonus de compétence) ou subir l'un des effets suivants (à votre choix) :",
+				{
+					"type": "list",
+					"items": [
+						"La cible doit utiliser sa réaction pour effectuer une attaque de mêlée contre une autre créature de votre choix que vous pouvez voir.",
+						"La cible subit {@damage 2d12} de dégâts psychiques."
+					]
+				},
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de Constitution (au moins une fois). Vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Call the Hunt",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Path of the Beast feature}",
+				"La bête qui est en vous devient si puissante que vous pouvez propager sa férocité à vos alliés. Lorsque vous entrez dans votre rage, vous pouvez choisir un nombre de créatures consentantes que vous pouvez voir dans un rayon de 30 pieds égal à votre modificateur de Constitution (au moins une créature). Jusqu'à ce que votre rage prenne fin, les créatures choisies gagnent la caractéristique Téméraire {@action Attack} et vous avez l'avantage sur les jets de sauvegarde contre l'être {@condition frightened}. Vous gagnez également 5 points de vie temporaires pour chaque créature qui accepte cet avantage. Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de Constitution (au minimum une fois). Vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Giant Power",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"Lorsque vous choisissez cette voie, vous apprenez à parler, lire et écrire le Géant ou une autre langue de votre choix si vous connaissez déjà le Géant. De plus, vous apprenez soit la druidcraft, soit le cantrip {@spell thaumaturgy} (au choix). La sagesse est votre capacité de lanceur de sorts pour ce sort."
+			]
+		},
+		{
+			"name": "Giant's Havoc",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"Vos rages puisent leur force dans la puissance primitive des géants, vous transformant en une imposante force de destruction. Lorsque vous êtes en colère, vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Crushing Hurl",
+							"entries": [
+								"Lorsque vous réussissez une attaque à distance avec une arme lancée en utilisant la Force, vous pouvez ajouter votre bonus de dégâts de rage au jet de dégâts de l'attaque."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Giant Stature",
+							"entries": [
+								"Votre portée augmente de 1,5 mètre, et si vous êtes plus petit que Large, vous devenez Large, ainsi que tout ce que vous portez. S'il n'y a pas assez de place pour que vous deveniez Grand, votre taille ne change pas."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Giant",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"Les barbares qui empruntent la voie du Géant puisent leur force dans les forces primitives que sont les Géants et leurs semblables élémentaires. Leurs rages se chargent de puissance élémentaire et font grandir ces barbares, les transformant en avatars de la puissance primordiale.",
+				"Pendant sa rage, un barbare peut prendre l'apparence d'un géant des tempêtes légendaire, les cheveux devenant blancs et les yeux crépitant d'éclairs. D'autres adoptent les traits monstrueux des titans de l'apocalypse, déchirant le monde qui les entoure afin de le recréer.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant Power|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant's Havoc|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				}
+			]
+		},
+		{
+			"name": "Elemental Cleaver",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Path of the Giant Feature}",
+				"Votre lien avec la puissance élémentaire des géants et de leurs semblables se développe, et vous apprenez à insuffler de l'énergie primordiale aux armes.",
+				"Lorsque vous entrez dans votre rage, vous pouvez infuser une arme de votre choix que vous tenez avec l'un des types de dégâts suivants : acide, froid, feu, tonnerre ou foudre. Lorsque vous maniez l'arme infusée pendant votre rage, le type de dégâts de l'arme change pour le type choisi, elle inflige {@damage 1d6} de dégâts supplémentaires du type choisi lorsqu'elle touche, et elle acquiert la propriété de jet, avec une portée normale de 20 pieds et une portée longue de 60 pieds. Si vous lancez l'arme, elle réapparaît dans votre main instantanément après avoir touché ou raté une cible. Les avantages de l'arme infusée sont supprimés lorsqu'une créature autre que vous la manie.",
+				"Lorsque vous êtes en rage et que vous tenez l'arme infusée, vous pouvez utiliser une action bonus pour changer le type de dégâts actuel de l'arme infusée en un type différent des types de dégâts ci-dessus."
+			]
+		},
+		{
+			"name": "Mighty Impel",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Path of the Giant Feature}",
+				"Votre lien avec la force géante vous permet désormais de projeter alliés et ennemis sur le champ de bataille. Comme action bonus pendant que vous êtes en colère, vous pouvez choisir une créature de taille moyenne ou plus petite à votre portée et la déplacer vers un espace inoccupé que vous pouvez voir dans un rayon de 30 pieds autour de vous. Une créature récalcitrante doit réussir un jet de sauvegarde de Force (DC égal à 8 + votre bonus de compétence + votre modificateur de Force) pour éviter l'effet.",
+				"Si, à la fin de ce mouvement, la créature projetée n'est pas sur une surface ou un liquide pouvant la soutenir, elle tombe, subissant des dégâts normaux et atterrissant {@condition prone}."
+			]
+		},
+		{
+			"name": "Demiurgic Colossus",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Path of the Giant Feature}",
+				"La puissance primordiale de votre rage s'intensifie. Lorsque vous êtes en rage, votre portée augmente maintenant de 3 mètres, votre taille peut augmenter jusqu'à Énorme, et vous pouvez maintenant utiliser votre Puissant Impulsion pour déplacer des créatures qui sont Grandes ou plus petites.",
+				"De plus, les dégâts supplémentaires infligés par votre caractéristique Fendoir élémentaire passent à {@dice 2d6}."
+			]
+		},
+		{
+			"name": "Path of the Wild Soul",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"entries": [
+				"Le royaume du Feywild regorge de beauté, d'émotions imprévisibles et de magie effrénée. Un barbare exposé à ce royaume ressent les émotions puissamment et la magie sature son corps.",
+				"Lorsqu'un barbare qui suit cette voie se déchaîne, c'est un rugissement de liberté, une explosion d'expression, qui se manifeste de manière imprévisible.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Lingering Magic|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Wild Surge|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|3"
+				}
+			]
+		},
+		{
+			"name": "Lingering Magic",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, votre corps réagit à la présence de la magie. Vous pouvez lancer le sort {@spell detect magic} sans utiliser d'emplacement de sort ni de composants. La Constitution est votre capacité de lanceur de sorts pour ce sort. Vous brillez faiblement d'une couleur correspondant à l'école de magie que vous détectez (vous choisissez les couleurs).",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de Constitution (au moins une fois). Vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Wild Surge",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du 3e niveau, la magie jaillit de vous lorsque vous êtes en colère. Lorsque vous entrez dans votre rage, lancez un dé sur la table Wild Surge pour déterminer l'effet magique produit.",
+				"Si l'élan sauvage nécessite un jet de sauvegarde, le DC est égal à 8 + votre bonus de compétence + votre modificateur de Constitution.",
+				{
+					"type": "table",
+					"caption": "Wild Surge",
+					"colLabels": [
+						"d8",
+						"Effect"
+					],
+					"colStyles": [
+						"col-1 text-center",
+						"col-11"
+					],
+					"rows": [
+						[
+							1,
+							"De l'énergie nécrotique jaillit de vous. Chaque créature située à moins de 30 pieds de vous subit {@damage 1d10} de dégâts nécrotiques, et vous gagnez des points de vie temporaires égaux à la somme des dégâts nécrotiques infligés aux créatures."
+						],
+						[
+							2,
+							"Vous vous téléportez jusqu'à 6 mètres dans un espace inoccupé que vous pouvez voir. Jusqu'à la fin de votre rage, vous pouvez activer cet effet à nouveau à chacun de vos tours comme une action bonus."
+						],
+						[
+							3,
+							"Vous conjurez {@dice 1d4} d'esprits intangibles qui ressemblent à {@creature flumph||flumphs} dans les espaces inoccupés situés à 30 pieds de vous. Chaque esprit s'envole immédiatement à 30 pieds dans une direction aléatoire. À la fin de votre tour, tous les esprits explosent et chaque créature située à moins de 1,5 mètre d'un ou plusieurs d'entre eux doit réussir un jet de sauvegarde de Dextérité ou subir {@damage 2d8} de dégâts de force."
+						],
+						[
+							4,
+							"L'énergie arcanique vous enveloppe. Jusqu'à ce que votre rage prenne fin, vous bénéficiez d'un bonus de +2 à la CA, et chaque fois qu'une créature située dans un rayon de 3 mètres vous touche avec une attaque, elle subit des dégâts de force égaux à votre modificateur de Constitution."
+						],
+						[
+							5,
+							"La vie végétale se développe temporairement autour de vous : jusqu'à la fin de votre rage, le sol dans un rayon de 3 mètres autour de vous est {@quickref difficult terrain||3}."
+						],
+						[
+							6,
+							"L'énergie arcanique s'infiltre dans les esprits de ceux qui vous entourent. Chaque créature se trouvant à moins de 30 pieds de vous doit réussir un jet de sauvegarde de Sagesse ou vous voyez un aperçu des pensées de la créature, apprenant comment elle prévoit de vous attaquer. En conséquence, la créature a un désavantage sur les jets d'attaque contre vous jusqu'au début de votre prochain tour."
+						],
+						[
+							7,
+							"Des ombres se tissent autour de l'arme de votre choix que vous tenez. Jusqu'à la fin de votre rage, votre arme inflige des dégâts psychiques au lieu de ses dégâts de matraquage, de taillade ou de perçage, et elle gagne les propriétés de lumière et de jet avec une portée normale de 20 pieds et une longue portée de 60 pieds. Si vous laissez tomber l'arme ou la lancez, elle se dissipe et réapparaît dans votre main à la fin de votre tour."
+						],
+						[
+							8,
+							"Un faisceau de lumière brillante part de votre poitrine et forme une ligne de 1,5 mètre de large et de 6 mètres de long. Chaque créature de la ligne doit réussir un jet de sauvegarde de Constitution ou subir {@damage 2d8} de dégâts radiants et être {@condition blinded} jusqu'au début de votre prochain tour."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Magic Reserves",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous pouvez canaliser la magie qui déferle en vous vers d'autres créatures. Comme action, vous pouvez toucher une créature et lancer un {@dice d4}. La créature récupère un emplacement de sort dépensé d'un niveau égal au nombre obtenu. Si la créature que vous touchez ne peut pas récupérer un emplacement de sort de ce niveau, elle gagne à la place des points de vie temporaires égaux à cinq fois le nombre obtenu.",
+				"Vous subissez des dégâts de force égaux à cinq fois le nombre obtenu.",
+				"Lorsque vous atteignez le 14ème niveau dans cette classe, vous augmentez le dé à un {@dice d6}."
+			]
+		},
+		{
+			"name": "Arcane Rebuke",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, la magie qui crépite dans votre âme se déchaîne. Lorsqu'une créature vous oblige à effectuer un jet de sauvegarde alors que vous êtes en rage, vous pouvez utiliser votre réaction pour infliger {@damage 3d6} de dégâts de force à cette créature."
+			]
+		},
+		{
+			"name": "Chaotic Fury",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, vous devenez une source de magie sauvage lorsque vous êtes en furie. Comme action bonus, vous pouvez relancer sur la table de déferlement sauvage, remplaçant votre effet actuel par le nouveau."
+			]
+		},
+		{
+			"name": "Improved Magic Reserves",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, vous augmentez votre dé de réserves magiques à un {@dice d6}."
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"entries": [
+				"Certains barbares sont issus de cultures qui vénèrent leurs ancêtres. Ces tribus enseignent que les guerriers du passé perdurent dans le monde sous la forme de puissants esprits qui peuvent guider et protéger les vivants. Lorsque les barbares qui suivent cette voie se déchaînent, ils franchissent la barrière vers le monde des esprits et appellent ces esprits gardiens à l'aide.",
+				"Les barbares qui font appel à leurs gardiens ancestraux se battent pour protéger leurs tribus et leurs alliés. Avec l'aide des esprits, ils peuvent entraver leurs ennemis même s'ils leur portent des coups puissants.",
+				"Afin de cimenter les liens avec leurs gardiens ancestraux, les barbares qui suivent cette voie se couvrent de tatouages élaborés qui célèbrent les exploits de leurs ancêtres. Ces tatouages racontent des sagas épiques de victoires contre de terribles monstres et autres rivaux redoutables.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ancestral Protectors|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|3"
+				}
+			]
+		},
+		{
+			"name": "Ancestral Protectors",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du moment où vous choisissez cette voie au 3e niveau, des guerriers spectraux apparaissent lorsque vous faites rage. Ces guerriers distraient un ennemi que vous désignez et entravent ses tentatives d'évasion. Lorsque vous êtes en rage, vous pouvez utiliser une action bonus à votre tour pour choisir une créature que vous pouvez voir dans un rayon de 1,5 mètre autour de vous. Jusqu'au début de votre prochain tour ou jusqu'à la fin de votre rage, la créature choisie a un désavantage sur tout jet d'attaque qui ne vous cible pas, et si la créature effectue l'action {@action Disengage} à moins de 1,5 m de vous, sa vitesse est réduite de moitié jusqu'à la fin de son tour."
+			]
+		},
+		{
+			"name": "Ancestral Shield",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, les esprits gardiens qui vous aident peuvent assurer la protection de vos alliés. Si vous êtes en rage et qu'un allié que vous pouvez voir à moins de 30 pieds de vous subit des dégâts de matraquage, de perçage ou de taillade, vous pouvez utiliser votre réaction pour transférer votre résistance à ces types de dégâts à l'allié. La résistance s'applique aux dégâts entrants. Jusqu'au début de votre prochain tour, l'allié conserve la résistance et vous en êtes dépourvu, à moins que vous ne la possédiez également d'une autre source que la rage."
+			]
+		},
+		{
+			"name": "Consult the Spirits",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous gagnez la capacité de consulter les esprits de vos ancêtres. Juste avant de faire un test d'Intelligence ou de Sagesse, vous pouvez vous donner un avantage sur ce test. Vous pouvez utiliser cette caractéristique trois fois, et vous récupérez les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Vengeful Ancestors",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, vos esprits ancestraux deviennent suffisamment puissants pour frapper vos ennemis. Lorsque vous ou un allié que vous pouvez voir dans un rayon de 30 pieds est endommagé par une attaque de mêlée alors que vous êtes en furie, vous pouvez utiliser votre réaction pour que l'attaquant subisse {@damage 2d8} de dégâts de force de la part des esprits."
+			]
+		},
+		{
+			"name": "Path of the Storm Herald",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"entries": [
+				"Les barbares typiques abritent une fureur qui les habite. Leur rage leur confère une force, une durabilité et une vitesse supérieures. Les barbares qui suivent la voie du Héraut de la tempête apprennent au contraire à transformer leur rage en un manteau de magie primitive qui tourbillonne autour d'eux. Lorsqu'il est en furie, un barbare de cette voie puise dans la nature pour créer des effets magiques puissants.",
+				"Les hérauts des tempêtes sont généralement des champions d'élite qui s'entraînent aux côtés de druides, de rangers et d'autres personnes ayant juré de protéger le royaume naturel. D'autres hérauts des tempêtes perfectionnent leur art dans des loges d'élite fondées dans des régions ravagées par les tempêtes, dans les régions gelées du bout du monde ou dans les déserts les plus chauds.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Storm of Fury|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|3"
+				}
+			]
+		},
+		{
+			"name": "Storm of Fury",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous sélectionnez cette voie au 3e niveau, choisissez l'une des options suivantes : désert, mer ou toundra. L'environnement que vous choisissez façonne la nature de la tempête que vous conjurez lorsque vous vous déchaînez. Lorsque vous vous déchaînez, vous émettez une aura dans un rayon de 3 mètres. Les effets de cette aura dépendent de l'environnement que vous avez choisi.",
+				{
+					"type": "entries",
+					"name": "Desert",
+					"entries": [
+						"Tout ennemi qui termine son tour dans votre aura subit des dégâts de feu égaux à 2 + votre niveau de barbare divisé par 4."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sea",
+					"entries": [
+						"À la fin de chacun de vos tours, vous pouvez choisir une créature dans votre aura autre que vous-même. La cible doit effectuer un jet de sauvegarde de Dextérité contre un DC égal à 8 + votre bonus de compétence + votre modificateur de Constitution. La cible subit {@damage 2d6} de dégâts de foudre en cas d'échec, et la moitié en cas de réussite. Ces dégâts passent à {@dice 3d6} au 10e niveau et à {@dice 4d6} au 15e niveau."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tundra",
+					"entries": [
+						"Tout ennemi qui termine son tour dans votre aura subit des dégâts de froid égaux à 2 + votre niveau de barbare divisé par 4."
+					]
+				}
+			]
+		},
+		{
+			"name": "Storm Soul",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6ème niveau, votre lien avec le pouvoir de la tempête vous octroie des capacités supplémentaires basées sur l'environnement que vous avez choisi au 3ème niveau.",
+				{
+					"type": "entries",
+					"name": "Desert",
+					"entries": [
+						"Vous gagnez une résistance aux dégâts du feu et ne subissez pas les effets de la chaleur extrême."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sea",
+					"entries": [
+						"Vous gagnez une résistance aux dégâts de la foudre et pouvez respirer sous l'eau."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tundra",
+					"entries": [
+						"Toundra. Vous gagnez une résistance aux dégâts du froid et ne subissez pas les effets du froid extrême."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shield of the Storm",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous apprenez à utiliser votre maîtrise de la tempête pour protéger vos alliés. Lorsque vous êtes en furie, les alliés se trouvant dans votre aura bénéficient des avantages de votre caractéristique Âme de tempête."
+			]
+		},
+		{
+			"name": "Raging Storm",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, la puissance de la tempête que vous canalisez devient plus puissante.",
+				{
+					"type": "entries",
+					"name": "Desert",
+					"entries": [
+						"Le sol autour de vous devient comme du sable mouvant. Tout ennemi qui tente de se déplacer de plus de 5 pieds par tour sur le sol alors qu'il se trouve dans votre aura doit effectuer un jet de sauvegarde de Force (DC 8 + votre bonus de compétence + votre modificateur de Constitution). En cas d'échec, la vitesse de la créature passe à 0 jusqu'au début de son prochain tour."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sea",
+					"entries": [
+						"Des vents rugissants déchirent la zone qui vous entoure. Toute créature dans votre aura que vous touchez avec une attaque doit effectuer un jet de sauvegarde de Force (DC 8 + votre bonus de compétence + votre modificateur de Force) ou être renversée {@condition prone}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tundra",
+					"entries": [
+						"L'air qui vous entoure ralentit froidement vos ennemis. La zone comprise dans votre aura est {@quickref difficult terrain||3} pour vos ennemis."
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Zealot",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"entries": [
+				"Certaines divinités inspirent leurs fidèles à se lancer dans une féroce furie de combat. Ces barbares sont des guerriers zélés qui canalisent leur rage dans de puissantes démonstrations de puissance divine.",
+				"Une variété de dieux à travers les mondes de D&D inspirent leurs fidèles à embrasser cette voie. Tempus des Royaumes oubliés, Hextor et Erythnul de Greyhawk en sont de parfaits exemples. En général, les dieux qui inspirent les zélotes sont des divinités de combat, de destruction et de violence. Tous ne sont pas mauvais, mais peu sont bons.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Divine Fury|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Warrior of the Gods|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|3"
+				}
+			]
+		},
+		{
+			"name": "Divine Fury",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du moment où vous choisissez cette voie au 3e niveau, vous pouvez canaliser la fureur divine lorsque vous commencez à vous mettre en colère. Si vous faites cela, vous êtes enveloppé d'une aura de puissance divine jusqu'à ce que la rage prenne fin. À la fin de chacun de vos tours pendant cette durée, chaque créature située à 1,5 mètre de vous subit des dégâts égaux à {@dice 1d6} + la moitié de votre niveau de barbare. Les dégâts sont nécrotiques ou radiants ; vous choisissez le type de dégâts lorsque vous obtenez cette caractéristique."
+			]
+		},
+		{
+			"name": "Warrior of the Gods",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, votre âme est marquée pour une bataille sans fin. Si un sort a pour seul effet de vous ramener à la vie (mais pas à la mort), le lanceur de sorts n'a pas besoin de composants matériels pour le lancer sur vous."
+			]
+		},
+		{
+			"name": "Zealous Focus",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6ème niveau, la puissance divine qui alimente votre rage peut vous protéger contre le mal. Si vous échouez à un jet de sauvegarde alors que vous êtes en rage, vous pouvez à la place réussir ce jet de sauvegarde en réaction. Cependant, cela met immédiatement fin à votre rage, et vous ne pouvez plus vous mettre en colère jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Zealous Presence",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous apprenez à canaliser la puissance divine pour inspirer le zèle aux autres. En tant qu'action, vous hurlez de fureur et lancez un cri de guerre infusé d'énergie divine. Chaque allié dans un rayon de 60 pieds de vous gagne l'avantage sur les jets d'attaque et de sauvegarde jusqu'au début de votre prochain tour.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Rage Beyond Death",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, le pouvoir divin qui alimente votre rage vous permet d'éviter les coups fatals.",
+				"Pendant la rage, le fait d'avoir 0 point de vie ne vous assomme pas {@condition unconscious}. Vous devez toujours effectuer des jets de sauvegarde en cas de décès, et vous subissez les effets normaux des dégâts subis lorsque vous êtes à 0 point de vie. Cependant, si vous deviez mourir en ratant vos jets de sauvegarde contre la mort, vous ne mourrez pas avant la fin de votre rage."
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian v2",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"entries": [
+				"Certains barbares sont issus de cultures qui vénèrent leurs ancêtres. Ces tribus enseignent que les guerriers du passé perdurent dans le monde sous la forme de puissants esprits qui peuvent guider et protéger les vivants. Lorsque les barbares qui suivent cette voie se déchaînent, ils franchissent la barrière vers le monde des esprits et appellent ces esprits gardiens à l'aide.",
+				"Les barbares qui font appel à leurs gardiens ancestraux se battent pour protéger leurs tribus et leurs alliés. Avec l'aide des esprits, ils peuvent entraver leurs ennemis même s'ils leur portent des coups puissants.",
+				"Afin de cimenter les liens avec leurs gardiens ancestraux, les barbares qui suivent cette voie se couvrent de tatouages élaborés qui célèbrent les exploits de leurs ancêtres. Ces tatouages racontent des sagas épiques de victoires contre de terribles monstres et autres rivaux redoutables.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ancestral Protectors|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Ancestral Protectors",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du moment où vous choisissez cette voie au 3e niveau, des guerriers spectraux apparaissent lorsque vous faites rage. Ces guerriers distraient un ennemi que vous désignez et entravent ses tentatives d'évasion. Pendant que vous êtes en rage, la première créature que vous touchez avec une attaque à votre tour devient la cible de ces guerriers. Jusqu'au début de votre prochain tour ou jusqu'à la fin de votre rage, cette cible a un désavantage sur tout jet d'attaque qui ne vous vise pas, et les créatures autres que vous ont une résistance aux dégâts des attaques de la créature."
+			]
+		},
+		{
+			"name": "Ancestral Shield",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, les esprits gardiens qui vous aident peuvent assurer la protection de vos alliés. Si vous êtes en colère et qu'une créature que vous pouvez voir dans un rayon de 30 pieds subit des dégâts, vous pouvez utiliser votre réaction et réduire ces dégâts de {@dice 2d8}. Lorsque vous atteignez certains niveaux dans cette classe, vous pouvez réduire les dégâts davantage : de {@dice 3d8} au 10e niveau et de {@dice 4d8} au 14e niveau."
+			]
+		},
+		{
+			"name": "Consult the Spirits",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous gagnez la capacité de consulter vos esprits ancestraux et de les utiliser pour explorer les terres lointaines. Lorsque vous le faites, vous lancez le sort {@spell clairvoyance}, sans avoir besoin d'un emplacement de sort. Plutôt que de créer un capteur sphérique, le sort convoque invisiblement l'un de vos esprits ancestraux à l'endroit choisi. La Sagesse est votre capacité de lanceur de sorts pour ce sort. Après avoir lancé le sort de cette façon, vous ne pouvez plus le faire jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Vengeful Ancestors",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, vos esprits ancestraux deviennent suffisamment puissants pour frapper les ennemis qui osent faire du mal à ceux que vous protégez. Lorsque vous utilisez votre capacité Bouclier spirituel pour protéger une créature endommagée par une attaque, l'attaquant subit le même nombre de dégâts que le bouclier spirituel protège."
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Certains barbares sont issus de cultures qui vénèrent leurs ancêtres. Ces tribus enseignent que les guerriers du passé subsistent dans le monde sous la forme de puissants esprits, qui peuvent guider et protéger les vivants. Lorsqu'un barbare qui suit cette voie est en colère, il contacte le monde des esprits et demande de l'aide à ces esprits gardiens.",
+				"Les barbares qui s'inspirent de leurs gardiens ancestraux peuvent mieux combattre pour protéger leurs tribus et leurs alliés. Afin de cimenter les liens avec leurs gardiens ancestraux, les barbares qui suivent cette voie se couvrent de tatouages élaborés qui célèbrent les exploits de leurs ancêtres. Ces tatouages racontent des sagas de victoires contre de terribles monstres et autres rivaux redoutables.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ancestral Protectors|Barbarian||Ancestral Guardian|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Ancestral Protectors",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du moment où vous choisissez cette voie au 3e niveau, des guerriers spectraux apparaissent lorsque vous entrez dans votre rage. Pendant que vous êtes en rage, la première créature que vous touchez avec une attaque à votre tour devient la cible des guerriers, qui entravent ses attaques. Jusqu'au début de votre prochain tour, cette cible a un désavantage sur tout jet d'attaque qui n'est pas contre vous, et lorsque la cible touche une créature autre que vous avec une attaque, cette créature a une résistance aux dégâts infligés par l'attaque. L'effet sur la cible prend fin prématurément si votre rage prend fin."
+			]
+		},
+		{
+			"name": "Spirit Shield",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, les esprits gardiens qui vous aident peuvent offrir une protection surnaturelle à ceux que vous défendez. Si vous êtes en rage et qu'une autre créature que vous pouvez voir dans un rayon de 30 pieds de vous subit des dégâts, vous pouvez utiliser votre réaction pour réduire ces dégâts de {@dice 2d6}.",
+				"Lorsque vous atteignez certains niveaux dans cette classe, vous pouvez réduire davantage les dégâts : de {@dice 3d6} au 10e niveau et de {@dice 4d6} au 14e niveau."
+			]
+		},
+		{
+			"name": "Consult the Spirits",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous gagnez la capacité de consulter les esprits de vos ancêtres. Lorsque vous le faites, vous lancez le sort {@spell augury} ou {@spell clairvoyance}, sans utiliser d'emplacement de sort ni de composantes matérielles. Plutôt que de créer un capteur sphérique, cette utilisation de {@spell clairvoyance} convoque invisiblement l'un de vos esprits ancestraux à l'endroit choisi. La sagesse est votre capacité de lanceur de sorts pour ces sorts.",
+				"Après avoir lancé l'un ou l'autre de ces sorts, vous ne pouvez plus utiliser cette caractéristique jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Vengeful Ancestors",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, vos esprits ancestraux deviennent suffisamment puissants pour riposter. Lorsque vous utilisez votre bouclier spirituel pour réduire les dégâts d'une attaque, l'attaquant subit un nombre de dégâts de force égal aux dégâts que votre bouclier spirituel empêche."
+			]
+		},
+		{
+			"name": "Path of the Storm Herald",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Tous les barbares abritent une fureur en eux. Leur rage leur confère une force, une durabilité et une vitesse supérieures. Les barbares qui suivent la voie du Héraut de la Tempête apprennent à transformer cette rage en un manteau de magie primitive, qui tourbillonne autour d'eux. Lorsqu'il est en furie, un barbare de cette voie puise dans les forces de la nature pour créer de puissants effets magiques.",
+				"Les hérauts des tempêtes sont généralement des champions d'élite qui s'entraînent aux côtés de druides, de rangers et d'autres personnes ayant juré de protéger la nature. D'autres hérauts des tempêtes perfectionnent leur art dans des pavillons situés dans des régions ravagées par les tempêtes, dans les régions gelées du bout du monde ou dans les déserts les plus chauds.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Storm Aura|Barbarian||Storm Herald|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Storm Aura",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du 3e niveau, vous émettez une aura orageuse et magique lorsque vous êtes en colère. L'aura s'étend à 10 pieds de vous dans toutes les directions, mais pas à travers une couverture totale.",
+				"Votre aura a un effet qui s'active lorsque vous entrez dans votre rage, et vous pouvez activer l'effet à nouveau à chacun de vos tours comme une action bonus. Choisissez le désert, la mer ou la toundra. L'effet de votre aura dépend de l'environnement choisi, comme détaillé ci-dessous. Vous pouvez changer votre choix d'environnement chaque fois que vous gagnez un niveau dans cette classe.",
+				"Si les effets de votre aura nécessitent un jet de sauvegarde, le DC est égal à 8 + votre bonus de compétence + votre modificateur de Constitution.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Desert|Barbarian|XGE|Storm Herald|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Sea|Barbarian|XGE|Storm Herald|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tundra|Barbarian|XGE|Storm Herald|XGE|3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Storm Soul",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, la tempête vous accorde des avantages même lorsque votre aura n'est pas active. Les avantages sont basés sur l'environnement que vous avez choisi pour votre aura de tempête.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Desert|Barbarian|XGE|Storm Herald|XGE|6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Sea|Barbarian|XGE|Storm Herald|XGE|6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tundra|Barbarian|XGE|Storm Herald|XGE|6"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shielding Storm",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous apprenez à utiliser votre maîtrise de la tempête pour protéger les autres. Chaque créature de votre choix bénéficie de la résistance aux dégâts que vous avez acquise grâce au trait Âme de tempête tant qu'elle se trouve dans votre aura de tempête."
+			]
+		},
+		{
+			"name": "Raging Storm",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, la puissance de la tempête que vous canalisez devient plus puissante et s'abat sur vos ennemis. L'effet est basé sur l'environnement que vous avez choisi pour votre aura de tempête.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Desert|Barbarian|XGE|Storm Herald|XGE|14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Sea|Barbarian|XGE|Storm Herald|XGE|14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tundra|Barbarian|XGE|Storm Herald|XGE|14"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Zealot",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Certaines divinités inspirent leurs fidèles à se lancer dans une féroce furie de combat. Ces barbares sont des guerriers zélés qui canalisent leur rage dans de puissantes démonstrations de puissance divine.",
+				"Une variété de dieux à travers les mondes de D&D inspirent leurs fidèles à embrasser cette voie. Tempus des Royaumes oubliés, Hextor et Erythnul de Greyhawk en sont de parfaits exemples. En général, les dieux qui inspirent les zélotes sont des divinités de combat, de destruction et de violence. Tous ne sont pas mauvais, mais peu sont bons.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Divine Fury|Barbarian||Zealot|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Warrior of the Gods|Barbarian||Zealot|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Divine Fury",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du moment où vous choisissez cette voie au 3e niveau, vous pouvez canaliser la fureur divine dans vos coups d'arme. Pendant que vous êtes en furie, la première créature que vous touchez à chacun de vos tours avec une attaque d'arme subit des dégâts supplémentaires égaux à {@dice 1d6} + la moitié de votre niveau de barbare. Les dégâts supplémentaires sont nécrotiques ou radiants ; vous choisissez le type de dégâts lorsque vous obtenez cette caractéristique."
+			]
+		},
+		{
+			"name": "Warrior of the Gods",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, votre âme est marquée pour une bataille sans fin. Si un sort, tel que {@spell raise dead}, a pour seul effet de vous rendre la vie (mais pas l'immortalité), le lanceur de sorts n'a pas besoin de composants matériels pour le lancer sur vous."
+			]
+		},
+		{
+			"name": "Fanatical Focus",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, la puissance divine qui alimente votre rage peut vous protéger. Si vous échouez à un jet de sauvegarde alors que vous êtes en rage, vous pouvez le relancer, et vous devez utiliser le nouveau jet. Vous ne pouvez utiliser cette capacité qu'une fois par rage."
+			]
+		},
+		{
+			"name": "Zealous Presence",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous apprenez à canaliser la puissance divine pour inspirer le zèle aux autres. Comme action bonus, vous lancez un cri de guerre imprégné d'énergie divine. Jusqu'à dix autres créatures de votre choix dans un rayon de 60 pieds de vous qui peuvent vous entendre gagnent l'avantage sur les jets d'attaque et de sauvegarde jusqu'au début de votre prochain tour.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Rage beyond Death",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, le pouvoir divin qui alimente votre rage vous permet d'éviter les coups fatals.",
+				"Lorsque vous êtes en rage, le fait d'avoir 0 point de vie ne vous assomme pas {@condition unconscious}. Vous devez toujours effectuer des jets de sauvegarde en cas de décès, et vous subissez les effets normaux des dégâts subis lorsque vous êtes à 0 point de vie. Cependant, si vous deviez mourir en ratant vos jets de sauvegarde contre la mort, vous ne mourrez pas avant la fin de votre rage, et vous ne mourrez alors que si vous avez toujours 0 point de vie."
+			]
+		},
+		{
+			"name": "Elk",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Lorsque vous êtes en rage et que vous ne portez pas d'armure lourde, votre vitesse de marche augmente de 15 pieds. L'esprit de l'élan vous rend extraordinairement rapide."
+			]
+		},
+		{
+			"name": "Tiger",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Lorsque vous êtes en rage, vous pouvez ajouter 10 pieds à votre distance de saut en longueur et 3 pieds à votre distance de saut en hauteur. L'esprit du tigre renforce vos sauts."
+			]
+		},
+		{
+			"name": "Elk",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Que vous soyez à cheval ou à pied, votre vitesse de déplacement est doublée, tout comme celle d'un maximum de dix compagnons lorsqu'ils sont à moins de 60 pieds de vous et que vous ne l'êtes pas {@condition incapacitated}. L'esprit d'élan vous aide à voyager loin et vite."
+			]
+		},
+		{
+			"name": "Tiger",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Vous gagnez la maîtrise de deux compétences parmi la liste suivante : {@skill Athletics}, {@skill Acrobatics}, {@skill Stealth}, et {@skill Survival}. L'esprit félin affine votre instinct de survie."
+			]
+		},
+		{
+			"name": "Elk",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Pendant votre rage, vous pouvez utiliser une action bonus pendant votre déplacement pour traverser l'espace d'une créature de grande taille ou plus petite. Cette créature doit réussir un jet de sauvegarde de Force (DC 8 + votre bonus de Force + votre bonus de compétence) ou être renversée {@condition prone} et subir des dégâts de matraquage égaux à {@dice 1d12} + votre modificateur de Force."
+			]
+		},
+		{
+			"name": "Tiger",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Pendant que vous êtes en rage, si vous vous déplacez d'au moins 6 mètres en ligne droite vers une cible de taille Large ou plus petite juste avant de porter une attaque de mêlée contre elle, vous pouvez utiliser une action bonus pour porter une attaque de mêlée supplémentaire contre elle."
+			]
+		},
+		{
+			"name": "Desert",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Lorsque cet effet est activé, toutes les autres créatures dans votre aura subissent 2 dégâts de feu chacune. Les dégâts augmentent lorsque vous atteignez certains niveaux dans cette classe, passant à 3 au 5e niveau, 4 au 10e niveau, 5 au 15e niveau et 6 au 20e niveau."
+			]
+		},
+		{
+			"name": "Sea",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Lorsque cet effet est activé, vous pouvez choisir une autre créature que vous pouvez voir dans votre aura. La cible doit effectuer un jet de sauvegarde de Dextérité. La cible subit {@damage 1d6} de dégâts de foudre en cas d'échec, ou la moitié des dégâts en cas de réussite. Les dégâts augmentent lorsque vous atteignez certains niveaux dans cette classe, passant à {@dice 2d6} au 10e niveau, {@dice 3d6} au 15e niveau, et {@dice 4d6} au 20e niveau."
+			]
+		},
+		{
+			"name": "Tundra",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Lorsque cet effet est activé, chaque créature de votre choix dans votre aura gagne 2 points de vie temporaires, car les esprits glacés l'intiment à la souffrance. Les points de vie temporaires augmentent lorsque vous atteignez certains niveaux dans cette classe, passant à 3 au 5e niveau, 4 au 10e niveau, 5 au 15e niveau et 6 au 20e niveau."
+			]
+		},
+		{
+			"name": "Desert",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Vous gagnez une résistance aux dégâts de feu, et vous ne subissez pas les effets de la chaleur extrême, comme décrit dans le Guide du maître du donjon. De plus, en tant qu'action, vous pouvez toucher un objet inflammable qui n'est pas porté par quelqu'un d'autre et l'enflammer."
+			]
+		},
+		{
+			"name": "Sea",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Vous gagnez une résistance aux dégâts de foudre, et vous pouvez respirer sous l'eau. Vous gagnez également une vitesse de nage de 30 pieds."
+			]
+		},
+		{
+			"name": "Tundra",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Vous gagnez une résistance aux dégâts de froid, et vous ne subissez pas les effets du froid extrême, comme décrit dans le Guide du maître du donjon. De plus, en tant qu'action, vous pouvez toucher de l'eau et en transformer un cube de 1,5 m en glace, qui fond après 1 minute. Cette action échoue si une créature se trouve dans le cube."
+			]
+		},
+		{
+			"name": "Desert",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"entries": [
+				"Immédiatement après qu'une créature dans votre aura vous a frappé avec une attaque, vous pouvez utiliser votre réaction pour forcer cette créature à faire un jet de sauvegarde de Dextérité. En cas d'échec, la créature subit des dégâts de feu égaux à la moitié de votre niveau de barbare."
+			]
+		},
+		{
+			"name": "Sea",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"entries": [
+				"Lorsque vous touchez une créature dans votre aura avec une attaque, vous pouvez utiliser votre réaction pour forcer cette créature à effectuer un jet de sauvegarde de Force. En cas d'échec, la créature est renversée {@condition prone}, comme si elle était frappée par une vague."
+			]
+		},
+		{
+			"name": "Tundra",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"entries": [
+				"Chaque fois que l'effet de votre Aura de tempête est activé, vous pouvez choisir une créature que vous pouvez voir dans l'aura. Cette créature doit réussir un jet de sauvegarde de Force, ou sa vitesse est réduite à 0 jusqu'au début de votre prochain tour, car du givre magique la recouvre."
+			]
+		}
+	]
+}

@@ -1,0 +1,469 @@
+{
+	"spell": [
+		{
+			"name": "Distort Value",
+			"source": "AI",
+			"page": 75,
+			"level": 1,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Avez-vous besoin de soutirer quelques pièces d'or supplémentaires à un marchand alors que vous essayez de vendre cette étrange statue de pieuvre que vous avez libérée du temple du chaos ? Avez-vous besoin de minimiser la valeur de certains biens magiques lorsque le collecteur d'impôts passe par là ? Distorsion de la valeur vous couvre.",
+				"Vous lancez ce sort sur un objet d'un maximum de 30 cm de côté, doublant la valeur perçue de l'objet en y ajoutant des fioritures ou un polissage illusoires, ou réduisant de moitié sa valeur perçue à l'aide d'éraflures, de bosses et d'autres caractéristiques inesthétiques illusoires. Toute personne examinant l'objet peut en déterminer la valeur réelle en réussissant un test d'Intelligence ({@skill Investigation}) contre votre DC de sauvegarde contre les sorts."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 2e niveau ou plus, la taille maximale de l'objet augmente de 1 pied pour chaque niveau d'emplacement supérieur au 1er."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Fast Friends",
+			"source": "AI",
+			"page": 75,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Lorsque vous devez vous assurer que quelque chose est fait, vous ne pouvez pas compter sur de vagues promesses, des serments sous serment ou des contrats de travail contraignants. Lorsque vous lancez ce sort, choisissez un humanoïde à portée qui peut vous voir et vous entendre, et qui peut vous comprendre. La créature doit réussir un jet de sauvegarde de Sagesse ou devenir {@condition charmed} par vous pour la durée du sort. Tant que la créature est {@condition charmed} de cette manière, elle s'engage à effectuer tous les services ou activités que vous lui demandez de manière amicale, au mieux de ses capacités.",
+				"Vous pouvez confier de nouvelles tâches à la créature lorsqu'une tâche précédente est terminée, ou si vous décidez de mettre fin à sa tâche actuelle. Si le service ou l'activité risque de blesser la créature, ou si elle entre en conflit avec ses activités et ses désirs normaux, la créature peut effectuer un autre jet de sauvegarde de Sagesse pour tenter de mettre fin à l'effet. Cette sauvegarde est effectuée avec avantage si vous ou vos compagnons combattez la créature. Si l'activité entraîne une mort certaine pour la créature, le sort prend fin.",
+				"Lorsque le sort prend fin, la créature sait qu'elle a été {@condition charmed} par vous."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, vous pouvez cibler une créature supplémentaire pour chaque niveau d'emplacement supérieur au 3e."
+					]
+				}
+			],
+			"conditionInflict": [
+				"charmed"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"affectsCreatureType": [
+				"humanoid"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Gift of Gab",
+			"source": "AI",
+			"page": 76,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction",
+					"condition": "which you take when you speak to another creature"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"r": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Lorsque j'ai rencontré Jim Darkmagic, je me suis demandé comment il arrivait à faire quoi que ce soit dans cette tenue. J'ai appris depuis que la plupart de ses talents consistent à rester debout et à parler. Sa tenue est parfaite pour cela."
+					],
+					"by": "Môrgæn"
+				},
+				"Jim Darkmagic aurait inventé ce sort, l'appelant à l'origine {@i I said what?!} Avez-vous déjà discuté avec le monarque local et mentionné accidentellement que son fils ressemble à votre porc préféré de l'époque où vous étiez enfant dans la ferme familiale ? Nous sommes tous passés par là ! Mais plutôt que d'être décapité pour un simple lapsus, vous pouvez faire comme si rien ne s'était passé, en vous assurant que personne ne le sache.",
+				"Lorsque vous lancez ce sort, vous remodelez habilement la mémoire des auditeurs dans votre zone immédiate, de sorte que chaque créature de votre choix située à moins de 1,5 mètre de vous oublie tout ce que vous avez dit au cours des 6 dernières secondes. Ces créatures se souviennent alors que vous avez réellement prononcé les mots que vous prononcez comme composante verbale du sort."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Incite Greed",
+			"source": "AI",
+			"page": 76,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gem worth at least 50 gp",
+					"cost": 5000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Lorsque vous lancez ce sort, vous présentez la gemme utilisée comme composant matériel et choisissez un nombre quelconque de créatures à portée qui peuvent vous voir. Chaque cible doit réussir un jet de sauvegarde de Sagesse ou être {@condition charmed} par vous jusqu'à la fin du sort, ou jusqu'à ce que vous ou vos compagnons lui fassiez du mal. Pendant qu'elle est ainsi {@condition charmed}, une créature ne peut rien faire d'autre que d'utiliser son mouvement pour s'approcher de vous en toute sécurité. Tant qu'une créature affectée se trouve à moins de 1,5 mètre de vous, elle ne peut pas bouger, mais se contente de fixer avidement la gemme que vous lui présentez.",
+				"À la fin de chacun de ses tours, une cible affectée peut effectuer un jet de sauvegarde de Sagesse. Si elle réussit, cet effet prend fin pour cette cible."
+			],
+			"conditionInflict": [
+				"charmed"
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Jim's Glowing Coin",
+			"source": "AI",
+			"page": 76,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true,
+				"m": "a coin",
+				"r": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Parmi les nombreuses tactiques employées par le maître magicien et aventurier de renom Jim Darkmagic, le vieux tour de la pièce de monnaie lumineuse est un classique qui a fait ses preuves. Lorsque vous lancez le sort, vous lancez la pièce de monnaie qui est l'élément matériel du sort vers n'importe quel endroit à portée. La pièce s'illumine comme si elle était sous l'effet d'un sort de {@spell light}. Chaque créature de votre choix que vous pouvez voir dans un rayon de 30 pieds autour de la pièce doit réussir un jet de sauvegarde de Sagesse ou être distraite pour la durée du sort. Lorsqu'elle est distraite, la créature a un désavantage sur les tests de Sagesse ({@skill Perception}) et les jets d'initiative."
+			],
+			"savingThrow": [
+				"wisdom"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Jim's Magic Missile",
+			"source": "AI",
+			"page": 76,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"r": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Le missile magique de Jim est un sort ancien et puissant, et c'est aussi le nom de mon groupe à la Wizard Academy."
+					],
+					"by": "Jim Darkmagic"
+				},
+				"N'importe quel apprenti sorcier peut lancer un vieux missile magique ennuyeux. Bien sûr, il atteint toujours sa cible. C'est ennuyeux. Débarrassez-vous de l'ennui de la magie de votre grand-père avec cette version améliorée du sort, telle qu'utilisée par Jim Darkmagic !",
+				"Vous créez trois fléchettes de force magique, sifflantes, hypoallergéniques et sans gluten. Chaque fléchette cible une créature de votre choix que vous pouvez voir à portée. Faites une attaque de sort à distance pour chaque missile. En cas de succès, un missile inflige {@damage 2d4} de dégâts de force à sa cible.",
+				"Si le jet d'attaque donne un résultat critique, la cible de ce missile subit {@damage 5d4} de dégâts de force au lieu que vous fassiez un double jet de dégâts pour un résultat critique. Si le jet d'attaque de n'importe quel missile est un 1, tous les missiles manquent leur cible et vous explosent au visage, vous infligeant 1 dégât de force par missile."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 2e niveau ou plus, le sort crée une fléchette supplémentaire, et la composante redevance augmente de 1 gp, pour chaque niveau d'emplacement supérieur au 1er."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"spellAttack": [
+				"R"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Motivational Speech",
+			"source": "AI",
+			"page": 77,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"J'ai entendu une fois un discours de motivation de Jim et ça a été les pires 90 secondes de ma vie. Que voit Omin en lui, de toute façon ?"
+					],
+					"by": "Walnut Dankgrass"
+				},
+				"Vous vous adressez aux alliés, au personnel ou aux spectateurs innocents pour les exhorter et les inspirer à la grandeur, qu'ils aient ou non quelque chose à se mettre sous la dent. Choisissez jusqu'à cinq créatures à portée qui peuvent vous entendre. Pour la durée, chaque créature affectée gagne 5 points de vie temporaires et bénéficie d'un avantage aux jets de sauvegarde de Sagesse. Si une créature affectée est touchée par une attaque, elle a l'avantage sur le prochain jet d'attaque qu'elle effectue. Lorsqu'une créature affectée perd les points de vie temporaires accordés par ce sort, le sort prend fin pour cette créature."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, les points de vie temporaires augmentent de 5 pour chaque niveau d'emplacement supérieur au 3e."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"THP"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

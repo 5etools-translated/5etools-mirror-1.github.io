@@ -1,0 +1,1732 @@
+{
+	"spell": [
+		{
+			"name": "Blade of Disaster",
+			"source": "TCE",
+			"page": 106,
+			"otherSources": [
+				{
+					"source": "IDRotF",
+					"page": 318
+				}
+			],
+			"level": 9,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous créez une faille plane en forme de lame d'environ 1 mètre de long dans un espace inoccupé que vous pouvez voir à portée. La lame dure toute la durée du sort. Lorsque vous lancez ce sort, vous pouvez effectuer jusqu'à deux attaques de sort en mêlée avec la lame, chacune contre une créature, un objet meuble ou une structure dans un rayon de 1,5 mètre de la lame. En cas de succès, la cible subit {@damage 4d12} de dégâts de force. Cette attaque marque un coup critique si le nombre sur le {@dice d20} est 18 ou plus. En cas de coup critique, la lame inflige {@damage 8d12} de dégâts de force supplémentaires (pour un total de {@damage 12d12} de dégâts de force).",
+				"En tant qu'action bonus à votre tour, vous pouvez déplacer la lame jusqu'à 30 pieds dans un espace inoccupé que vous pouvez voir, puis effectuer à nouveau jusqu'à deux attaques de sort en mêlée avec elle.",
+				"La lame peut traverser sans danger n'importe quelle barrière, y compris un {@spell wall of force}."
+			],
+			"damageInflict": [
+				"force"
+			],
+			"spellAttack": [
+				"M"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Booming Blade",
+			"source": "TCE",
+			"page": 106,
+			"otherSources": [
+				{
+					"source": "SCAG",
+					"page": 142
+				}
+			],
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a melee weapon worth at least 1 sp",
+					"cost": 10
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous brandissez l'arme utilisée lors de l'incantation du sort et effectuez une attaque de mêlée avec celle-ci contre une créature située à 1,5 mètre de vous. En cas de succès, la cible subit les effets normaux de l'attaque de l'arme, puis se retrouve gainée d'une énergie grondante jusqu'au début de votre prochain tour. Si la cible se déplace volontairement de 1,5 m ou plus avant, elle subit {@damage 1d8} de dégâts de tonnerre, et le sort prend fin.",
+				"Les dégâts de ce sort augmentent lorsque vous atteignez certains niveaux. Au 5e niveau, l'attaque de mêlée inflige un {@damage 1d8} de dégâts de tonnerre supplémentaires à la cible en cas de succès, et les dégâts subis par la cible en cas de déplacement passent à {@damage 2d8}. Les deux jets de dégâts augmentent de 1d8 au 11e niveau ({@damage 2d8} et {@damage 3d8}) et à nouveau au 17e niveau ({@damage 3d8} et {@damage 4d8})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "thunder damage on moving",
+					"scaling": {
+						"1": "1d8",
+						"5": "2d8",
+						"11": "3d8",
+						"17": "4d8"
+					}
+				},
+				{
+					"label": "thunder damage on hit",
+					"scaling": {
+						"5": "1d8",
+						"11": "2d8",
+						"17": "3d8"
+					}
+				}
+			],
+			"damageInflict": [
+				"thunder"
+			],
+			"miscTags": [
+				"SCL"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Dream of the Blue Veil",
+			"source": "TCE",
+			"page": 106,
+			"level": 7,
+			"school": "C",
+			"time": [
+				{
+					"number": 10,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 20
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a magic item or a willing creature from the destination world"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 6
+					}
+				}
+			],
+			"entries": [
+				"Vous et jusqu'à huit créatures consentantes à portée de main subissez une chute de {@condition unconscious} pendant la durée du sort et avez des visions d'un autre monde sur le plan matériel, comme Oerth, Toril, Krynn ou Eberron. Si le sort atteint sa durée totale, les visions se terminent par la rencontre et le retrait d'un mystérieux rideau bleu. A la fin du sort, vous êtes mentalement et physiquement transporté dans le monde qui était dans les visions.",
+				"Pour lancer ce sort, vous devez posséder un objet magique qui a été créé dans le monde que vous souhaitez atteindre, et vous devez être conscient de l'existence de ce monde, même si vous n'en connaissez pas le nom. Votre destination dans l'autre monde est un lieu sûr situé dans un rayon de 2 km de l'endroit où l'objet magique a été créé. Vous pouvez également lancer le sort si l'une des créatures affectées est née dans l'autre monde, ce qui fait que votre destination est un lieu sûr situé à moins de 1,5 km de l'endroit où cette créature est née.",
+				"Le sort se termine prématurément sur une créature si celle-ci subit des dégâts, et la créature n'est pas transportée. Si vous subissez des dégâts, le sort se termine pour vous et toutes les autres créatures, sans qu'aucune d'entre vous ne soit transportée."
+			],
+			"conditionInflict": [
+				"unconscious"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Bard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluff": true
+		},
+		{
+			"name": "Green-Flame Blade",
+			"source": "TCE",
+			"page": 107,
+			"otherSources": [
+				{
+					"source": "SCAG",
+					"page": 143
+				}
+			],
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"s": true,
+				"m": {
+					"text": "a melee weapon worth at least 1 sp",
+					"cost": 10
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous brandissez l'arme utilisée lors de l'incantation du sort et effectuez une attaque de mêlée avec celle-ci contre une créature située à moins de 1,5 mètre de vous. En cas de succès, la cible subit les effets normaux de l'arme, et vous pouvez faire sauter du feu vert de la cible vers une autre créature de votre choix que vous pouvez voir dans un rayon de 1,5 mètre. La seconde créature subit des dégâts de feu égaux à votre modificateur de capacité de lanceur de sorts.",
+				"Les dégâts de ce sort augmentent lorsque vous atteignez certains niveaux. Au 5e niveau, l'attaque de mêlée inflige {@damage 1d8} de dégâts de feu supplémentaires à la cible en cas de succès, et les dégâts de feu infligés à la deuxième créature augmentent de {@damage 1d8} + votre modificateur de capacité de lanceur de sorts. Les deux jets de dégâts augmentent de {@damage 1d8} au 11e niveau ({@damage 2d8} et {@damage 2d8}) et au 17e niveau ({@damage 3d8} et {@damage 3d8})."
+			],
+			"scalingLevelDice": [
+				{
+					"label": "fire damage to secondary creature",
+					"scaling": {
+						"1": "{{spellcasting_mod}}",
+						"5": "1d8 + {{spellcasting_mod}}",
+						"11": "2d8 + {{spellcasting_mod}}",
+						"17": "3d8 + {{spellcasting_mod}}"
+					}
+				},
+				{
+					"label": "fire damage on hit",
+					"scaling": {
+						"5": "1d8",
+						"11": "2d8",
+						"17": "3d8"
+					}
+				}
+			],
+			"damageInflict": [
+				"fire"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST",
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Intellect Fortress",
+			"source": "TCE",
+			"page": 107,
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Pour la durée de l'opération, vous ou une créature consentante que vous pouvez voir à portée, bénéficiez d'une résistance aux dégâts psychiques, ainsi que d'un avantage aux jets de sauvegarde d'Intelligence, de Sagesse et de Charisme."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, vous pouvez cibler une créature supplémentaire pour chaque niveau d'emplacement supérieur au 3e. Les créatures doivent se trouver à moins de 10 mètres l'une de l'autre lorsque vous les ciblez."
+					]
+				}
+			],
+			"damageResist": [
+				"psychic"
+			],
+			"damageImmune": [
+				"psychic"
+			],
+			"damageVulnerable": [
+				"psychic"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Bard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Lightning Lure",
+			"source": "TCE",
+			"page": 107,
+			"otherSources": [
+				{
+					"source": "SCAG",
+					"page": 143
+				}
+			],
+			"level": 0,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous créez un fouet d'énergie foudroyante qui frappe une créature de votre choix que vous pouvez voir dans un rayon de 15 pieds autour de vous. La cible doit réussir un jet de sauvegarde de Force ou être tirée jusqu'à 10 pieds en ligne droite vers vous et subir {@damage 1d8} de dégâts de foudre si elle se trouve à moins de 5 pieds de vous.",
+				"Les dégâts de ce sort augmentent de {@dice 1d8} lorsque vous atteignez le 5e niveau ({@damage 2d8}), le 11e niveau ({@damage 3d8}) et le 17e niveau ({@damage 4d8})."
+			],
+			"scalingLevelDice": {
+				"label": "lightning damage",
+				"scaling": {
+					"1": "1d8",
+					"5": "2d8",
+					"11": "3d8",
+					"17": "4d8"
+				}
+			},
+			"damageInflict": [
+				"lightning"
+			],
+			"savingThrow": [
+				"strength"
+			],
+			"miscTags": [
+				"FMV",
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Sliver",
+			"source": "TCE",
+			"page": 108,
+			"level": 0,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous envoyez une pointe d'énergie psychique désorientante dans l'esprit d'une créature que vous pouvez voir à portée. La cible doit réussir un jet de sauvegarde d'Intelligence ou subir {@damage 1d6} de dégâts psychiques et soustraire {@dice 1d4} au prochain jet de sauvegarde qu'elle effectuera avant la fin de votre prochain tour.",
+				"Les dégâts de ce sort augmentent de {@dice 1d6} lorsque vous atteignez certains niveaux : 5e niveau ({@dice 2d6}), 11e niveau ({@dice 3d6}), et 17e niveau ({@dice 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Sorcerer",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Aberrant Mind",
+							"source": "TCE"
+						}
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Spirit Shroud",
+			"source": "TCE",
+			"page": 108,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez les esprits des morts, qui volent autour de vous pendant la durée du sort. Les esprits sont intangibles et invulnérables.",
+				"Jusqu'à la fin du sort, toute attaque que vous effectuez inflige {@damage 1d8} de dégâts supplémentaires lorsque vous touchez une créature située à moins de 3 mètres de vous. Ces dégâts sont radiants, nécrotiques ou froids (votre choix lorsque vous lancez le sort). Toute créature qui subit ces dégâts ne peut pas regagner de points de vie avant le début de votre prochain tour.",
+				"De plus, toute créature de votre choix que vous pouvez voir et qui commence son tour à moins de 3 mètres de vous voit sa vitesse réduite de 3 mètres jusqu'au début de votre prochain tour."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, les dégâts augmentent de {@scaledamage 1d8|3,5,7,9|1d8} pour chaque tranche de deux niveaux d'emplacement au-dessus du 3e."
+					]
+				}
+			],
+			"damageInflict": [
+				"radiant",
+				"necrotic",
+				"cold"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Cleric",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Aberration",
+			"source": "TCE",
+			"page": 109,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a pickled tentacle and an eyeball in a platinum-inlaid vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit aberrant. Il se manifeste dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Aberrant Spirit|TCE}. Lorsque vous lancez le sort, choisissez Beholderkin, Slaad ou Star Spawn. La créature ressemble à une aberration de ce type, ce qui détermine certains traits dans son bloc de statistiques. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Sorcerer",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Aberrant Mind",
+							"source": "TCE"
+						}
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Beast",
+			"source": "TCE",
+			"page": 109,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp",
+					"cost": 20000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit bestial. Il se manifeste dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Bestial Spirit|TCE}. Lorsque vous lancez le sort, choisissez un environnement : Air, Terre, ou Eau. La créature ressemble à un animal de votre choix originaire de l'environnement choisi, ce qui détermine certains traits dans son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Druid",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Celestial",
+			"source": "TCE",
+			"page": 110,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a golden reliquary worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit céleste. Il se manifeste sous une forme angélique dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Celestial Spirit|TCE}. Lorsque vous lancez le sort, choisissez Vengeur ou Défenseur. Votre choix détermine l'attaque de la créature dans son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 6e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Cleric",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Summon Construct",
+			"source": "TCE",
+			"page": 111,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an ornate stone and metal lockbox worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez l'esprit d'une construction. Il se manifeste dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Construct Spirit|TCE}. Lorsque vous lancez le sort, choisissez un matériau : Argile, Métal, ou Pierre. La créature ressemble à un golem ou à un modron (au choix) fait du matériau choisi, qui détermine certains traits dans son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Sorcerer",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Clockwork Soul",
+							"source": "TCE"
+						}
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Elemental",
+			"source": "TCE",
+			"page": 111,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "air, a pebble, ash, and water inside a gold-inlaid vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit élémentaire. Il se manifeste dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Elemental Spirit|TCE}. Lorsque vous lancez le sort, choisissez un élément : Air, Terre, Feu ou Eau. La créature ressemble à une forme bipède enveloppée de l'élément choisi, qui détermine certains traits dans son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Fathomless",
+							"source": "TCE"
+						}
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Druid",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fey",
+			"source": "TCE",
+			"page": 112,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded flower worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit féerique. Il se manifeste dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Fey Spirit|TCE}. Lorsque vous lancez le sort, choisissez une humeur : Fumant, Joyeux, ou Rusé. La créature ressemble à une créature féerique de votre choix marquée par l'humeur choisie, qui détermine l'un des traits de son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Druid",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fiend",
+			"source": "TCE",
+			"page": 112,
+			"level": 6,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "humanoid blood inside a ruby vial worth at least 600 gp",
+					"cost": 60000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit diabolique. Il se manifeste dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Fiendish Spirit|TCE}. Lorsque vous lancez le sort, choisissez Démon, Diable ou Yugoloth. La créature ressemble à un démon du type choisi, ce qui détermine certains traits dans son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 7e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Shadowspawn",
+			"source": "TCE",
+			"page": 113,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "tears inside a gem worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit de l'ombre. Il se manifeste dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Shadow Spirit|TCE}. Lorsque vous lancez le sort, choisissez une émotion : Fureur, Désespoir, ou Peur. La créature ressemble à un bipède difforme marqué par l'émotion choisie, qui détermine certains traits dans son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Summon Undead",
+			"source": "TCE",
+			"page": 114,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded skull worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Vous appelez un esprit mort-vivant. Il se manifeste dans un espace inoccupé que vous pouvez voir à portée. Cette forme corporelle utilise le bloc de stat {@creature Undead Spirit|TCE}. Lorsque vous lancez le sort, choisissez la forme de la créature : Fantomatique, Putride, ou Squelettique. L'esprit ressemble à une créature morte-vivante avec la forme choisie, qui détermine certains traits dans son bloc de stat. La créature disparaît lorsqu'elle tombe à 0 point de vie ou lorsque le sort prend fin.",
+				"La créature est un allié pour vous et vos compagnons. En combat, la créature partage votre compte d'initiative, mais elle prend son tour immédiatement après le vôtre. Elle obéit à vos ordres verbaux (aucune action requise de votre part). Si vous n'en donnez aucun, elle prend l'action {@action Dodge} et utilise son déplacement pour éviter le danger."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 4e niveau ou plus, utilisez le niveau le plus élevé partout où le niveau du sort apparaît dans le bloc de statistiques."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Sword Burst",
+			"source": "TCE",
+			"page": 115,
+			"otherSources": [
+				{
+					"source": "SCAG",
+					"page": 143
+				}
+			],
+			"level": 0,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "radius",
+				"distance": {
+					"type": "feet",
+					"amount": 5
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Vous créez un cercle momentané de lames spectrales qui balayent autour de vous. Toutes les autres créatures situées à moins de 1,5 m de vous doivent réussir un jet de sauvegarde de Dextérité ou subir {@damage 1d6} de dégâts de force.",
+				"Les dégâts de ce sort augmentent de {@dice 1d6} lorsque vous atteignez le 5e niveau ({@damage 2d6}), le 11e niveau ({@damage 3d6}) et le 17e niveau ({@damage 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "force damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"force"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"miscTags": [
+				"SCL"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "SCAG"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Tasha's Caustic Brew",
+			"source": "TCE",
+			"page": 115,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "line",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a bit of rotten food"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Un jet d'acide émane de vous en une ligne de 30 pieds de long et 5 pieds de large dans la direction de votre choix. Chaque créature de la ligne doit réussir un jet de sauvegarde de Dextérité ou être couverte d'acide pendant la durée du sort ou jusqu'à ce qu'une créature utilise son action pour gratter ou laver l'acide sur elle-même ou une autre créature. Une créature couverte d'acide subit {@damage 2d4} de dégâts d'acide au début de chacun de ses tours."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 2e niveau ou plus, les dégâts augmentent de {@scaledamage 2d4|1-9|2d4} pour chaque niveau d'emplacement supérieur au 1er."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				],
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		},
+		{
+			"name": "Tasha's Mind Whip",
+			"source": "TCE",
+			"page": 115,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous vous déchaînez psychiquement sur une créature que vous pouvez voir à portée. La cible doit effectuer un jet de sauvegarde d'Intelligence. En cas d'échec, la cible subit {@damage 3d6} de dégâts psychiques, et elle ne peut pas faire de réaction avant la fin de son prochain tour. De plus, à son prochain tour, elle doit choisir si elle obtient un déplacement, une action ou une action bonus ; elle n'obtient qu'une seule des trois. En cas de sauvegarde réussie, la cible subit deux fois moins de dégâts et ne subit aucun des autres effets du sort."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, vous pouvez cibler une créature supplémentaire pour chaque niveau d'emplacement supérieur au 2e. Les créatures doivent se trouver à moins de 10 mètres l'une de l'autre lorsque vous les ciblez."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Tasha's Otherworldly Guise",
+			"source": "TCE",
+			"page": 116,
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an object engraved with a symbol of the Outer Planes, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"En prononçant une incantation, vous faites appel à la magie des plans inférieurs ou supérieurs (à votre choix) pour vous transformer. Vous bénéficiez des avantages suivants jusqu'à la fin du sort :",
+				{
+					"type": "list",
+					"items": [
+						"Vous êtes immunisé contre les dégâts de feu et de poison (plans inférieurs) ou les dégâts radiants et nécrotiques (plans supérieurs).",
+						"Vous êtes immunisé contre la condition {@condition poisoned} (plans inférieurs) ou la condition {@condition charmed} (plans supérieurs).",
+						"Des ailes spectrales apparaissent sur votre dos, vous donnant une vitesse de vol de 40 pieds.",
+						"Vous avez un bonus de +2 à la CA.",
+						"Toutes vos attaques d'armes sont magiques, et lorsque vous effectuez une attaque d'arme, vous pouvez utiliser votre modificateur de capacité de lanceur de sorts, au lieu de la Force ou de la Dextérité, pour les jets d'attaque et de dégâts.",
+						"Vous pouvez attaquer deux fois, au lieu d'une, lorsque vous effectuez l'action {@action Attack} à votre tour. Vous ignorez cet avantage si vous avez déjà une caractéristique, comme Attaque supplémentaire, qui vous permet d'attaquer plus d'une fois lorsque vous effectuez l'action Attaque à votre tour."
+					]
+				}
+			],
+			"damageImmune": [
+				"fire",
+				"poison",
+				"radiant",
+				"necrotic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"poisoned"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"classes": {
+				"fromClassListVariant": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB",
+						"definedInSource": "TCE"
+					}
+				]
+			}
+		}
+	]
+}

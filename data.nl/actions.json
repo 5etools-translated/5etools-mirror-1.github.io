@@ -1,0 +1,581 @@
+{
+	"action": [
+		{
+			"name": "Activate an Item",
+			"source": "DMG",
+			"page": 141,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Om sommige magische voorwerpen te activeren moet de gebruiker iets speciaals doen, zoals het voorwerp vasthouden en een commando uitspreken, het voorwerp lezen als het een boekrol is, of het drinken als het een toverdrank is. De beschrijving van elke categorie voorwerpen of van elk afzonderlijk voorwerp beschrijft hoe een voorwerp wordt geactiveerd. Bepaalde voorwerpen gebruiken een of meer van de volgende regels voor hun activering.",
+				"Als een item een actie vereist om te activeren, is die actie geen functie van de {@action Use an Object} actie, dus een eigenschap zoals de {@subclassFeature Fast Hands|Rogue||Thief||3} van de Rogue kan niet gebruikt worden om het item te activeren.",
+				{
+					"type": "entries",
+					"name": "Command Word",
+					"entries": [
+						"Een commandowoord is een woord of zin die hoorbaar moet worden uitgesproken om het voorwerp te laten werken. Een magisch voorwerp waarvoor de gebruiker een commandowoord moet uitspreken, kan niet worden geactiveerd in het gebied van een effect dat geluid verhindert, zoals het gebied dat door de stilte-spreuk wordt gecreëerd."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Consumables",
+					"entries": [
+						"Sommige voorwerpen worden opgebruikt wanneer ze worden geactiveerd. Een toverdrank of elixer moet worden ingeslikt, of een olie moet op het lichaam worden aangebracht. Het schrift verdwijnt uit een boekrol wanneer deze wordt gelezen. Een verbruiksartikel verliest na gebruik zijn magie en functioneert niet meer."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells",
+					"entries": [
+						"Sommige magische voorwerpen staan de gebruiker toe een spreuk uit te spreken met het voorwerp, vaak door er ladingen aan te besteden. De spreuk wordt uitgesproken met het laagst mogelijke spell en caster level, verbruikt geen spell slots van de gebruiker, en vereist geen componenten tenzij de beschrijving van het voorwerp anders zegt. De spreuk gebruikt de normale tijd, het bereik en de duur van de spreuk, en de gebruiker van het voorwerp moet zich concentreren als de spreuk concentratie vereist. Sommige voorwerpen maken uitzonderingen op deze regels en veranderen de uitwerptijd, duur of andere onderdelen van een spreuk.",
+						"Veel voorwerpen, zoals toverdranken, omzeilen het uitspreken van de spreuk en verlenen de effecten van de spreuk. Zo'n voorwerp gebruikt nog steeds de duur van de spreuk, tenzij in de beschrijving van het voorwerp anders staat.",
+						"Een magisch voorwerp, zoals bepaalde stafen, kan je verplichten je eigen tovervaardigheid te gebruiken als je een spreuk met het voorwerp uitspreekt. Als je meer dan één bezweringsvaardigheid hebt, kies je welke je met het voorwerp gebruikt. Als je geen spellcasting ability hebt - misschien ben je een rogue met de Use Magic Device eigenschap - dan is je spellcasting ability modifier +0 voor het voorwerp, en je proficiency bonus is wel van toepassing."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Charges",
+					"entries": [
+						"Sommige magische voorwerpen hebben ladingen die je gebruikt om de eigenschappen ervan te activeren. Het aantal ladingen dat een voorwerp nog heeft, wordt getoond wanneer een identificatiespreuk over het voorwerp wordt uitgesproken, of wanneer een wezen zich op het voorwerp afstemt. Bovendien, als een voorwerp weer is opgeladen, krijgt het wezen dat op dat voorwerp is afgestemd te horen hoeveel lading het heeft teruggekregen."
+					]
+				}
+			]
+		},
+		{
+			"name": "Attack",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"De meest voorkomende actie in een gevecht is de aanvalsactie, of je nu met een zwaard zwaait, een pijl afschiet met een boog, of met je vuisten vecht.",
+				"Met deze actie, doe je één melee of ranged aanval. Zie het \"{@book Making an Attack|phb|9|making an attack}\" gedeelte voor de regels die gelden voor aanvallen.",
+				"Bepaalde eigenschappen, zoals de Extra Aanval eigenschap van de vechter, staan je toe om meer dan één aanval te doen met deze actie."
+			],
+			"seeAlsoAction": [
+				"Disarm|DMG",
+				"Grapple",
+				"Mark|DMG",
+				"Shove",
+				"Shove Aside|DMG",
+				"Two-Weapon Fighting"
+			]
+		},
+		{
+			"name": "Cast a Spell",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				"Varies"
+			],
+			"entries": [
+				"Spreukenkunstenaars zoals tovenaars en geestelijken, maar ook veel monsters, hebben toegang tot spreuken en kunnen die in gevechten met groot effect gebruiken. Elke spreuk heeft een uitwerptijd, die bepaalt of de caster een actie, een reactie, minuten of zelfs uren moet gebruiken om de spreuk uit te spreken. Het uitspreken van een spreuk is dus niet noodzakelijkerwijs een actie. De meeste spreuken hebben een castingtijd van 1 actie, dus een spellcaster gebruikt vaak zijn of haar actie in een gevecht om zo'n spreuk te casten. Zie {@book chapter 10|phb|10|casting a spell} voor de regels over toverspreuken."
+			]
+		},
+		{
+			"name": "Climb onto a Bigger Creature",
+			"source": "DMG",
+			"page": 271,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Als een schepsel op een ander schepsel wil springen, kan het dit doen met {@action grapple||grappling}. Een klein of middelgroot wezen heeft echter weinig kans om een worp tegen een reusachtig of reusachtig wezen te doen slagen, tenzij magie de grijper bovennatuurlijke kracht heeft gegeven.",
+				"Als alternatief kan een voldoende grote tegenstander als terrein worden behandeld om op zijn rug te springen of zich aan een ledemaat vast te klampen. Na het maken van alle ability checks die nodig zijn om in positie en op het grotere wezen te komen, gebruikt het kleinere wezen zijn actie om een Strength ({@skill Athletics}) of Dexterity ({@skill Acrobatics}) check te maken die wordt betwist door de Dexterity ({@skill Acrobatics}) check van het doelwit. Als het de wedstrijd wint, beweegt het kleinere wezen succesvol naar de ruimte van het doelwezen, beweegt het kleinere wezen met het doelwit mee en heeft het voordeel op aanvalsrollen tegen het doelwit.",
+				"Het kleinere wezen kan zich verplaatsen binnen de ruimte van het grotere wezen, waarbij de ruimte wordt behandeld als {@quickref difficult terrain||3}. De mogelijkheid van het grotere wezen om het kleinere wezen aan te vallen hangt af van de locatie van het kleinere wezen, en wordt overgelaten aan je eigen oordeel. Het grotere wezen kan het kleinere wezen als actie verjagen - door het van zich af te slaan, tegen een muur te schrapen of door het te grijpen en te gooien - door een Strength ({@skill Athletics}) check te doen die wordt betwist door de Strength ({@skill Athletics}) of Dexterity ({@skill Acrobatics}) check van het kleinere wezen. Het kleinere wezen kiest welke vaardigheid het gebruikt."
+			]
+		},
+		{
+			"name": "Dash",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Als je de actie Dash doet, krijg je extra beweging voor de huidige beurt. De toename is gelijk aan je snelheid, na toepassing van eventuele modifiers. Met een snelheid van 30 voet, bijvoorbeeld, kun je je in je beurt tot 60 voet verplaatsen als je sprint.",
+				"Elke verhoging of verlaging van je snelheid verandert deze extra beweging met dezelfde hoeveelheid. Als uw snelheid van 30 voet bijvoorbeeld wordt verminderd tot 15 voet, kunt u deze beurt tot 30 voet bewegen als u sprint."
+			]
+		},
+		{
+			"name": "Disarm",
+			"source": "DMG",
+			"page": 271,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Een wezen kan een wapenaanval gebruiken om een wapen of een ander voorwerp uit de greep van het doelwit te slaan. De aanvaller doet een aanvalsrol die wordt betwist door de Strength ({@skill Athletics}) check of Dexterity ({@skill Acrobatics}) check van het doelwit. Als de aanvaller de wedstrijd wint, veroorzaakt de aanval geen schade of ander schadelijk effect, maar de verdediger laat het voorwerp vallen.",
+				"De aanvaller heeft nadeel op zijn aanvalsrol als het doelwit het voorwerp met twee of meer handen vasthoudt. Het doelwit heeft voordeel bij zijn ability check als het groter is dan het aanvallende wezen, of nadeel als het kleiner is."
+			],
+			"seeAlsoAction": [
+				"Attack"
+			]
+		},
+		{
+			"name": "Disengage",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Als je de actie Uitschakelen uitvoert, lokt je beweging geen gelegenheidsaanvallen meer uit voor de rest van de beurt."
+			]
+		},
+		{
+			"name": "Dodge",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Als je de actie Ontwijken doet, richt je je volledig op het ontwijken van aanvallen. Tot het begin van je volgende beurt heeft elke aanvalsrol die tegen je gedaan wordt nadeel als je de aanvaller kan zien, en je maakt Dexterity saving throws met voordeel. Je verliest dit voordeel als je niet meer in staat bent (zoals uitgelegd in de appendix) of als je snelheid tot 0 daalt."
+			]
+		},
+		{
+			"name": "Don or Doff a Shield",
+			"source": "PHB",
+			"page": 146,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"De tijd die nodig is om een pantser aan- of uit te trekken {@table Getting Into and Out of Armor; Donning and Doffing Armor|phb|depends on the armor's category}. Een {@item shield|phb} kan worden aan- of uitgetrokken als een actie."
+			]
+		},
+		{
+			"name": "End Concentration",
+			"source": "PHB",
+			"page": 203,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				"Free"
+			],
+			"entries": [
+				"Als een spreuk met concentratie moet worden onderhouden, staat dat in de vermelding Duur, en de spreuk geeft aan hoe lang je je erop kunt concentreren. Je kunt de concentratie op elk moment beëindigen (geen actie vereist)."
+			]
+		},
+		{
+			"name": "Escape a Grapple",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Een {@condition grappled} wezen kan zijn actie gebruiken om te ontsnappen. Om dit te doen, moet het slagen in een Strength ({@skill Athletics}) of Dexterity ({@skill Acrobatics}) check die wordt betwist door uw Strength ({@skill Athletics}) check."
+			],
+			"seeAlsoAction": [
+				"Grapple"
+			]
+		},
+		{
+			"name": "Grapple",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Als je een wezen wilt grijpen of ermee wilt worstelen, kun je de {@action Attack} actie gebruiken om een speciale melee aanval te doen, een grapple. Als je meerdere aanvallen kunt doen met de {@action Attack} actie, vervangt deze aanval een van hen. Het doelwit van je houdgreep mag niet groter zijn dan één maat en moet binnen je bereik zijn.",
+				"Met ten minste één vrije hand probeer je het doelwit te grijpen door een grapple check te doen, een Strength ({@skill Athletics}) check die wordt betwist door de Strength ({@skill Athletics}) of Dexterity ({@skill Acrobatics}) check van het doelwit (het doelwit kiest de te gebruiken vaardigheid). Je slaagt automatisch als het doelwit {@condition incapacitated} is. Als je slaagt, onderwerp je het doelwit aan de {@condition grappled} voorwaarde (zie de appendix). De conditie specificeert de dingen die het beëindigen, en je kunt het doelwit vrijlaten wanneer je maar wilt (geen actie vereist).",
+				{
+					"type": "entries",
+					"name": "Moving a Grappled Target",
+					"entries": [
+						"Als je beweegt, kun je het {@condition grappled} wezen met je meeslepen of dragen, maar je snelheid wordt gehalveerd, tenzij het wezen twee of meer maten kleiner is dan jij."
+					]
+				}
+			],
+			"seeAlsoAction": [
+				"Escape a Grapple"
+			]
+		},
+		{
+			"name": "Healing Surge",
+			"source": "DMG",
+			"page": 266,
+			"fromVariant": "Healing",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Als actie kan een personage een genezingsgolf gebruiken en tot de helft van zijn of haar Hit Dice uitgeven. Voor elke Hit Dice die op deze manier wordt uitgegeven, gooit de speler de dobbelsteen en telt de Constitution modifier van het karakter erbij op. Het personage krijgt evenveel hit points terug als het totaal. De speler kan besluiten om na elke worp een extra Hit-Die uit te geven.",
+				"Een personage dat een genezingsstoot gebruikt kan dit niet meer doen tot hij of zij een korte of lange rustperiode beëindigd heeft. Volgens deze optionele regel krijgt een personage aan het einde van een lange rust alle verbruikte Hit Dice terug. Bij een korte rust krijgt een personage een aantal Hit Dice terug dat gelijk is aan zijn of haar level gedeeld door vier (minimaal één dobbelsteen)."
+			]
+		},
+		{
+			"name": "Help",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Je kunt een ander wezen helpen bij het volbrengen van een taak. Wanneer je de actie Help uitvoert, krijgt het wezen dat je helpt voordeel bij de volgende vaardigheidscontrole die het maakt om de taak uit te voeren waarmee je helpt, op voorwaarde dat het de controle uitvoert voor het begin van je volgende beurt.",
+				"Je kunt ook een bevriend wezen helpen bij een aanval op een wezen binnen 2 meter van jou. Je maakt een schijnbeweging, leidt het doelwit af, of werkt op een andere manier samen om de aanval van je bondgenoot effectiever te maken. Als je bondgenoot het doelwit aanvalt voor je volgende beurt, wordt de eerste aanvalsrol met voordeel gedaan."
+			]
+		},
+		{
+			"name": "Hide",
+			"source": "PHB",
+			"page": 192,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Wanneer je de actie Verstoppen uitvoert, doe je een Dexterity ({@skill Stealth}) check in een poging je te verstoppen, volgens de regels in {@book chapter 7 |phb|7|hiding} voor verstoppen. Als je slaagt, krijg je bepaalde voordelen, zoals beschreven in de \"{@book Unseen Attackers and Targets|PHB|9|unseen attackers and targets}\" sectie in het Player's Handbook."
+			]
+		},
+		{
+			"name": "Identify a Spell",
+			"source": "XGE",
+			"page": 85,
+			"fromVariant": "Spellcasting|XGE",
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				},
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Soms wil een personage een spreuk identificeren die iemand anders aan het uitspreken is of die al is uitgesproken. Om dit te doen, kan een personage zijn reactie gebruiken om een spreuk te identificeren terwijl deze wordt uitgesproken, of hij kan een actie gebruiken tijdens zijn beurt om een spreuk te identificeren aan de hand van het effect nadat deze is uitgesproken.",
+				"Als het personage de casting, het effect van de spreuk, of beide heeft waargenomen, kan het personage een Intelligence ({@skill Arcana}) check doen bij de reactie of actie. De DC is gelijk aan 15 + het niveau van de spreuk. Als de spreuk is uitgesproken als een klassenspreuk en het personage is lid van die klasse, dan wordt de check met voordeel gedaan. Bijvoorbeeld, als de spellcaster een spell cast als een cleric, heeft een andere cleric voordeel bij de check om de spell te identificeren. Sommige spreuken zijn niet geassocieerd met een klasse wanneer ze worden uitgesproken, zoals wanneer een monster zijn Innate Spellcasting eigenschap gebruikt.",
+				"Deze Intelligence ({@skill Arcana}) check geeft aan dat het identificeren van een spreuk een snelle geest vereist en bekendheid met de theorie en praktijk van het gieten. Dit geldt zelfs voor een personage met Wisdom of Charisma als vaardigheid om spreuken uit te spreken. Het kunnen uitspreken van spreuken op zich maakt je nog niet bedreven in het afleiden wat anderen precies doen wanneer ze hun spreuken uitspreken."
+			]
+		},
+		{
+			"name": "Improvising an Action",
+			"source": "PHB",
+			"page": 193,
+			"basicRules": true,
+			"time": [
+				"Varies"
+			],
+			"entries": [
+				"Je karakter kan dingen doen die niet onder de acties in dit hoofdstuk vallen, zoals deuren openbreken, vijanden intimideren, zwakke punten in magische afweer voelen, of een onderhandeling met een vijand aanvragen. De enige grenzen aan de acties die je kunt proberen zijn je verbeelding en de vaardigheidsscores van je personage. Zie de beschrijvingen van de vaardigheidsscores in {@book chapter 7|phb|7|Ability Scores and Modifiers} voor inspiratie terwijl je improviseert.",
+				"Wanneer je een actie beschrijft die niet elders in de regels beschreven staat, vertelt de DM je of die actie mogelijk is en wat voor soort worp je moet doen, indien van toepassing, om succes of falen te bepalen."
+			]
+		},
+		{
+			"name": "Mark",
+			"source": "DMG",
+			"page": 271,
+			"fromVariant": "Action Options",
+			"entries": [
+				"Deze optie maakt het gemakkelijker voor mêlee strijders om elkaar te treiteren met gelegenheidsaanvallen.",
+				"Wanneer een wezen een mêlee-aanval uitvoert, kan het ook zijn doelwit markeren. Tot het einde van de volgende beurt van de aanvaller heeft elke gelegenheidsaanval die hij tegen het gemarkeerde doelwit uitvoert voordeel. De gelegenheidsaanval kost de aanvaller geen reactie, maar de aanvaller kan de aanval niet uitvoeren als iets, zoals de {@condition incapacitated} conditie of de {@spell shocking grasp} spreuk, hem verhindert om reacties uit te voeren. De aanvaller is beperkt tot één gelegenheidsaanval per beurt."
+			],
+			"seeAlsoAction": [
+				"Attack"
+			]
+		},
+		{
+			"name": "Opportunity Attack",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "reaction"
+				}
+			],
+			"entries": [
+				"In een gevecht is iedereen voortdurend op zoek naar vijanden die hun verdediging laten vallen. Je kunt je zelden achteloos langs je vijanden bewegen zonder jezelf in gevaar te brengen; als je dat doet, lok je een gelegenheidsaanval uit.",
+				"Je kunt een gelegenheidsaanval doen wanneer een vijandig wezen dat je kunt zien buiten je bereik beweegt. Om de gelegenheidsaanval uit te voeren, gebruik je je reactie om één aanval uit te voeren tegen het uitlokkende wezen. De aanval onderbreekt de beweging van het provocerende wezen en vindt plaats vlak voordat het wezen je bereik verlaat.",
+				"Je kunt voorkomen dat je een gelegenheidsaanval uitlokt door de actie {@action Disengage} uit te voeren. Je lokt ook geen gelegenheidsaanval uit als je teleporteert of als iemand of iets je verplaatst zonder je beweging, actie of reactie te gebruiken. Je lokt bijvoorbeeld geen gelegenheidsaanval uit als je door een explosie buiten het bereik van een vijand wordt geslingerd of als je door de zwaartekracht langs een vijand valt."
+			]
+		},
+		{
+			"name": "Other Activity",
+			"source": "PHB",
+			"page": 190,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				"Varies"
+			],
+			"entries": [
+				"Je beurt kan een verscheidenheid aan versieringen bevatten die noch je actie noch je zet vereisen.",
+				"U kunt communiceren zoals u kunt, met korte uitspraken en gebaren, wanneer u aan de beurt bent.",
+				"Je kunt ook gratis interactie hebben met een voorwerp of een kenmerk van de omgeving, tijdens je zet of je actie. Je kunt bijvoorbeeld een deur openen tijdens je beweging als je naar een vijand toe loopt, of je kunt je wapen trekken als onderdeel van dezelfde actie die je gebruikt om aan te vallen.",
+				"Als je met een tweede voorwerp wilt werken, moet je je actie gebruiken. Sommige magische voorwerpen en andere speciale voorwerpen vereisen altijd een actie om te gebruiken, zoals in hun beschrijvingen staat.",
+				"De DM zou kunnen eisen dat je een actie gebruikt voor een van deze activiteiten wanneer het speciale zorg nodig heeft of wanneer het een ongewoon obstakel vormt. De DM zou bijvoorbeeld redelijkerwijs kunnen verwachten dat je een actie gebruikt om een vastzittende deur te openen of een zwengel te draaien om een ophaalbrug te laten zakken.",
+				{
+					"type": "inset",
+					"name": "Interacting with Objects Around You",
+					"entries": [
+						"Hier zijn een paar voorbeelden van het soort dingen die je kunt doen in combinatie met je beweging en actie:",
+						{
+							"type": "list",
+							"items": [
+								"een zwaard trekken of schuiven",
+								"een deur openen of sluiten",
+								"een drankje uit je rugzak halen",
+								"een gevallen bijl oprapen",
+								"een kerstbal van een tafel pakken",
+								"een ring van je vinger te halen",
+								"stop wat eten in je mond",
+								"plant een spandoek in de grond",
+								"een paar munten uit je riemzak vissen",
+								"drink al het bier in een kruik",
+								"een hendel of een schakelaar overhalen",
+								"een fakkel uit een fitting trekken",
+								"pak een boek van een plank waar je bij kunt",
+								"een klein vlammetje doven",
+								"zet een masker op",
+								"trek de kap van je mantel omhoog en over je hoofd",
+								"leg je oor tegen een deur",
+								"schop tegen een kleine steen",
+								"draai een sleutel in een slot",
+								"tik op de vloer met een 10-voet paal",
+								"een voorwerp aan een ander personage geven"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Overrun",
+			"source": "DMG",
+			"page": 272,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				},
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"entries": [
+				"Wanneer een wezen door de ruimte van een vijandig wezen probeert te bewegen, kan de beweger proberen zich een weg te banen door het vijandige wezen te overmeesteren. Als actie of bonusactie doet de beweger een Strength ({@skill Athletics}) check die wordt betwist door de Strength ({@skill Athletics}) check van het vijandige wezen. Het wezen dat de overrompeling probeert uit te voeren heeft voordeel bij deze controle als het groter is dan het vijandige wezen, of nadeel als het kleiner is. Als de beweger de wedstrijd wint, mag hij deze beurt één keer door de ruimte van het vijandige wezen bewegen."
+			],
+			"seeAlsoAction": [
+				"Tumble|DMG"
+			]
+		},
+		{
+			"name": "Ready",
+			"source": "PHB",
+			"page": 193,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Soms wil je een vijand voor zijn of wachten op een bepaalde omstandigheid voordat je handelt. Om dat te doen, kun je de actie Klaar in je beurt doen, waarmee je met je reactie kunt handelen voordat je volgende beurt begint.",
+				"Eerst beslist u welke waarneembare omstandigheid uw reactie zal uitlokken. Dan kies je de actie die je zal ondernemen in antwoord op die trigger, of je kiest ervoor om je snelheid op te voeren in antwoord op die trigger. Voorbeelden zijn \"Als de sekteloper op het valluik stapt, trek ik aan de hendel die het luik opent,\" en \"Als de kobold naast me komt staan, ga ik weg.\"",
+				"Wanneer de trigger optreedt, kun je je reactie direct na afloop van de trigger uitvoeren of de trigger negeren. Onthoud dat je maar één reactie per ronde kunt doen.",
+				"Als je een spreuk klaarzet, doe je dat op de normale manier, maar je houdt de energie vast, die je met je reactie vrijgeeft als de trigger optreedt. Om klaar te staan moet een spreuk een casting tijd van 1 actie hebben, en het vasthouden van de magie van de spreuk vereist concentratie (uitgelegd in {@book chapter 10|phb|10|concentration}). Als je concentratie verbroken wordt, verdwijnt de spreuk zonder effect. Bijvoorbeeld, als je geconcentreerd bent op de webspreuk en magische raket klaar hebt, eindigt je webspreuk, en als je schade oploopt voordat je magische raket loslaat met je reactie, kan je concentratie verbroken worden.",
+				"Je hebt tot het begin van je volgende beurt om een klaarstaande actie te gebruiken."
+			]
+		},
+		{
+			"name": "Search",
+			"source": "PHB",
+			"page": 193,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Wanneer je de actie Zoeken uitvoert, besteed je je aandacht aan het vinden van iets. Afhankelijk van de aard van je zoektocht, kan de DM je een Wijsheid ({@skill Perception}) of een Intelligentie ({@skill Investigation}) check laten doen."
+			]
+		},
+		{
+			"name": "Shove",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Met de actie {@action Attack} kun je een speciale meeloopaanval doen om een wezen te duwen, hetzij om het te slaan {@condition prone}, hetzij om het van je af te duwen. Als je meerdere aanvallen kunt doen met de {@action Attack} actie, vervangt deze aanval een van hen.",
+				"Het doelwit van je duw mag niet groter zijn dan een maat groter dan jij, en moet binnen je bereik zijn. Je doet een Strength ({@skill Athletics}) check die wordt betwist door de Strength ({@skill Athletics}) of Dexterity ({@skill Acrobatics}) check van het doelwit (het doelwit kiest de te gebruiken vaardigheid). Je slaagt automatisch als het doelwit {@condition incapacitated} is. Als je slaagt, sla je het doelwit {@condition prone} of duw je het 5 voet van je vandaan."
+			],
+			"seeAlsoAction": [
+				"Attack",
+				"Shove Aside|DMG"
+			]
+		},
+		{
+			"name": "Shove Aside",
+			"source": "DMG",
+			"page": 272,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Met deze optie gebruikt een schepsel de speciale {@action shove} aanval van de {@book Player's Handbook|9|Shoving a Creature} om een doelwit opzij te dwingen, in plaats van weg. De aanvaller heeft nadeel bij zijn Strength ({@skill Athletics}) check wanneer hij dit doet. Als die check slaagt, verplaatst de aanvaller het doelwit 5 voet naar een andere ruimte binnen zijn bereik."
+			]
+		},
+		{
+			"name": "Tumble",
+			"source": "DMG",
+			"page": 272,
+			"fromVariant": "Action Options",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				},
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"entries": [
+				"Een wezen kan proberen om door de ruimte van een vijandig wezen te tuimelen, door te bukken en langs de tegenstander te weven. Als actie of bonusactie doet de tuimelaar een Dexterity ({@skill Acrobatics}) check die wordt betwist door de Dexterity ({@skill Acrobatics}) check van het vijandige wezen. Als de tuimelaar de wedstrijd wint, mag hij deze beurt één keer door de ruimte van het vijandige wezen bewegen."
+			],
+			"seeAlsoAction": [
+				"Overrun|DMG"
+			]
+		},
+		{
+			"name": "Two-Weapon Fighting",
+			"source": "PHB",
+			"page": 195,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"entries": [
+				"Wanneer je de actie {@action Attack} uitvoert en aanvalt met een licht strijdwapen dat je in de ene hand houdt, kun je een bonusactie gebruiken om aan te vallen met een ander licht strijdwapen dat je in de andere hand houdt. Je voegt je vermogensmodificator niet toe aan de schade van de bonusaanval, tenzij die modificator negatief is.",
+				"Als een van beide wapens de eigenschap \"geworpen\" heeft, kunt u het wapen werpen, in plaats van er een mêlee-aanval mee uit te voeren."
+			],
+			"seeAlsoAction": [
+				"Attack"
+			]
+		},
+		{
+			"name": "Use an Object",
+			"source": "PHB",
+			"page": 193,
+			"srd": true,
+			"basicRules": true,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Normaal gesproken heb je interactie met een voorwerp terwijl je iets anders doet, zoals wanneer je een zwaard trekt als onderdeel van een aanval. Wanneer een voorwerp je actie vereist voor het gebruik ervan, neem je de actie Gebruik een voorwerp. Deze actie is ook nuttig wanneer je in je beurt met meer dan één voorwerp wilt werken."
+			]
+		},
+		{
+			"name": "Waking Someone",
+			"source": "XGE",
+			"page": 77,
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"entries": [
+				"Een wezen dat van nature slaapt, in tegenstelling tot een wezen dat in een magische of chemische slaap is, wordt wakker als het schade oploopt of als iemand anders een actie gebruikt om het wezen wakker te schudden of te slaan. Een plotseling hard geluid - zoals geschreeuw, onweer of een rinkelende klok - wekt ook iemand die van nature slaapt.",
+				"Fluisteringen verstoren de slaap niet, tenzij de passieve Wijsheid ({@skill Perception}) score van een slaper 20 of hoger is en de fluisteringen zich binnen 10 meter van de slaper bevinden. Spraak op een normaal volume wekt een slaper als de omgeving verder stil is (geen wind, vogelgezang, krekels, straatgeluiden en dergelijke) en de slaper een passieve Wijsheid ({@skill Perception})-score van 15 of hoger heeft."
+			]
+		}
+	]
+}

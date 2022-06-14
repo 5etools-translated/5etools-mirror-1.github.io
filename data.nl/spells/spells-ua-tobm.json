@@ -1,0 +1,311 @@
+{
+	"spell": [
+		{
+			"name": "Conjure Barlgura (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10,
+						"upTo": true
+					}
+				}
+			],
+			"entries": [
+				"Je roept een {@creature barlgura} op die verschijnt in een onbezette ruimte die je binnen bereik kunt zien. De {@creature barlgura} verdwijnt wanneer deze tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"De {@creature barlgura} is vijandig tegen alle niet-demonen. Rol het initiatief voor de {@creature barlgura}, die zijn eigen beurt heeft. Aan het begin van zijn beurt beweegt hij zich naar de dichtstbijzijnde niet-demon die hij kan waarnemen en valt deze aan. Als er twee of meer wezens even dichtbij zijn, kiest hij er willekeurig een uit. Als hij geen potentiële vijanden kan zien, beweegt de {@creature barlgura} zich in een willekeurige richting op zoek naar vijanden.",
+				"Als onderdeel van het uitspreken van de spreuk kun je een cirkel op de grond tekenen met het bloed van een intelligente mensachtige die in de afgelopen 24 uur is gedood. De cirkel is groot genoeg om je ruimte te omvatten. De opgeroepene {@creature barlgura} kan de cirkel niet doorkruisen en kan zich niet op iemand in de cirkel richten zolang de spreuk duurt."
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Hezrou (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 7,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "food worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een {@creature hezrou} op die verschijnt in een onbezette ruimte die je binnen bereik kunt zien. De {@creature hezrou} verdwijnt wanneer deze tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"De houding van de {@creature hezrou} hangt af van de waarde van het voedsel dat als materiaalcomponent voor deze spreuk is gebruikt. Rol het initiatief voor de {@creature hezrou}, die zijn eigen beurt heeft. Aan het begin van de beurt van de {@creature hezrou} doet de DM een geheime Charisma-check in jouw naam, met een bonus gelijk aan de waarde van het voedsel gedeeld door 20. De DC van de check begint bij 10 en neemt elke ronde met 2 toe. Je kan bevelen geven aan de {@creature hezrou} en hem laten gehoorzamen zolang je slaagt voor de Charisma-check.",
+				"Als de test mislukt, vereist de spreuk niet langer concentratie en is de demon niet langer onder jouw controle. De {@creature hezrou} richt zich dan op het verslinden van alle lijken die hij kan zien. Als er geen lijken in de buurt zijn, valt hij de dichtstbijzijnde wezens aan en eet alles wat hij doodt. Als zijn hitpoints zijn gereduceerd tot minder dan de helft van zijn maximale hitpoints, keert hij terug naar de Abyss.",
+				"Als onderdeel van het uitspreken van de spreuk kun je een cirkel op de grond tekenen met het bloed van een intelligente mensachtige die in de afgelopen 24 uur is gedood. De cirkel is groot genoeg om je ruimte te omvatten. De opgeroepene {@creature hezrou} kan de cirkel niet doorkruisen en kan zich niet op iemand in de cirkel richten zolang de spreuk duurt."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Lesser Demon (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 2,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a vial of blood from an intelligent humanoid killed within the past 24 hours"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept tot een totaal van acht {@creature manes} of {@creature dretch||dretches} op die verschijnen in onbezette ruimtes die je binnen bereik kunt zien. Een {@creature manes} of {@creature dretch} verdwijnt wanneer deze tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"De demonen zijn vijandig tegenover alle wezens. Rol het initiatief voor de opgeroepen demonen als groep, die hun eigen beurten hebben. De demonen vallen de dichtstbijzijnde niet-demonen aan naar hun beste vermogen.",
+				"Als onderdeel van het uitspreken van de spreuk kun je een cirkel op de grond tekenen met het bloed dat als materiaal is gebruikt. De cirkel is groot genoeg om je ruimte te omvatten. De opgeroepen demonen kunnen de cirkel niet doorkruisen en kunnen zich niet op iemand in de cirkel richten zolang de spreuk duurt. Door de materiële component op deze manier te gebruiken, wordt deze verbruikt."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van het 6e of 7e niveau, roep je zestien demonen op. Als je deze spreuk uitspreekt met een spreuk van het 8e of 9e niveau, roep je tweeëndertig demonen op."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Shadow Demon (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 3,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a vial of blood from an intelligent humanoid killed within the past 24 hours"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een {@creature shadow demon} op die verschijnt in een onbezette ruimte die je binnen bereik kunt zien. De {@creature shadow demon} verdwijnt wanneer deze tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"Rol het initiatief voor de {@creature shadow demon}, die zijn eigen beurten heeft. Je kunt bevelen geven aan de {@creature shadow demon}, en hij gehoorzaamt je zolang hij in elk van zijn beurten een wezen kan aanvallen en zijn beurt niet begint in een gebied met fel licht. Als aan een van deze voorwaarden niet is voldaan, doet de {@creature shadow demon} onmiddellijk een Charisma-check die door jouw Charisma-check wordt betwist. Als je niet slaagt voor de check, vereist de spreuk niet langer concentratie en is de demon niet langer onder jouw controle. De demon slaagt automatisch voor de check als hij meer dan 100 voet van je verwijderd is.",
+				"Als onderdeel van het uitspreken van de spreuk kun je een cirkel op de grond tekenen met het bloed van een intelligente mensachtige die in de afgelopen 24 uur is gedood. De cirkel is groot genoeg om je ruimte te omvatten. De opgeroepene {@creature shadow demon} kan de cirkel niet doorkruisen en kan zich niet op iemand in de cirkel richten zolang de spreuk duurt."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Vrock (UA)",
+			"source": "UAThatOldBlackMagic",
+			"page": 3,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gem worth at least 100 gp, which the spell consumes",
+					"cost": 10000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een {@creature vrock} op die verschijnt in een onbezette ruimte die je binnen bereik kunt zien. De {@creature vrock} verdwijnt wanneer deze tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"De houding van de {@creature vrock} hangt af van de waarde van de edelsteen die als materiaalcomponent voor deze spreuk is gebruikt. Rol het initiatief voor de {@creature vrock}, die zijn eigen beurt heeft. Aan het begin van de beurt van de {@creature vrock} doet de DM een geheime Charisma-check in jouw naam, met een bonus gelijk aan de waarde van de edelsteen gedeeld door 20. De DC van de check begint bij 10 en neemt elke ronde met 2 toe. Je kan bevelen geven aan de {@creature vrock} en het je laten gehoorzamen zolang je slaagt voor de Charisma check.",
+				"Als de controle mislukt, vereist de spreuk niet langer concentratie en staat de {@creature vrock} niet langer onder jouw controle. De {@creature vrock} onderneemt geen actie tijdens zijn volgende beurt en gebruikt zijn telepathie om elk wezen dat hij kan zien te vertellen dat hij zal vechten in ruil voor een schat. Het wezen dat de {@creature vrock} de duurste edelsteen geeft, kan het voor de volgende {@dice 1d6} rondes commanderen. Aan het einde van die tijd biedt het de koop opnieuw aan. Als niemand de {@creature vrock} schat aanbiedt voordat zijn volgende beurt begint, valt het de dichtstbijzijnde wezens aan voor {@dice 1d6} rondes voordat het terugkeert naar de Abyss.",
+				"Als onderdeel van het uitspreken van de spreuk kun je een cirkel op de grond tekenen met het bloed van een intelligente mensachtige die in de afgelopen 24 uur is gedood. De cirkel is groot genoeg om je ruimte te omvatten. De opgeroepene {@creature vrock} kan de cirkel niet doorkruisen en kan zich niet op iemand in de cirkel richten zolang de spreuk duurt."
+			],
+			"abilityCheck": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

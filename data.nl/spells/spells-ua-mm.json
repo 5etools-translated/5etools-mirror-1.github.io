@@ -1,0 +1,1101 @@
+{
+	"spell": [
+		{
+			"name": "Arcane Hacking (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 2,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "hacking tools"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Je krijgt voordeel op alle intelligentiecontroles met hacking tools om software encryptie of online beveiliging te breken wanneer je een buitenlands systeem gebruikt. Met deze spreuk kun je ook beschermende spreuken van het 2e niveau en lager breken, zoals arcane lock of glyph of warding, door een intelligentiecontrole uit te voeren met hacking tools tegen de spell save DC van de caster van de spreuk."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van 3de niveau of hoger, kun je proberen een spreuk tegen te werken die is ingesteld om het vreemde systeem te beveiligen als het niveau van de spreuk gelijk is aan of lager is dan het niveau van het spreukslot dat je gebruikte."
+					]
+				}
+			],
+			"abilityCheck": [
+				"intelligence"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Commune with City (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 5,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"ritual": true
+			},
+			"entries": [
+				"Je wordt kortstondig één met de stad en krijgt kennis van de omgeving. Bovengronds geeft deze spreuk je kennis van het gebied binnen 1 mijl van jou. In riolen en andere ondergrondse omgevingen, krijg je kennis van het gebied binnen 600 voet van je.",
+				"U krijgt onmiddellijk kennis van maximaal drie feiten naar keuze over een van de volgende onderwerpen die betrekking hebben op het gebied:",
+				{
+					"type": "list",
+					"items": [
+						"Terrein en watermassa's",
+						"Overheersende gebouwen, planten, dieren, of intelligente wezens",
+						"Krachtige (CR 1 of hoger) celestials, fey, fiends, elementals, of undead",
+						"Invloeden van andere niveaus van bestaan",
+						"Elektrische stromen, draadloze signalen, en actieve doorvoerlijnen en -sporen"
+					]
+				},
+				"Je zou bijvoorbeeld de locatie van krachtige ondoden in het gebied kunnen bepalen, de locatie van belangrijke bronnen van elektrische stroom of interferentie, en de locatie van parken in de buurt."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Conjure Knowbot (UA)",
+			"source": "UAModernMagic",
+			"page": 5,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					}
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Je raakt een enkel computerapparaat of computersysteem aan om een knowbot tevoorschijn te toveren - een deels bewust stukje software dat bedrukt is met overblijfselen van je eigen vaardigheden en computervaardigheden. Tijdens de duur van de spreuk kun je een bonusactie gebruiken om de knowbot een computergerelateerde taak te laten uitvoeren waarvoor normaal gesproken een actie nodig zou zijn. De knowbot maakt intelligentievaardigheidscontroles met behulp van jouw vaardigheidsscore en proficiency-bonussen (inclusief jouw proficiency met hacking tools, indien van toepassing).",
+				"Je hebt een beperkte telepathische band met de knowbot, tot op een afstand van 500 voet van het apparaat of systeem waar de knowbot is getoverd. Als je je buiten dit bereik begeeft, verdwijnt de knowbot in {@dice 2d4} rondes, alsof de duur van de spreuk is verstreken. Als je je weer binnen dit bereik begeeft, wordt de band onmiddellijk hersteld.",
+				"De knowbot is gebonden aan het systeem waarin hij werd gecreëerd, en blijft daar tot hij wordt afgezet of de duur van de spreuk verstrijkt."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van 5e niveau of hoger, wordt de duur van de spreuk verlengd tot 1 uur. Bovendien is je telepathische band met de knowbot effectief tot een afstand van 1.000 voet, en als je het bereik van de band verlaat, gaat de knowbot door met het uitvoeren van zijn laatst opgedragen taak totdat de spreuk afloopt."
+					]
+				}
+			],
+			"miscTags": [
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Digital Phantom (UA)",
+			"source": "UAModernMagic",
+			"page": 6,
+			"level": 2,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a small piece of copper wire"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Deze spreuk werkt om je aanwezigheid binnen een computersysteem actief te verbergen. Voor de duur van de spreuk krijgen jij en alle andere gebruikers die je kiest in je lokale netwerk een +10 bonus op Intelligentiecontroles om detectie door beheerders, knowbots, opsporingssoftware en dergelijke te vermijden. Wanneer jij en de door jou gekozen gebruikers een computersysteem verlaten waarin je aan het werk bent terwijl deze spreuk van kracht is, worden alle sporen van je eerdere aanwezigheid in dat systeem gewist."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Find Vehicle (UA)",
+			"source": "UAModernMagic",
+			"page": 6,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 10,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 8
+					}
+				}
+			],
+			"entries": [
+				"Je roept een geest op die de vorm aanneemt van een niet-militair landvoertuig naar keuze, en die verschijnt in een onbezette ruimte binnen bereik. Het voertuig heeft de eigenschappen van een normaal voertuig van zijn soort, maar is hemels, feeëriek of duivels (de oorsprong mag je zelf kiezen). De fysieke kenmerken van het voertuig weerspiegelen tot op zekere hoogte zijn oorsprong. Een duivelse SUV kan bijvoorbeeld gitzwart zijn, met getinte ruiten en een sinister uitziende grille.",
+				"Je hebt een bovennatuurlijke band met het getoverde voertuig die je in staat stelt om meer te rijden dan je normaal zou kunnen. Als je het getoverde voertuig bestuurt, word je beschouwd als bekwaam in het besturen van voertuigen van dat type en verdubbel je je bekwaamheidsbonus bij bekwaamheidscontroles die betrekking hebben op het besturen van het voertuig. Als je het voertuig bestuurt, kun je elke spreuk die alleen op jou gericht is, ook op het voertuig richten.",
+				"Als het voertuig tot 0 hit points zakt, verdwijnt het, zonder fysieke vorm achter te laten. Je kunt het voertuig ook op elk moment afzetten als een actie, waardoor het verdwijnt.",
+				"Je kunt niet meer dan één voertuig tegelijk aan deze spreuk hebben gebonden. Als actie kun je op elk moment het voertuig losmaken van zijn band, waardoor het verdwijnt."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukengroef van 3de niveau of hoger, kun je een niet-militair watervoertuig oproepen dat groot genoeg is om zes wezens van gemiddelde grootte te vervoeren. Als je deze spreuk uitspreekt met een spreukgleuf van 5e niveau of hoger, kun je een niet-militair luchtvoertuig oproepen dat groot genoeg is om tien wezens van gemiddelde grootte te vervoeren. Als je deze spreuk uitspreekt met een spreukgleuf van 7e niveau of hoger, kun je elk type voertuig oproepen, mits de DM het goedkeurt."
+					]
+				}
+			],
+			"miscTags": [
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Haywire (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 3,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Deze spreuk brengt elektronische apparaten in de war en maakt het gebruik ervan zo goed als onmogelijk. Elk elektronisch apparaat in een gebied met een straal van 10 voet, gecentreerd op een punt dat je kiest binnen het bereik, ondergaat willekeurig gedrag zolang het binnen het gebied blijft. Een apparaat dat niet in handen is van een wezen wordt automatisch beïnvloed. Als een elektronisch apparaat in het bezit is van een wezen, moet dat wezen slagen op een Wisdom-reddingsworp of het apparaat wordt beïnvloed door de spreuk.",
+				"Gooi aan het begin van elke beurt een {@dice d6} voor elk getroffen apparaat om het gedrag ervan te bepalen. Behalve waar anders aangegeven, duurt dat gedrag tot het begin van je volgende beurt terwijl deze spreuk van kracht is.",
+				{
+					"type": "table",
+					"colLabels": [
+						"{@dice d6}",
+						"Effect"
+					],
+					"colStyles": [
+						"col-1 text-center no-wrap",
+						"col-11"
+					],
+					"rows": [
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 1
+								}
+							},
+							"Het apparaat wordt uitgeschakeld en moet opnieuw worden opgestart. Rol niet opnieuw voor dit apparaat totdat het opnieuw is opgestart."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"min": 2,
+									"max": 4
+								}
+							},
+							"Het apparaat werkt niet."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 5
+								}
+							},
+							"Het apparaat ondergaat een stroomstoot, die een elektrische schok veroorzaakt bij de drager (indien aanwezig) en één willekeurig wezen binnen een straal van 5 meter van het apparaat. Elk getroffen wezen moet een Dexterity saving throw doen tegen je spell save DC, en krijgt {@damage 6d6} bliksemschade als hij faalt, of half zoveel schade als hij slaagt."
+						],
+						[
+							{
+								"type": "cell",
+								"roll": {
+									"exact": 6
+								}
+							},
+							"Het apparaat is normaal bruikbaar."
+						]
+					]
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van niveau 4 of hoger, neemt de straal van de bol die door de spreuk wordt beïnvloed toe met 5 voet voor elk slotniveau hoger dan 3."
+					]
+				}
+			],
+			"damageInflict": [
+				"lightning"
+			],
+			"savingThrow": [
+				"wisdom",
+				"dexterity"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"areaTags": [
+				"S"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Infallible Relay (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 1,
+			"school": "D",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a mobile phone"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Met deze spreuk kun je elk wezen aanspreken waarmee je eerder hebt gesproken, zolang jullie je maar op hetzelfde bestaansvlak bevinden. Als je de spreuk uitspreekt, begint het dichtstbijzijnde functionerende telefoontoestel of soortgelijk communicatiemiddel binnen 100 voet van het doelwit te rinkelen. Als er geen geschikt apparaat dicht genoeg bij het doelwit is, mislukt de spreuk.",
+				"Het doelwit moet een succesvolle Charisma saving throw maken of gedwongen worden om je oproep te beantwoorden. Als de verbinding eenmaal tot stand is gebracht, is het gesprek kristalhelder en kan het niet worden afgebroken totdat het gesprek is beëindigd of de duur van de spreuk eindigt. Je kunt het gesprek op elk moment beëindigen, maar het doelwit moet slagen op een Charisma saving throw om het gesprek te beëindigen."
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Invisibility to Cameras (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 3,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a scrap of black paper"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Vier wezens naar keuze binnen bereik worden ondetecteerbaar voor elektronische sensoren en camera's voor de duur van de spreuk. Alles wat een doelwit draagt of bij zich draagt is eveneens ondetecteerbaar zolang het zich op het persoon van het doelwit bevindt. De doelwitten blijven zichtbaar voor het oog."
+			],
+			"areaTags": [
+				"MT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "On/Off (UA)",
+			"source": "UAModernMagic",
+			"page": 7,
+			"level": 0,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Met deze cantrip kunt u elk elektronisch apparaat binnen bereik activeren of deactiveren, zolang het apparaat een duidelijk omschreven aan- of uitschakelfunctie heeft die gemakkelijk van buitenaf kan worden bereikt. Apparaten die softwarematig moeten worden in- of uitgeschakeld, kunnen niet worden aan- of uitgezet."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Protection from Ballistics (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a shell casing"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Deze spreuk betovert het vlees van het doelwit tegen de inslag van kogels. Totdat de spreuk eindigt, heeft het doelwit weerstand tegen niet-magische ballistische schade."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Remote Access (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 1,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 10
+					}
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Je kunt elk elektronisch apparaat binnen bereik gebruiken alsof het in je handen is. Dit is geen telekinese effect. Deze spreuk stelt je in staat de mechanische functies van een apparaat elektronisch te simuleren. Je hebt alleen toegang tot functies waartoe iemand die het apparaat met de hand gebruikt ook toegang zou hebben. Je kunt toegang op afstand slechts met één apparaat tegelijk gebruiken."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Shutdown (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Deze spreuk schakelt alle elektronische apparaten binnen bereik uit die niet worden gebruikt door of onder de directe controle staan van een wezen. Als een elektronisch apparaat binnen bereik door een wezen wordt gebruikt, moet dat wezen een grondwettelijke reddingsworp doen om te voorkomen dat het apparaat wordt uitgeschakeld. Zolang de spreuk actief is, kan geen enkel elektronisch apparaat binnen bereik worden opgestart of opnieuw worden opgestart."
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Synchronicity (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Het wezen dat je aanraakt voelt de realiteit subtiel in zijn voordeel verschuiven terwijl deze spreuk in werking is. Het doelwit ondervindt geen ongemak van alledaagse vertragingen van welke aard dan ook. Verkeerslichten staan altijd op groen, er is altijd een wachtende lift, en een taxi is altijd om de hoek. Het doelwit kan op volle snelheid door dichte mensenmassa's rennen, en kansaanvallen die door de beweging van het doelwit worden uitgelokt, worden met nadeel uitgevoerd.",
+				"Synchroniciteit geeft voordeel bij Dexterity ({@skill Stealth}) checks, omdat het doelwit altijd een handig stukje dekking voorhanden vindt. Bovendien heeft het doelwit voordeel bij alle vaardigheidscontroles om een voertuig te besturen.",
+				"In het geval dat twee of meer wezens onder het effect van synchroniciteit proberen te voorkomen dat ze last van elkaar krijgen, gaan de wezens een wedstrijdje Charisma aan, telkens als de effecten van de spreuken elkaar zouden tegenwerken."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Cleric",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "City (UA)",
+							"source": "UAModernMagic"
+						}
+					},
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "System Backdoor (UA)",
+			"source": "UAModernMagic",
+			"page": 8,
+			"level": 4,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "minute"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "hacking tools"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"meta": {
+				"technomagic": true
+			},
+			"entries": [
+				"Met deze spreuk kun je de systeembeveiliging omzeilen om een veilige login te maken op een vreemd systeem. De login die je maakt geeft je administrator-level privileges in elk computersysteem dat niet verbeterd is door middel van technomagie. De login verslaat alle technomagic spreuken van 3de niveau of lager.",
+				"Zodra de duur van de ban is verstreken, worden de login en alle privileges van het systeem gewist. Systeemlogboeken tonen nog wel de activiteit van de gebruiker, maar de gebruikersidentificatie kan niet worden gevonden of getraceerd."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van 5e niveau of hoger, kun je technomagische spreuken omzeilen als het niveau van de spreuk gelijk is aan of lager is dan het niveau van de gebruikte spreukgleuf."
+					]
+				}
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				],
+				"fromSubclass": [
+					{
+						"class": {
+							"name": "Warlock",
+							"source": "PHB"
+						},
+						"subclass": {
+							"name": "Ghost in the Machine (UA)",
+							"source": "UAModernMagic"
+						}
+					}
+				]
+			}
+		}
+	]
+}

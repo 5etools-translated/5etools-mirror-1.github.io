@@ -1,0 +1,103 @@
+{
+	"spell": [
+		{
+			"name": "Linked Glyphs",
+			"source": "AitFR-AVT",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "AitFR-FCD",
+					"page": 11
+				}
+			],
+			"level": 3,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "incense and powdered diamond worth at least 300 gp, which the spell consumes",
+					"cost": 30000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "permanent",
+					"ends": [
+						"dispel",
+						"trigger"
+					]
+				}
+			],
+			"entries": [
+				"Lorsque vous lancez ce sort, vous inscrivez un glyphe de détection qui active ultérieurement un effet magique à l'emplacement d'un glyphe séparé et lié. Vous inscrivez le glyphe de détection soit sur une surface (comme une table ou une section de sol ou de mur), soit dans un objet qui peut être fermé (comme un livre, un parchemin ou un coffre à trésor) pour dissimuler le glyphe. Le glyphe peut couvrir une surface de 10 pieds de diamètre maximum. Si la surface ou l'objet est déplacé à plus de 3 mètres de l'endroit où vous lancez ce sort, le glyphe de détection est rompu et le sort se termine sans être déclenché.",
+				"Les deux glyphes sont presque invisibles, et pour les trouver, il faut réussir un test d'Intelligence ({@skill Investigation}) contre votre DC de sauvegarde contre les sorts.",
+				"Vous décidez de ce qui déclenche le glyphe de détection lorsque vous lancez ce sort. Pour les glyphes inscrits sur une surface, les déclencheurs les plus typiques incluent le fait de toucher ou de se tenir sur le glyphe, de retirer un autre objet couvrant le glyphe, de s'approcher à une certaine distance du glyphe, ou de manipuler l'objet sur lequel le glyphe est inscrit. Pour les glyphes inscrits dans un objet, les déclencheurs les plus courants sont l'ouverture de l'objet, l'approche à une certaine distance de l'objet, la vue ou la lecture du glyphe. Une fois qu'un glyphe est déclenché, ce sort prend fin.",
+				"Vous pouvez affiner le déclencheur pour que le sort ne s'active que dans certaines circonstances ou en fonction de caractéristiques physiques (comme la taille ou le poids), du type de créature (par exemple, le pupille peut être réglé pour affecter les aberrations ou les drows) ou de l'alignement. Vous pouvez également définir des conditions pour les créatures qui ne déclenchent pas le glyphe, comme celles qui disent un certain mot de passe.",
+				"Lorsque vous inscrivez le glyphe de détection, choisissez un glyphe d'alarme ou un glyphe de sort à y associer.",
+				{
+					"type": "entries",
+					"name": "Alarm Glyph",
+					"entries": [
+						"Vous créez et liez magiquement deux glyphes : un glyphe de détection et un glyphe d'effet. Chacun de ces deux glyphes doit rester à moins de 100 miles de l'autre ou l'effet du sort prend fin. Lorsque le glyphe de détection est déclenché, le glyphe d'effet réagit comme un sort d'alarme, créant un ping mental dans votre esprit si vous êtes dans un rayon de 1 mile du glyphe d'effet. Ce ping vous réveille si vous dormez."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spell Glyph",
+					"entries": [
+						"Vous créez et liez magiquement deux glyphes : un glyphe de détection et un glyphe d'effet. Ces deux glyphes doivent se trouver à moins de 30 mètres l'un de l'autre. Vous pouvez stocker un sort préparé de 4e niveau ou moins dans la glyphe d'effet en le lançant dans le cadre de la création des glyphes. Le sort doit cibler une seule créature ou une zone. Le sort stocké n'a pas d'effet immédiat lorsqu'il est lancé de cette manière. Lorsque le glyphe de détection est déclenché, le sort stocké dans le glyphe d'effet est lancé. Si le sort a une cible, il vise la créature qui a déclenché le glyphe. Si le sort affecte une zone, celle-ci est centrée sur la glyphe d'effet. Si le sort invoque des créatures hostiles ou crée des objets ou des pièges nuisibles, ils apparaissent aussi près que possible de la glyphe d'effet. Si le sort nécessite une concentration, celle-ci dure jusqu'à la fin de sa durée totale."
+					]
+				}
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5e niveau ou plus pour créer un glyphe de sort, vous pouvez stocker n'importe quel sort jusqu'au même niveau que l'emplacement utilisé."
+					]
+				}
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"miscTags": [
+				"PRM"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		}
+	]
+}

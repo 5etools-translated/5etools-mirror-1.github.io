@@ -1,0 +1,225 @@
+{
+	"spell": [
+		{
+			"name": "Intellect Fortress",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 7,
+			"level": 4,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Pour la durée de l'opération, vous ou une créature consentante que vous pouvez voir à portée, bénéficiez d'une résistance aux dégâts psychiques, ainsi que d'un avantage aux jets de sauvegarde d'Intelligence, de Sagesse et de Charisme."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 5e niveau ou plus, vous pouvez cibler une créature supplémentaire pour chaque niveau d'emplacement supérieur au 4e. Les créatures doivent se trouver à moins de 10 mètres l'une de l'autre lorsque vous les ciblez."
+					]
+				}
+			],
+			"damageResist": [
+				"psychic"
+			],
+			"damageImmune": [
+				"psychic"
+			],
+			"damageVulnerable": [
+				"psychic"
+			],
+			"savingThrow": [
+				"charisma"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Sliver",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 7,
+			"level": 0,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous envoyez un pic d'énergie psychique désorientant dans l'esprit d'une créature que vous pouvez voir à portée. La cible doit effectuer un jet de sauvegarde d'Intelligence. Si le jet de sauvegarde n'est pas réussi, la cible subit {@damage 1d6} de dégâts psychiques, et la première fois qu'elle effectue un jet de sauvegarde avant la fin de votre prochain tour, elle doit lancer un {@dice d4} et soustraire le nombre obtenu du jet de sauvegarde.",
+				"Les dégâts de ce sort augmentent de {@dice 1d6} lorsque vous atteignez certains niveaux : 5e niveau ({@dice 2d6}), 11e niveau ({@dice 3d6}), et 17e niveau ({@dice 4d6})."
+			],
+			"scalingLevelDice": {
+				"label": "psychic damage",
+				"scaling": {
+					"1": "1d6",
+					"5": "2d6",
+					"11": "3d6",
+					"17": "4d6"
+				}
+			},
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SCL",
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Mind Thrust",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 7,
+			"level": 2,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "round",
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Vous lancez une lance de perturbation psychique dans l'esprit d'une créature que vous pouvez voir à portée. La cible doit effectuer un jet de sauvegarde d'Intelligence. En cas d'échec, la cible subit {@damage 3d6} de dégâts psychiques et ne peut pas effectuer de réaction avant la fin de son prochain tour. De plus, à son prochain tour, elle doit choisir si elle obtient un déplacement, une action ou une action bonus ; elle n'obtient qu'une seule des trois. En cas de sauvegarde réussie, la cible subit deux fois moins de dégâts et ne subit aucun des autres effets du sort."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, vous pouvez cibler une créature supplémentaire pour chaque niveau d'emplacement supérieur au 2e. Les créatures doivent se trouver à moins de 10 mètres l'une de l'autre lorsque vous les ciblez."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

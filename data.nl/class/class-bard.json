@@ -1,0 +1,3531 @@
+{
+	"_meta": {
+		"dependencies": {
+			"subclass": [
+				"generic"
+			]
+		}
+	},
+	"class": [
+		{
+			"name": "Bard",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"dex",
+				"cha"
+			],
+			"spellcastingAbility": "cha",
+			"casterProgression": "full",
+			"cantripProgression": [
+				2,
+				2,
+				2,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4
+			],
+			"spellsKnownProgression": [
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				14,
+				15,
+				15,
+				16,
+				18,
+				19,
+				19,
+				20,
+				22,
+				22,
+				22
+			],
+			"additionalSpells": [
+				{
+					"name": "Magical Secrets",
+					"known": {
+						"10": [
+							{
+								"choose": "level=0;1;2;3;4;5"
+							},
+							{
+								"choose": "level=0;1;2;3;4;5"
+							}
+						],
+						"14": [
+							{
+								"choose": "level=0;1;2;3;4;5;6;7"
+							},
+							{
+								"choose": "level=0;1;2;3;4;5;6;7"
+							}
+						],
+						"18": [
+							{
+								"choose": ""
+							},
+							{
+								"choose": ""
+							}
+						]
+					}
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple",
+					"{@item hand crossbow|phb|hand crossbows}",
+					"{@item longsword|phb|longswords}",
+					"{@item rapier|phb|rapiers}",
+					"{@item shortsword|phb|shortswords}"
+				],
+				"tools": [
+					"three {@item musical instrument|PHB|musical instruments} of your choice"
+				],
+				"skills": [
+					{
+						"any": 3
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item rapier|phb}, (b) a {@item longsword|phb}, or (c) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item diplomat's pack|phb} or (b) an {@item entertainer's pack|phb}",
+					"(a) a {@item lute|phb} or (b) any other {@filter musical instrument|items|miscellaneous=mundane|type=instrument}",
+					"{@item Leather armor|phb}, and a {@item dagger|phb}"
+				],
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"rapier|phb"
+						],
+						"b": [
+							"longsword|phb"
+						],
+						"c": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"diplomat's pack|phb"
+						],
+						"b": [
+							"entertainer's pack|phb"
+						]
+					},
+					{
+						"a": [
+							"lute|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "instrumentMusical"
+							}
+						]
+					},
+					{
+						"_": [
+							"Leather armor|phb",
+							"dagger|phb"
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"cha": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light"
+					],
+					"skills": [
+						{
+							"choose": {
+								"from": [
+									"athletics",
+									"acrobatics",
+									"sleight of hand",
+									"stealth",
+									"arcana",
+									"history",
+									"investigation",
+									"nature",
+									"religion",
+									"animal handling",
+									"insight",
+									"medicine",
+									"perception",
+									"survival",
+									"deception",
+									"intimidation",
+									"performance",
+									"persuasion"
+								],
+								"count": 1
+							}
+						}
+					],
+					"tools": [
+						"one {@item musical instrument|PHB} of your choice"
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"{@filter Cantrips Known|spells|level=0|class=bard}",
+						"{@filter Spells Known|spells|class=bard}"
+					],
+					"rows": [
+						[
+							2,
+							4
+						],
+						[
+							2,
+							5
+						],
+						[
+							2,
+							6
+						],
+						[
+							3,
+							7
+						],
+						[
+							3,
+							8
+						],
+						[
+							3,
+							9
+						],
+						[
+							3,
+							10
+						],
+						[
+							3,
+							11
+						],
+						[
+							3,
+							12
+						],
+						[
+							4,
+							14
+						],
+						[
+							4,
+							15
+						],
+						[
+							4,
+							15
+						],
+						[
+							4,
+							16
+						],
+						[
+							4,
+							18
+						],
+						[
+							4,
+							19
+						],
+						[
+							4,
+							19
+						],
+						[
+							4,
+							20
+						],
+						[
+							4,
+							22
+						],
+						[
+							4,
+							22
+						],
+						[
+							4,
+							22
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=bard}",
+						"{@filter 2nd|spells|level=2|class=bard}",
+						"{@filter 3rd|spells|level=3|class=bard}",
+						"{@filter 4th|spells|level=4|class=bard}",
+						"{@filter 5th|spells|level=5|class=bard}",
+						"{@filter 6th|spells|level=6|class=bard}",
+						"{@filter 7th|spells|level=7|class=bard}",
+						"{@filter 8th|spells|level=8|class=bard}",
+						"{@filter 9th|spells|level=9|class=bard}"
+					],
+					"rowsSpellProgression": [
+						[
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							2,
+							1,
+							1
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Bardic Inspiration|Bard||1",
+				"Magical Inspiration|Bard||1|UAClassFeatureVariants",
+				"Spellcasting|Bard||1",
+				"Spell Versatility|Bard||1|UAClassFeatureVariants",
+				"Jack of All Trades|Bard||2",
+				"Song of Rest (d6)|Bard||2",
+				"Magical Inspiration|Bard||2|TCE",
+				{
+					"classFeature": "Bard College|Bard||3",
+					"gainSubclassFeature": true
+				},
+				"Expertise|Bard||3",
+				"Ability Score Improvement|Bard||4",
+				"Proficiency Versatility|Bard||4|UAClassFeatureVariants",
+				"Bardic Versatility|Bard||4|TCE",
+				"Bardic Inspiration (d8)|Bard||5",
+				"Font of Inspiration|Bard||5",
+				"Countercharm|Bard||6",
+				{
+					"classFeature": "Bard College feature|Bard||6",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Bard||8",
+				"Proficiency Versatility|Bard||8|UAClassFeatureVariants",
+				"Song of Rest (d8)|Bard||9",
+				"Bardic Inspiration (d10)|Bard||10",
+				"Expertise|Bard||10",
+				"Magical Secrets|Bard||10",
+				"Ability Score Improvement|Bard||12",
+				"Proficiency Versatility|Bard||12|UAClassFeatureVariants",
+				"Song of Rest (d10)|Bard||13",
+				"Magical Secrets|Bard||14",
+				{
+					"classFeature": "Bard College feature|Bard||14",
+					"gainSubclassFeature": true
+				},
+				"Bardic Inspiration (d12)|Bard||15",
+				"Ability Score Improvement|Bard||16",
+				"Proficiency Versatility|Bard||16|UAClassFeatureVariants",
+				"Song of Rest (d12)|Bard||17",
+				"Magical Secrets|Bard||18",
+				"Ability Score Improvement|Bard||19",
+				"Proficiency Versatility|Bard||19|UAClassFeatureVariants",
+				"Superior Inspiration|Bard||20"
+			],
+			"subclassTitle": "Bard College",
+			"fluff": [
+				{
+					"name": "Bard",
+					"type": "section",
+					"entries": [
+						"Al neuriënd strijkt ze met haar vingers over een oud monument in een lang vergeten ruïne. Een half-elf in ruig leer ziet kennis in haar geest opborrelen, tevoorschijn getoverd door de magie van haar lied - kennis van de mensen die het monument bouwden en de mythische sage die het uitbeeldt.",
+						"Een strenge menselijke krijger slaat zijn zwaard ritmisch tegen zijn maliënkolder, zet het tempo van zijn oorlogszang in en spoort zijn metgezellen aan tot dapperheid en heldenmoed. De magie van zijn lied versterkt en moedigt hen aan.",
+						"Lachend terwijl ze haar cittern stemt, weeft een gnoom haar subtiele magie over de verzamelde edelen, om ervoor te zorgen dat de woorden van haar metgezellen goed ontvangen zullen worden.",
+						"Een bard, of hij nu geleerde, skald of schurk is, weeft magie door middel van woorden en muziek om bondgenoten te inspireren, vijanden te demoraliseren, gedachten te manipuleren, illusies te creëren en zelfs wonden te genezen.",
+						{
+							"type": "entries",
+							"name": "Music and Magic",
+							"entries": [
+								"In de werelden van D&D zijn woorden en muziek niet zomaar luchttrillingen, maar vocalisaties met een geheel eigen kracht. De bard is een meester in zang, spraak, en de magie die ze bevatten. Barden zeggen dat het multiversum is ontstaan, dat de woorden van de goden het vorm hebben gegeven, en dat de echo's van deze oer-woorden van de schepping nog steeds door de kosmos klinken. De muziek van barden is een poging om die echo's op te vangen en te beheersen, subtiel verweven in hun spreuken en krachten.",
+								"De grootste kracht van barden is hun veelzijdigheid. Veel barden houden zich liever afzijdig in gevechten, waarbij ze hun magie gebruiken om hun bondgenoten te inspireren en hun vijanden van een afstand te hinderen. Maar barden zijn in staat om zichzelf te verdedigen in de strijd indien nodig, waarbij ze hun magie gebruiken om hun zwaarden en harnas te versterken. Hun spreuken neigen eerder naar betoveringen en illusies dan naar overduidelijke vernietigende spreuken. Ze hebben een brede kennis van vele onderwerpen en een natuurlijke aanleg waarmee ze bijna alles goed kunnen. Barden worden meesters in de talenten die ze willen perfectioneren, van muzikale prestaties tot esoterische kennis."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Learning from Experience",
+							"entries": [
+								"Echte barden komen niet veel voor in de wereld. Niet elke minstreel die zingt in een taveerne of nar die ronddartelt aan een koninklijk hof is een bard. Het ontdekken van de magie die in de muziek verborgen zit, vereist veel studie en een zekere mate van natuurlijk talent dat de meeste troubadours en jongleurs ontberen. Het kan echter moeilijk zijn om het verschil te zien tussen deze artiesten en echte barden. Het leven van een bard bestaat uit zwerven door het land om overleveringen te verzamelen, verhalen te vertellen, en te leven van de dankbaarheid van het publiek, net als elke andere entertainer. Maar een diepgaande kennis, een hoog niveau van muzikale vaardigheid, en een vleugje magie onderscheiden de barden van hun gelijken.",
+								"Zelden blijven barden lang op één plek, en hun natuurlijke drang om te reizen - om nieuwe verhalen te vertellen, nieuwe vaardigheden te leren, en nieuwe ontdekkingen aan de horizon - maakt van een avontuurlijke carrière een natuurlijke roeping. Elk avontuur is een kans om te leren, verschillende vaardigheden te oefenen, lang vergeten graven binnen te gaan, verloren magische werken te ontdekken, oude boeken te ontcijferen, naar vreemde plaatsen te reizen, of exotische wezens tegen te komen. Barden houden ervan helden te vergezellen om getuige te zijn van hun daden uit de eerste hand. Een barden die een ontzagwekkend verhaal uit eigen ervaring kan vertellen, verdient roem bij andere barden. Sterker nog, na het vertellen van zoveel verhalen over helden die machtige daden verrichten, nemen veel barden deze thema's ter harte en nemen zelf heldenrollen aan."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Bard",
+							"entries": [
+								"Barden gedijen op verhalen, of die verhalen nu waar zijn of niet. De achtergrond en beweegredenen van je personage zijn niet zo belangrijk als de verhalen die hij of zij over hen vertelt. Misschien had je een veilige en alledaagse jeugd. Daar valt geen goed verhaal over te vertellen, dus schilder je jezelf misschien af als een wees die is opgevoed door een heks in een troosteloos moeras. Of je jeugd is misschien wel een verhaal waard. Sommige barden krijgen hun magische muziek door buitengewone middelen, inclusief de inspiratie van fey of andere bovennatuurlijke wezens.",
+								"Ben je in de leer geweest bij een meester en heb je de meer ervaren bard gevolgd tot je klaar was om op eigen benen te staan? Of ging je naar een college waar je de bardische overlevering bestudeerde en je muzikale magie oefende? Misschien was je een jonge wegloper of wees, bevriend met een zwervende bard die je mentor werd. Of misschien was je een verwend adellijk kind dat les kreeg van een meester. Misschien ben je in de klauwen van een heks gestruikeld en heb je naast je leven en vrijheid ook een muzikaal geschenk gekregen, maar tegen welke prijs?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Je kunt snel een bard worden door deze suggesties te volgen. Ten eerste, Charisma moet je hoogste vaardigheidsscore zijn, gevolgd door Dexterity. Ten tweede, kies de {@background entertainer} achtergrond. Ten derde, kies de {@spell dancing lights} en {@spell vicious mockery} cantrips, samen met de volgende spreuken van het eerste niveau: {@spell charm person}, {@spell detect magic}, {@spell healing word}, en {@spell thunderwave}."
+									]
+								}
+							]
+						}
+					],
+					"source": "PHB",
+					"page": 51
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"Muziek is de vrucht van de goddelijke boom die vibreert met de Woorden der Schepping. Maar de vraag die ik u stel is, kan een bard tot de wortel van deze boom gaan? Kan iemand de bron van die kracht aanboren? Ah, wat voor muziek zouden ze dan naar deze wereld brengen!"
+							],
+							"by": "Fletcher Danairia, master bard"
+						},
+						"Barden brengen lichtheid in ernstige tijden; zij geven wijsheid om onwetendheid te compenseren; en zij doen het belachelijke verheven lijken. Barden zijn de bewaarders van de oude geschiedenis, hun liederen en verhalen vereeuwigen de herinnering aan grote gebeurtenissen door de tijd heen - kennis die zo belangrijk is dat ze uit het hoofd wordt geleerd en wordt doorgegeven als mondelinge geschiedenis, om te overleven zelfs als er geen geschreven verslag overblijft.",
+						"Het is ook de rol van de bard om kleinere en meer eigentijdse gebeurtenissen te kronieken - de verhalen van de helden van vandaag, met inbegrip van hun heldendaden, maar ook hun minder dan indrukwekkende mislukkingen.",
+						"Natuurlijk kent de wereld veel mensen die een deuntje kunnen zingen of een goed verhaal kunnen vertellen, en een avonturierende barard heeft veel meer in huis dan een gevatte tongval en een melodieuze stem. Maar wat barden echt onderscheidt van anderen - en van elkaar - is de stijl en de inhoud van hun optreden.",
+						"Om de aandacht van een publiek te trekken en vast te houden, zijn barden meestal flamboyant en extravert als ze optreden. De beroemdste barden zijn in wezen het equivalent van popsterren in de D&D wereld. Als je een barden speelt, overweeg dan om een van je favoriete muzikanten als rolmodel voor je personage te gebruiken.",
+						"Je kunt een aantal unieke aspecten aan je bard personage toevoegen door de volgende suggesties in overweging te nemen.",
+						{
+							"type": "entries",
+							"name": "Defining Work",
+							"entries": [
+								"Elke succesvolle bard staat bekend om ten minste één optreden, meestal een lied of een gedicht dat populair is bij iedereen die het hoort. Over deze optredens wordt nog jaren gesproken door degenen die ze hebben gezien, en sommige toeschouwers hebben hun leven voor altijd laten veranderen door de ervaring.",
+								"Als je nog maar net begonnen bent, ligt je uiteindelijke doorslaggevende werk waarschijnlijk in de toekomst. Maar als je van je beroep wilt leven, heb je waarschijnlijk al een paar stukken op je repertoire staan die het publiek hebben weten te bekoren.",
+								{
+									"type": "table",
+									"caption": "Defining Work",
+									"colLabels": [
+										"{@dice d6}",
+										"Defining Work"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"\"The Three Flambinis,\" een schunnig lied over verwisselde identiteiten en ongebreideld verlangen"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"\"Waltz of the Myconids,\" een vrolijk deuntje dat vooral kinderen leuk vinden"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"\"Asmodeus' Gouden Aars,\" een dramatisch gedicht dat volgens jou geïnspireerd is door je bezoek aan Avernus"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"\"De piraten van Luskan,\" jouw relaas over hoe je als kind werd ontvoerd door de zeeverraders"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"\"Een hoepel, twee duiven, en een hellehond,\" een subtiele parodie van een onbekwame edelman"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"\"Een dwaas in de afgrond,\" een komisch gedicht over de reizen van een nar tussen demonen"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Instrument",
+							"entries": [
+								"In de zoektocht van een bard naar het ultieme optreden en de hoogste waardering, is zijn instrument minstens even belangrijk als zijn vocale bekwaamheid. De kwaliteit van de vervaardiging van het instrument is natuurlijk een kritische factor; de beste instrumenten maken de beste muziek, en sommige barden zijn voortdurend op zoek naar verbetering. Maar misschien net zo belangrijk is de amusementswaarde van het instrument zelf; instrumenten die bizar gebouwd zijn of gemaakt zijn van exotische materialen zullen waarschijnlijk een blijvende indruk achterlaten bij een publiek.",
+								"Misschien heb je een \"uit het rek\" instrument, misschien omdat dat alles is wat je je op dit moment kunt veroorloven. Of, als je je eerste instrument cadeau hebt gekregen, is het misschien van een meer uitgebreide soort. Ben je tevreden met het instrument dat je hebt, of wil je het vervangen door iets heel bijzonders?",
+								{
+									"type": "table",
+									"caption": "Instrument",
+									"colLabels": [
+										"{@dice d6}",
+										"Instrument"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Een meesterlijk gemaakt halfling viooltje"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Een mithral {@item horn|PHB} gemaakt door elfen"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Een citer gemaakt van drow spinnen zijde"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Een Orcish {@item drum|PHB}"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Een houten pestkop kwaakdoos"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Een prutsersharp van gnomisch ontwerp"
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Embarrassment",
+							"entries": [
+								"Bijna elke bard heeft minstens één slechte ervaring gehad voor een publiek, en de kans is groot dat jij geen uitzondering bent. Niemand wordt per slot van rekening meteen beroemd; misschien had je in het begin van je carrière een paar kleine problemen, of misschien duurde het een tijdje voor je je reputatie had hersteld na een kwellende nacht waarin het noodlot samenspande om je theatrale ondergang te bewerkstelligen.",
+								"De manieren waarop een optreden fout kan gaan zijn zo gevarieerd als de vissen in de zee. Maar wat voor ramp zich ook voordoet, een bard heeft de moed en het vertrouwen om er weer bovenop te komen - of hij gaat door met de show (indien mogelijk) of hij belooft morgen terug te komen met een nieuwe voorstelling die gegarandeerd in de smaak zal vallen.",
+								{
+									"type": "table",
+									"caption": "Embarrassment",
+									"colLabels": [
+										"{@dice d6}",
+										"Embarrassment"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"De keer dat je komische liedje, \"Big Tom's Hijinks\" - wat je trouwens briljant vond - niet goed viel bij Big Tom"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"De matineevoorstelling toen de uilenbeer van een circus losliep en het publiek terroriseerde"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Als je openingslied je enthousiaste maar door iedereen gehate uitvoering van \"Song of the Froghemoth\" was"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"De eerste en laatste publieke uitvoering van \"Mirt, Man about Town\""
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Die keer op het podium toen je pruik in brand vloog en je hem naar beneden gooide, waardoor het podium in brand vloog."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Toen je per ongeluk op je {@item lute|PHB} ging zitten tijdens de laatste strofe van \"Starlight Serenade\""
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "A Bard's Muse",
+							"entries": [
+								"Natuurlijk heeft elke bard een repertoire van liederen en verhalen. Sommige barden zijn generalisten die voor elk optreden uit een breed scala van onderwerpen kunnen putten, en die trots zijn op hun veelzijdigheid. Anderen hebben een meer persoonlijke benadering van hun kunst, gedreven door hun gehechtheid aan een muze - een bepaald concept dat veel van wat die barden voor een publiek doen, inspireert.",
+								"Een bard die een muze volgt, doet dat over het algemeen om een dieper begrip te krijgen van wat die muze vertegenwoordigt en hoe hij dat begrip het beste op anderen kan overbrengen door middel van optreden.",
+								"Als je bardpersonage een muze heeft, kan dat een van de drie hier beschreven muzen zijn, of een muze die je zelf bedenkt.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Nature",
+											"entries": [
+												"U voelt verwantschap met de natuurlijke wereld, en haar schoonheid en mysterie inspireren u. Voor jou is een boom een diepe symboliek: zijn wortels graven in het duistere onbekende om de kracht van de aarde naar boven te halen, terwijl zijn takken naar de zon reiken om hun bloemen en vruchten te voeden. De natuur is de oeroude getuige die elk koninkrijk heeft zien opkomen en vallen, zelfs die waarvan de namen vergeten zijn en wachten om herontdekt te worden. De goden van de natuur delen hun geheimen met druïden en wijzen, en openen hun harten en geesten voor nieuwe manieren van kijken, en net als bij die individuen, ontdek je dat je creativiteit opbloeit terwijl je door een open veld van wuivend gras wandelt of in stille eerbied door een bosje van oeroude eiken loopt."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Love",
+											"entries": [
+												"U bent op een zoektocht om de essentie van ware liefde te identificeren. Hoewel u de oppervlakkige liefde van vlees en vorm niet afwijst, bent u geïnteresseerd in de diepere vorm van liefde die duizenden kan inspireren of vreugde kan brengen in elk moment van iemand. Liefde van dit soort neemt vele vormen aan, en u kunt haar aanwezigheid overal zien - van de schittering van een prachtig juweel tot het lied van een eenvoudige visser die de zee dankt voor haar overvloed. U bent op het spoor van de liefde, de meest kostbare en mysterieuze emotie, en uw zoektocht vervult uw verhalen en uw liederen met vitaliteit en passie."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Conflict",
+											"entries": [
+												"Drama belichaamt conflicten, en de beste verhalen hebben conflicten als kernelement. Van het verhaal van een vechtpartij in een herberg tot de sage van een epische veldslag, van een ruzie tussen minnaars tot een breuk tussen machtige dynastieën, conflicten inspireren verhalenvertellers als jij tot het beste werk. Conflicten kunnen het beste in sommige mensen naar boven brengen, waardoor hun heldhaftige aard naar voren komt en de wereld verandert, maar het kan er ook toe leiden dat anderen zich naar de duisternis richten en in de greep van het kwaad raken. U streeft ernaar alle vormen van conflict, groot en klein, te ervaren of mee te maken, om dit eeuwige aspect van het leven te bestuderen en het in uw woorden en muziek te vereeuwigen."
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 12
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "College of Lore",
+			"shortName": "Lore",
+			"source": "PHB",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 54,
+			"srd": true,
+			"additionalSpells": [
+				{
+					"name": "Additional Magical Secrets",
+					"known": {
+						"6": [
+							{
+								"choose": "level=0;1;2;3"
+							},
+							{
+								"choose": "level=0;1;2;3"
+							}
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"College of Lore|Bard||Lore||3",
+				"Additional Magical Secrets|Bard||Lore||6",
+				"Peerless Skill|Bard||Lore||14"
+			]
+		},
+		{
+			"name": "College of Valor",
+			"shortName": "Valor",
+			"source": "PHB",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 55,
+			"subclassFeatures": [
+				"College of Valor|Bard||Valor||3",
+				"Extra Attack|Bard||Valor||6",
+				"Battle Magic|Bard||Valor||14"
+			]
+		},
+		{
+			"name": "College of Satire (UA)",
+			"shortName": "Satire (UA)",
+			"source": "UAKitsOfOld",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 2,
+			"subclassFeatures": [
+				"College of Satire|Bard||Satire (UA)|UAKitsOfOld|3",
+				"Fool's Insight|Bard||Satire (UA)|UAKitsOfOld|6",
+				"Fool's Luck|Bard||Satire (UA)|UAKitsOfOld|14"
+			]
+		},
+		{
+			"name": "College of Swords (UA)",
+			"shortName": "Swords (UA)",
+			"source": "UAKitsOfOld",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Swords|Bard||Swords (UA)|UAKitsOfOld|3",
+				"Extra Attack|Bard||Swords (UA)|UAKitsOfOld|6",
+				"Battle Magic|Bard||Swords (UA)|UAKitsOfOld|14"
+			]
+		},
+		{
+			"name": "College of Glamour (UA)",
+			"shortName": "Glamour (UA)",
+			"source": "UABardBardColleges",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Glamour|Bard||Glamour (UA)|UABardBardColleges|3",
+				"Mantle of Majesty|Bard||Glamour (UA)|UABardBardColleges|6",
+				"Mantle of Majesty|Bard||Glamour (UA)|UABardBardColleges|14"
+			]
+		},
+		{
+			"name": "College of Whispers (UA)",
+			"shortName": "Whispers (UA)",
+			"source": "UABardBardColleges",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Whispers|Bard||Whispers (UA)|UABardBardColleges|3",
+				"Mantle of Whispers|Bard||Whispers (UA)|UABardBardColleges|6",
+				"Shadow Lore|Bard||Whispers (UA)|UABardBardColleges|14"
+			]
+		},
+		{
+			"name": "College of Swords v2 (UA)",
+			"shortName": "Swords v2 (UA)",
+			"source": "UARevisedSubclasses",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Swords v2|Bard||Swords v2 (UA)|UARevisedSubclasses|3",
+				"Cunning Flourish|Bard||Swords v2 (UA)|UARevisedSubclasses|6",
+				"Master's Flourish|Bard||Swords v2 (UA)|UARevisedSubclasses|14"
+			]
+		},
+		{
+			"name": "College of Glamour",
+			"shortName": "Glamour",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 14,
+			"additionalSpells": [
+				{
+					"innate": {
+						"6": [
+							"command"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"College of Glamour|Bard||Glamour|XGE|3",
+				"Mantle of Majesty|Bard||Glamour|XGE|6",
+				"Unbreakable Majesty|Bard||Glamour|XGE|14"
+			]
+		},
+		{
+			"name": "College of Swords",
+			"shortName": "Swords",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 15,
+			"subclassFeatures": [
+				"College of Swords|Bard||Swords|XGE|3",
+				"Extra Attack|Bard||Swords|XGE|6",
+				"Master's Flourish|Bard||Swords|XGE|14"
+			]
+		},
+		{
+			"name": "College of Whispers",
+			"shortName": "Whispers",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 16,
+			"subclassFeatures": [
+				"College of Whispers|Bard||Whispers|XGE|3",
+				"Mantle of Whispers|Bard||Whispers|XGE|6",
+				"Shadow Lore|Bard||Whispers|XGE|14"
+			]
+		},
+		{
+			"name": "College of Eloquence (UA)",
+			"shortName": "Eloquence (UA)",
+			"source": "UABardAndPaladin",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Eloquence|Bard||Eloquence (UA)|UABardAndPaladin|3",
+				"Undeniable Logic|Bard||Eloquence (UA)|UABardAndPaladin|6",
+				"Infectious Inspiration|Bard||Eloquence (UA)|UABardAndPaladin|14"
+			]
+		},
+		{
+			"name": "College of Creation (UA)",
+			"shortName": "Creation (UA)",
+			"source": "UA2020SubclassesPt2",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Creation|Bard||Creation (UA)|UA2020SubclassesPt2|3",
+				"Animating Performance|Bard||Creation (UA)|UA2020SubclassesPt2|6",
+				"Performance of Creation|Bard||Creation (UA)|UA2020SubclassesPt2|14"
+			]
+		},
+		{
+			"name": "College of Spirits (UA)",
+			"shortName": "Spirits (UA)",
+			"source": "UA2020SubclassesPt4",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Spirits|Bard||Spirits (UA)|UA2020SubclassesPt4|3",
+				"Spirit Session|Bard||Spirits (UA)|UA2020SubclassesPt4|6",
+				"Spiritual Focus|Bard||Spirits (UA)|UA2020SubclassesPt4|6",
+				"Mystical Connection|Bard||Spirits (UA)|UA2020SubclassesPt4|14"
+			]
+		},
+		{
+			"name": "College of Creation",
+			"shortName": "Creation",
+			"source": "TCE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 28,
+			"subclassFeatures": [
+				"College of Creation|Bard||Creation|TCE|3",
+				"Animating Performance|Bard||Creation|TCE|6",
+				"Creative Crescendo|Bard||Creation|TCE|14"
+			]
+		},
+		{
+			"name": "College of Eloquence",
+			"shortName": "Eloquence",
+			"source": "TCE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 29,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 28
+				}
+			],
+			"subclassFeatures": [
+				"College of Eloquence|Bard||Eloquence|TCE|3",
+				"Unfailing Inspiration|Bard||Eloquence|TCE|6",
+				"Universal Speech|Bard||Eloquence|TCE|6",
+				"Infectious Inspiration|Bard||Eloquence|TCE|14"
+			]
+		},
+		{
+			"name": "College of Spirits",
+			"shortName": "Spirits",
+			"source": "VRGR",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 28,
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"guidance#c"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"College of Spirits|Bard||Spirits|VRGR|3",
+				"Spirit Session|Bard||Spirits|VRGR|6",
+				"Mystical Connection|Bard||Spirits|VRGR|14"
+			]
+		},
+		{
+			"name": "Mage of Lorehold (UA)",
+			"shortName": "Lorehold (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Bard",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Lorehold (UA)",
+				"shortName": "Lorehold (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		},
+		{
+			"name": "Mage of Silverquill (UA)",
+			"shortName": "Silverquill (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Bard",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Silverquill (UA)",
+				"shortName": "Silverquill (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Bardic Inspiration",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Je kunt anderen inspireren met opzwepende woorden of muziek. Om dit te doen, gebruik je een bonusactie tijdens je beurt om een ander wezen dan jezelf te kiezen binnen een straal van 60 meter van je die je kan horen. Dat wezen krijgt één Bardische Inspiratie dobbelsteen, een {@dice d6}.",
+				"Eenmaal binnen de volgende 10 minuten kan het wezen de dobbelsteen gooien en het gegooide getal optellen bij een ability check, aanvalsrol of saving throw die het doet. Het wezen kan wachten tot nadat het de {@dice d20} gegooid heeft voordat het besluit om de Bardische Inspiratie dobbelsteen te gebruiken, maar moet beslissen voordat de DM zegt of de worp slaagt of mislukt. Zodra de Bardische Inspiratie-dobbelsteen is gegooid, is deze verloren. Een wezen kan maar één Bardische Inspiratie-dobbelsteen tegelijk hebben.",
+				"Je kunt deze eigenschap een aantal keer gebruiken gelijk aan je Charisma modifier (minimaal één keer). Je krijgt het verbruikte aantal weer terug als je een lange rustpauze hebt genomen.",
+				"Je Bardische Inspiratiematrix verandert als je bepaalde levels in deze klasse bereikt. De dobbelsteen wordt een {@dice d8} op het 5e niveau, een {@dice d10} op het 10e niveau, en een {@dice d12} op het 15e niveau."
+			]
+		},
+		{
+			"name": "Magical Inspiration",
+			"source": "UAClassFeatureVariants",
+			"page": 3,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level bard feature (enhances Bardic Inspiration)}",
+				"Als een wezen een Bardische Inspiratie-dobbelsteen van jou heeft en een spreuk uitspreekt, kan het wezen die dobbelsteen gooien en het gerolde getal optellen bij één schade- of genezingsworp van de spreuk. De Bardische Inspiratie dobbelsteen gaat dan verloren."
+			]
+		},
+		{
+			"name": "Spell Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 3,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level bard feature (enhances Spellcasting)}",
+				"Telkens als je een lange rustperiode beëindigt, kun je een spreuk die je met deze Spellcasting eigenschap hebt geleerd, vervangen door een andere spreuk uit de bardspreukenlijst. De nieuwe spreuk moet van hetzelfde niveau zijn als de spreuk die je vervangt."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Je hebt geleerd om het weefsel van de werkelijkheid te ontwarren en opnieuw vorm te geven in harmonie met je wensen en muziek. Je spreuken maken deel uit van je uitgebreide repertoire, magie die je op verschillende situaties kunt afstemmen. Zie {@book chapter 10|PHB|10} voor de algemene regels van het toverspreuken en {@book chapter 11|PHB|11} voor de {@filter bard spell list|spells|class=bard}.",
+				{
+					"type": "entries",
+					"name": "Cantrips",
+					"entries": [
+						"Je kent twee cantrips naar keuze uit de bardspreukenlijst. Je leert extra bard cantrips naar keuze op hogere niveaus, waarbij je een 3e cantrip leert op 4e niveau en een 4e op 10e niveau."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spell Slots",
+					"entries": [
+						"De Bard tabel toont hoeveel spell slots je hebt om je {@filter bard spells|spells|class=bard} spreuken van niveau 1 en hoger uit te spreken. Om een van deze spreuken uit te spreken, moet je een slot van het niveau van de spreuk of hoger gebruiken. Je krijgt alle verbruikte spell slots terug als je een lange rustperiode beëindigt.",
+						"Als je bijvoorbeeld de spreuk van het 1e niveau kent {@spell cure wounds} en een spreukenslot van het 1e niveau en een van het 2e niveau beschikbaar hebt, kun je {@spell cure wounds} in beide slots uitspreken."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells Known of 1st Level and Higher",
+					"entries": [
+						"Je kent vier spreuken van het eerste niveau naar keuze uit de lijst met bardspreuken.",
+						"Je leert een extra bardspreuk naar keuze op elk niveau behalve 12e, 16e, 19e en 20e. Elk van deze spreuken moet van een niveau zijn waarvoor je spell slots hebt. Als je bijvoorbeeld het 3e niveau in deze klasse bereikt, kun je een nieuwe spreuk van het 1e of 2e niveau leren.",
+						"Bovendien, als je een level stijgt in deze klasse, kun je een van de bard spreuken die je kent kiezen en deze vervangen door een andere spreuk van de bard spreukenlijst, die ook van een level moet zijn waarvoor je spell slots hebt."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Ability",
+					"entries": [
+						"Charisma is je bezweringsvaardigheid voor je bard spreuken. Je magie komt voort uit het hart en de ziel die je in de uitvoering van je muziek of oratie legt. Je gebruikt je Charisma wanneer een spreuk verwijst naar je bezweringsvaardigheid. Bovendien gebruik je je Charisma modifier bij het bepalen van de saving throw DC voor een bardspreuk die je uitspreekt en bij het maken van een aanvalsrol met een bardspreuk.",
+						{
+							"type": "abilityDc",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ritual Casting",
+					"entries": [
+						"Je kunt elke bardspreuk die je kent als een ritueel uitspreken als die spreuk het ritueel label heeft."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Focus",
+					"entries": [
+						"Je kunt een {@item musical instrument|PHB} gebruiken als een spellcasting focus voor je bard spreuken."
+					]
+				}
+			]
+		},
+		{
+			"name": "Jack of All Trades",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Vanaf het 2de niveau kan je de helft van je bekwaamheidsbonus, afgerond naar beneden, toevoegen aan elke ability check die je doet en die nog niet je bekwaamheidsbonus bevat."
+			]
+		},
+		{
+			"name": "Magical Inspiration",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level bard {@variantrule optional class features|tce|optional feature}}",
+				"Als een wezen een Bardische Inspiratiedobbelsteen van je heeft en een spreuk uitspreekt die hittepunten herstelt of schade toebrengt, kan het wezen die dobbelsteen gooien en een doelwit kiezen dat door de spreuk wordt getroffen. Het gegooide getal wordt als bonus opgeteld bij het aantal hittepunten dat is teruggewonnen of de schade die is toegebracht. De Bardische Inspiratie dobbelsteen is dan verloren."
+			]
+		},
+		{
+			"name": "Song of Rest (d6)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Vanaf het 2e niveau kun je met kalmerende muziek of een oratie je gewonde bondgenoten weer tot leven wekken tijdens een korte rustpauze. Als jij of een bevriend wezen dat je optreden kan horen, aan het eind van de korte rust weer hit points krijgt door Hit Dice uit te geven, krijgt elk van die wezens een extra {@dice 1d6} hit point terug.",
+				"De extra hit points nemen toe als je bepaalde levels in deze klasse bereikt: tot {@dice 1d8} op 9e level, tot {@dice 1d10} op 13e level, en tot {@dice 1d12} op 17e level."
+			]
+		},
+		{
+			"name": "Bard College",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Op het 3e niveau kun je je verdiepen in de geavanceerde technieken van een bard college naar keuze uit de lijst van beschikbare colleges. Je keuze verleent je eigenschappen op het 3e niveau en opnieuw op het 6e en 14e niveau."
+			]
+		},
+		{
+			"name": "Expertise",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Op het 3e niveau kies je twee van je vaardigheden. Je vaardigheidsbonus wordt verdubbeld voor elke vaardigheidstest die je doet en die een van de gekozen vaardigheden gebruikt.",
+				"Op het 10e niveau kun je nog twee vaardigheden kiezen om dit voordeel te behalen."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"Als je het 4e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Bardic Versatility",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level bard {@variantrule optional class features|tce|optional feature}}",
+				"Telkens wanneer je een level in deze klasse bereikt dat de Ability Score Improvement eigenschap verleent, kun je een van de volgende dingen doen, die een verandering in focus vertegenwoordigen als je je vaardigheden en magie gebruikt:",
+				{
+					"type": "list",
+					"items": [
+						"Vervang een van de vaardigheden die je hebt gekozen voor de Expertise eigenschap door een van je andere vaardigheden die niet profiteert van Expertise.",
+						"Vervang een cantrip die je geleerd hebt van de Spellcasting eigenschap van deze klasse door een andere cantrip uit de {@filter bard spell list|spells|level=0|class=bard}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Bardic Inspiration (d8)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"Op 5e niveau, verandert je Bardische Inspiratie dobbelsteen in een {@dice d8}."
+			]
+		},
+		{
+			"name": "Font of Inspiration",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"Vanaf je 5e level krijg je al je verbruikte Bardische Inspiratie terug als je een korte of lange rustpauze beëindigt."
+			]
+		},
+		{
+			"name": "Bard College feature",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Op het 6e niveau krijg je een eigenschap van je Bard College."
+			]
+		},
+		{
+			"name": "Countercharm",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Op het 6e niveau krijg je de mogelijkheid om muzieknoten of woorden van kracht te gebruiken om geestbeïnvloedende effecten te verstoren. Als actie kun je een optreden starten dat duurt tot het einde van je volgende beurt. Gedurende die tijd hebben jij en alle bevriende wezens binnen een straal van 30 meter van je voordeel bij het redden van worpen tegen {@condition frightened} of {@condition charmed}. Een wezen moet je kunnen horen om dit voordeel te krijgen. De voorstelling eindigt voortijdig als je {@condition incapacitated} of tot zwijgen wordt gebracht of als je ze vrijwillig beëindigt (geen actie vereist)."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"Als je 8e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Song of Rest (d8)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 9,
+			"entries": [
+				"Op het 9e niveau worden de extra hitpunten door Lied van Rust verhoogd tot {@dice 1d8}."
+			]
+		},
+		{
+			"name": "Bardic Inspiration (d10)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Op het 10e niveau verandert je Bardische Inspiratie dobbelsteen in een {@dice d10}."
+			]
+		},
+		{
+			"name": "Expertise",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Op het 10e niveau kun je nog twee vaardigheidsproficiencies kiezen. Je vaardigheidsbonus wordt verdubbeld voor elke vaardigheidstoets die je doet en die een van de gekozen vaardigheden gebruikt."
+			]
+		},
+		{
+			"name": "Magical Secrets",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Op het 10e niveau heb je magische kennis geplunderd uit een breed spectrum van disciplines. Kies twee spreuken uit alle klassen, inclusief deze. Een spreuk die je kiest moet van een niveau zijn dat je kunt bezweren, zoals aangegeven op de Bard tabel, of een cantrip.",
+				"De gekozen spreuken tellen als bardspreuken voor jou en worden meegeteld in het aantal in de kolom Bekende Spreuken van de Bardentabel.",
+				"Je leert twee extra spreuken uit alle klassen op 14e niveau en nogmaals op 18e niveau."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"Als je 12e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Song of Rest (d10)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 13,
+			"entries": [
+				"Op 13e niveau worden de extra hitpunten door Lied van Rust verhoogd tot {@dice 1d10}."
+			]
+		},
+		{
+			"name": "Bard College feature",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Op 14e level krijg je een eigenschap van je Bard College."
+			]
+		},
+		{
+			"name": "Magical Secrets",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Op 14e niveau kun je twee extra spreuken kiezen uit alle klassen, inclusief deze. Een spreuk die je kiest moet van een niveau zijn dat je kunt bezweren, zoals aangegeven op de Bard tabel, of een cantrip.",
+				"De gekozen spreuken tellen als bardspreuken voor jou en worden meegeteld in het aantal in de kolom Bekende Spreuken van de Bardentabel."
+			]
+		},
+		{
+			"name": "Bardic Inspiration (d12)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 15,
+			"entries": [
+				"Op 15e niveau, verandert je Bardische Inspiratie dobbelsteen in een {@dice d12}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"Als je 16e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Song of Rest (d12)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 17,
+			"entries": [
+				"Op 17e niveau worden de extra hitpunten door Lied van Rust verhoogd tot {@dice 1d12}."
+			]
+		},
+		{
+			"name": "Magical Secrets",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"Op 18e niveau kies je twee extra spreuken uit een klasse, inclusief deze. Een spreuk die je kiest moet van een niveau zijn dat je kunt bezweren, zoals aangegeven op de Bard tabel, of een cantrip.",
+				"De gekozen spreuken tellen als bardspreuken voor jou en worden meegeteld in het aantal in de kolom Bekende Spreuken van de Bardentabel."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"Als je 19e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Superior Inspiration",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"Op 20e niveau, als je initiatief rolt en geen Bardische Inspiratie meer over hebt, krijg je één gebruik terug."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "College of Lore",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Barden van het College van Lore weten iets over de meeste dingen, en verzamelen stukjes kennis uit verschillende bronnen, van wetenschappelijke boeken tot boerenverhalen. Of ze nu volksliederen zingen in taveernes of uitgebreide composities aan koninklijke hoven, deze barden gebruiken hun gaven om het publiek geboeid te houden. Wanneer het applaus verstomt, kunnen de toehoorders alles in twijfel trekken wat zij voor waar hielden, van hun geloof in de priesters van de plaatselijke tempel tot hun loyaliteit aan de koning.",
+				"De loyaliteit van deze barden ligt in het nastreven van schoonheid en waarheid, niet in trouw aan een vorst of het volgen van de leerstellingen van een godheid. Een edelman die zo'n bard als heraut of adviseur heeft, weet dat de bard liever eerlijk dan politiek is.",
+				"De leden van het college komen bijeen in bibliotheken en soms in echte colleges, compleet met klaslokalen en slaapzalen, om hun overlevering met elkaar te delen. Ze komen ook bijeen op festivals of bij staatsaangelegenheden, waar ze corruptie aan de kaak kunnen stellen, leugens kunnen ontrafelen en de draak kunnen steken met zelfingenomen gezagsdragers.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Lore||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Cutting Words|Bard||Lore||3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Als je op je 3e level lid wordt van het College of Lore, word je bekwaam in drie vaardigheden naar keuze."
+			]
+		},
+		{
+			"name": "Cutting Words",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Ook op het 3e niveau leer je hoe je je humor kunt gebruiken om anderen af te leiden, te verwarren en op een andere manier hun vertrouwen en competentie te ontnemen. Als een wezen dat je kunt zien binnen een straal van 60 meter een aanvalsrol, een ability check of een schaderol doet, kun je in je reactie een van je Bardische Inspiratie gebruiken door een Bardische Inspiratie-dobbelsteen te gooien en het gegooide getal af te trekken van de worp van het wezen. Je kunt ervoor kiezen om deze eigenschap te gebruiken nadat het wezen zijn worp heeft gedaan, maar voordat de DM bepaalt of de aanvalsrol of ability check slaagt of faalt, of voordat het wezen zijn schade toebrengt. Het wezen is immuun als het je niet kan horen of als het immuun is om te worden {@condition charmed}."
+			]
+		},
+		{
+			"name": "Additional Magical Secrets",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau leer je twee spreuken naar keuze uit een klasse. Een spreuk die je kiest moet van een niveau zijn dat je kunt bezweren, zoals aangegeven op de Bard tabel, of een cantrip. De gekozen spreuken tellen voor jou als bardspreuken maar tellen niet mee voor het aantal bardspreuken dat je kent."
+			]
+		},
+		{
+			"name": "Peerless Skill",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Vanaf level 14 kun je een Bardische Inspiratie gebruiken als je een vaardigheidstest doet. Gooi een Bardische Inspiratie dobbelsteen en voeg het gegooide aantal toe aan je ability check. Je kan kiezen om dit te doen nadat je de dobbelsteen voor de ability check hebt gegooid, maar voordat de DM je vertelt of je slaagt of faalt."
+			]
+		},
+		{
+			"name": "College of Valor",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Barden van het College of Valor zijn gedurfde skalds wier verhalen de herinnering aan de grote helden uit het verleden levend houden, en daardoor een nieuwe generatie helden inspireren. Deze barden komen samen in honingzalen of rond grote vreugdevuren om de daden van de machtigen uit heden en verleden te bezingen. Ze reizen door het land om getuige te zijn van grote gebeurtenissen uit de eerste hand en om ervoor te zorgen dat de herinnering aan die gebeurtenissen niet van de wereld verdwijnt. Met hun liederen inspireren zij anderen om dezelfde hoogten van verwezenlijking te bereiken als de helden van weleer.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Valor||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Combat Inspiration|Bard||Valor||3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Als je op je 3e niveau lid wordt van het College of Valor, krijg je vaardigheid met middelzware bepantsering, schilden en vechtwapens."
+			]
+		},
+		{
+			"name": "Combat Inspiration",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Ook op 3de niveau leer je anderen te inspireren in de strijd. Een wezen dat van jou een Bardische Inspiratiedobbelsteen heeft gekregen, kan die dobbelsteen gooien en het gegooide getal optellen bij een zojuist gedane worp met wapenschade. Een andere mogelijkheid is om, als er een aanval tegen het wezen wordt gedaan, zijn reactie te gebruiken om de Bardische Inspiratiedobbelsteen te gooien en het gegooide getal bij zijn AC tegen die aanval op te tellen, nadat hij de worp heeft gezien, maar voordat hij weet of de aanval raak of mis is."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau kun je twee keer aanvallen, in plaats van één keer, wanneer je de {@action Attack} actie doet tijdens je beurt."
+			]
+		},
+		{
+			"name": "Battle Magic",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op je 14e level heb je de kunst onder de knie om toverspreuken en het gebruik van wapens in één harmonieuze handeling samen te voegen. Als je je actie gebruikt om een bardspreuk uit te spreken, kun je als bonusactie een wapenaanval doen."
+			]
+		},
+		{
+			"name": "College of Creation",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Barden geloven dat de kosmos een kunstwerk is - de schepping van de eerste draken en goden. Dat scheppingswerk omvatte harmonieën die vandaag de dag nog steeds doorklinken in het bestaan, een kracht die bekend staat als het Lied van de Schepping. De barden van het Scheppingscollege putten uit dat oerlied door middel van dans, muziek en poëzie, en hun leraren delen deze les:",
+				"\"Vóór de zon en de maan was er het Lied, en zijn muziek wekte de eerste dageraad. Zijn melodieën brachten de stenen en bomen zo in verrukking dat sommigen van hen een eigen stem kregen. En nu zingen zij ook. Leer het Lied, leerlingen, en ook jullie kunnen de bergen leren zingen en dansen.\"",
+				"Dwergen en gnomen moedigen hun barden vaak aan om studenten te worden van het Lied der Schepping. En onder de draken wordt het Lied der Schepping vereerd, want in legenden worden Bahamut en Tiamat - de grootste der draken - afgeschilderd als twee van de eerste zangers van het lied.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Mote of Potential|Bard||Creation|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Performance of Creation|Bard||Creation|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Mote of Potential",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Creation feature}",
+				"Telkens als je een wezen een Bardische Inspiratie-dobbelsteen geeft, kun je een noot uit het Lied van de Schepping uitspreken om een kleine potentiaalbobbelsteen te creëren, die binnen een straal van 5 meter van dat wezen ronddraait. De fiche is ongrijpbaar en onkwetsbaar, en hij blijft bestaan totdat de Bardische Inspiratie-dobbelsteen verloren gaat. De fiche ziet eruit als een muzieknoot, een ster, een bloem, of een ander symbool van kunst of leven dat jij kiest.",
+				"Als het wezen de Bardische Inspiratiedobbelsteen gebruikt, geeft de mote een extra effect, afhankelijk van of de dobbelsteen een ability check, een aanvalsrol of een saving throw ten goede komt, zoals hieronder beschreven:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ability Check",
+							"entry": "Als het wezen de Bardische Inspiratie dobbelsteen gooit om deze toe te voegen aan een ability check, kan het wezen de Bardische Inspiratie dobbelsteen opnieuw gooien en kiezen welke worp te gebruiken, aangezien de klos knalt en voor een moment kleurrijke, onschadelijke vonken afgeeft."
+						},
+						{
+							"type": "item",
+							"name": "Attack Roll",
+							"entry": "Onmiddellijk nadat het wezen de Bardische Inspiratiedobbelsteen heeft gegooid om deze toe te voegen aan een aanvalsrol tegen een doelwit, spat de klos uit elkaar. Het doelwit en elk wezen van je keuze dat je kunt zien binnen een straal van 5 meter, moet slagen op een Constitution saving throw tegen je spell save DC of donderschade oplopen gelijk aan het aantal gegooide punten op de Bardic Inspiration dobbelsteen."
+						},
+						{
+							"type": "item",
+							"name": "Saving Throw",
+							"entry": "Onmiddellijk nadat het wezen de Bardische Inspiratiedobbelsteen heeft gegooid en deze heeft opgeteld bij een saving throw, verdwijnt de klodder met het geluid van zachte muziek, waardoor het wezen tijdelijke hit points krijgt gelijk aan het aantal gegooide Bardische Inspiratiedobbelsteen plus je Charisma modifier (minimaal 1 tijdelijke hit point)."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Performance of Creation",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Creation feature}",
+				"Als actie kun je de magie van het Lied der Schepping kanaliseren om een niet-magisch voorwerp naar keuze te creëren in een onbezette ruimte binnen 10 meter van je. Het voorwerp moet verschijnen op een oppervlak of in een vloeistof die het kan dragen. De waarde van het voorwerp mag niet meer zijn dan 20 keer je bard level, en het voorwerp moet Medium of kleiner zijn. Het voorwerp glinstert zachtjes, en een wezen kan vage muziek horen als hij het aanraakt. Het gemaakte voorwerp verdwijnt na een aantal uur dat gelijk is aan je vaardigheidsbonus. Voor voorbeelden van voorwerpen die je kunt maken, zie het uitrustingshoofdstuk van de {@book Player's Handbook|PHB|5}.",
+				"Als je eenmaal een voorwerp met deze actie hebt gemaakt, kun je dat niet meer doen totdat je een lange rustpauze hebt genomen, tenzij je een spell slot van 2e niveau of hoger gebruikt om deze actie opnieuw te gebruiken. Je kunt maar één voorwerp tegelijk met deze actie maken; als je deze actie gebruikt en al een voorwerp met deze actie hebt, verdwijnt het eerste voorwerp onmiddellijk.",
+				"De grootte van het voorwerp dat je met deze eigenschap kunt maken, neemt met één groottecategorie toe wanneer je het 6e niveau (Groot) en het 14e niveau (Enorm) bereikt."
+			]
+		},
+		{
+			"name": "Animating Performance",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Creation feature}",
+				"Als actie kun je een groot of kleiner niet-magisch voorwerp animeren dat zich binnen 30 meter van je bevindt en dat je niet draagt of draagt. Het animate item gebruikt het {@creature Dancing Item|TCE} stat block, dat je proficiency bonus (PB) gebruikt. Het voorwerp is vriendelijk voor jou en je metgezellen en gehoorzaamt je commando's. Het blijft 1 uur leven, totdat het is gereduceerd tot 0 hit points, of totdat je sterft.",
+				"In een gevecht deelt het voorwerp jouw initiatief, maar het komt onmiddellijk na jou aan de beurt. Het kan bewegen en zijn reactie op zichzelf gebruiken, maar de enige actie die het in zijn beurt doet is de {@action Dodge} actie, tenzij je een bonusactie doet in jouw beurt om het een andere actie te laten doen. Dat kan een actie uit zijn stat block zijn of een andere actie. Als je {@condition incapacitated} bent, kan het voorwerp elke actie van zijn keuze uitvoeren, niet alleen {@action Dodge}.",
+				"Als je je Bardische Inspiratie-feature gebruikt, kun je het voorwerp commanderen als onderdeel van dezelfde bonusactie die je gebruikt voor Bardische Inspiratie.",
+				"Als je eenmaal een voorwerp hebt geanimeerd met deze actie, kun je dat niet meer doen totdat je een lange rustperiode hebt gehad, tenzij je een spreukengroef van 3de niveau of hoger gebruikt om deze actie opnieuw te gebruiken. Je kunt maar één voorwerp tegelijk animeren met deze actie; als je deze actie gebruikt en al een {@creature dancing item|TCE} van deze actie hebt, wordt het eerste voorwerp onmiddellijk levenloos."
+			]
+		},
+		{
+			"name": "Creative Crescendo",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Creation feature}",
+				"Als je je Prestatie van Creatie-functie gebruikt, kun je meer dan één voorwerp tegelijk creëren. Het aantal voorwerpen is gelijk aan je Charisma modifier (minimum van twee voorwerpen). Als je een voorwerp creëert dat dat aantal zou overschrijden, kies je welk van de eerder gecreëerde voorwerpen verdwijnt. Slechts één van deze voorwerpen kan de maximale grootte hebben die je kunt maken; de rest moet Klein of Klein zijn.",
+				"Je bent niet langer beperkt door de gp waarde bij het maken van voorwerpen met Prestatie van Creatie."
+			]
+		},
+		{
+			"name": "College of Eloquence",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Aanhangers van het College van Welsprekendheid beheersen de kunst van het redenaarschap. Overtuiging wordt beschouwd als een hoge kunst, en een goed beredeneerd, goed uitgesproken argument blijkt vaak overtuigender dan feiten. Deze barden gebruiken een mix van logica en theatrale woordspelingen om sceptici en tegenstanders met logische argumenten te overtuigen en de emoties van het publiek op te roepen.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Silver Tongue|Bard||Eloquence|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Unsettling Words|Bard||Eloquence|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Silver Tongue",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Je bent een meester in het zeggen van het juiste ding op het juiste moment. Wanneer je een Charisma ({@skill Persuasion}) of Charisma ({@skill Deception}) check doet, kun je een {@dice d20} worp van 9 of lager als een 10 beschouwen."
+			]
+		},
+		{
+			"name": "Unsettling Words",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Je kunt met magie doorspekte woorden uitspreken die een wezen van streek maken en aan zichzelf doen twijfelen. Als bonusactie kun je één keer je Bardische Inspiratie gebruiken en één wezen kiezen dat je kunt zien binnen 60 meter van je. Rol de Bardische Inspiratie dobbelsteen. Het wezen moet het gegooide getal aftrekken van de eerstvolgende reddingsworp die het doet voor het begin van je volgende beurt."
+			]
+		},
+		{
+			"name": "Unfailing Inspiration",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Eloquence feature}",
+				"Je inspirerende woorden zijn zo overtuigend dat anderen zich gedreven voelen om te slagen. Als een wezen een van je Bardische Inspiratie-dobbelstenen toevoegt aan zijn ability check, aanvalsworp of saving throw en de worp mislukt, mag het wezen de Bardische Inspiratie-dobbelsteen houden."
+			]
+		},
+		{
+			"name": "Universal Speech",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Eloquence feature}",
+				"Je hebt de mogelijkheid gekregen om je spraak verstaanbaar te maken voor elk wezen. Als actie kies je een of meer wezens binnen 60 meter van je, tot een aantal gelijk aan je Charisma modifier (minimum van een wezen). De gekozen wezens kunnen je gedurende 1 uur magisch verstaan, ongeacht de taal die je spreekt.",
+				"Als je deze eigenschap eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een lange rustperiode hebt gehad, tenzij je een spreukslot gebruikt om hem weer te gebruiken."
+			]
+		},
+		{
+			"name": "Infectious Inspiration",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Eloquence feature}",
+				"Wanneer je iemand succesvol inspireert, kan de kracht van je welsprekendheid zich nu verspreiden naar iemand anders. Als een wezen binnen 60 meter van je één van je Bardische Inspiratie-dobbelstenen toevoegt aan zijn ability check, aanvalsrol of saving throw en de rol slaagt, dan kun je je reactie gebruiken om een ander wezen (anders dan jezelf) dat je kan horen binnen 60 meter van je aan te moedigen door het een Bardische Inspiratie-dobbelsteen te geven zonder een van je Bardische Inspiratie-gebruiken te verbruiken.",
+				"Je kan deze reactie een aantal keer gebruiken gelijk aan je Charisma modifier (minimum van één keer), en je krijgt alle gebruikte reacties terug wanneer je een lange rustperiode beëindigt."
+			]
+		},
+		{
+			"name": "College of Creation",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 3,
+			"entries": [
+				"Barden geloven dat het multiversum is ontstaan door woord en geluid, esoterische harmonieën die blijven doorklinken in het bestaan: het Lied van de Schepping. De barden van dit college putten uit deze oude kracht door voorstellingen van dans, muziek of zang om datgene tot stand te brengen wat ze het meest nodig hebben.",
+				"Leden van dit college hebben hun krachten misschien ontwikkeld tijdens ervaringen op andere werelden of bestaansvlakken. Degenen die de overeenkomsten van meerdere realiteiten hebben gezien, hebben misschien geleerd hoe ze waarheden kunnen aanboren die de meeste stervelingen maar heel even zien. Een andere mogelijkheid is dat de bard zich niet meer op zijn eigen niveau, realiteit of tijd bevindt, en dat zijn verbindingen met andere werelden hem in staat stellen de ruimte om zich heen te manipuleren. Ongeacht waar een bard zijn krachten vandaan haalt, kunnen andere artiesten zich tot hem aangetrokken voelen, hetzij om hun geheimen te leren kennen, hetzij om een einde te maken aan hun gevaarlijke manipulatie van het Lied der Schepping.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Note of Potential|Bard||Creation (UA)|UA2020SubclassesPt2|3"
+				}
+			]
+		},
+		{
+			"name": "Note of Potential",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Creation feature}",
+				"Je kunt het Lied van de Schepping manipuleren om een zwevende muzikale noot van mogelijkheden op te roepen: Telkens wanneer je een wezen een Bardische Inspiratiedobbelsteen geeft, kun je een Nota van Mogelijkheid creëren. De noot cirkelt binnen 5 meter van het wezen. De noot is een Tiny-object dat ongrijpbaar en onkwetsbaar is, en het duurt totdat de Bardische Inspiratie-dobbelsteen verloren is gegaan. Een wezen met een noot kan hem op de volgende manieren gebruiken.",
+				{
+					"type": "entries",
+					"name": "Note of Destruction",
+					"entries": [
+						"Onmiddellijk nadat het wezen de Bardische Inspiratiedobbelsteen heeft gegooid om deze toe te voegen aan een aanvalsrol, kan het wezen de noot gebruiken om een uitbarsting van geluid te creëren. Elk ander schepsel dat zich binnen een straal van 5 meter bevindt, moet een grondwettelijke reddingsworp doen tegen de DC van je spreuk of het krijgt donderschade gelijk aan het aantal gegooide punten op de Bardische Inspiratiedobbelsteen."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Note of Protection",
+					"entries": [
+						"Onmiddellijk nadat het wezen de Bardische Inspiratiedobbelsteen heeft gegooid en deze heeft opgeteld bij een saving throw, kan het wezen de noot gebruiken om tijdelijke hit points te krijgen die gelijk zijn aan het aantal gegooide Bardische Inspiratiedobbelsteen + je Charisma modifier, mits het wezen niet al tijdelijke hit points heeft."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Note of Ingenuity",
+					"entries": [
+						"Als het wezen de Bardische Inspiratie dobbelsteen gooit om deze toe te voegen aan een ability check, kan het wezen de noot gebruiken om de Bardische Inspiratie dobbelsteen opnieuw te gooien en te kiezen welke worp hij wil gebruiken."
+					]
+				}
+			]
+		},
+		{
+			"name": "Animating Performance",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Creation feature}",
+				"Je meesterschap over het Lied der Schepping stelt je in staat voorwerpen op magische wijze tot leven te wekken. Als actie kun je een groot of kleiner niet-magisch voorwerp dat je kunt zien binnen een straal van 30 meter van je richten en het tot leven wekken. Het bezielde voorwerp gebruikt de {@creature Dancing Item|UA2020SubclassesPt2} stat block en is onder jouw controle voor 1 uur of totdat het is gereduceerd tot 0 hit points.",
+				"In een gevecht deelt het voorwerp jouw initiatief, maar het komt onmiddellijk na jou aan de beurt. Het kan bewegen en zijn reactie op zichzelf gebruiken, maar de enige actie die het in zijn beurt doet is de {@action Dodge} actie, tenzij je een bonusactie doet in jouw beurt om het te bevelen een van de acties in zijn statblok te doen of de {@action Dash}, {@action Disengage}, {@action Help}, {@action Hide}, of {@action Search} actie.",
+				"Als je je Bardische Inspiratie-eigenschap gebruikt, kun je bevelen welke actie je bezielde voorwerp uitvoert als onderdeel van dezelfde bonusactie.",
+				"Als je eenmaal een voorwerp hebt geanimeerd met deze actie, kun je dat niet meer doen totdat je een lange rustpauze hebt genomen of totdat je een spreukengroef van 3de niveau of hoger hebt gebruikt om deze actie te gebruiken. Je kunt maar één voorwerp tegelijk animeren met deze actie; als je deze actie gebruikt en al een {@creature dancing item|UA2020SubclassesPt2} van deze actie hebt, wordt het eerste voorwerp onmiddellijk levenloos."
+			]
+		},
+		{
+			"name": "Performance of Creation",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Creation feature}",
+				"Je voorstelling kan de magie van de schepping manipuleren, waardoor de wereld om je heen kortstondig wordt getransformeerd. Als actie kun je een niet-magisch voorwerp naar keuze creëren in een onbezette ruimte binnen 2 meter van je. Het voorwerp moet verschijnen op een oppervlak of in een vloeistof die het kan dragen. De waarde van het voorwerp kan niet meer zijn dan 20 keer je bard level en moet Large of kleiner zijn. Er zweven kleine glinsterende, ongrijpbare noten omheen, en een wezen kan vaag muziek horen als het het aanraakt. Voor voorbeelden van voorwerpen die je kunt maken, zie de tabellen Pantser, Wapens, Avontuuruitrusting, Gereedschap en Bestijgen en Vervoermiddelen in hoofdstuk 5, Uitrusting, van het Handboek voor Spelers.",
+				"Het gemaakte voorwerp verdwijnt aan het einde van je volgende beurt, tenzij je je actie gebruikt om het te behouden. Elke keer dat je je actie op deze manier gebruikt, wordt de duur van het item verlengd tot het einde van je volgende beurt, tot een maximum van 1 minuut. Als je het voorwerp de volle minuut behoudt, blijft het bestaan voor een aantal uren gelijk aan je bard level.",
+				"Als je eenmaal een voorwerp met deze actie hebt gemaakt, kun je dat niet meer doen totdat je een lange rustpauze hebt genomen of totdat je een spellslot van 5e niveau of hoger hebt gebruikt om deze actie te doen. Je kunt maar één voorwerp tegelijk met deze actie maken; als je deze actie gebruikt en al een voorwerp met deze actie hebt, verdwijnt het eerste voorwerp onmiddellijk."
+			]
+		},
+		{
+			"name": "College of Spirits",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"entries": [
+				"Verhalen uit het verleden zijn machtig; ze bevatten lessen uit de geschiedenis, filosofie en magie. Barden van het Geestencollege zoeken de verhalen van mensen van voorbij het materiële vlak. Met behulp van spelsets reiken ze uit om hun verhalen te horen, maar de barden hebben geen controle over welk verhaal ze vinden.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Guiding Whispers|Bard||Spirits (UA)|UA2020SubclassesPt4|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spiritual Focus|Bard||Spirits (UA)|UA2020SubclassesPt4|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tales from Beyond|Bard||Spirits (UA)|UA2020SubclassesPt4|3"
+				}
+			]
+		},
+		{
+			"name": "Guiding Whispers",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Je kunt geesten aanraken om jou en anderen te leiden. Je leert de {@spell guidance} cantrip, die niet meetelt voor het aantal bard cantrips dat je kent. Voor jou heeft deze cantrip een bereik van 60 voet als je hem uitspreekt."
+			]
+		},
+		{
+			"name": "Spiritual Focus",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Bij het contact maken met geesten kun je gebruik maken van speciale hulpmiddelen. Je kunt de volgende voorwerpen gebruiken als focus voor je bard spreuken: een kaars, een kristallen bol, een praatbord, een tarokka dek, of een schedel.",
+				"Als je op niveau 6 een bardspreuk uitspreekt die schade toebrengt of hitpoints herstelt via de Spirituele Focus, gooi dan een {@dice d6}, en je krijgt een bonus op één worp van de spreuk gelijk aan het gegooide aantal."
+			]
+		},
+		{
+			"name": "Tales from Beyond",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Je reikt uit naar geesten die hun verhalen via jou vertellen. Terwijl je je Spirituele Focus vasthoudt, kun je een bonusactie gebruiken om één keer je Bardische Inspiratie te gebruiken en te rollen op de Spirits' Tales tabel met behulp van je Bardische Inspiratie dobbelsteen om het vertelde verhaal te bepalen. Je houdt het verhaal in je gedachten tot je het effect van het verhaal uitstraalt of tot je een korte of lange rustpauze beëindigt.",
+				"Je kunt een actie gebruiken om een wezen te kiezen dat je kunt zien binnen een straal van 30 meter (dit kan jijzelf zijn) om het doelwit van het effect van het sprookje te zijn. Als je dat eenmaal gedaan hebt, kun je het effect van het sprookje niet meer geven totdat je het opnieuw rolt.",
+				"Je kunt maar één van deze verhalen tegelijk onthouden, en als je rolt op de Spirits' Tales tabel, wordt het effect van het vorige verhaal onmiddellijk beëindigd. Als het verhaal een reddingsworp vereist, is de DC gelijk aan je spell save DC.",
+				{
+					"type": "table",
+					"caption": "Spirits' Tales",
+					"colLabels": [
+						"Bardic Insp. Die",
+						"Tale"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							1,
+							"{@b 1 Beast.} Je vertelt het verhaal van een slim dier. Gedurende 1 minuut heeft het doelwit voordeel op wijsheidscontroles ({@skill Perception}) en voordeel op aanvalsrollen tegen een wezen als een andere vijand zich binnen 5 meter van het dier bevindt, en die vijand is niet {@condition incapacitated}."
+						],
+						[
+							2,
+							"{@b 2 Warrior.} Je vertelt het verhaal van een vermaard duellist. Doe een mêlee-spreukaanval tegen het doelwit als een aanvallende spectrale krijger kortstondig verschijnt in een onbezette ruimte binnen 5 voet van het doelwit alvorens te verdwijnen. Bij een treffer loopt het doelwit een krachtschade op die gelijk is aan twee worpen van je Bardische Inspiratie dobbelsteen + je Charisma modifier."
+						],
+						[
+							3,
+							"{@b 3 Friends.} Je vertelt het verhaal van vrienden die elkaar in het hiernamaals hebben gevonden. Het doelwit en een ander wezen van zijn keuze dat hij kan zien binnen een straal van 5 meter van hem, krijgt een aantal hit points terug dat gelijk is aan de worp van je Bardische Inspiratiedobbelsteen + je Charisma modifier."
+						],
+						[
+							4,
+							"{@b 4 Runaway.} Je vertelt het verhaal van een avonturier die aan elke opsluiting kon ontsnappen. Het doelwit kan onmiddellijk zijn reactie gebruiken om tot 30 voet te teleporteren naar een onbezette ruimte die hij kan zien. Wanneer het doelwit teleporteert, kan het een aantal wezens kiezen die het binnen een straal van 30 voet kan zien, tot aan je Charisma modifier (minimum van 1) om onmiddellijk dezelfde reactie te gebruiken."
+						],
+						[
+							5,
+							"{@b 5 Avenger.} Je vertelt het verhaal van een wrekende ridder. Gedurende 1 minuut, telkens wanneer een wezen dat het doelwit kan zien binnen een straal van 30 voet door een wezen wordt beschadigd, kan het doelwit zijn reactie gebruiken om krachtschade gelijk aan een worp van je Bardische Inspiratie dobbelsteen aan de aanvaller uit te delen."
+						],
+						[
+							6,
+							"{@b 6 Hero.} Je vertelt het verhaal van een epische held. Kies een wezen dat je kunt zien binnen een straal van 30 meter van jou. Het doelwit krijgt tijdelijke hit points gelijk aan een worp van je Bardische Inspiratie dobbelsteen + je bard niveau. Terwijl het deze tijdelijke hit points heeft, verhoogt de loopsnelheid van het doelwit met 10 voet."
+						],
+						[
+							7,
+							"{@b 7 Fey.} Je vertelt het verhaal van een ondeugende fey. Het doelwit moet slagen op een Wisdom saving throw of {@condition charmed} worden door jou tot het einde van zijn volgende beurt. Het {@condition charmed} doelwit moet zijn actie gebruiken om een melee aanval uit te voeren tegen een ander wezen dan hijzelf dat jij mentaal kiest. Het doelwit kan tijdens zijn beurt normaal handelen als je geen ander wezen kiest."
+						],
+						[
+							8,
+							"{@b 8 Dark Spirit.} Je spreekt een afschuwelijk verhaal over een doder in het donker. Het doelwit wordt {@condition invisible} onzichtbaar tot het einde van zijn volgende beurt of tot het een wezen raakt met een aanval. Als het een wezen raakt met een aanval tijdens deze onzichtbaarheid, neemt dat wezen necrotische schade gelijk aan een worp van je Bardische Inspiratie-dobbelsteen en wordt {@condition frightened} van het doelwit tot het einde van zijn volgende beurt."
+						],
+						[
+							9,
+							"{@b 9 Giant.} Je spreekt over de daden van een machtige reus. Elk wezen naar keuze van het doelwit dat het kan zien binnen een straal van 30 meter moet een krachtsparende worp doen, waarbij het bij een mislukte redding een krachtschade oploopt die gelijk is aan twee worpen van je Bardische Inspiratiedobbelsteen en het wordt neergeslagen {@condition prone}. Een schepsel dat slaagt voor zijn reddingsworp krijgt de helft van de schade en wordt niet neergeslagen {@condition prone}."
+						],
+						[
+							10,
+							"{@b 10 Dragon.} Je ademt een gedicht van een woedende draak. Het doelwit spuwt magisch vuur uit zijn mond in een kegel van 30 voet. Elk wezen in dat gebied moet een Dexterity saving throw doen, waarbij hij vuurschade oploopt gelijk aan drie worpen van je Bardic Inspiration dobbelsteen als hij faalt, of half zoveel schade als hij slaagt."
+						],
+						[
+							11,
+							"{@b 11 Celestial.} Je spreekt over de verheven daden van een hemelse. Het doelwit krijgt een aantal hit points terug gelijk aan twee worpen van je Bardische Inspiratie dobbelsteen + je bard niveau, en je maakt een einde aan een ziekte of een aandoening uit de volgende lijst die het doelwit treft: {@condition blinded}, {@condition deafened}, {@condition paralyzed}, {@condition petrified}, of {@condition poisoned}."
+						],
+						[
+							12,
+							"{@b 12 Unknown.} Je spreekt een onbegrijpelijke fabel uit van een wezen voorbij de sterren. Kies een wezen dat je kunt zien binnen 30 meter van jou. Het doelwit moet slagen op een intelligentie saving throw of psychische schade oplopen gelijk aan drie worpen van je Bardische Inspiratie dobbelsteen, en het doelwit kan gedurende 1 minuut geen enkele taal spreken."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Session",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Spirits feature}",
+				"Je kunt geesten channelen om inzicht te krijgen in magie. Je kunt een ritueel van een uur uitvoeren waarbij je geesten channelt (wat tijdens een korte of lange rust kan worden gedaan) met behulp van je Spirituele focus. Je kunt het ritueel uitvoeren met een aantal wezens dat gelijk is aan je bekwaamheidsbonus (inclusief jezelf). Aan het einde van het ritueel leer je tijdelijk {@filter one spell of your choice from any class|spells|school=d;n|level=0;1;2;3;4;5;6}.",
+				"De gekozen spreuk moet van een niveau zijn dat gelijk is aan het aantal wezens dat het ritueel uitvoerde of minder, de spreuk moet van een niveau zijn dat je kunt uitspreken, en hij moet in de school van waarzeggerij of necromantie zijn. De gekozen spreuk telt voor jou als een bardspreuk maar telt niet mee voor het aantal bardspreuken dat je kent.",
+				"Als je het ritueel eenmaal hebt uitgevoerd, kun je dat niet meer doen totdat je aan een lange rust begint, en je kent de gekozen spreuk totdat je aan een lange rust begint."
+			]
+		},
+		{
+			"name": "Spiritual Focus",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Spirits feature}",
+				"Als je op niveau 6 een bardspreuk uitspreekt die schade toebrengt of hitpoints herstelt via de Spirituele Focus, gooi dan een {@dice d6}, en je krijgt een bonus op één worp van de spreuk gelijk aan het gegooide aantal."
+			]
+		},
+		{
+			"name": "Mystical Connection",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Spirits feature}",
+				"Je verbinding met geesten is semi-permanent geworden. Telkens wanneer je je Tales from Beyond-feature gebruikt, kun je een {@dice d6} gooien en die gebruiken in plaats van een Bardische Inspiratie-dobbelsteen uit te geven. Je gebruikt nog steeds je Bardische Inspiratie dobbelsteen voor het effect van het verhaal, zonder deze uit te geven."
+			]
+		},
+		{
+			"name": "College of Eloquence",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"entries": [
+				"Aanhangers van het College van Welsprekendheid beheersen de kunst van het redenaarschap. Overtuiging wordt beschouwd als een hoge kunst, en een goed beredeneerd, goed uitgesproken argument blijkt vaak krachtiger dan de objectieve waarheid. Deze barden hanteren een mix van logica en theatrale woordspelingen, winnen sceptici en tegenstanders met logische argumenten, en raken de emoties van het hele publiek.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Universal Speech|Bard||Eloquence (UA)|UABardAndPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Soothing Words|Bard||Eloquence (UA)|UABardAndPaladin|3"
+				}
+			]
+		},
+		{
+			"name": "Soothing Words",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Je kunt nu kalme emoties uitroepen zonder een spell slot te gebruiken. Je kunt deze eigenschap een aantal keer gebruiken gelijk aan je Charisma modifier. Je kunt deze eigenschap weer gebruiken als je een lange rustpauze hebt gehad."
+			]
+		},
+		{
+			"name": "Universal Speech",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Je hebt de mogelijkheid gekregen om met elk wezen te spreken en te redeneren. Als bonusactie kun je één van je Bardische Inspiratiebronnen gebruiken. Als je dat doet, rol dan je Bardische Inspiratie dobbelsteen en kies een aantal wezens binnen 60 meter van je die je kunt zien, gelijk aan de worp. Gedurende 10 minuten kunnen de gekozen wezens je magisch begrijpen, ongeacht de taal die je spreekt, en je hebt voordeel op Charisma checks die je maakt om hen te beïnvloeden. Deze eigenschap werkt zelfs op een wezen dat geen talen spreekt."
+			]
+		},
+		{
+			"name": "Undeniable Logic",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Eloquence feature}",
+				"Je kunt woorden doorspekken met magie tot een kluwen van redeneringen die bemoedigend kunnen zijn of onmogelijk te volgen.",
+				"Als bonusactie kun je één van je Bardische Inspiratiemiddelen gebruiken. Als je dat doet, kies je een wezen dat je kunt zien binnen een straal van 60 van jou die jou kan horen, dan rol je je Bardische Inspiratie dobbelsteen en kies je een van de volgende:",
+				{
+					"type": "list",
+					"items": [
+						"Het wezen krijgt psychische schade gelijk aan het aantal dat je gooit op de Bardische Inspiratie dobbelsteen, en het wezen moet slagen op een Intelligence saving throw tegen je spell save DC of nadeel hebben op de volgende saving throw die het maakt voor het einde van je volgende beurt.",
+						"Het wezen krijgt evenveel hit points terug als je gooit met de Bardische Inspiratie dobbelsteen, en het wezen heeft voordeel bij de volgende saving throw die het doet voor het einde van je volgende beurt."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infectious Inspiration",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Eloquence feature}",
+				"Als een wezen een van je Bardische Inspiratie-dobbelstenen toevoegt aan zijn ability check, aanvalsworp of saving throw en de worp mislukt, mag het wezen de Bardische Inspiratie-dobbelsteen houden.",
+				"Als een wezen een van jouw Bardische Inspiratie-dobbelstenen toevoegt aan zijn ability check, aanvalsworp of saving throw en de worp slaagt, dan kun je je reactie gebruiken om een ander wezen (behalve jezelf) dat jou kan horen binnen een straal van 60 meter aan te moedigen door het een Bardische Inspiratie-dobbelsteen te geven zonder dat je een van je Bardische Inspiratie-gebruiken verbruikt. Je kunt deze reactie een aantal keren gebruiken dat gelijk is aan je Charisma modifier (minimaal één keer), en je krijgt alle verbruikte gebruiken weer terug als je een lange rustperiode hebt beëindigd."
+			]
+		},
+		{
+			"name": "College of Glamour",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"entries": [
+				"Het College of Glamour staat open voor de barden die hun vak geleerd hebben in het levendige, dodelijke rijk van de Feywild. Onderwezen door satyrs, eladrin en andere fey, leren deze barden hun magie te gebruiken om anderen te verrukken en te boeien.",
+				"De barden van dit college worden beschouwd met een mengeling van ontzag en angst. Hun optredens zijn legendarisch. De barden van dit college zijn zo welsprekend dat een toespraak of lied dat één van hen ten gehore brengt, ervoor kan zorgen dat gevangenen de bard ongedeerd vrijlaten en een woedende draak in slaap kan sussen. Dezelfde magie die hen in staat stelt beesten te bedwingen, kan ook gedachten doen veranderen. Schurkachtige barden van dit college kunnen wekenlang een gemeenschap leegzuigen, waarbij ze hun magie misbruiken om hun gastheren te veranderen in troepen.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Mantle of Inspiration|Bard||Glamour (UA)|UABardBardColleges|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Enthralling Performance|Bard||Glamour (UA)|UABardBardColleges|3"
+				}
+			]
+		},
+		{
+			"name": "Enthralling Performance",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het 3e niveau kun je je optreden opladen met verleidelijke feeënmagie.",
+				"Als je minstens 10 minuten optreedt, kun je proberen je publiek te verwonderen door te zingen, een gedicht voor te dragen of te dansen. Aan het einde van het optreden kies je een aantal humanoïden binnen 60 meter van je die alles gezien en beluisterd hebben, tot een aantal gelijk aan je Charisma modifier (minimum van één). Elk doelwit moet slagen op een Wisdom saving throw tegen je spell save DC of {@condition charmed} door jou. Terwijl {@condition charmed} het doelwit je op deze manier verafgoodt, spreekt het gloedvol over je tegen iedereen die het aanspreekt, en hindert het iedereen die zich tegen je verzet, waarbij het geweld vermijdt tenzij het al geneigd was om namens jou te vechten. Dit effect eindigt bij het doelwit na 1 uur, als het schade oploopt, als je het aanvalt, of als het ziet dat je een van zijn bondgenoten aanvalt of beschadigt.",
+				"Als een doelwit slaagt op zijn save tegen dit effect, heeft het doelwit geen hint dat je het probeerde te charmeren.",
+				"Als je deze functie eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een korte of lange rustpauze hebt genomen."
+			]
+		},
+		{
+			"name": "Mantle of Inspiration",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Als je op je 3e level lid wordt van het College of Glamour, krijg je de mogelijkheid om een lied van feeërieke magie te weven dat je bondgenoten met kracht en snelheid betovert.",
+				"Als bonusactie kun je een Bardische Inspiratie gebruiken om jezelf een wonderlijk, buitenaards uiterlijk te geven. Wanneer je dit doet, kies je een aantal bondgenoten die je kunt zien en die jou kunnen zien binnen een straal van 60 meter van je, tot een aantal gelijk aan je Charisma modifier (minimum van één). Elk doelwit krijgt {@dice 2d6} tijdelijke hit points.",
+				"Wanneer een doelwit deze tijdelijke hit points krijgt, kan het ook zijn reactie gebruiken om tot zijn snelheid naar je toe te bewegen, zonder gelegenheidsaanvallen uit te lokken. Het moet de kortste, veiligste weg naar je toe nemen.",
+				"Het aantal tijdelijke hit points neemt toe wanneer je bepaalde levels in deze klasse bereikt, en neemt toe tot {@dice 2d8} op 5th level, {@dice 2d10} op 10th level, en {@dice 2d12} op 15th level."
+			]
+		},
+		{
+			"name": "Mantle of Majesty",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau krijg je de mogelijkheid om jezelf te hullen in een feeërieke magie die ervoor zorgt dat anderen je willen dienen. Als een bonus actie, neem je een verschijning van onaardse schoonheid aan voor 1 minuut. Gedurende deze tijd kun je in elke beurt {@spell command} als bonusactie toveren, zonder een spell slot te gebruiken. Dit effect duurt 1 minuut, en elk wezen {@condition charmed} bij jou faalt automatisch in zijn saving throw tegen de spreuk.",
+				"Als je deze functie eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een lange rustperiode hebt gehad."
+			]
+		},
+		{
+			"name": "Mantle of Majesty",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14e niveau krijg je een buitenaards aspect aan je uiterlijk waardoor je er feller en lieflijker uitziet.",
+				"Bovendien kun je met deze eigenschap {@spell sanctuary} over jezelf uitspreken. Als een wezen faalt in zijn saving throw tegen de spreuk, krijg je ook voordeel op alle Charisma checks tegen het wezen voor 1 minuut, en het heeft nadeel op elke saving throw die het maakt tegen je spreuken in je volgende beurt.",
+				"Als je eenmaal {@spell sanctuary} met deze functie hebt gedaan, kun je dat niet meer doen totdat je een korte of lange rust hebt genomen."
+			]
+		},
+		{
+			"name": "College of Whispers",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"entries": [
+				"De meeste mensen zijn blij om een bard in hun midden te verwelkomen. Barden van het College van Fluisteraars gebruiken dit in hun voordeel. Ze zien eruit als elke andere bard, delen nieuws, zingen liederen en vertellen verhalen aan het publiek dat ze bijeenbrengen. In werkelijkheid leert het College of Whispers zijn studenten dat zij wolven onder schapen zijn. Deze barden gebruiken hun kennis en magie om geheimen te onthullen en deze tegen anderen te gebruiken door middel van afpersing en bedreigingen.",
+				"Veel andere barden haten het College van Fluisteraars, omdat ze het zien als een parasiet die de reputatie van de barden gebruikt om rijkdom en macht te verwerven. Om deze reden onthullen deze barden zelden hun ware aard, tenzij ze moeten. Zij beweren meestal dat zij een ander college volgen, of houden hun ware aard geheim om beter te kunnen infiltreren aan koninklijke hoven en andere machtscentra.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Venomous Blades|Bard||Whispers (UA)|UABardBardColleges|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Venomous Words|Bard||Whispers (UA)|UABardBardColleges|3"
+				}
+			]
+		},
+		{
+			"name": "Venomous Blades",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Wanneer je je aansluit bij het College of Whispers op 3de niveau, krijg je de mogelijkheid om je wapen aanvallen voor een moment magisch giftig te maken.",
+				"Als je een wezen raakt met een wapenaanval, kun je één keer je Bardische Inspiratie gebruiken om extra {@damage 2d6} gifschade toe te brengen aan dat doelwit. Je kunt dit slechts één keer per ronde doen tijdens je beurt.",
+				"De extra schade neemt toe als je bepaalde levels in deze klasse bereikt, en loopt op tot {@dice 2d8} op 5e level, {@dice 2d10} op 10e level, en {@dice 2d12} op 15e level."
+			]
+		},
+		{
+			"name": "Venomous Words",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Op het 3e niveau kun je leren om onschuldig lijkende woorden te doordrenken met een verraderlijke magie. Een wezen dat je hoort spreken kan in angst en paranoia gedompeld raken.",
+				"Als je gedurende minstens 10 minuten alleen met een mensachtige spreekt, kun je proberen paranoia en angst in zijn geest te zaaien. Aan het einde van het gesprek moet het doelwit slagen op een Wisdom saving throw tegen je spell save DC of {@condition frightened} zijn voor het volgende uur, totdat het wordt aangevallen of beschadigd, of totdat het getuige is dat zijn bondgenoten worden aangevallen of beschadigd. Terwijl {@condition frightened} op deze manier, het doelwit is paranoïde en probeert te vermijden het gezelschap van anderen, met inbegrip van zijn bondgenoten. Het doelwit zoekt wat het beschouwt als de veiligste, meest geheime plaats die voor hem beschikbaar is en verbergt zich daar.",
+				"Als het doelwit slaagt op zijn save, heeft het doelwit geen hint dat je probeerde het bang te maken.",
+				"Als je deze functie eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een korte of lange rust hebt genomen."
+			]
+		},
+		{
+			"name": "Mantle of Whispers",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau krijg je de mogelijkheid om de persoonlijkheid van een schepsel over te nemen. Als je een wezen doodt met een aanval of een spreuk, of als een wezen sterft binnen een straal van 2 meter, kun je zijn schaduw magisch vangen met je reactie. Je kunt alleen de schaduw van een wezen vangen dat van jouw type is, zoals humanoïde, en van jouw grootte (je kunt een Small of Medium schaduw vangen als je Small bent), en je kunt maar één schaduw per keer gevangen hebben.",
+				"Nadat je de schaduw van een wezen hebt gevangen, kun je je magie gebruiken om er een vermomming van te maken die je in staat stelt het uiterlijk van het wezen aan te nemen en toegang te krijgen tot zijn herinneringen. Als een actie neem je de verschijning van het wezen aan voor 1 uur of tot je dit effect als bonusactie beëindigt.",
+				"Gedurende dat uur krijg je toegang tot alle informatie die het wezen vrijelijk zou delen met een toevallige kennis. De informatie omvat algemene details over zijn achtergrond en persoonlijke leven, maar bevat geen geheimen. De informatie is voldoende om jezelf voor het wezen te laten doorgaan door uit zijn herinneringen te putten.",
+				"Een ander schepsel kan deze vermomming doorzien door een Wisdom ({@skill Insight}) check te doen, waartegenover jouw Charisma ({@skill Deception}) check staat, maar je krijgt een +5 bonus voor je check.",
+				"De vermomming en de kennis die het verleent verdwijnt wanneer de duur van deze vaardigheid eindigt."
+			]
+		},
+		{
+			"name": "Shadow Lore",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14e niveau krijg je het vermogen om duistere magie in je woorden te weven en de diepste angsten van een wezen aan te boren.",
+				"Als een actie fluister je op magische wijze een zin die slechts één wezen naar keuze binnen een straal van 30 meter van je kan horen. Het doelwit moet een Wijsheidsparende worp doen tegen je spell save DC. Het slaagt automatisch als het geen taal met je deelt of als het je niet kan horen. Bij een succesvolle saving throw, klinkt je gefluister als onverstaanbaar gemompel en heeft het geen effect.",
+				"Als het doelwit faalt in zijn saving throw, is het {@condition charmed} door jou voor de volgende 8 uur of totdat jij of je bondgenoten het aanvallen of beschadigen. Het interpreteert de fluisteringen als een beschrijving van zijn meest vernederende geheim. Hoewel je geen kennis krijgt van dit geheim, is het doelwit ervan overtuigd dat jij het weet.",
+				"Terwijl {@condition charmed} op deze manier, gehoorzaamt het schepsel je bevelen uit angst dat je zijn geheim zult onthullen. Het zal zijn leven niet voor je riskeren of voor je vechten, tenzij het al geneigd was om dat te doen. Het verleent je gunsten en geschenken die het aan een goede vriend zou aanbieden.",
+				"Wanneer het effect eindigt, begrijpt het wezen niet waarom het je zo bang hield. Als je deze eigenschap eenmaal gebruikt, kun je hem niet meer gebruiken totdat je een lange rustperiode hebt voltooid."
+			]
+		},
+		{
+			"name": "College of Satire",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"entries": [
+				"Barden van het Satirecollege worden narren genoemd. Ze gebruiken laag-bij-de-grondse verhalen, gewaagde acrobatiek en scherpe grappen om het publiek te vermaken, variërend van de menigte in een vervallen havenkroeg tot de edelen van het koninklijk hof van een koning. Waar andere barden op zoek zijn naar vergeten overleveringen of verhalen over epische dapperheid, zoeken narren naar gênante en hilarische verhalen van allerlei aard. Of het nu gaat om het ribbelige verhaal over de affaire van een gespierde stalknecht met een oude hertogin of een spottende satire over de teergevoelige onschuld van een paladijn van Helm, een nar laat nooit smaak, sociaal decorum of schaamte in de weg staan van een goede lach.",
+				"Hoewel narren meesters zijn in woordspelingen, grappen en verbale weerhaken, zijn zij veel meer dan alleen een komische noot. Van hen wordt verwacht dat ze de spot drijven en provoceren, waarbij ze gebruik maken van het feit dat zelfs van het machtigste volk volgens de traditie wordt verwacht dat ze de weerhaken van de nar met een goed humeur verdragen. Door deze verwachting kan een nar dienen als criticus of als een stem van de rede wanneer anderen te geïntimideerd zijn om de waarheid te spreken.",
+				"Voor de hertogin met een voorliefde voor straffe jonge arbeiders, kunnen zulke verhalen dienen om de doelwitten van haar affecties te waarschuwen en haar te dwingen haar wegen te veranderen bij gebrek aan gewillige partners. Terugslaan op de nar ruïneert alleen maar haar reeds beschadigde reputatie, en is misschien het beste bewijs dat de satires van de nar hun doel hebben getroffen. Maar als ze vriendelijk en gul is voor haar veroveringen, maken de grappen en verhalen haar tot een soort volksheld, en trekt ze nog meer potentiële partners naar zich toe.",
+				"Narren zijn maar aan één zaak trouw: het nastreven en verspreiden van de waarheid. Ze gebruiken hun komedie en onschuldige uiterlijk om sociale barrières te slechten en corruptie, onbekwaamheid en domheid onder de rijken en machtigen aan de kaak te stellen. Of ze nu het verraad van een oplichter onthullen of de oorlogsplannen van een baron ontmaskeren als gedreven door hebzucht en bloeddorst, een nar fungeert als het geweten van een rijk.",
+				"Narren gaan op avontuur om het gewone volk te beschermen en om de plannen van de rijken, machtigen en arroganten te ondermijnen. Hun magie sterkt de geesten van bondgenoten en brengt de geesten van vijanden in twijfel. Onder de barden zijn narren ongeëvenaarde acrobaten, en hun vermogen om te tuimelen, te ontwijken, te springen en te klimmen maakt hen tot gladde tegenstanders in de strijd.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Satire (UA)|UAKitsOfOld|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tumbling Fool|Bard||Satire (UA)|UAKitsOfOld|3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Als je op je 3e niveau lid wordt van het Satirecollege, word je vaardig met {@item thieves' tools|phb}. Je wordt ook vaardiger in {@skill Sleight of Hand} en één extra vaardigheid naar keuze. Als je al vaardig bent met {@item thieves' tools|phb} of in {@skill Sleight of Hand}, kies dan een andere vaardigheid voor elke vaardigheid die je al hebt."
+			]
+		},
+		{
+			"name": "Tumbling Fool",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Op niveau 3 beheers je een aantal acrobatische technieken die je in staat stellen gevaar te ontwijken. Als een bonus actie, kun je tuimelen. Wanneer je tuimelt, krijg je de volgende voordelen voor de rest van je beurt:",
+				{
+					"type": "list",
+					"items": [
+						"Je krijgt de voordelen van het uitvoeren van de {@action Dash} en {@action Disengage} acties.",
+						"Je krijgt een klimsnelheid gelijk aan je huidige snelheid.",
+						"Je neemt de helft van de schade van het vallen."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fool's Insight",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau krijgt je vermogen om verhalen en overleveringen te verzamelen een bovennatuurlijk tintje. Je kunt gedachten detecteren tot een aantal keer gelijk aan je Charisma. Je kunt deze vaardigheid weer gebruiken na een lange rustperiode.",
+				"Als een wezen zich verzet tegen je poging om dieper te graven en slaagt in zijn reddingsworp tegen je detecteer gedachten, dan lijdt het onmiddellijk aan een gênante sociale blunder. Het kan luidruchtig winden laten, een daverende boer laten, struikelen en vallen, of gedwongen worden een smakeloze grap te vertellen."
+			]
+		},
+		{
+			"name": "Fool's Luck",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Narren schijnen er een handje van te hebben zich uit benarde situaties te redden, en wat een zekere mislukking lijkt, om te zetten in een gênant maar effectief succes.",
+				"Op 14de niveau kun je een Bardische Inspiratie gebruiken als je faalt voor een ability check, als je niet slaagt voor een saving throw, of als je mist met een aanvalsrol. Gooi een Bardische Inspiratie-dobbelsteen en tel het gerolde getal op bij je aanval, je reddingsworp of je ability check, waarbij je het nieuwe resultaat gebruikt in plaats van het mislukte resultaat.",
+				"Als het gebruik van deze vaardigheid je een succes oplevert bij de aanval, saving throw, of ability check, noteer dan het getal dat je gegooid hebt op de Bardic Inspiration dobbelsteen. De DM kan dan dat resultaat als een straf toepassen op een aanval of een check die je doet, en je kunt deze vaardigheid niet opnieuw gebruiken totdat je dit nadeel ondervindt. Wanneer de DM deze straf oproept, beschrijf dan een gênante blunder of fout die je maakt als deel van de getroffen dobbelsteenworp."
+			]
+		},
+		{
+			"name": "College of Swords",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"entries": [
+				"Barden van het College der Zwaarden worden Bladen genoemd, en zij vermaken zich met gewaagde wapenfeiten. Bladen halen stunts uit zoals zwaard slikken, messen werpen en jongleren, en schijngevechten. Maar hoewel ze hun wapens gebruiken om te vermaken, zijn ze ook zelf goed getrainde en vaardige krijgers.",
+				"Hun talent met wapens inspireert veel blades tot een dubbelleven. De ene blades gebruikt een circusgroep als dekmantel voor snode daden als moord, roof en chantage. Andere degens slaan toe en brengen gerechtigheid tegen de wrede en machtige. De meeste groepen accepteren het talent van een blade graag voor de opwinding die het toevoegt aan een voorstelling, maar weinig entertainers vertrouwen ze volledig.",
+				"Bladen die hun leven als entertainer opgaven, zijn vaak in de problemen geraakt die het handhaven van hun geheime activiteiten onmogelijk maken. Een blade die betrapt wordt op diefstal of burgerwacht is een te groot risico voor de meeste artiestengroepen. Met hun wapenvaardigheden als hun grootste troef, gaan deze Bladen ofwel aan de slag als handhavers voor dievengilden of gaan op eigen houtje op avontuur.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Swords (UA)|UAKitsOfOld|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fighting Style|Bard||Swords (UA)|UAKitsOfOld|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blade Flourish|Bard||Swords (UA)|UAKitsOfOld|3"
+				}
+			]
+		},
+		{
+			"name": "Blade Flourish",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Op het 3e niveau kun je leren om indrukwekkende kunsten met je wapens uit te voeren. Als je tijdens je beurt de actie {@action Attack} gebruikt en aanvalt met een dolk, langzwaard, rapier, kromzwaard of kortzwaard, kun je een van de volgende zwierigheden proberen.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Defensive Flourish",
+							"entries": [
+								"Je draait je wapen in snelle cirkels om je heen en creëert zo een hypnotisch schouwspel. Als bonusactie gebruik je één keer Bardische Inspiratie, waarbij je een Bardische Inspiratiedobbelsteen gooit en het gegooide getal als bonus op je AC toepast tot het begin van je volgende beurt."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Trick Shooter's Flourish",
+							"entries": [
+								"Deze favoriete truc van messenwerpers stelt je in staat om één keer Bardische Inspiratie te gebruiken als bonusactie. Gooi een Bardische Inspiratie dobbelsteen en pas het gegooide getal toe als bonus op de volgende reeks aanvallen die je deze beurt met een dolk doet. Als het doelwit van de aanval een onbeheerd, levenloos voorwerp is, is de bonus gelijk aan het dubbele van de gegooide dobbelsteen."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Unnerving Flourish",
+							"entries": [
+								"Je dodelijke vertoon van gevechtsbekwaamheid maakt je tegenstanders nerveus, waardoor ze ineenkrimpen van angst en aan je genade overgeleverd zijn. Telkens als je een wezen tot 0 hit points reduceert met een mêlee-aanval, kun je een bonusactie gebruiken om één keer Bardische Inspiratie te gebruiken, en in plaats daarvan het wezen op 1 hit point te laten staan.",
+								"Het schepsel is {@condition frightened} van jou voor een aantal minuten gelijk aan je Charisma modifier. Het moet ook een Charisma saving throw doen met een DC gelijk aan jouw spellcasting DC + een bonus gelijk aan de worp van jouw Bardic Inspiration dobbelsteen. Als het schepsel niet slaagt voor deze saving throw, antwoordt het naar waarheid op alle vragen die je hem stelt en gehoorzaamt het je directe bevelen terwijl het {@condition frightened} door dit effect wordt beïnvloed."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Wanneer je je aansluit bij het College of Blades op 3de niveau, krijg je vaardigheid met medium bepantsering en met kromzwaarden."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Het College of Blades legt de nadruk op meesterschap met wapens en geeft je toegang tot de optie voor het vechten met twee wapens voor de vechtstijl.",
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Two-Weapon Fighting"
+				}
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau kun je twee keer aanvallen, in plaats van één keer, wanneer je in je beurt de actie {@action Attack} uitvoert."
+			]
+		},
+		{
+			"name": "Battle Magic",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op je 14e level heb je de kunst onder de knie om toverspreuken en het gebruik van wapens in één harmonieuze handeling samen te voegen. Als je je actie gebruikt om een bardspreuk uit te spreken, kun je als bonusactie een wapenaanval doen."
+			]
+		},
+		{
+			"name": "College of Swords v2",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"entries": [
+				"Barden van het College der Zwaarden worden Bladen genoemd, en zij vermaken zich met gewaagde wapenfeiten. Bladen halen stunts uit zoals zwaard slikken, messen werpen en jongleren, en schijngevechten. Maar hoewel ze hun wapens gebruiken om te vermaken, zijn ze ook zelf goed getrainde en vaardige krijgers.",
+				"Hun talent met wapens inspireert veel blades tot een dubbelleven. De ene blades gebruikt een circusgroep als dekmantel voor snode daden als moord, roof en chantage. Andere degens slaan toe en brengen gerechtigheid tegen de wrede en machtige. De meeste groepen accepteren het talent van een blade graag voor de opwinding die het toevoegt aan een voorstelling, maar weinig entertainers vertrouwen ze volledig.",
+				"Bladen die hun leven als entertainer opgaven, zijn vaak in de problemen geraakt die het handhaven van hun geheime activiteiten onmogelijk maken. Een blade die betrapt wordt op diefstal of burgerwacht is een te groot risico voor de meeste artiestengroepen. Met hun wapenvaardigheden als hun grootste troef, gaan deze Bladen ofwel aan de slag als handhavers voor dievengilden of gaan op eigen houtje op avontuur.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Swords v2 (UA)|UARevisedSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fighting Style|Bard||Swords v2 (UA)|UARevisedSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blade Flourish|Bard||Swords v2 (UA)|UARevisedSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Blade Flourish",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Op het 3e niveau leer je om indrukwekkende vertoningen van vaardigheid met je wapens uit te voeren. Als een standaard actie kun je een standaard melee aanval doen en je loopsnelheid met 10 voet verhogen tot het einde van de huidige beurt. Telkens als je deze optie gebruikt, kun je er ook een van de volgende Blade Flourish opties bij gebruiken.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Defensive Flourish",
+							"entries": [
+								"Je draait je wapen in snelle cirkels om je heen en creëert zo een hypnotisch schouwspel. Je kunt een van je Bardische Inspiraties gebruiken om een Bardische Inspiratiedobbelsteen te gooien en het gerolde getal als bonus op je AC toe te passen tot het begin van je volgende beurt."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Slashing Flourish",
+							"entries": [
+								"Als de aanval zijn doelwit raakt, kun je één van je Bardische Inspiratiemiddelen gebruiken om het wapen schade te laten toebrengen aan elk wezen van je keuze dat je kunt zien binnen een straal van 1,5 meter van je. De schade is gelijk aan het getal dat je op de Bardische Inspiratiedobbelsteen gooit."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Mobile Flourish",
+							"entries": [
+								"Als de aanval zijn doelwit raakt, kun je een van je Bardische Inspiratie gebruiken om het doelwit tot 5 voet van je vandaan te duwen, plus een aantal voet dat gelijk is aan het aantal dat je op de Bardische Inspiratie-dobbelsteen gooit. Je kunt dan onmiddellijk je reactie gebruiken om je tot je snelheid te verplaatsen naar een onbezette ruimte binnen 5 voet van het doelwit."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Als je op je 3e niveau lid wordt van het College of Blades, krijg je vaardigheid met een middelzware wapenrusting en met kromzwaarden. Als je vaardig bent met een simpel of martiaal wapen, kun je het gebruiken als een spellcasting focus voor je Bard spreuken."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Het College of Blades legt de nadruk op meesterschap met wapens, en geeft je toegang tot de optie duelleren of vechten met twee wapens voor de Fighting Style class feature, die als volgt zijn.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cunning Flourish",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau kun je twee keer aanvallen, in plaats van één keer, als je de Blade Flourish actie doet tijdens je beurt. Je kunt echter maar één Blade Flourish-optie gebruiken als je die actie doet."
+			]
+		},
+		{
+			"name": "Master's Flourish",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Vanaf 14de niveau kun je, telkens als je een Blade Flourish optie gebruikt, een {@dice d6} gooien en deze gebruiken in plaats van een Bardische Inspiratie dobbelsteen uit te geven."
+			]
+		},
+		{
+			"name": "College of Spirits",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"entries": [
+				"Barden van het College der Geesten zoeken verhalen met inherente kracht - of het nu legendes, geschiedenissen of ficties zijn - en brengen hun onderwerpen tot leven. Met behulp van occulte attributen roepen deze barden spirituele belichamingen van krachtige krachten op om de wereld opnieuw te veranderen. Zulke geesten zijn echter wispelturig, en wat een bard oproept hebben ze niet altijd helemaal zelf in de hand.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Guiding Whispers|Bard||Spirits|VRGR|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spiritual Focus|Bard||Spirits|VRGR|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tales from Beyond|Bard||Spirits|VRGR|3"
+				}
+			]
+		},
+		{
+			"name": "Guiding Whispers",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Je kunt geesten aanraken om jou en anderen te leiden. Je leert de {@spell guidance} cantrip, die niet meetelt voor het aantal bard cantrips dat je kent. Voor jou heeft deze cantrip een bereik van 60 voet als je hem uitspreekt."
+			]
+		},
+		{
+			"name": "Spiritual Focus",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Je gebruikt hulpmiddelen die je helpen om geesten te channelen, of dat nu historische figuren zijn of fictieve archetypen. Je kunt de volgende voorwerpen gebruiken als focus voor je bard spreuken: een kaars, kristallen bol, schedel, geestenbord of tarokka deck.",
+				"Vanaf het 6e niveau, wanneer je een bardspreuk uitspreekt die schade toebrengt of hit points herstelt via de Spirituele Focus, gooi dan een {@dice d6}, en je krijgt een bonus op één schade- of genezingsworp van de spreuk gelijk aan het gegooide aantal."
+			]
+		},
+		{
+			"name": "Tales from Beyond",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Je reikt uit naar geesten die hun verhalen via jou vertellen. Terwijl je je Spirituele Focus vasthoudt, kun je een bonusactie gebruiken om één keer je Bardische Inspiratie te gebruiken en te rollen op de Verhalentabel met behulp van je Bardische Inspiratiedobbelsteen om het verhaal te bepalen dat de geesten je opdragen te vertellen. Je houdt het verhaal in je achterhoofd totdat je het effect van het verhaal hebt uitgesproken of totdat je een korte of lange rustpauze hebt beëindigd.",
+				"Je kunt een actie gebruiken om een wezen te kiezen dat je kunt zien binnen een straal van 30 meter (dit kan jijzelf zijn) om het doelwit van het effect van het sprookje te zijn. Als je dat eenmaal gedaan hebt, kun je het effect van het sprookje niet meer geven totdat je het opnieuw rolt.",
+				"Je kan maar één van deze verhalen tegelijk onthouden, en als je rolt op de Spirit Tales tafel, eindigt onmiddellijk het effect van het vorige verhaal.",
+				"Als de tale een saving throw vereist, is de DC gelijk aan je spell save DC.",
+				{
+					"type": "table",
+					"caption": "Spirit Tales",
+					"colLabels": [
+						"Bardic Insp. Die",
+						"Tale Told Through You"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Verhaal van het Slimme Dier. De komende 10 minuten kan het doelwit, telkens wanneer het een Intelligentie-, een Wijsheids- of een Charisma-check doet, een extra dobbelsteen gooien onmiddellijk na het gooien van de {@dice d20} en het getal van de extra dobbelsteen bij de check optellen. De extra dobbelsteen is van hetzelfde type als je Bardische Inspiratie dobbelsteen."
+						],
+						[
+							"2",
+							"Tale of the Renowned Duelist. Je doet een melee spell aanval tegen het doelwit. Bij een treffer loopt het doelwit een krachtschade op die gelijk is aan twee worpen van je Bardische Inspiratie dobbelsteen + je Charisma modifier."
+						],
+						[
+							"3",
+							"Tale of the Beloved Friends. Het doelwit en een ander wezen van zijn keuze dat hij kan zien binnen een straal van 5 meter, krijgt tijdelijke hit points die gelijk zijn aan een worp van je Bardische Inspiratiedobbelsteen + je Charisma modifier."
+						],
+						[
+							"4",
+							"Tale of the Runaway. Het doelwit kan onmiddellijk zijn reactie gebruiken om tot 30 voet te teleporteren naar een onbezette ruimte die het kan zien. Wanneer het doelwit teleporteert, kan het een aantal wezens kiezen die het binnen een straal van 30 voet kan zien, met een maximum van je Charisma modifier (minimum 0), om onmiddellijk dezelfde reactie te gebruiken."
+						],
+						[
+							"5",
+							"Tale of the Avenger. Gedurende 1 minuut, elk wezen dat het doelwit raakt met een mêlee aanval neemt krachtschade gelijk aan een worp van je Bardische Inspiratie dobbelsteen."
+						],
+						[
+							"6",
+							"Tale of the Traveler. Het doelwit krijgt tijdelijke hit points die gelijk zijn aan een worp van je Bardic Inspiration dobbelsteen + je bard level. Terwijl het doelwit deze tijdelijke hit points heeft, neemt zijn loopsnelheid met 10 voet toe en krijgt het een +1 bonus op zijn AC."
+						],
+						[
+							"7",
+							"Tale of the Beguiler. Het doelwit moet slagen op een Wisdom saving throw of psychische schade oplopen gelijk aan twee worpen van je Bardische Inspiratie dobbelsteen, en het doelwit is {@condition incapacitated} tot het einde van zijn volgende beurt."
+						],
+						[
+							"8",
+							"Tale of the Phantom. Het doelwit wordt {@condition invisible} onzichtbaar tot het einde van zijn volgende beurt of tot het een wezen raakt met een aanval. Als het doelwit een wezen raakt met een aanval tijdens deze onzichtbaarheid, neemt het wezen dat het raakt necrotische schade gelijk aan een worp van je Bardische Inspiratie-dobbelsteen en is {@condition frightened} van het doelwit tot het einde van de volgende beurt van het {@condition frightened} wezen."
+						],
+						[
+							"9",
+							"Tale of the Brute. Elk wezen van de keuze van het doelwit dat het kan zien binnen 30 meter van het moet een Sterkte-opofferingsworp doen. Als je niet slaagt, krijgt het wezen een donderschade gelijk aan drie worpen van je Bardische Inspiratiedobbelsteen en wordt het geslagen {@condition prone}. Een schepsel dat slaagt voor zijn reddingsworp krijgt de helft van de schade en wordt niet geslagen {@condition prone}."
+						],
+						[
+							"10",
+							"Tale of the Dragon. Het doelwit spuwt vuur uit zijn mond in een kegel van 30 voet. Elk wezen in dat gebied moet een Dexterity saving throw doen, waarbij het een vuurschade oploopt gelijk aan vier worpen van je Bardic Inspiration dobbelsteen als je niet slaagt, of half zoveel als je wel slaagt."
+						],
+						[
+							"11",
+							"Tale of the Angel. Het doelwit krijgt een aantal hit points terug dat gelijk is aan twee worpen van je Bardische Inspiratie dobbelsteen + je Charisma modifier, en je beëindigt één conditie uit de volgende lijst die het doelwit treft: {@condition blinded}, {@condition deafened}, {@condition paralyzed}, {@condition petrified}, of {@condition poisoned}."
+						],
+						[
+							"12",
+							"Verhaal van de Geestverruimer. Je roept een onbegrijpelijke fabel op van een buitenaards wezen. Het doelwit moet slagen op een intelligentie saving throw of psychische schade oplopen gelijk aan drie worpen van je Bardische Inspiratie dobbelsteen en {@condition stunned} zijn tot het einde van zijn volgende beurt."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Session",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Spirits feature}",
+				"Geesten geven je bovennatuurlijke inzichten. Je kunt een ritueel van een uur uitvoeren waarbij je geesten channelt (wat tijdens een korte of lange rust kan worden gedaan) met behulp van je Spirituele focus. Je kunt het ritueel uitvoeren met een aantal gewillige wezens gelijk aan je bekwaamheidsbonus (inclusief jezelf). Aan het einde van het ritueel, leer je tijdelijk {@filter one spell of your choice from any class|spells|school=d;n|level=0;1;2;3;4;5;6}.",
+				"De gekozen spreuk moet van een niveau zijn dat gelijk is aan het aantal wezens dat het ritueel uitvoerde of minder, de spreuk moet van een niveau zijn dat je kunt uitspreken, en hij moet in de school van waarzeggerij of necromantie zijn. De gekozen spreuk telt voor jou als een bardspreuk maar telt niet mee voor het aantal bardspreuken dat je kent.",
+				"Als je het ritueel eenmaal hebt uitgevoerd, kun je dat niet meer doen totdat je aan een lange rust begint, en je kent de gekozen spreuk totdat je aan een lange rust begint."
+			]
+		},
+		{
+			"name": "Mystical Connection",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Spirits feature}",
+				"Je hebt nu de mogelijkheid om de geesten van Tales from Beyond in de richting van bepaalde verhalen te duwen. Telkens wanneer je gooit op de tabel Spirit Tales, mag je de dobbelsteen twee keer gooien en kiezen welk van de twee effecten je wilt geven. Als je met beide dobbelstenen hetzelfde getal gooit, mag je het getal negeren en een willekeurig effect op de tabel kiezen.",
+				{
+					"type": "inset",
+					"name": "Spirit Tales",
+					"entries": [
+						"Verhalenvertellers, zoals de barden van het Geestencollege, vertellen vaak verhalen die geïnspireerd zijn op een groter thema of oeuvre. Als je bepaalt welke verhalen je vertelt, bedenk dan wat ze verbindt. Komen er personages uit een bepaalde groep in voor, zoals archetypen uit het tarokka dek, figuren uit sterrenbeelden, denkbeeldige vrienden uit je kindertijd, of personages uit een bepaald verhalenboek? Of zijn je inspiratiebronnen algemener, zoals historische kampioenen, mythologische helden of stadslegendes? Gebruik de verhalen die je vertelt om je niche als vertellende avonturier te definiëren."
+					]
+				}
+			]
+		},
+		{
+			"name": "College of Glamour",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Het College of Glamour is de thuisbasis van barden die hun vak geleerd hebben in het levendige rijk van de Feywild of onder de voogdij van iemand die daar gewoond heeft. Onderwezen door satyrs, eladrin en andere fey, leren deze barden om hun magie te gebruiken om anderen te verrukken en te boeien.",
+				"De barden van dit college worden beschouwd met een mengeling van ontzag en angst. Hun optredens zijn legendarisch. Deze barden zijn zo welsprekend dat een toespraak of lied dat één van hen ten gehore brengt, ervoor kan zorgen dat gevangenen de bard ongedeerd vrijlaten en een woedende draak in slaap kan sussen. Dezelfde magie die hen in staat stelt beesten te bedwingen, kan ook gedachten buigen. Schurkachtige barden van dit college kunnen wekenlang een gemeenschap leegzuigen, waarbij ze hun magie misbruiken om hun gastheren te veranderen in troepen. Heldhaftige barden van dit college gebruiken deze kracht juist om de vertrapten te verblijden en onderdrukkers te ondermijnen.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Mantle of Inspiration|Bard||Glamour|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Enthralling Performance|Bard||Glamour|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Enthralling Performance",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het 3e niveau, kun je je optreden opladen met verleidelijke, feeërieke magie.",
+				"Als je minstens 1 minuut optreedt, kun je proberen verwondering te wekken bij je publiek door te zingen, een gedicht voor te dragen of te dansen. Aan het eind van het optreden kies je een aantal mensachtigen binnen 60 meter van je die alles hebben gezien en beluisterd, tot een aantal gelijk aan je Charisma modifier (minimum van één). Elk doelwit moet slagen op een Wisdom saving throw tegen je spell save DC of {@condition charmed} door jou. Terwijl {@condition charmed} het doelwit jou op deze manier verafgoodt, spreekt het gloedvol over jou tegen iedereen die met hem praat, en hindert het iedereen die zich tegen jou verzet, hoewel het geweld vermijdt tenzij het al geneigd was om namens jou te vechten. Dit effect eindigt na 1 uur, als het doelwit schade oploopt, als jij het aanvalt, of als het ziet dat jij een van zijn bondgenoten aanvalt of beschadigt.",
+				"Als een doelwit slaagt op zijn saving throw, heeft het doelwit geen hint dat je het probeerde te charmeren.",
+				"Als je deze functie eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een korte of lange rustpauze hebt genomen."
+			]
+		},
+		{
+			"name": "Mantle of Inspiration",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Als je op je 3e level lid wordt van het College of Glamour, krijg je de mogelijkheid om een lied van feeënmagie te weven dat je bondgenoten kracht en snelheid geeft.",
+				"Als bonusactie kun je één keer je Bardische Inspiratie gebruiken om jezelf een wonderlijk uiterlijk te geven. Als je dat doet, kies je een aantal wezens die je kunt zien en die jou kunnen zien binnen 60 voet van je vandaan, tot een aantal gelijk aan je Charisma modifier (minimum van één). Elk van hen krijgt 5 tijdelijke hit points. Wanneer een wezen deze tijdelijke hit points krijgt, kan het onmiddellijk zijn reactie gebruiken om tot zijn snelheid te bewegen, zonder gelegenheidsaanvallen uit te lokken.",
+				"Het aantal tijdelijke hit points neemt toe bij het bereiken van bepaalde levels in deze klasse, en loopt op tot 8 bij het 5e level, 11 bij het 10e level, en 14 bij het 15e level."
+			]
+		},
+		{
+			"name": "Mantle of Majesty",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau krijg je de mogelijkheid om jezelf te hullen in een feeërieke magie die ervoor zorgt dat anderen je willen dienen. Als bonusactie kun je {@spell command} uitroepen, zonder een spell slot te gebruiken, en je neemt een verschijning van onaardse schoonheid aan voor 1 minuut of tot je concentratie ophoudt (alsof je je op een spreuk concentreert). Gedurende deze tijd kun je in elke beurt {@spell command} als bonusactie uitroepen, zonder een spell slot te gebruiken.",
+				"Any creature {@condition charmed} by you automatically fails its saving throw against the {@spell command} you cast with this feature.",
+				"Als je deze functie eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een lange rustperiode hebt gehad."
+			]
+		},
+		{
+			"name": "Unbreakable Majesty",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"At 14th level, your appearance permanently gains an otherworldly aspect that makes you look more lovely and fierce.",
+				"In addition, as a bonus action, you can assume a magically majestic presence for 1 minute or until you are {@condition incapacitated}. For the duration, whenever any creature tries to attack you for the first time on a turn, the attacker must make a Charisma saving throw against your spell save DC. On a failed save, it can't attack you on this turn, and it must choose a new target for its attack or the attack is wasted. On a successful save, it can attack you on this turn, but it has disadvantage on any saving throw it makes against your spells on your next turn.",
+				"Once you assume this majestic presence, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "College of Swords",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Bards of the College of Swords are called blades, and they entertain through daring feats of weapon prowess. Blades perform stunts such as sword swallowing, knife throwing and juggling, and mock combats. Though they use their weapons to entertain, they are also highly trained and skilled warriors in their own right.",
+				"Their talent with weapons inspires many blades to lead double lives. One blade might use a circus troupe as cover for nefarious deeds such as assassination, robbery, and blackmail. Other blades strike at the wicked, bringing justice to bear against the cruel and powerful. Most troupes are happy to accept a blade's talent for the excitement it adds to a performance, but few entertainers fully trust a blade in their ranks.",
+				"Blades who abandon their lives as entertainers have often run into trouble that makes maintaining their secret activities impossible. A blade caught stealing or engaging in vigilante justice is too great a liability for most troupes. With their weapon skills and magic, these blades either take up work as enforcers for thieves' guilds or strike out on their own as adventurers.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Swords|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fighting Style|Bard||Swords|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blade Flourish|Bard||Swords|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Blade Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"At 3rd level, you learn to perform impressive displays of martial prowess and speed.",
+				"Whenever you take the {@action Attack} action on your turn, your walking speed increases by 10 feet until the end of the turn, and if a weapon attack that you make as part of this action hits a creature, you can use one of the following Blade Flourish options of your choice. You can use only one Blade Flourish option per turn.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Defensive Flourish|Bard|XGE|Swords|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Slashing Flourish|Bard|XGE|Swords|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Mobile Flourish|Bard|XGE|Swords|XGE|3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"When you join the College of Swords at 3rd level, you gain proficiency with medium armor and the {@item scimitar|phb}.",
+				"If you're proficient with a simple or martial melee weapon, you can use it as a spellcasting focus for your bard spells."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"At 3rd level, you adopt a style of fighting as your specialty. Choose one of the following options. You can't take a Fighting Style option more than once, even if something in the game lets you choose again.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau kun je twee keer aanvallen, in plaats van één keer, wanneer je de {@action Attack} actie doet tijdens je beurt."
+			]
+		},
+		{
+			"name": "Master's Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Vanaf 14de niveau kun je, telkens als je een Blade Flourish optie gebruikt, een {@dice d6} gooien en deze gebruiken in plaats van een Bardische Inspiratie dobbelsteen uit te geven."
+			]
+		},
+		{
+			"name": "College of Whispers",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Most folk are happy to welcome a bard into their midst. Bards of the College of Whispers use this to their advantage. They appear to be like other bards, sharing news, singing songs, and telling tales to the audiences they gather. In truth, the College of Whispers teaches its students that they are wolves among sheep. These bards use their knowledge and magic to uncover secrets and turn them against others through extortion and threats.",
+				"Many other bards hate the College of Whispers, viewing it as a parasite that uses a bard's reputation to acquire wealth and power. For this reason, members of this college rarely reveal their true nature. They typically claim to follow some other college, or they keep their actual calling secret in order to infiltrate and exploit royal courts and other settings of power.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Psychic Blades|Bard||Whispers|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Words of Terror|Bard||Whispers|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Psychic Blades",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"When you join the College of Whispers at 3rd level, you gain the ability to make your weapon attacks magically toxic to a creature's mind.",
+				"When you hit a creature with a weapon attack, you can expend one use of your Bardic Inspiration to deal an extra {@damage 2d6} psychic damage to that target. You can do so only once per round on your turn.",
+				"The psychic damage increases when you reach certain levels in this class, increasing to {@dice 3d6} at 5th level, {@dice 5d6} at 10th level, and {@dice 8d6} at 15th level."
+			]
+		},
+		{
+			"name": "Words of Terror",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"At 3rd level, you learn to infuse innocent-seeming words with an insidious magic that can inspire terror.",
+				"If you speak to a humanoid alone for at least 1 minute, you can attempt to seed paranoia in its mind. At the end of the conversation, the target must succeed on a Wisdom saving throw against your spell save DC or be {@condition frightened} of you or another creature of your choice. The target is {@condition frightened} in this way for 1 hour, until it is attacked or damaged, or until it witnesses its allies being attacked or damaged.",
+				"If the target succeeds on its saving throw, the target has no hint that you tried to frighten it.",
+				"Als je deze functie eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een korte of lange rustpauze hebt genomen."
+			]
+		},
+		{
+			"name": "Mantle of Whispers",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"At 6th level, you gain the ability to adopt a humanoid's persona. When a humanoid dies within 30 feet of you, you can magically capture its shadow using your reaction. You retain this shadow until you use it or you finish a long rest.",
+				"You can use the shadow as an action. When you do so, it vanishes, magically transforming into a disguise that appears on you. You now look like the dead person, but healthy and alive. This disguise lasts for 1 hour or until you end it as a bonus action.",
+				"While you're in the disguise, you gain access to all information that the humanoid would freely share with a casual acquaintance. Such information includes general details on its background and personal life, but doesn't include secrets. The information is enough that you can pass yourself off as the person by drawing on its memories.",
+				"Another creature can see through this disguise by succeeding on a Wisdom ({@skill Insight}) check contested by your Charisma ({@skill Deception}) check. You gain a +5 bonus to your check.",
+				"Once you capture a shadow with this feature, you can't capture another one with it until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Shadow Lore",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14e niveau krijg je het vermogen om duistere magie in je woorden te weven en de diepste angsten van een wezen aan te boren.",
+				"Als een actie fluister je op magische wijze een zin die slechts één wezen naar keuze binnen een straal van 30 meter van je kan horen. Het doelwit moet een Wijsheidsparende worp doen tegen je spell save DC. Het slaagt automatisch als het geen taal met je deelt of als het je niet kan horen. Bij een succesvolle saving throw, klinkt je gefluister als onverstaanbaar gemompel en heeft het geen effect.",
+				"On a failed saving throw, the target is {@condition charmed} by you for the next 8 hours or until you or your allies attack it, damage it, or force it to make a saving throw. It interprets the whispers as a description of its most mortifying secret. You gain no knowledge of this secret, but the target is convinced you know it.",
+				"The {@condition charmed} creature obeys your commands for fear that you will reveal its secret. It won't risk its life for you or fight for you, unless it was already inclined to do so. It grants you favors and gifts it would offer to a close friend.",
+				"When the effect ends, the creature has no understanding of why it held you in such fear.",
+				"Als je deze functie eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een lange rustperiode hebt gehad."
+			]
+		},
+		{
+			"name": "Defensive Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "XGE",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"You can expend one use of your Bardic Inspiration to cause the weapon to deal extra damage to the target you hit. The damage equals the number you roll on the Bardic Inspiration die. You also add the number rolled to your AC until the start of your next turn."
+			]
+		},
+		{
+			"name": "Mobile Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "XGE",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"You can expend one use of your Bardic Inspiration to cause the weapon to deal extra damage to the target you hit. The damage equals the number you roll on the Bardic Inspiration die. You can also push the target up to 5 feet away from you, plus a number of feet equal to the number you roll on that die. You can then immediately use your reaction to move up to your walking speed to an unoccupied space within 5 feet of the target."
+			]
+		},
+		{
+			"name": "Slashing Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "XGE",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"You can expend one use of your Bardic Inspiration to cause the weapon to deal extra damage to the target you hit and to any other creature of your choice that you can see within 5 feet of you. The damage equals the number you roll on the Bardic Inspiration die."
+			]
+		}
+	]
+}

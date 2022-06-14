@@ -1,0 +1,5131 @@
+{
+	"class": [
+		{
+			"name": "Paladin",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 10
+			},
+			"proficiency": [
+				"wis",
+				"cha"
+			],
+			"spellcastingAbility": "cha",
+			"casterProgression": "1/2",
+			"preparedSpells": "<$level$> / 2 + <$cha_mod$>",
+			"optionalfeatureProgression": [
+				{
+					"name": "Fighting Style",
+					"featureType": [
+						"FS:P"
+					],
+					"progression": {
+						"2": 1
+					}
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"heavy",
+					"{@item shield|phb|shields}"
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"athletics",
+								"insight",
+								"intimidation",
+								"medicine",
+								"persuasion",
+								"religion"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@filter martial weapon|items|source=phb|category=basic|type=martial weapon} and a {@item shield|phb} or (b) two {@filter martial weapons|items|source=phb|category=basic|type=martial weapon}",
+					"(a) five {@item javelin|phb|javelins} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
+					"(a) a {@item priest's pack|phb} or (b) an {@item explorer's pack|phb}",
+					"{@item Chain mail|phb} and a {@item holy symbol|phb}"
+				],
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							{
+								"equipmentType": "weaponMartial"
+							},
+							"shield|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponMartial",
+								"quantity": 2
+							}
+						]
+					},
+					{
+						"a": [
+							{
+								"item": "javelin|phb",
+								"quantity": 5
+							}
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimpleMelee"
+							}
+						]
+					},
+					{
+						"a": [
+							"priest's pack|phb"
+						],
+						"b": [
+							"explorer's pack|phb"
+						]
+					},
+					{
+						"_": [
+							"Chain mail|phb",
+							"holy symbol|phb"
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"str": 13,
+					"cha": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						"{@item shield|phb|shields}"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=Paladin}",
+						"{@filter 2nd|spells|level=2|class=Paladin}",
+						"{@filter 3rd|spells|level=3|class=Paladin}",
+						"{@filter 4th|spells|level=4|class=Paladin}",
+						"{@filter 5th|spells|level=5|class=Paladin}"
+					],
+					"rowsSpellProgression": [
+						[
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Divine Sense|Paladin||1",
+				"Lay on Hands|Paladin||1",
+				"Divine Smite|Paladin||2",
+				"Fighting Style|Paladin||2",
+				"Martial Versatility|Paladin||2|UAClassFeatureVariants",
+				"Spellcasting|Paladin||2",
+				"Divine Health|Paladin||3",
+				{
+					"classFeature": "Sacred Oath|Paladin||3",
+					"gainSubclassFeature": true,
+					"gainSubclassFeatureHasContent": true
+				},
+				"Ability Score Improvement|Paladin||4",
+				"Proficiency Versatility|Paladin||4|UAClassFeatureVariants",
+				"Martial Versatility|Paladin||4|TCE",
+				"Extra Attack|Paladin||5",
+				"Aura of Protection|Paladin||6",
+				{
+					"classFeature": "Sacred Oath feature|Paladin||7",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Paladin||8",
+				"Proficiency Versatility|Paladin||8|UAClassFeatureVariants",
+				"Aura of Courage|Paladin||10",
+				"Improved Divine Smite|Paladin||11",
+				"Ability Score Improvement|Paladin||12",
+				"Proficiency Versatility|Paladin||12|UAClassFeatureVariants",
+				"Cleansing Touch|Paladin||14",
+				{
+					"classFeature": "Sacred Oath feature|Paladin||15",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Paladin||16",
+				"Proficiency Versatility|Paladin||16|UAClassFeatureVariants",
+				"Aura improvements|Paladin||18",
+				"Ability Score Improvement|Paladin||19",
+				"Proficiency Versatility|Paladin||19|UAClassFeatureVariants",
+				{
+					"classFeature": "Sacred Oath feature|Paladin||20",
+					"gainSubclassFeature": true
+				}
+			],
+			"subclassTitle": "Sacred Oath",
+			"fluff": [
+				{
+					"name": "Paladin",
+					"type": "section",
+					"entries": [
+						"Vêtue d'une armure de plaques qui brille au soleil malgré la poussière et la saleté d'un long voyage, une humaine dépose son épée et son bouclier et pose ses mains sur un homme mortellement blessé. Un rayonnement divin se dégage de ses mains, les blessures de l'homme se referment et ses yeux s'écarquillent de stupeur.",
+						"Un nain s'accroupit derrière un affleurement, sa cape noire le rendant presque invisible dans la nuit, et observe un groupe de guerriers orcs célébrant sa récente victoire. Silencieusement, il s'avance au milieu d'eux et murmure un serment, et deux orcs sont morts avant même qu'ils ne réalisent qu'il est là.",
+						"Les cheveux d'argent brillant dans un rayon de lumière qui semble n'éclairer que lui, un elfe rit de joie. Sa lance scintille comme ses yeux alors qu'il frappe encore et encore un géant tordu, jusqu'à ce que sa lumière vienne enfin à bout de son obscurité hideuse.",
+						"Quelles que soient leur origine et leur mission, les paladins sont unis par leur serment de s'opposer aux forces du mal. Qu'il soit prêté devant l'autel d'un dieu et le témoin d'un prêtre, dans une clairière sacrée devant les esprits de la nature et les êtres féeriques, ou dans un moment de désespoir et de deuil avec les morts comme seul témoin, le serment d'un paladin est un lien puissant. C'est une source de pouvoir qui transforme un guerrier dévoué en un champion béni.",
+						{
+							"type": "entries",
+							"name": "The Cause of Righteousness",
+							"entries": [
+								"Un paladin jure de défendre la justice et la droiture, de se tenir aux côtés des bonnes choses du monde contre les ténèbres qui s'approchent, et de chasser les forces du mal où qu'elles se cachent. Différents paladins se concentrent sur divers aspects de la cause de la droiture, mais tous sont liés par les serments qui leur donnent le pouvoir d'accomplir leur travail sacré. Bien que de nombreux paladins soient dévoués aux dieux du bien, le pouvoir d'un paladin provient autant de son engagement envers la justice elle-même que d'un dieu.",
+								"Les paladins s'entraînent pendant des années pour apprendre les techniques de combat, maîtrisant une grande variété d'armes et d'armures. Malgré cela, leurs compétences martiales sont secondaires par rapport au pouvoir magique qu'ils exercent : le pouvoir de guérir les malades et les blessés, de frapper les méchants et les morts-vivants, et de protéger les innocents et ceux qui se joignent à eux dans le combat pour la justice."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Beyond the Mundane Life",
+							"entries": [
+								"Presque par définition, la vie d'un paladin est une vie d'aventurier. À moins qu'une blessure durable ne l'ait empêché de partir à l'aventure pendant un certain temps, chaque paladin vit sur les lignes de front de la lutte cosmique contre le mal. Les combattants sont assez rares dans les rangs des milices et des armées du monde, mais encore moins de personnes peuvent prétendre à la véritable vocation de paladin. Lorsqu'ils reçoivent cet appel, ces guerriers abandonnent leurs anciennes occupations et prennent les armes pour combattre le mal. Parfois, leur serment les conduit au service de la couronne en tant que chefs de groupes d'élite de chevaliers, mais même dans ce cas, leur loyauté va d'abord à la cause de la justice, et non à la couronne et au pays.",
+								"Les paladins aventuriers prennent leur travail au sérieux. Une plongée dans une ruine ancienne ou une crypte poussiéreuse peut être une quête motivée par un objectif plus élevé que l'acquisition d'un trésor. Le mal rôde dans les donjons et les forêts vierges, et même la plus petite victoire contre lui peut faire pencher la balance cosmique loin de l'oubli."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Paladin",
+							"entries": [
+								"L'aspect le plus important d'un personnage paladin est la nature de sa quête sacrée. Bien que les caractéristiques de classe liées à votre serment n'apparaissent pas avant le 3e niveau, préparez-vous à ce choix en lisant les descriptions des serments à la fin de la classe. Êtes-vous un serviteur dévoué du bien, loyal aux dieux de la justice et de l'honneur, un saint chevalier en armure brillante qui s'aventure à combattre le mal ? Êtes-vous un glorieux champion de la lumière, chérissant tout ce qui est beau et se dresse contre l'ombre, un chevalier dont le serment découle de traditions plus anciennes que beaucoup de dieux ? Ou êtes-vous un solitaire aigri qui a juré de se venger de ceux qui ont fait le mal, envoyé comme ange de la mort par les dieux ou poussé par votre besoin de vengeance ? L'annexe B énumère de nombreuses divinités vénérées par les paladins dans le multivers, comme Torm, Tyr, Heironeous, Paladine, Kiri-Jolith, Dol Arrah, la Flamme d'argent, Bahamut, Athéna, Re-Horakhty et Heimdall.",
+								"Comment avez-vous vécu votre appel à servir en tant que paladin ? Avez-vous entendu le murmure d'un dieu ou d'un ange invisible pendant que vous étiez en prière ? Un autre paladin a-t-il senti le potentiel en vous et décidé de vous former comme écuyer ? Ou bien un événement terrible - la destruction de votre maison, peut-être - vous a-t-il poussé vers vos quêtes ? Peut-être avez-vous découvert par hasard un bosquet sacré ou une enclave elfique cachée et vous êtes-vous senti appelé à protéger tous ces refuges de bonté et de beauté. Ou bien vous avez su dès vos premiers souvenirs que la vie de paladin était votre vocation, presque comme si vous aviez été envoyé dans le monde avec ce but gravé dans votre âme.",
+								"En tant que gardiens contre les forces de la méchanceté, les paladins sont rarement d'alignement mauvais. La plupart d'entre eux suivent les voies de la charité et de la justice. Réfléchissez à la manière dont votre alignement colore la façon dont vous poursuivez votre quête sacrée et la manière dont vous vous comportez devant les dieux et les mortels. Votre serment et votre alignement peuvent être en harmonie, ou votre serment peut représenter des normes de comportement que vous n'avez pas encore atteintes.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Vous pouvez faire un paladin rapidement en suivant ces suggestions. Tout d'abord, la Force doit être votre meilleur score de capacité, suivie par le Charisme. Ensuite, choisissez le fond {@background noble}."
+									]
+								}
+							]
+						}
+					],
+					"page": 82,
+					"source": "PHB"
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"La véritable valeur d'un paladin ne se mesure pas aux ennemis vaincus ou aux donjons pillés. Elle se mesure aux vies sauvées et aux cœurs tournés vers les causes de la miséricorde et de la justice."
+							],
+							"by": "Isteval"
+						},
+						"Un paladin est l'incarnation vivante d'un serment - une promesse ou un vœu qui se manifeste dans la personne d'un guerrier saint qui possède les compétences et la détermination nécessaires pour aller jusqu'au bout de sa cause. Certains paladins se consacrent expressément à la protection des innocents et à la diffusion de la justice dans le monde, tandis que d'autres sont déterminés à atteindre cet objectif en conquérant ceux qui se dressent contre eux et en les soumettant à la loi.",
+						"Bien qu'aucun paladin au monde ne puisse être décrit comme typique, un certain nombre d'entre eux sont des bienfaiteurs à l'esprit étroit qui refusent de tolérer la moindre déviation par rapport à leur propre vision. Les paladins qui se lancent dans l'aventure, cependant, restent rarement aussi rigides dans leurs attitudes, ne serait-ce que pour ne pas aliéner leurs compagnons.",
+						"Vous pouvez étoffer votre personnage de paladin en utilisant les suggestions ci-dessous. Il est important de garder à l'esprit que la plupart des paladins ne sont pas des robots. Ils ont des doutes et des préjugés et entretiennent des pensées contradictoires, comme tout autre personnage. Certains sont poussés par une motivation interne qui peut parfois être en désaccord avec les principes de leurs serments.",
+						{
+							"type": "entries",
+							"name": "Personal Goal",
+							"entries": [
+								"Les préceptes du serment d'un paladin donnent un but au personnage et dictent un objectif ultime ou une intention générale que le paladin respecte et fait progresser. En dehors de cela, certains paladins sont motivés par un objectif personnel qui complète ou transcende les préceptes de leurs serments. Des paladins qui prêtent des serments différents peuvent avoir le même objectif personnel, ne différant que par la manière dont ils appliquent cet objectif à leurs actions lorsqu'ils respectent leurs serments.",
+								"Si votre personnage de paladin a un objectif personnel, celui-ci peut être tiré d'un événement de la vie et donc ne pas être directement lié au serment.",
+								{
+									"type": "table",
+									"caption": "Personal Goal",
+									"colLabels": [
+										"{@dice d6}",
+										"Personal Goal"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"La paix. Vous vous battez pour que les générations futures n'aient pas à le faire."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"La vengeance. Ton serment est le moyen par lequel tu vas réparer un ancien tort."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Le devoir. Vous ferez ce que vous avez juré de faire, ou vous mourrez en essayant."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Le leadership. Vous gagnerez une grande bataille que les bardes chanteront, et ce faisant, vous deviendrez un exemple pour inspirer les autres."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"La foi. Tu sais que ton chemin est juste, sinon les dieux ne t'y auraient pas mis."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"La gloire. Vous mènerez le monde vers une nouvelle ère grandiose, qui sera marquée de votre nom."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Symbol",
+							"entries": [
+								"Les paladins sont conscients de l'influence des symboles, et beaucoup d'entre eux adoptent ou conçoivent un dispositif artistique qui porte une image distinctive. Votre symbole illustre le serment que vous avez prêté et transmet ce message à ceux qui vous entourent, amis et ennemis confondus.",
+								"Votre symbole peut être affiché sur une bannière, un drapeau ou vos vêtements à la vue de tous. Il peut aussi être moins évident, comme un bibelot ou un jeton que vous portez sur vous de manière dissimulée.",
+								{
+									"type": "table",
+									"caption": "Symbol",
+									"colLabels": [
+										"{@dice d6}",
+										"Symbol"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Un dragon, emblématique de votre noblesse dans la paix et de votre férocité au combat."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Un poing serré, parce que vous êtes toujours prêt à vous battre pour vos convictions."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Une main ouverte levée, indiquant votre préférence pour la diplomatie plutôt que le combat."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Un cœur rouge, montrant au monde votre engagement pour la justice."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Un cœur noir, signifiant que des émotions telles que la pitié n'influencent pas votre dévouement à votre serment."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Un œil impassible, ce qui signifie que vous êtes toujours attentif à toutes les menaces contre votre cause."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Nemesis",
+							"entries": [
+								"Leur adhésion à un serment sacré exige que les paladins prennent une position active en portant leurs croyances dans le monde. Cette activité conduit naturellement à des conflits avec des créatures ou des entités qui s'opposent à ces croyances. Parmi ces adversaires, l'un d'entre eux se distingue souvent comme étant l'ennemi le plus persistant ou le plus redoutable d'un paladin - une némésis dont la présence ou l'influence est un facteur constant dans la vie d'un paladin.",
+								"Votre personnage de paladin peut avoir un ennemi qui date d'avant que vous ne preniez votre voie. Ou vous pouvez être une cible parce qu'en devenant paladin, vous avez immédiatement attiré l'attention de ceux qui veulent vous faire la peau. Si vous avez une némésis, qui ou quoi est-elle ? Qui, parmi vos ennemis, représente selon vous la plus grande menace pour la réalisation de vos objectifs ?",
+								{
+									"type": "table",
+									"caption": "Nemesis",
+									"colLabels": [
+										"{@dice d6}",
+										"Nemesis"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Un puissant chef de guerre orc qui menace d'envahir et de détruire tout ce que vous tenez pour sacré."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Un démon ou un céleste, l'agent d'une puissance des plans extérieurs, qui a été chargé de vous corrompre ou de vous racheter, selon le cas."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Un dragon dont les serviteurs suivent vos pas"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Un grand prêtre qui vous considère comme un fou égaré et veut que vous abandonniez votre religion."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Un paladin rival qui s'est entraîné avec vous mais qui a rompu son serment et vous tient pour responsable."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Un vampire qui a juré de se venger de tous les paladins après avoir été vaincu par l'un d'eux."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Temptation",
+							"entries": [
+								"Bien que les paladins soient dévoués à leur serment, ce sont des mortels et ils ont donc des défauts. Beaucoup d'entre eux ont un comportement ou une attitude qui n'est pas en accord avec les idéaux les plus élevés de leur vocation.",
+								"Quelle est la tentation à laquelle votre personnage succombe ou à laquelle il a du mal à résister ?",
+								{
+									"type": "table",
+									"caption": "Temptation",
+									"colLabels": [
+										"{@dice d6}",
+										"Temptation"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"La fureur. Lorsque vous êtes en colère, vous avez du mal à penser correctement et vous craignez de faire quelque chose que vous regretteriez."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"La fierté. Vos actes sont dignes d'intérêt, et personne n'en prend note plus souvent que vous."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"La convoitise. Vous ne pouvez pas résister à un visage attirant et à un sourire agréable."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"La jalousie. Vous êtes conscient de ce que certaines personnes célèbres ont accompli, et vous vous sentez inadéquat lorsque vos actions ne sont pas comparables aux leurs."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Le désespoir. Vous considérez la grande force des ennemis que vous devez vaincre, et parfois vous ne voyez aucun moyen d'obtenir la victoire finale."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"L'avidité. Peu importe la gloire et les trésors que vous amassez, ce n'est jamais assez pour vous."
+										]
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 36
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Oath of Devotion",
+			"shortName": "Devotion",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 85,
+			"srd": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"protection from evil and good",
+							"sanctuary"
+						],
+						"5": [
+							"lesser restoration",
+							"zone of truth"
+						],
+						"9": [
+							"beacon of hope",
+							"dispel magic"
+						],
+						"13": [
+							"freedom of movement",
+							"guardian of faith"
+						],
+						"17": [
+							"commune",
+							"flame strike"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Devotion|Paladin||Devotion||3",
+				"Aura of Devotion|Paladin||Devotion||7",
+				"Purity of Spirit|Paladin||Devotion||15",
+				"Holy Nimbus|Paladin||Devotion||20"
+			]
+		},
+		{
+			"name": "Oath of the Ancients",
+			"shortName": "Ancients",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 86,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"ensnaring strike",
+							"speak with animals"
+						],
+						"5": [
+							"moonbeam",
+							"misty step"
+						],
+						"9": [
+							"plant growth",
+							"protection from energy"
+						],
+						"13": [
+							"ice storm",
+							"stoneskin"
+						],
+						"17": [
+							"commune with nature",
+							"tree stride"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of the Ancients|Paladin||Ancients||3",
+				"Aura of Warding|Paladin||Ancients||7",
+				"Undying Sentinel|Paladin||Ancients||15",
+				"Elder Champion|Paladin||Ancients||20"
+			]
+		},
+		{
+			"name": "Oath of Vengeance",
+			"shortName": "Vengeance",
+			"source": "PHB",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 87,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"bane",
+							"hunter's mark"
+						],
+						"5": [
+							"hold person",
+							"misty step"
+						],
+						"9": [
+							"haste",
+							"protection from energy"
+						],
+						"13": [
+							"banishment",
+							"dimension door"
+						],
+						"17": [
+							"hold monster",
+							"scrying"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Vengeance|Paladin||Vengeance||3",
+				"Relentless Avenger|Paladin||Vengeance||7",
+				"Soul of Vengeance|Paladin||Vengeance||15",
+				"Avenging Angel|Paladin||Vengeance||20"
+			]
+		},
+		{
+			"name": "Oathbreaker",
+			"shortName": "Oathbreaker",
+			"source": "DMG",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 97,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"hellish rebuke",
+							"inflict wounds"
+						],
+						"5": [
+							"crown of madness",
+							"darkness"
+						],
+						"9": [
+							"animate dead",
+							"bestow curse"
+						],
+						"13": [
+							"blight",
+							"confusion"
+						],
+						"17": [
+							"contagion",
+							"dominate person"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oathbreaker|Paladin||Oathbreaker|DMG|3",
+				"Aura of Hate|Paladin||Oathbreaker|DMG|7",
+				"Supernatural Resistance|Paladin||Oathbreaker|DMG|15",
+				"Dread Lord|Paladin||Oathbreaker|DMG|20"
+			]
+		},
+		{
+			"name": "Oath of the Crown",
+			"shortName": "Crown",
+			"source": "SCAG",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 132,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"command",
+							"compelled duel"
+						],
+						"5": [
+							"warding bond",
+							"zone of truth"
+						],
+						"9": [
+							"aura of vitality",
+							"spirit guardians"
+						],
+						"13": [
+							"banishment",
+							"guardian of faith"
+						],
+						"17": [
+							"circle of power",
+							"geas"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of the Crown|Paladin||Crown|SCAG|3",
+				"Divine Allegiance|Paladin||Crown|SCAG|7",
+				"Unyielding Spirit|Paladin||Crown|SCAG|15",
+				"Exalted Champion|Paladin||Crown|SCAG|20"
+			]
+		},
+		{
+			"name": "Oath of Conquest (UA)",
+			"shortName": "Conquest (UA)",
+			"source": "UAPaladin",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"armor of Agathys",
+							"command"
+						],
+						"5": [
+							"hold person",
+							"spiritual weapon"
+						],
+						"9": [
+							"bestow curse",
+							"fear"
+						],
+						"13": [
+							"blight",
+							"dominate beast"
+						],
+						"17": [
+							"dominate person",
+							"insect plague"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Conquest|Paladin||Conquest (UA)|UAPaladin|3",
+				"Aura of Conquest|Paladin||Conquest (UA)|UAPaladin|7",
+				"Implacable Spirit|Paladin||Conquest (UA)|UAPaladin|15",
+				"Invincible Conqueror|Paladin||Conquest (UA)|UAPaladin|20"
+			]
+		},
+		{
+			"name": "Oath of Treachery (UA)",
+			"shortName": "Treachery (UA)",
+			"source": "UAPaladin",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 2,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"charm person",
+							"expeditious retreat"
+						],
+						"5": [
+							"invisibility",
+							"mirror image"
+						],
+						"9": [
+							"gaseous form",
+							"haste"
+						],
+						"13": [
+							"confusion",
+							"greater invisibility"
+						],
+						"17": [
+							"dominate person",
+							"passwall"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Treachery|Paladin||Treachery (UA)|UAPaladin|3",
+				"Aura of Treachery|Paladin||Treachery (UA)|UAPaladin|7",
+				"Blackguard's Escape|Paladin||Treachery (UA)|UAPaladin|15",
+				"Icon of Deceit|Paladin||Treachery (UA)|UAPaladin|20"
+			]
+		},
+		{
+			"name": "Oath of Redemption (UA)",
+			"shortName": "Redemption (UA)",
+			"source": "UAATrioOfSubclasses",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"shield",
+							"sleep"
+						],
+						"5": [
+							"hold person",
+							"ray of enfeeblement"
+						],
+						"9": [
+							"counterspell",
+							"hypnotic pattern"
+						],
+						"13": [
+							"Otiluke's resilient sphere",
+							"stoneskin"
+						],
+						"17": [
+							"hold monster",
+							"wall of force"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Redemption|Paladin||Redemption (UA)|UAATrioOfSubclasses|3",
+				"Aura of the Guardian|Paladin||Redemption (UA)|UAATrioOfSubclasses|7",
+				"Protective Spirit|Paladin||Redemption (UA)|UAATrioOfSubclasses|15",
+				"Emissary of Redemption|Paladin||Redemption (UA)|UAATrioOfSubclasses|20"
+			]
+		},
+		{
+			"name": "Oath of Conquest v2 (UA)",
+			"shortName": "Conquest v2 (UA)",
+			"source": "UARevisedClassOptions",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 3,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"armor of Agathys",
+							"command"
+						],
+						"5": [
+							"hold person",
+							"spiritual weapon"
+						],
+						"9": [
+							"bestow curse",
+							"fear"
+						],
+						"13": [
+							"dominate beast",
+							"stoneskin"
+						],
+						"17": [
+							"cloudkill",
+							"dominate person"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Conquest v2|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3",
+				"Aura of Conquest|Paladin||Conquest v2 (UA)|UARevisedClassOptions|7",
+				"Scornful Rebuke|Paladin||Conquest v2 (UA)|UARevisedClassOptions|15",
+				"Invincible Conqueror|Paladin||Conquest v2 (UA)|UARevisedClassOptions|20"
+			]
+		},
+		{
+			"name": "Oath of Conquest",
+			"shortName": "Conquest",
+			"source": "XGE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 37,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"armor of Agathys",
+							"command"
+						],
+						"5": [
+							"hold person",
+							"spiritual weapon"
+						],
+						"9": [
+							"bestow curse",
+							"fear"
+						],
+						"13": [
+							"dominate beast",
+							"stoneskin"
+						],
+						"17": [
+							"cloudkill",
+							"dominate person"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Conquest|Paladin||Conquest|XGE|3",
+				"Aura of Conquest|Paladin||Conquest|XGE|7",
+				"Scornful Rebuke|Paladin||Conquest|XGE|15",
+				"Invincible Conqueror|Paladin||Conquest|XGE|20"
+			]
+		},
+		{
+			"name": "Oath of Redemption",
+			"shortName": "Redemption",
+			"source": "XGE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 38,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"sanctuary",
+							"sleep"
+						],
+						"5": [
+							"calm emotions",
+							"hold person"
+						],
+						"9": [
+							"counterspell",
+							"hypnotic pattern"
+						],
+						"13": [
+							"Otiluke's resilient sphere",
+							"stoneskin"
+						],
+						"17": [
+							"hold monster",
+							"wall of force"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Redemption|Paladin||Redemption|XGE|3",
+				"Aura of the Guardian|Paladin||Redemption|XGE|7",
+				"Protective Spirit|Paladin||Redemption|XGE|15",
+				"Emissary of Redemption|Paladin||Redemption|XGE|20"
+			]
+		},
+		{
+			"name": "Oath of Heroism (UA)",
+			"shortName": "Heroism (UA)",
+			"source": "UABardAndPaladin",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"expeditious retreat",
+							"guiding bolt"
+						],
+						"5": [
+							"enhance ability",
+							"enthrall"
+						],
+						"9": [
+							"haste",
+							"protection from energy"
+						],
+						"13": [
+							"compulsion",
+							"freedom of movement"
+						],
+						"17": [
+							"commune",
+							"conjure volley"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Heroism|Paladin||Heroism (UA)|UABardAndPaladin|3",
+				"Mighty Deed|Paladin||Heroism (UA)|UABardAndPaladin|7",
+				"Glorious Defense|Paladin||Heroism (UA)|UABardAndPaladin|15",
+				"Living Myth|Paladin||Heroism (UA)|UABardAndPaladin|20"
+			]
+		},
+		{
+			"name": "Oath of the Watchers (UA)",
+			"shortName": "Watchers (UA)",
+			"source": "UA2020SubclassesPt1",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 3,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"alarm",
+							"chromatic orb"
+						],
+						"5": [
+							"augury",
+							"moonbeam"
+						],
+						"9": [
+							"counterspell",
+							"nondetection"
+						],
+						"13": [
+							"aura of purity",
+							"banishment"
+						],
+						"17": [
+							"hold monster",
+							"hallow"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of the Watchers|Paladin||Watchers (UA)|UA2020SubclassesPt1|3",
+				"Aura of the Sentinel|Paladin||Watchers (UA)|UA2020SubclassesPt1|7",
+				"Vigilant Rebuke|Paladin||Watchers (UA)|UA2020SubclassesPt1|15",
+				"Mortal Bulwark|Paladin||Watchers (UA)|UA2020SubclassesPt1|20"
+			]
+		},
+		{
+			"name": "Oath of Glory",
+			"shortName": "Glory",
+			"source": "TCE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"guiding bolt",
+							"heroism"
+						],
+						"5": [
+							"enhance ability",
+							"magic weapon"
+						],
+						"9": [
+							"haste",
+							"protection from energy"
+						],
+						"13": [
+							"compulsion",
+							"freedom of movement"
+						],
+						"17": [
+							"commune",
+							"flame strike"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of Glory|Paladin||Glory|TCE|3",
+				"Aura of Alacrity|Paladin||Glory|TCE|7",
+				"Glorious Defense|Paladin||Glory|TCE|15",
+				"Living Legend|Paladin||Glory|TCE|20"
+			]
+		},
+		{
+			"name": "Oath of the Watchers",
+			"shortName": "Watchers",
+			"source": "TCE",
+			"className": "Paladin",
+			"classSource": "PHB",
+			"page": 54,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"alarm",
+							"detect magic"
+						],
+						"5": [
+							"moonbeam",
+							"see invisibility"
+						],
+						"9": [
+							"counterspell",
+							"nondetection"
+						],
+						"13": [
+							"aura of purity",
+							"banishment"
+						],
+						"17": [
+							"hold monster",
+							"scrying"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Oath of the Watchers|Paladin||Watchers|TCE|3",
+				"Aura of the Sentinel|Paladin||Watchers|TCE|7",
+				"Vigilant Rebuke|Paladin||Watchers|TCE|15",
+				"Mortal Bulwark|Paladin||Watchers|TCE|20"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Divine Sense",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"La présence d'un mal puissant se manifeste à vos sens comme une odeur nocive, et un bien puissant résonne à vos oreilles comme une musique céleste. En tant qu'action, vous pouvez ouvrir votre conscience pour détecter de telles forces. Jusqu'à la fin de votre prochain tour, vous connaissez l'emplacement de tout céleste, démon ou mort-vivant se trouvant à moins de 60 pieds de vous et qui n'est pas totalement couvert. Vous connaissez le type (céleste, démon ou mort-vivant) de tout être dont vous sentez la présence, mais pas son identité (le vampire Comte Strahd von Zarovich, par exemple). Dans le même rayon, vous détectez également la présence de tout lieu ou objet qui a été consacré ou profané, comme avec le sort {@spell hallow}.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à 1 + votre modificateur de Charisme. Lorsque vous terminez un long repos, vous récupérez toutes les utilisations dépensées."
+			]
+		},
+		{
+			"name": "Lay on Hands",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Votre toucher béni peut guérir les blessures. Vous disposez d'une réserve de pouvoir de guérison qui se reconstitue lorsque vous prenez un long repos. Avec cette réserve, vous pouvez restaurer un nombre total de points de vie égal à votre niveau de paladin × 5.",
+				"En tant qu'action, vous pouvez toucher une créature et puiser de l'énergie dans le pool pour restaurer un certain nombre de points de vie à cette créature, jusqu'au montant maximum restant dans votre pool.",
+				"Vous pouvez également dépenser 5 points de vie de votre réserve de soins pour guérir la cible d'une maladie ou neutraliser un poison qui l'affecte. Vous pouvez guérir plusieurs maladies et neutraliser plusieurs poisons en une seule utilisation d'Imposition des mains, en dépensant des points de vie séparément pour chacune d'elles.",
+				"Cette caractéristique n'a aucun effet sur les morts-vivants et les constructions."
+			]
+		},
+		{
+			"name": "Divine Smite",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"À partir du 2e niveau, lorsque vous touchez une créature avec une attaque d'arme de mêlée, vous pouvez dépenser un emplacement de sort pour infliger des dégâts radiants à la cible, en plus des dégâts de l'arme. Les dégâts supplémentaires sont de {@dice 2d8} pour un emplacement de sort de 1er niveau, plus {@dice 1d8} pour chaque niveau de sort supérieur au 1er, jusqu'à un maximum de {@dice 5d8}. Les dégâts augmentent de {@dice 1d8} si la cible est un mort-vivant ou un démon, jusqu'à un maximum de {@dice 6d8}."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Au 2e niveau, vous adoptez un style de combat particulier comme spécialité. Choisissez l'une des options suivantes. Vous ne pouvez pas prendre la même option de style de combat plus d'une fois, même si vous pouvez choisir à nouveau.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Close Quarters Shooter|UALightDarkUnderdark"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Defense"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Great Weapon Fighting"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Mariner|UAWaterborneAdventures"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Protection"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Tunnel Fighter|UALightDarkUnderdark"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Thrown Weapon Fighting|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Unarmed Fighting|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blessed Warrior|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blessed Warrior|TCE"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Blind Fighting|TCE"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Interception|TCE"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Martial Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 12,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level feature (enhances Fighting Style)}",
+				"Chaque fois que vous gagnez un niveau dans cette classe, vous pouvez remplacer un style de combat que vous connaissez par un autre style disponible dans votre classe. Ce changement représente un changement d'orientation dans votre entraînement et votre pratique martiale, vous faisant perdre les avantages d'un style et gagner les avantages d'un autre style."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Au 2e niveau, vous avez appris à puiser dans la magie divine par la méditation et la prière pour lancer des sorts comme le fait un clerc. Voir {@book chapter 10|PHB|10} pour les règles générales de lancement de sorts et {@book chapter 11|PHB|11} pour les {@filter paladin spell list|spells|class=paladin}.",
+				{
+					"type": "entries",
+					"name": "Preparing and Casting Spells",
+					"entries": [
+						"La table des paladins indique le nombre d'emplacements de sorts dont vous disposez pour lancer vos {@filter paladin spells|spells|class=paladin}. Pour lancer un de vos sorts de paladin de 1er niveau ou plus, vous devez dépenser un emplacement du niveau du sort ou plus. Vous récupérez tous les emplacements de sorts dépensés lorsque vous terminez un long repos.",
+						"Vous préparez la liste des sorts de paladin que vous pouvez lancer, en choisissant dans la liste des sorts de paladin. Vous choisissez alors un nombre de sorts de paladin égal à votre modificateur de Charisme + la moitié de votre niveau de paladin, arrondi à l'inférieur (minimum d'un sort). Les sorts doivent être d'un niveau pour lequel vous disposez d'emplacements de sorts.",
+						"Par exemple, si vous êtes un paladin de 5e niveau, vous disposez de quatre emplacements de sorts de 1er niveau et de deux emplacements de sorts de 2e niveau. Avec un Charisme de 14, votre liste de sorts préparés peut inclure quatre sorts de 1er ou 2ème niveau, dans n'importe quelle combinaison. Si vous préparez le sort de 1er niveau {@spell cure wounds}, vous pouvez le lancer en utilisant un emplacement de 1er niveau ou de 2ème niveau. Le lancement du sort ne le retire pas de votre liste de sorts préparés.",
+						"Vous pouvez modifier votre liste de sorts préparés lorsque vous terminez un long repos. La préparation d'une nouvelle liste de sorts de paladin nécessite du temps passé en prière et en méditation : au moins 1 minute par niveau de sort pour chaque sort de votre liste."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Ability",
+					"entries": [
+						"Le Charisme est votre capacité de lanceur de sorts pour vos sorts de paladin, puisque leur puissance découle de la force de vos convictions. Vous utilisez votre Charisme chaque fois qu'un sort fait référence à votre capacité de lanceur de sorts. De plus, vous utilisez votre modificateur de Charisme lorsque vous déterminez le DC du jet de sauvegarde pour un sort de paladin que vous lancez et lorsque vous effectuez un jet d'attaque avec un tel sort.",
+						{
+							"type": "abilityDc",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Focus",
+					"entries": [
+						"Vous pouvez utiliser un {@item holy symbol|phb} comme foyer de sort pour vos sorts de paladin."
+					]
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Votre serment vous permet de canaliser l'énergie divine pour alimenter des effets magiques. Chaque option de canalisation de la divinité fournie par votre serment explique comment l'utiliser.",
+				"Lorsque vous utilisez votre canal de divinité, vous choisissez l'option à utiliser. Vous devez ensuite terminer un repos court ou long pour utiliser à nouveau votre canal de divinité.",
+				"Certains effets de canalisation de la divinité nécessitent des jets de sauvegarde. Lorsque vous utilisez un tel effet de cette classe, le jet de sauvegarde est égal à votre jet de sauvegarde des sorts de paladin."
+			]
+		},
+		{
+			"name": "Channel Divinity: Harness Divine Power",
+			"source": "TCE",
+			"page": 52,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level paladin {@variantrule optional class features|tce|optional feature}}",
+				"Vous pouvez dépenser une utilisation de votre canal de divinité pour alimenter vos sorts. Comme action bonus, vous touchez votre symbole sacré, prononcez une prière et récupérez un emplacement de sort dépensé, dont le niveau ne peut être supérieur à la moitié de votre bonus de compétence (arrondi au supérieur). Le nombre de fois que vous pouvez utiliser cette caractéristique est basé sur le niveau que vous avez atteint dans cette classe : 3ème niveau, une fois ; 7ème niveau, deux fois ; et 15ème niveau, trois fois. Vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Channel Divinity: Harness Divine Power",
+			"source": "UAClassFeatureVariants",
+			"page": 6,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level paladin feature (enhances Channel Divinity)}",
+				"Vous pouvez dépenser une utilisation de votre canal de divinité pour alimenter vos sorts. Comme action bonus, vous touchez votre symbole sacré, prononcez une prière et récupérez un emplacement de sort de 1er niveau dépensé."
+			]
+		},
+		{
+			"name": "Divine Health",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Au 3e niveau, la magie divine qui coule en vous vous immunise contre les maladies."
+			]
+		},
+		{
+			"name": "Sacred Oath",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Lorsque vous atteignez le 3e niveau, vous prêtez le serment qui vous lie à jamais en tant que paladin. Jusqu'à ce moment, vous étiez dans une phase préparatoire, engagé dans la voie mais pas encore assermenté. Vous choisissez maintenant parmi la liste des serments disponibles.",
+				"Votre choix vous confère des caractéristiques au 3e niveau, puis au 7e, 15e et 20e niveau. Ces caractéristiques comprennent les sorts de serment et la caractéristique Canal de la divinité.",
+				{
+					"name": "Oath Spells",
+					"type": "entries",
+					"entries": [
+						"Chaque serment a une liste de sorts associés. Vous avez accès à ces sorts aux niveaux spécifiés dans la description du serment. Une fois que vous avez accès à un sort de serment, vous l'avez toujours préparé. Les sorts de serment ne comptent pas dans le nombre de sorts que vous pouvez préparer chaque jour.",
+						"Si vous obtenez un sort de serment qui n'apparaît pas dans la liste des sorts de paladin, ce sort est néanmoins un sort de paladin pour vous."
+					]
+				},
+				{
+					"type": "refClassFeature",
+					"classFeature": "Channel Divinity|Paladin||3"
+				},
+				{
+					"type": "refClassFeature",
+					"classFeature": "Channel Divinity: Harness Divine Power|Paladin||3|UAClassFeatureVariants"
+				},
+				{
+					"type": "refClassFeature",
+					"classFeature": "Channel Divinity: Harness Divine Power|Paladin||3|TCE"
+				},
+				{
+					"name": "Breaking Your Oath",
+					"type": "inset",
+					"entries": [
+						"Un paladin essaie de respecter les normes de conduite les plus élevées, mais même le paladin le plus vertueux est faillible. Parfois, le droit chemin s'avère trop exigeant, parfois une situation exige le moindre mal, et parfois la chaleur de l'émotion amène un paladin à transgresser son serment.",
+						"Un paladin qui a rompu un vœu demande généralement l'absolution à un clerc qui partage sa foi ou à un autre paladin du même ordre. Le paladin peut passer une nuit entière en prière en signe de pénitence, ou entreprendre un jeûne ou un acte similaire d'abnégation. Après un rite de confession et de pardon, le paladin prend un nouveau départ.",
+						"Si un paladin viole délibérément son serment et ne montre aucun signe de repentance, les conséquences peuvent être plus graves. À la discrétion du MJ, un paladin impénitent peut être contraint d'abandonner cette classe et d'en adopter une autre, ou peut-être de prendre l'option du paladin briseur de serment qui figure dans le Guide du maître du donjon."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"Lorsque vous atteignez le 4ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Martial Versatility",
+			"source": "TCE",
+			"page": 52,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level paladin {@variantrule optional class features|tce|optional feature}}",
+				"Chaque fois que vous atteignez un niveau dans cette classe qui accorde la caractéristique Amélioration des scores de capacité, vous pouvez remplacer un {@filter fighting style|optionalfeatures|feature type=FS:P} que vous connaissez par un autre style de combat disponible pour les paladins. Ce remplacement représente un changement d'orientation dans votre pratique martiale."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"À partir du 5e niveau, vous pouvez attaquer deux fois, au lieu d'une, lorsque vous effectuez l'action {@action Attack} à votre tour."
+			]
+		},
+		{
+			"name": "Aura of Protection",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"À partir du 6e niveau, chaque fois que vous ou une créature amie située à 3 mètres de vous devez effectuer un jet de sauvegarde, la créature gagne un bonus au jet de sauvegarde égal à votre modificateur de Charisme (avec un bonus minimum de +1). Vous devez être conscient pour accorder ce bonus.",
+				"Au 18ème niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Sacred Oath feature",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 7,
+			"entries": [
+				"Au 7ème niveau, vous gagnez une caractéristique qui vous est accordée par votre Serment Sacré."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"Lorsque vous atteignez le 8e niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Aura of Courage",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"À partir du 10e niveau, vous et les créatures amies situées à 3 mètres de vous ne pouvez pas être {@condition frightened} tant que vous êtes conscient.",
+				"Au 18ème niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Improved Divine Smite",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 11,
+			"entries": [
+				"Au 11e niveau, vous êtes tellement imprégné de puissance vertueuse que toutes vos frappes à l'arme de mêlée sont porteuses de puissance divine. Chaque fois que vous touchez une créature avec une arme de mêlée, celle-ci subit {@damage 1d8} de dégâts radiants supplémentaires."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"Lorsque vous atteignez le 12ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Cleansing Touch",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"À partir du 14e niveau, vous pouvez utiliser votre action pour mettre fin à un sort sur vous-même ou sur une créature consentante que vous touchez.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de Charisme (au minimum une fois). Vous regagnez les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Sacred Oath feature",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 15,
+			"entries": [
+				"Au 15ème niveau, vous gagnez une caractéristique qui vous est accordée par votre Serment Sacré."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"Lorsque vous atteignez le 16ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Aura improvements",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"Au 18ème niveau, la portée de votre Aura de protection augmente à 30 pieds."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"Lorsque vous atteignez le 19ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Sacred Oath feature",
+			"source": "PHB",
+			"page": 82,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"Au 20ème niveau, vous gagnez une caractéristique qui vous est accordée par votre Serment Sacré."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Oathbreaker",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"entries": [
+				"Un briseur de serment est un paladin qui rompt ses serments sacrés pour poursuivre une sombre ambition ou servir une puissance maléfique. La lumière qui brûlait dans le cœur du paladin s'est éteinte. Seules les ténèbres demeurent.",
+				"Un paladin doit être maléfique et au moins de 3e niveau pour devenir un briseur de serments. Le paladin remplace les caractéristiques propres à son serment sacré par des caractéristiques de briseur de serments.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oathbreaker Spells|Paladin||Oathbreaker|DMG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oathbreaker Channel Divinity: Control Undead|Paladin||Oathbreaker|DMG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oathbreaker Channel Divinity: Dreadful Aspect|Paladin||Oathbreaker|DMG|3"
+				}
+			]
+		},
+		{
+			"name": "Oathbreaker Channel Divinity: Control Undead",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Comme action, le paladin cible une créature morte-vivante qu'il peut voir dans un rayon de 30 pieds autour de lui. La cible doit effectuer un jet de sauvegarde de Sagesse. En cas d'échec, la cible doit obéir aux ordres du paladin pendant les 24 heures suivantes, ou jusqu'à ce que le paladin utilise à nouveau cette option Channel Divinity. Un mort-vivant dont la valeur de défi est égale ou supérieure au niveau du paladin est immunisé contre cet effet."
+			]
+		},
+		{
+			"name": "Oathbreaker Channel Divinity: Dreadful Aspect",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"En tant qu'action, le paladin canalise les émotions les plus sombres et les concentre en une explosion de menace magique. Chaque créature du choix du paladin dans un rayon de 30 pieds autour du paladin doit effectuer un jet de sauvegarde de Sagesse si elle peut voir le paladin. En cas d'échec, la cible est {@condition frightened} du paladin pendant 1 minute. Si une créature {@condition frightened} par cet effet termine son tour à plus de 30 pieds du paladin, elle peut tenter un autre jet de sauvegarde de Sagesse pour mettre fin à l'effet sur elle."
+			]
+		},
+		{
+			"name": "Oathbreaker Spells",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de briseur de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oathbreaker Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell hellish rebuke}, {@spell inflict wounds}"
+						],
+						[
+							"5th",
+							"{@spell crown of madness}, {@spell darkness}"
+						],
+						[
+							"9th",
+							"{@spell animate dead}, {@spell bestow curse}"
+						],
+						[
+							"13th",
+							"{@spell blight}, {@spell confusion}"
+						],
+						[
+							"17th",
+							"{@spell contagion}, {@spell dominate person}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Hate",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"À partir du 7e niveau, le paladin, ainsi que tous les démons et les morts-vivants se trouvant dans un rayon de 3 mètres du paladin, bénéficient d'un bonus aux jets de dégâts des armes de mêlée égal au modificateur de Charisme du paladin (minimum de +1). Une créature ne peut bénéficier de cette caractéristique que d'un seul paladin à la fois.",
+				"Au 18ème niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Supernatural Resistance",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Au 15ème niveau, le paladin gagne une résistance aux dégâts de matraquage, de perçage et d'entaille des armes non magiques."
+			]
+		},
+		{
+			"name": "Dread Lord",
+			"source": "DMG",
+			"page": 97,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Oathbreaker",
+			"subclassSource": "DMG",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, le paladin peut, comme action, s'entourer d'une aura de ténèbres qui dure 1 minute. L'aura réduit toute lumière vive dans un rayon de 30 pieds autour du paladin en lumière tamisée. Chaque fois qu'un ennemi qui se trouve à {@condition frightened} du paladin commence son tour dans l'aura, il subit {@damage 4d10} de dégâts psychiques. De plus, le paladin et les créatures qu'il choisit dans l'aura sont drapés dans une ombre plus profonde. Les créatures qui dépendent de la vue ont un désavantage aux jets d'attaque contre les créatures drapées dans cette ombre.",
+				"Tant que l'aura dure, le paladin peut utiliser une action bonus à son tour pour que les ombres de l'aura attaquent une créature. Le paladin effectue une attaque de sort en mêlée contre la cible. Si l'attaque touche, la cible subit des dégâts nécrotiques égaux à {@dice 3d10} + le modificateur de Charisme du paladin.",
+				"Après avoir activé l'aura, le paladin ne peut plus le faire jusqu'à ce qu'il termine un long repos."
+			]
+		},
+		{
+			"name": "Oath of the Ancients",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Le Serment des Anciens est aussi vieux que la race des elfes et les rituels des druides. Parfois appelés chevaliers féeriques, chevaliers verts ou chevaliers cornus, les paladins qui prêtent ce serment se rangent du côté de la lumière dans la lutte cosmique contre les ténèbres parce qu'ils aiment les choses belles et vivifiantes du monde, et pas nécessairement parce qu'ils croient aux principes d'honneur, de courage et de justice. Ils ornent leurs armures et leurs vêtements d'images de choses qui poussent - feuilles, bois ou fleurs - pour refléter leur engagement à préserver la vie et la lumière dans le monde.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of the Ancients|Paladin||Ancients||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Ancients||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Nature's Wrath|Paladin||Ancients||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Turn the Faithless|Paladin||Ancients||3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Nature's Wrath",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Vous pouvez utiliser votre divinité de canal pour invoquer des forces primitives pour piéger un ennemi. En tant qu'action, vous pouvez faire en sorte que des lianes spectrales jaillissent et atteignent une créature située à 3 mètres de vous et que vous pouvez voir. La créature doit réussir un jet de sauvegarde de Force ou de Dextérité (au choix) ou être {@condition restrained}. Pendant que {@condition restrained} par les lianes, la créature répète le jet de sauvegarde à la fin de chacun de ses tours. En cas de réussite, elle se libère et les lianes disparaissent."
+			]
+		},
+		{
+			"name": "Channel Divinity: Turn the Faithless",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Vous pouvez utiliser votre divinité de canal pour prononcer des mots anciens qui sont douloureux à entendre pour les fey et les fiend. Comme une action, vous présentez votre symbole sacré, et chaque fey ou démon dans un rayon de 30 pieds de vous qui peut vous entendre doit faire un jet de sauvegarde de Sagesse. En cas d'échec, la créature est transformée pendant 1 minute ou jusqu'à ce qu'elle subisse des dégâts.",
+				"Une créature retournée doit passer ses tours à essayer de s'éloigner le plus possible de vous, et elle ne peut pas se déplacer volontairement vers un espace situé à moins de 30 pieds de vous. Elle ne peut pas non plus avoir de réactions. Pour son action, elle ne peut utiliser que l'action {@action Dash} ou essayer d'échapper à un effet qui l'empêche de se déplacer. S'il n'y a nulle part où se déplacer, la créature peut utiliser l'action {@action Dodge}.",
+				"Si la véritable forme de la créature est dissimulée par une illusion, une métamorphose ou un autre effet, cette forme est révélée pendant la transformation."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of the Ancients Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell ensnaring strike}, {@spell speak with animals}"
+						],
+						[
+							"5th",
+							"{@spell moonbeam}, {@spell misty step}"
+						],
+						[
+							"9th",
+							"{@spell plant growth}, {@spell protection from energy}"
+						],
+						[
+							"13th",
+							"{@spell ice storm}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell commune with nature}, {@spell tree stride}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of the Ancients",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Les principes du Serment des Anciens ont été préservés pendant des siècles. Ce serment met en avant les principes du bien au-dessus de toute préoccupation de loi ou de chaos. Ses quatre principes centraux sont simples.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Kindle the Light",
+							"entries": [
+								"Par vos actes de miséricorde, de bonté et de pardon, allumez la lumière de l'espoir dans le monde, en repoussant le désespoir."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Shelter the Light",
+							"entries": [
+								"Là où il y a du bien, de la beauté, de l'amour et du rire dans le monde, opposez-vous à la méchanceté qui voudrait l'engloutir. Là où la vie s'épanouit, opposez-vous aux forces qui la rendraient stérile."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Preserve Your Own Light",
+							"entries": [
+								"Réjouissez-vous des chants et des rires, de la beauté et de l'art. Si tu laisses la lumière mourir dans ton propre cœur, tu ne pourras pas la préserver dans le monde."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Be the Light",
+							"entries": [
+								"Soyez un phare glorieux pour tous ceux qui vivent dans le désespoir. Laissez la lumière de votre joie et de votre courage briller dans tous vos actes."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Warding",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"À partir du 7e niveau, la magie ancienne repose si lourdement sur vous qu'elle forme une garde eldritch. Vous et les créatures amies situées dans un rayon de 3 mètres de vous avez une résistance aux dégâts des sorts.",
+				"Au 18ème niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Undying Sentinel",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"À partir du 15e niveau, lorsque vous êtes réduit à 0 point de vie et que vous n'êtes pas tué sur le coup, vous pouvez choisir de tomber à 1 point de vie à la place. Une fois que vous utilisez cette capacité, vous ne pouvez pas la réutiliser avant d'avoir terminé un long repos.",
+				"De plus, vous ne souffrez d'aucun des inconvénients de la vieillesse, et vous ne pouvez pas être vieilli par magie."
+			]
+		},
+		{
+			"name": "Elder Champion",
+			"source": "PHB",
+			"page": 86,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Ancients",
+			"subclassSource": "PHB",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, vous pouvez prendre la forme d'une ancienne force de la nature, en prenant l'apparence de votre choix. Par exemple, votre peau peut devenir verte ou prendre la forme d'une écorce, vos cheveux peuvent ressembler à des feuilles ou à de la mousse, ou encore vous pouvez faire pousser des bois ou une crinière de lion.",
+				"En utilisant votre action, vous subissez une transformation. Pendant 1 minute, vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Au début de chacun de vos tours, vous regagnez 10 points de vie.",
+						"Chaque fois que vous lancez un sort de paladin dont le temps d'incantation est de 1 action, vous pouvez le lancer en utilisant votre action bonus à la place.",
+						"Les créatures ennemies situées à moins de 3 mètres de vous ont un désavantage aux jets de sauvegarde contre vos sorts de paladin et vos options de canal de divinité."
+					]
+				},
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Oath of Devotion",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Le serment de dévotion lie un paladin aux idéaux les plus élevés de justice, de vertu et d'ordre. Parfois appelés cavaliers, chevaliers blancs ou guerriers sacrés, ces paladins correspondent à l'idéal du chevalier en armure brillante, agissant avec honneur dans la poursuite de la justice et du bien commun. Ils s'imposent les normes de conduite les plus élevées et certains, pour le meilleur ou pour le pire, imposent les mêmes normes au reste du monde. Beaucoup de ceux qui prêtent ce serment sont dévoués aux dieux de la loi et du bien et utilisent les principes de leurs dieux comme mesure de leur dévotion. Ils considèrent les anges - les parfaits serviteurs du bien - comme leurs idéaux et incorporent des images d'ailes angéliques dans leurs casques ou leurs armoiries.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Devotion|Paladin||Devotion||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Devotion||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Sacred Weapon|Paladin||Devotion||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Turn the Unholy|Paladin||Devotion||3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Sacred Weapon",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Comme action, vous pouvez imprégner une arme que vous tenez d'énergie positive, en utilisant votre canal de divinité. Pendant 1 minute, vous ajoutez votre modificateur de Charisme aux jets d'attaque effectués avec cette arme (avec un bonus minimum de +1). L'arme émet également une lumière vive dans un rayon de 20 pieds et une lumière faible 20 pieds au-delà. Si l'arme n'est pas déjà magique, elle devient magique pour la durée du sort.",
+				"Vous pouvez mettre fin à cet effet à votre tour dans le cadre de toute autre action. Si vous ne tenez ou ne portez plus cette arme, ou si vous tombez {@condition unconscious}, cet effet prend fin."
+			]
+		},
+		{
+			"name": "Channel Divinity: Turn the Unholy",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"En tant qu'action, vous présentez votre symbole sacré et prononcez une prière censurant les démons et les morts-vivants, en utilisant votre canal de divinité. Chaque démon ou mort-vivant qui peut vous voir ou vous entendre à moins de 30 pieds de vous doit effectuer un jet de sauvegarde de Sagesse. Si la créature échoue à son jet de sauvegarde, elle est transformée pendant 1 minute ou jusqu'à ce qu'elle subisse des dégâts.",
+				"Une créature retournée doit passer ses tours à essayer de s'éloigner le plus possible de vous, et elle ne peut pas se déplacer volontairement vers un espace situé à moins de 30 pieds de vous. Elle ne peut pas non plus avoir de réactions. Pour son action, elle ne peut utiliser que l'action {@action Dash} ou essayer d'échapper à un effet qui l'empêche de se déplacer. S'il n'y a nulle part où se déplacer, la créature peut utiliser l'action {@action Dodge}."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of Devotion Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell protection from evil and good}, {@spell sanctuary}"
+						],
+						[
+							"5th",
+							"{@spell lesser restoration}, {@spell zone of truth}"
+						],
+						[
+							"9th",
+							"{@spell beacon of hope}, {@spell dispel magic}"
+						],
+						[
+							"13th",
+							"{@spell freedom of movement}, {@spell guardian of faith}"
+						],
+						[
+							"17th",
+							"{@spell commune}, {@spell flame strike}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Devotion",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Bien que les termes exacts et les restrictions du serment de dévotion varient, les paladins de ce serment partagent ces principes.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Honesty",
+							"entries": [
+								"Ne mentez pas et ne trichez pas. Que votre parole soit votre promesse."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Courage",
+							"entries": [
+								"Ne craignez jamais d'agir, même si la prudence est de mise."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Compassion",
+							"entries": [
+								"Aidez les autres, protégez les faibles et punissez ceux qui les menacent. Faites preuve de clémence envers vos ennemis, mais tempérez-la par la sagesse."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Honor",
+							"entries": [
+								"Traitez les autres avec équité, et faites en sorte que vos actes honorables soient un exemple pour eux. Faites autant de bien que possible tout en causant le moins de mal possible."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Duty",
+							"entries": [
+								"Soyez responsable de vos actes et de leurs conséquences, protégez ceux qui vous sont confiés et obéissez à ceux qui ont une juste autorité sur vous."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Devotion",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"À partir du 7e niveau, vous et les créatures amies situées à 3 mètres de vous ne pouvez pas être {@condition charmed} tant que vous êtes conscient.",
+				"Au 18ème niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Purity of Spirit",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"À partir du 15e niveau, vous êtes toujours sous l'effet d'un sort de {@spell protection from evil and good}."
+			]
+		},
+		{
+			"name": "Holy Nimbus",
+			"source": "PHB",
+			"page": 85,
+			"srd": true,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Devotion",
+			"subclassSource": "PHB",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, comme une action, vous pouvez émaner une aura de lumière solaire. Pendant 1 minute, une lumière vive brille de vous dans un rayon de 30 pieds, et une lumière faible brille 30 pieds au-delà.",
+				"Chaque fois qu'une créature ennemie commence son tour dans la lumière vive, la créature subit 10 dégâts radiants.",
+				"De plus, pendant toute la durée de l'opération, vous bénéficiez d'un avantage aux jets de sauvegarde contre les sorts lancés par les démons ou les morts-vivants.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Oath of Vengeance",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Le serment de vengeance est un engagement solennel à punir ceux qui ont commis un péché grave. Lorsque des forces maléfiques massacrent des villageois sans défense, lorsqu'un peuple entier se retourne contre la volonté des dieux, lorsqu'une guilde de voleurs devient trop violente et trop puissante, lorsqu'un dragon se déchaîne dans la campagne - dans de tels moments, les paladins se lèvent et prêtent le serment de vengeance pour réparer ce qui a été mal fait. Pour ces paladins - parfois appelés vengeurs ou chevaliers noirs - leur propre pureté n'est pas aussi importante que de rendre la justice.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Vengeance|Paladin||Vengeance||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Vengeance||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Abjure Enemy|Paladin||Vengeance||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Vow of Enmity|Paladin||Vengeance||3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Abjure Enemy",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"En tant qu'action, vous présentez votre symbole sacré et prononcez une prière de dénonciation, en utilisant votre canal de divinité. Choisissez une créature dans un rayon de 60 pieds de vous que vous pouvez voir. Cette créature doit effectuer un jet de sauvegarde de Sagesse, à moins qu'elle ne soit immunisée contre l'être {@condition frightened}. Les monstres et les morts-vivants ont un désavantage sur ce jet de sauvegarde.",
+				"En cas d'échec de la sauvegarde, la créature est {@condition frightened} pendant 1 minute ou jusqu'à ce qu'elle subisse des dégâts. Pendant {@condition frightened}, la vitesse de la créature est de 0, et elle ne peut bénéficier d'aucun bonus à sa vitesse.",
+				"En cas de sauvegarde réussie, la vitesse de la créature est réduite de moitié pendant 1 minute ou jusqu'à ce que la créature subisse des dégâts."
+			]
+		},
+		{
+			"name": "Channel Divinity: Vow of Enmity",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Comme action bonus, vous pouvez prononcer un vœu d'inimitié contre une créature que vous pouvez voir dans un rayon de 3 mètres autour de vous, en utilisant votre canal de divinité. Vous gagnez l'avantage sur les jets d'attaque contre la créature pendant 1 minute ou jusqu'à ce qu'elle tombe à 0 point de vie ou tombe {@condition unconscious}."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of Vengeance Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell bane}, {@spell hunter's mark}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell misty step}"
+						],
+						[
+							"9th",
+							"{@spell haste}, {@spell protection from energy}"
+						],
+						[
+							"13th",
+							"{@spell banishment}, {@spell dimension door}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell scrying}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Vengeance",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Les principes du Serment de vengeance varient d'un paladin à l'autre, mais tous tournent autour de la punition des malfaiteurs par tous les moyens nécessaires. Les paladins qui respectent ces principes sont prêts à sacrifier leur propre droiture pour rendre justice à ceux qui font le mal, c'est pourquoi les paladins sont souvent neutres ou légalement neutres. Les principes fondamentaux de ces principes sont brutalement simples.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Fight the Greater Evil",
+							"entries": [
+								"Confronté au choix de combattre mes ennemis jurés ou de combattre un moindre mal, je choisis le plus grand mal."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "No Mercy for the Wicked",
+							"entries": [
+								"Les ennemis ordinaires peuvent gagner ma pitié, mais pas mes ennemis jurés."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "By Any Means Necessary",
+							"entries": [
+								"Mes scrupules ne doivent pas m'empêcher d'exterminer mes ennemis."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Restitution",
+							"entries": [
+								"Si mes ennemis sèment la ruine dans le monde, c'est parce que je n'ai pas réussi à les arrêter. Je dois aider ceux qui ont été blessés par leurs méfaits."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Relentless Avenger",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Au 7e niveau, votre concentration surnaturelle vous aide à fermer la retraite d'un ennemi. Lorsque vous touchez une créature avec une attaque d'opportunité, vous pouvez vous déplacer jusqu'à la moitié de votre vitesse immédiatement après l'attaque et dans le cadre de la même réaction. Ce mouvement ne provoque pas d'attaque d'opportunité."
+			]
+		},
+		{
+			"name": "Soul of Vengeance",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"À partir du 15e niveau, l'autorité avec laquelle vous prononcez votre vœu d'inimitié vous confère un plus grand pouvoir sur votre ennemi. Lorsqu'une créature sous l'effet de votre vœu d'inimitié effectue une attaque, vous pouvez utiliser votre réaction pour effectuer une attaque d'arme de mêlée contre cette créature si elle est à portée."
+			]
+		},
+		{
+			"name": "Avenging Angel",
+			"source": "PHB",
+			"page": 87,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Vengeance",
+			"subclassSource": "PHB",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, vous pouvez prendre la forme d'un vengeur angélique. En utilisant votre action, vous subissez une transformation. Pendant 1 heure, vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Des ailes poussent dans votre dos et vous confèrent une vitesse de vol de 60 pieds.",
+						"Vous émanez une aura de menace dans un rayon de 30 pieds. La première fois qu'une créature ennemie pénètre dans l'aura ou y commence son tour pendant un combat, elle doit réussir un jet de sauvegarde de Sagesse ou devenir {@condition frightened} de vous pendant 1 minute ou jusqu'à ce qu'elle subisse des dégâts. Les jets de {@action Attack} contre la créature {@condition frightened} ont l'avantage."
+					]
+				},
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Oath of the Crown",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"entries": [
+				"Le serment de la Couronne est prêté aux idéaux de la civilisation, qu'il s'agisse de l'esprit d'une nation, de la fidélité à un souverain ou du service à une divinité de la loi et du pouvoir. Les paladins qui prêtent ce serment se consacrent à servir la société et, en particulier, les lois qui la maintiennent. Ces paladins sont les gardiens vigilants sur les murs, se dressant contre les marées chaotiques de la barbarie qui menacent de détruire tout ce que la civilisation a construit, et sont communément appelés gardiens, exemplaires ou sentinelles. Souvent, les paladins qui prêtent ce serment sont membres d'un ordre de chevalerie au service d'une nation ou d'un souverain, et prêtent leur serment dans le cadre de leur admission dans les rangs de l'ordre.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of the Crown|Paladin||Crown|SCAG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Crown|SCAG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Champion Challenge|Paladin||Crown|SCAG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Turn the Tide|Paladin||Crown|SCAG|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Champion Challenge",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Comme action bonus, vous lancez un défi qui oblige d'autres créatures à se battre contre vous. Chaque créature de votre choix que vous pouvez voir dans un rayon de 30 pieds autour de vous doit effectuer un jet de sauvegarde de Sagesse. En cas d'échec, la créature ne peut pas s'éloigner de vous de plus de 10 mètres. Cet effet prend fin sur la créature si vous êtes {@condition incapacitated} ou mourrez ou si la créature se trouve à plus de 30 pieds de vous."
+			]
+		},
+		{
+			"name": "Channel Divinity: Turn the Tide",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Comme action bonus, vous pouvez soutenir les créatures blessées avec votre canal de divinité. Chaque créature de votre choix qui peut vous entendre à moins de 30 pieds de vous regagne un nombre de points de vie égal à {@dice 1d6} + votre modificateur de Charisme (minimum de 1) si elle n'a pas plus de la moitié de ses points de vie."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of the Crown Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell command}, {@spell compelled duel}"
+						],
+						[
+							"5th",
+							"{@spell warding bond}, {@spell zone of truth}"
+						],
+						[
+							"9th",
+							"{@spell aura of vitality}, {@spell spirit guardians}"
+						],
+						[
+							"13th",
+							"{@spell banishment}, {@spell guardian of faith}"
+						],
+						[
+							"17th",
+							"{@spell circle of power}, {@spell geas}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of the Crown",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Les principes du serment de la Couronne sont souvent fixés par le souverain auquel ils prêtent serment, mais ils mettent généralement l'accent sur les principes suivants.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Law",
+							"entries": [
+								"La loi est primordiale. C'est le mortier qui maintient ensemble les pierres de la civilisation, et il doit être respecté."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Loyalty",
+							"entries": [
+								"Votre parole est votre lien. Sans loyauté, les serments et les lois n'ont aucun sens."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Courage",
+							"entries": [
+								"Vous devez être prêt à faire ce qui doit être fait pour le bien de l'ordre, même si les chances sont écrasantes. Si vous n'agissez pas, qui le fera ?"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Responsibility",
+							"entries": [
+								"Vous devez faire face aux conséquences de vos actes, et vous êtes responsable du respect de vos devoirs et obligations."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Divine Allegiance",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"À partir du 7e niveau, lorsqu'une créature située à moins de 1,5 mètre de vous subit des dégâts, vous pouvez utiliser votre réaction pour substituer magiquement votre propre santé à celle de la créature ciblée, faisant en sorte que cette créature ne subisse pas les dégâts. À la place, c'est vous qui subissez les dégâts. Ces dégâts qui vous sont infligés ne peuvent être réduits ou évités d'aucune manière."
+			]
+		},
+		{
+			"name": "Unyielding Spirit",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"À partir du 15e niveau, vous avez un avantage sur les jets de sauvegarde pour éviter de devenir {@condition paralyzed} ou {@condition stunned}."
+			]
+		},
+		{
+			"name": "Exalted Champion",
+			"source": "SCAG",
+			"page": 132,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Crown",
+			"subclassSource": "SCAG",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, votre présence sur le champ de bataille est une inspiration pour ceux qui sont dévoués à votre cause. Vous pouvez utiliser votre action pour obtenir les avantages suivants pendant 1 heure :",
+				{
+					"type": "list",
+					"items": [
+						"Vous avez une résistance aux dégâts de matraquage, de perçage et de coupure des armes non magiques.",
+						"Vos alliés ont l'avantage sur les jets de sauvegarde en cas de décès lorsqu'ils se trouvent à moins de 30 pieds de vous.",
+						"Vous avez l'avantage sur les jets de sauvegarde de Sagesse, tout comme vos alliés dans un rayon de 30 pieds autour de vous."
+					]
+				},
+				"Cet effet se termine prématurément si vous êtes {@condition incapacitated} ou mourrez. Une fois que vous avez utilisé cette caractéristique, vous ne pouvez plus l'utiliser jusqu'à ce que vous terminiez un long repos."
+			]
+		},
+		{
+			"name": "Oath of Glory",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Les paladins qui prêtent le Serment de la Gloire croient qu'eux-mêmes et leurs compagnons sont destinés à atteindre la gloire par des actes d'héroïsme. Ils s'entraînent assidûment et encouragent leurs compagnons pour qu'ils soient prêts lorsque le destin les appelle.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Glory|Paladin||Glory|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Glory|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Glory|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level Oath of Glory feature}",
+				"Vous gagnez les deux options suivantes de canal de divinité. Voir le trait de classe Serment sacré pour savoir comment fonctionne le canal de divinité.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Peerless Athlete|Paladin||Glory|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Inspiring Smite|Paladin||Glory|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of Glory feature}",
+				"Vous obtenez des sorts de serment aux niveaux de paladin indiqués dans la table des sorts de serment de gloire. Consultez le trait de classe Serment sacré pour savoir comment fonctionnent les sorts de serment.",
+				{
+					"type": "table",
+					"caption": "Oath of Glory Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell guiding bolt}, {@spell heroism}"
+						],
+						[
+							"5th",
+							"{@spell enhance ability}, {@spell magic weapon}"
+						],
+						[
+							"9th",
+							"{@spell haste}, {@spell protection from energy}"
+						],
+						[
+							"13th",
+							"{@spell compulsion}, {@spell freedom of movement}"
+						],
+						[
+							"17th",
+							"{@spell commune}, {@spell flame strike}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Glory",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Les principes du Serment de Gloire poussent un paladin à tenter des actes héroïques qui pourraient un jour entrer dans la légende.",
+				{
+					"type": "entries",
+					"name": "Actions over Words",
+					"entries": [
+						"Efforcez-vous d'être connu par des actions glorieuses, pas par des mots."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Challenges Are but Tests",
+					"entries": [
+						"Affrontez les épreuves avec courage et encouragez vos alliés à les affronter avec vous."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hone the Body",
+					"entries": [
+						"Comme la pierre brute, votre corps doit être travaillé pour que son potentiel puisse être exploité."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Discipline the Soul",
+					"entries": [
+						"Vous devez faire preuve de discipline pour surmonter les défaillances qui menacent de ternir votre gloire et celle de vos amis."
+					]
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Inspiring Smite",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Immédiatement après avoir infligé des dégâts à une créature avec votre caractéristique Frappe divine, vous pouvez utiliser votre Canalisation de la divinité comme action bonus et distribuer des points de vie temporaires aux créatures de votre choix situées dans un rayon de 30 pieds, ce qui peut vous inclure. Le nombre total de points de vie temporaires est égal à {@dice 2d8} + votre niveau dans cette classe, répartis entre les créatures choisies comme vous le souhaitez."
+			]
+		},
+		{
+			"name": "Channel Divinity: Peerless Athlete",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 2,
+			"entries": [
+				"Comme action bonus, vous pouvez utiliser votre canal de divinité pour augmenter vos capacités athlétiques. Pendant les 10 minutes suivantes, vous avez l'avantage sur les tests de Force ({@skill Athletics}) et de Dextérité ({@skill Acrobatics}) ; vous pouvez porter, pousser, traîner et soulever deux fois plus de poids que la normale ; et la distance de vos sauts en longueur et en hauteur augmente de 10 pieds (cette distance supplémentaire coûte un mouvement normal)."
+			]
+		},
+		{
+			"name": "Aura of Alacrity",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Oath of Glory feature}",
+				"Vous émanez une aura qui vous emplit, vous et vos compagnons, d'une vitesse surnaturelle, vous permettant de traverser un champ de bataille en formation. Votre vitesse de marche augmente de 10 pieds. De plus, si vous n'êtes pas {@condition incapacitated}, la vitesse de marche de tout allié qui commence son tour à moins de 1,5 mètre de vous augmente de 3 mètres jusqu'à la fin de ce tour.",
+				"Lorsque vous atteignez le 18e niveau dans cette classe, la portée de l'aura passe à 10 pieds."
+			]
+		},
+		{
+			"name": "Glorious Defense",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of Glory feature}",
+				"Vous pouvez transformer une défense en une attaque soudaine. Lorsque vous ou une autre créature que vous pouvez voir dans un rayon de 3 mètres de vous êtes touché par un jet d'attaque, vous pouvez utiliser votre réaction pour accorder un bonus à la CA de la cible contre cette attaque, la faisant potentiellement rater. Le bonus est égal à votre modificateur de Charisme (minimum de +1). Si l'attaque rate, vous pouvez effectuer une attaque d'arme contre l'attaquant dans le cadre de cette réaction, à condition que l'attaquant soit à portée de votre arme.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de Charisme (au moins une fois), et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Living Legend",
+			"source": "TCE",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 29
+				}
+			],
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Glory",
+			"subclassSource": "TCE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of Glory feature}",
+				"Vous pouvez vous imprégner des légendes - qu'elles soient vraies ou exagérées - de vos grands exploits. Comme une action bonus, vous gagnez les avantages suivants pendant 1 minute :",
+				{
+					"type": "list",
+					"items": [
+						"Vous bénéficiez d'une présence d'un autre monde et gagnez un avantage sur tous les tests de Charisme.",
+						"Une fois à chacun de vos tours, lorsque vous effectuez une attaque avec une arme et que vous la ratez, vous pouvez faire en sorte que cette attaque touche à la place.",
+						"Si vous échouez à un jet de sauvegarde, vous pouvez utiliser votre réaction pour le relancer. Vous devez utiliser ce nouveau jet."
+					]
+				},
+				"Une fois que vous avez utilisé cette caractéristique, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos, à moins que vous ne dépensiez un emplacement de sort de 5e niveau pour l'utiliser à nouveau."
+			]
+		},
+		{
+			"name": "Oath of the Watchers",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Le serment des Veilleurs oblige les paladins à protéger les royaumes mortels des prédations des créatures extraplanaires, dont beaucoup peuvent dévaster les soldats mortels. Ainsi, les Veilleurs affinent leur esprit, leur âme et leur corps pour être les armes ultimes contre de telles menaces.",
+				"Les paladins qui suivent le serment des Veilleurs sont toujours vigilants pour repérer l'influence des forces extraplanaires, établissant souvent un réseau d'espions et d'informateurs pour recueillir des informations sur les cultes suspects. Pour un Veilleur, il est aussi naturel de se méfier de ce qui l'entoure que de porter une armure au combat.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of the Watchers|Paladin||Watchers|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Watchers|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Watchers|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"Vous gagnez les options de divinité de canal suivantes. Voir le trait de classe Serment sacré pour savoir comment fonctionne le canal de divinité.",
+				{
+					"type": "entries",
+					"name": "Watcher's Will",
+					"entries": [
+						"Vous pouvez utiliser votre divinité de canal pour investir votre présence avec le pouvoir de protection de votre foi. En tant qu'action, vous pouvez choisir un nombre de créatures que vous pouvez voir à moins de 30 pieds de vous, jusqu'à un nombre égal à votre modificateur de Charisme (minimum d'une créature). Pendant 1 minute, vous et les créatures choisies avez l'avantage sur les jets de sauvegarde d'Intelligence, de Sagesse et de Charisme."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Abjure the Extraplanar",
+					"entries": [
+						"Vous pouvez utiliser votre canal de divinité pour fustiger les êtres non-mondains. En tant qu'action, vous présentez votre symbole sacré et chaque aberration, céleste, élémentaire, féerique ou démon à moins de 30 pieds de vous qui peut vous entendre doit effectuer un jet de sauvegarde de Sagesse. En cas d'échec, la créature est transformée pendant 1 minute ou jusqu'à ce qu'elle subisse des dégâts.",
+						"Une créature retournée doit passer ses tours à essayer de s'éloigner le plus possible de vous, et elle ne peut pas volontairement terminer son déplacement dans un espace à moins de 30 pieds de vous. Pour son action, elle ne peut utiliser que l'action {@action Dash} ou essayer d'échapper à un effet qui l'empêche de se déplacer. S'il n'y a nulle part où se déplacer, la créature peut effectuer l'action {@action Dodge}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"Vous obtenez des sorts de serment aux niveaux de paladin indiqués dans la table Serment des veilleurs. Consultez le trait de classe Serment sacré pour savoir comment fonctionnent les sorts de serment.",
+				{
+					"type": "table",
+					"caption": "Oath of the Watchers Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell alarm}, {@spell detect magic}"
+						],
+						[
+							"5th",
+							"{@spell moonbeam}, {@spell see invisibility}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell nondetection}"
+						],
+						[
+							"13th",
+							"{@spell aura of purity}, {@spell banishment}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell scrying}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of the Watchers",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Un paladin qui fait le Serment des Veilleurs jure de protéger les royaumes mortels des menaces d'un autre monde.",
+				{
+					"type": "entries",
+					"name": "Vigilance",
+					"entries": [
+						"Les menaces auxquelles vous faites face sont rusées, puissantes et subversives. Soyez toujours attentifs à leur corruption."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Loyalty",
+					"entries": [
+						"N'acceptez jamais de cadeaux ou de faveurs de la part de démons ou de ceux qui les côtoient. Restez fidèle à votre ordre, à vos camarades et à votre devoir."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Discipline",
+					"entries": [
+						"Vous êtes le bouclier contre les terreurs infinies qui se trouvent au-delà des étoiles. Votre lame doit être toujours aiguisée et votre esprit vif pour survivre à ce qui se trouve au-delà."
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of the Sentinel",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Oath of the Watchers feature}",
+				"Vous émettez une aura de vigilance lorsque vous ne l'êtes pas {@condition incapacitated}. Lorsque vous et les créatures de votre choix situées dans un rayon de 3 mètres de vous faites un jet d'initiative, vous gagnez tous un bonus à l'initiative égal à votre bonus de compétence.",
+				"Au 18ème niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Vigilant Rebuke",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of the Watchers feature}",
+				"Vous avez appris à châtier tous ceux qui osent manier les béguines contre vous et vos gardes. Chaque fois que vous ou une créature que vous pouvez voir dans un rayon de 30 pieds de vous réussissez un jet de sauvegarde d'Intelligence, de Sagesse ou de Charisme, vous pouvez utiliser votre réaction pour infliger {@damage 2d8} + votre modificateur de Charisme à la créature qui a forcé le jet de sauvegarde."
+			]
+		},
+		{
+			"name": "Mortal Bulwark",
+			"source": "TCE",
+			"page": 54,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers",
+			"subclassSource": "TCE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of the Watchers feature}",
+				"Vous manifestez une étincelle de puissance divine pour défendre les royaumes mortels. Comme action bonus, vous gagnez les avantages suivants pendant 1 minute :",
+				{
+					"type": "list",
+					"items": [
+						"Vous gagnez {@sense truesight} avec une portée de 120 pieds.",
+						"Vous avez un avantage sur les jets d'attaque contre les aberrations, les célestes, les élémentaires, les fey et les démons.",
+						"Lorsque vous touchez une créature avec un jet d'attaque et que vous lui infligez des dégâts, vous pouvez également l'obliger à effectuer un jet de sauvegarde de Charisme contre le DC de sauvegarde de votre sort. En cas d'échec, la créature est bannie par magie vers son plan d'existence d'origine si elle ne s'y trouve pas actuellement. En cas de sauvegarde réussie, la créature ne peut plus être bannie par cette caractéristique pendant 24 heures."
+					]
+				},
+				"Une fois que vous avez utilisé cette action bonus, vous ne pouvez plus l'utiliser jusqu'à la fin d'un long repos, à moins que vous ne dépensiez un emplacement de sort de 5e niveau pour l'utiliser à nouveau."
+			]
+		},
+		{
+			"name": "Oath of the Watchers",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Les paladins qui prêtent le serment des Veilleurs cherchent à protéger le royaume des mortels des prédations des créatures extraplanaires, dont beaucoup peuvent dévaster les soldats mortels. Ainsi, les Veilleurs affinent leur esprit, leur âme et leur corps pour être les armes ultimes contre de telles menaces.",
+				"Les paladins qui suivent le serment des Veilleurs sont toujours vigilants pour repérer l'influence des forces extraplanaires, établissant souvent un réseau d'espions et d'informateurs pour recueillir des informations sur les cultes suspects. Pour un Veilleur, il est aussi naturel de se méfier de ce qui l'entoure que de porter une armure au combat.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of the Watchers|Paladin||Watchers (UA)|UA2020SubclassesPt1|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Watchers (UA)|UA2020SubclassesPt1|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Watchers (UA)|UA2020SubclassesPt1|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"Vous gagnez les options de divinité de canal suivantes. Voir le trait de classe Serment sacré pour savoir comment fonctionne le canal de divinité.",
+				{
+					"type": "entries",
+					"name": "Watcher's Will",
+					"entries": [
+						"Vous pouvez utiliser votre divinité de canal pour investir votre présence avec le pouvoir de protection de votre foi. En tant qu'action, vous pouvez choisir un nombre de créatures que vous pouvez voir à moins de 30 pieds de vous, jusqu'à un nombre égal à votre modificateur de Charisme (minimum d'une créature). Pendant 1 minute, toutes les créatures choisies ont l'avantage sur les jets de sauvegarde d'Intelligence, de Sagesse et de Charisme."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Abjure the Extraplanar",
+					"entries": [
+						"Vous pouvez utiliser votre canal de divinité pour fustiger les êtres non-mondains. Comme action, vous présentez votre symbole sacré et chaque élémentaire, fey, démon ou aberration dans un rayon de 30 pieds autour de vous qui peut vous entendre doit faire un jet de sauvegarde de Sagesse. En cas d'échec, la créature est transformée pendant 1 minute ou jusqu'à ce qu'elle subisse des dégâts.",
+						"Une créature retournée doit passer ses tours à essayer de s'éloigner de vous autant qu'elle le peut, et elle ne peut pas se déplacer volontairement vers un espace situé à moins de 30 pieds de vous. Pour son action, elle ne peut utiliser que l'action {@action Dash} ou essayer d'échapper à un effet qui l'empêche de se déplacer. S'il n'y a nulle part où se déplacer, la créature peut utiliser l'action {@action Dodge}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of the Watchers feature}",
+				"Vous obtenez des sorts de serment aux niveaux de paladin indiqués dans la table Serment des veilleurs. Consultez le trait de classe Serment sacré pour savoir comment fonctionnent les sorts de serment.",
+				{
+					"type": "table",
+					"caption": "Oath of the Watchers Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell alarm}, {@spell chromatic orb}"
+						],
+						[
+							"5th",
+							"{@spell augury}, {@spell moonbeam}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell nondetection}"
+						],
+						[
+							"13th",
+							"{@spell aura of purity}, {@spell banishment}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell hallow}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of the Watchers",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Un paladin qui fait le Serment des Veilleurs jure de protéger le royaume des mortels contre les menaces d'un autre monde.",
+				{
+					"type": "entries",
+					"name": "Vigilance",
+					"entries": [
+						"Les menaces auxquelles vous faites face sont rusées, puissantes et subversives. Soyez toujours attentifs à leur corruption."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Loyalty",
+					"entries": [
+						"N'acceptez jamais de cadeaux ou de faveurs de la part de démons ou de ceux qui les côtoient. Restez fidèle à votre ordre, à vos camarades et à votre devoir."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Discipline",
+					"entries": [
+						"Vous êtes le bouclier contre les terreurs infinies qui se trouvent au-delà des étoiles. Votre lame doit être toujours aiguisée et votre esprit vif pour survivre à ce qui se trouve au-delà."
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of the Sentinel",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th- and 18th-level Oath of the Watchers feature}",
+				"Vous émettez une aura de vigilance lorsque vous ne l'êtes pas {@condition incapacitated}. Lorsque vous et toute créature de votre choix située à moins de 3 mètres de vous faites un jet d'initiative, vous gagnez chacun un bonus à l'initiative égal à votre modificateur de Charisme (minimum de +1). Au 18e niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Vigilant Rebuke",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of the Watchers feature}",
+				"Vous avez appris à châtier magiquement toute personne qui ose lancer des sorts indésirables contre vous et vos gardes. Chaque fois que vous ou une créature que vous pouvez voir dans un rayon de 30 pieds de vous réussissez un jet de sauvegarde contre un sort, vous pouvez utiliser votre réaction pour infliger {@damage 2d8} + votre modificateur de Charisme aux dégâts de force du lanceur de sorts."
+			]
+		},
+		{
+			"name": "Mortal Bulwark",
+			"source": "UA2020SubclassesPt1",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Watchers (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of the Watchers feature}",
+				"Vous manifestez une étincelle de la puissance de votre divinité pour défendre votre serment sacré. Comme action bonus, vous gagnez les avantages suivants pendant 1 minute :",
+				{
+					"type": "list",
+					"items": [
+						"Vous gagnez {@sense truesight} dans un rayon de 120 pieds.",
+						"Vous avez un avantage sur les jets d'attaque contre les élémentaires, les fey, les démons et les aberrations.",
+						"Lorsque vous touchez une créature avec une attaque et lui infligez des dégâts, vous pouvez également la forcer à effectuer un jet de sauvegarde de Charisme. En cas d'échec, la créature est bannie par magie vers son plan d'existence natal si elle n'y est pas actuellement. En cas de sauvegarde réussie, la créature ne peut plus être bannie par cette caractéristique pendant 24 heures."
+					]
+				},
+				"Une fois que vous avez utilisé cette action bonus, vous ne pouvez plus l'utiliser jusqu'à ce que vous terminiez un long repos."
+			]
+		},
+		{
+			"name": "Oath of Redemption",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Le serment de rédemption engage un paladin sur une voie difficile, qui exige du guerrier saint qu'il n'utilise la violence qu'en dernier recours. Les paladins qui se consacrent à ce serment croient que toute personne peut être rachetée et que le chemin de la bienveillance et de la justice est un chemin que tout le monde peut emprunter. Ces paladins affrontent des créatures maléfiques dans l'espoir de les faire revenir à la lumière, et ils ne les tuent que lorsqu'un tel acte permet de sauver d'autres vies. Les paladins qui suivent cette voie sont connus sous le nom de rédempteurs.",
+				"Bien que les rédempteurs soient des idéalistes, ils ne sont pas idiots. Les rédempteurs savent que les morts-vivants, les démons, les diables et autres menaces surnaturelles peuvent être intrinsèquement mauvais. Contre de tels ennemis, les paladins utilisent toute la colère de leurs armes et de leurs sorts. Pourtant, les rédempteurs prient toujours pour qu'un jour, même les créatures maléfiques invitent à leur propre rédemption.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Redemption|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Armor of Peace|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Warrior of Reconciliation|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Emissary of Peace|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Rebuke the Violent|Paladin||Redemption (UA)|UAATrioOfSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Armor of Peace",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du 3e niveau, votre engagement en faveur de la paix vous permet de vous aventurer sans armure dans les situations les plus dangereuses. Tant que vous ne portez pas d'armure ou ne brandissez pas de bouclier, votre CA de base est de 16 + votre modificateur de Dextérité."
+			]
+		},
+		{
+			"name": "Channel Divinity: Emissary of Peace",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Vous pouvez utiliser votre canal de divinité pour augmenter votre présence avec la puissance divine. Comme action bonus, vous vous accordez un bonus de +5 au prochain test de Charisme ({@skill Persuasion}) que vous effectuerez dans la minute qui suit."
+			]
+		},
+		{
+			"name": "Channel Divinity: Rebuke the Violent",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Vous pouvez utiliser votre canal de divinité pour réprimander ceux qui utilisent la violence. En réaction, lorsqu'un ennemi situé à moins de 3 mètres de vous inflige des dégâts avec une attaque de mêlée contre une créature autre que vous, vous obligez cet attaquant à effectuer un jet de sauvegarde de Sagesse. En cas d'échec, l'attaquant subit des dégâts radiants égaux aux dégâts qu'il vient de subir. En cas de réussite, il subit la moitié des dégâts."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of Redemption Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell shield}, {@spell sleep}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell ray of enfeeblement}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell hypnotic pattern}"
+						],
+						[
+							"13th",
+							"{@spell Otiluke's resilient sphere}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell wall of force}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Redemption",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Les principes du serment de rédemption obligent les paladins à respecter des normes élevées de paix et de justice.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Peace",
+							"entries": [
+								"La violence est une arme de dernier recours. La diplomatie et la compréhension sont les voies d'une paix durable."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Innocence",
+							"entries": [
+								"Tout le monde commence sa vie dans un état innocent, et c'est son environnement ou l'influence de forces obscures qui le pousse au mal. En donnant le bon exemple, et en travaillant à guérir les blessures d'un monde profondément défectueux, vous pouvez mettre n'importe qui sur le droit chemin."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Patience",
+							"entries": [
+								"Le changement prend du temps. Ceux qui ont emprunté le chemin des méchants doivent recevoir des rappels pour qu'ils restent honnêtes et fidèles. Une fois que vous avez planté la graine de la droiture dans une créature, vous devez travailler jour après jour pour lui permettre de survivre puis de s'épanouir."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Wisdom",
+							"entries": [
+								"Votre cœur et votre esprit doivent rester lucides, car vous serez finalement obligé de reconnaître votre défaite. Si toutes les créatures peuvent être rachetées, certaines sont tellement engagées sur la voie du mal que tu n'as d'autre choix que de mettre fin à leur vie pour le bien de tous. Toute action de ce type doit être soigneusement pesée et les conséquences pleinement comprises, mais une fois que vous avez pris la décision, allez jusqu'au bout en sachant que votre chemin est juste."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Warrior of Reconciliation",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, vous délaissez les armes de guerre au profit d'outils simples. Lorsque vous maniez une arme simple qui inflige des dégâts de matraquage, vous bénéficiez d'un avantage spécial si vous réduisez une créature à 0 point de vie avec cette arme et décidez d'épargner la vie de la créature. Au lieu de tomber {@condition unconscious}, la créature est {@condition charmed} à vos côtés pendant 1 minute. Pendant ce temps, la créature {@condition charmed} est paisible et docile, refusant de bouger ou d'entreprendre des actions ou des réactions, sauf si vous le lui ordonnez. Vous ne pouvez pas ordonner à la créature d'attaquer, de forcer quelqu'un à faire un jet de sauvegarde ou de causer des dégâts à elle-même ou aux autres. Cet effet {@condition charmed} prend fin prématurément si vous êtes {@condition incapacitated} ou si vous ou vos compagnons attaquez la créature, lui infligez des dégâts ou la forcez à effectuer un jet de sauvegarde. Lorsque l'effet prend fin, la créature tombe de {@condition unconscious} si elle a encore 0 point de vie."
+			]
+		},
+		{
+			"name": "Aura of the Guardian",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"À partir du 7e niveau, vous pouvez protéger vos alliés contre le mal au prix de votre propre santé. En réaction, lorsqu'un allié dans un rayon de 3 mètres de vous subit des dégâts, c'est vous qui les subissez comme par magie. Cette caractéristique ne transfère pas les autres effets qui pourraient accompagner les dégâts."
+			]
+		},
+		{
+			"name": "Protective Spirit",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"À partir du 15e niveau, une présence sainte soigne vos blessures au combat. Vous regagnez un nombre de points de vie égal à {@dice 1d6} + la moitié de votre niveau de paladin si vous terminez votre tour en combat avec moins de la moitié de vos points de vie restants et que vous n'êtes pas {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Emissary of Redemption",
+			"source": "UAATrioOfSubclasses",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption (UA)",
+			"subclassSource": "UAATrioOfSubclasses",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, vous devenez un avatar de la paix, ce qui vous confère deux avantages :",
+				{
+					"type": "list",
+					"items": [
+						"Vous avez une résistance à tous les dégâts infligés par les autres créatures (leurs attaques, sorts et autres effets).",
+						"Lorsqu'une créature vous inflige des dégâts, elle subit des dommages égaux à la moitié de ceux qu'elle vous a infligés."
+					]
+				},
+				"Si vous attaquez une créature, lui infligez des dégâts ou la forcez à effectuer un jet de sauvegarde, aucun des deux avantages ne fonctionne contre cette créature jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Oath of Heroism",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"entries": [
+				"Le Serment d'Héroïsme est une affirmation d'une voie destinée, une voie tracée pour vous par des mains divines. Pour une raison quelconque, un dieu ou un groupe de dieux vous a inclus dans leurs machinations. Vous n'êtes pas un héros réticent, mais quelqu'un qui adhère pleinement à l'idée que les grandes actions sont à votre portée. Vous vous entraînez assidûment, sculptant votre corps et affinant vos compétences pour être prêt lorsque le destin vous appelle.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Heroism|Paladin||Heroism (UA)|UABardAndPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Heroism (UA)|UABardAndPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity|Paladin||Heroism (UA)|UABardAndPaladin|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"{@i 3rd-level Oath of Heroism feature}",
+				"Vous gagnez les deux options suivantes de divinité de canal.",
+				{
+					"type": "entries",
+					"name": "Peerless Athlete",
+					"entries": [
+						"Vous pouvez utiliser votre canal de divinité pour augmenter vos capacités athlétiques avec une faveur divine. Comme action bonus, vous gagnez un avantage sur tous les tests de Force ({@skill Athletics}) et de Dextérité ({@skill Acrobatics}) pendant les 10 prochaines minutes."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Legendary Strike",
+					"entries": [
+						"Vous pouvez utiliser votre canal de divinité comme une action bonus pour guider vos attaques : pendant 1 minute, vos attaques d'armes obtiennent un coup critique sur un jet de 19 ou 20 sur le {@dice d20}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Oath of Heroism feature}",
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués dans la table des sorts de serment d'héroïsme.",
+				{
+					"type": "table",
+					"caption": "Oath of Heroism Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell expeditious retreat}, {@spell guiding bolt}"
+						],
+						[
+							"5th",
+							"{@spell enhance ability}, {@spell enthrall}"
+						],
+						[
+							"9th",
+							"{@spell haste}, {@spell protection from energy}"
+						],
+						[
+							"13th",
+							"{@spell compulsion}, {@spell freedom of movement}"
+						],
+						[
+							"17th",
+							"{@spell commune}, {@spell conjure volley}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Heroism",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Les principes du serment d'héroïsme reflètent l'engagement d'un paladin à remplir sa vocation de héros digne de la légende.",
+				{
+					"type": "entries",
+					"name": "Actions over Words",
+					"entries": [
+						"Efforcez-vous de vous faire connaître par vos actes et non par vos paroles."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Challenges Are but Tests",
+					"entries": [
+						"Chaque épreuve sert à défier vos capacités et à renforcer votre détermination."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Embrace Destiny",
+					"entries": [
+						"Vous n'avez pas choisi ce chemin, mais c'est à vous de le suivre. Et il vous mènera dans la légende."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hone the Body",
+					"entries": [
+						"Comme la pierre brute, votre corps doit être travaillé pour que son potentiel puisse être exploité."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mighty Deed",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"{@i 7th-level Oath of Heroism feature}",
+				"Vos actions sur le champ de bataille peuvent surnaturellement soutenir vos alliés et démoraliser vos ennemis. Chaque fois que vous obtenez un coup critique ou réduisez une créature à 0 point de vie, vous pouvez choisir une ou plusieurs créatures que vous pouvez voir dans un rayon de 30 pieds autour de vous, jusqu'à un nombre égal à votre modificateur de Charisme (minimum d'une créature). Toutes les créatures choisies sont affectées par l'un des effets suivants de votre choix :",
+				{
+					"type": "list",
+					"items": [
+						"La créature gagne des points de vie temporaires égaux à {@dice 1d6} + votre modificateur de Charisme (minimum de 1 point de vie temporaire).",
+						"La créature doit réussir un jet de sauvegarde de Sagesse contre le DC de sauvegarde de votre sort ou être {@condition frightened} de vous jusqu'au début de votre prochain tour."
+					]
+				},
+				"Une fois que vous utilisez cette caractéristique, vous ne pouvez plus l'utiliser avant le début de votre prochain tour."
+			]
+		},
+		{
+			"name": "Glorious Defense",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Oath of Heroism feature}",
+				"Votre gloire bénie sur le champ de bataille peut détourner une attaque. Lorsqu'une créature que vous pouvez voir vous touche avec un jet d'attaque, vous pouvez utiliser votre réaction pour gagner un bonus à la CA contre cette attaque, faisant potentiellement en sorte qu'elle vous manque. Le bonus est égal à votre modificateur de Charisme (minimum de +1). Si l'attaque rate, vous pouvez effectuer une attaque d'arme contre l'attaquant dans le cadre de cette réaction."
+			]
+		},
+		{
+			"name": "Living Myth",
+			"source": "UABardAndPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Heroism (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"{@i 20th-level Oath of Heroism feature}",
+				"Vous pouvez désormais vous imprégner des légendes - vraies ou exagérées - qui relatent vos exploits. Comme action bonus, vous gagnez les avantages suivants pendant 10 minutes :",
+				{
+					"type": "list",
+					"items": [
+						"Vous êtes doté d'une élégance d'un autre monde et bénéficiez d'un avantage sur tous les tests de Charisme.",
+						"Une fois à chacun de vos tours, lorsque vous effectuez une attaque avec une arme et que vous la ratez, vous pouvez faire en sorte que cette attaque touche à la place.",
+						"Si vous échouez à un jet de sauvegarde, vous pouvez utiliser votre réaction pour réussir à la place."
+					]
+				},
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Oath of Conquest",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"entries": [
+				"Le Serment de Conquête fait appel à des paladins qui recherchent la gloire au combat et la soumission de leurs ennemis. Il ne suffit pas à ces paladins d'établir l'ordre. Ils doivent écraser les forces du chaos. Parfois appelés chevaliers tyrans ou faiseurs de fer, ceux qui prêtent ce serment se rassemblent en ordres sinistres qui servent des dieux ou des philosophies de la guerre et de la puissance bien ordonnée. Certains de ces paladins vont jusqu'à fréquenter les puissances des neuf enfers. L'archidémon Bel, seigneur de guerre d'Avernus, compte parmi ses plus ardents partisans nombre de ces paladins appelés chevaliers de l'enfer. Les chevaliers de l'enfer recouvrent leur armure de trophées pris à leurs ennemis tombés au combat, un sinistre avertissement à tous ceux qui osent s'opposer à eux et aux décrets de leurs seigneurs.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Conquest|Paladin||Conquest (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Conquest (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Conquering Strike|Paladin||Conquest (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Guided Strike|Paladin||Conquest (UA)|UAPaladin|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Conquering Strike",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Vous pouvez utiliser votre canal de divinité pour briser la volonté d'un ennemi. Lorsque vous touchez une créature avec une attaque d'arme de mêlée dans le cadre de l'action {@action Attack}, vous pouvez également utiliser votre divinité de canal pour forcer la cible à effectuer un jet de sauvegarde de Sagesse. En cas d'échec, la cible devient {@condition frightened} de vous pendant 1 minute. La créature {@condition frightened} peut répéter ce jet de sauvegarde à la fin de chacun de ses tours, mettant fin à l'effet sur elle-même en cas de réussite."
+			]
+		},
+		{
+			"name": "Channel Divinity: Guided Strike",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Vous pouvez utiliser votre canal de divinité pour frapper avec une précision surnaturelle. Lorsque vous effectuez un jet d'attaque, vous pouvez utiliser votre canal de divinité pour obtenir un bonus de +10 au jet. Vous faites ce choix après avoir vu le jet, mais avant que le DM ne dise si l'attaque a réussi ou manqué."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of Conquest Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell armor of Agathys}, {@spell command}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell spiritual weapon}"
+						],
+						[
+							"9th",
+							"{@spell bestow curse}, {@spell fear}"
+						],
+						[
+							"13th",
+							"{@spell blight}, {@spell dominate beast}"
+						],
+						[
+							"17th",
+							"{@spell dominate person}, {@spell insect plague}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Conquest",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Un paladin qui prête ce serment a les principes de la conquête gravés sur le haut de son bras. Le serment d'un chevalier de l'enfer apparaît en runes {@language Infernal}, un rappel brutal des vœux aux seigneurs de l'enfer.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Douse the Flame of Hope",
+							"entries": [
+								"Il ne suffit pas de vaincre un ennemi au combat. Votre victoire doit être si écrasante que la volonté de combattre de votre ennemi est brisée à jamais. Une lame peut mettre fin à une vie. La peur peut mettre fin à un empire."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Rule with an Iron Fist",
+							"entries": [
+								"Une fois que vous avez conquis, ne tolérez aucune dissidence. Ta parole est la loi. Ceux qui y obéissent seront favorisés. Ceux qui la défient seront punis comme un exemple pour tous ceux qui pourraient suivre."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Strength Above All",
+							"entries": [
+								"Tu dois régner jusqu'à ce qu'un plus fort se présente. Alors tu devras devenir plus fort et relever le défi, ou tomber dans ta propre ruine."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Conquest",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"À partir du 7e niveau, vous émanez une aura menaçante lorsque vous n'êtes pas {@condition incapacitated}. L'aura inclut votre espace, s'étend à 10 pieds de vous dans toutes les directions, et est bloquée par une couverture totale. Tout ennemi situé dans l'aura a un désavantage aux jets de sauvegarde contre le fait d'être {@condition frightened}.",
+				"Au 18ème niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Implacable Spirit",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Une fois que vous avez atteint le 15ème niveau, vous ne pouvez plus être {@condition charmed}."
+			]
+		},
+		{
+			"name": "Invincible Conqueror",
+			"source": "UAPaladin",
+			"page": 1,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, vous gagnez la capacité d'exploiter des prouesses martiales extraordinaires. Comme une action, vous pouvez magiquement devenir un avatar de la conquête, gagnant les avantages suivants pendant 1 minute :",
+				{
+					"type": "list",
+					"items": [
+						"Vous avez une résistance à tous les dommages.",
+						"Lorsque vous effectuez l'action {@action Attack} à votre tour, vous pouvez effectuer une attaque supplémentaire dans le cadre de cette action.",
+						"Vos attaques à l'arme de mêlée obtiennent un coup critique sur un jet de 19 ou 20."
+					]
+				},
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Oath of Treachery",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"entries": [
+				"The Oath of Treachery is the path followed by paladins who have forsworn other oaths or who care only for their own power and survival. Commonly known as blackguards, these profane warriors are faithful only to themselves. Anyone desperate enough to follow one of these paladins does so because, while deceitful, these paladins command great power. Those who follow them without falling prey to their treachery hope to indulge in wanton violence and accumulate great treasure. Many of these paladins pay homage to demon lords, especially Grazz't and Orcus. Even the Lords of Hell are loath to ally with these champions of chaos, but sometimes Baalzebul and Glasya find a kindred spirit in a blackguard's penchant for double dealing and treachery.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Treachery|Paladin||Treachery (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Treachery (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Conjure Duplicate|Paladin||Treachery (UA)|UAPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Poison Strike|Paladin||Treachery (UA)|UAPaladin|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Conjure Duplicate",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"As an action, you create a visual illusion of yourself that lasts for 1 minute, or until you lose your concentration (as if you were concentrating on a spell). The illusion appears in an unoccupied space of your choice that you can see within 30 feet of you. The illusion looks exactly like you; it is silent; it is your size, is insubstantial, doesn't occupy its space; and it is unaffected by attacks and damage. As a bonus action on your turn, you can move the illusion up to 30 feet to a space you can see, but the illusion must remain within 120 feet of you.",
+				"For the duration, you can cast spells as though you were in the illusion's space, but you must use your own senses. Additionally, when both you and your illusion are within 5 feet of a creature that can see the illusion, you have advantage on attack rolls against that creature, given how uncanny the illusion is."
+			]
+		},
+		{
+			"name": "Channel Divinity: Poison Strike",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"You can use your Channel Divinity to make a weapon deadlier. As a bonus action, you touch one weapon or piece of ammunition and conjure a special poison on it. The poison lasts for 1 minute. The next time you hit a target with an attack using that weapon or ammunition, the target takes poison damage immediately after the attack. The poison damage equals {@dice 2d10} + your paladin level, or 20 + your paladin level if you had advantage on the attack roll."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of Treachery Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell charm person}, {@spell expeditious retreat}"
+						],
+						[
+							"5th",
+							"{@spell invisibility}, {@spell mirror image}"
+						],
+						[
+							"9th",
+							"{@spell gaseous form}, {@spell haste}"
+						],
+						[
+							"13th",
+							"{@spell confusion}, {@spell greater invisibility}"
+						],
+						[
+							"17th",
+							"{@spell dominate person}, {@spell passwall}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Treachery",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"A paladin who embraces the Oath of Treachery owes allegiance to no one. There are no tenets of this oath, for it lacks any substance. Those who are unfortunate enough to have close contact with blackguards have observed that a blackguard's overwhelming concern is power and safety, especially if both can be obtained at the expense of others."
+			]
+		},
+		{
+			"name": "Aura of Treachery",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Starting at 7th level, you emanate an aura of discord, which gives you the following benefits.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Cull the Herd",
+							"entries": [
+								"You have advantage on melee attack rolls against any creature that has one or more of its allies within 5 feet of it."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Treacherous Strike",
+							"entries": [
+								"If a creature within 5 feet of you misses you with a melee attack, you can use your reaction to force the attacker to reroll that attack against a creature of your choice that is also within 5 feet of the attacker. The ability fails and is wasted if the attacker is immune to being {@condition charmed}.",
+								"You can use this ability three times. You regain expended uses of it when you finish a short or long rest."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Blackguard's Escape",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"At 15th level, you have the ability to slip away from your foes. Immediately after you are hit by an attack, you can use your reaction to turn {@condition invisible} and teleport up to 60 feet to a spot you can see. You remain {@condition invisible} until the end of your next turn or until you attack, deal damage, or force a creature to make a saving throw. Once you use this feature, you must finish a short or long rest before you can use it again."
+			]
+		},
+		{
+			"name": "Icon of Deceit",
+			"source": "UAPaladin",
+			"page": 2,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Treachery (UA)",
+			"subclassSource": "UAPaladin",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"At 20th level, you gain the ability to emanate feelings of treachery. As an action, you can magically become an avatar of deceit, gaining the following benefits for 1 minute:",
+				{
+					"type": "list",
+					"items": [
+						"You are {@condition invisible}.",
+						"If a creature damages you on its turn, it must succeed on a Wisdom saving throw (DC equal to your spell save DC) or you control its next action, provided that you aren't {@condition incapacitated} when it takes the action. A creature automatically succeeds on the save if the creature is immune to being {@condition charmed}.",
+						"If you have advantage on an attack roll, you gain a bonus to its damage roll equal to your paladin level."
+					]
+				},
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Oath of Conquest v2",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"entries": [
+				"The Oath of Conquest calls to paladins who seek glory in battle and the subjugation of their enemies. It isn't enough for these paladins to establish order. They must crush the forces of chaos. Sometimes called knight tyrants or iron mongers, those who swear this oath gather into grim orders that serve gods or philosophies of war and well-ordered might.",
+				"Some of these paladins go so far as to consort with the powers of the Nine Hells, valuing the rule of law over the balm of mercy. The archdevil Bel, warlord of Avernus, counts many of these paladins—called hell knights—as his most ardent supporters. Hell knights cover their armor with trophies taken from fallen enemies, a grim warning to any who dare oppose them and the decrees of their lords. These knights are often most fiercely resisted by other paladins of this oath, who believe that the hell knights have wandered too far into darkness.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Conquest|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Conquering Presence|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Guided Strike|Paladin||Conquest v2 (UA)|UARevisedClassOptions|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Conquering Presence",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"You can use your Channel Divinity to exude a terrifying presence. As an action, you force each creature of your choice that you can see within 30 feet of you to make a Wisdom saving throw. On a failed save, a creature becomes {@condition frightened} of you for 1 minute. The {@condition frightened} creature can repeat this saving throw at the end of each of its turns, ending the effect on itself on a success."
+			]
+		},
+		{
+			"name": "Channel Divinity: Guided Strike",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Vous pouvez utiliser votre canal de divinité pour frapper avec une précision surnaturelle. Lorsque vous effectuez un jet d'attaque, vous pouvez utiliser votre canal de divinité pour obtenir un bonus de +10 au jet. Vous faites ce choix après avoir vu le jet, mais avant que le DM ne dise si l'attaque a réussi ou manqué."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of Conquest Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell armor of Agathys}, {@spell command}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell spiritual weapon}"
+						],
+						[
+							"9th",
+							"{@spell bestow curse}, {@spell fear}"
+						],
+						[
+							"13th",
+							"{@spell dominate beast}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell cloudkill}, {@spell dominate person}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Conquest",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Un paladin qui prête ce serment a les principes de la conquête gravés sur le haut de son bras. Le serment d'un chevalier de l'enfer apparaît en runes {@language Infernal}, un rappel brutal des vœux aux seigneurs de l'enfer.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Douse the Flame of Hope",
+							"entries": [
+								"It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies' will to fight is shattered forever. A blade can end a life. Fear can end an empire."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Rule with an Iron Fist",
+							"entries": [
+								"Une fois que vous avez conquis, ne tolérez aucune dissidence. Ta parole est la loi. Ceux qui y obéissent seront favorisés. Ceux qui la défient seront punis comme un exemple pour tous ceux qui pourraient suivre."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Strength Above All",
+							"entries": [
+								"Tu dois régner jusqu'à ce qu'un plus fort se présente. Alors tu devras devenir plus fort et relever le défi, ou tomber dans ta propre ruine."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Conquest",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Starting at 7th level, you constantly emanate a menacing aura while you're not {@condition incapacitated}. The aura includes your space, extends 10 feet from you in every direction, and is blocked by total cover.",
+				"If a creature is {@condition frightened} of you, its speed is reduced to 0 while in the aura, and that creature takes psychic damage equal to half your paladin level if it starts its turn there. At 18th level, the range of this aura increases to 30 feet."
+			]
+		},
+		{
+			"name": "Scornful Rebuke",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Starting at 15th level, those who dare to strike you are psychically punished for their audacity. Whenever a creature hits you with an attack, that creature takes psychic damage equal to your Charisma modifier (minimum of 0) if you're not {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Invincible Conqueror",
+			"source": "UARevisedClassOptions",
+			"page": 3,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, vous gagnez la capacité d'exploiter des prouesses martiales extraordinaires. Comme une action, vous pouvez magiquement devenir un avatar de la conquête, gagnant les avantages suivants pendant 1 minute :",
+				{
+					"type": "list",
+					"items": [
+						"Vous avez une résistance à tous les dommages.",
+						"Lorsque vous effectuez l'action {@action Attack} à votre tour, vous pouvez effectuer une attaque supplémentaire dans le cadre de cette action.",
+						"Your melee weapon attacks score a critical hit on a roll of 19 or 20 on the {@dice d20}."
+					]
+				},
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Oath of Conquest",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"The Oath of Conquest calls to paladins who seek glory in battle and the subjugation of their enemies. It isn't enough for these paladins to establish order. They must crush the forces of chaos. Sometimes called knight tyrants or iron mongers, those who swear this oath gather into grim orders that serve gods or philosophies of war and well-ordered might.",
+				"Some of these paladins go so far as to consort with the powers of the Nine Hells, valuing the rule of law over the balm of mercy. The archdevil Bel, warlord of Avernus, counts many of these paladins—called hell knights—as his most ardent supporters. Hell knights cover their armor with trophies taken from fallen enemies, a grim warning to any who dare oppose them and the decrees of their lords. These knights are often most fiercely resisted by other paladins of this oath, who believe that the hell knights have wandered too far into darkness.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Conquest|Paladin||Conquest|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Conquest|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Conquering Presence|Paladin||Conquest|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Guided Strike|Paladin||Conquest|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Conquering Presence",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"You can use your Channel Divinity to exude a terrifying presence. As an action, you force each creature of your choice that you can see within 30 feet of you to make a Wisdom saving throw. On a failed save, a creature becomes {@condition frightened} of you for 1 minute. The {@condition frightened} creature can repeat this saving throw at the end of each of its turns, ending the effect on itself on a success."
+			]
+		},
+		{
+			"name": "Channel Divinity: Guided Strike",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"Vous pouvez utiliser votre canal de divinité pour frapper avec une précision surnaturelle. Lorsque vous effectuez un jet d'attaque, vous pouvez utiliser votre canal de divinité pour obtenir un bonus de +10 au jet. Vous faites ce choix après avoir vu le jet, mais avant que le DM ne dise si l'attaque a réussi ou manqué."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of Conquest Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell armor of Agathys}, {@spell command}"
+						],
+						[
+							"5th",
+							"{@spell hold person}, {@spell spiritual weapon}"
+						],
+						[
+							"9th",
+							"{@spell bestow curse}, {@spell fear}"
+						],
+						[
+							"13th",
+							"{@spell dominate beast}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell cloudkill}, {@spell dominate person}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Conquest",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"A paladin who takes this oath has the tenets of conquest seared on the upper arm.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Douse the Flame of Hope",
+							"entries": [
+								"It is not enough to merely defeat an enemy in battle. Your victory must be so overwhelming that your enemies' will to fight is shattered forever. A blade can end a life. Fear can end an empire."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Rule with an Iron Fist",
+							"entries": [
+								"Une fois que vous avez conquis, ne tolérez aucune dissidence. Ta parole est la loi. Ceux qui y obéissent seront favorisés. Ceux qui la défient seront punis comme un exemple pour tous ceux qui pourraient suivre."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Strength Above All",
+							"entries": [
+								"Tu dois régner jusqu'à ce qu'un plus fort se présente. Alors tu devras devenir plus fort et relever le défi, ou tomber dans ta propre ruine."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of Conquest",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Starting at 7th level, you constantly emanate a menacing aura while you're not {@condition incapacitated}. The aura extends 10 feet from you in every direction, but not through total cover.",
+				"If a creature is {@condition frightened} of you, its speed is reduced to 0 while in the aura, and that creature takes psychic damage equal to half your paladin level if it starts its turn there.",
+				"Au 18ème niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Scornful Rebuke",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Starting at 15th level, those who dare to strike you are psychically punished for their audacity. Whenever a creature hits you with an attack, that creature takes psychic damage equal to your Charisma modifier (minimum of 1) if you're not {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Invincible Conqueror",
+			"source": "XGE",
+			"page": 37,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Conquest",
+			"subclassSource": "XGE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, vous gagnez la capacité d'exploiter des prouesses martiales extraordinaires. Comme une action, vous pouvez magiquement devenir un avatar de la conquête, gagnant les avantages suivants pendant 1 minute :",
+				{
+					"type": "list",
+					"items": [
+						"Vous avez une résistance à tous les dommages.",
+						"Lorsque vous effectuez l'action {@action Attack} à votre tour, vous pouvez effectuer une attaque supplémentaire dans le cadre de cette action.",
+						"Your melee weapon attacks score a critical hit on a roll of 19 or 20 on the {@dice d20}."
+					]
+				},
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Oath of Redemption",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"The Oath of Redemption sets a paladin on a difficult path, one that requires a holy warrior to use violence only as a last resort. Paladins who dedicate themselves to this oath believe that any person can be redeemed and that the path of benevolence and justice is one that anyone can walk. These paladins face evil creatures in the hope of turning their foes to the light, and they slay their enemies only when such a deed will clearly save other lives. Paladins who follow this path are known as redeemers.",
+				"While redeemers are idealists, they are no fools. Redeemers know that undead, demons, devils, and other supernatural threats can be inherently evil. Against such foes, paladins who swear this oath bring the full wrath of their weapons and spells to bear. Yet the redeemers still pray that, one day, even creatures of wickedness will invite their own redemption.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tenets of Redemption|Paladin||Redemption|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Oath Spells|Paladin||Redemption|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Emissary of Peace|Paladin||Redemption|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Channel Divinity: Rebuke the Violent|Paladin||Redemption|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Channel Divinity: Emissary of Peace",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"You can use your Channel Divinity to augment your presence with divine power. As a bonus action, you grant yourself a +5 bonus to Charisma ({@skill Persuasion}) checks for the next 10 minutes."
+			]
+		},
+		{
+			"name": "Channel Divinity: Rebuke the Violent",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"consumes": {
+				"name": "Channel Divinity"
+			},
+			"entries": [
+				"You can use your Channel Divinity to rebuke those who use violence. Immediately after an attacker within 30 feet of you deals damage with an attack against a creature other than you, you can use your reaction to force the attacker to make a Wisdom saving throw. On a failed save, the attacker takes radiant damage equal to the damage it just dealt. On a successful save, it takes half as much damage."
+			]
+		},
+		{
+			"name": "Oath Spells",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vous gagnez des sorts de serment aux niveaux de paladin indiqués.",
+				{
+					"type": "table",
+					"caption": "Oath of Redemption Spells",
+					"colLabels": [
+						"Paladin Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell sanctuary}, {@spell sleep}"
+						],
+						[
+							"5th",
+							"{@spell calm emotions}, {@spell hold person}"
+						],
+						[
+							"9th",
+							"{@spell counterspell}, {@spell hypnotic pattern}"
+						],
+						[
+							"13th",
+							"{@spell Otiluke's resilient sphere}, {@spell stoneskin}"
+						],
+						[
+							"17th",
+							"{@spell hold monster}, {@spell wall of force}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tenets of Redemption",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Les principes du serment de rédemption obligent les paladins à respecter des normes élevées de paix et de justice.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Peace",
+							"entries": [
+								"La violence est une arme de dernier recours. La diplomatie et la compréhension sont les voies d'une paix durable."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Innocence",
+							"entries": [
+								"Tout le monde commence sa vie dans un état innocent, et c'est son environnement ou l'influence de forces obscures qui le pousse au mal. En donnant le bon exemple, et en travaillant à guérir les blessures d'un monde profondément défectueux, vous pouvez mettre n'importe qui sur le droit chemin."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Patience",
+							"entries": [
+								"Change takes time. Those who have walked the path of the wicked must be given reminders to keep them honest and true. Once you have planted the seed of righteousness in a creature, you must work day after day to allow that seed to survive and flourish."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Wisdom",
+							"entries": [
+								"Votre cœur et votre esprit doivent rester lucides, car vous serez finalement obligé de reconnaître votre défaite. Si toutes les créatures peuvent être rachetées, certaines sont tellement engagées sur la voie du mal que tu n'as d'autre choix que de mettre fin à leur vie pour le bien de tous. Toute action de ce type doit être soigneusement pesée et les conséquences pleinement comprises, mais une fois que vous avez pris la décision, allez jusqu'au bout en sachant que votre chemin est juste."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Aura of the Guardian",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 7,
+			"header": 2,
+			"entries": [
+				"Starting at 7th level, you can shield others from harm at the cost of your own health. When a creature within 10 feet of you takes damage, you can use your reaction to magically take that damage, instead of that creature taking it. This feature doesn't transfer any other effects that might accompany the damage, and this damage can't be reduced in any way.",
+				"Au 18ème niveau, la portée de cette aura passe à 30 pieds."
+			]
+		},
+		{
+			"name": "Protective Spirit",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"Starting at 15th level, a holy presence mends your wounds in battle. You regain hit points equal to {@dice 1d6} + half your paladin level if you end your turn in combat with fewer than half of your hit points remaining and you aren't {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Emissary of Redemption",
+			"source": "XGE",
+			"page": 38,
+			"className": "Paladin",
+			"classSource": "PHB",
+			"subclassShortName": "Redemption",
+			"subclassSource": "XGE",
+			"level": 20,
+			"header": 2,
+			"entries": [
+				"Au 20e niveau, vous devenez un avatar de la paix, ce qui vous confère deux avantages :",
+				{
+					"type": "list",
+					"items": [
+						"Vous avez une résistance à tous les dégâts infligés par les autres créatures (leurs attaques, sorts et autres effets).",
+						"Whenever a creature hits you with an attack, it takes radiant damage equal to half the damage you take from the attack."
+					]
+				},
+				"If you attack a creature, cast a spell on it, or deal damage to it by any means but this feature, neither benefit works against that creature until you finish a long rest."
+			]
+		}
+	]
+}

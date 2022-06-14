@@ -1,0 +1,112 @@
+{
+	"spell": [
+		{
+			"name": "Create Magen",
+			"source": "IDRotF",
+			"page": 318,
+			"level": 7,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a vial of quicksilver worth 500 gp and a life-sized human doll, both of which the spell consumes, and an intricate crystal rod worth at least 1,500 gp that is not consumed",
+					"cost": 50000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Pendant que vous lancez le sort, vous placez une fiole de vif-argent dans la poitrine d'une poupée humaine grandeur nature remplie de cendres ou de poussière. Vous recousez ensuite la poupée et y faites couler votre sang. À la fin de l'incantation, vous tapez sur la poupée avec une baguette de cristal, la transformant en un {@filter magen|bestiary|search=magen|source=IDRotF} vêtu de ce que portait la poupée. Le type de magen est choisi par vous lors de l'incantation du sort. Voir {@adventure appendix C|IDRotF|21} pour les différents types de magen et leurs statistiques.",
+				"Lorsque le magen apparaît, votre maximum de points de vie diminue d'un montant égal à la valeur de défi du magen (réduction minimale de 1). Seul un sort de {@spell wish} peut annuler cette réduction de votre maximum de points de vie.",
+				"Tout magen que tu crées avec ce sort obéit à tes ordres sans poser de questions."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Frost Fingers",
+			"source": "IDRotF",
+			"page": 318,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Un froid glacial jaillit du bout de vos doigts dans un cône de 15 pieds. Chaque créature dans cette zone doit effectuer un jet de sauvegarde de Constitution, subissant {@damage 2d8} de dégâts de froid en cas d'échec, ou la moitié des dégâts en cas de réussite.",
+				"Le froid gèle les liquides non magiques dans la zone qui ne sont pas portés ou transportés."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 2e niveau ou plus, les dégâts augmentent de {@dice 1d8} pour chaque niveau d'emplacement supérieur au 1er."
+					]
+				}
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

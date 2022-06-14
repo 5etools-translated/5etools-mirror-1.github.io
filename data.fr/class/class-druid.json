@@ -1,0 +1,5217 @@
+{
+	"_meta": {
+		"dependencies": {
+			"subclass": [
+				"generic"
+			]
+		}
+	},
+	"class": [
+		{
+			"name": "Druid",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"int",
+				"wis"
+			],
+			"spellcastingAbility": "wis",
+			"casterProgression": "full",
+			"preparedSpells": "<$level$> + <$wis_mod$>",
+			"cantripProgression": [
+				2,
+				2,
+				2,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					{
+						"proficiency": "{@item shield|phb|shields}",
+						"full": "shields (druids will not wear armor or use shields made of metal)"
+					}
+				],
+				"weapons": [
+					"{@item club|phb|clubs}",
+					"{@item dagger|phb|daggers}",
+					"{@item dart|phb|darts}",
+					"{@item javelin|phb|javelins}",
+					"{@item mace|phb|maces}",
+					"{@item quarterstaff|phb|quarterstaffs}",
+					"{@item scimitar|phb|scimitars}",
+					"{@item sickle|phb|sickles}",
+					"{@item sling|phb|slings}",
+					"{@item spear|phb|spears}"
+				],
+				"tools": [
+					"{@item Herbalism kit|PHB}"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"arcana",
+								"animal handling",
+								"insight",
+								"medicine",
+								"nature",
+								"perception",
+								"religion",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a wooden {@item shield|phb} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item scimitar|phb} or (b) any {@filter simple melee weapon|items|source=phb|category=basic|type=simple weapon;melee weapon=sand}",
+					"{@item Leather armor|phb}, an {@item explorer's pack|phb}, and a {@item druidic focus|phb}"
+				],
+				"goldAlternative": "{@dice 2d4 × 10|2d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"shield|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"scimitar|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimpleMelee"
+							}
+						]
+					},
+					{
+						"_": [
+							"Leather armor|phb",
+							"explorer's pack|phb",
+							"druidic focus|phb"
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"wis": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light",
+						"medium",
+						{
+							"proficiency": "{@item shield|phb|shields}",
+							"full": "shields (druids will not wear armor or use shields made of metal)"
+						}
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"{@filter Cantrips Known|spells|level=0|class=Druid}"
+					],
+					"rows": [
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							2
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							3
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						],
+						[
+							4
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=Druid}",
+						"{@filter 2nd|spells|level=2|class=Druid}",
+						"{@filter 3rd|spells|level=3|class=Druid}",
+						"{@filter 4th|spells|level=4|class=Druid}",
+						"{@filter 5th|spells|level=5|class=Druid}",
+						"{@filter 6th|spells|level=6|class=Druid}",
+						"{@filter 7th|spells|level=7|class=Druid}",
+						"{@filter 8th|spells|level=8|class=Druid}",
+						"{@filter 9th|spells|level=9|class=Druid}"
+					],
+					"rowsSpellProgression": [
+						[
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							2,
+							1,
+							1
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Druidic|Druid||1",
+				"Spellcasting|Druid||1",
+				"Cantrip Versatility|Druid||1|UAClassFeatureVariants",
+				"Wild Shape|Druid||2",
+				"Wild Companion|Druid||2|UAClassFeatureVariants",
+				"Wild Companion|Druid||2|TCE",
+				{
+					"classFeature": "Druid Circle|Druid||2",
+					"gainSubclassFeature": true
+				},
+				"Wild Shape Improvement|Druid||4",
+				"Ability Score Improvement|Druid||4",
+				"Proficiency Versatility|Druid||4|UAClassFeatureVariants",
+				"Cantrip Versatility|Druid||4|TCE",
+				{
+					"classFeature": "Druid Circle feature|Druid||6",
+					"gainSubclassFeature": true
+				},
+				"Wild Shape Improvement|Druid||8",
+				"Ability Score Improvement|Druid||8",
+				"Proficiency Versatility|Druid||8|UAClassFeatureVariants",
+				{
+					"classFeature": "Druid Circle feature|Druid||10",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Druid||12",
+				"Proficiency Versatility|Druid||12|UAClassFeatureVariants",
+				{
+					"classFeature": "Druid Circle feature|Druid||14",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Druid||16",
+				"Proficiency Versatility|Druid||16|UAClassFeatureVariants",
+				"Timeless Body|Druid||18",
+				"Beast Spells|Druid||18",
+				"Ability Score Improvement|Druid||19",
+				"Proficiency Versatility|Druid||19|UAClassFeatureVariants",
+				"Archdruid|Druid||20"
+			],
+			"subclassTitle": "Druid Circle",
+			"fluff": [
+				{
+					"name": "Druid",
+					"type": "section",
+					"entries": [
+						"Tenant haut un bâton noueux orné de houx, un elfe invoque la fureur de la tempête et fait descendre des éclairs explosifs pour frapper les orcs porteurs de torches qui menacent sa forêt.",
+						"Accroupi à l'abri des regards sur une haute branche d'arbre sous la forme d'un léopard, un humain observe la jungle et l'étrange construction d'un temple de l'élémentaire Air maléfique, tout en gardant un œil sur les activités des cultistes.",
+						"Balançant une lame formée de feu pur, un demi-elfe charge une masse de soldats squelettiques, brisant la magie contre nature qui donne à ces créatures immondes un semblant de vie.",
+						"Qu'ils fassent appel aux forces élémentaires de la nature ou qu'ils imitent les créatures du monde animal, les druides sont une incarnation de la résilience, de la ruse et de la fureur de la nature. Ils ne prétendent pas maîtriser la nature. Au contraire, ils se considèrent comme des extensions de la volonté indomptable de la nature.",
+						{
+							"type": "entries",
+							"name": "Power of Nature",
+							"entries": [
+								"Les druides vénèrent la nature par-dessus tout, tirant leurs sorts et autres pouvoirs magiques soit de la force de la nature elle-même, soit d'une divinité de la nature. De nombreux druides poursuivent une spiritualité mystique d'union transcendante avec la nature plutôt que de dévotion à une entité divine, tandis que d'autres servent des dieux de la nature sauvage, des animaux ou des forces élémentaires. Les anciennes traditions druidiques sont parfois appelées l'ancienne foi, par opposition au culte des dieux dans les temples et les sanctuaires.",
+								"Les sorts druidiques sont orientés vers la nature et les animaux - le pouvoir des dents et des griffes, du soleil et de la lune, du feu et de la tempête. Les druides acquièrent également la capacité de prendre des formes animales, et certains druides font une étude particulière de cette pratique, jusqu'à préférer la forme animale à leur forme naturelle."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Preserve the Balance",
+							"entries": [
+								"Pour les druides, la nature existe dans un équilibre précaire. Les quatre éléments qui composent un monde - l'air, la terre, le feu et l'eau - doivent rester en équilibre. Si un élément venait à prendre le pouvoir sur les autres, le monde pourrait être détruit, attiré dans l'un des plans élémentaires et brisé en ses éléments constitutifs. C'est pourquoi les druides s'opposent aux cultes du Mal élémentaire et à ceux qui favorisent un élément à l'exclusion des autres.",
+								"Les druides s'intéressent également à l'équilibre écologique délicat qui soutient la vie végétale et animale, et à la nécessité pour les personnes civilisées de vivre en harmonie avec la nature, et non en opposition avec elle. Les druides acceptent ce qui est cruel dans la nature, et ils détestent ce qui n'est pas naturel, y compris les aberrations (comme les voyants et les voleurs d'esprit) et les morts-vivants (comme les zombies et les vampires). Les druides mènent parfois des raids contre ces créatures, en particulier lorsque les monstres empiètent sur le territoire des druides.",
+								"Les druides gardent souvent des sites sacrés ou veillent sur des régions à la nature intacte. Mais lorsqu'un danger important survient, menaçant l'équilibre de la nature ou les terres qu'ils protègent, les druides jouent un rôle plus actif dans la lutte contre la menace, en tant qu'aventuriers."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Druid",
+							"entries": [
+								"Lorsque vous créez un druide, demandez-vous pourquoi votre personnage a un lien si étroit avec la nature. Peut-être votre personnage vit-il dans une société où l'Ancienne Foi est encore florissante, ou a-t-il été élevé par un druide après avoir été abandonné dans les profondeurs d'une forêt. Peut-être votre personnage a-t-il fait une rencontre dramatique avec les esprits de la nature, se retrouvant face à face avec un aigle géant ou un loup terrible et survivant à cette expérience. Peut-être votre personnage est-il né pendant une tempête épique ou une éruption volcanique, ce qui a été interprété comme un signe que devenir druide faisait partie de son destin.",
+								"Avez-vous toujours été un aventurier dans le cadre de votre vocation druidique, ou avez-vous d'abord été le gardien d'un bosquet ou d'une source sacrée ? Peut-être que votre patrie a été souillée par le mal, et que vous avez pris la route de l'aventure dans l'espoir de trouver un nouveau foyer ou un nouveau but.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Vous pouvez faire un druide rapidement en suivant ces suggestions. Premièrement, la Sagesse devrait être votre meilleur score de capacité, suivie de la Constitution. Deuxièmement, choisissez le fond {@background hermit}."
+									]
+								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Sacred Plants and Wood",
+							"entries": [
+								"Un druide considère certaines plantes comme sacrées, notamment l'aulne, le frêne, le bouleau, le sureau, le noisetier, le houx, le genévrier, le gui, le chêne, le sorbier, le saule et l'if. Les druides utilisent souvent ces plantes dans le cadre d'un rituel d'incantation, en y incorporant des longueurs de chêne ou d'if ou des brins de gui.",
+								"De même, un druide utilise ces bois pour fabriquer d'autres objets, comme des armes et des boucliers. L'if est associé à la mort et à la renaissance, de sorte que les manches de cimeterres ou de faucilles peuvent en être façonnés. Le frêne est associé à la vie et le chêne à la force. Ces bois font d'excellents fers ou armes entières, comme des massues ou des bâtons, ainsi que des boucliers. L'aulne est associé à l'air et peut être utilisé pour des armes de jet, comme des fléchettes ou des javelots.",
+								"Les druides des régions qui ne possèdent pas les plantes décrites ici ont choisi d'autres plantes pour assumer des usages similaires. Par exemple, un druide d'une région désertique pourrait apprécier le yucca et les cactus."
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Druids and the Gods",
+							"entries": [
+								"Certains druides vénèrent les forces de la nature elles-mêmes, mais la plupart des druides sont dévoués à l'une des nombreuses divinités de la nature adorées dans le multivers (les listes de dieux de l'annexe B en incluent beaucoup). Le culte de ces divinités est souvent considéré comme une tradition plus ancienne que les croyances des clercs et des peuples urbanisés. En fait, dans le monde de Greyhawk, la foi druidique est appelée l'Ancienne Foi, et elle revendique de nombreux adhérents parmi les fermiers, les forestiers, les pêcheurs et autres personnes qui vivent en étroite relation avec la nature. Cette tradition inclut le culte de la Nature en tant que force primitive au-delà de toute personnification, mais englobe également le culte de Beory, la Mère d'Oerth, ainsi que les dévots d'Obad-Hai, Ehlonna et Ulaa.",
+								"Dans les mondes de Greyhawk et des Royaumes oubliés, les cercles druidiques ne sont généralement pas liés à la foi d'une seule divinité de la nature. Un cercle donné dans les Royaumes oubliés, par exemple, peut inclure des druides qui vénèrent Silvanus, Mielikki, Eldath, Chauntea, ou même les dieux de la fureur : Talos, Malar, Auril et Umberlee. Ces dieux de la nature sont souvent appelés le Premier Cercle, les premiers parmi les druides, et la plupart des druides les considèrent tous (même les plus violents) comme dignes de vénération.",
+								"Les druides d'Eberron ont des croyances animistes qui n'ont aucun lien avec le Souverain Hôte, les Six Ténèbres ou les autres religions du monde. Ils croient que chaque être vivant et chaque phénomène naturel - le soleil, la lune, le vent, le feu et le monde lui-même - a un esprit. Leurs sorts sont donc un moyen de communiquer avec ces esprits et de les commander. Les différentes sectes druidiques, cependant, ont des philosophies différentes sur la relation correcte de ces esprits entre eux et avec les forces de la civilisation. Les Ashbound, par exemple, pensent que la magie des arcanes est une abomination contre la nature, les Children of Winter vénèrent les forces de la mort, et les Gatekeepers préservent les anciennes traditions destinées à protéger le monde de l'incursion des aberrations."
+							]
+						}
+					],
+					"source": "PHB",
+					"page": 64
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"Même dans la mort, chaque créature joue son rôle dans le maintien du grand équilibre. Mais aujourd'hui, un déséquilibre se développe, une force qui cherche à dominer la nature. C'est le comportement destructeur des races mortelles. Plus leurs actions les éloignent de la nature, plus leur influence devient corruptrice. En tant que druides, nous cherchons principalement à protéger et à éduquer, à préserver le grand équilibre, mais il arrive que nous devions nous élever contre le danger et l'éradiquer."
+							],
+							"by": "Safhran, archdruid"
+						},
+						"Les druides sont les gardiens du monde naturel, et on dit qu'avec le temps, un druide devient la voix de la nature, exprimant la vérité qui est trop subtile pour être entendue par le grand public. Nombreux sont ceux qui deviennent druides et qui se sentent naturellement attirés par la nature ; ses forces, ses cycles et ses mouvements remplissent leur esprit et leur âme d'émerveillement et de perspicacité. Beaucoup de sages et de gens sages ont étudié la nature, écrivant des volumes sur son mystère et son pouvoir, mais les druides sont une sorte d'être spécial : à un moment donné, ils commencent à incarner ces forces naturelles, produisant des phénomènes magiques qui les relient à l'esprit de la nature et au flux de la vie. En raison de leur pouvoir étrange et mystérieux, les druides sont souvent vénérés, évités ou considérés comme dangereux par les gens qui les entourent.",
+						"Votre personnage druide peut être un véritable adorateur de la nature, qui a toujours méprisé la civilisation et trouvé du réconfort dans la nature. Ou bien votre personnage peut être un enfant de la ville qui s'efforce maintenant de mettre le monde civilisé en harmonie avec la nature sauvage. Vous pouvez utiliser les sections qui suivent pour étoffer votre druide, quelle que soit la façon dont votre personnage est arrivé à cette profession.",
+						{
+							"type": "entries",
+							"name": "Treasured Item",
+							"entries": [
+								"Certains druides portent un ou plusieurs objets qui sont sacrés pour eux ou qui ont une signification personnelle profonde. Ces objets ne sont pas nécessairement magiques, mais chacun d'entre eux est un objet dont la signification relie l'esprit et le cœur du druide à un concept profond ou à une perspective spirituelle.",
+								"Lorsque vous décidez quel est l'objet précieux de votre personnage, pensez à lui donner une histoire d'origine : comment avez-vous trouvé cet objet et pourquoi est-il important pour vous ?",
+								{
+									"type": "table",
+									"caption": "Treasured Item",
+									"colLabels": [
+										"{@dice d6}",
+										"Treasured Item"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Une brindille de l'arbre de réunion qui se trouve au centre de votre village."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Une fiole d'eau provenant de la source d'une rivière sacrée"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Des herbes spéciales attachées ensemble dans un paquet"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Une petite coupe en bronze gravée d'images d'animaux"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Un hochet fabriqué à partir d'une calebasse séchée et de baies de houx."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Une faucille d'or miniature qui vous a été transmise par votre mentor."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Guiding Aspects",
+							"entries": [
+								"De nombreux druides ressentent un lien fort avec un aspect spécifique du monde naturel, comme une étendue d'eau, un animal, un type d'arbre ou une autre sorte de plante. Vous vous identifiez à l'aspect que vous avez choisi ; par son comportement ou sa nature même, il constitue un exemple que vous cherchez à imiter.",
+								{
+									"type": "table",
+									"caption": "Guiding Aspects",
+									"colLabels": [
+										"{@dice d6}",
+										"Guiding Aspects"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Les ifs vous rappellent qu'il faut renouveler votre esprit et votre âme, laisser l'ancien mourir et le nouveau jaillir."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Les chênes représentent la force et la vitalité. Méditer sous un chêne remplit votre corps et votre esprit de résolution et de force d'âme."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"L'écoulement sans fin de la rivière vous rappelle la grande étendue du monde. Vous cherchez à agir en gardant à l'esprit les intérêts à long terme de la nature."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"La mer est un chaudron constant et agité de puissance et de chaos. Elle vous rappelle que l'acceptation du changement est nécessaire pour vous maintenir dans le monde."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Les oiseaux dans le ciel sont la preuve que même les plus petites créatures peuvent survivre si elles restent au-dessus de la mêlée."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Comme le montrent les actions du loup, la force d'un individu n'est rien comparée à la puissance de la meute."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Mentors",
+							"entries": [
+								"Il n'est pas rare que les druides en herbe recherchent (ou soient recherchés par) des instructeurs ou des anciens qui leur enseignent les bases de leurs arts magiques. La plupart des druides qui apprennent auprès d'un mentor commencent leur formation à un jeune âge, et le mentor joue un rôle essentiel dans la formation des attitudes et des croyances de l'élève.",
+								"Si votre personnage a été formé par quelqu'un d'autre, qui ou quoi était cette personne, et quelle était la nature de votre relation ? Votre mentor vous a-t-il inculqué un point de vue particulier ou a-t-il influencé votre approche pour atteindre les objectifs de la voie que vous avez choisie ?",
+								{
+									"type": "table",
+									"caption": "Mentors",
+									"colLabels": [
+										"{@dice d6}",
+										"Mentors"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Votre mentor était un sage arbre qui vous a appris à penser en termes d'années et de décennies plutôt que de jours ou de mois."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Vous étiez sous la tutelle d'une dryade qui veillait sur un portail somnolent menant aux abysses. Pendant votre formation, vous avez été chargé de surveiller les menaces cachées pour le monde."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Votre tuteur a toujours interagi avec vous sous la forme d'un faucon. Vous n'avez jamais vu la forme humanoïde du tuteur."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Vous étiez l'un des nombreux jeunes qui avaient pour mentor un vieux druide, jusqu'à ce qu'un de vos camarades trahisse votre groupe et tue votre maître."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Votre mentor ne vous est apparu que dans des visions. Vous n'avez pas encore rencontré cette personne, et vous n'êtes pas sûr qu'une telle personne existe sous forme mortelle."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Votre mentor était un ours-garou qui vous a appris à traiter tous les êtres vivants avec la même considération."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "section",
+							"name": "Learning Beast Shapes",
+							"entries": [
+								"La caractéristique Forme sauvage du manuel du joueur vous permet de vous transformer en une bête que vous avez vue. Cette règle vous donne une très grande flexibilité, ce qui vous permet d'amasser facilement un éventail d'options de formes bestiales pour vous-même, mais vous devez respecter les limitations de la table des formes bestiales de ce livre.",
+								"Lorsque vous obtenez Forme sauvage en tant que druide de 2e niveau, vous pouvez vous demander quelles sont les bêtes que vous avez déjà vues. Les tables suivantes classent les bêtes du manuel des monstres en fonction de leur environnement le plus probable. Considérez l'environnement dans lequel votre druide a grandi, puis consultez la table appropriée pour obtenir une liste des animaux que votre druide a probablement vus au 2e niveau.",
+								"Ces tables peuvent également vous aider, vous et votre DM, à déterminer quels animaux vous pourriez rencontrer au cours de vos voyages. De plus, les tables comprennent la valeur de défi de chaque bête et indiquent si la bête a une vitesse de vol ou de nage. Ces informations vous aideront à déterminer si vous pouvez adopter la forme de cette bête.",
+								"Les tables comprennent toutes les bêtes individuelles qui sont éligibles pour la Forme sauvage (jusqu'à une valeur de défi de 1) ou la caractéristique Formes du cercle de la Lune (jusqu'à une valeur de défi de 6).",
+								{
+									"type": "table",
+									"caption": "Arctic",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Owl}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant owl}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Brown bear}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Polar bear}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Saber-toothed tiger}",
+											"—"
+										],
+										[
+											"6",
+											"{@creature Mammoth}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Coast",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Crab}",
+											"Swim"
+										],
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant crab}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Pteranodon}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Plesiosaurus}",
+											"Swim"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Desert",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Cat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Jackal}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Scorpion}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Vulture}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Camel}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Flying snake}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Mule}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant vulture}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"3",
+											"{@creature Giant scorpion}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Forest",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Baboon}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Badger}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Cat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Deer}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Owl}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Flying snake}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant rat}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Giant weasel}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Mastiff}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Boar}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Elk}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant badger}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant bat}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant frog}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant owl}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Panther}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Wolf}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Ape}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Black bear}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Giant wasp}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Brown bear}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Dire wolf}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Tiger}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant boar}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Grassland",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Cat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Deer}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Goat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Jackal}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Vulture}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Flying snake}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant weasel}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Axe beak}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Boar}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Elk}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Panther} (léopard)",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Pteranodon}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Riding horse}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Wolf}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Giant goat}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Giant wasp}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant vulture}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Tiger}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Allosaurus}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant boar}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Rhinoceros}",
+											"—"
+										],
+										[
+											"3",
+											"{@creature Ankylosaurus}",
+											"—"
+										],
+										[
+											"4",
+											"{@creature Elephant}",
+											"—"
+										],
+										[
+											"5",
+											"{@creature Triceratops}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Hill",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Baboon}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Goat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Hyena}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Raven}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Vulture}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant weasel}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Mastiff}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Mule}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Axe beak}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Boar}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Elk}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant owl}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant wolf spider}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Panther} (cougar)",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Wolf}",
+											"—"
+										],
+										[
+											"1/2",
+											"{@creature Giant goat}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Brown bear}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Dire wolf}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Giant hyena}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant boar}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Mountain",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Eagle}",
+											"Fly"
+										],
+										[
+											"0",
+											"{@creature Goat}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Blood hawk}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Pteranodon}",
+											"Fly"
+										],
+										[
+											"1/2",
+											"{@creature Giant goat}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant eagle}",
+											"Fly"
+										],
+										[
+											"1",
+											"{@creature Lion}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Giant elk}",
+											"—"
+										],
+										[
+											"2",
+											"{@creature Saber-toothed tiger}",
+											"—"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Swamp",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Rat}",
+											"—"
+										],
+										[
+											"0",
+											"{@creature Raven}",
+											"Fly"
+										],
+										[
+											"1/8",
+											"{@creature Giant rat}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant frog}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1/2",
+											"{@creature Crocodile}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"5",
+											"{@creature Giant crocodile}",
+											"Swim"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Underdark",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Giant fire beetle}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Giant rat}",
+											"—"
+										],
+										[
+											"1/8",
+											"{@creature Stirge}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant bat}",
+											"Fly"
+										],
+										[
+											"1/4",
+											"{@creature Giant centipede}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant lizard}",
+											"—"
+										],
+										[
+											"1/4",
+											"{@creature Giant poisonous snake}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant spider}",
+											"—"
+										],
+										[
+											"1",
+											"{@creature Giant toad}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Polar bear} (ours des cavernes)",
+											"Swim"
+										]
+									]
+								},
+								{
+									"type": "table",
+									"caption": "Underwater",
+									"colLabels": [
+										"CR",
+										"Beast",
+										"Fly/Swim"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-8",
+										"col-2"
+									],
+									"rows": [
+										[
+											"0",
+											"{@creature Quipper}",
+											"Swim"
+										],
+										[
+											"1/4",
+											"{@creature Constrictor snake}",
+											"Swim"
+										],
+										[
+											"1/2",
+											"{@creature Giant sea horse}",
+											"Swim"
+										],
+										[
+											"1/2",
+											"{@creature Reef shark}",
+											"Swim"
+										],
+										[
+											"1",
+											"{@creature Giant octopus}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Giant constrictor snake}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Hunter shark}",
+											"Swim"
+										],
+										[
+											"2",
+											"{@creature Plesiosaurus}",
+											"Swim"
+										],
+										[
+											"3",
+											"{@creature Killer whale}",
+											"Swim"
+										],
+										[
+											"5",
+											"{@creature Giant shark}",
+											"Swim"
+										]
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 21
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Circle of the Land",
+			"shortName": "Land",
+			"source": "PHB",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 68,
+			"srd": true,
+			"additionalSpells": [
+				{
+					"name": "Arctic",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"hold person",
+							"spike growth"
+						],
+						"5": [
+							"sleet storm",
+							"slow"
+						],
+						"7": [
+							"freedom of movement",
+							"ice storm"
+						],
+						"9": [
+							"commune with nature",
+							"cone of cold"
+						]
+					}
+				},
+				{
+					"name": "Coast",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"mirror image",
+							"misty step"
+						],
+						"5": [
+							"water breathing",
+							"water walk"
+						],
+						"7": [
+							"control water",
+							"freedom of movement"
+						],
+						"9": [
+							"conjure elemental",
+							"scrying"
+						]
+					}
+				},
+				{
+					"name": "Desert",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"blur",
+							"silence"
+						],
+						"5": [
+							"create food and water",
+							"protection from energy"
+						],
+						"7": [
+							"blight",
+							"hallucinatory terrain"
+						],
+						"9": [
+							"insect plague",
+							"wall of stone"
+						]
+					}
+				},
+				{
+					"name": "Forest",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"barkskin",
+							"spider climb"
+						],
+						"5": [
+							"call lightning",
+							"plant growth"
+						],
+						"7": [
+							"divination",
+							"freedom of movement"
+						],
+						"9": [
+							"commune with nature",
+							"tree stride"
+						]
+					}
+				},
+				{
+					"name": "Grassland",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"invisibility",
+							"pass without trace"
+						],
+						"5": [
+							"daylight",
+							"haste"
+						],
+						"7": [
+							"divination",
+							"freedom of movement"
+						],
+						"9": [
+							"dream",
+							"insect plague"
+						]
+					}
+				},
+				{
+					"name": "Mountain",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"spider climb",
+							"spike growth"
+						],
+						"5": [
+							"lightning bolt",
+							"meld into stone"
+						],
+						"7": [
+							"stone shape",
+							"stoneskin"
+						],
+						"9": [
+							"passwall",
+							"wall of stone"
+						]
+					}
+				},
+				{
+					"name": "Swamp",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"darkness",
+							"Melf's acid arrow"
+						],
+						"5": [
+							"water walk",
+							"stinking cloud"
+						],
+						"7": [
+							"freedom of movement",
+							"locate creature"
+						],
+						"9": [
+							"insect plague",
+							"scrying"
+						]
+					}
+				},
+				{
+					"name": "Underdark",
+					"known": {
+						"1": {
+							"_": [
+								{
+									"choose": "level=0|class=Druid"
+								}
+							]
+						}
+					},
+					"prepared": {
+						"3": [
+							"spider climb",
+							"web"
+						],
+						"5": [
+							"gaseous form",
+							"stinking cloud"
+						],
+						"7": [
+							"greater invisibility",
+							"stone shape"
+						],
+						"9": [
+							"cloudkill",
+							"insect plague"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of the Land|Druid||Land||2",
+				"Land's Stride|Druid||Land||6",
+				"Nature's Ward|Druid||Land||10",
+				"Nature's Sanctuary|Druid||Land||14"
+			]
+		},
+		{
+			"name": "Circle of the Moon",
+			"shortName": "Moon",
+			"source": "PHB",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 69,
+			"additionalSpells": [
+				{
+					"known": {
+						"14": [
+							"alter self"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of the Moon|Druid||Moon||2",
+				"Primal Strike|Druid||Moon||6",
+				"Elemental Wild Shape|Druid||Moon||10",
+				"Thousand Forms|Druid||Moon||14"
+			]
+		},
+		{
+			"name": "Circle of Dreams (UA)",
+			"shortName": "Dreams (UA)",
+			"source": "UADruid",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Circle of Dreams|Druid||Dreams (UA)|UADruid|2",
+				"Hearth of Moonlight and Shadow|Druid||Dreams (UA)|UADruid|6",
+				"Hidden Paths|Druid||Dreams (UA)|UADruid|10",
+				"Purifying Light|Druid||Dreams (UA)|UADruid|14"
+			]
+		},
+		{
+			"name": "Circle of the Shepherd (UA)",
+			"shortName": "Shepherd (UA)",
+			"source": "UADruid",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Circle of the Shepherd|Druid||Shepherd (UA)|UADruid|2",
+				"Mighty Summoner|Druid||Shepherd (UA)|UADruid|6",
+				"Guardian Spirit|Druid||Shepherd (UA)|UADruid|10",
+				"Faithful Summons|Druid||Shepherd (UA)|UADruid|14"
+			]
+		},
+		{
+			"name": "Circle of Twilight (UA)",
+			"shortName": "Twilight (UA)",
+			"source": "UADruid",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 2,
+			"subclassFeatures": [
+				"Circle of Twilight|Druid||Twilight (UA)|UADruid|2",
+				"Speech Beyond the Grave|Druid||Twilight (UA)|UADruid|6",
+				"Watcher at the Threshold|Druid||Twilight (UA)|UADruid|10",
+				"Paths of the Dead|Druid||Twilight (UA)|UADruid|14"
+			]
+		},
+		{
+			"name": "Circle of the Shepherd v2 (UA)",
+			"shortName": "Shepherd v2 (UA)",
+			"source": "UARevisedClassOptions",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Circle of the Shepherd v2|Druid||Shepherd v2 (UA)|UARevisedClassOptions|2",
+				"Mighty Summoner|Druid||Shepherd v2 (UA)|UARevisedClassOptions|6",
+				"Guardian Spirit|Druid||Shepherd v2 (UA)|UARevisedClassOptions|10",
+				"Faithful Summons|Druid||Shepherd v2 (UA)|UARevisedClassOptions|14"
+			]
+		},
+		{
+			"name": "Circle of Dreams",
+			"shortName": "Dreams",
+			"source": "XGE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 22,
+			"subclassFeatures": [
+				"Circle of Dreams|Druid||Dreams|XGE|2",
+				"Hearth of Moonlight and Shadow|Druid||Dreams|XGE|6",
+				"Hidden Paths|Druid||Dreams|XGE|10",
+				"Walker in Dreams|Druid||Dreams|XGE|14"
+			]
+		},
+		{
+			"name": "Circle of the Shepherd",
+			"shortName": "Shepherd",
+			"source": "XGE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 23,
+			"subclassFeatures": [
+				"Circle of the Shepherd|Druid||Shepherd|XGE|2",
+				"Mighty Summoner|Druid||Shepherd|XGE|6",
+				"Guardian Spirit|Druid||Shepherd|XGE|10",
+				"Faithful Summons|Druid||Shepherd|XGE|14"
+			]
+		},
+		{
+			"name": "Circle of Spores (UA)",
+			"shortName": "Spores (UA)",
+			"source": "UAThreeSubclasses",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"gentle repose",
+							"ray of enfeeblement"
+						],
+						"5": [
+							"animate dead",
+							"gaseous form"
+						],
+						"7": [
+							"blight",
+							"confusion"
+						],
+						"9": [
+							"cloudkill",
+							"contagion"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Spores (UA)|Druid||Spores (UA)|UAThreeSubclasses|2",
+				"Fungal Infestation|Druid||Spores (UA)|UAThreeSubclasses|6",
+				"Spreading Spores|Druid||Spores (UA)|UAThreeSubclasses|10",
+				"Fungal Body|Druid||Spores (UA)|UAThreeSubclasses|14"
+			]
+		},
+		{
+			"name": "Circle of Wildfire (UA)",
+			"shortName": "Wildfire (UA)",
+			"source": "UAClericDruidWizard",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"3": [
+							"locate animals or plants",
+							"scorching ray"
+						],
+						"5": [
+							"fireball",
+							"plant growth"
+						],
+						"7": [
+							"aura of life",
+							"fire shield"
+						],
+						"9": [
+							"flame strike",
+							"raise dead"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Wildfire|Druid||Wildfire (UA)|UAClericDruidWizard|2",
+				"Enhanced Bond|Druid||Wildfire (UA)|UAClericDruidWizard|6",
+				"Flames of Life|Druid||Wildfire (UA)|UAClericDruidWizard|10",
+				"Blazing Endurance|Druid||Wildfire (UA)|UAClericDruidWizard|14"
+			]
+		},
+		{
+			"name": "Circle of the Stars (UA)",
+			"shortName": "Stars (UA)",
+			"source": "UA2020SubclassesPt3",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 3,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Circle of the Stars|Druid||Stars (UA)|UA2020SubclassesPt3|2",
+				"Cosmic Omen|Druid||Stars (UA)|UA2020SubclassesPt3|6",
+				"Full of Stars|Druid||Stars (UA)|UA2020SubclassesPt3|10",
+				"Star Flare|Druid||Stars (UA)|UA2020SubclassesPt3|14"
+			]
+		},
+		{
+			"name": "Circle of Spores",
+			"shortName": "Spores",
+			"source": "TCE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"2": [
+							"chill touch#c"
+						]
+					},
+					"prepared": {
+						"3": [
+							"blindness/deafness",
+							"gentle repose"
+						],
+						"5": [
+							"animate dead",
+							"gaseous form"
+						],
+						"7": [
+							"blight",
+							"confusion"
+						],
+						"9": [
+							"cloudkill",
+							"contagion"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Spores|Druid||Spores|TCE|2",
+				"Fungal Infestation|Druid||Spores|TCE|6",
+				"Spreading Spores|Druid||Spores|TCE|10",
+				"Fungal Body|Druid||Spores|TCE|14"
+			]
+		},
+		{
+			"name": "Circle of Stars",
+			"shortName": "Stars",
+			"source": "TCE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 38,
+			"additionalSpells": [
+				{
+					"known": {
+						"2": [
+							"guidance#c"
+						]
+					},
+					"prepared": {
+						"2": [
+							"guiding bolt"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Stars|Druid||Stars|TCE|2",
+				"Cosmic Omen|Druid||Stars|TCE|6",
+				"Twinkling Constellations|Druid||Stars|TCE|10",
+				"Full of Stars|Druid||Stars|TCE|14"
+			]
+		},
+		{
+			"name": "Circle of Wildfire",
+			"shortName": "Wildfire",
+			"source": "TCE",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 39,
+			"additionalSpells": [
+				{
+					"prepared": {
+						"2": [
+							"burning hands",
+							"cure wounds"
+						],
+						"3": [
+							"flaming sphere",
+							"scorching ray"
+						],
+						"5": [
+							"plant growth",
+							"revivify"
+						],
+						"7": [
+							"aura of life",
+							"fire shield"
+						],
+						"9": [
+							"flame strike",
+							"mass cure wounds"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Circle of Wildfire|Druid||Wildfire|TCE|2",
+				"Enhanced Bond|Druid||Wildfire|TCE|6",
+				"Cauterizing Flames|Druid||Wildfire|TCE|10",
+				"Blazing Revival|Druid||Wildfire|TCE|14"
+			]
+		},
+		{
+			"name": "Mage of Prismari (UA)",
+			"shortName": "Prismari (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Druid",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Prismari (UA)",
+				"shortName": "Prismari (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		},
+		{
+			"name": "Mage of Witherbloom (UA)",
+			"shortName": "Witherbloom (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Druid",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Witherbloom (UA)",
+				"shortName": "Witherbloom (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		},
+		{
+			"name": " Circle of the Primeval (UA)",
+			"shortName": "Primeval (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Druid",
+			"classSource": "PHB",
+			"page": 2,
+			"subclassFeatures": [
+				"Circle of the Primeval|Druid||Primeval (UA)|UA2022GiantOptions|2",
+				"Prehistoric Conduit|Druid||Primeval (UA)|UA2022GiantOptions|6",
+				"Titanic Bond|Druid||Primeval (UA)|UA2022GiantOptions|10",
+				"Scourge of the Ancients|Druid||Primeval (UA)|UA2022GiantOptions|14"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Cantrip Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 4,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level druid feature (enhances Spellcasting)}",
+				"Chaque fois que vous gagnez un niveau dans cette classe, vous pouvez remplacer un cantrip appris grâce à cette caractéristique de lanceur de sorts par un autre cantrip de la liste de sorts des druides."
+			]
+		},
+		{
+			"name": "Druidic",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Vous connaissez {@language Druidic}, la langue secrète des druides. Vous pouvez parler cette langue et l'utiliser pour laisser des messages cachés. Vous et les autres personnes qui connaissent cette langue repèrent automatiquement un tel message. Les autres repèrent la présence du message en réussissant un test de Sagesse ({@skill Perception}) DC 15, mais ne peuvent pas le déchiffrer sans magie."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"En puisant dans l'essence divine de la nature elle-même, vous pouvez lancer des sorts pour façonner cette essence à votre volonté. Voir {@book chapter 10|PHB|10} pour les règles générales du lancement de sorts et {@book chapter 11|PHB|11} pour les {@filter druid spell list|spells|class=druid}.",
+				{
+					"type": "entries",
+					"name": "Cantrips",
+					"entries": [
+						"Au 1er niveau, vous connaissez deux cantrips de votre choix parmi les {@filter druid spell list|spells|level=0|class=druid}. Vous apprenez des cantrips druidiques supplémentaires de votre choix aux niveaux supérieurs, comme indiqué dans la colonne Cantrips Known de la table de druide."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Preparing and Casting Spells",
+					"entries": [
+						"La table des druides indique le nombre d'emplacements de sorts dont vous disposez pour lancer vos {@filter druid spells|spells|class=druid} de 1er niveau et plus. Pour lancer l'un de ces sorts de druide, vous devez dépenser un emplacement du niveau du sort ou plus. Vous récupérez tous les emplacements de sorts dépensés lorsque vous terminez un long repos.",
+						"Vous préparez la liste des sorts de druide que vous pouvez lancer, en choisissant dans la liste des sorts de druide. Vous choisissez alors un nombre de sorts de druide égal à votre modificateur de Sagesse + votre niveau de druide (minimum d'un sort). Les sorts doivent être d'un niveau pour lequel vous disposez d'emplacements de sorts.",
+						"Par exemple, si vous êtes un druide de 3e niveau, vous avez quatre emplacements de sorts de 1er niveau et deux de 2e niveau. Avec une Sagesse de 16, votre liste de sorts préparés peut inclure six sorts de 1er ou 2ème niveau, dans n'importe quelle combinaison. Si vous préparez le sort de 1er niveau {@spell cure wounds}, vous pouvez le lancer en utilisant un emplacement de 1er niveau ou de 2ème niveau. Le lancement du sort ne le retire pas de votre liste de sorts préparés.",
+						"Vous pouvez également modifier votre liste de sorts préparés lorsque vous terminez un long repos. La préparation d'une nouvelle liste de sorts de druide nécessite du temps passé en prière et en méditation : au moins 1 minute par niveau de sort pour chaque sort de votre liste."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Ability",
+					"entries": [
+						"La Sagesse est votre capacité de lancement de sorts pour vos sorts de druide, puisque votre magie s'appuie sur votre dévotion et votre accord avec la nature. Vous utilisez votre Sagesse chaque fois qu'un sort fait référence à votre capacité de lanceur de sorts. De plus, vous utilisez votre modificateur de Sagesse pour déterminer le jet de sauvegarde d'un sort de druide que vous lancez et pour effectuer un jet d'attaque avec un tel sort.",
+						{
+							"type": "abilityDc",
+							"name": "Spell",
+							"attributes": [
+								"wis"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Spell",
+							"attributes": [
+								"wis"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ritual Casting",
+					"entries": [
+						"Vous pouvez lancer un sort de druide en tant que rituel si ce sort possède l'étiquette rituel et que vous avez préparé le sort."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Focus",
+					"entries": [
+						"Vous pouvez utiliser un {@item druidic focus|phb} comme focalisation des sorts pour vos sorts de druide."
+					]
+				}
+			]
+		},
+		{
+			"name": "Druid Circle",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Au 2e niveau, vous choisissez de vous identifier à un cercle de druides parmi la liste des cercles disponibles. Votre choix vous octroie des caractéristiques au 2ème niveau et à nouveau au 6ème, 10ème et 14ème niveau."
+			]
+		},
+		{
+			"name": "Wild Companion",
+			"source": "TCE",
+			"page": 35,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level druid {@variantrule optional class features|tce|optional feature}}",
+				"Vous gagnez la capacité d'invoquer un esprit qui prend une forme animale : comme action, vous pouvez dépenser une utilisation de votre caractéristique Forme sauvage pour lancer le sort {@spell find familiar}, sans composantes matérielles.",
+				"Lorsque vous lancez le sort de cette manière, le familier est un fey au lieu d'une bête, et le familier disparaît après un nombre d'heures égal à la moitié de votre niveau de druide."
+			]
+		},
+		{
+			"name": "Wild Companion",
+			"source": "UAClassFeatureVariants",
+			"page": 4,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level druid feature (enhances Wild Shape)}",
+				"Vous gagnez la capacité d'invoquer un esprit qui prend une forme animale : comme action, vous pouvez dépenser une utilisation de votre caractéristique Forme sauvage pour lancer le sort {@spell find familiar}, sans composantes matérielles.",
+				"Lorsque vous lancez le sort de cette manière, le familier est un fey au lieu d'une bête, et le familier disparaît après un nombre d'heures égal à la moitié de votre niveau de druide."
+			]
+		},
+		{
+			"name": "Wild Shape",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"À partir du 2e niveau, vous pouvez utiliser votre action pour prendre magiquement la forme d'une bête que vous avez déjà vue. Vous pouvez utiliser cette caractéristique deux fois. Vous regagnez les utilisations dépensées lorsque vous terminez un repos court ou long.",
+				"Votre niveau de druide détermine les bêtes en lesquelles vous pouvez vous transformer, comme indiqué dans la table Formes des bêtes. Au 2e niveau, par exemple, vous pouvez vous transformer en n'importe quelle bête dont le niveau de difficulté est de 1/4 ou moins et qui n'a pas de vitesse de vol ou de natation.",
+				{
+					"type": "table",
+					"caption": "Beast Shapes",
+					"colLabels": [
+						"Level",
+						"Max. CR",
+						"Limitations",
+						"Example"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-2 text-center",
+						"col-5",
+						"col-3"
+					],
+					"rows": [
+						[
+							"2nd",
+							"{@filter 1/4|bestiary|challenge rating=[&0;&1/4]|type=beast|speed type=!fly;!swim|miscellaneous=!swarm}",
+							"Pas de vitesse de vol ou de natation",
+							"Wolf"
+						],
+						[
+							"4th",
+							"{@filter 1/2|bestiary|challenge rating=[&0;&1/2]|type=beast|speed type=!fly|miscellaneous=!swarm}",
+							"Pas de vitesse de vol",
+							"Crocodile"
+						],
+						[
+							"8th",
+							"{@filter 1|bestiary|challenge rating=[&0;&1]|type=beast|miscellaneous=!swarm}",
+							"—",
+							"Aigle géant"
+						]
+					]
+				},
+				"Vous pouvez rester sous une forme de bête pendant un nombre d'heures égal à la moitié de votre niveau de druide (arrondi à l'inférieur). Vous reprenez ensuite votre forme normale, sauf si vous dépensez une autre utilisation de cette caractéristique. Vous pouvez revenir à votre forme normale plus tôt en utilisant une action bonus à votre tour. Vous revenez automatiquement à votre forme normale si vous tombez {@condition unconscious}, si vous tombez à 0 point de vie ou si vous mourez.",
+				"Pendant votre transformation, les règles suivantes s'appliquent :",
+				{
+					"type": "list",
+					"items": [
+						"Vos statistiques de jeu sont remplacées par celles de la bête, mais vous conservez votre alignement, votre personnalité et vos scores d'Intelligence, de Sagesse et de Charisme. Vous conservez également toutes vos compétences et vos jets de sauvegarde, en plus de gagner celles de la créature. Si la créature a la même compétence que vous et que le bonus de son bloc de statistiques est supérieur au vôtre, utilisez le bonus de la créature au lieu du vôtre. Si la créature possède des actions légendaires ou des actions de repaire, vous ne pouvez pas les utiliser.",
+						"Lorsque vous vous transformez, vous assumez les points de vie et les dés de réussite de la bête. Lorsque vous revenez à votre forme normale, vous retrouvez le nombre de points de vie que vous aviez avant de vous transformer. Cependant, si vous revenez à votre forme normale parce que vous êtes tombé à 0 point de vie, tout dommage excédentaire est reporté sur votre forme normale. Par exemple, si vous subissez 10 points de dégâts sous forme animale et qu'il ne vous reste qu'un point de vie, vous vous retransformez et subissez 9 points de dégâts. Tant que l'excédent de dégâts ne réduit pas votre forme normale à 0 point de vie, vous n'êtes pas frappé {@condition unconscious}.",
+						"Vous ne pouvez pas lancer de sorts, et votre capacité à parler ou à entreprendre toute action nécessitant des mains est limitée aux capacités de votre forme bestiale. La transformation ne rompt cependant pas votre concentration sur un sort que vous avez déjà lancé, ni ne vous empêche d'entreprendre des actions qui font partie d'un sort, comme {@spell call lightning}, que vous avez déjà lancé.",
+						"Vous conservez le bénéfice de toutes les caractéristiques de votre classe, race ou autre source et pouvez les utiliser si la nouvelle forme en est physiquement capable. Cependant, vous ne pouvez utiliser aucun de vos sens spéciaux, tels que {@sense darkvision}, à moins que votre nouvelle forme ne possède également ce sens.",
+						"Vous choisissez si votre équipement tombe sur le sol dans votre espace, s'intègre à votre nouvelle forme ou est porté par elle. L'équipement porté fonctionne normalement, mais le MD décide s'il est pratique pour la nouvelle forme de porter une pièce d'équipement, en se basant sur la forme et la taille de la créature. Votre équipement ne change pas de taille ou de forme pour s'adapter à la nouvelle forme, et tout équipement que la nouvelle forme ne peut pas porter doit soit tomber au sol, soit fusionner avec elle. L'équipement qui fusionne avec la forme n'a aucun effet jusqu'à ce que vous quittiez la forme."
+					]
+				}
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"Lorsque vous atteignez le 4ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Cantrip Versatility",
+			"source": "TCE",
+			"page": 35,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level druid {@variantrule optional class features|tce|optional feature}}",
+				"Chaque fois que vous atteignez un niveau dans cette classe qui accorde la caractéristique d'amélioration des scores de capacité, vous pouvez remplacer un cantrip que vous avez appris avec la caractéristique de lanceur de sorts de cette classe par un autre cantrip de la {@filter druid spell list|spells|level=0|class=Druid}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Wild Shape Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"Au 4e niveau, votre Forme sauvage s'améliore comme indiqué sur la table des Formes de bête."
+			]
+		},
+		{
+			"name": "Druid Circle feature",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Au 6ème niveau, vous gagnez une caractéristique accordée par votre cercle druidique."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"Lorsque vous atteignez le 8e niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Wild Shape Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"Au 8e niveau, votre Forme sauvage s'améliore comme indiqué sur la table des Formes de bête."
+			]
+		},
+		{
+			"name": "Druid Circle feature",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Au 10e niveau, vous gagnez une caractéristique accordée par votre caractéristique Cercle druidique."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"Lorsque vous atteignez le 12ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Druid Circle feature",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Au 14e niveau, vous gagnez une caractéristique accordée par votre caractéristique Cercle druidique."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"Lorsque vous atteignez le 16ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Beast Spells",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"À partir du 18e niveau, vous pouvez lancer plusieurs de vos sorts de druide dans n'importe quelle forme que vous adoptez en utilisant Forme sauvage. Vous pouvez exécuter les composantes somatiques et verbales d'un sort de druide lorsque vous êtes dans une forme de bête, mais vous ne pouvez pas fournir de composantes matérielles."
+			]
+		},
+		{
+			"name": "Timeless Body",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"À partir du 18e niveau, la magie primitive que vous maniez vous fait vieillir plus lentement. Pour chaque tranche de 10 ans qui passe, votre corps ne vieillit que d'un an."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"Lorsque vous atteignez le 19e niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Archdruid",
+			"source": "PHB",
+			"page": 64,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"Au 20e niveau, vous pouvez utiliser votre forme sauvage un nombre illimité de fois.",
+				"De plus, vous pouvez ignorer les composantes verbales et somatiques de vos sorts de druide, ainsi que toutes les composantes matérielles qui n'ont pas de coût et qui ne sont pas consommées par un sort. Vous bénéficiez de cet avantage à la fois dans votre forme normale et dans votre forme bestiale de Forme sauvage."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Circle of the Land",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Le Cercle de la Terre est composé de mystiques et de sages qui sauvegardent les connaissances et les rites anciens à travers une vaste tradition orale. Ces druides se réunissent dans des cercles sacrés d'arbres ou de pierres dressées pour chuchoter des secrets primitifs en {@language Druidic}. Les membres les plus sages du cercle président en tant que prêtres en chef des communautés qui adhèrent à l'ancienne foi et servent de conseillers aux dirigeants de ces peuples. En tant que membre de ce cercle, votre magie est influencée par la terre où vous avez été initié aux rites mystérieux du cercle.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Cantrip|Druid||Land||2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Natural Recovery|Druid||Land||2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Land||2"
+				}
+			]
+		},
+		{
+			"name": "Bonus Cantrip",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Vous apprenez un cantrip druidique supplémentaire de votre choix. Ce cantrip ne compte pas dans le nombre de cantrips druidiques que vous connaissez."
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Votre lien mystique avec la terre vous insuffle la capacité de lancer certains sorts. Aux 3e, 5e, 7e et 9e niveaux, vous avez accès à des sorts de cercle liés à la terre où vous êtes devenu druide. Choisissez cette terre - arctique, côte, désert, forêt, prairie, montagne, marécage ou souterrain - et consultez la liste de sorts associée.",
+				"Une fois que vous avez accès à un sort de cercle, vous l'avez toujours préparé, et il ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous avez accès à un sort qui ne figure pas dans la liste des sorts de druide, ce sort est néanmoins un sort de druide pour vous.",
+				{
+					"type": "table",
+					"caption": "Arctic",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell hold person}, {@spell spike growth}"
+						],
+						[
+							"5th",
+							"{@spell sleet storm}, {@spell slow}"
+						],
+						[
+							"7th",
+							"{@spell freedom of movement}, {@spell ice storm}"
+						],
+						[
+							"9th",
+							"{@spell commune with nature}, {@spell cone of cold}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Coast",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell mirror image}, {@spell misty step}"
+						],
+						[
+							"5th",
+							"{@spell water breathing}, {@spell water walk}"
+						],
+						[
+							"7th",
+							"{@spell control water}, {@spell freedom of movement}"
+						],
+						[
+							"9th",
+							"{@spell conjure elemental}, {@spell scrying}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Desert",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell blur}, {@spell silence}"
+						],
+						[
+							"5th",
+							"{@spell create food and water}, {@spell protection from energy}"
+						],
+						[
+							"7th",
+							"{@spell blight}, {@spell hallucinatory terrain}"
+						],
+						[
+							"9th",
+							"{@spell insect plague}, {@spell wall of stone}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Forest",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell barkskin}, {@spell spider climb}"
+						],
+						[
+							"5th",
+							"{@spell call lightning}, {@spell plant growth}"
+						],
+						[
+							"7th",
+							"{@spell divination}, {@spell freedom of movement}"
+						],
+						[
+							"9th",
+							"{@spell commune with nature}, {@spell tree stride}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Grassland",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell invisibility}, {@spell pass without trace}"
+						],
+						[
+							"5th",
+							"{@spell daylight}, {@spell haste}"
+						],
+						[
+							"7th",
+							"{@spell divination}, {@spell freedom of movement}"
+						],
+						[
+							"9th",
+							"{@spell dream}, {@spell insect plague}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Mountain",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell spider climb}, {@spell spike growth}"
+						],
+						[
+							"5th",
+							"{@spell lightning bolt}, {@spell meld into stone}"
+						],
+						[
+							"7th",
+							"{@spell stone shape}, {@spell stoneskin}"
+						],
+						[
+							"9th",
+							"{@spell passwall}, {@spell wall of stone}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Swamp",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell darkness}, {@spell Melf's acid arrow}"
+						],
+						[
+							"5th",
+							"{@spell water walk}, {@spell stinking cloud}"
+						],
+						[
+							"7th",
+							"{@spell freedom of movement}, {@spell locate creature}"
+						],
+						[
+							"9th",
+							"{@spell insect plague}, {@spell scrying}"
+						]
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Underdark",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell spider climb}, {@spell web}"
+						],
+						[
+							"5th",
+							"{@spell gaseous form}, {@spell stinking cloud}"
+						],
+						[
+							"7th",
+							"{@spell greater invisibility}, {@spell stone shape}"
+						],
+						[
+							"9th",
+							"{@spell cloudkill}, {@spell insect plague}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Natural Recovery",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"À partir du 2e niveau, vous pouvez récupérer une partie de votre énergie magique en vous asseyant en méditation et en communiant avec la nature. Pendant un court repos, vous choisissez des emplacements de sorts dépensés pour récupérer. Les emplacements de sorts peuvent avoir un niveau combiné égal ou inférieur à la moitié de votre niveau de druide (arrondi au supérieur), et aucun des emplacements ne peut être de 6e niveau ou plus. Vous ne pouvez pas utiliser cette caractéristique à nouveau avant d'avoir terminé un long repos.",
+				"Par exemple, lorsque vous êtes un druide de 4ème niveau, vous pouvez récupérer jusqu'à deux niveaux d'emplacements de sorts. Vous pouvez récupérer soit un emplacement de 2ème niveau, soit deux emplacements de 1er niveau."
+			]
+		},
+		{
+			"name": "Land's Stride",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, se déplacer à travers des plantes non magiques {@quickref difficult terrain||3} ne vous coûte aucun mouvement supplémentaire. Vous pouvez également traverser des plantes non magiques sans être ralenti par elles et sans subir de dégâts si elles ont des épines, des épines ou un danger similaire.",
+				"De plus, vous avez un avantage sur les jets de sauvegarde contre les plantes créées ou manipulées magiquement pour entraver le mouvement, comme celles créées par le sort {@spell entangle}."
+			]
+		},
+		{
+			"name": "Nature's Ward",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Lorsque vous atteignez le 10e niveau, vous ne pouvez pas être {@condition charmed} ou {@condition frightened} par les élémentaires ou les fey, et vous êtes immunisé contre le poison et les maladies."
+			]
+		},
+		{
+			"name": "Nature's Sanctuary",
+			"source": "PHB",
+			"page": 68,
+			"srd": true,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Land",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Lorsque vous atteignez le 14e niveau, les créatures du monde naturel ressentent votre lien avec la nature et deviennent hésitantes à vous attaquer. Lorsqu'une créature animale ou végétale vous attaque, elle doit effectuer un jet de sauvegarde de Sagesse contre votre DC de sauvegarde contre les sorts de druide. En cas d'échec, la créature doit choisir une autre cible, ou l'attaque est automatiquement manquée. En cas de sauvegarde réussie, la créature est immunisée contre cet effet pendant 24 heures.",
+				"La créature est consciente de cet effet avant d'effectuer son attaque contre vous."
+			]
+		},
+		{
+			"name": "Circle of the Moon",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Les druides du Cercle de la Lune sont de farouches gardiens de la nature. Leur ordre se réunit à la pleine lune pour partager des nouvelles et échanger des avertissements. Ils hantent les régions sauvages les plus profondes, où ils peuvent passer des semaines avant de croiser une autre créature humanoïde, et encore moins un autre druide.",
+				"Aussi changeant que la lune, un druide de ce cercle peut rôder sous la forme d'un grand chat une nuit, s'envoler au-dessus des cimes des arbres sous la forme d'un aigle le lendemain, et s'écraser dans les sous-bois sous la forme d'un ours pour chasser un monstre intrus. Le druide a la nature dans le sang.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Combat Wild Shape|Druid||Moon||2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Forms|Druid||Moon||2"
+				}
+			]
+		},
+		{
+			"name": "Circle Forms",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Les rites de votre cercle vous confèrent la capacité de vous transformer en des formes animales plus dangereuses. À partir du 2e niveau, vous pouvez utiliser votre Forme sauvage pour vous transformer en un {@filter beast with a challenge rating as high as 1|bestiary|challenge rating=[&0;&1]|type=beast|speed type=!fly;!swim|miscellaneous=!swarm} (vous ignorez la colonne Max. CR de la table des Formes bestiales, mais vous devez respecter les autres limitations qui y figurent).",
+				"À partir du 6e niveau, vous pouvez vous transformer en une bête dont la valeur de défi est aussi élevée que votre niveau de druide divisé par 3, arrondi à l'inférieur.",
+				{
+					"type": "table",
+					"caption": "Circle of the Moon Beast Shapes",
+					"colLabels": [
+						"Level",
+						"Max. CR",
+						"Limitations"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-2 text-center",
+						"col-8"
+					],
+					"rows": [
+						[
+							"2nd",
+							"{@filter 1|bestiary|challenge rating=[&0;&1]|type=beast|speed type=!fly;!swim|miscellaneous=!swarm}",
+							"Pas de vitesse de vol ou de natation"
+						],
+						[
+							"4th",
+							"{@filter 1|bestiary|challenge rating=[&0;&1]|type=beast|speed type=!fly|miscellaneous=!swarm}",
+							"Pas de vitesse de vol"
+						],
+						[
+							"6th",
+							"{@filter 2|bestiary|challenge rating=[&0;&2]|type=beast|speed type=!fly|miscellaneous=!swarm}",
+							"Pas de vitesse de vol"
+						],
+						[
+							"8th",
+							"{@filter 2|bestiary|challenge rating=[&0;&2]|type=beast|miscellaneous=!swarm}",
+							"—"
+						],
+						[
+							"9th",
+							"{@filter 3|bestiary|challenge rating=[&0;&3]|type=beast|miscellaneous=!swarm}",
+							"—"
+						],
+						[
+							"12th",
+							"{@filter 4|bestiary|challenge rating=[&0;&4]|type=beast|miscellaneous=!swarm}",
+							"—"
+						],
+						[
+							"15th",
+							"{@filter 5|bestiary|challenge rating=[&0;&5]|type=beast|miscellaneous=!swarm}",
+							"—"
+						],
+						[
+							"18th",
+							"{@filter 6|bestiary|challenge rating=[&0;&6]|type=beast|miscellaneous=!swarm}",
+							"—"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Combat Wild Shape",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Vous gagnez la capacité d'utiliser Forme sauvage à votre tour comme une action bonus, plutôt que comme une action.",
+				"De plus, lorsque vous êtes transformé par Forme sauvage, vous pouvez utiliser une action bonus pour dépenser un emplacement de sort afin de regagner {@dice 1d8} de points de vie par niveau de l'emplacement de sort dépensé."
+			]
+		},
+		{
+			"name": "Primal Strike",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, vos attaques sous forme de bête comptent comme magiques pour surmonter la résistance et l'immunité aux attaques et dégâts non magiques."
+			]
+		},
+		{
+			"name": "Elemental Wild Shape",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"consumes": {
+				"name": "Wild Shape",
+				"amount": 2
+			},
+			"entries": [
+				"Au 10e niveau, vous pouvez dépenser deux utilisations de Forme sauvage en même temps pour vous transformer en un {@creature air elemental}, un {@creature earth elemental}, un {@creature fire elemental} ou un {@creature water elemental}."
+			]
+		},
+		{
+			"name": "Thousand Forms",
+			"source": "PHB",
+			"page": 69,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Moon",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, vous avez appris à utiliser la magie pour modifier votre forme physique de manière plus subtile. Vous pouvez lancer le sort {@spell alter self} à volonté."
+			]
+		},
+		{
+			"name": "Circle of Spores",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"entries": [
+				"Les druides du Cercle des Spores trouvent la beauté dans la décomposition. Ils voient dans les moisissures et autres champignons la capacité de transformer une matière sans vie en une vie abondante, bien que quelque peu étrange.",
+				"Ces druides croient que la vie et la mort font partie d'un grand cycle, l'un menant à l'autre et inversement. La mort n'est pas la fin de la vie, mais plutôt un changement d'état qui voit la vie prendre une nouvelle forme.",
+				"Les druides de ce cercle ont une relation complexe avec les morts-vivants. Contrairement à la plupart des autres druides, ils ne voient rien de mal en soi à la non-mort, qu'ils considèrent comme un compagnon de vie et de mort. Mais ces druides pensent que le cycle naturel est plus sain lorsque chaque segment est vivant et changeant. Les morts-vivants qui cherchent à remplacer toute vie par la non-mort, ou qui tentent d'éviter de passer à un repos final, violent le cycle et doivent être contrecarrés.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Spores|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Halo of Spores|Druid||Spores|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Symbiotic Entity|Druid||Spores|TCE|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Votre lien symbiotique avec le champignon et votre capacité à puiser dans le cycle de la vie et de la mort vous donnent accès à certains sorts. Au 2ème niveau, vous apprenez le cantrip {@spell chill touch}. Aux 3e, 5e, 7e et 9e niveaux, vous avez accès aux sorts listés pour ce niveau dans la table des sorts du Cercle des spores.",
+				"Une fois que vous avez accès à l'un de ces sorts, vous l'avez toujours préparé, et il ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous avez accès à un sort qui ne figure pas dans la liste des sorts de druide, ce sort est néanmoins un sort de druide pour vous.",
+				{
+					"type": "table",
+					"caption": "Circle of Spores Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell blindness/deafness}, {@spell gentle repose}"
+						],
+						[
+							"5th",
+							"{@spell animate dead}, {@spell gaseous form}"
+						],
+						[
+							"7th",
+							"{@spell blight}, {@spell confusion}"
+						],
+						[
+							"9th",
+							"{@spell cloudkill}, {@spell contagion}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Halo of Spores",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"À partir du 2e niveau, vous êtes entouré de spores nécrotiques invisibles qui sont inoffensives jusqu'à ce que vous les libériez sur une créature à proximité. Lorsqu'une créature que vous pouvez voir se déplace dans un espace de 3 mètres autour de vous ou commence son tour à cet endroit, vous pouvez utiliser votre réaction pour infliger {@damage 1d4} de dégâts nécrotiques à cette créature, à moins qu'elle ne réussisse un jet de sauvegarde de Constitution contre le DC de sauvegarde de votre sort. Les dégâts nécrotiques passent à {@dice 1d6} au 6e niveau, {@dice 1d8} au 10e niveau et {@dice 1d10} au 14e niveau."
+			]
+		},
+		{
+			"name": "Symbiotic Entity",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"Au 2e niveau, vous gagnez la capacité de canaliser la magie dans vos spores. En tant qu'action, vous pouvez dépenser une utilisation de votre caractéristique Forme sauvage pour réveiller ces spores, plutôt que de vous transformer en forme de bête, et vous gagnez 4 points de vie temporaires pour chaque niveau que vous avez dans cette classe. Tant que cette caractéristique est active, vous gagnez les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Lorsque vous infligez vos dégâts à Halo of Spores, lancez le dé de dégâts une seconde fois et ajoutez-le au total.",
+						"Vos attaques à l'arme de mêlée infligent un {@damage 1d6} de dégâts nécrotiques supplémentaires à toute cible qu'elles touchent."
+					]
+				},
+				"Ces avantages durent 10 minutes, jusqu'à ce que vous perdiez tous ces points de vie temporaires, ou jusqu'à ce que vous utilisiez à nouveau votre Forme sauvage."
+			]
+		},
+		{
+			"name": "Fungal Infestation",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vos spores gagnent la capacité d'infester un cadavre et de l'animer. Si une bête ou un humanoïde de petite ou moyenne taille meurt à moins de 3 mètres de vous, vous pouvez utiliser votre réaction pour l'animer, le faisant se relever immédiatement avec 1 point de vie. La créature utilise le bloc de stat {@creature zombie} dans le {@book Monster Manual|MM}. Elle reste animée pendant 1 heure, après quoi elle s'effondre et meurt.",
+				"En combat, le tour du zombie vient immédiatement après le vôtre. Il obéit à vos ordres mentaux, et la seule action qu'il peut entreprendre est l'action {@action Attack}, en effectuant une attaque de mêlée.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de sagesse (au moins une fois), et vous récupérez toutes les utilisations dépensées de cette caractéristique lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Spreading Spores",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous gagnez la capacité d'ensemencer une zone avec des spores mortelles. Comme action bonus pendant que votre caractéristique Entité symbiotique est active, vous pouvez lancer des spores jusqu'à 30 pieds de distance, où elles tourbillonnent dans un cube de 10 pieds pendant 1 minute. Les spores disparaissent plus tôt si vous utilisez à nouveau cette caractéristique, si vous les renvoyez en action bonus ou si votre caractéristique Entité symbiotique n'est plus active.",
+				"Chaque fois qu'une créature se déplace dans le cube ou commence son tour à cet endroit, elle subit les dégâts de votre Halo of Spores, à moins qu'elle ne réussisse un jet de sauvegarde de Constitution contre votre DC de sauvegarde contre les sorts. Une créature ne peut subir ces dégâts qu'une fois par tour.",
+				"Tant que le cube de spores persiste, vous ne pouvez pas utiliser votre réaction Halo de spores."
+			]
+		},
+		{
+			"name": "Fungal Body",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, les spores fongiques présentes dans votre corps vous altèrent : vous ne pouvez plus être {@condition blinded}, {@condition deafened}, {@condition frightened} ou {@condition poisoned}, et tout coup critique contre vous compte comme un coup normal à la place, sauf si vous êtes {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Circle of Stars",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 2,
+			"entries": [
+				"Le Cercle des étoiles permet aux druides de tirer parti du pouvoir de la lumière des étoiles. Ces druides ont suivi les modèles célestes depuis des temps immémoriaux, découvrant les secrets cachés parmi les constellations. En révélant et en comprenant ces secrets, le Cercle des étoiles cherche à exploiter les pouvoirs du cosmos.",
+				"De nombreux druides de ce cercle tiennent des registres des constellations et des effets des étoiles sur le monde. Certains groupes documentent ces observations sur des sites mégalithiques, qui servent d'énigmatiques bibliothèques de savoirs. Ces dépôts peuvent prendre la forme de cercles de pierres, de pyramides, de pétroglyphes et de temples souterrains - toute construction suffisamment durable pour protéger le savoir sacré du cercle, même en cas de grand cataclysme.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Star Map|Druid||Stars|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Starry Form|Druid||Stars|TCE|2"
+				}
+			]
+		},
+		{
+			"name": "Star Map",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"Vous avez créé une carte des étoiles dans le cadre de vos études célestes. Il s'agit d'un objet minuscule qui peut servir de foyer pour vos sorts de druide. Vous déterminez sa forme en effectuant un jet sur la table Carte des étoiles ou en en choisissant une.",
+				{
+					"type": "table",
+					"caption": "Star Map",
+					"colLabels": [
+						"d6",
+						"Map Form"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Un parchemin couvert de représentations de constellations"
+						],
+						[
+							"2",
+							"Une tablette de pierre percée de fins trous."
+						],
+						[
+							"3",
+							"Une peau de hibou mouchetée, ornée de marques en relief."
+						],
+						[
+							"4",
+							"Une collection de cartes reliées dans une couverture en ébène"
+						],
+						[
+							"5",
+							"Un cristal qui projette des motifs étoilés lorsqu'il est placé devant une lumière."
+						],
+						[
+							"6",
+							"Disques de verre représentant des constellations"
+						]
+					]
+				},
+				"Pendant que vous détenez cette carte, vous bénéficiez des avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"Vous connaissez le sortilège.",
+						"Vous avez préparé le sort {@spell guiding bolt}. Il compte comme un sort de druide pour vous, et il ne compte pas dans le nombre de sorts que vous pouvez avoir préparé.",
+						"Vous pouvez lancer {@spell guiding bolt} sans dépenser un emplacement de sort. Vous pouvez le faire un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+					]
+				},
+				"Si vous perdez la carte, vous pouvez effectuer une cérémonie d'une heure pour créer magiquement une carte de remplacement. Cette cérémonie peut être effectuée pendant un repos court ou long, et elle détruit la carte précédente."
+			]
+		},
+		{
+			"name": "Starry Form",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"Comme action bonus, vous pouvez dépenser une utilisation de votre caractéristique Forme sauvage pour prendre une forme étoilée, plutôt que de vous transformer en bête.",
+				"Lorsque vous êtes sous votre forme étoilée, vous conservez vos statistiques de jeu, mais votre corps devient lumineux ; vos articulations scintillent comme des étoiles, et des lignes lumineuses les relient comme sur une carte du ciel. Cette forme diffuse une lumière vive dans un rayon de 3 mètres et une lumière faible sur 3 mètres supplémentaires. La forme dure 10 minutes. Elle prend fin prématurément si vous la renvoyez (aucune action requise), si vous êtes {@condition incapacitated}, si vous mourez ou si vous utilisez à nouveau cette caractéristique.",
+				"Lorsque vous prenez votre forme étoilée, choisissez laquelle des constellations suivantes brille sur votre corps ; votre choix vous donne certains avantages lorsque vous êtes sous cette forme :",
+				{
+					"type": "entries",
+					"name": "Archer",
+					"entries": [
+						"Une constellation d'un archer apparaît sur vous. Lorsque vous activez cette forme, et comme action bonus lors de vos tours suivants tant qu'elle dure, vous pouvez effectuer une attaque de sort à distance, lançant une flèche lumineuse qui cible une créature dans un rayon de 60 pieds autour de vous. En cas de succès, l'attaque inflige des dégâts radiants égaux à {@dice 1d8} + votre modificateur de sagesse."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Chalice",
+					"entries": [
+						"Une constellation d'un gobelet vivifiant apparaît sur vous. Chaque fois que vous lancez un sort utilisant un emplacement de sort qui redonne des points de vie à une créature, vous ou une autre créature située à 30 pieds de vous pouvez regagner un nombre de points de vie égal à {@dice 1d8} + votre modificateur de sagesse."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon",
+					"entries": [
+						"Une constellation d'un dragon sage apparaît sur vous. Lorsque vous effectuez un test d'Intelligence ou de Sagesse ou un jet de sauvegarde de Constitution pour maintenir votre concentration sur un sort, vous pouvez considérer un résultat de 9 ou moins sur le {@dice d20} comme un 10."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cosmic Omen",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of the Stars feature}",
+				"Chaque fois que vous terminez un long repos, vous pouvez consulter votre Carte des étoiles pour y trouver des présages. Pour ce faire, lancez un dé. Jusqu'à la fin de votre prochain repos long, vous avez accès à une réaction spéciale selon que vous avez obtenu un nombre pair ou impair sur le dé :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Weal (even)",
+							"entry": "Chaque fois qu'une créature que vous pouvez voir à moins de 30 pieds de vous est sur le point de faire un jet d'attaque, un jet de sauvegarde ou un test de capacité, vous pouvez utiliser votre réaction pour lancer un {@dice d6} et ajouter le nombre obtenu au total."
+						},
+						{
+							"type": "item",
+							"name": "Woe (odd)",
+							"entry": "Chaque fois qu'une créature que vous pouvez voir à moins de 30 pieds de vous est sur le point de faire un jet d'attaque, un jet de sauvegarde ou un test de capacité, vous pouvez utiliser votre réaction pour lancer un {@dice d6} et soustraire le nombre obtenu du total."
+						}
+					]
+				},
+				"Vous pouvez utiliser cette réaction un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Twinkling Constellations",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of the Stars feature}",
+				"Les constellations de votre Forme étoilée s'améliorent. Le {@dice 1d8} de l'Archer et du Calice devient {@dice 2d8}, et tant que le Dragon est actif, vous avez une vitesse de vol de 20 pieds et pouvez faire du surplace.",
+				"De plus, au début de chacun de vos tours sous votre forme étoilée, vous pouvez changer la constellation qui brille sur votre corps."
+			]
+		},
+		{
+			"name": "Full of Stars",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of the Stars feature}",
+				"Lorsque vous êtes sous votre forme étoilée, vous devenez partiellement incorporel, ce qui vous confère une résistance aux dégâts de matraquage, de perforation et de coupure."
+			]
+		},
+		{
+			"name": "Circle of Wildfire",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 2,
+			"entries": [
+				"Les druides du Cercle du Feu Sauvage comprennent que la destruction est parfois le précurseur de la création, comme lorsqu'un feu de forêt favorise la croissance ultérieure. Ces druides se lient à un esprit primitif qui recèle un pouvoir à la fois destructeur et créatif, ce qui leur permet de créer des flammes contrôlées qui brûlent une chose mais donnent vie à une autre.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Wildfire|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Summon Wildfire Spirit|Druid||Wildfire|TCE|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"Vous avez formé un lien avec un esprit du feu grégeois, un être primitif de création et de destruction. Votre lien avec cet esprit vous donne accès à certains sorts lorsque vous atteignez certains niveaux dans cette classe, comme indiqué sur la table des sorts du cercle du feu sauvage.",
+				"Une fois que vous avez accès à l'un de ces sorts, vous l'avez toujours préparé, et il ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous avez accès à un sort qui ne figure pas dans la liste des sorts de druide, ce sort est néanmoins un sort de druide pour vous.",
+				{
+					"type": "table",
+					"caption": "Circle of Wildfire Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"2nd",
+							"{@spell burning hands}, {@spell cure wounds}"
+						],
+						[
+							"3rd",
+							"{@spell flaming sphere}, {@spell scorching ray}"
+						],
+						[
+							"5th",
+							"{@spell plant growth}, {@spell revivify}"
+						],
+						[
+							"7th",
+							"{@spell aura of life}, {@spell fire shield}"
+						],
+						[
+							"9th",
+							"{@spell flame strike}, {@spell mass cure wounds}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Summon Wildfire Spirit",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"Vous pouvez invoquer l'esprit primitif lié à votre âme. En tant qu'action, vous pouvez dépenser une utilisation de votre caractéristique Forme sauvage pour invoquer votre esprit de feu grégeois, plutôt que de prendre une forme bestiale.",
+				"L'esprit apparaît dans un espace inoccupé de votre choix que vous pouvez voir dans un rayon de 30 pieds autour de vous. Chaque créature située à moins de 3 mètres de l'esprit (autre que vous) lorsqu'il apparaît doit réussir un jet de sauvegarde de Dextérité contre votre DC de sauvegarde contre les sorts ou subir {@damage 2d6} de dégâts de feu.",
+				"L'esprit est amical envers vous et vos compagnons et obéit à vos ordres. Consultez les statistiques de jeu de cette créature dans le bloc de stat {@creature Wildfire Spirit|TCE}, qui utilise votre bonus de compétence (PB) à plusieurs endroits. Vous déterminez l'apparence de l'esprit. Certains esprits prennent la forme d'une figure humanoïde faite de branches noueuses couvertes de flammes, tandis que d'autres ressemblent à des bêtes enveloppées de feu.",
+				"En combat, l'esprit partage votre compte d'initiative, mais il prend son tour immédiatement après le vôtre. La seule action qu'il effectue à son tour est l'action {@action Dodge}, à moins que vous n'effectuiez une action bonus à votre tour pour lui ordonner d'effectuer une autre action. Cette action peut être une action de son bloc de statistiques ou une autre action. Si vous êtes {@condition incapacitated}, l'esprit peut faire n'importe quelle action de son choix, et pas seulement {@action Dodge}.",
+				"L'esprit se manifeste pendant 1 heure, jusqu'à ce qu'il soit réduit à 0 point de vie, jusqu'à ce que vous utilisiez à nouveau cette caractéristique pour invoquer l'esprit, ou jusqu'à votre mort."
+			]
+		},
+		{
+			"name": "Enhanced Bond",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of Wildfire feature}",
+				"Le lien avec votre esprit feu grégeois améliore vos sorts destructeurs et réparateurs. Chaque fois que vous lancez un sort qui inflige des dégâts de feu ou restaure des points de vie pendant que votre esprit des feux de forêt est invoqué, lancez un {@dice d8}, et vous gagnez un bonus égal au nombre obtenu à un jet de dégâts ou de soins du sort.",
+				"De plus, lorsque vous lancez un sort dont la portée est autre que vous-même, le sort peut provenir de vous ou de votre esprit de feu grégeois."
+			]
+		},
+		{
+			"name": "Cauterizing Flames",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of Wildfire feature}",
+				"Vous gagnez la capacité de transformer la mort en flammes magiques qui peuvent guérir ou incinérer. Lorsqu'une créature de petite taille ou de taille supérieure meurt dans un rayon de 30 pieds autour de vous ou de votre esprit du feu, une flamme spectrale inoffensive jaillit dans l'espace de la créature morte et y vacille pendant 1 minute. Lorsqu'une créature que vous pouvez voir entre dans cet espace, vous pouvez utiliser votre réaction pour éteindre la flamme spectrale à cet endroit et soit guérir la créature, soit lui infliger des dégâts de feu. Les soins ou les dégâts sont égaux à {@dice 2d10} + votre modificateur de Sagesse.",
+				"Vous pouvez utiliser cette réaction un nombre de fois égal à votre bonus de compétence, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Blazing Revival",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of Wildfire feature}",
+				"Le lien avec votre esprit du feu grégeois peut vous sauver de la mort. Si l'esprit se trouve à moins de 120 pieds de vous lorsque vous êtes réduit à 0 point de vie et tombez ainsi {@condition unconscious}, vous pouvez faire en sorte que l'esprit tombe à 0 point de vie. Vous regagnez alors la moitié de vos points de vie et vous vous relevez immédiatement.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Circle of the Stars",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 2,
+			"entries": [
+				"Lignée ancienne, le Cercle des étoiles permet aux druides de tirer parti du pouvoir de la lumière des étoiles. Ces druides ont suivi les modèles célestes depuis des temps immémoriaux, découvrant les secrets cachés parmi les constellations. En révélant et en comprenant ces secrets, le Cercle des étoiles cherche à exploiter les pouvoirs du cosmos.",
+				"De nombreux druides de ce cercle tiennent des registres détaillés des étoiles et de leurs effets sur le monde. Certains groupes documentent ces observations sur des sites mégalithiques, qui servent d'énigmatiques bibliothèques de savoirs. Ces dépôts peuvent prendre la forme de cercles de pierres, de pyramides, de pétroglyphes et de temples souterrains - toute construction suffisamment durable pour protéger le savoir sacré du cercle, même en cas de grand cataclysme.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Star Map|Druid||Stars (UA)|UA2020SubclassesPt3|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Starry Form|Druid||Stars (UA)|UA2020SubclassesPt3|2"
+				}
+			]
+		},
+		{
+			"name": "Star Map",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"Vous avez créé une carte des étoiles dans le cadre de votre étude des cieux. La carte est un objet minuscule et peut servir de foyer de sorts pour vos sorts de druide. Vous décidez de la forme que prend l'objet, ou vous pouvez déterminer ce qu'il est en faisant un jet sur la table Carte des étoiles.",
+				{
+					"type": "table",
+					"caption": "Star Map",
+					"colLabels": [
+						"d6",
+						"Map Form"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Un rouleau de bois vivant qui s'aligne avec les corps célestes"
+						],
+						[
+							"2",
+							"Une tablette de pierre percée de fins trous."
+						],
+						[
+							"3",
+							"Une peau de hibou mouchetée, ornée de marques en relief."
+						],
+						[
+							"4",
+							"Une collection de cartes reliées dans une couverture en ébène"
+						],
+						[
+							"5",
+							"Un cristal qui projette des motifs étoilés lorsqu'il est placé devant une lumière."
+						],
+						[
+							"6",
+							"Disques en verre trempé qui s'alignent pour représenter les constellations."
+						]
+					]
+				},
+				"Si vous perdez votre carte, vous pouvez effectuer une cérémonie d'une heure pour créer magiquement une carte de remplacement. Cette cérémonie peut être effectuée pendant un repos court ou long, et elle détruit la carte précédente.",
+				"Vous pouvez lancer les sorts {@spell augury} et {@spell guiding bolt} sans dépenser un emplacement de sort et sans préparer le sort, à condition d'utiliser la carte des étoiles comme point de focalisation du sort. Vous pouvez lancer un sort de la carte de cette manière un nombre de fois égal à votre modificateur de Sagesse (au minimum une fois), et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Starry Form",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"Vous gagnez la capacité d'exploiter le pouvoir des constellations pour modifier votre forme. En tant qu'action, vous pouvez dépenser une utilisation de votre caractéristique Forme sauvage pour prendre une forme étoilée plutôt que de vous transformer en bête.",
+				"Lorsque vous êtes sous votre forme étoilée, vous conservez vos statistiques de jeu, mais votre corps prend une apparence lumineuse, semblable à celle d'une étoile ; vos articulations scintillent comme des étoiles, et des lignes lumineuses les relient comme sur une carte des étoiles. Cette forme diffuse une lumière vive dans un rayon de 3 mètres et une lumière faible sur 3 mètres supplémentaires. La forme dure 10 minutes ou jusqu'à ce que vous soyez {@condition incapacitated}.",
+				"Lorsque vous prenez votre forme étoilée, choisissez laquelle des constellations suivantes brille sur votre corps ; votre choix vous donne certains avantages lorsque vous êtes sous cette forme :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Chalice",
+							"entry": "Une constellation d'un gobelet vivifiant apparaît sur vous. Chaque fois que vous lancez un sort utilisant un emplacement de sort qui redonne des points de vie à une créature, vous ou une autre créature située à 30 pieds de vous pouvez regagner des points de vie égaux à {@dice 1d8} + la moitié de votre niveau dans cette classe."
+						},
+						{
+							"type": "item",
+							"name": "Archer",
+							"entry": "Une constellation d'un archer apparaît sur vous. Vous gagnez une action bonus que vous pouvez utiliser pour effectuer une attaque de sort à distance, lançant une flèche lumineuse qui cible une créature que vous pouvez voir dans un rayon de 60 pieds autour de vous. En cas de succès, l'attaque inflige des dégâts radiants égaux à {@dice 1d8} + votre modificateur de sagesse."
+						},
+						{
+							"type": "item",
+							"name": "Dragon",
+							"entry": "Une constellation d'un dragon ancien et sage apparaît sur vous. Lorsque vous effectuez un test d'Intelligence ou de Sagesse ou un jet de sauvegarde de Constitution pour maintenir votre concentration sur un sort, vous pouvez considérer un résultat de 9 ou moins sur le {@dice d20} comme un 10."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cosmic Omen",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of the Stars feature}",
+				"Vous apprenez à utiliser votre carte des étoiles pour deviner la volonté du cosmos. Chaque fois que vous terminez un long repos, vous pouvez consulter votre carte des étoiles pour y trouver des présages. Pour ce faire, lancez un {@dice d6}. Vous gagnez l'un des présages possibles suivants, selon que vous avez obtenu un nombre pair ou impair sur le {@dice d6} :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Weal (even)",
+							"entry": "Chaque fois qu'une créature que vous pouvez voir à moins de 30 pieds de vous fait un jet d'attaque, un jet de sauvegarde ou un test de capacité, vous pouvez utiliser votre réaction pour lancer un {@dice d6} et ajouter le nombre obtenu au total."
+						},
+						{
+							"type": "item",
+							"name": "Woe (odd)",
+							"entry": "Chaque fois qu'une créature que vous pouvez voir à moins de 30 pieds de vous fait un jet d'attaque, un jet de sauvegarde ou un test de capacité, vous pouvez utiliser votre réaction pour lancer un {@dice d6} et soustraire le nombre obtenu du total."
+						}
+					]
+				},
+				"Vous pouvez utiliser cette réaction un nombre de fois égal à votre modificateur de sagesse, et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Full of Stars",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of the Stars feature}",
+				"Lorsque votre caractéristique Forme étoilée est active, vous devenez partiellement incorporelle, ce qui vous confère une résistance aux dégâts de matraquage, de perçage et de coupure."
+			]
+		},
+		{
+			"name": "Star Flare",
+			"source": "UA2020SubclassesPt3",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars (UA)",
+			"subclassSource": "UA2020SubclassesPt3",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of the Stars feature}",
+				"Votre connexion avec le cosmos vous permet de conjurer une lumière stellaire brillante. En tant qu'action, vous conjurez un éclat de lumière dans une sphère de 30 pieds de rayon centrée sur un point que vous pouvez voir dans un rayon de 120 pieds autour de vous. Vous pouvez immédiatement téléporter chaque créature volontaire dans la sphère vers un espace inoccupé dans un rayon de 30 pieds. Chaque créature restant dans la sphère doit réussir un jet de sauvegarde de Constitution contre le DC de sauvegarde de votre sort ou subir {@damage 4d10} de dégâts radiants et être {@condition blinded} jusqu'à la fin de votre prochain tour.",
+				"Une fois que vous avez utilisé cette action, vous ne pouvez plus l'utiliser jusqu'à la fin d'un long repos ou jusqu'à ce que vous dépensiez un emplacement de sort de 5e niveau ou plus pour l'utiliser à nouveau."
+			]
+		},
+		{
+			"name": "Circle of the Primeval",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"entries": [
+				"Le Cercle du Primitif enseigne que, même si la terre change avec le temps, elle n'oublie jamais vraiment. En puisant dans la mémoire séculaire de la terre, ces druides invoquent et se lient à l'esprit d'un béhémoth primitif, une créature imposante qui régnait autrefois sur le monde antique aux côtés des géants. Les béhémoths primitifs les plus connus sont les dinosaures, mais les esprits liés aux membres du Cercle du Primitif ont également pris la forme d'anciens prédécesseurs des bêtes communes d'aujourd'hui et d'autres créatures titanesques fantastiques.",
+				"Travaillant aux côtés de leur esprit compagnon, la plupart des druides du Cercle du Primitif passent leur vie à fouiller des lieux oubliés depuis longtemps et à préserver les vestiges d'époques révolues. Au fur et à mesure que la puissance d'un druide augmente, son compagnon fait de même, la bête commençant par être de taille presque égale à celle de son partenaire druide avant d'augmenter en stature jusqu'à ce qu'elle domine elle aussi la terre.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Keeper of Old|Druid||Primeval (UA)|UA2022GiantOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Primeval Companion|Druid||Primeval (UA)|UA2022GiantOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Keeper of Old",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Circle of the Primeval Feature}",
+				"Votre lien avec les puissants béhémoths primitifs vous permet d'avoir une nouvelle vision du monde ancien. Vous gagnez la compétence {@skill History}. Lorsque vous effectuez un test d'Intelligence ({@skill History}), vous pouvez lancer un {@dice d4} et ajouter le nombre obtenu au test de capacité."
+			]
+		},
+		{
+			"name": "Primeval Companion",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-Level Circle of the Primeval Feature}",
+				"À partir du moment où vous choisissez ce cercle, vous pouvez faire appel à la créature primitive dont l'esprit est lié à vous. En tant qu'action, vous pouvez dépenser une utilisation de votre caractéristique Forme sauvage pour invoquer votre compagnon primitif, plutôt que de prendre une forme bestiale. Le compagnon apparaît dans un espace inoccupé de votre choix dans un rayon de 30 pieds autour de vous.",
+				"Le compagnon primitif est amical envers vous et vos compagnons, et il obéit à vos ordres. Consultez les statistiques de jeu de cette créature dans le bloc de stat {@creature Primeval Companion|UA2022GiantOptions}, qui utilise votre bonus de compétence (PB) à plusieurs endroits. Vous pouvez déterminer l'apparence cosmétique du compagnon ; par exemple, votre compagnon peut évoquer d'anciens prédateurs comme des raptors ou des tigres à dents de sabre, ou il peut être plus enclin à la défense, apparaissant comme un ankylosaure blindé ou un rhinocéros laineux. Ces choix n'ont aucun effet sur les statistiques de jeu du compagnon.",
+				"En combat, le compagnon partage votre compte d'initiative, mais il prend son tour immédiatement après le vôtre. Il peut se déplacer et utiliser sa réaction à sa guise, mais la seule action qu'il entreprend à son tour est l'action {@action Dodge}, à moins que vous ne preniez une action bonus à votre tour pour lui ordonner d'entreprendre une autre action. Cette action peut être une action de son bloc de statistiques ou une autre action. Si vous êtes {@condition incapacitated}, le compagnon peut effectuer n'importe quelle action de son choix, et pas seulement {@action Dodge}.",
+				"Le compagnon reste jusqu'à ce qu'il soit réduit à 0 point de vie ou jusqu'à votre mort, auquel cas il disparaît. Si vous utilisez cette caractéristique pour invoquer à nouveau le compagnon et que vous avez déjà un compagnon présent, le premier compagnon disparaît immédiatement. Tout ce que le compagnon portait ou transportait est laissé derrière lui lorsque le compagnon disparaît."
+			]
+		},
+		{
+			"name": "Prehistoric Conduit",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Circle of the Primeval Feature}",
+				"Vous apprenez à canaliser votre magie à travers votre compagnon primitif. Lorsque vous lancez un sort dont la portée est autre que vous-même, le sort peut provenir de vous ou de votre compagnon primitif.",
+				"De plus, si le compagnon primitif est affecté par un sort que vous lancez et qui permet aux créatures de faire un jet de sauvegarde contre ses effets, le compagnon primitif a l'avantage sur son jet de sauvegarde. Si le compagnon primitif subit normalement la moitié des dégâts en cas de sauvegarde réussie contre ce sort, il ne subit aucun dégât en cas de sauvegarde réussie et la moitié des dégâts sans effets supplémentaires en cas d'échec."
+			]
+		},
+		{
+			"name": "Titanic Bond",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Circle of the Primeval Feature}",
+				"Le compagnon primitif devient de grande taille, et lorsque vous l'invoquez, vous pouvez lui accorder soit une vitesse d'escalade, soit une vitesse de nage égale à sa vitesse de marche.",
+				"En retour, le compagnon primitif vous prête une partie de sa puissance terrifiante. Une fois par tour pendant que votre compagnon primitif est invoqué, lorsque vous touchez une créature avec une attaque ou que vous infligez des dégâts à une créature que vous pouvez voir avec un sort que vous lancez, vous pouvez forcer cette créature à faire un jet de sauvegarde de Sagesse contre le DC de sauvegarde de votre sort ; en cas d'échec, la créature est {@condition frightened} de vous jusqu'à la fin de votre prochain tour."
+			]
+		},
+		{
+			"name": "Scourge of the Ancients",
+			"source": "UA2022GiantOptions",
+			"page": 3,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Primeval (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Circle of the Primeval Feature}",
+				"Vous avez appris à exploiter pleinement l'héritage titanesque de votre compagnon. Dans le cadre de l'action bonus que vous utilisez pour commander votre compagnon, vous pouvez dépenser un emplacement de sort de n'importe quel niveau pour augmenter la puissance de votre compagnon primitif, lui accordant les avantages suivants :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Hulking Behemoth",
+							"entries": [
+								"Le compagnon devient Énorme et gagne des points de vie temporaires égaux à 10 fois le niveau de l'emplacement de sort dépensé. S'il n'y a pas assez de place pour que le compagnon devienne Énorme, il atteint la taille maximale possible dans l'espace disponible."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Mauler",
+							"entries": [
+								"En cas de succès, la frappe du compagnon inflige des dégâts supplémentaires égaux à {@dice 1d8} plus le niveau de l'emplacement de sort dépensé."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Titanic Stride",
+							"entries": [
+								"La vitesse de marche du compagnon augmente d'un nombre de pieds égal à 5 fois le niveau de l'emplacement de sort dépensé."
+							]
+						}
+					]
+				},
+				"Ces avantages durent 1 heure, jusqu'à ce que le compagnon disparaisse, ou jusqu'à ce que vous dépensiez à nouveau un emplacement de sort pour cette caractéristique."
+			]
+		},
+		{
+			"name": "Circle of Wildfire",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 2,
+			"entries": [
+				"Les druides qui sont membres du Cercle du Feu Sauvage comprennent la nécessité de la destruction, comme un feu de forêt qui favorise la croissance. Ces druides se lient à un esprit primitif qui a des tendances destructives, ce qui leur permet d'utiliser leur pouvoir pour créer des flammes contrôlées qui aident la flore et la faune à se reproduire et à se développer.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Wildfire (UA)|UAClericDruidWizard|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Summon Wildfire|Druid||Wildfire (UA)|UAClericDruidWizard|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"Vous avez formé un lien mystique avec un esprit des feux de forêt, un être primitif de création et de destruction. Votre lien avec cet esprit vous donne accès à certains sorts. Au 2e niveau, vous apprenez le cantrip de l'éclair de feu.",
+				"Lorsque vous atteignez certains niveaux dans cette classe, vous gagnez l'accès aux sorts listés pour ce niveau dans la table des sorts du Cercle du feu sauvage. Une fois que vous avez accès à l'un de ces sorts, vous l'avez toujours préparé, et il ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous avez accès à un sort qui ne figure pas dans la liste des sorts de druide, ce sort est néanmoins un sort de druide pour vous.",
+				{
+					"type": "table",
+					"caption": "Circle of Wildfire Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell locate animals or plants}, {@spell scorching ray}"
+						],
+						[
+							"5th",
+							"{@spell fireball}, {@spell plant growth}"
+						],
+						[
+							"7th",
+							"{@spell aura of life}, {@spell fire shield}"
+						],
+						[
+							"9th",
+							"{@spell flame strike}, {@spell raise dead}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Summon Wildfire",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 2,
+			"header": 1,
+			"consumes": {
+				"name": "Wild Shape"
+			},
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"Vous pouvez invoquer l'esprit primitif lié à votre âme. En tant qu'action, vous pouvez dépenser une utilisation de votre caractéristique Forme sauvage pour invoquer votre {@creature wildfire spirit|UAClericDruidWizard}, plutôt que de prendre une forme bestiale.",
+				"L'esprit apparaît dans un espace inoccupé de votre choix que vous pouvez voir dans un rayon de 30 pieds autour de vous. Chaque créature située dans un rayon de 3 mètres de l'esprit (autre que vous) lorsqu'il apparaît doit réussir un jet de sauvegarde de Dextérité contre votre DC de sauvegarde contre les sorts ou subir {@damage 2d10} de dégâts de feu.",
+				"L'esprit du feu grégeois est amical envers vous et vos compagnons et obéit à vos ordres. Consultez les statistiques de jeu de cette créature dans le bloc de statistiques de l'esprit des feux de forêt. Vous déterminez l'apparence de l'esprit. Certains esprits prennent la forme d'une figure humanoïde faite de branches noueuses couvertes de flammes, tandis que d'autres ressemblent à des bêtes enveloppées de feu.",
+				"En combat, l'esprit du feu grégeois partage votre compte d'initiative, mais il prend son tour immédiatement après le vôtre. La seule action qu'il effectue à son tour est l'action {@action Dodge}, à moins que vous ne preniez une action bonus à votre tour pour lui ordonner d'effectuer l'une des actions de son bloc de statistiques ou d'effectuer l'action {@action Dash}, {@action Disengage}, {@action Help} ou {@action Hide}.",
+				"L'esprit de feu grégeois se manifeste pendant 1 heure, jusqu'à ce qu'il soit réduit à 0 point de vie, ou jusqu'à ce que vous utilisiez à nouveau votre Forme sauvage."
+			]
+		},
+		{
+			"name": "Enhanced Bond",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of Wildfire feature}",
+				"Le lien avec votre esprit feu grégeois améliore vos sorts destructeurs et réparateurs. Chaque fois que vous lancez un sort qui inflige des dégâts de feu ou restaure des points de vie pendant que votre esprit des feux de forêt est invoqué, lancez un {@dice d8}, et vous gagnez un bonus à un jet du sort égal au nombre obtenu. De plus, lorsque vous lancez un sort dont la portée est autre que vous-même, le sort peut provenir de vous ou de votre esprit des feux follets."
+			]
+		},
+		{
+			"name": "Flames of Life",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of Wildfire feature}",
+				"Vous gagnez la capacité de transformer la mort en flammes de vitalité. Lorsqu'une créature de petite taille ou de taille supérieure que vous pouvez voir meurt à moins de 30 pieds de vous ou de votre esprit feu grégeois, vous pouvez utiliser votre réaction pour faire jaillir des flammes primitives de son corps. Lorsqu'une créature que vous pouvez voir touche ces flammes, elle regagne des points de vie ou subit des dégâts de feu (à votre choix) égaux à {@dice 2d10} + votre modificateur de sagesse. Les flammes disparaissent après qu'une créature les ait touchées ou après 1 minute. Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de Sagesse (au minimum une fois). Vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Blazing Endurance",
+			"source": "UAClericDruidWizard",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire (UA)",
+			"subclassSource": "UAClericDruidWizard",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of Wildfire feature}",
+				"Le lien avec votre esprit de feu grégeois est exceptionnellement fort, même les coups fatals ne font qu'alimenter votre défiance. Si vous tombez à 0 point de vie et ne mourez pas tout de suite, vous tombez à 1 point de vie à la place et gagnez des points de vie temporaires égaux à cinq fois votre niveau de druide, et chaque créature de votre choix dans un rayon de 30 pieds de vous que vous pouvez voir subit des dégâts de feu égaux à {@dice 2d10} + votre niveau de druide.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Circle of Dreams",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"entries": [
+				"Les druides qui sont membres du Cercle des Rêves viennent de régions qui ont des liens étroits avec le Feywild. Le fait que les druides soient les gardiens du monde naturel crée une alliance naturelle entre eux et les feys d'alignement bon. Ces druides cherchent à remplir le monde de joie et de lumière. Leur magie répare les blessures et apporte la joie aux cœurs abattus, et les royaumes qu'ils protègent sont des endroits brillants et fructueux.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Balm of the Summer Court|Druid||Dreams (UA)|UADruid|2"
+				}
+			]
+		},
+		{
+			"name": "Balm of the Summer Court",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Au 2ème niveau, vous êtes imprégné des bénédictions de la Cour d'été. Vous êtes une source d'énergie qui soulage les pieds fatigués et apporte un répit aux blessures. Vous disposez d'une réserve d'énergie féerique représentée par un nombre de {@dice d6}s égal à votre niveau de druide.",
+				"Comme action bonus, vous pouvez choisir un allié que vous pouvez voir dans un rayon de 120 pieds de vous et dépenser un nombre de ces dés égal à la moitié de votre niveau de druide ou moins. Lancez les dés dépensés et additionnez-les. La cible regagne un nombre de points de vie égal au total. La cible gagne également 1 point de vie temporaire par dé dépensé, et sa vitesse augmente de 5 pieds par dé dépensé. L'augmentation de la vitesse dure 1 minute.",
+				"Vous récupérez les dés dépensés lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Hearth of Moonlight and Shadow",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, votre foyer est l'endroit où vous établissez votre camp. Pendant un repos court ou long, vous pouvez invoquer le pouvoir de l'ombre de la Cour lumineuse pour protéger votre campement des intrus. Au début du repos, vous créez une zone d'un rayon de 30 pieds. Dans cette zone, vous et vos alliés bénéficiez d'un bonus de +5 aux tests de Sagesse ({@skill Perception}) pour détecter les créatures, et toute lumière provenant de flammes nues (feu de camp, torches et autres) n'est pas visible en dehors de la zone. Ces effets prennent fin lorsque le repos se termine ou lorsque vous quittez la zone."
+			]
+		},
+		{
+			"name": "Hidden Paths",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous pouvez utiliser les voies magiques cachées et imprévisibles que certains fey utilisent pour traverser l'espace en un clin d'œil. À votre tour, vous pouvez vous téléporter jusqu'à 30 pieds vers un endroit que vous pouvez voir. Chaque pied de cette téléportation coûte 1 pied de votre mouvement.",
+				"Vous pouvez également utiliser cette caractéristique pour téléporter quelqu'un d'autre. En tant qu'action, vous pouvez téléporter un allié volontaire que vous touchez jusqu'à 30 pieds vers un point que vous pouvez voir.",
+				"Une fois que vous avez utilisé l'une ou l'autre des options (téléportation de vous-même ou d'un allié), vous ne pouvez plus l'utiliser avant que {@dice 1d4} des rounds se soient écoulés."
+			]
+		},
+		{
+			"name": "Purifying Light",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams (UA)",
+			"subclassSource": "UADruid",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, la faveur de la Cour d'été vous permet de mettre fin aux sorts qui vous gênent, vous et vos alliés. Lorsque vous lancez un sort avec un emplacement de sort et qu'il restaure des points de vie à vous ou à un allié ce tour-ci, vous pouvez simultanément cibler la créature guérie avec dissipation de la magie, en utilisant un emplacement de sort d'un niveau égal à l'emplacement utilisé pour lancer le sort de guérison.",
+				"Vous pouvez utiliser cette caractéristique trois fois, et vous récupérez les utilisations dépensées lorsque vous terminez un long repos. Si le sort de guérison cible plus d'une créature, vous pouvez utiliser cette caractéristique sur plus d'une créature en même temps, en dépensant une utilisation de cette caractéristique par créature."
+			]
+		},
+		{
+			"name": "Circle of the Shepherd",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"entries": [
+				"Les druides du cercle du berger communient avec les esprits des bêtes. Bien que ces druides reconnaissent que tous les êtres vivants jouent un rôle dans le monde naturel, ils se concentrent sur la protection des animaux. Les bergers, comme on les appelle, considèrent les bêtes comme leurs protégés. Ils éloignent les monstres qui menacent les créatures naturelles, réprimandent les chasseurs qui tuent plus de proies que nécessaire, et empêchent la civilisation d'empiéter sur les habitats et les chemins nécessaires aux migrations des animaux. Beaucoup de ces druides sont plus heureux loin des villes et des villages, heureux de passer leurs journées en compagnie des animaux sauvages.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spirit Bond|Druid||Shepherd (UA)|UADruid|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Beast Speech|Druid||Shepherd (UA)|UADruid|2"
+				}
+			]
+		},
+		{
+			"name": "Beast Speech",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Au 2ème niveau, vous gagnez la capacité de converser avec les bêtes. Les bêtes peuvent comprendre votre discours, et vous gagnez la capacité de déchiffrer leurs bruits et leurs mouvements en mots et phrases reconnaissables. La plupart des bêtes n'ont pas l'intelligence nécessaire pour transmettre ou comprendre des concepts sophistiqués, mais une bête amicale peut transmettre ce qu'elle a vu ou entendu dans un passé récent.",
+				"Cette capacité ne vous accorde aucune amitié particulière avec les bêtes, mais vous pouvez la combiner avec des cadeaux et d'autres faveurs pour vous attirer leurs faveurs comme vous le feriez avec n'importe quel autre personnage non joueur."
+			]
+		},
+		{
+			"name": "Spirit Bond",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"À partir du 2e niveau, vous gagnez la capacité d'invoquer les esprits des animaux et de les utiliser pour influencer le monde qui vous entoure. Comme action bonus, vous invoquez magiquement un esprit moyen dans un espace inoccupé que vous pouvez voir dans un rayon de 60 pieds autour de vous. L'esprit crée une aura dans un rayon de 30 pieds autour de lui, il n'occupe pas son espace, il est immobile, et il ne compte ni comme une créature ni comme un objet.",
+				"L'esprit persiste pendant 1 minute. Une fois que vous utilisez cette caractéristique, vous ne pouvez plus l'utiliser jusqu'à ce que vous terminiez un repos court ou long.",
+				"La nature de l'aura dépend du type d'esprit que vous choisissez d'invoquer parmi les options ci-dessous.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Bear",
+							"entries": [
+								"L'esprit de l'ours vous accorde, ainsi qu'à vos alliés, sa puissance et son endurance. Vous et vos alliés qui sont dans l'aura lorsque l'esprit apparaît gagnent chacun des points de vie temporaires égaux à 5 + votre niveau de druide. De plus, vous et vos alliés gagnez un avantage sur les tests de Force et les jets de sauvegarde de Force tant que vous êtes dans l'aura."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Hawk",
+							"entries": [
+								"L'esprit faucon est un chasseur accompli, qui marque vos ennemis de sa vue perçante. Vous et vos alliés gagnez un avantage sur les jets d'attaque à distance contre les cibles situées dans l'aura de l'esprit."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Wolf",
+							"entries": [
+								"L'esprit du loup vous prête, à vous et à vos alliés, ses sens précis, tandis que votre magie fonctionne au profit des membres de votre meute. Vous et vos alliés gagnez un avantage sur tous les tests de capacité effectués pour détecter les créatures dans l'aura de l'esprit. De plus, si vous lancez un sort avec un emplacement de sort qui redonne des points de vie à toute personne à l'intérieur ou à l'extérieur de l'aura, chacun de vos alliés dans l'aura regagne également des points de vie égaux à votre niveau de druide."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mighty Summoner",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité de conjurer de puissants animaux. Toute bête invoquée ou créée par vos sorts gagne deux avantages. Son maximum de points de vie augmente de 2 par dé de toucher, et les dégâts de ses armes naturelles sont considérés comme magiques pour surmonter l'immunité et la résistance aux attaques et dégâts non magiques."
+			]
+		},
+		{
+			"name": "Guardian Spirit",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10ème niveau, vous gagnez les services d'un esprit qui veille sur vous et vous protège du mal. Chaque fois que vous terminez un long repos, vous gagnez les bénéfices d'un sort {@spell death ward}. La durée du sort est portée à 24 heures."
+			]
+		},
+		{
+			"name": "Faithful Summons",
+			"source": "UADruid",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd (UA)",
+			"subclassSource": "UADruid",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, les esprits bestiaux avec lesquels vous communiez vous protègent lorsque vous êtes vulnérable. Si vous êtes réduit à 0 point de vie ou êtes {@condition incapacitated} contre votre volonté, vous pouvez immédiatement bénéficier des avantages de {@spell conjure animals} comme s'il avait été lancé avec un emplacement de sort de 9e niveau. Il convoque quatre bêtes de votre choix dont le niveau de défi est inférieur ou égal à 2. Les bêtes conjurées apparaissent dans un rayon de 6 mètres autour de vous. Si elles ne reçoivent pas d'ordres de votre part, elles vous protègent contre le mal et attaquent vos ennemis. Ce sort dure 1 heure.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Circle of Twilight",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"entries": [
+				"Le Cercle du Crépuscule cherche à exterminer les créatures mortes-vivantes et à préserver le cycle naturel de vie et de mort qui règne sur le cosmos. Leur magie leur permet de manipuler la frontière entre la vie et la mort, envoyant leurs ennemis à leur dernier repos tout en préservant leurs alliés de ce destin.",
+				"Ces druides cherchent des terres qui ont été souillées par la mort. Ces endroits sont sinistres et inquiétants. Des forêts autrefois pleines de vie deviennent des lieux lugubres et hantés, dépourvus d'animaux et remplis de plantes qui meurent lentement et lentement. Le Cercle du Crépuscule se rend dans ces endroits pour bannir la mort et restaurer la vie.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Harvest's Scythe|Druid||Twilight (UA)|UADruid|2"
+				}
+			]
+		},
+		{
+			"name": "Harvest's Scythe",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"À partir du 2e niveau, vous apprenez à démêler et à récolter l'énergie vitale d'autres créatures. Vous pouvez augmenter vos sorts pour drainer la force vitale des créatures. Vous disposez d'une réserve d'énergie représentée par un nombre de {@dice d10}s égal à votre niveau de druide.",
+				"Lorsque vous effectuez un jet de dégâts pour un sort, vous pouvez augmenter ces dégâts en dépensant des dés de la réserve. Vous pouvez dépenser un nombre de dés égal à la moitié de votre niveau de druide ou moins. Lancez les dés dépensés et ajoutez-les aux dégâts en tant que dégâts nécrotiques. Si vous tuez une ou plusieurs créatures hostiles avec un sort augmenté de cette façon, vous ou un allié de votre choix que vous pouvez voir dans un rayon de 30 pieds autour de vous regagnez 2 points de vie par dé dépensé pour augmenter les dégâts du sort, ou 5 points de vie par dé si au moins une des créatures tuées était morte-vivante.",
+				"Vous récupérez les dés dépensés lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Speech Beyond the Grave",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité d'aller au-delà du voile de la mort à la recherche de la connaissance. En utilisant cette caractéristique, vous pouvez lancer {@spell speak with dead} sans composants matériels, et vous comprenez ce que dit la cible de ce lancer. Elle peut comprendre vos questions, même si vous ne partagez pas de langue ou si elle n'est pas assez intelligente pour parler.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Watcher at the Threshold",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous gagnez une résistance aux dégâts nécrotiques et radiants. De plus, tant que vous n'êtes pas {@condition incapacitated}, tout allié situé à moins de 30 pieds de vous bénéficie d'un avantage aux jets de sauvegarde contre la mort."
+			]
+		},
+		{
+			"name": "Paths of the Dead",
+			"source": "UADruid",
+			"page": 2,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Twilight (UA)",
+			"subclassSource": "UADruid",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, votre maîtrise de la mort vous permet de fouler les sentiers empruntés par les fantômes et autres esprits. En utilisant cette caractéristique, vous pouvez lancer {@spell etherealness}. Une fois le sort terminé, vous ne pouvez plus le lancer avec cette caractéristique jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Circle of the Shepherd v2",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 2,
+			"entries": [
+				"Les druides du cercle du berger communient avec les esprits de la nature, en particulier les esprits des bêtes et des feys, et appellent ces esprits à l'aide. Ces druides reconnaissent que tous les êtres vivants jouent un rôle dans le monde naturel, mais ils se concentrent sur la protection des animaux et des créatures féeriques qui ont des difficultés à se défendre. Les bergers, comme on les appelle, considèrent ces créatures comme leurs protégés. Ils éloignent les monstres qui les menacent, réprimandent les chasseurs qui tuent plus de proies que nécessaire et empêchent la civilisation d'empiéter sur les habitats d'animaux rares et sur les sites sacrés pour les feys. Beaucoup de ces druides sont plus heureux loin des villes et des villages, heureux de passer leurs journées en compagnie des animaux et des créatures féeriques de la nature.",
+				"Les membres de ce cercle deviennent des aventuriers pour s'opposer aux forces qui menacent leurs protégés ou pour rechercher des connaissances et des pouvoirs qui les aideront à mieux protéger leurs protégés. Partout où vont ces druides, les esprits de la nature sauvage les accompagnent.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Speech of the Woods|Druid||Shepherd v2 (UA)|UARevisedClassOptions|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spirit Totem|Druid||Shepherd v2 (UA)|UARevisedClassOptions|2"
+				}
+			]
+		},
+		{
+			"name": "Speech of the Woods",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Au 2ème niveau, vous gagnez la capacité de converser avec les bêtes et de nombreux fey.",
+				"Vous apprenez à parler, lire et écrire {@language Sylvan}. De plus, les bêtes peuvent comprendre votre discours, et vous gagnez la capacité de déchiffrer leurs bruits et leurs mouvements. La plupart des bêtes n'ont pas l'intelligence nécessaire pour transmettre ou comprendre des concepts sophistiqués, mais une bête amie pourrait relayer ce qu'elle a vu ou entendu dans un passé récent. Cette capacité ne vous confère aucune amitié particulière avec les bêtes, mais vous pouvez la combiner avec des dons pour vous attirer leurs faveurs comme vous le feriez avec n'importe quel personnage non joueur."
+			]
+		},
+		{
+			"name": "Spirit Totem",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"À partir du 2e niveau, vous gagnez la capacité d'invoquer les esprits de la nature et de les utiliser pour influencer le monde qui vous entoure. Comme action bonus, vous pouvez invoquer magiquement un esprit incorporel à un point que vous pouvez voir dans un rayon de 60 pieds autour de vous. L'esprit crée une aura dans un rayon de 30 pieds autour de ce point. Il ne compte ni comme une créature ni comme un objet, mais il a l'apparence spectrale de la créature qu'il représente.",
+				"Comme action bonus, vous pouvez déplacer l'esprit jusqu'à 60 pieds vers un point que vous pouvez voir.",
+				"L'esprit persiste pendant 1 minute. Une fois que vous utilisez cette caractéristique, vous ne pouvez plus l'utiliser jusqu'à ce que vous terminiez un repos court ou long.",
+				"L'effet de l'aura de l'esprit dépend du type d'esprit que vous invoquez parmi les options ci-dessous.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Bear Spirit",
+							"entries": [
+								"L'esprit de l'ours vous accorde, ainsi qu'à vos alliés, sa puissance et son endurance. Chaque créature de votre choix se trouvant dans l'aura lorsque l'esprit apparaît gagne des points de vie temporaires égaux à 5 + votre niveau de druide. De plus, vous et vos alliés gagnez un avantage sur les tests de Force et les jets de sauvegarde de Force tant que vous êtes dans l'aura."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Hawk Spirit",
+							"entries": [
+								"L'esprit faucon est un chasseur accompli, qui marque vos ennemis de sa vue perçante. Lorsqu'une créature effectue un jet d'attaque contre une cible située dans l'aura de l'esprit, vous pouvez utiliser votre réaction pour accorder un avantage à ce jet d'attaque."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Unicorn Spirit",
+							"entries": [
+								"L'esprit de la licorne prête sa protection à ceux qui se trouvent à proximité. Vous et vos alliés gagnez un avantage sur tous les tests de capacité effectués pour détecter les créatures dans l'aura de l'esprit. De plus, si vous lancez un sort avec un emplacement de sort qui redonne des points de vie à toute personne à l'intérieur ou à l'extérieur de l'aura, chaque créature de votre choix dans l'aura regagne également des points de vie égaux à votre niveau de druide."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mighty Summoner",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité de conjurer des bêtes et des feys puissants. Toute bête ou fey invoquée ou créée par vos sorts gagne deux avantages :",
+				{
+					"type": "list",
+					"items": [
+						"La créature apparaît avec plus de points de vie que la normale : 2 points de vie supplémentaires par dé de vie qu'elle possède.",
+						"Les dommages causés par ses armes naturelles sont considérés comme magiques afin de surmonter l'immunité et la résistance aux attaques et aux dommages non magiques."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guardian Spirit",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, votre Totem d'esprit protège les bêtes et les feys que vous invoquez avec votre magie. Lorsqu'une bête ou une fey que vous avez invoquée ou créée avec un sort termine son tour dans votre aura de Totem Spirituel, cette créature regagne un nombre de points de vie égal à la moitié de votre niveau de druide."
+			]
+		},
+		{
+			"name": "Faithful Summons",
+			"source": "UARevisedClassOptions",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd v2 (UA)",
+			"subclassSource": "UARevisedClassOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, les esprits de la nature avec lesquels vous communiez vous protègent lorsque vous êtes le plus sans défense. Si vous êtes réduit à 0 point de vie ou êtes {@condition incapacitated} contre votre volonté, vous pouvez immédiatement bénéficier des avantages de {@spell conjure animals} comme s'il était lancé avec un emplacement de sort de 9e niveau. Il convoque quatre bêtes de votre choix dont le niveau de défi est inférieur ou égal à 2. Les bêtes conjurées apparaissent dans un rayon de 6 mètres autour de vous. Si elles ne reçoivent pas d'ordres de votre part, elles vous protègent contre le mal et attaquent vos ennemis. Le sort dure 1 heure, sans nécessiter de concentration, ou jusqu'à ce que vous l'annuliez (aucune action requise).",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Circle of Spores (UA)",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 2,
+			"entries": [
+				"Les druides du Cercle des Spores trouvent la beauté dans la décomposition. Ils voient dans les moisissures et autres champignons la capacité de transformer une matière sans vie en une vie abondante, bien que quelque peu étrange. Ces druides croient que la vie et la mort sont des parties d'un grand cycle, l'une menant à l'autre et puis à nouveau. La mort n'est pas la fin de la vie, mais plutôt un changement d'état qui voit la vie prendre une nouvelle forme. Les druides de ce cercle ont une relation complexe avec les morts-vivants. Contrairement à la plupart des autres druides, ils ne voient rien de mal en soi à la mort-vivante, qu'ils considèrent comme un compagnon de vie et de mort. Cependant, ces druides pensent que le cycle naturel est plus sain lorsque chaque segment est vivant et changeant. Les morts-vivants qui cherchent à remplacer toute vie par la non-mort, ou à éviter de passer à un repos final, violent le cycle et doivent être contrecarrés.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Spores (UA)|UAThreeSubclasses|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Halo of Spores|Druid||Spores (UA)|UAThreeSubclasses|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Symbiotic Entity|Druid||Spores (UA)|UAThreeSubclasses|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Votre lien symbiotique avec le champignon et votre capacité à puiser dans le cycle de la vie et de la mort vous donnent accès à certains sorts. Au 1er niveau, vous apprenez le cantrip {@spell chill touch}. Aux 3e, 5e, 7e et 9e niveaux, vous avez accès aux sorts listés pour ce niveau dans la table des sorts du Cercle des spores.",
+				"Une fois que vous avez accès à l'un de ces sorts, vous l'avez toujours préparé, et il ne compte pas dans le nombre de sorts que vous pouvez préparer chaque jour. Si vous avez accès à un sort qui ne figure pas dans la liste des sorts de druide, ce sort est néanmoins un sort de druide pour vous.",
+				{
+					"type": "table",
+					"caption": "Circle of Spores Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell gentle repose}, {@spell ray of enfeeblement}"
+						],
+						[
+							"5th",
+							"{@spell animate dead}, {@spell gaseous form}"
+						],
+						[
+							"7th",
+							"{@spell blight}, {@spell confusion}"
+						],
+						[
+							"9th",
+							"{@spell cloudkill}, {@spell contagion}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Halo of Spores",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"À partir du 2e niveau, vous pouvez lancer des spores toxiques sur d'autres créatures. Pour ce faire, vous utilisez votre réaction à votre tour pour infliger 3 dégâts de poison à une créature que vous pouvez voir dans un rayon de 3 mètres autour de vous. Ces dégâts passent à 6 au 6e niveau, 9 au 10e niveau et 12 au 14e."
+			]
+		},
+		{
+			"name": "Symbiotic Entity",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Au 2ème niveau, vous gagnez la capacité de canaliser la magie dans les spores qui vous infusent.",
+				"Lorsque vous utilisez votre caractéristique Forme sauvage, vous pouvez réveiller ces spores, plutôt que de vous transformer. Dans ce cas, vous gagnez 3 points de vie temporaires par niveau de cette classe, les dégâts de votre caractéristique Halo de spores doublent, et vos attaques de mêlée infligent {@damage 1d6} de dégâts de poison supplémentaires à toute cible qu'elles touchent. Ces avantages durent 10 minutes ou jusqu'à ce que vous utilisiez à nouveau votre forme sauvage."
+			]
+		},
+		{
+			"name": "Fungal Infestation",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vos spores gagnent la capacité d'infester un cadavre humanoïde et de l'animer.",
+				"Si vous tuez un humanoïde avec vos dégâts de Halo of Spores, la créature se relève sous la forme d'un {@creature zombie} à la fin de votre tour. Elle a 1 point de vie. En combat, son tour est immédiatement après le vôtre. Elle obéit à vos ordres mentaux, et la seule action qu'elle peut entreprendre est l'action {@action Attack}, effectuant une attaque de mêlée. Il reste animé pendant 1 heure, après quoi il s'effondre et meurt."
+			]
+		},
+		{
+			"name": "Spreading Spores",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Au 10e niveau, vous gagnez la capacité de semer une zone avec des spores mortelles. Comme action bonus, vous lancez des spores fongiques jusqu'à 30 pieds de distance, où elles tourbillonnent dans un cube de 3 mètres pendant 1 minute. Tant que le cube de spores persiste, vous ne pouvez pas utiliser votre caractéristique Halo de spores, mais toute créature qui commence son tour dans le cube subit les dégâts de votre Halo de spores. Le cube de spores disparaît prématurément si vous utilisez à nouveau cette caractéristique."
+			]
+		},
+		{
+			"name": "Fungal Body",
+			"source": "UAThreeSubclasses",
+			"page": 1,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores (UA)",
+			"subclassSource": "UAThreeSubclasses",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, les spores fongiques présentes dans votre corps vous altèrent : vous ne pouvez pas être {@condition blinded}, {@condition deafened}, {@condition frightened}, ou {@condition poisoned}, et si une attaque est un coup critique contre vous, elle ne vous inflige pas ses dégâts supplémentaires."
+			]
+		},
+		{
+			"name": "Circle of Dreams",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 2,
+			"entries": [
+				"Les druides membres du Cercle des Rêves viennent de régions qui ont des liens étroits avec le Feywild et ses royaumes oniriques. Le fait que les druides soient les gardiens du monde naturel crée une alliance naturelle entre eux et les feys d'alignement bon. Ces druides cherchent à remplir le monde de merveilles oniriques. Leur magie répare les blessures et apporte la joie aux cœurs abattus, et les royaumes qu'ils protègent sont des endroits brillants et fructueux, où le rêve et la réalité se confondent et où les personnes fatiguées peuvent trouver le repos.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Balm of the Summer Court|Druid||Dreams|XGE|2"
+				}
+			]
+		},
+		{
+			"name": "Balm of the Summer Court",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Au 2ème niveau, vous êtes imprégné des bénédictions de la Cour d'été. Vous êtes une source d'énergie qui offre un répit aux blessures. Vous disposez d'une réserve d'énergie féerique représentée par un nombre de {@dice d6}s égal à votre niveau de druide.",
+				"Comme action bonus, vous pouvez choisir une créature que vous pouvez voir dans un rayon de 120 pieds de vous et dépenser un nombre de ces dés égal à la moitié de votre niveau de druide ou moins. Lancez les dés dépensés et additionnez-les. La cible regagne un nombre de points de vie égal au total. La cible gagne également 1 point de vie temporaire par dé dépensé.",
+				"Vous regagnez tous les dés dépensés lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Hearth of Moonlight and Shadow",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, votre foyer peut être n'importe où. Lors d'un repos court ou long, vous pouvez invoquer le pouvoir de l'ombre de la Cour Glaçante pour vous aider à garder votre répit. Au début du repos, vous touchez un point dans l'espace, et une sphère invisible de magie de 30 pieds de rayon apparaît, centrée sur ce point. Une couverture totale bloque la sphère.",
+				"Tant que vous êtes dans la sphère, vous et vos alliés bénéficiez d'un bonus de +5 aux tests de Dextérité ({@skill Stealth}) et de Sagesse ({@skill Perception}), et toute lumière provenant de flammes ouvertes dans la sphère (un feu de camp, des torches ou autres) n'est pas visible à l'extérieur.",
+				"La sphère disparaît à la fin du repos ou lorsque vous quittez la sphère."
+			]
+		},
+		{
+			"name": "Hidden Paths",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"À partir du 10e niveau, vous pouvez utiliser les chemins magiques cachés que certains fey utilisent pour traverser l'espace en un clin d'œil. Comme action bonus à votre tour, vous pouvez vous téléporter jusqu'à 60 pieds dans un espace inoccupé que vous pouvez voir. Vous pouvez également utiliser votre action pour téléporter une créature volontaire que vous touchez jusqu'à 30 pieds vers un espace inoccupé que vous pouvez voir.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de sagesse (au moins une fois), et vous récupérez toutes les utilisations dépensées de cette caractéristique lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Walker in Dreams",
+			"source": "XGE",
+			"page": 22,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Dreams",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, la magie du Feywild vous donne la capacité de voyager mentalement ou physiquement dans les pays des rêves.",
+				"Lorsque vous terminez un court repos, vous pouvez lancer l'un des sorts suivants, sans dépenser de slot de sort ni nécessiter de composants matériels : {@spell dream} (avec vous comme messager), {@spell scrying}, ou {@spell teleportation circle}.",
+				"Cette utilisation de {@spell teleportation circle} est spéciale. Plutôt que d'ouvrir un portail vers un {@spell teleportation circle} permanent, elle ouvre un portail vers le dernier endroit où vous avez terminé un long repos sur votre plan d'existence actuel. Si vous n'avez pas pris un long repos sur votre plan actuel, le sort échoue mais n'est pas gaspillé.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Circle of the Shepherd",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 2,
+			"entries": [
+				"Les druides du cercle du berger communient avec les esprits de la nature, en particulier les esprits des bêtes et des feys, et appellent ces esprits à l'aide. Ces druides reconnaissent que tous les êtres vivants jouent un rôle dans le monde naturel, mais ils se concentrent sur la protection des animaux et des créatures féeriques qui ont des difficultés à se défendre. Les bergers, comme on les appelle, considèrent ces créatures comme leurs protégés. Ils éloignent les monstres qui les menacent, réprimandent les chasseurs qui tuent plus de proies que nécessaire et empêchent la civilisation d'empiéter sur les habitats d'animaux rares et sur les sites sacrés pour les feys. Beaucoup de ces druides sont plus heureux loin des villes et des villages, heureux de passer leurs journées en compagnie des animaux et des créatures féeriques de la nature.",
+				"Les membres de ce cercle deviennent des aventuriers pour s'opposer aux forces qui menacent leurs protégés ou pour rechercher des connaissances et des pouvoirs qui les aideront à mieux protéger leurs protégés. Partout où vont ces druides, les esprits de la nature sauvage les accompagnent.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Speech of the Woods|Druid||Shepherd|XGE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spirit Totem|Druid||Shepherd|XGE|2"
+				}
+			]
+		},
+		{
+			"name": "Speech of the Woods",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Au 2ème niveau, vous gagnez la capacité de converser avec les bêtes et de nombreux fey.",
+				"Vous apprenez à parler, lire et écrire {@language Sylvan}. De plus, les bêtes peuvent comprendre votre discours, et vous gagnez la capacité de déchiffrer leurs bruits et leurs mouvements. La plupart des bêtes n'ont pas l'intelligence nécessaire pour transmettre ou comprendre des concepts sophistiqués, mais une bête amie pourrait relayer ce qu'elle a vu ou entendu dans un passé récent. Cette capacité ne vous donne pas l'amitié des bêtes, mais vous pouvez la combiner avec des dons pour vous attirer leurs faveurs, comme vous le feriez avec n'importe quel personnage non joueur."
+			]
+		},
+		{
+			"name": "Spirit Totem",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"À partir du 2e niveau, vous pouvez invoquer les esprits de la nature pour influencer le monde qui vous entoure. Comme une action bonus, vous pouvez invoquer magiquement un esprit incorporel à un point que vous pouvez voir dans un rayon de 60 pieds de vous. L'esprit crée une aura dans un rayon de 30 pieds autour de ce point. Il ne compte ni comme une créature ni comme un objet, mais il a l'apparence spectrale de la créature qu'il représente.",
+				"Comme action bonus, vous pouvez déplacer l'esprit jusqu'à 60 pieds vers un point que vous pouvez voir.",
+				"L'esprit persiste pendant 1 minute ou jusqu'à ce que vous soyez {@condition incapacitated}. Une fois que vous utilisez cette caractéristique, vous ne pouvez plus l'utiliser jusqu'à ce que vous terminiez un repos court ou long.",
+				"L'effet de l'aura de l'esprit dépend du type d'esprit que vous invoquez parmi les options ci-dessous.",
+				{
+					"type": "entries",
+					"name": "Bear Spirit",
+					"entries": [
+						"L'esprit de l'ours vous accorde, ainsi qu'à vos alliés, sa puissance et son endurance. Chaque créature de votre choix se trouvant dans l'aura lorsque l'esprit apparaît gagne des points de vie temporaires égaux à 5 + votre niveau de druide. De plus, vous et vos alliés gagnez un avantage sur les tests de Force et les jets de sauvegarde de Force tant que vous êtes dans l'aura."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hawk Spirit",
+					"entries": [
+						"L'esprit faucon est un chasseur accompli, qui vous aide, vous et vos alliés, grâce à sa vue perçante. Lorsqu'une créature effectue un jet d'attaque contre une cible dans l'aura de l'esprit, vous pouvez utiliser votre réaction pour accorder un avantage à ce jet d'attaque. De plus, vous et vos alliés avez un avantage sur les tests de Sagesse ({@skill Perception}) tant que vous êtes dans l'aura."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Unicorn Spirit",
+					"entries": [
+						"L'esprit de la licorne prête sa protection à ceux qui se trouvent à proximité. Vous et vos alliés gagnez un avantage sur tous les tests de capacité effectués pour détecter les créatures dans l'aura de l'esprit. De plus, si vous lancez un sort utilisant un emplacement de sort qui redonne des points de vie à toute créature à l'intérieur ou à l'extérieur de l'aura, chaque créature de votre choix dans l'aura regagne également des points de vie égaux à votre niveau de druide."
+					]
+				}
+			]
+		},
+		{
+			"name": "Mighty Summoner",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, les bêtes et les fey que vous conjurez sont plus résistants que la normale. Toute bête ou fey invoquée ou créée par un sort que vous lancez gagne les avantages suivants :",
+				{
+					"type": "list",
+					"items": [
+						"La créature apparaît avec plus de points de vie que la normale : 2 points de vie supplémentaires par dé de vie qu'elle possède.",
+						"Les dommages causés par ses armes naturelles sont considérés comme magiques afin de surmonter l'immunité et la résistance aux attaques et aux dommages non magiques."
+					]
+				}
+			]
+		},
+		{
+			"name": "Guardian Spirit",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"À partir du 10e niveau, votre Totem d'esprit protège les bêtes et les feys que vous invoquez avec votre magie. Lorsqu'une bête ou une fey que vous avez invoquée ou créée avec un sort termine son tour dans votre aura de Totem d'esprit, cette créature regagne un nombre de points de vie égal à la moitié de votre niveau de druide."
+			]
+		},
+		{
+			"name": "Faithful Summons",
+			"source": "XGE",
+			"page": 23,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Shepherd",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, les esprits de la nature avec lesquels vous communiez vous protègent lorsque vous êtes le plus sans défense. Si vous êtes réduit à 0 point de vie ou êtes {@condition incapacitated} contre votre volonté, vous pouvez immédiatement bénéficier des avantages de {@spell conjure animals} comme s'il était lancé avec un emplacement de sort de 9e niveau. Il convoque quatre bêtes de votre choix dont le niveau de défi est inférieur ou égal à 2. Les bêtes conjurées apparaissent dans un rayon de 6 mètres autour de vous. Si elles ne reçoivent pas d'ordres de votre part, elles vous protègent contre le mal et attaquent vos ennemis. Le sort dure 1 heure, sans nécessiter de concentration, ou jusqu'à ce que vous l'annuliez (aucune action requise).",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		}
+	]
+}

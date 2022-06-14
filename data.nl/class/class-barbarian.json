@@ -1,0 +1,3323 @@
+{
+	"class": [
+		{
+			"name": "Barbarian",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 12
+			},
+			"proficiency": [
+				"str",
+				"con"
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light",
+					"medium",
+					"{@item shield|phb|shields}"
+				],
+				"weapons": [
+					"simple",
+					"martial"
+				],
+				"skills": [
+					{
+						"choose": {
+							"from": [
+								"animal handling",
+								"athletics",
+								"intimidation",
+								"nature",
+								"perception",
+								"survival"
+							],
+							"count": 2
+						}
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item greataxe|phb} or (b) any {@filter martial melee weapon|items|source=phb|category=basic|type=martial weapon;melee weapon=sand}",
+					"(a) two {@item handaxe|phb|handaxes} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"An {@item explorer's pack|phb}, and four {@item javelin|phb|javelins}"
+				],
+				"goldAlternative": "{@dice 2d4 × 10|2d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"greataxe|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "weaponMartialMelee"
+							}
+						]
+					},
+					{
+						"a": [
+							{
+								"item": "handaxe|phb",
+								"quantity": 2
+							}
+						],
+						"b": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"_": [
+							"explorer's pack|phb",
+							{
+								"item": "javelin|phb",
+								"quantity": 4
+							}
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"str": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"{@item shield|phb|shields}"
+					],
+					"weapons": [
+						"simple",
+						"martial"
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"Rages",
+						"Rage Damage"
+					],
+					"rows": [
+						[
+							"2",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"2",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"3",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"3",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"3",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 2
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"4",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 3
+							}
+						],
+						[
+							"5",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"6",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"6",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"6",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						],
+						[
+							"Onbeperkt",
+							{
+								"type": "bonus",
+								"value": 4
+							}
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Rage|Barbarian||1",
+				"Unarmored Defense|Barbarian||1",
+				"Danger Sense|Barbarian||2",
+				"Survival Instincts|Barbarian||2|UAClassFeatureVariants",
+				"Reckless Attack|Barbarian||2",
+				{
+					"classFeature": "Primal Path|Barbarian||3",
+					"gainSubclassFeature": true
+				},
+				"Primal Knowledge|Barbarian||3|TCE",
+				"Ability Score Improvement|Barbarian||4",
+				"Proficiency Versatility|Barbarian||4|UAClassFeatureVariants",
+				"Extra Attack|Barbarian||5",
+				"Fast Movement|Barbarian||5",
+				"Instinctive Pounce|Barbarian||5|UAClassFeatureVariants",
+				{
+					"classFeature": "Path Feature|Barbarian||6",
+					"gainSubclassFeature": true
+				},
+				"Feral Instinct|Barbarian||7",
+				"Instinctive Pounce|Barbarian||7|TCE",
+				"Ability Score Improvement|Barbarian||8",
+				"Proficiency Versatility|Barbarian||8|UAClassFeatureVariants",
+				"Brutal Critical (1 die)|Barbarian||9",
+				{
+					"classFeature": "Path feature|Barbarian||10",
+					"gainSubclassFeature": true
+				},
+				"Relentless Rage|Barbarian||11",
+				"Ability Score Improvement|Barbarian||12",
+				"Proficiency Versatility|Barbarian||12|UAClassFeatureVariants",
+				"Brutal Critical (2 dice)|Barbarian||13",
+				{
+					"classFeature": "Path feature|Barbarian||14",
+					"gainSubclassFeature": true
+				},
+				"Persistent Rage|Barbarian||15",
+				"Ability Score Improvement|Barbarian||16",
+				"Proficiency Versatility|Barbarian||16|UAClassFeatureVariants",
+				"Brutal Critical (3 dice)|Barbarian||17",
+				"Indomitable Might|Barbarian||18",
+				"Ability Score Improvement|Barbarian||19",
+				"Proficiency Versatility|Barbarian||19|UAClassFeatureVariants",
+				"Primal Champion|Barbarian||20"
+			],
+			"subclassTitle": "Primal Path",
+			"fluff": [
+				{
+					"name": "Barbarian",
+					"type": "section",
+					"entries": [
+						"Een lange menselijke stamlid loopt door een sneeuwstorm, gehuld in bont en met zijn bijl in de aanslag. Hij lacht terwijl hij de vorstreus aanvalt die de elandkudde van zijn volk durfde te stropen.",
+						"Een half-orc snauwt naar de laatste uitdager van haar gezag over hun woeste stam, klaar om met haar blote handen zijn nek te breken, zoals zij met de laatste zes rivalen heeft gedaan.",
+						"Schuimbekkend slaat een dwerg zijn helm in het gezicht van zijn drow vijand, en draait zich dan om om zijn gepantserde elleboog in de darm van een ander te duwen.",
+						"Deze barbaren, hoe verschillend ze ook zijn, worden gedefinieerd door hun woede: ongebreidelde, onblusbare en onbedachtzame woede. Hun woede is meer dan een emotie, het is de woestheid van een roofdier in het nauw, de niet aflatende aanval van een storm, de kolkende onrust van de zee.",
+						"Voor sommigen komt hun woede voort uit een gemeenschap met woeste dierlijke geesten. Anderen putten uit een kolkend reservoir van woede over een wereld vol pijn. Voor elke barbaar is woede een kracht die niet alleen een waanzinnige strijd aanwakkert, maar ook buitengewone reflexen, veerkracht en krachttoeren.",
+						{
+							"type": "entries",
+							"name": "Primal Instinct",
+							"entries": [
+								"Stedelingen zijn er trots op dat hun beschaafde levenswijze hen onderscheidt van de dieren, alsof het verloochenen van de eigen natuur een teken van superioriteit is. Voor een barbaar is beschaving echter geen deugd, maar een teken van zwakte. De sterken omarmen hun dierlijke natuur - driftige instincten, primaire lichamelijkheid, en woeste woede. Barbaren voelen zich niet op hun gemak als ze worden omringd door muren en mensenmassa's. Zij gedijen in de wildernis van hun thuisland: de toendra, de jungle of de graslanden waar hun stammen leven en jagen.",
+								"Barbaren komen tot leven in de chaos van het gevecht. Ze kunnen in een berserktoestand terechtkomen, waarin woede de overhand neemt en hen bovenmenselijke kracht en veerkracht geeft. Een barbaar kan dit reservoir van woede maar een paar keer aanspreken zonder te rusten, maar die paar woedeaanvallen zijn meestal voldoende om alle bedreigingen te verslaan."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "A Life of Danger",
+							"entries": [
+								"Niet ieder lid van de stammen die door nazaten van de beschaafde maatschappij als \"barbaren\" worden beschouwd, heeft de barbaarse klasse. Een echte barbaar onder deze mensen is even ongewoon als een bekwame strijder in een stad, en hij of zij speelt een vergelijkbare rol als beschermer van het volk en als leider in tijden van oorlog. Het leven in de wildernis van de wereld is vol gevaren: rivaliserende stammen, dodelijk weer, en angstaanjagende monsters. Barbaren storten zich in dat gevaar, zodat hun volk dat niet hoeft te doen.",
+								"Hun moed in het aangezicht van gevaar maakt barbaren perfect geschikt voor avonturieren. Zwerven is vaak een manier van leven voor hun inheemse stammen, en het leven van de avonturier zonder wortels is weinig moeilijk voor een barbaar. Sommige barbaren missen de hechte familiestructuren van de stam, maar vinden die uiteindelijk vervangen door de banden die gevormd worden tussen de leden van hun avonturiersgroepen."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Barbarian",
+							"entries": [
+								"Bij het creëren van een barbaars karakter, denk na over waar je karakter vandaan komt en zijn of haar plaats in de wereld. Overleg met je DM over een gepaste afkomst voor je barbaar. Kom je uit een ver land, waardoor je een vreemdeling bent in het gebied van de campagne? Of speelt de campagne zich af in een ruige grensstreek waar barbaren heel gewoon zijn?",
+								"Wat bracht je ertoe om het avontuurlijke leven te beginnen? Werd je naar een gevestigd land gelokt door de belofte van rijkdom? Sloot je je aan bij soldaten van die landen om een gezamenlijke dreiging het hoofd te bieden? Hebben monsters of een binnenvallende horde je uit je thuisland verdreven, waardoor je een vluchteling zonder wortels werd? Misschien was je een krijgsgevangene, geketend naar \"beschaafde\" landen gebracht en nu pas in staat je vrijheid te winnen. Of je bent verstoten door je volk vanwege een misdaad die je hebt begaan, een taboe dat je hebt geschonden, of een staatsgreep die je uit een gezagspositie heeft verwijderd.",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Je kunt snel een barbaar maken door de volgende suggesties te volgen. Ten eerste, zet je hoogste vaardigheidsscore op Strength, gevolgd door Constitution. Ten tweede, kies de {@background outlander} achtergrond."
+									]
+								}
+							]
+						}
+					],
+					"source": "PHB",
+					"page": 46
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"Ik ben getuige geweest van de ontembare prestaties van barbaren op het slagveld, en het doet me afvragen welke kracht aan de basis ligt van hun woede."
+							],
+							"by": "Seret, archwizard"
+						},
+						"De woede van een normaal mens lijkt op de woede van een barbaar, zoals een zacht briesje op een woeste onweersbui lijkt. De drijvende kracht van de barbaar komt van een plaats die louter emotie overstijgt, waardoor de manifestatie ervan des te verschrikkelijker is. Of de impuls voor de woede nu van binnenuit komt of van het smeden van een band met een spiritueel dier, een razende barbaar wordt in staat om bovennatuurlijke prestaties van kracht en uithoudingsvermogen te leveren. De uitbarsting is tijdelijk, maar zolang ze duurt, neemt ze lichaam en geest over en drijft de barbaar voort, ondanks gevaar en verwondingen, tot de laatste vijand valt.",
+						"Het kan verleidelijk zijn om een barbaar te spelen die een rechttoe rechtaan toepassing is van het klassieke archetype - een bruut, en meestal nog een onnozele ook, die naar binnen stormt waar anderen bang zijn om binnen te treden. Maar niet alle barbaren in de wereld zijn uit dat hout gesneden, dus je kunt er zeker je eigen draai aan geven. Hoe dan ook, overweeg om je barbaar te laten opvallen tussen alle anderen; zie de volgende secties voor enkele ideeën.",
+						{
+							"type": "entries",
+							"name": "Personal Totems",
+							"entries": [
+								"Barbaren hebben de neiging licht te reizen en weinig persoonlijke bezittingen of andere onnodige uitrusting mee te nemen. De weinige bezittingen die ze bij zich dragen, zijn vaak kleine voorwerpen die een speciale betekenis hebben. Een persoonlijke totem is belangrijk omdat hij een mystieke oorsprong heeft of verbonden is met een belangrijk moment in het leven van het personage - misschien een herinnering uit het verleden van de barbaar of een voorbode van wat hem te wachten staat.",
+								"Een dergelijke persoonlijke totem kan geassocieerd zijn met het geestesdier van een barbaar, of kan zelfs het totemobject voor het dier zijn, maar een dergelijk verband is niet essentieel. Iemand met een beer totemgeest kan bijvoorbeeld nog steeds een adelaarsveer als persoonlijke totem dragen.",
+								"Overweeg een of meer persoonlijke totems voor je personage te maken - voorwerpen die een speciale band met het verleden of de toekomst van je personage hebben. Bedenk hoe een totem de handelingen van je personage kan beïnvloeden.",
+								{
+									"type": "table",
+									"caption": "Personal Totems",
+									"colLabels": [
+										"{@dice d6}",
+										"Totem"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Een pluk vacht van een eenzame wolf waarmee je bevriend bent geraakt tijdens een jacht"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Drie adelaarsveren, aan jou gegeven door een wijze sjamaan, die je vertelde dat ze een rol zouden spelen bij het bepalen van je lot"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Een halssnoer gemaakt van de klauwen van een jonge holenbeer die je als kind eigenhandig doodde."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Een klein lederen buideltje met drie stenen die je voorouders voorstellen"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Een paar kleine botten van het eerste beest dat je doodde, samengebonden met gekleurde wol"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Een steen ter grootte van een ei in de vorm van je spirituele dier, die op een dag in je gordeltasje verscheen."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Tattoos",
+							"entries": [
+								"De leden van vele barbaarse clans versieren hun lichaam met tatoeages, die elk een belangrijk moment uit het leven van de drager of zijn voorouders vertegenwoordigen, of die een gevoel of een houding symboliseren. Net als bij persoonlijke totems, kunnen de tatoeages van een barbaar al dan niet gerelateerd zijn aan een dierlijke geest.",
+								"Elke tatoeage die een barbaar draagt, draagt bij aan zijn identiteit. Als je personage tatoeages draagt, hoe zien die er dan uit, en wat stellen ze voor?",
+								{
+									"type": "table",
+									"caption": "Tattoos",
+									"colLabels": [
+										"{@dice d6}",
+										"Tattoo"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"De vleugels van een adelaar zijn wijd uitgespreid over je bovenrug."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Op de rug van je handen staan de poten van een holenbeer gegraveerd."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"De symbolen van je clan staan in lakpatronen langs je armen."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Het gewei van een eland is op je rug geïnkt."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Afbeeldingen van je spirituele dier worden langs je wapenarm en hand getatoeëerd."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"De ogen van een wolf zijn op je rug gemerkt om je te helpen zien en boze geesten af te weren."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Superstitions",
+							"entries": [
+								"Barbaren verschillen sterk in hoe zij het leven begrijpen. Sommigen volgen goden en zoeken begeleiding van die goden in de cycli van de natuur en de dieren die zij tegenkomen. Deze barbaren geloven dat geesten de planten en dieren van de wereld bewonen, en de barbaren kijken naar hen voor voortekenen en macht.",
+								"Andere barbaren vertrouwen alleen op het bloed dat door hun aderen stroomt en het staal dat zij in hun handen houden. Zij hebben geen oog voor de onzichtbare wereld, maar vertrouwen op hun zintuigen om te jagen en te overleven als de wilde beesten die zij imiteren.",
+								"Beide houdingen kunnen aanleiding geven tot bijgeloof. Deze overtuigingen worden vaak doorgegeven binnen een familie of gedeeld onder de leden van een clan of een jachtgroep.",
+								"Als je barbaarse personage bijgeloof heeft, heb je dat dan meegekregen van je familie, of zijn ze het resultaat van persoonlijke ervaring?",
+								{
+									"type": "table",
+									"caption": "Superstition",
+									"colLabels": [
+										"{@dice d6}",
+										"Superstition"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Als je de beenderen van de doden verstoort, erf je alle problemen die hen tijdens hun leven hebben geteisterd."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Vertrouw nooit een tovenaar. Het zijn allemaal duivels in vermomming, vooral de vriendelijke."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Dwergen hebben hun geest verloren, en zijn bijna als de ondoden. Daarom leven ze onder de grond."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Magische dingen brengen problemen. Slaap nooit met een magisch voorwerp binnen tien meter van je."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Als je over een kerkhof loopt, draag dan zilver, anders springt er een geest in je lichaam."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Als een elf je in de ogen kijkt, probeert ze je gedachten te lezen."
+										]
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 8
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "Path of the Berserker",
+			"shortName": "Berserker",
+			"source": "PHB",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 49,
+			"srd": true,
+			"subclassFeatures": [
+				"Path of the Berserker|Barbarian||Berserker||3",
+				"Mindless Rage|Barbarian||Berserker||6",
+				"Intimidating Presence|Barbarian||Berserker||10",
+				"Retaliation|Barbarian||Berserker||14"
+			]
+		},
+		{
+			"name": "Path of the Totem Warrior",
+			"shortName": "Totem Warrior",
+			"source": "PHB",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 50,
+			"additionalSpells": [
+				{
+					"innate": {
+						"3": {
+							"ritual": [
+								"beast sense",
+								"speak with animals"
+							]
+						},
+						"10": {
+							"ritual": [
+								"commune with nature"
+							]
+						}
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Path of the Totem Warrior|Barbarian||Totem Warrior||3",
+				"Aspect of the Beast|Barbarian||Totem Warrior||6",
+				"Spirit Walker|Barbarian||Totem Warrior||10",
+				"Totemic Attunement|Barbarian||Totem Warrior||14"
+			]
+		},
+		{
+			"name": "Path of the Battlerager",
+			"shortName": "Battlerager",
+			"source": "SCAG",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 121,
+			"subclassFeatures": [
+				"Path of the Battlerager|Barbarian||Battlerager|SCAG|3",
+				"Reckless Abandon|Barbarian||Battlerager|SCAG|6",
+				"Battlerager Charge|Barbarian||Battlerager|SCAG|10",
+				"Spiked Retribution|Barbarian||Battlerager|SCAG|14"
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian (UA)",
+			"shortName": "Ancestral Guardian (UA)",
+			"source": "UABarbarianPrimalPaths",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Ancestral Guardian|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|3",
+				"Ancestral Shield|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|6",
+				"Consult the Spirits|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|10",
+				"Vengeful Ancestors|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|14"
+			]
+		},
+		{
+			"name": "Path of the Storm Herald (UA)",
+			"shortName": "Storm Herald (UA)",
+			"source": "UABarbarianPrimalPaths",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Storm Herald|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|3",
+				"Storm Soul|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|6",
+				"Shield of the Storm|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|10",
+				"Raging Storm|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|14"
+			]
+		},
+		{
+			"name": "Path of the Zealot (UA)",
+			"shortName": "Zealot (UA)",
+			"source": "UABarbarianPrimalPaths",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Zealot|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|3",
+				"Zealous Focus|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|6",
+				"Zealous Presence|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|10",
+				"Rage Beyond Death|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|14"
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian v2 (UA)",
+			"shortName": "Ancestral Guardian v2 (UA)",
+			"source": "UARevisedSubclasses",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"spellcastingAbility": "wis",
+			"subclassFeatures": [
+				"Path of the Ancestral Guardian v2|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|3",
+				"Ancestral Shield|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|6",
+				"Consult the Spirits|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|10",
+				"Vengeful Ancestors|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|14"
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian",
+			"shortName": "Ancestral Guardian",
+			"source": "XGE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 9,
+			"spellcastingAbility": "wis",
+			"additionalSpells": [
+				{
+					"innate": {
+						"10": [
+							"augury",
+							"clairvoyance"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"Path of the Ancestral Guardian|Barbarian||Ancestral Guardian|XGE|3",
+				"Spirit Shield|Barbarian||Ancestral Guardian|XGE|6",
+				"Consult the Spirits|Barbarian||Ancestral Guardian|XGE|10",
+				"Vengeful Ancestors|Barbarian||Ancestral Guardian|XGE|14"
+			]
+		},
+		{
+			"name": "Path of the Storm Herald",
+			"shortName": "Storm Herald",
+			"source": "XGE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 10,
+			"subclassFeatures": [
+				"Path of the Storm Herald|Barbarian||Storm Herald|XGE|3",
+				"Storm Soul|Barbarian||Storm Herald|XGE|6",
+				"Shielding Storm|Barbarian||Storm Herald|XGE|10",
+				"Raging Storm|Barbarian||Storm Herald|XGE|14"
+			]
+		},
+		{
+			"name": "Path of the Zealot",
+			"shortName": "Zealot",
+			"source": "XGE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 11,
+			"subclassFeatures": [
+				"Path of the Zealot|Barbarian||Zealot|XGE|3",
+				"Fanatical Focus|Barbarian||Zealot|XGE|6",
+				"Zealous Presence|Barbarian||Zealot|XGE|10",
+				"Rage beyond Death|Barbarian||Zealot|XGE|14"
+			]
+		},
+		{
+			"name": "Path of the Wild Soul (UA)",
+			"shortName": "Wild Soul (UA)",
+			"source": "UABarbarianAndMonk",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Wild Soul|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|3",
+				"Magic Reserves|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|6",
+				"Arcane Rebuke|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|10",
+				"Chaotic Fury|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|14",
+				"Improved Magic Reserves|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|14"
+			]
+		},
+		{
+			"name": "Path of the Beast (UA)",
+			"shortName": "Beast (UA)",
+			"source": "UA2020SubclassesPt1",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"Path of the Beast|Barbarian||Beast (UA)|UA2020SubclassesPt1|3",
+				"Bestial Soul|Barbarian||Beast (UA)|UA2020SubclassesPt1|6",
+				"Infectious Fury|Barbarian||Beast (UA)|UA2020SubclassesPt1|10",
+				"Call the Hunt|Barbarian||Beast (UA)|UA2020SubclassesPt1|14"
+			]
+		},
+		{
+			"name": "Path of the Beast",
+			"shortName": "Beast",
+			"source": "TCE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 24,
+			"subclassFeatures": [
+				"Path of the Beast|Barbarian||Beast|TCE|3",
+				"Bestial Soul|Barbarian||Beast|TCE|6",
+				"Infectious Fury|Barbarian||Beast|TCE|10",
+				"Call the Hunt|Barbarian||Beast|TCE|14"
+			]
+		},
+		{
+			"name": "Path of Wild Magic",
+			"shortName": "Wild Magic",
+			"source": "TCE",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 25,
+			"subclassFeatures": [
+				"Path of Wild Magic|Barbarian||Wild Magic|TCE|3",
+				"Bolstering Magic|Barbarian||Wild Magic|TCE|6",
+				"Unstable Backlash|Barbarian||Wild Magic|TCE|10",
+				"Controlled Surge|Barbarian||Wild Magic|TCE|14"
+			]
+		},
+		{
+			"name": "Path of the Giant (UA)",
+			"shortName": "Giant (UA)",
+			"source": "UA2022GiantOptions",
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"page": 1,
+			"subclassFeatures": [
+				"Path of the Giant|Barbarian||Giant (UA)|UA2022GiantOptions|3",
+				"Elemental Cleaver|Barbarian||Giant (UA)|UA2022GiantOptions|6",
+				"Mighty Impel|Barbarian||Giant (UA)|UA2022GiantOptions|10",
+				"Demiurgic Colossus|Barbarian||Giant (UA)|UA2022GiantOptions|14"
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Rage",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"In de strijd, vecht je met oerwoede. Als je aan de beurt bent, kun je in woede uitbarsten als een bonus actie.",
+				"Terwijl je raast, krijg je de volgende voordelen als je geen zwaar harnas draagt:",
+				{
+					"type": "list",
+					"items": [
+						"Je hebt voordeel bij Strength checks en Strength saving throws.",
+						"Wanneer je een aanval uitvoert met een wapen, gebruik makend van Strength, krijg je een +2 bonus op de schade rol. Deze bonus neemt toe met je level.",
+						"Je hebt weerstand tegen knuppelen, doorboren en snijden."
+					]
+				},
+				"Als je spreuken kunt uitspreken, kun je ze niet uitspreken of je erop concentreren terwijl je raast.",
+				"Je woede duurt 1 minuut. Hij eindigt vroegtijdig als je wordt geslagen {@condition unconscious} of als je beurt eindigt en je sinds je laatste beurt geen vijandig wezen hebt aangevallen of schade hebt opgelopen. Je kunt je woede ook tijdens je beurt beëindigen als een bonusactie.",
+				"Als je het maximum aantal keren voor je barbaarse level hebt geraasd, moet je een lange rust afwerken voor je weer kunt razen. Je mag 2 keer razen op je 1e level, 3 keer op je 3e, 4 keer op je 6e, 5 keer op je 12e en 6 keer op je 17e."
+			]
+		},
+		{
+			"name": "Unarmored Defense",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Als je geen pantser draagt, is je Armor Class gelijk aan 10 + je Dexterity modifier + je Constitution modifier. U kunt een schild gebruiken en nog steeds dit voordeel behalen."
+			]
+		},
+		{
+			"name": "Danger Sense",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Op het 2e niveau voel je feilloos aan wanneer dingen in de buurt niet zijn zoals ze zouden moeten zijn, wat je een voordeel geeft als je gevaar uit de weg gaat. Je hebt voordeel bij Dexterity saving throws tegen effecten die je kunt zien, zoals vallen en spreuken. Om dit voordeel te krijgen, mag je niet {@condition blinded}, {@condition deafened}, of {@condition incapacitated} zijn."
+			]
+		},
+		{
+			"name": "Reckless Attack",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"Vanaf het 2e niveau kun je alle zorg voor verdediging opzij gooien om met woeste wanhoop aan te vallen. Wanneer u uw eerste aanval doet tijdens uw beurt, kunt u besluiten om roekeloos aan te vallen. Als u dat doet, hebt u tijdens deze beurt voordeel bij aanvalsrollen met het mêleewapen en de kracht, maar aanvalsrollen tegen u hebben voordeel tot uw volgende beurt."
+			]
+		},
+		{
+			"name": "Survival Instincts",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level barbarian feature (replaces Danger Sense)}",
+				"Je wordt vaardig in twee van de volgende vaardigheden naar keuze: {@skill Animal Handling}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, of {@skill Survival}.",
+				"Je bekwaamheidsbonus wordt verdubbeld voor elke vaardigheidstoets die je doet en die een van deze vaardigheden gebruikt."
+			]
+		},
+		{
+			"name": "Primal Knowledge",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 3rd-level barbarian {@variantrule optional class features|tce|optional feature}}",
+				"Bij je 3e level en nogmaals bij je 10e level, krijg je vaardigheid in een vaardigheid naar keuze uit de lijst van vaardigheden die beschikbaar zijn voor barbaren op het 1e level."
+			]
+		},
+		{
+			"name": "Primal Path",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Op het 3e niveau kies je een pad dat de aard van je woede bepaalt uit de lijst van beschikbare paden. Je keuze verleent je eigenschappen op het 3e niveau en opnieuw op het 6e, 10e en 14e niveau."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"Als je het 4e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"Vanaf het 5e niveau kun je twee keer aanvallen, in plaats van één keer, wanneer je in je beurt de actie {@action Attack} uitvoert."
+			]
+		},
+		{
+			"name": "Fast Movement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"Vanaf het 5e niveau neemt je snelheid met 10 voet toe als je geen zware bepantsering draagt."
+			]
+		},
+		{
+			"name": "Instinctive Pounce",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 5,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 5th-level barbarian feature (replaces Fast Movement)}",
+				"Als een wezen binnen een straal van 15 voet van jou komt, kun je met je reactie de helft van je snelheid verplaatsen naar een plek dichter bij het wezen. Deze beweging lokt geen gelegenheidsaanvallen uit."
+			]
+		},
+		{
+			"name": "Path Feature",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Op het 6e niveau krijg je een eigenschap van je Primal Path."
+			]
+		},
+		{
+			"name": "Feral Instinct",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 7,
+			"entries": [
+				"Op het 7e niveau zijn je instincten zo verfijnd dat je voordeel hebt bij initiatiefrollen.",
+				"Bovendien, als je verrast wordt aan het begin van het gevecht en dat niet bent {@condition incapacitated}, kun je normaal handelen tijdens je eerste beurt, maar alleen als je je woede invoert voordat je iets anders doet tijdens die beurt."
+			]
+		},
+		{
+			"name": "Instinctive Pounce",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 7,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 7th-level barbarian {@variantrule optional class features|tce|optional feature}}",
+				"Als onderdeel van de bonusactie die je neemt om je woede in te zetten, kun je tot de helft van je snelheid bewegen."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"Als je 8e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Brutal Critical (1 die)",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 9,
+			"entries": [
+				"Vanaf het 9e niveau kun je één extra dobbelsteen gooien bij het bepalen van de extra schade bij een kritieke treffer met een mêlee aanval.",
+				"Dit neemt toe tot twee extra dobbelstenen op 13e niveau en tot drie extra dobbelstenen op 17e niveau."
+			]
+		},
+		{
+			"name": "Path feature",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Op het 10e niveau krijg je een eigenschap van je Primal Path."
+			]
+		},
+		{
+			"name": "Relentless Rage",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 11,
+			"entries": [
+				"Vanaf het 11e niveau kan je woede je laten vechten ondanks zware verwondingen. Als je tijdens je woede-uitbarsting tot 0 hit points zakt en niet direct sterft, kun je een DC 10 grondwettelijke reddingsworp doen. Als je slaagt, val je terug naar 1 hit point.",
+				"Elke keer dat je deze functie gebruikt na de eerste, verhoogt de DC met 5. Wanneer je een korte of lange rustpauze beëindigt, wordt de DC teruggezet op 10."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"Als je 12e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Brutal Critical (2 dice)",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 13,
+			"entries": [
+				"Op 13e niveau kun je twee extra dobbelstenen gooien bij het bepalen van de extra schade bij een kritieke treffer met een mêlee aanval.",
+				"Dit neemt toe tot drie extra dobbelstenen op 17e niveau."
+			]
+		},
+		{
+			"name": "Path feature",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Op 14de level, krijg je een eigenschap van je Primal Path."
+			]
+		},
+		{
+			"name": "Persistent Rage",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 15,
+			"entries": [
+				"Vanaf het 15e niveau is je woede zo hevig dat het alleen vroegtijdig eindigt als je valt {@condition unconscious} of als je ervoor kiest om het te beëindigen."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"Als je 16e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Brutal Critical (3 dice)",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 17,
+			"entries": [
+				"Op 17e niveau kun je drie extra wapendobbelstenen gooien bij het bepalen van de extra schade bij een kritieke treffer met een mêlee-aanval."
+			]
+		},
+		{
+			"name": "Indomitable Might",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"Vanaf het 18e niveau kunt u, als het totaal van een Strength check lager is dan uw Strength score, die score gebruiken in plaats van het totaal."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"Als je 19e level bereikt, kun je een vaardigheidsscore naar keuze met 2 verhogen, of je kunt twee vaardigheidsscores naar keuze met 1 verhogen. Zoals gewoonlijk kun je met deze eigenschap geen vaardigheidsscore boven de 20 verhogen.",
+				"Als je DM het gebruik van feats toestaat, mag je in plaats daarvan een {@5etools feat|feats.html} nemen."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"Als je de vaardigheidsscore verbetereigenschap van je klasse krijgt, kun je ook een van je vaardigheidsproficiënties vervangen door een vaardigheidsproficiëntie die door je klasse op het 1e niveau wordt aangeboden (de proficiëntie die je vervangt hoeft niet van de klasse te zijn).",
+				"Deze verandering betekent dat een van je vaardigheden afneemt terwijl je je op een andere vaardigheid concentreert."
+			]
+		},
+		{
+			"name": "Primal Champion",
+			"source": "PHB",
+			"page": 46,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"Op 20e niveau, belichaam je de kracht van de wildernis. Je Strength en Constitution scores stijgen met 4. Je maximum voor deze scores is nu 24."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Path of the Berserker",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Voor sommige barbaren is woede een middel om een doel te bereiken, dat doel is geweld. Het pad van de Berserker is een pad van ongeremde woede, besmeurd met bloed. Als je de razernij van de Berserker binnengaat, ga je helemaal op in de chaos van het gevecht, zonder acht te slaan op je eigen gezondheid of welzijn.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Frenzy|Barbarian||Berserker||3"
+				}
+			]
+		},
+		{
+			"name": "Frenzy",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het moment dat je dit pad kiest op 3de niveau, kun je in razernij gaan als je raast. Als je dat doet, kun je voor de duur van je razernij een enkele aanval met een geleewapen doen als een bonusactie op elk van je beurten na deze beurt. Als je razernij eindigt, krijg je een level van {@condition exhaustion}."
+			]
+		},
+		{
+			"name": "Mindless Rage",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau kun je geen {@condition charmed} of {@condition frightened} meer zijn als je in woede uitbarst. Als je {@condition charmed} of {@condition frightened} bent wanneer je je woede uit, wordt het effect opgeschort voor de duur van de woede."
+			]
+		},
+		{
+			"name": "Intimidating Presence",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Vanaf level 10 kun je je actie gebruiken om iemand bang te maken met je dreigende aanwezigheid. Als je dat doet, kies dan een wezen dat je kunt zien binnen een straal van 30 meter. Als het wezen je kan zien of horen, moet het slagen op een Wisdom saving throw (DC gelijk aan 8 + je proficiency bonus + je Charisma modifier) of {@condition frightened} van je zijn tot het einde van je volgende beurt. Tijdens volgende beurten kun je je actie gebruiken om de duur van dit effect op het {@condition frightened} wezen te verlengen tot het einde van je volgende beurt. Dit effect eindigt als het wezen zijn beurt beëindigt buiten gezichtsveld of op meer dan 60 voet afstand van jou.",
+				"Als het schepsel slaagt in zijn reddingsworp, kun je deze eigenschap 24 uur lang niet meer op dat schepsel gebruiken."
+			]
+		},
+		{
+			"name": "Retaliation",
+			"source": "PHB",
+			"page": 49,
+			"srd": true,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Berserker",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Vanaf het 14e niveau kun je, als je schade oploopt door een wezen dat zich binnen een straal van 2 meter van je bevindt, je reactie gebruiken om dat wezen met een wapen aan te vallen."
+			]
+		},
+		{
+			"name": "Bear",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Als je raast, heb je weerstand tegen alle schade, behalve psychische schade. De geest van de beer maakt je sterk genoeg om elke afstraffing aan te kunnen."
+			]
+		},
+		{
+			"name": "Eagle",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Als je raast en geen zware bepantsering draagt, hebben andere wezens nadeel bij opportuniteitsaanvalrollen tegen je, en je kunt de {@action Dash} actie als bonusactie gebruiken als je aan de beurt bent. De geest van de adelaar maakt van jou een roofdier dat zich met gemak door het strijdgewoel kan slingeren."
+			]
+		},
+		{
+			"name": "Path of the Totem Warrior",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Het pad van de Totemkrijger is een spirituele reis, waarbij de barbaar een spiritueel dier accepteert als gids, beschermer en inspiratie. In de strijd vult je totemgeest je met bovennatuurlijke kracht en voegt magische brandstof toe aan je barbaarse woede.",
+				"De meeste barbaarse stammen beschouwen een totemdier als verwant aan een bepaalde clan. In dergelijke gevallen is het ongebruikelijk dat een individu meer dan één totemdiergeest heeft, hoewel er uitzonderingen bestaan.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spirit Seeker|Barbarian||Totem Warrior||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Totem Spirit|Barbarian||Totem Warrior||3"
+				}
+			]
+		},
+		{
+			"name": "Wolf",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Terwijl je woedt, hebben je vrienden voordeel op mêlee-aanvalsrollen tegen elk wezen binnen 2 meter van je dat je vijandig gezind is. De geest van de wolf maakt je een leider van de jagers."
+			]
+		},
+		{
+			"name": "Spirit Seeker",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Dit is een pad dat afstemming zoekt met de natuurlijke wereld, waardoor je verwantschap krijgt met beesten. Als je dit pad volgt op niveau 3, krijg je de mogelijkheid om de {@spell beast sense} en {@spell speak with animals} spreuken uit te spreken, maar alleen als rituelen, zoals beschreven in {@book chapter 10|PHB|10|rituals}."
+			]
+		},
+		{
+			"name": "Totem Spirit",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Als je op niveau 3 dit pad kiest, kies je een totemgeest en krijg je zijn eigenschap. Je moet een fysiek totemvoorwerp maken of verwerven - een amulet of een gelijkaardige versiering - dat bont of veren, klauwen, tanden of beenderen van het totemdier bevat. Naar keuze krijg je ook kleine fysieke attributen die aan je totemgeest doen denken. Als je bijvoorbeeld een beer totem spirit hebt, kun je ongewoon harig en dik zijn, of als je totem adelaar is, worden je ogen helder geel.",
+				"Je totemdier kan een dier zijn dat verwant is aan de hier genoemde dieren, maar dat meer past bij je thuisland. Je zou bijvoorbeeld een havik of een gier kunnen kiezen in plaats van een adelaar.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bear|Barbarian||Totem Warrior||3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Eagle|Barbarian||Totem Warrior||3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Elk|Barbarian|SCAG|Totem Warrior||3|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tiger|Barbarian|SCAG|Totem Warrior||3|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Wolf|Barbarian||Totem Warrior||3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bear",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Je krijgt de kracht van een beer. Je draagkracht (inclusief maximale lading en maximaal heffen) is verdubbeld en je hebt voordeel bij krachtcontroles om voorwerpen te duwen, te trekken, op te tillen of te breken."
+			]
+		},
+		{
+			"name": "Eagle",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Je krijgt het gezichtsvermogen van een adelaar. Je kunt zonder moeite tot op 1 mijl afstand zien en zelfs de kleinste details onderscheiden alsof je naar iets kijkt dat zich op niet meer dan 100 meter afstand van je bevindt. Bovendien is schemerig licht niet nadelig voor je Wisdom ({@skill Perception}) checks."
+			]
+		},
+		{
+			"name": "Wolf",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Je krijgt de jachtgevoeligheid van een wolf. Je kunt andere wezens volgen terwijl je in een snel tempo reist, en je kunt je sluipend voortbewegen terwijl je in een normaal tempo reist."
+			]
+		},
+		{
+			"name": "Aspect of the Beast",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau krijg je een magisch voordeel dat gebaseerd is op het totemdier van je keuze. Je kunt hetzelfde dier kiezen als op het 3e niveau of een ander dier.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bear|Barbarian||Totem Warrior||6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Eagle|Barbarian||Totem Warrior||6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Elk|Barbarian|SCAG|Totem Warrior||6|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tiger|Barbarian|SCAG|Totem Warrior||6|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Wolf|Barbarian||Totem Warrior||6"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Walker",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Op je 10e niveau kun je de {@spell commune with nature} spreuk uitspreken, maar alleen als een ritueel. Als je dat doet, verschijnt er een spirituele versie van een van de dieren die je koos voor Totemgeest of Aspect van het Beest aan je om de informatie die je zoekt over te brengen."
+			]
+		},
+		{
+			"name": "Bear",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Terwijl je woedt, heeft elk wezen binnen 5 meter van je dat je vijandig gezind is een nadeel bij aanvalsrollen tegen andere doelwitten dan jou of een ander karakter met deze eigenschap. Een vijand is immuun voor dit effect als hij je niet kan zien of horen of als hij niet {@condition frightened} kan zijn."
+			]
+		},
+		{
+			"name": "Eagle",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Terwijl je raast, heb je een vliegsnelheid gelijk aan je huidige loopsnelheid. Dit voordeel werkt alleen in korte uitbarstingen; je valt als je je beurt in de lucht beëindigt en niets anders je in de lucht houdt."
+			]
+		},
+		{
+			"name": "Wolf",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Terwijl je raast, kun je in je beurt een bonusactie gebruiken om een groot of kleiner wezen {@condition prone} te slaan wanneer je het met een mêlee wapenaanval raakt."
+			]
+		},
+		{
+			"name": "Totemic Attunement",
+			"source": "PHB",
+			"page": 50,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14de niveau krijg je een magisch voordeel dat gebaseerd is op een totemdier van jouw keuze. Je kunt hetzelfde dier kiezen dat je eerder hebt gekozen of een ander dier.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bear|Barbarian||Totem Warrior||14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Eagle|Barbarian||Totem Warrior||14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Elk|Barbarian|SCAG|Totem Warrior||14|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tiger|Barbarian|SCAG|Totem Warrior||14|SCAG"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Wolf|Barbarian||Totem Warrior||14"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Battlerager",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"entries": [
+				"Slagers staan bekend als Kuldjargh (letterlijk \"bijl idioot\") in het Dwarvish, en zijn dwergen volgelingen van de oorlogsgoden en volgen het Pad van de Slager. Ze zijn gespecialiseerd in het dragen van omvangrijke, {@item spiked armor|scag} en werpen zich in de strijd, slaan met hun lichaam zelf en geven zich over aan de woede van de strijd.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Restriction—Dwarves Only|Barbarian||Battlerager|SCAG|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Battlerager Armor|Barbarian||Battlerager|SCAG|3"
+				}
+			]
+		},
+		{
+			"name": "Battlerager Armor",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Als je dit pad kiest op 3de niveau, krijg je de mogelijkheid om {@item spiked armor|scag} als wapen te gebruiken.",
+				"Als je {@item spiked armor|scag} draagt en woedend bent, kun je een bonusactie gebruiken om met je pantserspikes een aanval uit te voeren op een doelwit dat zich binnen een straal van 1 meter van je bevindt. Als de aanval raak is, veroorzaken de spikes {@damage 1d4} doorborende schade. Je gebruikt je Strength modifier voor de aanval en schade rollen.",
+				"Bovendien, als je de {@action Attack} actie gebruikt om een wezen te grijpen, neemt het doelwit 3 doordringende schade op als je grijpcontrole slaagt."
+			]
+		},
+		{
+			"name": "Restriction—Dwarves Only",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Alleen dwergen kunnen het Pad van de Slager volgen. De slagman vervult een bijzondere rol in de dwergengemeenschap en -cultuur.",
+				"Je DM kan deze restrictie opheffen om beter bij de campagne te passen. De beperking bestaat voor de Forgotten Realms. Het kan zijn dat het niet van toepassing is op jouw DM's omgeving of jouw DM's versie van de Realms."
+			]
+		},
+		{
+			"name": "Reckless Abandon",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau, als je Roekeloze Aanval gebruikt terwijl je raast, krijg je ook tijdelijke hit points gelijk aan je Constitution modifier (minimum van 1). Ze verdwijnen als er nog over zijn wanneer je woede eindigt."
+			]
+		},
+		{
+			"name": "Battlerager Charge",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Vanaf level 10 kun je de actie {@action Dash} als bonusactie doen terwijl je raast."
+			]
+		},
+		{
+			"name": "Spiked Retribution",
+			"source": "SCAG",
+			"page": 121,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Battlerager",
+			"subclassSource": "SCAG",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Vanaf het 14e niveau, als een wezen binnen een straal van 5 meter je met een mêlee aanval raakt, neemt de aanvaller 3 doordringende schade als je woedend bent, niet {@condition incapacitated} bent, en {@item spiked armor|scag} draagt."
+			]
+		},
+		{
+			"name": "Path of the Beast",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Barbaren die het Pad van het Beest bewandelen, putten hun woede uit een beestachtige vonk die in hun ziel brandt. Dat beest barst uit in zijn woede en transformeert de barbaar fysiek.",
+				"Zo'n barbaar kan bewoond zijn door een oergeest of afstammen van gedaanteverwisselaars. Je kunt de oorsprong van je wilde kracht kiezen of deze bepalen door te rollen op de Herkomst van het Beest tabel.",
+				{
+					"type": "table",
+					"caption": "Origin of the Beast",
+					"colLabels": [
+						"d4",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Een van je ouders is een lycanthrope, en je hebt wat van hun vloek geërfd."
+						],
+						[
+							"2",
+							"Je stamt af van een aartsdruïde en hebt het vermogen geërfd om gedeeltelijk van vorm te veranderen."
+						],
+						[
+							"3",
+							"Een duivelse geest schonk je de mogelijkheid om verschillende beestachtige aspecten aan te nemen."
+						],
+						[
+							"4",
+							"Een oeroude dierengeest huist in je, die je toestaat dit pad te bewandelen."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Form of the Beast|Barbarian||Beast|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Form of the Beast",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of the Beast feature}",
+				"Als je in woede uitbarst, kun je transformeren en de beestachtige kracht in je onthullen. Totdat de woede eindigt, manifesteer je een natuurlijk wapen. Het telt als een eenvoudig wapen voor jou, en je voegt je Strength modifier toe aan de aanvals- en damage rolls als je ermee aanvalt, zoals normaal.",
+				"Je kiest de vorm van het wapen elke keer dat je tekeer gaat:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bite",
+							"entry": "Je mond verandert in een beestachtige snuit of grote onderkaken (jouw keuze). Het veroorzaakt {@damage 1d8} doordringende schade bij een treffer. Eenmaal in elke beurt dat je een wezen met deze beet beschadigt, krijg je een aantal hitpoints terug dat gelijk is aan je proficiency bonus, mits je minder dan de helft van je hitpoints hebt op het moment dat je geraakt wordt."
+						},
+						{
+							"type": "item",
+							"name": "Claws",
+							"entry": "Elk van je handen verandert in een klauw, die je als wapen kunt gebruiken als hij leeg is. Als je hem raakt, richt hij {@damage 1d6} schade aan. Als je in elke beurt met een klauw aanvalt met de {@action Attack} actie, kun je één extra klauwaanval doen als onderdeel van dezelfde actie."
+						},
+						{
+							"type": "item",
+							"name": "Tail",
+							"entry": "Je kweekt een sjorrende, stekelige staart, die bij een treffer {@damage 1d8} doordringende schade aanricht en de eigenschap 'reach' heeft. Als een wezen dat je kunt zien binnen een straal van 10 meter je met een aanvalsrol raakt, kun je in je reactie met je staart zwiepen en een {@dice d8} gooien, waarbij je een bonus op je AC toepast die gelijk is aan het gerolde getal, waardoor de aanval je mogelijk mist."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bestial Soul",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Path of the Beast feature}",
+				"De verwilderde kracht in je neemt toe, waardoor de natuurlijke wapens van je Vorm van het Beest als magisch tellen voor het overwinnen van weerstand en immuniteit tegen niet-magische aanvallen en schade.",
+				"Je kunt ook je vorm veranderen om je te helpen je aan te passen aan je omgeving. Als je klaar bent met een korte of lange rust, kies dan een van de volgende voordelen, die duurt tot je klaar bent met je volgende korte of lange rust:",
+				{
+					"type": "list",
+					"items": [
+						"Je krijgt een zwemsnelheid gelijk aan je loopsnelheid, en je kunt onder water ademen.",
+						"U krijgt een klimsnelheid gelijk aan uw loopsnelheid, en u kunt moeilijke oppervlakken beklimmen, inclusief ondersteboven op plafonds, zonder dat u een ability check hoeft te doen.",
+						"Wanneer u springt, kunt u een Strength ({@skill Athletics}) check doen en uw sprong verlengen met een aantal feet gelijk aan het totaal van de check. U kunt deze speciale controle slechts eenmaal per beurt uitvoeren."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infectious Fury",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Path of the Beast feature}",
+				"Als je een wezen raakt met je natuurlijke wapens terwijl je raast, kan het beest in je je doelwit vervloeken met razende woede. Het doelwit moet slagen op een Wisdom saving throw (DC gelijk aan 8 + je Constitution modifier + je proficiency bonus) of een van de volgende effecten ondergaan (jouw keuze):",
+				{
+					"type": "list",
+					"items": [
+						"Het doelwit moet zijn reactie gebruiken om een melee aanval uit te voeren tegen een ander wezen van jouw keuze dat je kunt zien.",
+						"Het doelwit neemt {@damage 2d12} psychische schade."
+					]
+				},
+				"Je kunt deze eigenschap een aantal keren gebruiken gelijk aan je vaardigheidsbonus, en je krijgt alle verbruikte keren terug als je een lange rustpauze beëindigt."
+			]
+		},
+		{
+			"name": "Call the Hunt",
+			"source": "TCE",
+			"page": 24,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Path of the Beast feature}",
+				"Het beest in je wordt zo krachtig dat je zijn woestheid op anderen kunt overbrengen en veerkracht krijgt van hen die zich bij je jacht aansluiten. Wanneer je in woede uitbarst, kun je een aantal andere gewillige wezens kiezen die je kunt zien binnen een straal van 30 meter van je, gelijk aan je Constitution modifier (minimaal één wezen).",
+				"Je krijgt 5 tijdelijke hit points voor elk wezen dat deze eigenschap accepteert. Totdat de razernij eindigt, kunnen de gekozen wezens in elke beurt het volgende voordeel gebruiken: als het wezen een doelwit raakt met een aanvalsrol en het schade toebrengt, kan het wezen een {@dice d6} gooien en een bonus op de schade krijgen die gelijk is aan het gerolde getal.",
+				"Je kunt deze eigenschap een aantal keren gebruiken gelijk aan je vaardigheidsbonus, en je krijgt alle verbruikte keren terug als je een lange rustpauze beëindigt."
+			]
+		},
+		{
+			"name": "Path of Wild Magic",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Veel plaatsen in het multiversum zijn overladen met schoonheid, intense emotie en ongebreidelde magie; de Feywild, de Hogere Planeten en andere rijken van bovennatuurlijke kracht stralen dergelijke krachten uit en kunnen mensen diepgaand beïnvloeden. Als volk van diepe gevoelens zijn barbaren bijzonder vatbaar voor deze wilde invloeden, waarbij sommige barbaren door de magie worden getransformeerd. Deze door magie beïnvloede barbaren bewandelen het Pad van de Wilde Magie. Elf-, tiefling-, aasimar- en genasi-barbaren bewandelen dit pad vaak, omdat ze de buitenwereldse magie van hun voorouders graag willen manifesteren.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Magic Awareness|Barbarian||Wild Magic|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Wild Surge|Barbarian||Wild Magic|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Magic Awareness",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of Wild Magic feature}",
+				"Als actie kun je je bewustzijn openen voor de aanwezigheid van geconcentreerde magie. Tot het einde van je volgende beurt weet je de locatie van elke spreuk of magisch voorwerp binnen 60 voet van je, dat niet achter totale dekking ligt. Wanneer je een spreuk opmerkt, leer je tot welke school van magie deze behoort.",
+				"Je kunt deze eigenschap een aantal keren gebruiken gelijk aan je vaardigheidsbonus, en je krijgt alle verbruikte keren terug als je een lange rustpauze beëindigt."
+			]
+		},
+		{
+			"name": "Wild Surge",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of Wild Magic feature}",
+				"De magische energie die in je woedt, barst soms uit je. Als je in woede uitbarst, rol dan op de Wild Magic tabel om het magische effect te bepalen.",
+				"Als het effect een reddingsworp vereist, is de DC gelijk aan 8 + je vaardigheidsbonus + je Grondwettelijk modifier.",
+				{
+					"type": "table",
+					"caption": "Wild Magic",
+					"colLabels": [
+						"d8",
+						"Magical Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Schaduwachtige ranken omsingelen je. Elk wezen naar keuze dat je kunt zien binnen 30 meter van jou moet slagen op een Constitution saving throw of {@damage 1d12} necrotische schade oplopen. Je krijgt ook {@dice 1d12} tijdelijke hit points."
+						],
+						[
+							"2",
+							"Je teleporteert tot 30 voet naar een onbezette ruimte die je kunt zien. Totdat je woede eindigt, kun je dit effect in elke beurt opnieuw gebruiken als een bonusactie."
+						],
+						[
+							"3",
+							"Een ongrijpbare geest, die eruitziet als een {@creature flumph} of een {@creature pixie} (naar keuze), verschijnt binnen 5 meter van een wezen naar keuze dat je binnen 30 meter van je kunt zien. Aan het einde van de huidige beurt explodeert de geest, en elk wezen binnen een straal van 5 meter moet slagen op een Dexterity saving throw of {@damage 1d6} krachtschade oplopen. Totdat je woede eindigt, kun je dit effect opnieuw gebruiken en een andere geest oproepen tijdens elke beurt als een bonusactie."
+						],
+						[
+							"4",
+							"Magie doordrenkt een wapen naar keuze dat je vasthoudt. Totdat je woede eindigt, verandert het type schade van het wapen in kracht en krijgt het de eigenschappen licht en gegooid, met een normaal bereik van 20 voet en een lang bereik van 60 voet. Als het wapen je hand verlaat, verschijnt het weer in je hand aan het einde van de huidige beurt."
+						],
+						[
+							"5",
+							"Telkens wanneer een wezen je raakt met een aanvalsrol voordat je woede eindigt, loopt dat wezen {@damage 1d6} krachtschade op, omdat magie als vergelding uithaalt."
+						],
+						[
+							"6",
+							"Totdat je woede eindigt, ben je omgeven door meerkleurige, beschermende lichten; je krijgt een +1 bonus op AC, en als je binnen 10 voet van je bent, krijgen je bondgenoten dezelfde bonus."
+						],
+						[
+							"7",
+							"Bloemen en wijnstokken groeien tijdelijk om je heen. Totdat je woede eindigt, is de grond binnen 15 voet van je {@quickref difficult terrain||3} voor je vijanden."
+						],
+						[
+							"8",
+							"Een lichtstraal schiet uit je borst. Een ander schepsel naar keuze dat je kunt zien binnen een straal van 30 meter moet slagen op een grondwettelijke reddingsworp of {@damage 1d6} stralingsschade oplopen en {@condition blinded} worden tot het begin van je volgende beurt. Totdat je woede eindigt, kun je dit effect in elke beurt opnieuw gebruiken als een bonusactie."
+						]
+					],
+					"data": {
+						"tableInclude": true
+					}
+				}
+			]
+		},
+		{
+			"name": "Bolstering Magic",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Path of Wild Magic feature}",
+				"Je kunt je wilde magie inzetten om jezelf of een metgezel te versterken. Als actie kun je een wezen aanraken (dat kan jezelf zijn) en een van de volgende voordelen naar keuze aan dat wezen toekennen:",
+				{
+					"type": "list",
+					"items": [
+						"Gedurende 10 minuten kan het wezen een {@dice d3} gooien wanneer het een aanvalsrol of een ability check maakt en het gegooide getal bij de {@dice d20} rol optellen.",
+						"Gooi een {@dice d3}. Het wezen krijgt één verbruikt spell slot terug, waarvan het niveau gelijk is aan het gegooide getal of lager (de keuze van het wezen). Als een wezen dit voordeel eenmaal heeft gekregen, kan het dit pas weer krijgen na een lange rustperiode."
+					]
+				},
+				"Je kunt deze actie een aantal keren uitvoeren gelijk aan je vaardigheidsbonus, en je krijgt alle gebruikte acties terug als je een lange rustpauze beëindigt."
+			]
+		},
+		{
+			"name": "Unstable Backlash",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Path of Wild Magic feature}",
+				"Als je tijdens je woedeaanval in gevaar komt, kan de magie in je losbarsten; onmiddellijk nadat je tijdens je woedeaanval schade hebt geleden of een saving throw hebt gefaald, kun je met je reactie een worp doen op de Wild Magic tabel en onmiddellijk het gerolde effect produceren. Dit effect vervangt je huidige Wild Magic effect."
+			]
+		},
+		{
+			"name": "Controlled Surge",
+			"source": "TCE",
+			"page": 25,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Magic",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Path of Wild Magic feature}",
+				"Telkens wanneer je gooit op de Wild Magic tafel, mag je de dobbelsteen twee keer gooien en kiezen welk van de twee effecten je wilt loslaten. Als je met beide dobbelstenen hetzelfde getal gooit, mag je het getal negeren en een willekeurig effect op de tafel kiezen."
+			]
+		},
+		{
+			"name": "Path of the Beast",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"entries": [
+				"Barbaren die het Pad van Beest bewandelen, putten hun woede uit een beestachtige vonk die in hun ziel brandt. Dat beest huilt om vrijgelaten te worden en barst uit in de stuiptrekkingen van woede.",
+				"Zij die dit pad bewandelen kunnen bewoond zijn door een oergeest of afstammen van gedaanteverwisselaars. Je kunt de oorsprong van je wilde kracht kiezen of deze willekeurig bepalen door te rollen op de Herkomst van het Beest tabel.",
+				{
+					"type": "table",
+					"caption": "Origin of the Beast",
+					"colLabels": [
+						"d4",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Een van je ouders is een lycanthrope, en je hebt een deel van de vloek geërfd."
+						],
+						[
+							"2",
+							"Je stamt af van een legendarische druïde, wat blijkt uit je gave om gedeeltelijk van gedaante te veranderen."
+						],
+						[
+							"3",
+							"Een duivelse geest schonk je de mogelijkheid om verschillende beestachtige aspecten aan te nemen."
+						],
+						[
+							"4",
+							"Een oeroude dierengeest huist in je, die je toestaat dit pad te bewandelen."
+						]
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Form of the Beast|Barbarian||Beast (UA)|UA2020SubclassesPt1|3"
+				}
+			]
+		},
+		{
+			"name": "Form of the Beast",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Path of the Beast feature}",
+				"Als je in woede uitbarst, kun je transformeren en de beestachtige kracht in je onthullen. Totdat je woede eindigt, manifesteer je een natuurlijk wapen, waarbij je elke keer dat je woede uitbarst een van de volgende opties kiest:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Bite",
+							"entry": "Je mond verandert in een beestachtige snuit of grote onderkaken (jouw keuze). Je beet veroorzaakt {@damage 1d8} doordringende schade bij een treffer. Eenmaal per beurt, wanneer je een wezen met je beet beschadigt, krijg je een aantal hit points terug dat gelijk is aan je Constitution modifier (minimaal 1 hit point)."
+						},
+						{
+							"type": "item",
+							"name": "Claws",
+							"entry": "Je handen veranderen in klauwen, die bij een treffer {@damage 1d6} schade toebrengen. Als je in je beurt de actie {@action Attack} uitvoert en een aanval met je klauwen doet, kun je in dezelfde actie nog een aanval met je klauwen doen."
+						},
+						{
+							"type": "item",
+							"name": "Tail",
+							"entry": "Je kweekt een sjorrende, stekelige staart, die bij een treffer {@damage 1d12} doordringende schade aanricht en de eigenschap 'reach' heeft."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bestial Soul",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Path of the Beast feature}",
+				"De wilde geest in je groeit in kracht, waardoor de natuurlijke wapens van je Vorm van het Beest als magisch tellen voor het overwinnen van weerstand en immuniteit tegen niet-magische aanvallen en schade.",
+				"Je kunt ook een beroep doen op de wilde geest om je te helpen je aan te passen aan je omgeving. Als je klaar bent met een korte of lange rust, kies je een van de volgende voordelen, die duurt tot je klaar bent met een korte of lange rust:",
+				{
+					"type": "list",
+					"items": [
+						"Je krijgt een zwemsnelheid gelijk aan je loopsnelheid, en je kunt onder water ademen.",
+						"U krijgt een klimsnelheid gelijk aan uw loopsnelheid, en u kunt moeilijke oppervlakken beklimmen, inclusief ondersteboven op plafonds, zonder dat u een ability check hoeft te doen.",
+						"Wanneer u springt, kunt u een Strength ({@skill Athletics}) check doen en uw sprong verlengen met een aantal feet gelijk aan het totaal van de check. U kunt deze speciale controle slechts eenmaal per beurt uitvoeren."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infectious Fury",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Path of the Beast feature}",
+				"Als je een wezen raakt met je natuurlijke wapens terwijl je razend bent, kan de geest in jou je doelwit vervloeken met razende woede. Het doelwit moet slagen op een Wisdom saving throw (DC gelijk aan 8 + je Constitution modifier + je proficiency bonus) of een van de volgende effecten ondergaan (jouw keuze):",
+				{
+					"type": "list",
+					"items": [
+						"Het doelwit moet zijn reactie gebruiken om een melee aanval uit te voeren tegen een ander wezen van jouw keuze dat je kunt zien.",
+						"Doelwit neemt {@damage 2d12} psychische schade."
+					]
+				},
+				"Je kunt deze eigenschap een aantal keer gebruiken gelijk aan je Constitution modifier (minimaal één keer). Je krijgt alle gebruikte keren terug als je een lange rustperiode beëindigd hebt."
+			]
+		},
+		{
+			"name": "Call the Hunt",
+			"source": "UA2020SubclassesPt1",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Beast (UA)",
+			"subclassSource": "UA2020SubclassesPt1",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Path of the Beast feature}",
+				"Het beest in je groeit zo krachtig dat je zijn woestheid op je medestrijders kunt overbrengen. Wanneer je in woede uitbarst, kun je een aantal gewillige wezens kiezen die je kunt zien binnen een straal van 30 meter van je, gelijk aan je Constitution modifier (minimum van één wezen). Totdat je woede eindigt, krijgen de gekozen wezens de eigenschap Roekeloos {@action Attack} en heb je voordeel op saving throws tegen zijn {@condition frightened}. Je krijgt ook 5 tijdelijke hit points voor elk wezen dat het voordeel accepteert. Je kunt deze eigenschap een aantal keer gebruiken gelijk aan je Constitution modifier (een minimum van één keer). Je krijgt al je verbruikte krachten terug als je een lange rustperiode beëindigd hebt."
+			]
+		},
+		{
+			"name": "Giant Power",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"Als je dit pad kiest, leer je Reuzen te spreken, lezen en schrijven of een andere taal naar keuze als je al Reuzen kent. Daarnaast leer je de druidcraft of {@spell thaumaturgy} cantrip (jouw keuze). Wisdom is je spellcasting ability voor deze spreuk."
+			]
+		},
+		{
+			"name": "Giant's Havoc",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"{@i 3rd-Level Path of the Giant Feature}",
+				"Je woedeaanvallen trekken kracht uit de oerkracht van reuzen, waardoor je verandert in een kolossale kracht van vernietiging. Als je raast, krijg je de volgende voordelen:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Crushing Hurl",
+							"entries": [
+								"Bij een succesvolle aanval met een geworpen wapen waarbij je Kracht gebruikt, kun je je woede bonus toevoegen aan de schade rol van de aanval."
+							]
+						},
+						{
+							"type": "item",
+							"name": "Giant Stature",
+							"entries": [
+								"Je reikwijdte wordt 2 meter, en als je kleiner bent dan Large, word je Large, samen met alles wat je draagt. Als er niet genoeg ruimte is voor je om Large te worden, verandert je maat niet."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Giant",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 3,
+			"entries": [
+				"Barbaren die het Pad van de Reus bewandelen, putten kracht uit de oerkrachten die de Reuzen en hun elementaire soortgenoten zijn. Hun woede golft met elementaire kracht en zorgt ervoor dat deze barbaren groeien in omvang, waardoor ze veranderen in avatars van primordiale macht.",
+				"Tijdens hun woede kan een barbaar de vorm aannemen van een legendarische stormreus, waarbij het haar wit wordt en de ogen bliksemen. Anderen nemen de monsterlijke trekken van apocalyptische titanen aan en verscheuren de wereld om hen heen, zodat deze opnieuw kan worden gemaakt.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant Power|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Giant's Havoc|Barbarian||Giant (UA)|UA2022GiantOptions|3"
+				}
+			]
+		},
+		{
+			"name": "Elemental Cleaver",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-Level Path of the Giant Feature}",
+				"Je band met de elementaire kracht van reuzen en hun soortgenoten groeit, en je leert wapens met oerenergie te doordringen.",
+				"Wanneer je in woede uitbarst, kun je een wapen naar keuze dat je vasthoudt, doordrenken met één van de volgende schadecategorieën: zuur, koud, vuur, donder of bliksem. Terwijl je het geïnfuseerde wapen tijdens je razernij vasthoudt, verandert het schadetype van het wapen in het gekozen type, het brengt een extra {@damage 1d6} schade van het gekozen type toe wanneer het wordt geraakt, en het krijgt de eigenschap gegooid, met een normaal bereik van 20 voet en een lang bereik van 60 voet. Als je het wapen gooit, verschijnt het weer in je hand onmiddellijk nadat het een doelwit heeft geraakt of gemist. De voordelen van het toegepaste wapen worden onderdrukt wanneer een ander wezen dan jij het hanteert.",
+				"Terwijl je raast en het geïnfuseerde wapen vasthoudt, kun je een bonusactie gebruiken om het huidige schadetype van het geïnfuseerde wapen te veranderen in een ander schadetype dan de bovenstaande."
+			]
+		},
+		{
+			"name": "Mighty Impel",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-Level Path of the Giant Feature}",
+				"Je verbinding met reuzenkracht stelt je nu in staat om zowel bondgenoten als vijanden op het slagveld te slingeren. Als een bonusactie tijdens het razen kun je een medium of kleiner wezen binnen je bereik kiezen en het naar een onbezette ruimte verplaatsen die je binnen 30 voet van jezelf kunt zien. Een onwillig wezen moet slagen op een Sterkte-reddingsworp (DC is 8 + je vaardigheidsbonus + je Sterkte-modifier) om het effect te vermijden.",
+				"Als het gegooide wezen zich aan het einde van deze beweging niet op een oppervlak of vloeistof bevindt die het kan dragen, valt het wezen, waarbij het schade oploopt zoals normaal en landt {@condition prone}."
+			]
+		},
+		{
+			"name": "Demiurgic Colossus",
+			"source": "UA2022GiantOptions",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Giant (UA)",
+			"subclassSource": "UA2022GiantOptions",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-Level Path of the Giant Feature}",
+				"De oerkracht van je woede wordt intenser. Wanneer je woedt, neemt je reikwijdte nu met 10 voet toe, je grootte kan tot enorm toenemen en je kunt nu je machtige Impel gebruiken om wezens te verplaatsen die groot of kleiner zijn.",
+				"Bovendien wordt de extra schade die je uitdeelt met je Elemental Cleaver-eigenschap verhoogd tot {@dice 2d6}."
+			]
+		},
+		{
+			"name": "Path of the Wild Soul",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"entries": [
+				"Het rijk van de Feywild wemelt van schoonheid, onvoorspelbare emotie, en ongebreidelde magie. Een barbaar die aan dit rijk wordt blootgesteld, voelt emoties krachtig aan en magie doordrenkt zijn lichaam.",
+				"Wanneer een barbaar die dit pad volgt woedt, is dat een brullend gebrul om vrijheid, een explosie van expressie, die zich op onvoorspelbare manieren manifesteert.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Lingering Magic|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Wild Surge|Barbarian||Wild Soul (UA)|UABarbarianAndMonk|3"
+				}
+			]
+		},
+		{
+			"name": "Lingering Magic",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Op 3de niveau reageert je lichaam op de aanwezigheid van magie. Je kunt de {@spell detect magic} spreuk uitspreken zonder een spell slot of componenten te gebruiken. Constitution is je spellcasting ability voor deze spreuk. Je licht op in een kleur die overeenkomt met de school van magie die je detecteert (jij kiest de kleuren).",
+				"Je kunt deze eigenschap een aantal keer gebruiken gelijk aan je Constitution modifier (minimaal één keer). Je krijgt alle gebruikte keren terug als je een lange rustperiode beëindigd hebt."
+			]
+		},
+		{
+			"name": "Wild Surge",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het 3e niveau barst er magie uit je als je in woede uitbarst. Wanneer je in woede uitbarst, rol je op de Wild Surge tabel om het magische effect te bepalen.",
+				"Als de wild surge een reddingsworp vereist, is de DC gelijk aan 8 + je proficiency bonus + je Constitution modifier.",
+				{
+					"type": "table",
+					"caption": "Wild Surge",
+					"colLabels": [
+						"d8",
+						"Effect"
+					],
+					"colStyles": [
+						"col-1 text-center",
+						"col-11"
+					],
+					"rows": [
+						[
+							1,
+							"Necrotische energie barst uit je. Elk wezen binnen 30 meter van je krijgt {@damage 1d10} necrotische schade, en je krijgt tijdelijke hit points gelijk aan de som van de necrotische schade die aan de wezens is uitgedeeld."
+						],
+						[
+							2,
+							"Je teleporteert tot 20 voet naar een onbezette ruimte die je kunt zien. Totdat je woede eindigt, kun je dit effect tijdens elke beurt opnieuw activeren als een bonusactie."
+						],
+						[
+							3,
+							"Je roept {@dice 1d4} ontastbare geesten op die er uitzien als {@creature flumph||flumphs} in onbezette ruimtes binnen 30 voet van jou. Elke geest vliegt onmiddellijk 30 voet in een willekeurige richting. Aan het eind van je beurt exploderen alle geesten en elk wezen binnen 2 meter van een of meer van hen moet slagen op een Dexterity saving throw of {@damage 2d8} krachtschade oplopen."
+						],
+						[
+							4,
+							"Arcane energie omhult je. Totdat je woede eindigt, krijg je een +2 bonus op AC, en telkens als een wezen binnen een straal van 10 meter je met een aanval raakt, krijgt dat wezen krachtschade gelijk aan je Constitution modifier."
+						],
+						[
+							5,
+							"Plantaardig leven groeit tijdelijk om je heen: totdat je woede eindigt, is de grond binnen 10 voet van je {@quickref difficult terrain||3}."
+						],
+						[
+							6,
+							"Arcane energie boort in de gedachten van de mensen om je heen. Elk wezen dat zich binnen een straal van 30 meter van je bevindt moet slagen op een Wisdom saving throw of je ziet een glimp van de gedachten van het wezen en leert hoe het van plan is je aan te vallen. Als gevolg daarvan heeft het wezen nadeel op aanvalsrollen tegen jou tot het begin van je volgende beurt."
+						],
+						[
+							7,
+							"Schaduwen weven rond een wapen naar keuze dat je vasthoudt. Totdat je woede eindigt, richt je wapen psychische schade aan in plaats van vernietigende, snijdende of doordringende schade, en krijgt het de eigenschappen licht en gegooid met een normaal bereik van 20 voet en een lang bereik van 60 voet. Als je het wapen laat vallen of gooit, verdwijnt het en verschijnt het weer in je hand aan het einde van je beurt."
+						],
+						[
+							8,
+							"Een straal van schitterend licht schiet vanuit je borst in een lijn van 5 voet breed en 60 voet lang. Elk wezen in de lijn moet slagen op een grondwettelijke reddingsworp of {@damage 2d8} stralingsschade oplopen en {@condition blinded} worden tot het begin van je volgende beurt."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Magic Reserves",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau kun je de magie die in je opwelt kanaliseren naar andere wezens. Als actie kun je een wezen aanraken en een {@dice d4} gooien. Het wezen krijgt een verbruikt spell slot terug van een niveau gelijk aan het gegooide getal. Als het wezen dat je aanraakt geen spell slot van dat niveau kan terugwinnen, krijgt het wezen in plaats daarvan tijdelijke hit points gelijk aan vijf keer het gegooide getal.",
+				"Je neemt krachtschade gelijk aan vijf keer het gerolde getal.",
+				"Als je 14de niveau in deze klasse bereikt, verhoog je de dobbelsteen tot een {@dice d6}."
+			]
+		},
+		{
+			"name": "Arcane Rebuke",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Op het 10e niveau slaat de magie die in je ziel knettert er op los. Als een wezen je dwingt een reddingsworp te doen terwijl je woedend bent, kun je met je reactie {@damage 3d6} krachtschade aan dat wezen toebrengen."
+			]
+		},
+		{
+			"name": "Chaotic Fury",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14de niveau word je een bron van wilde magie terwijl je raast. Als bonusactie kun je opnieuw gooien op de Wild Surge tabel, waarbij je je huidige effect vervangt door het nieuwe."
+			]
+		},
+		{
+			"name": "Improved Magic Reserves",
+			"source": "UABarbarianAndMonk",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Wild Soul (UA)",
+			"subclassSource": "UABarbarianAndMonk",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14e niveau, verhoog je je magische reserve dobbelsteen tot een {@dice d6}."
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"entries": [
+				"Sommige barbaren komen uit culturen die hun voorouders vereren. Deze stammen leren dat de krijgers van het verleden in de wereld voortleven als machtige geesten die de levenden kunnen leiden en beschermen. Wanneer barbaren die dit pad volgen woeden, steken zij de barrière over naar de geestenwereld en roepen deze beschermgeesten aan voor hulp.",
+				"Barbaren die een beroep doen op hun voorouderlijke beschermers, vechten om hun stammen en hun bondgenoten te beschermen. Met de hulp van de geesten kunnen zij hun vijanden hinderen, zelfs als zij krachtige slagen tegen hen uitdelen.",
+				"Om de band met hun voorouderlijke beschermers te verstevigen, bedekken barbaren die dit pad volgen, zichzelf met uitgebreide tatoeages die de daden van hun voorouders herdenken. Deze tatoeages vertellen epische sagen over overwinningen op verschrikkelijke monsters en andere geduchte rivalen.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ancestral Protectors|Barbarian||Ancestral Guardian (UA)|UABarbarianPrimalPaths|3"
+				}
+			]
+		},
+		{
+			"name": "Ancestral Protectors",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het moment dat je dit pad kiest op 3de niveau, verschijnen er spectrale krijgers als je raast. Deze krijgers leiden een vijand die je aanwijst af en hinderen zijn pogingen om je te ontwijken. Terwijl je woedt, kun je in je beurt een bonusactie gebruiken om een wezen te kiezen dat je kunt zien binnen een straal van 2 meter. Tot het begin van je volgende beurt of tot je woede eindigt, heeft het gekozen wezen nadeel bij elke aanvalsrol die niet op jou is gericht, en als het wezen de actie {@action Disengage} uitvoert binnen 5 meter van jou, wordt zijn snelheid gehalveerd tot het einde van zijn beurt."
+			]
+		},
+		{
+			"name": "Ancestral Shield",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau kunnen de beschermgeesten die je bijstaan je bondgenoten bescherming bieden. Als je woedend bent en een medestander die je kunt zien binnen een straal van 30 meter schade toebrengt door slagen, stoten of doorboren, kun je je reactie gebruiken om je weerstand tegen deze schade over te dragen op de medestander. De weerstand geldt voor de inkomende schade. Tot het begin van je volgende beurt behoudt de bondgenoot je weerstand en heb jij die niet, tenzij je die ook hebt van een andere bron dan woede."
+			]
+		},
+		{
+			"name": "Consult the Spirits",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Op het 10e niveau kun je overleggen met je voorouderlijke geesten. Vlak voordat je een Intelligentie- of een Wijsheid-check doet, kun je jezelf voordeel geven bij de check. Je kunt deze eigenschap drie keer gebruiken, en je krijgt het verbruikte voordeel terug als je een lange rustpauze hebt genomen."
+			]
+		},
+		{
+			"name": "Vengeful Ancestors",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14e niveau worden je voorouderlijke geesten krachtig genoeg om je vijanden te slaan. Als jij of een bondgenoot die je kunt zien binnen een straal van 30 meter van je wordt beschadigd door een mêlee-aanval terwijl je woedt, kun je je reactie gebruiken om de aanvaller {@damage 2d8} krachtschade van de geesten te laten oplopen."
+			]
+		},
+		{
+			"name": "Path of the Storm Herald",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"entries": [
+				"Typische barbaren koesteren een woede die in hen huist. Hun woede geeft hen superieure kracht, duurzaamheid en snelheid. Barbaren die het pad van de Storm Herald volgen, leren in plaats daarvan hun woede om te zetten in een mantel van oermagie die om hen heen wervelt. In een woedeaanval kan een barbaar van dit pad de natuur aanboren om krachtige, magische effecten te creëren.",
+				"Storm herauten zijn meestal elite kampioenen die trainen samen met druïden, rangers, en anderen die gezworen hebben om het natuurlijke rijk te beschermen. Andere stormherauten vervolmaken hun vak in elite loges die gesticht zijn in door stormen geteisterde streken, in de bevroren gebieden aan het einde van de wereld, of diep in de heetste woestijnen.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Storm of Fury|Barbarian||Storm Herald (UA)|UABarbarianPrimalPaths|3"
+				}
+			]
+		},
+		{
+			"name": "Storm of Fury",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Als je dit pad kiest op 3de niveau, kies dan één van de volgende opties: woestijn, zee, of toendra. De omgeving die je kiest bepaalt de aard van de storm die je oproept als je woedt. Als je raast, straal je een aura uit in een straal van 3 meter. De effecten van dit aura zijn afhankelijk van de gekozen omgeving.",
+				{
+					"type": "entries",
+					"name": "Desert",
+					"entries": [
+						"Elke vijand die zijn beurt eindigt in je aura krijgt vuurschade gelijk aan 2 + je barbaarse level gedeeld door 4."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sea",
+					"entries": [
+						"Aan het eind van elke beurt mag je een ander wezen in je aura kiezen dan jezelf. Het doelwit moet een Dexterity saving throw doen tegen een DC gelijk aan 8 + je proficiency bonus + je Constitution modifier. Het doelwit loopt {@damage 2d6} bliksemschade op als hij niet slaagt, en half zoveel als hij wel slaagt. Deze schade stijgt tot {@dice 3d6} op 10de niveau en tot {@dice 4d6} op 15de niveau."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tundra",
+					"entries": [
+						"Elke vijand die zijn beurt eindigt in je aura krijgt koude schade gelijk aan 2 + je barbaar level gedeeld door 4."
+					]
+				}
+			]
+		},
+		{
+			"name": "Storm Soul",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau verleent je link met de kracht van de storm je extra vaardigheden, gebaseerd op de omgeving die je op het 3e niveau hebt gekozen.",
+				{
+					"type": "entries",
+					"name": "Desert",
+					"entries": [
+						"Je krijgt weerstand tegen vuurschade en lijdt niet aan de effecten van extreme hitte."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sea",
+					"entries": [
+						"Je krijgt weerstand tegen bliksemschade en je kunt onder water ademen."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tundra",
+					"entries": [
+						"Toendra. Je krijgt weerstand tegen koude schade en lijdt niet aan de effecten van extreme kou."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shield of the Storm",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Op het 10e niveau leer je je meesterschap over de storm te gebruiken om je bondgenoten te beschermen. Terwijl je raast, krijgen je bondgenoten binnen je aura de voordelen van je Stormziel eigenschap."
+			]
+		},
+		{
+			"name": "Raging Storm",
+			"source": "UABarbarianPrimalPaths",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14de niveau, wordt de kracht van de storm die je kanaliseert machtiger.",
+				{
+					"type": "entries",
+					"name": "Desert",
+					"entries": [
+						"De grond om je heen wordt als verschuivend zand. Elke vijand die meer dan 5 voet per beurt probeert te bewegen op de grond terwijl hij zich in je aura bevindt, moet een Sterkte-reddingsworp doen (DC 8 + je vaardigheidsbonus + je Grondwettelijkheidsfactor). Als hij niet slaagt, zakt de snelheid van het wezen tot 0 tot het begin van zijn volgende beurt."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sea",
+					"entries": [
+						"Brullende winden scheuren door het gebied om je heen. Elk wezen in uw aura dat u met een aanval raakt, moet een Sterkte-reddingsworp doen (DC 8 + uw vaardigheidsbonus + uw Sterkte-modificator) of wordt verdreven {@condition prone}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Tundra",
+					"entries": [
+						"De lucht om je heen vertraagt je vijanden op koude wijze. Het gebied binnen je aura is {@quickref difficult terrain||3} voor je vijanden."
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Zealot",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"entries": [
+				"Sommige goden inspireren hun volgelingen om zich in een woeste strijdwoede te storten. Deze barbaren zijn fanatiekelingen-krijgers die hun woede kanaliseren in krachtige vertoningen van goddelijke macht.",
+				"Een verscheidenheid aan goden in de werelden van D&D inspireren hun volgelingen om dit pad te omarmen. Tempus uit de Forgotten Realms en Hextor en Erythnul uit Greyhawk zijn allemaal goede voorbeelden. In het algemeen zijn de goden die fanatiekelingen inspireren godheden van de strijd, vernietiging en geweld. Ze zijn niet allemaal slecht, maar slechts weinigen zijn goed.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Divine Fury|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Warrior of the Gods|Barbarian||Zealot (UA)|UABarbarianPrimalPaths|3"
+				}
+			]
+		},
+		{
+			"name": "Divine Fury",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het moment dat je dit pad kiest op 3de niveau, kun je goddelijke woede kanaliseren als je begint te razen. Als je dat doet, word je gehuld in een aura van goddelijke kracht totdat de woede eindigt. Aan het einde van elk van je beurten voor die duur, krijgt elk wezen binnen 5 voet van je schade gelijk aan {@dice 1d6} + de helft van je barbarian level. De schade is necrotic of radiant; je kiest het type schade wanneer je deze eigenschap verkrijgt."
+			]
+		},
+		{
+			"name": "Warrior of the Gods",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Op het 3e niveau is je ziel gemarkeerd voor eindeloze strijd. Als een spreuk als enig effect heeft dat je weer tot leven komt (maar niet ondood), heeft de caster geen materiële componenten nodig om de spreuk op jou uit te spreken."
+			]
+		},
+		{
+			"name": "Zealous Focus",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau kan de goddelijke kracht die je woede aanwakkert je beschermen tegen kwaad. Als je een saving throw niet haalt terwijl je raast, kun je in plaats daarvan slagen op die saving throw als een reactie. Dit beëindigt echter onmiddellijk je woede en je kunt niet opnieuw woeden tot je een korte of lange rust hebt genomen."
+			]
+		},
+		{
+			"name": "Zealous Presence",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Op het 10e niveau leer je goddelijke kracht te kanaliseren om anderen tot ijver aan te zetten. Als actie huil je van woede en slaak je een strijdkreet, doordrenkt met goddelijke energie. Elke bondgenoot binnen 60 meter van jou krijgt voordeel op aanvalsrollen en reddingsslagen tot het begin van je volgende beurt.",
+				"Als je deze functie eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een lange rustperiode hebt gehad."
+			]
+		},
+		{
+			"name": "Rage Beyond Death",
+			"source": "UABarbarianPrimalPaths",
+			"page": 2,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot (UA)",
+			"subclassSource": "UABarbarianPrimalPaths",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Vanaf het 14e niveau kun je met de goddelijke kracht die je woede voedt, fatale klappen afweren.",
+				"Als je woedend bent, ben je niet knock-out als je 0 hit points hebt {@condition unconscious}. Je moet nog steeds de dood reddende worpen doen, en je lijdt aan de normale effecten van het nemen van schade terwijl je 0 hit points hebt. Echter, als je zou sterven als gevolg van het falen van de dood saving throws, je niet sterven totdat je woede eindigt."
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian v2",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"entries": [
+				"Sommige barbaren komen uit culturen die hun voorouders vereren. Deze stammen leren dat de krijgers van het verleden in de wereld voortleven als machtige geesten die de levenden kunnen leiden en beschermen. Wanneer barbaren die dit pad volgen woeden, steken zij de barrière over naar de geestenwereld en roepen deze beschermgeesten aan voor hulp.",
+				"Barbaren die een beroep doen op hun voorouderlijke beschermers, vechten om hun stammen en hun bondgenoten te beschermen. Met de hulp van de geesten kunnen zij hun vijanden hinderen, zelfs als zij krachtige slagen tegen hen uitdelen.",
+				"Om de band met hun voorouderlijke beschermers te verstevigen, bedekken barbaren die dit pad volgen, zichzelf met uitgebreide tatoeages die de daden van hun voorouders herdenken. Deze tatoeages vertellen epische sagen over overwinningen op verschrikkelijke monsters en andere geduchte rivalen.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ancestral Protectors|Barbarian||Ancestral Guardian v2 (UA)|UARevisedSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Ancestral Protectors",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het moment dat je dit pad kiest op 3de niveau, verschijnen er spectrale krijgers als je raast. Deze krijgers leiden een vijand die je aanwijst af en belemmeren zijn pogingen om je te ontwijken. Terwijl je woedt, wordt het eerste wezen dat je in je beurt met een aanval raakt het doelwit van deze krijgers. Tot het begin van je volgende beurt of tot het einde van je woedeaanval heeft het doelwit nadeel bij elke aanvalsrol die niet op jou is gericht, en andere wezens dan jij hebben weerstand tegen de schade van de aanvallen van het wezen."
+			]
+		},
+		{
+			"name": "Ancestral Shield",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau kunnen de beschermgeesten die je bijstaan je bondgenoten bescherming bieden. Als je woedend bent en een wezen dat je kunt zien binnen een straal van 30 meter schade oploopt, kun je je reactie gebruiken om de schade met {@dice 2d8} te verminderen. Als je bepaalde levels in deze klasse bereikt, kun je de schade met meer verminderen: met {@dice 3d8} op het 10e level en met {@dice 4d8} op het 14e level."
+			]
+		},
+		{
+			"name": "Consult the Spirits",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Op het 10e niveau kun je met je voorouderlijke geesten overleggen en ze gebruiken om verre landen te verkennen. Als je dat doet, spreek je de spreuk {@spell clairvoyance} uit, zonder dat je een spreukgleuf nodig hebt. In plaats van een sferische sensor te creëren, roept de spreuk onzichtbaar een van je voorouderlijke geesten naar de gekozen locatie. Wijsheid is je bezweringsvaardigheid voor de spreuk. Nadat je de spreuk op deze manier hebt uitgesproken, kun je dit niet meer doen totdat je een korte of lange rust hebt genomen."
+			]
+		},
+		{
+			"name": "Vengeful Ancestors",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op je 14e level worden je voorouderlijke geesten krachtig genoeg om vijanden te treffen die de mensen die jij beschermt durven te schaden. Als je je Spirit Shield Ability gebruikt om een schepsel te beschermen dat door een aanval is beschadigd, loopt de aanvaller evenveel schade op als het Spirit Shield beschermt."
+			]
+		},
+		{
+			"name": "Path of the Ancestral Guardian",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Sommige barbaren komen uit culturen die hun voorouders vereren. Deze stammen leren dat de krijgers van het verleden in de wereld rondwaren als machtige geesten, die de levenden kunnen leiden en beschermen. Wanneer een barbaar die dit pad volgt woedt, neemt de barbaar contact op met de geestenwereld en roept deze beschermgeesten om hulp.",
+				"Barbaren die een beroep doen op hun voorouderlijke beschermers kunnen beter vechten om hun stammen en hun bondgenoten te beschermen. Om de band met hun voorouderlijke beschermers te verstevigen, bedekken barbaren die dit pad volgen zichzelf met uitgebreide tatoeages die de daden van hun voorouders herdenken. Deze tatoeages vertellen verhalen over overwinningen op verschrikkelijke monsters en andere geduchte rivalen.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Ancestral Protectors|Barbarian||Ancestral Guardian|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Ancestral Protectors",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het moment dat je dit pad kiest op 3de niveau, verschijnen er spectrale krijgers als je in je woede uitbarst. Terwijl je woedt, wordt het eerste wezen dat je in je beurt met een aanval raakt het doelwit van de krijgers, die hun aanvallen hinderen. Tot het begin van je volgende beurt heeft het doelwit nadeel bij elke aanvalsrol die niet tegen jou is gericht, en als het doelwit een ander wezen dan jij raakt met een aanval, heeft dat wezen weerstand tegen de schade die door de aanval wordt aangericht. Het effect op het doelwit eindigt vroegtijdig als je woede eindigt."
+			]
+		},
+		{
+			"name": "Spirit Shield",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau kunnen de beschermgeesten die je bijstaan bovennatuurlijke bescherming bieden aan degenen die je verdedigt. Als je woedend bent en een ander wezen dat je kunt zien binnen een straal van 30 meter schade oploopt, kun je je reactie gebruiken om die schade met {@dice 2d6} te verminderen.",
+				"Als je bepaalde niveaus in deze klasse bereikt, kun je de schade met meer verminderen: met {@dice 3d6} op het 10e niveau en met {@dice 4d6} op het 14e niveau."
+			]
+		},
+		{
+			"name": "Consult the Spirits",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Op je 10e level krijg je de mogelijkheid om met je voorouderlijke geesten te overleggen. Wanneer je dit doet, spreek je de {@spell augury} of {@spell clairvoyance} spreuk uit, zonder gebruik te maken van een spell slot of materiële componenten. In plaats van een sferische sensor te creëren, roept dit gebruik van {@spell clairvoyance} onzichtbaar een van je voorouderlijke geesten op naar de gekozen locatie. Wijsheid is je bezweringsvermogen voor deze spreuken.",
+				"Nadat je een van beide spreuken op deze manier hebt uitgesproken, kun je deze eigenschap niet meer gebruiken totdat je een korte of lange rust hebt genomen."
+			]
+		},
+		{
+			"name": "Vengeful Ancestors",
+			"source": "XGE",
+			"page": 9,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Ancestral Guardian",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14e niveau worden je voorouderlijke geesten krachtig genoeg om wraak te nemen. Als je je Geestenschild gebruikt om de schade van een aanval te verminderen, krijgt de aanvaller een hoeveelheid krachtschade gelijk aan de schade die je Geestenschild voorkomt."
+			]
+		},
+		{
+			"name": "Path of the Storm Herald",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Alle barbaren koesteren een woede in zich. Hun woede geeft hen superieure kracht, duurzaamheid en snelheid. Barbaren die het pad van de Storm Herald volgen, leren om die woede om te zetten in een mantel van oermagie, die om hen heen wervelt. In een woedeaanval gebruikt een barbaar van dit pad de krachten van de natuur om krachtige magische effecten te creëren.",
+				"Storm herauten zijn meestal elite kampioenen die trainen samen met druïden, rangers, en anderen die gezworen hebben de natuur te beschermen. Andere storm-herauten bekwamen zich in lodges in door stormen geteisterde streken, in de bevroren gebieden aan het einde van de wereld, of diep in de heetste woestijnen.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Storm Aura|Barbarian||Storm Herald|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Storm Aura",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het 3e niveau straal je een stormachtig, magisch aura uit als je tekeer gaat. De aura strekt zich 10 voet van je uit in elke richting, maar niet door totale dekking.",
+				"Je aura heeft een effect dat wordt geactiveerd als je in je woede komt, en je kunt het effect in elke beurt opnieuw activeren als bonusactie. Kies woestijn, zee of toendra. Het effect van je aura hangt af van de gekozen omgeving, zoals hieronder beschreven. Je kunt je omgevingskeuze telkens veranderen als je een level stijgt in deze klasse.",
+				"Als de effecten van je aura een reddingsworp vereisen, is de DC gelijk aan 8 + je vaardigheidsbonus + je Grondwettelijk modifier.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Desert|Barbarian|XGE|Storm Herald|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Sea|Barbarian|XGE|Storm Herald|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tundra|Barbarian|XGE|Storm Herald|XGE|3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Storm Soul",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Op het 6e niveau, geeft de storm je voordelen, zelfs als je aura niet actief is. De voordelen zijn gebaseerd op de omgeving die je voor je Storm Aura hebt gekozen.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Desert|Barbarian|XGE|Storm Herald|XGE|6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Sea|Barbarian|XGE|Storm Herald|XGE|6"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tundra|Barbarian|XGE|Storm Herald|XGE|6"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shielding Storm",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Op het 10e niveau leer je je meesterschap over de storm te gebruiken om anderen te beschermen. Elk wezen van je keuze heeft de schadeweerstand die je hebt verkregen door de Stormziel eigenschap terwijl het wezen in je Storm Aura is."
+			]
+		},
+		{
+			"name": "Raging Storm",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Op 14e niveau wordt de kracht van de storm die je kanaliseert machtiger, en slaat naar je vijanden uit. Het effect is gebaseerd op de omgeving die je voor je Storm Aura hebt gekozen.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Desert|Barbarian|XGE|Storm Herald|XGE|14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Sea|Barbarian|XGE|Storm Herald|XGE|14"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Tundra|Barbarian|XGE|Storm Herald|XGE|14"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Path of the Zealot",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Sommige goden inspireren hun volgelingen om zich in een woeste strijdwoede te storten. Deze barbaren zijn fanatiekelingen-krijgers die hun woede kanaliseren in krachtige vertoningen van goddelijke macht.",
+				"Een verscheidenheid aan goden in de werelden van D&D inspireren hun volgelingen om dit pad te omarmen. Tempus uit de Forgotten Realms en Hextor en Erythnul uit Greyhawk zijn allemaal goede voorbeelden. In het algemeen zijn de goden die fanatiekelingen inspireren godheden van de strijd, vernietiging en geweld. Ze zijn niet allemaal slecht, maar slechts weinigen zijn goed.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Divine Fury|Barbarian||Zealot|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Warrior of the Gods|Barbarian||Zealot|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Divine Fury",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Vanaf het moment dat je dit pad kiest op niveau 3, kun je goddelijke woede kanaliseren in je wapenaanvallen. Terwijl je woedt, wordt het eerste wezen dat je in elke beurt met een wapenaanval raakt, extra beschadigd gelijk aan {@dice 1d6} + de helft van je barbaarse level. De extra schade is necrotic of radiant; je kiest het type schade wanneer je deze eigenschap verkrijgt."
+			]
+		},
+		{
+			"name": "Warrior of the Gods",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Op het 3e niveau is je ziel gemarkeerd voor eindeloze strijd. Als een spreuk, zoals {@spell raise dead}, als enig effect heeft dat je weer tot leven wordt gewekt (maar niet ondood), heeft de caster geen materiële componenten nodig om de spreuk op jou uit te spreken."
+			]
+		},
+		{
+			"name": "Fanatical Focus",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Vanaf het 6e niveau kan de goddelijke kracht die je woede aanwakkert je beschermen. Als je een reddingsworp niet haalt terwijl je woedt, kun je deze opnieuw doen, en moet je de nieuwe worp gebruiken. Je kunt deze vaardigheid maar één keer per woedeaanval gebruiken."
+			]
+		},
+		{
+			"name": "Zealous Presence",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"Op het 10e niveau leer je goddelijke kracht te kanaliseren om anderen tot fanatisme aan te zetten. Als een bonus actie, ontketen je een strijdkreet doordrenkt met goddelijke energie. Tot tien andere wezens naar keuze binnen 60 meter van je die je kunnen horen krijgen voordeel op aanvalsrollen en reddingsslagen tot het begin van je volgende beurt.",
+				"Als je deze functie eenmaal hebt gebruikt, kun je hem niet meer gebruiken totdat je een lange rustperiode hebt gehad."
+			]
+		},
+		{
+			"name": "Rage beyond Death",
+			"source": "XGE",
+			"page": 11,
+			"className": "Barbarian",
+			"classSource": "PHB",
+			"subclassShortName": "Zealot",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Vanaf het 14e niveau kun je met de goddelijke kracht die je woede voedt, fatale klappen afweren.",
+				"Als je woedend bent, heb je geen 0 hit points {@condition unconscious}. Je moet nog steeds de dood reddende worpen doen, en je lijdt aan de normale effecten van het nemen van schade terwijl je 0 hit points hebt. Als je echter zou sterven door het niet halen van de doodsreddende worpen, sterf je pas als je woede eindigt, en je sterft dan alleen als je nog steeds 0 hit points hebt."
+			]
+		},
+		{
+			"name": "Elk",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Als je raast en geen zwaar harnas draagt, neemt je loopsnelheid met 15 voet toe. De geest van de eland maakt je buitengewoon snel."
+			]
+		},
+		{
+			"name": "Tiger",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Terwijl je raast, kun je 10 voet toevoegen aan je ver-spring afstand en 3 voet aan je hoog-spring afstand. De geest van de tijger versterkt je sprongen."
+			]
+		},
+		{
+			"name": "Elk",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Te paard of te voet, je reistempo wordt verdubbeld, net als het reistempo van maximaal tien metgezellen zolang zij zich binnen 60 voet van je bevinden en jij niet {@condition incapacitated}. De elandgeest helpt je ver en snel te zwerven."
+			]
+		},
+		{
+			"name": "Tiger",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Je behaalt vaardigheid in twee vaardigheden uit de volgende lijst: {@skill Athletics}, {@skill Acrobatics}, {@skill Stealth}, en {@skill Survival}. De kattengeest scherpt je overlevingsinstincten aan."
+			]
+		},
+		{
+			"name": "Elk",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Terwijl u woedt, kunt u een bonusactie gebruiken tijdens uw beweging om door de ruimte van een groot of kleiner wezen te gaan. Dat wezen moet slagen op een Sterkte-sparingsworp (DC 8 + uw Sterkte-bonus + uw vaardigheidsbonus) of het wordt {@condition prone} geslagen en krijgt een vernietigingsschade gelijk aan {@dice 1d12} + uw Sterkte-modificator."
+			]
+		},
+		{
+			"name": "Tiger",
+			"source": "SCAG",
+			"page": 122,
+			"className": "Barbarian",
+			"classSource": "SCAG",
+			"subclassShortName": "Totem Warrior",
+			"subclassSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Als je je tijdens je woedeaanval in een rechte lijn van minstens 20 voet naar een Large of kleiner doelwit beweegt, net voordat je er een aanval met een wapen tegen uitvoert, kun je een bonusactie gebruiken om er een extra aanval met een wapen tegen uit te voeren."
+			]
+		},
+		{
+			"name": "Desert",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Als dit effect wordt geactiveerd, lopen alle andere wezens in je aura elk 2 vuurschade op. De schade neemt toe als je bepaalde levels in deze klasse bereikt, en wordt 3 op 5e level, 4 op 10e level, 5 op 15e level, en 6 op 20e level."
+			]
+		},
+		{
+			"name": "Sea",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Wanneer dit effect wordt geactiveerd, kun je één ander wezen kiezen dat je in je aura kunt zien. Het doelwit moet een Dexterity saving throw doen. Het doelwit loopt {@damage 1d6} bliksemschade op als hij niet slaagt, of half zoveel als hij wel slaagt. De schade neemt toe als je een bepaald level in deze klasse bereikt, en loopt op tot {@dice 2d6} op het 10e level, {@dice 3d6} op het 15e level, en {@dice 4d6} op het 20e level."
+			]
+		},
+		{
+			"name": "Tundra",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Als dit effect wordt geactiveerd, krijgt elk wezen van je keuze in je aura 2 tijdelijke hit points, omdat ijzige geesten het lijden bezorgen. De tijdelijke hit points nemen toe als je bepaalde levels in deze klasse bereikt, tot 3 op 5e level, 4 op 10e level, 5 op 15e level, en 6 op 20e level."
+			]
+		},
+		{
+			"name": "Desert",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Je krijgt weerstand tegen vuurschade, en je hebt geen last van de effecten van extreme hitte, zoals beschreven in de Dungeon Master's Guide. Bovendien kun je als actie een brandbaar voorwerp aanraken dat niet door iemand anders wordt gedragen, en het in brand steken."
+			]
+		},
+		{
+			"name": "Sea",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Je krijgt weerstand tegen bliksemschade, en je kunt onder water ademen. Je krijgt ook een zwemsnelheid van 30 voet."
+			]
+		},
+		{
+			"name": "Tundra",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 6,
+			"entries": [
+				"Je krijgt weerstand tegen schade door koude, en je hebt geen last van de effecten van extreme kou, zoals beschreven in de Dungeon Master's Guide. Bovendien kun je als actie water aanraken en een kubus van 3 meter in ijs veranderen, dat na 1 minuut smelt. Deze actie mislukt als er een wezen in de kubus staat."
+			]
+		},
+		{
+			"name": "Desert",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"entries": [
+				"Onmiddellijk nadat een wezen in je aura je met een aanval raakt, kun je je reactie gebruiken om dat wezen te dwingen een Dexterity saving throw te doen. Als je niet slaagt, krijgt het wezen een vuurschade gelijk aan de helft van je barbaarse level."
+			]
+		},
+		{
+			"name": "Sea",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"entries": [
+				"Wanneer je een wezen in je aura raakt met een aanval, kun je je reactie gebruiken om dat wezen te dwingen een Sterkte-sparingsworp te doen. Als je niet slaagt, wordt het wezen {@condition prone} geraakt, alsof het door een golf wordt geraakt."
+			]
+		},
+		{
+			"name": "Tundra",
+			"source": "XGE",
+			"page": 10,
+			"className": "Barbarian",
+			"classSource": "XGE",
+			"subclassShortName": "Storm Herald",
+			"subclassSource": "XGE",
+			"level": 14,
+			"entries": [
+				"Telkens wanneer het effect van je Storm Aura wordt geactiveerd, mag je één wezen kiezen dat je in de aura kunt zien. Dat wezen moet slagen op een Strength saving throw, of zijn snelheid wordt gereduceerd tot 0 tot het begin van je volgende beurt, omdat magische vorst het bedekt."
+			]
+		}
+	]
+}

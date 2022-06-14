@@ -1,0 +1,3531 @@
+{
+	"_meta": {
+		"dependencies": {
+			"subclass": [
+				"generic"
+			]
+		}
+	},
+	"class": [
+		{
+			"name": "Bard",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"hd": {
+				"number": 1,
+				"faces": 8
+			},
+			"proficiency": [
+				"dex",
+				"cha"
+			],
+			"spellcastingAbility": "cha",
+			"casterProgression": "full",
+			"cantripProgression": [
+				2,
+				2,
+				2,
+				3,
+				3,
+				3,
+				3,
+				3,
+				3,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4,
+				4
+			],
+			"spellsKnownProgression": [
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				14,
+				15,
+				15,
+				16,
+				18,
+				19,
+				19,
+				20,
+				22,
+				22,
+				22
+			],
+			"additionalSpells": [
+				{
+					"name": "Magical Secrets",
+					"known": {
+						"10": [
+							{
+								"choose": "level=0;1;2;3;4;5"
+							},
+							{
+								"choose": "level=0;1;2;3;4;5"
+							}
+						],
+						"14": [
+							{
+								"choose": "level=0;1;2;3;4;5;6;7"
+							},
+							{
+								"choose": "level=0;1;2;3;4;5;6;7"
+							}
+						],
+						"18": [
+							{
+								"choose": ""
+							},
+							{
+								"choose": ""
+							}
+						]
+					}
+				}
+			],
+			"startingProficiencies": {
+				"armor": [
+					"light"
+				],
+				"weapons": [
+					"simple",
+					"{@item hand crossbow|phb|hand crossbows}",
+					"{@item longsword|phb|longswords}",
+					"{@item rapier|phb|rapiers}",
+					"{@item shortsword|phb|shortswords}"
+				],
+				"tools": [
+					"three {@item musical instrument|PHB|musical instruments} of your choice"
+				],
+				"skills": [
+					{
+						"any": 3
+					}
+				]
+			},
+			"startingEquipment": {
+				"additionalFromBackground": true,
+				"default": [
+					"(a) a {@item rapier|phb}, (b) a {@item longsword|phb}, or (c) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+					"(a) a {@item diplomat's pack|phb} or (b) an {@item entertainer's pack|phb}",
+					"(a) a {@item lute|phb} or (b) any other {@filter musical instrument|items|miscellaneous=mundane|type=instrument}",
+					"{@item Leather armor|phb}, and a {@item dagger|phb}"
+				],
+				"goldAlternative": "{@dice 5d4 × 10|5d4 × 10|Starting Gold}",
+				"defaultData": [
+					{
+						"a": [
+							"rapier|phb"
+						],
+						"b": [
+							"longsword|phb"
+						],
+						"c": [
+							{
+								"equipmentType": "weaponSimple"
+							}
+						]
+					},
+					{
+						"a": [
+							"diplomat's pack|phb"
+						],
+						"b": [
+							"entertainer's pack|phb"
+						]
+					},
+					{
+						"a": [
+							"lute|phb"
+						],
+						"b": [
+							{
+								"equipmentType": "instrumentMusical"
+							}
+						]
+					},
+					{
+						"_": [
+							"Leather armor|phb",
+							"dagger|phb"
+						]
+					}
+				]
+			},
+			"multiclassing": {
+				"requirements": {
+					"cha": 13
+				},
+				"proficienciesGained": {
+					"armor": [
+						"light"
+					],
+					"skills": [
+						{
+							"choose": {
+								"from": [
+									"athletics",
+									"acrobatics",
+									"sleight of hand",
+									"stealth",
+									"arcana",
+									"history",
+									"investigation",
+									"nature",
+									"religion",
+									"animal handling",
+									"insight",
+									"medicine",
+									"perception",
+									"survival",
+									"deception",
+									"intimidation",
+									"performance",
+									"persuasion"
+								],
+								"count": 1
+							}
+						}
+					],
+					"tools": [
+						"one {@item musical instrument|PHB} of your choice"
+					]
+				}
+			},
+			"classTableGroups": [
+				{
+					"colLabels": [
+						"{@filter Cantrips Known|spells|level=0|class=bard}",
+						"{@filter Spells Known|spells|class=bard}"
+					],
+					"rows": [
+						[
+							2,
+							4
+						],
+						[
+							2,
+							5
+						],
+						[
+							2,
+							6
+						],
+						[
+							3,
+							7
+						],
+						[
+							3,
+							8
+						],
+						[
+							3,
+							9
+						],
+						[
+							3,
+							10
+						],
+						[
+							3,
+							11
+						],
+						[
+							3,
+							12
+						],
+						[
+							4,
+							14
+						],
+						[
+							4,
+							15
+						],
+						[
+							4,
+							15
+						],
+						[
+							4,
+							16
+						],
+						[
+							4,
+							18
+						],
+						[
+							4,
+							19
+						],
+						[
+							4,
+							19
+						],
+						[
+							4,
+							20
+						],
+						[
+							4,
+							22
+						],
+						[
+							4,
+							22
+						],
+						[
+							4,
+							22
+						]
+					]
+				},
+				{
+					"title": "Spell Slots per Spell Level",
+					"colLabels": [
+						"{@filter 1st|spells|level=1|class=bard}",
+						"{@filter 2nd|spells|level=2|class=bard}",
+						"{@filter 3rd|spells|level=3|class=bard}",
+						"{@filter 4th|spells|level=4|class=bard}",
+						"{@filter 5th|spells|level=5|class=bard}",
+						"{@filter 6th|spells|level=6|class=bard}",
+						"{@filter 7th|spells|level=7|class=bard}",
+						"{@filter 8th|spells|level=8|class=bard}",
+						"{@filter 9th|spells|level=9|class=bard}"
+					],
+					"rowsSpellProgression": [
+						[
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							1,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							0,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							0,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							0,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							0
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							1,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							1,
+							1,
+							1
+						],
+						[
+							4,
+							3,
+							3,
+							3,
+							3,
+							2,
+							2,
+							1,
+							1
+						]
+					]
+				}
+			],
+			"classFeatures": [
+				"Bardic Inspiration|Bard||1",
+				"Magical Inspiration|Bard||1|UAClassFeatureVariants",
+				"Spellcasting|Bard||1",
+				"Spell Versatility|Bard||1|UAClassFeatureVariants",
+				"Jack of All Trades|Bard||2",
+				"Song of Rest (d6)|Bard||2",
+				"Magical Inspiration|Bard||2|TCE",
+				{
+					"classFeature": "Bard College|Bard||3",
+					"gainSubclassFeature": true
+				},
+				"Expertise|Bard||3",
+				"Ability Score Improvement|Bard||4",
+				"Proficiency Versatility|Bard||4|UAClassFeatureVariants",
+				"Bardic Versatility|Bard||4|TCE",
+				"Bardic Inspiration (d8)|Bard||5",
+				"Font of Inspiration|Bard||5",
+				"Countercharm|Bard||6",
+				{
+					"classFeature": "Bard College feature|Bard||6",
+					"gainSubclassFeature": true
+				},
+				"Ability Score Improvement|Bard||8",
+				"Proficiency Versatility|Bard||8|UAClassFeatureVariants",
+				"Song of Rest (d8)|Bard||9",
+				"Bardic Inspiration (d10)|Bard||10",
+				"Expertise|Bard||10",
+				"Magical Secrets|Bard||10",
+				"Ability Score Improvement|Bard||12",
+				"Proficiency Versatility|Bard||12|UAClassFeatureVariants",
+				"Song of Rest (d10)|Bard||13",
+				"Magical Secrets|Bard||14",
+				{
+					"classFeature": "Bard College feature|Bard||14",
+					"gainSubclassFeature": true
+				},
+				"Bardic Inspiration (d12)|Bard||15",
+				"Ability Score Improvement|Bard||16",
+				"Proficiency Versatility|Bard||16|UAClassFeatureVariants",
+				"Song of Rest (d12)|Bard||17",
+				"Magical Secrets|Bard||18",
+				"Ability Score Improvement|Bard||19",
+				"Proficiency Versatility|Bard||19|UAClassFeatureVariants",
+				"Superior Inspiration|Bard||20"
+			],
+			"subclassTitle": "Bard College",
+			"fluff": [
+				{
+					"name": "Bard",
+					"type": "section",
+					"entries": [
+						"En fredonnant et en traçant ses doigts sur un monument ancien dans une ruine oubliée depuis longtemps, un demi-elfe vêtu d'un cuir robuste trouve des connaissances qui surgissent dans son esprit, conjurées par la magie de sa chanson - des connaissances sur les gens qui ont construit le monument et la saga mythique qu'il dépeint.",
+						"Un guerrier humain sévère frappe son épée en rythme contre sa cotte de mailles, donnant le tempo de son chant de guerre et exhortant ses compagnons à la bravoure et à l'héroïsme. La magie de son chant les fortifie et les encourage.",
+						"En riant et en accordant son cistre, un gnome tisse sa magie subtile sur les nobles assemblés, s'assurant que les mots de ses compagnons seront bien reçus.",
+						"Qu'il s'agisse d'un érudit, d'un skald ou d'un scélérat, un barde tisse de la magie à travers les mots et la musique pour inspirer ses alliés, démoraliser ses ennemis, manipuler les esprits, créer des illusions et même soigner les blessures.",
+						{
+							"type": "entries",
+							"name": "Music and Magic",
+							"entries": [
+								"Dans les mondes de D&D, les mots et la musique ne sont pas seulement des vibrations de l'air, mais des vocalisations avec un pouvoir qui leur est propre. Le barde est un maître du chant, de la parole et de la magie qu'ils contiennent. Les bardes disent que le multivers a été créé par la parole, que les mots des dieux lui ont donné forme, et que les échos de ces mots primordiaux de la création résonnent encore dans tout le cosmos. La musique des bardes est une tentative de capter et d'exploiter ces échos, subtilement tissés dans leurs sorts et leurs pouvoirs.",
+								"La plus grande force des bardes est leur polyvalence. De nombreux bardes préfèrent rester à l'écart du combat, utilisant leur magie pour inspirer leurs alliés et gêner leurs ennemis à distance. Mais les bardes sont capables de se défendre en mêlée si nécessaire, en utilisant leur magie pour renforcer leurs épées et leurs armures. Leurs sorts tendent vers les charmes et les illusions plutôt que vers des sorts ouvertement destructeurs. Ils ont une connaissance étendue de nombreux sujets et une aptitude naturelle qui leur permet de faire presque tout bien. Les bardes deviennent les maîtres des talents qu'ils s'efforcent de perfectionner, de la performance musicale aux connaissances ésotériques."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Learning from Experience",
+							"entries": [
+								"Les vrais bardes ne sont pas courants dans le monde. Tous les ménestrels chantant dans une taverne ou les bouffons gambadant dans une cour royale ne sont pas des bardes. La découverte de la magie cachée dans la musique exige une étude approfondie et une certaine mesure de talent naturel dont la plupart des troubadours et des jongleurs sont dépourvus. Il peut être difficile de faire la différence entre ces interprètes et les vrais bardes, cependant. Un barde passe sa vie à errer à travers le pays pour recueillir des connaissances, raconter des histoires et vivre de la gratitude du public, comme n'importe quel autre artiste. Mais une connaissance approfondie, un niveau de compétence musicale et une touche de magie distinguent les bardes de leurs congénères.",
+								"Les bardes ne s'installent que rarement dans un endroit pour longtemps, et leur désir naturel de voyager - pour trouver de nouvelles histoires à raconter, de nouvelles compétences à apprendre et de nouvelles découvertes au-delà de l'horizon - fait de la carrière d'aventurier une vocation naturelle. Chaque aventure est une occasion d'apprendre, de pratiquer diverses compétences, de pénétrer dans des tombes oubliées depuis longtemps, de découvrir des œuvres magiques perdues, de déchiffrer de vieux tomes, de voyager dans des lieux étranges ou de rencontrer des créatures exotiques. Les bardes aiment accompagner les héros pour être les témoins directs de leurs exploits. Un barde capable de raconter une histoire impressionnante à partir de son expérience personnelle gagne en renommée auprès des autres bardes. En effet, après avoir raconté tant d'histoires de héros accomplissant de grandes choses, de nombreux bardes prennent ces thèmes à cœur et assument eux-mêmes des rôles héroïques."
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Creating a Bard",
+							"entries": [
+								"Les bardes se nourrissent d'histoires, que ces histoires soient vraies ou non. Le passé et les motivations de votre personnage ne sont pas aussi importants que les histoires qu'il ou elle raconte à leur sujet. Vous avez peut-être eu une enfance tranquille et banale. Il n'y a pas de bonne histoire à raconter à ce sujet, alors vous pouvez vous dépeindre comme un orphelin élevé par une sorcière dans un marais lugubre. Ou votre enfance pourrait être digne d'une histoire. Certains bardes acquièrent leur musique magique par des moyens extraordinaires, y compris l'inspiration de fey ou d'autres créatures surnaturelles.",
+								"Avez-vous fait un apprentissage, étudiant sous la direction d'un maître, suivant le barde le plus expérimenté jusqu'à ce que vous soyez prêt à voler de vos propres ailes ? Ou bien avez-vous fréquenté un collège où vous avez étudié les traditions bardes et pratiqué votre magie musicale ? Peut-être étiez-vous un jeune fugueur ou un orphelin, ami d'un barde errant qui est devenu votre mentor. Ou bien vous avez été un enfant gâté de la noblesse dont un maître a été le tuteur. Peut-être êtes-vous tombé dans les griffes d'une sorcière, faisant un marché pour un cadeau musical en plus de votre vie et de votre liberté, mais à quel prix ?",
+								{
+									"type": "entries",
+									"name": "Quick Build",
+									"entries": [
+										"Vous pouvez devenir rapidement un barde en suivant ces suggestions. Tout d'abord, le Charisme doit être votre meilleur score de capacité, suivi de la Dextérité. Deuxièmement, choisissez le fond {@background entertainer}. Troisièmement, choisissez les cantrips {@spell dancing lights} et {@spell vicious mockery}, ainsi que les sorts de 1er niveau suivants : {@spell charm person}, {@spell detect magic}, {@spell healing word} et {@spell thunderwave}."
+									]
+								}
+							]
+						}
+					],
+					"source": "PHB",
+					"page": 51
+				},
+				{
+					"type": "section",
+					"entries": [
+						{
+							"type": "quote",
+							"entries": [
+								"La musique est le fruit de l'arbre divin qui vibre avec les mots de la création. Mais la question que je vous pose est la suivante : un barde peut-il aller à la racine de cet arbre ? Peut-on puiser à la source de ce pouvoir ? Ah, alors quelle sorte de musique ils apporteraient à ce monde !"
+							],
+							"by": "Fletcher Danairia, master bard"
+						},
+						"Les bardes apportent de la gaieté dans les moments graves ; ils transmettent la sagesse pour compenser l'ignorance ; et ils rendent le ridicule sublime. Les bardes sont les gardiens de l'histoire ancienne, leurs chansons et leurs récits perpétuant la mémoire des grands événements à travers le temps - une connaissance si importante qu'elle est mémorisée et transmise sous forme d'histoire orale, pour survivre même lorsqu'il ne reste aucune trace écrite.",
+						"C'est également le rôle du barde de relater des événements plus modestes et plus contemporains - les histoires des héros d'aujourd'hui, y compris leurs exploits et leurs échecs moins impressionnants.",
+						"Bien sûr, le monde compte de nombreuses personnes capables de jouer un air ou de raconter une bonne histoire, et les bardes aventuriers ont bien plus à offrir qu'une langue bien pendue et une voix mélodieuse. Mais ce qui distingue vraiment les bardes des autres - et les uns des autres - c'est le style et la substance de leurs performances.",
+						"Pour attirer et retenir l'attention d'un public, les bardes sont généralement flamboyants et extravertis lorsqu'ils se produisent. Les plus célèbres d'entre eux sont essentiellement l'équivalent des pop stars dans le monde de D&D. Si vous jouez un barde, pensez à utiliser l'un de vos musiciens préférés comme modèle pour votre personnage.",
+						"Vous pouvez ajouter des aspects uniques à votre personnage de barde en tenant compte des suggestions qui suivent.",
+						{
+							"type": "entries",
+							"name": "Defining Work",
+							"entries": [
+								"Tout barde accompli est réputé pour au moins une performance artistique, généralement une chanson ou un poème qui est populaire auprès de tous ceux qui l'entendent. Ces performances sont évoquées pendant des années par ceux qui les ont vues, et certains spectateurs ont vu leur vie changer à jamais à cause de cette expérience.",
+								"Si votre personnage débute, votre œuvre déterminante est probablement à venir. Mais si vous voulez gagner votre vie dans votre profession, il y a de fortes chances que vous ayez déjà une ou deux pièces dans votre répertoire qui se sont avérées plaire au public.",
+								{
+									"type": "table",
+									"caption": "Defining Work",
+									"colLabels": [
+										"{@dice d6}",
+										"Defining Work"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"\"Les trois Flambinis\", une chanson humoristique sur les erreurs d'identité et le désir effréné."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"La \"Valse des myconides\", un air entraînant que les enfants apprécient tout particulièrement."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"\"Le cul d'or d'Asmodée\", un poème dramatique que vous dites avoir été inspiré par votre visite personnelle à Avernus."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"\"Les pirates de Luskan\", votre récit de première main d'avoir été kidnappé par des castors marins quand vous étiez enfant."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"\"A Hoop, Two Pigeons, and a Hell Hound\", une parodie subtile d'un noble incompétent."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"\"A Fool in the Abyss\", un poème comique sur les voyages d'un bouffon parmi les démons."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Instrument",
+							"entries": [
+								"Dans la quête d'un barde pour une performance ultime et une reconnaissance maximale, l'instrument est au moins aussi important que les capacités vocales. La qualité de fabrication de l'instrument est un facteur critique, bien sûr ; les meilleurs font la meilleure musique, et certains bardes sont continuellement à la recherche d'une amélioration. Cependant, la valeur divertissante de l'instrument est peut-être tout aussi importante ; ceux qui sont construits de façon bizarre ou faits de matériaux exotiques sont susceptibles de laisser une impression durable sur un public.",
+								"Vous pouvez avoir un instrument \"standard\", peut-être parce que c'est tout ce que vous pouvez vous permettre pour le moment. Ou, si votre premier instrument vous a été offert, il peut être plus élaboré. Êtes-vous satisfait de l'instrument que vous avez, ou aspirez-vous à le remplacer par quelque chose de vraiment distinctif ?",
+								{
+									"type": "table",
+									"caption": "Instrument",
+									"colLabels": [
+										"{@dice d6}",
+										"Instrument"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"Un violon halfling fabriqué de main de maître"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"Un mithral {@item horn|PHB} fabriqué par les elfes"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Une cithare faite de soie d'araignée drow."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"Un orque {@item drum|PHB}"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"Une boîte à crocs en bois de bullywug"
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Une harpe de bricoleur de conception gnomique."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Embarrassment",
+							"entries": [
+								"Presque tous les bardes ont vécu au moins une mauvaise expérience devant un public, et il y a de fortes chances que vous ne fassiez pas exception. Après tout, personne ne devient célèbre tout de suite ; peut-être avez-vous eu quelques petites difficultés au début de votre carrière, ou peut-être vous a-t-il fallu un certain temps pour rétablir votre réputation après une nuit angoissante où les destins se sont ligués pour provoquer votre ruine théâtrale.",
+								"Les façons dont un spectacle peut mal tourner sont aussi variées que les poissons dans la mer. Mais quel que soit le désastre, un barde a le courage et la confiance nécessaires pour rebondir, soit en continuant le spectacle (si possible), soit en promettant de revenir le lendemain avec un nouveau spectacle qui plaira à coup sûr.",
+								{
+									"type": "table",
+									"caption": "Embarrassment",
+									"colLabels": [
+										"{@dice d6}",
+										"Embarrassment"
+									],
+									"colStyles": [
+										"col-1 text-center",
+										"col-11"
+									],
+									"rows": [
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 1
+												}
+											},
+											"La fois où votre chanson comique, \"Big Tom's Hijinks\" - que vous trouviez brillante, soit dit en passant - n'a pas été appréciée par Big Tom."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 2
+												}
+											},
+											"La représentation en matinée où l'ours hibou d'un cirque s'est échappé et a terrorisé la foule."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 3
+												}
+											},
+											"Lorsque votre chanson d'ouverture était votre interprétation enthousiaste mais universellement détestée de \"Song of the Froghemoth\"."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 4
+												}
+											},
+											"La première et dernière représentation publique de \"Mirt, Man about Town\"."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 5
+												}
+											},
+											"La fois où, sur scène, votre perruque a pris feu et vous l'avez jetée par terre, ce qui a mis le feu à la scène."
+										],
+										[
+											{
+												"type": "cell",
+												"roll": {
+													"exact": 6
+												}
+											},
+											"Quand tu t'es assis sur ton {@item lute|PHB} par erreur pendant la dernière strophe de \"Starlight Serenade\"."
+										]
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "A Bard's Muse",
+							"entries": [
+								"Naturellement, chaque barde possède un répertoire de chansons et d'histoires. Certains bardes sont des généralistes qui peuvent puiser dans un large éventail de sujets pour chaque spectacle, et qui sont fiers de leur polyvalence. D'autres adoptent une approche plus personnelle de leur art, motivés par leur attachement à une muse - un concept particulier qui inspire une grande partie de ce que ces bardes font devant un public.",
+								"Un barde qui suit une muse le fait généralement pour acquérir une compréhension plus profonde de ce que cette muse représente et de la meilleure façon de transmettre cette compréhension aux autres par le biais de la performance.",
+								"Si votre personnage de barde a une muse, il peut s'agir de l'une des trois décrites ici, ou d'une muse de votre propre conception.",
+								{
+									"type": "entries",
+									"entries": [
+										{
+											"type": "entries",
+											"name": "Nature",
+											"entries": [
+												"Vous vous sentez proche du monde naturel, et sa beauté et son mystère vous inspirent. Pour vous, un arbre est profondément symbolique, ses racines plongent dans l'inconnu pour puiser la force de la terre, tandis que ses branches se tendent vers le soleil pour nourrir leurs fleurs et leurs fruits. La nature est l'ancien témoin qui a vu tous les royaumes s'élever et tomber, même ceux dont les noms ont été oubliés et attendent d'être redécouverts. Les dieux de la nature partagent leurs secrets avec les druides et les sages, ouvrant leurs cœurs et leurs esprits à de nouvelles façons de voir, et comme avec ces individus, vous découvrez que votre créativité s'épanouit alors que vous vous promenez dans un champ d'herbe ondulante ou que vous marchez en silence dans un bosquet de chênes anciens."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Love",
+											"entries": [
+												"Vous êtes en quête de l'essence du véritable amour. Bien que vous ne dédaigniez pas l'amour superficiel de la chair et de la forme, ce qui vous intéresse, c'est la forme plus profonde de l'amour qui peut inspirer des milliers de personnes ou apporter de la joie à chaque instant. L'amour de ce genre prend de nombreuses formes, et vous pouvez voir sa présence partout - du scintillement d'une belle pierre précieuse au chant d'un simple pêcheur remerciant la mer pour sa générosité. Vous êtes sur la piste de l'amour, la plus précieuse et la plus mystérieuse des émotions, et votre quête remplit vos histoires et vos chansons de vitalité et de passion."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Conflict",
+											"entries": [
+												"Le drame incarne le conflit, et les meilleures histoires ont le conflit comme élément clé. Qu'il s'agisse du récit du lendemain d'une rixe dans une taverne, de la saga d'une bataille épique, d'une querelle d'amoureux ou d'un désaccord entre de puissantes dynasties, le conflit est ce qui inspire les conteurs comme vous pour créer vos meilleures œuvres. Le conflit peut faire ressortir le meilleur de certaines personnes, en faisant briller leur nature héroïque et en transformant le monde, mais il peut aussi faire graviter d'autres personnes vers les ténèbres et les faire tomber sous l'emprise du mal. Vous vous efforcez d'expérimenter ou d'être témoin de toutes les formes de conflit, grandes et petites, afin d'étudier cet aspect éternel de la vie et de l'immortaliser dans vos paroles et votre musique."
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"source": "XGE",
+					"page": 12
+				}
+			]
+		}
+	],
+	"subclass": [
+		{
+			"name": "College of Lore",
+			"shortName": "Lore",
+			"source": "PHB",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 54,
+			"srd": true,
+			"additionalSpells": [
+				{
+					"name": "Additional Magical Secrets",
+					"known": {
+						"6": [
+							{
+								"choose": "level=0;1;2;3"
+							},
+							{
+								"choose": "level=0;1;2;3"
+							}
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"College of Lore|Bard||Lore||3",
+				"Additional Magical Secrets|Bard||Lore||6",
+				"Peerless Skill|Bard||Lore||14"
+			]
+		},
+		{
+			"name": "College of Valor",
+			"shortName": "Valor",
+			"source": "PHB",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 55,
+			"subclassFeatures": [
+				"College of Valor|Bard||Valor||3",
+				"Extra Attack|Bard||Valor||6",
+				"Battle Magic|Bard||Valor||14"
+			]
+		},
+		{
+			"name": "College of Satire (UA)",
+			"shortName": "Satire (UA)",
+			"source": "UAKitsOfOld",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 2,
+			"subclassFeatures": [
+				"College of Satire|Bard||Satire (UA)|UAKitsOfOld|3",
+				"Fool's Insight|Bard||Satire (UA)|UAKitsOfOld|6",
+				"Fool's Luck|Bard||Satire (UA)|UAKitsOfOld|14"
+			]
+		},
+		{
+			"name": "College of Swords (UA)",
+			"shortName": "Swords (UA)",
+			"source": "UAKitsOfOld",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Swords|Bard||Swords (UA)|UAKitsOfOld|3",
+				"Extra Attack|Bard||Swords (UA)|UAKitsOfOld|6",
+				"Battle Magic|Bard||Swords (UA)|UAKitsOfOld|14"
+			]
+		},
+		{
+			"name": "College of Glamour (UA)",
+			"shortName": "Glamour (UA)",
+			"source": "UABardBardColleges",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Glamour|Bard||Glamour (UA)|UABardBardColleges|3",
+				"Mantle of Majesty|Bard||Glamour (UA)|UABardBardColleges|6",
+				"Mantle of Majesty|Bard||Glamour (UA)|UABardBardColleges|14"
+			]
+		},
+		{
+			"name": "College of Whispers (UA)",
+			"shortName": "Whispers (UA)",
+			"source": "UABardBardColleges",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 2,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Whispers|Bard||Whispers (UA)|UABardBardColleges|3",
+				"Mantle of Whispers|Bard||Whispers (UA)|UABardBardColleges|6",
+				"Shadow Lore|Bard||Whispers (UA)|UABardBardColleges|14"
+			]
+		},
+		{
+			"name": "College of Swords v2 (UA)",
+			"shortName": "Swords v2 (UA)",
+			"source": "UARevisedSubclasses",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Swords v2|Bard||Swords v2 (UA)|UARevisedSubclasses|3",
+				"Cunning Flourish|Bard||Swords v2 (UA)|UARevisedSubclasses|6",
+				"Master's Flourish|Bard||Swords v2 (UA)|UARevisedSubclasses|14"
+			]
+		},
+		{
+			"name": "College of Glamour",
+			"shortName": "Glamour",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 14,
+			"additionalSpells": [
+				{
+					"innate": {
+						"6": [
+							"command"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"College of Glamour|Bard||Glamour|XGE|3",
+				"Mantle of Majesty|Bard||Glamour|XGE|6",
+				"Unbreakable Majesty|Bard||Glamour|XGE|14"
+			]
+		},
+		{
+			"name": "College of Swords",
+			"shortName": "Swords",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 15,
+			"subclassFeatures": [
+				"College of Swords|Bard||Swords|XGE|3",
+				"Extra Attack|Bard||Swords|XGE|6",
+				"Master's Flourish|Bard||Swords|XGE|14"
+			]
+		},
+		{
+			"name": "College of Whispers",
+			"shortName": "Whispers",
+			"source": "XGE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 16,
+			"subclassFeatures": [
+				"College of Whispers|Bard||Whispers|XGE|3",
+				"Mantle of Whispers|Bard||Whispers|XGE|6",
+				"Shadow Lore|Bard||Whispers|XGE|14"
+			]
+		},
+		{
+			"name": "College of Eloquence (UA)",
+			"shortName": "Eloquence (UA)",
+			"source": "UABardAndPaladin",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Eloquence|Bard||Eloquence (UA)|UABardAndPaladin|3",
+				"Undeniable Logic|Bard||Eloquence (UA)|UABardAndPaladin|6",
+				"Infectious Inspiration|Bard||Eloquence (UA)|UABardAndPaladin|14"
+			]
+		},
+		{
+			"name": "College of Creation (UA)",
+			"shortName": "Creation (UA)",
+			"source": "UA2020SubclassesPt2",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Creation|Bard||Creation (UA)|UA2020SubclassesPt2|3",
+				"Animating Performance|Bard||Creation (UA)|UA2020SubclassesPt2|6",
+				"Performance of Creation|Bard||Creation (UA)|UA2020SubclassesPt2|14"
+			]
+		},
+		{
+			"name": "College of Spirits (UA)",
+			"shortName": "Spirits (UA)",
+			"source": "UA2020SubclassesPt4",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 1,
+			"isReprinted": true,
+			"subclassFeatures": [
+				"College of Spirits|Bard||Spirits (UA)|UA2020SubclassesPt4|3",
+				"Spirit Session|Bard||Spirits (UA)|UA2020SubclassesPt4|6",
+				"Spiritual Focus|Bard||Spirits (UA)|UA2020SubclassesPt4|6",
+				"Mystical Connection|Bard||Spirits (UA)|UA2020SubclassesPt4|14"
+			]
+		},
+		{
+			"name": "College of Creation",
+			"shortName": "Creation",
+			"source": "TCE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 28,
+			"subclassFeatures": [
+				"College of Creation|Bard||Creation|TCE|3",
+				"Animating Performance|Bard||Creation|TCE|6",
+				"Creative Crescendo|Bard||Creation|TCE|14"
+			]
+		},
+		{
+			"name": "College of Eloquence",
+			"shortName": "Eloquence",
+			"source": "TCE",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 29,
+			"otherSources": [
+				{
+					"source": "MOT",
+					"page": 28
+				}
+			],
+			"subclassFeatures": [
+				"College of Eloquence|Bard||Eloquence|TCE|3",
+				"Unfailing Inspiration|Bard||Eloquence|TCE|6",
+				"Universal Speech|Bard||Eloquence|TCE|6",
+				"Infectious Inspiration|Bard||Eloquence|TCE|14"
+			]
+		},
+		{
+			"name": "College of Spirits",
+			"shortName": "Spirits",
+			"source": "VRGR",
+			"className": "Bard",
+			"classSource": "PHB",
+			"page": 28,
+			"additionalSpells": [
+				{
+					"known": {
+						"3": [
+							"guidance#c"
+						]
+					}
+				}
+			],
+			"subclassFeatures": [
+				"College of Spirits|Bard||Spirits|VRGR|3",
+				"Spirit Session|Bard||Spirits|VRGR|6",
+				"Mystical Connection|Bard||Spirits|VRGR|14"
+			]
+		},
+		{
+			"name": "Mage of Lorehold (UA)",
+			"shortName": "Lorehold (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Bard",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Lorehold (UA)",
+				"shortName": "Lorehold (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		},
+		{
+			"name": "Mage of Silverquill (UA)",
+			"shortName": "Silverquill (UA)",
+			"source": "UA2021MagesOfStrixhaven",
+			"className": "Bard",
+			"classSource": "PHB",
+			"_copy": {
+				"name": "Mage of Silverquill (UA)",
+				"shortName": "Silverquill (UA)",
+				"source": "UA2021MagesOfStrixhaven",
+				"className": "Generic",
+				"classSource": "Generic",
+				"_preserve": {
+					"page": true
+				}
+			}
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Bardic Inspiration",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Vous pouvez inspirer les autres par des paroles ou de la musique émouvantes. Pour ce faire, vous utilisez une action bonus à votre tour pour choisir une créature autre que vous-même dans un rayon de 60 pieds de vous et qui peut vous entendre. Cette créature gagne un dé d'inspiration bardique, un {@dice d6}.",
+				"Une fois dans les 10 minutes suivantes, la créature peut lancer le dé et ajouter le nombre obtenu à un test de capacité, un jet d'attaque ou un jet de sauvegarde qu'elle effectue. La créature peut attendre d'avoir lancé le {@dice d20} avant de décider d'utiliser le dé d'inspiration bardesque, mais elle doit décider avant que le MD ne dise si le jet réussit ou échoue. Une fois que le dé d'inspiration bardesque est lancé, il est perdu. Une créature ne peut avoir qu'un seul dé d'inspiration bardesque à la fois.",
+				"Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de Charisme (au moins une fois). Vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos.",
+				"Votre dé d'inspiration bardique change lorsque vous atteignez certains niveaux dans cette classe. Le dé devient un {@dice d8} au 5e niveau, un {@dice d10} au 10e niveau et un {@dice d12} au 15e niveau."
+			]
+		},
+		{
+			"name": "Magical Inspiration",
+			"source": "UAClassFeatureVariants",
+			"page": 3,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level bard feature (enhances Bardic Inspiration)}",
+				"Si une créature a un dé d'inspiration bardique de votre part et qu'elle lance un sort, elle peut lancer ce dé et ajouter le nombre obtenu à un jet de dégâts ou de soins du sort. Le dé d'inspiration bardesque est alors perdu."
+			]
+		},
+		{
+			"name": "Spell Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 3,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 1st-level bard feature (enhances Spellcasting)}",
+				"À chaque fois que vous terminez un long repos, vous pouvez remplacer un sort que vous avez appris grâce à cette caractéristique de lanceur de sorts par un autre sort de la liste des sorts de barde. Le nouveau sort doit être du même niveau que le sort que vous remplacez."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 1,
+			"entries": [
+				"Vous avez appris à démêler et à remodeler le tissu de la réalité en harmonie avec vos souhaits et votre musique. Vos sorts font partie de votre vaste répertoire, une magie que vous pouvez accorder à différentes situations. Voir {@book chapter 10|PHB|10} pour les règles générales du lancement de sorts et {@book chapter 11|PHB|11} pour les {@filter bard spell list|spells|class=bard}.",
+				{
+					"type": "entries",
+					"name": "Cantrips",
+					"entries": [
+						"Vous connaissez deux cantrips de votre choix dans la liste des sorts de barde. Vous apprenez des cantrips bardes supplémentaires de votre choix à des niveaux plus élevés, apprenant un 3e cantrip au 4e niveau et un 4e au 10e niveau."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spell Slots",
+					"entries": [
+						"La table de barde indique le nombre d'emplacements de sorts dont vous disposez pour lancer vos {@filter bard spells|spells|class=bard} de 1er niveau et plus. Pour lancer l'un de ces sorts, vous devez dépenser un emplacement du niveau du sort ou d'un niveau supérieur. Vous récupérez tous les emplacements de sorts dépensés lorsque vous terminez un long repos.",
+						"Par exemple, si vous connaissez le sort de 1er niveau {@spell cure wounds} et que vous disposez d'un emplacement de 1er niveau et d'un emplacement de 2ème niveau, vous pouvez lancer {@spell cure wounds} en utilisant l'un ou l'autre de ces emplacements."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spells Known of 1st Level and Higher",
+					"entries": [
+						"Vous connaissez quatre sorts de 1er niveau de votre choix dans la liste des sorts de barde.",
+						"Vous apprenez un sort de barde supplémentaire de votre choix à chaque niveau, sauf aux 12e, 16e, 19e et 20e. Chacun de ces sorts doit être d'un niveau pour lequel vous avez des emplacements de sorts. Par exemple, lorsque vous atteignez le 3e niveau dans cette classe, vous pouvez apprendre un nouveau sort de 1er ou 2e niveau.",
+						"De plus, lorsque vous gagnez un niveau dans cette classe, vous pouvez choisir un des sorts de barde que vous connaissez et le remplacer par un autre sort de la liste des sorts de barde, qui doit également être d'un niveau pour lequel vous avez des emplacements de sorts."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Ability",
+					"entries": [
+						"Le charisme est votre capacité de lancement de sorts pour vos sorts de barde. Votre magie vient du cœur et de l'âme que vous mettez dans l'exécution de votre musique ou de votre oraison. Vous utilisez votre Charisme chaque fois qu'un sort fait référence à votre capacité de lanceur de sorts. De plus, vous utilisez votre modificateur de Charisme lorsque vous déterminez le DC du jet de sauvegarde pour un sort de barde que vous lancez et lorsque vous faites un jet d'attaque avec un tel sort.",
+						{
+							"type": "abilityDc",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						},
+						{
+							"type": "abilityAttackMod",
+							"name": "Spell",
+							"attributes": [
+								"cha"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ritual Casting",
+					"entries": [
+						"Vous pouvez lancer n'importe quel sort de barde que vous connaissez comme un rituel si ce sort a le tag rituel."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Spellcasting Focus",
+					"entries": [
+						"Vous pouvez utiliser un {@item musical instrument|PHB} comme foyer de sorts pour vos sorts de barde."
+					]
+				}
+			]
+		},
+		{
+			"name": "Jack of All Trades",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"À partir du 2e niveau, vous pouvez ajouter la moitié de votre bonus de compétence, arrondi à l'inférieur, à tout test d'aptitude que vous effectuez et qui n'inclut pas déjà votre bonus de compétence."
+			]
+		},
+		{
+			"name": "Magical Inspiration",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level bard {@variantrule optional class features|tce|optional feature}}",
+				"Si une créature dispose d'un dé d'inspiration bardique de votre part et lance un sort qui restaure des points de vie ou inflige des dégâts, elle peut lancer ce dé et choisir une cible affectée par le sort. Ajoutez le nombre obtenu comme bonus aux points de vie regagnés ou aux dégâts infligés. Le dé d'inspiration bardique est alors perdu."
+			]
+		},
+		{
+			"name": "Song of Rest (d6)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 2,
+			"entries": [
+				"À partir du 2e niveau, vous pouvez utiliser une musique apaisante ou une oraison pour aider à revitaliser vos alliés blessés pendant un court repos. Si vous ou toute créature amie qui peut entendre votre prestation regagnez des points de vie en dépensant des dés de points de vie à la fin du court repos, chacune de ces créatures regagne {@dice 1d6} de points de vie supplémentaires.",
+				"Les points de vie supplémentaires augmentent lorsque vous atteignez certains niveaux dans cette classe : à {@dice 1d8} au 9ème niveau, à {@dice 1d10} au 13ème niveau, et à {@dice 1d12} au 17ème niveau."
+			]
+		},
+		{
+			"name": "Bard College",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Au 3e niveau, vous vous plongez dans les techniques avancées d'un collège de barde de votre choix dans la liste des collèges disponibles. Votre choix vous confère des caractéristiques au 3e niveau, puis au 6e et au 14e niveau."
+			]
+		},
+		{
+			"name": "Expertise",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Au 3e niveau, choisissez deux de vos compétences. Votre bonus de compétence est doublé pour tout test d'aptitude que vous effectuez et qui utilise l'une ou l'autre des compétences choisies.",
+				"Au 10e niveau, vous pouvez choisir deux autres compétences pour bénéficier de cet avantage."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 4,
+			"entries": [
+				"Lorsque vous atteignez le 4ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Bardic Versatility",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level bard {@variantrule optional class features|tce|optional feature}}",
+				"Chaque fois que vous atteignez un niveau dans cette classe qui accorde la caractéristique d'amélioration des scores de capacité, vous pouvez faire l'une des choses suivantes, ce qui représente un changement d'orientation lorsque vous utilisez vos compétences et votre magie :",
+				{
+					"type": "list",
+					"items": [
+						"Remplacez une des compétences que vous avez choisies pour la caractéristique Expertise par une de vos autres compétences qui ne bénéficie pas de l'Expertise.",
+						"Remplacez un sort que vous avez appris avec la caractéristique de lanceur de sorts de cette classe par un autre sort de la {@filter bard spell list|spells|level=0|class=bard}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Bardic Inspiration (d8)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"Au 5e niveau, votre dé d'inspiration bardique se transforme en un {@dice d8}."
+			]
+		},
+		{
+			"name": "Font of Inspiration",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 5,
+			"entries": [
+				"À partir du 5e niveau, vous récupérez toutes vos utilisations de l'inspiration bardique lorsque vous terminez un repos court ou long."
+			]
+		},
+		{
+			"name": "Bard College feature",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Au 6ème niveau, vous gagnez une caractéristique de votre collège de barde."
+			]
+		},
+		{
+			"name": "Countercharm",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 6,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité d'utiliser des notes de musique ou des mots de pouvoir pour perturber les effets d'influence sur l'esprit. En tant qu'action, vous pouvez commencer une performance qui dure jusqu'à la fin de votre prochain tour. Pendant ce temps, vous et toutes les créatures amies se trouvant à moins de 30 pieds de vous avez l'avantage sur les jets de sauvegarde contre le fait d'être {@condition frightened} ou {@condition charmed}. Une créature doit être capable de vous entendre pour bénéficier de cet avantage. La performance se termine prématurément si vous êtes {@condition incapacitated} ou réduit au silence ou si vous y mettez fin volontairement (aucune action requise)."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 8,
+			"entries": [
+				"Lorsque vous atteignez le 8e niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 8,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 8th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Song of Rest (d8)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 9,
+			"entries": [
+				"Au 9ème niveau, les points de vie supplémentaires gagnés grâce au Chant du repos augmentent à {@dice 1d8}."
+			]
+		},
+		{
+			"name": "Bardic Inspiration (d10)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Au 10e niveau, votre dé d'inspiration bardique se transforme en un {@dice d10}."
+			]
+		},
+		{
+			"name": "Expertise",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Au 10ème niveau, vous pouvez choisir deux autres compétences. Votre bonus de compétence est doublé pour tout test d'aptitude que vous effectuez et qui utilise l'une ou l'autre des compétences choisies."
+			]
+		},
+		{
+			"name": "Magical Secrets",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 10,
+			"entries": [
+				"Au 10ème niveau, vous avez pillé les connaissances magiques d'un large éventail de disciplines. Choisissez deux sorts parmi toutes les classes, y compris celle-ci. Le sort que vous choisissez doit être d'un niveau que vous pouvez lancer, comme indiqué sur la table des bardes, ou un cantrip.",
+				"Les sorts choisis comptent comme des sorts de barde pour vous et sont inclus dans le nombre de la colonne Sorts connus de la table de barde.",
+				"Vous apprenez deux sorts supplémentaires de n'importe quelle classe au 14ème niveau et à nouveau au 18ème niveau."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 12,
+			"entries": [
+				"Lorsque vous atteignez le 12ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 12,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 12th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Song of Rest (d10)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 13,
+			"entries": [
+				"Au 13ème niveau, les points de vie supplémentaires gagnés grâce au Chant du repos augmentent à {@dice 1d10}."
+			]
+		},
+		{
+			"name": "Bard College feature",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Au 14ème niveau, vous gagnez une caractéristique de votre collège de barde."
+			]
+		},
+		{
+			"name": "Magical Secrets",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 14,
+			"entries": [
+				"Au 14ème niveau, choisissez deux sorts supplémentaires parmi toutes les classes, y compris celle-ci. Le sort que vous choisissez doit être d'un niveau que vous pouvez lancer, comme indiqué sur la table des bardes, ou un cantrip.",
+				"Les sorts choisis comptent comme des sorts de barde pour vous et sont inclus dans le nombre de la colonne Sorts connus de la table de barde."
+			]
+		},
+		{
+			"name": "Bardic Inspiration (d12)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 15,
+			"entries": [
+				"Au 15e niveau, votre dé d'inspiration bardique se transforme en un {@dice d12}."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 16,
+			"entries": [
+				"Lorsque vous atteignez le 16ème niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 16,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 16th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Song of Rest (d12)",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 17,
+			"entries": [
+				"Au 17e niveau, les points de vie supplémentaires gagnés grâce au Chant du repos augmentent à {@dice 1d12}."
+			]
+		},
+		{
+			"name": "Magical Secrets",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 18,
+			"entries": [
+				"Au 18ème niveau, choisissez deux sorts supplémentaires dans n'importe quelle classe, y compris celle-ci. Le sort que vous choisissez doit être d'un niveau que vous pouvez lancer, comme indiqué sur la table des bardes, ou un cantrip.",
+				"Les sorts choisis comptent comme des sorts de barde pour vous et sont inclus dans le nombre de la colonne Sorts connus de la table de barde."
+			]
+		},
+		{
+			"name": "Ability Score Improvement",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 19,
+			"entries": [
+				"Lorsque vous atteignez le 19e niveau, vous pouvez augmenter un score de capacité de votre choix de 2, ou vous pouvez augmenter deux scores de capacité de votre choix de 1. Comme d'habitude, vous ne pouvez pas augmenter un score de capacité au-dessus de 20 en utilisant cette caractéristique.",
+				"Si votre DM autorise l'utilisation de feats, vous pouvez à la place prendre un {@5etools feat|feats.html}."
+			]
+		},
+		{
+			"name": "Proficiency Versatility",
+			"source": "UAClassFeatureVariants",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 19,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 19th-level feature (enhances Ability Score Improvement)}",
+				"Lorsque vous obtenez la caractéristique d'amélioration des scores de capacité de votre classe, vous pouvez également remplacer une de vos compétences par une compétence offerte par votre classe au 1er niveau (la compétence que vous remplacez ne doit pas nécessairement provenir de la classe).",
+				"Ce changement représente une de vos compétences qui s'atrophie alors que vous vous concentrez sur une autre compétence."
+			]
+		},
+		{
+			"name": "Superior Inspiration",
+			"source": "PHB",
+			"page": 51,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"level": 20,
+			"entries": [
+				"Au 20e niveau, lorsque vous effectuez un jet d'initiative et que vous n'avez plus aucune utilisation d'inspiration bardique, vous regagnez une utilisation."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "College of Lore",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Les bardes du Collège des Lore connaissent la plupart des choses, recueillant des bribes de connaissances à partir de sources aussi diverses que des tomes savants et des contes paysans. Qu'ils chantent des ballades populaires dans les tavernes ou des compositions élaborées dans les cours royales, ces bardes utilisent leurs dons pour envoûter leur public. Lorsque les applaudissements se taisent, les membres de l'auditoire peuvent être amenés à remettre en question tout ce qu'ils tenaient pour vrai, de leur foi dans le sacerdoce du temple local à leur loyauté envers le roi.",
+				"La loyauté de ces bardes réside dans la recherche de la beauté et de la vérité, et non dans la fidélité à un monarque ou dans le respect des principes d'une divinité. Un noble qui garde un tel barde comme héraut ou conseiller sait que le barde préfère être honnête que politique.",
+				"Les membres du collège se réunissent dans des bibliothèques et parfois dans de véritables collèges, avec salles de classe et dortoirs, pour partager leurs connaissances. Ils se réunissent également à l'occasion de festivals ou d'affaires d'État, où ils peuvent dénoncer la corruption, démêler les mensonges et se moquer des figures d'autorité qui se croient supérieures.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Lore||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Cutting Words|Bard||Lore||3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le College of Lore au 3e niveau, vous gagnez la compétence dans trois compétences de votre choix."
+			]
+		},
+		{
+			"name": "Cutting Words",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau également, vous apprenez à utiliser votre esprit pour distraire, confondre et saper la confiance et la compétence des autres. Lorsqu'une créature que vous pouvez voir à moins de 60 pieds de vous fait un jet d'attaque, un test de capacité ou un jet de dégâts, vous pouvez utiliser votre réaction pour dépenser une de vos utilisations d'inspiration bardique, en lançant un dé d'inspiration bardique et en soustrayant le nombre obtenu du jet de la créature. Vous pouvez choisir d'utiliser cette caractéristique après que la créature ait effectué son jet, mais avant que le MD ne détermine si le jet d'attaque ou le test de capacité réussit ou échoue, ou avant que la créature n'inflige ses dégâts. La créature est immunisée si elle ne peut pas vous entendre ou si elle est immunisée contre les {@condition charmed}."
+			]
+		},
+		{
+			"name": "Additional Magical Secrets",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous apprenez deux sorts de votre choix dans n'importe quelle classe. Le sort que vous choisissez doit être d'un niveau que vous pouvez lancer, comme indiqué sur la table de barde, ou un cantrip. Les sorts choisis comptent comme des sorts de barde pour vous mais ne sont pas comptabilisés dans le nombre de sorts de barde que vous connaissez."
+			]
+		},
+		{
+			"name": "Peerless Skill",
+			"source": "PHB",
+			"page": 54,
+			"srd": true,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Lore",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, lorsque vous effectuez un test de capacité, vous pouvez dépenser une utilisation de l'inspiration bardesque. Lancez un dé d'inspiration bardesque et ajoutez le nombre obtenu à votre test de capacité. Vous pouvez choisir de le faire après avoir lancé le dé pour le test de capacité, mais avant que le DM ne vous dise si vous avez réussi ou échoué."
+			]
+		},
+		{
+			"name": "College of Valor",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 3,
+			"entries": [
+				"Les bardes du Collège de la Valeur sont des skalds audacieux dont les récits perpétuent la mémoire des grands héros du passé et inspirent ainsi une nouvelle génération de héros. Ces bardes se réunissent dans les salles d'hydromel ou autour de grands feux de joie pour chanter les exploits des puissants, passés et présents. Ils parcourent le pays pour être les témoins directs des grands événements et pour s'assurer que la mémoire de ces événements ne disparaisse pas du monde. Avec leurs chansons, ils inspirent les autres à atteindre les mêmes sommets d'accomplissement que les héros d'autrefois.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Valor||3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Combat Inspiration|Bard||Valor||3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le Collège de la Vaillance au 3e niveau, vous gagnez la compétence avec les armures moyennes, les boucliers et les armes martiales."
+			]
+		},
+		{
+			"name": "Combat Inspiration",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau également, vous apprenez à inspirer les autres au combat. Une créature qui a un dé d'inspiration bardique de votre part peut lancer ce dé et ajouter le nombre obtenu à un jet de dégâts d'arme qu'elle vient de faire. De même, lorsqu'un jet d'attaque est effectué contre la créature, elle peut utiliser sa réaction pour lancer le dé d'inspiration bardique et ajouter le nombre obtenu à sa CA contre cette attaque, après avoir vu le jet mais avant de savoir s'il est réussi ou manqué."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, vous pouvez attaquer deux fois, au lieu d'une, lorsque vous effectuez l'action {@action Attack} à votre tour."
+			]
+		},
+		{
+			"name": "Battle Magic",
+			"source": "PHB",
+			"page": 55,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Valor",
+			"subclassSource": "PHB",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, vous avez maîtrisé l'art de tisser le lancement de sorts et l'utilisation d'armes en un seul acte harmonieux. Lorsque vous utilisez votre action pour lancer un sort de barde, vous pouvez effectuer une attaque d'arme en tant qu'action bonus."
+			]
+		},
+		{
+			"name": "College of Creation",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Les bardes croient que le cosmos est une œuvre d'art - la création des premiers dragons et dieux. Cette œuvre créative comprenait des harmonies qui continuent de résonner dans l'existence aujourd'hui, une puissance connue sous le nom de Chant de la Création. Les bardes du Collège de la Création puisent dans ce chant primitif à travers la danse, la musique et la poésie, et leurs professeurs partagent cette leçon :",
+				"\"Avant le soleil et la lune, il y avait le Chant, et sa musique a réveillé la première aube. Ses mélodies ont tellement enchanté les pierres et les arbres que certains d'entre eux ont acquis une voix qui leur est propre. Et maintenant ils chantent aussi. Apprenez le Chant, étudiants, et vous aussi vous pourrez apprendre aux montagnes à chanter et à danser.\"",
+				"Les nains et les gnomes encouragent souvent leurs bardes à étudier le Chant de la Création. Et parmi les natifs du dragon, le Chant de la Création est vénéré, car les légendes décrivent Bahamut et Tiamat - le plus grand des dragons - comme deux des premiers chanteurs du chant.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Mote of Potential|Bard||Creation|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Performance of Creation|Bard||Creation|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Mote of Potential",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Creation feature}",
+				"Chaque fois que vous donnez un dé d'inspiration bardique à une créature, vous pouvez prononcer une note du Chant de la Création pour créer une minuscule mote de potentiel, qui orbite dans un rayon de 1,5 mètre autour de cette créature. La mote est intangible et invulnérable, et elle dure jusqu'à ce que le dé d'inspiration bardesque soit perdu. La mote ressemble à une note de musique, une étoile, une fleur, ou un autre symbole d'art ou de vie que vous choisissez.",
+				"Lorsque la créature utilise le dé d'inspiration bardique, la mote fournit un effet supplémentaire selon que le dé bénéficie à un test de capacité, un jet d'attaque ou un jet de sauvegarde, comme détaillé ci-dessous :",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Ability Check",
+							"entry": "Lorsque la créature jette le dé d'inspiration bardesque pour l'ajouter à un test de capacité, elle peut relancer le dé d'inspiration bardesque et choisir le dé à utiliser, car la taupe éclate et émet des étincelles colorées et inoffensives pendant un instant."
+						},
+						{
+							"type": "item",
+							"name": "Attack Roll",
+							"entry": "Immédiatement après que la créature a lancé le dé d'inspiration bardique pour l'ajouter à un jet d'attaque contre une cible, la mote se brise de façon tonitruante. La cible et chaque créature de votre choix que vous pouvez voir dans un rayon de 1,5 m autour d'elle doivent réussir un jet de sauvegarde de Constitution contre votre DC de sauvegarde contre les sorts ou subir des dégâts de tonnerre égaux au nombre obtenu sur le dé d'inspiration bardique."
+						},
+						{
+							"type": "item",
+							"name": "Saving Throw",
+							"entry": "Immédiatement après que la créature a lancé le dé d'inspiration bardique et l'a ajouté à un jet de sauvegarde, la taupe disparaît au son d'une musique douce, faisant gagner à la créature un nombre de points de vie temporaires égal au nombre obtenu sur le dé d'inspiration bardique plus votre modificateur de Charisme (minimum de 1 point de vie temporaire)."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Performance of Creation",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Creation feature}",
+				"En tant qu'action, vous pouvez canaliser la magie du Chant de la Création pour créer un objet non magique de votre choix dans un espace inoccupé situé à 3 mètres de vous. L'objet doit apparaître sur une surface ou dans un liquide qui peut le supporter. La valeur en gp de l'objet ne peut pas être supérieure à 20 fois votre niveau de barde, et l'objet doit être de taille moyenne ou inférieure. L'objet scintille doucement, et une créature peut entendre faiblement de la musique en le touchant. L'objet créé disparaît après un nombre d'heures égal à votre bonus de compétence. Pour des exemples d'objets que vous pouvez créer, consultez le chapitre sur l'équipement du {@book Player's Handbook|PHB|5}.",
+				"Une fois que vous avez créé un objet avec cette caractéristique, vous ne pouvez plus le faire jusqu'à ce que vous ayez terminé un long repos, à moins que vous ne dépensiez un emplacement de sort de 2ème niveau ou plus pour utiliser à nouveau cette caractéristique. Vous ne pouvez avoir qu'un seul objet créé par cette caractéristique à la fois ; si vous utilisez cette action et que vous avez déjà un objet de cette caractéristique, le premier disparaît immédiatement.",
+				"La taille de l'objet que vous pouvez créer avec cette caractéristique augmente d'une catégorie de taille lorsque vous atteignez le 6e niveau (grand) et le 14e niveau (énorme)."
+			]
+		},
+		{
+			"name": "Animating Performance",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Creation feature}",
+				"En tant qu'action, vous pouvez animer un objet non magique de grande taille ou plus petit dans un rayon de 30 pieds autour de vous, qui n'est pas porté. L'objet animé utilise le bloc de stat {@creature Dancing Item|TCE}, qui utilise votre bonus de compétence (PB). L'objet est amical envers vous et vos compagnons et obéit à vos ordres. Il vit pendant 1 heure, jusqu'à ce qu'il soit réduit à 0 point de vie, ou jusqu'à votre mort.",
+				"En combat, l'objet partage votre compte d'initiative, mais il prend son tour immédiatement après le vôtre. Il peut se déplacer et utiliser sa réaction seul, mais la seule action qu'il entreprend à son tour est l'action {@action Dodge}, à moins que vous ne preniez une action bonus à votre tour pour lui ordonner d'entreprendre une autre action. Cette action peut être une action de son bloc de statistiques ou une autre action. Si vous êtes {@condition incapacitated}, l'objet peut effectuer n'importe quelle action de son choix, et pas seulement {@action Dodge}.",
+				"Lorsque vous utilisez votre caractéristique Inspiration bardique, vous pouvez commander l'objet dans le cadre de la même action bonus que vous utilisez pour l'Inspiration bardique.",
+				"Une fois que vous animez un objet avec cette caractéristique, vous ne pouvez plus le faire jusqu'à la fin d'un long repos, à moins de dépenser un emplacement de sort de 3e niveau ou plus pour utiliser à nouveau cette caractéristique. Vous ne pouvez avoir qu'un seul objet animé par cette caractéristique à la fois ; si vous utilisez cette action et que vous avez déjà un {@creature dancing item|TCE} de cette caractéristique, le premier devient immédiatement inanimé."
+			]
+		},
+		{
+			"name": "Creative Crescendo",
+			"source": "TCE",
+			"page": 27,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Creation feature}",
+				"Lorsque vous utilisez votre caractéristique Performance de création, vous pouvez créer plus d'un objet à la fois. Le nombre d'objets est égal à votre modificateur de Charisme (minimum de deux objets). Si vous créez un objet qui dépasserait ce nombre, vous choisissez lequel des objets précédemment créés disparaît. Un seul de ces objets peut avoir la taille maximale que vous pouvez créer ; les autres doivent être petits ou minuscules.",
+				"Vous n'êtes plus limité par la valeur en gp lorsque vous créez des objets avec Performance de création."
+			]
+		},
+		{
+			"name": "College of Eloquence",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"Les adeptes du Collège d'éloquence maîtrisent l'art oratoire. La persuasion est considérée comme un grand art, et un argument bien raisonné et bien parlé s'avère souvent plus persuasif que les faits. Ces bardes manient un mélange de logique et de jeux de mots théâtraux, convainquant les sceptiques et les détracteurs avec des arguments logiques et faisant vibrer les cordes sensibles pour faire appel aux émotions du public.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Silver Tongue|Bard||Eloquence|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Unsettling Words|Bard||Eloquence|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Silver Tongue",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Vous êtes passé maître dans l'art de dire la bonne chose au bon moment. Lorsque vous faites un test de Charisme ({@skill Persuasion}) ou de Charisme ({@skill Deception}), vous pouvez traiter un jet de {@dice d20} de 9 ou moins comme un 10."
+			]
+		},
+		{
+			"name": "Unsettling Words",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Vous pouvez prononcer des mots empreints de magie qui déstabilisent une créature et la font douter d'elle-même. Comme action bonus, vous pouvez dépenser une utilisation de votre inspiration bardique et choisir une créature que vous pouvez voir à moins de 60 pieds de vous. Lancez le dé d'inspiration bardesque. La créature doit soustraire le nombre obtenu au prochain jet de sauvegarde qu'elle effectue avant le début de votre prochain tour."
+			]
+		},
+		{
+			"name": "Unfailing Inspiration",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Eloquence feature}",
+				"Vos paroles inspirantes sont si persuasives que les autres se sentent poussés à réussir. Lorsqu'une créature ajoute un de vos dés d'inspiration bardique à son test de capacité, son jet d'attaque ou son jet de sauvegarde et que le jet échoue, la créature peut conserver le dé d'inspiration bardique."
+			]
+		},
+		{
+			"name": "Universal Speech",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Eloquence feature}",
+				"Vous avez gagné la capacité de rendre votre discours intelligible à toute créature. Comme une action, choisissez une ou plusieurs créatures dans un rayon de 60 pieds de vous, jusqu'à un nombre égal à votre modificateur de Charisme (minimum d'une créature). Les créatures choisies peuvent vous comprendre magiquement, quelle que soit la langue que vous parlez, pendant 1 heure.",
+				"Une fois que vous avez utilisé cette caractéristique, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos, à moins que vous ne dépensiez un emplacement de sort pour l'utiliser à nouveau."
+			]
+		},
+		{
+			"name": "Infectious Inspiration",
+			"source": "TCE",
+			"page": 29,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Eloquence feature}",
+				"Lorsque vous réussissez à inspirer quelqu'un, le pouvoir de votre éloquence peut désormais s'étendre à une autre personne. Lorsqu'une créature située dans un rayon de 60 pieds autour de vous ajoute un de vos dés d'inspiration bardique à son test de capacité, son jet d'attaque ou son jet de sauvegarde et que le jet réussit, vous pouvez utiliser votre réaction pour encourager une créature différente (autre que vous-même) qui peut vous entendre dans un rayon de 60 pieds autour de vous, en lui donnant un dé d'inspiration bardique sans dépenser aucune de vos utilisations d'inspiration bardique.",
+				"Vous pouvez utiliser cette réaction un nombre de fois égal à votre modificateur de Charisme (au minimum une fois), et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "College of Creation",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 3,
+			"entries": [
+				"Les bardes croient que l'existence du multivers a été donnée par des mots et des sons, des harmonies ésotériques qui continuent de résonner à travers l'existence : le Chant de la Création. Les bardes de ce collège puisent dans cet ancien pouvoir à travers des spectacles de danse, de musique ou de chant pour faire naître ce dont ils ont le plus besoin.",
+				"Les membres de ce collège ont pu développer leurs pouvoirs lors d'expériences sur d'autres mondes ou plans d'existence. Ceux qui ont vu les points communs de multiples réalités ont pu apprendre à puiser dans des vérités que la plupart des mortels n'entrevoient qu'un instant. Il se peut aussi que le barde se trouve en décalage avec son propre plan, sa propre réalité ou son propre temps, ses connexions avec l'ailleurs lui permettant de manipuler l'espace qui l'entoure. Quel que soit l'endroit d'où le barde tire ses pouvoirs, d'autres artistes peuvent être attirés vers lui, soit pour apprendre ses secrets, soit pour mettre fin à sa dangereuse manipulation du Chant de la Création.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Note of Potential|Bard||Creation (UA)|UA2020SubclassesPt2|3"
+				}
+			]
+		},
+		{
+			"name": "Note of Potential",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Creation feature}",
+				"Vous pouvez manipuler le Chant de la Création pour invoquer une note musicale flottante de possibilité : Chaque fois que vous donnez un dé d'inspiration bardique à une créature, vous pouvez créer une note de potentiel. La note orbite dans un rayon de 1,5 mètre autour de la créature. La note est un objet minuscule, intangible et invulnérable, et elle dure jusqu'à ce que le dé d'inspiration bardesque soit perdu. Une créature possédant une note peut l'utiliser de la manière suivante.",
+				{
+					"type": "entries",
+					"name": "Note of Destruction",
+					"entries": [
+						"Immédiatement après avoir lancé le dé d'inspiration bardique pour l'ajouter à un jet d'attaque, la créature peut dépenser la note pour créer une explosion de son. Toutes les autres créatures situées à moins de 1,5 m de lui doivent réussir un jet de sauvegarde de Constitution contre le DC de sauvegarde de votre sort ou subir des dégâts de tonnerre égaux au nombre obtenu sur le dé d'inspiration bardique."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Note of Protection",
+					"entries": [
+						"Immédiatement après avoir lancé le dé d'inspiration bardesque et l'avoir ajouté à un jet de sauvegarde, la créature peut dépenser la note pour gagner des points de vie temporaires égaux au nombre obtenu sur le dé d'inspiration bardesque + votre modificateur de Charisme, à condition que la créature n'ait pas déjà des points de vie temporaires."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Note of Ingenuity",
+					"entries": [
+						"Lorsque la créature lance le dé d'inspiration bardique pour l'ajouter à un test de capacité, elle peut dépenser la note pour lancer à nouveau le dé d'inspiration bardique et choisir le jet à utiliser."
+					]
+				}
+			]
+		},
+		{
+			"name": "Animating Performance",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Creation feature}",
+				"Votre maîtrise du Chant de la Création vous permet de donner magiquement vie à des objets. En tant qu'action, vous pouvez cibler un objet non magique de grande taille ou plus petit que vous pouvez voir dans un rayon de 30 pieds de vous et l'animer. L'objet animé utilise le bloc de statistiques {@creature Dancing Item|UA2020SubclassesPt2} et reste sous votre contrôle pendant 1 heure ou jusqu'à ce qu'il soit réduit à 0 point de vie.",
+				"En combat, l'objet partage votre compte d'initiative, mais il prend son tour immédiatement après le vôtre. Il peut se déplacer et utiliser sa réaction seul, mais la seule action qu'il entreprend à son tour est l'action {@action Dodge}, à moins que vous ne preniez une action bonus à votre tour pour lui ordonner d'entreprendre l'une des actions de son bloc de statistiques ou l'action {@action Dash}, {@action Disengage}, {@action Help}, {@action Hide} ou {@action Search}.",
+				"Lorsque vous utilisez votre caractéristique Inspiration bardesque, vous pouvez commander l'action que votre objet animé effectue dans le cadre de la même action bonus.",
+				"Une fois que vous animez un objet avec cette caractéristique, vous ne pouvez plus le faire jusqu'à ce que vous terminiez un long repos ou que vous dépensiez un emplacement de sort de 3e niveau ou plus pour utiliser cette caractéristique. Vous ne pouvez avoir qu'un seul objet animé par cette caractéristique à la fois ; si vous utilisez cette action et avez déjà un {@creature dancing item|UA2020SubclassesPt2} de cette caractéristique, le premier devient immédiatement inanimé."
+			]
+		},
+		{
+			"name": "Performance of Creation",
+			"source": "UA2020SubclassesPt2",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Creation (UA)",
+			"subclassSource": "UA2020SubclassesPt2",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Creation feature}",
+				"Votre performance peut manipuler la magie de la création, transformant brièvement le monde qui vous entoure. En tant qu'action, vous pouvez créer un objet non-magique de votre choix dans un espace inoccupé à moins de 3 mètres de vous. L'objet doit apparaître sur une surface ou dans un liquide qui peut le supporter. La valeur en gp de l'objet ne peut pas être supérieure à 20 fois votre niveau de barde et doit être grande ou plus petite. De minuscules notes scintillantes et intangibles flottent autour de l'objet, et une créature peut entendre faiblement la musique en le touchant. Pour des exemples d'objets que vous pouvez créer, consultez les tables Armure, Armes, Matériel d'aventure, Outils, et Montures et Véhicules du chapitre 5, \"Équipement\", du Manuel du joueur.",
+				"L'objet créé disparaît à la fin de votre prochain tour, sauf si vous utilisez votre action pour le maintenir. Chaque fois que vous utilisez votre action de cette manière, la durée de l'objet est prolongée jusqu'à la fin de votre prochain tour, jusqu'à un maximum de 1 minute. Si vous maintenez l'objet pendant toute la minute, il continue d'exister pendant un nombre d'heures égal à votre niveau de barde.",
+				"Une fois que vous avez créé un objet avec cette caractéristique, vous ne pouvez plus le faire jusqu'à la fin d'un long repos ou jusqu'à ce que vous dépensiez un emplacement de sort de 5e niveau ou plus pour utiliser cette caractéristique. Vous ne pouvez avoir qu'un seul objet créé par cette caractéristique à la fois ; si vous utilisez cette action et que vous avez déjà un objet de cette caractéristique, le premier disparaît immédiatement."
+			]
+		},
+		{
+			"name": "College of Spirits",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"entries": [
+				"Les histoires du passé sont puissantes ; elles contiennent des leçons d'histoire, de philosophie et de magie. Les bardes du Collège des Esprits recherchent les histoires de ceux qui se trouvent au-delà du plan matériel. En utilisant des jeux, ils vont à la rencontre de leurs histoires, mais les bardes n'ont aucun contrôle sur les histoires qu'ils trouvent.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Guiding Whispers|Bard||Spirits (UA)|UA2020SubclassesPt4|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spiritual Focus|Bard||Spirits (UA)|UA2020SubclassesPt4|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tales from Beyond|Bard||Spirits (UA)|UA2020SubclassesPt4|3"
+				}
+			]
+		},
+		{
+			"name": "Guiding Whispers",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Vous pouvez atteindre les esprits pour qu'ils vous guident, vous et les autres. Vous apprenez le cantrip {@spell guidance}, qui ne compte pas dans le nombre de cantrips de barde que vous connaissez. Pour vous, il a une portée de 60 pieds lorsque vous le lancez."
+			]
+		},
+		{
+			"name": "Spiritual Focus",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Votre pratique du contact avec les esprits peut utiliser des outils spéciaux. Vous pouvez utiliser les objets suivants comme foyer pour vos sorts de barde : une bougie, une boule de cristal, un tableau parlant, un jeu de tarokka ou un crâne.",
+				"Au 6e niveau, lorsque vous lancez un sort de barde qui inflige des dégâts ou restaure des points de vie grâce à la focalisation spirituelle, lancez un {@dice d6}, et vous gagnez un bonus à un jet du sort égal au nombre obtenu."
+			]
+		},
+		{
+			"name": "Tales from Beyond",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Vous entrez en contact avec les esprits qui racontent leurs histoires à travers vous. Lorsque vous tenez votre focalisation spirituelle, vous pouvez utiliser une action bonus pour dépenser une utilisation de votre inspiration bardique et faire un jet sur la table des contes d'esprits en utilisant votre dé d'inspiration bardique pour déterminer le conte raconté. Vous gardez le conte en tête jusqu'à ce que vous accordiez l'effet du conte ou que vous terminiez un repos court ou long.",
+				"Vous pouvez utiliser une action pour choisir une créature que vous pouvez voir à moins de 30 pieds de vous (cela peut être vous) pour être la cible de l'effet du conte. Une fois que vous l'avez fait, vous ne pouvez plus accorder l'effet du conte jusqu'à ce que vous le lanciez à nouveau.",
+				"Vous ne pouvez avoir qu'un seul de ces contes à l'esprit à la fois, et un jet sur la table des Contes des Esprits met immédiatement fin à l'effet du conte précédent. Si le conte nécessite un jet de sauvegarde, le DC est égal à votre DC de sauvegarde contre les sorts.",
+				{
+					"type": "table",
+					"caption": "Spirits' Tales",
+					"colLabels": [
+						"Bardic Insp. Die",
+						"Tale"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							1,
+							"{@b 1 Beast.} Vous récitez le conte d'un animal intelligent. Pendant 1 minute, la cible bénéficie d'un avantage aux tests de Sagesse ({@skill Perception}) et d'un avantage aux jets d'attaque contre une créature si un autre ennemi se trouve à moins de 1,5 mètre d'elle, et que cet ennemi n'est pas {@condition incapacitated}."
+						],
+						[
+							2,
+							"{@b 2 Warrior.} Vous racontez l'histoire d'un duelliste renommé. Effectuez une attaque de sort en mêlée contre la cible alors qu'un guerrier spectral apparaît brièvement dans un espace inoccupé à moins de 1,5 mètre de la cible avant de disparaître. En cas de succès, la cible subit des dégâts de force égaux à deux jets de votre dé d'inspiration bardique + votre modificateur de Charisme."
+						],
+						[
+							3,
+							"{@b 3 Friends.} Vous récitez le récit d'amis qui se sont retrouvés dans l'au-delà. La cible et une autre créature de son choix qu'elle peut voir à moins de 1,5 m d'elle regagnent un nombre de points de vie égal à un jet de votre dé d'inspiration bardique + votre modificateur de Charisme."
+						],
+						[
+							4,
+							"{@b 4 Runaway.} Vous racontez l'histoire d'un aventurier capable d'échapper à tout enfermement. La cible peut immédiatement utiliser sa réaction pour se téléporter jusqu'à 30 pieds dans un espace inoccupé qu'elle peut voir. Lorsque la cible se téléporte, elle peut choisir un nombre de créatures qu'elle voit dans un rayon de 30 pieds égal à votre modificateur de Charisme (minimum 1) pour utiliser immédiatement la même réaction."
+						],
+						[
+							5,
+							"{@b 5 Avenger.} Vous racontez l'histoire d'un chevalier vengeur. Pendant 1 minute, chaque fois qu'une créature que la cible peut voir dans un rayon de 30 pieds est endommagée par une créature, la cible peut utiliser sa réaction pour infliger des dégâts de force égaux à un jet de votre dé d'inspiration bardique à l'attaquant."
+						],
+						[
+							6,
+							"{@b 6 Hero.} Vous racontez l'histoire d'un héros épique. Choisissez une créature que vous pouvez voir dans un rayon de 30 pieds autour de vous. La cible gagne des points de vie temporaires égaux à un jet de votre dé d'inspiration bardique + votre niveau de barde. Tant qu'elle a ces points de vie temporaires, la vitesse de marche de la cible augmente de 10 pieds."
+						],
+						[
+							7,
+							"{@b 7 Fey.} Vous racontez l'histoire d'un fey espiègle. La cible doit réussir un jet de sauvegarde de Sagesse ou devenir {@condition charmed} par vous jusqu'à la fin de son prochain tour. La cible {@condition charmed} doit utiliser son action pour effectuer une attaque de mêlée contre une créature autre qu'elle-même que vous choisissez mentalement. La cible peut agir normalement à son tour si vous ne choisissez aucune autre créature."
+						],
+						[
+							8,
+							"{@b 8 Dark Spirit.} Vous racontez l'épouvantable histoire d'un tueur dans l'obscurité. La cible devient {@condition invisible} jusqu'à la fin de son prochain tour ou jusqu'à ce qu'elle touche une créature avec une attaque. Si elle touche une créature avec une attaque pendant cette invisibilité, cette dernière subit des dégâts nécrotiques égaux à un jet de votre dé d'inspiration bardique et devient {@condition frightened} de la cible jusqu'à la fin de son prochain tour."
+						],
+						[
+							9,
+							"{@b 9 Giant.} Vous parlez des exploits d'un puissant géant. Chaque créature du choix de la cible qu'elle peut voir dans un rayon de 30 pieds autour d'elle doit effectuer un jet de sauvegarde de Force, subissant des dégâts de force égaux à deux jets de votre dé d'inspiration bardesque en cas d'échec et est assommée {@condition prone}. Une créature qui réussit son jet de sauvegarde subit moitié moins de dégâts et n'est pas assommée {@condition prone}."
+						],
+						[
+							10,
+							"{@b 10 Dragon.} Vous soufflez un poème de dragon courroucé. La cible crache magiquement du feu de sa bouche dans un cône de 30 pieds. Chaque créature dans cette zone doit effectuer un jet de sauvegarde de Dextérité, subissant des dégâts de feu égaux à trois jets de votre dé d'inspiration bardique en cas d'échec, ou la moitié en cas de réussite."
+						],
+						[
+							11,
+							"{@b 11 Celestial.} Vous parlez des exploits exaltés d'un céleste. La cible regagne un nombre de points de vie égal à deux jets de votre dé d'inspiration bardique + votre niveau de barde, et vous mettez fin à une maladie ou une condition de la liste suivante affectant la cible : {@condition blinded}, {@condition deafened}, {@condition paralyzed}, {@condition petrified}, ou {@condition poisoned}."
+						],
+						[
+							12,
+							"{@b 12 Unknown.} Vous prononcez une fable incompréhensible provenant d'un être au-delà des étoiles. Choisissez une créature que vous pouvez voir dans un rayon de 30 pieds autour de vous. La cible doit réussir un jet de sauvegarde d'Intelligence ou subir des dégâts psychiques égaux à trois jets de votre dé d'inspiration bardique, et la cible est incapable de parler une quelconque langue pendant 1 minute."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Session",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Spirits feature}",
+				"Vous pouvez canaliser les esprits pour obtenir des informations sur la magie. Vous pouvez mener un rituel de canalisation des esprits d'une heure (qui peut être effectué pendant un repos court ou long) en utilisant votre focalisation spirituelle. Vous pouvez mener ce rituel avec un nombre de créatures égal à votre bonus de compétence (y compris vous-même). À la fin du rituel, vous apprenez temporairement {@filter one spell of your choice from any class|spells|school=d;n|level=0;1;2;3;4;5;6}.",
+				"Le sort que vous choisissez doit être d'un niveau égal ou inférieur au nombre de créatures qui ont mené le rituel, le sort doit être d'un niveau que vous pouvez lancer, et il doit être dans l'école de divination ou de nécromancie. Le sort choisi compte comme un sort de barde pour vous mais ne compte pas dans le nombre de sorts de barde que vous connaissez.",
+				"Une fois que vous avez effectué le rituel, vous ne pouvez plus le faire jusqu'à ce que vous entamiez un long repos, et vous connaissez le sort choisi jusqu'à ce que vous entamiez un long repos."
+			]
+		},
+		{
+			"name": "Spiritual Focus",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Spirits feature}",
+				"Au 6e niveau, lorsque vous lancez un sort de barde qui inflige des dégâts ou restaure des points de vie grâce à la focalisation spirituelle, lancez un {@dice d6}, et vous gagnez un bonus à un jet du sort égal au nombre obtenu."
+			]
+		},
+		{
+			"name": "Mystical Connection",
+			"source": "UA2020SubclassesPt4",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits (UA)",
+			"subclassSource": "UA2020SubclassesPt4",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Spirits feature}",
+				"Votre connexion avec les esprits est devenue semi-permanente. Chaque fois que vous utilisez votre caractéristique Contes de l'au-delà, vous pouvez lancer un {@dice d6} et l'utiliser au lieu de dépenser un dé d'inspiration bardique. Vous utilisez toujours votre dé d'inspiration bardique pour l'effet du conte, sans le dépenser."
+			]
+		},
+		{
+			"name": "College of Eloquence",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"entries": [
+				"Les adeptes du Collège d'éloquence maîtrisent l'art oratoire. La persuasion est considérée comme un grand art, et un argument bien raisonné et bien parlé s'avère souvent plus puissant que la vérité objective. Ces bardes manient un mélange de logique et de jeux de mots théâtraux, convainquant les sceptiques et les détracteurs avec des arguments logiques, et faisant vibrer les cordes sensibles pour faire appel aux émotions de tout un public.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Universal Speech|Bard||Eloquence (UA)|UABardAndPaladin|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Soothing Words|Bard||Eloquence (UA)|UABardAndPaladin|3"
+				}
+			]
+		},
+		{
+			"name": "Soothing Words",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Vous pouvez désormais lancer des émotions calmes sans dépenser un emplacement de sort. Vous pouvez utiliser cette caractéristique un nombre de fois égal à votre modificateur de Charisme. Vous récupérez toutes les utilisations de cette caractéristique lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "Universal Speech",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Eloquence feature}",
+				"Vous avez acquis la capacité de parler et de raisonner avec n'importe quelle créature. Comme action bonus, vous pouvez dépenser une de vos utilisations d'inspiration bardique. Dans ce cas, lancez votre dé d'inspiration bardique et choisissez un nombre de créatures situées à moins de 60 pieds de vous et que vous pouvez voir égal au résultat du lancer. Pendant 10 minutes, les créatures choisies peuvent vous comprendre magiquement, quelle que soit la langue que vous parlez, et vous avez l'avantage sur les tests de Charisme effectués pour les influencer. Cette caractéristique fonctionne même sur une créature qui ne parle aucune langue."
+			]
+		},
+		{
+			"name": "Undeniable Logic",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Eloquence feature}",
+				"Vous pouvez transformer des mots empreints de magie en un nœud de raisonnement qui peut être encourageant ou impossible à suivre.",
+				"En tant qu'action bonus, vous pouvez dépenser une de vos utilisations de l'inspiration bardique. Lorsque vous faites cela, choisissez une créature que vous pouvez voir dans un rayon de 60 autour de vous et qui peut vous entendre, puis lancez votre dé d'inspiration bardique et choisissez l'un des éléments suivants :",
+				{
+					"type": "list",
+					"items": [
+						"La créature subit des dégâts psychiques égaux au nombre que vous obtenez sur le dé d'inspiration bardique, et elle doit réussir un jet de sauvegarde d'Intelligence contre votre DC de sauvegarde contre les sorts ou avoir un désavantage au prochain jet de sauvegarde qu'elle effectuera avant la fin de votre prochain tour.",
+						"La créature regagne un nombre de points de vie égal à celui que vous obtenez au dé d'inspiration bardique, et elle bénéficie d'un avantage au prochain jet de sauvegarde qu'elle effectue avant la fin de votre prochain tour."
+					]
+				}
+			]
+		},
+		{
+			"name": "Infectious Inspiration",
+			"source": "UABardAndPaladin",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Eloquence (UA)",
+			"subclassSource": "UABardAndPaladin",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Eloquence feature}",
+				"Lorsqu'une créature ajoute un de vos dés d'inspiration bardique à son test de capacité, son jet d'attaque ou son jet de sauvegarde et que le jet échoue, la créature peut conserver le dé d'inspiration bardique.",
+				"De plus, lorsqu'une créature ajoute un de vos dés d'inspiration bardique à son test de capacité, son jet d'attaque ou son jet de sauvegarde et que le jet réussit, vous pouvez utiliser votre réaction pour encourager une créature différente (autre que vous-même) qui peut vous entendre dans un rayon de 60 pieds autour de vous, en lui donnant un dé d'inspiration bardique sans dépenser aucune de vos utilisations d'inspiration bardique. Vous pouvez utiliser cette réaction un nombre de fois égal à votre modificateur de Charisme (au minimum une fois), et vous récupérez toutes les utilisations dépensées lorsque vous terminez un long repos."
+			]
+		},
+		{
+			"name": "College of Glamour",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"entries": [
+				"Le Collège du Glamour est ouvert aux bardes qui ont maîtrisé leur art dans le royaume vibrant et mortel du Feywild. Encadrés par des satyres, des eladrins et d'autres feys, ces bardes apprennent à utiliser leur magie pour enchanter et captiver les autres.",
+				"Les bardes de ce collège sont considérés avec un mélange d'admiration et de crainte. Leurs performances font partie de la légende. Les bardes de ce collège sont si éloquents qu'un discours ou une chanson que l'un d'entre eux interprète peut amener les ravisseurs à relâcher le barde indemne et peut calmer un dragon furieux. La même magie qui leur permet de calmer les bêtes peut aussi faire plier les esprits. Les méchants bardes de ce collège peuvent s'emparer d'une communauté pendant des semaines, abusant de leur magie pour transformer leurs hôtes en esclaves.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Mantle of Inspiration|Bard||Glamour (UA)|UABardBardColleges|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Enthralling Performance|Bard||Glamour (UA)|UABardBardColleges|3"
+				}
+			]
+		},
+		{
+			"name": "Enthralling Performance",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"A partir du 3ème niveau, vous pouvez charger votre performance de magie féerique séduisante.",
+				"Si vous vous produisez pendant au moins 10 minutes, vous pouvez tenter d'émerveiller votre public en chantant, en récitant un poème ou en dansant. À la fin du spectacle, choisissez un nombre d'humanoïdes dans un rayon de 60 pieds autour de vous qui ont regardé et écouté tout le spectacle, jusqu'à un nombre d'entre eux égal à votre modificateur de Charisme (au moins un). Chaque cible doit réussir un jet de sauvegarde de Sagesse contre le DC de sauvegarde de votre sort ou être {@condition charmed} par vous. Pendant qu'elle est ainsi {@condition charmed}, la cible vous idolâtre, elle parle de vous en termes élogieux à quiconque lui parle, et elle entrave quiconque s'oppose à vous, évitant la violence à moins qu'elle ne soit déjà encline à se battre en votre nom. Cet effet prend fin sur une cible au bout d'une heure, si elle subit des dégâts, si vous l'attaquez ou si elle vous voit attaquer ou endommager l'un de ses alliés.",
+				"Si une cible réussit son jet de sauvegarde contre cet effet, elle ne se doute pas que vous avez essayé de la charmer.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Mantle of Inspiration",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le Collège du Glamour au 3e niveau, vous gagnez la capacité de tisser un chant de magie féerique qui envoûte vos alliés avec vigueur et rapidité.",
+				"Comme action bonus, vous pouvez dépenser une utilisation d'Inspiration bardique pour vous accorder une apparence merveilleuse, d'un autre monde. À ce moment-là, choisissez un nombre d'alliés que vous pouvez voir et qui peuvent vous voir dans un rayon de 60 pieds autour de vous, jusqu'à un nombre d'entre eux égal à votre modificateur de Charisme (minimum de un). Chaque cible gagne {@dice 2d6} de points de vie temporaires.",
+				"Lorsqu'une cible gagne ces points de vie temporaires, elle peut également utiliser sa réaction pour se déplacer à sa vitesse vers vous, sans provoquer d'attaque d'opportunité. Elle doit emprunter le chemin le plus court et le plus sûr vers vous.",
+				"Le nombre de points de vie temporaires augmente lorsque vous atteignez certains niveaux dans cette classe, passant à {@dice 2d8} au 5e niveau, {@dice 2d10} au 10e niveau, et {@dice 2d12} au 15e niveau."
+			]
+		},
+		{
+			"name": "Mantle of Majesty",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité de vous envelopper d'une magie féerique qui incite les autres à vous servir. Comme action bonus, vous prenez une apparence de beauté surnaturelle pendant 1 minute. Pendant ce temps, vous pouvez lancer {@spell command} comme action bonus à chacun de vos tours, sans utiliser de slot de sort. Cet effet dure 1 minute, et toute créature {@condition charmed} à côté de vous rate automatiquement son jet de sauvegarde contre le sort.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Mantle of Majesty",
+			"source": "UABardBardColleges",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, vous gagnez un aspect d'un autre monde à votre apparence qui vous rend plus féroce et charmant.",
+				"De plus, grâce à cette caractéristique, vous pouvez lancer {@spell sanctuary} sur vous-même. Si une créature rate son jet de sauvegarde contre le sort, vous bénéficiez également d'un avantage sur tous les tests de Charisme contre cette créature pendant 1 minute, et elle a un désavantage sur tout jet de sauvegarde qu'elle effectue contre vos sorts à votre prochain tour.",
+				"Une fois que vous avez lancé {@spell sanctuary} en utilisant cette caractéristique, vous ne pouvez plus le faire jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "College of Whispers",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"entries": [
+				"La plupart des gens sont heureux d'accueillir un barde parmi eux. Les bardes du Collège des Chuchotements utilisent cela à leur avantage. Ils semblent être des bardes comme les autres, partageant des nouvelles, chantant des chansons et racontant des histoires au public qu'ils rassemblent. En réalité, le Collège des Chuchoteurs enseigne à ses étudiants qu'ils sont des loups parmi les moutons. Ces bardes utilisent leurs connaissances et leur magie pour découvrir des secrets et les retourner contre les autres par l'extorsion et les menaces.",
+				"De nombreux autres bardes détestent le Collège des Chuchoteurs, qu'ils considèrent comme un parasite qui utilise la réputation des bardes pour acquérir richesse et pouvoir. Pour cette raison, ces bardes révèlent rarement leur véritable nature, sauf s'ils y sont contraints. Ils prétendent généralement appartenir à un autre collège, ou gardent leur vraie nature secrète afin de mieux infiltrer et exploiter les cours royales et autres lieux de pouvoir.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Venomous Blades|Bard||Whispers (UA)|UABardBardColleges|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Venomous Words|Bard||Whispers (UA)|UABardBardColleges|3"
+				}
+			]
+		},
+		{
+			"name": "Venomous Blades",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le Collège des chuchotements au 3e niveau, vous gagnez la capacité de rendre magiquement toxiques vos attaques d'armes pendant un instant.",
+				"Lorsque vous touchez une créature avec une attaque d'arme, vous pouvez dépenser une utilisation de votre Inspiration bardesque pour infliger {@damage 2d6} de dégâts de poison supplémentaires à cette cible. Vous ne pouvez le faire qu'une fois par round, à votre tour.",
+				"Les dégâts supplémentaires augmentent lorsque vous atteignez certains niveaux dans cette classe, passant à {@dice 2d8} au 5e niveau, {@dice 2d10} au 10e niveau et {@dice 2d12} au 15e niveau."
+			]
+		},
+		{
+			"name": "Venomous Words",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, vous apprenez à imprégner des mots d'apparence innocente d'une magie insidieuse. Une créature qui vous entend parler peut être plongée dans la peur et la paranoïa.",
+				"Si vous parlez à un humanoïde seul pendant au moins 10 minutes, vous pouvez tenter de semer la paranoïa et la peur dans son esprit. À la fin de la conversation, la cible doit réussir un jet de sauvegarde de Sagesse contre le DC de sauvegarde de votre sort ou être {@condition frightened} pendant l'heure suivante, jusqu'à ce qu'elle soit attaquée ou endommagée, ou jusqu'à ce qu'elle soit témoin que ses alliés sont attaqués ou endommagés. Pendant qu'elle est {@condition frightened} dans cet état, la cible est paranoïaque et tente d'éviter la compagnie des autres, y compris de ses alliés. La cible cherche ce qu'elle considère comme l'endroit le plus sûr et le plus secret à sa disposition et s'y cache.",
+				"Si la cible réussit son jet de sauvegarde, elle ne se doute pas que vous avez essayé de l'effrayer.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un court repos ou un long repos."
+			]
+		},
+		{
+			"name": "Mantle of Whispers",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité d'adopter le personnage d'une créature. Lorsque vous tuez une créature avec une attaque ou un sort ou qu'une créature meurt à moins de 1,5 mètre de vous, vous pouvez capturer magiquement son ombre en utilisant votre réaction. Vous ne pouvez capturer que l'ombre d'une créature qui correspond à votre type de créature, comme humanoïde, et à votre taille (vous pouvez capturer une ombre petite ou moyenne si vous êtes petit), et vous ne pouvez avoir qu'une seule ombre capturée à la fois.",
+				"Après avoir capturé l'ombre d'une créature, vous pouvez utiliser votre magie pour la tisser dans un déguisement qui vous permet de prendre son apparence et d'avoir accès à ses souvenirs de surface. En tant qu'action, vous prenez l'apparence de la créature pendant 1 heure ou jusqu'à ce que vous mettiez fin à cet effet en tant qu'action bonus.",
+				"Pendant cette heure, vous avez accès à toutes les informations que la créature partagerait librement avec une personne de passage. Ces informations comprennent des détails généraux sur son passé et sa vie personnelle, mais pas de secrets. Les informations sont suffisantes pour que vous puissiez vous faire passer pour la créature en puisant dans ses souvenirs.",
+				"Une autre créature peut voir à travers ce déguisement en faisant un test de Sagesse ({@skill Insight}) opposé à votre test de Charisme ({@skill Deception}), bien que vous gagniez un bonus de +5 à votre test.",
+				"Le déguisement et les connaissances qu'il confère disparaissent lorsque la durée de cette capacité prend fin."
+			]
+		},
+		{
+			"name": "Shadow Lore",
+			"source": "UABardBardColleges",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers (UA)",
+			"subclassSource": "UABardBardColleges",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, vous gagnez la capacité de tisser de la magie noire dans vos paroles et de puiser dans les peurs les plus profondes d'une créature.",
+				"Comme une action, vous chuchotez magiquement une phrase que seule une créature de votre choix dans un rayon de 30 pieds de vous peut entendre. La cible doit effectuer un jet de sauvegarde de Sagesse contre le DC de sauvegarde de votre sort. Elle réussit automatiquement si elle ne partage pas de langue avec vous ou si elle ne peut pas vous entendre. En cas de jet de sauvegarde réussi, votre murmure ressemble à un marmonnement inintelligible et n'a aucun effet.",
+				"Si la cible échoue à son jet de sauvegarde, elle est {@condition charmed} par vous pendant les 8 heures suivantes ou jusqu'à ce que vous ou vos alliés l'attaquiez ou lui fassiez des dégâts. Elle interprète les chuchotements comme une description de son secret le plus mortifère. Bien que vous n'obteniez aucune connaissance de ce secret, la cible est convaincue que vous le connaissez.",
+				"Tant que {@condition charmed} de cette façon, la créature obéit à vos ordres de peur que vous ne révéliez son secret. Elle ne risquera pas sa vie pour vous ou ne se battra pas pour vous, sauf si elle était déjà encline à le faire. Elle vous accorde des faveurs et des cadeaux qu'elle offrirait à un ami proche.",
+				"Lorsque l'effet prend fin, la créature ne comprend pas pourquoi elle vous a tenu dans une telle crainte. Une fois que vous avez utilisé cette caractéristique, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "College of Satire",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"entries": [
+				"Les bardes du Collège de la Satire sont appelés bouffons. Ils se servent d'histoires banales, d'acrobaties audacieuses et de blagues acérées pour divertir leur public, qu'il s'agisse de la foule d'un pub délabré sur les quais ou des nobles de la cour royale d'un roi. Là où d'autres bardes recherchent des traditions oubliées ou des récits de bravoure épique, les bouffons dénichent des histoires embarrassantes et hilarantes de toutes sortes. Qu'il s'agisse de raconter la liaison d'un palefrenier musclé avec une duchesse âgée ou la satire moqueuse de l'innocence étouffante d'un paladin de Helm, le bouffon ne laisse jamais le goût, la bienséance sociale ou la honte s'opposer à un bon rire.",
+				"Si les bouffons sont des maîtres du jeu de mots, de la plaisanterie et du barbarisme, ils sont bien plus que de simples comiques. On attend d'eux qu'ils se moquent et qu'ils provoquent, en tirant parti du fait que même les personnes les plus puissantes sont censées, par tradition, supporter les attaques d'un bouffon avec bonne humeur. Cette attente permet au bouffon de servir de critique ou de voix de la raison lorsque les autres sont trop intimidés pour dire la vérité.",
+				"Pour la duchesse qui a un penchant pour les jeunes travailleurs costauds, de tels récits pourraient servir à mettre en garde les cibles de son affection et la forcer à changer ses habitudes, faute de partenaires consentants. Se venger du bouffon ne fait que ruiner sa réputation déjà bien entachée, et pourrait constituer la meilleure preuve que les satires du bouffon ont atteint leur but. Mais si elle est gentille et généreuse avec ses conquêtes, les blagues et les histoires font d'elle une sorte de héros populaire, tout en attirant vers elle encore plus de partenaires potentiels.",
+				"Les bouffons ne sont fidèles qu'à une seule cause : la poursuite et la propagation de la vérité. Ils utilisent leur humour et leur apparence inoffensive pour faire tomber les barrières sociales et dénoncer la corruption, l'incompétence et la stupidité des riches et des puissants. Qu'il s'agisse de révéler la trahison d'un escroc ou d'exposer les plans de guerre d'un baron, motivés par la cupidité et la soif de sang, le bouffon est la conscience d'un royaume.",
+				"Les bouffons s'aventurent pour protéger les gens du peuple et pour saper les plans des riches, des puissants et des arrogants. Leur magie renforce le moral des alliés et sème le doute dans l'esprit des ennemis. Parmi les bardes, les bouffons sont des acrobates hors pair, et leur capacité à culbuter, esquiver, sauter et grimper en fait des adversaires redoutables au combat.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Satire (UA)|UAKitsOfOld|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tumbling Fool|Bard||Satire (UA)|UAKitsOfOld|3"
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le Collège de la Satire au 3e niveau, vous gagnez la compétence en {@item thieves' tools|phb}. Vous gagnez également la compétence en {@skill Sleight of Hand} et une compétence supplémentaire de votre choix. Si vous êtes déjà compétent en {@item thieves' tools|phb} ou en {@skill Sleight of Hand}, choisissez une autre compétence pour chaque compétence que vous avez déjà."
+			]
+		},
+		{
+			"name": "Tumbling Fool",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, vous maîtrisez une variété de techniques acrobatiques qui vous permettent d'échapper au danger. Comme action bonus, vous pouvez faire une culbute. Lorsque vous culbutez, vous gagnez les avantages suivants pour le reste de votre tour :",
+				{
+					"type": "list",
+					"items": [
+						"Vous gagnez les avantages des actions {@action Dash} et {@action Disengage}.",
+						"Vous gagnez une vitesse de montée égale à votre vitesse actuelle.",
+						"Vous subissez la moitié des dégâts en tombant."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fool's Insight",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, votre capacité à recueillir des histoires et des connaissances gagne un avantage surnaturel. Vous pouvez lancer Détection des pensées jusqu'à un nombre de fois égal à votre modificateur de Charisme. Vous récupérez toutes les utilisations de cette capacité après un long repos.",
+				"Si une créature résiste à votre tentative d'approfondissement et réussit son jet de sauvegarde contre votre détection des pensées, elle subit immédiatement une gaffe sociale embarrassante. Elle peut cracher bruyamment des gaz, lâcher un rot tonitruant, trébucher et tomber, ou être obligée de raconter une blague de mauvais goût."
+			]
+		},
+		{
+			"name": "Fool's Luck",
+			"source": "UAKitsOfOld",
+			"page": 2,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Satire (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Les bouffons semblent avoir le don de se sortir de situations difficiles, transformant ce qui semble être un échec assuré en un succès embarrassant mais efficace.",
+				"Au 14ème niveau, vous pouvez dépenser une utilisation de Bardic Inspiration après avoir raté un test de capacité, un jet de sauvegarde ou un jet d'attaque. Lancez un dé d'inspiration bardesque et ajoutez le nombre obtenu à votre attaque, jet de sauvegarde ou test de capacité, en utilisant le nouveau résultat à la place de celui qui a échoué.",
+				"Si l'utilisation de cette capacité vous permet de réussir une attaque, un jet de sauvegarde ou un test de capacité, notez le nombre que vous avez obtenu sur le dé d'inspiration bardique. Le MD peut alors appliquer ce résultat comme une pénalité à une attaque ou un test que vous faites, et vous ne pouvez plus utiliser cette capacité jusqu'à ce que vous subissiez cet inconvénient. Lorsque le MJ invoque cette pénalité, décrivez une gaffe ou une erreur embarrassante que vous faites dans le cadre du jet de dé affecté."
+			]
+		},
+		{
+			"name": "College of Swords",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"entries": [
+				"Les bardes du Collège des épées sont appelés des lames, et ils divertissent par des prouesses audacieuses avec des armes. Les lames réalisent des cascades comme avaler des épées, lancer des couteaux, jongler et simuler des combats. Mais bien qu'ils utilisent leurs armes pour divertir, ils sont aussi des guerriers hautement entraînés et compétents.",
+				"Leur talent pour les armes incite de nombreuses lames à mener une double vie. Une lame peut utiliser une troupe de cirque comme couverture pour des actes infâmes tels que l'assassinat, le vol et le chantage. D'autres lames s'attaquent aux méchants, faisant régner la justice contre les puissants et les cruels. La plupart des troupes sont heureuses d'accepter le talent d'une lame pour l'excitation qu'elle ajoute à un spectacle, mais peu d'artistes leur font entièrement confiance.",
+				"Les lames qui abandonnent leur vie d'artiste ont souvent rencontré des problèmes qui rendent impossible le maintien de leurs activités secrètes. Une lame surprise en train de voler ou de se livrer à une justice d'autodéfense est une trop grande responsabilité pour la plupart des troupes d'artistes. Avec leurs compétences en matière d'armes comme principal atout, ces lames travaillent soit comme hommes de main pour des guildes de voleurs, soit comme aventuriers.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Swords (UA)|UAKitsOfOld|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fighting Style|Bard||Swords (UA)|UAKitsOfOld|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blade Flourish|Bard||Swords (UA)|UAKitsOfOld|3"
+				}
+			]
+		},
+		{
+			"name": "Blade Flourish",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, vous apprenez à faire des démonstrations impressionnantes d'habileté avec vos armes. Lorsque vous utilisez l'action {@action Attack} à votre tour et que vous attaquez avec une dague, une épée longue, une rapière, un cimeterre ou une épée courte, vous pouvez tenter l'une des prouesses suivantes.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Defensive Flourish",
+							"entries": [
+								"Vous faites tourner votre arme autour de vous en cercles rapides, créant un spectacle hypnotique. Comme action bonus, vous dépensez une utilisation de l'inspiration bardique, en lançant un dé d'inspiration bardique et en appliquant le nombre obtenu comme bonus à votre CA jusqu'au début de votre prochain tour."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Trick Shooter's Flourish",
+							"entries": [
+								"Cette astuce favorite des lanceurs de couteaux vous permet de dépenser une utilisation de l'inspiration bardesque comme action bonus. Lancez un dé d'inspiration bardesque et appliquez le nombre obtenu comme bonus au prochain jet d'attaque à distance que vous effectuez avec une dague ce tour-ci. Si la cible de l'attaque est un objet inanimé et sans surveillance, le bonus est égal au double du jet de dé."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Unnerving Flourish",
+							"entries": [
+								"Votre démonstration mortelle de prouesses au combat perturbe vos adversaires, les laissant se recroqueviller de peur et à votre merci. Chaque fois que vous réduisez une créature à 0 point de vie avec une attaque de mêlée, vous pouvez utiliser une action bonus pour dépenser une utilisation d'Inspiration bardique, et à la place laisser la créature à 1 point de vie.",
+								"La créature est {@condition frightened} de vous pendant un nombre de minutes égal à votre modificateur de Charisme. Elle doit également effectuer un jet de sauvegarde de Charisme avec un DC égal à votre DC de lanceur de sorts + un bonus égal au résultat de votre dé d'inspiration bardique. Si la créature échoue à ce jet de sauvegarde, elle répond sincèrement à toutes les questions que vous lui posez et obéit à vos ordres directs tant qu'elle est {@condition frightened} par cet effet."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le Collège des Lames au 3e niveau, vous gagnez la compétence avec les armures moyennes et avec les cimeterres."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Le Collège des lames met l'accent sur la maîtrise des armes, vous donnant accès à l'option de combat à deux armes pour la caractéristique de classe Style de combat.",
+				{
+					"type": "refOptionalfeature",
+					"optionalfeature": "Two-Weapon Fighting"
+				}
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, vous pouvez attaquer deux fois, au lieu d'une, lorsque vous effectuez l'action {@action Attack} à votre tour."
+			]
+		},
+		{
+			"name": "Battle Magic",
+			"source": "UAKitsOfOld",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords (UA)",
+			"subclassSource": "UAKitsOfOld",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, vous avez maîtrisé l'art de tisser le lancement de sorts et l'utilisation d'armes en un seul acte harmonieux. Lorsque vous utilisez votre action pour lancer un sort de barde, vous pouvez effectuer une attaque d'arme en tant qu'action bonus."
+			]
+		},
+		{
+			"name": "College of Swords v2",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"entries": [
+				"Les bardes du Collège des épées sont appelés des lames, et ils divertissent par des prouesses audacieuses avec des armes. Les lames réalisent des cascades comme avaler des épées, lancer des couteaux, jongler et simuler des combats. Mais bien qu'ils utilisent leurs armes pour divertir, ils sont aussi des guerriers hautement entraînés et compétents.",
+				"Leur talent pour les armes incite de nombreuses lames à mener une double vie. Une lame peut utiliser une troupe de cirque comme couverture pour des actes infâmes tels que l'assassinat, le vol et le chantage. D'autres lames s'attaquent aux méchants, faisant régner la justice contre les puissants et les cruels. La plupart des troupes sont heureuses d'accepter le talent d'une lame pour l'excitation qu'elle ajoute à un spectacle, mais peu d'artistes leur font entièrement confiance.",
+				"Les lames qui abandonnent leur vie d'artiste ont souvent rencontré des problèmes qui rendent impossible le maintien de leurs activités secrètes. Une lame surprise en train de voler ou de se livrer à une justice d'autodéfense est une trop grande responsabilité pour la plupart des troupes d'artistes. Avec leurs compétences en matière d'armes comme principal atout, ces lames travaillent soit comme hommes de main pour des guildes de voleurs, soit comme aventuriers.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Swords v2 (UA)|UARevisedSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fighting Style|Bard||Swords v2 (UA)|UARevisedSubclasses|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blade Flourish|Bard||Swords v2 (UA)|UARevisedSubclasses|3"
+				}
+			]
+		},
+		{
+			"name": "Blade Flourish",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, vous apprenez à faire des démonstrations impressionnantes d'habileté avec vos armes. En tant qu'action standard, vous pouvez effectuer une attaque de mêlée standard et augmenter votre vitesse de marche de 10 pieds jusqu'à la fin du tour en cours. Chaque fois que vous utilisez cette option, vous pouvez également utiliser l'une des options suivantes de Fleur de lame avec elle.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Defensive Flourish",
+							"entries": [
+								"Vous faites tourner votre arme autour de vous en cercles rapides, créant un spectacle hypnotique. Vous pouvez dépenser une de vos utilisations de l'inspiration bardique, en lançant un dé d'inspiration bardique et en appliquant le nombre obtenu comme un bonus à votre CA jusqu'au début de votre prochain tour."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Slashing Flourish",
+							"entries": [
+								"Si l'attaque touche sa cible, vous pouvez dépenser une de vos utilisations de l'inspiration bardique pour que l'arme endommage chaque créature de votre choix, autre que la cible, que vous pouvez voir dans un rayon de 1,5 mètre autour de vous. Les dégâts sont égaux au nombre que vous obtenez sur le dé d'inspiration bardesque."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Mobile Flourish",
+							"entries": [
+								"Si l'attaque touche sa cible, vous pouvez dépenser l'une de vos utilisations de l'inspiration bardesque pour repousser la cible jusqu'à 5 pieds de vous, plus un nombre de pieds égal au nombre obtenu sur le dé d'inspiration bardesque. Vous pouvez alors immédiatement utiliser votre réaction pour vous déplacer à la hauteur de votre vitesse vers un espace inoccupé situé à moins de 5 pieds de la cible."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le Collège des Lames au 3e niveau, vous gagnez la compétence avec les armures moyennes et avec les cimeterres. Si vous êtes compétent avec une arme de mêlée simple ou martiale, vous pouvez l'utiliser comme foyer de sort pour vos sorts de barde."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Le Collège des lames met l'accent sur la maîtrise des armes et vous donne accès aux options de duel ou de combat à deux armes pour la caractéristique de classe Style de combat, qui sont les suivantes.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cunning Flourish",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, vous pouvez attaquer deux fois, au lieu d'une, lorsque vous effectuez l'action Blade Flourish à votre tour. Néanmoins, vous ne pouvez utiliser qu'une seule option de Blade Flourish lorsque vous effectuez cette action."
+			]
+		},
+		{
+			"name": "Master's Flourish",
+			"source": "UARevisedSubclasses",
+			"page": 1,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords v2 (UA)",
+			"subclassSource": "UARevisedSubclasses",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, chaque fois que vous utilisez une option de fleur de lame, vous pouvez lancer un {@dice d6} et l'utiliser au lieu de dépenser un dé d'inspiration bardique."
+			]
+		},
+		{
+			"name": "College of Spirits",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"entries": [
+				"Les bardes du Collège des Esprits recherchent des récits dotés d'un pouvoir inhérent - qu'il s'agisse de légendes, d'histoires ou de fictions - et donnent vie à leurs sujets. En utilisant des moyens occultes, ces bardes font apparaître des incarnations spirituelles de forces puissantes pour changer le monde une fois de plus. Ces esprits sont cependant capricieux, et ce qu'un barde invoque n'est pas toujours entièrement sous leur contrôle.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Guiding Whispers|Bard||Spirits|VRGR|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Spiritual Focus|Bard||Spirits|VRGR|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tales from Beyond|Bard||Spirits|VRGR|3"
+				}
+			]
+		},
+		{
+			"name": "Guiding Whispers",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Vous pouvez atteindre les esprits pour qu'ils vous guident, vous et les autres. Vous apprenez le cantrip {@spell guidance}, qui ne compte pas dans le nombre de cantrips de barde que vous connaissez. Pour vous, il a une portée de 60 pieds lorsque vous le lancez."
+			]
+		},
+		{
+			"name": "Spiritual Focus",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Vous utilisez des outils qui vous aident à canaliser les esprits, qu'il s'agisse de personnages historiques ou d'archétypes fictifs. Vous pouvez utiliser les objets suivants pour concentrer vos sorts de barde : une bougie, une boule de cristal, un crâne, une planche d'esprits ou un jeu de tarokka.",
+				"À partir du 6e niveau, lorsque vous lancez un sort de barde qui inflige des dégâts ou restaure des points de vie grâce à la focalisation spirituelle, lancez un {@dice d6}, et vous gagnez un bonus à un jet de dégâts ou de soins du sort égal au nombre obtenu."
+			]
+		},
+		{
+			"name": "Tales from Beyond",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level College of Spirits feature}",
+				"Vous entrez en contact avec les esprits qui racontent leurs histoires à travers vous. Pendant que vous tenez votre focalisation spirituelle, vous pouvez utiliser une action bonus pour dépenser une utilisation de votre inspiration bardique et faire un jet sur la table des contes d'esprits en utilisant votre dé d'inspiration bardique pour déterminer le conte que les esprits vous demandent de raconter. Vous gardez le conte en tête jusqu'à ce que vous accordiez l'effet du conte ou que vous terminiez un repos court ou long.",
+				"Vous pouvez utiliser une action pour choisir une créature que vous pouvez voir à moins de 30 pieds de vous (cela peut être vous) pour être la cible de l'effet du conte. Une fois que vous l'avez fait, vous ne pouvez plus accorder l'effet du conte jusqu'à ce que vous le lanciez à nouveau.",
+				"Vous ne pouvez avoir qu'un seul de ces contes à l'esprit à la fois, et un jet sur la table des Contes de l'esprit met immédiatement fin à l'effet du conte précédent.",
+				"Si le conte nécessite un jet de sauvegarde, le DC est égal au DC de sauvegarde de votre sort.",
+				{
+					"type": "table",
+					"caption": "Spirit Tales",
+					"colLabels": [
+						"Bardic Insp. Die",
+						"Tale Told Through You"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Conte de l'animal malin. Pendant les 10 prochaines minutes, chaque fois que la cible effectue un test d'Intelligence, de Sagesse ou de Charisme, elle peut lancer un dé supplémentaire immédiatement après avoir lancé le {@dice d20} et ajouter le nombre du dé supplémentaire au test. Le dé supplémentaire est du même type que votre dé d'inspiration bardique."
+						],
+						[
+							"2",
+							"Conte du duelliste renommé. Vous effectuez une attaque de sort en mêlée contre la cible. En cas de succès, la cible subit des dégâts de force égaux à deux jets de votre dé d'inspiration bardique + votre modificateur de Charisme."
+						],
+						[
+							"3",
+							"Conte des amis bien-aimés. La cible et une autre créature de son choix qu'elle peut voir dans un rayon de 1,5 m gagnent des points de vie temporaires égaux à un jet de votre dé d'inspiration bardique + votre modificateur de Charisme."
+						],
+						[
+							"4",
+							"Conte du fugueur. La cible peut immédiatement utiliser sa réaction pour se téléporter jusqu'à 30 pieds dans un espace inoccupé qu'elle peut voir. Lorsque la cible se téléporte, elle peut choisir un nombre de créatures qu'elle peut voir dans un rayon de 30 pieds égal à votre modificateur de Charisme (minimum de 0) pour utiliser immédiatement la même réaction."
+						],
+						[
+							"5",
+							"Conte du vengeur. Pendant 1 minute, toute créature qui touche la cible avec une attaque de mêlée subit des dégâts de force égaux à un jet de votre dé d'inspiration bardique."
+						],
+						[
+							"6",
+							"Conte du voyageur. La cible gagne des points de vie temporaires égaux à un jet de votre dé d'inspiration bardique + votre niveau de barde. Tant qu'elle a ces points de vie temporaires, la vitesse de marche de la cible augmente de 10 pieds et elle bénéficie d'un bonus de +1 à sa CA."
+						],
+						[
+							"7",
+							"Conte du béguineur . La cible doit réussir un jet de sauvegarde de Sagesse ou subir des dégâts psychiques égaux à deux jets de votre dé d'inspiration bardique, et la cible est {@condition incapacitated} jusqu'à la fin de son prochain tour."
+						],
+						[
+							"8",
+							"Conte du Fantôme . La cible devient {@condition invisible} jusqu'à la fin de son prochain tour ou jusqu'à ce qu'elle touche une créature avec une attaque. Si la cible touche une créature avec une attaque pendant cette invisibilité, la créature qu'elle touche subit des dégâts nécrotiques égaux à un jet de votre dé d'inspiration bardesque et devient {@condition frightened} de la cible jusqu'à la fin du prochain tour de la créature {@condition frightened}."
+						],
+						[
+							"9",
+							"Conte de la Brute. Chaque créature du choix de la cible qu'elle peut voir dans un rayon de 30 pieds autour d'elle doit effectuer un jet de sauvegarde de Force. Sur un jet de sauvegarde raté, la créature subit des dégâts de tonnerre égaux à trois jets de votre dé d'inspiration bardique et est assommée {@condition prone}. Une créature qui réussit son jet de sauvegarde subit la moitié des dégâts et n'est pas assommée {@condition prone}."
+						],
+						[
+							"10",
+							"Conte du Dragon. La cible crache du feu de sa bouche dans un cône de 30 pieds. Chaque créature dans cette zone doit effectuer un jet de sauvegarde de Dextérité, subissant des dégâts de feu égaux à quatre jets de votre dé d'inspiration bardique en cas d'échec, ou la moitié des dégâts en cas de réussite."
+						],
+						[
+							"11",
+							"Conte de l'ange. La cible regagne un nombre de points de vie égal à deux jets de votre dé d'inspiration bardique + votre modificateur de Charisme, et vous mettez fin à une condition de la liste suivante affectant la cible : {@condition blinded}, {@condition deafened}, {@condition paralyzed}, {@condition petrified}, ou {@condition poisoned}."
+						],
+						[
+							"12",
+							"Le conte du Mind-Bender. Vous évoquez une fable incompréhensible provenant d'un être d'un autre monde. La cible doit réussir un jet de sauvegarde d'Intelligence ou subir des dégâts psychiques égaux à trois jets de votre dé d'inspiration bardique et être {@condition stunned} jusqu'à la fin de son prochain tour."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Spirit Session",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level College of Spirits feature}",
+				"Les esprits vous offrent des perspectives surnaturelles. Vous pouvez mener un rituel de canalisation des esprits d'une heure (qui peut être effectué pendant un repos court ou long) en utilisant votre focalisation spirituelle. Vous pouvez mener ce rituel avec un nombre de créatures consentantes égal à votre bonus de compétence (y compris vous-même). À la fin du rituel, vous apprenez temporairement {@filter one spell of your choice from any class|spells|school=d;n|level=0;1;2;3;4;5;6}.",
+				"Le sort que vous choisissez doit être d'un niveau égal ou inférieur au nombre de créatures qui ont mené le rituel, le sort doit être d'un niveau que vous pouvez lancer, et il doit appartenir à l'école de divination ou de nécromancie. Le sort choisi compte comme un sort de barde pour vous mais ne compte pas dans le nombre de sorts de barde que vous connaissez.",
+				"Une fois que vous avez effectué le rituel, vous ne pouvez plus le faire jusqu'à ce que vous entamiez un long repos, et vous connaissez le sort choisi jusqu'à ce que vous entamiez un long repos."
+			]
+		},
+		{
+			"name": "Mystical Connection",
+			"source": "VRGR",
+			"page": 28,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Spirits",
+			"subclassSource": "VRGR",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level College of Spirits feature}",
+				"Vous avez maintenant la possibilité de pousser les esprits de Tales from Beyond vers certains contes. Chaque fois que vous lancez un dé sur la table des contes spirituels, vous pouvez le faire deux fois et choisir lequel des deux effets vous souhaitez accorder. Si vous obtenez le même chiffre sur les deux dés, vous pouvez ignorer ce chiffre et choisir n'importe quel effet sur la table.",
+				{
+					"type": "inset",
+					"name": "Spirit Tales",
+					"entries": [
+						"Les conteurs, comme les bardes du Collège des Esprits, donnent souvent la parole à des récits inspirés par un thème ou un ensemble d'œuvres plus importants. Lorsque vous déterminez quelles histoires vous allez raconter, réfléchissez à ce qui les unit. Mettent-elles toutes en scène des personnages d'un groupe spécifique, comme les archétypes du jeu de tarokka, les figures des constellations, les amis imaginaires de l'enfance ou les personnages d'un livre de contes particulier ? Ou vos inspirations sont-elles plus générales, intégrant des champions historiques, des héros mythologiques ou des légendes urbaines ? Utilisez les histoires que vous racontez pour définir votre niche en tant qu'aventurier conteur."
+					]
+				}
+			]
+		},
+		{
+			"name": "College of Glamour",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Le Collège du Glamour est la maison des bardes qui ont maîtrisé leur art dans le royaume vibrant du Feywild ou sous la tutelle de quelqu'un qui y a vécu. Encadrés par des satyres, des eladrins et d'autres fey, ces bardes apprennent à utiliser leur magie pour enchanter et captiver les autres.",
+				"Les bardes de ce collège sont considérés avec un mélange d'admiration et de crainte. Leurs performances font partie de la légende. Ces bardes sont si éloquents qu'un discours ou une chanson qu'ils interprètent peut amener les ravisseurs à relâcher le barde indemne et peut calmer un dragon furieux. La même magie qui leur permet de calmer les bêtes peut également faire plier les esprits. Les méchants bardes de ce collège peuvent s'emparer d'une communauté pendant des semaines, abusant de leur magie pour transformer leurs hôtes en esclaves. Les bardes héroïques de ce collège utilisent plutôt ce pouvoir pour réjouir les opprimés et saper les oppresseurs.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Mantle of Inspiration|Bard||Glamour|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Enthralling Performance|Bard||Glamour|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Enthralling Performance",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"À partir du 3e niveau, vous pouvez charger votre performance d'une magie féerique et séduisante.",
+				"Si vous vous produisez pendant au moins 1 minute, vous pouvez tenter d'émerveiller votre public en chantant, en récitant un poème ou en dansant. À la fin du spectacle, choisissez un nombre d'humanoïdes dans un rayon de 60 pieds autour de vous qui ont regardé et écouté tout le spectacle, jusqu'à un nombre égal à votre modificateur de Charisme (au moins un). Chaque cible doit réussir un jet de sauvegarde de Sagesse contre le DC de sauvegarde de votre sort ou être {@condition charmed} par vous. Pendant qu'elle est {@condition charmed} de cette façon, la cible vous idolâtre, elle parle de vous en termes élogieux à quiconque lui parle, et elle entrave quiconque s'oppose à vous, bien qu'elle évite la violence à moins qu'elle ne soit déjà encline à se battre en votre nom. Cet effet prend fin sur une cible après 1 heure, si elle subit des dégâts, si vous l'attaquez ou si elle vous voit attaquer ou endommager l'un de ses alliés.",
+				"Si la cible réussit son jet de sauvegarde, elle ne se doute pas que vous avez essayé de la charmer.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Mantle of Inspiration",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le Collège du Glamour au 3e niveau, vous gagnez la capacité de tisser un chant de magie féerique qui imprègne vos alliés de vigueur et de rapidité.",
+				"Comme action bonus, vous pouvez dépenser une utilisation de votre Inspiration bardique pour vous accorder une apparence merveilleuse. À ce moment-là, choisissez un nombre de créatures que vous pouvez voir et qui peuvent vous voir dans un rayon de 60 pieds autour de vous, jusqu'à un nombre égal à votre modificateur de Charisme (minimum de un). Chacune d'entre elles gagne 5 points de vie temporaires. Lorsqu'une créature gagne ces points de vie temporaires, elle peut immédiatement utiliser sa réaction pour se déplacer à hauteur de sa vitesse, sans provoquer d'attaques d'opportunité.",
+				"Le nombre de points de vie temporaires augmente lorsque vous atteignez certains niveaux dans cette classe, passant à 8 au 5e niveau, 11 au 10e niveau, et 14 au 15e niveau."
+			]
+		},
+		{
+			"name": "Mantle of Majesty",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité de vous revêtir d'une magie féerique qui donne envie aux autres de vous servir. Comme action bonus, vous lancez {@spell command}, sans dépenser d'emplacement de sort, et vous prenez une apparence de beauté surnaturelle pendant 1 minute ou jusqu'à la fin de votre concentration (comme si vous vous concentriez sur un sort). Pendant ce temps, vous pouvez lancer {@spell command} comme action bonus à chacun de vos tours, sans dépenser d'emplacement de sort.",
+				"Toute créature qui se trouve à {@condition charmed} de vous rate automatiquement son jet de sauvegarde contre les {@spell command} que vous lancez avec cette caractéristique.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Unbreakable Majesty",
+			"source": "XGE",
+			"page": 14,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Glamour",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14ème niveau, votre apparence gagne de façon permanente un aspect d'un autre monde qui vous rend plus belle et plus féroce.",
+				"De plus, comme action bonus, vous pouvez assumer une présence magiquement majestueuse pendant 1 minute ou jusqu'à ce que vous soyez {@condition incapacitated}. Pendant cette durée, chaque fois qu'une créature tente de vous attaquer pour la première fois à un tour, l'attaquant doit effectuer un jet de sauvegarde de Charisme contre votre DC de sauvegarde contre les sorts. En cas d'échec, la créature ne peut pas vous attaquer pendant ce tour, et elle doit choisir une nouvelle cible pour son attaque ou l'attaque est perdue. En cas de sauvegarde réussie, il peut vous attaquer à ce tour, mais il a un désavantage sur tous les jets de sauvegarde qu'il effectue contre vos sorts à votre prochain tour.",
+				"Une fois que vous assumez cette présence majestueuse, vous ne pouvez plus le faire jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "College of Swords",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Les bardes du Collège des épées sont appelés des lames, et ils divertissent par des prouesses audacieuses avec des armes. Les lames exécutent des cascades telles que l'avalage d'épée, le lancer de couteau et le jonglage, ainsi que des combats simulés. Bien qu'ils utilisent leurs armes pour divertir, ils sont également des guerriers hautement entraînés et compétents.",
+				"Leur talent pour les armes incite de nombreuses lames à mener une double vie. Une lame peut utiliser une troupe de cirque comme couverture pour des actes infâmes tels que l'assassinat, le vol et le chantage. D'autres lames s'attaquent aux méchants, faisant régner la justice contre les puissants et les cruels. La plupart des troupes sont heureuses d'accepter le talent d'une lame pour l'excitation qu'il ajoute à un spectacle, mais peu d'artistes font entièrement confiance à une lame dans leurs rangs.",
+				"Les lames qui abandonnent leur vie d'artiste ont souvent des problèmes qui rendent impossible le maintien de leurs activités secrètes. Une lame surprise en train de voler ou de se livrer à une justice d'autodéfense est une trop grande responsabilité pour la plupart des troupes. Grâce à leurs compétences en matière d'armes et de magie, ces lames peuvent soit travailler en tant qu'exécuteurs pour des guildes de voleurs, soit s'aventurer seules.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Bonus Proficiencies|Bard||Swords|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Fighting Style|Bard||Swords|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Blade Flourish|Bard||Swords|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Blade Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, vous apprenez à faire des démonstrations impressionnantes de prouesses martiales et de rapidité.",
+				"À chaque fois que vous effectuez l'action {@action Attack} à votre tour, votre vitesse de marche augmente de 10 pieds jusqu'à la fin du tour, et si une attaque d'arme que vous effectuez dans le cadre de cette action touche une créature, vous pouvez utiliser l'une des options suivantes de Blade Flourish de votre choix. Vous ne pouvez utiliser qu'une seule option Blade Flourish par tour.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Defensive Flourish|Bard|XGE|Swords|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Slashing Flourish|Bard|XGE|Swords|XGE|3"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Mobile Flourish|Bard|XGE|Swords|XGE|3"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bonus Proficiencies",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le Collège des épées au 3e niveau, vous gagnez la compétence avec les armures moyennes et le {@item scimitar|phb}.",
+				"Si vous êtes compétent avec une arme de mêlée simple ou martiale, vous pouvez l'utiliser comme foyer pour vos sorts de barde."
+			]
+		},
+		{
+			"name": "Fighting Style",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, vous adoptez un style de combat comme spécialité. Choisissez l'une des options suivantes. Vous ne pouvez pas prendre une option de style de combat plus d'une fois, même si quelque chose dans le jeu vous permet de choisir à nouveau.",
+				{
+					"type": "options",
+					"count": 1,
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Dueling"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Two-Weapon Fighting"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"À partir du 6e niveau, vous pouvez attaquer deux fois, au lieu d'une, lorsque vous effectuez l'action {@action Attack} à votre tour."
+			]
+		},
+		{
+			"name": "Master's Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"À partir du 14e niveau, chaque fois que vous utilisez une option de fleur de lame, vous pouvez lancer un {@dice d6} et l'utiliser au lieu de dépenser un dé d'inspiration bardique."
+			]
+		},
+		{
+			"name": "College of Whispers",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"La plupart des gens sont heureux d'accueillir un barde parmi eux. Les bardes du Collège des Chuchotements utilisent cela à leur avantage. Ils semblent être comme les autres bardes, partageant des nouvelles, chantant des chansons et racontant des histoires au public qu'ils rassemblent. En réalité, le Collège des Chuchoteurs enseigne à ses étudiants qu'ils sont des loups parmi les moutons. Ces bardes utilisent leurs connaissances et leur magie pour découvrir des secrets et les retourner contre les autres par l'extorsion et les menaces.",
+				"De nombreux autres bardes détestent le Collège des Chuchoteurs, qu'ils considèrent comme un parasite qui utilise la réputation d'un barde pour acquérir richesse et pouvoir. Pour cette raison, les membres de ce collège révèlent rarement leur véritable nature. Ils prétendent généralement appartenir à un autre collège ou gardent secrète leur véritable vocation afin d'infiltrer et d'exploiter les cours royales et autres lieux de pouvoir.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Psychic Blades|Bard||Whispers|XGE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Words of Terror|Bard||Whispers|XGE|3"
+				}
+			]
+		},
+		{
+			"name": "Psychic Blades",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Lorsque vous rejoignez le Collège des murmures au 3e niveau, vous gagnez la capacité de rendre vos attaques d'armes magiquement toxiques pour l'esprit d'une créature.",
+				"Lorsque vous touchez une créature avec une attaque d'arme, vous pouvez dépenser une utilisation de votre Inspiration bardesque pour infliger un {@damage 2d6} de dégâts psychiques supplémentaires à cette cible. Vous ne pouvez le faire qu'une fois par round, à votre tour.",
+				"Les dégâts psychiques augmentent lorsque vous atteignez certains niveaux dans cette classe, passant à {@dice 3d6} au 5e niveau, {@dice 5d6} au 10e niveau et {@dice 8d6} au 15e niveau."
+			]
+		},
+		{
+			"name": "Words of Terror",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"Au 3e niveau, vous apprenez à imprégner des mots d'apparence innocente d'une magie insidieuse qui peut inspirer la terreur.",
+				"Si vous parlez à un humanoïde seul pendant au moins 1 minute, vous pouvez tenter de semer la paranoïa dans son esprit. À la fin de la conversation, la cible doit réussir un jet de sauvegarde de Sagesse contre le DC de sauvegarde de votre sort ou être {@condition frightened} de vous ou d'une autre créature de votre choix. La cible est {@condition frightened} ainsi pendant 1 heure, jusqu'à ce qu'elle soit attaquée ou endommagée, ou jusqu'à ce qu'elle soit témoin que ses alliés sont attaqués ou endommagés.",
+				"Si la cible réussit son jet de sauvegarde, elle ne se doute pas que vous avez essayé de l'effrayer.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Mantle of Whispers",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"Au 6e niveau, vous gagnez la capacité d'adopter le personnage d'un humanoïde. Lorsqu'un humanoïde meurt à moins de 30 pieds de vous, vous pouvez capturer magiquement son ombre en utilisant votre réaction. Vous conservez cette ombre jusqu'à ce que vous l'utilisiez ou que vous terminiez un long repos.",
+				"Vous pouvez utiliser l'ombre comme une action. Lorsque vous le faites, elle disparaît, se transformant magiquement en un déguisement qui apparaît sur vous. Vous ressemblez maintenant à la personne morte, mais en bonne santé et en vie. Ce déguisement dure 1 heure ou jusqu'à ce que vous y mettiez fin par une action bonus.",
+				"Pendant que vous êtes déguisé, vous avez accès à toutes les informations que l'humanoïde partagerait librement avec une simple connaissance. Ces informations comprennent des détails généraux sur son passé et sa vie personnelle, mais pas de secrets. Ces informations sont suffisantes pour que vous puissiez vous faire passer pour cette personne en puisant dans ses souvenirs.",
+				"Une autre créature peut voir à travers ce déguisement en réussissant un test de Sagesse ({@skill Insight}) contesté par votre test de Charisme ({@skill Deception}). Vous gagnez un bonus de +5 à votre test.",
+				"Une fois que vous avez capturé une ombre avec cette fonction, vous ne pouvez pas en capturer une autre avec elle avant d'avoir terminé un repos court ou long."
+			]
+		},
+		{
+			"name": "Shadow Lore",
+			"source": "XGE",
+			"page": 16,
+			"className": "Bard",
+			"classSource": "PHB",
+			"subclassShortName": "Whispers",
+			"subclassSource": "XGE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"Au 14e niveau, vous gagnez la capacité de tisser de la magie noire dans vos paroles et de puiser dans les peurs les plus profondes d'une créature.",
+				"Comme une action, vous chuchotez magiquement une phrase que seule une créature de votre choix dans un rayon de 30 pieds de vous peut entendre. La cible doit effectuer un jet de sauvegarde de Sagesse contre le DC de sauvegarde de votre sort. Elle réussit automatiquement si elle ne partage pas de langue avec vous ou si elle ne peut pas vous entendre. En cas de jet de sauvegarde réussi, votre murmure ressemble à un marmonnement inintelligible et n'a aucun effet.",
+				"Sur un jet de sauvegarde raté, la cible est {@condition charmed} par vous pour les 8 prochaines heures ou jusqu'à ce que vous ou vos alliés l'attaquent, lui fassent des dégâts ou la forcent à faire un jet de sauvegarde. Elle interprète les chuchotements comme une description de son secret le plus mortifère. Vous ne gagnez aucune connaissance de ce secret, mais la cible est convaincue que vous le connaissez.",
+				"La créature {@condition charmed} obéit à vos ordres de peur que vous ne révéliez son secret. Elle ne risquera pas sa vie pour vous ou ne se battra pas pour vous, sauf si elle était déjà encline à le faire. Elle vous accorde des faveurs et des cadeaux qu'elle offrirait à un ami proche.",
+				"Lorsque l'effet prend fin, la créature ne comprend pas pourquoi elle vous a tenu dans une telle crainte.",
+				"Une fois que vous avez utilisé cette fonction, vous ne pouvez plus l'utiliser jusqu'à ce que vous ayez terminé un long repos."
+			]
+		},
+		{
+			"name": "Defensive Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "XGE",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Vous pouvez dépenser une utilisation de votre inspiration bardesque pour que l'arme inflige des dégâts supplémentaires à la cible que vous avez touchée. Les dégâts sont égaux au nombre que vous obtenez sur le dé d'inspiration bardesque. Vous ajoutez également le nombre obtenu à votre CA jusqu'au début de votre prochain tour."
+			]
+		},
+		{
+			"name": "Mobile Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "XGE",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Vous pouvez dépenser une utilisation de votre inspiration bardesque pour que l'arme inflige des dégâts supplémentaires à la cible que vous avez touchée. Les dégâts sont égaux au nombre que vous obtenez sur le dé d'inspiration bardesque. Vous pouvez également repousser la cible jusqu'à 5 pieds de vous, plus un nombre de pieds égal au nombre que vous obtenez sur ce dé. Vous pouvez alors immédiatement utiliser votre réaction pour vous déplacer à la hauteur de votre vitesse de marche vers un espace inoccupé situé à moins de 1,5 mètre de la cible."
+			]
+		},
+		{
+			"name": "Slashing Flourish",
+			"source": "XGE",
+			"page": 15,
+			"className": "Bard",
+			"classSource": "XGE",
+			"subclassShortName": "Swords",
+			"subclassSource": "XGE",
+			"level": 3,
+			"entries": [
+				"Vous pouvez dépenser une utilisation de votre inspiration bardique pour que l'arme inflige des dégâts supplémentaires à la cible que vous avez touchée et à toute autre créature de votre choix que vous pouvez voir dans un rayon de 1,5 mètre autour de vous. Les dégâts sont égaux au nombre que vous obtenez sur le dé d'inspiration bardesque."
+			]
+		}
+	]
+}

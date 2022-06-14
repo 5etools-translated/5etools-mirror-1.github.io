@@ -1,0 +1,112 @@
+{
+	"spell": [
+		{
+			"name": "Create Magen",
+			"source": "IDRotF",
+			"page": 318,
+			"level": 7,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "hour"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a vial of quicksilver worth 500 gp and a life-sized human doll, both of which the spell consumes, and an intricate crystal rod worth at least 1,500 gp that is not consumed",
+					"cost": 50000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Terwijl je de spreuk uitspreekt, plaats je een flacon kwikzilver in de borst van een levensgrote menselijke pop, gevuld met as of stof. Vervolgens naai je de pop dicht en druppel je er je bloed op. Aan het einde van de spreuk tik je met een kristallen staaf op de pop, waardoor deze verandert in een {@filter magen|bestiary|search=magen|source=IDRotF} gekleed in wat de pop ook droeg. Het type magene wordt door jou gekozen tijdens het uitspreken van de spreuk. Zie {@adventure appendix C|IDRotF|21} voor de verschillende soorten magen en hun statistieken.",
+				"Wanneer de magiër verschijnt, vermindert je maximale aantal hit points met een bedrag gelijk aan de uitdaging van de magiër (minimale vermindering van 1). Alleen een spreuk {@spell wish} kan deze vermindering ongedaan maken.",
+				"Elke magene die je met deze spreuk creëert, gehoorzaamt je bevelen zonder vragen te stellen."
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Frost Fingers",
+			"source": "IDRotF",
+			"page": 318,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je vingertoppen blazen ijzige kou uit in een kegel van 15 meter. Elk wezen in dat gebied moet een grondwettelijke reddingsworp doen en krijgt {@damage 2d8} koude schade als hij faalt, of half zoveel schade als hij slaagt.",
+				"De kou bevriest niet-magische vloeistoffen in het gebied die niet gedragen of gedragen worden."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukengroef van het 2e niveau of hoger, neemt de schade toe met {@dice 1d8} voor elk groefniveau boven het 1e."
+					]
+				}
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"areaTags": [
+				"N"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,794 @@
+{
+	"spell": [
+		{
+			"name": "Acid Stream",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 2,
+			"level": 1,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "line",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": "a bit of rotten food"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Een stroom van zuur vloeit van je af in een lijn van 30 voet lang en 5 voet breed in een richting die jij kiest. Elk wezen in de lijn moet slagen op een Dexterity saving throw of bedekt worden met zuur voor de duur van de spreuk of totdat een wezen zijn actie gebruikt om het zuur van zichzelf of een ander wezen af te schrapen of te wassen. Een wezen dat onder het zuur zit, krijgt {@damage 3d4} zuurschade aan het begin van elke beurt."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukengroef van het 2e niveau of hoger, neemt de schade toe met {@scaledamage 3d4|1-9|1d4} voor elk groefniveau boven het 1e."
+					]
+				}
+			],
+			"damageInflict": [
+				"acid"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"areaTags": [
+				"L"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Otherworldly Form",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 2,
+			"level": 6,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an object engraved with a symbol of the Outer Planes, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Door een bezwering uit te spreken, maak je gebruik van de magie van de Lagere Planeten of Hogere Planeten (jouw keuze) om jezelf te transformeren. Je krijgt de volgende voordelen totdat de bezwering eindigt:",
+				{
+					"type": "list",
+					"items": [
+						"Je bent immuun voor vuur- en gifschade (Lagere Planes) of stralings- en necrotische schade (Hogere Planes).",
+						"Je bent immuun voor de {@condition poisoned} conditie (Lagere Planeten) of de {@condition charmed} conditie (Hogere Planeten).",
+						"Spectrale vleugels verschijnen op je rug, en geven je een vliegsnelheid van 40 voet.",
+						"Je hebt een +2 bonus op AC.",
+						"Al je wapenaanvallen zijn magisch, en als je een wapenaanval doet, kun je je spellcasting ability modifier gebruiken, in plaats van Strength of Dexterity, voor de aanvals- en damage rolls.",
+						"Je kunt twee keer aanvallen, in plaats van één keer, als je in je beurt de actie Aanval doet. Je negeert dit voordeel als je al een eigenschap hebt, zoals Extra Aanval, die je extra aanvallen geeft."
+					]
+				}
+			],
+			"damageImmune": [
+				"fire",
+				"poison",
+				"radiant",
+				"necrotic"
+			],
+			"conditionImmune": [
+				"poisoned",
+				"charmed"
+			],
+			"miscTags": [
+				"MAC"
+			],
+			"areaTags": [
+				"ST"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Spirit Shroud",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 2,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept geesten van de doden op, die om je heen zweven voor de duur van de spreuk. De geesten zijn ongrijpbaar en onkwetsbaar, en ze zijn goed of slecht (jouw keuze).",
+				"Totdat de spreuk eindigt, brengt elke aanval die je doet {@damage 1d8} extra schade toe als je een wezen raakt dat zich binnen 10 meter van je bevindt. Deze schade is radiant als de geesten goed zijn en necrotic als ze slecht zijn. Elk wezen dat deze schade oploopt, kan pas weer hit points krijgen aan het begin van je volgende beurt.",
+				"Bovendien wordt de snelheid van elk wezen van je keuze dat je kunt zien en dat zijn beurt binnen een straal van 10 voet van je begint, met 10 voet verminderd tot het begin van je volgende beurt."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van niveau 4 of hoger, neemt de extra schade toe met {@scaledamage 1d8|3-9|1d8} voor elk slotniveau hoger dan 3."
+					]
+				}
+			],
+			"damageInflict": [
+				"radiant",
+				"necrotic",
+				"cold"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Aberrant Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 3,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a pickled tentacle and an eyeball in a crystal vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een geest op uit het Verre Rijk of een ander buitenaards rijk van waanzin. De geest manifesteert zich fysiek in een onbezette ruimte die je binnen bereik kunt zien. Deze stoffelijke vorm gebruikt de {@creature Aberrant Spirit|UA2020SpellsAndMagicTattoos} stat block. Als je de spreuk uitspreekt, kies dan Beholderkin, Slaadi, of Star Spawn. Het wezen lijkt fysiek op je keuze, wat ook enkele eigenschappen in zijn stat block bepaalt. Het wezen verdwijnt wanneer het tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"Het wezen is vriendelijk tegen jou en je metgezellen voor de duur van de spreuk. In een gevecht deelt het wezen jouw initiatief, maar het komt direct na jou aan de beurt. Het gehoorzaamt verbale commando's die jij het geeft (geen actie van jou vereist). Als je geen commando's geeft, verdedigt het zich, maar onderneemt verder geen actie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van 5e niveau of hoger, neemt het wezen het hogere niveau voor die spreuk aan, waar het ook het niveau van de spreuk gebruikt in zijn statblok."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Bestial Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 3,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a feather, tuft of fur, and fish tail inside a gilded acorn worth at least 200 gp",
+					"cost": 20000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept de geest van een beest op. De geest manifesteert zich fysiek in een onbezette ruimte die je binnen bereik kunt zien. Deze stoffelijke vorm gebruikt de {@creature Bestial Spirit|UA2020SpellsAndMagicTattoos} stat block. Wanneer je de spreuk uitspreekt, kies je een omgeving: Lucht, Land, of Water. Het wezen lijkt fysiek op een dier naar keuze dat inheems is in de gekozen omgeving, wat ook een van de bewegingsmogelijkheden in het stat block van het wezen bepaalt. Het wezen verdwijnt wanneer het tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"Het wezen is vriendelijk tegen jou en je metgezellen voor de duur van de spreuk. In een gevecht deelt het wezen jouw initiatief, maar het komt direct na jou aan de beurt. Het gehoorzaamt verbale commando's die jij het geeft (geen actie van jou vereist). Als je geen commando's geeft, verdedigt het zich, maar onderneemt verder geen actie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van 3de niveau of hoger, neemt het wezen het hogere niveau aan voor die spreuk, waar het ook het niveau van de spreuk gebruikt in zijn statblok."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Celestial Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 4,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a golden reliquary worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een geest op van de Hogere Planeten. De geest manifesteert zich fysiek in een engelachtige vorm in een onbezette ruimte die je binnen bereik kunt zien. Deze stoffelijke vorm gebruikt de {@creature Celestial Spirit|UA2020SpellsAndMagicTattoos} stat block. Als je de spreuk uitspreekt, kies dan Avenger of Defender. Je keuze bepaalt de aanval van het wezen in zijn stat block. Het wezen verdwijnt als het tot 0 hit points zakt of als de spreuk eindigt.",
+				"Het wezen is vriendelijk tegen jou en je metgezellen voor de duur van de spreuk. In een gevecht deelt het wezen jouw initiatief, maar het komt direct na jou aan de beurt. Het gehoorzaamt verbale commando's die jij het geeft (geen actie van jou vereist). Als je geen commando's geeft, verdedigt het zich, maar onderneemt verder geen actie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van 6e niveau of hoger, neemt het wezen het hogere niveau voor die spreuk aan, overal waar het het niveau van de spreuk gebruikt in zijn statblok."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Cleric",
+						"source": "PHB"
+					},
+					{
+						"name": "Paladin",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Elemental Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 4,
+			"level": 4,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "air, a pebble, ash, and water inside a crystal vial worth at least 400 gp",
+					"cost": 40000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een geest op van de Elementaire Planes. De geest manifesteert zich fysiek in een onbezette ruimte die je binnen bereik kunt zien. Deze stoffelijke vorm gebruikt de {@creature Elemental Spirit|UA2020SpellsAndMagicTattoos} stat block. Wanneer je de spreuk uitspreekt, kies je een element: Lucht, Aarde, Vuur, of Water. Het wezen lijkt fysiek op een vaag humanoïde vorm omhuld door het gekozen element, dat ook enkele eigenschappen in zijn stat block bepaalt. Het wezen verdwijnt wanneer het tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"Het wezen is vriendelijk tegen jou en je metgezellen voor de duur van de spreuk. In een gevecht deelt het wezen jouw initiatief, maar het komt direct na jou aan de beurt. Het gehoorzaamt verbale commando's die jij het geeft (geen actie van jou vereist). Als je geen commando's geeft, verdedigt het zich, maar onderneemt verder geen actie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van 5e niveau of hoger, neemt het wezen het hogere niveau voor die spreuk aan, waar het ook het niveau van de spreuk gebruikt in zijn statblok."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fey Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 5,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded flower worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een geest op uit de Feywild. De geest manifesteert zich fysiek in een onbezette ruimte die je binnen bereik kunt zien. Deze stoffelijke vorm gebruikt de {@creature Fey Spirit|UA2020SpellsAndMagicTattoos} stat block. Wanneer je de spreuk uitspreekt, kies je een stemming: Bedrieglijk, Woedend, of Vrolijk. Het wezen lijkt fysiek op een sater, een dryade of een elf (naar keuze), getekend door de gekozen stemming, die ook een van de eigenschappen in zijn stat block bepaalt. Het wezen verdwijnt wanneer het tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"Het wezen is vriendelijk tegen jou en je metgezellen voor de duur van de spreuk. In een gevecht deelt het wezen jouw initiatief, maar het komt direct na jou aan de beurt. Het gehoorzaamt verbale commando's die jij het geeft (geen actie van jou vereist). Als je geen commando's geeft, verdedigt het zich, maar onderneemt verder geen actie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van 4e niveau of hoger, neemt het wezen het hogere niveau aan voor die spreuk, waar het ook het niveau van de spreuk gebruikt in zijn statblok."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Fiendish Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 6,
+			"level": 6,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "humanoid blood inside a ruby vial worth at least 600 gp",
+					"cost": 60000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een duivelse geest op uit de lagere niveaus. De geest manifesteert zich fysiek in een onbezette ruimte die je binnen bereik kunt zien. Deze stoffelijke vorm gebruikt de {@creature Fiendish Spirit|UA2020SpellsAndMagicTattoos} stat block. Wanneer je de spreuk uitspreekt, kies je Demon, Duivel of Yugoloth. Het wezen lijkt fysiek op een duivel van het gekozen type, wat ook enkele eigenschappen in zijn stat block bepaalt. Het wezen verdwijnt wanneer het tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"Het wezen is vriendelijk tegen jou en je metgezellen voor de duur van de spreuk. In een gevecht deelt het wezen jouw initiatief, maar het komt direct na jou aan de beurt. Het gehoorzaamt verbale commando's die jij het geeft (geen actie van jou vereist). Als je geen commando's geeft, verdedigt het zich, maar onderneemt verder geen actie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van 7e niveau of hoger, neemt het wezen het hogere niveau voor die spreuk aan, overal waar het het niveau van de spreuk gebruikt in zijn statblok."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Shadow Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 7,
+			"level": 3,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "tears inside a crystal vial worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een schaduwgeest op uit de Schaduwberg. De geest manifesteert zich fysiek in een onbezette ruimte die je binnen bereik kunt zien. Deze stoffelijke vorm gebruikt de {@creature Shadow Spirit|UA2020SpellsAndMagicTattoos} stat block. Wanneer je de spreuk uitspreekt, kies je een emotie: Woede, Wanhoop, of Angst. Het wezen lijkt fysiek op een misvormde mensachtige getekend door de gekozen emotie, die ook enkele eigenschappen in zijn stat block bepaalt. Het wezen verdwijnt wanneer het 0 hit points heeft of wanneer de spreuk eindigt.",
+				"Het wezen is vriendelijk tegen jou en je metgezellen voor de duur van de spreuk. In een gevecht deelt het wezen jouw initiatief, maar het komt direct na jou aan de beurt. Het gehoorzaamt verbale commando's die jij het geeft (geen actie van jou vereist). Als je geen commando's geeft, verdedigt het zich, maar onderneemt verder geen actie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van 4e niveau of hoger, neemt het wezen het hogere niveau aan voor die spreuk, waar het ook het niveau van de spreuk gebruikt in zijn statblok."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Undead Spirit",
+			"source": "UA2020SpellsAndMagicTattoos",
+			"page": 7,
+			"level": 3,
+			"school": "N",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 90
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a gilded humanoid skull worth at least 300 gp",
+					"cost": 30000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een rusteloze geest op van achter het graf. De geest manifesteert zich fysiek in een onbezette ruimte die je binnen bereik kunt zien. Deze stoffelijke vorm gebruikt de {@creature Undead Spirit|UA2020SpellsAndMagicTattoos} stat block. Als je de spreuk uitspreekt, kies je de vorm van het wezen: Spookachtig, Potsierlijk, of Skeletachtig. Het wezen lijkt fysiek op een humanoïde met de gekozen vorm, die ook enkele eigenschappen in zijn stat block bepaalt. Het wezen verdwijnt wanneer het tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"Het wezen is vriendelijk tegen jou en je metgezellen voor de duur van de spreuk. In een gevecht deelt het wezen jouw initiatief, maar het komt direct na jou aan de beurt. Het gehoorzaamt verbale commando's die jij het geeft (geen actie van jou vereist). Als je geen commando's geeft, verdedigt het zich, maar onderneemt verder geen actie."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukslot van 4e niveau of hoger, neemt het wezen het hogere niveau aan voor die spreuk, waar het ook het niveau van de spreuk gebruikt in zijn statblok."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,522 @@
+{
+	"spell": [
+		{
+			"name": "Draconic Transformation",
+			"source": "UA2021DraconicOptions",
+			"page": 5,
+			"level": 7,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a statuette of a dragon, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Met een brul gebruik je de magie van draken om jezelf te transformeren en verschillende draconische kenmerken aan te nemen. Je krijgt de volgende voordelen totdat de spreuk eindigt:",
+				{
+					"type": "list",
+					"items": [
+						"Je hebt {@sense blindsight} met een bereik van 30 voet. Binnen dat bereik kun je alles zien dat zich niet achter volledige dekking bevindt, zelfs als je {@condition blinded} of in het donker bent. Bovendien kun je een {@condition invisible} schepsel zien, tenzij het schepsel zich succesvol voor je verbergt.",
+						"Onstoffelijke vleugels ontspruiten uit je rug, en geven je een vliegsnelheid van 40 voet.",
+						"Als je deze spreuk uitspreekt, en als bonusactie bij volgende beurten voor de duur van de spreuk, kun je een adem van glinsterende energie uitademen in een kegel van 30 voet. Elk wezen in het gebied moet een Dexterity saving throw doen, waarbij het {@damage 3d8} krachtschade oploopt als het niet slaagt, of half zoveel als het wel slaagt."
+					]
+				}
+			],
+			"damageInflict": [
+				"force"
+			],
+			"conditionInflict": [
+				"blinded",
+				"invisible"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Fizban's Platinum Shield",
+			"source": "UA2021DraconicOptions",
+			"page": 5,
+			"level": 6,
+			"school": "A",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a platinum-plated dragon scale, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je creëert een veld van zilverachtig licht dat een wezen van je keuze binnen bereik omringt (je kunt jezelf kiezen). Het veld verspreidt zwak licht tot op 2 meter.",
+				"Als bonusactie bij volgende beurten kun je het veld verplaatsen naar een ander wezen binnen 60 voet van het veld.",
+				"Het wezen dat door het veld wordt beschermd, krijgt de volgende voordelen:",
+				{
+					"type": "list",
+					"items": [
+						"Het schepsel heeft halve dekking.",
+						"Het wezen heeft weerstand tegen zuur, koude, vuur, bliksem en gifschade.",
+						"Als het wezen wordt onderworpen aan een effect dat het toestaat om een Dexterity saving throw te doen om slechts de helft van de schade op te nemen, neemt het wezen in plaats daarvan geen schade op als het slaagt op de saving throw, en slechts de helft van de schade als het niet slaagt."
+					]
+				}
+			],
+			"damageResist": [
+				"acid",
+				"cold",
+				"fire",
+				"lightning",
+				"poison"
+			],
+			"savingThrow": [
+				"dexterity"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Flame Stride",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 3,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "bonus"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "self"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"De golvende vlammen van een draak bedekken je voeten en geven je een explosieve snelheid. Voor de duur, je snelheid neemt toe met 20 voet en bewegen lokt geen gelegenheidsaanvallen uit.",
+				"Als je je binnen een straal van 5 meter beweegt van een wezen of voorwerp dat je niet draagt, loopt het {@damage 1d6} vuurschade op door je warmtespoor. Een wezen of voorwerp kan deze schade slechts eenmaal in een beurt oplopen."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukengroef van het 4e niveau of hoger, verhoog je je snelheid met 5 voet voor elk spreukengroef-niveau boven het 3e. Bovendien geeft de spreuk een extra {@damage 1d6} vuurschade voor elk slot niveau boven de 3e."
+					]
+				}
+			],
+			"damageInflict": [
+				"fire"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Icingdeath's Frost",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 2,
+			"school": "V",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "cone",
+				"distance": {
+					"type": "feet",
+					"amount": 15
+				}
+			},
+			"components": {
+				"s": true,
+				"m": "a vial of meltwater"
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Een uitbarsting van ijskoude energie straalt van je af in een kegel van 30 voet. Elk wezen in dat gebied moet een grondwettelijke reddingsworp doen. Als je niet slaagt, loopt het wezen {@damage 3d8} koude schade op en wordt het bedekt met ijs gedurende 1 minuut of totdat een ander wezen zijn actie gebruikt om het ijs van zichzelf of een ander wezen te breken. De snelheid van een schepsel bedekt met ijs wordt gereduceerd tot 0. Als de reddingspoging slaagt, loopt het schepsel half zoveel schade op zonder bijkomende gevolgen."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Wanneer je deze spreuk uitspreekt met een spreukgleuf van het 3e niveau of hoger, verhoog je de koude schade met {@dice 1d8} voor elke sleufleuf boven het 2e niveau."
+					]
+				}
+			],
+			"damageInflict": [
+				"cold"
+			],
+			"savingThrow": [
+				"constitution"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Nathair's Mischief",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 2,
+			"school": "I",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true,
+				"m": "a piece of crust from an apple pie"
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "minute",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je vult een kubus van 20 voet gecentreerd op een punt dat je kiest binnen bereik met fey en draconische magie. Rol op de Mischievous Surge tafel om het magische effect te bepalen. Aan het begin van elke beurt mag je de kubus tot 3 meter verplaatsen en opnieuw rollen op de tabel.",
+				{
+					"type": "table",
+					"caption": "Mischievous Surge",
+					"colLabels": [
+						"d4",
+						"Effect"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-12"
+					],
+					"rows": [
+						[
+							"1",
+							"De geur van appeltaart vult de lucht, en elk wezen in de kubus moet slagen op een Wisdom saving throw of {@condition charmed} door jou worden tot het begin van je volgende beurt."
+						],
+						[
+							"2",
+							"Rondom verschijnen boeketten bloemen, en elk wezen in de kubus moet slagen op een Dexterity saving throw of {@condition blinded} zijn tot het begin van je volgende beurt als de bloemen water in hun gezichten spuiten."
+						],
+						[
+							"3",
+							"Elk wezen in de kubus moet slagen op een Wisdom saving throw of beginnen te giechelen tot het begin van je volgende beurt. Een giechelend wezen is {@condition incapacitated} en gebruikt al zijn beweging om in een willekeurige richting te bewegen."
+						],
+						[
+							"4",
+							"Druppels melasse verschijnen en zweven in de kubus, waardoor deze verandert in {@quickref difficult terrain||3} tot het begin van je volgende beurt."
+						]
+					]
+				}
+			],
+			"conditionInflict": [
+				"blinded",
+				"charmed",
+				"incapacitated"
+			],
+			"savingThrow": [
+				"dexterity",
+				"wisdom"
+			],
+			"miscTags": [
+				"RO"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Raulothim's Psychic Lance",
+			"source": "UA2021DraconicOptions",
+			"page": 6,
+			"level": 4,
+			"school": "E",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 120
+				}
+			},
+			"components": {
+				"v": true
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Je ontketent een glinsterende lans van psychische kracht vanaf je voorhoofd op een wezen dat je binnen bereik kunt zien. Je kunt ook de naam van het wezen uitspreken. Als het genoemde doelwit binnen bereik is, heeft het geen voordeel van dekking of onzichtbaarheid als de lans op hem afkomt. Als het genoemde doelwit niet binnen bereik is, verdwijnt de lans en wordt het spellslot niet gebruikt.",
+				"Het doelwit moet slagen op een Intelligentie saving throw of {@damage 10d6} psychische schade oplopen en {@condition incapacitated} zijn tot het begin van je volgende beurt."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een slot van 5e niveau of hoger, neemt de schade toe met {@dice 1d6} voor elk slotniveau boven 4e."
+					]
+				}
+			],
+			"damageInflict": [
+				"psychic"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"savingThrow": [
+				"intelligence"
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Bard",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Warlock",
+						"source": "PHB"
+					}
+				]
+			}
+		},
+		{
+			"name": "Summon Draconic Spirit",
+			"source": "UA2021DraconicOptions",
+			"page": 7,
+			"level": 5,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "an art object from a dragon's hoard, worth at least 500 gp",
+					"cost": 50000
+				}
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 1
+					},
+					"concentration": true
+				}
+			],
+			"entries": [
+				"Je roept een draconische geest op. Hij manifesteert zich in een onbezette ruimte die je binnen bereik kunt zien.",
+				"Deze stoffelijke vorm gebruikt de {@creature Draconic Spirit|UA2021DraconicOptions} stat block. Als je deze spreuk doet, kies dan een drakenfamilie: Chromatic, Gem, of Metallic. Het wezen lijkt op een draak van de gekozen familie, wat bepaalde eigenschappen in zijn stat block bepaalt. Het wezen verdwijnt wanneer het tot 0 hit points zakt of wanneer de spreuk eindigt.",
+				"Het wezen is een bondgenoot van jou en je metgezellen. In een gevecht deelt het wezen jouw initiatief, maar het komt direct na jou aan de beurt. Het gehoorzaamt je verbale commando's (geen actie van jou vereist). Als je geen bevelen geeft, neemt het de {@action Dodge} actie en gebruikt zijn beweging om gevaar te vermijden."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Als je deze spreuk uitspreekt met een spreukgleuf van 6e niveau of hoger, gebruik je het hogere niveau overal waar het niveau van de spreuk in het statblok staat."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT",
+				"SMN"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					}
+				]
+			}
+		}
+	]
+}
