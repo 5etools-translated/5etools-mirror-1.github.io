@@ -3,159 +3,159 @@
 		{
 			"name": "Aggressive",
 			"example": "Orc",
-			"effect": "As a bonus action, the creature can move up to its speed toward a hostile creature it can see.",
+			"effect": "Comme action bonus, la créature peut se déplacer à hauteur de sa vitesse vers une créature hostile qu'elle peut voir.",
 			"dpr": "2"
 		},
 		{
 			"name": "Ambusher",
 			"example": "Doppelganger",
-			"effect": "The creature has advantage on attack rolls against any creature it has surprised.",
+			"effect": "La créature a l'avantage sur les jets d'attaque contre toute créature qu'elle a surprise.",
 			"attackBonus": "1"
 		},
 		{
 			"name": "Angelic Weapons",
 			"example": "Deva",
-			"effect": "The creature's weapon attacks are magical. When the creature hits with any weapon, the weapon deals extra radiant damage. Input this extra damage per round.",
+			"effect": "Les attaques d'armes de la créature sont magiques. Lorsque la créature touche avec n'importe quelle arme, celle-ci inflige des dégâts radiants supplémentaires. Saisissez ces dégâts supplémentaires par round.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Avoidance",
 			"example": "Demilich",
-			"effect": "If the creature is subjected to an effect that allows it to make a saving throw to only take half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails.",
+			"effect": "Si la créature est soumise à un effet qui lui permet de faire un jet de sauvegarde pour ne subir que la moitié des dégâts, elle ne subit aucun dégât si elle réussit son jet de sauvegarde, et seulement la moitié des dégâts si elle échoue.",
 			"ac": "1"
 		},
 		{
 			"name": "Blood Frenzy",
 			"example": "Sahuagin",
-			"effect": "The creature has advantage on melee attack rolls against any creature that doesn't have all its hit points.",
+			"effect": "La créature a l'avantage sur les jets d'attaque en mêlée contre toute créature qui n'a pas tous ses points de vie.",
 			"attackBonus": "4"
 		},
 		{
 			"name": "Constrict",
 			"example": "Giant Constrictor Snake",
-			"effect": "The creature has the ability to restrain and/or grapple a target as part of an attack.",
+			"effect": "La créature a la capacité de retenir et/ou d'agripper une cible dans le cadre d'une attaque.",
 			"ac": "1"
 		},
 		{
 			"name": "Damage Transfer",
 			"example": "Cloaker",
-			"effect": "While attached or grappling a creature, the creature takes only half damage dealt to it (rounded down), and the other creature takes the other half.",
+			"effect": "Lorsqu'elle est attachée ou agrippée à une créature, celle-ci ne subit que la moitié des dégâts qui lui sont infligés (arrondis à l'inférieur), et l'autre créature subit l'autre moitié.",
 			"hp": "hp",
 			"dpr": "hp * 0.33"
 		},
 		{
 			"name": "Enlarge",
 			"example": "Duergar",
-			"effect": "The creature magically increases in size, along with anything it is wearing or carrying. Input the extra damage inflicted per round whilst enlarged.",
+			"effect": "La créature augmente magiquement de taille, ainsi que tout ce qu'elle porte ou transporte. Saisissez les dégâts supplémentaires infligés par round lorsqu'elle est agrandie.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Frightful Presence",
 			"example": "Ancient Gold Dragon",
-			"effect": "Each creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
+			"effect": "Chaque créature du choix de la créature à portée doit effectuer un jet de sauvegarde de Sagesse ou être effrayée pendant 1 minute.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Heated Body",
 			"example": "Azer",
-			"effect": "Touching or hitting the creature while within 5 ft. of it causes damage.",
+			"effect": "Toucher ou frapper la créature alors qu'elle se trouve à moins de 1,5 m d'elle provoque des dégâts.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Horrifying Visage",
 			"example": "Banshee",
-			"effect": "Each non-undead creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
+			"effect": "Chaque créature non morte-vivante du choix de la créature à portée doit effectuer un jet de sauvegarde de Sagesse ou être effrayée pendant 1 minute.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Legendary Resistance",
 			"example": "Tarrasque",
-			"effect": "If the creature fails a saving throw, it can choose to succeed instead. Input the number of uses per day.",
+			"effect": "Si la créature échoue à un jet de sauvegarde, elle peut choisir de le réussir à la place. Indiquez le nombre d'utilisations par jour.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 10*trait : ((expectedCr >= 5 && expectedCr <= 10) ? 20*trait : ((expectedCr >= 11) ? 30*trait : 0)))",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Magic Resistance",
 			"example": "Balor",
-			"effect": "The creature has advantage on saving throws against spells and other magical effects.",
+			"effect": "La créature a l'avantage sur les jets de sauvegarde contre les sorts et autres effets magiques.",
 			"ac": "2"
 		},
 		{
 			"name": "Martial Advantage",
 			"example": "Hobgoblin",
-			"effect": "The creature can deal extra damage to a creature it hits if that creature is with in 5 ft. of an ally of the creature that isn't incapacitated. Input the extra damage inflicted per round.",
+			"effect": "La créature peut infliger des dégâts supplémentaires à une créature qu'elle touche si cette dernière se trouve à moins de 5 pieds d'un allié de la créature qui n'est pas frappé d'incapacité. Saisissez les dégâts supplémentaires infligés par round.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Nimble Escape",
 			"example": "Goblin",
-			"effect": "The creature can take the Disengage or Hide action as a bonus action on each of its turns.",
+			"effect": "La créature peut effectuer l'action Se désengager ou Se cacher comme action bonus à chacun de ses tours.",
 			"ac": "4",
 			"attackBonus": "4"
 		},
 		{
 			"name": "Pack Tactics",
 			"example": "Kobold",
-			"effect": "The creature has advantage on an attack roll against a creature if at least one of the creature's allies is within 5 feet of the creature and the ally isn't incapacitated.",
+			"effect": "La créature a l'avantage sur un jet d'attaque contre une créature si au moins un de ses alliés se trouve à moins de 1,5 mètre de la créature et que l'allié n'est pas frappé d'incapacité.",
 			"attackBonus": "1"
 		},
 		{
 			"name": "Parry",
 			"example": "Hobgoblin warlord",
-			"effect": "The creature adds its proficiency bonus to its AC against one melee attack that would hit it as a reaction.",
+			"effect": "La créature ajoute son bonus de compétence à sa CA contre une attaque de mêlée qui la toucherait en réaction.",
 			"ac": "1"
 		},
 		{
 			"name": "Possession",
 			"example": "Ghost",
-			"effect": "The creature can control another creature, during which time it cannot be targeted by nearly any effect.",
+			"effect": "La créature peut contrôler une autre créature, pendant laquelle elle ne peut être ciblée par presque aucun effet.",
 			"hp": "hp"
 		},
 		{
 			"name": "Regeneration",
 			"example": "Troll",
-			"effect": "At the beginning of the creature's turn, it regains hit points and cannot be killed until this effect is mitigated in some way, usually through acid or fire damage. Input how many hit points it regains at the beginning of its turn.",
+			"effect": "Au début du tour de la créature, elle regagne des points de vie et ne peut être tuée tant que cet effet n'est pas atténué d'une manière ou d'une autre, généralement par des dégâts d'acide ou de feu. Indiquez le nombre de points de vie qu'elle regagne au début de son tour.",
 			"hp": "trait*3",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Relentless",
 			"example": "Boar",
-			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1.",
+			"effect": "Si la créature devait être réduite à 0 point de vie, il y a une chance qu'elle ne soit réduite qu'à 1.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{
 			"name": "Shadow Stealth",
 			"example": "Shadow Demon",
-			"effect": "While in dim light or darkness, the creature can take the Hide action as a bonus action.",
+			"effect": "Lorsqu'elle se trouve dans une faible lumière ou dans l'obscurité, la créature peut utiliser l'action Hide comme action bonus.",
 			"ac": "4"
 		},
 		{
 			"name": "Stench",
 			"example": "Troglodyte",
-			"effect": "Any creature other than the monster within 5 feet of it must make a saving throw or be poisoned.",
+			"effect": "Toute créature autre que le monstre se trouvant à moins de 1,5 mètre de lui doit effectuer un jet de sauvegarde ou être empoisonnée.",
 			"ac": "1"
 		},
 		{
 			"name": "Superior Invisibility",
 			"example": "Pixie",
-			"effect": "The creature can turn invisible as an action or bonus action.",
+			"effect": "La créature peut se rendre invisible en tant qu'action ou action bonus.",
 			"ac": "2"
 		},
 		{
 			"name": "Undead Fortitude",
 			"example": "Zombie",
-			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1. This feature is negated if the damage is from radiant nature.",
+			"effect": "Si la créature devait être réduite à 0 point de vie, il y a une chance qu'elle ne soit réduite qu'à 1. Cette caractéristique est annulée si les dégâts sont de nature rayonnante.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{
 			"name": "Web",
 			"example": "Giant Spider",
-			"effect": "Ranged Weapon Attack that restrains the target on a hit.",
+			"effect": "Attaque d'arme à distance qui immobilise la cible en cas de succès.",
 			"ac": "1"
 		}
 	]
