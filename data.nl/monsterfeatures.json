@@ -3,159 +3,159 @@
 		{
 			"name": "Aggressive",
 			"example": "Orc",
-			"effect": "As a bonus action, the creature can move up to its speed toward a hostile creature it can see.",
+			"effect": "Als bonusactie kan het wezen zich tot zijn snelheid naar een vijandig wezen bewegen dat hij kan zien.",
 			"dpr": "2"
 		},
 		{
 			"name": "Ambusher",
 			"example": "Doppelganger",
-			"effect": "The creature has advantage on attack rolls against any creature it has surprised.",
+			"effect": "Het schepsel heeft voordeel op aanvalsrollen tegen elk schepsel dat het heeft verrast.",
 			"attackBonus": "1"
 		},
 		{
 			"name": "Angelic Weapons",
 			"example": "Deva",
-			"effect": "The creature's weapon attacks are magical. When the creature hits with any weapon, the weapon deals extra radiant damage. Input this extra damage per round.",
+			"effect": "De wapenaanvallen van het wezen zijn magisch. Wanneer het wezen slaat met een wapen, deelt het wapen extra stralingsschade uit. Voer deze extra schade per ronde in.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Avoidance",
 			"example": "Demilich",
-			"effect": "If the creature is subjected to an effect that allows it to make a saving throw to only take half damage, it instead takes no damage if it succeeds on the saving throw, and only half damage if it fails.",
+			"effect": "Als het wezen onderhevig is aan een effect dat het toestaat om een reddingsworp te doen om slechts de helft van de schade op te lopen, loopt het in plaats daarvan geen schade op als het slaagt op de reddingsworp, en slechts de helft van de schade als het niet slaagt.",
 			"ac": "1"
 		},
 		{
 			"name": "Blood Frenzy",
 			"example": "Sahuagin",
-			"effect": "The creature has advantage on melee attack rolls against any creature that doesn't have all its hit points.",
+			"effect": "Het wezen heeft voordeel op mêlee-aanvalsrollen tegen elk wezen dat niet al zijn hit points heeft.",
 			"attackBonus": "4"
 		},
 		{
 			"name": "Constrict",
 			"example": "Giant Constrictor Snake",
-			"effect": "The creature has the ability to restrain and/or grapple a target as part of an attack.",
+			"effect": "Het schepsel heeft de mogelijkheid om een doelwit vast te binden en/of te grijpen als onderdeel van een aanval.",
 			"ac": "1"
 		},
 		{
 			"name": "Damage Transfer",
 			"example": "Cloaker",
-			"effect": "While attached or grappling a creature, the creature takes only half damage dealt to it (rounded down), and the other creature takes the other half.",
+			"effect": "Als een wezen wordt vastgemaakt of vastgegrepen, neemt het wezen slechts de helft van de schade op zich (naar beneden afgerond), en het andere wezen de andere helft.",
 			"hp": "hp",
 			"dpr": "hp * 0.33"
 		},
 		{
 			"name": "Enlarge",
 			"example": "Duergar",
-			"effect": "The creature magically increases in size, along with anything it is wearing or carrying. Input the extra damage inflicted per round whilst enlarged.",
+			"effect": "Het schepsel wordt magisch groter, samen met alles wat het draagt of draagt. Voer de extra schade in die per ronde wordt toegebracht terwijl het vergroot is.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Frightful Presence",
 			"example": "Ancient Gold Dragon",
-			"effect": "Each creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
+			"effect": "Elk wezen naar keuze binnen het bereik van het wezen moet een Wisdom saving throw doen of gedurende 1 minuut angstig zijn.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Heated Body",
 			"example": "Azer",
-			"effect": "Touching or hitting the creature while within 5 ft. of it causes damage.",
+			"effect": "Aanraken of raken van het wezen binnen 5 ft. ervan veroorzaakt schade.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Horrifying Visage",
 			"example": "Banshee",
-			"effect": "Each non-undead creature of the creature's choice within range must make a Wisdom saving throw or be frightened for 1 minute.",
+			"effect": "Elk niet ondood wezen naar keuze binnen het bereik van het wezen moet een Wisdom saving throw doen of 1 minuut lang bang zijn.",
 			"hp": "Math.floor((expectedCr <= 10) ? hp * 0.25 : 0)"
 		},
 		{
 			"name": "Legendary Resistance",
 			"example": "Tarrasque",
-			"effect": "If the creature fails a saving throw, it can choose to succeed instead. Input the number of uses per day.",
+			"effect": "Als het schepsel faalt bij een reddingsworp, kan het kiezen om te slagen. Voer het aantal keren per dag in.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 10*trait : ((expectedCr >= 5 && expectedCr <= 10) ? 20*trait : ((expectedCr >= 11) ? 30*trait : 0)))",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Magic Resistance",
 			"example": "Balor",
-			"effect": "The creature has advantage on saving throws against spells and other magical effects.",
+			"effect": "Het schepsel heeft voordeel bij het redden van spreuken en andere magische effecten.",
 			"ac": "2"
 		},
 		{
 			"name": "Martial Advantage",
 			"example": "Hobgoblin",
-			"effect": "The creature can deal extra damage to a creature it hits if that creature is with in 5 ft. of an ally of the creature that isn't incapacitated. Input the extra damage inflicted per round.",
+			"effect": "Het wezen kan extra schade toebrengen aan een wezen dat het raakt als dat wezen zich binnen 5 ft. van een bondgenoot van het wezen bevindt die niet onbekwaam is. Voer de extra toegebrachte schade per ronde in.",
 			"dpr": "trait",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Nimble Escape",
 			"example": "Goblin",
-			"effect": "The creature can take the Disengage or Hide action as a bonus action on each of its turns.",
+			"effect": "Het wezen kan de actie Terugtrekken of Verstoppen als bonusactie uitvoeren tijdens elke beurt.",
 			"ac": "4",
 			"attackBonus": "4"
 		},
 		{
 			"name": "Pack Tactics",
 			"example": "Kobold",
-			"effect": "The creature has advantage on an attack roll against a creature if at least one of the creature's allies is within 5 feet of the creature and the ally isn't incapacitated.",
+			"effect": "Het schepsel heeft voordeel bij een aanvalsrol tegen een schepsel als ten minste één van de bondgenoten van het schepsel zich binnen 5 voet van het schepsel bevindt en de bondgenoot niet onbekwaam is.",
 			"attackBonus": "1"
 		},
 		{
 			"name": "Parry",
 			"example": "Hobgoblin warlord",
-			"effect": "The creature adds its proficiency bonus to its AC against one melee attack that would hit it as a reaction.",
+			"effect": "Het wezen voegt zijn vaardigheidsbonus toe aan zijn AC tegen één mêlee-aanval die het als reactie zou raken.",
 			"ac": "1"
 		},
 		{
 			"name": "Possession",
 			"example": "Ghost",
-			"effect": "The creature can control another creature, during which time it cannot be targeted by nearly any effect.",
+			"effect": "Het schepsel kan een ander schepsel controleren, terwijl het niet het doelwit kan worden van bijna elk effect.",
 			"hp": "hp"
 		},
 		{
 			"name": "Regeneration",
 			"example": "Troll",
-			"effect": "At the beginning of the creature's turn, it regains hit points and cannot be killed until this effect is mitigated in some way, usually through acid or fire damage. Input how many hit points it regains at the beginning of its turn.",
+			"effect": "Aan het begin van de beurt van het wezen krijgt het weer hit points en kan niet gedood worden totdat dit effect op de een of andere manier is afgezwakt, meestal door zuur- of vuurschade. Voer in hoeveel hit points het terugkrijgt aan het begin van zijn beurt.",
 			"hp": "trait*3",
 			"hasNumberParam": true
 		},
 		{
 			"name": "Relentless",
 			"example": "Boar",
-			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1.",
+			"effect": "Als het wezen zou worden gereduceerd tot 0 hit points, is er een kans dat het in plaats daarvan kan worden gereduceerd tot slechts 1.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{
 			"name": "Shadow Stealth",
 			"example": "Shadow Demon",
-			"effect": "While in dim light or darkness, the creature can take the Hide action as a bonus action.",
+			"effect": "In schemerlicht of duisternis kan het schepsel de actie Verbergen als bonusactie uitvoeren.",
 			"ac": "4"
 		},
 		{
 			"name": "Stench",
 			"example": "Troglodyte",
-			"effect": "Any creature other than the monster within 5 feet of it must make a saving throw or be poisoned.",
+			"effect": "Elk ander schepsel dan het monster binnen 5 voet van het monster moet een reddende worp doen of vergiftigd worden.",
 			"ac": "1"
 		},
 		{
 			"name": "Superior Invisibility",
 			"example": "Pixie",
-			"effect": "The creature can turn invisible as an action or bonus action.",
+			"effect": "Het wezen kan onzichtbaar worden als een actie of bonusactie.",
 			"ac": "2"
 		},
 		{
 			"name": "Undead Fortitude",
 			"example": "Zombie",
-			"effect": "If the creature would be reduced to 0 hit points, there is a chance that it can instead only be reduced to 1. This feature is negated if the damage is from radiant nature.",
+			"effect": "Als het wezen zou worden gereduceerd tot 0 hit points, is er een kans dat het in plaats daarvan slechts kan worden gereduceerd tot 1. Deze eigenschap wordt tenietgedaan als de schade van stralende aard is.",
 			"hp": "((expectedCr >= 0 && expectedCr <= 4) ? 7 : ((expectedCr >= 5 && expectedCr <= 10) ? 14 : ((expectedCr >= 11 && expectedCr <= 16) ? 21 : ((expectedCr >= 17) ? 28 : 0))))"
 		},
 		{
 			"name": "Web",
 			"example": "Giant Spider",
-			"effect": "Ranged Weapon Attack that restrains the target on a hit.",
+			"effect": "Een wapenaanval die het doelwit bij een treffer in bedwang houdt.",
 			"ac": "1"
 		}
 	]
