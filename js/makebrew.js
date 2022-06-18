@@ -665,20 +665,27 @@ class Builder extends ProxyBase {
 		this._addHook("meta", "isModified", hkBtnSaveText);
 		hkBtnSaveText();
 
-		$(`<button class="btn btn-xs btn-default">New</button>`)
-			.click(() => {
-				if (!confirm("Are you sure?")) return;
-				this.reset();
+		$(`<button class="btn btn-xs btn-default" title="SHIFT to reset additional state (such as whether or not certain attributes are auto-calculated)">New</button>`)
+			.click(async (evt) => {
+				if (!await InputUiUtil.pGetUserBoolean({title: "Reset Builder", htmlDescription: "Are you sure?", textYes: "Yes", textNo: "Cancel"})) return;
+				this.reset({isResetAllMeta: !!evt.shiftKey});
 			})
 			.appendTo($wrpControls);
 	}
 
-	reset () {
-		this.setStateFromLoaded({s: this._getInitialState(), m: this._getInitialMetaState()});
+	reset ({isResetAllMeta = false} = {}) {
+		const metaNext = this._getInitialMetaState();
+		if (!isResetAllMeta) this._reset_mutNextMetaState({metaNext});
+		this.setStateFromLoaded({
+			s: this._getInitialState(),
+			m: metaNext,
+		});
 		this.renderInput();
 		this.renderOutput();
 		this.doUiSave();
 	}
+
+	_reset_mutNextMetaState ({metaNext}) { /* Implement as required */ }
 
 	async _pHandleClick_pSaveBrew () {
 		const source = this._state.source;

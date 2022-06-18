@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.7.1",
+	"version": "1.7.2",
 
 	"definitions" : {
 		"_arrayOfSpell": {
@@ -23,6 +23,10 @@
 					}
 				]
 			}
+		},
+
+		"_entryDataStyle": {
+			"type": "string", "enum":  ["inset"]
 		},
 
 		"mediaHref": {
@@ -1148,6 +1152,7 @@
 			"type": "object",
 			"properties": {
 				"type": {"const": "dataCreature"},
+				"style": {"$ref": "#/definitions/_entryDataStyle"},
 				"dataCreature": {
 					"$ref" : "bestiary/bestiary.json#/definitions/creature"
 				}
@@ -1161,6 +1166,7 @@
 			"type": "object",
 			"properties": {
 				"type": {"const": "dataSpell"},
+				"style": {"$ref": "#/definitions/_entryDataStyle"},
 				"dataSpell": {
 					"$ref" : "spells/spells.json#/definitions/spell"
 				}
@@ -1174,6 +1180,7 @@
 			"type": "object",
 			"properties": {
 				"type": {"const": "dataTrapHazard"},
+				"style": {"$ref": "#/definitions/_entryDataStyle"},
 				"dataTrapHazard": {
 					"oneOf": [
 						{
@@ -1194,6 +1201,7 @@
 			"type": "object",
 			"properties": {
 				"type": {"const": "dataObject"},
+				"style": {"$ref": "#/definitions/_entryDataStyle"},
 				"dataObject": {
 					"$ref" : "objects.json#/definitions/object"
 				}
@@ -1207,6 +1215,7 @@
 			"type": "object",
 			"properties": {
 				"type": {"const": "dataItem"},
+				"style": {"$ref": "#/definitions/_entryDataStyle"},
 				"dataItem": {
 					"$ref" : "items.json#/definitions/item"
 				}
@@ -1226,7 +1235,8 @@
 						"tag": {"$ref": "util.json#/definitions/tagNameStats"},
 						"name": {"type": "string"},
 						"source": {"type": "string"},
-						"hash": {"type": "string"}
+						"hash": {"type": "string"},
+						"style": {"$ref": "#/definitions/_entryDataStyle"}
 					},
 					"required": ["tag", "name"],
 					"additionalProperties": false

@@ -306,6 +306,11 @@ class CreatureBuilder extends Builder {
 		this.doUiSave();
 	}
 
+	_reset_mutNextMetaState ({metaNext}) {
+		if (!metaNext) return;
+		metaNext.autoCalc = MiscUtil.copy(this._meta?.autoCalc || {});
+	}
+
 	doHandleSourcesAdd () {
 		(this._$eles.$selVariantSources || []).map($sel => {
 			const currSrcJson = $sel.val();
@@ -1770,8 +1775,8 @@ class CreatureBuilder extends Builder {
 		if (this._state.senses && this._state.senses.length) $iptSenses.val(this._state.senses.join(", "));
 
 		const menu = ContextUtil.getMenu(
-			Object.keys(Parser.SENSE_JSON_TO_FULL)
-				.map(sense => {
+			Parser.SENSES
+				.map(({name: sense}) => {
 					return new ContextUtil.Action(
 						sense.uppercaseFirst(),
 						async () => {
@@ -3143,11 +3148,11 @@ class CreatureBuilder extends Builder {
 		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
 
 		// statblock
-		const $tblMon = $(`<table class="stats monster"/>`).appendTo(statTab.$wrpTab);
+		const $tblMon = $(`<table class="w-100 stats monster"/>`).appendTo(statTab.$wrpTab);
 		RenderBestiary.$getRenderedCreature(this._state, {isSkipExcludesRender: true}).appendTo($tblMon);
 
 		// info
-		const $tblInfo = $(`<table class="stats"/>`).appendTo(infoTab.$wrpTab);
+		const $tblInfo = $(`<table class="w-100 stats"/>`).appendTo(infoTab.$wrpTab);
 		Renderer.utils.pBuildFluffTab({
 			isImageTab: false,
 			$content: $tblInfo,
@@ -3156,7 +3161,7 @@ class CreatureBuilder extends Builder {
 		});
 
 		// images
-		const $tblImages = $(`<table class="stats"/>`).appendTo(imageTab.$wrpTab);
+		const $tblImages = $(`<table class="w-100 stats"/>`).appendTo(imageTab.$wrpTab);
 		Renderer.utils.pBuildFluffTab({
 			isImageTab: true,
 			$content: $tblImages,
@@ -3165,7 +3170,7 @@ class CreatureBuilder extends Builder {
 		});
 
 		// data
-		const $tblData = $(`<table class="stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(dataTab.$wrpTab);
+		const $tblData = $(`<table class="w-100 stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(dataTab.$wrpTab);
 		const asJson = Renderer.get().render({
 			type: "entries",
 			entries: [
@@ -3181,7 +3186,7 @@ class CreatureBuilder extends Builder {
 		$tblData.append(Renderer.utils.getBorderTr());
 
 		// markdown
-		const $tblMarkdown = $(`<table class="stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(markdownTab.$wrpTab);
+		const $tblMarkdown = $(`<table class="w-100 stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(markdownTab.$wrpTab);
 		$tblMarkdown.append(Renderer.utils.getBorderTr());
 		$tblMarkdown.append(`<tr><td colspan="6">${this._getRenderedMarkdownCode()}</td></tr>`);
 		$tblMarkdown.append(Renderer.utils.getBorderTr());

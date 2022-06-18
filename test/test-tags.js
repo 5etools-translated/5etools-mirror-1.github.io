@@ -299,18 +299,10 @@ class LinkCheck {
 				MSG.LinkCheck += `Missing link: ${match[0]} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
 			}
 		}
-
-		while ((match = LinkCheck.SKILL_RE.exec(str))) {
-			const skill = match[1];
-			if (!Parser.SKILL_JSON_TO_FULL[skill]) {
-				MSG.LinkCheck += `Unknown skill: ${match[0]} in file ${file} (evaluates to "${skill}")\n`;
-			}
-		}
 	}
 }
 LinkCheck._RE_TAG_BLACKLIST = new Set(["quickref"]);
 LinkCheck.RE = RegExp(`{@(${Object.keys(Parser.TAG_TO_DEFAULT_SOURCE).filter(tag => !LinkCheck._RE_TAG_BLACKLIST.has(tag)).join("|")}) ([^}]*?)}`, "g");
-LinkCheck.SKILL_RE = /{@skill (.*?)(\|.*?)?}/g;
 
 class ClassLinkCheck {
 	static addHandlers () {

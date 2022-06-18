@@ -101,7 +101,7 @@ class TablePage {
 		let htmlText = `
 		<tr>
 			<td colspan="6">
-				<table class="stripe-odd-table">
+				<table class="w-100 stripe-odd-table">
 					<caption>${tableName}</caption>
 					<thead>
 						<tr>

@@ -85,7 +85,7 @@ class SpellsPage extends ListPageMultiSource {
 			.sort((a, b) => SortUtil.ascSortLower(a.name, b.name));
 
 		const renderSpell = (stack, sp) => {
-			stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
+			stack.push(`<div class="bkmv__wrp-item"><table class="w-100 stats stats--book stats--bkmv"><tbody>`);
 			stack.push(Renderer.spell.getCompactRenderedString(sp));
 			stack.push(`</tbody></table></div>`);
 		};

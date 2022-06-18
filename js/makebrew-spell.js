@@ -1043,14 +1043,14 @@ class SpellBuilder extends Builder {
 		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
 
 		// Spell
-		const $tblSpell = $(`<table class="stats"/>`).appendTo(spellTab.$wrpTab);
+		const $tblSpell = $(`<table class="w-100 stats"/>`).appendTo(spellTab.$wrpTab);
 		// Make a copy of the spell, and add the data that would be displayed in the spells page
 		const procSpell = MiscUtil.copy(this._state);
 		Renderer.spell.initClasses(procSpell);
 		RenderSpells.$getRenderedSpell(procSpell, this._subclassLookup, {isSkipExcludesRender: true}).appendTo($tblSpell);
 
 		// Info
-		const $tblInfo = $(`<table class="stats"/>`).appendTo(infoTab.$wrpTab);
+		const $tblInfo = $(`<table class="w-100 stats"/>`).appendTo(infoTab.$wrpTab);
 		Renderer.utils.pBuildFluffTab({
 			isImageTab: false,
 			$content: $tblInfo,
@@ -1059,7 +1059,7 @@ class SpellBuilder extends Builder {
 		});
 
 		// Images
-		const $tblImages = $(`<table class="stats"/>`).appendTo(imageTab.$wrpTab);
+		const $tblImages = $(`<table class="w-100 stats"/>`).appendTo(imageTab.$wrpTab);
 		Renderer.utils.pBuildFluffTab({
 			isImageTab: true,
 			$content: $tblImages,
@@ -1068,7 +1068,7 @@ class SpellBuilder extends Builder {
 		});
 
 		// Data
-		const $tblData = $(`<table class="stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(dataTab.$wrpTab);
+		const $tblData = $(`<table class="w-100 stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(dataTab.$wrpTab);
 		const asCode = Renderer.get().render({
 			type: "entries",
 			entries: [
@@ -1084,7 +1084,7 @@ class SpellBuilder extends Builder {
 		$tblData.append(Renderer.utils.getBorderTr());
 
 		// Markdown
-		const $tblMarkdown = $(`<table class="stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(markdownTab.$wrpTab);
+		const $tblMarkdown = $(`<table class="w-100 stats stats--book mkbru__wrp-output-tab-data"/>`).appendTo(markdownTab.$wrpTab);
 		$tblMarkdown.append(Renderer.utils.getBorderTr());
 		$tblMarkdown.append(`<tr><td colspan="6">${this._getRenderedMarkdownCode()}</td></tr>`);
 		$tblMarkdown.append(Renderer.utils.getBorderTr());

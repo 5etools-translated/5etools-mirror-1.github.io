@@ -582,7 +582,7 @@ function Renderer () {
 			}
 		}
 
-		textStack[0] += `<table class="rd__table ${entry.style || ""} ${entry.isStriped === false ? "" : "stripe-odd-table"}">`;
+		textStack[0] += `<table class="w-100 rd__table ${entry.style || ""} ${entry.isStriped === false ? "" : "stripe-odd-table"}">`;
 
 		const autoRollMode = Renderer.getAutoConvertedTableRollMode(entry);
 		const toRenderLabel = autoRollMode ? RollerUtil.getFullRollCol(entry.colLabels[0]) : null;
@@ -1187,7 +1187,7 @@ function Renderer () {
 
 	this._renderDataCreature = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack, entry.dataCreature.name);
+		this._renderDataHeader(textStack, entry.dataCreature.name, entry.style);
 		textStack[0] += Renderer.monster.getCompactRenderedString(entry.dataCreature, this, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
@@ -1195,7 +1195,7 @@ function Renderer () {
 
 	this._renderDataSpell = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack, entry.dataSpell.name);
+		this._renderDataHeader(textStack, entry.dataSpell.name, entry.style);
 		textStack[0] += Renderer.spell.getCompactRenderedString(entry.dataSpell, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
@@ -1203,7 +1203,7 @@ function Renderer () {
 
 	this._renderDataTrapHazard = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack, entry.dataTrapHazard.name);
+		this._renderDataHeader(textStack, entry.dataTrapHazard.name, entry.style);
 		textStack[0] += Renderer.traphazard.getCompactRenderedString(entry.dataTrapHazard, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
@@ -1211,7 +1211,7 @@ function Renderer () {
 
 	this._renderDataObject = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack, entry.dataObject.name);
+		this._renderDataHeader(textStack, entry.dataObject.name, entry.style);
 		textStack[0] += Renderer.object.getCompactRenderedString(entry.dataObject, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
@@ -1219,7 +1219,7 @@ function Renderer () {
 
 	this._renderDataItem = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack, entry.dataItem.name);
+		this._renderDataHeader(textStack, entry.dataItem.name, entry.style);
 		const id = CryptUtil.uid();
 		const asString = JSON.stringify(entry.dataItem);
 		textStack[0] += `<script id="dataItem-${id}">Renderer.item.populatePropertyAndTypeReference().then(() => {const dataItem = ${asString}; Renderer.item.enhanceItem(dataItem); $("#dataItem-${id}").replaceWith(Renderer.item.getCompactRenderedString(dataItem,  {isEmbeddedEntity: true}))})</script>`;
@@ -1229,14 +1229,14 @@ function Renderer () {
 
 	this._renderDataLegendaryGroup = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack, entry.dataLegendaryGroup.name);
+		this._renderDataHeader(textStack, entry.dataLegendaryGroup.name, entry.style);
 		textStack[0] += Renderer.monster.getCompactRenderedStringLegendaryGroup(entry.dataLegendaryGroup, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
 
-	this._renderDataHeader = function (textStack, name) {
-		textStack[0] += Renderer.utils.getEmbeddedDataHeader(name);
+	this._renderDataHeader = function (textStack, name, style) {
+		textStack[0] += Renderer.utils.getEmbeddedDataHeader(name, style);
 	};
 
 	this._renderDataFooter = function (textStack) {
@@ -1250,9 +1250,9 @@ function Renderer () {
 		const source = entry.source || Parser.TAG_TO_DEFAULT_SOURCE[entry.tag];
 		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page]({name: entry.name, source});
 
-		this._renderDataHeader(textStack, entry.name);
+		this._renderDataHeader(textStack, entry.name, entry.style);
 		textStack[0] += `<tr>
-			<td colspan="6" data-rd-tag="${entry.tag.qq()}" data-rd-page="${page.qq()}" data-rd-source="${(source || "").qq()}" data-rd-hash="${hash.qq()}" data-rd-name="${(entry.name || "").qq()}">
+			<td colspan="6" data-rd-tag="${entry.tag.qq()}" data-rd-page="${page.qq()}" data-rd-source="${(source || "").qq()}" data-rd-hash="${hash.qq()}" data-rd-name="${(entry.name || "").qq()}" data-rd-style="${(entry.style || "").qq()}">
 				<i>Loading ${Renderer.get().render(`{@${entry.tag} ${entry.name}|${source}}`)}...</i>
 				<style onload="Renderer.events.handleLoad_inlineStatblock(this)"></style>
 			</td>
@@ -1657,19 +1657,6 @@ function Renderer () {
 
 				break;
 			}
-			case "@skill":
-			case "@sense": {
-				const expander = tag === "@skill" ? Parser.skillToExplanation : tag === "@sense" ? Parser.senseToExplanation : null;
-				const [name, displayText] = Renderer.splitTagByPipe(text);
-				const hoverMeta = Renderer.hover.getMakePredefinedHover({
-					type: "entries",
-					name: name.toTitleCase(),
-					entries: expander(name),
-				});
-				textStack[0] += `<span class="help help--hover" ${hoverMeta.html}>${displayText || name}</span>`;
-
-				break;
-			}
 			case "@area": {
 				const [compactText, areaId, flags, ...others] = Renderer.splitTagByPipe(text);
 
@@ -1719,7 +1706,7 @@ function Renderer () {
 			}
 
 			default: {
-				const {name, source, displayText, others, page, hash, hashPreEncoded, pageHover, hashHover, hashPreEncodedHover, preloadId, linkText, subhashes, subhashesHover} = Renderer.utils.getTagMeta(tag, text);
+				const {name, source, displayText, others, page, hash, hashPreEncoded, pageHover, hashHover, hashPreEncodedHover, preloadId, linkText, subhashes, subhashesHover, isFauxPage} = Renderer.utils.getTagMeta(tag, text);
 
 				const fauxEntry = {
 					type: "link",
@@ -1729,6 +1716,7 @@ function Renderer () {
 						hash,
 						hover: {
 							page,
+							isFauxPage,
 							source,
 						},
 					},
@@ -1788,6 +1776,8 @@ function Renderer () {
 
 		if (this._isInternalLinksDisabled && entry.href.type === "internal") {
 			textStack[0] += `<span class="bold" ${isDisableEvents ? "" : this._renderLink_getHoverString(entry)} ${additionalAttributes.join(" ")}>${this.render(entry.text)}</span>`;
+		} else if (entry.href.hover?.isFauxPage) {
+			textStack[0] += `<span class="help help--hover" ${isDisableEvents ? "" : this._renderLink_getHoverString(entry)} ${additionalAttributes.join(" ")}>${this.render(entry.text)}</span>`;
 		} else {
 			textStack[0] += `<a href="${href.qq()}" ${entry.href.type === "internal" ? "" : `target="_blank" rel="noopener noreferrer"`} ${isDisableEvents ? "" : this._renderLink_getHoverString(entry)} ${additionalAttributes.join(" ")}>${this.render(entry.text)}</a>`;
 		}
@@ -1835,7 +1825,7 @@ function Renderer () {
 		const replacementAttributes = pluginData.map(it => it.attributesHoverReplace).filter(Boolean);
 		if (replacementAttributes.length) return replacementAttributes.join(" ");
 
-		return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this)" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" data-vet-page="${entry.href.hover.page.qq()}" data-vet-source="${entry.href.hover.source.qq()}" data-vet-hash="${procHash.qq()}" ${entry.href.hover.preloadId != null ? `data-vet-preload-id="${`${entry.href.hover.preloadId}`.qq()}"` : ""} ${Renderer.hover.getPreventTouchString()}`;
+		return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this)" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" data-vet-page="${entry.href.hover.page.qq()}" data-vet-source="${entry.href.hover.source.qq()}" data-vet-hash="${procHash.qq()}" ${entry.href.hover.preloadId != null ? `data-vet-preload-id="${`${entry.href.hover.preloadId}`.qq()}"` : ""} ${entry.href.hover.isFauxPage ? `data-vet-is-faux-page="true"` : ""} ${Renderer.hover.getPreventTouchString()}`;
 	};
 
 	/**
@@ -1975,6 +1965,7 @@ Renderer.events = {
 		const source = ele.dataset.rdSource.uq();
 		const name = ele.dataset.rdName.uq();
 		const hash = ele.dataset.rdHash.uq();
+		const style = ele.dataset.rdStyle.uq();
 
 		Renderer.hover.pCacheAndGet(page, source || Parser.TAG_TO_DEFAULT_SOURCE[tag], hash)
 			.then(toRender => {
@@ -1987,14 +1978,18 @@ Renderer.events = {
 
 				const fnRender = Renderer.hover.getFnRenderCompact(page);
 				const tbl = tr.closest("table");
+				const nxt = e_({
+					outer: Renderer.utils.getEmbeddedDataHeader(toRender.name, style)
+						+ fnRender(toRender)
+						+ Renderer.utils.getEmbeddedDataFooter(),
+				});
 				tbl.parentNode.replaceChild(
-					e_({
-						outer: Renderer.utils.getEmbeddedDataHeader(toRender.name)
-							+ fnRender(toRender)
-							+ Renderer.utils.getEmbeddedDataFooter(),
-					}),
+					nxt,
 					tbl,
 				);
+
+				const fnBind = Renderer.hover.getFnBindListenersCompact(page);
+				if (fnBind) fnBind(toRender, nxt);
 			});
 	},
 };
@@ -2701,8 +2696,8 @@ Renderer.utils = {
 		return Renderer.get().render(`{@ability ${ability} ${statblock[ability]}}`);
 	},
 
-	getEmbeddedDataHeader (name) {
-		return `<table class="rd__b-special rd__b-data">
+	getEmbeddedDataHeader (name, style) {
+		return `<table class="rd__b-special rd__b-data ${style ? `rd__b-data--${style}` : ""}">
 		<thead><tr><th class="rd__data-embed-header" colspan="6" data-rd-data-embed-header="true"><span style="display: none;" class="rd__data-embed-name">${name}</span><span class="rd__data-embed-toggle">[\u2013]</span></th></tr></thead><tbody>`;
 	},
 
@@ -3526,6 +3521,9 @@ Renderer.utils = {
 				break;
 			}
 
+			case "@skill": { out.isFauxPage = true; out.page = "skill"; break; }
+			case "@sense": { out.isFauxPage = true; out.page = "sense"; break; }
+
 			default: throw new Error(`Unhandled tag "${tag}"`);
 		}
 
@@ -3856,7 +3854,7 @@ Renderer.spell = {
 			${Renderer.utils.getExcludedTr({entity: spell, dataProp: "spell", page: UrlUtil.PG_SPELLS})}
 			${Renderer.utils.getNameTr(spell, {page: UrlUtil.PG_SPELLS, isEmbeddedEntity: opts.isEmbeddedEntity})}
 			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
+				<table class="w-100 summary stripe-even-table">
 					<tr>
 						<th colspan="1">Level</th>
 						<th colspan="1">School</th>
@@ -4786,7 +4784,7 @@ Renderer.reward = {
 };
 
 Renderer.race = {
-	getCompactRenderedString (race) {
+	getCompactRenderedString (race, {isStatic = false} = {}) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -4795,7 +4793,7 @@ Renderer.race = {
 			${Renderer.utils.getExcludedTr({entity: race, dataProp: "race", page: UrlUtil.PG_RACES})}
 			${Renderer.utils.getNameTr(race, {page: UrlUtil.PG_RACES})}
 			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
+				<table class="w-100 summary stripe-even-table">
 					<tr>
 						<th class="col-4 text-center">Ability Scores</th>
 						<th class="col-4 text-center">Size</th>
@@ -4815,7 +4813,58 @@ Renderer.race = {
 			: renderer.recursiveRender({type: "entries", entries: race.entries}, renderStack, {depth: 1});
 		renderStack.push("</td></tr>");
 
+		const ptHeightWeight = Renderer.race.getHeightAndWeightPart(race, {isStatic});
+		if (ptHeightWeight) renderStack.push(`<tr class="text"><td colspan="6"><hr class="rd__hr">${ptHeightWeight}</td></tr>`);
+
 		return renderStack.join("");
+	},
+
+	getHeightAndWeightPart (race, {isStatic = false} = {}) {
+		if (!race.heightAndWeight) return null;
+		if (race._isBaseRace) return null;
+
+		const colLabels = ["Base Height", "Base Weight", "Height Modifier", "Weight Modifier"];
+		const colStyles = ["col-2-3 text-center", "col-2-3 text-center", "col-2-3 text-center", "col-2 text-center"];
+		const row = [
+			Renderer.race.getRenderedHeight(race.heightAndWeight.baseHeight),
+			`${race.heightAndWeight.baseWeight} lb.`,
+			`+<span data-race-heightmod="true">${race.heightAndWeight.heightMod}</span>`,
+			`× <span data-race-weightmod="true">${race.heightAndWeight.weightMod || "1"}</span> lb.`,
+		];
+
+		if (!isStatic) {
+			colLabels.push("");
+			colStyles.push("col-3-1 text-center");
+			row.push(`<div class="ve-flex-vh-center">
+				<div class="ve-hidden race__disp-result-height-weight ve-flex-v-baseline">
+					<div class="mr-1">=</div>
+					<div class="race__disp-result-height"></div>
+					<div class="mr-2">; </div>
+					<div class="race__disp-result-weight mr-1"></div>
+					<div class="small">lb.</div>
+				</div>
+				<button class="btn btn-default btn-xs my-1 race__btn-roll-height-weight">Roll</button>
+			</div>`);
+		}
+
+		const entries = [
+			"You may roll for your character's height and weight on the Random Height and Weight table. The roll in the Height Modifier column adds a number (in inches) to the character's base height. To get a weight, multiply the number you rolled for height by the roll in the Weight Modifier column and add the result (in pounds) to the base weight.",
+			{
+				type: "table",
+				caption: "Random Height and Weight",
+				colLabels,
+				colStyles,
+				rows: [row],
+			},
+		];
+
+		return Renderer.get().render({entries});
+	},
+
+	getRenderedHeight (height) {
+		const heightFeet = Number(Math.floor(height / 12).toFixed(3));
+		const heightInches = Number((height % 12).toFixed(3));
+		return `${heightFeet ? `${heightFeet}'` : ""}${heightInches ? `${heightInches}"` : ""}`;
 	},
 
 	/**
@@ -5110,6 +5159,105 @@ Renderer.race = {
 		});
 
 		return nxtData;
+	},
+
+	bindListenersHeightAndWeight (race, ele) {
+		const $render = $(ele);
+
+		const $dispResult = $render.find(`.race__disp-result-height-weight`);
+		const $dispHeight = $render.find(`.race__disp-result-height`);
+		const $dispWeight = $render.find(`.race__disp-result-weight`);
+
+		const lock = new VeLock();
+		let hasRolled = false;
+		let resultHeight;
+		let resultWeightMod;
+
+		const $btnRollHeight = $render
+			.find(`[data-race-heightmod="true"]`)
+			.html(race.heightAndWeight.heightMod)
+			.addClass("roller")
+			.mousedown(evt => evt.preventDefault())
+			.click(async () => {
+				try {
+					await lock.pLock();
+
+					if (!hasRolled) return pDoFullRoll(true);
+					await pRollHeight();
+					updateDisplay();
+				} finally {
+					lock.unlock();
+				}
+			});
+
+		const isWeightRoller = race.heightAndWeight.weightMod && isNaN(race.heightAndWeight.weightMod);
+		const $btnRollWeight = $render
+			.find(`[data-race-weightmod="true"]`)
+			.html(isWeightRoller ? `(<span class="roller">${race.heightAndWeight.weightMod}</span>)` : race.heightAndWeight.weightMod || "1")
+			.click(async () => {
+				try {
+					await lock.pLock();
+
+					if (!hasRolled) return pDoFullRoll(true);
+					await pRollWeight();
+					updateDisplay();
+				} finally {
+					lock.unlock();
+				}
+			});
+		if (isWeightRoller) $btnRollWeight.mousedown(evt => evt.preventDefault());
+
+		const $btnRoll = $render
+			.find(`button.race__btn-roll-height-weight`)
+			.click(async () => pDoFullRoll());
+
+		const pRollHeight = async () => {
+			const mResultHeight = await Renderer.dice.pRoll2(race.heightAndWeight.heightMod, {
+				isUser: false,
+				label: "Height Modifier",
+				name: race.name,
+			});
+			if (mResultHeight == null) return;
+			resultHeight = mResultHeight;
+		};
+
+		const pRollWeight = async () => {
+			const weightModRaw = race.heightAndWeight.weightMod || "1";
+			const mResultWeightMod = isNaN(weightModRaw) ? await Renderer.dice.pRoll2(weightModRaw, {
+				isUser: false,
+				label: "Weight Modifier",
+				name: race.name,
+			}) : Number(weightModRaw);
+			if (mResultWeightMod == null) return;
+			resultWeightMod = mResultWeightMod;
+		};
+
+		const updateDisplay = () => {
+			const renderedHeight = Renderer.race.getRenderedHeight(race.heightAndWeight.baseHeight + resultHeight);
+			const totalWeight = race.heightAndWeight.baseWeight + (resultWeightMod * resultHeight);
+			$dispHeight.text(renderedHeight);
+			$dispWeight.text(Number(totalWeight.toFixed(3)));
+		};
+
+		const pDoFullRoll = async isPreLocked => {
+			try {
+				if (!isPreLocked) await lock.pLock();
+
+				$btnRoll.parent().removeClass(`ve-flex-vh-center`).addClass(`split-v-center`);
+				await pRollHeight();
+				await pRollWeight();
+				$dispResult.removeClass(`ve-hidden`);
+				updateDisplay();
+
+				hasRolled = true;
+			} finally {
+				if (!isPreLocked) lock.unlock();
+			}
+		};
+	},
+
+	bindListenersCompact (race, ele) {
+		Renderer.race.bindListenersHeightAndWeight(race, ele);
 	},
 
 	async pPostProcessFluff (race, raceFluff) {
@@ -5867,7 +6015,7 @@ Renderer.monster = {
 			<tr><td colspan="6"><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<table class="summary-noback relative table-layout-fixed">
+				<table class="w-100 summary-noback relative table-layout-fixed">
 					<tr>
 						<th colspan="2">Armor Class</th>
 						<th colspan="2">Hit Points</th>
@@ -5888,7 +6036,7 @@ Renderer.monster = {
 			</td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
+				<table class="w-100 summary stripe-even-table">
 					<tr>
 						<th class="col-2 text-center">STR</th>
 						<th class="col-2 text-center">DEX</th>
@@ -6066,15 +6214,44 @@ Renderer.monster = {
 		return cpy;
 	},
 
+	_FN_TAG_SENSES: null,
+	_SENSE_TAG_METAS: null,
 	getRenderedSenses (senses, isPlainText) {
 		if (typeof senses === "string") senses = [senses]; // handle legacy format
 		if (isPlainText) return senses.join(", ");
-		const reSenses = new RegExp(`(^| |\\()(${["tremorsense", "blindsight", "truesight", "darkvision", ...Object.keys(BrewUtil2.getMetaLookup("senses") || []).map(it => it.escapeRegexp())].join("|")})(\\)| |$)`, "gi");
+
+		if (!Renderer.monster._FN_TAG_SENSES) {
+			Renderer.monster._SENSE_TAG_METAS = [...MiscUtil.copy(Parser.SENSES), ...BrewUtil2.getBrewProcessedFromCache("sense")];
+			Renderer.monster._SENSE_TAG_METAS.forEach(it => it._re = new RegExp(`\\b(?<sense>${it.name.escapeRegexp()})\\b`, "gi"));
+			Renderer.monster._FN_TAG_SENSES = str => {
+				Renderer.monster._SENSE_TAG_METAS
+					.forEach(({name, source, _re}) => str = str.replace(_re, (...m) => `{@sense ${m.last().sense}|${source}}`));
+				return str;
+			};
+		}
+
 		const senseStr = senses
+			.map(str => {
+				const tagSplit = Renderer.splitByTags(str);
+				str = "";
+				const len = tagSplit.length;
+				for (let i = 0; i < len; ++i) {
+					const s = tagSplit[i];
+
+					if (!s) continue;
+
+					if (s.startsWith("{@")) {
+						str += s;
+						continue;
+					}
+
+					str += Renderer.monster._FN_TAG_SENSES(s);
+				}
+				return str;
+			})
 			.join(", ")
-			.replace(reSenses, (...m) => `${m[1]}{@sense ${m[2]}}${m[3]}`)
-			.replace(/(^| |\()(blind|blinded)(\)| |$)/gi, (...m) => `${m[1]}{@condition blinded||${m[2]}}${m[3]}`)
-		;
+			.replace(/(^| |\()(blind|blinded)(\)| |$)/gi, (...m) => `${m[1]}{@condition blinded||${m[2]}}${m[3]}`);
+
 		return Renderer.get().render(senseStr);
 	},
 
@@ -7682,7 +7859,7 @@ Renderer.vehicle = {
 
 	_getAbilitySection (veh) {
 		return Parser.ABIL_ABVS.some(it => veh[it] != null) ? `<tr><td colspan="6">
-			<table class="summary stripe-even-table">
+			<table class="w-100 summary stripe-even-table">
 				<tr>
 					<th class="col-2 text-center">STR</th>
 					<th class="col-2 text-center">DEX</th>
@@ -8215,6 +8392,32 @@ Renderer.recipe = {
 	// endregion
 };
 
+Renderer.skill = {
+	getCompactRenderedString (ent) {
+		const cpy = MiscUtil.copy(ent);
+		delete cpy.name;
+		return `
+			${Renderer.utils.getNameTr(ent)}
+			<tr><td colspan="6">
+			${Renderer.get().setFirstSection(true).render(cpy)}
+			</td></tr>
+		`;
+	},
+};
+
+Renderer.sense = {
+	getCompactRenderedString (ent) {
+		const cpy = MiscUtil.copy(ent);
+		delete cpy.name;
+		return `
+			${Renderer.utils.getNameTr(ent)}
+			<tr><td colspan="6">
+			${Renderer.get().setFirstSection(true).render(cpy)}
+			</td></tr>
+		`;
+	},
+};
+
 Renderer.generic = {
 	/**
 	 * @param it
@@ -8265,6 +8468,8 @@ Renderer.hover = {
 		"table": UrlUtil.PG_TABLES,
 		"recipe": UrlUtil.PG_RECIPES,
 		"quickref": UrlUtil.PG_QUICKREF,
+		"skill": "skill",
+		"sense": "sense",
 	},
 
 	LinkMeta: function () {
@@ -8378,17 +8583,19 @@ Renderer.hover = {
 	async pHandleLinkMouseOver (evt, ele, opts) {
 		Renderer.hover._doInit();
 
-		let page, source, hash, preloadId;
+		let page, source, hash, preloadId, isFauxPage;
 		if (opts) {
 			page = opts.page;
 			source = opts.source;
 			hash = opts.hash;
 			preloadId = opts.preloadId;
+			isFauxPage = !!opts.isFauxPage;
 		} else {
 			page = ele.dataset.vetPage;
 			source = ele.dataset.vetSource;
 			hash = ele.dataset.vetHash;
 			preloadId = ele.dataset.vetPreloadId;
+			isFauxPage = ele.dataset.vetIsFauxPage;
 		}
 
 		let meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
@@ -8457,7 +8664,7 @@ Renderer.hover = {
 			{
 				title: toRender ? toRender.name : "",
 				isPermanent: meta.isPermanent,
-				pageUrl: `${Renderer.get().baseUrl}${page}#${hash}`,
+				pageUrl: isFauxPage ? null : `${Renderer.get().baseUrl}${page}#${hash}`,
 				cbClose: () => meta.isHovered = meta.isPermanent = meta.isLoading = meta.isFluff = false,
 				isBookContent: page === UrlUtil.PG_RECIPES,
 				compactReferenceData,
@@ -9387,6 +9594,8 @@ Renderer.hover = {
 			case "raw_classfeature": return Renderer.hover._pCacheAndGet_pLoadClassFeatures(page, source, hash, opts);
 			case "raw_subclassfeature": return Renderer.hover._pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts);
 
+			case "skill": return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "skills.json", "skill");
+			case "sense": return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "senses.json", "sense");
 			case "legendarygroup": return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "bestiary/legendarygroups.json", "legendaryGroup");
 
 			case "itementry": return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "items-base.json", "itemEntry");
@@ -10099,7 +10308,7 @@ Renderer.hover = {
 			case UrlUtil.PG_OPT_FEATURES: return Renderer.optionalfeature.getCompactRenderedString;
 			case UrlUtil.PG_PSIONICS: return Renderer.psionic.getCompactRenderedString;
 			case UrlUtil.PG_REWARDS: return Renderer.reward.getCompactRenderedString;
-			case UrlUtil.PG_RACES: return Renderer.race.getCompactRenderedString;
+			case UrlUtil.PG_RACES: return it => Renderer.race.getCompactRenderedString(it, {isStatic});
 			case UrlUtil.PG_DEITIES: return Renderer.deity.getCompactRenderedString;
 			case UrlUtil.PG_OBJECTS: return Renderer.object.getCompactRenderedString;
 			case UrlUtil.PG_TRAPS_HAZARDS: return Renderer.traphazard.getCompactRenderedString;
@@ -10119,7 +10328,16 @@ Renderer.hover = {
 			case "subclassfeature":
 			case "subclassFeature":
 				return Renderer.hover.getGenericCompactRenderedString;
+			case "skill": return Renderer.skill.getCompactRenderedString;
+			case "sense": return Renderer.sense.getCompactRenderedString;
 			// endregion
+			default: return null;
+		}
+	},
+
+	getFnBindListenersCompact (page) {
+		switch (page) {
+			case UrlUtil.PG_RACES: return Renderer.race.bindListenersCompact;
 			default: return null;
 		}
 	},
@@ -10202,7 +10420,14 @@ Renderer.hover = {
 		if (page === UrlUtil.PG_RECIPES) opts = {...MiscUtil.copy(opts), isBookContent: true};
 
 		const fnRender = opts.fnRender || Renderer.hover.getFnRenderCompact(page, {isStatic: opts.isStatic});
-		return $$`<table class="stats ${opts.isBookContent ? `stats--book` : ""}">${fnRender(toRender, renderFnOpts)}</table>`;
+		const $out = $$`<table class="w-100 stats ${opts.isBookContent ? `stats--book` : ""}">${fnRender(toRender, renderFnOpts)}</table>`;
+
+		if (!opts.isStatic) {
+			const fnBind = Renderer.hover.getFnBindListenersCompact(page);
+			if (fnBind) fnBind(toRender, $out[0]);
+		}
+
+		return $out;
 	},
 
 	/**
@@ -10217,7 +10442,7 @@ Renderer.hover = {
 		if (page === UrlUtil.PG_RECIPES) opts = {...MiscUtil.copy(opts), isBookContent: true};
 
 		if (!toRender) {
-			return $$`<table class="stats ${opts.isBookContent ? `stats--book` : ""}"><tr class="text"><td colspan="6" class="p-2 text-center">${Renderer.utils.HTML_NO_INFO}</td></tr></table>`;
+			return $$`<table class="w-100 stats ${opts.isBookContent ? `stats--book` : ""}"><tr class="text"><td colspan="6" class="p-2 text-center">${Renderer.utils.HTML_NO_INFO}</td></tr></table>`;
 		}
 
 		toRender = MiscUtil.copy(toRender);
@@ -10241,7 +10466,7 @@ Renderer.hover = {
 			}
 		}
 
-		return $$`<table class="stats ${opts.isBookContent ? `stats--book` : ""}">${Renderer.generic.getCompactRenderedString(toRender, renderFnOpts)}</table>`;
+		return $$`<table class="w-100 stats ${opts.isBookContent ? `stats--book` : ""}">${Renderer.generic.getCompactRenderedString(toRender, renderFnOpts)}</table>`;
 	},
 
 	$getHoverContent_statsCode (toRender, {isSkipClean = false, title = null} = {}) {
@@ -10258,7 +10483,7 @@ Renderer.hover = {
 			name,
 			preformatted: code,
 		};
-		return $$`<table class="stats stats--book">${Renderer.get().render(toRenderCode)}</table>`;
+		return $$`<table class="w-100 stats stats--book">${Renderer.get().render(toRenderCode)}</table>`;
 	},
 
 	/**
@@ -10271,7 +10496,7 @@ Renderer.hover = {
 	$getHoverContent_generic (toRender, opts) {
 		opts = opts || {};
 
-		return $$`<table class="stats ${opts.isBookContent || opts.isLargeBookContent ? "stats--book" : ""} ${opts.isLargeBookContent ? "stats--book-large" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender, opts.depth || 0)}</table>`;
+		return $$`<table class="w-100 stats ${opts.isBookContent || opts.isLargeBookContent ? "stats--book" : ""} ${opts.isLargeBookContent ? "stats--book-large" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender, opts.depth || 0)}</table>`;
 	},
 
 	/**
@@ -10447,9 +10672,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@comicH3":
 					case "@comicH4":
 					case "@comicNote":
-					case "@note":
-					case "@sense":
-					case "@skill": {
+					case "@note": {
 						return text;
 					}
 
@@ -10501,6 +10724,8 @@ Renderer._stripTagLayer = function (str) {
 					case "@reward":
 					case "@vehicle":
 					case "@vehupgrade":
+					case "@sense":
+					case "@skill":
 					case "@spell":
 					case "@status":
 					case "@table":

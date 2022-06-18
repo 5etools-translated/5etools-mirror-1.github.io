@@ -1308,6 +1308,26 @@ PropOrder._CHAROPTION = [
 	"hasFluff",
 	"hasFluffImages",
 ];
+PropOrder._SKILL = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+	"basicRules",
+
+	"entries",
+];
+PropOrder._SENSE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+	"basicRules",
+
+	"entries",
+];
 
 PropOrder._PROP_TO_LIST = {
 	"monster": PropOrder._MONSTER,
@@ -1359,6 +1379,8 @@ PropOrder._PROP_TO_LIST = {
 	"recipeFluff": PropOrder._GENERIC_FLUFF,
 	"charoption": PropOrder._CHAROPTION,
 	"charoptionFluff": PropOrder._GENERIC_FLUFF,
+	"skill": PropOrder._SKILL,
+	"sense": PropOrder._SENSE,
 };
 
 if (typeof module !== "undefined") {

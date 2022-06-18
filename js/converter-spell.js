@@ -88,6 +88,8 @@ class SpellParser extends BaseParser {
 
 			// casting time
 			if (i === 2) {
+				// noinspection StatementWithEmptyBodyJS
+				while (absorbBrokenLine(true)) ;
 				this._setCleanCastingTime(spell, curLine, options);
 				continue;
 			}

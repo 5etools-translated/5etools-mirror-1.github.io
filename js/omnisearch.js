@@ -237,13 +237,17 @@ class Omnisearch {
 		this._pDoSearch_renderLinks(results);
 	}
 
-	static _renderLink_getHoverString (category, url, src) {
-		return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this)" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" data-vet-page="${UrlUtil.categoryToHoverPage(category).qq()}" data-vet-source="${src.qq()}" data-vet-hash="${url.qq()}" ${Renderer.hover.getPreventTouchString()}`;
+	static _renderLink_getHoverString (category, url, src, {isFauxPage = false} = {}) {
+		return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this)" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" data-vet-page="${UrlUtil.categoryToHoverPage(category).qq()}" data-vet-source="${src.qq()}" data-vet-hash="${url.qq()}" ${isFauxPage ? `data-vet-is-faux-page="true"` : ""} ${Renderer.hover.getPreventTouchString()}`;
 	}
 
 	static $getResultLink (r) {
+		const isFauxPage = !!r.hx;
+
+		if (isFauxPage) return $(`<span ${r.h ? this._renderLink_getHoverString(r.c, r.u, r.s, {isFauxPage}) : ""} class="omni__lnk-name help-subtle">${r.cf}: ${r.n}</span>`);
+
 		const href = r.c === Parser.CAT_ID_PAGE ? r.u : `${Renderer.get().baseUrl}${UrlUtil.categoryToPage(r.c)}#${r.uh || r.u}`;
-		return $(`<a href="${href}" ${r.h ? this._renderLink_getHoverString(r.c, r.u, r.s) : ""} class="omni__lnk-name">${r.cf}: ${r.n}</a>`);
+		return $(`<a href="${href}" ${r.h ? this._renderLink_getHoverString(r.c, r.u, r.s, {isFauxPage}) : ""} class="omni__lnk-name">${r.cf}: ${r.n}</a>`);
 	}
 
 	static _pDoSearch_renderLinks (results, page = 0) {

@@ -832,63 +832,72 @@ DamageTypeTag._BLACKLIST_NAMES = new Set([
 ]);
 
 class MiscTag {
-	static _handleProp (m, prop, tagSet) {
-		if (m[prop]) {
-			m[prop].forEach(it => {
-				let hasRangedAttack = false;
-
-				const strEntries = it.entries ? JSON.stringify(it.entries, null, "\t") : null;
-
-				if (strEntries) {
-					// Weapon attacks
-					// - any melee/ranged attack
-					strEntries.replace(/{@atk ([^}]+)}/g, (...mx) => {
-						const spl = mx[1].split(",");
-						if (spl.includes("rw")) {
-							tagSet.add("RW");
-							hasRangedAttack = true;
-						}
-						if (spl.includes("mw")) tagSet.add("MW");
-					});
-
-					// - reach
-					strEntries.replace(/reach (\d+) ft\./g, (...m) => {
-						if (Number(m[1]) > 5) tagSet.add("RCH");
-					});
-
-					// AoE effects
-					strEntries.replace(/\d+-foot[- ](line|cube|cone|radius|sphere|hemisphere|cylinder)/g, () => tagSet.add("AOE"));
-					strEntries.replace(/each creature within \d+ feet/gi, () => tagSet.add("AOE"));
-				}
-
-				if (it.name) {
-					// thrown weapon (PHB only)
-					if (hasRangedAttack) MiscTag._THROWN_WEAPON_MATCHERS.forEach(r => it.name.replace(r, () => tagSet.add("THW")));
-
-					// other ranged weapon (PHB only)
-					MiscTag._RANGED_WEAPON_MATCHERS.forEach(r => it.name.replace(r, () => {
-						const mAtk = /{@atk ([^}]+)}/.exec(strEntries || "");
-						if (mAtk) {
-							const spl = mAtk[1].split(",");
-							// Avoid adding the "ranged attack" tag for spell attacks
-							if (spl.includes("rs")) return;
-						}
-						tagSet.add("RNG");
-					}));
-				}
-			});
-		}
+	/** @return empty string for easy use in `.replace` */
+	static _addTag ({tagSet, whitelistTags, tag}) {
+		if (whitelistTags != null && !whitelistTags.has(tag)) return "";
+		tagSet.add(tag);
+		return "";
 	}
 
-	static tryRun (m) {
-		const typeSet = new Set();
-		MiscTag._handleProp(m, "action", typeSet);
-		MiscTag._handleProp(m, "trait", typeSet);
-		MiscTag._handleProp(m, "reaction", typeSet);
-		MiscTag._handleProp(m, "bonus", typeSet);
-		MiscTag._handleProp(m, "legendary", typeSet);
-		MiscTag._handleProp(m, "mythic", typeSet);
-		if (typeSet.size) m.miscTags = [...typeSet];
+	static _handleProp ({m, prop, tagSet, whitelistTags}) {
+		if (!m[prop]) return;
+
+		m[prop].forEach(it => {
+			let hasRangedAttack = false;
+
+			const strEntries = it.entries ? JSON.stringify(it.entries, null, "\t") : null;
+
+			if (strEntries) {
+				// Weapon attacks
+				// - any melee/ranged attack
+				strEntries.replace(/{@atk ([^}]+)}/g, (...mx) => {
+					const spl = mx[1].split(",");
+					if (spl.includes("rw")) {
+						this._addTag({tagSet, whitelistTags, tag: "RW"});
+						hasRangedAttack = true;
+					}
+					if (spl.includes("mw")) this._addTag({tagSet, whitelistTags, tag: "MW"});
+				});
+
+				// - reach
+				strEntries.replace(/reach (\d+) ft\./g, (...m) => {
+					if (Number(m[1]) > 5) this._addTag({tagSet, whitelistTags, tag: "RCH"});
+				});
+
+				// AoE effects
+				strEntries.replace(/\d+-foot[- ](line|cube|cone|radius|sphere|hemisphere|cylinder)/g, () => this._addTag({tagSet, whitelistTags, tag: "AOE"}));
+				strEntries.replace(/each creature within \d+ feet/gi, () => this._addTag({tagSet, whitelistTags, tag: "AOE"}));
+
+				strEntries.replace(/\bhit point maximum is reduced\b/gi, () => this._addTag({tagSet, whitelistTags, tag: "HPR"}));
+			}
+
+			if (it.name) {
+				// thrown weapon (PHB only)
+				if (hasRangedAttack) MiscTag._THROWN_WEAPON_MATCHERS.forEach(r => it.name.replace(r, () => this._addTag({tagSet, whitelistTags, tag: "THW"})));
+
+				// other ranged weapon (PHB only)
+				MiscTag._RANGED_WEAPON_MATCHERS.forEach(r => it.name.replace(r, () => {
+					const mAtk = /{@atk ([^}]+)}/.exec(strEntries || "");
+					if (mAtk) {
+						const spl = mAtk[1].split(",");
+						// Avoid adding the "ranged attack" tag for spell attacks
+						if (spl.includes("rs")) return;
+					}
+					this._addTag({tagSet, whitelistTags, tag: "RNG"});
+				}));
+			}
+		});
+	}
+
+	static tryRun (m, {isAdditiveOnly = false, whitelistTags = null} = {}) {
+		const tagSet = new Set(isAdditiveOnly ? m.miscTags || [] : []);
+		MiscTag._handleProp({m, prop: "action", tagSet, whitelistTags});
+		MiscTag._handleProp({m, prop: "trait", tagSet, whitelistTags});
+		MiscTag._handleProp({m, prop: "reaction", tagSet, whitelistTags});
+		MiscTag._handleProp({m, prop: "bonus", tagSet, whitelistTags});
+		MiscTag._handleProp({m, prop: "legendary", tagSet, whitelistTags});
+		MiscTag._handleProp({m, prop: "mythic", tagSet, whitelistTags});
+		if (tagSet.size) m.miscTags = [...tagSet];
 		else delete m.miscTags;
 	}
 }

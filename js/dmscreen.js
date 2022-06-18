@@ -1043,8 +1043,11 @@ class Panel {
 			const fn = Renderer.hover.getFnRenderCompact(page);
 
 			const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
-			const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
+			const $contentStats = $(`<table class="w-100 stats"/>`).appendTo($contentInner);
 			$contentStats.append(fn(it));
+
+			const fnBind = Renderer.hover.getFnBindListenersCompact(page);
+			if (fnBind) fnBind(it, $contentStats[0]);
 
 			this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
 			this._stats_bindSummonScaleClickHandler(it, meta, $contentInner, $contentStats);
@@ -1232,7 +1235,7 @@ class Panel {
 		).then(it => {
 			ScaleCreature.scale(it, targetCr).then(initialRender => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
-				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
+				const $contentStats = $(`<table class="w-100 stats"/>`).appendTo($contentInner);
 				$contentStats.append(Renderer.monster.getCompactRenderedString(initialRender, null, {isShowScalers: true, isScaledCr: true}));
 
 				this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
@@ -1263,7 +1266,7 @@ class Panel {
 		).then(it => {
 			ScaleSpellSummonedCreature.scale(it, summonSpellLevel).then(scaledMon => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
-				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
+				const $contentStats = $(`<table class="w-100 stats"/>`).appendTo($contentInner);
 				$contentStats.append(Renderer.monster.getCompactRenderedString(scaledMon, null, {isShowScalers: true, isScaledSpellSummon: true}));
 
 				this._stats_doUpdateSummonScaleDropdowns(scaledMon, $contentStats);
@@ -1296,7 +1299,7 @@ class Panel {
 		).then(it => {
 			ScaleClassSummonedCreature.scale(it, summonClassLevel).then(scaledMon => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
-				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
+				const $contentStats = $(`<table class="w-100 stats"/>`).appendTo($contentInner);
 				$contentStats.append(Renderer.monster.getCompactRenderedString(scaledMon, null, {isShowScalers: true, isScaledClassSummon: true}));
 
 				this._stats_doUpdateSummonScaleDropdowns(scaledMon, $contentStats);
@@ -1329,7 +1332,7 @@ class Panel {
 				ix,
 				PANEL_TYP_RULES,
 				meta,
-				$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
+				$(`<div class="panel-content-wrapper-inner"><table class="w-100 stats">${it}</table></div>`),
 				title || rule.name || "",
 				true,
 				!!title,
@@ -3530,7 +3533,7 @@ class UnitConverter {
 
 		const $wrpConverter = $(`<div class="dm-unitconv dm__panel-bg split-column"/>`);
 
-		const $tblConvert = $(`<table class="table-striped"/>`).appendTo($wrpConverter);
+		const $tblConvert = $(`<table class="w-100 table-striped"/>`).appendTo($wrpConverter);
 		const $tbodyConvert = $(`<tbody/>`).appendTo($tblConvert);
 		units.forEach((u, i) => {
 			const $tr = $(`<tr class="row clickable"/>`).appendTo($tbodyConvert);
@@ -3654,7 +3657,7 @@ class AdventureOrBookView {
 
 		this._$wrpContent = $(`<div class="h-100"/>`);
 		this._$wrpContentOuter = $$`<div class="h-100 dm-book__wrp-content">
-			<table class="stats stats--book stats--book-hover"><tr class="text"><td colspan="6">${this._$wrpContent}</td></tr></table>
+			<table class="w-100 stats stats--book stats--book-hover"><tr class="text"><td colspan="6">${this._$wrpContent}</td></tr></table>
 		</div>`;
 
 		const $wrp = $$`<div class="ve-flex-col h-100">

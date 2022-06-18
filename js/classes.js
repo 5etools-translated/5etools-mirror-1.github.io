@@ -1197,7 +1197,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 		}
 		// endregion
 
-		$$`<table class="stats shadow-big">
+		$$`<table class="w-100 stats shadow-big">
 			<tr><th class="border" colspan="6"></th></tr>
 			<tr><th colspan="6">
 				<div class="split-v-center pr-1" ${dataPartSendToFoundry}>
@@ -2240,7 +2240,7 @@ ClassesPage.ClassBookView = class {
 		const $pnlMenu = $(`<div class="cls-bkmv__wrp-tabs ve-flex-h-center"/>`).appendTo(this._$wrpBook);
 
 		// Main panel
-		const $tblBook = $(`<table class="stats stats--book stats--book-large"/>`);
+		const $tblBook = $(`<table class="w-100 stats stats--book stats--book-large"/>`);
 		$$`<div class="ve-flex-col overflow-y-auto container">${$tblBook}</div>`.appendTo(this._$wrpBook);
 
 		const renderStack = [];

@@ -805,19 +805,6 @@ Parser.dmgTypeToFull = function (dmgType) {
 	return Parser._parse_aToB(Parser.DMGTYPE_JSON_TO_FULL, dmgType);
 };
 
-Parser.skillToExplanation = function (skillType) {
-	const fromBrew = typeof BrewUtil2 !== "undefined" ? BrewUtil2.getMetaLookup("skills")?.[skillType] : null;
-	if (fromBrew) return fromBrew;
-	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType);
-};
-
-Parser.senseToExplanation = function (senseType) {
-	senseType = senseType.toLowerCase();
-	const fromBrew = BrewUtil2.getMetaLookup("senses")?.[senseType];
-	if (fromBrew) return fromBrew;
-	return Parser._parse_aToB(Parser.SENSE_JSON_TO_FULL, senseType, ["No explanation available."]);
-};
-
 Parser.skillProficienciesToFull = function (skillProficiencies) {
 	function renderSingle (skProf) {
 		if (skProf.any) {
@@ -1476,6 +1463,7 @@ Parser.monSpellcastingTagToFull = function (tag) {
 
 Parser.MON_MISC_TAG_TO_FULL = {
 	"AOE": "Has Areas of Effect",
+	"HPR": "Has HP Reduction",
 	"MW": "Has Weapon Attacks, Melee",
 	"RW": "Has Weapon Attacks, Ranged",
 	"RNG": "Has Ranged Weapons",
@@ -1743,6 +1731,8 @@ Parser.CAT_ID_LEGENDARY_GROUP = 46;
 Parser.CAT_ID_CHAR_CREATION_OPTIONS = 47;
 Parser.CAT_ID_RECIPES = 48;
 Parser.CAT_ID_STATUS = 49;
+Parser.CAT_ID_SKILLS = 50;
+Parser.CAT_ID_SENSES = 51;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1794,6 +1784,9 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LEGENDARY_GROUP] = "Legendary Group";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CHAR_CREATION_OPTIONS] = "Character Creation Option";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RECIPES] = "Recipe";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_STATUS] = "Status";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SKILLS] = "Skill";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SENSES] = "Sense";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1849,6 +1842,9 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PAGE] = null;
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LEGENDARY_GROUP] = null;
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CHAR_CREATION_OPTIONS] = "charoption";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RECIPES] = "recipe";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_STATUS] = "status";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SKILLS] = "skill";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SENSES] = "sense";
 
 Parser.pageCategoryToProp = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_PROP, catId);
@@ -3387,6 +3383,8 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"recipe": SRC_HEROES_FEAST,
 	"itemEntry": SRC_DMG,
 	"quickref": SRC_PHB,
+	"skill": SRC_PHB,
+	"sense": SRC_PHB,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
@@ -3416,26 +3414,25 @@ Parser.PROP_TO_DISPLAY_NAME = {
 	"variantrule": "Variant Rule",
 	"optionalfeature": "Optional Feature",
 	"variant": "Magic Item Variant",
-	"classFeature": "Class Feature",
-	"subclassFeature": "Subclass Feature",
 	"baseitem": "Item (Base)",
 	"item": "Item",
-	"itemGroup": "Item Group",
-	"legendaryGroup": "Legendary Group",
 	"adventure": "Adventure",
 	"adventureData": "Adventure Text",
 	"book": "Book",
 	"bookData": "Book Text",
-	"itemProperty": "Item Property",
-	"itemEntry": "Item Entry",
 	"makebrewCreatureTrait": "Homebrew Builder Creature Trait",
 	"charoption": "Other Character Creation Option",
-	"vehicleUpgrade": "Vehicle Upgrade",
 };
-Parser.getPropDisplayName = function (prop) {
-	if (Parser.PROP_TO_DISPLAY_NAME[prop]) return Parser.PROP_TO_DISPLAY_NAME[prop];
-	prop = prop.replace(/Fluff$/, " Fluff");
-	return prop.uppercaseFirst();
+Parser.getPropDisplayName = function (prop, {suffix = ""} = {}) {
+	if (Parser.PROP_TO_DISPLAY_NAME[prop]) return `${Parser.PROP_TO_DISPLAY_NAME[prop]}${suffix}`;
+
+	const mFluff = /Fluff$/.exec(prop);
+	if (mFluff) return Parser.getPropDisplayName(prop.slice(0, -mFluff[0].length), {suffix: " Fluff"});
+
+	const mFoundry = /^foundry(?<prop>[A-Z].*)$/.exec(prop);
+	if (mFoundry) return Parser.getPropDisplayName(mFoundry.groups.prop.lowercaseFirst(), {suffix: " Foundry Data"});
+
+	return `${prop.split(/([A-Z][a-z]+)/g).join(" ").uppercaseFirst()}${suffix}`;
 };
 
 Parser.ITEM_TYPE_JSON_TO_ABV = {
@@ -3492,85 +3489,12 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 Parser.DMG_TYPES = ["acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"];
 Parser.CONDITIONS = ["blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"];
 
-Parser.SKILL_JSON_TO_FULL = {
-	"Acrobatics": [
-		"Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you're trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship's deck. The DM might also call for a Dexterity (Acrobatics) check to see if you can perform acrobatic stunts, including dives, rolls, somersaults, and flips.",
-	],
-	"Animal Handling": [
-		"When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal's intentions, the DM might call for a Wisdom (Animal Handling) check. You also make a Wisdom (Animal Handling) check to control your mount when you attempt a risky maneuver.",
-	],
-	"Arcana": [
-		"Your Intelligence (Arcana) check measures your ability to recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes.",
-	],
-	"Athletics": [
-		"Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities:",
-		{
-			"type": "list",
-			"items": [
-				"You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off.",
-				"You try to jump an unusually long distance or pull off a stunt mid jump.",
-				"You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming.",
-			],
-		},
-	],
-	"Deception": [
-		"Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions. This deception can encompass everything from misleading others through ambiguity to telling outright lies. Typical situations include trying to fast-talk a guard, con a merchant, earn money through gambling, pass yourself off in a disguise, dull someone's suspicions with false assurances, or maintain a straight face while telling a blatant lie.",
-	],
-	"History": [
-		"Your Intelligence (History) check measures your ability to recall lore about historical events, legendary people, ancient kingdoms, past disputes, recent wars, and lost civilizations.",
-	],
-	"Insight": [
-		"Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone's next move. Doing so involves gleaning clues from body language, speech habits, and changes in mannerisms.",
-	],
-	"Intimidation": [
-		"When you attempt to influence someone through overt threats, hostile actions, and physical violence, the DM might ask you to make a Charisma (Intimidation) check. Examples include trying to pry information out of a prisoner, convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier to reconsider a decision.",
-	],
-	"Investigation": [
-		"When you look around for clues and make deductions based on those clues, you make an Intelligence (Investigation) check. You might deduce the location of a hidden object, discern from the appearance of a wound what kind of weapon dealt it, or determine the weakest point in a tunnel that could cause it to collapse. Poring through ancient scrolls in search of a hidden fragment of knowledge might also call for an Intelligence (Investigation) check.",
-	],
-	"Medicine": [
-		"A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness.",
-	],
-	"Nature": [
-		"Your Intelligence (Nature) check measures your ability to recall lore about terrain, plants and animals, the weather, and natural cycles.",
-	],
-	"Perception": [
-		"Your Wisdom (Perception) check lets you spot, hear, or otherwise detect the presence of something. It measures your general awareness of your surroundings and the keenness of your senses.", "For example, you might try to hear a conversation through a closed door, eavesdrop under an open window, or hear monsters moving stealthily in the forest. Or you might try to spot things that are obscured or easy to miss, whether they are orcs lying in ambush on a road, thugs hiding in the shadows of an alley, or candlelight under a closed secret door.",
-	],
-	"Performance": [
-		"Your Charisma (Performance) check determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment.",
-	],
-	"Persuasion": [
-		"When you attempt to influence someone or a group of people with tact, social graces, or good nature, the DM might ask you to make a Charisma (Persuasion) check. Typically, you use persuasion when acting in good faith, to foster friendships, make cordial requests, or exhibit proper etiquette. Examples of persuading others include convincing a chamberlain to let your party see the king, negotiating peace between warring tribes, or inspiring a crowd of townsfolk.",
-	],
-	"Religion": [
-		"Your Intelligence (Religion) check measures your ability to recall lore about deities, rites and prayers, religious hierarchies, holy symbols, and the practices of secret cults.",
-	],
-	"Sleight of Hand": [
-		"Whenever you attempt an act of legerdemain or manual trickery, such as planting something on someone else or concealing an object on your person, make a Dexterity (Sleight of Hand) check. The DM might also call for a Dexterity (Sleight of Hand) check to determine whether you can lift a coin purse off another person or slip something out of another person's pocket.",
-	],
-	"Stealth": [
-		"Make a Dexterity (Stealth) check when you attempt to conceal yourself from enemies, slink past guards, slip away without being noticed, or sneak up on someone without being seen or heard.",
-	],
-	"Survival": [
-		"The DM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wild game, guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather, or avoid quicksand and other natural hazards.",
-	],
-};
-
-Parser.SENSE_JSON_TO_FULL = {
-	"blindsight": [
-		"A creature with blindsight can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as oozes, and creatures with echolocation or heightened senses, such as bats and true dragons, have this sense.",
-	],
-	"darkvision": [
-		"Many creatures in fantasy gaming worlds, especially those that dwell underground, have darkvision. Within a specified range, a creature with darkvision can see in dim light as if it were bright light and in darkness as if it were dim light, so areas of darkness are only lightly obscured as far as that creature is concerned. However, the creature can't discern color in that darkness, only shades of gray.",
-	],
-	"tremorsense": [
-		"A creature with tremorsense can detect and pinpoint the origin of vibrations within a specific radius, provided that the creature and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense.",
-	],
-	"truesight": [
-		"A creature with truesight can, out to a specific range, see in normal and magical darkness, see invisible creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceives the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the creature can see into the Ethereal Plane.",
-	],
-};
+Parser.SENSES = [
+	{"name": "blindsight", "source": "PHB"},
+	{"name": "darkvision", "source": "PHB"},
+	{"name": "tremorsense", "source": "MM"},
+	{"name": "truesight", "source": "PHB"},
+];
 
 Parser.NUMBERS_ONES = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 Parser.NUMBERS_TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];

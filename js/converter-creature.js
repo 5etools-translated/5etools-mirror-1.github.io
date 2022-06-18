@@ -188,7 +188,7 @@ class CreatureParser extends BaseParser {
 			}
 
 			// Alternate ability scores (all six abbreviations followed by all six scores, each on new lines)
-			if (this._getSequentialAbilityScoreSectionLineCount(stats, toConvert, i)) {
+			if (this._getSequentialAbilityScoreSectionLineCount(stats, toConvert, i) === 6) {
 				i += this._getSequentialAbilityScoreSectionLineCount(stats, toConvert, i);
 				this._mutAbilityScoresFromSingleLine(stats, toConvert, i);
 				continue;
@@ -1090,7 +1090,7 @@ class CreatureParser extends BaseParser {
 
 	static _tryGetStat (strLine) {
 		try {
-			return this._tryConvertNumber(/(\d+) \(.*?\)/.exec(strLine)[1]);
+			return this._tryConvertNumber(/(\d+) ?\(.*?\)/.exec(strLine)[1]);
 		} catch (e) {
 			return 0;
 		}

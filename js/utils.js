@@ -6,8 +6,8 @@ IS_NODE = typeof module !== "undefined";
 if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
-IS_DEPLOYED="v1.152.4.1655483834";
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.159.0"/* 5ETOOLS_VERSION__CLOSE */;
+IS_DEPLOYED="v1.152.4.1655573154";
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.160.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -2254,32 +2254,34 @@ UrlUtil.PG_CLASS_SUBCLASS_FEATURES = "classfeatures.html";
 UrlUtil.PG_MAPS = "maps.html";
 UrlUtil.PG_SEARCH = "search.html";
 
+UrlUtil.URL_TO_HASH_GENERIC = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+
 UrlUtil.URL_TO_HASH_BUILDER = {};
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS_DISEASES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPT_FEATURES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIANTRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS_DISEASES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPT_FEATURES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PSIONICS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIANTRULES] = UrlUtil.URL_TO_HASH_GENERIC;
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURES] = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE];
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOK] = (it) => UrlUtil.encodeForHash(it.id);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOKS] = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOK];
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.pantheon, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS_BOONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CHAR_CREATION_OPTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS_BOONS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CHAR_CREATION_OPTIONS] = UrlUtil.URL_TO_HASH_GENERIC;
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RECIPES] = (it) => `${UrlUtil.encodeForHash([it.name, it.source])}${it._scaleFactor ? `${HASH_PART_SEP}${VeCt.HASH_SCALED}${HASH_SUB_KV_SEP}${it._scaleFactor}` : ""}`;
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASS_SUBCLASS_FEATURES] = (it) => (it.__prop === "subclassFeature" || it.subclassSource) ? UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](it) : UrlUtil.URL_TO_HASH_BUILDER["classFeature"](it);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_QUICKREF] = ({name, ixChapter, ixHeader}) => {
@@ -2335,11 +2337,13 @@ UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
 };
 UrlUtil.URL_TO_HASH_BUILDER["classFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.level, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.subclassShortName, it.subclassSource, it.level, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER["legendaryGroup"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER["itemEntry"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER["legendaryGroup"] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER["itemEntry"] = UrlUtil.URL_TO_HASH_GENERIC;
 Object.keys(UrlUtil.URL_TO_HASH_BUILDER)
 	.filter(k => !k.endsWith(".html") && k.toLowerCase() !== k)
 	.forEach(k => UrlUtil.URL_TO_HASH_BUILDER[k.toLowerCase()] = UrlUtil.URL_TO_HASH_BUILDER[k]);
+UrlUtil.URL_TO_HASH_BUILDER["skill"] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER["sense"] = UrlUtil.URL_TO_HASH_GENERIC;
 // endregion
 
 UrlUtil.PG_TO_NAME = {};
@@ -2435,10 +2439,14 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LEGENDARY_GROUP] = null;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CHAR_CREATION_OPTIONS] = UrlUtil.PG_CHAR_CREATION_OPTIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RECIPES] = UrlUtil.PG_RECIPES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_STATUS] = UrlUtil.PG_CONDITIONS_DISEASES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SKILLS] = "skill";
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SENSES] = "sense";
 
 UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassfeature";
+UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_SKILLS] = "skill";
+UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_SENSES] = "sense";
 
 UrlUtil.HASH_START_CREATURE_SCALED = `${VeCt.HASH_SCALED}${HASH_SUB_KV_SEP}`;
 UrlUtil.HASH_START_CREATURE_SCALED_SPELL_SUMMON = `${VeCt.HASH_SCALED_SPELL_SUMMON}${HASH_SUB_KV_SEP}`;
@@ -6135,16 +6143,28 @@ TokenUtil = {
 };
 
 // LOCKS ===============================================================================================================
-VeLock = function () {
+VeLock = function ({name = null, isDbg = false} = {}) {
+	this._name = name;
+	this._isDbg = isDbg;
 	this._lockMeta = null;
+
+	this._getCaller = () => {
+		return (new Error()).stack.split("\n")[3].trim();
+	};
 
 	this.pLock = async ({token = null} = {}) => {
 		if (token != null && this._lockMeta?.token === token) {
 			++this._lockMeta.depth;
+			// eslint-disable-next-line no-console
+			if (this._isDbg) console.warn(`Lock "${this._name || "(unnamed)"}" add (now ${this._lockMeta.depth}) at ${this._getCaller()}`);
 			return token;
 		}
 
 		while (this._lockMeta) await this._lockMeta.lock;
+
+		// eslint-disable-next-line no-console
+		if (this._isDbg) console.warn(`Lock "${this._name || "(unnamed)"}" acquired at ${this._getCaller()}`);
+
 		let unlock = null;
 		const lock = new Promise(resolve => unlock = resolve);
 		this._lockMeta = {
@@ -6160,7 +6180,14 @@ VeLock = function () {
 	this.unlock = () => {
 		if (!this._lockMeta) return;
 
-		if (this._lockMeta.depth > 0) return --this._lockMeta.depth;
+		if (this._lockMeta.depth > 0) {
+			// eslint-disable-next-line no-console
+			if (this._isDbg) console.warn(`Lock "${this._name || "(unnamed)"}" sub (now ${this._lockMeta.depth - 1}) at ${this._getCaller()}`);
+			return --this._lockMeta.depth;
+		}
+
+		// eslint-disable-next-line no-console
+		if (this._isDbg) console.warn(`Lock "${this._name || "(unnamed)"}" released at ${this._getCaller()}`);
 
 		const lockMeta = this._lockMeta;
 		this._lockMeta = null;

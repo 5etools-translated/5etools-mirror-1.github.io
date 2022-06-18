@@ -158,7 +158,7 @@ class LegendaryGroupBuilder extends Builder {
 		tabs.forEach(it => it.$wrpTab.appendTo($wrp));
 
 		// Legendary Group
-		const $tblLegGroup = $(`<table class="stats"/>`).appendTo(legGroupTab.$wrpTab);
+		const $tblLegGroup = $(`<table class="w-100 stats"/>`).appendTo(legGroupTab.$wrpTab);
 		RenderBestiary.$getRenderedLegendaryGroup(this._state).appendTo($tblLegGroup);
 
 		// Data

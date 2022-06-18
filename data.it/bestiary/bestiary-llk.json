@@ -255,6 +255,43 @@
 			"hasToken": true
 		},
 		{
+			"name": "Ctenmiir the Vampire",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LLK",
+			"page": 4,
+			"_copy": {
+				"name": "Vampire",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the vampire",
+						"with": "Ctenmiir",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Coffin Imprisonment",
+							"entries": [
+								"Ctenmiir è imprigionato in una bara di ferro magica montata su gambe di golem animate. La bara di Ctenmiir ha una velocità di 9 metri e una velocità di arrampicata di 3 metri, e protegge il vampiro dalla luce del sole anche se gli impedisce di sfuggire alla sua servitù."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"speed": {
+				"walk": 30,
+				"climb": 10
+			},
+			"hasFluffImages": true
+		},
+		{
 			"name": "East Wind",
 			"isNpc": true,
 			"isNamedCreature": true,
@@ -267,7 +304,8 @@
 					"*": {
 						"mode": "replaceTxt",
 						"replace": "the adept",
-						"with": "East Wind"
+						"with": "East Wind",
+						"flags": "i"
 					},
 					"trait": {
 						"mode": "prependArr",
@@ -458,7 +496,59 @@
 				"incapacitated",
 				"prone"
 			],
-			"hasToken": true
+			"hasToken": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Gearbox",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LLK",
+			"page": 5,
+			"_copy": {
+				"name": "Monodrone",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the monodrone",
+						"with": "Gearbox",
+						"flags": "i"
+					},
+					"trait": {
+						"mode": "prependArr",
+						"items": {
+							"name": "Unique Programming",
+							"entries": [
+								"L'esclusiva programmazione di Gearbox permette al modrone di funzionare come un {@item Orb of Direction|XGE} e un {@item Orb of Time|XGE}, di lanciare il cantrip {@spell light} a volontà e di concedere agli altri personaggi un vantaggio sulle prove di Destrezza effettuate con gli strumenti dei ladri e sulle prove di abilità effettuate per identificare o far funzionare apparecchiature meccaniche o di laboratorio."
+							]
+						}
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"N"
+			],
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Gearbox può lanciare il cantrip {@spell light} a volontà."
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell light}"
+							]
+						}
+					},
+					"hidden": [
+						"spells"
+					]
+				}
+			],
+			"hasFluffImages": true
 		},
 		{
 			"name": "Gloine Nathair-Nathair",
@@ -500,7 +590,8 @@
 				"petrified",
 				"restrained"
 			],
-			"hasToken": true
+			"hasToken": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Mary Greymalkin",
@@ -649,7 +740,8 @@
 				"charmed",
 				"incapacitated"
 			],
-			"hasToken": true
+			"hasToken": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Monastery of the Distressed Body Grand Master",
@@ -822,7 +914,8 @@
 					"*": {
 						"mode": "replaceTxt",
 						"replace": "the adept",
-						"with": "West Wind"
+						"with": "West Wind",
+						"flags": "i"
 					},
 					"trait": {
 						"mode": "prependArr",

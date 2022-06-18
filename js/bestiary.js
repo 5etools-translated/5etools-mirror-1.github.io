@@ -170,7 +170,7 @@ class BestiaryPage extends ListPageMultiSource {
 		const stack = [];
 
 		const renderCreature = (mon) => {
-			stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
+			stack.push(`<div class="bkmv__wrp-item"><table class="w-100 stats stats--book stats--bkmv"><tbody>`);
 			stack.push(Renderer.monster.getCompactRenderedString(mon, Renderer.get()));
 			stack.push(`</tbody></table></div>`);
 		};
@@ -484,7 +484,7 @@ class BestiaryPage extends ListPageMultiSource {
 				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${this._getUrlSubhashes(toRender)}`;
 
 				const renderFn = Renderer.hover.getFnRenderCompact(UrlUtil.getCurrentPage());
-				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
+				const $content = $$`<table class="w-100 stats">${renderFn(toRender)}</table>`;
 				const windowMeta = Renderer.hover.getShowWindow(
 					$content,
 					Renderer.hover.getWindowPositionFromEvent(evt),

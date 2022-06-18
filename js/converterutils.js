@@ -86,11 +86,14 @@ class BaseParser {
 		if (/,\s*$/.test(lastEntry)) return true;
 		// If the current string ends in a dash
 		if (/[-\u2014]\s*$/.test(lastEntry)) return true;
+		// If the current string ends in a conjunction
+		if (/ (?:and|or)\s*$/.test(lastEntry)) return true;
 
 		const cleanLine = curLine.trim();
 
 		if (/^\d..-\d.. level\s+\(/.test(cleanLine) && !opts.noSpellcastingWarlockSlotLevel) return false;
 
+		// Start of a list item
 		if (/^[•●]/.test(cleanLine)) return false;
 
 		// A lowercase word
@@ -670,7 +673,7 @@ class SenseTag {
 	}
 
 	static _fnTag (strMod) {
-		return strMod.replace(/(tremorsense|blindsight|truesight|darkvision)/g, (...m) => `{@sense ${m[0]}}`);
+		return strMod.replace(/(tremorsense|blindsight|truesight|darkvision)/g, (...m) => `{@sense ${m[0]}${m[0].toLowerCase() === "tremorsense" ? "|MM" : ""}}`);
 	}
 }
 
@@ -865,6 +868,9 @@ class ConvertUtil {
 
 		// if it's an ability score, it's not a name
 		if (Object.values(Parser.ATB_ABV_TO_FULL).includes(namePartNoStopwords)) return false;
+
+		// if it's a dice, it's not a name
+		if (/^\d*d\d+\b/.test(namePartNoStopwords)) return false;
 
 		if (exceptions && exceptions.has(namePartNoStopwords.toLowerCase())) return false;
 

@@ -223,7 +223,7 @@ class BrewUtil2 {
 
 	static _VERSION = 2;
 
-	static _LOCK = new VeLock();
+	static _LOCK = new VeLock({name: "brew"});
 
 	static _cache_brewsProc = null;
 	static _cache_metas = null;
@@ -304,69 +304,6 @@ class BrewUtil2 {
 		return BrewDoc.mergeObjects(undefined, ...cpyBrewsLoaded);
 	}
 
-	// region Alternate implementation which pre-loads and saves dependencies--consider instead?
-	// Pros:
-	//   - All dependency brews will be resolved the first time brew is loaded, which is likely to be around the time the
-	//     user loaded their brew. This means we snapshot all the brews in the dependency graph, and therefore future
-	//     updates to one brew won't brick another brew that relies upon it.
-	//   - More performant; all the brew is loaded and stored locally once, and can then be accessed quickly thereafter
-	//   - Is closer to the previous brew implementation, so fewer surprises for long-time users
-	// Cons:
-	//   - Much more complex/duplicates the functionality of the existing dependency resolution system
-	// Neutral:
-	//   - We load and save more brew, which the user may not have wanted
-	static async _pGetBrewProcessed2 ({lockToken}) {
-		// region Pre-load any dependencies
-		const brewIndex = await DataUtil.brew.pLoadSourceIndex();
-		const urlRoot = await this.pGetCustomUrl();
-
-		await this._pGetBrewProcessed2_pAddDepBrews({brewIndex, urlRoot, lockToken});
-		// endregion
-
-		// region Fake data load
-		const cpyBrews = MiscUtil.copy(await this.pGetBrew({lockToken}));
-		const cpyBrewsLoaded = await cpyBrews.pSerialAwaitMap(async ({head, body}) => DataUtil.pDoMetaMerge(head.url || head.docIdLocal, body));
-		// endregion
-
-		// region Combine and return results
-		this._cache_brewsProc = this._pGetBrewProcessed_getMergedOutput({cpyBrewsLoaded});
-		// endregion
-
-		return this._cache_brewsProc;
-	}
-
-	static async _pGetBrewProcessed2_pAddDepBrews ({brewIndex, urlRoot, lockToken, depth = null, seenSources = null}) {
-		if (depth == null) depth = 0;
-		if (seenSources == null) seenSources = new Set(); // Track the sources we've tried, to avoid retrying them if they fail
-
-		if (depth > 100) return setTimeout(() => { throw new Error(`Failed to load brew dependencies after ${depth} steps!`); });
-
-		const brews = await this.pGetBrew({lockToken});
-
-		const brewDepSourcesMissing = brews
-			.map(brew => {
-				const deps = brew.body._meta?.dependencies;
-				if (!deps || !Object.keys(deps).length) return [];
-				return Object.values(deps)
-					.filter(arr => arr.filter(src => brewIndex[src]));
-			})
-			.flat()
-			.unique()
-			.filter(src => !brews.some(brew => (brew._meta?.sources || []).some(it => it.json === src)))
-			.filter(src => !seenSources.has(src));
-
-		if (!brewDepSourcesMissing.length) return;
-
-		for (const src of brewDepSourcesMissing) {
-			seenSources.add(src);
-			const brewUrl = DataUtil.brew.getFileUrl(brewIndex[src], urlRoot);
-			await this.pAddBrewFromUrl(brewUrl, {lockToken});
-		}
-
-		await this._pGetBrewProcessed2_pAddDepBrews({brewIndex, urlRoot, lockToken, depth: depth + 1, seenSources});
-	}
-	// endregion
-
 	/**
 	 * TODO refactor such that this is not necessary
 	 * @deprecated
@@ -382,7 +319,7 @@ class BrewUtil2 {
 
 			const out = [
 				...(await this._pGetBrewRaw({lockToken})),
-				...(await this._pGetBrew_pGetLocalBrew()),
+				...(await this._pGetBrew_pGetLocalBrew({lockToken})),
 			];
 
 			return out
@@ -393,11 +330,19 @@ class BrewUtil2 {
 		}
 	}
 
-	static async _pGetBrew_pGetLocalBrew () {
+	static async _pGetBrew_pGetLocalBrew ({lockToken} = {}) {
 		if (this._cache_brewsLocal) return this._cache_brewsLocal;
-
 		if (IS_VTT || IS_DEPLOYED || typeof window === "undefined") return this._cache_brewsLocal = [];
 
+		try {
+			await this._LOCK.pLock({token: lockToken});
+			return (await this._pGetBrew_pGetLocalBrew_());
+		} finally {
+			this._LOCK.unlock();
+		}
+	}
+
+	static async _pGetBrew_pGetLocalBrew_ () {
 		// auto-load from `homebrew/`, for custom versions of the site
 		const indexLocal = await DataUtil.loadJSON(`${Renderer.get().baseUrl}${VeCt.JSON_HOMEBREW_INDEX}`);
 		if (!indexLocal?.toImport?.length) return this._cache_brewsLocal = [];
@@ -519,6 +464,76 @@ class BrewUtil2 {
 		return [...brews, ...brewsToAdd];
 	}
 
+	static async _pAddBrewDependencies ({brewDocs, brewsRaw = null, brewsRawLocal = null, lockToken}) {
+		try {
+			lockToken = await this._LOCK.pLock({token: lockToken});
+			return (await this._pAddBrewDependencies_({brewDocs, brewsRaw, brewsRawLocal, lockToken}));
+		} finally {
+			this._LOCK.unlock();
+		}
+	}
+
+	static async _pAddBrewDependencies_ ({brewDocs, brewsRaw = null, brewsRawLocal = null, lockToken}) {
+		const brewIndex = await DataUtil.brew.pLoadSourceIndex();
+		const urlRoot = await this.pGetCustomUrl();
+
+		const toLoad = [];
+		const out = [];
+		const loaded = new Set();
+
+		brewsRaw = brewsRaw || await this._pGetBrewRaw({lockToken});
+		brewsRawLocal = brewsRawLocal || await this._pGetBrew_pGetLocalBrew({lockToken});
+
+		const trackLoaded = brew => (brew.body._meta?.sources || [])
+			.filter(src => src.json)
+			.forEach(src => loaded.add(src.json));
+		brewsRaw.forEach(brew => trackLoaded(brew));
+		brewsRawLocal.forEach(brew => brewsRawLocal(brew));
+
+		brewDocs.forEach(brewDoc => toLoad.push(...this._getBrewDependencySources({brewDoc, brewIndex})));
+
+		while (toLoad.length) {
+			const src = toLoad.pop();
+			if (loaded.has(src)) continue;
+			loaded.add(src);
+
+			const url = DataUtil.brew.getFileUrl(brewIndex[src], urlRoot);
+			const brewDocDep = await this._pGetBrewDocFromUrl({url});
+			out.push(brewDocDep);
+			trackLoaded(brewDocDep);
+		}
+
+		return out;
+	}
+
+	static _PROPS_DEPS = ["dependencies", "includes"];
+	static _PROPS_DEPS_DEEP = ["otherSources"];
+
+	static _getBrewDependencySources ({brewDoc, brewIndex}) {
+		const out = new Set();
+
+		this._PROPS_DEPS.forEach(prop => {
+			const obj = brewDoc.body._meta?.[prop];
+			if (!obj || !Object.keys(obj).length) return;
+			Object.values(obj)
+				.flat()
+				.filter(src => brewIndex[src])
+				.forEach(src => out.add(src));
+		});
+
+		this._PROPS_DEPS_DEEP.forEach(prop => {
+			const obj = brewDoc.body._meta?.[prop];
+			if (!obj || !Object.keys(obj).length) return;
+			return Object.values(obj)
+				.map(objSub => Object.keys(objSub))
+				.flat()
+				.filter(src => brewIndex[src])
+				.forEach(src => out.add(src));
+		});
+
+		return out;
+	}
+
 	static async pAddBrewFromUrl (url, {lockToken, isLazy} = {}) {
 		try {
 			return (await this._pAddBrewFromUrl({url, lockToken, isLazy}));
@@ -529,10 +544,13 @@ class BrewUtil2 {
 		return [];
 	}
 
-	static async _pAddBrewFromUrl ({url, lockToken, isLazy}) {
+	static async _pGetBrewDocFromUrl ({url}) {
 		const json = await DataUtil.loadRawJSON(url);
+		return this._getBrewDoc({json, url, filename: UrlUtil.getFilename(url)});
+	}
 
-		const brewDoc = this._getBrewDoc({json, url, filename: UrlUtil.getFilename(url)});
+	static async _pAddBrewFromUrl ({url, lockToken, isLazy}) {
+		const brewDoc = await this._pGetBrewDocFromUrl({url});
 
 		if (isLazy) {
 			try {
@@ -545,34 +563,46 @@ class BrewUtil2 {
 			return [brewDoc];
 		}
 
+		const brewDocs = [brewDoc];
 		try {
 			lockToken = await this._LOCK.pLock({token: lockToken});
 			const brews = MiscUtil.copy(await this._pGetBrewRaw({lockToken}));
-			const brewsNxt = this._getNextBrews(brews, [brewDoc]);
+
+			const brewDocsDependencies = await this._pAddBrewDependencies({brewDocs: [brewDoc], brewsRaw: brews, lockToken});
+			brewDocs.push(...brewDocsDependencies);
+
+			const brewsNxt = this._getNextBrews(brews, brewDocs);
 			await this.pSetBrew(brewsNxt, {lockToken});
 		} finally {
 			this._LOCK.unlock();
 		}
 
-		return [brewDoc];
+		return brewDocs;
 	}
 
 	static async pAddBrewsFromFiles (files) {
 		try {
-			return (await this._pAddBrewsFromFiles({files}));
+			const lockToken = await this._LOCK.pLock();
+			return (await this._pAddBrewsFromFiles({files, lockToken}));
 		} catch (e) {
 			JqueryUtil.doToast({type: "danger", content: `Failed to load homebrew from file(s)! ${VeCt.STR_SEE_CONSOLE}`});
 			setTimeout(() => { throw e; });
+		} finally {
+			this._LOCK.unlock();
 		}
 		return [];
 	}
 
-	static async _pAddBrewsFromFiles ({files}) {
+	static async _pAddBrewsFromFiles ({files, lockToken}) {
 		const brewDocs = files.map(file => this._getBrewDoc({json: file.json, filename: file.name}));
 
-		const brews = MiscUtil.copy(await this._pGetBrewRaw());
+		const brews = MiscUtil.copy(await this._pGetBrewRaw({lockToken}));
+
+		const brewDocsDependencies = await this._pAddBrewDependencies({brewDocs, brewsRaw: brews, lockToken});
+		brewDocs.push(...brewDocsDependencies);
+
 		const brewsNxt = this._getNextBrews(brews, brewDocs);
-		await this.pSetBrew(brewsNxt);
+		await this.pSetBrew(brewsNxt, {lockToken});
 
 		return brewDocs;
 	}
@@ -1194,7 +1224,7 @@ class BrewUtil2 {
 		await [...Omnidexer.TO_INDEX__FROM_INDEX_JSON, ...Omnidexer.TO_INDEX]
 			.filter(ti => ti.alternateIndexes && (brew[ti.listProp] || []).length)
 			.pSerialAwaitMap(async arbiter => {
-				Object.keys(arbiter.alternateIndexes)
+				await Object.keys(arbiter.alternateIndexes)
 					.filter(prop => prop === altProp)
 					.pSerialAwaitMap(async prop => {
 						await indexer.pAddToIndex(arbiter, brew, {alt: arbiter.alternateIndexes[prop]});

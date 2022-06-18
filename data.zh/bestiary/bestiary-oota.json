@@ -10,7 +10,10 @@
 			"monster": {
 				"MTF": "OotA"
 			}
-		}
+		},
+		"internalCopies": [
+			"monster"
+		]
 	},
 	"monster": [
 		{
@@ -724,6 +727,180 @@
 				"invisible"
 			],
 			"hasToken": true
+		},
+		{
+			"name": "Derro",
+			"source": "OotA",
+			"page": 224,
+			"reprintedAs": [
+				"Derro|MTF"
+			],
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"derro"
+				]
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item leather armor|PHB}"
+					]
+				}
+			],
+			"hp": {
+				"average": 13,
+				"formula": "3d6 + 3"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 9,
+			"dex": 14,
+			"con": 12,
+			"int": 11,
+			"wis": 5,
+			"cha": 9,
+			"skill": {
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 7,
+			"languages": [
+				"Dwarvish",
+				"Undercommon"
+			],
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Insanity",
+					"entries": [
+						"德罗在对被（%0%）或（%1%）的救赎上有优势。"
+					]
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"德罗人对法术和其他魔法效果的救赎有优势。"
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"在阳光下时，德鲁在攻击卷轴以及依靠视觉的智慧（感知）检查上都处于劣势。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Hooked Shortspear",
+					"entries": [
+						"{@atk mw} {@hit 2}击中，到达5英尺，一个目标。{@h}1 ({@damage 1d4 - 1})穿刺伤害。如果目标是生物，德鲁可以选择不造成伤害，而是尝试绊倒目标，在这种情况下，目标必须在{@dc 9}力量投掷中成功，否则会跌倒{@condition prone}。"
+					]
+				},
+				{
+					"name": "Light Repeating Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 4}击中，范围40/160英尺，一个目标。{@h}6 ({@damage 1d8 + 2})穿刺伤害。"
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Resistance",
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"D",
+				"U"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Derro Savant",
+			"source": "OotA",
+			"page": 224,
+			"reprintedAs": [
+				"Derro Savant|MTF"
+			],
+			"_copy": {
+				"name": "Derro",
+				"source": "OotA"
+			},
+			"hp": {
+				"average": 49,
+				"formula": "11d6 + 11"
+			},
+			"cha": 14,
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"德罗人是一个5级的施法者。它的法术能力是魅力（法术救赎（%0%），用法术攻击命中率（%1%））。德罗人知道以下的巫师法术。"
+					],
+					"spells": {
+						"0": {
+							"spells": [
+								"{@spell acid splash}",
+								"{@spell mage hand}",
+								"{@spell message}",
+								"{@spell ray of frost}"
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								"{@spell burning hands}",
+								"{@spell chromatic orb}",
+								"{@spell sleep}"
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								"{@spell invisibility}",
+								"{@spell spider climb}"
+							]
+						},
+						"3": {
+							"slots": 2,
+							"spells": [
+								"{@spell blink}",
+								"{@spell lightning bolt}"
+							]
+						}
+					},
+					"ability": "cha"
+				}
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Droki",
@@ -1781,7 +1958,8 @@
 			"speed": {
 				"walk": 25
 			},
-			"hasToken": true
+			"hasToken": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Ghazrim DuLoc",
@@ -1935,7 +2113,9 @@
 			"languages": [
 				"telepathy 60 ft."
 			],
-			"hasToken": true
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Grazilaxx",
@@ -3724,7 +3904,7 @@
 				"N"
 			],
 			"skill": {
-				"acrobatics": "+3",
+				"acrobatics": "+6",
 				"athletics": "+3",
 				"stealth": "+6"
 			},
@@ -4239,6 +4419,7 @@
 				"P"
 			],
 			"miscTags": [
+				"HPR",
 				"MW"
 			],
 			"hasToken": true,
@@ -4356,6 +4537,7 @@
 				"CC"
 			],
 			"miscTags": [
+				"HPR",
 				"MW"
 			],
 			"hasToken": true,
@@ -4848,7 +5030,7 @@
 				"N"
 			],
 			"skill": {
-				"acrobatics": "+3",
+				"acrobatics": "+6",
 				"athletics": "+3",
 				"stealth": "+6"
 			},

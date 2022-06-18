@@ -82,8 +82,8 @@ class RenderBestiary {
 		${RenderBestiary._getRenderedSection({mon, prop: "bonus", entries: mon.bonus})}` : ""}
 		${mon.reaction ? `${this._getRenderedSectionHeader({mon, title: "Reactions", prop: "reaction"})}
 		${RenderBestiary._getRenderedSection({mon, prop: "reaction", entries: mon.reaction})}` : ""}
-		${mon.legendary ? `${this._getRenderedSectionHeader({mon, title: "Legendary Actions", prop: "legendary", fnGetHeader: Renderer.monster.getLegendaryActionIntro.bind(Renderer.monster)})}
-		${RenderBestiary._getRenderedSection({mon, prop: "legendary", entries: mon.legendary})}` : ""}
+		${mon.legendary ? `${this._getRenderedSectionHeader({mon, title: "Legendary Actions", prop: "legendary"})}
+		${RenderBestiary._getRenderedSection({mon, prop: "legendary", entries: mon.legendary, fnGetHeader: Renderer.monster.getLegendaryActionIntro.bind(Renderer.monster)})}` : ""}
 		${mon.mythic ? `${this._getRenderedSectionHeader({mon, title: "Mythic Actions", prop: "mythic"})}
 		${RenderBestiary._getRenderedSection({mon, prop: "mythic", entries: mon.mythic})}` : ""}
 

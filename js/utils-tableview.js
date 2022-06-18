@@ -69,7 +69,7 @@ class UtilsTableview {
 		if (typeof filter === "object" && filter.generator) filter = filter.generator();
 
 		let stack = `<div class="overflow-y-auto w-100 h-100 ve-flex-col overflow-x-auto">
-			<table class="table-striped stats stats--book stats--book-large min-w-100 w-initial">
+			<table class="w-100 table-striped stats stats--book stats--book-large min-w-100 w-initial">
 				<thead>
 					<tr>${Object.values(colTransforms).map((c, i) => `<th data-col="${i}" class="px-2" colspan="${c.flex || 1}">${c.name}</th>`).join("")}</tr>
 				</thead>
