@@ -35,7 +35,9 @@ class RenderRaces {
 	}
 
 	static _getHeightAndWeightPart (race) {
-		const ele = e_({outer: Renderer.race.getHeightAndWeightPart(race)});
+		const outer = Renderer.race.getHeightAndWeightPart(race);
+		if (!outer) return null;
+		const ele = e_({outer});
 		Renderer.race.bindListenersHeightAndWeight(race, ele);
 		return ele;
 	}

@@ -2095,9 +2095,14 @@
 		"txt": "- Added Vecna, from the Vecna Dossier (thanks @ Lyra)\n- Added tokens for all creatures\n- (Brew) Added prompt to convert brew to editable when trying to edit non-editable brew in Homebrew Builder\n- (Brew) Fixed \"creature\" being the only usable embedded statblock type\n- (Brew) fixed formatting of embedded statblocks within non-standard rendering modes\n- (Fixed typos/added tags)"
 	},
 	{
-		"ver": "1.159.2",
+		"ver": "1.160.0",
 		"date": "2022-06-17",
 		"title": "Couple Brewskis",
 		"txt": "- Updated MPMM tokens to latest Roll20 versions\n- Added \"Has HP Reduction\" to Bestiary \"Miscellaneous\" filter\n- Skills and senses can now be found in Omnisearch\n- Added race height/weight information to hover windows\n- Fixed crash when loading the DM Screen with content blacklisted\n- (Brew) Dependencies declared in `\"_meta\"` (whether by `\"dependencies\"` or `\"includes\"`) are now eagerly loaded when loading a brew, rather than loaded dynamically with every page load. This improves stability by snapshotting all related brews at load time, avoiding cases where a remote brew could receive an update and thereby break links or introduce unwanted content. Additionally, this fixes minor visual issues (e.g. missing source colors) in linked content.\n- (Brew) Split \"skills\" and \"senses\" data out from `\"_meta\"` into standalone entity types (`\"skill\"` and `\"sense\"` arrays, respectively), bringing them in line with other data types. Note that `@skill`/`@sense` tags may now require `|<source>` to be specified.\n- (Brew) `\"data<X>\"`/`\"statblock\"` types now render without \"inset-like\" backgrounds by default, to better match common use cases. To revert to the old functionality, use `\"style\": \"inset\"`.\n- (Brew) Homebrew Builder now remembers some meta-state (e.g. whether PB should be auto-calculated) when creating a new entity with the \"New\" button. SHIFT-click the button to access the old functionality.\n- (Brew) Fixed Creature Text Converter failing to parse some well-known ability score layouts\n- (Brew) Fixed navbar adventure/book sections failing to render in the presence of bad homebrew\n- (Brew) Fixed race condition preventing homebrew Omnisearch indexes from fully loading\n- (Fixed typos/added tags)"
+	},
+	{
+		"ver": "1.160.1",
+		"date": "2022-06-18",
+		"txt": "- Fixed rendering of races which do not have height/weight info"
 	}
 ]

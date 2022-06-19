@@ -5162,6 +5162,9 @@ Renderer.race = {
 	},
 
 	bindListenersHeightAndWeight (race, ele) {
+		if (!race.heightAndWeight) return;
+		if (race._isBaseRace) return;
+
 		const $render = $(ele);
 
 		const $dispResult = $render.find(`.race__disp-result-height-weight`);
