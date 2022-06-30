@@ -6,8 +6,8 @@ IS_NODE = typeof module !== "undefined";
 if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
-IS_DEPLOYED="v1.152.4.1656521187";
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.160.1"/* 5ETOOLS_VERSION__CLOSE */;
+IS_DEPLOYED="v1.152.4.1656608946";
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.161.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -1185,6 +1185,9 @@ MiscUtil = {
 		return obj1;
 	},
 
+	/**
+	 * @deprecated
+	 */
 	mix: (superclass) => new MiscUtil._MixinBuilder(superclass),
 	_MixinBuilder: function (superclass) {
 		this.superclass = superclass;
@@ -1317,20 +1320,45 @@ MiscUtil = {
 		}
 	},
 
-	findCommonPrefix (strArr) {
+	findCommonPrefix (strArr, {isRespectWordBoundaries} = {}) {
+		if (isRespectWordBoundaries) {
+			let prefixTks = null;
+			strArr
+				.map(str => str.split(" "))
+				.forEach(tks => {
+					if (prefixTks == null) {
+						prefixTks = tks;
+						return;
+					}
+
+					const minLen = Math.min(tks.length, prefixTks.length);
+					for (let i = 0; i < minLen; ++i) {
+						const cp = prefixTks[i];
+						const cs = tks[i];
+						if (cp !== cs) {
+							prefixTks = prefixTks.slice(0, i);
+							break;
+						}
+					}
+				});
+
+			return `${prefixTks.join(" ")} `;
+		}
+
 		let prefix = null;
 		strArr.forEach(s => {
 			if (prefix == null) {
 				prefix = s;
-			} else {
-				const minLen = Math.min(s.length, prefix.length);
-				for (let i = 0; i < minLen; ++i) {
-					const cp = prefix[i];
-					const cs = s[i];
-					if (cp !== cs) {
-						prefix = prefix.substring(0, i);
-						break;
-					}
+				return;
+			}
+
+			const minLen = Math.min(s.length, prefix.length);
+			for (let i = 0; i < minLen; ++i) {
+				const cp = prefix[i];
+				const cs = s[i];
+				if (cp !== cs) {
+					prefix = prefix.substring(0, i);
+					break;
 				}
 			}
 		});
@@ -1542,7 +1570,9 @@ MiscUtil = {
 							if (obj != null) {
 								const out = new Array(obj.length);
 								for (let i = 0, len = out.length; i < len; ++i) {
+									if (stack) stack.push(obj);
 									out[i] = fn(obj[i], primitiveHandlers, lastKey, stack);
+									if (stack) stack.pop();
 									if (out[i] === VeCt.SYM_WALKER_BREAK) return out[i];
 								}
 								if (!opts.isNoModification) obj = out;
@@ -1557,8 +1587,8 @@ MiscUtil = {
 						if (opts.isDepthFirst) {
 							if (stack) stack.push(obj);
 							const flag = doObjectRecurse(obj, primitiveHandlers, stack);
-							if (flag === VeCt.SYM_WALKER_BREAK) return flag;
 							if (stack) stack.pop();
+							if (flag === VeCt.SYM_WALKER_BREAK) return flag;
 
 							if (primitiveHandlers.object) {
 								const out = MiscUtil._getWalker_applyHandlers({opts, handlers: primitiveHandlers.object, obj, lastKey, stack});
@@ -1577,7 +1607,9 @@ MiscUtil = {
 							if (obj == null) {
 								if (!opts.isAllowDeleteObjects) throw new Error(`Object handler(s) returned null!`);
 							} else {
+								if (stack) stack.push(obj);
 								const flag = doObjectRecurse(obj, primitiveHandlers, stack);
+								if (stack) stack.pop();
 								if (flag === VeCt.SYM_WALKER_BREAK) return flag;
 							}
 						}
@@ -2870,7 +2902,6 @@ DataUtil = {
 
 					sourceIds.forEach(sourceId => loadedSourceIds.add(sourceId));
 
-					// This loads the brew as a side-effect
 					const includesData = await Promise.all(sourceIds.map(sourceId => DataUtil.pLoadByMeta(dataProp, sourceId)));
 
 					const flatIncludesData = includesData.map(dd => dd[dataProp]).flat();
@@ -3202,7 +3233,11 @@ DataUtil = {
 		async _pMergeCopy (impl, page, entryList, entry, options) {
 			if (!entry._copy) return;
 
+			const hashCurrent = UrlUtil.URL_TO_HASH_BUILDER[page](entry);
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[page](entry._copy);
+
+			if (hashCurrent === hash) throw new Error(`${hashCurrent} _copy self-references! This is a bug!`);
+
 			const it = impl._mergeCache[hash] || DataUtil.generic._pMergeCopy_search(impl, page, entryList, entry, options);
 
 			if (!it) {
@@ -3233,6 +3268,7 @@ DataUtil = {
 			});
 		},
 
+		COPY_ENTRY_PROPS: ["action", "bonus", "reaction", "trait", "legendary", "mythic", "variant", "spellcasting", "legendaryHeader"],
 		_applyCopy (impl, copyFrom, copyTo, traitData, options = {}) {
 			if (options.doKeepCopy) copyTo.__copy = MiscUtil.copy(copyFrom);
 
@@ -3719,7 +3755,7 @@ DataUtil = {
 									case "name": return copyTo.name;
 									case "short_name":
 									case "title_short_name": {
-										return Renderer.monster.getShortName(copyTo, parts[0] === "title_short_name");
+										return Renderer.monster.getShortName(copyTo, {isTitleCase: parts[0] === "title_short_name"});
 									}
 									case "spell_dc": {
 										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`${msgPtFailed} Unknown ability score "${parts[1]}"`);
@@ -3748,7 +3784,7 @@ DataUtil = {
 				});
 
 				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
-					if (prop === "*") doMod(modInfos, "action", "bonus", "reaction", "trait", "legendary", "mythic", "variant", "spellcasting", "legendaryHeader");
+					if (prop === "*") doMod(modInfos, ...DataUtil.generic.COPY_ENTRY_PROPS);
 					else if (prop === "_") doMod(modInfos);
 					else doMod(modInfos, prop);
 				});

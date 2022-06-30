@@ -625,13 +625,13 @@ AbilityScoreFilter.FilterItem = class {
 	getMiniPillDisplayText () {
 		if (this._isAnyIncrease) return `+Any ${Parser.attAbvToFull(this._ability)}`;
 		if (this._isAnyDecrease) return `\u2012Any ${Parser.attAbvToFull(this._ability)}`;
-		return `${UiUtil.intToBonus(this._modifier)} ${Parser.attAbvToFull(this._ability)}`;
+		return `${UiUtil.intToBonus(this._modifier, {isPretty: true})} ${Parser.attAbvToFull(this._ability)}`;
 	}
 
 	getPillDisplayHtml () {
 		if (this._isAnyIncrease) return `+Any`;
 		if (this._isAnyDecrease) return `\u2012Any`;
-		return UiUtil.intToBonus(this._modifier);
+		return UiUtil.intToBonus(this._modifier, {isPretty: true});
 	}
 };
 

@@ -17227,7 +17227,7 @@
 							"{@spell tongues}"
 						],
 						"1e": [
-							"{@spell conjure elemental} (earth elemental only)",
+							"{@spell conjure elemental} ({@creature earth elemental} only)",
 							"{@spell gaseous form}",
 							"{@spell invisibility}",
 							"{@spell phantasmal killer}",
@@ -22167,7 +22167,7 @@
 							"{@spell tongues}"
 						],
 						"1e": [
-							"{@spell conjure elemental} (fire elemental only)",
+							"{@spell conjure elemental} ({@creature fire elemental} only)",
 							"{@spell gaseous form}",
 							"{@spell invisibility}",
 							"{@spell major image}",
@@ -41821,7 +41821,7 @@
 							"{@spell water walk}"
 						],
 						"1e": [
-							"{@spell conjure elemental} (water elemental only)",
+							"{@spell conjure elemental} ({@creature water elemental} only)",
 							"{@spell control water}",
 							"{@spell gaseous form}",
 							"{@spell invisibility}",
@@ -60602,7 +60602,7 @@
 						}
 					],
 					"_version": {
-						"name": "Toll (Loathsome Limbs)",
+						"name": "Troll (Loathsome Limbs)",
 						"addHeadersAs": "trait"
 					}
 				}
@@ -60641,7 +60641,108 @@
 			],
 			"hasToken": true,
 			"hasFluff": true,
-			"hasFluffImages": true
+			"hasFluffImages": true,
+			"_versions": [
+				{
+					"name": "Troll (Loathsome Limb; Severed Arm)",
+					"source": "MM",
+					"_mod": {
+						"trait": [
+							{
+								"mode": "removeArr",
+								"names": "Keen Smell"
+							}
+						]
+					},
+					"size": "T",
+					"ac": [
+						{
+							"ac": 13,
+							"from": [
+								"natural armor"
+							]
+						}
+					],
+					"hp": {
+						"special": "10"
+					},
+					"speed": {
+						"walk": 5
+					},
+					"skill": null,
+					"senses": null,
+					"languages": null,
+					"action": [
+						{
+							"name": "Claw",
+							"entries": [
+								"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}11 ({@damage 2d6 + 4}) slashing damage. This attack is made with disadvantage unless the troll can see the arm and its target."
+							]
+						}
+					],
+					"variant": null
+				},
+				{
+					"name": "Troll (Loathsome Limb; Severed Head)",
+					"source": "MM",
+					"size": "T",
+					"ac": [
+						{
+							"ac": 13,
+							"from": [
+								"natural armor"
+							]
+						}
+					],
+					"hp": {
+						"special": "10"
+					},
+					"speed": {
+						"walk": 0
+					},
+					"action": [
+						{
+							"name": "Bite",
+							"entries": [
+								"{@atk mw} {@hit 7} to hit, reach 5 ft., one target. {@h}7 ({@damage 1d6 + 4}) piercing damage."
+							]
+						}
+					],
+					"variant": null
+				},
+				{
+					"name": "Troll (Loathsome Limb; Severed Leg)",
+					"source": "MM",
+					"_mod": {
+						"trait": [
+							{
+								"mode": "removeArr",
+								"names": "Keen Smell"
+							}
+						]
+					},
+					"size": "T",
+					"ac": [
+						{
+							"ac": 13,
+							"from": [
+								"natural armor"
+							]
+						}
+					],
+					"hp": {
+						"special": "10"
+					},
+					"speed": {
+						"walk": 5
+					},
+					"skill": null,
+					"senses": null,
+					"languages": null,
+					"action": null,
+					"variant": null
+				}
+			]
 		},
 		{
 			"name": "Twig Blight",

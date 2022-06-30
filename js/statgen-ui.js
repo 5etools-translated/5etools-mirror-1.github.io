@@ -1203,7 +1203,7 @@ class StatGenUi extends BaseComponent {
 
 			$ptChooseFrom = $$`<div class="ve-flex-col mr-3">
 				<div class="my-1 statgen-pb__header statgen-pb__header--choose-from ve-flex-vh-center">
-					<div class="${count !== 1 ? `mr-1` : ""}">${UiUtil.intToBonus(amount)}</div>${count !== 1 ? `<div class="ve-small ve-muted">(x${count})</div>` : ""}
+					<div class="${count !== 1 ? `mr-1` : ""}">${UiUtil.intToBonus(amount, {isPretty: true})}</div>${count !== 1 ? `<div class="ve-small ve-muted">(x${count})</div>` : ""}
 				</div>
 				${$wrpsChoose}
 			</div>`;
@@ -1246,7 +1246,7 @@ class StatGenUi extends BaseComponent {
 				});
 
 				return $$`<div class="ve-flex-col mr-3">
-					<div class="my-1 statgen-pb__header statgen-pb__header--choose-from ve-flex-vh-center">${UiUtil.intToBonus(weight)}</div>
+					<div class="my-1 statgen-pb__header statgen-pb__header--choose-from ve-flex-vh-center">${UiUtil.intToBonus(weight, {isPretty: true})}</div>
 					${$wrpsChoose}
 				</div>`;
 			});
@@ -1900,7 +1900,7 @@ StatGenUi.CompAsi = class extends BaseComponent {
 					const abilitySet = feat.ability[this._parent.state[propIxFeatAbility]];
 
 					// region Static/no choices
-					const ptsNoChoose = Parser.ABIL_ABVS.filter(ab => abilitySet[ab]).map(ab => `${Parser.attAbvToFull(ab)} ${UiUtil.intToBonus(abilitySet[ab])}`);
+					const ptsNoChoose = Parser.ABIL_ABVS.filter(ab => abilitySet[ab]).map(ab => `${Parser.attAbvToFull(ab)} ${UiUtil.intToBonus(abilitySet[ab], {isPretty: true})}`);
 					$stgFeatNoChoice.empty().toggleVe(ptsNoChoose.length).html(`<div><span class="mr-2">\u2014</span>${ptsNoChoose.join(", ")}</div>`);
 					// endregion
 
@@ -1918,13 +1918,13 @@ StatGenUi.CompAsi = class extends BaseComponent {
 							propFeatAbilityChooseFrom,
 							{
 								values: abilitySet.choose.from,
-								fnDisplay: v => `${Parser.attAbvToFull(v)} ${UiUtil.intToBonus(amount)}`,
+								fnDisplay: v => `${Parser.attAbvToFull(v)} ${UiUtil.intToBonus(amount, {isPretty: true})}`,
 								count,
 							},
 						);
 						fnsCleanupFeatAbility.push(() => cleanupAsiPicker());
 
-						$stgFeatChooseAsiFrom.append(`<div><span class="mr-2">\u2014</span>choose ${count > 1 ? `${count} ` : ""}${UiUtil.intToBonus(amount)}</div>`);
+						$stgFeatChooseAsiFrom.append(`<div><span class="mr-2">\u2014</span>choose ${count > 1 ? `${count} ` : ""}${UiUtil.intToBonus(amount, {isPretty: true})}</div>`);
 
 						rowMetas.forEach(meta => {
 							meta.$cb.change(() => this._doPulseThrottled());

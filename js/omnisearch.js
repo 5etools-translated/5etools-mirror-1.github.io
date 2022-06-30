@@ -19,12 +19,28 @@ class Omnisearch {
 
 		const $nav = $(`#navbar`);
 
-		this._$iptSearch = $(`<input class="form-control search omni__input" placeholder="${this._PLACEHOLDER_TEXT}" title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution.">`).disableSpellcheck();
+		const updateClearButtonDisplay = () => {
+			const isShown = !!(document.activeElement === this._$iptSearch[0] && this._$iptSearch[0].value?.length);
+			$btnClearSearch.toggleVe(isShown);
+		};
+
+		this._$iptSearch = $(`<input class="form-control search omni__input" placeholder="${this._PLACEHOLDER_TEXT}" title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution." type="search">`)
+			.disableSpellcheck()
+			.focus(() => updateClearButtonDisplay())
+			.keydown(() => updateClearButtonDisplay())
+			.blur(() => updateClearButtonDisplay());
+		const $btnClearSearch = $(`<span class="absolute glyphicon glyphicon-remove omni__btn-clear ve-hidden" style="z-index: 999999999999"></span>`)
+			.mousedown(evt => {
+				evt.stopPropagation();
+				evt.preventDefault();
+				this._$iptSearch.val("").focus();
+			});
 		const $searchSubmit = $(`<button class="btn btn-default omni__submit" tabindex="-1"><span class="glyphicon glyphicon-search"></span></button>`);
 
 		this._$searchInputWrapper = $$`
-			<div class="input-group omni__wrp-input">
+			<div class="input-group omni__wrp-input relative">
 				${this._$iptSearch}
+				${$btnClearSearch}
 				<div class="input-group-btn">
 					${$searchSubmit}
 				</div>

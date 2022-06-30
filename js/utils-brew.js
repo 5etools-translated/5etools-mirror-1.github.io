@@ -231,6 +231,7 @@ class BrewUtil2 {
 
 	static _isDirty = false;
 
+	static _brewsTemp = [];
 	static _addLazy_brewsTemp = [];
 
 	static _storage = StorageUtil;
@@ -280,7 +281,10 @@ class BrewUtil2 {
 	}
 
 	static async _pGetBrewProcessed_ ({lockToken}) {
-		const cpyBrews = MiscUtil.copy(await this.pGetBrew({lockToken}));
+		const cpyBrews = MiscUtil.copy([
+			...await this.pGetBrew({lockToken}),
+			...this._brewsTemp,
+		]);
 		if (!cpyBrews.length) return this._cache_brewsProc = {};
 
 		await this._pGetBrewProcessed_pDoBlacklistExtension({cpyBrews});
@@ -412,6 +416,14 @@ class BrewUtil2 {
 		return this._storage.pGet(this._STORAGE_KEY);
 	}
 
+	static getBrewRawTemp () { return this._brewsTemp; }
+
+	static setBrewRawTemp (val) {
+		this._mutBrewsForSet(val);
+		this._cache_brewsProc = null;
+		this._brewsTemp = val;
+	}
+
 	static async _pGetMigrationInfo () {
 		const version = await this._storage.pGet(this._STORAGE_KEY_MIGRATION_VERSION);
 
@@ -438,14 +450,18 @@ class BrewUtil2 {
 	}
 
 	static async _pSetBrew_ ({val, isInitialMigration}) {
-		if (!(val instanceof Array)) throw new Error(`Homebrew array must be an array!`);
-
-		this._setBrewMetas(val.map(brew => this._getBrewDocReduced(brew)));
+		this._mutBrewsForSet(val);
 
 		if (!isInitialMigration) this._cache_brewsProc = null;
 		await this._storage.pSet(this._STORAGE_KEY, val);
 
 		if (!isInitialMigration) BrewUtil2._isDirty = true;
+	}
+
+	static _mutBrewsForSet (val) {
+		if (!(val instanceof Array)) throw new Error(`Homebrew array must be an array!`);
+
+		this._setBrewMetas(val.map(brew => this._getBrewDocReduced(brew)));
 	}
 
 	static _getBrewId (brew) {
@@ -488,7 +504,7 @@ class BrewUtil2 {
 			.filter(src => src.json)
 			.forEach(src => loaded.add(src.json));
 		brewsRaw.forEach(brew => trackLoaded(brew));
-		brewsRawLocal.forEach(brew => brewsRawLocal(brew));
+		brewsRawLocal.forEach(brew => trackLoaded(brew));
 
 		brewDocs.forEach(brewDoc => toLoad.push(...this._getBrewDependencySources({brewDoc, brewIndex})));
 
@@ -613,7 +629,34 @@ class BrewUtil2 {
 	 */
 	static async pAddBrewFromMemory (json) {
 		try {
-			return (await this._pAddBrewFromMemory({json}));
+			const lockToken = await this._LOCK.pLock();
+			return (await this._pAddBrewFromMemory({json, lockToken}));
+		} catch (e) {
+			JqueryUtil.doToast({type: "danger", content: `Failed to load homebrew from pre-loaded data! ${VeCt.STR_SEE_CONSOLE}`});
+			setTimeout(() => { throw e; });
+		} finally {
+			this._LOCK.unlock();
+		}
+		return [];
+	}
+
+	static async _pAddBrewFromMemory ({json, lockToken}) {
+		const brewDoc = this._getBrewDoc({json});
+
+		const brews = MiscUtil.copy(await this._pGetBrewRaw({lockToken}));
+		const brewsNxt = this._getNextBrews(brews, [brewDoc]);
+		await this.pSetBrew(brewsNxt, {lockToken});
+
+		return [brewDoc];
+	}
+
+	/**
+	 * As above.
+	 * Note that this is sync, and should not make use of locks.
+	 */
+	static addTempBrewFromMemory (json) {
+		try {
+			return (this._addTempBrewFromMemory({json}));
 		} catch (e) {
 			JqueryUtil.doToast({type: "danger", content: `Failed to load homebrew from pre-loaded data! ${VeCt.STR_SEE_CONSOLE}`});
 			setTimeout(() => { throw e; });
@@ -621,12 +664,12 @@ class BrewUtil2 {
 		return [];
 	}
 
-	static async _pAddBrewFromMemory ({json}) {
+	static _addTempBrewFromMemory ({json}) {
 		const brewDoc = this._getBrewDoc({json});
 
-		const brews = MiscUtil.copy(await this._pGetBrewRaw());
+		const brews = MiscUtil.copy(this.getBrewRawTemp());
 		const brewsNxt = this._getNextBrews(brews, [brewDoc]);
-		await this.pSetBrew(brewsNxt);
+		this.setBrewRawTemp(brewsNxt);
 
 		return [brewDoc];
 	}

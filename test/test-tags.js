@@ -31,6 +31,7 @@ const MSG = {
 	BackgroundDataCheck: "",
 	BestiaryDataCheck: "",
 	RefTagCheck: "",
+	TestCopyCheck: "",
 };
 
 const WALKER = MiscUtil.getWalker({
@@ -1145,6 +1146,41 @@ class RefTagCheck {
 RefTagCheck._RE_TAG = /^ref[A-Z]/;
 RefTagCheck._TO_CHECK = [];
 
+class TestCopyCheck {
+	static checkFile (file, contents) {
+		if (!contents._meta) return;
+
+		const fileErrors = [];
+
+		Object.entries(contents)
+			.forEach(([prop, arr]) => {
+				if (!(arr instanceof Array)) return;
+
+				const propNoFluff = prop.replace(/Fluff$/, "");
+				const hashBuilder = UrlUtil.URL_TO_HASH_BUILDER[prop] || UrlUtil.URL_TO_HASH_BUILDER[propNoFluff];
+				if (!hashBuilder) return;
+
+				arr.forEach(ent => {
+					if (!ent._copy) return;
+
+					const hash = hashBuilder(ent);
+					const hashCopy = hashBuilder(ent._copy);
+
+					if (hash !== hashCopy) return;
+
+					fileErrors.push({prop, hash, ent});
+				});
+			});
+
+		if (!fileErrors.length) return;
+
+		MSG.TestCopyCheck += `Self-referencing _copy hashes in ${file}! See below:\n`;
+		fileErrors.forEach(({prop, hash, ent}) => {
+			MSG.TestCopyCheck += `\t${prop} "${ent.name}" with hash "${hash}"\n`;
+		});
+	}
+}
+
 async function main () {
 	await TagTestUtil.pInit();
 
@@ -1161,6 +1197,7 @@ async function main () {
 	ParsedJsonChecker.register(EscapeCharacterCheck.checkFile.bind(EscapeCharacterCheck));
 	ParsedJsonChecker.register(DuplicateEntityCheck.checkFile.bind(DuplicateEntityCheck));
 	ParsedJsonChecker.register(RefTagCheck.checkFile.bind(RefTagCheck));
+	ParsedJsonChecker.register(TestCopyCheck.checkFile.bind(TestCopyCheck));
 	ParsedJsonChecker.runAll();
 
 	ut.patchLoadJson();

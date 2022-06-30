@@ -121,7 +121,7 @@ class OptionalFeaturesPage extends ListPage {
 		$wrpTab.find(`.opt-feature-type`).remove();
 		const $wrpOptFeatType = $(`<div class="opt-feature-type"/>`).prependTo($wrpTab);
 
-		const commonPrefix = it.featureType.length > 1 ? MiscUtil.findCommonPrefix(it.featureType.map(fs => Parser.optFeatureTypeToFull(fs))) : "";
+		const commonPrefix = it.featureType.length > 1 ? MiscUtil.findCommonPrefix(it.featureType.map(fs => Parser.optFeatureTypeToFull(fs)), {isRespectWordBoundaries: true}) : "";
 		if (commonPrefix) $wrpOptFeatType.append(`${commonPrefix.trim()} `);
 
 		it.featureType.forEach((ft, i) => {

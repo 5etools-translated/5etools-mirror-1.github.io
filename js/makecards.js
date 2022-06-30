@@ -468,7 +468,7 @@ class MakeCards extends BaseComponent {
 			mon.reaction ? this._ct_section("Reactions") : null,
 			...(mon.reaction ? this._ct_renderEntries(mon.reaction, 2) : []),
 			mon.legendary ? this._ct_section("Legendary Actions") : null,
-			mon.legendary ? this._ct_text(this._ct_htmlToText(Renderer.monster.getLegendaryActionIntro(mon, renderer))) : null,
+			mon.legendary ? this._ct_text(this._ct_htmlToText(Renderer.monster.getLegendaryActionIntro(mon, {renderer}))) : null,
 			...(mon.legendary ? this._ct_renderEntries(mon.legendary, 2) : []),
 			mon.mythic ? this._ct_section("Mythic Actions") : null,
 			mon.mythic ? this._ct_text(this._ct_htmlToText(Renderer.monster.getSectionIntro(mon, {renderer, prop: "mythic"}))) : null,

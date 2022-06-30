@@ -265,7 +265,7 @@ class UiUtil {
 		return string === "true" ? true : string === "false" ? false : opts.fallbackOnNaB;
 	}
 
-	static intToBonus (int) { return `${int >= 0 ? "+" : int < 0 ? "\u2012" : ""}${Math.abs(int)}`; }
+	static intToBonus (int, {isPretty = false} = {}) { return `${int >= 0 ? "+" : int < 0 ? (isPretty ? "\u2012" : "-") : ""}${Math.abs(int)}`; }
 
 	static getEntriesAsText (entryArray) {
 		if (!entryArray || !entryArray.length) return "";
@@ -481,6 +481,13 @@ class UiUtil {
 		}
 
 		return out;
+	}
+
+	/**
+	 * Async to support external overrides; should be used in common applications.
+	 */
+	static async pGetShowModal (opts) {
+		return UiUtil.getShowModal(opts);
 	}
 
 	static _pushToModalStack (modalStackMeta) {

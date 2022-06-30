@@ -2474,7 +2474,7 @@
 	_scale_pbNote (mon, toClassLevel, state) {
 		if (!mon.pbNote) return;
 
-		mon.pbNote = mon.pbNote.replace(/equals your bonus\b/, (...m) => `${m[0]} (${UiUtil.intToBonus(state.proficiencyBonus)})`);
+		mon.pbNote = mon.pbNote.replace(/equals your bonus\b/, (...m) => `${m[0]} (${UiUtil.intToBonus(state.proficiencyBonus, {isPretty: true})})`);
 	},
 
 	State: function ({className, proficiencyBonus}) {

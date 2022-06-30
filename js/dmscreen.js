@@ -2687,6 +2687,10 @@ class AddMenu {
 		return this;
 	}
 
+	getTab ({label}) {
+		return this.tabs.find(it => it.label === label);
+	}
+
 	setActiveTab (tab) {
 		$(document.activeElement).blur();
 
@@ -3028,7 +3032,12 @@ class AddMenuSpecialTab extends AddMenuTab {
 
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
+			const $btnSwitchToEmbedTag = $(`<button class="btn btn-default btn-xxs">embed</button>`)
+				.click(() => {
+					this.menu.setActiveTab(this.menu.getTab({label: "Embed"}));
+				});
+
+			const $wrpText = $$`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, ${$btnSwitchToEmbedTag} a Google Doc or similar)</i></span></div>`.appendTo($tab);
 			const $btnText = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpText);
 			$btnText.on("click", () => {
 				this.menu.pnl.doPopulate_TextBox();
