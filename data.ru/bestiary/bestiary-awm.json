@@ -1,0 +1,858 @@
+{
+	"monster": [
+		{
+			"name": "Big Water Slurpent",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 29,
+			"size": [
+				"L"
+			],
+			"type": "elemental",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"special": "58"
+			},
+			"speed": {
+				"walk": 0,
+				"swim": 60
+			},
+			"str": 17,
+			"dex": 16,
+			"con": 13,
+			"int": 11,
+			"wis": 10,
+			"cha": 10,
+			"passive": 0,
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Invisible in Water",
+					"entries": [
+						"Большой водяной слёрпент составляет {@condition invisible} при полном погружении в воду."
+					]
+				},
+				{
+					"name": "Water Bound",
+					"entries": [
+						"Большой водный спрут умирает, если покидает воду, к которой привязан, или если эта вода разрушена."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Constrict",
+					"entries": [
+						"{@atk mw} {@hit 5} попадание, одна цель. {@h}13 ({@damage 3d6+3}) повреждений от удара. Если цель среднего или меньшего размера, она {@condition grappled} (побег {@dc 13}) подтягивается на 5 футов к большому водяному змею. Пока захват не закончится, цель находится в состоянии {@condition restrained}, большой водяной змей пытается утопить ее, и большой водяной змей не может зажать другую цель."
+					]
+				}
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled",
+				"invisible",
+				"restrained"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Birdsquirrel",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 30,
+			"size": [
+				"T"
+			],
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"special": "10"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 30,
+				"canHover": false,
+				"climb": 20
+			},
+			"str": 6,
+			"dex": 14,
+			"con": 13,
+			"int": 4,
+			"wis": 12,
+			"cha": 6,
+			"passive": 0,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"Birdsquirrel имеет преимущество при броске атаки против существа, если хотя бы один из союзников Birdsquirrel находится в пределах 5 футов от существа, а союзник - нет {@condition incapacitated}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Birdsquirrel делает две атаки: одну с помощью укуса и одну с помощью когтей."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} попадание, радиус действия 5 футов, одна цель. {@h}3 ({@damage 1d6+2}) колющего урона."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 4} попадание, радиус действия 5 футов, одна цель. {@h}1 ({@damage 1d4+2}) косой урон."
+					]
+				}
+			],
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Boontu Monkey",
+			"source": "AWM",
+			"page": 30,
+			"size": [
+				"M"
+			],
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"special": "3"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 8,
+			"dex": 14,
+			"con": 11,
+			"int": 5,
+			"wis": 12,
+			"cha": 6,
+			"passive": 0,
+			"cr": "0",
+			"trait": [
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"Обезьяна Бунту имеет преимущество при броске атаки против существа, если хотя бы один из союзников обезьяны Бунту находится в пределах 5 футов от существа, а союзник - нет {@condition incapacitated}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 1} попадание, радиус действия 5 футов, одна цель. {@h}1 ({@damage 1d4 ‒1}) колющий урон."
+					]
+				}
+			],
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Crystal Cave Merfolk",
+			"source": "AWM",
+			"page": 31,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"merfolk"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"special": "11"
+			},
+			"speed": {
+				"walk": 10,
+				"swim": 40
+			},
+			"str": 10,
+			"dex": 13,
+			"con": 12,
+			"int": 11,
+			"wis": 11,
+			"cha": 12,
+			"passive": 0,
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Мерфолки могут дышать воздухом и водой."
+					]
+				},
+				{
+					"name": "Siren Song",
+					"entries": [
+						"Прекрасные поющие голоса очаровывают всех гуманоидов или великанов в радиусе 300 футов. Цели должны успешно пройти {@dc 11} бросок спасброска мудрости или быть {@condition charmed} до окончания песни."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 2} попадание, одна цель. {@h}3 ({@damage 1d6}) колющего урона."
+					]
+				}
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Dankwood Hag",
+			"source": "AWM",
+			"page": 31,
+			"size": [
+				"M"
+			],
+			"type": "fey",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				17
+			],
+			"hp": {
+				"special": "82"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 12,
+			"con": 16,
+			"int": 13,
+			"wis": 14,
+			"cha": 14,
+			"passive": 0,
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"footerEntries": [
+						"The hag's spellcasting ability is Charisma",
+						"(spell save {@dc 12}). It can innately cast the following spells:"
+					],
+					"will": [
+						"{@spell dancing lights}",
+						"{@spell minor illusion}",
+						"{@spell vicious mockery}"
+					],
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Карга может дышать воздухом и водой."
+					]
+				},
+				{
+					"name": "Mimicry (Green Hag)",
+					"entries": [
+						"Карга может подражать звукам животных и голосам гуманоидов. Существо, которое слышит эти звуки, может определить, что это имитация, при успешной {@dc 14} проверке мудрости ({@skill Insight})."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Illusory Appearance",
+					"entries": [
+						"Карга покрывает себя магической иллюзией, которая позволяет ей выглядеть как другое существо ее общего размера и формы. Иллюзия прекращается по желанию ведьмы или если она умирает. Проверка {@dc 20} интеллекта (расследование) раскроет маскировку ведьмы."
+					]
+				},
+				{
+					"name": "Invisible Passage",
+					"entries": [
+						"Карга магически превращается {@condition invisible}, пока не атакует или не произнесет заклинание, или пока не закончится ее концентрация. Пока {@condition invisible}, она не оставляет физических следов своего перемещения, и ее можно отследить только с помощью магии."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 6} попадание, одна цель. {@h}17 ({@damage 2d8 + 4}) косой урон."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"damageTags": [
+				"S"
+			],
+			"damageTagsSpell": [
+				"Y"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Dum-Dum Goblin",
+			"source": "AWM",
+			"page": 32,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"goblinoid"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				7
+			],
+			"hp": {
+				"special": "7"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 8,
+			"dex": 14,
+			"con": 10,
+			"int": 10,
+			"wis": 8,
+			"cha": 8,
+			"passive": 0,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Nimble Escape",
+					"entries": [
+						"Гоблин может совершить действие {@action Disengage} или {@action Hide} в качестве бонусного действия на каждом из своих ходов."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Catch me if you can!",
+					"entries": [
+						"Гоблины Дум-Дум предпочитают бежать и прятаться перед боем! Прежде чем атаковать их, необходимо сделать проверку ловкости {@dc 15}."
+					]
+				},
+				{
+					"name": "Scimitar",
+					"entries": [
+						"{@atk mw} {@hit 4} попадание, одна цель. {@h}3 ({@damage 1d6 +2}) косой урон."
+					]
+				},
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk rw} {@hit 4} попадание, одна цель. {@h}6 ({@damage 1d6 + 2}) колющего урона."
+					]
+				}
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Dwarf",
+			"source": "AWM",
+			"page": 32,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Dwarf"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				10
+			],
+			"hp": {
+				"special": "30"
+			},
+			"speed": {
+				"walk": 25
+			},
+			"str": 16,
+			"dex": 13,
+			"con": 14,
+			"int": 10,
+			"wis": 11,
+			"cha": 10,
+			"passive": 0,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Dwarven Resilience",
+					"entries": [
+						"У них есть преимущество при бросках спасения против яда, и у них есть устойчивость к повреждениям ядом."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk mw} {@hit 3} попадание, одна цель. {@h}4 ({@damage 1d6 + 1}) косой урон."
+					]
+				}
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RNG"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Great Kroom, Purple Worm",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 33,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "247"
+			},
+			"speed": {
+				"walk": 50,
+				"burrow": 30
+			},
+			"str": 10,
+			"dex": 13,
+			"con": 12,
+			"int": 11,
+			"wis": 11,
+			"cha": 12,
+			"passive": 0,
+			"cr": "15",
+			"trait": [
+				{
+					"name": "Tunneler",
+					"entries": [
+						"Червь может прорываться сквозь твердую породу со скоростью, равной половине скорости его норы, и оставляет после себя туннель диаметром 10 футов."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Червь совершает две атаки:"
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 14} попадание, одна цель. {@h}22 ({@damage 3d8}) колющего урона. Цель должна сделать спасбросок на ловкость {@dc 19} или будет проглочена червем!"
+					]
+				},
+				{
+					"name": "Tail Stinger",
+					"entries": [
+						"{@atk mw} {@hit 14} попадание, одно существо. {@h}19 ({@damage 3d6 + 9}) колющих повреждений Цель должна сделать {@dc 19} спасбросок конституции, или получить 42",
+						"({@dice 12d6}) урон ядом."
+					]
+				}
+			],
+			"environment": [
+				"desert",
+				"underdark"
+			],
+			"soundClip": {
+				"type": "external",
+				"url": "https://5e.tools/audio/bestiary/purple-worm.mp3"
+			},
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Hangry Otyugh",
+			"source": "AWM",
+			"page": 33,
+			"size": [
+				"L"
+			],
+			"type": "aberration",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				14
+			],
+			"hp": {
+				"special": "114"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 19,
+			"int": 6,
+			"wis": 13,
+			"cha": 6,
+			"passive": 0,
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Limited Telepathy",
+					"entries": [
+						"Отюг может магически передавать простые сообщения и изображения любому существу в радиусе 120 футов от него, способному понимать язык. Эта форма телепатии не позволяет принимающему существу телепатически отвечать."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Отюг делает три атаки:"
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 6} попадание, радиус действия 5 футов, одна цель. {@h}12 ({@damage 2d8 + 3}) колющего урона. Цель должна сделать {@dc 15} спасбросок конституции или получить d",
+						"({@dice 1d10}) урон ядом до излечения."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 6} попадание, дальность 10 футов, одна цель. {@h}7 ({@damage 1d8 + 3}) колющий урон, цель должна сделать {@dc 19} спасбросок конституции, или получить 42",
+						"({@dice 12d6}) урон ядом"
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"Цель должна сделать {@dc 14} спасбросок конституции или получить {@condition grappled}."
+					]
+				}
+			],
+			"environment": [
+				"underdark"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Hill Giant, Blorbo",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 34,
+			"size": [
+				"H"
+			],
+			"type": "giant",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"special": "105"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 21,
+			"dex": 8,
+			"con": 19,
+			"int": 5,
+			"wis": 9,
+			"cha": 6,
+			"passive": 0,
+			"cr": "4",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Гигант делает две атаки большим ударом."
+					]
+				},
+				{
+					"name": "Greatclub",
+					"entries": [
+						"{@atk mw} {@hit 8} попадание, одна цель. {@h}18 ({@damage 3d8 + 5}) урон от удара."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"{@atk rw} {@hit 8} попадание, одна цель. {@h}21 ({@damage 3d10 + 5}) урон от удара."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Saleeth the Couatl",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 34,
+			"size": [
+				"M"
+			],
+			"type": "celestial",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 19,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "97"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 90
+			},
+			"str": 16,
+			"dex": 20,
+			"con": 17,
+			"int": 18,
+			"wis": 20,
+			"cha": 18,
+			"passive": 0,
+			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"Способность к заклинаниям у куатля - харизма (спасение от заклинаний {@dc 14}). Он может накладывать следующие заклинания, требующие только словесных компонентов:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell detect magic}",
+						"{@spell detect thoughts}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell bless}",
+							"{@spell create food and water}",
+							"{@spell cure wounds}",
+							"{@spell lesser restoration}",
+							"{@spell protection from poison}",
+							"{@spell sanctuary}",
+							"{@spell shield}"
+						],
+						"1e": [
+							"{@spell dream}",
+							"{@spell greater restoration}",
+							"{@spell scrying}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"Атаки оружием куатля являются магическими."
+					]
+				},
+				{
+					"name": "Shielded Mind",
+					"entries": [
+						"Куатль невосприимчив к заклинаниям и любым эффектам, которые могут почувствовать его эмоции, прочитать его мысли или определить его местоположение."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 8} попадание, досягаемость 5 футов, одно существо. {@h}8 ({@damage 1d6 + 5}) колющих повреждений, цель должна сделать {@dc 13} спасбросок по конституции или упасть {@condition unconscious}. Другое существо может использовать действие, чтобы встряхнуть цель."
+					]
+				},
+				{
+					"name": "Constrict",
+					"entries": [
+						"{@atk mw} {@hit 6} попадание, досягаемость 10 футов, одно существо среднего или меньшего размера. {@h}10 ({@damage 2d6 + 3}) урон от удара, цель - {@condition grappled} (побег {@dc 15}). Куатль может сдерживать только одну цель одновременно."
+					]
+				},
+				{
+					"name": "Change Shape",
+					"entries": [
+						"Куатль магически полиморфирует в гуманоида или зверя, у которого рейтинг сложности равен или меньше его собственного, или возвращается в свою истинную форму. Он возвращается в свою истинную форму, если умирает. Любое снаряжение, которое он носит или несет, поглощается или переносится новой формой (по выбору куатля).",
+						"В новой форме куатль сохраняет свою игровую статистику и способность говорить, но его AC, способы передвижения, сила, ловкость и другие действия заменяются на те, что есть у новой формы, и он получает все статистики и возможности (кроме классовых особенностей, легендарных действий и действий в логове), которые есть у новой формы, но которых нет у него. Если у новой формы есть атака укусом, куатль может использовать свой укус в этой форме."
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Shapechanger"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"damageTagsSpell": [
+				"Y"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

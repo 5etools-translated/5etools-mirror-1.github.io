@@ -49,7 +49,7 @@ class Omnidexer {
 		});
 
 		x.forEach(it => Object.keys(it).filter(k => props.has(k))
-			.forEach(k => it[k] = lookup[k][it[k]] || it[k]));
+			.forEach(k => it[k] = lookup[k][it[k]] ?? it[k]));
 		return x;
 	}
 
@@ -431,7 +431,7 @@ class IndexableFileMagicVariants extends IndexableFile {
 			file: "magicvariants.json",
 			source: "inherits.source",
 			page: "inherits.page",
-			listProp: "variant",
+			listProp: "magicvariant",
 			baseUrl: "items.html",
 			hashBuilder: (it) => {
 				return UrlUtil.encodeForHash([it.name, it.inherits.source]);

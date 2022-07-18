@@ -351,7 +351,7 @@ class ItemParser extends BaseParser {
 		if (isSuffix) stats.inherits.nameSuffix = ` ${prefixSuffixName.trim()}`;
 		else stats.inherits.namePrefix = `${prefixSuffixName.trim()} `;
 
-		stats.__prop = "variant";
+		stats.__prop = "magicvariant";
 		stats.type = "GV";
 		switch (genericType) {
 			case "weapon": stats.requires = [{"weapon": true}]; break;

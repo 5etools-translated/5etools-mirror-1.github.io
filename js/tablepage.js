@@ -1,100 +1,124 @@
 "use strict";
 
-class TablePage {
-	constructor (opts) {
-		this._jsonUrl = opts.jsonUrl;
-		this._dataProp = opts.dataProp;
-		this._listClass = opts.listClass;
-		this._tableCol1 = opts.tableCol1;
-		this._fnGetTableName = opts.fnGetTableName;
-		this._fnGetTableHash = opts.fnGetTableHash;
+class TableListPage extends ListPage {
+	constructor (...args) {
+		super(...args);
 
-		this._list = null;
-		this._dataList = null;
+		this._listMetas = {};
 	}
 
 	static _pad (number) {
 		return String(number).padStart(2, "0");
 	}
 
-	async pInit () {
-		await BrewUtil2.pInit();
+	_getHash (ent) { throw new Error(`Unimplemented!`); }
+	_getHeaderId (ent) { throw new Error(`Unimplemented!`); }
+	_getDisplayName (ent) { throw new Error(`Unimplemented!`); }
 
-		window.addEventListener("hashchange", this._handleHashChange.bind(this));
-		window.loadHash = this._doLoadHash.bind(this);
+	get primaryLists () {
+		return Object.values(this._listMetas).map(it => it.list);
+	}
 
-		ExcludeUtil.pInitialise().then(null); // don't await, as this is only used for search
-		this._dataList = (await DataUtil.loadJSON(this._jsonUrl))[this._dataProp];
-		this._list = ListUtil.initList({listClass: this._listClass, isUseJquery: true, isBindFindHotkey: true});
-		ListUtil.setOptions({primaryLists: [this._list]});
+	_addData (data) {
+		const groups = data[this._dataProps[0]];
+		this._dataList = groups
+			.map(group => {
+				return group.tables
+					.map(tbl => {
+						const out = MiscUtil.copy(group);
+						delete out.tables;
+						Object.assign(out, MiscUtil.copy(tbl));
+						return out;
+					});
+			})
+			.flat();
+
+		const $wrpLists = $(`[data-name="tablepage-wrp-list"]`);
 
 		for (let i = 0; i < this._dataList.length; i++) {
-			const loc = this._dataList[i];
+			const ent = this._dataList[i];
 
-			const $dispShowHide = $(`<div class="lst__tgl-item-group mr-1">[\u2013]</div>`);
+			const headerId = this._getHeaderId(ent);
+			if (!this._listMetas[headerId]) {
+				const $wrpList = $(`<div class="ve-flex-col w-100 list"></div>`);
 
-			const $btnHeader = $$`<div class="lst__item-group-header my-2 split-v-center" title="Source: ${Parser.sourceJsonToFull(loc.source)}">
-				<div>${loc.name}</div>
-				${$dispShowHide}
-			</div>`
-				.click(() => {
-					$ulContents.toggleVe();
-					if ($ulContents.hasClass("ve-hidden")) $dispShowHide.html(`[+]`);
-					else $dispShowHide.html(`[\u2013]`);
+				const isFirst = !Object.keys(this._listMetas).length;
+				const list = this._initList({
+					$iptSearch: $("#lst__search"),
+					$wrpList,
+					$btnReset: $("#reset"),
+					$btnClear: $(`#lst__search-glass`),
+					$dispPageTagline: isFirst ? null : $(`.page__subtitle`),
+					isBindFindHotkey: isFirst,
+					optsList: {
+						isUseJquery: true,
+					},
 				});
 
-			const $ulContents = this._$getContentsBlock(i, loc);
+				const $dispShowHide = $(`<div class="lst__tgl-item-group mr-1">[\u2013]</div>`);
 
-			const $wrp = $$`<div>
-				${$btnHeader}
-				${$ulContents}
+				const $btnHeader = $$`<div class="lst__item-group-header my-2 split-v-center" title="Source: ${Parser.sourceJsonToFull(ent.source)}">
+					<div>${ent.name}</div>
+					${$dispShowHide}
+				</div>`
+					.click(() => {
+						$wrpList.toggleVe();
+						if ($wrpList.hasClass("ve-hidden")) $dispShowHide.html(`[+]`);
+						else $dispShowHide.html(`[\u2013]`);
+					});
+
+				list.on("updated", () => {
+					$btnHeader.toggleVe(!!list.visibleItems.length);
+				});
+
+				$$`<div class="flex-col">
+					${$btnHeader}
+					${$wrpList}
+				</div>`.appendTo($wrpLists);
+
+				this._listMetas[headerId] = {
+					list,
+				};
+			}
+
+			const displayName = this._getDisplayName(ent);
+			const hash = this._getHash(ent);
+
+			const $ele = $$`<div class="lst__row ve-flex-col">
+				<a href="#${hash}" class="lst--border lst__row-inner">${displayName}</a>
 			</div>`;
 
-			const listItem = new ListItem(i, $wrp, loc.name);
+			const listItem = new ListItem(
+				i,
+				$ele,
+				displayName,
+				{
+					hash,
+				},
+			);
 
-			this._list.addItem(listItem);
+			this._listMetas[headerId].list.addItem(listItem);
 		}
-
-		this._list.init();
-		this._handleHashChange();
-
-		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	_handleHashChange () {
-		const [link] = Hist.getHashParts();
-		const $a = $(`a[href="#${link}"]`);
-		if (!$a.length || !link) {
-			window.location.hash = $(`.list.${this._listClass}`).find("a").attr("href");
-			return;
-		}
-		const id = $a.attr("id");
-		document.title = `${$a.title()} - 5etools`;
-		this._doLoadHash(id);
-	}
-
-	_$getContentsBlock (i, meta) {
-		const $out = $(`<div class="ve-flex-col w-100"></div>`);
-		let stack = "";
-		meta.tables.forEach((table, j) => {
-			const tableName = this._fnGetTableName(meta, table);
-			stack += `<div class="lst__row ve-flex-col"><a id="${i},${j}" class="lst--border lst__row-inner" href="#${this._fnGetTableHash(meta, table)}" title="${tableName}">${tableName}</a></div>`;
-		});
-		$out.fastSetHtml(stack);
-		return $out;
-	}
+	handleFilterChange () { /* No-op */ }
+	async _pOnLoad_pInitPrimaryLists () { /* No-op */ }
+	_pOnLoad_initVisibleItemsDisplay () { /* No-op */ }
+	async _pOnLoad_pLoadListState () { /* No-op */ }
+	_pOnLoad_bindMiscButtons () { /* No-op */ }
+	pDoLoadSubHash () { /* No-op */ }
 
 	_doLoadHash (id) {
 		Renderer.get().setFirstSection(true);
 
-		const [iLoad, jLoad] = id.split(",").map(n => Number(n));
-		const meta = this._dataList[iLoad];
-		const table = meta.tables[jLoad].table;
-		const tableName = this._fnGetTableName(meta, meta.tables[jLoad]);
-		const diceType = meta.tables[jLoad].diceType;
+		const ent = this._dataList[id];
+
+		const table = ent.table;
+		const tableName = this._getDisplayName(ent);
+		const diceType = ent.diceType;
 
 		const htmlRows = table.map(it => {
-			const range = it.min === it.max ? TablePage._pad(it.min) : `${TablePage._pad(it.min)}-${TablePage._pad(it.max)}`;
+			const range = it.min === it.max ? this.constructor._pad(it.min) : `${this.constructor._pad(it.min)}-${this.constructor._pad(it.max)}`;
 			return `<tr><td class="text-center p-0">${range}</td><td class="p-0">${Renderer.get().render(it.result)}</td></tr>`;
 		});
 
@@ -106,9 +130,9 @@ class TablePage {
 					<thead>
 						<tr>
 							<th class="col-2 text-center">
-								<span class="roller" onclick="tablePage.roll('${id}')">d${diceType}</span>
+								<span class="roller" data-name="btn-roll">d${diceType}</span>
 							</th>
-							<th class="col-10">${this._tableCol1}</th>
+							<th class="col-10">${this.constructor._COL_NAME_1}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -118,18 +142,19 @@ class TablePage {
 			</td>
 		</tr>`;
 
-		$("#pagecontent").html(htmlText);
-
-		// update list highlights
-		$(`.list.${this._listClass}`).find(`.list-multi-selected`).removeClass("list-multi-selected");
-		$(`a[id="${id}"]`).parent().addClass("list-multi-selected");
+		$("#pagecontent")
+			.html(htmlText)
+			.find(`[data-name="btn-roll"]`)
+			.click(() => {
+				this._roll(ent);
+			})
+			.mousedown(evt => {
+				evt.preventDefault();
+			});
 	}
 
-	roll (id) {
-		const [ixMeta, ixTable] = id.split(",").map(n => Number(n));
-		const meta = this._dataList[ixMeta];
-		const table = meta.tables[ixTable];
-		const rollTable = table.table;
+	_roll (ent) {
+		const rollTable = ent.table;
 
 		rollTable._rMax = rollTable._rMax == null
 			? Math.max(...rollTable.filter(it => it.min != null).map(it => it.min), ...rollTable.filter(it => it.max != null).map(it => it.max))
@@ -152,20 +177,38 @@ class TablePage {
 		}
 
 		// add dice results
-		result = result.replace(RollerUtil.DICE_REGEX, function (match) {
+		result = result.replace(RollerUtil.DICE_REGEX, (match) => {
 			const r = Renderer.dice.parseRandomise2(match);
-			return `<span class="roller" onmousedown="event.preventDefault()" onclick="tablePage.reroll(this)">${match}</span> (<span class="result">${r}</span>)`;
+			return `<span class="roller" data-name="tablepage-reroll">${match}</span> (<span class="result">${r}</span>)`;
 		});
 
-		Renderer.dice.addRoll({name: this._fnGetTableName(meta, table)}, `<span><strong>${TablePage._pad(roll)}</strong> ${result}</span>`);
+		const $ele = $$`<span><strong>${this.constructor._pad(roll)}</strong> ${result}</span>`;
+
+		$ele.find(`[data-name="tablepage-reroll"]`)
+			.each((i, e) => {
+				const $roller = $(e);
+				$roller
+					.click(() => {
+						this._reroll($roller);
+					})
+					.mousedown(evt => {
+						evt.preventDefault();
+					});
+			});
+
+		Renderer.dice.addRoll({
+			rolledBy: {
+				name: this._getDisplayName(ent),
+			},
+			$ele,
+		});
 	}
 
-	reroll (ele) {
-		const $ele = $(ele);
-		const resultRoll = Renderer.dice.parseRandomise2($ele.html());
+	_reroll ($ele) {
+		const resultRoll = Renderer.dice.parseRandomise2($ele.text());
 		const $result = $ele.next(".result");
-		const oldText = $result.text().replace(/\(\)/g, "");
-		$result.html(resultRoll);
+		const oldText = $result.text();
+		$result.text(resultRoll);
 		JqueryUtil.showCopiedEffect($result, oldText, true);
 	}
 }

@@ -3,7 +3,7 @@
 	"$id": "entry.json",
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.7.2",
+	"version": "1.7.4",
 	"definitions": {
 		"_arrayOfSpell": {
 			"type": "array",
@@ -1394,7 +1394,6 @@
 					},
 					"required": [
 						"type",
-						"name",
 						"entry"
 					],
 					"additionalProperties": false
@@ -1440,7 +1439,6 @@
 					},
 					"required": [
 						"type",
-						"name",
 						"entries"
 					],
 					"additionalProperties": false
@@ -1593,6 +1591,10 @@
 						},
 						"offsetY": {
 							"type": "integer"
+						},
+						"scale": {
+							"description": "Map image scaling. Where possible, avoid using this, and use size/offset instead.",
+							"type": "number"
 						}
 					},
 					"additionalProperties": false

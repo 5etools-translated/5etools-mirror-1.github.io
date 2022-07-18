@@ -1,5 +1,36 @@
 "use strict";
 
+class VariantRulesSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subvariantrules",
+		});
+	}
+
+	pGetSublistItem (it, hash) {
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col"><a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="bold col-10 pl-0">${it.name}</span>
+				<span class="col-3 text-center pr-0">${it.ruleType ? Parser.ruleTypeToFull(it.ruleType) : "\u2014"}</span>
+			</a></div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			it.name,
+			{
+				hash,
+				ruleType: it.ruleType || "",
+			},
+			{
+				entity: it,
+			},
+		);
+		return listItem;
+	}
+}
+
 class VariantRulesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterVariantRules();
@@ -9,8 +40,6 @@ class VariantRulesPage extends ListPage {
 			pageFilter,
 
 			listClass: "variantrules",
-
-			sublistClass: "subvariantrules",
 
 			dataProps: ["variantrule"],
 		});
@@ -52,7 +81,7 @@ class VariantRulesPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -63,34 +92,12 @@ class VariantRulesPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (it, ix) {
-		const hash = UrlUtil.autoEncodeHash(it);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col"><a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-10 pl-0">${it.name}</span>
-				<span class="col-3 text-center pr-0">${it.ruleType ? Parser.ruleTypeToFull(it.ruleType) : "\u2014"}</span>
-			</a></div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			it.name,
-			{
-				hash,
-				ruleType: it.ruleType || "",
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		const rule = this._dataList[id];
 
 		this._$pgContent.empty().append(RenderVariantRules.$getRenderedVariantRule(rule));
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 
 	async pDoLoadSubHash (sub) {
@@ -103,4 +110,5 @@ class VariantRulesPage extends ListPage {
 }
 
 const variantRulesPage = new VariantRulesPage();
+variantRulesPage.sublistManager = new VariantRulesSublistManager();
 window.addEventListener("load", () => variantRulesPage.pOnLoad());

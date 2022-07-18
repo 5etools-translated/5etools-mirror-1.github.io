@@ -135,6 +135,14 @@ class BrewDoc {
 	}
 
 	static _mergeObjects_mutMakeCompatible (json) {
+		// region Item
+		if (json.variant) {
+			// 2022-07-09
+			json.magicvariant = json.variant;
+			delete json.variant;
+		}
+		// endregion
+
 		// region Race
 		if (json.subrace) {
 			json.subrace.forEach(sr => {
@@ -1006,7 +1014,7 @@ class BrewUtil2 {
 		[UrlUtil.PG_OBJECTS]: ["object"],
 		[UrlUtil.PG_TRAPS_HAZARDS]: ["trap", "hazard"],
 		[UrlUtil.PG_DEITIES]: ["deity"],
-		[UrlUtil.PG_ITEMS]: ["item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff", "itemGroup", "itemEntry"],
+		[UrlUtil.PG_ITEMS]: ["item", "baseitem", "magicvariant", "itemProperty", "itemType", "itemFluff", "itemGroup", "itemEntry"],
 		[UrlUtil.PG_REWARDS]: ["reward"],
 		[UrlUtil.PG_PSIONICS]: ["psionic"],
 		[UrlUtil.PG_VARIANTRULES]: ["variantrule"],
@@ -1056,8 +1064,6 @@ class BrewUtil2 {
 	static getDirProp (dir) {
 		switch (dir) {
 			case "creature": return "monster";
-			case "collection": return dir;
-			case "magicvariant": return "variant";
 			case "makebrew": return "makebrewCreatureTrait";
 		}
 		return dir;

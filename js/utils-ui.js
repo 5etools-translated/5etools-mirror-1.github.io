@@ -45,174 +45,181 @@ class Prx {
 	}
 }
 
-class ProxyBase {
-	constructor () {
-		this.__hooks = {};
-		this.__hooksAll = {};
-		this.__hooksTmp = null;
-		this.__hooksAllTmp = null;
-	}
-
-	_getProxy (hookProp, toProxy) {
-		return new Proxy(toProxy, {
-			set: (object, prop, value) => {
-				return this._doProxySet(hookProp, object, prop, value);
-			},
-			deleteProperty: (object, prop) => {
-				if (!(prop in object)) return true;
-				const prevValue = object[prop];
-				delete object[prop];
-				this._doFireHooksAll(hookProp, prop, undefined, prevValue);
-				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, undefined, prevValue));
-				return true;
-			},
-		});
-	}
-
-	_doProxySet (hookProp, object, prop, value) {
-		if (object[prop] === value) return true;
-		const prevValue = object[prop];
-		object[prop] = value;
-		this._doFireHooksAll(hookProp, prop, value, prevValue);
-		this._doFireHooks(hookProp, prop, value, prevValue);
-		return true;
-	}
-
-	/** As per `_doProxySet`, but the hooks are run strictly in serial. */
-	async _pDoProxySet (hookProp, object, prop, value) {
-		if (object[prop] === value) return true;
-		const prevValue = object[prop];
-		object[prop] = value;
-		if (this.__hooksAll[hookProp]) for (const hook of this.__hooksAll[hookProp]) await hook(prop, value, prevValue);
-		if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) for (const hook of this.__hooks[hookProp][prop]) await hook(prop, value, prevValue);
-		return true;
-	}
-
-	_doFireHooks (hookProp, prop, value, prevValue) {
-		if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, value, prevValue));
-	}
-
-	_doFireHooksAll (hookProp, prop, value, prevValue) {
-		if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, undefined, prevValue));
-	}
-
-	// ...Not to be confused with...
-
-	_doFireAllHooks (hookProp) {
-		if (this.__hooks[hookProp]) Object.entries(this.__hooks[hookProp]).forEach(([prop, hk]) => hk(prop));
-	}
-
-	/**
-	 * Register a hook versus a root property on the state object. **INTERNAL CHANGES TO CHILD OBJECTS ON THE STATE
-	 *   OBJECT ARE NOT TRACKED**.
-	 * @param hookProp The state object.
-	 * @param prop The root property to track.
-	 * @param hook The hook to run. Will be called with two arguments; the property and the value of the property being
-	 *   modified.
-	 */
-	_addHook (hookProp, prop, hook) {
-		ProxyBase._addHook_to(this.__hooks, hookProp, prop, hook);
-		if (this.__hooksTmp) ProxyBase._addHook_to(this.__hooksTmp, hookProp, prop, hook);
-	}
-
-	static _addHook_to (obj, hookProp, prop, hook) {
-		((obj[hookProp] = obj[hookProp] || {})[prop] = (obj[hookProp][prop] || [])).push(hook);
-	}
-
-	_addHookAll (hookProp, hook) {
-		ProxyBase._addHookAll_to(this.__hooksAll, hookProp, hook);
-		if (this.__hooksAllTmp) ProxyBase._addHookAll_to(this.__hooksAllTmp, hookProp, hook);
-	}
-
-	static _addHookAll_to (obj, hookProp, hook) {
-		(obj[hookProp] = obj[hookProp] || []).push(hook);
-	}
-
-	_removeHook (hookProp, prop, hook) {
-		ProxyBase._removeHook_from(this.__hooks, hookProp, prop, hook);
-		if (this.__hooksTmp) ProxyBase._removeHook_from(this.__hooksTmp, hookProp, prop, hook);
-	}
-
-	static _removeHook_from (obj, hookProp, prop, hook) {
-		if (obj[hookProp] && obj[hookProp][prop]) {
-			const ix = obj[hookProp][prop].findIndex(hk => hk === hook);
-			if (~ix) obj[hookProp][prop].splice(ix, 1);
+function MixinProxyBase (Cls) {
+	class MixedProxyBase extends Cls {
+		constructor (...args) {
+			super(...args);
+			this.__hooks = {};
+			this.__hooksAll = {};
+			this.__hooksTmp = null;
+			this.__hooksAllTmp = null;
 		}
-	}
 
-	_removeHooks (hookProp, prop) {
-		if (this.__hooks[hookProp]) delete this.__hooks[hookProp][prop];
-		if (this.__hooksTmp && this.__hooksTmp[hookProp]) delete this.__hooksTmp[hookProp][prop];
-	}
-
-	_removeHookAll (hookProp, hook) {
-		ProxyBase._removeHookAll_from(this.__hooksAll, hookProp, hook);
-		if (this.__hooksAllTmp) ProxyBase._removeHook_from(this.__hooksAllTmp, hookProp, hook);
-	}
-
-	static _removeHookAll_from (obj, hookProp, hook) {
-		if (obj[hookProp]) {
-			const ix = obj[hookProp].findIndex(hk => hk === hook);
-			if (~ix) obj[hookProp].splice(ix, 1);
+		_getProxy (hookProp, toProxy) {
+			return new Proxy(toProxy, {
+				set: (object, prop, value) => {
+					return this._doProxySet(hookProp, object, prop, value);
+				},
+				deleteProperty: (object, prop) => {
+					if (!(prop in object)) return true;
+					const prevValue = object[prop];
+					delete object[prop];
+					this._doFireHooksAll(hookProp, prop, undefined, prevValue);
+					if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, undefined, prevValue));
+					return true;
+				},
+			});
 		}
-	}
 
-	_resetHooks (hookProp) {
-		if (hookProp !== undefined) delete this.__hooks[hookProp];
-		else Object.keys(this.__hooks).forEach(prop => delete this.__hooks[prop]);
-	}
+		_doProxySet (hookProp, object, prop, value) {
+			if (object[prop] === value) return true;
+			const prevValue = object[prop];
+			object[prop] = value;
+			this._doFireHooksAll(hookProp, prop, value, prevValue);
+			this._doFireHooks(hookProp, prop, value, prevValue);
+			return true;
+		}
 
-	_resetHooksAll (hookProp) {
-		if (hookProp !== undefined) delete this.__hooksAll[hookProp];
-		else Object.keys(this.__hooksAll).forEach(prop => delete this.__hooksAll[prop]);
-	}
+		/** As per `_doProxySet`, but the hooks are run strictly in serial. */
+		async _pDoProxySet (hookProp, object, prop, value) {
+			if (object[prop] === value) return true;
+			const prevValue = object[prop];
+			object[prop] = value;
+			if (this.__hooksAll[hookProp]) for (const hook of this.__hooksAll[hookProp]) await hook(prop, value, prevValue);
+			if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) for (const hook of this.__hooks[hookProp][prop]) await hook(prop, value, prevValue);
+			return true;
+		}
 
-	_saveHookCopiesTo (obj) { this.__hooksTmp = obj; }
-	_saveHookAllCopiesTo (obj) { this.__hooksAllTmp = obj; }
+		_doFireHooks (hookProp, prop, value, prevValue) {
+			if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, value, prevValue));
+		}
 
-	/**
-	 * Object.assign equivalent, overwrites values on the current proxied object with some new values,
-	 *   then trigger all the appropriate event handlers.
-	 * @param hookProp Hook property, e.g. "state".
-	 * @param proxyProp Proxied object property, e.g. "_state".
-	 * @param underProp Underlying object property, e.g. "__state".
-	 * @param toObj
-	 * @param isOverwrite If the overwrite should clean/delete all data from the object beforehand.
-	 */
-	_proxyAssign (hookProp, proxyProp, underProp, toObj, isOverwrite) {
-		const oldKeys = Object.keys(this[proxyProp]);
-		const nuKeys = new Set(Object.keys(toObj));
-		const dirtyKeyValues = {};
+		_doFireHooksAll (hookProp, prop, value, prevValue) {
+			if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, undefined, prevValue));
+		}
 
-		if (isOverwrite) {
-			oldKeys.forEach(k => {
-				if (!nuKeys.has(k) && this[underProp] !== undefined) {
+		// ...Not to be confused with...
+
+		_doFireAllHooks (hookProp) {
+			if (this.__hooks[hookProp]) Object.entries(this.__hooks[hookProp]).forEach(([prop, hk]) => hk(prop));
+		}
+
+		/**
+		 * Register a hook versus a root property on the state object. **INTERNAL CHANGES TO CHILD OBJECTS ON THE STATE
+		 *   OBJECT ARE NOT TRACKED**.
+		 * @param hookProp The state object.
+		 * @param prop The root property to track.
+		 * @param hook The hook to run. Will be called with two arguments; the property and the value of the property being
+		 *   modified.
+		 */
+		_addHook (hookProp, prop, hook) {
+			ProxyBase._addHook_to(this.__hooks, hookProp, prop, hook);
+			if (this.__hooksTmp) ProxyBase._addHook_to(this.__hooksTmp, hookProp, prop, hook);
+		}
+
+		static _addHook_to (obj, hookProp, prop, hook) {
+			((obj[hookProp] = obj[hookProp] || {})[prop] = (obj[hookProp][prop] || [])).push(hook);
+		}
+
+		_addHookAll (hookProp, hook) {
+			ProxyBase._addHookAll_to(this.__hooksAll, hookProp, hook);
+			if (this.__hooksAllTmp) ProxyBase._addHookAll_to(this.__hooksAllTmp, hookProp, hook);
+		}
+
+		static _addHookAll_to (obj, hookProp, hook) {
+			(obj[hookProp] = obj[hookProp] || []).push(hook);
+		}
+
+		_removeHook (hookProp, prop, hook) {
+			ProxyBase._removeHook_from(this.__hooks, hookProp, prop, hook);
+			if (this.__hooksTmp) ProxyBase._removeHook_from(this.__hooksTmp, hookProp, prop, hook);
+		}
+
+		static _removeHook_from (obj, hookProp, prop, hook) {
+			if (obj[hookProp] && obj[hookProp][prop]) {
+				const ix = obj[hookProp][prop].findIndex(hk => hk === hook);
+				if (~ix) obj[hookProp][prop].splice(ix, 1);
+			}
+		}
+
+		_removeHooks (hookProp, prop) {
+			if (this.__hooks[hookProp]) delete this.__hooks[hookProp][prop];
+			if (this.__hooksTmp && this.__hooksTmp[hookProp]) delete this.__hooksTmp[hookProp][prop];
+		}
+
+		_removeHookAll (hookProp, hook) {
+			ProxyBase._removeHookAll_from(this.__hooksAll, hookProp, hook);
+			if (this.__hooksAllTmp) ProxyBase._removeHook_from(this.__hooksAllTmp, hookProp, hook);
+		}
+
+		static _removeHookAll_from (obj, hookProp, hook) {
+			if (obj[hookProp]) {
+				const ix = obj[hookProp].findIndex(hk => hk === hook);
+				if (~ix) obj[hookProp].splice(ix, 1);
+			}
+		}
+
+		_resetHooks (hookProp) {
+			if (hookProp !== undefined) delete this.__hooks[hookProp];
+			else Object.keys(this.__hooks).forEach(prop => delete this.__hooks[prop]);
+		}
+
+		_resetHooksAll (hookProp) {
+			if (hookProp !== undefined) delete this.__hooksAll[hookProp];
+			else Object.keys(this.__hooksAll).forEach(prop => delete this.__hooksAll[prop]);
+		}
+
+		_saveHookCopiesTo (obj) { this.__hooksTmp = obj; }
+		_saveHookAllCopiesTo (obj) { this.__hooksAllTmp = obj; }
+
+		/**
+		 * Object.assign equivalent, overwrites values on the current proxied object with some new values,
+		 *   then trigger all the appropriate event handlers.
+		 * @param hookProp Hook property, e.g. "state".
+		 * @param proxyProp Proxied object property, e.g. "_state".
+		 * @param underProp Underlying object property, e.g. "__state".
+		 * @param toObj
+		 * @param isOverwrite If the overwrite should clean/delete all data from the object beforehand.
+		 */
+		_proxyAssign (hookProp, proxyProp, underProp, toObj, isOverwrite) {
+			const oldKeys = Object.keys(this[proxyProp]);
+			const nuKeys = new Set(Object.keys(toObj));
+			const dirtyKeyValues = {};
+
+			if (isOverwrite) {
+				oldKeys.forEach(k => {
+					if (!nuKeys.has(k) && this[underProp] !== undefined) {
+						const prevValue = this[proxyProp][k];
+						delete this[underProp][k];
+						dirtyKeyValues[k] = prevValue;
+					}
+				});
+			}
+
+			nuKeys.forEach(k => {
+				if (!CollectionUtil.deepEquals(this[underProp][k], toObj[k])) {
 					const prevValue = this[proxyProp][k];
-					delete this[underProp][k];
+					this[underProp][k] = toObj[k];
 					dirtyKeyValues[k] = prevValue;
 				}
 			});
+
+			Object.entries(dirtyKeyValues)
+				.forEach(([k, prevValue]) => {
+					this._doFireHooksAll(hookProp, k, this[underProp][k], prevValue);
+					if (this.__hooks[hookProp] && this.__hooks[hookProp][k]) this.__hooks[hookProp][k].forEach(hk => hk(k, this[underProp][k], prevValue));
+				});
 		}
 
-		nuKeys.forEach(k => {
-			if (!CollectionUtil.deepEquals(this[underProp][k], toObj[k])) {
-				const prevValue = this[proxyProp][k];
-				this[underProp][k] = toObj[k];
-				dirtyKeyValues[k] = prevValue;
-			}
-		});
-
-		Object.entries(dirtyKeyValues)
-			.forEach(([k, prevValue]) => {
-				this._doFireHooksAll(hookProp, k, this[underProp][k], prevValue);
-				if (this.__hooks[hookProp] && this.__hooks[hookProp][k]) this.__hooks[hookProp][k].forEach(hk => hk(k, this[underProp][k], prevValue));
-			});
+		_proxyAssignSimple (hookProp, toObj, isOverwrite) {
+			return this._proxyAssign(hookProp, `_${hookProp}`, `__${hookProp}`, toObj, isOverwrite);
+		}
 	}
 
-	_proxyAssignSimple (hookProp, toObj, isOverwrite) {
-		return this._proxyAssign(hookProp, `_${hookProp}`, `__${hookProp}`, toObj, isOverwrite);
-	}
+	return MixedProxyBase;
 }
+
+class ProxyBase extends MixinProxyBase(class {}) {}
 
 class UiUtil {
 	/**
@@ -798,6 +805,7 @@ class ListUiUtil {
 	static bindPreviewButton (page, allData, item, btnShowHidePreview, {$fnGetPreviewStats} = {}) {
 		btnShowHidePreview.addEventListener("click", evt => {
 			const entity = allData[item.ix];
+			page = page || entity?.__prop;
 
 			const elePreviewWrp = this.getOrAddListItemPreviewLazy(item);
 
@@ -3152,319 +3160,325 @@ class SourceUiUtil {
 	}
 }
 
-class BaseComponent extends ProxyBase {
-	constructor () {
-		super();
+function MixinBaseComponent (Cls) {
+	class MixedBaseComponent extends Cls {
+		constructor (...args) {
+			super(...args);
 
-		this.__locks = {};
-		this.__rendered = {};
+			this.__locks = {};
+			this.__rendered = {};
 
-		// state
-		this.__state = {...this._getDefaultState()};
-		this._state = this._getProxy("state", this.__state);
-	}
+			// state
+			this.__state = {...this._getDefaultState()};
+			this._state = this._getProxy("state", this.__state);
+		}
 
-	_addHookBase (prop, hook) {
-		return this._addHook("state", prop, hook);
-	}
+		_addHookBase (prop, hook) {
+			return this._addHook("state", prop, hook);
+		}
 
-	_removeHookBase (prop, hook) {
-		return this._removeHook("state", prop, hook);
-	}
+		_removeHookBase (prop, hook) {
+			return this._removeHook("state", prop, hook);
+		}
 
-	_removeHooksBase (prop) {
-		return this._removeHooks("state", prop);
-	}
+		_removeHooksBase (prop) {
+			return this._removeHooks("state", prop);
+		}
 
-	_setState (toState) {
-		this._proxyAssign("state", "_state", "__state", toState, true);
-	}
+		_setState (toState) {
+			this._proxyAssign("state", "_state", "__state", toState, true);
+		}
 
-	_setStateValue (prop, value, {isForceTriggerHooks = true} = {}) {
-		if (this._state[prop] === value && !isForceTriggerHooks) return value;
-		// If the value is new, hooks will be run automatically
-		if (this._state[prop] !== value) return this._state[prop] = value;
+		_setStateValue (prop, value, {isForceTriggerHooks = true} = {}) {
+			if (this._state[prop] === value && !isForceTriggerHooks) return value;
+			// If the value is new, hooks will be run automatically
+			if (this._state[prop] !== value) return this._state[prop] = value;
 
-		this._doFireHooksAll("state", prop, value, value);
-		this._doFireHooks("state", prop, value, value);
-		return value;
-	}
+			this._doFireHooksAll("state", prop, value, value);
+			this._doFireHooks("state", prop, value, value);
+			return value;
+		}
 
-	_getState () { return MiscUtil.copy(this.__state); }
+		_getState () { return MiscUtil.copy(this.__state); }
 
-	getPod () {
-		this.__pod = this.__pod || {
-			get: (prop) => this._state[prop],
-			set: (prop, val) => this._state[prop] = val,
-			delete: (prop) => delete this._state[prop],
-			addHook: (prop, hook) => this._addHookBase(prop, hook),
-			addHookAll: (hook) => this._addHookAll("state", hook),
-			removeHook: (prop, hook) => this._removeHookBase(prop, hook),
-			triggerCollectionUpdate: (prop) => this._triggerCollectionUpdate(prop),
-			setState: (state) => this._setState(state),
-			getState: () => this._getState(),
-			assign: (toObj, isOverwrite) => this._proxyAssign("state", "_state", "__state", toObj, isOverwrite),
-			pLock: lockName => this._pLock(lockName),
-			unlock: lockName => this._unlock(lockName),
-			component: this,
-		};
-		return this.__pod;
-	}
+		getPod () {
+			this.__pod = this.__pod || {
+				get: (prop) => this._state[prop],
+				set: (prop, val) => this._state[prop] = val,
+				delete: (prop) => delete this._state[prop],
+				addHook: (prop, hook) => this._addHookBase(prop, hook),
+				addHookAll: (hook) => this._addHookAll("state", hook),
+				removeHook: (prop, hook) => this._removeHookBase(prop, hook),
+				triggerCollectionUpdate: (prop) => this._triggerCollectionUpdate(prop),
+				setState: (state) => this._setState(state),
+				getState: () => this._getState(),
+				assign: (toObj, isOverwrite) => this._proxyAssign("state", "_state", "__state", toObj, isOverwrite),
+				pLock: lockName => this._pLock(lockName),
+				unlock: lockName => this._unlock(lockName),
+				component: this,
+			};
+			return this.__pod;
+		}
 
-	// to be overridden as required
-	_getDefaultState () { return {}; }
+		// to be overridden as required
+		_getDefaultState () { return {}; }
 
-	getBaseSaveableState () {
-		return {
-			state: MiscUtil.copy(this.__state),
-		};
-	}
+		getBaseSaveableState () {
+			return {
+				state: MiscUtil.copy(this.__state),
+			};
+		}
 
-	setBaseSaveableStateFrom (toLoad, isOverwrite = false) {
-		toLoad.state && this._proxyAssignSimple("state", toLoad.state, isOverwrite);
-	}
+		setBaseSaveableStateFrom (toLoad, isOverwrite = false) {
+			toLoad.state && this._proxyAssignSimple("state", toLoad.state, isOverwrite);
+		}
 
-	/**
-	 * @param opts Options object.
-	 * @param opts.prop The state property.
-	 * @param [opts.namespace] The render namespace.
-	 */
-	_getRenderedCollection (opts) {
-		opts = opts || {};
-		const renderedLookupProp = opts.namespace ? `${opts.namespace}.${opts.prop}` : opts.prop;
-		return (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
-	}
+		/**
+		 * @param opts Options object.
+		 * @param opts.prop The state property.
+		 * @param [opts.namespace] The render namespace.
+		 */
+		_getRenderedCollection (opts) {
+			opts = opts || {};
+			const renderedLookupProp = opts.namespace ? `${opts.namespace}.${opts.prop}` : opts.prop;
+			return (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
+		}
 
-	/**
-	 * Asynchronous version available below.
-	 * @param opts Options object.
-	 * @param opts.prop The state property.
-	 * @param [opts.fnDeleteExisting] Function to run on deleted render meta. Arguments are `rendered, item`.
-	 * @param [opts.fnReorderExisting] Function to run on all meta, as a final step. Useful for re-ordering elements.
-	 * @param opts.fnUpdateExisting Function to run on existing render meta. Arguments are `rendered, item`.
-	 * @param opts.fnGetNew Function to run which generates existing render meta. Arguments are `item`.
-	 * @param [opts.isDiffMode] If a diff of the state should be taken/checked before updating renders.
-	 * @param [opts.namespace] A namespace to store these renders under. Useful if multiple renders are being made from
-	 *        the same collection.
-	 */
-	_renderCollection (opts) {
-		opts = opts || {};
+		/**
+		 * Asynchronous version available below.
+		 * @param opts Options object.
+		 * @param opts.prop The state property.
+		 * @param [opts.fnDeleteExisting] Function to run on deleted render meta. Arguments are `rendered, item`.
+		 * @param [opts.fnReorderExisting] Function to run on all meta, as a final step. Useful for re-ordering elements.
+		 * @param opts.fnUpdateExisting Function to run on existing render meta. Arguments are `rendered, item`.
+		 * @param opts.fnGetNew Function to run which generates existing render meta. Arguments are `item`.
+		 * @param [opts.isDiffMode] If a diff of the state should be taken/checked before updating renders.
+		 * @param [opts.namespace] A namespace to store these renders under. Useful if multiple renders are being made from
+		 *        the same collection.
+		 */
+		_renderCollection (opts) {
+			opts = opts || {};
 
-		const rendered = this._getRenderedCollection(opts);
-		const toDelete = new Set(Object.keys(rendered));
+			const rendered = this._getRenderedCollection(opts);
+			const toDelete = new Set(Object.keys(rendered));
 
-		(this._state[opts.prop] || []).forEach((it, i) => {
-			if (it.id == null) throw new Error(`Collection item did not have an ID!`);
-			const meta = rendered[it.id];
-
-			toDelete.delete(it.id);
-			if (meta) {
-				if (opts.isDiffMode) {
-					// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
-					const nxtHash = CryptUtil.md5(JSON.stringify(it));
-					if (nxtHash !== meta.__hash) {
-						meta.__hash = nxtHash;
-					} else return;
-				}
-
-				meta.data = it; // update any existing pointers
-				opts.fnUpdateExisting(meta, it, i);
-			} else {
-				const meta = opts.fnGetNew(it, i);
-
-				// If the "get new" function returns null, skip rendering this entity
-				if (meta == null) return;
-
-				meta.data = it;
-				if (!meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
-
-				if (opts.isDiffMode) meta.hash = CryptUtil.md5(JSON.stringify(it));
-
-				rendered[it.id] = meta;
-			}
-		});
-
-		toDelete.forEach(id => {
-			const meta = rendered[id];
-			meta.$wrpRow.remove();
-			delete rendered[id];
-			if (opts.fnDeleteExisting) opts.fnDeleteExisting(meta);
-		});
-
-		if (opts.fnReorderExisting) {
 			(this._state[opts.prop] || []).forEach((it, i) => {
+				if (it.id == null) throw new Error(`Collection item did not have an ID!`);
 				const meta = rendered[it.id];
-				opts.fnReorderExisting(meta, it, i);
-			});
-		}
-	}
 
-	/**
-	 * Synchronous version available above.
-	 * @param [opts] Options object.
-	 * @param opts.prop The state property.
-	 * @param [opts.pFnDeleteExisting] Function to run on deleted render meta. Arguments are `rendered, item`.
-	 * @param opts.pFnUpdateExisting Function to run on existing render meta. Arguments are `rendered, item`.
-	 * @param opts.pFnGetNew Function to run which generates existing render meta. Arguments are `item`.
-	 * @param [opts.isDiffMode] If updates should be run in "diff" mode (i.e. no update is run if nothing has changed).
-	 * @param [opts.isMultiRender] If multiple renders will be produced.
-	 * @param [opts.additionalCaches] Additional cache objects to be cleared on entity delete. Should be objects with
-	 *        entity IDs as keys.
-	 * @param [opts.namespace] A namespace to store these renders under. Useful if multiple renders are being made from
-	 *        the same collection.
-	 */
-	async _pRenderCollection (opts) {
-		opts = opts || {};
+				toDelete.delete(it.id);
+				if (meta) {
+					if (opts.isDiffMode) {
+						// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
+						const nxtHash = CryptUtil.md5(JSON.stringify(it));
+						if (nxtHash !== meta.__hash) {
+							meta.__hash = nxtHash;
+						} else return;
+					}
 
-		const rendered = this._getRenderedCollection(opts);
-		const entities = this._state[opts.prop];
-		return this._pRenderCollection_doRender(rendered, entities, opts);
-	}
+					meta.data = it; // update any existing pointers
+					opts.fnUpdateExisting(meta, it, i);
+				} else {
+					const meta = opts.fnGetNew(it, i);
 
-	async _pRenderCollection_doRender (rendered, entities, opts) {
-		opts = opts || {};
+					// If the "get new" function returns null, skip rendering this entity
+					if (meta == null) return;
 
-		const toDelete = new Set(Object.keys(rendered));
+					meta.data = it;
+					if (!meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
 
-		// Run the external functions in serial, to prevent element re-ordering
-		for (let i = 0; i < entities.length; ++i) {
-			const it = entities[i];
+					if (opts.isDiffMode) meta.hash = CryptUtil.md5(JSON.stringify(it));
 
-			if (!it.id) throw new Error(`Collection item did not have an ID!`);
-			// N.B.: Meta can be an array, if one item maps to multiple renders (e.g. the same is shown in two places)
-			const meta = rendered[it.id];
-
-			toDelete.delete(it.id);
-			if (meta) {
-				if (opts.isDiffMode) {
-					// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
-					const nxtHash = CryptUtil.md5(JSON.stringify(it));
-					if (nxtHash !== meta.__hash) meta.__hash = nxtHash;
-					else continue;
+					rendered[it.id] = meta;
 				}
+			});
 
-				const nxtMeta = await opts.pFnUpdateExisting(meta, it);
-				// Overwrite the existing renders in multi-render mode
-				//    Otherwise, just ignore the result--single renders never modify their render
-				if (opts.isMultiRender) rendered[it.id] = nxtMeta;
-			} else {
-				const meta = await opts.pFnGetNew(it);
-				// If the generator decides there's nothing to render, skip this item
-				if (meta == null) continue;
+			toDelete.forEach(id => {
+				const meta = rendered[id];
+				meta.$wrpRow.remove();
+				delete rendered[id];
+				if (opts.fnDeleteExisting) opts.fnDeleteExisting(meta);
+			});
 
-				if (opts.isMultiRender && meta.some(it => !it.$wrpRow)) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
-				if (!opts.isMultiRender && !meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
-
-				if (opts.isDiffMode) meta.__hash = CryptUtil.md5(JSON.stringify(it));
-
-				rendered[it.id] = meta;
+			if (opts.fnReorderExisting) {
+				(this._state[opts.prop] || []).forEach((it, i) => {
+					const meta = rendered[it.id];
+					opts.fnReorderExisting(meta, it, i);
+				});
 			}
 		}
 
-		for (const id of toDelete) {
-			const meta = rendered[id];
-			if (opts.isMultiRender) meta.forEach(it => it.$wrpRow.remove());
-			else meta.$wrpRow.remove();
-			if (opts.additionalCaches) opts.additionalCaches.forEach(it => delete it[id]);
-			delete rendered[id];
-			if (opts.pFnDeleteExisting) await opts.pFnDeleteExisting(meta);
+		/**
+		 * Synchronous version available above.
+		 * @param [opts] Options object.
+		 * @param opts.prop The state property.
+		 * @param [opts.pFnDeleteExisting] Function to run on deleted render meta. Arguments are `rendered, item`.
+		 * @param opts.pFnUpdateExisting Function to run on existing render meta. Arguments are `rendered, item`.
+		 * @param opts.pFnGetNew Function to run which generates existing render meta. Arguments are `item`.
+		 * @param [opts.isDiffMode] If updates should be run in "diff" mode (i.e. no update is run if nothing has changed).
+		 * @param [opts.isMultiRender] If multiple renders will be produced.
+		 * @param [opts.additionalCaches] Additional cache objects to be cleared on entity delete. Should be objects with
+		 *        entity IDs as keys.
+		 * @param [opts.namespace] A namespace to store these renders under. Useful if multiple renders are being made from
+		 *        the same collection.
+		 */
+		async _pRenderCollection (opts) {
+			opts = opts || {};
+
+			const rendered = this._getRenderedCollection(opts);
+			const entities = this._state[opts.prop];
+			return this._pRenderCollection_doRender(rendered, entities, opts);
 		}
-	}
 
-	/**
-	 * Detach (and thus preserve) rendered collection elements so they can be re-used later.
-	 * @param prop The state property.
-	 * @param [namespace] A namespace to store these renders under. Useful if multiple renders are being made from
-	 *        the same collection.
-	 */
-	_detachCollection (prop, namespace = null) {
-		const renderedLookupProp = namespace ? `${namespace}.${prop}` : prop;
-		const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
-		Object.values(rendered).forEach(it => it.$wrpRow.detach());
-	}
+		async _pRenderCollection_doRender (rendered, entities, opts) {
+			opts = opts || {};
 
-	/**
-	 * Wipe any rendered collection elements, and reset the render cache.
-	 * @param prop The state property.
-	 * @param [namespace] A namespace to store these renders under. Useful if multiple renders are being made from
-	 *        the same collection.
-	 */
-	_resetCollectionRenders (prop, namespace = null) {
-		const renderedLookupProp = namespace ? `${namespace}.${prop}` : prop;
-		const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
-		Object.values(rendered).forEach(it => it.$wrpRow.remove());
-		delete this.__rendered[renderedLookupProp];
-	}
+			const toDelete = new Set(Object.keys(rendered));
 
-	render () { throw new Error("Unimplemented!"); }
+			// Run the external functions in serial, to prevent element re-ordering
+			for (let i = 0; i < entities.length; ++i) {
+				const it = entities[i];
 
-	// to be overridden as required
-	getSaveableState () { return {...this.getBaseSaveableState()}; }
-	setStateFrom (toLoad, isOverwrite = false) { this.setBaseSaveableStateFrom(toLoad, isOverwrite); }
+				if (!it.id) throw new Error(`Collection item did not have an ID!`);
+				// N.B.: Meta can be an array, if one item maps to multiple renders (e.g. the same is shown in two places)
+				const meta = rendered[it.id];
 
-	async _pLock (lockName) {
-		while (this.__locks[lockName]) await this.__locks[lockName].lock;
-		let unlock = null;
-		const lock = new Promise(resolve => unlock = resolve);
-		this.__locks[lockName] = {
-			lock,
-			unlock,
-		};
-	}
+				toDelete.delete(it.id);
+				if (meta) {
+					if (opts.isDiffMode) {
+						// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
+						const nxtHash = CryptUtil.md5(JSON.stringify(it));
+						if (nxtHash !== meta.__hash) meta.__hash = nxtHash;
+						else continue;
+					}
 
-	async _pGate (lockName) {
-		while (this.__locks[lockName]) await this.__locks[lockName].lock;
-	}
+					const nxtMeta = await opts.pFnUpdateExisting(meta, it);
+					// Overwrite the existing renders in multi-render mode
+					//    Otherwise, just ignore the result--single renders never modify their render
+					if (opts.isMultiRender) rendered[it.id] = nxtMeta;
+				} else {
+					const meta = await opts.pFnGetNew(it);
+					// If the generator decides there's nothing to render, skip this item
+					if (meta == null) continue;
 
-	_unlock (lockName) {
-		const lockMeta = this.__locks[lockName];
-		if (lockMeta) {
-			delete this.__locks[lockName];
-			lockMeta.unlock();
+					if (opts.isMultiRender && meta.some(it => !it.$wrpRow)) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
+					if (!opts.isMultiRender && !meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
+
+					if (opts.isDiffMode) meta.__hash = CryptUtil.md5(JSON.stringify(it));
+
+					rendered[it.id] = meta;
+				}
+			}
+
+			for (const id of toDelete) {
+				const meta = rendered[id];
+				if (opts.isMultiRender) meta.forEach(it => it.$wrpRow.remove());
+				else meta.$wrpRow.remove();
+				if (opts.additionalCaches) opts.additionalCaches.forEach(it => delete it[id]);
+				delete rendered[id];
+				if (opts.pFnDeleteExisting) await opts.pFnDeleteExisting(meta);
+			}
 		}
+
+		/**
+		 * Detach (and thus preserve) rendered collection elements so they can be re-used later.
+		 * @param prop The state property.
+		 * @param [namespace] A namespace to store these renders under. Useful if multiple renders are being made from
+		 *        the same collection.
+		 */
+		_detachCollection (prop, namespace = null) {
+			const renderedLookupProp = namespace ? `${namespace}.${prop}` : prop;
+			const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
+			Object.values(rendered).forEach(it => it.$wrpRow.detach());
+		}
+
+		/**
+		 * Wipe any rendered collection elements, and reset the render cache.
+		 * @param prop The state property.
+		 * @param [namespace] A namespace to store these renders under. Useful if multiple renders are being made from
+		 *        the same collection.
+		 */
+		_resetCollectionRenders (prop, namespace = null) {
+			const renderedLookupProp = namespace ? `${namespace}.${prop}` : prop;
+			const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
+			Object.values(rendered).forEach(it => it.$wrpRow.remove());
+			delete this.__rendered[renderedLookupProp];
+		}
+
+		render () { throw new Error("Unimplemented!"); }
+
+		// to be overridden as required
+		getSaveableState () { return {...this.getBaseSaveableState()}; }
+		setStateFrom (toLoad, isOverwrite = false) { this.setBaseSaveableStateFrom(toLoad, isOverwrite); }
+
+		async _pLock (lockName) {
+			while (this.__locks[lockName]) await this.__locks[lockName].lock;
+			let unlock = null;
+			const lock = new Promise(resolve => unlock = resolve);
+			this.__locks[lockName] = {
+				lock,
+				unlock,
+			};
+		}
+
+		async _pGate (lockName) {
+			while (this.__locks[lockName]) await this.__locks[lockName].lock;
+		}
+
+		_unlock (lockName) {
+			const lockMeta = this.__locks[lockName];
+			if (lockMeta) {
+				delete this.__locks[lockName];
+				lockMeta.unlock();
+			}
+		}
+
+		async _pDoProxySetBase (prop, value) { return this._pDoProxySet("state", this.__state, prop, value); }
+
+		_triggerCollectionUpdate (prop) {
+			if (!this._state[prop]) return;
+			this._state[prop] = [...this._state[prop]];
+		}
+
+		static _toCollection (array) {
+			if (array) return array.map(it => ({id: CryptUtil.uid(), entity: it}));
+		}
+
+		static _fromCollection (array) {
+			if (array) return array.map(it => it.entity);
+		}
+
+		static fromObject (obj, ...noModCollections) {
+			const comp = new this();
+			Object.entries(MiscUtil.copy(obj)).forEach(([k, v]) => {
+				if (v == null) comp.__state[k] = v;
+				else if (noModCollections.includes(k) || noModCollections.includes("*")) comp.__state[k] = v;
+				else if (typeof v === "object" && v instanceof Array) comp.__state[k] = BaseComponent._toCollection(v);
+				else comp.__state[k] = v;
+			});
+			return comp;
+		}
+
+		static fromObjectNoMod (obj) { return this.fromObject(obj, "*"); }
+
+		toObject (...noModCollections) {
+			const cpy = MiscUtil.copy(this.__state);
+			Object.entries(cpy).forEach(([k, v]) => {
+				if (v == null) return;
+
+				if (noModCollections.includes(k) || noModCollections.includes("*")) cpy[k] = v;
+				else if (v instanceof Array && v.every(it => it && it.id)) cpy[k] = BaseComponent._fromCollection(v);
+			});
+			return cpy;
+		}
+
+		toObjectNoMod () { return this.toObject("*"); }
 	}
 
-	async _pDoProxySetBase (prop, value) { return this._pDoProxySet("state", this.__state, prop, value); }
-
-	_triggerCollectionUpdate (prop) {
-		if (!this._state[prop]) return;
-		this._state[prop] = [...this._state[prop]];
-	}
-
-	static _toCollection (array) {
-		if (array) return array.map(it => ({id: CryptUtil.uid(), entity: it}));
-	}
-
-	static _fromCollection (array) {
-		if (array) return array.map(it => it.entity);
-	}
-
-	static fromObject (obj, ...noModCollections) {
-		const comp = new this();
-		Object.entries(MiscUtil.copy(obj)).forEach(([k, v]) => {
-			if (v == null) comp.__state[k] = v;
-			else if (noModCollections.includes(k) || noModCollections.includes("*")) comp.__state[k] = v;
-			else if (typeof v === "object" && v instanceof Array) comp.__state[k] = BaseComponent._toCollection(v);
-			else comp.__state[k] = v;
-		});
-		return comp;
-	}
-
-	static fromObjectNoMod (obj) { return this.fromObject(obj, "*"); }
-
-	toObject (...noModCollections) {
-		const cpy = MiscUtil.copy(this.__state);
-		Object.entries(cpy).forEach(([k, v]) => {
-			if (v == null) return;
-
-			if (noModCollections.includes(k) || noModCollections.includes("*")) cpy[k] = v;
-			else if (v instanceof Array && v.every(it => it && it.id)) cpy[k] = BaseComponent._fromCollection(v);
-		});
-		return cpy;
-	}
-
-	toObjectNoMod () { return this.toObject("*"); }
+	return MixedBaseComponent;
 }
+
+class BaseComponent extends MixinBaseComponent(ProxyBase) {}
 
 class RenderableCollectionBase {
 	/**
@@ -3684,123 +3698,129 @@ class CompLayer extends ProxyBase {
 	static fromSavedState (component, savedState) { return new CompLayer(component, savedState.name, savedState.data); }
 }
 
-const MixinComponentHistory = compClass => class extends compClass {
-	constructor () {
-		super(...arguments);
-		this._histStackUndo = [];
-		this._histStackRedo = [];
-		this._isHistDisabled = true;
-		this._histPropBlacklist = new Set();
-		this._histPropWhitelist = null;
+function MixinComponentHistory (Cls) {
+	class MixedComponentHistory extends Cls {
+		constructor () {
+			super(...arguments);
+			this._histStackUndo = [];
+			this._histStackRedo = [];
+			this._isHistDisabled = true;
+			this._histPropBlacklist = new Set();
+			this._histPropWhitelist = null;
 
-		this._histInitialState = null;
-	}
+			this._histInitialState = null;
+		}
 
-	set isHistDisabled (val) { this._isHistDisabled = val; }
-	addBlacklistProps (...props) { props.forEach(p => this._histPropBlacklist.add(p)); }
-	addWhitelistProps (...props) {
-		this._histPropWhitelist = this._histPropWhitelist || new Set();
-		props.forEach(p => this._histPropWhitelist.add(p));
-	}
+		set isHistDisabled (val) { this._isHistDisabled = val; }
+		addBlacklistProps (...props) { props.forEach(p => this._histPropBlacklist.add(p)); }
+		addWhitelistProps (...props) {
+			this._histPropWhitelist = this._histPropWhitelist || new Set();
+			props.forEach(p => this._histPropWhitelist.add(p));
+		}
 
-	/**
-	 * This should be initialised after all other hooks have been added
-	 */
-	initHistory () {
-		// Track the initial state, and watch for further modifications
-		this._histInitialState = MiscUtil.copy(this._state);
-		this._isHistDisabled = false;
+		/**
+		 * This should be initialised after all other hooks have been added
+		 */
+		initHistory () {
+			// Track the initial state, and watch for further modifications
+			this._histInitialState = MiscUtil.copy(this._state);
+			this._isHistDisabled = false;
 
-		this._addHookAll("state", prop => {
-			if (this._isHistDisabled) return;
-			if (this._histPropBlacklist.has(prop)) return;
-			if (this._histPropWhitelist && !this._histPropWhitelist.has(prop)) return;
+			this._addHookAll("state", prop => {
+				if (this._isHistDisabled) return;
+				if (this._histPropBlacklist.has(prop)) return;
+				if (this._histPropWhitelist && !this._histPropWhitelist.has(prop)) return;
 
-			this.recordHistory();
-		});
-	}
+				this.recordHistory();
+			});
+		}
 
-	recordHistory () {
-		const stateCopy = MiscUtil.copy(this._state);
+		recordHistory () {
+			const stateCopy = MiscUtil.copy(this._state);
 
-		// remove any un-tracked properties
-		this._histPropBlacklist.forEach(prop => delete stateCopy[prop]);
-		if (this._histPropWhitelist) Object.keys(stateCopy).filter(k => !this._histPropWhitelist.has(k)).forEach(k => delete stateCopy[k]);
+			// remove any un-tracked properties
+			this._histPropBlacklist.forEach(prop => delete stateCopy[prop]);
+			if (this._histPropWhitelist) Object.keys(stateCopy).filter(k => !this._histPropWhitelist.has(k)).forEach(k => delete stateCopy[k]);
 
-		this._histStackUndo.push(stateCopy);
-		this._histStackRedo = [];
-	}
+			this._histStackUndo.push(stateCopy);
+			this._histStackRedo = [];
+		}
 
-	_histAddExcludedProperties (stateCopy) {
-		Object.entries(this._state).forEach(([k, v]) => {
-			if (this._histPropBlacklist.has(k)) return stateCopy[k] = v;
-			if (this._histPropWhitelist && !this._histPropWhitelist.has(k)) stateCopy[k] = v;
-		});
-	}
+		_histAddExcludedProperties (stateCopy) {
+			Object.entries(this._state).forEach(([k, v]) => {
+				if (this._histPropBlacklist.has(k)) return stateCopy[k] = v;
+				if (this._histPropWhitelist && !this._histPropWhitelist.has(k)) stateCopy[k] = v;
+			});
+		}
 
-	undo () {
-		if (this._histStackUndo.length) {
+		undo () {
+			if (this._histStackUndo.length) {
+				const lastHistDisabled = this._isHistDisabled;
+				this._isHistDisabled = true;
+
+				const curState = this._histStackUndo.pop();
+				this._histStackRedo.push(curState);
+				const toApply = MiscUtil.copy(this._histStackUndo.last() || this._histInitialState);
+				this._histAddExcludedProperties(toApply);
+				this._setState(toApply);
+
+				this._isHistDisabled = lastHistDisabled;
+			} else {
+				const lastHistDisabled = this._isHistDisabled;
+				this._isHistDisabled = true;
+
+				const toApply = MiscUtil.copy(this._histInitialState);
+				this._histAddExcludedProperties(toApply);
+				this._setState(toApply);
+
+				this._isHistDisabled = lastHistDisabled;
+			}
+		}
+
+		redo () {
+			if (!this._histStackRedo.length) return;
+
 			const lastHistDisabled = this._isHistDisabled;
 			this._isHistDisabled = true;
 
-			const curState = this._histStackUndo.pop();
-			this._histStackRedo.push(curState);
-			const toApply = MiscUtil.copy(this._histStackUndo.last() || this._histInitialState);
-			this._histAddExcludedProperties(toApply);
-			this._setState(toApply);
-
-			this._isHistDisabled = lastHistDisabled;
-		} else {
-			const lastHistDisabled = this._isHistDisabled;
-			this._isHistDisabled = true;
-
-			const toApply = MiscUtil.copy(this._histInitialState);
+			const toApplyRaw = this._histStackRedo.pop();
+			this._histStackUndo.push(toApplyRaw);
+			const toApply = MiscUtil.copy(toApplyRaw);
 			this._histAddExcludedProperties(toApply);
 			this._setState(toApply);
 
 			this._isHistDisabled = lastHistDisabled;
 		}
 	}
-
-	redo () {
-		if (!this._histStackRedo.length) return;
-
-		const lastHistDisabled = this._isHistDisabled;
-		this._isHistDisabled = true;
-
-		const toApplyRaw = this._histStackRedo.pop();
-		this._histStackUndo.push(toApplyRaw);
-		const toApply = MiscUtil.copy(toApplyRaw);
-		this._histAddExcludedProperties(toApply);
-		this._setState(toApply);
-
-		this._isHistDisabled = lastHistDisabled;
-	}
-};
+	return MixedComponentHistory;
+}
 
 // region Globally-linked state components
-const MixinComponentGlobalState = compClass => class extends compClass {
-	constructor () {
-		super(...arguments);
+function MixinComponentGlobalState (Cls) {
+	class MixedComponentGlobalState extends Cls {
+		constructor (...args) {
+			super(...args);
 
-		// Point our proxy at the singleton `__stateGlobal` object
-		this._stateGlobal = this._getProxy("stateGlobal", MixinComponentGlobalState._Singleton.__stateGlobal);
+			// Point our proxy at the singleton `__stateGlobal` object
+			this._stateGlobal = this._getProxy("stateGlobal", MixinComponentGlobalState._Singleton.__stateGlobal);
 
-		// Load the singleton's state, then fire all our hooks once it's ready
-		MixinComponentGlobalState._Singleton._pLoadState()
-			.then(() => {
-				this._doFireHooksAll("stateGlobal");
-				this._doFireAllHooks("stateGlobal");
-				this._addHookAll("stateGlobal", MixinComponentGlobalState._Singleton._pSaveStateDebounced);
-			});
+			// Load the singleton's state, then fire all our hooks once it's ready
+			MixinComponentGlobalState._Singleton._pLoadState()
+				.then(() => {
+					this._doFireHooksAll("stateGlobal");
+					this._doFireAllHooks("stateGlobal");
+					this._addHookAll("stateGlobal", MixinComponentGlobalState._Singleton._pSaveStateDebounced);
+				});
+		}
+
+		get __stateGlobal () { return MixinComponentGlobalState._Singleton.__stateGlobal; }
+
+		_addHookGlobal (prop, hook) {
+			return this._addHook("stateGlobal", prop, hook);
+		}
 	}
-
-	get __stateGlobal () { return MixinComponentGlobalState._Singleton.__stateGlobal; }
-
-	_addHookGlobal (prop, hook) {
-		return this._addHook("stateGlobal", prop, hook);
-	}
-};
+	return MixedComponentGlobalState;
+}
 
 MixinComponentGlobalState._Singleton = class {
 	static async _pSaveState () {

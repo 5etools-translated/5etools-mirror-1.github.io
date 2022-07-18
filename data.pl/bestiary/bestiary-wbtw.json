@@ -940,7 +940,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Unsettling Presence (Recharge 6)",
+					"name": "Unsettling Presence {@recharge}",
 					"entries": [
 						"Clapperclaw celuje w jedną istotę, którą widzi w promieniu 15 stóp od siebie. Celowi musi się udać rzut na {@dc 11} Mądrości lub zostanie on magicznie {@condition frightened} osłabiony do końca następnej tury Clapperclaw."
 					]
@@ -1145,7 +1145,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Feint (Recharge 5-6)",
+					"name": "Feint {@recharge 5}",
 					"entries": [
 						"Elkhorn celuje w jedną istotę, którą widzi w promieniu 5 stóp od siebie. Elkhorn ma przewagę przy następnym ataku, który wykona przeciwko temu celowi przed końcem swojej tury. Jeśli ten atak trafi, cel otrzymuje dodatkowe 7 ({@damage 2d6}) obrażeń od rodzaju broni."
 					]
@@ -1916,7 +1916,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Dazzling Light (Recharge 5-6)",
+					"name": "Dazzling Light {@recharge 5}",
 					"entries": [
 						"Magiczne, kolorowe światło tryska z golema w promieniu 15 stóp. Każda istota w stożku musi zdać {@dc 10} rzutu na uratowanie przed utratą Konstytucji, albo zostanie {@condition blinded} porażona na 1 minutę. Stworzenie może powtórzyć rzut ratunkowy na koniec każdej swojej tury, kończąc efekt na sobie w przypadku sukcesu."
 					]
@@ -3062,7 +3062,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Cackle (Recharge 4-6)",
+					"name": "Cackle {@recharge 4}",
 					"entries": [
 						"Lalka chichocze, celując w jedną lub dwie istoty, które widzi w promieniu 30 stóp od siebie. Każdy cel, który słyszy chichot lalki, musi wykonać {@dc 11} rzut na ocalenie przed utratą mądrości, udaje mu się to automatycznie, jeśli jego Inteligencja wynosi 4 lub mniej. W przypadku nieudanego rzutu ratunkowego, stworzenie otrzymuje 5 ({@damage 2d4}) obrażeń psychicznych i przez 1 minutę jest w stanie {@condition incapacitated} śmiechu. Na koniec każdej swojej tury stworzenie może powtórzyć rzut ratujący, kończąc efekt na sobie w przypadku sukcesu. Stworzenie, któremu powiedzie się ten rzut, jest odporne na Laleczkowy Chichot przez 24 godziny."
 					]
@@ -4270,19 +4270,27 @@
 				{
 					"name": "Euphoria Breath {@recharge 5}",
 					"entries": [
-						"Sir Talavar wydycha gaz euforyczny na jedną istotę znajdującą się w promieniu 5 stóp od niego. Celowi musi udać się {@dc 11} rzut ratunkowy na Mądrość, albo przez 1 minutę cel nie może podejmować reakcji i musi rzucać {@dice d6} na początku każdej swojej tury, aby określić swoje zachowanie podczas tury:"
-					]
-				},
-				{
-					"name": "1-4",
-					"entries": [
-						"Cel nie wykonuje żadnej akcji ani dodatkowej akcji i wykorzystuje cały swój ruch, aby poruszyć się w losowym kierunku."
-					]
-				},
-				{
-					"name": "5-6",
-					"entries": [
-						"Cel nie porusza się, a jedyne, co może zrobić w swojej turze, to wykonać {@dc 11} rzut ratunkowy na Mądrość, kończący efekt na sobie w przypadku powodzenia."
+						"Sir Talavar wydycha gaz euforyczny na jedną istotę znajdującą się w promieniu 5 stóp od niego. Celowi musi udać się {@dc 11} rzut ratunkowy na Mądrość, albo przez 1 minutę cel nie może podejmować reakcji i musi rzucać {@dice d6} na początku każdej swojej tury, aby określić swoje zachowanie podczas tury:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "1-4",
+									"entries": [
+										"Cel nie wykonuje żadnej akcji ani dodatkowej akcji i wykorzystuje cały swój ruch, aby poruszyć się w losowym kierunku."
+									]
+								},
+								{
+									"type": "item",
+									"name": "5-6",
+									"entries": [
+										"Cel nie porusza się, a jedyne, co może zrobić w swojej turze, to wykonać {@dc 11} rzut ratunkowy na Mądrość, kończący efekt na sobie w przypadku powodzenia."
+									]
+								}
+							]
+						}
 					]
 				}
 			],

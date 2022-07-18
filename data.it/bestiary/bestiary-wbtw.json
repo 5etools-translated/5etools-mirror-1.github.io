@@ -940,7 +940,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Unsettling Presence (Recharge 6)",
+					"name": "Unsettling Presence {@recharge}",
 					"entries": [
 						"Clapperclaw prende di mira una creatura che può vedere entro 15 piedi da lui. Il bersaglio deve riuscire in un tiro salvezza di Saggezza {@dc 11} o essere magicamente {@condition frightened} fino alla fine del prossimo turno di Clapperclaw."
 					]
@@ -1145,7 +1145,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Feint (Recharge 5-6)",
+					"name": "Feint {@recharge 5}",
 					"entries": [
 						"Elkhorn prende di mira una creatura che può vedere entro 5 piedi da lui. Elkhorn ha un vantaggio sul prossimo tiro di attacco che effettua contro quel bersaglio prima della fine del suo turno. Se quell'attacco colpisce, il bersaglio subisce un danno extra di 7 ({@damage 2d6}) del tipo di arma."
 					]
@@ -1916,7 +1916,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Dazzling Light (Recharge 5-6)",
+					"name": "Dazzling Light {@recharge 5}",
 					"entries": [
 						"Una luce magica e colorata scaturisce dal golem in un cono di 15 piedi. Ogni creatura nel cono deve riuscire in un tiro salvezza di Costituzione {@dc 10} o subire {@condition blinded} per 1 minuto. Una creatura può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stessa con un successo."
 					]
@@ -3062,7 +3062,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Cackle (Recharge 4-6)",
+					"name": "Cackle {@recharge 4}",
 					"entries": [
 						"La bambola schiamazza mentre prende di mira una o due creature che può vedere entro 30 piedi da essa. Ogni bersaglio che può sentire lo schiamazzo della bambola deve effettuare un tiro salvezza di Saggezza {@dc 11}, riuscendo automaticamente se ha un'Intelligenza di 4 o inferiore. Se il tiro salvezza viene fallito, la creatura subisce 5 ({@damage 2d4}) danni psichici ed è {@condition incapacitated} per 1 minuto mentre viene sopraffatta da una risata. Alla fine di ogni suo turno, la creatura può ripetere il tiro salvezza, terminando l'effetto su se stessa con un successo. Una creatura che ha successo in questo tiro salvezza è immune al Cackle di questa bambola per 24 ore."
 					]
@@ -4270,19 +4270,27 @@
 				{
 					"name": "Euphoria Breath {@recharge 5}",
 					"entries": [
-						"Sir Talavar esala un soffio di gas euforia verso una creatura entro 5 piedi da lui. Il bersaglio deve riuscire in un tiro salvezza di saggezza {@dc 11}, o per 1 minuto, il bersaglio non può effettuare reazioni e deve tirare un {@dice d6} all'inizio di ogni suo turno per determinare il suo comportamento durante il turno:"
-					]
-				},
-				{
-					"name": "1-4",
-					"entries": [
-						"Il bersaglio non prende nessuna azione o azione bonus e usa tutto il suo movimento per muoversi in una direzione casuale."
-					]
-				},
-				{
-					"name": "5-6",
-					"entries": [
-						"Il bersaglio non si muove e l'unica cosa che può fare nel suo turno è effettuare un tiro salvezza di saggezza {@dc 11}, terminando l'effetto su se stesso in caso di successo."
+						"Sir Talavar esala un soffio di gas euforia verso una creatura entro 5 piedi da lui. Il bersaglio deve riuscire in un tiro salvezza di saggezza {@dc 11}, o per 1 minuto, il bersaglio non può effettuare reazioni e deve tirare un {@dice d6} all'inizio di ogni suo turno per determinare il suo comportamento durante il turno:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "1-4",
+									"entries": [
+										"Il bersaglio non prende nessuna azione o azione bonus e usa tutto il suo movimento per muoversi in una direzione casuale."
+									]
+								},
+								{
+									"type": "item",
+									"name": "5-6",
+									"entries": [
+										"Il bersaglio non si muove e l'unica cosa che può fare nel suo turno è effettuare un tiro salvezza di saggezza {@dc 11}, terminando l'effetto su se stesso in caso di successo."
+									]
+								}
+							]
+						}
 					]
 				}
 			],

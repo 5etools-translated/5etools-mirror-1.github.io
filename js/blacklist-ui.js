@@ -45,9 +45,9 @@ class BlacklistUtil {
 
 		const jsons = await Promise.all(this._BASIC_FILES.map(url => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/${url}`)));
 		for (let json of jsons) {
-			if (json.variant) {
+			if (json.magicvariant) {
 				json = MiscUtil.copy(json);
-				json.variant.forEach(it => it.source = SourceUtil.getEntitySource(it));
+				json.magicvariant.forEach(it => it.source = SourceUtil.getEntitySource(it));
 			}
 			this._addData(out, json);
 		}

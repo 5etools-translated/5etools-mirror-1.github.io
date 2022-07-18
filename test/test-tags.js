@@ -434,7 +434,7 @@ class ItemDataCheck extends GenericDataCheck {
 		items.itemGroup.forEach(it => this._checkRoot("data/items.json", it, it.name, it.source));
 
 		const magicVariants = require(`../data/magicvariants.json`);
-		magicVariants.variant.forEach(va => this._checkRoot("data/magicvariants.json", va, va.name, va.source) || (va.inherits && this._checkRoot("data/magicvariants.json", va.inherits, `${va.name} (inherits)`, va.source)));
+		magicVariants.magicvariant.forEach(va => this._checkRoot("data/magicvariants.json", va, va.name, va.source) || (va.inherits && this._checkRoot("data/magicvariants.json", va.inherits, `${va.name} (inherits)`, va.source)));
 	}
 }
 

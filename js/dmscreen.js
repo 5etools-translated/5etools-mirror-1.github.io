@@ -216,7 +216,10 @@ class Board {
 		const temp = await StorageUtil.pGet(VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST);
 		if (!temp) return;
 
-		const entities = await Promise.all(temp.list.items.map(it => Renderer.hover.pCacheAndGetHash(temp.page, it.h)));
+		const entities = await temp.list.items.pMap(async it => {
+			const ent = await Renderer.hover.pCacheAndGetHash(temp.page, it.h);
+			return Renderer.hover.pApplyCustomHashId(temp.page, ent, it.customHashId);
+		});
 		const len = entities.length;
 		if (!len) return;
 
@@ -235,7 +238,11 @@ class Board {
 		for (const p of panels) {
 			if (!p.getEmpty()) continue;
 
-			p.doPopulate_Stats(temp.page, entities[ixEntity].source, temp.list.items[ixEntity].h);
+			const ent = entities[ixEntity];
+			ent?._scaledCr
+				? p.doPopulate_StatsScaledCr(temp.page, ent.source, temp.list.items[ixEntity].h, ent._scaledCr)
+				: p.doPopulate_Stats(temp.page, ent.source, temp.list.items[ixEntity].h);
+
 			++ixEntity;
 
 			if (ixEntity >= entities.length) break;

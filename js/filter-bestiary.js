@@ -380,7 +380,7 @@ class PageFilterBestiary extends PageFilter {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(mon._fSources);
-		this._crFilter.addItem(mon._pCr);
+		this._crFilter.addItem(mon._fCr);
 		this._strengthFilter.addItem(mon.str);
 		this._dexterityFilter.addItem(mon.dex);
 		this._constitutionFilter.addItem(mon.con);

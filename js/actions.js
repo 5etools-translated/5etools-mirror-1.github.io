@@ -1,5 +1,40 @@
 "use strict";
 
+class ActionsSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subactions",
+		});
+	}
+
+	pGetSublistItem (it, hash) {
+		const time = it.time ? it.time.map(tm => PageFilterActions.getTimeText(tm)).join("/") : "\u2014";
+
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="bold col-8 pl-0">${it.name}</span>
+				<span class="text-center col-4 pr-0">${time}</span>
+			</a>
+		</div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			it.name,
+			{
+				hash,
+				time,
+			},
+			{
+				entity: it,
+			},
+		);
+		return listItem;
+	}
+}
+
 class ActionsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterActions();
@@ -9,8 +44,6 @@ class ActionsPage extends ListPage {
 			pageFilter,
 
 			listClass: "actions",
-
-			sublistClass: "subactions",
 
 			dataProps: ["action"],
 
@@ -54,7 +87,7 @@ class ActionsPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -65,38 +98,13 @@ class ActionsPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (it, ix) {
-		const hash = UrlUtil.autoEncodeHash(it);
-
-		const time = it.time ? it.time.map(tm => PageFilterActions.getTimeText(tm)).join("/") : "\u2014";
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-8 pl-0">${it.name}</span>
-				<span class="text-center col-4 pr-0">${time}</span>
-			</a>
-		</div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			it.name,
-			{
-				hash,
-				time,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		const it = this._dataList[id];
 		this._$pgContent.empty().append(RenderActions.$getRenderedAction(it));
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 }
 
 const actionsPage = new ActionsPage();
+actionsPage.sublistManager = new ActionsSublistManager();
 window.addEventListener("load", () => actionsPage.pOnLoad());

@@ -1,5 +1,35 @@
 "use strict";
 
+class TablesSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subtablesdata",
+			sublistListOptions: {
+				sortByInitial: "sortName",
+			},
+		});
+	}
+
+	pGetSublistItem (it, hash) {
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col"><a href="#${hash}" class="lst--border lst__row-inner" title="${it.name}"><span class="bold col-12 px-0">${it.name}</span></a></div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			it.name,
+			{
+				hash,
+			},
+			{
+				entity: it,
+			},
+		);
+		return listItem;
+	}
+}
+
 class TablesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterTables();
@@ -10,11 +40,6 @@ class TablesPage extends ListPage {
 
 			listClass: "tablesdata",
 			listOptions: {
-				sortByInitial: "sortName",
-			},
-
-			sublistClass: "subtablesdata",
-			sublistOptions: {
 				sortByInitial: "sortName",
 			},
 
@@ -78,7 +103,7 @@ class TablesPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -89,31 +114,13 @@ class TablesPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (it, ix) {
-		const hash = UrlUtil.autoEncodeHash(it);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col"><a href="#${hash}" class="lst--border lst__row-inner" title="${it.name}"><span class="bold col-12 px-0">${it.name}</span></a></div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			it.name,
-			{
-				hash,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		Renderer.get().setFirstSection(true);
 		const it = this._dataList[id];
 
 		this._$pgContent.empty().append(RenderTables.$getRenderedTable(it));
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 
 	_getSearchCache (entity) {
@@ -126,4 +133,5 @@ class TablesPage extends ListPage {
 }
 
 const tablesPage = new TablesPage();
+tablesPage.sublistManager = new TablesSublistManager();
 window.addEventListener("load", () => tablesPage.pOnLoad());

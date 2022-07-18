@@ -1,5 +1,56 @@
 "use strict";
 
+class SpellsSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subspells",
+			sublistListOptions: {
+				fnSort: PageFilterSpells.sortSpells,
+			},
+		});
+	}
+
+	pGetSublistItem (spell, hash) {
+		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools);
+		const time = PageFilterSpells.getTblTimeStr(spell.time[0]);
+		const concentration = spell._isConc ? "×" : "";
+		const range = Parser.spRangeToFull(spell.range);
+
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}" class="lst--border lst__row-inner">
+				<span class="bold col-3-2 pl-0">${spell.name}</span>
+				<span class="capitalise col-1-5 text-center">${PageFilterSpells.getTblLevelStr(spell)}</span>
+				<span class="col-1-8 text-center">${time}</span>
+				<span class="capitalise col-1-6 sp__school-${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+				<span class="concentration--sublist col-0-7 text-center" title="Concentration">${concentration}</span>
+				<span class="range col-3-2 pr-0 text-right">${range}</span>
+			</a>
+		</div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			spell.name,
+			{
+				hash,
+				school,
+				level: spell.level,
+				time,
+				concentration,
+				range,
+				normalisedTime: spell._normalisedTime,
+				normalisedRange: spell._normalisedRange,
+			},
+			{
+				entity: spell,
+			},
+		);
+		return listItem;
+	}
+}
+
 class SpellsPage extends ListPageMultiSource {
 	constructor () {
 		super({
@@ -10,18 +61,14 @@ class SpellsPage extends ListPageMultiSource {
 				fnSort: PageFilterSpells.sortSpells,
 			},
 
-			sublistClass: "subspells",
-			sublistOptions: {
-				fnSort: PageFilterSpells.sortSpells,
-			},
-
 			dataProps: ["spell"],
 
 			bookViewOptions: {
 				$btnOpen: $(`#btn-spellbook`),
 				$eleNoneVisible: $(`<span class="initial-message">If you wish to view multiple spells, please first make a list</span>`),
 				pageTitle: "Spells Book View",
-				popTblGetNumShown: (opts) => this._bookView_popTblGetNumShown(opts),
+				fnSort: (a, b) => this._bookViewLastOrder === "0" ? SortUtil.ascSort(a.level, b.level) : SortUtil.ascSortLower(a.name, b.name),
+				fnGetMd: sp => RendererMarkdown.get().render({type: "dataSpell", dataSpell: sp}).trim(),
 			},
 
 			tableViewOptions: {
@@ -51,14 +98,9 @@ class SpellsPage extends ListPageMultiSource {
 					entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
 					entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2},
 				},
-				filter: {generator: ListUtil.basicFilterGenerator},
-				sorter: (a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source),
 			},
 
-			bindPopoutButtonOptions: {
-				handlerGenerator: SpellsPage.popoutHandlerGenerator.bind(SpellsPage),
-				title: "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)",
-			},
+			isMarkdownPopout: true,
 			bindOtherButtonsOptions: {
 				upload: {
 					pFnPreLoad: (...args) => this.pPreloadSublistSources(...args),
@@ -78,10 +120,11 @@ class SpellsPage extends ListPageMultiSource {
 
 		this._lastFilterValues = null;
 		this._subclassLookup = {};
+		this._bookViewLastOrder = null;
 	}
 
 	_bookView_popTblGetNumShown ({$wrpContent, $dispName, $wrpControls}) {
-		const toShow = ListUtil.getSublistedIds().map(id => this._dataList[id])
+		this._bookViewToShow = this._sublistManager.getSublistedEntities()
 			.sort((a, b) => SortUtil.ascSortLower(a.name, b.name));
 
 		const renderSpell = (stack, sp) => {
@@ -90,74 +133,34 @@ class SpellsPage extends ListPageMultiSource {
 			stack.push(`</tbody></table></div>`);
 		};
 
-		let lastOrder = StorageUtil.syncGetForPage(SpellsPage._BOOK_VIEW_MODE_K);
-		if (lastOrder != null) lastOrder = `${lastOrder}`;
+		this._bookViewLastOrder = StorageUtil.syncGetForPage(SpellsPage._BOOK_VIEW_MODE_K);
+		if (this._bookViewLastOrder != null) this._bookViewLastOrder = `${this._bookViewLastOrder}`;
 
 		const $selSortMode = $(`<select class="form-control input-sm">
-					<option value="0">Spell Level</option>
-					<option value="1">Alphabetical</option>
-				</select>`)
+			<option value="0">Spell Level</option>
+			<option value="1">Alphabetical</option>
+		</select>`)
 			.change(() => {
-				if (!toShow.length && Hist.lastLoadedId != null) return;
+				if (!this._bookViewToShow.length && Hist.lastLoadedId != null) return;
 
-				const val = Number($selSortMode.val());
-				if (val === 0) renderByLevel();
+				const val = $selSortMode.val();
+				if (val === "0") renderByLevel();
 				else renderByAlpha();
 
 				StorageUtil.syncSetForPage(SpellsPage._BOOK_VIEW_MODE_K, val);
 			});
-		if (lastOrder != null) $selSortMode.val(lastOrder);
+		if (this._bookViewLastOrder != null) $selSortMode.val(this._bookViewLastOrder);
 
 		$$`<div class="ve-flex-vh-center ml-3"><div class="mr-2 no-wrap">Sort order:</div>${$selSortMode}</div>`.appendTo($wrpControls);
 
 		// region Markdown
-		// TODO refactor this and bestiary markdown section
-		const getAsMarkdown = () => {
-			const toRender = toShow.length ? toShow : [this._dataList[Hist.lastLoadedId]];
-			const parts = [...toRender]
-				.sort((a, b) => lastOrder === "0" ? SortUtil.ascSort(a.level, b.level) : SortUtil.ascSortLower(a.name, b.name))
-				.map(sp => RendererMarkdown.get().render({type: "dataSpell", dataSpell: sp}).trim());
-
-			const out = [];
-			let charLimit = RendererMarkdown._PAGE_CHARS;
-			for (let i = 0; i < parts.length; ++i) {
-				const part = parts[i];
-				out.push(part);
-
-				if (i < parts.length - 1) {
-					if ((charLimit -= part.length) < 0) {
-						if (RendererMarkdown._isAddPageBreaks) out.push("", "\\pagebreak", "");
-						charLimit = RendererMarkdown._PAGE_CHARS;
-					}
-				}
-			}
-
-			return out.join("\n\n");
-		};
-
-		const $btnDownloadMarkdown = $(`<button class="btn btn-default btn-sm">Download as Markdown</button>`)
-			.click(() => DataUtil.userDownloadText("spells.md", getAsMarkdown()));
-
-		const $btnCopyMarkdown = $(`<button class="btn btn-default btn-sm px-2" title="Copy Markdown to Clipboard"><span class="glyphicon glyphicon-copy"/></button>`)
-			.click(async () => {
-				await MiscUtil.pCopyTextToClipboard(await getAsMarkdown());
-				JqueryUtil.showCopiedEffect($btnCopyMarkdown);
-			});
-
-		const $btnDownloadMarkdownSettings = $(`<button class="btn btn-default btn-sm px-2" title="Markdown Settings"><span class="glyphicon glyphicon-cog"/></button>`)
-			.click(async () => RendererMarkdown.pShowSettingsModal());
-
-		$$`<div class="ve-flex-v-center btn-group ml-3">
-					${$btnDownloadMarkdown}
-					${$btnCopyMarkdown}
-					${$btnDownloadMarkdownSettings}
-				</div>`.appendTo($wrpControls);
+		this._bookView_$getControlsMarkdown().appendTo($wrpControls);
 		// endregion
 
 		const renderByLevel = () => {
 			const stack = [];
 			for (let i = 0; i < 10; ++i) {
-				const atLvl = toShow.filter(sp => sp.level === i);
+				const atLvl = this._bookViewToShow.filter(sp => sp.level === i);
 				if (atLvl.length) {
 					stack.push(`<div class="w-100 h-100 bkmv__no-breaks">`);
 					stack.push(`<div class="bkmv__spacer-name ve-flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
@@ -166,14 +169,14 @@ class SpellsPage extends ListPageMultiSource {
 				}
 			}
 			$wrpContent.empty().append(stack.join(""));
-			lastOrder = "0";
+			this._bookViewLastOrder = "0";
 		};
 
 		const renderByAlpha = () => {
 			const stack = [];
-			toShow.forEach(sp => renderSpell(stack, sp));
+			this._bookViewToShow.forEach(sp => renderSpell(stack, sp));
 			$wrpContent.empty().append(stack.join(""));
-			lastOrder = "1";
+			this._bookViewLastOrder = "1";
 		};
 
 		const renderNoneSelected = () => {
@@ -186,11 +189,11 @@ class SpellsPage extends ListPageMultiSource {
 			$wrpContent.empty().append(stack.join(""));
 		};
 
-		if (!toShow.length && Hist.lastLoadedId != null) renderNoneSelected();
-		else if (lastOrder === 1) renderByAlpha();
+		if (!this._bookViewToShow.length && Hist.lastLoadedId != null) renderNoneSelected();
+		else if (this._bookViewLastOrder === "1") renderByAlpha();
 		else renderByLevel();
 
-		return toShow.length;
+		return this._bookViewToShow.length;
 	}
 
 	getListItem (spell, spI) {
@@ -212,7 +215,7 @@ class SpellsPage extends ListPageMultiSource {
 			tag: "div",
 			clazz: `lst__row ve-flex-col ${isExcluded ? "lst__row--blacklisted" : ""}`,
 			click: (evt) => this._list.doSelect(listItem, evt),
-			contextmenu: (evt) => ListUtil.openContextMenu(evt, this._list, listItem),
+			contextmenu: (evt) => this._openContextMenu(evt, this._list, listItem),
 			children: [
 				e_({
 					tag: "a",
@@ -275,44 +278,6 @@ class SpellsPage extends ListPageMultiSource {
 		this._onFilterChangeMulti(this._dataList, f);
 	}
 
-	pGetSublistItem (spell, ix) {
-		const hash = UrlUtil.autoEncodeHash(spell);
-		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools);
-		const time = PageFilterSpells.getTblTimeStr(spell.time[0]);
-		const concentration = spell._isConc ? "×" : "";
-		const range = Parser.spRangeToFull(spell.range);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}" class="lst--border lst__row-inner">
-				<span class="bold col-3-2 pl-0">${spell.name}</span>
-				<span class="capitalise col-1-5 text-center">${PageFilterSpells.getTblLevelStr(spell)}</span>
-				<span class="col-1-8 text-center">${time}</span>
-				<span class="capitalise col-1-6 sp__school-${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
-				<span class="concentration--sublist col-0-7 text-center" title="Concentration">${concentration}</span>
-				<span class="range col-3-2 pr-0 text-right">${range}</span>
-			</a>
-		</div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			spell.name,
-			{
-				hash,
-				school,
-				level: spell.level,
-				time,
-				concentration,
-				range,
-				normalisedTime: spell._normalisedTime,
-				normalisedRange: spell._normalisedRange,
-			},
-		);
-		return listItem;
-	}
-
 	doLoadHash (id) {
 		Renderer.get().setFirstSection(true);
 		this._$pgContent.empty();
@@ -354,7 +319,7 @@ class SpellsPage extends ListPageMultiSource {
 			tabLabelReference: tabMetas.map(it => it.label),
 		});
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 
 	async pDoLoadSubHash (sub) {
@@ -365,44 +330,6 @@ class SpellsPage extends ListPageMultiSource {
 	async _pOnLoad_pPreDataLoad () {
 		const subclassLookup = await DataUtil.class.pGetSubclassLookup();
 		Object.assign(this._subclassLookup, subclassLookup);
-	}
-
-	// TODO refactor this and bestiary markdown section
-	static popoutHandlerGenerator (toList) {
-		return (evt) => {
-			if (Hist.lastLoadedId !== null) {
-				const toRender = toList[Hist.lastLoadedId];
-
-				if (evt.shiftKey) {
-					const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
-					Renderer.hover.getShowWindow(
-						$content,
-						Renderer.hover.getWindowPositionFromEvent(evt),
-						{
-							title: `${toRender.name} \u2014 Source Data`,
-							isPermanent: true,
-							isBookContent: true,
-						},
-					);
-				} else if (evt.ctrlKey || evt.metaKey) {
-					const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
-					const mdText = RendererMarkdown.get().render({entries: [{type: "dataSpell", dataSpell: toRender}]});
-					const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
-
-					Renderer.hover.getShowWindow(
-						$content,
-						Renderer.hover.getWindowPositionFromEvent(evt),
-						{
-							title: name,
-							isPermanent: true,
-							isBookContent: true,
-						},
-					);
-				} else {
-					Renderer.hover.doPopoutCurPage(evt, toList[Hist.lastLoadedId]);
-				}
-			}
-		};
 	}
 
 	async _pOnLoad_pPreDataAdd () {
@@ -446,4 +373,5 @@ SpellsPage._INDEXABLE_PROPS = [
 ];
 
 const spellsPage = new SpellsPage();
+spellsPage.sublistManager = new SpellsSublistManager();
 window.addEventListener("load", () => spellsPage.pOnLoad());

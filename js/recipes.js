@@ -1,5 +1,46 @@
 "use strict";
 
+class RecipesSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subrecipes",
+		});
+	}
+
+	_getCustomHashId ({entity}) {
+		return Renderer.recipe.getCustomHashId(entity);
+	}
+
+	async pGetSublistItem (itRaw, hash, {customHashId = null} = {}) {
+		const it = await Renderer.hover.pApplyCustomHashId(UrlUtil.getCurrentPage(), itRaw, customHashId);
+		const name = it._displayName || it.name;
+
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="bold col-9 pl-0">${name}</span>
+				<span class="col-3 text-center pr-0">${it.type || "\u2014"}</span>
+			</a>
+		</div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			name,
+			{
+				hash,
+				type: it.type,
+			},
+			{
+				entity: it,
+				customHashId,
+			},
+		);
+		return listItem;
+	}
+}
+
 class RecipesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterRecipes();
@@ -11,37 +52,8 @@ class RecipesPage extends ListPage {
 
 			listClass: "recipes",
 
-			sublistClass: "subrecipes",
-			sublistOptions: {
-				pCustomHashHandler: RecipesPage._sublist_customHashHandler.bind(RecipesPage),
-			},
-
 			dataProps: ["recipe"],
-
-			fnGetCustomHashId: () => this._getCurrentPinListCustomHashId(),
-
-			bindPopoutButtonOptions: {
-				fnGetToRender: () => this._lastRender,
-			},
 		});
-
-		this._lastRender = null;
-	}
-
-	static _sublist_customHashHandler (r, customHashId) {
-		return this._pGetModifiedRecipe(r, customHashId);
-	}
-
-	static _pGetModifiedRecipe (rRaw, customHashId) {
-		if (!customHashId) return rRaw;
-		const {_scaleFactor} = Renderer.recipe.getUnpackedCustomHashId(customHashId);
-		if (_scaleFactor == null) return rRaw;
-		return Renderer.recipe.getScaledRecipe(rRaw, _scaleFactor);
-	}
-
-	_getCurrentPinListCustomHashId () {
-		if (!this._lastRender?._scaleFactor) return null;
-		return Renderer.recipe.getCustomHashId(this._lastRender);
 	}
 
 	getListItem (it, rpI, isExcluded) {
@@ -74,7 +86,7 @@ class RecipesPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -85,36 +97,7 @@ class RecipesPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (itRaw, ix, {customHashId = null} = {}) {
-		const it = this.constructor._pGetModifiedRecipe(itRaw, customHashId);
-		const name = it._displayName || it.name;
-		const hash = UrlUtil.autoEncodeHash(it);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-9 pl-0">${name}</span>
-				<span class="col-3 text-center pr-0">${it.type || "\u2014"}</span>
-			</a>
-		</div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			name,
-			{
-				hash,
-				type: it.type,
-			},
-			{
-				customHashId,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		const it = this._dataList[id];
 		this._$pgContent.empty();
 
@@ -141,7 +124,7 @@ class RecipesPage extends ListPage {
 			tabLabelReference: tabMetas.map(it => it.label),
 		});
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 
 	_renderStats (it, scaleFactor = null) {
@@ -162,7 +145,7 @@ class RecipesPage extends ListPage {
 		$selScaleFactor.val(`${scaleFactor || 1}`);
 
 		this._$pgContent.empty().append(RenderRecipes.$getRenderedRecipe(it, {$selScaleFactor}));
-		this._lastRender = it;
+		this._lastRender = {entity: it};
 	}
 
 	_renderFluff (it, isImageTab) {
@@ -196,4 +179,6 @@ class RecipesPage extends ListPage {
 RecipesPage._HASH_START_SCALED = `${VeCt.HASH_SCALED}${HASH_SUB_KV_SEP}`;
 
 const recipesPage = new RecipesPage();
+recipesPage.sublistManager = new RecipesSublistManager();
+
 window.addEventListener("load", () => recipesPage.pOnLoad());

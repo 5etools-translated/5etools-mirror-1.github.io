@@ -53,7 +53,6 @@ const getTemplateDev = (page, source, hash, textStyle, isFluff) => `<!DOCTYPE ht
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>5etools</title>
 <link rel="stylesheet" href="/css/bootstrap.css">
-<link rel="stylesheet" href="/css/jquery-ui.css">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png">
@@ -89,7 +88,6 @@ const getTemplateDev = (page, source, hash, textStyle, isFluff) => `<!DOCTYPE ht
 <main class="container"><div class="row"><div id="wrp-pagecontent"><table id="pagecontent" class="w-100 stats"><tr><th class="border" colspan="6"></th></tr><tr><td colspan="6" class="initial-message">Loading...</td></tr><tr><th class="border" colspan="6"></th></tr></table></div></div><div class="row" id="link-page"></div></main>
 <script type="text/javascript" src="/lib/jquery.js"></script>
 <script type="text/javascript" src="/lib/localforage.js"></script>
-<script type="text/javascript" src="/lib/jquery-ui.js"></script>
 <script type="text/javascript" src="/lib/elasticlunr.js"></script>
 <script type="text/javascript" src="/js/parser.js"></script>
 <script type="text/javascript" src="/js/utils.js"></script>

@@ -1,5 +1,48 @@
 "use strict";
 
+class OptionalFeaturesSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "suboptfeatures",
+			sublistListOptions: {
+				fnSort: PageFilterOptionalFeatures.sortOptionalFeatures,
+			},
+		});
+	}
+
+	pGetSublistItem (it, hash) {
+		const prerequisite = Renderer.utils.getPrerequisiteHtml(it.prerequisite, {isListMode: true, blacklistKeys: new Set(["level"])});
+		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite);
+
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="bold col-4 pl-0">${it.name}</span>
+				<span class="col-2 text-center" title="${it._dFeatureType}">${it._lFeatureType}</span>
+				<span class="col-4-5 ${prerequisite === "\u2014" ? "text-center" : ""}">${prerequisite}</span>
+				<span class="col-1-5 text-center pr-0">${level}</span>
+			</a>
+		</div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			it.name,
+			{
+				hash,
+				type: it._lFeatureType,
+				prerequisite,
+				level,
+			},
+			{
+				entity: it,
+			},
+		);
+		return listItem;
+	}
+}
+
 class OptionalFeaturesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterOptionalFeatures();
@@ -14,18 +57,12 @@ class OptionalFeaturesPage extends ListPage {
 				fnSort: PageFilterOptionalFeatures.sortOptionalFeatures,
 			},
 
-			sublistClass: "suboptfeatures",
-			sublistOptions: {
-				fnSort: PageFilterOptionalFeatures.sortOptionalFeatures,
-			},
-
 			dataProps: ["optionalfeature"],
 
 			bookViewOptions: {
 				$btnOpen: $(`#btn-book`),
 				$eleNoneVisible: $(`<span class="initial-message">If you wish to view multiple optional features, please first make a list</span>`),
 				pageTitle: "Optional Features Book View",
-				popTblGetNumShown: (opts) => this._bookView_popTblGetNumShown(opts),
 			},
 
 			isPreviewable: true,
@@ -73,7 +110,7 @@ class OptionalFeaturesPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -84,37 +121,7 @@ class OptionalFeaturesPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (it, ix) {
-		const hash = UrlUtil.autoEncodeHash(it);
-		const prerequisite = Renderer.utils.getPrerequisiteHtml(it.prerequisite, {isListMode: true, blacklistKeys: new Set(["level"])});
-		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(it.prerequisite);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-4 pl-0">${it.name}</span>
-				<span class="col-2 text-center" title="${it._dFeatureType}">${it._lFeatureType}</span>
-				<span class="col-4-5 ${prerequisite === "\u2014" ? "text-center" : ""}">${prerequisite}</span>
-				<span class="col-1-5 text-center pr-0">${level}</span>
-			</a>
-		</div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			it.name,
-			{
-				hash,
-				type: it._lFeatureType,
-				prerequisite,
-				level,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		const it = this._dataList[id];
 
 		const $wrpTab = $(`#stat-tabs`);
@@ -136,7 +143,7 @@ class OptionalFeaturesPage extends ListPage {
 
 		this._$pgContent.empty().append(RenderOptionalFeatures.$getRenderedOptionalFeature(it));
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 
 	async pDoLoadSubHash (sub) {
@@ -146,4 +153,5 @@ class OptionalFeaturesPage extends ListPage {
 }
 
 const optionalFeaturesPage = new OptionalFeaturesPage();
+optionalFeaturesPage.sublistManager = new OptionalFeaturesSublistManager();
 window.addEventListener("load", () => optionalFeaturesPage.pOnLoad());

@@ -984,7 +984,7 @@ PropOrder._ITEM__COPY_MOD = [
 	"_",
 	...PropOrder._ITEM,
 ];
-PropOrder._VARIANT = [
+PropOrder._MAGICVARIANT = [
 	"name",
 	"source",
 
@@ -1362,7 +1362,7 @@ PropOrder._PROP_TO_LIST = {
 	"vehicleUpgrade": PropOrder._VEHICLE_UPGRADE,
 	"item": PropOrder._ITEM,
 	"baseitem": PropOrder._ITEM,
-	"variant": PropOrder._VARIANT,
+	"magicvariant": PropOrder._MAGICVARIANT,
 	"itemGroup": PropOrder._ITEM,
 	"object": PropOrder._OBJECT,
 	"optionalfeature": PropOrder._OPTIONALFEATURE,

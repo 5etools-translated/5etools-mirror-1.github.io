@@ -4,7 +4,7 @@ class RenderTrapsHazards {
 
 		Renderer.get().recursiveRender({entries: it.entries}, renderStack, {depth: 1});
 
-		const trapPart = Renderer.traphazard.getRenderedTrapPart(Renderer.get(), it);
+		const trapPart = Renderer.trap.getRenderedTrapPart(Renderer.get(), it);
 		const subtitle = Renderer.traphazard.getSubtitle(it);
 
 		return $$`

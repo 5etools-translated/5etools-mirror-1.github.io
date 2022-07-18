@@ -1,5 +1,40 @@
 "use strict";
 
+class TrapsHazardsSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subtrapshazards",
+		});
+	}
+
+	pGetSublistItem (it, hash) {
+		const trapType = Parser.trapHazTypeToFull(it.trapHazType);
+
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="col-4 text-center pl-0">${trapType}</span>
+				<span class="bold col-8 pr-0">${it.name}</span>
+			</a>
+		</div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			it.name,
+			{
+				hash,
+				trapType,
+			},
+			{
+				entity: it,
+			},
+		);
+		return listItem;
+	}
+}
+
 class TrapsHazardsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterTrapsHazards();
@@ -9,8 +44,6 @@ class TrapsHazardsPage extends ListPage {
 			pageFilter,
 
 			listClass: "trapshazards",
-
-			sublistClass: "subtrapshazards",
 
 			dataProps: ["trap", "hazard"],
 		});
@@ -47,7 +80,7 @@ class TrapsHazardsPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -58,38 +91,13 @@ class TrapsHazardsPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (it, ix) {
-		const hash = UrlUtil.autoEncodeHash(it);
-		const trapType = Parser.trapHazTypeToFull(it.trapHazType);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="col-4 text-center pl-0">${trapType}</span>
-				<span class="bold col-8 pr-0">${it.name}</span>
-			</a>
-		</div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			it.name,
-			{
-				hash,
-				trapType,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		Renderer.get().setFirstSection(true);
 		const it = this._dataList[id];
 
 		this._$pgContent.empty().append(RenderTrapsHazards.$getRenderedTrapHazard(it));
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 	_getSearchCache (entity) {
 		if (!entity.effect && !entity.trigger && !entity.countermeasures && !entity.entries) return "";
@@ -103,4 +111,5 @@ class TrapsHazardsPage extends ListPage {
 }
 
 const trapsHazardsPage = new TrapsHazardsPage();
+trapsHazardsPage.sublistManager = new TrapsHazardsSublistManager();
 window.addEventListener("load", () => trapsHazardsPage.pOnLoad());

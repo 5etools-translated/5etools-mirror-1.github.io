@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.7.2",
+	"version": "1.7.4",
 
 	"definitions" : {
 		"_arrayOfSpell": {
@@ -831,7 +831,7 @@
 									"const": false
 								}
 							},
-							"required": ["name", "entry"],
+							"required": ["entry"],
 							"additionalProperties": false
 						}
 					]
@@ -854,7 +854,7 @@
 									"const": false
 								}
 							},
-							"required": ["name", "entries"],
+							"required": ["entries"],
 							"additionalProperties": false
 						}
 					]
@@ -940,7 +940,11 @@
 								},
 								"size": {"type": "integer"},
 								"offsetX": {"type": "integer"},
-								"offsetY": {"type": "integer"}
+								"offsetY": {"type": "integer"},
+								"scale": {
+									"description": "Map image scaling. Where possible, avoid using this, and use size/offset instead.",
+									"type": "number"
+								}
 							},
 							"additionalProperties": false
 						},

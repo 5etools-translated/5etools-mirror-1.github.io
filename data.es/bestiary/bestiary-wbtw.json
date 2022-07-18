@@ -940,7 +940,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Unsettling Presence (Recharge 6)",
+					"name": "Unsettling Presence {@recharge}",
 					"entries": [
 						"Clapperclaw tiene como objetivo una criatura que pueda ver en un radio de 15 pies. El objetivo debe tener éxito en una tirada de salvación de Sabiduría {@dc 11} o quedar mágicamente {@condition frightened} hasta el final del siguiente turno de Clapperclaw."
 					]
@@ -1145,7 +1145,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Feint (Recharge 5-6)",
+					"name": "Feint {@recharge 5}",
 					"entries": [
 						"Elkhorn tiene como objetivo una criatura que pueda ver a menos de 1,5 metros de él. Elkhorn tiene ventaja en la siguiente tirada de ataque que haga contra ese objetivo antes del final de su turno. Si ese ataque impacta, el objetivo recibe un 7 ({@damage 2d6}) de daño adicional del tipo de arma."
 					]
@@ -1916,7 +1916,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Dazzling Light (Recharge 5-6)",
+					"name": "Dazzling Light {@recharge 5}",
 					"entries": [
 						"Una luz mágica y coloreada brota del gólem en un cono de 15 pies. Cada criatura en el cono debe tener éxito en una tirada de salvación de Constitución {@dc 10} o quedar {@condition blinded} durante 1 minuto. Una criatura puede repetir la tirada de salvación al final de cada uno de sus turnos, terminando el efecto sobre sí misma si tiene éxito."
 					]
@@ -3062,7 +3062,7 @@
 			],
 			"bonus": [
 				{
-					"name": "Cackle (Recharge 4-6)",
+					"name": "Cackle {@recharge 4}",
 					"entries": [
 						"El muñeco cacarea mientras apunta a una o dos criaturas que pueda ver en un radio de 30 pies. Cada objetivo que pueda oír el cacareo del muñeco debe realizar una tirada de salvación de Sabiduría {@dc 11}, que tiene éxito automáticamente si tiene una Inteligencia de 4 o menos. En caso de fallar la tirada de salvación, la criatura recibe 5 ({@damage 2d4}) de daño psíquico y queda {@condition incapacitated} durante 1 minuto mientras se deja llevar por un ataque de risa. Al final de cada uno de sus turnos, la criatura puede repetir la tirada de salvación, terminando el efecto sobre sí misma si tiene éxito. Una criatura que tenga éxito en esta tirada de salvación es inmune al cacareo de esta muñeca durante 24 horas."
 					]
@@ -4270,19 +4270,27 @@
 				{
 					"name": "Euphoria Breath {@recharge 5}",
 					"entries": [
-						"Sir Talavar exhala una bocanada de gas de euforia a una criatura en un radio de 1,5 metros de él. El objetivo debe tener éxito en una tirada de salvación de Sabiduría {@dc 11}, o durante 1 minuto, el objetivo no puede tomar reacciones y debe tirar un {@dice d6} al comienzo de cada uno de sus turnos para determinar su comportamiento durante el mismo:"
-					]
-				},
-				{
-					"name": "1-4",
-					"entries": [
-						"El objetivo no realiza ninguna acción ni acción adicional y utiliza todo su movimiento para moverse en una dirección aleatoria."
-					]
-				},
-				{
-					"name": "5-6",
-					"entries": [
-						"El objetivo no se mueve, y lo único que puede hacer en su turno es hacer una tirada de salvación de Sabiduría {@dc 11}, terminando el efecto sobre sí mismo en caso de éxito."
+						"Sir Talavar exhala una bocanada de gas de euforia a una criatura en un radio de 1,5 metros de él. El objetivo debe tener éxito en una tirada de salvación de Sabiduría {@dc 11}, o durante 1 minuto, el objetivo no puede tomar reacciones y debe tirar un {@dice d6} al comienzo de cada uno de sus turnos para determinar su comportamiento durante el mismo:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "1-4",
+									"entries": [
+										"El objetivo no realiza ninguna acción ni acción adicional y utiliza todo su movimiento para moverse en una dirección aleatoria."
+									]
+								},
+								{
+									"type": "item",
+									"name": "5-6",
+									"entries": [
+										"El objetivo no se mueve, y lo único que puede hacer en su turno es hacer una tirada de salvación de Sabiduría {@dc 11}, terminando el efecto sobre sí mismo en caso de éxito."
+									]
+								}
+							]
+						}
 					]
 				}
 			],

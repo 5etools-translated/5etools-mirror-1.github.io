@@ -1,5 +1,40 @@
 "use strict";
 
+class LanguagesSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "sublanguages",
+		});
+	}
+
+	pGetSublistItem (it, hash) {
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="bold col-8 pl-0">${it.name}</span>
+				<span class="col-2 text-center">${(it.type || "\u2014").uppercaseFirst()}</span>
+				<span class="col-2 text-center pr-0">${(it.script || "\u2014").toTitleCase()}</span>
+			</a>
+		</div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			it.name,
+			{
+				hash,
+				type: it.type || "",
+				script: it.script || "",
+			},
+			{
+				entity: it,
+			},
+		);
+		return listItem;
+	}
+}
+
 class LanguagesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterLanguages();
@@ -9,8 +44,6 @@ class LanguagesPage extends ListPage {
 			pageFilter,
 
 			listClass: "languages",
-
-			sublistClass: "sublanguages",
 
 			dataProps: ["language"],
 		});
@@ -49,7 +82,7 @@ class LanguagesPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -60,33 +93,7 @@ class LanguagesPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (it, ix) {
-		const hash = UrlUtil.autoEncodeHash(it);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-8 pl-0">${it.name}</span>
-				<span class="col-2 text-center">${(it.type || "\u2014").uppercaseFirst()}</span>
-				<span class="col-2 text-center pr-0">${(it.script || "\u2014").toTitleCase()}</span>
-			</a>
-		</div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			it.name,
-			{
-				hash,
-				type: it.type || "",
-				script: it.script || "",
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		this._$pgContent.empty();
 		const it = this._dataList[id];
 
@@ -210,9 +217,10 @@ class LanguagesPage extends ListPage {
 			tabLabelReference: tabMetas.map(it => it.label),
 		});
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 }
 
 const languagesPage = new LanguagesPage();
+languagesPage.sublistManager = new LanguagesSublistManager();
 window.addEventListener("load", () => languagesPage.pOnLoad());

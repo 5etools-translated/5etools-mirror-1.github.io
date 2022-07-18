@@ -787,6 +787,7 @@ class FilterBox extends ProxyBase {
 	}
 
 	setFromSubHashes (subHashes, {force = false, $iptSearch = null} = {}) {
+		// TODO(unpack) refactor
 		const unpacked = {};
 		subHashes.forEach(s => {
 			const unpackedPart = UrlUtil.unpackSubHash(s, true);

@@ -1,12 +1,26 @@
 "use strict";
 
-const tablePage = new TablePage({
-	jsonUrl: "data/encounters.json",
-	dataProp: "encounter",
-	listClass: "encounters",
-	tableCol1: "Encounter",
-	fnGetTableName: (meta, table) => `${meta.name} Encounters (Levels ${table.minlvl}\u2013${table.maxlvl})`,
-	fnGetTableHash: (meta, table) => UrlUtil.encodeForHash([meta.name, meta.source, `${table.minlvl}-${table.maxlvl}`]),
-});
+class EncountersPage extends TableListPage {
+	constructor () {
+		super({
+			dataSource: "data/encounters.json",
 
-window.addEventListener("load", tablePage.pInit.bind(tablePage));
+			dataProps: ["encounter"],
+		});
+	}
+
+	static _COL_NAME_1 = "Encounter";
+
+	_getHash (ent) {
+		return UrlUtil.encodeForHash([ent.name, ent.source, `${ent.minlvl}-${ent.maxlvl}`]);
+	}
+
+	_getHeaderId (ent) {
+		return UrlUtil.encodeForHash([ent.name, ent.source]);
+	}
+
+	_getDisplayName (ent) { return `${ent.name} Encounters (Levels ${ent.minlvl}\u2013${ent.maxlvl})`; }
+}
+
+const encountersPage = new EncountersPage();
+window.addEventListener("load", () => encountersPage.pOnLoad());

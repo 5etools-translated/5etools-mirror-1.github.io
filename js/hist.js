@@ -59,6 +59,10 @@ class Hist {
 		Hist.isHistorySuppressed = val;
 	}
 
+	static _listPage = null;
+
+	static setListPage (listPage) { this._listPage = listPage; }
+
 	static getSelectedListItem () {
 		const [link] = Hist.getHashParts();
 		return Hist.getActiveListItem(link);
@@ -74,7 +78,7 @@ class Hist {
 	}
 
 	static getActiveListItem (link, getIndex) {
-		const primaryLists = ListUtil.getPrimaryLists();
+		const primaryLists = this._listPage.primaryLists;
 		if (primaryLists && primaryLists.length) {
 			for (let x = 0; x < primaryLists.length; ++x) {
 				const list = primaryLists[x];

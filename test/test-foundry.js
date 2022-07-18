@@ -117,7 +117,7 @@ class TestFoundry {
 
 	static async pTestSpecialMagicItemVariants ({foundryData, originalDatas, errors}) {
 		const variants = await this.pLoadData("magicvariants.json", `./data/magicvariants.json`);
-		const prop = "variant";
+		const prop = "magicvariant";
 		this.doCompareData({prop, foundryData, originalDatas: [variants], errors});
 	}
 
@@ -143,7 +143,7 @@ class TestFoundry {
 
 const SPECIAL_PROPS = {
 	"raceFeature": TestFoundry.testSpecialRaceFeatures.bind(TestFoundry),
-	"variant": TestFoundry.pTestSpecialMagicItemVariants.bind(TestFoundry),
+	"magicvariant": TestFoundry.pTestSpecialMagicItemVariants.bind(TestFoundry),
 };
 
 async function main () {

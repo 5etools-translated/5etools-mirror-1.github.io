@@ -1,17 +1,170 @@
 "use strict";
 
+class EncounterBuilderUtils {
+	static ECGEN_BASE_PLAYERS = 4; // assume a party size of four
+
+	static getSublistedEncounter ({sublistItems}) {
+		return sublistItems
+			.map(li => {
+				const mon = li.data.entityBase;
+				if (!mon.cr) return null;
+
+				// (N.b.: we don't handle scaled summon creatures here, as they *shouldn't* have CRs.)
+				const crScaled = li.data.customHashId
+					? Number(Renderer.monster.getUnpackedCustomHashId(li.data.customHashId)._scaledCr)
+					: null;
+				return {
+					cr: li.values.cr,
+					crNumber: Parser.crToNumber(li.values.cr),
+					count: Number(li.data.count),
+
+					approxHp: li.data.approxHp,
+					approxAc: li.data.approxAc,
+
+					isLocked: li.data.isLocked,
+
+					// used for encounter adjuster
+					crScaled: crScaled,
+					customHashId: li.data.customHashId,
+					hash: UrlUtil.autoEncodeHash(mon),
+					baseCreature: mon,
+				};
+			})
+			.filter(it => it && it.crNumber < VeCt.CR_CUSTOM)
+			.sort((a, b) => SortUtil.ascSort(b.crNumber, a.crNumber));
+	}
+
+	static getCrCutoff (data, partyMeta) {
+		data = data.filter(it => EncounterBuilderUtils.getCr(it) < VeCt.CR_CUSTOM).sort((a, b) => SortUtil.ascSort(EncounterBuilderUtils.getCr(b), EncounterBuilderUtils.getCr(a)));
+		if (!data.length) return 0;
+
+		// no cutoff for CR 0-2
+		if (EncounterBuilderUtils.getCr(data[0]) <= 2) return 0;
+
+		// ===============================================================================================================
+		// "When making this calculation, don't count any monsters whose challenge rating is significantly below the average
+		// challenge rating of the other monsters in the group unless you think the weak monsters significantly contribute
+		// to the difficulty of the encounter." -- DMG, p. 82
+		// ===============================================================================================================
+
+		// "unless you think the weak monsters significantly contribute to the difficulty of the encounter"
+		// For player levels <5, always include every monster. We assume that levels 5> will have strong
+		//   AoE/multiattack, allowing trash to be quickly cleared.
+		if (!partyMeta.isPartyLevelFivePlus()) return 0;
+
+		// Spread the CRs into a single array
+		const crValues = [];
+		data.forEach(it => {
+			const cr = EncounterBuilderUtils.getCr(it);
+			for (let i = 0; i < it.count; ++i) crValues.push(cr);
+		});
+
+		// TODO(Future) allow this to be controlled by the user
+		let CR_THRESH_MODE = "statisticallySignificant";
+
+		switch (CR_THRESH_MODE) {
+			// "Statistically significant" method--note that this produces very passive filtering; the threshold is below
+			//   the minimum CR in the vast majority of cases.
+			case "statisticallySignificant": {
+				const cpy = MiscUtil.copy(crValues)
+					.sort(SortUtil.ascSort);
+
+				const avg = cpy.mean();
+				const deviation = cpy.meanAbsoluteDeviation();
+
+				return avg - (deviation * 2);
+			}
+
+			case "5etools": {
+				// The ideal interpretation of this:
+				//   "don't count any monsters whose challenge rating is significantly below the average
+				//   challenge rating of the other monsters in the group"
+				// Is:
+				//   Arrange the creatures in CR order, lowest to highest. Remove the lowest CR creature (or one of them, if there
+				//   are ties). Calculate the average CR without this removed creature. If the removed creature's CR is
+				//   "significantly below" this average, repeat the process with the next lowest CR creature.
+				// However, this can produce a stair-step pattern where our average CR keeps climbing as we remove more and more
+				//   creatures. Therefore, only do this "remove creature -> calculate average CR" step _once_, and use the
+				//   resulting average CR to calculate a cutoff.
+
+				const crMetas = [];
+
+				// If there's precisely one CR value, use it
+				if (crValues.length === 1) {
+					crMetas.push({
+						mean: crValues[0],
+						deviation: 0,
+					});
+				} else {
+					// Get an average CR for every possible encounter without one of the creatures in the encounter
+					for (let i = 0; i < crValues.length; ++i) {
+						const crValueFilt = crValues.filter((_, j) => i !== j);
+						const crMean = crValueFilt.mean();
+						const crStdDev = Math.sqrt((1 / crValueFilt.length) * crValueFilt.map(it => (it - crMean) ** 2).reduce((a, b) => a + b, 0));
+						crMetas.push({mean: crMean, deviation: crStdDev});
+					}
+				}
+
+				// Sort by descending average CR -> ascending deviation
+				crMetas.sort((a, b) => SortUtil.ascSort(b.mean, a.mean) || SortUtil.ascSort(a.deviation, b.deviation));
+
+				// "significantly below the average" -> cutoff at half the average
+				return crMetas[0].mean / 2;
+			}
+
+			default: return 0;
+		}
+	}
+
+	/**
+	 * @param data an array of {cr: n, count: m} objects
+	 * @param partyMeta number of players in the party
+	 */
+	static calculateEncounterXp (data, partyMeta = null) {
+		// Make a default, generic-sized party of level 1 players
+		if (partyMeta == null) partyMeta = new EncounterPartyMeta([{level: 1, count: this.ECGEN_BASE_PLAYERS}]);
+
+		data = data.filter(it => EncounterBuilderUtils.getCr(it) < VeCt.CR_CUSTOM)
+			.sort((a, b) => SortUtil.ascSort(EncounterBuilderUtils.getCr(b), EncounterBuilderUtils.getCr(a)));
+
+		let baseXp = 0;
+		let relevantCount = 0;
+		let count = 0;
+		if (!data.length) return {baseXp: 0, relevantCount: 0, count: 0, adjustedXp: 0};
+
+		const crCutoff = EncounterBuilderUtils.getCrCutoff(data, partyMeta);
+		data.forEach(it => {
+			if (EncounterBuilderUtils.getCr(it) >= crCutoff) relevantCount += it.count;
+			count += it.count;
+			baseXp += (Parser.crToXpNumber(Parser.numberToCr(EncounterBuilderUtils.getCr(it))) || 0) * it.count;
+		});
+
+		const playerAdjustedXpMult = Parser.numMonstersToXpMult(relevantCount, partyMeta.cntPlayers);
+
+		const adjustedXp = playerAdjustedXpMult * baseXp;
+		return {baseXp, relevantCount, count, adjustedXp, meta: {crCutoff, playerCount: partyMeta.cntPlayers, playerAdjustedXpMult}};
+	}
+
+	static getCr (obj) {
+		if (obj.crScaled != null) return obj.crScaled;
+		if (obj.cr == null || obj.cr === "Unknown" || obj.cr === "\u2014") return null;
+		return typeof obj.cr === "string" ? obj.cr.includes("/") ? Parser.crToNumber(obj.cr) : Number(obj.cr) : obj.cr;
+	}
+}
+
 /**
  * TODO rework this to use doubled multipliers for XP, so we avoid the 0.5x issue for 6+ party sizes. Then scale
  *   everything back down at the end.
  */
 class EncounterBuilder extends ProxyBase {
-	constructor (bestiaryPage) {
+	constructor () {
 		super();
 
-		this._bestiaryPage = bestiaryPage;
+		this._bestiaryPage = null;
+		this._sublistManager = null;
 
 		this.stateInit = false;
-		this._cache = new EncounterBuilder.Cache({bestiaryPage});
+		this._cache = null;
 		this._lastPartyMeta = null;
 		this._isAdvanced = false;
 		this._lock = new VeLock();
@@ -65,6 +218,24 @@ class EncounterBuilder extends ProxyBase {
 		// endregion
 	}
 
+	set bestiaryPage (val) {
+		this._bestiaryPage = val;
+		this._cache = new EncounterBuilder.Cache({bestiaryPage: val});
+	}
+
+	set sublistManager (val) { this._sublistManager = val; }
+
+	calculateListEncounterXp (partyMeta) {
+		partyMeta = partyMeta || this._lastPartyMeta;
+
+		return EncounterBuilderUtils.calculateEncounterXp(
+			EncounterBuilderUtils.getSublistedEncounter({
+				sublistItems: this._sublistManager.sublistItems,
+			}),
+			partyMeta,
+		);
+	}
+
 	initUi () {
 		// region Init elements
 		this._wrpRandomAndAdjust = document.getElementById("wrp-encounterbuild-random-and-adjust");
@@ -104,7 +275,7 @@ class EncounterBuilder extends ProxyBase {
 
 	_handleClickCopyAsText (evt) {
 		let xpTotal = 0;
-		const toCopyCreatures = ListUtil.sublist.items
+		const toCopyCreatures = this._sublistManager.sublistItems
 			.sort((a, b) => SortUtil.ascSortLower(a.name, b.name))
 			.map(it => {
 				xpTotal += Parser.crToXpNumber(it.values.cr) * it.data.count;
@@ -129,7 +300,11 @@ class EncounterBuilder extends ProxyBase {
 		let modeRandom = "medium";
 
 		const pSetRandomMode = async (mode) => {
-			const randomizer = new EncounterBuilder.Randomizer({partyMeta: this._getPartyMeta(), cache: this._cache});
+			const randomizer = new EncounterBuilder.Randomizer({
+				partyMeta: this._getPartyMeta(),
+				sublistItems: this._sublistManager.sublistItems,
+				cache: this._cache,
+			});
 			const random = await randomizer.pGetRandomEncounter(mode);
 			if (random != null) await this._pLoadSublist(random);
 
@@ -166,7 +341,11 @@ class EncounterBuilder extends ProxyBase {
 		let modeAdjust = "medium";
 
 		const pSetAdjustMode = async (mode) => {
-			const adjuster = new EncounterBuilder.Adjuster({partyMeta: this._getPartyMeta()});
+			const adjuster = new EncounterBuilder.Adjuster({
+				partyMeta: this._getPartyMeta(),
+				sublistItems: this._sublistManager.sublistItems,
+				passthroughSources: this._sublistManager.getExportableSublist().sources,
+			});
 			const adjusted = await adjuster.pGetAdjustedEncounter(mode);
 			if (adjusted != null) await this._pLoadSublist(adjusted);
 
@@ -415,7 +594,7 @@ class EncounterBuilder extends ProxyBase {
 
 	_addInitialPlayerRows (first) {
 		if (this._isAdvanced) this._addAdvancedPlayerRow(first);
-		else this._addPlayerRow(first, true, ECGEN_BASE_PLAYERS);
+		else this._addPlayerRow(first, true, EncounterBuilderUtils.ECGEN_BASE_PLAYERS);
 	}
 
 	/**
@@ -426,7 +605,7 @@ class EncounterBuilder extends ProxyBase {
 	 */
 	async _pReset (opts) {
 		opts = opts || {};
-		if (!opts.isNotRemoveCreatures) await ListUtil.pDoSublistRemoveAll();
+		if (!opts.isNotRemoveCreatures) await this._sublistManager.pDoSublistRemoveAll();
 		if (!opts.isNotResetPlayers) this._removeAllPlayerRows();
 		if (!opts.isNotAddInitialPlayers) this._addInitialPlayerRows();
 
@@ -460,7 +639,7 @@ class EncounterBuilder extends ProxyBase {
 
 			if (savedState.l && !playersOnly) {
 				await this._bestiaryPage.pPreloadSublistSources(savedState.l);
-				await ListUtil.pDoJsonLoad(savedState.l, false);
+				await this._sublistManager(savedState.l, false);
 			}
 
 			this.updateDifficulty();
@@ -473,7 +652,7 @@ class EncounterBuilder extends ProxyBase {
 	_getSaveableState () {
 		const out = {
 			p: this._getPartyMeta().levelMetas,
-			l: ListUtil.getExportableSublist(),
+			l: this._sublistManager.getExportableSublist(),
 			a: this._isAdvanced,
 		};
 		if (this._isAdvanced) {
@@ -500,7 +679,7 @@ class EncounterBuilder extends ProxyBase {
 
 	async _pLoadSublist (toLoad) {
 		await this._bestiaryPage.pPreloadSublistSources(toLoad);
-		await ListUtil.pDoJsonLoad(toLoad, false);
+		await this._sublistManager.pDoJsonLoad(toLoad, false);
 		this.updateDifficulty();
 	}
 
@@ -528,8 +707,8 @@ class EncounterBuilder extends ProxyBase {
 		document.title = "Encounter Builder - 5etools";
 		$(document.body).addClass("ecgen_active");
 		this.updateDifficulty();
-		ListUtil.doDeselectAll();
-		ListUtil.doSublistDeselectAll();
+		this._bestiaryPage.doDeselectAll();
+		this._sublistManager.doSublistDeselectAll();
 	}
 
 	_hideBuilder () {
@@ -540,12 +719,12 @@ class EncounterBuilder extends ProxyBase {
 		$(document.body).removeClass("ecgen_active");
 	}
 
-	_handleClick ({evt, index, mode, customHashId}) {
+	_handleClick ({evt, mode, entity}) {
 		if (mode === "add") {
-			return ListUtil.pDoSublistAdd({index, customHashId, doFinalize: true, addCount: evt.shiftKey ? 5 : 1});
+			return this._sublistManager.pDoSublistAdd({entity, doFinalize: true, addCount: evt.shiftKey ? 5 : 1});
 		}
 
-		return ListUtil.pDoSublistSubtract({index, subtractCount: evt.shiftKey ? 5 : 1, customHashId});
+		return this._sublistManager.pDoSublistSubtract({entity, subtractCount: evt.shiftKey ? 5 : 1});
 	}
 
 	async _pHandleShuffleClick (ix) {
@@ -556,7 +735,7 @@ class EncounterBuilder extends ProxyBase {
 			const xp = Parser.crToXpNumber(mon.cr);
 			if (!xp) return; // if Unknown/etc
 
-			const curr = ListUtil.getExportableSublist();
+			const curr = this._sublistManager.getExportableSublist();
 			const hash = UrlUtil.autoEncodeHash(mon);
 			const itemToSwitch = curr.items.find(it => it.h === hash);
 
@@ -604,7 +783,9 @@ class EncounterBuilder extends ProxyBase {
 
 	_getApproxTurnsToKill () {
 		const party = this._getPartyMeta().levelMetas;
-		const encounter = EncounterBuilderUtils.getSublistedEncounter();
+		const encounter = EncounterBuilderUtils.getSublistedEncounter({
+			sublistItems: this._sublistManager.sublistItems,
+		});
 
 		const totalDpt = party
 			.map(it => this._getApproxDpt(it.level) * it.count)
@@ -639,7 +820,7 @@ class EncounterBuilder extends ProxyBase {
 
 	updateDifficulty () {
 		const partyMeta = this._getPartyMeta();
-		const encounter = EncounterBuilderUtils.calculateListEncounterXp(partyMeta);
+		const encounter = this.calculateListEncounterXp(partyMeta);
 
 		const $elEasy = this._$dispXpEasy.removeClass("bold").html(`<span class="help-subtle" title="${EncounterBuilder._TITLE_EASY}">Easy:</span> ${partyMeta.easy.toLocaleString()} XP`);
 		const $elmed = this._$dispXpMedium.removeClass("bold").html(`<span class="help-subtle" title="${EncounterBuilder._TITLE_MEDIUM}">Medium:</span> ${partyMeta.medium.toLocaleString()} XP`);
@@ -784,19 +965,17 @@ class EncounterBuilder extends ProxyBase {
 		return out;
 	}
 
-	get lastPartyMeta () { return this._lastPartyMeta; }
-
-	_calculateXp () {
-		const partyMeta = this._getPartyMeta();
-		const encounter = EncounterBuilderUtils.calculateListEncounterXp(partyMeta);
-		return {partyMeta: partyMeta, encounter: encounter};
-	}
-
-	async doStatblockMouseOver (evt, ele, ixMon, customHashId) {
-		const mon = this._bestiaryPage.dataList_[ixMon];
-
-		const hash = UrlUtil.autoEncodeHash(mon);
-		return Renderer.hover.pHandleLinkMouseOver(evt, ele, {page: UrlUtil.PG_BESTIARY, source: mon.source, hash, preloadId: customHashId});
+	async doStatblockMouseOver ({evt, ele, source, hash, customHashId}) {
+		return Renderer.hover.pHandleLinkMouseOver(
+			evt,
+			ele,
+			{
+				page: UrlUtil.PG_BESTIARY,
+				source,
+				hash,
+				customHashId,
+			},
+		);
 	}
 
 	static getTokenHoverMeta (mon) {
@@ -818,11 +997,9 @@ class EncounterBuilder extends ProxyBase {
 		);
 	}
 
-	async handleImageMouseOver (evt, $ele, ixMon) {
+	async handleImageMouseOver (evt, $ele, mon) {
 		// We'll rebuild the mouseover handler with whatever we load
 		$ele.off("mouseover");
-
-		const mon = this._bestiaryPage.dataList_[ixMon];
 
 		const handleNoImages = () => {
 			const hoverMeta = Renderer.hover.getMakePredefinedHover(
@@ -872,13 +1049,18 @@ class EncounterBuilder extends ProxyBase {
 		return {name, source, _isScaledCr: scaledTo != null, _scaledCr: scaledTo};
 	}
 
-	async pDoCrChange ($iptCr, ixMon, scaledTo) {
+	async pDoCrChange ($iptCr, monScaled, scaledTo) {
 		await this._lock.pLock();
 
 		if (!$iptCr) return; // Should never occur, but if the creature has a non-adjustable CR, this field will not exist
 
 		try {
-			const mon = this._bestiaryPage.dataList_[ixMon];
+			// Fetch original
+			const mon = await Renderer.hover.pCacheAndGetHash(
+				UrlUtil.PG_BESTIARY,
+				UrlUtil.autoEncodeHash(monScaled),
+			);
+
 			const baseCr = mon.cr.cr || mon.cr;
 			if (baseCr == null) return;
 			const baseCrNum = Parser.crToNumber(baseCr);
@@ -889,7 +1071,7 @@ class EncounterBuilder extends ProxyBase {
 
 				if (targetCrNum === scaledTo) return;
 
-				const state = ListUtil.getExportableSublist();
+				const state = this._sublistManager.getExportableSublist();
 				const toFindHash = UrlUtil.autoEncodeHash(mon);
 
 				const toFindUid = !(scaledTo == null || baseCrNum === scaledTo) ? Renderer.monster.getCustomHashId(EncounterBuilder._getFauxMon(mon.name, mon.source, scaledTo)) : null;
@@ -1186,7 +1368,7 @@ class EncounterBuilder extends ProxyBase {
 					tag: "button",
 					title: `Add (SHIFT for 5)`,
 					clazz: `btn btn-success btn-xs ecgen__btn_list`,
-					click: evt => this._handleClick({evt, index: monId, mode: "add"}),
+					click: evt => this._handleClick({evt, entity: this._bestiaryPage.dataList_[monId], mode: "add"}),
 					children: [
 						e_({
 							tag: "span",
@@ -1198,7 +1380,7 @@ class EncounterBuilder extends ProxyBase {
 					tag: "button",
 					title: `Subtract (SHIFT for 5)`,
 					clazz: `btn btn-danger btn-xs ecgen__btn_list`,
-					click: evt => this._handleClick({evt, index: monId, mode: "subtract"}),
+					click: evt => this._handleClick({evt, entity: this._bestiaryPage.dataList_[monId], mode: "subtract"}),
 					children: [
 						e_({
 							tag: "span",
@@ -1212,16 +1394,16 @@ class EncounterBuilder extends ProxyBase {
 
 	getSublistButtonsMeta (sublistItem) {
 		const $btnAdd = $(`<button title="Add (SHIFT for 5)" class="btn btn-success btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-plus"></span></button>`)
-			.click(evt => this._handleClick({evt, index: sublistItem.ix, mode: "add", customHashId: sublistItem.data.customHashId}));
+			.click(evt => this._handleClick({evt, entity: sublistItem.data.entity, mode: "add"}));
 
 		const $btnSub = $(`<button title="Subtract (SHIFT for 5)" class="btn btn-danger btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-minus"></span></button>`)
-			.click(evt => this._handleClick({evt, index: sublistItem.ix, mode: "subtract", customHashId: sublistItem.data.customHashId}));
+			.click(evt => this._handleClick({evt, entity: sublistItem.data.entity, mode: "subtract"}));
 
 		const $btnRandomize = $(`<button title="Randomize Monster" class="btn btn-default btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-random"></span></button>`)
 			.click(() => this._pHandleShuffleClick(sublistItem.ix));
 
 		const $btnLock = $(`<button title="Lock Monster against Randomizing/Adjusting" class="btn btn-default btn-xs ecgen__btn_list"><span class="glyphicon glyphicon-lock"></span></button>`)
-			.click(() => ListUtil.pSetDataEntry({sublistItem, key: "isLocked", value: !sublistItem.data.isLocked}))
+			.click(() => this._sublistManager.pSetDataEntry({sublistItem, key: "isLocked", value: !sublistItem.data.isLocked}))
 			.toggleClass("active", sublistItem.data.isLocked);
 
 		const $wrp = $$`<span class="ecgen__visible col-1-5 no-wrap pl-0 btn-group">
@@ -1464,12 +1646,16 @@ EncounterBuilder.Cache = class {
 };
 
 EncounterBuilder.Adjuster = class {
-	constructor ({partyMeta}) {
+	constructor ({partyMeta, sublistItems, passthroughSources}) {
 		this._partyMeta = partyMeta;
+		this._sublistItems = sublistItems;
+		this._passthroughSources = passthroughSources;
 	}
 
 	async pGetAdjustedEncounter (difficulty) {
-		let currentEncounter = EncounterBuilderUtils.getSublistedEncounter();
+		let currentEncounter = EncounterBuilderUtils.getSublistedEncounter({
+			sublistItems: this._sublistItems,
+		});
 		if (!currentEncounter.length) {
 			JqueryUtil.doToast({content: `The current encounter contained no creatures! Please add some first.`, type: "warning"});
 			return;
@@ -1548,7 +1734,7 @@ EncounterBuilder.Adjuster = class {
 				customHashId: creatureMeta.customHashId || undefined,
 				l: creatureMeta.isLocked,
 			})),
-			sources: ListUtil.getExportableSublist().sources,
+			sources: this._passthroughSources,
 		};
 	}
 
@@ -1647,8 +1833,9 @@ EncounterBuilder.Adjuster._INCOMPLETE_FAILED = -1;
 EncounterBuilder.Adjuster._COMPLETE = 1;
 
 EncounterBuilder.Randomizer = class {
-	constructor ({partyMeta, cache}) {
+	constructor ({partyMeta, sublistItems, cache}) {
 		this._partyMeta = partyMeta;
+		this._sublistItems = sublistItems;
 		this._cache = cache;
 
 		// region Pre-cache various "constants" required during generation, for performance
@@ -1674,7 +1861,9 @@ EncounterBuilder.Randomizer = class {
 		if (!~ixLow) throw new Error(`Unhandled difficulty level: "${difficulty}"`);
 
 		const budget = this._partyMeta[EncounterBuilder.TIERS[ixLow + 1]] - 1;
-		const lockedEncounterCreatures = await EncounterBuilderUtils.getSublistedEncounter()
+		const lockedEncounterCreatures = await EncounterBuilderUtils.getSublistedEncounter({
+			sublistItems: this._sublistItems,
+		})
 			.filter(it => it.isLocked)
 			.pSerialAwaitMap(async ({baseCreature, count, customHashId}) => {
 				const creature = await Renderer.monster.pGetModifiedCreature(baseCreature, customHashId);

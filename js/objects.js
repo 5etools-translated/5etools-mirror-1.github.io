@@ -1,5 +1,40 @@
 "use strict";
 
+class ObjectsSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subobjects",
+		});
+	}
+
+	pGetSublistItem (it, hash) {
+		const size = Parser.sizeAbvToFull(it.size);
+
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="bold col-9 pl-0">${it.name}</span>
+				<span class="col-3 pr-0 text-center">${size}</span>
+			</a>
+		</div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			it.name,
+			{
+				hash,
+				size,
+			},
+			{
+				entity: it,
+			},
+		);
+		return listItem;
+	}
+}
+
 class ObjectsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterObjects();
@@ -9,8 +44,6 @@ class ObjectsPage extends ListPage {
 			pageFilter,
 
 			listClass: "objects",
-
-			sublistClass: "subobjects",
 
 			dataProps: ["object"],
 		});
@@ -49,7 +82,7 @@ class ObjectsPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -60,32 +93,7 @@ class ObjectsPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (obj, ix) {
-		const hash = UrlUtil.autoEncodeHash(obj);
-		const size = Parser.sizeAbvToFull(obj.size);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-9 pl-0">${obj.name}</span>
-				<span class="col-3 pr-0 text-center">${size}</span>
-			</a>
-		</div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			obj.name,
-			{
-				hash,
-				size,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		const obj = this._dataList[id];
 
 		const renderStack = [];
@@ -103,7 +111,7 @@ class ObjectsPage extends ListPage {
 			this._$dispToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="Token Image: ${(obj.name || "").qq()}" loading="lazy"></a>`);
 		}
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 
 	_getSearchCache (entity) {
@@ -116,4 +124,5 @@ class ObjectsPage extends ListPage {
 }
 
 const objectsPage = new ObjectsPage();
+objectsPage.sublistManager = new ObjectsSublistManager();
 window.addEventListener("load", () => objectsPage.pOnLoad());

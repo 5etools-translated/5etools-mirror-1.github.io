@@ -27,9 +27,9 @@ class Omnisearch {
 		this._$iptSearch = $(`<input class="form-control search omni__input" placeholder="${this._PLACEHOLDER_TEXT}" title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution." type="search">`)
 			.disableSpellcheck()
 			.focus(() => updateClearButtonDisplay())
-			.keydown(() => updateClearButtonDisplay())
+			.keyup(() => updateClearButtonDisplay())
 			.blur(() => updateClearButtonDisplay());
-		const $btnClearSearch = $(`<span class="absolute glyphicon glyphicon-remove omni__btn-clear ve-hidden" style="z-index: 999999999999"></span>`)
+		const $btnClearSearch = $(`<span class="absolute glyphicon glyphicon-remove omni__btn-clear ve-hidden"></span>`)
 			.mousedown(evt => {
 				evt.stopPropagation();
 				evt.preventDefault();
@@ -38,7 +38,7 @@ class Omnisearch {
 		const $searchSubmit = $(`<button class="btn btn-default omni__submit" tabindex="-1"><span class="glyphicon glyphicon-search"></span></button>`);
 
 		this._$searchInputWrapper = $$`
-			<div class="input-group omni__wrp-input relative">
+			<div class="input-group omni__wrp-input">
 				${this._$iptSearch}
 				${$btnClearSearch}
 				<div class="input-group-btn">

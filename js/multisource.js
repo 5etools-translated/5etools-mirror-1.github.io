@@ -59,7 +59,7 @@ class ListPageMultiSource extends ListPage {
 		const hashSourceRaw = Hist.getHashSource();
 		const hashSource = hashSourceRaw ? Object.keys(src2UrlMap).find(it => it.toLowerCase() === hashSourceRaw.toLowerCase()) : null;
 		const filterSel = await this._filterBox.pGetStoredActiveSources() || defaultSel;
-		const listSel = await ListUtil.pGetSelectedSources() || [];
+		const listSel = await this._sublistManager.pGetSelectedSources() || [];
 		const userSel = [...new Set([...filterSel, ...listSel, hashSource].filter(Boolean))];
 
 		const allSources = [];

@@ -409,7 +409,7 @@ Renderer.dice = {
 		}
 
 		async function pRollGeneratorTable () {
-			Renderer.dice.addElement(rolledBy, `<i>${rolledBy.label}:</i>`);
+			Renderer.dice.addElement({rolledBy, html: `<i>${rolledBy.label}:</i>`, isMessage: true});
 
 			const out = [];
 			const numRolls = Number($parent.attr("data-rd-namegeneratorrolls"));
@@ -429,7 +429,7 @@ Renderer.dice = {
 				out.push(elesTd[i].innerHTML.trim());
 			}
 
-			Renderer.dice.addElement(rolledBy, `= ${out.join(" ")}`);
+			Renderer.dice.addElement({rolledBy, html: `= ${out.join(" ")}`, isMessage: true});
 		}
 
 		const rolledBy = {
@@ -502,18 +502,17 @@ Renderer.dice = {
 		if (!str) return;
 		if (rolledBy.isUser) Renderer.dice._addHistory(str);
 
-		if (str.startsWith("/")) Renderer.dice._handleCommand(str, rolledBy);
-		else if (str.startsWith("#")) return Renderer.dice._pHandleSavedRoll(str, rolledBy, opts);
-		else {
-			const [head, ...tail] = str.split(":");
-			if (tail.length) {
-				str = tail.join(":");
-				rolledBy.label = head;
-			}
-			const wrpTree = Renderer.dice.lang.getTree3(str);
-			if (!wrpTree) return Renderer.dice._SYMBOL_PARSE_FAILED;
-			return Renderer.dice._pHandleRoll2(wrpTree, rolledBy, opts);
+		if (str.startsWith("/")) return Renderer.dice._pHandleCommand(str, rolledBy);
+		if (str.startsWith("#")) return Renderer.dice._pHandleSavedRoll(str, rolledBy, opts);
+
+		const [head, ...tail] = str.split(":");
+		if (tail.length) {
+			str = tail.join(":");
+			rolledBy.label = head;
 		}
+		const wrpTree = Renderer.dice.lang.getTree3(str);
+		if (!wrpTree) return Renderer.dice._SYMBOL_PARSE_FAILED;
+		return Renderer.dice._pHandleRoll2(wrpTree, rolledBy, opts);
 	},
 
 	/**
@@ -616,6 +615,7 @@ Renderer.dice = {
 	 * @param [opts.pb] User-entered proficiency bonus, to be propagated to the meta.
 	 * @param [opts.summonSpellLevel] User-entered summon spell level, to be propagated to the meta.
 	 * @param [opts.summonClassLevel] User-entered summon class level, to be propagated to the meta.
+	 * @param [opts.target] Generic target number (e.g. save DC, AC) to meet/beat.
 	 */
 	_pHandleRoll2_automatic (tree, rolledBy, opts) {
 		opts = opts || {};
@@ -637,6 +637,10 @@ Renderer.dice = {
 
 			const lbl = rolledBy.label && (!rolledBy.name || rolledBy.label.trim().toLowerCase() !== rolledBy.name.trim().toLowerCase()) ? rolledBy.label : null;
 
+			const ptTarget = opts.target != null
+				? result >= opts.target ? ` <b>&geq;${opts.target}</b>` : ` <span class="ve-muted">&lt;${opts.target}</span>`
+				: "";
+
 			const totalPart = tree.successThresh
 				? `<span class="roll">${result > (tree.successMax || 100) - tree.successThresh ? (tree.chanceSuccessText || "Success!") : (tree.chanceFailureText || "Failure")}</span>`
 				: `<span class="roll ${allMax ? "roll-max" : allMin ? "roll-min" : ""}">${result}</span>`;
@@ -648,6 +652,7 @@ Renderer.dice = {
 					<div>
 						${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
 						${totalPart}
+						${ptTarget}
 						<span class="all-rolls ve-muted">${fullHtml}</span>
 						${opts.fnGetMessage ? `<span class="message">${opts.fnGetMessage(result)}</span>` : ""}
 					</div>
@@ -701,20 +706,14 @@ Renderer.dice = {
 		Renderer.dice._showMessage("Invalid input! Try &quot;/help&quot;", Renderer.dice.SYSTEM_USER);
 	},
 
-	_validCommands: new Set(["/c", "/cls", "/clear"]),
-	_handleCommand (com, rolledBy) {
+	_validCommands: new Set(["/c", "/cls", "/clear", "/iterroll"]),
+	async _pHandleCommand (com, rolledBy) {
 		Renderer.dice._showMessage(`<span class="out-roll-item-code">${com}</span>`, rolledBy); // parrot the user's command back to them
-		const PREF_MACRO = "/macro";
 
-		function checkLength (arr, desired) {
-			return arr.length === desired;
-		}
+		const comParsed = Renderer.dice._getParsedCommand(com);
+		const [comOp] = comParsed;
 
-		async function pSave () {
-			await StorageUtil.pSet(VeCt.STORAGE_ROLLER_MACRO, Renderer.dice.storage);
-		}
-
-		if (com === "/help" || com === "/h") {
+		if (comOp === "/help" || comOp === "/h") {
 			Renderer.dice._showMessage(
 				`<ul class="rll__list">
 					<li>Keep highest; <span class="out-roll-item-code">4d6kh3</span></li>
@@ -755,21 +754,25 @@ Renderer.dice = {
 				</ul>
 				Up and down arrow keys cycle input history.<br>
 				Anything before a colon is treated as a label (<span class="out-roll-item-code">Fireball: 8d6</span>)<br>
-Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved macros.<br>
-				Use <span class="out-roll-item-code">${PREF_MACRO} add myName 1d2+3</span> to add (or update) a macro. Macro names should not contain spaces or hashes.<br>
-				Use <span class="out-roll-item-code">${PREF_MACRO} remove myName</span> to remove a macro.<br>
+Use <span class="out-roll-item-code">/macro list</span> to list saved macros.<br>
+				Use <span class="out-roll-item-code">/macro add myName 1d2+3</span> to add (or update) a macro. Macro names should not contain spaces or hashes.<br>
+				Use <span class="out-roll-item-code">/macro remove myName</span> to remove a macro.<br>
 				Use <span class="out-roll-item-code">#myName</span> to roll a macro.<br>
+				Use <span class="out-roll-item-code">/iterroll roll count [target]</span> to roll multiple times, optionally against a target.
 				Use <span class="out-roll-item-code">/clear</span> to clear the roller.`,
 				Renderer.dice.SYSTEM_USER,
 			);
-		} else if (com.startsWith(PREF_MACRO)) {
-			const [_, mode, ...others] = com.split(/\s+/);
+			return;
+		}
+
+		if (comOp === "/macro") {
+			const [, mode, ...others] = comParsed;
 
 			if (!["list", "add", "remove", "clear"].includes(mode)) Renderer.dice._showInvalid();
 			else {
 				switch (mode) {
 					case "list":
-						if (checkLength(others, 0)) {
+						if (!others.length) {
 							Object.keys(Renderer.dice.storage).forEach(name => {
 								Renderer.dice._showMessage(`<span class="out-roll-item-code">#${name}</span> \u2014 ${Renderer.dice.storage[name]}`, Renderer.dice.SYSTEM_USER);
 							});
@@ -778,13 +781,13 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 						}
 						break;
 					case "add": {
-						if (checkLength(others, 2)) {
+						if (others.length === 2) {
 							const [name, macro] = others;
 							if (name.includes(" ") || name.includes("#")) Renderer.dice._showInvalid();
 							else {
 								Renderer.dice.storage[name] = macro;
-								pSave()
-									.then(() => Renderer.dice._showMessage(`Saved macro <span class="out-roll-item-code">#${name}</span>`, Renderer.dice.SYSTEM_USER));
+								await Renderer.dice._pSaveMacros();
+								Renderer.dice._showMessage(`Saved macro <span class="out-roll-item-code">#${name}</span>`, Renderer.dice.SYSTEM_USER);
 							}
 						} else {
 							Renderer.dice._showInvalid();
@@ -792,11 +795,11 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 						break;
 					}
 					case "remove":
-						if (checkLength(others, 1)) {
+						if (others.length === 1) {
 							if (Renderer.dice.storage[others[0]]) {
 								delete Renderer.dice.storage[others[0]];
-								pSave()
-									.then(() => Renderer.dice._showMessage(`Removed macro <span class="out-roll-item-code">#${others[0]}</span>`, Renderer.dice.SYSTEM_USER));
+								await Renderer.dice._pSaveMacros();
+								Renderer.dice._showMessage(`Removed macro <span class="out-roll-item-code">#${others[0]}</span>`, Renderer.dice.SYSTEM_USER);
 							} else {
 								Renderer.dice._showMessage(`Macro <span class="out-roll-item-code">#${others[0]}</span> not found`, Renderer.dice.SYSTEM_USER);
 							}
@@ -806,17 +809,55 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 						break;
 				}
 			}
-		} else if (Renderer.dice._validCommands.has(com)) {
-			switch (com) {
+			return;
+		}
+
+		if (Renderer.dice._validCommands.has(comOp)) {
+			switch (comOp) {
 				case "/c":
 				case "/cls":
 				case "/clear":
 					Renderer.dice._$outRoll.empty();
 					Renderer.dice._$lastRolledBy.empty();
 					Renderer.dice._$lastRolledBy = null;
-					break;
+					return;
+
+				case "/iterroll": {
+					let [, exp, count, target] = comParsed;
+
+					if (!exp) return Renderer.dice._showInvalid();
+					const wrpTree = Renderer.dice.lang.getTree3(exp);
+					if (!wrpTree) return Renderer.dice._showInvalid();
+
+					count = count && !isNaN(count) ? Number(count) : 1;
+					target = target && !isNaN(target) ? Number(target) : undefined;
+
+					for (let i = 0; i < count; ++i) {
+						await Renderer.dice.pRoll2(
+							exp,
+							{
+								name: "Anon",
+							},
+							{
+								target,
+							},
+						);
+					}
+				}
 			}
-		} else Renderer.dice._showInvalid();
+			return;
+		}
+
+		Renderer.dice._showInvalid();
+	},
+
+	async _pSaveMacros () {
+		await StorageUtil.pSet(VeCt.STORAGE_ROLLER_MACRO, Renderer.dice.storage);
+	},
+
+	_getParsedCommand (str) {
+		// TODO(Future) this is probably too naive
+		return str.split(/\s+/);
 	},
 
 	_pHandleSavedRoll (id, rolledBy, opts) {
@@ -829,18 +870,39 @@ Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved mac
 		} else Renderer.dice._showMessage(`Macro <span class="out-roll-item-code">#${id}</span> not found`, Renderer.dice.SYSTEM_USER);
 	},
 
-	addRoll (rolledBy, msgText) {
-		if (!msgText.trim()) return;
+	addRoll ({rolledBy, html, $ele}) {
+		if (html && $ele) throw new Error(`Must specify one of html or $ele!`);
+
+		if (html != null && !html.trim()) return;
+
 		Renderer.dice._showBox();
 		Renderer.dice._checkHandleName(rolledBy.name);
-		Renderer.dice._$outRoll.prepend(`<div class="out-roll-item" title="${rolledBy.name || ""}">${msgText}</div>`);
+
+		if (html) {
+			Renderer.dice._$outRoll.prepend(`<div class="out-roll-item" title="${(rolledBy.name || "").qq()}">${html}</div>`);
+		} else {
+			$$`<div class="out-roll-item" title="${(rolledBy.name || "").qq()}">${$ele}</div>`
+				.prependTo(Renderer.dice._$outRoll);
+		}
+
 		Renderer.dice._scrollBottom();
 	},
 
-	addElement (rolledBy, $ele) {
+	addElement ({rolledBy, html, $ele}) {
+		if (html && $ele) throw new Error(`Must specify one of html or $ele!`);
+
+		if (html != null && !html.trim()) return;
+
 		Renderer.dice._showBox();
 		Renderer.dice._checkHandleName(rolledBy.name);
-		$$`<div class="out-roll-item out-roll-item--message">${$ele}</div>`.appendTo(Renderer.dice._$lastRolledBy);
+
+		if (html) {
+			Renderer.dice._$lastRolledBy.prepend(`<div class="out-roll-item out-roll-item--message" title="${(rolledBy.name || "").qq()}">${html}</div>`);
+		} else {
+			$$`<div class="out-roll-item out-roll-item--message" title="${(rolledBy.name || "").qq()}">${$ele}</div>`
+				.prependTo(Renderer.dice._$lastRolledBy);
+		}
+
 		Renderer.dice._scrollBottom();
 	},
 

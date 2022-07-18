@@ -1,5 +1,42 @@
 "use strict";
 
+class BackgroundSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subbackgrounds",
+		});
+	}
+
+	pGetSublistItem (it, hash) {
+		const name = it.name.replace("Variant ", "");
+		const skills = Renderer.background.getSkillSummary(it.skillProficiencies || [], true);
+
+		const $ele = $$`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="bold col-4 pl-0">${name}</span>
+				<span class="col-8 pr-0">${skills}</span>
+			</a>
+		</div>`
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			name,
+			{
+				hash,
+				source: Parser.sourceJsonToAbv(it.source),
+				skills,
+			},
+			{
+				entity: it,
+			},
+		);
+		return listItem;
+	}
+}
+
 class BackgroundPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterBackgrounds();
@@ -10,8 +47,6 @@ class BackgroundPage extends ListPage {
 			pageFilter,
 
 			listClass: "backgrounds",
-
-			sublistClass: "subbackgrounds",
 
 			dataProps: ["background"],
 		});
@@ -48,7 +83,7 @@ class BackgroundPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -59,34 +94,7 @@ class BackgroundPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (bg, ix) {
-		const name = bg.name.replace("Variant ", "");
-		const hash = UrlUtil.autoEncodeHash(bg);
-		const skills = Renderer.background.getSkillSummary(bg.skillProficiencies || [], true);
-
-		const $ele = $$`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-4 pl-0">${name}</span>
-				<span class="col-8 pr-0">${skills}</span>
-			</a>
-		</div>`
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			name,
-			{
-				hash,
-				source: Parser.sourceJsonToAbv(bg.source),
-				skills,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		this._$pgContent.empty();
 
 		this._renderer.setFirstSection(true);
@@ -128,9 +136,10 @@ class BackgroundPage extends ListPage {
 			tabLabelReference: tabMetas.map(it => it.label),
 		});
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 }
 
 const backgroundsPage = new BackgroundPage();
+backgroundsPage.sublistManager = new BackgroundSublistManager();
 window.addEventListener("load", () => backgroundsPage.pOnLoad());

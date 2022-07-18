@@ -1,5 +1,38 @@
 "use strict";
 
+class ConditionsDiseasesSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subconditions",
+		});
+	}
+
+	pGetSublistItem (it, hash) {
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="col-2 pl-0 text-center">${PageFilterConditionsDiseases.getDisplayProp(it.__prop)}</span>
+				<span class="bold col-10 pr-0">${it.name}</span>
+			</a>
+		</div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			it.name,
+			{
+				hash,
+				type: it.__prop,
+			},
+			{
+				entity: it,
+			},
+		);
+		return listItem;
+	}
+}
+
 class ConditionsDiseasesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterConditionsDiseases();
@@ -10,8 +43,6 @@ class ConditionsDiseasesPage extends ListPage {
 			pageFilter,
 
 			listClass: "conditions",
-
-			sublistClass: "subconditions",
 
 			dataProps: ["condition", "disease", "status"],
 
@@ -54,7 +85,7 @@ class ConditionsDiseasesPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -65,31 +96,7 @@ class ConditionsDiseasesPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (it, ix) {
-		const hash = UrlUtil.autoEncodeHash(it);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="col-2 pl-0 text-center">${PageFilterConditionsDiseases.getDisplayProp(it.__prop)}</span>
-				<span class="bold col-10 pr-0">${it.name}</span>
-			</a>
-		</div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			it.name,
-			{
-				hash,
-				type: it.__prop,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		this._$pgContent.empty();
 		const it = this._dataList[id];
 
@@ -131,9 +138,10 @@ class ConditionsDiseasesPage extends ListPage {
 			tabLabelReference: tabMetas.map(it => it.label),
 		});
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 }
 
 const conditionsDiseasesPage = new ConditionsDiseasesPage();
+conditionsDiseasesPage.sublistManager = new ConditionsDiseasesSublistManager();
 window.addEventListener("load", () => conditionsDiseasesPage.pOnLoad());

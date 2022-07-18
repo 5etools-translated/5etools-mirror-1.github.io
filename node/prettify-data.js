@@ -64,7 +64,7 @@ function getFnListSort (prop) {
 		case "raceFluff":
 		case "item":
 		case "baseitem":
-		case "variant":
+		case "magicvariant":
 		case "itemGroup":
 		case "object":
 		case "optionalfeature":

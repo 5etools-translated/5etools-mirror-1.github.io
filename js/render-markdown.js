@@ -10,6 +10,8 @@ class RendererMarkdown {
 		if (!RendererMarkdown._isInit) throw new Error(`RendererMarkdown has not been initialised!`);
 	}
 
+	getLineBreak () { return "\n"; }
+
 	constructor () {
 		// FIXME this is awful
 		const renderer = new Renderer();
@@ -531,11 +533,44 @@ ___
 	_renderDataObject (entry, textStack, meta, options) {
 		// TODO
 	}
+	*/
 
 	_renderDataItem (entry, textStack, meta, options) {
-		// TODO
+		const subStack = [""];
+
+		const item = entry.dataItem;
+
+		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item, {renderer: RendererMarkdown.get()});
+		const [typeRarityText, subTypeText, tierText] = RendererMarkdown.item.getTypeRarityAndAttunementText(item);
+
+		const typeRarityTierValueWeight = [typeRarityText, subTypeText, tierText, Parser.itemValueToFullMultiCurrency(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst();
+		const damageProperties = [damage, damageType, propertiesTxt].filter(Boolean).join(" ").uppercaseFirst();
+
+		const ptSubtitle = [typeRarityTierValueWeight, damageProperties].filter(Boolean).join("\n\n");
+
+		subStack[0] += `#### ${item._displayName || item.name}${ptSubtitle ? `\n\n${ptSubtitle}` : ""}\n\n${ptSubtitle ? `---\n\n` : ""}`;
+
+		if (Renderer.item.hasEntries(item)) {
+			const cacheDepth = meta.depth;
+
+			if (item._fullEntries || (item.entries?.length)) {
+				const entry = {type: "entries", entries: item._fullEntries || item.entries};
+				meta.depth = 1;
+				this._recursiveRender(entry, subStack, meta, {suffix: "\n"});
+			}
+
+			if (item._fullAdditionalEntries || item.additionalEntries) {
+				const additionEntries = {type: "entries", entries: item._fullAdditionalEntries || item.additionalEntries};
+				meta.depth = 1;
+				this._recursiveRender(additionEntries, subStack, meta, {suffix: "\n"});
+			}
+
+			meta.depth = cacheDepth;
+		}
+
+		const itemRender = subStack.join("").trim();
+		textStack[0] += `\n${itemRender}\n\n`;
 	}
-	*/
 
 	_renderDataLegendaryGroup (entry, textStack, meta, options) {
 		const lg = entry.dataLegendaryGroup;
@@ -977,6 +1012,21 @@ RendererMarkdown.monster = class {
 		return RendererMarkdown.get().render({entries: asEntries});
 	}
 	// endregion
+};
+
+RendererMarkdown.item = class {
+	static getTypeRarityAndAttunementText (item) {
+		const typeRarity = [
+			item._typeHtml === "other" ? "" : $(`<div></div>`).html(item._typeHtml).text(),
+			(item.rarity && Renderer.item.doRenderRarity(item.rarity) ? item.rarity : ""),
+		].filter(Boolean).join(", ");
+
+		return [
+			item.reqAttune ? `${typeRarity} ${item._attunement}` : typeRarity,
+			item._subTypeHtml || "",
+			item.tier ? `${item.tier} tier` : "",
+		];
+	}
 };
 
 class MarkdownConverter {

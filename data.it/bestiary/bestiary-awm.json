@@ -1,0 +1,858 @@
+{
+	"monster": [
+		{
+			"name": "Big Water Slurpent",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 29,
+			"size": [
+				"L"
+			],
+			"type": "elemental",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"special": "58"
+			},
+			"speed": {
+				"walk": 0,
+				"swim": 60
+			},
+			"str": 17,
+			"dex": 16,
+			"con": 13,
+			"int": 11,
+			"wis": 10,
+			"cha": 10,
+			"passive": 0,
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Invisible in Water",
+					"entries": [
+						"Il grande slurpente d'acqua è {@condition invisible} quando è completamente immerso nell'acqua."
+					]
+				},
+				{
+					"name": "Water Bound",
+					"entries": [
+						"Il grande serpente d'acqua muore se lascia l'acqua a cui è legato o se quest'ultima viene distrutta."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Constrict",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, un bersaglio. {@h}13 ({@damage 3d6+3}) danni da percosse. Se il bersaglio è Medio o più piccolo, viene {@condition grappled} (fuga {@dc 13}) e tirato per un metro e mezzo verso il grande slurpente d'acqua. Finché la presa non termina, il bersaglio subisce {@condition restrained}, il grande slurpente d'acqua cerca di annegarlo e non può costringere un altro bersaglio."
+					]
+				}
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled",
+				"invisible",
+				"restrained"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Birdsquirrel",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 30,
+			"size": [
+				"T"
+			],
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"special": "10"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": 30,
+				"canHover": false,
+				"climb": 20
+			},
+			"str": 6,
+			"dex": 14,
+			"con": 13,
+			"int": 4,
+			"wis": 12,
+			"cha": 6,
+			"passive": 0,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"Il Birdsquirrel ha vantaggio su un tiro di attacco contro una creatura se almeno uno degli alleati del Birdsquirrel si trova entro 2 metri dalla creatura e l'alleato non lo è {@condition incapacitated}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Lo scoiattolo uccello compie due attacchi: uno con il morso e uno con gli artigli."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}3 ({@damage 1d6+2}) danni perforanti."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}1 ({@damage 1d4+2}) danni da taglio."
+					]
+				}
+			],
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Boontu Monkey",
+			"source": "AWM",
+			"page": 30,
+			"size": [
+				"M"
+			],
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"special": "3"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 8,
+			"dex": 14,
+			"con": 11,
+			"int": 5,
+			"wis": 12,
+			"cha": 6,
+			"passive": 0,
+			"cr": "0",
+			"trait": [
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"La scimmia boontu ha vantaggio su un tiro di attacco contro una creatura se almeno uno degli alleati della scimmia boontu si trova entro 2 metri dalla creatura e l'alleato non lo è {@condition incapacitated}."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 1} per colpire, portata 5 ft., un bersaglio. {@h}1 ({@damage 1d4 ‒1}) danni perforanti."
+					]
+				}
+			],
+			"traitTags": [
+				"Pack Tactics"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Crystal Cave Merfolk",
+			"source": "AWM",
+			"page": 31,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"merfolk"
+				]
+			},
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"special": "11"
+			},
+			"speed": {
+				"walk": 10,
+				"swim": 40
+			},
+			"str": 10,
+			"dex": 13,
+			"con": 12,
+			"int": 11,
+			"wis": 11,
+			"cha": 12,
+			"passive": 0,
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"Il popolo dei sirenetti può respirare l'aria e l'acqua."
+					]
+				},
+				{
+					"name": "Siren Song",
+					"entries": [
+						"Le incantevoli voci canore incantano ogni umanoide o gigante nel raggio di 300 piedi. I bersagli devono riuscire a superare un tiro salvezza di Saggezza {@dc 11} o subire {@condition charmed} fino alla fine del canto."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 2} per colpire, un bersaglio. {@h}3 ({@damage 1d6}) danni perforanti."
+					]
+				}
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Dankwood Hag",
+			"source": "AWM",
+			"page": 31,
+			"size": [
+				"M"
+			],
+			"type": "fey",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				17
+			],
+			"hp": {
+				"special": "82"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 12,
+			"con": 16,
+			"int": 13,
+			"wis": 14,
+			"cha": 14,
+			"passive": 0,
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"footerEntries": [
+						"The hag's spellcasting ability is Charisma",
+						"(spell save {@dc 12}). It can innately cast the following spells:"
+					],
+					"will": [
+						"{@spell dancing lights}",
+						"{@spell minor illusion}",
+						"{@spell vicious mockery}"
+					],
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Amphibious",
+					"entries": [
+						"La megera può respirare aria e acqua."
+					]
+				},
+				{
+					"name": "Mimicry (Green Hag)",
+					"entries": [
+						"La megera può imitare suoni di animali e voci umanoidi. Una creatura che sente i suoni può riconoscere che si tratta di imitazioni con una prova di Saggezza ({@skill Insight}) riuscita."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Illusory Appearance",
+					"entries": [
+						"La megera si copre con un'illusione magica che le permette di assomigliare a un'altra creatura della sua taglia e forma generale. L'illusione termina quando la megera lo sceglie o se muore. Una prova di Intelligenza {@dc 20} (Investigazione) smaschera il travestimento della megera."
+					]
+				},
+				{
+					"name": "Invisible Passage",
+					"entries": [
+						"La megera si trasforma magicamente {@condition invisible} finché non attacca o lancia un incantesimo, o finché la sua concentrazione non termina. Mentre {@condition invisible}, non lascia alcuna traccia fisica del suo passaggio e può essere rintracciata solo con la magia."
+					]
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, un bersaglio. {@h}17 ({@damage 2d8 + 4}) danni da taglio."
+					]
+				}
+			],
+			"traitTags": [
+				"Amphibious"
+			],
+			"damageTags": [
+				"S"
+			],
+			"damageTagsSpell": [
+				"Y"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"invisible"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Dum-Dum Goblin",
+			"source": "AWM",
+			"page": 32,
+			"size": [
+				"S"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"goblinoid"
+				]
+			},
+			"alignment": [
+				"N",
+				"E"
+			],
+			"ac": [
+				7
+			],
+			"hp": {
+				"special": "7"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 8,
+			"dex": 14,
+			"con": 10,
+			"int": 10,
+			"wis": 8,
+			"cha": 8,
+			"passive": 0,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Nimble Escape",
+					"entries": [
+						"Il goblin può compiere l'azione {@action Disengage} o {@action Hide} come azione bonus in ogni suo turno."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Catch me if you can!",
+					"entries": [
+						"I Goblin Dum-Dum scelgono di correre e nascondersi prima di combattere! Prima di poterli attaccare, è necessario effettuare una prova di Destrezza {@dc 15}."
+					]
+				},
+				{
+					"name": "Scimitar",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, un bersaglio. {@h}3 ({@damage 1d6 +2}) danni da taglio."
+					]
+				},
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk rw} {@hit 4} per colpire, un bersaglio. {@h}6 ({@damage 1d6 + 2}) danni perforanti."
+					]
+				}
+			],
+			"damageTags": [
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Dwarf",
+			"source": "AWM",
+			"page": 32,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"Dwarf"
+				]
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				10
+			],
+			"hp": {
+				"special": "30"
+			},
+			"speed": {
+				"walk": 25
+			},
+			"str": 16,
+			"dex": 13,
+			"con": 14,
+			"int": 10,
+			"wis": 11,
+			"cha": 10,
+			"passive": 0,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Dwarven Resilience",
+					"entries": [
+						"Hanno vantaggio nei tiri salvezza contro il veleno e hanno resistenza ai danni da veleno."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Shortbow",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, un bersaglio. {@h}4 ({@damage 1d6 + 1}) danni da taglio."
+					]
+				}
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RNG"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Great Kroom, Purple Worm",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 33,
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "247"
+			},
+			"speed": {
+				"walk": 50,
+				"burrow": 30
+			},
+			"str": 10,
+			"dex": 13,
+			"con": 12,
+			"int": 11,
+			"wis": 11,
+			"cha": 12,
+			"passive": 0,
+			"cr": "15",
+			"trait": [
+				{
+					"name": "Tunneler",
+					"entries": [
+						"Il verme può scavare nella roccia solida alla metà della sua velocità di scavo e lascia un tunnel di 3 metri di diametro nella sua scia."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il verme effettua due attacchi:"
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 14} per colpire, un bersaglio. {@h}22 ({@damage 3d8}) danni da perforazione. Il bersaglio deve effettuare un tiro salvezza di Destrezza {@dc 19} o essere inghiottito dal verme!"
+					]
+				},
+				{
+					"name": "Tail Stinger",
+					"entries": [
+						"{@atk mw} {@hit 14} per colpire, una creatura. {@h}19 ({@damage 3d6 + 9}) danni da perforazione Il bersaglio deve effettuare un tiro salvezza {@dc 19} di Costituzione, o subire 42",
+						"({@dice 12d6}) danni da veleno."
+					]
+				}
+			],
+			"environment": [
+				"desert",
+				"underdark"
+			],
+			"soundClip": {
+				"type": "external",
+				"url": "https://5e.tools/audio/bestiary/purple-worm.mp3"
+			},
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Hangry Otyugh",
+			"source": "AWM",
+			"page": 33,
+			"size": [
+				"L"
+			],
+			"type": "aberration",
+			"alignment": [
+				"N"
+			],
+			"ac": [
+				14
+			],
+			"hp": {
+				"special": "114"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 11,
+			"con": 19,
+			"int": 6,
+			"wis": 13,
+			"cha": 6,
+			"passive": 0,
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Limited Telepathy",
+					"entries": [
+						"L'otyugh può trasmettere magicamente semplici messaggi e immagini a qualsiasi creatura nel raggio di 120 piedi in grado di comprendere una lingua. Questa forma di telepatia non consente alla creatura ricevente di rispondere telepaticamente."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'otyugh compie tre attacchi:"
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 5 ft., un bersaglio. {@h}12 ({@damage 2d8 + 3}) danni perforanti. Il bersaglio deve effettuare un tiro salvezza di Costituzione {@dc 15} o subire danni da perforazione.",
+						"({@dice 1d10}) danni da veleno fino alla guarigione."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 10 ft., un bersaglio. {@h}7 ({@damage 1d8 + 3}) danni da percosse, il bersaglio deve effettuare un tiro salvezza {@dc 19} per la Costituzione o subire 42 danni.",
+						"({@dice 12d6}) danni da veleno"
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"Il bersaglio deve effettuare un tiro salvezza di Costituzione {@dc 14} o subire {@condition grappled}."
+					]
+				}
+			],
+			"environment": [
+				"underdark"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Hill Giant, Blorbo",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 34,
+			"size": [
+				"H"
+			],
+			"type": "giant",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"special": "105"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 21,
+			"dex": 8,
+			"con": 19,
+			"int": 5,
+			"wis": 9,
+			"cha": 6,
+			"passive": 0,
+			"cr": "4",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il gigante compie due attacchi con la clava."
+					]
+				},
+				{
+					"name": "Greatclub",
+					"entries": [
+						"{@atk mw} {@hit 8} per colpire, un bersaglio. {@h}18 ({@damage 3d8 + 5}) danni da percosse."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"{@atk rw} {@hit 8} per colpire, un bersaglio. {@h}21 ({@damage 3d10 + 5}) danni da percosse."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Saleeth the Couatl",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "AWM",
+			"page": 34,
+			"size": [
+				"M"
+			],
+			"type": "celestial",
+			"alignment": [
+				"L",
+				"G"
+			],
+			"ac": [
+				{
+					"ac": 19,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"special": "97"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 90
+			},
+			"str": 16,
+			"dex": 20,
+			"con": 17,
+			"int": 18,
+			"wis": 20,
+			"cha": 18,
+			"passive": 0,
+			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Innate Spellcasting",
+					"headerEntries": [
+						"La capacità di incantesimo del couatl è il Carisma (tiro salvezza {@dc 14}). Può lanciare innatamente i seguenti incantesimi, che richiedono solo componenti verbali:"
+					],
+					"will": [
+						"{@spell detect evil and good}",
+						"{@spell detect magic}",
+						"{@spell detect thoughts}"
+					],
+					"daily": {
+						"3e": [
+							"{@spell bless}",
+							"{@spell create food and water}",
+							"{@spell cure wounds}",
+							"{@spell lesser restoration}",
+							"{@spell protection from poison}",
+							"{@spell sanctuary}",
+							"{@spell shield}"
+						],
+						"1e": [
+							"{@spell dream}",
+							"{@spell greater restoration}",
+							"{@spell scrying}"
+						]
+					},
+					"ability": "cha",
+					"type": "spellcasting"
+				}
+			],
+			"trait": [
+				{
+					"name": "Magic Weapons",
+					"entries": [
+						"Gli attacchi con le armi del couatl sono magici."
+					]
+				},
+				{
+					"name": "Shielded Mind",
+					"entries": [
+						"Il couatl è immune allo scrying e a qualsiasi effetto che possa percepire le sue emozioni, leggere i suoi pensieri o individuare la sua posizione."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 8} per colpire, portata 5 ft., una creatura. {@h}8 ({@damage 1d6 + 5}) danni perforanti, il bersaglio deve effettuare un tiro salvezza di Costituzione {@dc 13} o cadere {@condition unconscious}. Un'altra creatura può usare un'azione per scuotere il bersaglio."
+					]
+				},
+				{
+					"name": "Constrict",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 10 ft., una creatura Media o più piccola. {@h}10 ({@damage 2d6 + 3}) danni da percosse, il bersaglio è {@condition grappled} (fuga {@dc 15}). Il couatl può vincolare un solo bersaglio alla volta."
+					]
+				},
+				{
+					"name": "Change Shape",
+					"entries": [
+						"Il couatl si polimorizza magicamente in un umanoide o in una bestia con un punteggio di sfida uguale o inferiore al suo, oppure torna alla sua vera forma. Se muore, ritorna alla sua vera forma. Qualsiasi equipaggiamento indossato o trasportato viene assorbito o sostenuto dalla nuova forma (a scelta del couatl).",
+						"In una nuova forma, il couatl mantiene le sue statistiche di gioco e la capacità di parlare, ma la sua CA, le modalità di movimento, la Forza, la Destrezza e le altre azioni sono sostituite da quelle della nuova forma, e guadagna tutte le statistiche e le capacità (eccetto le caratteristiche di classe, le azioni leggendarie e le azioni di tana) che la nuova forma possiede ma che a lui mancano. Se la nuova forma ha un attacco di morso, il couatl può usare il suo morso in quella forma."
+					]
+				}
+			],
+			"traitTags": [
+				"Magic Weapons"
+			],
+			"actionTags": [
+				"Shapechanger"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"damageTagsSpell": [
+				"Y"
+			],
+			"spellcastingTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

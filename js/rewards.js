@@ -1,5 +1,38 @@
 "use strict";
 
+class RewardsSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subrewards",
+		});
+	}
+
+	pGetSublistItem (reward, hash) {
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				<span class="name col-2 pl-0 text-center">${reward.type}</span>
+				<span class="name col-10 pr-0">${reward.name}</span>
+			</a>
+		</div>`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			reward.name,
+			{
+				hash,
+				type: reward.type,
+			},
+			{
+				entity: reward,
+			},
+		);
+		return listItem;
+	}
+}
+
 class RewardsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterRewards();
@@ -9,8 +42,6 @@ class RewardsPage extends ListPage {
 			pageFilter,
 
 			listClass: "rewards",
-
-			sublistClass: "subrewards",
 
 			dataProps: ["reward"],
 		});
@@ -46,7 +77,7 @@ class RewardsPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -57,39 +88,16 @@ class RewardsPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (reward, ix) {
-		const hash = UrlUtil.autoEncodeHash(reward);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="name col-2 pl-0 text-center">${reward.type}</span>
-				<span class="name col-10 pr-0">${reward.name}</span>
-			</a>
-		</div>`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			reward.name,
-			{
-				hash,
-				type: reward.type,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		Renderer.get().setFirstSection(true);
 		const reward = this._dataList[id];
 
 		this._$pgContent.empty().append(RenderRewards.$getRenderedReward(reward));
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 }
 
 const rewardsPage = new RewardsPage();
+rewardsPage.sublistManager = new RewardsSublistManager();
 window.addEventListener("load", () => rewardsPage.pOnLoad());

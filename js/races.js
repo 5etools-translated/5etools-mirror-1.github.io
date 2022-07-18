@@ -1,5 +1,40 @@
 "use strict";
 
+class RacesSublistManager extends SublistManager {
+	constructor () {
+		super({
+			sublistClass: "subraces",
+		});
+	}
+
+	pGetSublistItem (race, hash) {
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+				<a href="#${UrlUtil.autoEncodeHash(race)}" class="lst--border lst__row-inner">
+					<span class="bold col-5 pl-0">${race.name}</span>
+					<span class="col-5 ${race._slAbility === "Lineage (choose)" ? "italic" : ""}">${race._slAbility}</span>
+					<span class="col-2 text-center pr-0">${(race.size || [SZ_VARIES]).map(sz => Parser.sizeAbvToFull(sz)).join("/")}</span>
+				</a>
+			</div>
+		`)
+			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
+			.click(evt => this._listSub.doSelect(listItem, evt));
+
+		const listItem = new ListItem(
+			hash,
+			$ele,
+			race.name,
+			{
+				hash,
+				ability: race._slAbility,
+			},
+			{
+				entity: race,
+			},
+		);
+		return listItem;
+	}
+}
+
 class RacesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterRaces();
@@ -11,8 +46,6 @@ class RacesPage extends ListPage {
 			pageFilter,
 
 			listClass: "races",
-
-			sublistClass: "subraces",
 
 			dataProps: ["race"],
 
@@ -68,7 +101,7 @@ class RacesPage extends ListPage {
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
@@ -79,33 +112,7 @@ class RacesPage extends ListPage {
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
-	pGetSublistItem (race, ix) {
-		const hash = UrlUtil.autoEncodeHash(race);
-
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
-				<a href="#${UrlUtil.autoEncodeHash(race)}" class="lst--border lst__row-inner">
-					<span class="bold col-5 pl-0">${race.name}</span>
-					<span class="col-5 ${race._slAbility === "Lineage (choose)" ? "italic" : ""}">${race._slAbility}</span>
-					<span class="col-2 text-center pr-0">${(race.size || [SZ_VARIES]).map(sz => Parser.sizeAbvToFull(sz)).join("/")}</span>
-				</a>
-			</div>
-		`)
-			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem))
-			.click(evt => ListUtil.sublist.doSelect(listItem, evt));
-
-		const listItem = new ListItem(
-			ix,
-			$ele,
-			race.name,
-			{
-				hash,
-				ability: race._slAbility,
-			},
-		);
-		return listItem;
-	}
-
-	doLoadHash (id) {
+	_doLoadHash (id) {
 		const renderer = this._renderer;
 		renderer.setFirstSection(true);
 		this._$pgContent.empty();
@@ -147,9 +154,10 @@ class RacesPage extends ListPage {
 			tabLabelReference: tabMetas.map(it => it.label),
 		});
 
-		ListUtil.updateSelected();
+		this._updateSelected();
 	}
 }
 
 const racesPage = new RacesPage();
+racesPage.sublistManager = new RacesSublistManager();
 window.addEventListener("load", () => racesPage.pOnLoad());

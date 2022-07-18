@@ -3403,7 +3403,7 @@ Parser.PROP_TO_TAG = {
 	"vehicleUpgrade": "vehupgrade",
 	"baseitem": "item",
 	"itemGroup": "item",
-	"variant": "item",
+	"magicvariant": "item",
 };
 Parser.getPropTag = function (prop) {
 	if (Parser.PROP_TO_TAG[prop]) return Parser.PROP_TO_TAG[prop];
@@ -3413,7 +3413,7 @@ Parser.getPropTag = function (prop) {
 Parser.PROP_TO_DISPLAY_NAME = {
 	"variantrule": "Variant Rule",
 	"optionalfeature": "Optional Feature",
-	"variant": "Magic Item Variant",
+	"magicvariant": "Magic Item Variant",
 	"baseitem": "Item (Base)",
 	"item": "Item",
 	"adventure": "Adventure",
@@ -3422,6 +3422,12 @@ Parser.PROP_TO_DISPLAY_NAME = {
 	"bookData": "Book Text",
 	"makebrewCreatureTrait": "Homebrew Builder Creature Trait",
 	"charoption": "Other Character Creation Option",
+
+	"bonus": "Bonus Action",
+	"legendary": "Legendary Action",
+	"mythic": "Mythic Action",
+	"lairActions": "Lair Action",
+	"regionalEffects": "Regional Effect",
 };
 Parser.getPropDisplayName = function (prop, {suffix = ""} = {}) {
 	if (Parser.PROP_TO_DISPLAY_NAME[prop]) return `${Parser.PROP_TO_DISPLAY_NAME[prop]}${suffix}`;

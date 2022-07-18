@@ -1,6 +1,6 @@
 "use strict";
 
-class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
+class ClassesPage extends MixinComponentGlobalState(MixinBaseComponent(MixinProxyBase(ListPage))) {
 	static _ascSortSubclasses (scA, scB) {
 		return SortUtil.ascSortLower(scA.name, scB.name);
 	}
@@ -23,7 +23,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 	}
 
 	constructor () {
-		super();
+		super({});
 		// Don't include classId in the main state/proxy, as we want special handling for it as the main hash part
 		this.__classId = {_: 0};
 		this._classId = this._getProxy("classId", this.__classId);
@@ -60,9 +60,11 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 	}
 	get activeClassRaw () { return this._dataList[this._classId._]; }
 
-	get filterBox () { return this._pageFilter.filterBox; }
+	get filterBox () { return this._filterBox; }
 
 	async pOnLoad () {
+		Hist.setListPage(this);
+
 		this._$pgContent = $(`#pagecontent`);
 
 		await BrewUtil2.pInit();
@@ -70,14 +72,24 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.class.loadJSON();
 
-		this._list = ListUtil.initList({listClass: "classes", isUseJquery: true, isBindFindHotkey: true});
-		ListUtil.setOptions({primaryLists: [this._list]});
+		const $btnReset = $("#reset");
+		this._list = this._initList({
+			$iptSearch: $("#lst__search"),
+			$wrpList: $(`.list.classes`),
+			$btnReset,
+			$btnClear: $(`#lst__search-glass`),
+			$dispPageTagline: $(`.page__subtitle`),
+			isBindFindHotkey: true,
+			optsList: {
+				isUseJquery: true,
+			},
+		});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
-		await this._pageFilter.pInitFilterBox({
+		this._filterBox = await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`),
-			$btnReset: $(`#reset`),
+			$btnReset,
 		});
 
 		this._addData(data);
@@ -88,8 +100,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 		this._pageFilter.trimState();
 
 		ManageBrewUi.bindBtnOpen($(`#manage-brew`));
-		await ListUtil.pLoadState();
-		RollerUtil.addListRollButton(true);
+		this._renderListFeelingLucky({isCompact: true, $btnReset});
 
 		window.onhashchange = this._handleHashChange.bind(this);
 
@@ -106,7 +117,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 		ListPage._checkShowAllExcluded(this._dataList, this._$pgContent);
 		this._initLinkGrabbers();
 		this._initScrollToSubclassSelection();
-		UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export`));
+		this._bindLinkExportButton({$btn: $(`#btn-link-export`)});
 		this._doBindBtnSettingsSidebar();
 
 		Hist.initialLoad = false;
@@ -184,11 +195,6 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 			this._list.update();
 			this.filterBox.render();
 			this._handleFilterChange(false);
-
-			ListUtil.setOptions({
-				itemList: this._dataList,
-				primaryLists: [this._list],
-			});
 		}
 
 		return {isAddedAnyClass, isAddedAnySubclass};
@@ -294,6 +300,7 @@ class ClassesPage extends MixinComponentGlobalState(BaseComponent) {
 				Hist.lastLoadedId = ixToLoad;
 				const cls = this._dataList[ixToLoad];
 				document.title = `${cls ? cls.name : "Classes"} - 5etools`;
+				this._updateSelected();
 				target._ = ixToLoad;
 			}
 		} else {
