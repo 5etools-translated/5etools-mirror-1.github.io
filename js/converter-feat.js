@@ -185,7 +185,7 @@ class FeatParser extends BaseParser {
 						}
 
 						obj.items.shift();
-					} else if (typeof obj.items[0] === "string" && /^increase one ability score of your choice by 1/i.test(obj.items[0])) {
+					} else if (typeof obj.items[0] === "string" && /^increase (?:one|an) ability score of your choice by 1/i.test(obj.items[0])) {
 						feat.ability = [
 							{
 								choose: {

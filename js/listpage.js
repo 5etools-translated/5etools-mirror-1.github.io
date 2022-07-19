@@ -1184,7 +1184,7 @@ class ListPage {
 			optsList,
 		},
 	) {
-		const list = new List({$iptSearch, $wrpList, ...optsList});
+		const list = new List({$iptSearch, $wrpList, syntax, ...optsList});
 
 		const helpText = [];
 
