@@ -40,6 +40,11 @@ class PageFilterFeats extends PageFilter {
 				"Weapon Proficiency",
 			],
 		});
+		this._vulnerableFilter = FilterCommon.getDamageVulnerableFilter();
+		this._resistFilter = FilterCommon.getDamageResistFilter();
+		this._immuneFilter = FilterCommon.getDamageImmuneFilter();
+		this._defenceFilter = new MultiFilter({header: "Damage", filters: [this._vulnerableFilter, this._resistFilter, this._immuneFilter]});
+		this._conditionImmuneFilter = FilterCommon.getConditionImmuneFilter();
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isMiscFilter: true});
 	}
 
@@ -73,6 +78,9 @@ class PageFilterFeats extends PageFilter {
 
 		feat._slAbility = ability.asText || VeCt.STR_NONE;
 		feat._slPrereq = prereqText;
+
+		FilterCommon.mutateForFilters_damageVulnResImmune_player(feat);
+		FilterCommon.mutateForFilters_conditionImmune_player(feat);
 	}
 
 	addToFilters (feat, isExcluded) {
@@ -80,6 +88,11 @@ class PageFilterFeats extends PageFilter {
 
 		this._sourceFilter.addItem(feat.source);
 		if (feat.prerequisite) this._levelFilter.addItem(feat._fPrereqLevel);
+		this._vulnerableFilter.addItem(feat._fVuln);
+		this._resistFilter.addItem(feat._fRes);
+		this._immuneFilter.addItem(feat._fImm);
+		this._conditionImmuneFilter.addItem(feat._fCondImm);
+		this._benefitsFilter.addItem(feat._fBenifits);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -88,6 +101,8 @@ class PageFilterFeats extends PageFilter {
 			this._asiFilter,
 			this._prerequisiteFilter,
 			this._benefitsFilter,
+			this._defenceFilter,
+			this._conditionImmuneFilter,
 			this._miscFilter,
 		];
 	}
@@ -102,6 +117,12 @@ class PageFilterFeats extends PageFilter {
 				ft._fPrereqLevel,
 			],
 			ft._fBenifits,
+			[
+				ft._fVuln,
+				ft._fRes,
+				ft._fImm,
+			],
+			ft._fCondImm,
 			ft._fMisc,
 		);
 	}

@@ -470,6 +470,7 @@ class DiceConvert {
 					...MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
 					"dmg1",
 					"dmg2",
+					"area",
 				]),
 			});
 			DiceConvert._walkerHandlers = {

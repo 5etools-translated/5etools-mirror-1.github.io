@@ -88,13 +88,13 @@ class SublistManager {
 		const $handle = $(`<div class="sublist__ele-resize mobile__hidden">...</div>`).appendTo(this._$wrpContainer);
 
 		let mousePos;
-		function resize (evt) {
+		const resize = (evt) => {
 			evt.preventDefault();
 			evt.stopPropagation();
 			const dx = EventUtil.getClientY(evt) - mousePos;
 			mousePos = EventUtil.getClientY(evt);
 			this._$wrpContainer.css("height", parseInt(this._$wrpContainer.css("height")) + dx);
-		}
+		};
 
 		$handle
 			.on("mousedown", (evt) => {

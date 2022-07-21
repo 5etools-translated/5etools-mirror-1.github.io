@@ -11,6 +11,15 @@ class EncountersPage extends TableListPage {
 
 	static _COL_NAME_1 = "Encounter";
 
+	static _FN_SORT (a, b, o) {
+		if (o.sortBy === "name") return SortUtil.ascSort(a.data._sLevel, b.data._sLevel) || SortUtil.compareListNames(a, b);
+		return 0;
+	}
+
+	_getListItemData (ent) {
+		return {_sLevel: ent.minlvl};
+	}
+
 	_getHash (ent) {
 		return UrlUtil.encodeForHash([ent.name, ent.source, `${ent.minlvl}-${ent.maxlvl}`]);
 	}

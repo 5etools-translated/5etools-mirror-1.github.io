@@ -2956,7 +2956,7 @@ Renderer.utils = {
 		let cntPrerequisites = 0;
 		let hasNote = false;
 		const listOfChoices = prerequisites.map(pr => {
-			const ptPrereqs = Object.entries(pr)
+			const prereqsToJoin = Object.entries(pr)
 				.sort(([kA], [kB]) => Renderer.utils._prereqWeights[kA] - Renderer.utils._prereqWeights[kB])
 				.map(([k, v]) => {
 					if (k === "note" || blacklistKeys.has(k)) return false;
@@ -3120,8 +3120,10 @@ Renderer.utils = {
 						default: throw new Error(`Unhandled key: ${k}`);
 					}
 				})
-				.filter(Boolean)
-				.join(", ");
+				.filter(Boolean);
+
+			const ptPrereqs = prereqsToJoin
+				.join(prereqsToJoin.some(it => / or /.test(it)) ? "; " : ", ");
 
 			// Never include notes in list mode
 			const ptNote = !isListMode && pr.note ? Renderer.get().render(pr.note) : null;

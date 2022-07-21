@@ -639,13 +639,14 @@ class EncounterBuilder extends ProxyBase {
 
 			if (savedState.l && !playersOnly) {
 				await this._bestiaryPage.pPreloadSublistSources(savedState.l);
-				await this._sublistManager(savedState.l, false);
+				await this._sublistManager.pDoJsonLoad(savedState.l, false);
 			}
 
 			this.updateDifficulty();
 		} catch (e) {
 			JqueryUtil.doToast({content: `Could not load encounter! Was the file valid?`, type: "danger"});
 			this._pReset();
+			setTimeout(() => { throw e; });
 		}
 	}
 

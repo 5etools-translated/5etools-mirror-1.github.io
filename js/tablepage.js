@@ -19,6 +19,10 @@ class TableListPage extends ListPage {
 		return Object.values(this._listMetas).map(it => it.list);
 	}
 
+	static _FN_SORT; // Implement as required
+
+	_getListItemData (ent, i) { return {}; }
+
 	_addData (data) {
 		const groups = data[this._dataProps[0]];
 		this._dataList = groups
@@ -48,10 +52,11 @@ class TableListPage extends ListPage {
 					$wrpList,
 					$btnReset: $("#reset"),
 					$btnClear: $(`#lst__search-glass`),
-					$dispPageTagline: isFirst ? null : $(`.page__subtitle`),
+					$dispPageTagline: isFirst ? $(`.page__subtitle`) : null,
 					isBindFindHotkey: isFirst,
 					optsList: {
 						isUseJquery: true,
+						fnSort: this.constructor._FN_SORT,
 					},
 				});
 
@@ -94,6 +99,9 @@ class TableListPage extends ListPage {
 				displayName,
 				{
 					hash,
+				},
+				{
+					...this._getListItemData(ent, i),
 				},
 			);
 

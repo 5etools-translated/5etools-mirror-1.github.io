@@ -767,9 +767,6 @@ class PageFilterRaces extends PageFilter {
 				"Amphibious",
 				"Armor Proficiency",
 				"Blindsight",
-				"Condition Immunity",
-				"Damage Immunity",
-				"Damage Resistance",
 				"Darkvision", "Superior Darkvision",
 				"Dragonmark",
 				"Feat",
@@ -790,6 +787,11 @@ class PageFilterRaces extends PageFilter {
 				return it === "NPC Race";
 			},
 		});
+		this._vulnerableFilter = FilterCommon.getDamageVulnerableFilter();
+		this._resistFilter = FilterCommon.getDamageResistFilter();
+		this._immuneFilter = FilterCommon.getDamageImmuneFilter();
+		this._defenceFilter = new MultiFilter({header: "Damage", filters: [this._vulnerableFilter, this._resistFilter, this._immuneFilter]});
+		this._conditionImmuneFilter = FilterCommon.getConditionImmuneFilter();
 		this._languageFilter = new Filter({
 			header: "Languages",
 			items: [
@@ -840,9 +842,6 @@ class PageFilterRaces extends PageFilter {
 		r._fTraits = [
 			r.darkvision === 120 ? "Superior Darkvision" : r.darkvision ? "Darkvision" : null,
 			r.blindsight ? "Blindsight" : null,
-			r.resist ? "Damage Resistance" : null,
-			r.immune ? "Damage Immunity" : null,
-			r.conditionImmune ? "Condition Immunity" : null,
 			r.skillProficiencies ? "Skill Proficiency" : null,
 			r.toolProficiencies ? "Tool Proficiency" : null,
 			r.feats ? "Feat" : null,
@@ -880,6 +879,9 @@ class PageFilterRaces extends PageFilter {
 		if (r.age?.mature != null && r.age?.max != null) r._fAge = [r.age.mature, r.age.max];
 		else if (r.age?.mature != null) r._fAge = r.age.mature;
 		else if (r.age?.max != null) r._fAge = r.age.max;
+
+		FilterCommon.mutateForFilters_damageVulnResImmune_player(r);
+		FilterCommon.mutateForFilters_conditionImmune_player(r);
 	}
 
 	addToFilters (r, isExcluded) {
@@ -891,6 +893,10 @@ class PageFilterRaces extends PageFilter {
 		this._baseRaceFilter.addItem(r._baseName);
 		this._creatureTypeFilter.addItem(r._fCreatureTypes);
 		this._traitFilter.addItem(r._fTraits);
+		this._vulnerableFilter.addItem(r._fVuln);
+		this._resistFilter.addItem(r._fRes);
+		this._immuneFilter.addItem(r._fImm);
+		this._conditionImmuneFilter.addItem(r._fCondImm);
 		this._asiFilterLegacy.addItem(r._fAbility);
 		this._ageFilter.addItem(r._fAge);
 		this._languageFilter.addItem(r._fLangs);
@@ -903,6 +909,8 @@ class PageFilterRaces extends PageFilter {
 			this._sizeFilter,
 			this._speedFilter,
 			this._traitFilter,
+			this._defenceFilter,
+			this._conditionImmuneFilter,
 			this._languageFilter,
 			this._baseRaceFilter,
 			this._creatureTypeFilter,
@@ -921,6 +929,12 @@ class PageFilterRaces extends PageFilter {
 			r._fSize,
 			r._fSpeed,
 			r._fTraits,
+			[
+				r._fVuln,
+				r._fRes,
+				r._fImm,
+			],
+			r._fCondImm,
 			r._fLangs,
 			r._baseName,
 			r._fCreatureTypes,

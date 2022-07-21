@@ -279,6 +279,7 @@ class SpellsPage extends ListPageMultiSource {
 	}
 
 	doLoadHash (id) {
+		this._lastRender.entity = this._dataList[id];
 		Renderer.get().setFirstSection(true);
 		this._$pgContent.empty();
 		const spell = this._dataList[id];

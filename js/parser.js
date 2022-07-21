@@ -2402,6 +2402,7 @@ SRC_SCC_TMM = "SCC-TMM";
 SRC_SCC_ARiR = "SCC-ARiR";
 SRC_MPMM = "MPMM";
 SRC_CRCotN = "CRCotN";
+SRC_JttRC = "JttRC";
 SRC_SCREEN = "Screen";
 SRC_SCREEN_WILDERNESS_KIT = "ScreenWildernessKit";
 SRC_SCREEN_DUNGEON_KIT = "ScreenDungeonKit";
@@ -2600,17 +2601,18 @@ Parser.SOURCE_JSON_TO_FULL[SRC_AitFR_THP] = `${AitFR_NAME}: The Hidden Page`;
 Parser.SOURCE_JSON_TO_FULL[SRC_AitFR_AVT] = `${AitFR_NAME}: A Verdant Tomb`;
 Parser.SOURCE_JSON_TO_FULL[SRC_AitFR_DN] = `${AitFR_NAME}: Deepest Night`;
 Parser.SOURCE_JSON_TO_FULL[SRC_AitFR_FCD] = `${AitFR_NAME}: From Cyan Depths`;
-Parser.SOURCE_JSON_TO_FULL[SRC_WBtW] = `The Wild Beyond the Witchlight`;
-Parser.SOURCE_JSON_TO_FULL[SRC_DoD] = `Domains of Delight`;
-Parser.SOURCE_JSON_TO_FULL[SRC_MaBJoV] = `Minsc and Boo's Journal of Villainy`;
-Parser.SOURCE_JSON_TO_FULL[SRC_FTD] = `Fizban's Treasury of Dragons`;
-Parser.SOURCE_JSON_TO_FULL[SRC_SCC] = `Strixhaven: A Curriculum of Chaos`;
-Parser.SOURCE_JSON_TO_FULL[SRC_SCC_CK] = `Campus Kerfuffle`;
-Parser.SOURCE_JSON_TO_FULL[SRC_SCC_HfMT] = `Hunt for Mage Tower`;
-Parser.SOURCE_JSON_TO_FULL[SRC_SCC_TMM] = `The Magister's Masquerade`;
-Parser.SOURCE_JSON_TO_FULL[SRC_SCC_ARiR] = `A Reckoning in Ruins`;
-Parser.SOURCE_JSON_TO_FULL[SRC_MPMM] = `Mordenkainen Presents: Monsters of the Multiverse`;
-Parser.SOURCE_JSON_TO_FULL[SRC_CRCotN] = `Critical Role: Call of the Netherdeep`;
+Parser.SOURCE_JSON_TO_FULL[SRC_WBtW] = "The Wild Beyond the Witchlight";
+Parser.SOURCE_JSON_TO_FULL[SRC_DoD] = "Domains of Delight";
+Parser.SOURCE_JSON_TO_FULL[SRC_MaBJoV] = "Minsc and Boo's Journal of Villainy";
+Parser.SOURCE_JSON_TO_FULL[SRC_FTD] = "Fizban's Treasury of Dragons";
+Parser.SOURCE_JSON_TO_FULL[SRC_SCC] = "Strixhaven: A Curriculum of Chaos";
+Parser.SOURCE_JSON_TO_FULL[SRC_SCC_CK] = "Campus Kerfuffle";
+Parser.SOURCE_JSON_TO_FULL[SRC_SCC_HfMT] = "Hunt for Mage Tower";
+Parser.SOURCE_JSON_TO_FULL[SRC_SCC_TMM] = "The Magister's Masquerade";
+Parser.SOURCE_JSON_TO_FULL[SRC_SCC_ARiR] = "A Reckoning in Ruins";
+Parser.SOURCE_JSON_TO_FULL[SRC_MPMM] = "Mordenkainen Presents: Monsters of the Multiverse";
+Parser.SOURCE_JSON_TO_FULL[SRC_CRCotN] = "Critical Role: Call of the Netherdeep";
+Parser.SOURCE_JSON_TO_FULL[SRC_JttRC] = "Journeys through the Radiant Citadel";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN_WILDERNESS_KIT] = "Dungeon Master's Screen: Wilderness Kit";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN_DUNGEON_KIT] = "Dungeon Master's Screen: Dungeon Kit";
@@ -2798,6 +2800,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_SCC_TMM] = "SCC-TMM";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCC_ARiR] = "SCC-ARiR";
 Parser.SOURCE_JSON_TO_ABV[SRC_MPMM] = "MPMM";
 Parser.SOURCE_JSON_TO_ABV[SRC_CRCotN] = "CRCotN";
+Parser.SOURCE_JSON_TO_ABV[SRC_JttRC] = "JttRC";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN_WILDERNESS_KIT] = "ScWild";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN_DUNGEON_KIT] = "ScDun";
@@ -2984,6 +2987,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_SCC_TMM] = "2021-12-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCC_ARiR] = "2021-12-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_MPMM] = "2022-01-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_CRCotN] = "2022-03-15";
+Parser.SOURCE_JSON_TO_DATE[SRC_JttRC] = "2022-07-19";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN_WILDERNESS_KIT] = "2020-11-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN_DUNGEON_KIT] = "2020-09-21";
@@ -3152,6 +3156,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_SCC_TMM,
 	SRC_SCC_ARiR,
 	SRC_CRCotN,
+	SRC_JttRC,
 
 	SRC_AWM,
 ]);
@@ -3349,6 +3354,7 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 	SRC_SCC_TMM,
 	SRC_SCC_ARiR,
 	SRC_CRCotN,
+	SRC_JttRC,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;

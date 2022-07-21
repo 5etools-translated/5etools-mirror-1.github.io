@@ -175,35 +175,11 @@ class PageFilterBestiary extends PageFilter {
 			items: ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"],
 			displayFn: StrUtil.uppercaseFirst,
 		});
-		this._vulnerableFilter = new Filter({
-			header: "Vulnerabilities",
-			items: PageFilterBestiary.DMG_TYPES,
-			displayFnMini: str => `Vuln. ${str.toTitleCase()}`,
-			displayFnTitle: str => `Damage Vulnerability: ${str.toTitleCase()}`,
-			displayFn: StrUtil.uppercaseFirst,
-		});
-		this._resistFilter = new Filter({
-			header: "Resistance",
-			items: PageFilterBestiary.DMG_TYPES,
-			displayFnMini: str => `Res. ${str.toTitleCase()}`,
-			displayFnTitle: str => `Damage Resistance: ${str.toTitleCase()}`,
-			displayFn: StrUtil.uppercaseFirst,
-		});
-		this._immuneFilter = new Filter({
-			header: "Immunity",
-			items: PageFilterBestiary.DMG_TYPES,
-			displayFnMini: str => `Imm. ${str.toTitleCase()}`,
-			displayFnTitle: str => `Damage Immunity: ${str.toTitleCase()}`,
-			displayFn: StrUtil.uppercaseFirst,
-		});
+		this._vulnerableFilter = FilterCommon.getDamageVulnerableFilter();
+		this._resistFilter = FilterCommon.getDamageResistFilter();
+		this._immuneFilter = FilterCommon.getDamageImmuneFilter();
 		this._defenceFilter = new MultiFilter({header: "Damage", filters: [this._vulnerableFilter, this._resistFilter, this._immuneFilter]});
-		this._conditionImmuneFilter = new Filter({
-			header: "Condition Immunity",
-			items: PageFilterBestiary.CONDS,
-			displayFnMini: str => `Imm. ${str.toTitleCase()}`,
-			displayFnTitle: str => `Condition Immunity: ${str.toTitleCase()}`,
-			displayFn: StrUtil.uppercaseFirst,
-		});
+		this._conditionImmuneFilter = FilterCommon.getConditionImmuneFilter();
 		this._traitFilter = new Filter({
 			header: "Traits",
 			items: [
@@ -507,26 +483,6 @@ class PageFilterBestiary extends PageFilter {
 }
 PageFilterBestiary._NEUT_ALIGNS = ["NX", "NY"];
 PageFilterBestiary.MISC_FILTER_SPELLCASTER = "Spellcaster, ";
-PageFilterBestiary.DMG_TYPES = [...Parser.DMG_TYPES];
-PageFilterBestiary.CONDS = [
-	"blinded",
-	"charmed",
-	"deafened",
-	"exhaustion",
-	"frightened",
-	"grappled",
-	"incapacitated",
-	"invisible",
-	"paralyzed",
-	"petrified",
-	"poisoned",
-	"prone",
-	"restrained",
-	"stunned",
-	"unconscious",
-	// not really a condition, but whatever
-	"disease",
-];
 PageFilterBestiary._RE_SPELL_TAG = /{@spell ([^}]+)}/g;
 PageFilterBestiary._WALKER = null;
 PageFilterBestiary._BASIC_ENTRY_PROPS = [
