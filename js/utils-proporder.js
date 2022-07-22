@@ -766,6 +766,8 @@ PropOrder._VEHICLE = [
 	"capPassenger",
 	"capCargo",
 
+	"cost",
+
 	"ac",
 	"pace",
 	"speed",

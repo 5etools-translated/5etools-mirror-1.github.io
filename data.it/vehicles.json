@@ -814,6 +814,111 @@
 			]
 		},
 		{
+			"name": "Hammerhead Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": 4,
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Ci vuole 1 azione per caricare la balista, 1 azione per puntarla e 1 azione per sparare."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} per colpire, portata 120/480 piedi, un bersaglio. {@h}16 ({@damage 3d10}) danno perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Ci vogliono 2 azioni per caricare un manganello, 2 azioni per puntarlo e 1 azione per sparare."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} per colpire, portata 200/800 ft. (non può colpire bersagli entro 60 ft. da esso), un bersaglio. {@h}27 ({@damage 5d10}) danno da randellate."
+							]
+						}
+					]
+				},
+				{
+					"name": "Blunt Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"L'incantatore della nave può effettuare il seguente attacco quando la nave va a sbattere contro un altro oggetto o contro una creatura gargantuesca (vedi \"Schianto\" nel capitolo 2 della Guida dell'Avventuriero Astrale)."
+					],
+					"action": [
+						{
+							"name": "Blunt Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} per colpire, portata 0 ft. un oggetto o una creatura gargantuesca. {@h}88 ({@damage 16d10}) danni da percosse. La nave martello subisce la metà dei danni e si ferma. {@m}L'attacco non infligge danni, il bersaglio si sposta nello spazio non occupato più vicino che non si trova sulla traiettoria della nave martello e la nave martello può continuare a muoversi se ha ancora movimento."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Keelboat",
 			"source": "GoS",
 			"page": 188,
@@ -1866,6 +1971,111 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Squid Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"250 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 20,
+			"cost": 2500000,
+			"pace": "3½",
+			"speed": {
+				"fly": 30
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Ci vuole 1 azione per caricare la balista, 1 azione per puntarla e 1 azione per sparare."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} per colpire, portata 120/480 piedi, un bersaglio. {@h}16 ({@damage 3d10}) danno perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Ci vogliono 2 azioni per caricare un manganello, 2 azioni per puntarlo e 1 azione per sparare."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} per colpire, portata 200/800 ft. (non può colpire bersagli entro 60 ft. da esso), un bersaglio. {@h}27 ({@damage 5d10}) danno da randellate."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"L'incantatore della nave può effettuare il seguente attacco quando la nave va a sbattere contro un altro oggetto o contro una creatura gargantuesca (vedi \"Schianto\" nel capitolo 2 della Guida dell'Avventuriero Astrale)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} per colpire, portata 0 ft. un oggetto o una creatura gargantuesca. {@h}88 ({@damage 16d10}) danni da perforazione. La nave calamaro subisce la metà dei danni e si ferma. {@m}L'attacco non infligge danni, il bersaglio si sposta nello spazio non occupato più vicino che non si trova sulla traiettoria della nave calamaro e la nave calamaro può continuare a muoversi se ha ancora movimento."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},

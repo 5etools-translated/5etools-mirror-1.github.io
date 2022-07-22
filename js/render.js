@@ -1451,9 +1451,8 @@ function Renderer () {
 			case "@atk":
 				textStack[0] += `<i>${Renderer.attackTagToFull(text)}</i>`;
 				break;
-			case "@h":
-				textStack[0] += `<i>Hit:</i> `;
-				break;
+			case "@h": textStack[0] += `<i>Hit:</i> `; break;
+			case "@m": textStack[0] += `<i>Miss:</i> `; break;
 			case "@color": {
 				const [toDisplay, color] = Renderer.splitTagByPipe(text);
 				const scrubbedColor = BrewUtil2.getValidColor(color);
@@ -7776,6 +7775,7 @@ Renderer.vehicle = {
 		veh.vehicleType = veh.vehicleType || "SHIP";
 		switch (veh.vehicleType) {
 			case "SHIP": return Renderer.vehicle._getRenderedString_ship(veh, opts);
+			case "SPELLJAMMER": return Renderer.vehicle._getRenderedString_spelljammer(veh, opts);
 			case "INFWAR": return Renderer.vehicle._getRenderedString_infwar(veh, opts);
 			case "CREATURE": return Renderer.monster.getCompactRenderedString(veh, null, {...opts, isHideLanguages: true, isHideSenses: true, isCompact: false, page: UrlUtil.PG_VEHICLES});
 			case "OBJECT": return Renderer.object.getCompactRenderedString(veh, {...opts, isCompact: false, page: UrlUtil.PG_VEHICLES});
@@ -7832,7 +7832,7 @@ Renderer.vehicle = {
 		},
 
 		getSectionTitle_ (title) {
-			return `<tr class="mon__stat-header-underline"><td colspan="6"><span>${title}</span></td></tr>`;
+			return `<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${title}</h3></td></tr>`;
 		},
 
 		getSectionHpPart_ (renderer, sect, each) {
@@ -7846,10 +7846,10 @@ Renderer.vehicle = {
 		getControlSection_ (renderer, control) {
 			if (!control) return "";
 			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>Control: ${control.name}</span></td></tr>
-				<tr><td colspan="6">
+				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">Control: ${control.name}</h3></td></tr>
+				<tr><td colspan="6" class="mon__sect-row-inner">
 				${Renderer.vehicle.ship.getSectionHpPart_(renderer, control)}
-				<div>${renderer.render({entries: control.entries})}</div>
+				<div class="rd__b--1">${renderer.render({entries: control.entries})}</div>
 				</td></tr>
 			`;
 		},
@@ -7859,17 +7859,17 @@ Renderer.vehicle = {
 
 			function getLocomotionSection (loc) {
 				const asList = Renderer.vehicle.ship.getLocomotionEntries(loc);
-				return `<div>${renderer.render(asList)}</div>`;
+				return `<div class="rd__b--1">${renderer.render(asList)}</div>`;
 			}
 
 			function getSpeedSection (spd) {
 				const asList = Renderer.vehicle.ship.getSpeedEntries(spd);
-				return `<div>${renderer.render(asList)}</div>`;
+				return `<div class="rd__b--1">${renderer.render(asList)}</div>`;
 			}
 
 			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>${move.isControl ? `Control and ` : ""}Movement: ${move.name}</span></td></tr>
-				<tr><td colspan="6">
+				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${move.isControl ? `Control and ` : ""}Movement: ${move.name}</h3></td></tr>
+				<tr><td colspan="6" class="mon__sect-row-inner">
 				${Renderer.vehicle.ship.getSectionHpPart_(renderer, move)}
 				${(move.locomotion || []).map(getLocomotionSection)}
 				${(move.speed || []).map(getSpeedSection)}
@@ -7879,8 +7879,8 @@ Renderer.vehicle = {
 
 		getWeaponSection_ (renderer, weap) {
 			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</span></td></tr>
-				<tr><td colspan="6">
+				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</h3></td></tr>
+				<tr><td colspan="6" class="mon__sect-row-inner">
 				${Renderer.vehicle.ship.getSectionHpPart_(renderer, weap, !!weap.count)}
 				${renderer.render({entries: weap.entries})}
 				</td></tr>
@@ -7889,8 +7889,8 @@ Renderer.vehicle = {
 
 		getOtherSection_ (renderer, oth) {
 			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>${oth.name}</span></td></tr>
-				<tr><td colspan="6">
+				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${oth.name}</h3></td></tr>
+				<tr><td colspan="6" class="mon__sect-row-inner">
 				${Renderer.vehicle.ship.getSectionHpPart_(renderer, oth)}
 				${renderer.render({entries: oth.entries})}
 				</td></tr>
@@ -7910,6 +7910,72 @@ Renderer.vehicle = {
 				${veh.pace != null ? `<div><b>Travel Pace</b> ${veh.pace} miles per hour (${veh.pace * 24} miles per day)</div>
 				<div class="ve-muted ve-small help-subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Speed</b> ${veh.pace * 10} ft.]</div>` : ""}
 			</td></tr>`;
+		},
+	},
+
+	spelljammer: {
+		getSummarySection_ (renderer, veh) {
+			const ptAc = veh.hull?.ac
+				? `${veh.hull.ac}${veh.hull.acFrom ? ` (${veh.hull.acFrom.join(", ")})` : ""}`
+				: "\u2014";
+
+			const ptSpeed = veh.speed != null
+				? Parser.getSpeedString(veh, {isSkipZeroWalk: true})
+				: "";
+			const ptPace = veh.pace != null
+				? `(<span class="help-subtle" title="${veh.pace * 24} miles per day">${veh.pace} mph</span>)`
+				: "";
+
+			const ptSpeedPace = [ptSpeed, ptPace].filter(Boolean).join(" ");
+
+			return `<tr><td colspan="6">
+				<table class="w-100 summary stripe-odd-table">
+					<tr>
+						<td class="col-6"><b>Armor Class:</b> ${ptAc}</td>
+						<td class="col-6"><b>Cargo:</b> ${veh.capCargo ? `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}` : "\u2014"}</td>
+					</tr>
+					<tr>
+						<td class="col-6"><b>Hit Points:</b> ${veh.hull?.hp ?? "\u2014"}</td>
+						<td class="col-6"><b>Crew:</b> ${veh.capCrew ?? "\u2014"}</td>
+					</tr>
+					<tr>
+						<td class="col-6"><b>Damage Threshold:</b> ${veh.hull?.dt ?? "\u2014"}</td>
+						<td class="col-6"><b>Keel/Beam:</b> ${(veh.dimensions || ["\u2014"]).join("/")}</td>
+					</tr>
+					<tr>
+						<td class="col-6"><b>Speed:</b> ${ptSpeedPace}</td>
+						<td class="col-6"><b>Cost:</b> ${veh.cost != null ? Parser.vehicleCostToFull(veh) : "\u2014"}</td>
+					</tr>
+				</table>
+			</td></tr>`;
+		},
+
+		getWeaponSection_ (renderer, weap) {
+			const isMultiple = weap.count != null && weap.count > 1;
+			const ptAction = weap.action?.length
+				? weap.action.map(act => `<div class="mt-1">${renderer.render(act, 2)}</div>`)
+				: "";
+			return `
+				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${isMultiple ? `${weap.count} ` : ""}${weap.name}${weap.crew ? ` (Crew: ${weap.crew}${isMultiple ? " each" : ""})` : ""}</h3></td></tr>
+				<tr><td colspan="6" class="mon__sect-row-inner">
+				${Renderer.vehicle.spelljammer.getSectionHpCostPart_(renderer, weap)}
+				${weap.entries?.length ? `<div>${renderer.render({entries: weap.entries})}</div>` : ""}
+				${ptAction}
+				</td></tr>
+			`;
+		},
+
+		getSectionHpCostPart_ (renderer, sect) {
+			const ptCosts = sect.costs?.length
+				? sect.costs.map(cost => {
+					return `${Parser.vehicleCostToFull(cost) || "\u2014"}${cost.note ? `  (${renderer.render(cost.note)})` : ""}`;
+				})
+				: "\u2014";
+			return `
+				<div><b>Armor Class:</b> ${sect.ac == null ? "\u2014" : sect.ac}</div>
+				<div><b>Hit Points:</b> ${sect.hp == null ? "\u2014" : sect.hp}</div>
+				<div class="mb-2"><b>Cost:</b> ${ptCosts}</div>
+			`;
 		},
 	},
 
@@ -7946,7 +8012,7 @@ Renderer.vehicle = {
 	},
 
 	_getTraitSection (renderer, veh) {
-		return veh.trait ? `<tr class="mon__stat-header-underline"><td colspan="6"><span>Traits</span></td></tr>
+		return veh.trait ? `<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">Traits</h3></td></tr>
 		<tr><td colspan="6"><div class="border"></div></td></tr>
 		<tr class="text"><td colspan="6">
 		${Renderer.monster.getOrderedTraits(veh, renderer).map(it => it.rendered || renderer.render(it, 2)).join("")}
@@ -7971,10 +8037,10 @@ Renderer.vehicle = {
 			${Renderer.vehicle._getAbilitySection(veh)}
 			${Renderer.vehicle._getResImmVulnSection(veh)}
 			${veh.action ? Renderer.vehicle.ship.getSectionTitle_("Actions") : ""}
-			${veh.action ? `<tr><td colspan="6">${Renderer.vehicle.ship.getActionPart_(renderer, veh)}</td></tr>` : ""}
+			${veh.action ? `<tr><td colspan="6" class="mon__sect-row-inner">${Renderer.vehicle.ship.getActionPart_(renderer, veh)}</td></tr>` : ""}
 			${otherSectionActions.map(Renderer.vehicle.ship.getOtherSection_.bind(this, renderer)).join("")}
 			${veh.hull ? `${Renderer.vehicle.ship.getSectionTitle_("Hull")}
-			<tr><td colspan="6">
+			<tr><td colspan="6" class="mon__sect-row-inner">
 			${Renderer.vehicle.ship.getSectionHpPart_(renderer, veh.hull)}
 			</td></tr>` : ""}
 			${Renderer.vehicle._getTraitSection(renderer, veh)}
@@ -7987,6 +8053,20 @@ Renderer.vehicle = {
 
 	getShipCreatureCapacity (veh) { return `${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passenger${veh.capPassenger === 1 ? "" : "s"}` : ""}`; },
 	getShipCargoCapacity (veh) { return typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`; },
+
+	_getRenderedString_spelljammer (veh, opts) {
+		const renderer = Renderer.get();
+
+		const hasToken = veh.tokenUrl || veh.hasToken;
+		const extraThClasses = !opts.isCompact && hasToken ? ["veh__name--token"] : null;
+
+		return `
+			${Renderer.utils.getExcludedTr({entity: veh, dataProp: "vehicle", page: UrlUtil.PG_VEHICLES})}
+			${Renderer.utils.getNameTr(veh, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
+			${Renderer.vehicle.spelljammer.getSummarySection_(renderer, veh)}
+			${(veh.weapon || []).map(Renderer.vehicle.spelljammer.getWeaponSection_.bind(this, renderer)).join("")}
+		`;
+	},
 
 	_getRenderedString_infwar (veh, opts) {
 		const renderer = Renderer.get();
@@ -10640,6 +10720,7 @@ Renderer._stripTagLayer = function (str) {
 					}
 
 					case "@h": return "Hit: ";
+					case "@m": return "Miss: ";
 
 					case "@dc": {
 						const [dcText, displayText] = Renderer.splitTagByPipe(text);

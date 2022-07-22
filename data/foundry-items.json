@@ -112,6 +112,27 @@
 					"piercing"
 				]
 			}
+		},
+		{
+			"name": "Robe of the Archmagi",
+			"source": "DMG",
+			"effects": [
+				{
+					"name": "Armor Class",
+					"changes": [
+						{
+							"key": "data.attributes.ac.calc",
+							"mode": "OVERRIDE",
+							"value": "custom"
+						},
+						{
+							"key": "data.attributes.ac.formula",
+							"mode": "OVERRIDE",
+							"value": "15 + @abilities.dex.mod"
+						}
+					]
+				}
+			]
 		}
 	]
 }

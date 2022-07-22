@@ -814,6 +814,111 @@
 			]
 		},
 		{
+			"name": "Hammerhead Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": 4,
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"It takes 1 action to load the ballista, 1 action to aim it, and 1 action to fire it."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"It takes 2 actions to load a mangonel, 2 actions to aim it, and 1 action to fire it."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+							]
+						}
+					]
+				},
+				{
+					"name": "Blunt Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"The ship's spelljammer can make the following attack when the ship runs into another object or into a Gargantuan creature (see \"Crashing\" in chapter 2 of Astral Adventurer's Guide)."
+					],
+					"action": [
+						{
+							"name": "Blunt Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} to hit, range 0 ft. one object or Gargantuan creature. {@h}88 ({@damage 16d10}) bludgeoning damage. The hammerhead ship takes half as much damage and comes to a dead stop. {@m}The attack deals no damage, the target moves into the nearest unoccupied space that isn't in the hammerhead ship's path, and the hammerhead ship can continue moving if it has any movement left."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Keelboat",
 			"source": "GoS",
 			"page": 188,
@@ -1866,6 +1971,111 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Squid Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"250 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 20,
+			"cost": 2500000,
+			"pace": "3½",
+			"speed": {
+				"fly": 30
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"It takes 1 action to load the ballista, 1 action to aim it, and 1 action to fire it."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"It takes 2 actions to load a mangonel, 2 actions to aim it, and 1 action to fire it."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 ft. of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"The ship's spelljammer can make the following attack when the ship runs into another object or into a Gargantuan creature (see \"Crashing\" in chapter 2 of Astral Adventurer's Guide)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} to hit, range 0 ft. one object or Gargantuan creature. {@h}88 ({@damage 16d10}) piercing damage. The squid ship takes half as much damage and comes to a dead stop. {@m}The attack deals no damage, the target moves into the nearest unoccupied space that isn't in the squid ship's path, and the squid ship can continue moving if it has any movement left."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},

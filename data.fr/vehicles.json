@@ -814,6 +814,111 @@
 			]
 		},
 		{
+			"name": "Hammerhead Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": 4,
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger la baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@damage 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger un mangonneau, 2 actions pour le viser et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} pour toucher, portée de 200/800 ft. (ne peut pas toucher les cibles à moins de 60 ft. de lui), une cible. {@h}27 ({@damage 5d10}) dégâts de matraquage."
+							]
+						}
+					]
+				},
+				{
+					"name": "Blunt Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Le lanceur de sorts du navire peut effectuer l'attaque suivante lorsque le navire se heurte à un autre objet ou à une créature gargantuesque (voir \"Crashing\" dans le chapitre 2 du Guide de l'aventurier astral)."
+					],
+					"action": [
+						{
+							"name": "Blunt Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} pour toucher, portée de 0 ft. un objet ou une créature gargantuesque. {@h}88 ({@damage 16d10}) dégâts de matraquage. Le navire marteau subit deux fois moins de dégâts et s'arrête net. {@m}L'attaque n'inflige aucun dégât, la cible se déplace dans l'espace inoccupé le plus proche qui ne se trouve pas sur la trajectoire du navire marteau, et le navire marteau peut continuer à se déplacer s'il lui reste du mouvement."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Keelboat",
 			"source": "GoS",
 			"page": 188,
@@ -1866,6 +1971,111 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Squid Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"250 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 20,
+			"cost": 2500000,
+			"pace": "3½",
+			"speed": {
+				"fly": 30
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger la baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@damage 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger un mangonneau, 2 actions pour le viser et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} pour toucher, portée de 200/800 ft. (ne peut pas toucher les cibles à moins de 60 ft. de lui), une cible. {@h}27 ({@damage 5d10}) dégâts de matraquage."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Le lanceur de sorts du navire peut effectuer l'attaque suivante lorsque le navire se heurte à un autre objet ou à une créature gargantuesque (voir \"Crashing\" dans le chapitre 2 du Guide de l'aventurier astral)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} pour toucher, portée 0 ft. un objet ou une créature Gargantuane. {@h}88 ({@damage 16d10}) dégâts perforants. Le navire calamar subit deux fois moins de dégâts et s'arrête net. {@m}L'attaque n'inflige aucun dégât, la cible se déplace dans l'espace inoccupé le plus proche qui ne se trouve pas sur la trajectoire du vaisseau calamar, et le vaisseau calamar peut continuer à se déplacer s'il lui reste du mouvement."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},

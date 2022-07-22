@@ -814,6 +814,111 @@
 			]
 		},
 		{
+			"name": "Hammerhead Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": 4,
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Es braucht 1 Aktion, um die Balliste zu laden, 1 Aktion, um sie auszurichten, und 1 Aktion, um sie abzufeuern."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} bis zum Treffer, Reichweite 120/480 Fuß, ein Ziel. {@h}16 ({@damage 3d10}) Stich-Schaden."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Es braucht 2 Aktionen, um eine Mangonel zu laden, 2 Aktionen, um sie zu zielen, und 1 Aktion, um sie abzufeuern."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} zu treffen, Reichweite 200/800 ft. (kann Ziele im Umkreis von 60 ft. nicht treffen), ein Ziel. {@h}27 ({@damage 5d10}) Schaden durch Wucht."
+							]
+						}
+					]
+				},
+				{
+					"name": "Blunt Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Der Zauberjäger des Schiffes kann die folgende Attacke ausführen, wenn das Schiff auf ein anderes Objekt oder eine Gargantuan-Kreatur aufläuft (siehe \"Aufprall\" in Kapitel 2 des Astralabenteurer-Handbuchs)."
+					],
+					"action": [
+						{
+							"name": "Blunt Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} auf Treffer, Reichweite 0 ft. ein Objekt oder eine Gargantuan-Kreatur. {@h}88 ({@damage 16d10}) Schaden durch Wucht. Das Hammerhead-Schiff erleidet die Hälfte des Schadens und kommt zum Stillstand. {@m}Der Angriff verursacht keinen Schaden, das Ziel bewegt sich in den nächsten unbesetzten Raum, der nicht in der Flugbahn des Hammerhead-Schiffs liegt, und das Hammerhead-Schiff kann sich weiterbewegen, wenn es noch etwas Bewegung hat."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Keelboat",
 			"source": "GoS",
 			"page": 188,
@@ -1866,6 +1971,111 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Squid Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"250 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 20,
+			"cost": 2500000,
+			"pace": "3½",
+			"speed": {
+				"fly": 30
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Es braucht 1 Aktion, um die Balliste zu laden, 1 Aktion, um sie auszurichten, und 1 Aktion, um sie abzufeuern."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} bis zum Treffer, Reichweite 120/480 Fuß, ein Ziel. {@h}16 ({@damage 3d10}) Stich-Schaden."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Es braucht 2 Aktionen, um eine Mangonel zu laden, 2 Aktionen, um sie zu zielen, und 1 Aktion, um sie abzufeuern."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} zu treffen, Reichweite 200/800 ft. (kann Ziele im Umkreis von 60 ft. nicht treffen), ein Ziel. {@h}27 ({@damage 5d10}) Schaden durch Wucht."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Der Zauberjäger des Schiffes kann die folgende Attacke ausführen, wenn das Schiff auf ein anderes Objekt oder eine Gargantuan-Kreatur aufläuft (siehe \"Aufprall\" in Kapitel 2 des Astralabenteurer-Handbuchs)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} auf Treffer, Reichweite 0 ft. ein Objekt oder eine Gargantuan-Kreatur. {@h}88 ({@damage 16d10}) Stich-Schaden. Das Tintenfischschiff erleidet halb so viel Schaden und kommt zum Stillstand. {@m}Der Angriff verursacht keinen Schaden, das Ziel bewegt sich in den nächsten unbesetzten Raum, der nicht in der Flugbahn des Tintenfischschiffs liegt, und das Tintenfischschiff kann sich weiterbewegen, wenn es noch Bewegung hat."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},

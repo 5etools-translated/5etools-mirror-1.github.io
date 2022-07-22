@@ -814,6 +814,111 @@
 			]
 		},
 		{
+			"name": "Hammerhead Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": 4,
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar la balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} para golpear, alcance 120/480 pies, un objetivo. {@h}16 ({@damage 3d10}) de daño penetrante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar un mangonel, 2 acciones para apuntarlo y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} para golpear, alcance 200/800 pies. (no puede golpear a objetivos en un radio de 60 pies), un objetivo. {@h}27 ({@damage 5d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				},
+				{
+					"name": "Blunt Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"El hechicero de la nave puede realizar el siguiente ataque cuando la nave choca con otro objeto o con una criatura gargantuesca (ver \"Chocar\" en el capítulo 2 de la Guía del Aventurero Astral)."
+					],
+					"action": [
+						{
+							"name": "Blunt Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} para golpear, alcance 0 pies un objeto o criatura Gargantuan. {@h}88 ({@damage 16d10}) de daño por apaleamiento. El barco martillo recibe la mitad de daño y se detiene en seco. {@m}El ataque no inflige daño, el objetivo se desplaza al espacio desocupado más cercano que no esté en la trayectoria de la nave cabeza de martillo, y la nave cabeza de martillo puede seguir moviéndose si le queda movimiento."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Keelboat",
 			"source": "GoS",
 			"page": 188,
@@ -1866,6 +1971,111 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Squid Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"250 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 20,
+			"cost": 2500000,
+			"pace": "3½",
+			"speed": {
+				"fly": 30
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar la balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} para golpear, alcance 120/480 pies, un objetivo. {@h}16 ({@damage 3d10}) de daño penetrante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar un mangonel, 2 acciones para apuntarlo y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} para golpear, alcance 200/800 pies. (no puede golpear a objetivos en un radio de 60 pies), un objetivo. {@h}27 ({@damage 5d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"El hechicero de la nave puede realizar el siguiente ataque cuando la nave choca con otro objeto o con una criatura gargantuesca (ver \"Chocar\" en el capítulo 2 de la Guía del Aventurero Astral)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} para golpear, alcance 0 pies un objeto o criatura Gargantuesca. {@h}88 ({@damage 16d10}) de daño perforante. El barco calamar recibe la mitad de daño y se detiene en seco. {@m}El ataque no inflige daño, el objetivo se desplaza al espacio desocupado más cercano que no esté en la trayectoria del barco calamar, y el barco calamar puede seguir moviéndose si le queda movimiento."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},

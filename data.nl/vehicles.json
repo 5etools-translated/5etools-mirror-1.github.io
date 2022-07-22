@@ -814,6 +814,111 @@
 			]
 		},
 		{
+			"name": "Hammerhead Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": 4,
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om de ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} om te raken, bereik 120/480 ft., één doel. {@h}16 ({@damage 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het kost 2 acties om een mangel te laden, 2 acties om te richten, en 1 actie om te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 ft. ervan), één doel. {@h}27 ({@damage 5d10}) knuppelschade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Blunt Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"De spelljammer van het schip kan de volgende aanval uitvoeren wanneer het schip tegen een ander voorwerp of tegen een Gargantuan wezen aanloopt (zie \"Neerstorten\" in hoofdstuk 2 van de Astral Adventurer's Guide)."
+					],
+					"action": [
+						{
+							"name": "Blunt Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} om te raken, bereik 0 ft. een voorwerp of Gargantuan wezen. {@h}88 ({@damage 16d10}) knuppelschade. Het hamerkopschip lijdt half zoveel schade en komt tot stilstand. {@m}De aanval brengt geen schade toe, het doelwit beweegt naar de dichtstbijzijnde onbezette ruimte die niet op het pad van het hamerkopschip ligt, en het hamerkopschip kan blijven bewegen als het nog enige beweging over heeft."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Keelboat",
 			"source": "GoS",
 			"page": 188,
@@ -1866,6 +1971,111 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Squid Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"250 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 20,
+			"cost": 2500000,
+			"pace": "3½",
+			"speed": {
+				"fly": 30
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om de ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} om te raken, bereik 120/480 ft., één doel. {@h}16 ({@damage 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het kost 2 acties om een mangel te laden, 2 acties om te richten, en 1 actie om te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 ft. ervan), één doel. {@h}27 ({@damage 5d10}) knuppelschade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"De spelljammer van het schip kan de volgende aanval uitvoeren wanneer het schip tegen een ander voorwerp of tegen een Gargantuan wezen aanloopt (zie \"Neerstorten\" in hoofdstuk 2 van de Astral Adventurer's Guide)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} om te raken, bereik 0 ft. een voorwerp of Gargantuan wezen. {@h}88 ({@damage 16d10}) doorborende schade. Het inktvisschip lijdt half zoveel schade en komt tot stilstand. {@m}De aanval brengt geen schade toe, het doelwit beweegt naar de dichtstbijzijnde onbezette ruimte die niet op het pad van het inktvisschip ligt, en het inktvisschip kan verder bewegen als het nog enige beweging over heeft."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},

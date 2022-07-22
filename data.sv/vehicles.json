@@ -814,6 +814,111 @@
 			]
 		},
 		{
+			"name": "Hammerhead Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": 4,
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Det tar 1 åtgärd att ladda ballistan, 1 åtgärd att sikta och 1 åtgärd att avfyra den."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} för att träffa, räckvidd 120/480 fot, ett mål. {@h}16 ({@damage 3d10}) genomträngande skada."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Det tar 2 åtgärder för att ladda en mangonel, 2 åtgärder för att sikta på den och 1 åtgärd för att avfyra den."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} för att träffa, räckvidd 200/800 fot (kan inte träffa mål inom 60 fot), ett mål. {@h}27 ({@damage 5d10}) blåslagningsskada."
+							]
+						}
+					]
+				},
+				{
+					"name": "Blunt Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Skeppets trollkarl kan göra följande attack när fartyget kör in i ett annat föremål eller i en Gargantuanvarelse (se \"Crashing\" i kapitel 2 i Astral Adventurer's Guide)."
+					],
+					"action": [
+						{
+							"name": "Blunt Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} för att träffa, räckvidd 0 ft. ett objekt eller en Gargantuanvarelse. {@h}88 ({@damage 16d10}) blåslagningsskada. Hammarskinnsskeppet tar hälften så mycket skada och stannar till. {@m}Attacken ger ingen skada, målet flyttar sig in i det närmaste obebodda utrymmet som inte ligger i hammarhuvudskeppets väg, och hammarhuvudskeppet kan fortsätta att röra sig om det har någon rörelse kvar."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Keelboat",
 			"source": "GoS",
 			"page": 188,
@@ -1866,6 +1971,111 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Squid Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"250 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 20,
+			"cost": 2500000,
+			"pace": "3½",
+			"speed": {
+				"fly": 30
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Det tar 1 åtgärd att ladda ballistan, 1 åtgärd att sikta och 1 åtgärd att avfyra den."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} för att träffa, räckvidd 120/480 fot, ett mål. {@h}16 ({@damage 3d10}) genomträngande skada."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Det tar 2 åtgärder för att ladda en mangonel, 2 åtgärder för att sikta på den och 1 åtgärd för att avfyra den."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} för att träffa, räckvidd 200/800 fot (kan inte träffa mål inom 60 fot), ett mål. {@h}27 ({@damage 5d10}) blåslagningsskada."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Skeppets trollkarl kan göra följande attack när fartyget kör in i ett annat föremål eller i en Gargantuanvarelse (se \"Crashing\" i kapitel 2 i Astral Adventurer's Guide)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} för att träffa, räckvidd 0 ft. ett objekt eller en Gargantuanvarelse. {@h}88 ({@damage 16d10}) genomträngande skada. Kalmarskeppet tar hälften så mycket skada och stannar till. {@m}Attacken ger ingen skada, målet flyttar sig in i det närmaste obebodda utrymmet som inte ligger i bläckfiskfartygets väg, och bläckfiskfartyget kan fortsätta att röra sig om det har någon rörelse kvar."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},

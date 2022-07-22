@@ -210,14 +210,14 @@ Parser.getAbilityModifier = function (abilityScore) {
 	return `${modifier}`;
 };
 
-Parser.getSpeedString = (ent, {isMetric = false} = {}) => {
+Parser.getSpeedString = (ent, {isMetric = false, isSkipZeroWalk = false} = {}) => {
 	if (ent.speed == null) return "\u2014";
 
 	const unit = isMetric ? Parser.metric.getMetricUnit({originalUnit: "ft.", isShortForm: true}) : "ft.";
 	if (typeof ent.speed === "object") {
 		const stack = [];
 		let joiner = ", ";
-		Parser.SPEED_MODES.forEach(mode => Parser._getSpeedString_addSpeedMode({ent, prop: mode, stack, isMetric, unit}));
+		Parser.SPEED_MODES.forEach(mode => Parser._getSpeedString_addSpeedMode({ent, prop: mode, stack, isMetric, isSkipZeroWalk, unit}));
 		if (ent.speed.choose) {
 			joiner = "; ";
 			stack.push(`${ent.speed.choose.from.sort().joinConjunct(", ", " or ")} ${ent.speed.choose.amount} ${unit}${ent.speed.choose.note ? ` ${ent.speed.choose.note}` : ""}`);
@@ -228,8 +228,8 @@ Parser.getSpeedString = (ent, {isMetric = false} = {}) => {
 	return (isMetric ? Parser.metric.getMetricNumber({originalValue: ent.speed, originalUnit: UNT_FEET}) : ent.speed)
 		+ (ent.speed === "Varies" ? "" : ` ${unit} `);
 };
-Parser._getSpeedString_addSpeedMode = ({ent, prop, stack, isMetric, unit}) => {
-	if (ent.speed[prop] || prop === "walk") Parser._getSpeedString_addSpeed({prop, speed: ent.speed[prop] || 0, isMetric, unit, stack});
+Parser._getSpeedString_addSpeedMode = ({ent, prop, stack, isMetric, isSkipZeroWalk, unit}) => {
+	if (ent.speed[prop] || (!isSkipZeroWalk && prop === "walk")) Parser._getSpeedString_addSpeed({prop, speed: ent.speed[prop] || 0, isMetric, unit, stack});
 	if (ent.speed.alternate && ent.speed.alternate[prop]) ent.speed.alternate[prop].forEach(speed => Parser._getSpeedString_addSpeed({prop, speed, isMetric, unit, stack}));
 };
 Parser._getSpeedString_addSpeed = ({prop, speed, isMetric, unit, stack}) => {
@@ -606,6 +606,10 @@ Parser.itemVehicleCostsToFull = function (item, isShortForm) {
 };
 
 Parser.spellComponentCostToFull = function (item, isShortForm) {
+	return Parser._moneyToFull(item, "cost", "costMult", {isShortForm});
+};
+
+Parser.vehicleCostToFull = function (item, isShortForm) {
 	return Parser._moneyToFull(item, "cost", "costMult", {isShortForm});
 };
 
@@ -2297,6 +2301,7 @@ Parser.ruleTypeToFull = function (ruleType) {
 
 Parser.VEHICLE_TYPE_TO_FULL = {
 	"SHIP": "Ship",
+	"SPELLJAMMER": "Spelljammer Ship",
 	"INFWAR": "Infernal War Machine",
 	"CREATURE": "Creature",
 	"OBJECT": "Object",
@@ -2418,6 +2423,7 @@ SRC_NRH_AWoL = "NRH-AWoL";
 SRC_NRH_AT = "NRH-AT";
 SRC_MGELFT = "MGELFT";
 SRC_VD = "VD";
+SRC_SjA = "SjA";
 
 SRC_AL_PREFIX = "AL";
 
@@ -2628,6 +2634,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_NRH_AWoL] = `${NRH_NAME}: A Web of Lies`;
 Parser.SOURCE_JSON_TO_FULL[SRC_NRH_AT] = `${NRH_NAME}: Adventure Together`;
 Parser.SOURCE_JSON_TO_FULL[SRC_MGELFT] = "Muk's Guide To Everything He Learned From Tasha";
 Parser.SOURCE_JSON_TO_FULL[SRC_VD] = "Vecna Dossier";
+Parser.SOURCE_JSON_TO_FULL[SRC_SjA] = "Spelljammer Academy";
 Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
 Parser.SOURCE_JSON_TO_FULL[SRC_ALRoD] = `${AL_PREFIX}Rage of Demons`;
@@ -2816,6 +2823,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_NRH_AWoL] = "NRH-AWoL";
 Parser.SOURCE_JSON_TO_ABV[SRC_NRH_AT] = "NRH-AT";
 Parser.SOURCE_JSON_TO_ABV[SRC_MGELFT] = "MGELFT";
 Parser.SOURCE_JSON_TO_ABV[SRC_VD] = "VD";
+Parser.SOURCE_JSON_TO_ABV[SRC_SjA] = "SjA";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALRoD] = "ALRoD";
@@ -3003,6 +3011,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_NRH_AWoL] = "2021-09-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_NRH_AT] = "2021-09-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_MGELFT] = "2020-12-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_VD] = "2022-06-09";
+Parser.SOURCE_JSON_TO_DATE[SRC_SjA] = "2022-07-11"; // pt1; pt2 2022-07-18
 Parser.SOURCE_JSON_TO_DATE[SRC_ALCoS] = "2016-03-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALEE] = "2015-04-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALRoD] = "2015-09-15";
@@ -3157,6 +3166,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_SCC_ARiR,
 	SRC_CRCotN,
 	SRC_JttRC,
+	SRC_SjA,
 
 	SRC_AWM,
 ]);
@@ -3192,6 +3202,7 @@ Parser.SOURCES_NON_STANDARD_WOTC = new Set([
 	SRC_NRH_AT,
 	SRC_MGELFT,
 	SRC_VD,
+	SRC_SjA,
 ]);
 // region Source categories
 
@@ -3249,6 +3260,7 @@ Parser.SOURCES_NON_FR = new Set([
 	SRC_SCC_TMM,
 	SRC_SCC_ARiR,
 	SRC_CRCotN,
+	SRC_SjA,
 ]);
 
 // endregion

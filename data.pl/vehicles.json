@@ -814,6 +814,111 @@
 			]
 		},
 		{
+			"name": "Hammerhead Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": 4,
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Załadowanie balisty zajmuje 1 akcję, wycelowanie jej i odpalenie 1 akcję."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} do trafienia, zasięg 120/480 stóp, jeden cel. {@h}16 ({@damage 3d10}) obrażeń przebijających."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"count": 2,
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Załadowanie mangusty zajmuje 2 akcje, 2 akcje wycelowanie jej i 1 akcję wystrzelenie."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} do trafienia, zasięg 200/800 stóp (nie może trafić celów w promieniu 60 stóp od niego), jeden cel. {@h}27 ({@damage 5d10}) obrażeń od obrażeń kłutych."
+							]
+						}
+					]
+				},
+				{
+					"name": "Blunt Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Zaklinacz statków może wykonać następujący atak, gdy statek wpadnie na inny obiekt lub na Gargantuiczną istotę (patrz \"Rozbicie\" w rozdziale 2 Astral Adventurer's Guide)."
+					],
+					"action": [
+						{
+							"name": "Blunt Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} do trafienia, zasięg 0 ft. jeden przedmiot lub Gargantuiczna istota. {@h}88 ({@damage 16d10}) obrażeń od obrażeń kłutych. Statek-młot otrzymuje połowę mniej obrażeń i zatrzymuje się w miejscu. {@m}Atak nie zadaje żadnych obrażeń, cel przemieszcza się do najbliższej niezajętej przestrzeni, która nie znajduje się na drodze statku-młota, a statek-młot może kontynuować ruch, o ile pozostały mu jakieś możliwości ruchu."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Keelboat",
 			"source": "GoS",
 			"page": 188,
@@ -1866,6 +1971,111 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Squid Ship",
+			"source": "SjA",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"250 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"wildspace",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 20,
+			"cost": 2500000,
+			"pace": "3½",
+			"speed": {
+				"fly": 30
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"crew": 3,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Załadowanie balisty zajmuje 1 akcję, wycelowanie jej i odpalenie 1 akcję."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} {@hit 6} do trafienia, zasięg 120/480 stóp, jeden cel. {@h}16 ({@damage 3d10}) obrażeń przebijających."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonels",
+					"ac": 15,
+					"hp": 100,
+					"crew": 5,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Załadowanie mangusty zajmuje 2 akcje, 2 akcje wycelowanie jej i 1 akcję wystrzelenie."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} {@hit 5} do trafienia, zasięg 200/800 stóp (nie może trafić celów w promieniu 60 stóp od niego), jeden cel. {@h}27 ({@damage 5d10}) obrażeń od obrażeń kłutych."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Zaklinacz statków może wykonać następujący atak, gdy statek wpadnie na inny obiekt lub na Gargantuiczną istotę (patrz \"Rozbicie\" w rozdziale 2 Astral Adventurer's Guide)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} {@hit 8} do trafienia, zasięg 0 ft. jeden przedmiot lub Gargantuiczna istota. {@h}88 ({@damage 16d10}) obrażeń przebijających. Statek kałamarnicy otrzymuje o połowę mniej obrażeń i zatrzymuje się w miejscu. {@m}Atak nie zadaje żadnych obrażeń, cel przemieszcza się do najbliższej niezajętej przestrzeni, która nie znajduje się na drodze kałamarnicy, a kałamarnica może kontynuować ruch, jeśli pozostała jej jakaś część ruchu."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},
