@@ -136,7 +136,7 @@ class PageFilterItems extends PageFilterEquipment {
 
 	static _getBaseItemDisplay (baseItem) {
 		if (!baseItem) return null;
-		let [name, source] = baseItem.split("|");
+		let [name, source] = baseItem.split("__");
 		name = name.toTitleCase();
 		source = source || SRC_DMG;
 		if (source.toLowerCase() === SRC_PHB.toLowerCase()) return name;
@@ -231,12 +231,12 @@ class PageFilterItems extends PageFilterEquipment {
 		if (item.grantsProficiency) item._fMisc.push("Grants Proficiency");
 		if (item.critThreshold) item._fMisc.push("Expanded Critical Range");
 
-		item._fBaseItemSelf = item._isBaseItem ? `${item.name}|${item.source}`.toLowerCase() : null;
+		const fBaseItemSelf = item._isBaseItem ? `${item.name}__${item.source}`.toLowerCase() : null;
 		item._fBaseItem = [
-			item.baseItem ? (item.baseItem.includes("|") ? item.baseItem : `${item.baseItem}|${SRC_DMG}`).toLowerCase() : null,
-			item._baseName ? `${item._baseName}|${item._baseSource || item.source}`.toLowerCase() : null,
+			item.baseItem ? (item.baseItem.includes("|") ? item.baseItem.replace("|", "__") : `${item.baseItem}__${SRC_DMG}`).toLowerCase() : null,
+			item._baseName ? `${item._baseName}__${item._baseSource || item.source}`.toLowerCase() : null,
 		].filter(Boolean);
-		item._fBaseItemAll = item._fBaseItemSelf ? [item._fBaseItemSelf, ...item._fBaseItem] : item._fBaseItem;
+		item._fBaseItemAll = fBaseItemSelf ? [fBaseItemSelf, ...item._fBaseItem] : item._fBaseItem;
 
 		item._fBonus = [];
 		if (item.bonusAc) item._fBonus.push("Armor Class");

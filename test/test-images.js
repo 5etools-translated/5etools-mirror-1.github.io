@@ -1,10 +1,18 @@
 const fs = require("fs");
 require("../js/utils");
 
+const _IS_CLEAN_MM_EXTRAS = false;
+
 const expected = new Set();
 const expectedDirs = {};
 const existing = new Set();
 const expectedFromHashToken = {};
+
+let _mmTokens = null;
+const isMmToken = (filename) => {
+	if (!_mmTokens) _mmTokens = fs.readdirSync("./img/MM").mergeMap(it => ({[it]: true}));
+	return !!_mmTokens[filename.split("/").last()];
+};
 
 // Loop through each bestiary-related img directory and push the list of files in each.
 if (fs.existsSync("./img")) {
@@ -90,7 +98,11 @@ if (fs.existsSync("./img")) {
 	existing.forEach((img) => {
 		delete expectedFromHashToken[img];
 		if (!expected.has(img)) {
-			// fs.unlinkSync(`./img/${img}`);
+			if (_IS_CLEAN_MM_EXTRAS && isMmToken(img)) {
+				fs.unlinkSync(`./img/${img}`);
+				results.push(`[ !DELETE] ${img}`);
+				return;
+			}
 			results.push(`[   EXTRA] ${img}`);
 		}
 	});

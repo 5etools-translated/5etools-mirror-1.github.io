@@ -777,7 +777,6 @@ class DamageTypeTag {
 								let isSentenceMatch = DamageTypeTag._SUMMON_DAMAGE_REGEX.test(sentence);
 								if (!isSentenceMatch) return;
 
-								// debugger
 								sentence.replace(ConverterConst.RE_DAMAGE_TYPE, (m0, type) => {
 									typeSet.add(DamageTypeTag._TYPE_LOOKUP[type]);
 								});
