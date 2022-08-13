@@ -116,6 +116,8 @@ class AcConvert {
 						case "chain shirt": froms.push("{@item chain shirt|phb}"); break;
 						case "shields": froms.push("{@item shield|phb|shields}"); break;
 
+						case "spiked shield": froms.push("{@item shield|phb|spiked shield}"); break;
+
 						// magic items
 						case "dwarven plate": froms.push("{@item dwarven plate}"); break;
 						case "elven chain": froms.push("{@item elven chain}"); break;
@@ -167,7 +169,11 @@ class AcConvert {
 				});
 
 			if (froms.length || cur.condition) {
-				if (froms.length) cur.from = froms;
+				if (froms.length) {
+					cur.from = froms
+						// Ensure "Unarmored Defense" is always properly capitalized
+						.map(it => it.toLowerCase() === "unarmored defense" ? "Unarmored Defense" : it);
+				}
 				nuAc.push(cur);
 			} else {
 				nuAc.push(cur.ac);
@@ -447,6 +453,8 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 		"immutable form": "Immutable Form",
 
 		"tree stride": "Tree Stride",
+
+		"unusual nature": "Unusual Nature",
 	},
 	action: {
 		"multiattack": "Multiattack",

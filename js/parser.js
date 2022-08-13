@@ -108,7 +108,7 @@ Parser.textToNumber = function (str) {
 	return NaN;
 };
 
-Parser.numberToVulgar = function (number) {
+Parser.numberToVulgar = function (number, {isFallbackOnFractional = true} = {}) {
 	const isNeg = number < 0;
 	const spl = `${number}`.replace(/^-/, "").split(".");
 	if (spl.length === 1) return number;
@@ -118,11 +118,15 @@ Parser.numberToVulgar = function (number) {
 
 	switch (spl[1]) {
 		case "125": return `${preDot}⅛`;
+		case "2": return `${preDot}⅕`;
 		case "25": return `${preDot}¼`;
 		case "375": return `${preDot}⅜`;
+		case "4": return `${preDot}⅖`;
 		case "5": return `${preDot}½`;
+		case "6": return `${preDot}⅗`;
 		case "625": return `${preDot}⅝`;
 		case "75": return `${preDot}¾`;
+		case "8": return `${preDot}⅘`;
 		case "875": return `${preDot}⅞`;
 
 		default: {
@@ -137,7 +141,7 @@ Parser.numberToVulgar = function (number) {
 		}
 	}
 
-	return Parser.numberToFractional(number);
+	return isFallbackOnFractional ? Parser.numberToFractional(number) : null;
 };
 
 Parser.vulgarToNumber = function (str) {
@@ -733,25 +737,14 @@ Parser.itemWeightToFull = function (item, isShortForm) {
 		// Handle pure integers
 		if (Math.round(item.weight) === item.weight) return `${item.weight} lb.${(item.weightNote ? ` ${item.weightNote}` : "")}`;
 
-		// Attempt to render the amount as (a number +) a vulgar
-		const weightOunces = item.weight * 16;
 		const integerPart = Math.floor(item.weight);
-		const vulgarPart = weightOunces % 16;
 
-		let vulgarGlyph;
-		switch (vulgarPart) {
-			case 2: vulgarGlyph = "⅛"; break;
-			case 4: vulgarGlyph = "¼"; break;
-			case 6: vulgarGlyph = "⅜"; break;
-			case 8: vulgarGlyph = "½"; break;
-			case 10: vulgarGlyph = "⅝"; break;
-			case 12: vulgarGlyph = "¾"; break;
-			case 14: vulgarGlyph = "⅞"; break;
-		}
+		// Attempt to render the amount as (a number +) a vulgar
+		const vulgarGlyph = Parser.numberToVulgar(item.weight - integerPart, {isFallbackOnFractional: false});
 		if (vulgarGlyph) return `${integerPart || ""}${vulgarGlyph} lb.${(item.weightNote ? ` ${item.weightNote}` : "")}`;
 
 		// Fall back on decimal pounds or ounces
-		return `${item.weight < 1 ? item.weight * 16 : item.weight} ${item.weight < 1 ? "oz" : "lb"}.${(item.weightNote ? ` ${item.weightNote}` : "")}`;
+		return `${(item.weight < 1 ? item.weight * 16 : item.weight).toLocaleString(undefined, {maximumFractionDigits: 5})} ${item.weight < 1 ? "oz" : "lb"}.${(item.weightNote ? ` ${item.weightNote}` : "")}`;
 	}
 	if (item.weightMult) return isShortForm ? `×${item.weightMult}` : `base weight ×${item.weightMult}`;
 	return "";
@@ -3011,7 +3004,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_NRH_AWoL] = "2021-09-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_NRH_AT] = "2021-09-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_MGELFT] = "2020-12-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_VD] = "2022-06-09";
-Parser.SOURCE_JSON_TO_DATE[SRC_SjA] = "2022-07-11"; // pt1; pt2 2022-07-18
+Parser.SOURCE_JSON_TO_DATE[SRC_SjA] = "2022-07-11"; // pt1; pt2 2022-07-18; pt3 2022-07-25; pt4 2022-08-01
 Parser.SOURCE_JSON_TO_DATE[SRC_ALCoS] = "2016-03-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALEE] = "2015-04-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALRoD] = "2015-09-15";
@@ -3212,10 +3205,10 @@ Parser.SOURCES_VANILLA = new Set([
 	SRC_MM,
 	SRC_PHB,
 	SRC_SCAG,
-	SRC_TTP,
-	SRC_VGM,
+	// SRC_TTP, // "Legacy" source, removed in favor of MPMM
+	// SRC_VGM, // "Legacy" source, removed in favor of MPMM
 	SRC_XGE,
-	SRC_MTF,
+	// SRC_MTF, // "Legacy" source, removed in favor of MPMM
 	SRC_SAC,
 	SRC_MFF,
 	SRC_SADS,

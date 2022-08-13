@@ -231,7 +231,7 @@ class ItemParser extends BaseParser {
 			if (partLower === "weapon" || partLower === "weapon (any)") {
 				genericType = "weapon";
 				continue;
-			} else if (partLower === "armor" || partLower === "armor (any)") {
+			} else if (/^armou?r(?: \(any\))?$/.test(partLower)) {
 				genericType = "armor";
 				continue;
 			} else {
@@ -243,7 +243,7 @@ class ItemParser extends BaseParser {
 			}
 
 			const mBaseWeapon = /^(weapon|staff) \(([^)]+)\)$/i.exec(part);
-			const mBaseArmor = /^armor \((?<type>[^)]+)\)$/i.exec(part);
+			const mBaseArmor = /^armou?r \((?<type>[^)]+)\)$/i.exec(part);
 			if (mBaseWeapon) {
 				if (mBaseWeapon[1].toLowerCase() === "staff") stats.staff = true;
 				baseItem = ItemParser.getItem(mBaseWeapon[2]);

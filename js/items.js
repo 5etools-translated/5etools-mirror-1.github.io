@@ -32,7 +32,7 @@ class ItemsSublistManager extends SublistManager {
 		const $ele = $$`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${hash}" class="lst--border lst__row-inner">
 				<span class="bold col-6 pl-0">${item.name}</span>
-				<span class="text-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
+				<span class="text-center col-2">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
 				<span class="text-center col-2">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014"}</span>
 				${$dispCount}
 			</a>
@@ -78,7 +78,7 @@ class ItemsSublistManager extends SublistManager {
 			if (item.value) value += item.value * count;
 		});
 
-		this._$totalWeight.text(`${weight.toLocaleString(undefined, {maximumFractionDigits: 5})} lb${weight !== 1 ? "s" : ""}.`);
+		this._$totalWeight.text(Parser.itemWeightToFull({weight}, true));
 		this._$totalItems.text(cntItems);
 
 		if (availConversions.size) {

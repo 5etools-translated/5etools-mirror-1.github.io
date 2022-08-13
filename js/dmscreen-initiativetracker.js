@@ -90,42 +90,9 @@ class InitiativeTracker {
 
 		// initialise "upload" context menu
 		const menu = ContextUtil.getMenu([
-			new ContextUtil.Action(
-				"From Current Bestiary Encounter",
-				async () => {
-					const savedState = await EncounterUtil.pGetInitialState();
-					if (savedState) await pConvertAndLoadBestiaryList(savedState.data);
-					else {
-						JqueryUtil.doToast({
-							content: `No saved encounter! Please first go to the Bestiary and create one.`,
-							type: "warning",
-						});
-					}
-				},
-			),
-			new ContextUtil.Action(
-				"From Saved Bestiary Encounter",
-				async () => {
-					const allSaves = Object.values((await EncounterUtil.pGetSavedState()).savedEncounters || {});
-					if (!allSaves.length) return JqueryUtil.doToast({type: "warning", content: "No saved encounters were found! Go to the Bestiary and create some first."});
-					const selected = await InputUiUtil.pGetUserEnum({
-						values: allSaves.map(it => it.name),
-						placeholder: "Select a save",
-						title: "Select Saved Encounter",
-					});
-					if (selected != null) await pConvertAndLoadBestiaryList(allSaves[selected].data);
-				},
-			),
-			new ContextUtil.Action(
-				"From Bestiary Encounter File",
-				async () => {
-					const {jsons, errors} = await DataUtil.pUserUpload();
-
-					DataUtil.doHandleFileLoadErrorsGeneric(errors);
-
-					if (jsons?.length) await pConvertAndLoadBestiaryList(jsons[0]);
-				},
-			),
+			...ListUtilBestiary.getContextOptionsLoadSublist({
+				pFnOnSelect: pDoLoadEncounter,
+			}),
 			null,
 			new ContextUtil.Action(
 				"Import Settings",
@@ -147,7 +114,7 @@ class InitiativeTracker {
 				<div class="dm-init-row-rhs">
 					<div class="dm-init-header dm-init-header--input dm-init-header--input-wide" title="Hit Points">HP</div>
 					<div class="dm-init-header dm-init-header--input" title="Initiative Score">#</div>
-					<div style="width: 43px;"/>
+					<div style="width: 52px;"/>
 				</div>
 			</div>
 		`).appendTo($wrpTop);
@@ -1275,7 +1242,7 @@ class InitiativeTracker {
 			return "";
 		}
 
-		async function pConvertAndLoadBestiaryList (bestiaryList) {
+		async function pDoLoadEncounter ({entityInfos, encounterInfo}) {
 			const toLoad = {
 				s: "NUM",
 				d: "DESC",
@@ -1285,21 +1252,21 @@ class InitiativeTracker {
 			};
 
 			if (cfg.importIsAddPlayers) {
-				if (bestiaryList.a) { // advanced encounter builder
-					if (bestiaryList.d) {
+				if (encounterInfo.isAdvanced) { // advanced encounter builder
+					if (encounterInfo.playersAdvanced) {
 						const colNameIndex = {};
-						bestiaryList.c = bestiaryList.c || [];
-						if (bestiaryList.c.length) cfg.statsAddColumns = true;
+						encounterInfo.colsExtraAdvanced = encounterInfo.colsExtraAdvanced || [];
+						if (encounterInfo.colsExtraAdvanced.length) cfg.statsAddColumns = true;
 
-						bestiaryList.c.forEach((colName, i) => colNameIndex[i] = (colName || "").toLowerCase());
+						encounterInfo.colsExtraAdvanced.forEach((col, i) => colNameIndex[i] = (col?.name || "").toLowerCase());
 
 						// mark all old stats cols for deletion
 						cfg.statsCols.forEach(col => col.isDeleted = true);
 
 						const colIndex = {};
 						let hpIndex = null;
-						bestiaryList.c.forEach((colName, i) => {
-							colName = colName || "";
+						encounterInfo.colsExtraAdvanced.forEach((col, i) => {
+							let colName = col?.name || "";
 							if (colName.toLowerCase() === "hp") {
 								hpIndex = i;
 								return;
@@ -1321,23 +1288,24 @@ class InitiativeTracker {
 							cfg.statsCols.push(newCol);
 						});
 
-						bestiaryList.d.forEach(playerDetails => {
+						encounterInfo.playersAdvanced.forEach(playerDetails => {
 							const row = {
-								n: playerDetails.n || "", // name
+								n: playerDetails.name || "", // name
 								i: "", // score
 								a: 0, // is active?
 								c: [], // conditions
 								v: true,
 							};
 
-							if (playerDetails.x && playerDetails.x.length) { // extra stats
-								row.k = playerDetails.x.map((val, i) => {
+							if (playerDetails.extras?.length) { // extra stats
+								row.k = playerDetails.extras.map((extra, i) => {
+									const val = extra?.value || "";
 									if (i === hpIndex) return null;
 									return {id: colIndex[i].id, v: val || ""};
 								}).filter(Boolean);
 
 								if (hpIndex != null) {
-									row.h = row.g = (playerDetails.x[hpIndex] || "").trim();
+									row.h = row.g = (playerDetails.extras[hpIndex]?.value || "").trim();
 								} else row.h = row.g = "";
 							} else row.h = row.g = "";
 
@@ -1345,8 +1313,8 @@ class InitiativeTracker {
 						});
 					}
 				} else {
-					if (bestiaryList.p) {
-						bestiaryList.p.forEach(playerGroup => {
+					if (encounterInfo.playersSimple) {
+						encounterInfo.playersSimple.forEach(playerGroup => {
 							[...new Array(playerGroup.count || 1)].forEach(() => {
 								toLoad.r.push({
 									n: ``,
@@ -1363,79 +1331,38 @@ class InitiativeTracker {
 				}
 			}
 
-			// convert Bestiary sublist files
-			if (bestiaryList.items && bestiaryList.sources) bestiaryList.l = {items: bestiaryList.items, sources: bestiaryList.sources};
+			if (entityInfos?.length) {
+				await entityInfos
+					.filter(Boolean)
+					.pSerialAwaitMap(async it => {
+						const groupInit = cfg.importIsRollGroups && cfg.isRollInit ? await pRollInitiative(it.entity) : null;
+						const groupHp = cfg.importIsRollGroups ? await pGetOrRollHp(it.entity) : null;
 
-			if (bestiaryList.l && bestiaryList.l.items) {
-				const toAdd = await Promise.all(bestiaryList.l.items.map(it => {
-					const count = Number(it.c);
-					const hash = it.h;
-
-					const {_scaledCr: scaledCr, _scaledSpellSummonLevel: scaledSpellSummonLevel, _scaledClassSummonLevel: scaledClassSummonLevel} = Renderer.monster.getUnpackedCustomHashId(it.customHashId) || {};
-
-					const source = UrlUtil.decodeHash(hash)[1];
-					if (!source) return null;
-					return new Promise(resolve => {
-						Renderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash)
-							.then(mon => {
-								if (scaledCr != null) {
-									ScaleCreature.scale(mon, scaledCr).then(scaled => {
-										resolve({
-											count,
-											monster: scaled,
-										});
-									});
-								} else if (scaledSpellSummonLevel != null) {
-									ScaleSpellSummonedCreature.scale(mon, scaledSpellSummonLevel).then(scaled => {
-										resolve({
-											count,
-											monster: scaled,
-										});
-									});
-								} else if (scaledClassSummonLevel != null) {
-									ScaleClassSummonedCreature.scale(mon, scaledClassSummonLevel).then(scaled => {
-										resolve({
-											count,
-											monster: scaled,
-										});
-									});
-								} else {
-									resolve({
-										count,
-										monster: mon,
-									});
-								}
+						await Promise.all([...new Array(it.count || 1)].map(async () => {
+							const hp = `${cfg.importIsRollGroups ? groupHp : await pGetOrRollHp(it.entity)}`;
+							toLoad.r.push({
+								n: {
+									name: it.entity.name,
+									displayName: it.entity._displayName,
+									scaledToCr: it.entity._scaledCr,
+									scaledToSummonSpellLevel: it.entity._summonedBySpell_level,
+									scaledToSummonClassLevel: it.entity._summonedByClass_level,
+								},
+								i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : await pRollInitiative(it.entity)}` : null,
+								a: 0,
+								s: it.entity.source,
+								c: [],
+								h: hp,
+								g: hp,
 							});
+						}));
 					});
-				}));
-				await Promise.all(toAdd.filter(Boolean).map(async it => {
-					const groupInit = cfg.importIsRollGroups && cfg.isRollInit ? await pRollInitiative(it.monster) : null;
-					const groupHp = cfg.importIsRollGroups ? await pGetOrRollHp(it.monster) : null;
+			}
 
-					await Promise.all([...new Array(it.count || 1)].map(async () => {
-						const hp = `${cfg.importIsRollGroups ? groupHp : await pGetOrRollHp(it.monster)}`;
-						toLoad.r.push({
-							n: {
-								name: it.monster.name,
-								displayName: it.monster._displayName,
-								scaledToCr: it.monster._scaledCr,
-								scaledToSummonSpellLevel: it.monster._summonedBySpell_level,
-								scaledToSummonClassLevel: it.monster._summonedByClass_level,
-							},
-							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : await pRollInitiative(it.monster)}` : null,
-							a: 0,
-							s: it.monster.source,
-							c: [],
-							h: hp,
-							g: hp,
-						});
-					}));
-				}));
-				await pLoadState(toLoad, cfg.importIsAppend);
-			} else await pLoadState(toLoad, cfg.importIsAppend);
+			await pLoadState(toLoad, cfg.importIsAppend);
 		}
 
-		$wrpTracker.data("doConvertAndLoadBestiaryList", (bestiaryList) => pConvertAndLoadBestiaryList(bestiaryList));
+		$wrpTracker.data("pDoLoadEncounter", ({entityInfos, encounterInfo}) => pDoLoadEncounter({entityInfos, encounterInfo}));
 
 		pLoadState(state)
 			.then(() => doSort(cfg.sort));

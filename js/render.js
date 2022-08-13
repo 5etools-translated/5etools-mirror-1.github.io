@@ -1277,7 +1277,6 @@ function Renderer () {
 	};
 
 	this._renderFlowchart = function (entry, textStack, meta, options) {
-		// TODO style this
 		textStack[0] += `<div class="rd__wrp-flowchart">`;
 		const len = entry.blocks.length;
 		for (let i = 0; i < len; ++i) {
@@ -3844,6 +3843,120 @@ Renderer.class = {
 	getRenderedWeaponProfs (weaponProfs) { return weaponProfs.map(w => Renderer.get().render(w === "simple" || w === "martial" ? `{@filter ${w} weapons|items|type=${w} weapon}` : w.optional ? `<span class="help help--hover" title="Optional Proficiency">${w.proficiency}</span>` : w)).join(", "); },
 	getRenderedToolProfs (toolProfs) { return toolProfs.map(it => Renderer.get().render(it)).join(", "); },
 	getRenderedSkillProfs (skills) { return `${Parser.skillProficienciesToFull(skills).uppercaseFirst()}.`; },
+
+	getWalkerFilterDereferencedFeatures () {
+		return MiscUtil.getWalker({
+			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
+			isAllowDeleteObjects: true,
+			isDepthFirst: true,
+		});
+	},
+
+	mutFilterDereferencedClassFeatures (
+		{
+			walker,
+			cpyCls,
+			pageFilter,
+			filterValues,
+			isUseSubclassSources = false,
+		},
+	) {
+		walker = walker || Renderer.class.getWalkerFilterDereferencedFeatures();
+
+		cpyCls.classFeatures = cpyCls.classFeatures.map((lvlFeatures, ixLvl) => {
+			return walker.walk(
+				lvlFeatures,
+				{
+					object: (obj) => {
+						if (!obj.source) return obj;
+						const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
+
+						const isDisplay = [obj.source, ...(obj.otherSources || [])
+							.map(it => it.source)]
+							.some(src => pageFilter.filterBox.toDisplayByFilters(
+								filterValues,
+								...[
+									{
+										filter: pageFilter.sourceFilter,
+										value: isUseSubclassSources && src === cpyCls.source
+											? pageFilter.getActiveSource(filterValues)
+											: src,
+									},
+									pageFilter.levelFilter
+										? {
+											filter: pageFilter.levelFilter,
+											value: ixLvl + 1,
+										}
+										: null,
+									{
+										filter: pageFilter.optionsFilter,
+										value: fText,
+									},
+								].filter(Boolean),
+							));
+
+						return isDisplay ? obj : null;
+					},
+					array: (arr) => {
+						return arr.filter(it => it != null);
+					},
+				},
+			);
+		});
+	},
+
+	mutFilterDereferencedSubclassFeatures (
+		{
+			walker,
+			cpySc,
+			pageFilter,
+			filterValues,
+		},
+	) {
+		walker = walker || Renderer.class.getWalkerFilterDereferencedFeatures();
+
+		cpySc.subclassFeatures = cpySc.subclassFeatures.map(lvlFeatures => {
+			const level = CollectionUtil.bfs(lvlFeatures, {prop: "level"});
+
+			return walker.walk(
+				lvlFeatures,
+				{
+					object: (obj) => {
+						if (obj.entries && !obj.entries.length) return null;
+						if (!obj.source) return obj;
+						const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
+
+						const isDisplay = [obj.source, ...(obj.otherSources || [])
+							.map(it => it.source)]
+							.some(src => pageFilter.filterBox.toDisplayByFilters(
+								filterValues,
+								...[
+									{
+										filter: pageFilter.sourceFilter,
+										value: src,
+									},
+									pageFilter.levelFilter
+										? {
+											filter: pageFilter.levelFilter,
+											value: level,
+										}
+										: null,
+									{
+										filter: pageFilter.optionsFilter,
+										value: fText,
+									},
+								].filter(Boolean),
+							));
+
+						return isDisplay ? obj : null;
+					},
+					array: (arr) => {
+						return arr.filter(it => it != null);
+					},
+				},
+			);
+		});
+	},
 };
 
 Renderer.spell = {
@@ -5383,7 +5496,7 @@ Renderer.object = {
 			${Renderer.utils.getNameTr(obj, {page: opts.page || UrlUtil.PG_OBJECTS, extraThClasses, isEmbeddedEntity: opts.isEmbeddedEntity})}
 			<tr class="text"><td colspan="6"><i>${obj.objectType !== "GEN" ? `${Parser.sizeAbvToFull(obj.size)} ${obj.creatureType ? Parser.monTypeToFullObj(obj.creatureType).asText : "object"}` : `Variable size object`}</i><br></td></tr>
 			<tr class="text"><td colspan="6">
-				${obj.capCrew != null ? `<b>Creature Capacity:</b> ${Renderer.vehicle.getShipCreatureCapacity(obj)}<br>` : ""}
+				${obj.capCrew != null || obj.capPassenger != null ? `<b>Creature Capacity:</b> ${Renderer.vehicle.getShipCreatureCapacity(obj)}<br>` : ""}
 				${obj.capCargo != null ? `<b>Cargo Capacity:</b> ${Renderer.vehicle.getShipCargoCapacity(obj)}</br>` : ""}
 				${obj.ac != null ? `<b>Armor Class:</b> ${obj.ac.special ?? obj.ac}<br>` : ""}
 				${obj.hp != null ? `<b>Hit Points:</b> ${obj.hp.special ?? obj.hp}<br>` : ""}
@@ -7133,47 +7246,62 @@ Renderer.item = {
 		delete specificVariant.page;
 
 		specificVariant._category = "Specific Variant";
-		Object.keys(inherits).forEach((inheritedProperty) => {
-			switch (inheritedProperty) {
-				case "namePrefix": specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`; break;
-				case "nameSuffix": specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`; break;
-				case "entries": {
-					Renderer.item._initFullEntries(specificVariant);
+		Object.entries(inherits)
+			.forEach(([inheritedProperty, val]) => {
+				switch (inheritedProperty) {
+					case "namePrefix": specificVariant.name = `${val}${specificVariant.name}`; break;
+					case "nameSuffix": specificVariant.name = `${specificVariant.name}${val}`; break;
+					case "entries": {
+						Renderer.item._initFullEntries(specificVariant);
 
-					const appliedPropertyEntries = Renderer.applyAllProperties(inherits.entries, Renderer.item._getInjectableProps(baseItem, inherits));
-					appliedPropertyEntries.forEach((ent, i) => specificVariant._fullEntries.splice(i, 0, ent));
-					break;
-				}
-				case "nameRemove": {
-					specificVariant.name = specificVariant.name.replace(new RegExp(inherits[inheritedProperty].escapeRegexp(), "g"), "");
-
-					break;
-				}
-				case "weightExpression":
-				case "valueExpression": {
-					const exp = Renderer.item._createSpecificVariants_evaluateExpression(baseItem, specificVariant, inherits, inheritedProperty);
-
-					const result = Renderer.dice.parseRandomise2(exp);
-					if (result != null) {
-						switch (inheritedProperty) {
-							case "weightExpression": specificVariant.weight = result; break;
-							case "valueExpression": specificVariant.value = result; break;
-						}
+						const appliedPropertyEntries = Renderer.applyAllProperties(val, Renderer.item._getInjectableProps(baseItem, inherits));
+						appliedPropertyEntries.forEach((ent, i) => specificVariant._fullEntries.splice(i, 0, ent));
+						break;
 					}
+					case "nameRemove": {
+						specificVariant.name = specificVariant.name.replace(new RegExp(val.escapeRegexp(), "g"), "");
 
-					break;
+						break;
+					}
+					case "weightExpression":
+					case "valueExpression": {
+						const exp = Renderer.item._createSpecificVariants_evaluateExpression(baseItem, specificVariant, inherits, inheritedProperty);
+
+						const result = Renderer.dice.parseRandomise2(exp);
+						if (result != null) {
+							switch (inheritedProperty) {
+								case "weightExpression": specificVariant.weight = result; break;
+								case "valueExpression": specificVariant.value = result; break;
+							}
+						}
+
+						break;
+					}
+					case "barding": {
+						specificVariant.bardingType = baseItem.type;
+						break;
+					}
+					case "propertyAdd": {
+						specificVariant.property = [
+							...(specificVariant.property || []),
+							...val.filter(it => !specificVariant.property || !specificVariant.property.includes(it)),
+						];
+						break;
+					}
+					case "propertyRemove": {
+						if (specificVariant.property) {
+							specificVariant.property = specificVariant.property.filter(it => !val.includes(it));
+							if (!specificVariant.property.length) delete specificVariant.property;
+						}
+						break;
+					}
+					default: specificVariant[inheritedProperty] = val;
 				}
-				case "barding": {
-					specificVariant.bardingType = baseItem.type;
-					break;
-				}
-				default: specificVariant[inheritedProperty] = inherits[inheritedProperty];
-			}
-		});
+			});
 
 		// track the specific variant on the parent generic, to later render as part of the stats
 		genericVariant.variants = genericVariant.variants || [];
-		genericVariant.variants.push({base: baseItem, specificVariant});
+		if (!genericVariant.variants.some(it => it.base?.name === baseItem.name && it.base?.source === baseItem.source)) genericVariant.variants.push({base: baseItem, specificVariant});
 
 		// add reverse link to get generic from specific--primarily used for indexing
 		specificVariant.genericVariant = {
@@ -7905,7 +8033,7 @@ Renderer.vehicle = {
 			if (veh.capCrew == null && veh.capCargo == null && veh.pace == null) return "";
 
 			return `<tr class="text"><td colspan="6">
-				${veh.capCrew != null ? `<div><b>Creature Capacity</b> ${Renderer.vehicle.getShipCreatureCapacity(veh)}</div>` : ""}
+				${veh.capCrew != null || veh.capPassenger != null ? `<div><b>Creature Capacity</b> ${Renderer.vehicle.getShipCreatureCapacity(veh)}</div>` : ""}
 				${veh.capCargo != null ? `<div><b>Cargo Capacity</b> ${Renderer.vehicle.getShipCargoCapacity(veh)}</div>` : ""}
 				${veh.pace != null ? `<div><b>Travel Pace</b> ${veh.pace} miles per hour (${veh.pace * 24} miles per day)</div>
 				<div class="ve-muted ve-small help-subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Speed</b> ${veh.pace * 10} ft.]</div>` : ""}
@@ -8051,7 +8179,12 @@ Renderer.vehicle = {
 		`;
 	},
 
-	getShipCreatureCapacity (veh) { return `${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passenger${veh.capPassenger === 1 ? "" : "s"}` : ""}`; },
+	getShipCreatureCapacity (veh) {
+		return [
+			veh.capCrew ? `${veh.capCrew} crew` : null,
+			veh.capPassenger ? `${veh.capPassenger} passenger${veh.capPassenger === 1 ? "" : "s"}` : null,
+		].filter(Boolean).join(", ");
+	},
 	getShipCargoCapacity (veh) { return typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`; },
 
 	_getRenderedString_spelljammer (veh, opts) {
@@ -8743,7 +8876,7 @@ Renderer.hover = {
 					break;
 				}
 			}
-		} if (customHashId) {
+		} else if (customHashId) {
 			toRender = await Renderer.hover.pCacheAndGet(page, source, hash);
 			toRender = await Renderer.hover.pApplyCustomHashId(page, toRender, customHashId);
 		} else {
@@ -8786,7 +8919,7 @@ Renderer.hover = {
 
 		meta.windowMeta = Renderer.hover.getShowWindow(
 			$content,
-			Renderer.hover.getWindowPositionFromEvent(tmpEvt || evt),
+			Renderer.hover.getWindowPositionFromEvent(tmpEvt || evt, {isPreventFlicker: !meta.isPermanent}),
 			{
 				title: toRender ? toRender.name : "",
 				isPermanent: meta.isPermanent,
@@ -8876,7 +9009,7 @@ Renderer.hover = {
 
 		if (!meta.windowMeta) return;
 
-		meta.windowMeta.setPosition(Renderer.hover.getWindowPositionFromEvent(evt));
+		meta.windowMeta.setPosition(Renderer.hover.getWindowPositionFromEvent(evt, {isPreventFlicker: evt.shiftKey || meta.isPermanent}));
 
 		if (evt.shiftKey && !meta.isPermanent) {
 			meta.isPermanent = true;
@@ -8910,7 +9043,7 @@ Renderer.hover = {
 		const $content = Renderer.hover.$getHoverContent_generic(toRender, opts);
 		meta.windowMeta = Renderer.hover.getShowWindow(
 			$content,
-			Renderer.hover.getWindowPositionFromEvent(evt),
+			Renderer.hover.getWindowPositionFromEvent(evt, {isPreventFlicker: !meta.isPermanent}),
 			{
 				title: toRender.data && toRender.data.hoverTitle != null ? toRender.data.hoverTitle : toRender.name,
 				isPermanent: meta.isPermanent,
@@ -8929,32 +9062,29 @@ Renderer.hover = {
 	// (Baked into render strings)
 	handlePredefinedMouseMove (evt, ele) { return Renderer.hover.handleLinkMouseMove(evt, ele); },
 
-	getWindowPositionFromEvent (evt) {
+	getWindowPositionFromEvent (evt, {isPreventFlicker = false} = {}) {
 		const ele = evt.target;
+		const win = evt?.view?.window || window;
 
-		const offset = $(ele).offset();
-		const vpOffsetT = offset.top - $(document).scrollTop();
-		const vpOffsetL = offset.left - $(document).scrollLeft();
+		const bcr = ele.getBoundingClientRect();
 
-		const fromBottom = vpOffsetT > window.innerHeight / 2;
-		const fromRight = vpOffsetL > window.innerWidth / 2;
+		const isFromBottom = bcr.top > win.innerHeight / 2;
+		const isFromRight = bcr.left > win.innerWidth / 2;
 
 		return {
 			mode: "autoFromElement",
-			vpOffsetT,
-			vpOffsetL,
-			fromBottom,
-			fromRight,
-			eleHeight: $(ele).height(),
-			eleWidth: $(ele).width(),
+			isFromBottom,
+			isFromRight,
 			clientX: EventUtil.getClientX(evt),
-			window: (evt.view || {}).window || window,
+			window: win,
+			isPreventFlicker,
+			bcr: MiscUtil.copy(bcr),
 		};
 	},
 
 	getWindowPositionExact (x, y, evt = null) {
 		return {
-			window: ((evt || {}).view || {}).window || window,
+			window: evt?.view?.window || window,
 			mode: "exact",
 			x,
 			y,
@@ -9006,6 +9136,13 @@ Renderer.hover = {
 
 			return Renderer.hover._getNextZIndex(hoverId);
 		} else return out;
+	},
+
+	_isIntersectRect (r1, r2) {
+		return r1.left <= r2.right
+			&& r2.left <= r1.right
+			&& r1.top <= r2.bottom
+			&& r2.top <= r1.bottom;
 	},
 
 	/**
@@ -9408,11 +9545,13 @@ Renderer.hover = {
 		const setPosition = (pos) => {
 			switch (pos.mode) {
 				case "autoFromElement": {
-					if (pos.fromBottom) $hov.css("top", pos.vpOffsetT - ($hov.height() + 10));
-					else $hov.css("top", pos.vpOffsetT + pos.eleHeight + 10);
+					const bcr = $hov[0].getBoundingClientRect();
 
-					if (pos.fromRight) $hov.css("left", (pos.clientX || pos.vpOffsetL) - (parseFloat($hov.css("width")) + 10));
-					else $hov.css("left", (pos.clientX || (pos.vpOffsetL + pos.eleWidth)) + 10);
+					if (pos.isFromBottom) $hov.css("top", pos.bcr.top - (bcr.height + 10));
+					else $hov.css("top", pos.bcr.top + pos.bcr.height + 10);
+
+					if (pos.isFromRight) $hov.css("left", (pos.clientX || pos.bcr.left) - (bcr.width + 10));
+					else $hov.css("left", (pos.clientX || (pos.bcr.left + pos.bcr.width)) + 10);
 					break;
 				}
 				case "exact": {
@@ -9453,24 +9592,46 @@ Renderer.hover = {
 
 		function adjustPosition () {
 			const eleHov = $hov[0];
-			// use these pre-computed values instead of forcing redraws for speed (saves ~100ms)
-			const hvTop = parseFloat(eleHov.style.top);
-			const hvLeft = parseFloat(eleHov.style.left);
-			const hvWidth = parseFloat(eleHov.style.width);
+
+			const bcr = MiscUtil.copy(eleHov.getBoundingClientRect());
 			const screenHeight = position.window.innerHeight;
 			const screenWidth = position.window.innerWidth;
 
 			// readjust position...
 			// ...if vertically clipping off screen
-			if (hvTop < 0) eleHov.style.top = `0px`;
-			else if (hvTop >= screenHeight - Renderer.hover._BAR_HEIGHT) {
-				$hov.css("top", screenHeight - Renderer.hover._BAR_HEIGHT);
+			if (bcr.top < 0) {
+				bcr.top = 0;
+				bcr.bottom = bcr.top + bcr.height;
+				eleHov.style.top = `${bcr.top}px`;
+			} else if (bcr.top >= screenHeight - Renderer.hover._BAR_HEIGHT) {
+				bcr.top = screenHeight - Renderer.hover._BAR_HEIGHT;
+				bcr.bottom = bcr.top + bcr.height;
+				eleHov.style.top = `${bcr.top}px`;
 			}
 
 			// ...if horizontally clipping off screen
-			if (hvLeft < 0) $hov.css("left", 0);
-			else if (hvLeft + hvWidth + Renderer.hover._BODY_SCROLLER_WIDTH_PX > screenWidth) {
-				$hov.css("left", Math.max(screenWidth - hvWidth - Renderer.hover._BODY_SCROLLER_WIDTH_PX, 0));
+			if (bcr.left < 0) {
+				bcr.left = 0;
+				bcr.right = bcr.left + bcr.width;
+				eleHov.style.left = `${bcr.left}px`;
+			} else if (bcr.left + bcr.width + Renderer.hover._BODY_SCROLLER_WIDTH_PX > screenWidth) {
+				bcr.left = Math.max(screenWidth - bcr.width - Renderer.hover._BODY_SCROLLER_WIDTH_PX, 0);
+				bcr.right = bcr.left + bcr.width;
+				eleHov.style.left = `${bcr.left}px`;
+			}
+
+			// Prevent window "flickering" when hovering a link
+			if (
+				position.isPreventFlicker
+				&& Renderer.hover._isIntersectRect(bcr, position.bcr)
+			) {
+				if (position.isFromBottom) {
+					bcr.height = position.bcr.top - 5;
+					eleHov.style.height = `${bcr.height}px`;
+				} else {
+					bcr.height = screenHeight - position.bcr.bottom - 5;
+					eleHov.style.height = `${bcr.height}px`;
+				}
 			}
 		}
 
@@ -9616,6 +9777,55 @@ Renderer.hover = {
 
 		const brewJson = await DataUtil.pAddBrewBySource(sourceJsonCorrectCase);
 		return brewJson?.length;
+	},
+
+	getEntityLink (
+		ent,
+		{
+			displayText = null,
+			prop = null,
+			isLowerCase = false,
+			isTitleCase = false,
+		} = {},
+	) {
+		if (isLowerCase && isTitleCase) throw new Error(`"isLowerCase" and "isTitleCase" are mutually exclusive!`);
+
+		const name = isLowerCase ? ent.name.toLowerCase() : isTitleCase ? ent.name.toTitleCase() : ent.name;
+
+		let parts = [
+			name,
+			ent.source,
+			displayText || "",
+		];
+
+		switch (prop || ent.__prop) {
+			case "monster": {
+				if (ent._isScaledCr) {
+					parts.push(`${VeCt.HASH_SCALED}=${Parser.numberToCr(ent._scaledCr)}`);
+				}
+
+				if (ent._isScaledSpellSummon) {
+					parts.push(`${VeCt.HASH_SCALED_SPELL_SUMMON}=${ent._scaledSpellSummonLevel}`);
+				}
+
+				if (ent._isScaledClassSummon) {
+					parts.push(`${VeCt.HASH_SCALED_CLASS_SUMMON}=${ent._scaledClassSummonLevel}`);
+				}
+
+				break;
+			}
+
+			// TODO recipe?
+
+			case "deity": {
+				parts.splice(1, 0, ent.pantheon);
+				break;
+			}
+		}
+
+		while (parts.length && !parts.last()?.length) parts.pop();
+
+		return Renderer.get().render(`{@${Parser.getPropTag(prop || ent.__prop)} ${parts.join("|")}}`);
 	},
 
 	_psCacheLoading: {},
@@ -9988,13 +10198,15 @@ Renderer.hover = {
 					const brewData = (brew[propData] || []).find(it => it.id === id);
 					const brewContents = (brew[prop] || []).find(it => it.id === id);
 
+					const hashBrew = UrlUtil.URL_TO_HASH_BUILDER[page](brewContents);
+					Renderer.hover._pWalkAdventureBook_addImageBackReferences(brewData, page, source, hashBrew);
+
 					const pack = {
 						[prop]: brewContents,
 						[propData]: brewData,
 					};
 
-					const hash = UrlUtil.URL_TO_HASH_BUILDER[page](brewContents);
-					Renderer.hover._addToCache(page, brewContents.source, hash, pack);
+					Renderer.hover._addToCache(page, brewContents.source, hashBrew, pack);
 				});
 				// endregion
 
@@ -10002,6 +10214,8 @@ Renderer.hover = {
 				const fromIndex = index[prop].find(it => UrlUtil.URL_TO_HASH_BUILDER[page](it) === hash);
 				if (fromIndex) {
 					const json = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/${prop}/${prop}-${hash}.json`);
+
+					Renderer.hover._pWalkAdventureBook_addImageBackReferences(json, page, source, hash);
 
 					const pack = {
 						[prop]: fromIndex,
@@ -10015,6 +10229,25 @@ Renderer.hover = {
 
 		if (isNotLoadedAndIsSourceAvailableBrew) return Renderer.hover.pCacheAndGet(page, source, hash);
 		return Renderer.hover.getFromCache(page, source, hash, opts);
+	},
+
+	/** Allow maps to reference back to their parent entity. */
+	_pWalkAdventureBook_addImageBackReferences (json, page, source, hash) {
+		if (!json) return;
+
+		const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST, isNoModification: true});
+		walker.walk(
+			json,
+			{
+				object: (obj) => {
+					if (obj.type === "image" && obj.mapRegions) {
+						obj.page = obj.page || page;
+						obj.source = obj.source || source;
+						obj.hash = obj.hash || hash;
+					}
+				},
+			},
+		);
 	},
 
 	async _pCacheAndGet_pLoadClasses (page, source, hash, opts) {
@@ -10159,7 +10392,6 @@ Renderer.hover = {
 	},
 
 	// region Apply custom hash IDs
-	// TODO refactor to use this more
 	async pApplyCustomHashId (page, ent, customHashId) {
 		switch (page) {
 			case UrlUtil.PG_BESTIARY: {

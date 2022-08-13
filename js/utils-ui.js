@@ -63,7 +63,7 @@ function MixinProxyBase (Cls) {
 				deleteProperty: (object, prop) => {
 					if (!(prop in object)) return true;
 					const prevValue = object[prop];
-					delete object[prop];
+					Reflect.deleteProperty(object, prop);
 					this._doFireHooksAll(hookProp, prop, undefined, prevValue);
 					if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, undefined, prevValue));
 					return true;
@@ -74,7 +74,7 @@ function MixinProxyBase (Cls) {
 		_doProxySet (hookProp, object, prop, value) {
 			if (object[prop] === value) return true;
 			const prevValue = object[prop];
-			object[prop] = value;
+			Reflect.set(object, prop, value);
 			this._doFireHooksAll(hookProp, prop, value, prevValue);
 			this._doFireHooks(hookProp, prop, value, prevValue);
 			return true;
@@ -84,7 +84,7 @@ function MixinProxyBase (Cls) {
 		async _pDoProxySet (hookProp, object, prop, value) {
 			if (object[prop] === value) return true;
 			const prevValue = object[prop];
-			object[prop] = value;
+			Reflect.set(object, prop, value);
 			if (this.__hooksAll[hookProp]) for (const hook of this.__hooksAll[hookProp]) await hook(prop, value, prevValue);
 			if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) for (const hook of this.__hooks[hookProp][prop]) await hook(prop, value, prevValue);
 			return true;
@@ -603,7 +603,9 @@ class UiUtil {
 	static bindTypingEnd ({$ipt, fnKeyup, fnKeypress, fnKeydown, fnClick} = {}) {
 		let timerTyping;
 		$ipt
-			.on("keyup search paste", evt => {
+			// Trigger on blur, as tabbing out of a field triggers the keyup on the element which was tabbed into. Our
+			//   intent. however, is to trigger on any keyup which began in this field.
+			.on("keyup search paste blur", evt => {
 				clearTimeout(timerTyping);
 				timerTyping = setTimeout(() => { fnKeyup(evt); }, UiUtil.TYPE_TIMEOUT_MS);
 			})
@@ -2092,6 +2094,31 @@ class InputUiUtil {
 		return UiUtil.getShowModal(getShowModalOpts);
 	}
 
+	static _$getBtnOk ({comp = null, opts, doClose}) {
+		return $(`<button class="btn btn-primary mr-2">${opts.buttonText || "OK"}</button>`)
+			.click(evt => {
+				evt.stopPropagation();
+				if (comp && !comp._state.isValid) return JqueryUtil.doToast({content: `Please enter valid input!`, type: "warning"});
+				doClose(true);
+			});
+	}
+
+	static _$getBtnCancel ({comp = null, opts, doClose}) {
+		return $(`<button class="btn btn-default">Cancel</button>`)
+			.click(evt => {
+				evt.stopPropagation();
+				doClose(false);
+			});
+	}
+
+	static _$getBtnSkip ({comp = null, opts, doClose}) {
+		return !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
+			.click(evt => {
+				evt.stopPropagation();
+				doClose(VeCt.SYM_UI_SKIP);
+			});
+	}
+
 	/**
 	 * @param opts Options.
 	 * @param opts.min Minimum value.
@@ -2128,17 +2155,14 @@ class InputUiUtil {
 			});
 		if (defaultVal !== undefined) $iptNumber.val(defaultVal);
 
-		const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
-			.click(() => doClose(true));
-		const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
-			.click(() => doClose(false));
-		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
-
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			title: opts.title || "Enter a Number",
 			isMinHeight0: true,
 		});
+
+		const $btnOk = this._$getBtnOk({opts, doClose});
+		const $btnCancel = this._$getBtnCancel({opts, doClose});
+		const $btnSkip = this._$getBtnSkip({opts, doClose});
 
 		if (opts.$elePre) opts.$elePre.appendTo($modalInner);
 		$iptNumber.appendTo($modalInner);
@@ -2209,13 +2233,22 @@ class InputUiUtil {
 			}) : null;
 
 		const $btnTrue = $(`<button class="btn btn-primary ve-flex-v-center mr-3"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYes || "OK"}</span></button>`)
-			.click(() => doClose(true, true));
+			.click(evt => {
+				evt.stopPropagation();
+				doClose(true, true);
+			});
 
 		const $btnFalse = opts.isAlert ? null : $(`<button class="btn btn-default btn-sm ve-flex-v-center"><span class="glyphicon glyphicon-remove mr-2"></span><span>${opts.textNo || "Cancel"}</span></button>`)
-			.click(() => doClose(true, false));
+			.click(evt => {
+				evt.stopPropagation();
+				doClose(true, false);
+			});
 
 		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default btn-sm ml-3"><span class="glyphicon glyphicon-forward"></span><span>${opts.textSkip || "Skip"}</span></button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
+			.click(evt => {
+				evt.stopPropagation();
+				doClose(VeCt.SYM_UI_SKIP);
+			});
 
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			title: opts.title || "Choose",
@@ -2273,17 +2306,15 @@ class InputUiUtil {
 		if (opts.default != null) $selEnum.val(opts.default);
 		else $selEnum[0].selectedIndex = 0;
 
-		const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
-			.click(() => doClose(true));
-		const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
-			.click(() => doClose(false));
-		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
-
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			title: opts.title || "Select an Option",
 			isMinHeight0: true,
 		});
+
+		const $btnOk = this._$getBtnOk({opts, doClose});
+		const $btnCancel = this._$getBtnCancel({opts, doClose});
+		const $btnSkip = this._$getBtnSkip({opts, doClose});
+
 		$selEnum.appendTo($modalInner);
 		if (opts.$elePost) opts.$elePost.appendTo($modalInner);
 		$$`<div class="ve-flex-v-center ve-flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
@@ -2330,13 +2361,6 @@ class InputUiUtil {
 	 * @return {Promise} A promise which resolves to the indices of the items the user selected, or null otherwise.
 	 */
 	static async pGetUserMultipleChoice (opts) {
-		const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
-			.click(() => doClose(true));
-		const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
-			.click(() => doClose(false));
-		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
-
 		const prop = "formData";
 
 		const initialState = {};
@@ -2361,16 +2385,21 @@ class InputUiUtil {
 		const {$ele: $wrpList, $iptSearch, propIsAcceptable} = ComponentUiUtil.getMetaWrpMultipleChoice(comp, prop, opts);
 		$wrpList.addClass(`mb-1`);
 
-		const hkIsAcceptable = () => $btnOk.attr("disabled", !comp._state[propIsAcceptable]);
-		comp._addHookBase(propIsAcceptable, hkIsAcceptable);
-		hkIsAcceptable();
-
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			...(opts.modalOpts || {}),
 			title,
 			isMinHeight0: true,
 			isUncappedHeight: true,
 		});
+
+		const $btnOk = this._$getBtnOk({opts, doClose});
+		const $btnCancel = this._$getBtnCancel({opts, doClose});
+		const $btnSkip = this._$getBtnSkip({opts, doClose});
+
+		const hkIsAcceptable = () => $btnOk.attr("disabled", !comp._state[propIsAcceptable]);
+		comp._addHookBase(propIsAcceptable, hkIsAcceptable);
+		hkIsAcceptable();
+
 		if (opts.htmlDescription) $modalInner.append(opts.htmlDescription);
 		if ($iptSearch) {
 			$$`<label class="mb-1">
@@ -2449,12 +2478,9 @@ class InputUiUtil {
 			return $btn;
 		})}</div>`.appendTo($modalInner);
 
-		const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
-			.click(() => doClose(true));
-		const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
-			.click(() => doClose(false));
-		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
+		const $btnOk = this._$getBtnOk({opts, doClose});
+		const $btnCancel = this._$getBtnCancel({opts, doClose});
+		const $btnSkip = this._$getBtnSkip({opts, doClose});
 
 		$$`<div class="ve-flex-v-center ve-flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 
@@ -2525,19 +2551,15 @@ class InputUiUtil {
 			hkIsValid();
 		}
 
-		const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
-			.click(() => {
-				if (!comp._state.isValid) return JqueryUtil.doToast({content: `Please enter valid input!`, type: "warning"});
-				return doClose(true);
-			});
-		const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
-			.click(() => doClose(false));
-		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			title: opts.title || "Enter Text",
 			isMinHeight0: true,
 		});
+
+		const $btnOk = this._$getBtnOk({comp, opts, doClose});
+		const $btnCancel = this._$getBtnCancel({comp, opts, doClose});
+		const $btnSkip = this._$getBtnSkip({comp, opts, doClose});
+
 		if (opts.$elePre) opts.$elePre.appendTo($modalInner);
 		$iptStr.appendTo($modalInner);
 		if (opts.$elePost) opts.$elePost.appendTo($modalInner);
@@ -2582,16 +2604,16 @@ class InputUiUtil {
 		const $iptStr = $(`<textarea class="form-control mb-2 resize-vertical w-100" ${opts.disabled ? "disabled" : ""}></textarea>`)
 			.val(opts.default);
 		if (opts.isCode) $iptStr.addClass("code");
-		const $btnOk = $(`<button class="btn btn-primary mr-2">${opts.buttonText || "OK"}</button>`)
-			.click(() => doClose(true));
-		const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
-			.click(() => doClose(false));
-		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
+
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			title: opts.title || "Enter Text",
 			isMinHeight0: true,
 		});
+
+		const $btnOk = this._$getBtnOk({opts, doClose});
+		const $btnCancel = this._$getBtnCancel({opts, doClose});
+		const $btnSkip = this._$getBtnSkip({opts, doClose});
+
 		$iptStr.appendTo($modalInner);
 		$$`<div class="ve-flex-v-center ve-flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 
@@ -2622,16 +2644,16 @@ class InputUiUtil {
 		opts = opts || {};
 
 		const $iptRgb = $(`<input class="form-control mb-2" ${opts.default != null ? `value="${opts.default}"` : ""} type="color">`);
-		const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
-			.click(() => doClose(true));
-		const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
-			.click(() => doClose(false));
-		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
+
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			title: opts.title || "Choose Color",
 			isMinHeight0: true,
 		});
+
+		const $btnOk = this._$getBtnOk({opts, doClose});
+		const $btnCancel = this._$getBtnCancel({opts, doClose});
+		const $btnSkip = this._$getBtnSkip({opts, doClose});
+
 		$iptRgb.appendTo($modalInner);
 		$$`<div class="ve-flex-v-center ve-flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
 
@@ -2750,16 +2772,15 @@ class InputUiUtil {
 				});
 		})() : null;
 
-		const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
-			.click(() => doClose(true));
-		const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
-			.click(() => doClose(false));
-		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			title: opts.title || "Select Direction",
 			isMinHeight0: true,
 		});
+
+		const $btnOk = this._$getBtnOk({opts, doClose});
+		const $btnCancel = this._$getBtnCancel({opts, doClose});
+		const $btnSkip = this._$getBtnSkip({opts, doClose});
+
 		$$`<div class="ve-flex-vh-center mb-3">
 				${$padOuter || $pad}
 			</div>`.appendTo($modalInner);
@@ -2827,16 +2848,14 @@ class InputUiUtil {
 			return `${this._state.num}d${this._state.faces}${this._state.bonus ? UiUtil.intToBonus(this._state.bonus) : ""}`;
 		};
 
-		const $btnOk = $(`<button class="btn btn-primary mr-2">OK</button>`)
-			.click(() => doClose(true));
-		const $btnCancel = $(`<button class="btn btn-default">Cancel</button>`)
-			.click(() => doClose(false));
-		const $btnSkip = !opts.isSkippable ? null : $(`<button class="btn btn-default ml-3">Skip</button>`)
-			.click(() => doClose(VeCt.SYM_UI_SKIP));
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			title: opts.title || "Enter Dice",
 			isMinHeight0: true,
 		});
+
+		const $btnOk = this._$getBtnOk({opts, doClose});
+		const $btnCancel = this._$getBtnCancel({opts, doClose});
+		const $btnSkip = this._$getBtnSkip({opts, doClose});
 
 		comp.render($modalInner);
 
@@ -3185,6 +3204,14 @@ function MixinBaseComponent (Cls) {
 			return this._removeHooks("state", prop);
 		}
 
+		_addHookAllBase (hook) {
+			return this._addHookAll("state", hook);
+		}
+
+		_removeHookAllBase (hook) {
+			return this._removeHookAll("state", hook);
+		}
+
 		_setState (toState) {
 			this._proxyAssign("state", "_state", "__state", toState, true);
 		}
@@ -3207,8 +3234,9 @@ function MixinBaseComponent (Cls) {
 				set: (prop, val) => this._state[prop] = val,
 				delete: (prop) => delete this._state[prop],
 				addHook: (prop, hook) => this._addHookBase(prop, hook),
-				addHookAll: (hook) => this._addHookAll("state", hook),
+				addHookAll: (hook) => this._addHookAllBase(hook),
 				removeHook: (prop, hook) => this._removeHookBase(prop, hook),
+				removeHookAll: (hook) => this._removeHookAllBase(hook),
 				triggerCollectionUpdate: (prop) => this._triggerCollectionUpdate(prop),
 				setState: (state) => this._setState(state),
 				getState: () => this._getState(),
@@ -3230,7 +3258,7 @@ function MixinBaseComponent (Cls) {
 		}
 
 		setBaseSaveableStateFrom (toLoad, isOverwrite = false) {
-			toLoad.state && this._proxyAssignSimple("state", toLoad.state, isOverwrite);
+			toLoad?.state && this._proxyAssignSimple("state", toLoad.state, isOverwrite);
 		}
 
 		/**
@@ -3285,7 +3313,7 @@ function MixinBaseComponent (Cls) {
 					if (meta == null) return;
 
 					meta.data = it;
-					if (!meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
+					if (!meta.$wrpRow && !meta.fmRemoveEles) throw new Error(`A "$wrpRow" or a "fmRemoveEles" property is required for deletes!`);
 
 					if (opts.isDiffMode) meta.hash = CryptUtil.md5(JSON.stringify(it));
 
@@ -3295,7 +3323,8 @@ function MixinBaseComponent (Cls) {
 
 			toDelete.forEach(id => {
 				const meta = rendered[id];
-				meta.$wrpRow.remove();
+				if (meta.$wrpRow) meta.$wrpRow.remove();
+				if (meta.fmRemoveEles) meta.fmRemoveEles();
 				delete rendered[id];
 				if (opts.fnDeleteExisting) opts.fnDeleteExisting(meta);
 			});
@@ -3361,8 +3390,8 @@ function MixinBaseComponent (Cls) {
 					// If the generator decides there's nothing to render, skip this item
 					if (meta == null) continue;
 
-					if (opts.isMultiRender && meta.some(it => !it.$wrpRow)) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
-					if (!opts.isMultiRender && !meta.$wrpRow) throw new Error(`A "$wrpRow" property is required in order for deletes!`);
+					if (opts.isMultiRender && meta.some(it => !it.$wrpRow && !it.fmRemoveEles)) throw new Error(`A "$wrpRow" or a "fmRemoveEles" property is required for deletes!`);
+					if (!opts.isMultiRender && !meta.$wrpRow && !meta.fmRemoveEles) throw new Error(`A "$wrpRow" or a "fmRemoveEles" property is required for deletes!`);
 
 					if (opts.isDiffMode) meta.__hash = CryptUtil.md5(JSON.stringify(it));
 
@@ -3370,10 +3399,15 @@ function MixinBaseComponent (Cls) {
 				}
 			}
 
+			const doRemoveELements = meta => {
+				if (meta.$wrpRow) meta.$wrpRow.remove();
+				if (meta.fmRemoveEles) meta.fmRemoveEles();
+			};
+
 			for (const id of toDelete) {
 				const meta = rendered[id];
-				if (opts.isMultiRender) meta.forEach(it => it.$wrpRow.remove());
-				else meta.$wrpRow.remove();
+				if (opts.isMultiRender) meta.forEach(it => doRemoveELements(it));
+				else doRemoveELements(meta);
 				if (opts.additionalCaches) opts.additionalCaches.forEach(it => delete it[id]);
 				delete rendered[id];
 				if (opts.pFnDeleteExisting) await opts.pFnDeleteExisting(meta);
@@ -3512,6 +3546,10 @@ class RenderableCollectionBase {
 		// No-op
 	}
 
+	_getCollectionItem (id) {
+		return this._comp._state[this._prop].find(it => it.id === id);
+	}
+
 	/**
 	 * @param [opts] Temporary override options.
 	 * @param [opts.isDiffMode]
@@ -3566,8 +3604,8 @@ class RenderableCollectionAsyncBase {
 		opts = opts || {};
 		this._comp._pRenderCollection({
 			prop: this._prop,
-			fnUpdateExisting: (rendered, source, i) => this.pGetNewRender(rendered, source, i),
-			fnGetNew: (entity, i) => this.pDoUpdateExistingRender(entity, i),
+			fnUpdateExisting: (rendered, source, i) => this.pDoUpdateExistingRender(rendered, source, i),
+			fnGetNew: (entity, i) => this.pGetNewRender(entity, i),
 			namespace: this._namespace,
 			isDiffMode: opts.isDiffMode != null ? opts.isDiffMode : this._isDiffMode,
 			isMultiRender: this._isMultiRender,
@@ -3852,6 +3890,16 @@ class ComponentUiUtil {
 	static trackHook (hooks, prop, hook) {
 		hooks[prop] = hooks[prop] || [];
 		hooks[prop].push(hook);
+	}
+
+	static $getDisp (comp, prop, {html, $ele, fnGetText} = {}) {
+		$ele = ($ele || $(html || `<div></div>`));
+
+		const hk = () => $ele.text(fnGetText ? fnGetText(comp._state[prop]) : comp._state[prop]);
+		comp._addHookBase(prop, hk);
+		hk();
+
+		return $ele;
 	}
 
 	/**

@@ -10,6 +10,28 @@ class SearchPage {
 		this._render();
 	}
 
+	static _render_$getBtnToggleFilter (
+		{
+			propOmnisearch,
+			fnAddHookOmnisearch,
+			fnDoToggleOmnisearch,
+			title,
+			text,
+		},
+	) {
+		const $btn = $(`<button class="btn btn-default" title="${title.qq()}">${text.qq()}</button>`)
+			.click(() => Omnisearch[fnDoToggleOmnisearch]());
+		const hkBrew = (val) => {
+			$btn.toggleClass("active", Omnisearch[propOmnisearch]);
+			if (val == null) return;
+			this._doSearch();
+		};
+		Omnisearch[fnAddHookOmnisearch](hkBrew);
+		hkBrew();
+
+		return $btn;
+	}
+
 	static _render () {
 		Omnisearch.initState();
 
@@ -28,35 +50,37 @@ class SearchPage {
 		const $btnHelp = $(`<button class="btn btn-default mr-2 mobile__hidden" title="Help"><span class="glyphicon glyphicon-info-sign"></span></button>`)
 			.click(() => Omnisearch.doShowHelp());
 
-		const $btnToggleUa = $(`<button class="btn btn-default" title="Filter Unearthed Arcana and other unofficial source results">Include UA</button>`)
-			.click(() => Omnisearch.doToggleUa());
-		const hkUa = (val) => {
-			$btnToggleUa.toggleClass("active", Omnisearch.isShowUa);
-			if (val == null) return;
-			this._doSearch();
-		};
-		Omnisearch.addHookUa(hkUa);
-		hkUa();
+		const $btnToggleBrew = this._render_$getBtnToggleFilter({
+			propOmnisearch: "isShowBrew",
+			fnAddHookOmnisearch: "addHookBrew",
+			fnDoToggleOmnisearch: "doToggleBrew",
+			title: "Filter Homebrew",
+			text: "Include Homebrew",
+		});
 
-		const $btnToggleBlacklisted = $(`<button class="btn btn-default" title="Filter blacklisted content results">Include Blacklisted</button>`)
-			.click(() => Omnisearch.doToggleBlacklisted());
-		const hkBlacklisted = (val) => {
-			$btnToggleBlacklisted.toggleClass("active", Omnisearch.isShowBlacklisted);
-			if (val == null) return;
-			this._doSearch();
-		};
-		Omnisearch.addHookBlacklisted(hkBlacklisted);
-		hkBlacklisted();
+		const $btnToggleUa = this._render_$getBtnToggleFilter({
+			propOmnisearch: "isShowUa",
+			fnAddHookOmnisearch: "addHookUa",
+			fnDoToggleOmnisearch: "doToggleUa",
+			title: "Filter Unearthed Arcana and other unofficial source results",
+			text: "Include UA",
+		});
 
-		const $btnToggleSrd = $(`<button class="btn btn-default" title="Filter non- Systems Reference Document results">SRD Only</button>`)
-			.click(() => Omnisearch.doToggleSrdOnly());
-		const hkSrd = (val) => {
-			$btnToggleSrd.toggleClass("active", Omnisearch.isSrdOnly);
-			if (val == null) return;
-			this._doSearch();
-		};
-		Omnisearch.addHookSrdOnly(hkSrd);
-		hkSrd();
+		const $btnToggleBlacklisted = this._render_$getBtnToggleFilter({
+			propOmnisearch: "isShowBlacklisted",
+			fnAddHookOmnisearch: "addHookBlacklisted",
+			fnDoToggleOmnisearch: "doToggleBlacklisted",
+			title: "Filter blacklisted content results",
+			text: "Include Blacklisted",
+		});
+
+		const $btnToggleSrd = this._render_$getBtnToggleFilter({
+			propOmnisearch: "isSrdOnly",
+			fnAddHookOmnisearch: "addHookSrdOnly",
+			fnDoToggleOmnisearch: "doToggleSrdOnly",
+			title: "Filter non- Systems Reference Document results",
+			text: "SRD Only",
+		});
 
 		const handleMassExpandCollapse = mode => {
 			SearchPage._isAllExpanded = mode;
@@ -80,9 +104,10 @@ class SearchPage {
 			<div class="ve-flex-v-center mb-2 mobile__ve-flex-col">
 				<div class="ve-flex-v-center input-group btn-group mr-2 w-100 mobile__mb-2">${$iptSearch}${$btnSearch}</div>
 
-				<div class="ve-flex-v-center">
+				<div class="ve-flex-v-center mobile__ve-flex-col mobile__ve-flex-ai-start mobile__w-100">
 					${$btnHelp}
-					<div class="ve-flex-v-center btn-group mr-2">
+					<div class="ve-flex-v-center btn-group mr-2 mobile__mb-2 mobile__mr-0">
+						${$btnToggleBrew}
 						${$btnToggleUa}
 						${$btnToggleBlacklisted}
 						${$btnToggleSrd}

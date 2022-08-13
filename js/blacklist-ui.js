@@ -613,7 +613,7 @@ class BlacklistUi {
 	}
 
 	async _pImport_getUserUpload () {
-		return DataUtil.pUserUpload({expectedFileType: "content-blacklist"});
+		return DataUtil.pUserUpload({expectedFileTypes: ["content-blacklist"]});
 	}
 
 	async _pImport (evt) {

@@ -336,6 +336,8 @@
 		if (mon.cr.cr) mon.cr.cr = crOutStr;
 		else mon.cr = crOutStr;
 
+		Renderer.monster.updateParsed(mon);
+
 		mon._displayName = `${mon.name} (CR ${crOutStr})`;
 		mon._scaledCr = toCr;
 		mon._isScaledCr = true;

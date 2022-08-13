@@ -53,7 +53,6 @@ class BestiarySublistManager extends SublistManager {
 		const monCount = this.sublistItems.map(it => it.data.count).reduce((a, b) => a + b, 0);
 		this._$dispCrTotal.html(`${monCount} creature${monCount === 1 ? "" : "s"}; ${xp.baseXp.toLocaleString()} XP (<span class="help" title="Adjusted Encounter XP">Enc</span>: ${(xp.adjustedXp).toLocaleString()} XP)`);
 		if (this._encounterBuilder.isActive()) this._encounterBuilder.updateDifficulty();
-		else this._encounterBuilder.doSaveState();
 	}
 
 	_getSublistFullHash ({entity}) {
@@ -90,7 +89,7 @@ class BestiarySublistManager extends SublistManager {
 		const $ptCr = (() => {
 			if (!ScaleCreature.isCrInScaleRange(mon)) return $(`<span class="col-1-2 text-center">${cr}</span>`);
 
-			const $iptCr = $(`<input value="${cr}" class="ecgen__cr_input form-control form-control--minimal input-xs">`)
+			const $iptCr = $(`<input value="${cr}" class="w-100 text-center form-control form-control--minimal input-xs">`)
 				.click(() => $iptCr.select())
 				.change(() => this._encounterBuilder.pDoCrChange($iptCr, mon, mon._scaledCr));
 
@@ -472,46 +471,6 @@ class BestiaryPage extends ListPageMultiSource {
 		this._bindProfDiceHandlers();
 	}
 
-	// FIXME cleanup
-	// TODO refactor this and spell markdown section
-	static popoutHandlerGenerator (toList) {
-		const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${_BestiaryUtil.getUrlSubhashes(toRender)}`;
-
-		const renderFn = Renderer.hover.getFnRenderCompact(UrlUtil.getCurrentPage());
-		const $content = $$`<table class="w-100 stats">${renderFn(toRender)}</table>`;
-		const windowMeta = Renderer.hover.getShowWindow(
-			$content,
-			Renderer.hover.getWindowPositionFromEvent(evt),
-			{
-				pageUrl,
-				title: toRender._displayName || toRender.name,
-				isPermanent: true,
-				sourceData: toRender,
-			},
-		);
-
-		// region Hacky post-process step to match the hover window rendering pipeline
-		const page = UrlUtil.PG_BESTIARY;
-		const source = toRender.source;
-		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon);
-		Renderer.monster.doBindCompactContentHandlers({
-			$content,
-			compactReferenceData: {
-				type: "stats",
-				page,
-				source,
-				hash,
-			},
-			toRender,
-			fnRender: Renderer.hover.getFnRenderCompact(page),
-			page,
-			source,
-			hash,
-			meta: {windowMeta},
-		});
-		// endregion
-	}
-
 	async _pOnLoad_pPreDataAdd () {
 		this._pPageInit_profBonusDiceToggle();
 	}
@@ -530,10 +489,6 @@ class BestiaryPage extends ListPageMultiSource {
 				this._$pgContent.attr("data-proficiency-dice-mode", this._profDicMode);
 			}
 		});
-	}
-
-	async _pOnLoad_pPreHashInit () {
-		this._encounterBuilder.initState();
 	}
 
 	_handleBestiaryLiClick (evt, listItem) {
@@ -930,7 +885,7 @@ class BestiaryPage extends ListPageMultiSource {
 			];
 			const menu = ContextUtil.getMenu(actions);
 
-			const $btnOptions = $(`<button class="btn btn-default btn-xs btn-stats-name"><span class="glyphicon glyphicon-option-vertical"/></button>`)
+			const $btnOptions = $(`<button class="btn btn-default btn-xs btn-stats-name" title="Other Options"><span class="glyphicon glyphicon-option-vertical"/></button>`)
 				.click(evt => ContextUtil.pOpenMenu(evt, menu));
 
 			return $$`<div class="ve-flex-v-center btn-group ml-2">${$btnOptions}</div>`;

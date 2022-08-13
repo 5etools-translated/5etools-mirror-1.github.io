@@ -1,8 +1,6 @@
 "use strict";
 
 class EncounterBuilderUtils {
-	static ECGEN_BASE_PLAYERS = 4; // assume a party size of four
-
 	static getSublistedEncounter ({sublistItems}) {
 		return sublistItems
 			.map(li => {
@@ -121,8 +119,7 @@ class EncounterBuilderUtils {
 	 * @param partyMeta number of players in the party
 	 */
 	static calculateEncounterXp (data, partyMeta = null) {
-		// Make a default, generic-sized party of level 1 players
-		if (partyMeta == null) partyMeta = new EncounterPartyMeta([{level: 1, count: this.ECGEN_BASE_PLAYERS}]);
+		if (partyMeta == null) partyMeta = new EncounterPartyMeta([{level: 1, count: 1}]);
 
 		data = data.filter(it => EncounterBuilderUtils.getCr(it) < VeCt.CR_CUSTOM)
 			.sort((a, b) => SortUtil.ascSort(EncounterBuilderUtils.getCr(b), EncounterBuilderUtils.getCr(a)));
@@ -163,41 +160,27 @@ class EncounterBuilder extends ProxyBase {
 		this._bestiaryPage = null;
 		this._sublistManager = null;
 
-		this.stateInit = false;
 		this._cache = null;
 		this._lastPartyMeta = null;
-		this._isAdvanced = false;
 		this._lock = new VeLock();
 
 		this._cachedTitle = null;
 
-		// Encounter save/load
-		this.__state = {
-			savedEncounters: {},
-			activeKey: null,
-		};
-		this._state = this._getProxy("state", this.__state);
-		this._$iptName = null;
-		this._$btnSave = null;
-		this._$btnReload = null;
-		this._$btnLoad = null;
-		this.pSetSavedEncountersThrottled = MiscUtil.throttle(this._pSetSavedEncounters.bind(this), 50);
 		this._infoHoverId = null;
 
-		this.doSaveStateDebounced = MiscUtil.debounce(this.doSaveState, 50);
+		this._sublistPlugin = null;
 
 		// region Elements
+		this._$wrpRowsSimple = null;
+		this._$wrpRowsAdvanced = null;
+		this._$wrpHeadersAdvanced = null;
+		this._$wrpFootersAdvanced = null;
+
 		this._wrpRandomAndAdjust = null;
 		this._wrpGroupAndDifficulty = null;
 
-		this._$wrpAddidionalPlayers = null;
-		this._$btnAddPlayers = null;
-		this._$cbIsAdvanced = null;
-		this._$btnAddAdvancedCol = null;
-		this._$wrpGroupInfoLhs = null;
 		this._$hrHasCreatures = null;
 		this._$wrpDifficulty = null;
-		this._$wrpAdvancedHelp = null;
 		this._$dispXpEasy = null;
 		this._$dispXpMedium = null;
 		this._$dispXpHard = null;
@@ -211,10 +194,9 @@ class EncounterBuilder extends ProxyBase {
 		this._$dispXpAdjustedTotal = null;
 		this._$dispXpAdjustedPerPlayer = null;
 
-		this._playerGroupMetas = [];
-		this._playerAdvancedMetas = [];
-		this._advancedHeaderMetas = [];
-		this._advancedFooterMetas = [];
+		this._collectionPlayersSimple = null;
+		this._collectionColsExtraAdvanced = null;
+		this._collectionPlayersAdvanced = null;
 		// endregion
 	}
 
@@ -223,7 +205,15 @@ class EncounterBuilder extends ProxyBase {
 		this._cache = new EncounterBuilder.Cache({bestiaryPage: val});
 	}
 
-	set sublistManager (val) { this._sublistManager = val; }
+	set sublistManager (val) {
+		this._sublistManager = val;
+
+		this._sublistPlugin = new EncounterBuilderSublistPlugin();
+		this._sublistPlugin.encounterBuilder = this;
+		this._sublistPlugin.sublistManager = val;
+
+		this._sublistManager.addPlugin(this._sublistPlugin);
+	}
 
 	calculateListEncounterXp (partyMeta) {
 		partyMeta = partyMeta || this._lastPartyMeta;
@@ -239,146 +229,80 @@ class EncounterBuilder extends ProxyBase {
 	initUi () {
 		// region Init elements
 		this._wrpRandomAndAdjust = document.getElementById("wrp-encounterbuild-random-and-adjust");
+		this._wrpSaveLoad = document.getElementById("ecgen__wrp-save-controls");
 		this._wrpGroupAndDifficulty = document.getElementById("wrp-encounterbuild-group-and-difficulty");
 		// endregion
 
 		$(`#btn-encounterbuild`).click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, true));
 
 		this._renderRandomAndAdjust();
+		this._renderSaveLoad();
 		this._renderGroupAndDifficulty();
-	}
-
-	async _handleClickSaveToUrl (evt) {
-		const encounterPart = UrlUtil.packSubHash(EncounterUtil.SUB_HASH_PREFIX, [JSON.stringify(this._getSaveableState())], {isEncodeBoth: true});
-		const parts = [location.href, encounterPart];
-		await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
-		JqueryUtil.showCopiedEffect(evt.currentTarget);
-	}
-
-	_handleClickSaveToFile () {
-		DataUtil.userDownload(`encounter`, this._getSaveableState(), {fileType: "encounter"});
-	}
-
-	async _handleClickLoadFromFile () {
-		const {jsons, errors} = await DataUtil.pUserUpload({expectedFileType: "encounter"});
-
-		DataUtil.doHandleFileLoadErrorsGeneric(errors);
-
-		if (jsons?.length && jsons[0].items && jsons[0].sources) { // if it's a bestiary sublist
-			jsons.l = {
-				items: jsons.items,
-				sources: jsons.sources,
-			};
-		}
-		await this._pDoLoadState(jsons[0]);
+		this._renderCollections();
+		this._renderAddHooks();
 	}
 
 	_handleClickCopyAsText (evt) {
 		let xpTotal = 0;
-		const toCopyCreatures = this._sublistManager.sublistItems
+		const ptsCreature = this._sublistManager.sublistItems
 			.sort((a, b) => SortUtil.ascSortLower(a.name, b.name))
 			.map(it => {
 				xpTotal += Parser.crToXpNumber(it.values.cr) * it.data.count;
 				return `${it.data.count}× ${it.name}`;
-			})
-			.join(", ");
-		MiscUtil.pCopyTextToClipboard(`${toCopyCreatures} (${xpTotal.toLocaleString()} XP)`);
-		JqueryUtil.showCopiedEffect(evt.currentTarget);
-	}
+			});
+		const ptXp = `${xpTotal.toLocaleString()} XP`;
 
-	async _handleClickReset (evt) {
-		if (!await InputUiUtil.pGetUserBoolean({title: "Reset Encounter", htmlDescription: "Are you sure?", textYes: "Yes", textNo: "Cancel"})) return;
-		await this._pReset({isNotResetPlayers: !evt.shiftKey, isNotAddInitialPlayers: !evt.shiftKey});
+		if (evt.shiftKey) {
+			MiscUtil.pCopyTextToClipboard([...ptsCreature, ptXp].join("\n")).then(null);
+		} else {
+			MiscUtil.pCopyTextToClipboard(`${ptsCreature.join(", ")} (${ptXp})`).then(null);
+		}
+		JqueryUtil.showCopiedEffect(evt.currentTarget);
 	}
 
 	_handleClickBackToStatblocks () {
 		Hist.setSubhash(EncounterBuilder.HASH_KEY, null);
 	}
 
+	async _pGetLockedEncounterCreatures () {
+		return EncounterBuilderUtils.getSublistedEncounter({
+			sublistItems: this._sublistManager.sublistItems,
+		})
+			.filter(it => it.isLocked)
+			.pSerialAwaitMap(async ({baseCreature, count, customHashId}) => {
+				const creature = await Renderer.monster.pGetModifiedCreature(baseCreature, customHashId);
+				const xp = Parser.crToXpNumber(creature.cr);
+
+				return new EncounterBuilder.CandidateEncounterCreature({
+					xp,
+					count,
+					creature,
+					isLocked: true,
+					customHashId,
+				});
+			});
+	}
+
 	_renderRandomAndAdjust () {
-		// region Random
-		let modeRandom = "medium";
+		const {
+			$btnRandom,
+			$btnRandomMode,
+			$liRandomEasy,
+			$liRandomMedium,
+			$liRandomHard,
+			$liRandomDeadly,
+		} = this._renderRandomAndAdjust_getRandomMeta();
 
-		const pSetRandomMode = async (mode) => {
-			const randomizer = new EncounterBuilder.Randomizer({
-				partyMeta: this._getPartyMeta(),
-				sublistItems: this._sublistManager.sublistItems,
-				cache: this._cache,
-			});
-			const random = await randomizer.pGetRandomEncounter(mode);
-			if (random != null) await this._pLoadSublist(random);
+		const {
+			$btnAdjust,
+			$btnAdjustMode,
+			$liAdjustEasy,
+			$liAdjustMedium,
+			$liAdjustHard,
+			$liAdjustDeadly,
+		} = this._renderRandomAndAdjust_getAdjustMeta();
 
-			modeRandom = mode;
-			$btnRandom
-				.text(`Random ${mode.toTitleCase()}`)
-				.title(`Randomly generate ${Parser.getArticle(mode)} ${mode.toTitleCase()} encounter`);
-		};
-
-		const $getLiRandom = (mode) => {
-			return $(`<li title="Randomly generate ${Parser.getArticle(mode)} ${mode.toTitleCase()} encounter"><a href="#">Random ${mode.toTitleCase()}</a></li>`)
-				.click((evt) => {
-					evt.preventDefault();
-					pSetRandomMode(mode);
-				});
-		};
-
-		const $btnRandom = $(`<button class="btn btn-primary" style="min-width: 135px;" title="Randomly generate a Medium encounter">Random Medium</button>`)
-			.click(evt => {
-				evt.preventDefault();
-				pSetRandomMode(modeRandom);
-			});
-
-		const $btnRandomMode = $(`<button class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>`);
-		JqueryUtil.bindDropdownButton($btnRandomMode);
-
-		const $liRandomEasy = $getLiRandom("easy");
-		const $liRandomMedium = $getLiRandom("medium");
-		const $liRandomHard = $getLiRandom("hard");
-		const $liRandomDeadly = $getLiRandom("deadly");
-		// endregion
-
-		// region Adjust
-		let modeAdjust = "medium";
-
-		const pSetAdjustMode = async (mode) => {
-			const adjuster = new EncounterBuilder.Adjuster({
-				partyMeta: this._getPartyMeta(),
-				sublistItems: this._sublistManager.sublistItems,
-				passthroughSources: this._sublistManager.getExportableSublist().sources,
-			});
-			const adjusted = await adjuster.pGetAdjustedEncounter(mode);
-			if (adjusted != null) await this._pLoadSublist(adjusted);
-
-			modeAdjust = mode;
-			$btnAdjust
-				.text(`Adjust to ${mode.toTitleCase()}`)
-				.title(`Adjust the current encounter difficulty to ${mode.toTitleCase()}`);
-		};
-
-		const $getLiAdjust = (mode) => {
-			return $(`<li title="Adjust the current encounter difficulty to ${mode.toTitleCase()}"><a href="#">Adjust to ${mode.toTitleCase()}</a></li>`)
-				.click((evt) => {
-					evt.preventDefault();
-					pSetAdjustMode(mode);
-				});
-		};
-
-		const $btnAdjust = $(`<button class="btn btn-primary" style="min-width: 135px;" title="Adjust the current encounter difficulty to Medium">Adjust to Medium</button>`)
-			.click(evt => {
-				evt.preventDefault();
-				pSetAdjustMode(modeAdjust);
-			});
-
-		const $btnAdjustMode = $(`<button class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>`);
-		JqueryUtil.bindDropdownButton($btnAdjustMode);
-
-		const $liAdjustEasy = $getLiAdjust("easy");
-		const $liAdjustMedium = $getLiAdjust("medium");
-		const $liAdjustHard = $getLiAdjust("hard");
-		const $liAdjustDeadly = $getLiAdjust("deadly");
-		// endregion
-
-		$$(this._wrpRandomAndAdjust)`<div class="row">
+		$$(this._wrpRandomAndAdjust)`<div class="ve-flex-col">
 			<div class="ve-flex-h-right">
 				<div class="btn-group mr-3">
 					${$btnRandom}
@@ -405,16 +329,155 @@ class EncounterBuilder extends ProxyBase {
 		</div>`;
 	}
 
+	_renderRandomAndAdjust_getRandomMeta () {
+		let modeRandom = "medium";
+
+		const pSetRandomMode = async (mode) => {
+			const randomizer = new EncounterBuilder.Randomizer({
+				partyMeta: this._getPartyMeta(),
+				cache: this._cache,
+			});
+			const random = await randomizer.pGetRandomEncounter({
+				difficulty: mode,
+				lockedEncounterCreatures: await this._pGetLockedEncounterCreatures(),
+			});
+
+			if (random != null) {
+				const nxtState = await this._sublistManager.pGetExportableSublist({isMemoryOnly: true});
+				Object.assign(nxtState, random.getAsExportedSublistState());
+				await this._sublistManager.pDoLoadExportedSublist(nxtState, {isMemoryOnly: true});
+			}
+
+			modeRandom = mode;
+			$btnRandom
+				.text(`Random ${mode.toTitleCase()}`)
+				.title(`Randomly generate ${Parser.getArticle(mode)} ${mode.toTitleCase()} encounter`);
+		};
+
+		const $getLiRandom = (mode) => {
+			return $(`<li title="Randomly generate ${Parser.getArticle(mode)} ${mode.toTitleCase()} encounter"><a href="#">Random ${mode.toTitleCase()}</a></li>`)
+				.click(async (evt) => {
+					evt.preventDefault();
+					await pSetRandomMode(mode);
+				});
+		};
+
+		const $btnRandom = $(`<button class="btn btn-primary" style="min-width: 135px;" title="Randomly generate a Medium encounter">Random Medium</button>`)
+			.click(async evt => {
+				evt.preventDefault();
+				await pSetRandomMode(modeRandom);
+			});
+
+		const $btnRandomMode = $(`<button class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>`);
+		JqueryUtil.bindDropdownButton($btnRandomMode);
+
+		return {
+			$btnRandom,
+			$btnRandomMode,
+			$liRandomEasy: $getLiRandom("easy"),
+			$liRandomMedium: $getLiRandom("medium"),
+			$liRandomHard: $getLiRandom("hard"),
+			$liRandomDeadly: $getLiRandom("deadly"),
+		};
+	}
+
+	_renderRandomAndAdjust_getAdjustMeta () {
+		let modeAdjust = "medium";
+
+		const pSetAdjustMode = async (mode) => {
+			const adjuster = new EncounterBuilder.Adjuster({
+				partyMeta: this._getPartyMeta(),
+			});
+			const adjusted = await adjuster.pGetAdjustedEncounter({
+				difficulty: mode,
+				currentEncounter: EncounterBuilderUtils.getSublistedEncounter({
+					sublistItems: this._sublistManager.sublistItems,
+				}),
+			});
+
+			if (adjusted != null) {
+				const nxtState = await this._sublistManager.pGetExportableSublist({isMemoryOnly: true});
+				Object.assign(nxtState, adjusted.getAsExportedSublistState());
+				await this._sublistManager.pDoLoadExportedSublist(nxtState, {isMemoryOnly: true});
+			}
+
+			modeAdjust = mode;
+			$btnAdjust
+				.text(`Adjust to ${mode.toTitleCase()}`)
+				.title(`Adjust the current encounter difficulty to ${mode.toTitleCase()}`);
+		};
+
+		const $getLiAdjust = (mode) => {
+			return $(`<li title="Adjust the current encounter difficulty to ${mode.toTitleCase()}"><a href="#">Adjust to ${mode.toTitleCase()}</a></li>`)
+				.click(async (evt) => {
+					evt.preventDefault();
+					await pSetAdjustMode(mode);
+				});
+		};
+
+		const $btnAdjust = $(`<button class="btn btn-primary" style="min-width: 135px;" title="Adjust the current encounter difficulty to Medium">Adjust to Medium</button>`)
+			.click(async evt => {
+				evt.preventDefault();
+				await pSetAdjustMode(modeAdjust);
+			});
+
+		const $btnAdjustMode = $(`<button class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>`);
+		JqueryUtil.bindDropdownButton($btnAdjustMode);
+
+		return {
+			$btnAdjust,
+			$btnAdjustMode,
+			$liAdjustEasy: $getLiAdjust("easy"),
+			$liAdjustMedium: $getLiAdjust("medium"),
+			$liAdjustHard: $getLiAdjust("hard"),
+			$liAdjustDeadly: $getLiAdjust("deadly"),
+		};
+	}
+
+	_renderSaveLoad () {
+		const $btnSave = $(`<button class="btn btn-default btn-xs">Save Encounter</button>`)
+			.click(evt => this._sublistManager.pHandleClick_save(evt));
+
+		const $btnLoad = $(`<button class="btn btn-default btn-xs">Load Encounter</button>`)
+			.click(evt => this._sublistManager.pHandleClick_load(evt));
+
+		$$(this._wrpSaveLoad)`<div class="ve-flex-col">
+				<div class="ve-flex-h-right btn-group">
+					${$btnSave}
+					${$btnLoad}
+			</div>
+		</div>`;
+	}
+
 	_renderGroupAndDifficulty () {
-		const $btnSaveToUrl = $(`<button class="btn btn-primary btn-xs mr-2">Save to URL</button>`).click((evt) => this._handleClickSaveToUrl(evt));
-		const $btnSaveToFile = $(`<button class="btn btn-primary btn-xs">Save to File</button>`).click((evt) => this._handleClickSaveToFile(evt));
-		const $btnLoadFromFile = $(`<button class="btn btn-primary btn-xs">Load from File</button>`).click((evt) => this._handleClickLoadFromFile(evt));
-		const $btnCopyAsText = $(`<button class="btn btn-primary btn-xs mr-2">Copy as Text</button>`).click((evt) => this._handleClickCopyAsText(evt));
-		const $btnReset = $(`<button class="btn btn-danger btn-xs" title="SHIFT-click to reset players">Reset</button>`).click((evt) => this._handleClickReset(evt));
+		const $btnSaveToUrl = $(`<button class="btn btn-default btn-xs mr-2">Save to URL</button>`)
+			.click(() => this._sublistManager.pHandleClick_download({isUrl: true, $eleCopyEffect: $btnSaveToUrl}));
+		const $btnSaveToFile = $(`<button class="btn btn-default btn-xs">Save to File</button>`)
+			.click(() => this._sublistManager.pHandleClick_download());
+		const $btnLoadFromFile = $(`<button class="btn btn-default btn-xs">Load from File</button>`)
+			.click(evt => this._sublistManager.pHandleClick_upload({isAdditive: evt.shiftKey}));
+		const $btnCopyAsText = $(`<button class="btn btn-default btn-xs mr-2" title="SHIFT for Multi-Line Format">Copy as Text</button>`).click((evt) => this._handleClickCopyAsText(evt));
+		const $btnReset = $(`<button class="btn btn-danger btn-xs" title="SHIFT to Reset Players">Reset</button>`)
+			.click((evt) => this._sublistManager.pHandleClick_new(evt));
 
-		const $btnBackToStatblocks = $(`<button class="btn btn-default btn-xs ecgen__visible">Back to Statblocks</button>`).click((evt) => this._handleClickBackToStatblocks(evt));
+		const $btnBackToStatblocks = $(`<button class="btn btn-success btn-xs">Back to Statblocks</button>`).click((evt) => this._handleClickBackToStatblocks(evt));
 
-		this._$wrpGroupInfoLhs = this._renderGroupAndDifficulty_$getGroupInfoLhs();
+		const {
+			$stg: $stgSimple,
+			$wrpRows: $wrpRowsSimple,
+		} = this._renderGroupAndDifficulty_getGroupEles_simple();
+		this._$wrpRowsSimple = $wrpRowsSimple;
+
+		const {
+			$stg: $stgAdvanced,
+			$wrpRows: $wrpRowsAdvanced,
+			$wrpHeaders: $wrpHeadersAdvanced,
+			$wrpFooters: $wrpFootersAdvanced,
+		} = this._renderGroupAndDifficulty_getGroupEles_advanced();
+		this._$wrpRowsAdvanced = $wrpRowsAdvanced;
+		this._$wrpHeadersAdvanced = $wrpHeadersAdvanced;
+		this._$wrpFootersAdvanced = $wrpFootersAdvanced;
+
 		this._$hrHasCreatures = $(`<hr class="hr-1">`);
 		this._$wrpDifficulty = $$`<div class="ve-flex">
 			${this._renderGroupAndDifficulty_$getDifficultyLhs()}
@@ -424,7 +487,8 @@ class EncounterBuilder extends ProxyBase {
 		$$(this._wrpGroupAndDifficulty)`
 		<h3 class="mt-1 m-2">Group Info</h3>
 		<div class="ve-flex">
-			${this._$wrpGroupInfoLhs}
+			${$stgSimple}
+			${$stgAdvanced}
 			${this._renderGroupAndDifficulty_$getGroupInfoRhs()}
 		</div>
 
@@ -448,74 +512,100 @@ class EncounterBuilder extends ProxyBase {
 		</div>`;
 	}
 
-	_renderGroupAndDifficulty_$getGroupInfoLhs () {
-		this._$btnAddAdvancedCol = $(`<button class="btn btn-primary btn-xs ecgen__advanced_add_col" title="Add Column"><span class="glyphicon glyphicon-list-alt"></span></button>`)
-			.click(() => this._addAdvancedColumn());
+	_renderGroupAndDifficulty_getGroupEles_advanced () {
+		const $btnAddPlayers = $(`<button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Add Another Player</button>`)
+			.click(() => this._sublistPlugin.doAddPlayer());
 
-		this._$btnAddPlayers = $(`<button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Add Another Level</button>`)
-			.click(() => {
-				if (this._isAdvanced) this._addAdvancedPlayerRow(false);
-				else this._addPlayerRow(false);
-			});
+		const $btnAddAdvancedCol = $(`<button class="btn btn-primary btn-xxs ecgen-player__btn-inline h-ipt-xs bl-0 bb-0 bbl-0 bbr-0 btl-0 ml-n1" title="Add Column" tabindex="-1"><span class="glyphicon glyphicon-list-alt"></span></button>`)
+			.click(() => this._sublistPlugin.doAddColExtraAdvanced());
 
-		this._$cbIsAdvanced = $(`<input type="checkbox">`)
-			.change(() => {
-				const party = this._getPartyMeta();
-				this._isAdvanced = !!this._$cbIsAdvanced.prop("checked");
-				if (this._isAdvanced) {
-					let first = true;
-					party.levelMetas.forEach(it => {
-						[...new Array(it.count)].forEach(() => {
-							this._addAdvancedPlayerRow(first, false, "", it.level);
-							first = false;
-						});
-					});
-					this._playerGroupMetas.forEach(({fnRemove}) => fnRemove());
-					this.updateDifficulty();
-				} else {
-					let first = true;
-					party.levelMetas.forEach(it => {
-						this._addPlayerRow(first, false, it.count, it.level);
-						first = false;
-					});
-					this._playerAdvancedMetas.forEach(({fnRemove}) => fnRemove());
-					this.updateDifficulty();
-				}
-				this._updateUiIsAdvanced(this._isAdvanced);
-			});
+		const $wrpHeaders = $(`<div class="ve-flex"></div>`);
+		const $wrpFooters = $(`<div class="ve-flex"></div>`);
 
-		this._$wrpAddidionalPlayers = $$`<div class="mb-1 ve-flex">
-			<div class="ecgen__wrp_add_players_btn_wrp">
-				${this._$btnAddPlayers}
+		const $wrpRows = $(`<div class="ve-flex-col"></div>`);
+
+		const $stg = $$`<div class="w-70 overflow-x-auto ve-flex-col">
+			<div class="ve-flex-h-center mb-2 bb-1p small-caps ve-self-flex-start">
+				<div class="w-100p mr-1 h-ipt-xs no-shrink">Name</div>
+				<div class="w-40p text-center mr-1 h-ipt-xs no-shrink">Level</div>
+				${$wrpHeaders}
+				${$btnAddAdvancedCol}
+			</div>
+
+			${$wrpRows}
+
+			<div class="mb-1 ve-flex">
+				<div class="ecgen__wrp_add_players_btn_wrp no-shrink no-grow">
+					${$btnAddPlayers}
+				</div>
+				${$wrpFooters}
+			</div>
+
+			${this._renderGroupAndDifficulty_$getPtAdvancedMode()}
+
+			<div class="row">
+				<div class="w-100">
+					${Renderer.get().render(`{@note Additional columns will be imported into the DM Screen.}`)}
+				</div>
 			</div>
 		</div>`;
 
-		this._$wrpAdvancedHelp = $(`<div class="row">
-			<div class="w-100">
-				<i>Additional columns will be imported into the DM Screen.</i>
-			</div>
-		</div>`).hideVe();
+		const hkIsAdvanced = () => {
+			$stg.toggleVe(this._sublistPlugin.isAdvanced);
+		};
+		this._sublistPlugin.addHookIsAdvanced(hkIsAdvanced);
 
-		return $$`<div class="w-70">
-			<div class="ve-flex ecgen__players_head_simple">
+		return {
+			$stg,
+			$wrpRows,
+			$wrpHeaders,
+			$wrpFooters,
+		};
+	}
+
+	_renderGroupAndDifficulty_getGroupEles_simple () {
+		const $btnAddPlayers = $(`<button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"></span> Add Another Level</button>`)
+			.click(() => this._sublistPlugin.doAddPlayer());
+
+		const $wrpRows = $(`<div class="ve-flex-col w-100"></div>`);
+
+		const $stg = $$`<div class="w-70 ve-flex-col">
+			<div class="ve-flex">
 				<div class="w-20">Players:</div>
 				<div class="w-20">Level:</div>
 			</div>
 
-			<div class="ecgen__players_head_advanced">
-				<div class="ecgen__player_advanced__name_head mr-1 ecgen__player_head_tall">Name</div>
-				<div class="ecgen__player_advanced_narrow text-center mr-1 ecgen__player_head_tall">Level</div>
-				${this._$btnAddAdvancedCol}
+			${$wrpRows}
+
+			<div class="mb-1 ve-flex">
+				<div class="ecgen__wrp_add_players_btn_wrp">
+					${$btnAddPlayers}
+				</div>
 			</div>
 
-			${this._$wrpAddidionalPlayers}
+			${this._renderGroupAndDifficulty_$getPtAdvancedMode()}
 
+		</div>`;
+
+		const hkIsAdvanced = () => {
+			$stg.toggleVe(!this._sublistPlugin.isAdvanced);
+		};
+		this._sublistPlugin.addHookIsAdvanced(hkIsAdvanced);
+
+		return {
+			$wrpRows,
+			$stg,
+		};
+	}
+
+	_renderGroupAndDifficulty_$getPtAdvancedMode () {
+		const $cbAdvanced = ComponentUiUtil.$getCbBool(this._sublistPlugin, "isAdvanced");
+
+		return $$`<div class="ve-flex-v-center">
 			<label class="ve-flex-v-center">
 				<div class="mr-2">Advanced Mode</div>
-				${this._$cbIsAdvanced}
+				${$cbAdvanced}
 			</label>
-
-			${this._$wrpAdvancedHelp}
 		</div>`;
 	}
 
@@ -567,137 +657,52 @@ class EncounterBuilder extends ProxyBase {
 		</div>`;
 	}
 
-	_updateUiIsAdvanced () {
-		this._$cbIsAdvanced.prop("checked", this._isAdvanced);
+	_renderCollections () {
+		this._collectionPlayersSimple = new EncounterBuilder.RenderableCollectionPlayersSimple({
+			comp: this._sublistPlugin,
+			$wrpRows: this._$wrpRowsSimple,
+		});
 
-		this._advancedHeaderMetas.forEach(({fnRemove}) => fnRemove());
-		this._advancedFooterMetas.forEach(({fnRemove}) => fnRemove());
+		this._collectionColsExtraAdvanced = new EncounterBuilder.RenderableCollectionColsExtraAdvanced({
+			comp: this._sublistPlugin,
+			$wrpHeadersAdvanced: this._$wrpHeadersAdvanced,
+			$wrpFootersAdvanced: this._$wrpFootersAdvanced,
+		});
 
-		if (this._isAdvanced) {
-			this._$btnAddPlayers.html(`<span class="glyphicon glyphicon-plus"></span> Add Another Player`);
-			this._$wrpGroupInfoLhs.addClass(`ecgen__group_lhs--advanced`);
-			this._$wrpAdvancedHelp.showVe();
-		} else {
-			this._$btnAddPlayers.html(`<span class="glyphicon glyphicon-plus"></span> Add Another Level`);
-			this._$wrpGroupInfoLhs.removeClass(`ecgen__group_lhs--advanced`);
-			this._$wrpAdvancedHelp.hideVe();
-		}
+		this._collectionPlayersAdvanced = new EncounterBuilder.RenderableCollectionPlayersAdvanced({
+			comp: this._sublistPlugin,
+			$wrpRows: this._$wrpRowsAdvanced,
+		});
 	}
 
-	async initState () {
-		const initialState = await EncounterUtil.pGetInitialState();
-		if (initialState && initialState.data) await this._pDoLoadState(initialState.data, initialState.type === "local");
-		else this._addInitialPlayerRows();
-		this.stateInit = true;
-		await this._initSavedEncounters();
-	}
-
-	_addInitialPlayerRows (first) {
-		if (this._isAdvanced) this._addAdvancedPlayerRow(first);
-		else this._addPlayerRow(first, true, EncounterBuilderUtils.ECGEN_BASE_PLAYERS);
-	}
-
-	/**
-	 * @param [opts] Options object
-	 * @param [opts.isNotRemoveCreatures] If creature rows should not be removed.
-	 * @param [opts.isNotResetPlayers] If player info should not be reset.
-	 * @param [opts.isNotAddInitialPlayers] If initial player info should not be added.
-	 */
-	async _pReset (opts) {
-		opts = opts || {};
-		if (!opts.isNotRemoveCreatures) await this._sublistManager.pDoSublistRemoveAll();
-		if (!opts.isNotResetPlayers) this._removeAllPlayerRows();
-		if (!opts.isNotAddInitialPlayers) this._addInitialPlayerRows();
-
-		this._state.activeKey = null;
-		this.pSetSavedEncountersThrottled();
-		this.doSaveStateDebounced();
-	}
-
-	async _pDoLoadState (savedState, playersOnly) {
-		await this._pReset({isNotAddInitialPlayers: true, isNotRemoveCreatures: playersOnly});
-		if (!savedState) return;
-		try {
-			if (savedState.a) {
-				this._isAdvanced = true;
-				this._updateUiIsAdvanced();
-				if (savedState.d && savedState.d.length) {
-					savedState.d.forEach((details, i) => this._addAdvancedPlayerRow(!i, false, details.n, details.l, details.x));
-				} else this._addInitialPlayerRows(false);
-
-				if (savedState.c && savedState.c.length) {
-					savedState.c.forEach(col => {
-						this._addAdvancedColumnHeader(col);
-						this._addAdvancedColumnFooter();
-					});
-				}
-			} else {
-				if (savedState.p && savedState.p.length) {
-					savedState.p.forEach(({count, level}, i) => this._addPlayerRow(!i, false, count, level));
-				} else this._addInitialPlayerRows(false);
-			}
-
-			if (savedState.l && !playersOnly) {
-				await this._bestiaryPage.pPreloadSublistSources(savedState.l);
-				await this._sublistManager.pDoJsonLoad(savedState.l, false);
-			}
+	_renderAddHooks () {
+		const hkPlayersSimple = () => {
+			this._collectionPlayersSimple.render();
 
 			this.updateDifficulty();
-		} catch (e) {
-			JqueryUtil.doToast({content: `Could not load encounter! Was the file valid?`, type: "danger"});
-			this._pReset();
-			setTimeout(() => { throw e; });
-		}
-	}
-
-	_getSaveableState () {
-		const out = {
-			p: this._getPartyMeta().levelMetas,
-			l: this._sublistManager.getExportableSublist(),
-			a: this._isAdvanced,
 		};
-		if (this._isAdvanced) {
-			out.c = this._advancedHeaderMetas.map(({iptName}) => iptName.val());
-			out.d = this._playerAdvancedMetas.map(({iptName, iptLevel, iptsExtra}) => {
-				const extras = iptsExtra.map(ipt => ipt.val());
-				while (extras.length < out.c.length) extras.push(""); // pad array to match columns length
+		this._sublistPlugin.addHookPlayersSimple(hkPlayersSimple);
 
-				return {
-					n: iptName.val(),
-					l: Number(iptLevel.val()),
-					x: extras.slice(0, out.c.length), // cap at columns length
-				};
-			});
-		}
-		return out;
-	}
+		const hkPlayersAdvanced = () => {
+			this._collectionPlayersAdvanced.render();
 
-	doSaveState () {
-		if (this.stateInit) EncounterUtil.pDoSaveState(this._getSaveableState());
+			this.updateDifficulty();
+		};
+		this._sublistPlugin.addHookPlayersAdvanced(hkPlayersAdvanced);
+
+		const hkColsExtraAdvanced = () => {
+			this._collectionColsExtraAdvanced.render();
+		};
+		this._sublistPlugin.addHookColsExtraAdvanced(hkColsExtraAdvanced);
+
+		this._sublistPlugin.addHookIsAdvanced(hkPlayersSimple, {isCall: false});
+		this._sublistPlugin.addHookIsAdvanced(hkPlayersAdvanced, {isCall: false});
+
+		this._sublistPlugin.addHookPulseSublist(hkPlayersSimple, {isCall: false});
+		this._sublistPlugin.addHookPulseSublist(hkPlayersAdvanced, {isCall: false});
 	}
 
 	resetCache () { this._cache.reset(); }
-
-	async _pLoadSublist (toLoad) {
-		await this._bestiaryPage.pPreloadSublistSources(toLoad);
-		await this._sublistManager.pDoJsonLoad(toLoad, false);
-		this.updateDifficulty();
-	}
-
-	_addAdvancedPlayerRow (first = true, doUpdate = true, name, level, extraCols) {
-		this._$wrpAddidionalPlayers.before(this._getAdvancedPlayerRow(first, name, level, extraCols));
-		if (doUpdate) this.updateDifficulty();
-	}
-
-	_addPlayerRow (first = true, doUpdate = true, count, level) {
-		this._$wrpAddidionalPlayers.before(this._getPlayerRow(first, count, level));
-		if (doUpdate) this.updateDifficulty();
-	}
-
-	_removeAllPlayerRows () {
-		this._playerGroupMetas.forEach(({fnRemove}) => fnRemove());
-		this._playerAdvancedMetas.forEach(({fnRemove}) => fnRemove());
-	}
 
 	isActive () {
 		return Hist.getSubHash(EncounterBuilder.HASH_KEY) === "true";
@@ -707,7 +712,6 @@ class EncounterBuilder extends ProxyBase {
 		this._cachedTitle = this._cachedTitle || document.title;
 		document.title = "Encounter Builder - 5etools";
 		$(document.body).addClass("ecgen_active");
-		this.updateDifficulty();
 		this._bestiaryPage.doDeselectAll();
 		this._sublistManager.doSublistDeselectAll();
 	}
@@ -736,7 +740,7 @@ class EncounterBuilder extends ProxyBase {
 			const xp = Parser.crToXpNumber(mon.cr);
 			if (!xp) return; // if Unknown/etc
 
-			const curr = this._sublistManager.getExportableSublist();
+			const curr = await this._sublistManager.pGetExportableSublist({isForceIncludePlugins: true, isMemoryOnly: true});
 			const hash = UrlUtil.autoEncodeHash(mon);
 			const itemToSwitch = curr.items.find(it => it.h === hash);
 
@@ -769,7 +773,7 @@ class EncounterBuilder extends ProxyBase {
 					}
 				}
 
-				await this._pLoadSublist(curr);
+				await this._sublistManager.pDoLoadExportedSublist(curr, {isMemoryOnly: true});
 			} // else can't reroll
 		} finally {
 			this._lock.unlock();
@@ -777,13 +781,14 @@ class EncounterBuilder extends ProxyBase {
 	}
 
 	handleSubhash () {
-		// loading state from the URL is instead handled as part of EncounterUtil.pGetInitialState
 		if (Hist.getSubHash(EncounterBuilder.HASH_KEY) === "true") this._showBuilder();
 		else this._hideBuilder();
 	}
 
 	_getApproxTurnsToKill () {
 		const party = this._getPartyMeta().levelMetas;
+		if (!party.length) return 0;
+
 		const encounter = EncounterBuilderUtils.getSublistedEncounter({
 			sublistItems: this._sublistManager.sublistItems,
 		});
@@ -937,31 +942,10 @@ class EncounterBuilder extends ProxyBase {
 			this._$hrHasCreatures.hideVe();
 			this._$wrpDifficulty.hideVe();
 		}
-
-		this.doSaveState();
 	}
 
 	_getPartyMeta () {
-		let rawPlayerArr;
-		if (this._isAdvanced) {
-			const countByLevel = {};
-			this._playerAdvancedMetas
-				.forEach(({iptLevel}) => {
-					const level = Number(iptLevel.val());
-					countByLevel[level] = (countByLevel[level] || 0) + 1;
-				});
-			rawPlayerArr = Object.entries(countByLevel).map(([level, count]) => ({level: Number(level), count}));
-		} else {
-			rawPlayerArr = this._playerGroupMetas
-				.map(({selCount, selLevel}) => {
-					return {
-						count: Number(selCount.val()),
-						level: Number(selLevel.val()),
-					};
-				});
-		}
-
-		const out = new EncounterPartyMeta(rawPlayerArr);
+		const out = new EncounterPartyMeta(this._sublistPlugin.getRawPartyMeta());
 		this._lastPartyMeta = out;
 		return out;
 	}
@@ -1072,7 +1056,7 @@ class EncounterBuilder extends ProxyBase {
 
 				if (targetCrNum === scaledTo) return;
 
-				const state = this._sublistManager.getExportableSublist();
+				const state = await this._sublistManager.pGetExportableSublist({isForceIncludePlugins: true, isMemoryOnly: true});
 				const toFindHash = UrlUtil.autoEncodeHash(mon);
 
 				const toFindUid = !(scaledTo == null || baseCrNum === scaledTo) ? Renderer.monster.getCustomHashId(EncounterBuilder._getFauxMon(mon.name, mon.source, scaledTo)) : null;
@@ -1099,7 +1083,7 @@ class EncounterBuilder extends ProxyBase {
 					else state.items[ixCurrItem].customHashId = Renderer.monster.getCustomHashId(EncounterBuilder._getFauxMon(mon.name, mon.source, targetCrNum));
 				}
 
-				await this._pLoadSublist(state);
+				await this._sublistManager.pDoLoadExportedSublist(state, {isMemoryOnly: true});
 			} else {
 				JqueryUtil.doToast({
 					content: `"${$iptCr.val()}" is not a valid Challenge Rating! Please enter a valid CR (0-30). For fractions, "1/X" should be used.`,
@@ -1110,250 +1094,6 @@ class EncounterBuilder extends ProxyBase {
 		} finally {
 			this._lock.unlock();
 		}
-	}
-
-	_addAdvancedColumnHeader (name) {
-		this._$btnAddAdvancedCol.before(this._getAdvancedPlayerDetailHeader(name));
-	}
-
-	_addAdvancedColumnFooter () {
-		const wrpFooter = e_({
-			tag: "div",
-			clazz: "ecgen__player_advanced_narrow ve-flex-v-baseline ve-flex-h-center no-shrink no-grow mr-1",
-			children: [
-				e_({
-					tag: "button",
-					clazz: "btn btn-xs btn-danger ecgen__advanced_remove_col",
-					click: () => {
-						const pos = this._advancedFooterMetas.indexOf(meta);
-						this._playerAdvancedMetas.forEach(({fnRemoveIptExtra}) => fnRemoveIptExtra(pos));
-						this._advancedHeaderMetas[pos].fnRemove();
-						fnRemove();
-					},
-					title: "Remove Column",
-					html: `<span class="glyphicon-trash glyphicon"></span>`,
-				}),
-			],
-		});
-
-		const fnRemove = () => {
-			wrpFooter.remove();
-			this._advancedFooterMetas = this._advancedFooterMetas.filter(it => it !== meta);
-			this.doSaveStateDebounced();
-		};
-
-		const meta = {
-			wrp: wrpFooter,
-			fnRemove,
-		};
-		this._advancedFooterMetas.push(meta);
-
-		this._$wrpAddidionalPlayers.append(wrpFooter);
-	}
-
-	_addAdvancedColumn () {
-		this._addAdvancedColumnHeader();
-		this._playerAdvancedMetas.forEach(({fnAddIptExtra}) => fnAddIptExtra());
-		this._addAdvancedColumnFooter();
-		this.doSaveStateDebounced();
-	}
-
-	_getAdvancedPlayerDetailHeader (name) {
-		const iptName = e_({
-			tag: "input",
-			clazz: `ecgen__player_advanced_narrow form-control form-control--minimal input-xs text-center mr-1`,
-			val: name || "",
-			change: () => this.doSaveStateDebounced(),
-			attrs: {
-				autocomplete: "new-password",
-			},
-		});
-
-		const fnRemove = () => {
-			iptName.remove();
-			this._advancedHeaderMetas = this._advancedHeaderMetas.filter(it => it !== meta);
-			this.doSaveStateDebounced();
-		};
-
-		const meta = {
-			iptName,
-			fnRemove,
-		};
-		this._advancedHeaderMetas.push(meta);
-
-		return iptName;
-	}
-
-	_getIptAdvancedPlayerDetail (value) {
-		return e_({
-			tag: "input",
-			clazz: `ecgen__player_advanced_narrow ecgen__player_advanced_extra form-control form-control--minimal input-xs text-center mr-1`,
-			val: value || "",
-			change: () => this.doSaveStateDebounced(),
-		});
-	}
-
-	_getAdvancedPlayerRow (isFirst, name, level, extraVals) {
-		extraVals = extraVals || this._advancedHeaderMetas.map(() => "");
-
-		const iptName = e_({
-			tag: "input",
-			clazz: `ecgen__player_advanced__name form-control form-control--minimal input-xs mr-1`,
-			val: name || "",
-			change: () => this.doSaveStateDebounced(),
-		});
-
-		const iptLevel = e_({
-			tag: "input",
-			clazz: `ecgen__player_advanced__level ecgen__player_advanced_narrow form-control form-control--minimal input-xs text-right mr-1`,
-			val: level || 1,
-			type: "number",
-			attrs: {
-				min: 1,
-				max: 20,
-			},
-			change: () => this.updateDifficulty(),
-		});
-
-		const iptsExtra = extraVals.map(it => this._getIptAdvancedPlayerDetail(it));
-
-		const btnRemove = isFirst
-			? e_({tag: "div", clazz: `ecgen__del_players_filler`})
-			: e_({
-				tag: "button",
-				clazz: `btn btn-danger btn-xs ecgen__del_players`,
-				click: () => {
-					this._playerAdvancedMetas = this._playerAdvancedMetas.filter(it => it !== meta);
-					wrpRow.remove();
-					this.updateDifficulty();
-				},
-				title: "Remove Player",
-				html: `<span class="glyphicon glyphicon-trash"></span>`,
-			});
-
-		const wrpRow = e_({
-			tag: "div",
-			clazz: `row mb-2`,
-			children: [
-				e_({
-					tag: "div",
-					clazz: `w-100 ve-flex ecgen__player_advanced_flex`,
-					children: [
-						iptName,
-						iptLevel,
-						...iptsExtra,
-						btnRemove,
-					],
-				}),
-			],
-		});
-
-		const fnAddIptExtra = () => {
-			const iptExtra = this._getIptAdvancedPlayerDetail();
-			(iptsExtra.last() || iptLevel).after(iptExtra);
-			iptsExtra.push(iptExtra);
-			this.doSaveStateDebounced();
-		};
-
-		const fnRemoveIptExtra = (ix) => {
-			const iptExtra = iptsExtra[ix];
-			iptsExtra.splice(ix, 1);
-			iptExtra.remove();
-			this.doSaveStateDebounced();
-		};
-
-		const fnRemove = () => {
-			wrpRow.remove();
-			this._playerAdvancedMetas = this._playerAdvancedMetas.filter(it => it !== meta);
-			this.doSaveStateDebounced();
-		};
-
-		const meta = {
-			wrp: wrpRow,
-			iptName,
-			iptLevel,
-			iptsExtra,
-			fnAddIptExtra,
-			fnRemoveIptExtra,
-			fnRemove,
-		};
-		this._playerAdvancedMetas.push(meta);
-
-		return wrpRow;
-	}
-
-	_getPlayerRow (isFirst, count, level) {
-		count = Number(count) || 1;
-		level = Number(level) || 1;
-
-		const selLevel = e_({
-			tag: "select",
-			clazz: `form-control form-control--minimal input-xs`,
-			change: () => this.updateDifficulty(),
-			html: `${[...new Array(20)].map((_, i) => `<option ${(level === i + 1) ? "selected" : ""}>${i + 1}</option>`).join("")}`,
-		});
-
-		const selCount = e_({
-			tag: "select",
-			clazz: `form-control form-control--minimal input-xs`,
-			change: () => this.updateDifficulty(),
-			html: `${[...new Array(12)].map((_, i) => `<option ${(count === i + 1) ? "selected" : ""}>${i + 1}</option>`).join("")}`,
-		});
-
-		const wrpRow = e_({
-			tag: "div",
-			clazz: `ve-flex-v-center mb-2`,
-			children: [
-				e_({
-					tag: "div",
-					clazz: `w-20`,
-					children: [
-						selCount,
-					],
-				}),
-
-				e_({
-					tag: "div",
-					clazz: `w-20`,
-					children: [
-						selLevel,
-					],
-				}),
-
-				isFirst ? null : e_({
-					tag: "div",
-					clazz: `ml-2 ve-flex-v-center`,
-					children: [
-						e_({
-							tag: "button",
-							clazz: `btn btn-danger btn-xs ecgen__del_players`,
-							click: () => {
-								this._playerGroupMetas = this._playerGroupMetas.filter(it => it !== meta);
-								wrpRow.remove();
-								this.updateDifficulty();
-							},
-							title: `Remove Player Group`,
-							html: `<span class="glyphicon glyphicon-trash"></span>`,
-						}),
-					],
-				}),
-			],
-		});
-
-		const fnRemove = () => {
-			wrpRow.remove();
-			this._playerGroupMetas = this._playerGroupMetas.filter(it => it !== meta);
-		};
-
-		const meta = {
-			wrp: wrpRow,
-			selLevel,
-			selCount,
-			fnRemove,
-		};
-		this._playerGroupMetas.push(meta);
-
-		return wrpRow;
 	}
 
 	getButtons (monId) {
@@ -1423,181 +1163,6 @@ class EncounterBuilder extends ProxyBase {
 			fnUpdate: () => $btnLock.toggleClass("active", sublistItem.data.isLocked),
 		};
 	}
-
-	// region saved encounters
-	async _initSavedEncounters () {
-		const $wrpControls = $(`#ecgen__wrp-save-controls`).empty();
-
-		const savedState = await EncounterUtil.pGetSavedState();
-		Object.assign(this._state, savedState);
-
-		const pLoadActiveEncounter = async () => {
-			// save/restore the active key, to prevent it from being killed by the reset
-			const cached = this._state.activeKey;
-			const encounter = this._state.savedEncounters[this._state.activeKey];
-			await this._pDoLoadState(encounter.data);
-			this._state.activeKey = cached;
-			this.pSetSavedEncountersThrottled();
-		};
-
-		this._$iptName = $(`<input class="form-control form-control--minimal mb-3 mt-0 px-2 text-right bold" style="max-width: 330px;"/>`)
-			.change(() => {
-				const name = this._$iptName.val().trim() || "(Unnamed Encounter)";
-				this._$iptName.val(name);
-				const encounter = this._state.savedEncounters[this._state.activeKey];
-				encounter.name = name;
-				this._state.savedEncounters = {
-					...this._state.savedEncounters,
-					[this._state.activeKey]: encounter,
-				};
-				this.pSetSavedEncountersThrottled();
-			});
-		const hookName = () => {
-			if (this._state.activeKey) {
-				const encounter = this._state.savedEncounters[this._state.activeKey];
-				this._$iptName.val(encounter.name);
-			} else this._$iptName.val("");
-			this.pSetSavedEncountersThrottled();
-		};
-		this._addHook("state", "savedEncounters", hookName);
-		this._addHook("state", "activeKey", hookName);
-		hookName();
-
-		this._$btnNew = $(`<button class="btn btn-default btn-xs mr-2" title="New Encounter (SHIFT-click to reset players)"><span class="glyphicon glyphicon glyphicon-file"/></button>`)
-			.click(evt => {
-				this._state.activeKey = null;
-				this._pReset({isNotResetPlayers: !evt.shiftKey, isNotAddInitialPlayers: !evt.shiftKey});
-			});
-		const hookDisplayNew = () => this._$btnNew.toggleClass("hidden", !this._state.activeKey);
-		this._addHook("state", "activeKey", hookDisplayNew);
-		hookDisplayNew();
-
-		// TODO set window title to encounter name on save?
-		this._$btnSave = $(`<button class="btn btn-default btn-xs mr-2" title="Save Encounter"/>`)
-			.click(async () => {
-				if (this._state.activeKey) {
-					const encounter = this._state.savedEncounters[this._state.activeKey];
-					encounter.data = this._getSaveableState();
-
-					this._state.savedEncounters = {
-						...this._state.savedEncounters,
-						[this._state.activeKey]: encounter,
-					};
-					this.pSetSavedEncountersThrottled();
-					JqueryUtil.doToast({type: "success", content: "Saved!"});
-				} else {
-					const name = await InputUiUtil.pGetUserString({title: "Enter Encounter Name"});
-
-					if (name != null) {
-						const key = CryptUtil.uid();
-						this._state.savedEncounters = {
-							...this._state.savedEncounters,
-							[key]: {
-								name,
-								data: this._getSaveableState(),
-							},
-						};
-						this._state.activeKey = key;
-						this.pSetSavedEncountersThrottled();
-						JqueryUtil.doToast({type: "success", content: "Saved!"});
-					}
-				}
-			});
-		const hookButtonText = () => this._$btnSave.html(this._state.activeKey ? `<span class="glyphicon glyphicon-floppy-disk"/>` : "Save Encounter");
-		this._addHook("state", "activeKey", hookButtonText);
-		hookButtonText();
-
-		const pDoReload = async () => {
-			const inStorage = await EncounterUtil.pGetSavedState();
-			const prev = inStorage.savedEncounters[this._state.activeKey];
-			if (!prev) {
-				return JqueryUtil.doToast({
-					content: `Could not find encounter in storage! Has it been deleted?`,
-					type: "danger",
-				});
-			} else {
-				this._state.savedEncounters = {
-					...this._state.savedEncounters,
-					[this._state.activeKey]: prev,
-				};
-				await pLoadActiveEncounter();
-			}
-		};
-		this._$btnReload = $(`<button class="btn btn-default btn-xs mr-2" title="Reload Current Encounter"><span class="glyphicon glyphicon-refresh"/></button>`)
-			.click(() => pDoReload());
-
-		this._$btnLoad = $(`<button class="btn btn-default btn-xs">Load Encounter</button>`)
-			.click(async () => {
-				const inStorage = await EncounterUtil.pGetSavedState();
-				const {$modalInner, doClose} = UiUtil.getShowModal({title: "Saved Encounters"});
-				const $wrpRows = $(`<div class="ve-flex-col w-100 h-100"/>`).appendTo($modalInner);
-
-				const encounters = inStorage.savedEncounters;
-				if (Object.keys(encounters).length) {
-					let rendered = Object.keys(encounters).length;
-					Object.entries(encounters)
-						.sort((a, b) => SortUtil.ascSortLower(a[1].name || "", b[1].name || ""))
-						.forEach(([k, v]) => {
-							const $iptName = $(`<input class="input input-xs form-control form-control--minimal mr-2">`)
-								.val(v.name)
-								.change(() => {
-									const name = $iptName.val().trim() || "(Unnamed Encounter)";
-									$iptName.val(name);
-									const loaded = this._state.savedEncounters[k];
-									loaded.name = name;
-									this._state.savedEncounters = {...this._state.savedEncounters};
-									this.pSetSavedEncountersThrottled();
-								});
-
-							const $btnLoad = $(`<button class="btn btn-primary btn-xs mr-2">Load</button>`)
-								.click(async () => {
-									// if we've already got the correct encounter loaded, reload it
-									if (this._state.activeKey === k) await pDoReload();
-									else this._state.activeKey = k;
-
-									await pLoadActiveEncounter();
-									await doClose();
-								});
-
-							const $btnDelete = $(`<button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"/></button>`)
-								.click(() => {
-									if (this._state.activeKey === k) this._state.activeKey = null;
-									this._state.savedEncounters = Object.keys(this._state.savedEncounters)
-										.filter(it => it !== k)
-										.mergeMap(it => ({[it]: this._state.savedEncounters[it]}));
-									$row.remove();
-									if (!--rendered) $$`<div class="w-100 ve-flex-vh-center italic">No saved encounters</div>`.appendTo($wrpRows);
-									this.pSetSavedEncountersThrottled();
-								});
-
-							const $row = $$`<div class="ve-flex-v-center w-100 mb-2">
-								${$iptName}
-								${$btnLoad}
-								${$btnDelete}
-							</div>`.appendTo($wrpRows);
-						});
-				} else $$`<div class="w-100 ve-flex-vh-center italic">No saved encounters</div>`.appendTo($wrpRows);
-			});
-
-		const hookActiveKey = () => {
-			// show/hide controls
-			this._$iptName.toggle(!!this._state.activeKey);
-			this._$btnReload.toggle(!!this._state.activeKey);
-		};
-		this._addHook("state", "activeKey", hookActiveKey);
-		hookActiveKey();
-
-		$$`<div class="ve-flex-col" style="align-items: flex-end;">
-			${this._$iptName}
-			<div class="ve-flex-h-right">${this._$btnNew}${this._$btnSave}${this._$btnReload}${this._$btnLoad}</div>
-		</div>`.appendTo($wrpControls);
-	}
-
-	_pSetSavedEncounters () {
-		if (!this.stateInit) return;
-		return StorageUtil.pSet(EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION, this.__state);
-	}
-	// endregion
 }
 EncounterBuilder.HASH_KEY = "encounterbuilder";
 EncounterBuilder.TIERS = ["easy", "medium", "hard", "deadly", "absurd"];
@@ -1608,6 +1173,233 @@ EncounterBuilder._TITLE_DEADLY = "A deadly encounter could be lethal for one or 
 EncounterBuilder._TITLE_ABSURD = "An &quot;absurd&quot; encounter is a deadly encounter as per the rules, but is differentiated here to provide an additional tool for judging just how deadly a &quot;deadly&quot; encounter will be. It is calculated as: &quot;deadly + (deadly - hard)&quot;.";
 EncounterBuilder._TITLE_BUDGET_DAILY = "This provides a rough estimate of the adjusted XP value for encounters the party can handle before the characters will need to take a long rest.";
 EncounterBuilder._TITLE_TTK = "Time to Kill: The estimated number of turns the party will require to defeat the encounter. This assumes single-target damage only.";
+
+EncounterBuilder.RenderableCollectionPlayersSimple = class extends RenderableCollectionBase {
+	constructor (
+		{
+			comp,
+
+			$wrpRows,
+		},
+	) {
+		super(comp, "playersSimple");
+		this._$wrpRows = $wrpRows;
+	}
+
+	getNewRender (playerGroup, i) {
+		playerGroup.entity.count = playerGroup.entity.count || 1;
+		playerGroup.entity.level = playerGroup.entity.level || 1;
+
+		const comp = BaseComponent.fromObject(playerGroup.entity, "*");
+		comp._addHookAll("state", () => {
+			this._getCollectionItem(playerGroup.id).entity = comp.toObject("*");
+			this._comp._triggerCollectionUpdate("playersSimple");
+		});
+
+		const $selCount = ComponentUiUtil.$getSelEnum(
+			comp,
+			"count",
+			{
+				values: [...new Array(12)].map((_, i) => i + 1),
+			},
+		).addClass("form-control--minimal no-shrink");
+
+		const $selLevel = ComponentUiUtil.$getSelEnum(
+			comp,
+			"level",
+			{
+				values: [...new Array(20)].map((_, i) => i + 1),
+			},
+		).addClass("form-control--minimal no-shrink bl-0");
+
+		const $btnRemove = $(`<button class="btn btn-danger btn-xxs ecgen-player__btn-inline h-ipt-xs no-shrink bl-0 bbl-0 btl-0" title="Remove Player Group" tabindex="-1"><span class="glyphicon glyphicon-trash"></span></button>`)
+			.click(() => {
+				this._comp.playersSimple = this._comp.playersSimple.filter(it => it.id !== playerGroup.id);
+			});
+
+		const $wrpRow = $$`<div class="ve-flex-v-center mb-2 ecgen-player__wrp-row">
+			<div class="w-20">${$selCount}</div>
+			<div class="w-20">${$selLevel}</div>
+			<div class="ve-flex-v-center">${$btnRemove}</div>
+		</div>`.appendTo(this._$wrpRows);
+
+		return {
+			comp,
+			$wrpRow,
+		};
+	}
+
+	doUpdateExistingRender (renderedMeta, playerGroup, i) {
+		renderedMeta.comp._proxyAssignSimple("state", playerGroup.entity, true);
+		if (!renderedMeta.$wrpRow.parent().is(this._$wrpRows)) renderedMeta.$wrpRow.appendTo(this._$wrpRows);
+	}
+};
+
+EncounterBuilder.RenderableCollectionColsExtraAdvanced = class extends RenderableCollectionBase {
+	constructor (
+		{
+			comp,
+
+			$wrpHeadersAdvanced,
+			$wrpFootersAdvanced,
+		},
+	) {
+		super(comp, "colsExtraAdvanced");
+
+		this._$wrpHeadersAdvanced = $wrpHeadersAdvanced;
+		this._$wrpFootersAdvanced = $wrpFootersAdvanced;
+	}
+
+	getNewRender (colExtra, i) {
+		const comp = BaseComponent.fromObject(colExtra.entity, "*");
+		comp._addHookAll("state", () => {
+			this._getCollectionItem(colExtra.id).entity = comp.toObject("*");
+			this._comp._triggerCollectionUpdate("colsExtraAdvanced");
+		});
+
+		const $iptName = ComponentUiUtil.$getIptStr(comp, "name")
+			.addClass("w-40p form-control--minimal no-shrink text-center mr-1 bb-0");
+
+		const $wrpHeader = $$`<div class="ve-flex">
+			${$iptName}
+		</div>`
+			.appendTo(this._$wrpHeadersAdvanced);
+
+		const $btnDelete = $(`<button class="btn btn-xxs ecgen-player__btn-inline w-40p btn-danger no-shrink mt-n2 bt-0 btl-0 btr-0" title="Remove Column" tabindex="-1"><span class="glyphicon-trash glyphicon"></span></button>`)
+			.click(() => this._comp.doRemoveColExtraAdvanced(colExtra.id));
+
+		const $wrpFooter = $$`<div class="w-40p ve-flex-v-baseline ve-flex-h-center no-shrink no-grow mr-1">
+			${$btnDelete}
+		</div>`
+			.appendTo(this._$wrpFootersAdvanced);
+
+		return {
+			comp,
+			$wrpHeader,
+			$wrpFooter,
+			fmRemoveEles: () => {
+				$wrpHeader.remove();
+				$wrpFooter.remove();
+			},
+		};
+	}
+
+	doUpdateExistingRender (renderedMeta, colExtra, i) {
+		renderedMeta.comp._proxyAssignSimple("state", colExtra.entity, true);
+		if (!renderedMeta.$wrpHeader.parent().is(this._$wrpHeadersAdvanced)) renderedMeta.$wrpHeader.appendTo(this._$wrpHeadersAdvanced);
+		if (!renderedMeta.$wrpFooter.parent().is(this._$wrpFootersAdvanced)) renderedMeta.$wrpFooter.appendTo(this._$wrpFootersAdvanced);
+	}
+};
+
+EncounterBuilder.RenderableCollectionPlayersAdvanced = class extends RenderableCollectionBase {
+	constructor (
+		{
+			comp,
+
+			$wrpRows,
+		},
+	) {
+		super(comp, "playersAdvanced");
+		this._$wrpRows = $wrpRows;
+	}
+
+	getNewRender (player, i) {
+		player.entity.name = player.entity.name || "";
+		player.entity.level = player.entity.level || 1;
+		player.entity.extraCols = player.entity.extraCols || this._comp.colsExtraAdvanced.map(() => "");
+
+		const comp = BaseComponent.fromObject(player.entity, "*");
+		comp._addHookAll("state", () => {
+			this._getCollectionItem(player.id).entity = comp.toObject("*");
+			this._comp._triggerCollectionUpdate("playersAdvanced");
+		});
+
+		const $iptName = ComponentUiUtil.$getIptStr(comp, "name")
+			.addClass(`w-100p form-control--minimal no-shrink mr-1`);
+
+		const $iptLevel = ComponentUiUtil.$getIptInt(
+			comp,
+			"level",
+			1,
+			{
+				min: 1,
+				max: 20,
+				fallbackOnNaN: 1,
+			},
+		).addClass("w-40p form-control--minimal no-shrink mr-1 text-center");
+
+		const $wrpIptsExtra = $(`<div class="ve-flex-v-center"></div>`);
+		const collectionExtras = new EncounterBuilder.RenderableCollectionPlayerAdvancedExtras({
+			comp,
+			$wrpIptsExtra,
+		});
+		const hkExtras = () => collectionExtras.render();
+		comp._addHookBase("extras", hkExtras);
+		hkExtras();
+
+		const $btnRemove = $(`<button class="btn btn-danger btn-xxs ecgen-player__btn-inline h-ipt-xs no-shrink ml-n1 bl-0 bbl-0 btl-0" title="Remove Player" tabindex="-1"><span class="glyphicon glyphicon-trash"></span></button>`)
+			.click(() => {
+				this._comp.playersAdvanced = this._comp.playersAdvanced.filter(it => it.id !== player.id);
+			});
+
+		const $wrpRow = $$`<div class="ve-flex-v-center mb-2 ecgen-player__wrp-row">
+			${$iptName}
+			${$iptLevel}
+			${$wrpIptsExtra}
+			${$btnRemove}
+		</div>`.appendTo(this._$wrpRows);
+
+		return {
+			comp,
+			$wrpRow,
+			$wrpIptsExtra,
+		};
+	}
+
+	doUpdateExistingRender (renderedMeta, player, i) {
+		renderedMeta.comp._proxyAssignSimple("state", player.entity, true);
+		if (!renderedMeta.$wrpRow.parent().is(this._$wrpRows)) renderedMeta.$wrpRow.appendTo(this._$wrpRows);
+	}
+};
+
+EncounterBuilder.RenderableCollectionPlayerAdvancedExtras = class extends RenderableCollectionBase {
+	constructor (
+		{
+			comp,
+
+			$wrpIptsExtra,
+		},
+	) {
+		super(comp, "extras");
+		this._$wrpIptsExtra = $wrpIptsExtra;
+	}
+
+	getNewRender (extra, i) {
+		const comp = BaseComponent.fromObject(extra.entity, "*");
+		comp._addHookAll("state", () => {
+			this._getCollectionItem(extra.id).entity = comp.toObject("*");
+			this._comp._triggerCollectionUpdate("extras");
+		});
+
+		const $iptVal = ComponentUiUtil.$getIptStr(comp, "value")
+			.addClass(`w-40p no-shrink form-control--minimal text-center mr-1`);
+
+		const $wrpRow = $$`<div class="ve-flex-v-h-center">
+			${$iptVal}
+		</div>`
+			.appendTo(this._$wrpIptsExtra);
+
+		return {
+			comp,
+			$wrpRow,
+		};
+	}
+
+	doUpdateExistingRender (renderedMeta, extra, i) {
+		renderedMeta.comp._proxyAssignSimple("state", extra.entity, true);
+		if (!renderedMeta.$wrpRow.parent().is(this._$wrpIptsExtra)) renderedMeta.$wrpRow.appendTo(this._$wrpIptsExtra);
+	}
+};
 
 /**
  * A cache of XP value -> creature.
@@ -1647,16 +1439,15 @@ EncounterBuilder.Cache = class {
 };
 
 EncounterBuilder.Adjuster = class {
-	constructor ({partyMeta, sublistItems, passthroughSources}) {
+	static _INCOMPLETE_EXHAUSTED = 0;
+	static _INCOMPLETE_FAILED = -1;
+	static _COMPLETE = 1;
+
+	constructor ({partyMeta}) {
 		this._partyMeta = partyMeta;
-		this._sublistItems = sublistItems;
-		this._passthroughSources = passthroughSources;
 	}
 
-	async pGetAdjustedEncounter (difficulty) {
-		let currentEncounter = EncounterBuilderUtils.getSublistedEncounter({
-			sublistItems: this._sublistItems,
-		});
+	async pGetAdjustedEncounter ({difficulty, currentEncounter}) {
 		if (!currentEncounter.length) {
 			JqueryUtil.doToast({content: `The current encounter contained no creatures! Please add some first.`, type: "warning"});
 			return;
@@ -1727,16 +1518,7 @@ EncounterBuilder.Adjuster = class {
 		// do a post-step to randomly bulk out our counts of "irrelevant" creatures, ensuring plenty of fireball fodder
 		this._pGetAdjustedEncounter_doIncreaseIrrelevantCreatureCount({currentEncounter, crCutoff, targetMax});
 
-		// Return data in "loadable sublist" format
-		return {
-			items: currentEncounter.map(creatureMeta => ({
-				h: creatureMeta.hash,
-				c: `${creatureMeta.count}`,
-				customHashId: creatureMeta.customHashId || undefined,
-				l: creatureMeta.isLocked,
-			})),
-			sources: this._passthroughSources,
-		};
+		return new EncounterBuilder.AdjustedEncounter({currentEncounter});
 	}
 
 	_pGetAdjustedEncounter_doTryAdjusting ({currentEncounter, numSkipTotals, targetMin, targetMax}) {
@@ -1829,14 +1611,30 @@ EncounterBuilder.Adjuster = class {
 		}
 	}
 };
-EncounterBuilder.Adjuster._INCOMPLETE_EXHAUSTED = 0;
-EncounterBuilder.Adjuster._INCOMPLETE_FAILED = -1;
-EncounterBuilder.Adjuster._COMPLETE = 1;
+
+// TODO use this earlier in the adjuster
+EncounterBuilder.AdjustedEncounter = class {
+	constructor ({currentEncounter}) {
+		this._currentEncounter = currentEncounter;
+	}
+
+	getAsExportedSublistState () {
+		return {
+			items: this._currentEncounter.map(creatureMeta => ({
+				h: creatureMeta.hash,
+				c: `${creatureMeta.count}`,
+				customHashId: creatureMeta.customHashId || undefined,
+				l: creatureMeta.isLocked,
+			})),
+		};
+	}
+};
 
 EncounterBuilder.Randomizer = class {
-	constructor ({partyMeta, sublistItems, cache}) {
+	static _NUM_SAMPLES = 20;
+
+	constructor ({partyMeta, cache}) {
 		this._partyMeta = partyMeta;
-		this._sublistItems = sublistItems;
 		this._cache = cache;
 
 		// region Pre-cache various "constants" required during generation, for performance
@@ -1857,27 +1655,11 @@ EncounterBuilder.Randomizer = class {
 		// endregion
 	}
 
-	async pGetRandomEncounter (difficulty) {
+	async pGetRandomEncounter ({difficulty, lockedEncounterCreatures}) {
 		const ixLow = EncounterBuilder.TIERS.indexOf(difficulty);
 		if (!~ixLow) throw new Error(`Unhandled difficulty level: "${difficulty}"`);
 
 		const budget = this._partyMeta[EncounterBuilder.TIERS[ixLow + 1]] - 1;
-		const lockedEncounterCreatures = await EncounterBuilderUtils.getSublistedEncounter({
-			sublistItems: this._sublistItems,
-		})
-			.filter(it => it.isLocked)
-			.pSerialAwaitMap(async ({baseCreature, count, customHashId}) => {
-				const creature = await Renderer.monster.pGetModifiedCreature(baseCreature, customHashId);
-				const xp = Parser.crToXpNumber(creature.cr);
-
-				return new EncounterBuilder.CandidateEncounterCreature({
-					xp,
-					count,
-					creature,
-					isLocked: true,
-					customHashId,
-				});
-			});
 
 		const closestSolution = this._pDoGenerateEncounter_getSolution({budget, lockedEncounterCreatures});
 
@@ -1886,20 +1668,7 @@ EncounterBuilder.Randomizer = class {
 			return;
 		}
 
-		const toLoad = {items: []};
-		const sources = new Set();
-		closestSolution.creatures
-			.forEach(it => {
-				toLoad.items.push({
-					h: UrlUtil.autoEncodeHash(it.creature),
-					c: String(it.count),
-					l: it.isLocked,
-					customHashId: it.customHashId ?? undefined,
-				});
-				sources.add(it.creature.source);
-			});
-		toLoad.sources = [...sources];
-		return toLoad;
+		return closestSolution;
 	}
 
 	_pDoGenerateEncounter_getSolution ({budget, lockedEncounterCreatures}) {
@@ -2068,7 +1837,6 @@ EncounterBuilder.Randomizer = class {
 		return maxSkip - 1;
 	}
 };
-EncounterBuilder.Randomizer._NUM_SAMPLES = 20;
 
 EncounterBuilder.CandidateEncounter = class {
 	constructor ({lockedEncounterCreatures = null} = {}) {
@@ -2096,6 +1864,23 @@ EncounterBuilder.CandidateEncounter = class {
 				count,
 			}),
 		);
+	}
+
+	getAsExportedSublistState () {
+		const toLoad = {items: []};
+		const sources = new Set();
+		this.creatures
+			.forEach(it => {
+				toLoad.items.push({
+					h: UrlUtil.autoEncodeHash(it.creature),
+					c: String(it.count),
+					l: it.isLocked,
+					customHashId: it.customHashId ?? undefined,
+				});
+				sources.add(it.creature.source);
+			});
+		toLoad.sources = [...sources];
+		return toLoad;
 	}
 };
 

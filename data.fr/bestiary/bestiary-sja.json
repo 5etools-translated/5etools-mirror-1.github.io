@@ -1,0 +1,101 @@
+{
+	"_meta": {
+		"otherSources": {
+			"monster": {
+				"MM": "SjA",
+				"MPMM": "SjA"
+			}
+		}
+	},
+	"monster": [
+		{
+			"name": "Giff Shipmate",
+			"source": "SjA",
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d8 + 30"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 17,
+			"int": 11,
+			"wis": 12,
+			"cha": 12,
+			"passive": 11,
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Firearms Knowledge",
+					"entries": [
+						"La maîtrise de ses armes par le giff lui permet d'ignorer la propriété de chargement de toute arme à feu."
+					]
+				},
+				{
+					"name": "Steady as She Goes",
+					"entries": [
+						"Sur le pont d'un navire, le giff a l'avantage sur les tests de capacité et les jets de sauvegarde effectués contre les effets qui le renverseraient {@condition prone} ou le pousseraient par-dessus bord."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Le giff fait deux attaques à l'épée longue ou au mousquet."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 6} pour toucher, portée de 1,5 m, une cible. {@h}8 ({@damage 1d8 + 4}) dégâts tranchants, ou 9 ({@damage 1d10 + 4}) dégâts tranchants si utilisé à deux mains."
+					]
+				},
+				{
+					"name": "Musket",
+					"entries": [
+						"{@atk rw} {@hit 4} pour toucher, portée de 40/120 ft., une cible. {@h}8 ({@damage 1d12 + 2}) dégâts perforants."
+					]
+				},
+				{
+					"name": "Force Grenade",
+					"entries": [
+						"Le giff lance une grenade jusqu'à 60 pieds, et la grenade explose dans une sphère de 20 pieds de rayon. Chaque créature dans cette zone doit effectuer un jet de sauvegarde de {@dc 15} de Dextérité, subissant 17 ({@damage 5d6}) dégâts de force en cas d'échec, ou la moitié des dégâts en cas de réussite. Après que le giff a lancé la grenade, lancez un {@dice d6} ; sur un résultat de 4 ou moins, le giff n'a plus de grenades à lancer."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"O",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW"
+			]
+		}
+	]
+}

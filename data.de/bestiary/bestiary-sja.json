@@ -1,0 +1,101 @@
+{
+	"_meta": {
+		"otherSources": {
+			"monster": {
+				"MM": "SjA",
+				"MPMM": "SjA"
+			}
+		}
+	},
+	"monster": [
+		{
+			"name": "Giff Shipmate",
+			"source": "SjA",
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d8 + 30"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 17,
+			"int": 11,
+			"wis": 12,
+			"cha": 12,
+			"passive": 11,
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Firearms Knowledge",
+					"entries": [
+						"Da der Giff seine Waffen beherrscht, kann er die Ladeeigenschaft jeder Feuerwaffe ignorieren."
+					]
+				},
+				{
+					"name": "Steady as She Goes",
+					"entries": [
+						"Auf dem Deck eines Schiffes hat der Giff einen Vorteil bei Fähigkeitsprüfungen und Rettungswürfen gegen Effekte, die ihn umwerfen {@condition prone} oder über Bord schubsen würden."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Der Giff führt zwei Angriffe mit dem Langschwert oder der Muskete aus."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 6} bis zum Treffer, Reichweite 5 Fuß, ein Ziel. {@h}8 ({@damage 1d8 + 4}) Hiebschaden, oder 9 ({@damage 1d10 + 4}) Hiebschaden, wenn mit zwei Händen eingesetzt."
+					]
+				},
+				{
+					"name": "Musket",
+					"entries": [
+						"{@atk rw} {@hit 4} als Treffer, Reichweite 40/120 Fuß, ein Ziel. {@h}8 ({@damage 1d12 + 2}) Stich-Schaden."
+					]
+				},
+				{
+					"name": "Force Grenade",
+					"entries": [
+						"Der Giff wirft eine Granate bis zu 60 Fuß weit, und die Granate explodiert in einer Kugel mit einem Radius von 20 Fuß. Jede Kreatur in diesem Bereich muss einen {@dc 15} Rettungswurf in Geschicklichkeit machen und erleidet bei einem misslungenen Rettungswurf 17 ({@damage 5d6}) Kraftschaden, bei einem erfolgreichen Rettungswurf die Hälfte des Schadens. Nachdem der Giff die Granate geworfen hat, wirfst du einen {@dice d6}; bei einem Wurf von 4 oder weniger hat der Giff keine Granate mehr zu werfen."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"O",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW"
+			]
+		}
+	]
+}

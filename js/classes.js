@@ -494,86 +494,24 @@ class ClassesPage extends MixinComponentGlobalState(MixinBaseComponent(MixinProx
 
 		const cpyCls = MiscUtil.copy(this.activeClassRaw);
 
-		const walker = MiscUtil.getWalker({
-			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
-			isAllowDeleteObjects: true,
-			isDepthFirst: true,
-		});
+		const walker = Renderer.class.getWalkerFilterDereferencedFeatures();
 
 		const isUseSubclassSources = !this._pageFilter.isClassNaturallyDisplayed(f, cpyCls) && this._pageFilter.isAnySubclassDisplayed(f, cpyCls);
 
-		cpyCls.classFeatures = cpyCls.classFeatures.map((lvlFeatures, ixLvl) => {
-			return walker.walk(
-				lvlFeatures,
-				{
-					object: (obj) => {
-						if (!obj.source) return obj;
-						const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
-
-						const isDisplay = [obj.source, ...(obj.otherSources || []).map(it => it.source)]
-							.some(src => this.filterBox.toDisplayByFilters(
-								f,
-								{
-									filter: this._pageFilter.sourceFilter,
-									value: isUseSubclassSources && src === cpyCls.source
-										? this._pageFilter.getActiveSource(f)
-										: src,
-								},
-								{
-									filter: this._pageFilter.levelFilter,
-									value: ixLvl + 1,
-								},
-								{
-									filter: this._pageFilter.optionsFilter,
-									value: fText,
-								},
-							));
-
-						return isDisplay ? obj : null;
-					},
-					array: (arr) => {
-						return arr.filter(it => it != null);
-					},
-				},
-			);
+		Renderer.class.mutFilterDereferencedClassFeatures({
+			walker,
+			cpyCls,
+			pageFilter: this._pageFilter,
+			filterValues: f,
+			isUseSubclassSources,
 		});
 
 		(cpyCls.subclasses || []).forEach(sc => {
-			sc.subclassFeatures = sc.subclassFeatures.map(lvlFeatures => {
-				const level = CollectionUtil.bfs(lvlFeatures, {prop: "level"});
-
-				return walker.walk(
-					lvlFeatures,
-					{
-						object: (obj) => {
-							if (obj.entries && !obj.entries.length) return null;
-							if (!obj.source) return obj;
-							const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
-
-							const isDisplay = [obj.source, ...(obj.otherSources || []).map(it => it.source)]
-								.some(src => this.filterBox.toDisplayByFilters(
-									f,
-									{
-										filter: this._pageFilter.sourceFilter,
-										value: src,
-									},
-									{
-										filter: this._pageFilter.levelFilter,
-										value: level,
-									},
-									{
-										filter: this._pageFilter.optionsFilter,
-										value: fText,
-									},
-								));
-
-							return isDisplay ? obj : null;
-						},
-						array: (arr) => {
-							return arr.filter(it => it != null);
-						},
-					},
-				);
+			Renderer.class.mutFilterDereferencedSubclassFeatures({
+				walker,
+				cpySc: sc,
+				pageFilter: this._pageFilter,
+				filterValues: f,
 			});
 		});
 

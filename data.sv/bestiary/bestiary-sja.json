@@ -1,0 +1,101 @@
+{
+	"_meta": {
+		"otherSources": {
+			"monster": {
+				"MM": "SjA",
+				"MPMM": "SjA"
+			}
+		}
+	},
+	"monster": [
+		{
+			"name": "Giff Shipmate",
+			"source": "SjA",
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d8 + 30"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 17,
+			"int": 11,
+			"wis": 12,
+			"cha": 12,
+			"passive": 11,
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Firearms Knowledge",
+					"entries": [
+						"Giffens behärskning av sina vapen gör att den kan ignorera laddningsegenskaperna hos alla skjutvapen."
+					]
+				},
+				{
+					"name": "Steady as She Goes",
+					"entries": [
+						"På ett fartygs däck har giff en fördel på förmågekontroller och räddningskast mot effekter som skulle kunna slå den {@condition prone} eller knuffa den överbord."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Giff gör två attacker med långsvärd eller musköt."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 6} för att träffa, räckvidd 1,5 m, ett mål. {@h}8 ({@damage 1d8 + 4}) snittskador, eller 9 ({@damage 1d10 + 4}) snittskador om den används med två händer."
+					]
+				},
+				{
+					"name": "Musket",
+					"entries": [
+						"{@atk rw} {@hit 4} för att träffa, räckvidd 40/120 fot, ett mål. {@h}8 ({@damage 1d12 + 2}) genomträngande skada."
+					]
+				},
+				{
+					"name": "Force Grenade",
+					"entries": [
+						"Giff kastar en granat upp till 60 fot och granaten exploderar i en sfär med en radie på 20 fot. Varje varelse i det området måste göra ett {@dc 15} Dexterity räddningskast, och tar 17 ({@damage 5d6}) kraftskador vid ett misslyckat räddningskast, eller hälften så mycket skada vid ett lyckat. Efter att giffens kastar granaten kastar du en {@dice d6}; vid ett kast på 4 eller lägre har giffens inga fler granater att kasta."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"O",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW"
+			]
+		}
+	]
+}

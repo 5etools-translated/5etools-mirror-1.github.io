@@ -34,3 +34,83 @@
 	color: $rgb-link-blue--night;
 }
 // endregion
+
+// region Encounter builder
+.ecgen_active .lst__row--bestiary-sublist {
+	cursor: default;
+}
+
+.ecgen_active .lst__row--bestiary-sublist:hover {
+	background: initial;
+}
+
+.ecgen {
+	&__ {
+		&visible,
+		&visible--flex,
+		&visible--flex-col {
+			display: none;
+		}
+
+		&btn_list {
+			padding: 0 2px;
+			line-height: 12px;
+			font-size: 9px;
+			border-radius: 3px;
+		}
+
+		&wrp_add_players_btn_wrp {
+			width: calc(140px + 0.5rem);
+		}
+	}
+
+	&-player__ {
+		&wrp-row {
+			&:only-child {
+				.ecgen-player__btn-inline {
+					display: none !important;
+				}
+			}
+		}
+
+		&btn-inline {
+			font-size: 10px;
+		}
+	}
+}
+
+.night-mode .ecgen__ {
+	&wrp {
+		background: $rgb-bg--night;
+	}
+}
+
+.ecgen_active {
+	.ecgen {
+		&__visible {
+			display: block;
+		}
+
+		&__visible--flex {
+			display: flex;
+		}
+
+		&__visible--flex-col {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__hidden {
+			display: none !important;
+		}
+
+		&__name {
+			width: 26.66666666%;
+		}
+
+		&__name--sub {
+			width: 29.16666667%;
+		}
+	}
+}
+// endregion

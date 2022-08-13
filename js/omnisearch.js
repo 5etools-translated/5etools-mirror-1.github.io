@@ -19,17 +19,9 @@ class Omnisearch {
 
 		const $nav = $(`#navbar`);
 
-		const updateClearButtonDisplay = () => {
-			const isShown = !!(document.activeElement === this._$iptSearch[0] && this._$iptSearch[0].value?.length);
-			$btnClearSearch.toggleVe(isShown);
-		};
-
 		this._$iptSearch = $(`<input class="form-control search omni__input" placeholder="${this._PLACEHOLDER_TEXT}" title="Hotkey: F. Disclaimer: unlikely to search everywhere. Use with caution." type="search">`)
-			.disableSpellcheck()
-			.focus(() => updateClearButtonDisplay())
-			.keyup(() => updateClearButtonDisplay())
-			.blur(() => updateClearButtonDisplay());
-		const $btnClearSearch = $(`<span class="absolute glyphicon glyphicon-remove omni__btn-clear ve-hidden"></span>`)
+			.disableSpellcheck();
+		const $btnClearSearch = $(`<span class="absolute glyphicon glyphicon-remove omni__btn-clear"></span>`)
 			.mousedown(evt => {
 				evt.stopPropagation();
 				evt.preventDefault();
@@ -127,7 +119,7 @@ class Omnisearch {
 				this._$searchOut.removeClass("omni__output--scrolled");
 			} else {
 				if ($window.scrollTop() > 50) {
-					this._$iptSearch.attr("placeholder", "");
+					this._$iptSearch.attr("placeholder", " ");
 					this._$searchInputWrapper.addClass("omni__wrp-input--scrolled");
 					this._$searchOut.addClass("omni__output--scrolled");
 				} else {
@@ -230,6 +222,10 @@ class Omnisearch {
 			results = results.filter(r => r.doc.r);
 		}
 
+		if (!this._state.isShowBrew) {
+			results = results.filter(r => !r.doc.s || SourceUtil.isSiteSource(r.doc.s));
+		}
+
 		if (!this._state.isShowUa) {
 			results = results.filter(r => !r.doc.s || !SourceUtil.isNonstandardSourceWotc(r.doc.s));
 		}
@@ -266,52 +262,72 @@ class Omnisearch {
 		return $(`<a href="${href}" ${r.h ? this._renderLink_getHoverString(r.c, r.u, r.s, {isFauxPage}) : ""} class="omni__lnk-name">${r.cf}: ${r.n}</a>`);
 	}
 
+	static _$btnToggleBrew = null;
+	static _$btnToggleUa = null;
+	static _$btnToggleBlacklisted = null;
+	static _$btnToggleSrd = null;
+
+	static _doInitBtnToggleFilter (
+		{
+			propState,
+			propBtn,
+			title,
+			text,
+		},
+	) {
+		if (this[propBtn]) this[propBtn].detach();
+		else {
+			this[propBtn] = $(`<button class="btn btn-default btn-xs" title="${title.qq()}" tabindex="-1">${text.qq()}</button>`)
+				.on("click", () => this._state[propState] = !this._state[propState]);
+
+			const hk = (val) => {
+				this[propBtn].toggleClass("active", this._state[propState]);
+				if (val != null) this._pDoSearch().then(null);
+			};
+			this._state._addHookBase(propState, hk);
+			hk();
+		}
+	}
+
 	static _pDoSearch_renderLinks (results, page = 0) {
-		if (this._$btnToggleUa) this._$btnToggleUa.detach();
-		else {
-			this._$btnToggleUa = $(`<button class="btn btn-default btn-xs mr-2" title="Include Unearthed Arcana and other unofficial source results" tabindex="-1">Include UA/etc.</button>`)
-				.on("click", () => this._state.isShowUa = !this._state.isShowUa);
+		this._doInitBtnToggleFilter({
+			propState: "isShowBrew",
+			propBtn: "_$btnToggleBrew",
+			title: "Include homebrew content results",
+			text: "Include Homebrew",
+		});
 
-			const hk = (val) => {
-				this._$btnToggleUa.toggleClass("active", this._state.isShowUa);
-				if (val != null) this._pDoSearch();
-			};
-			this._state._addHookBase("isShowUa", hk);
-			hk();
-		}
+		this._doInitBtnToggleFilter({
+			propState: "isShowUa",
+			propBtn: "_$btnToggleUa",
+			title: "Include Unearthed Arcana and other unofficial source results",
+			text: "Include UA/etc.",
+		});
 
-		if (this._$btnToggleBlacklisted) this._$btnToggleBlacklisted.detach();
-		else {
-			this._$btnToggleBlacklisted = $(`<button class="btn btn-default btn-xs mr-2" title="Include blacklisted content results" tabindex="-1">Include Blacklisted</button>`)
-				.on("click", async () => this._state.isShowBlacklisted = !this._state.isShowBlacklisted);
+		this._doInitBtnToggleFilter({
+			propState: "isShowBlacklisted",
+			propBtn: "_$btnToggleBlacklisted",
+			title: "Include blacklisted content results",
+			text: "Include Blacklisted",
+		});
 
-			const hk = (val) => {
-				this._$btnToggleBlacklisted.toggleClass("active", this._state.isShowBlacklisted);
-				if (val != null) this._pDoSearch();
-			};
-			this._state._addHookBase("isShowBlacklisted", hk);
-			hk();
-		}
-
-		if (this._$btnToggleSrd) this._$btnToggleSrd.detach();
-		else {
-			this._$btnToggleSrd = $(`<button class="btn btn-default btn-xs mr-2" title="Only show Systems Reference Document content results" tabindex="-1">SRD Only</button>`)
-				.on("click", async () => this._state.isSrdOnly = !this._state.isSrdOnly);
-
-			const hk = (val) => {
-				this._$btnToggleSrd.toggleClass("active", this._state.isSrdOnly);
-				if (val != null) this._pDoSearch();
-			};
-			this._state._addHookBase("isSrdOnly", hk);
-			hk();
-		}
+		this._doInitBtnToggleFilter({
+			propState: "isSrdOnly",
+			propBtn: "_$btnToggleSrd",
+			title: "Only show Systems Reference Document content results",
+			text: "SRD Only",
+		});
 
 		this._$searchOut.empty();
 
-		const $btnHelp = $(`<button class="btn btn-default btn-xs" title="Help"><span class="glyphicon glyphicon-info-sign"></span></button>`)
+		const $btnHelp = $(`<button class="btn btn-default btn-xs ml-2" title="Help"><span class="glyphicon glyphicon-info-sign"></span></button>`)
 			.click(() => this.doShowHelp());
 
-		this._$searchOut.append($(`<div class="text-right"/>`).append([this._$btnToggleUa, this._$btnToggleBlacklisted, this._$btnToggleSrd, $btnHelp]));
+		this._$searchOut.append($(`<div class="ve-flex-h-right ve-flex-v-center mb-2"/>`)
+			.append([
+				$$`<div class="btn-group ve-flex-v-center">${this._$btnToggleBrew}${this._$btnToggleUa}${this._$btnToggleBlacklisted}${this._$btnToggleSrd}</div>`,
+				$btnHelp,
+			]));
 		const base = page * this._MAX_RESULTS;
 		for (let i = base; i < Math.max(Math.min(results.length, this._MAX_RESULTS + base), base); ++i) {
 			const r = results[i].doc;
@@ -388,14 +404,23 @@ class Omnisearch {
 	static initState () {
 		if (this._state) return;
 
-		const saved = StorageUtil.syncGet(this._STORAGE_NAME) || {isShowUa: true, isShowBlacklisted: false, isSrdOnly: false};
+		const saved = StorageUtil.syncGet(this._STORAGE_NAME)
+			|| {
+				isShowBrew: true,
+				isShowUa: true,
+				isShowBlacklisted: false,
+				isSrdOnly: false,
+			};
+
 		class SearchState extends BaseComponent {
+			get isShowBrew () { return this._state.isShowBrew; }
 			get isShowUa () { return this._state.isShowUa; }
 			get isShowBlacklisted () { return this._state.isShowBlacklisted; }
 			get isSrdOnly () { return this._state.isSrdOnly; }
-			set isShowUa (val) { this._state.isShowUa = val; }
-			set isShowBlacklisted (val) { this._state.isShowBlacklisted = val; }
-			set isSrdOnly (val) { this._state.isSrdOnly = val; }
+			set isShowBrew (val) { this._state.isShowBrew = !!val; }
+			set isShowUa (val) { this._state.isShowUa = !!val; }
+			set isShowBlacklisted (val) { this._state.isShowBlacklisted = !!val; }
+			set isSrdOnly (val) { this._state.isSrdOnly = !!val; }
 		}
 		this._state = SearchState.fromObject(saved);
 		this._state._addHookAll("state", () => {
@@ -403,12 +428,15 @@ class Omnisearch {
 		});
 	}
 
+	static addHookBrew (hk) { this._state._addHookBase("isShowBrew", hk); }
 	static addHookUa (hk) { this._state._addHookBase("isShowUa", hk); }
 	static addHookBlacklisted (hk) { this._state._addHookBase("isShowBlacklisted", hk); }
 	static addHookSrdOnly (hk) { this._state._addHookBase("isSrdOnly", hk); }
+	static doToggleBrew () { this._state.isShowBrew = !this._state.isShowBrew; }
 	static doToggleUa () { this._state.isShowUa = !this._state.isShowUa; }
 	static doToggleBlacklisted () { this._state.isShowBlacklisted = !this._state.isShowBlacklisted; }
 	static doToggleSrdOnly () { this._state.isSrdOnly = !this._state.isSrdOnly; }
+	static get isShowBrew () { return this._state.isShowBrew; }
 	static get isShowUa () { return this._state.isShowUa; }
 	static get isShowBlacklisted () { return this._state.isShowBlacklisted; }
 	static get isSrdOnly () { return this._state.isSrdOnly; }
@@ -534,9 +562,6 @@ Omnisearch._adventureBookLookup = null; // A map of `<sourceLower>: (adventureCa
 Omnisearch._pLoadSearch = null;
 Omnisearch._CATEGORY_COUNTS = {};
 
-Omnisearch._$btnToggleUa = null;
-Omnisearch._$btnToggleBlacklisted = null;
-Omnisearch._$btnToggleSrd = null;
 Omnisearch._$searchOut = null;
 Omnisearch._$searchOutWrapper = null;
 Omnisearch._$searchInputWrapper = null;

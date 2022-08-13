@@ -16,7 +16,7 @@ class RenderRaces {
 		${race._isBaseRace ? `<tr class="text"><td colspan="6">${renderer.render({type: "entries", entries: race._baseRaceEntries}, 1)}</td></tr>` : `<tr class="text"><td colspan="6">${renderer.render({type: "entries", entries: race.entries}, 1)}</td></tr>`}
 
 		${race.traitTags && race.traitTags.includes("NPC Race") ? `<tr class="text"><td colspan="6"><section class="text-muted">
-			${renderer.render(`{@i Note: This race is listed in the {@i Dungeon Master's Guide} as an option for creating NPCs. It is not designed for use as a playable race.}`, 2)}
+			${renderer.render(`{@note Note: This race is listed in the {@i Dungeon Master's Guide} as an option for creating NPCs. It is not designed for use as a playable race.}`, 2)}
 		 </section></td></tr>` : ""}
 
 		${ptHeightWeight ? $$`<tr class="text"><td colspan="6"><hr class="rd__hr">${ptHeightWeight}</td></tr>` : ""}

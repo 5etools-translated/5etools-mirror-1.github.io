@@ -1086,7 +1086,7 @@ class BrewUtil2 {
 
 		(this._getBrewMetas() || [])
 			.forEach(({_meta}) => {
-				Object.entries(_meta)
+				Object.entries(_meta || {})
 					.forEach(([prop, val]) => {
 						if (!val) return;
 						if (typeof val !== "object") return;
@@ -1104,7 +1104,7 @@ class BrewUtil2 {
 		// Add a special "_sources" cache, which is a lookup-friendly object (rather than "sources", which is an array)
 		this._cache_metas["_sources"] = (this._getBrewMetas() || [])
 			.mergeMap(({_meta}) => {
-				return (_meta.sources || [])
+				return (_meta?.sources || [])
 					.mergeMap(src => ({[(src.json || "").toLowerCase()]: MiscUtil.copy(src)}));
 			});
 	}

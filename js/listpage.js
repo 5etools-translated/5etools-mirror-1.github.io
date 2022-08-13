@@ -44,6 +44,11 @@ class SublistManager {
 		this._isSublistItemsCountable = !!opts.isSublistItemsCountable;
 		this._shiftCountAddSubtract = opts.shiftCountAddSubtract ?? 20;
 
+		this._persistor = new SublistPersistor();
+
+		this._saveManager = new SaveManager();
+		this._plugins = [];
+
 		this._listPage = null;
 
 		this._listSub = null;
@@ -54,15 +59,23 @@ class SublistManager {
 		this._contextMenuListSub = null;
 
 		this._$wrpContainer = null;
+
+		this._pSaveSublistDebounced = MiscUtil.debounce(this._pSaveSublist.bind(this), 50);
 	}
 
 	set listPage (val) { this._listPage = val; }
 
-	get sublistItems () { return this._listSub.items; }
+	get sublistItems () { return this._listSub?.items || []; }
 	get isSublistItemsCountable () { return !!this._isSublistItemsCountable; }
+
+	addPlugin (plugin) {
+		this._plugins.push(plugin);
+	}
 
 	init () {
 		this._listSub.init();
+
+		this._plugins.forEach(plugin => plugin.initLate());
 	}
 
 	async pCreateSublist () {
@@ -79,7 +92,20 @@ class SublistManager {
 
 		if (this._$wrpContainer.hasClass(`sublist--resizable`)) this._pBindSublistResizeHandlers();
 
+		this._saveManager.render({
+			cbOnNew: (evt) => this.pHandleClick_new(evt),
+			cbOnSave: (evt) => this.pHandleClick_save(evt),
+			cbOnReset: (evt, exportedSublist) => this.pDoLoadExportedSublist(exportedSublist),
+			cbOnUpload: (evt) => this.pHandleClick_upload({isAdditive: evt.shiftKey}),
+		})
+			.appendTo(this._$wrpContainer);
+
 		this._initContextMenu();
+
+		this._listSub
+			.on("updated", () => {
+				this._plugins.forEach(plugin => plugin.doPulseSublistUpdate());
+			});
 	}
 
 	async _pBindSublistResizeHandlers () {
@@ -171,8 +197,8 @@ class SublistManager {
 			null,
 			new ContextUtil.Action(
 				"Send to DM Screen",
-				() => this._pDoSendSublistToDmScreen(),
-				{title: "A DM Screen panel will be created for each entry."},
+				(evt) => this._pDoSendSublistToDmScreen({evt}),
+				{title: "A DM Screen panel will be created for each entry. SHIFT to use tabs."},
 			),
 			ExtensionUtil.ACTIVE
 				? new ContextUtil.Action(
@@ -206,12 +232,17 @@ class SublistManager {
 
 	pGetSublistItem () { throw new Error(`Unimplemented!`); }
 
-	async pDoSublistRemoveAll (noSave) {
+	async pDoSublistRemoveAll ({isNoSave = false} = {}) {
 		this._listSub.removeAllItems();
-		await this._pFinaliseSublist(noSave);
+		await this._plugins.pSerialAwaitMap(plugin => plugin.pHandleRemoveAll());
+		await this._pFinaliseSublist({isNoSave});
 	}
 
-	getExportableSublist () {
+	/**
+	 * @param isForceIncludePlugins
+	 * @param isMemoryOnly If this export is for a temporary internal application, e.g. export-modify-import.
+	 */
+	async pGetExportableSublist ({isForceIncludePlugins = false, isMemoryOnly = false} = {}) {
 		const sources = new Set();
 		const toSave = this._listSub.items
 			.map(it => {
@@ -224,42 +255,64 @@ class SublistManager {
 					...this._getSerializedPinnedItemData(it),
 				};
 			});
-		return {items: toSave, sources: Array.from(sources)};
+		const exportedSublist = {items: toSave, sources: Array.from(sources)};
+
+		this._saveManager.mutSaveableData({exportedSublist});
+		await this._plugins.pSerialAwaitMap(plugin => plugin.pMutSaveableData({
+			exportedSublist,
+			isForce: isForceIncludePlugins,
+			isMemoryOnly,
+		}));
+
+		return exportedSublist;
 	}
 
-	async _pLoadSavedSublist (serialized, additive) {
-		if (!additive) await this.pDoSublistRemoveAll(true);
+	async pDoLoadExportedSublist (
+		exportedSublist,
+		{
+			isAdditive = false,
+			isMemoryOnly = false,
+			isNoSave = false,
+		} = {},
+	) {
+		// This should never be necessary, but, ensure no unwanted state gets passed
+		if (exportedSublist) ListUtil.getWithoutManagerClientState(exportedSublist);
 
-		const page = UrlUtil.getCurrentPage();
+		// Note that `exportedSublist` keys are case-insensitive here, as we can load from URL
+		await this._plugins.pSerialAwaitMap(plugin => plugin.pMutLegacyData({exportedSublist, isMemoryOnly}));
+
+		if (exportedSublist && !isAdditive) await this.pDoSublistRemoveAll({isNoSave: true});
 
 		// Do this in series to ensure sublist items are added before having their counts updated
 		//  This only becomes a problem when there are duplicate items in the list, but as we're not finalizing, the
 		//  performance implications are negligible.
-		await serialized.pSerialAwaitMap(async ser => {
-			const listItem = Hist.getActiveListItem(ser.h);
-			if (listItem == null) return null;
+		const entityInfos = await ListUtil.pGetSublistEntities_fromList({
+			exportedSublist,
+			dataList: this._listPage.dataList_,
+		});
 
-			const entity = await Renderer.hover.pApplyCustomHashId(
-				UrlUtil.getCurrentPage(),
-				// Pull from the list page, as there may be list-page-specific temp data
-				this._listPage.dataList_[listItem.ix],
-				// Support lowercase prop from URL
-				ser.customHashId || ser.customhashid,
-			);
+		for (const entityInfo of entityInfos) {
+			const {count, entity, ser} = entityInfo;
 
 			await this.pDoSublistAdd({
-				addCount: isNaN(ser.c) ? 1 : Number(ser.c),
+				addCount: count,
 				entity,
 				initialData: this._getDeserializedPinnedItemData(ser),
 				doFinalize: false,
 			});
-		});
+		}
 
-		await this._pFinaliseSublist(true);
+		await this._plugins.pSerialAwaitMap(plugin => plugin.pLoadData({
+			exportedSublist,
+			isAdditive,
+			isMemoryOnly,
+		}));
+
+		await this._pFinaliseSublist({isNoSave});
 	}
 
-	getHashPartExport () {
-		const toEncode = JSON.stringify(this.getExportableSublist());
+	async pGetHashPartExport () {
+		const toEncode = JSON.stringify(await this.pGetExportableSublist());
 		return UrlUtil.packSubHash(this.constructor._SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true});
 	}
 
@@ -317,20 +370,56 @@ class SublistManager {
 		DataUtil.userDownload(`${this._getDownloadName()}-data`, entities);
 	}
 
-	async pHandleClick_download (evt, $btnOptions) {
-		if (evt.shiftKey) {
-			const toEncode = JSON.stringify(this.getExportableSublist());
-			const parts = [window.location.href, (UrlUtil.packSubHash(this.constructor._SUB_HASH_PREFIX, [toEncode], {isEncodeBoth: true}))];
-			await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
-			JqueryUtil.showCopiedEffect($btnOptions);
-		} else {
-			const fileType = this._getDownloadName();
-			DataUtil.userDownload(fileType, this.getExportableSublist(), {fileType});
-		}
+	async pHandleClick_new (evt) {
+		const exportableSublist = await this.pGetExportableSublist({isForceIncludePlugins: true});
+		const exportableSublistMemory = await this.pGetExportableSublist({isForceIncludePlugins: true, isMemoryOnly: true});
+		const didNew = await this._saveManager.pDoNew(exportableSublist);
+		if (!didNew) return;
+		await this.pDoSublistRemoveAll();
+
+		// Handle e.g. copying some aspects of the old state over
+		await this._plugins.pSerialAwaitMap(plugin => plugin.pDoInitNewState({
+			prevExportableSublist: exportableSublistMemory,
+			evt,
+		}));
 	}
 
-	async pHandleClick_upload (evt, {pFnPreLoad} = {}) {
-		const {jsons, errors} = await DataUtil.pUserUpload({expectedFileType: this._getDownloadName()});
+	async pHandleClick_load (evt) {
+		const exportedSublist = await this._saveManager.pDoLoad();
+		if (exportedSublist == null) return;
+
+		await this.pDoLoadExportedSublist(exportedSublist);
+	}
+
+	async pHandleClick_save (evt) {
+		const saveInfo = await this._saveManager.pDoSave(await this.pGetExportableSublist({isForceIncludePlugins: true}));
+		if (saveInfo == null) return;
+
+		await this._pSaveSublist();
+
+		JqueryUtil.doToast(`Saved "${saveInfo.name}"!`);
+	}
+
+	async pHandleClick_download ({isUrl = false, $eleCopyEffect = null} = {}) {
+		const exportableSublist = await this.pGetExportableSublist();
+
+		if (isUrl) {
+			const parts = [
+				window.location.href,
+				await this.pGetHashPartExport(),
+			];
+			await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
+			JqueryUtil.showCopiedEffect($eleCopyEffect);
+			return;
+		}
+
+		const filename = this._getDownloadName();
+		const fileType = this._getDownloadFileType();
+		DataUtil.userDownload(filename, exportableSublist, {fileType});
+	}
+
+	async pHandleClick_upload ({isAdditive = false} = {}) {
+		const {jsons, errors} = await DataUtil.pUserUpload({expectedFileTypes: [this._getDownloadFileType()]});
 
 		DataUtil.doHandleFileLoadErrorsGeneric(errors);
 
@@ -338,17 +427,19 @@ class SublistManager {
 
 		const json = jsons[0];
 
-		if (pFnPreLoad) await pFnPreLoad(json);
-		await this.pDoJsonLoad(json, evt.shiftKey);
+		await this.pDoLoadExportedSublist(json, {isAdditive});
 	}
 
 	_getDownloadName () {
+		const fromPlugin = this._plugins.first(plugin => plugin.getDownloadName());
+		if (fromPlugin) return fromPlugin;
 		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
 	}
 
-	async pDoJsonLoad (json, additive) {
-		await this._pLoadSavedSublist(json.items, additive);
-		await this._pFinaliseSublist();
+	_getDownloadFileType () {
+		const fromPlugin = this._plugins.first(plugin => plugin.getDownloadFileType());
+		if (fromPlugin) return fromPlugin;
+		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
 	}
 
 	async pSetFromSubHashes (subHashes, pFnPreLoad) {
@@ -370,15 +461,14 @@ class SublistManager {
 				await pFnPreLoad(json);
 			}
 
-			await this._pLoadSavedSublist(json.items, false);
-			await this._pFinaliseSublist();
+			await this.pDoLoadExportedSublist(json);
 
 			const [link] = Hist.getHashParts();
 			const outSub = [];
 			Object.keys(unpacked)
 				.filter(k => k !== this.constructor._SUB_HASH_PREFIX)
 				.forEach(k => {
-					outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].join(HASH_SUB_LIST_SEP)}`);
+					outSub.push(`${k}${HASH_SUB_KV_SEP}${unpacked[k].clean.join(HASH_SUB_LIST_SEP)}`);
 				});
 			Hist.setSuppressHistory(true);
 			window.location.hash = `#${link}${outSub.length ? `${HASH_PART_SEP}${outSub.join(HASH_PART_SEP)}` : ""}`;
@@ -467,15 +557,22 @@ class SublistManager {
 			.forEach(fn => fn());
 	}
 
-	async _pFinaliseSublist (noSave) {
+	async _pFinaliseSublist ({isNoSave = false} = {}) {
 		this._listSub.update();
 		this._updateSublistVisibility();
-		if (!noSave) await this._pSaveSublist();
 		this._onSublistChange();
+		if (!isNoSave) await this._pSaveSublist();
 	}
 
 	async _pSaveSublist () {
-		await StorageUtil.pSetForPage("sublist", this.getExportableSublist());
+		await this._persistor.pDoSaveStateToStorage({
+			exportableSublist: await this.pGetExportableSublist({isForceIncludePlugins: true}),
+		});
+		await this._saveManager.pDoSaveStateToStorage();
+	}
+
+	async pSaveSublistDebounced () {
+		return this._pSaveSublistDebounced();
 	}
 
 	_updateSublistVisibility () {
@@ -499,31 +596,40 @@ class SublistManager {
 		if (this._hasLoadedState) return;
 		this._hasLoadedState = true;
 		try {
-			const store = await StorageUtil.pGetForPage("sublist");
-			if (store && store.items) {
-				await this._pLoadSavedSublist(store.items);
-			}
+			const store = await this._persistor.pGetStateFromStorage();
+			await this.pDoLoadExportedSublist(store, {isNoSave: true});
+
+			await this._saveManager.pMutStateFromStorage();
 		} catch (e) {
 			setTimeout(() => { throw e; });
-			await StorageUtil.pRemoveForPage("sublist");
+			await this._saveManager.pDoRemoveStateFromStorage();
+			await this._persistor.pDoRemoveStateFromStorage();
 		}
 	}
 
 	async pGetSelectedSources () {
 		let store;
 		try {
-			store = await StorageUtil.pGetForPage("sublist");
+			store = await this._persistor.pGetStateFromStorage();
 		} catch (e) {
 			setTimeout(() => { throw e; });
 		}
-		if (store && store.sources) return store.sources;
+		if (store?.sources) return store.sources;
+		return [];
 	}
 
-	async _pDoSendSublistToDmScreen () {
+	async _pDoSendSublistToDmScreen ({evt}) {
 		try {
-			const list = this.getExportableSublist();
-			const len = list.items.length;
-			await StorageUtil.pSet(VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST, {page: UrlUtil.getCurrentPage(), list});
+			const exportedSublist = await this.pGetExportableSublist();
+			const len = exportedSublist.items.length;
+			await StorageUtil.pSet(
+				VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST,
+				{
+					page: UrlUtil.getCurrentPage(),
+					exportedSublist,
+					isTabs: evt.shiftKey,
+				},
+			);
 			JqueryUtil.doToast(`${len} pin${len === 1 ? "" : "s"} will be loaded into the DM Screen on your next visit.`);
 		} catch (e) {
 			JqueryUtil.doToast(`Failed! ${VeCt.STR_SEE_CONSOLE}`);
@@ -532,7 +638,7 @@ class SublistManager {
 	}
 
 	async _pDoSendSublistToFoundry () {
-		const list = this.getExportableSublist();
+		const list = await this.pGetExportableSublist();
 		const len = list.items.length;
 
 		const page = UrlUtil.getCurrentPage();
@@ -732,8 +838,6 @@ class ListPage {
 		this._pOnLoad_bookView();
 		this._pOnLoad_tableView();
 
-		await this._pOnLoad_pPreHashInit();
-
 		// bind hash-change functions for hist.js to use
 		window.loadHash = this.doLoadHash.bind(this);
 		window.loadSubHash = this.pDoLoadSubHash.bind(this);
@@ -747,6 +851,8 @@ class ListPage {
 		ListPage._checkShowAllExcluded(this._dataList, this._$pgContent);
 
 		this.handleFilterChange();
+
+		await this._pOnLoad_pPostLoad();
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
@@ -797,7 +903,8 @@ class ListPage {
 		if (this._hasAudio) Renderer.utils.bindPronounceButtons();
 	}
 
-	_pOnLoad_pPreDataLoad () { /* Implement as required */ }
+	async _pOnLoad_pPreDataLoad () { /* Implement as required */ }
+	async _pOnLoad_pPostLoad () { /* Implement as required */ }
 
 	async _pOnLoad_pGetData () {
 		const data = await (typeof this._dataSource === "string" ? DataUtil.loadJSON(this._dataSource) : this._dataSource());
@@ -919,7 +1026,6 @@ class ListPage {
 	}
 
 	async _pOnLoad_pPreDataAdd () { /* Implement as required */ }
-	async _pOnLoad_pPreHashInit () { /* Implement as required */ }
 
 	_addData (data) {
 		if (!this._dataProps.some(prop => data[prop] && data[prop].length)) return;
@@ -946,8 +1052,6 @@ class ListPage {
 		this._bindPopoutButton();
 		this._bindLinkExportButton(this._filterBox);
 		this._bindOtherButtons({
-			download: true,
-			upload: true,
 			...(this._bindOtherButtonsOptions || {}),
 		});
 	}
@@ -1114,7 +1218,7 @@ class ListPage {
 				parts.unshift(url);
 
 				if (evt.shiftKey && this._sublistManager) {
-					parts.push(this._sublistManager.getHashPartExport());
+					parts.push(await this._sublistManager.pGetHashPartExport());
 				}
 
 				await MiscUtil.pCopyTextToClipboard(parts.join(HASH_PART_SEP));
@@ -1393,7 +1497,7 @@ class ListPage {
 			);
 	}
 
-	_getOrTabRightButton (ident, icon) {
+	_getOrTabRightButton (ident, icon, {title} = {}) {
 		if (this._btnsTabs[ident]) return $(this._btnsTabs[ident]);
 
 		this._btnsTabs[ident] = e_({
@@ -1405,6 +1509,7 @@ class ListPage {
 					clazz: `glyphicon glyphicon-${icon}`,
 				}),
 			],
+			title,
 		});
 
 		const wrpBtns = document.getElementById("tabs-right");
@@ -1445,25 +1550,31 @@ class ListPage {
 	_bindOtherButtons (opts) {
 		opts = opts || {};
 
-		const $btnOptions = this._getOrTabRightButton(`sublist-other`, `option-vertical`);
+		const $btnOptions = this._getOrTabRightButton(`sublist-other`, `option-vertical`, {title: "Other Options"});
 
-		const contextOptions = [];
-
-		if (opts.download) {
-			const action = new ContextUtil.Action(
+		const contextOptions = [
+			new ContextUtil.Action(
+				"New Pinned List",
+				evt => this._sublistManager.pHandleClick_new(evt),
+			),
+			new ContextUtil.Action(
+				"Load Pinned List",
+				evt => this._sublistManager.pHandleClick_load(evt),
+			),
+			new ContextUtil.Action(
+				"Save Pinned List",
+				evt => this._sublistManager.pHandleClick_save(evt),
+			),
+			null,
+			new ContextUtil.Action(
 				"Download Pinned List (SHIFT to Copy Link)",
-				evt => this._sublistManager.pHandleClick_download(evt, $btnOptions),
-			);
-			contextOptions.push(action);
-		}
-
-		if (opts.upload) {
-			const action = new ContextUtil.Action(
+				evt => this._sublistManager.pHandleClick_download({isUrl: evt.shiftKey, $eleCopyEffect: $btnOptions}),
+			),
+			new ContextUtil.Action(
 				"Upload Pinned List (SHIFT for Add Only)",
-				evt => this._sublistManager.pHandleClick_upload(evt, typeof opts.upload === "object" ? opts.upload : undefined),
-			);
-			contextOptions.push(action);
-		}
+				evt => this._sublistManager.pHandleClick_upload({isAdditive: evt.shiftKey}),
+			),
+		];
 
 		if (opts.sendToBrew) {
 			if (contextOptions.length) contextOptions.push(null); // Add a spacer after the previous group

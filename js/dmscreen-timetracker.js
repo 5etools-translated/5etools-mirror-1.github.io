@@ -613,20 +613,6 @@ class TimeTrackerRoot extends TimeTrackerBase {
 	}
 
 	setStateFrom (toLoad) {
-		// region TODO(Future) legacy state migration; remove
-		if (toLoad.state) {
-			// Convert "object containing objects with IDs" format to "array containing wrapped objects" format
-			const toMigrate = ["days", "months", "seasons", "years", "eras", "moons"];
-
-			toMigrate.forEach(prop => {
-				if (!toLoad.state[prop] || toLoad.state[prop] instanceof Array) return;
-
-				toLoad.state[prop] = Object.values(toLoad.state[prop])
-					.map(({id, ...rest}) => ({id, data: rest}));
-			});
-		}
-		// endregion
-
 		this.setBaseSaveableStateFrom(toLoad);
 		if (toLoad.compClockState) this._compClock.setStateFrom(toLoad.compClockState);
 		if (toLoad.compCalendarState) this._compCalendar.setStateFrom(toLoad.compCalendarState);
@@ -1022,34 +1008,27 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 
 					todayEncounters.forEach(encounter => {
 						const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", entries: []}, {isBookContent: true});
-						const doUpdateMeta = () => {
+
+						const pDoUpdateMeta = async () => {
 							let name = encounter.displayName != null ? encounter.displayName : (encounter.name || "(Unnamed Encounter)");
 							if (encounter.hasTime) {
 								const {hours, minutes, seconds} = TimeTrackerBase.getHoursMinutesSecondsFromSeconds(secsPerHour, secsPerMinute, encounter.timeOfDaySecs);
 								name = `${name} at ${TimeTrackerBase.getPaddedNum(hours, hoursPerDay)}:${TimeTrackerBase.getPaddedNum(minutes, minutesPerHour)}:${TimeTrackerBase.getPaddedNum(seconds, secsPerMinute)}`;
 							}
+
+							const entityInfos = await ListUtil.pGetSublistEntities_fromHover({
+								exportedSublist: encounter.data,
+								page: UrlUtil.PG_BESTIARY,
+							});
+
 							const toShow = {
 								name,
 								type: "entries",
 								entries: [
 									{
 										type: "list",
-										items: encounter.data.l.items.map(it => {
-											const spl = UrlUtil.decodeHash(it.h);
-
-											const name = spl[0].toTitleCase();
-											const source = spl[1];
-
-											const {_scaledCr: scaledCr, _scaledSpellSummonLevel: scaledSpellSummonLevel, _scaledClassSummonLevel: scaledClassSummonLevel} = Renderer.monster.getUnpackedCustomHashId(it.customHashId) || {};
-
-											const parts = [name, source];
-											if (scaledCr != null || scaledSpellSummonLevel != null || scaledClassSummonLevel != null) {
-												parts.push(
-													"", // Display text
-													scaledCr != null ? `${VeCt.HASH_SCALED}=${Parser.numberToCr(scaledCr)}` : scaledSpellSummonLevel != null ? `${VeCt.HASH_SCALED_SPELL_SUMMON}=${scaledSpellSummonLevel}` : scaledClassSummonLevel != null ? `${VeCt.HASH_SCALED_CLASS_SUMMON}=${scaledClassSummonLevel}` : "",
-												);
-											}
-											return `${it.c || 1}× {@creature ${parts.join("|")}}`;
+										items: entityInfos.map(it => {
+											return `${it.count || 1}× ${Renderer.hover.getEntityLink(it.entity)}`;
 										}),
 									},
 								],
@@ -1059,8 +1038,8 @@ class TimeTrackerRoot_Clock extends TimeTrackerComponent {
 						};
 
 						const $dispEncounter = $$`<div class="dm-time__disp-clock-entry dm-time__disp-clock-entry--encounter ${encounter.countUses ? "dm-time__disp-clock-entry--used-encounter" : ""}" title="${encounter.countUses ? "(Encounter has been used)" : "Run Encounter (Add to Initiative Tracker)"}">*</div>`
-							.mouseover(evt => {
-								doUpdateMeta();
+							.mouseover(async evt => {
+								await pDoUpdateMeta();
 								hoverMeta.mouseOver(evt, $dispEncounter[0]);
 							})
 							.mousemove(evt => hoverMeta.mouseMove(evt, $dispEncounter[0]))
@@ -2120,152 +2099,60 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 
 		const {year, dayInfo, date, monthInfo, seasonInfos, yearInfos, eraInfos} = getTimeInfo({year: eventYear, dayOfYear: eventDay});
 
-		const pHandleContextSwitch = async (mode, nuEncounter) => {
-			switch (mode) {
-				case 0: {
-					const savedState = await EncounterUtil.pGetInitialState();
-					if (savedState && savedState.data) {
-						const encounter = savedState.data;
-						const name = await InputUiUtil.pGetUserString({
-							title: "Enter Encounter Name",
-							default: EncounterUtil.getEncounterName(encounter),
-						});
-						nuEncounter.name = name || "(Unnamed encounter)";
-						nuEncounter.data = encounter;
-					} else {
-						return JqueryUtil.doToast({
-							content: `No saved encounter! Please first go to the Bestiary and create one.`,
-							type: "warning",
-						});
-					}
-					break;
-				}
-				case 1: {
-					const savedEncounters = (await EncounterUtil.pGetSavedState()).savedEncounters || {};
+		const pMutAddEncounter = async ({exportedSublist, nuEncounter}) => {
+			exportedSublist = MiscUtil.copy(exportedSublist);
+			exportedSublist.name = exportedSublist.name
+				|| await InputUiUtil.pGetUserString({
+					title: "Enter Encounter Name",
+					default: await EncounterBuilderSublistPlugin.pGetEncounterName(exportedSublist),
+				})
+				|| "(Unnamed encounter)";
 
-					const savedKeys = Object.keys(savedEncounters);
-					if (!savedKeys.length) return JqueryUtil.doToast({type: "warning", content: "No saved encounters were found! Go to the Bestiary and create some first."});
+			nuEncounter.name = exportedSublist.name;
+			nuEncounter.data = exportedSublist;
 
-					const $cbCopy = $(`<input type="checkbox">`);
-					$cbCopy.prop("checked", TimeTrackerRoot_Calendar._tmpPrefCbCopy);
-					const selected = await InputUiUtil.pGetUserEnum({
-						values: savedKeys.map(it => savedEncounters[it].name || EncounterUtil.getEncounterName(savedEncounters[it])),
-						placeholder: "Select an encounter",
-						title: "Select Saved Encounter",
-						fnGetExtraState: () => ({isCopy: $cbCopy.prop("checked")}),
-						$elePost: $$`<label class="ve-flex-label ve-flex-h-center w-100 mb-2">
-								<span class="mr-2 help" title="Turning this on will make a copy of the encounter as it currently exists, allowing the original to be modified or deleted without affecting the copy. Leaving this off will instead keep a reference to the encounter, so any change to the encounter will be reflected here.">Make Copy of Encounter</span>
-								${$cbCopy}
-							</label>`,
-					});
-					if (selected != null) {
-						const key = savedKeys[selected.ix];
-						const save = savedEncounters[key];
-						nuEncounter.name = save.name;
-
-						// save the user's preference for copy vs. reference
-						TimeTrackerRoot_Calendar._tmpPrefCbCopy = selected.extraState.isCopy;
-
-						if (selected.extraState.isCopy) nuEncounter.data = save.data;
-						else nuEncounter.data = {isRef: true, bestiaryId: key};
-					} else return;
-					break;
-				}
-				case 2: {
-					const {jsons, errors} = await DataUtil.pUserUpload({expectedFileType: "encounter"});
-
-					DataUtil.doHandleFileLoadErrorsGeneric(errors);
-
-					if (!jsons?.length) return;
-
-					const json = jsons[0];
-					const name = await InputUiUtil.pGetUserString({
-						title: "Enter Encounter Name",
-						default: EncounterUtil.getEncounterName(json),
-					});
-					nuEncounter.name = name || "(Unnamed Encounter)";
-					nuEncounter.data = json;
-
-					break;
-				}
-			}
-
-			this._parent.set("encounters", [...Object.values(this._parent.get("encounters")), nuEncounter].mergeMap(it => ({[it.id]: it})));
+			this._parent.set(
+				"encounters",
+				[...Object.values(this._parent.get("encounters")), nuEncounter]
+					.mergeMap(it => ({[it.id]: it})),
+			);
 		};
 
 		const menuEncounter = ContextUtil.getMenu([
-			new ContextUtil.Action(
-				"From Current Bestiary Encounter",
-				() => {
+			...ListUtilBestiary.getContextOptionsLoadSublist({
+				pFnOnSelect: async ({exportedSublist}) => {
 					const nxtPos = Object.keys(this._parent.get("encounters")).length;
 					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, year, eventDay);
-					return pHandleContextSwitch(0, nuEncounter);
+
+					return pMutAddEncounter({exportedSublist, nuEncounter});
 				},
-			),
-			new ContextUtil.Action(
-				"From Saved Bestiary Encounter",
-				() => {
-					const nxtPos = Object.keys(this._parent.get("encounters")).length;
-					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, year, eventDay);
-					return pHandleContextSwitch(1, nuEncounter);
+
+				optsSaveManager: {
+					isReferencable: true,
 				},
-			),
-			new ContextUtil.Action(
-				"From Bestiary Encounter File",
-				() => {
-					const nxtPos = Object.keys(this._parent.get("encounters")).length;
-					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, year, eventDay);
-					return pHandleContextSwitch(2, nuEncounter);
-				},
-			),
+			}),
 		]);
 
 		const menuEncounterAtTime = ContextUtil.getMenu([
-			new ContextUtil.Action(
-				"From Current Bestiary Encounter",
-				async evt => {
-					const chosenTimeInfo = await this._render_pGetEventTimeOfDay(eventYear, eventDay, evt.shiftKey);
+			...ListUtilBestiary.getContextOptionsLoadSublist({
+				pFnOnSelect: async ({exportedSublist, isShiftKey}) => {
+					const chosenTimeInfo = await this._render_pGetEventTimeOfDay(eventYear, eventDay, isShiftKey);
 					if (chosenTimeInfo == null) return;
 
 					const nxtPos = Object.keys(this._parent.get("encounters")).length;
 					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, chosenTimeInfo.year, chosenTimeInfo.eventDay, chosenTimeInfo.timeOfDay);
 
-					return pHandleContextSwitch(0, nuEncounter);
+					return pMutAddEncounter({exportedSublist, nuEncounter});
 				},
-				{
-					title: "SHIFT to Add at Current Time",
-				},
-			),
-			new ContextUtil.Action(
-				"From Saved Bestiary Encounter",
-				async evt => {
-					const chosenTimeInfo = await this._render_pGetEventTimeOfDay(eventYear, eventDay, evt.shiftKey);
-					if (chosenTimeInfo == null) return;
 
-					const nxtPos = Object.keys(this._parent.get("encounters")).length;
-					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, chosenTimeInfo.year, chosenTimeInfo.eventDay, chosenTimeInfo.timeOfDay);
+				optsSaveManager: {
+					isReferencable: true,
+				},
 
-					return pHandleContextSwitch(1, nuEncounter);
-				},
-				{
-					title: "SHIFT to Add at Current Time",
-				},
-			),
-			new ContextUtil.Action(
-				"From Bestiary Encounter File",
-				async evt => {
-					const chosenTimeInfo = await this._render_pGetEventTimeOfDay(eventYear, eventDay, evt.shiftKey);
-					if (chosenTimeInfo == null) return;
-
-					const nxtPos = Object.keys(this._parent.get("encounters")).length;
-					const nuEncounter = TimeTrackerBase.getGenericEncounter(nxtPos, chosenTimeInfo.year, chosenTimeInfo.eventDay, chosenTimeInfo.timeOfDay);
-
-					return pHandleContextSwitch(2, nuEncounter);
-				},
-				{
-					title: "SHIFT to Add at Current Time",
-				},
-			),
+				optsFromCurrent: {title: "SHIFT to Add at Current Time"},
+				optsFromSaved: {title: "SHIFT to Add at Current Time"},
+				optsFromFile: {title: "SHIFT to Add at Current Time"},
+			}),
 		]);
 
 		const $btnAddEncounter = $(`<button class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"/> Add Encounter</button>`)
@@ -2280,7 +2167,7 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 				this._parent.removeHook("events", hookEvents);
 				ContextUtil.deleteMenu(menuEncounter);
 			},
-			zIndex: TimeTrackerRoot_Calendar._Z_INDEX_MODAL,
+			zIndex: VeCt.Z_INDEX_BENEATH_HOVER,
 			isUncappedHeight: true,
 			isHeight100: true,
 			$titleSplit: $btnJumpToDay,
@@ -2668,7 +2555,7 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 
 		const {$modalInner, doClose} = UiUtil.getShowModal({
 			title: opts.title,
-			zIndex: TimeTrackerRoot_Calendar._Z_INDEX_MODAL,
+			zIndex: VeCt.Z_INDEX_BENEATH_HOVER,
 		});
 
 		// Create a copy of the current state, as a temp component
@@ -2712,10 +2599,29 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 	}
 
 	static async _pGetDereferencedEncounter (encounter) {
-		if (encounter.data.isRef) {
-			const savedState = await EncounterUtil.pGetSavedState();
-			return (savedState.savedEncounters || {})[encounter.data.bestiaryId];
-		} else return encounter;
+		const saveManager = new SaveManager({
+			isReadOnlyUi: true,
+			page: UrlUtil.PG_BESTIARY,
+			isReferencable: true,
+		});
+		await saveManager.pMutStateFromStorage();
+
+		encounter = MiscUtil.copy(encounter);
+		await EncounterBuilderSublistPlugin.pMutLegacyData({exportedSublist: encounter.data});
+
+		if (
+			encounter.data.managerClient_isReferencable
+			&& !encounter.data.managerClient_isLoadAsCopy
+			&& encounter.data.saveId
+		) {
+			encounter = MiscUtil.copy(encounter);
+
+			const nxtData = await saveManager.pGetSaveBySaveId({saveId: encounter.data.saveId});
+			if (!nxtData) return null;
+
+			encounter.data = nxtData;
+		}
+		return encounter;
 	}
 
 	static async pDoRunEncounter (parent, encounter) {
@@ -2745,8 +2651,10 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 
 				if (!toLoad) return JqueryUtil.doToast({content: "Could not find encounter data! Has the encounter been deleted?", type: "warning"});
 
+				const {entityInfos, encounterInfo} = await ListUtilBestiary.pGetLoadableSublist({exportedSublist: toLoad.data});
+
 				try {
-					await $tracker.data("doConvertAndLoadBestiaryList")(toLoad.data);
+					await $tracker.data("pDoLoadEncounter")({entityInfos, encounterInfo});
 				} catch (e) {
 					JqueryUtil.doToast({type: "error", content: `Failed to add encounter! ${VeCt.STR_SEE_CONSOLE}`});
 					throw e;
@@ -2761,8 +2669,6 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 		}
 	}
 }
-TimeTrackerRoot_Calendar._Z_INDEX_MODAL = 200;
-TimeTrackerRoot_Calendar._tmpPrefCbCopy = false;
 
 class TimeTrackerRoot_Settings extends TimeTrackerComponent {
 	static getTimeNum (str, isAllowNegative) {

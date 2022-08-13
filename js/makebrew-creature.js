@@ -426,8 +426,11 @@ class CreatureBuilder extends Builder {
 		// ABILITIES
 		this.__$getSpellcastingInput(cb).appendTo(abilTab.$wrpTab);
 		this.__$getTraitInput(cb).appendTo(abilTab.$wrpTab);
+		BuilderUi.$getStateIptEntries("Actions Intro", cb, this._state, {}, "actionHeader").appendTo(abilTab.$wrpTab);
 		this.__$getActionInput(cb).appendTo(abilTab.$wrpTab);
+		BuilderUi.$getStateIptEntries("Bonus Actions Intro", cb, this._state, {}, "bonusHeader").appendTo(abilTab.$wrpTab);
 		this.__$getBonusActionInput(cb).appendTo(abilTab.$wrpTab);
+		BuilderUi.$getStateIptEntries("Reactions Intro", cb, this._state, {}, "reactionHeader").appendTo(abilTab.$wrpTab);
 		this.__$getReactionInput(cb).appendTo(abilTab.$wrpTab);
 		BuilderUi.$getStateIptNumber(
 			"Legendary Action Count",

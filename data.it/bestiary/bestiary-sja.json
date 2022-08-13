@@ -1,0 +1,101 @@
+{
+	"_meta": {
+		"otherSources": {
+			"monster": {
+				"MM": "SjA",
+				"MPMM": "SjA"
+			}
+		}
+	},
+	"monster": [
+		{
+			"name": "Giff Shipmate",
+			"source": "SjA",
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d8 + 30"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 17,
+			"int": 11,
+			"wis": 12,
+			"cha": 12,
+			"passive": 11,
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Firearms Knowledge",
+					"entries": [
+						"La padronanza delle armi del Giff gli consente di ignorare la proprietà di caricamento di qualsiasi arma da fuoco."
+					]
+				},
+				{
+					"name": "Steady as She Goes",
+					"entries": [
+						"Sul ponte di una nave, il giff ha vantaggio sulle prove di abilità e sui tiri salvezza effettuati contro gli effetti che lo farebbero cadere {@condition prone} o lo spingerebbero fuori bordo."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il giff effettua due attacchi con spada lunga o moschetto."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata di 5 metri, un bersaglio. {@h}8 ({@damage 1d8 + 4}) danni da taglio, o 9 ({@damage 1d10 + 4}) danni da taglio se usato a due mani."
+					]
+				},
+				{
+					"name": "Musket",
+					"entries": [
+						"{@atk rw} {@hit 4} per colpire, gittata 40/120 ft., un bersaglio. {@h}8 ({@damage 1d12 + 2}) danni perforanti."
+					]
+				},
+				{
+					"name": "Force Grenade",
+					"entries": [
+						"Il giff lancia una granata fino a 6 metri, che esplode in una sfera di 6 metri di raggio. Ogni creatura in quell'area deve effettuare un tiro salvezza di Destrezza {@dc 15}, subendo 17 ({@damage 5d6}) danni alla forza se il tiro salvezza fallisce, o la metà dei danni se riesce. Dopo che il giff ha lanciato la granata, tira un {@dice d6}; con un tiro di 4 o inferiore, il giff non ha più granate da lanciare."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"O",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW"
+			]
+		}
+	]
+}
