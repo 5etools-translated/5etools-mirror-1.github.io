@@ -2877,18 +2877,33 @@
 						"with": "Xocopol",
 						"flags": "i"
 					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Greatsword",
-						"items": {
-							"name": "Greathammer",
-							"entries": [
-								"{@atk mw} {@hit 11} Treffer, Reichweite 10 ft., ein Ziel. {@h}28 ({@damage 6d6 + 7}) Schaden durch Wucht."
-							]
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"Der Riese führt zwei Großhammerangriffe aus."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Greatsword",
+							"items": {
+								"name": "Greathammer",
+								"entries": [
+									"{@atk mw} {@hit 11} Treffer, Reichweite 10 ft., ein Ziel. {@h}28 ({@damage 6d6 + 7}) Schaden durch Wucht."
+								]
+							}
 						}
-					}
+					]
 				}
 			},
+			"alignment": [
+				"N"
+			],
 			"hasToken": true
 		},
 		{

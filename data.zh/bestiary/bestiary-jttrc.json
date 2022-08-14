@@ -2877,18 +2877,33 @@
 						"with": "Xocopol",
 						"flags": "i"
 					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Greatsword",
-						"items": {
-							"name": "Greathammer",
-							"entries": [
-								"{@atk mw} {@hit 11}击中，到达10英尺，一个目标。{@h}28 ({@damage 6d6 + 7})重击伤害。"
-							]
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"巨人进行了两次大锤攻击。"
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Greatsword",
+							"items": {
+								"name": "Greathammer",
+								"entries": [
+									"{@atk mw} {@hit 11}击中，到达10英尺，一个目标。{@h}28 ({@damage 6d6 + 7})重击伤害。"
+								]
+							}
 						}
-					}
+					]
 				}
 			},
+			"alignment": [
+				"N"
+			],
 			"hasToken": true
 		},
 		{

@@ -283,6 +283,8 @@ class SublistManager {
 
 		if (exportedSublist && !isAdditive) await this.pDoSublistRemoveAll({isNoSave: true});
 
+		await this._listPage.pDoLoadExportedSublistSources(exportedSublist);
+
 		// Do this in series to ensure sublist items are added before having their counts updated
 		//  This only becomes a problem when there are duplicate items in the list, but as we're not finalizing, the
 		//  performance implications are negligible.
@@ -905,6 +907,8 @@ class ListPage {
 
 	async _pOnLoad_pPreDataLoad () { /* Implement as required */ }
 	async _pOnLoad_pPostLoad () { /* Implement as required */ }
+
+	async pDoLoadExportedSublistSources (exportedSublist) { /* Implement as required */ }
 
 	async _pOnLoad_pGetData () {
 		const data = await (typeof this._dataSource === "string" ? DataUtil.loadJSON(this._dataSource) : this._dataSource());

@@ -2877,18 +2877,33 @@
 						"with": "Xocopol",
 						"flags": "i"
 					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Greatsword",
-						"items": {
-							"name": "Greathammer",
-							"entries": [
-								"{@atk mw} {@hit 11} do trafienia, zasięg 10 stóp, jeden cel. {@h}28 ({@damage 6d6 + 7}) obrażeń od uderzenia."
-							]
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"Olbrzym wykonuje dwa ataki wielkim młotem."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Greatsword",
+							"items": {
+								"name": "Greathammer",
+								"entries": [
+									"{@atk mw} {@hit 11} do trafienia, zasięg 10 stóp, jeden cel. {@h}28 ({@damage 6d6 + 7}) obrażeń od uderzenia."
+								]
+							}
 						}
-					}
+					]
 				}
 			},
+			"alignment": [
+				"N"
+			],
 			"hasToken": true
 		},
 		{

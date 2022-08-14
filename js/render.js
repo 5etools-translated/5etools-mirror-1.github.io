@@ -1248,14 +1248,29 @@ function Renderer () {
 	this._renderStatblock = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 
-		const page = Renderer.hover.TAG_TO_PAGE[entry.tag];
+		const page = entry.prop || Renderer.hover.TAG_TO_PAGE[entry.tag];
 		const source = entry.source || Parser.TAG_TO_DEFAULT_SOURCE[entry.tag];
-		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page]({name: entry.name, source});
+		const hash = entry.hash || (UrlUtil.URL_TO_HASH_BUILDER[page] ? UrlUtil.URL_TO_HASH_BUILDER[page]({...entry, name: entry.name, source}) : null);
+
+		const asTag = `{@${entry.tag} ${entry.name}|${source}${entry.displayName ? `|${entry.displayName}` : ""}}`;
+
+		if (!page || !source || !hash) {
+			this._renderDataHeader(textStack, entry.name, entry.style);
+			textStack[0] += `<tr>
+				<td colspan="6">
+					<i class="text-danger">Cannot load ${entry.tag ? `&quot;${asTag}&quot;` : entry.displayName || entry.name}! An unknown tag/prop, source, or hash was provided.</i>
+				</td>
+			</tr>`;
+			this._renderDataFooter(textStack);
+			this._renderSuffix(entry, textStack, meta, options);
+
+			return;
+		}
 
 		this._renderDataHeader(textStack, entry.name, entry.style);
 		textStack[0] += `<tr>
-			<td colspan="6" data-rd-tag="${entry.tag.qq()}" data-rd-page="${page.qq()}" data-rd-source="${(source || "").qq()}" data-rd-hash="${hash.qq()}" data-rd-name="${(entry.name || "").qq()}" data-rd-style="${(entry.style || "").qq()}">
-				<i>Loading ${Renderer.get().render(`{@${entry.tag} ${entry.name}|${source}}`)}...</i>
+			<td colspan="6" data-rd-tag="${(entry.tag || "").qq()}" data-rd-page="${(page || "").qq()}" data-rd-source="${(source || "").qq()}" data-rd-hash="${(hash || "").qq()}" data-rd-name="${(entry.name || "").qq()}" data-rd-display-name="${(entry.displayName || "").qq()}" data-rd-style="${(entry.style || "").qq()}">
+				<i>Loading ${entry.tag ? `${Renderer.get().render(asTag)}` : entry.displayName || entry.name}...</i>
 				<style onload="Renderer.events.handleLoad_inlineStatblock(this)"></style>
 			</td>
 		</tr>`;
@@ -1964,6 +1979,7 @@ Renderer.events = {
 		const page = ele.dataset.rdPage.uq();
 		const source = ele.dataset.rdSource.uq();
 		const name = ele.dataset.rdName.uq();
+		const displayName = ele.dataset.rdDisplayName.uq();
 		const hash = ele.dataset.rdHash.uq();
 		const style = ele.dataset.rdStyle.uq();
 
@@ -1972,14 +1988,16 @@ Renderer.events = {
 				const tr = ele.closest("tr");
 
 				if (!toRender) {
-					tr.innerHTML = `<td colspan="6"><i>Failed to load ${Renderer.get().render(`{@${tag} ${name}|${source}}`)}!</i></td>`;
-					throw new Error(`Could not find ${tag} ${hash}`);
+					tr.innerHTML = `<td colspan="6"><i class="text-danger">Failed to load ${tag ? Renderer.get().render(`{@${tag} ${name}|${source}${displayName ? `|${displayName}` : ""}}`) : displayName || name}!</i></td>`;
+					throw new Error(`Could not find tag: "${tag}" (page/prop: "${page}") hash: "${hash}"`);
 				}
+
+				const headerName = displayName || (name ?? toRender.name ?? toRender.entries?.length ? toRender.entries[0]?.name : "(Unknown)");
 
 				const fnRender = Renderer.hover.getFnRenderCompact(page);
 				const tbl = tr.closest("table");
 				const nxt = e_({
-					outer: Renderer.utils.getEmbeddedDataHeader(toRender.name, style)
+					outer: Renderer.utils.getEmbeddedDataHeader(headerName, style)
 						+ fnRender(toRender)
 						+ Renderer.utils.getEmbeddedDataFooter(),
 				});
@@ -10321,6 +10339,9 @@ Renderer.hover = {
 		// Add a copy using the subclass source, for omnisearch results
 		Renderer.hover._addToCache(UrlUtil.PG_CLASSES, sc.source || SRC_PHB, scHash, scEntries);
 
+		// Add a copy for loading via "statblock" entries
+		Renderer.hover._addToCache("subclass", sc.source || SRC_PHB, scHash, scEntries);
+
 		// add all class/subclass features
 		UrlUtil.class.getIndexedSubclassEntries(sc).forEach(it => Renderer.hover._addToCache(UrlUtil.PG_CLASSES, it.source, it.hash, it.entry));
 	},
@@ -10717,6 +10738,8 @@ Renderer.hover = {
 				return Renderer.hover.getGenericCompactRenderedString;
 			case "subclassfeature":
 			case "subclassFeature":
+				return Renderer.hover.getGenericCompactRenderedString;
+			case "subclass":
 				return Renderer.hover.getGenericCompactRenderedString;
 			// endregion
 			default:

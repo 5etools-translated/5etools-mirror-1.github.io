@@ -142,13 +142,7 @@ class Board {
 		// assumes 7px grid spacing
 		this.$creen.css({
 			marginTop: this.isFullscreen ? 0 : 3,
-			height: `calc(100% - ${this._getHeightAdjustment()}px)`,
 		});
-	}
-
-	_getHeightAdjustment () {
-		if (this.isFullscreen) return 0;
-		else return 81; // 81 magical pixels
 	}
 
 	getPanelDimensions () {

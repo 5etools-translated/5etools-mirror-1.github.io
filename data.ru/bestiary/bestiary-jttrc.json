@@ -2877,18 +2877,33 @@
 						"with": "Xocopol",
 						"flags": "i"
 					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Greatsword",
-						"items": {
-							"name": "Greathammer",
-							"entries": [
-								"{@atk mw} {@hit 11} попадание, радиус действия 10 футов, одна цель. {@h}28 ({@damage 6d6 + 7}) урон от удара."
-							]
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"Великан делает две атаки большим молотом."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Greatsword",
+							"items": {
+								"name": "Greathammer",
+								"entries": [
+									"{@atk mw} {@hit 11} попадание, радиус действия 10 футов, одна цель. {@h}28 ({@damage 6d6 + 7}) урон от удара."
+								]
+							}
 						}
-					}
+					]
 				}
 			},
+			"alignment": [
+				"N"
+			],
 			"hasToken": true
 		},
 		{

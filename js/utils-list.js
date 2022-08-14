@@ -186,6 +186,7 @@ class ListUtilEntity {
 			page,
 
 			evt,
+			...others
 		},
 	) {
 		const saveManager = new SaveManager({
@@ -205,7 +206,7 @@ class ListUtilEntity {
 		const exportedSublist = await saveManager.pDoLoad({isIncludeManagerClientState: true});
 		if (!exportedSublist) return;
 
-		await this._pHandleExportedSublist({pFnOnSelect, page, exportedSublist, evt});
+		await this._pHandleExportedSublist({pFnOnSelect, page, exportedSublist, evt, ...others});
 	}
 
 	static async _pHandleClick_loadSublist_file (
@@ -215,6 +216,7 @@ class ListUtilEntity {
 			page,
 
 			evt,
+			...others
 		},
 	) {
 		const {jsons, errors} = await DataUtil.pUserUpload({
@@ -227,7 +229,7 @@ class ListUtilEntity {
 
 		const json = jsons[0];
 
-		await this._pHandleExportedSublist({pFnOnSelect, page, exportedSublist: json, evt});
+		await this._pHandleExportedSublist({pFnOnSelect, page, exportedSublist: json, evt, ...others});
 	}
 
 	static getContextOptionsLoadSublist (

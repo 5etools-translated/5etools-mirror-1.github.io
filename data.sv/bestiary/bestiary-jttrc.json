@@ -2877,18 +2877,33 @@
 						"with": "Xocopol",
 						"flags": "i"
 					},
-					"action": {
-						"mode": "replaceArr",
-						"replace": "Greatsword",
-						"items": {
-							"name": "Greathammer",
-							"entries": [
-								"{@atk mw} {@hit 11} för att träffa, räckvidd 3 meter, ett mål. {@h}28 ({@damage 6d6 + 7}) blåslagningsskada."
-							]
+					"action": [
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"entries": [
+									"Jätten gör två attacker med en storhammar."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Greatsword",
+							"items": {
+								"name": "Greathammer",
+								"entries": [
+									"{@atk mw} {@hit 11} för att träffa, räckvidd 3 meter, ett mål. {@h}28 ({@damage 6d6 + 7}) blåslagningsskada."
+								]
+							}
 						}
-					}
+					]
 				}
 			},
+			"alignment": [
+				"N"
+			],
 			"hasToken": true
 		},
 		{

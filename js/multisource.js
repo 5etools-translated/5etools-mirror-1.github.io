@@ -33,6 +33,11 @@ class ListPageMultiSource extends ListPage {
 		await Promise.all(defaultSources.map(src => this._pLoadSource(src, "yes")));
 	}
 
+	async pDoLoadExportedSublistSources (exportedSublist) {
+		if (!exportedSublist?.sources?.length) return;
+		await exportedSublist.sources.pMap(src => this._pLoadSource(src, "yes"));
+	}
+
 	async _pLoadSource (src, nextFilterVal) {
 		// We only act when the user changes the filter to "yes", i.e. "load/view the source"
 		if (nextFilterVal !== "yes") return;
