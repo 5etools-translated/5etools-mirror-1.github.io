@@ -1444,6 +1444,7 @@ Parser.MON_SPELLCASTING_TAG_TO_FULL = {
 	"I": "Innate",
 	"F": "Form Only",
 	"S": "Shared",
+	"O": "Other",
 	"CA": "Class, Artificer",
 	"CB": "Class, Bard",
 	"CC": "Class, Cleric",

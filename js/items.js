@@ -362,7 +362,7 @@ class ItemsPage extends ListPage {
 			$iptSearch,
 			$btnReset,
 			$btnClear,
-			$dispPageTagline: $(`.page__subtitle`),
+			dispPageTagline: document.getElementById(`page__subtitle`),
 			$wrpList: $(`.list.mundane`),
 			syntax: this._listSyntax,
 			isBindFindHotkey: true,

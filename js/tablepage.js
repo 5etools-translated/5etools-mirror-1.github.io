@@ -52,7 +52,7 @@ class TableListPage extends ListPage {
 					$wrpList,
 					$btnReset: $("#reset"),
 					$btnClear: $(`#lst__search-glass`),
-					$dispPageTagline: isFirst ? $(`.page__subtitle`) : null,
+					dispPageTagline: isFirst ? document.getElementById(`page__subtitle`) : null,
 					isBindFindHotkey: isFirst,
 					optsList: {
 						isUseJquery: true,

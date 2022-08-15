@@ -53,6 +53,7 @@ class CreatureParser extends BaseParser {
 	static _NO_ABSORB_TITLES = [
 		"ACTION",
 		"LEGENDARY ACTION",
+		"VILLAIN ACTION",
 		"MYTHIC ACTION",
 		"REACTION",
 		"BONUS ACTION",
@@ -107,7 +108,7 @@ class CreatureParser extends BaseParser {
 		options = this._getValidOptions(options);
 
 		function startNextPhase (cur) {
-			return /^(?:action|legendary action|mythic action|reaction|bonus action)s?(?:\s+\([^)]+\))?$/i.test(cur);
+			return /^(?:action|legendary action|villain action|mythic action|reaction|bonus action)s?(?:\s+\([^)]+\))?$/i.test(cur);
 		}
 
 		if (!inText || !inText.trim()) return options.cbWarning("No input!");
@@ -117,6 +118,7 @@ class CreatureParser extends BaseParser {
 			// region Handle bad OCR'ing of headers
 			[
 				"Legendary Actions?",
+				"Villain Actions?",
 				"Bonus Actions?",
 				"Reactions?",
 				"Actions?",
@@ -401,7 +403,9 @@ class CreatureParser extends BaseParser {
 					isBonusActions = ConvertUtil.isStatblockLineHeaderStart("BONUS ACTION", meta.curLine.toUpperCase())
 						|| ConvertUtil.isStatblockLineHeaderStart("BONUS ACTIONS", meta.curLine.toUpperCase());
 					isLegendaryActions = ConvertUtil.isStatblockLineHeaderStart("LEGENDARY ACTION", meta.curLine.toUpperCase())
-						|| ConvertUtil.isStatblockLineHeaderStart("LEGENDARY ACTIONS", meta.curLine.toUpperCase());
+						|| ConvertUtil.isStatblockLineHeaderStart("LEGENDARY ACTIONS", meta.curLine.toUpperCase())
+						|| ConvertUtil.isStatblockLineHeaderStart("VILLAIN ACTION", meta.curLine.toUpperCase())
+						|| ConvertUtil.isStatblockLineHeaderStart("VILLAIN ACTIONS", meta.curLine.toUpperCase());
 					isLegendaryDescription = isLegendaryActions;
 					isMythicActions = ConvertUtil.isStatblockLineHeaderStart("MYTHIC ACTION", meta.curLine.toUpperCase())
 						|| ConvertUtil.isStatblockLineHeaderStart("MYTHIC ACTIONS", meta.curLine.toUpperCase());
@@ -425,7 +429,7 @@ class CreatureParser extends BaseParser {
 					if (isLegendaryDescription) {
 						// usually the first paragraph is a description of how many legendary actions the creature can make
 						// but in the case that it's missing the substring "legendary" and "action" it's probably an action
-						if (!compressed.includes("legendary") && !compressed.includes("action")) isLegendaryDescription = false;
+						if (!(compressed.includes("legendary") || compressed.includes("villain")) && !compressed.includes("action")) isLegendaryDescription = false;
 					} else if (isMythicDescription) {
 						// as above--mythic action headers include the text "legendary action"
 						if (!compressed.includes("legendary") && !compressed.includes("action")) isLegendaryDescription = false;
@@ -450,7 +454,7 @@ class CreatureParser extends BaseParser {
 				meta.curLine = meta.toConvert[meta.ixToConvert];
 
 				// collect subsequent paragraphs
-				while (meta.curLine && !ConvertUtil.isNameLine(meta.curLine, {exceptions: new Set(["cantrips"]), splitterPunc: /(\.)/g}) && !startNextPhase(meta.curLine)) {
+				while (meta.curLine && !ConvertUtil.isNameLine(meta.curLine, {exceptions: new Set(["cantrips"]), splitterPunc: /([.?!])/g}) && !startNextPhase(meta.curLine)) {
 					if (BaseParser._isContinuationLine(curTrait.entries, meta.curLine)) {
 						curTrait.entries.last(`${curTrait.entries.last().trim()} ${meta.curLine.trim()}`);
 					} else {
@@ -488,22 +492,34 @@ class CreatureParser extends BaseParser {
 			if (stats.mythic.length === 0) delete stats.mythic;
 		}
 
-		(function doCleanLegendaryActionHeader () {
-			if (stats.legendary) {
-				stats.legendary = stats.legendary.map(it => {
-					if (!it.name.trim() && !it.entries.length) return null;
-					const m = /can take (\d) legendary actions/gi.exec(it.entries[0]);
-					if (!it.name.trim() && m) {
-						if (m[1] !== "3") stats.legendaryActions = Number(m[1]);
-						return null;
-					} else return it;
-				}).filter(Boolean);
-			}
-		})();
+		this._doCleanLegendaryActionHeader(stats);
 
 		this._doStatblockPostProcess(stats, false, options);
 		const statsOut = PropOrder.getOrdered(stats, "monster");
 		options.cbOutput(statsOut, options.isAppend);
+	}
+
+	static _doCleanLegendaryActionHeader (stats) {
+		if (!stats.legendary?.length) return;
+
+		stats.legendary = stats.legendary
+			.map(it => {
+				if (!it.name.trim() && !it.entries.length) return null;
+
+				const m = /can take (\d) legendary actions/gi.exec(it.entries[0]);
+				if (!it.name.trim() && m) {
+					if (m[1] !== "3") stats.legendaryActions = Number(m[1]);
+					return null;
+				}
+
+				if (!it.name.trim() && it.entries[0].includes("villain")) {
+					stats.legendaryHeader = it.entries;
+					return null;
+				}
+
+				return it;
+			})
+			.filter(Boolean);
 	}
 
 	static _doMergeBulletedLists (stats, prop) {

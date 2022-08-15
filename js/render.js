@@ -1992,7 +1992,8 @@ Renderer.events = {
 					throw new Error(`Could not find tag: "${tag}" (page/prop: "${page}") hash: "${hash}"`);
 				}
 
-				const headerName = displayName || (name ?? toRender.name ?? toRender.entries?.length ? toRender.entries[0]?.name : "(Unknown)");
+				const headerName = displayName
+					|| (name ?? toRender.name ?? (toRender.entries?.length ? toRender.entries?.[0]?.name : "(Unknown)"));
 
 				const fnRender = Renderer.hover.getFnRenderCompact(page);
 				const tbl = tr.closest("table");

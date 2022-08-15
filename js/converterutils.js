@@ -893,15 +893,28 @@ class ConvertUtil {
 		const entry = line.substring(rawName.length + 1, line.length).trim();
 		const name = this.getCleanTraitActionName(rawName);
 		const out = {name, entry};
-		if (isKeepPunctuation) out.name += spl[1].trim();
+
+		if (
+			isKeepPunctuation
+			// If the name ends with something besides ".", maintain it
+			|| /^[?!:]$/.test(spl[1])
+		) out.name += spl[1].trim();
+
 		return out;
 	}
 
 	static _getMergedSplitName ({line, splitterPunc}) {
 		let spl = line.split(splitterPunc || /([.!?:])/g);
 
-		// Handle e.g. "1. Freezing Ray. ..."
-		if (/^\d+$/.test(spl[0]) && spl.length > 3) {
+		if (
+			spl.length > 3
+			&& (
+				// Handle e.g. "1. Freezing Ray. ..."
+				/^\d+$/.test(spl[0])
+				// Handle e.g. "Action 1: Close In. ...
+				|| /^Action \d+$/.test(spl[0])
+			)
+		) {
 			spl = [
 				`${spl[0]}${spl[1]}${spl[2]}`,
 				...spl.slice(3),

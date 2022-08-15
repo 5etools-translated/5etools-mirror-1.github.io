@@ -655,10 +655,13 @@ class SpellcastingTypeTag {
 			const tags = new Set();
 			m.spellcasting.forEach(sc => {
 				if (!sc.name) return;
-				if (/(^|[^a-zA-Z])psionics([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("P");
-				if (/(^|[^a-zA-Z])innate([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("I");
-				if (/(^|[^a-zA-Z])form([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("F");
-				if (/(^|[^a-zA-Z])shared([^a-zA-Z]|$)/gi.exec(sc.name)) tags.add("S");
+
+				let isAdded = false;
+
+				if (/(^|[^a-zA-Z])psionics([^a-zA-Z]|$)/gi.exec(sc.name)) { tags.add("P"); isAdded = true; }
+				if (/(^|[^a-zA-Z])innate([^a-zA-Z]|$)/gi.exec(sc.name)) { tags.add("I"); isAdded = true; }
+				if (/(^|[^a-zA-Z])form([^a-zA-Z]|$)/gi.exec(sc.name)) { tags.add("F"); isAdded = true; }
+				if (/(^|[^a-zA-Z])shared([^a-zA-Z]|$)/gi.exec(sc.name)) { tags.add("S"); isAdded = true; }
 
 				if (sc.headerEntries) {
 					const strHeader = JSON.stringify(sc.headerEntries);
@@ -667,10 +670,13 @@ class SpellcastingTypeTag {
 						const match = regex.exec(strHeader);
 						if (match) {
 							tags.add(tag);
+							isAdded = true;
 							if (cbAll) cbAll(match[0]);
 						}
 					});
 				}
+
+				if (!isAdded) tags.add("O");
 
 				if (cbAll) cbAll(sc.name);
 			});

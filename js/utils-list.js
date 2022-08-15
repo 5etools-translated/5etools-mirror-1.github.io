@@ -85,7 +85,7 @@ class ListUtil {
 	}
 
 	static getDownloadName ({page, save}) {
-		return `${this.getDownloadFiletype({page})}-${save.entity.name}`;
+		return `${this.getDownloadFiletype({page})}${save.entity.name ? `-${save.entity.name}` : ""}`;
 	}
 
 	static getDownloadFiletypeSaves ({page}) {
@@ -280,22 +280,33 @@ class ListUtilEntity {
 
 			page,
 
-			baseRenamers,
+			optsFromCurrent,
+			optsFromSaved,
+			optsFromFile,
+
 			altGenerators,
 		},
 	) {
 		const values = [
-			baseRenamers?.fromCurrent ? baseRenamers?.fromCurrent(this._getString_action_currentPinned_name({page})) : this._getString_action_currentPinned_name({page}),
-			baseRenamers?.fromSaved ? baseRenamers?.fromSaved(this._getString_action_savedPinned_name({page})) : this._getString_action_savedPinned_name({page}),
-			baseRenamers?.fromFile ? baseRenamers?.fromFile(this._getString_action_file_name({page})) : this._getString_action_file_name({page}),
+			optsFromCurrent?.renamer ? optsFromCurrent.renamer(this._getString_action_currentPinned_name({page})) : this._getString_action_currentPinned_name({page}),
+			optsFromSaved?.renamer ? optsFromSaved.renamer(this._getString_action_savedPinned_name({page})) : this._getString_action_savedPinned_name({page}),
+			optsFromFile?.renamer ? optsFromFile.renamer(this._getString_action_file_name({page})) : this._getString_action_file_name({page}),
 		];
 
-		const altOtherOpts = [...new Array(3)].map(() => {});
+		const ixdPFnConfirms = [
+			optsFromCurrent?.pFnConfirm,
+			optsFromSaved?.pFnConfirm,
+			optsFromFile?.pFnConfirm,
+		];
+		const ixdOtherOpts = [...new Array(3)].map(() => {});
 		if (altGenerators?.length) {
 			altGenerators.forEach(({fromCurrent, fromSaved, fromFile}) => {
-				altOtherOpts.push(fromCurrent.otherOpts || {});
-				altOtherOpts.push(fromSaved.otherOpts || {});
-				altOtherOpts.push(fromFile.otherOpts || {});
+				const modes = [fromCurrent, fromSaved, fromFile];
+
+				modes.forEach(mode => {
+					ixdPFnConfirms.push(mode?.pFnConfirm);
+					ixdOtherOpts.push(mode?.otherOpts || {});
+				});
 
 				values.push(fromCurrent.renamer(this._getString_action_currentPinned_name({page})));
 				values.push(fromSaved.renamer(this._getString_action_savedPinned_name({page})));
@@ -310,10 +321,11 @@ class ListUtilEntity {
 
 		const ixBase = ix % 3;
 
+		if (ixdPFnConfirms[ix] && !(await ixdPFnConfirms[ix]())) return;
 		switch (ixBase) {
-			case 0: return this._pHandleClick_loadSublist_currentPinned({pFnOnSelect, page, ...altOtherOpts[ix]});
-			case 1: return this._pHandleClick_loadSublist_savedPinned({pFnOnSelect, optsSaveManager, page, ...altOtherOpts[ix]});
-			case 2: return this._pHandleClick_loadSublist_file({pFnOnSelect, page, ...altOtherOpts[ix]});
+			case 0: return this._pHandleClick_loadSublist_currentPinned({pFnOnSelect, page, ...ixdOtherOpts[ix]});
+			case 1: return this._pHandleClick_loadSublist_savedPinned({pFnOnSelect, optsSaveManager, page, ...ixdOtherOpts[ix]});
+			case 2: return this._pHandleClick_loadSublist_file({pFnOnSelect, page, ...ixdOtherOpts[ix]});
 			default: throw new Error(`Unhandled!`);
 		}
 	}
@@ -445,6 +457,18 @@ class SaveManager extends BaseComponent {
 	}
 
 	_getUsableSaves () { return this._state.saves.filter(it => it.entity.name && it.entity.manager_isSaved); }
+
+	async pDoUpdateCurrentStateFrom (exportedSublist, {isNoSave = false} = {}) {
+		if (!exportedSublist) return;
+
+		const activeSave = this._getActiveSave();
+
+		Object.keys(this._getNewSave_entity()).forEach(k => activeSave.entity[k] = exportedSublist[k]);
+
+		this._triggerCollectionUpdate("saves");
+
+		if (!isNoSave) this._pDoSaveStateToStorageDebounced();
+	}
 
 	async pDoLoad (
 		{
@@ -637,6 +661,8 @@ class SaveManager extends BaseComponent {
 	}
 
 	_isWarnUnsavedChanges (exportedSublist) {
+		if (!exportedSublist) return false;
+
 		const save = this._getActiveSave();
 		if (!save?.entity.manager_isSaved) return false;
 
@@ -647,6 +673,8 @@ class SaveManager extends BaseComponent {
 	}
 
 	_isWarnNeverSaved (exportedSublist) {
+		if (!exportedSublist) return false;
+
 		const save = this._getActiveSave();
 		if (save?.entity.manager_isSaved) return false;
 
@@ -684,10 +712,15 @@ class SaveManager extends BaseComponent {
 		return $wrp;
 	}
 
-	$getBtnDownloadSave_ ({save, title = "Download"}) {
+	$getBtnDownloadSave_ ({save, title = "Download", cbOnSave = null}) {
 		return $(`<button class="btn btn-5et btn-xs btn-default" title="${title.qq()}"><span class="glyphicon glyphicon-download"></span></button>`)
-			.click(evt => {
+			.click(async evt => {
 				evt.stopPropagation();
+
+				if (cbOnSave) {
+					const didSave = await cbOnSave(evt);
+					if (!didSave) return;
+				}
 
 				DataUtil.userDownload(
 					ListUtil.getDownloadName({page: this._page, save}),
@@ -700,11 +733,17 @@ class SaveManager extends BaseComponent {
 			});
 	}
 
+	_getNewSave_entity () {
+		return {
+			name: null,
+		};
+	}
+
 	_getNewSave () {
 		return {
 			id: CryptUtil.uid(),
 			entity: {
-				name: null,
+				...this._getNewSave_entity(),
 
 				// Used to e.g. reference encounters in the DM Screen timetracker
 				saveId: CryptUtil.uid(),
@@ -879,7 +918,7 @@ SaveManager._RenderableCollectionSaves_Summary = class extends RenderableCollect
 			this._comp._triggerCollectionUpdate("saves");
 		});
 
-		const $iptName = ComponentUiUtil.$getIptStr(comp, "name");
+		const $iptName = ComponentUiUtil.$getIptStr(comp, "name", {placeholder: "(Unnamed List)"});
 
 		const $btnNew = $(`<button class="btn btn-5et btn-xs btn-default" title="New Pinned List"><span class="glyphicon glyphicon glyphicon-file"></span></button>`)
 			.click(evt => this._cbOnNew(evt));
@@ -887,13 +926,18 @@ SaveManager._RenderableCollectionSaves_Summary = class extends RenderableCollect
 		const $btnSave = $(`<button class="btn btn-5et btn-xs btn-default" title="Save Pinned List"><span class="glyphicon glyphicon-floppy-disk"></span></button>`)
 			.click(evt => this._cbOnSave(evt));
 
-		const $btnDownload = this._comp.$getBtnDownloadSave_({save, title: "Download Pinned List"});
+		const $btnDownload = this._comp.$getBtnDownloadSave_({save, title: "Download Pinned List", cbOnSave: this._cbOnSave});
 
 		const $btnUpload = $(`<button class="btn btn-5et btn-xs btn-default" title="Upload Pinned List"><span class="glyphicon glyphicon-upload"></span></button>`)
 			.click(evt => this._cbOnUpload(evt));
 
 		const $btnReset = $(`<button class="btn btn-5et btn-xs btn-default" title="Reload Pinned List"><span class="glyphicon glyphicon-refresh"></span></button>`)
 			.click(evt => this._cbOnReset(evt, ListUtil.getWithoutManagerState(comp.toObject("*"))));
+
+		const hkBtnReset = () => $btnReset.prop("disabled", !comp._state.manager_isSaved);
+		comp._addHookBase("name", hkBtnReset);
+		comp._addHookBase("manager_isSaved", hkBtnReset);
+		hkBtnReset();
 
 		const $wrpRow = $$`<div class="ve-flex-col my-2 w-100">
 			<hr class="hr-1">
@@ -910,9 +954,7 @@ SaveManager._RenderableCollectionSaves_Summary = class extends RenderableCollect
 			</div>
 		</div>`.appendTo(this._$wrp);
 
-		const hkDisplay = () => $wrpRow.toggleVe(this._comp._state.activeId === save.id && comp._state.name && comp._state.manager_isSaved);
-		comp._addHookBase("name", hkDisplay);
-		comp._addHookBase("manager_isSaved", hkDisplay);
+		const hkDisplay = () => $wrpRow.toggleVe(this._comp._state.activeId === save.id);
 		hkDisplay();
 
 		return {

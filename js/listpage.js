@@ -310,6 +310,8 @@ class SublistManager {
 			isMemoryOnly,
 		}));
 
+		await this._saveManager.pDoUpdateCurrentStateFrom(exportedSublist, {isNoSave});
+
 		await this._pFinaliseSublist({isNoSave});
 	}
 
@@ -867,7 +869,7 @@ class ListPage {
 			$wrpList: $(`.list.${this._listClass}`),
 			$btnReset,
 			$btnClear: $(`#lst__search-glass`),
-			$dispPageTagline: $(`.page__subtitle`),
+			dispPageTagline: document.getElementById(`page__subtitle`),
 			isPreviewable: this._isPreviewable,
 			syntax: this._listSyntax,
 			isBindFindHotkey: true,
@@ -1285,7 +1287,7 @@ class ListPage {
 			$wrpList,
 			$btnReset,
 			$btnClear,
-			$dispPageTagline,
+			dispPageTagline,
 			isPreviewable,
 			isBindFindHotkey,
 			syntax,
@@ -1341,8 +1343,8 @@ class ListPage {
 		$iptSearch.on("keydown", handleSearchChange);
 		// endregion
 
-		if ($dispPageTagline) {
-			$dispPageTagline.html(`${$dispPageTagline.html()} Press J/K to navigate${isPreviewable ? `, M to expand` : ""}.`);
+		if (dispPageTagline) {
+			dispPageTagline.innerHTML += ` Press J/K to navigate${isPreviewable ? `, M to expand` : ""}.`;
 			this._initList_bindWindowHandlers();
 		}
 

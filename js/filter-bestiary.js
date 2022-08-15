@@ -202,7 +202,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		this._spellcastingTypeFilter = new Filter({
 			header: "Spellcasting Type",
-			items: ["F", "I", "P", "S", "CA", "CB", "CC", "CD", "CP", "CR", "CS", "CL", "CW"],
+			items: ["F", "I", "P", "S", "O", "CA", "CB", "CC", "CD", "CP", "CR", "CS", "CL", "CW"],
 			displayFn: Parser.monSpellcastingTagToFull,
 		});
 		this._spellSlotLevelFilter = new RangeFilter({
