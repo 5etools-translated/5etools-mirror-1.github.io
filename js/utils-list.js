@@ -681,15 +681,16 @@ class SaveManager extends BaseComponent {
 		return !!exportedSublist.items?.length;
 	}
 
-	render (
+	$getRenderedSummary (
 		{
 			cbOnNew,
 			cbOnSave,
+			cbOnLoad,
 			cbOnReset,
 			cbOnUpload,
 		},
 	) {
-		const $wrp = $(`<div class="mt-auto pt-2 ve-flex-col"></div>`);
+		const $wrp = $(`<div class="pt-2 ve-flex-col"></div>`);
 
 		const renderableCollectionSummary = new SaveManager._RenderableCollectionSaves_Summary(
 			{
@@ -697,6 +698,7 @@ class SaveManager extends BaseComponent {
 				$wrp,
 				cbOnNew,
 				cbOnSave,
+				cbOnLoad,
 				cbOnReset,
 				cbOnUpload,
 			},
@@ -899,6 +901,7 @@ SaveManager._RenderableCollectionSaves_Summary = class extends RenderableCollect
 			$wrp,
 			cbOnNew,
 			cbOnSave,
+			cbOnLoad,
 			cbOnReset,
 			cbOnUpload,
 		},
@@ -907,6 +910,7 @@ SaveManager._RenderableCollectionSaves_Summary = class extends RenderableCollect
 		this._$wrp = $wrp;
 		this._cbOnNew = cbOnNew;
 		this._cbOnSave = cbOnSave;
+		this._cbOnLoad = cbOnLoad;
 		this._cbOnReset = cbOnReset;
 		this._cbOnUpload = cbOnUpload;
 	}
@@ -926,6 +930,9 @@ SaveManager._RenderableCollectionSaves_Summary = class extends RenderableCollect
 		const $btnSave = $(`<button class="btn btn-5et btn-xs btn-default" title="Save Pinned List"><span class="glyphicon glyphicon-floppy-disk"></span></button>`)
 			.click(evt => this._cbOnSave(evt));
 
+		const $btnLoad = $(`<button class="btn btn-5et btn-xs btn-default" title="Load Pinned List"><span class="glyphicon glyphicon-folder-open"></span></button>`)
+			.click(evt => this._cbOnLoad(evt));
+
 		const $btnDownload = this._comp.$getBtnDownloadSave_({save, title: "Download Pinned List", cbOnSave: this._cbOnSave});
 
 		const $btnUpload = $(`<button class="btn btn-5et btn-xs btn-default" title="Upload Pinned List"><span class="glyphicon glyphicon-upload"></span></button>`)
@@ -940,17 +947,19 @@ SaveManager._RenderableCollectionSaves_Summary = class extends RenderableCollect
 		hkBtnReset();
 
 		const $wrpRow = $$`<div class="ve-flex-col my-2 w-100">
-			<hr class="hr-1">
-			<div class="ve-flex-h-right ve-flex-v-center mb-2">
-				<div class="mr-2 ve-muted">List:</div>
-				${$iptName.addClass("max-w-300p")}
-			</div>
-			<div class="ve-flex-h-right ve-flex-v-center btn-group">
-				${$btnNew}
-				${$btnSave}
-				${$btnDownload}
-				${$btnUpload}
-				${$btnReset}
+			<div class="ve-flex-v-center">
+				<div class="ve-flex-v-center mr-1 w-100 min-w-0">
+					<div class="mr-2 ve-muted">List:</div>
+					${$iptName}
+				</div>
+				<div class="ve-flex-h-right ve-flex-v-center btn-group no-shrink">
+					${$btnNew}
+					${$btnSave}
+					${$btnLoad}
+					${$btnDownload}
+					${$btnUpload}
+					${$btnReset}
+				</div>
 			</div>
 		</div>`.appendTo(this._$wrp);
 

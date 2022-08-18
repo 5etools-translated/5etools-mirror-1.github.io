@@ -198,6 +198,42 @@
 			]
 		},
 		{
+			"name": "Crashing",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Spelljammer może wjechać swoim statkiem w inny obiekt lub istotę, przesuwając statek w przestrzeń celu i wykonując specjalny rzut ataku ({@dice 1d20} + bonus biegłości spelljammera) przeciwko klasie pancerza celu. Jeśli rolka ataku trafi, następuje zderzenie; w przeciwnym razie cel przesuwa się z drogi statku, unikając zderzenia. Jeśli DM zdecyduje, że kraksa jest nieunikniona, nie trzeba wykonywać rolki ataku, a kraksa następuje automatycznie.",
+				"Kiedy zaklęty statek zderza się z czymś, co mogłoby go rozsądnie uszkodzić, zarówno statek, jak i istota lub obiekt, w który uderzył, otrzymują obrażenia od uderzenia oparte na rozmiarze uderzonego obiektu, jak pokazano w tabeli Obrażeń od zderzenia. Jeśli statek wpadnie na coś, co nie ma punktów trafień (jak planeta czy księżyc), zastosuj obrażenia tylko do statku. Statek zatrzymuje się po zderzeniu z Gargantuiczną lub nieruchomą istotą lub obiektem; w przeciwnym razie statek może kontynuować ruch, jeśli pozostał mu jakiś ruch, a to, w co uderzył, przesuwa się do najbliższej niezajętej przestrzeni, która nie znajduje się na drodze statku.",
+				"Po rozstrzygnięciu efektu katastrofy określ, czy płaszczyzna grawitacji statku jest stłumiona (patrz \"{@book Overlapping Gravity Planes|AAG|2|Overlapping Gravity Planes}\" wcześniej w rozdziale). Jeśli stłumienie płaszczyzny grawitacyjnej statku spowodowałoby upadek istot znajdujących się na tym statku lub w jego wnętrzu, spadają one w dowolnym kierunku, odpowiednim dla nagłej zmiany grawitacji. Aby określić obrażenia od upadku, zobacz zasady {@book falling|PHB|8|Falling} w {@book Player's Handbook|PHB}.",
+				{
+					"type": "table",
+					"caption": "Crash Damage",
+					"colLabels": [
+						"Size of Creature or Object Struck",
+						"Bludgeoning Damage"
+					],
+					"colStyles": [
+						"col-8 text-center",
+						"col-4 text-center"
+					],
+					"rows": [
+						[
+							"Duża",
+							"{@dice 4d10}"
+						],
+						[
+							"Huge",
+							"{@dice 8d10}"
+						],
+						[
+							"Gargantuiczny",
+							"{@dice 16d10}"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Crashing a Ship",
 			"source": "UAOfShipsAndSea",
 			"page": 9,
@@ -435,6 +471,15 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Crew",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Standardowa załoga statku zaklinającego składa się z jednego kapitana, który wydaje rozkazy, jednego zaklinacza, który pilotuje statek i jednego lub więcej członków załogi, którzy obsługują jego broń. Niektóre statki przewożą dodatkową załogę (taką jak żołnierze i zapasowi zaklinacze) lub pasażerów. Statek, który posiada więcej niż standardową załogę, będzie szybciej degradował jakość swojego zaopatrzenia w powietrze.",
+				"Spellcaster zazwyczaj pobiera co najmniej 50 gp dziennie, aby obsługiwać {@item spelljamming helm|AAG}."
 			]
 		},
 		{
@@ -10014,6 +10059,15 @@
 			]
 		},
 		{
+			"name": "Ship Repairs",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Nie magiczne naprawy uszkodzonego statku mogą być dokonywane, gdy statek jest zacumowany. Naprawa 1 punktu trafienia uszkodzonego zacumowanego statku trwa 1 dzień i kosztuje 20 gp za materiały i robociznę. Uszkodzenia broni pokładowej można naprawić równie szybko (1 punkt trafienia dziennie), ale za połowę kosztów (10 gp za punkt trafienia).",
+				"Zaklęcie {@spell mending} jest tańszym, mniej czasochłonnym sposobem dokonywania napraw. Rzucenie {@spell mending} na uszkodzony statek lub broń pokładową przywraca celowi liczbę punktów trafień równą {@dice 1d8} plus modyfikator zdolności zaklęcia. Cel może odzyskać punkty trafień dzięki temu zaklęciu nie częściej niż raz na godzinę."
+			]
+		},
+		{
 			"name": "Ship Stat Blocks",
 			"source": "GoS",
 			"page": 186,
@@ -10287,6 +10341,77 @@
 								"{@vehicle Warship|UAOfShipsAndSea}"
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ship-to-Ship Combat",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Poniższe zasady zostały zaprojektowane tak, aby walka między statkami była prosta, a jednocześnie ekscytująca.",
+				{
+					"type": "entries",
+					"name": "Starting Distance",
+					"entries": [
+						"Na początku zaangażowania DM decyduje, jak daleko statek znajduje się od swoich wrogów. Trzy możliwości są podane w tabeli Starting Encounter Distance. Im krótszy dystans, tym mniej czasu mają załogi na załadowanie broni i inne przygotowania.",
+						{
+							"type": "table",
+							"caption": "Starting Encounter Distance",
+							"colLabels": [
+								"Distance",
+								"Notes"
+							],
+							"colStyles": [
+								"col-2",
+								"col-10"
+							],
+							"rows": [
+								[
+									"250 feet",
+									"Długi zasięg dla balist, mangoneli, krótkich łuków, długich łuków, lekkich kusz i ciężkich kusz."
+								],
+								[
+									"500 feet",
+									"Duży zasięg dla longbows i mangonels; poza zasięgiem ballistae i kuszy"
+								],
+								[
+									"1,000 feet",
+									"Poza zasięgiem większości broni dystansowych."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Initiative",
+					"entries": [
+						"{@book Dungeon Master's Guide|DMG} prezentuje wariantową zasadę zwaną {@variantrule Initiative Variants||Side Initiative}, która jest idealna do starć między statkami, ponieważ oszczędza ci kłopotów ze śledzeniem inicjatywy dla poszczególnych istot na pokładzie każdego statku.",
+						{
+							"type": "inset",
+							"name": "Shipboard Weapons",
+							"entries": [
+								"Okręt zaklinający posiada zazwyczaj jedną lub więcej broni pokładowej, z czego najczęściej spotykane są balisty i mangusty. Taka broń jest wolna do załadowania i wystrzelenia. Postacie graczy prawie zawsze lepiej używać własnej broni i zaklęć w walce między statkami, rezerwując broń pokładową dla celów, które są zbyt daleko, by można je było zniszczyć innymi sposobami."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Moving and Steering a Ship",
+					"entries": [
+						"Zaklinacz może użyć {@item spelljamming helm|AAG} statku, aby poruszać się i kierować statkiem bez wydawania własnych akcji lub ruchu. W swojej turze zaklinacz określa, jak daleko porusza się statek (do jego maksymalnej prędkości) i decyduje, czy zbliżyć się do innego statku, czy zwiększyć dystans między nimi.",
+						"W swojej turze statek może zostać obrócony i przeorientowany tak, że wszystkie jego bronie mogą celować i strzelać do każdego celu w zasięgu, niezależnie od tego, gdzie znajduje się on na pokładzie."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Boarding",
+					"entries": [
+						"Kiedy jeden statek przesuwa się na odległość 5 stóp od innego statku, zaklinacz lub pilot poruszającego się statku może manewrować nim wzdłuż drugiego statku, umożliwiając stworzeniom bezpieczne przejście z pokładu jednego statku na pokład drugiego, dopóki jeden ze statków nie odsunie się od drugiego.",
+						"Statek, który ma wystarczającą ilość ruchu, może zbliżyć się do innego statku, rozmieścić grupę abordażową, a następnie oddalić się, pod warunkiem, że członkowie grupy abordażowej wykonali akcję {@action ready||Ready}, aby ustawić się tak, by móc przenieść się na drugi statek, kiedy ten będzie wystarczająco blisko."
 					]
 				}
 			]

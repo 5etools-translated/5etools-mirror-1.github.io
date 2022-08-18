@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "vehicles.json",
-	"version": "1.5.6",
+	"version": "1.6.1",
 	"type": "object",
 
 	"definitions": {
@@ -17,7 +17,7 @@
 						"land",
 						"sea",
 						"air",
-						"wildspace"
+						"space"
 					]
 				}
 			}
@@ -27,6 +27,20 @@
 			"description": "In copper pieces.",
 			"type": "number"
 		},
+
+		"spelljammerPaceObj": {
+			"type": "object",
+			"properties": {
+				"walk": {"$ref": "#/definitions/_spelljammerPace"},
+				"burrow": {"$ref": "#/definitions/_spelljammerPace"},
+				"climb": {"$ref": "#/definitions/_spelljammerPace"},
+				"fly": {"$ref": "#/definitions/_spelljammerPace"},
+				"swim": {"$ref": "#/definitions/_spelljammerPace"}
+			},
+			"additionalProperties": false
+		},
+
+		"_spelljammerPace": {"type": ["string", "number"]},
 
 		"vehicle": {
 			"oneOf": [
@@ -54,6 +68,7 @@
 					"type": "string"
 				},
 				"page": {"$ref": "util.json#/definitions/page"},
+				"otherSources": {"$ref": "util.json#/definitions/otherSources"},
 				"upgradeType": {
 					"type": "array",
 					"items": {
@@ -86,6 +101,7 @@
 					"type": "string"
 				},
 				"page": {"$ref": "util.json#/definitions/page"},
+				"otherSources": {"$ref": "util.json#/definitions/otherSources"},
 				"vehicleType": {"const": "SHIP"},
 				"terrain": {"$ref": "#/definitions/vehicleTerrain"},
 				"size": {
@@ -393,6 +409,7 @@
 				"name": {"type": "string"},
 				"source": {"type": "string"},
 				"page": {"$ref": "util.json#/definitions/page"},
+				"otherSources": {"$ref": "util.json#/definitions/otherSources"},
 				"vehicleType": {"const": "SPELLJAMMER"},
 				"terrain": {"$ref": "#/definitions/vehicleTerrain"},
 				"dimensions": {
@@ -402,10 +419,11 @@
 					}
 				},
 				"capCrew": {"type": "integer"},
+				"capCrewNote": {"type": "string"},
 				"capCargo": {
 					"type": ["number", "string"]
 				},
-				"pace": {"type": ["string", "number"]},
+				"pace": {"$ref": "#/definitions/spelljammerPaceObj"},
 				"speed": {"$ref": "util.json#/definitions/speed"},
 				"hull": {
 					"type": "object",
@@ -505,6 +523,7 @@
 					"type": "string"
 				},
 				"page": {"$ref": "util.json#/definitions/page"},
+				"otherSources": {"$ref": "util.json#/definitions/otherSources"},
 				"vehicleType": {"const": "INFWAR"},
 				"terrain": {"$ref": "#/definitions/vehicleTerrain"},
 				"size": {

@@ -371,6 +371,180 @@
 			"hasFluffImages": true
 		},
 		{
+			"name": "Bombard",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"140 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 12,
+			"capCargo": 150,
+			"cost": 5000000,
+			"pace": {
+				"fly": 4
+			},
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 20
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger une baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Giant Cannon",
+					"crew": 4,
+					"ac": 19,
+					"hp": 250,
+					"costs": [
+						{
+							"note": "cannon"
+						},
+						{
+							"cost": 100000,
+							"note": "giant cannon ball"
+						}
+					],
+					"entries": [
+						"Il faut 3 actions pour charger l'énorme canon et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Cannon Ball",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée 600/2 400 ft, une cible. {@h}88 ({@dice 16d10}) dégâts de matraquage."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Damselfly Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"100 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 9,
+			"capCargo": 5,
+			"cost": 2000000,
+			"pace": {
+				"fly": 8
+			},
+			"speed": {
+				"fly": 70
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 200,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger la baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 4,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger le mangonneau, 1 action pour le diriger à l'aide du rotateur de tourelle (zone 2 sur le plan de pont ci-joint), et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 pour toucher, portée de 200/800 pieds (ne peut pas toucher les cibles à moins de 60 pieds de lui), une cible. {@h}27 ({@dice 5d10}) dégâts de matraquage."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Demon Grinder",
 			"source": "BGDIA",
 			"page": 219,
@@ -538,6 +712,93 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Flying Fish Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"120 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 10,
+			"capCargo": 13,
+			"cost": 2000000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger la baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger le mangonneau, 2 actions pour le viser et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 pour toucher, portée de 200/800 pieds (ne peut pas toucher les cibles à moins de 60 pieds de lui), une cible. {@h}27 ({@dice 5d10}) dégâts de matraquage."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},
@@ -815,20 +1076,27 @@
 		},
 		{
 			"name": "Hammerhead Ship",
-			"source": "SjA",
+			"source": "AAG",
+			"otherSources": [
+				{
+					"source": "SjA"
+				}
+			],
 			"vehicleType": "SPELLJAMMER",
 			"dimensions": [
 				"130 ft.",
 				"20 ft."
 			],
 			"terrain": [
-				"wildspace",
+				"space",
 				"sea"
 			],
 			"capCrew": 15,
 			"capCargo": 30,
 			"cost": 4000000,
-			"pace": 4,
+			"pace": {
+				"fly": 4
+			},
 			"speed": {
 				"fly": 35
 			},
@@ -1146,6 +1414,150 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Lamprey Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"115 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 6,
+			"cost": 2000000,
+			"pace": {
+				"fly": 4
+			},
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger une baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Grappling Jaws",
+					"crew": 1,
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour faire une attaque de mâchoires de grappin."
+					],
+					"action": [
+						{
+							"name": "Grappling Jaws",
+							"entries": [
+								"{@atk mw} +6 pour toucher, portée de 10 ft, un navire ou une créature Gargantuane. {@h}22 ({@dice 4d10}) dégâts perforants, et la vitesse du navire lamproie et de la cible devient 0 jusqu'à la fin du grappin. En tant qu'action, une créature peut utiliser les commandes des mâchoires du grappin pour libérer la cible. Sinon, l'effet prend fin lorsque la cible ou le bateau lamproie tombe à 0 point de vie."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Living Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"80 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 5,
+			"capCrewNote": "(plus the {@creature treant})",
+			"capCargo": 10,
+			"cost": 2500000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger la baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Longship",
@@ -1474,6 +1886,205 @@
 							"type": "item",
 							"name": "Move",
 							"entry": "Le contemplateur mécanique peut utiliser son casque pour se déplacer en utilisant son unité de propulsion magique."
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nautiloid",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"180 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 20,
+			"capCargo": 17,
+			"cost": 5000000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger une baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger le mangonneau, 2 actions pour le viser et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 pour toucher, portée de 200/800 pieds (ne peut pas toucher les cibles à moins de 60 pieds de lui), une cible. {@h}27 ({@dice 5d10}) dégâts de matraquage."
+							]
+						}
+					]
+				},
+				{
+					"name": "Tentacles",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"En tant qu'action, le lanceur de sorts du navire peut effectuer l'une des attaques suivantes avec les tentacules du navire."
+					],
+					"action": [
+						{
+							"name": "Grappling Tentacles",
+							"entries": [
+								"{@atk mw} +8 pour toucher, portée de 30 ft, une cible énorme ou gargantuesque. {@h}22 ({@dice 4d10}) dégâts de matraquage, et la vitesse du nautiloïde devient 0 jusqu'à ce que son lanceur de sorts utilise une action pour libérer la cible. Si la cible est une créature, elle subit {@condition grappled} (évasion DC 16). Si la cible est un autre navire, la vitesse de la cible devient 0 jusqu'à ce que le nautiloïde la libère, ou jusqu'à ce que la cible ou le nautiloïde tombe à 0 point de vie."
+							]
+						},
+						{
+							"name": "Teleport",
+							"entries": [
+								"{@atk ms} +8 pour toucher, portée de 30 ft, une créature. {@h}La cible doit réussir un jet de sauvegarde de Constitution DC 15 ou être téléportée dans un espace inoccupé à bord du nautiloïde que le lanceur de sorts du nautiloïde peut voir."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nightspider",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"175 ft.",
+				"50 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 25,
+			"capCargo": 50,
+			"cost": 5000000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger une baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger le mangonneau, 2 actions pour le viser et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 pour toucher, portée de 200/800 pieds (ne peut pas toucher les cibles à moins de 60 pieds de lui), une cible. {@h}27 ({@dice 5d10}) dégâts de matraquage."
+							]
 						}
 					]
 				}
@@ -1975,21 +2586,307 @@
 			"hasFluffImages": true
 		},
 		{
+			"name": "Scorpion Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"75 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"space",
+				"land"
+			],
+			"capCrew": 12,
+			"capCargo": 12,
+			"cost": 2500000,
+			"pace": {
+				"walk": "3½",
+				"fly": "3½"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 30
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger la baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Claws",
+					"crew": 1,
+					"count": 2,
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour effectuer une attaque de Griffe."
+					],
+					"action": [
+						{
+							"name": "Claw",
+							"entries": [
+								"{@atk mw} +3 pour toucher, portée de 6 mètres, une cible. {@h}11 ({@dice 2d10}) dégâts de matraquage. Si la cible est une créature énorme ou plus petite, elle subit également {@condition grappled} (évasion DC 13). Jusqu'à la fin de ce grappin, la créature subit 11 ({@dice 2d10}) de dégâts de matraquage au début de chacun de ses tours."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger le mangonneau, 2 actions pour le viser et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 pour toucher, portée de 200/800 pieds (ne peut pas toucher les cibles à moins de 60 pieds de lui), une cible. {@h}27 ({@dice 5d10}) dégâts de matraquage."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Shrike Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"100 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 11,
+			"capCargo": 20,
+			"cost": 2000000,
+			"pace": {
+				"fly": 8
+			},
+			"speed": {
+				"fly": 70
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger une baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Le jeteur de sorts du navire peut effectuer l'attaque suivante lorsque le navire heurte un autre objet ou une créature gargantuesque (voir \"{@book Crashing|AAG|2|Crashing}\" plus haut dans le chapitre)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} +8 pour toucher, portée de 0 ft, un objet ou une créature Gargantuane. {@h}88 ({@dice 16d10}) dégâts perforants. Le vaisseau pie-grièche subit deux fois moins de dégâts et s'arrête net. Manqué : L'attaque n'inflige aucun dégât, la cible se déplace dans l'espace inoccupé le plus proche qui ne se trouve pas sur la trajectoire du bateau-grièche, et le bateau-grièche peut continuer à se déplacer s'il lui reste du mouvement."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Space Galleon",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 20,
+			"capCargo": 20,
+			"cost": 3000000,
+			"pace": {
+				"fly": 4
+			},
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger une baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger le mangonneau, 2 actions pour le viser et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 pour toucher, portée de 200/800 pieds (ne peut pas toucher les cibles à moins de 60 pieds de lui), une cible. {@h}27 ({@dice 5d10}) dégâts de matraquage."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Squid Ship",
-			"source": "SjA",
+			"source": "AAG",
+			"otherSources": [
+				{
+					"source": "SjA"
+				}
+			],
 			"vehicleType": "SPELLJAMMER",
 			"dimensions": [
 				"250 ft.",
 				"25 ft."
 			],
 			"terrain": [
-				"wildspace",
+				"space",
 				"sea"
 			],
 			"capCrew": 13,
 			"capCargo": 20,
 			"cost": 2500000,
-			"pace": "3½",
+			"pace": {
+				"fly": "3½"
+			},
 			"speed": {
 				"fly": 30
 			},
@@ -2158,6 +3055,94 @@
 			"hasToken": true
 		},
 		{
+			"name": "Star Moth",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"200 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": {
+				"fly": "5½"
+			},
+			"speed": {
+				"fly": 50
+			},
+			"hull": {
+				"ac": 13,
+				"acFrom": [
+					"ceramic"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger une baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger le mangonneau, 2 actions pour le viser et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 pour toucher, portée de 200/800 pieds (ne peut pas toucher les cibles à moins de 60 pieds de lui), une cible. {@h}27 ({@dice 5d10}) dégâts de matraquage."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Tormentor",
 			"source": "BGDIA",
 			"page": 218,
@@ -2247,6 +3232,150 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Turtle Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"95 ft.",
+				"70 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 16,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": {
+				"fly": 3,
+				"swim": 3
+			},
+			"speed": {
+				"fly": 25,
+				"swim": 25
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger une baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Il faut 2 actions pour charger le mangonneau, 2 actions pour le viser et 1 action pour le tirer."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 pour toucher, portée de 200/800 pieds (ne peut pas toucher les cibles à moins de 60 pieds de lui), une cible. {@h}27 ({@dice 5d10}) dégâts de matraquage."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Tyrant Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"100 ft.",
+				"100 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 10,
+			"capCrewNote": "({@creature Beholder||beholders})",
+			"capCargo": 20,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 17,
+				"acFrom": [
+					"(stone)"
+				],
+				"hp": 300,
+				"dt": 20
+			},
+			"weapon": [
+				{
+					"name": "Eyestalk Cannons",
+					"crew": 1,
+					"count": 3,
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Cette arme ressemble à un œil monté sur une tige oculaire. Un observateur posté dans l'une des nacelles de méditation du vaisseau tyran peut voir à travers l'œil en se concentrant dessus (comme s'il se concentrait sur un sort) et utiliser une action pour effectuer l'attaque suivante."
+					],
+					"action": [
+						{
+							"name": "Destructive Ray",
+							"entries": [
+								"{@atk rs} +8 pour toucher, portée de 120/480 ft, une cible. {@h}35 ({@dice 10d6}) dégâts de force."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},
@@ -2521,6 +3650,66 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Wasp Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"80 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 5,
+			"capCargo": 10,
+			"cost": 2000000,
+			"pace": {
+				"fly": "5½"
+			},
+			"speed": {
+				"fly": 50
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Il faut 1 action pour charger la baliste, 1 action pour la viser, et 1 action pour la tirer."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 pour toucher, portée de 120/480 ft., une cible. {@h}16 ({@dice 3d10}) dégâts perforants."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		}
 	],
 	"vehicleUpgrade": [

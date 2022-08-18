@@ -198,6 +198,42 @@
 			]
 		},
 		{
+			"name": "Crashing",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Een spelljammer kan zijn schip tegen een ander voorwerp of wezen laten botsen door het schip in de ruimte van het doelwit te bewegen en een speciale aanvalsworp ({@dice 1d20} + de vaardigheidsbonus van de spelljammer) tegen de Armor Class van het doelwit te doen. Als de aanvalsworp raak is, volgt een botsing; anders beweegt het doelwit uit het pad van het schip en vermijdt de botsing. Als de DM besluit dat een botsing onvermijdelijk is, is geen aanvalsrol nodig en vindt de botsing automatisch plaats.",
+				"Als een spelljamming-schip ergens tegenaan botst dat het redelijkerwijs zou kunnen beschadigen, lopen zowel het schip als het wezen of object dat het heeft geraakt, blauwschade op, gebaseerd op de grootte van het getroffen object, zoals aangegeven in de Crash Damage-tabel. Als het schip tegen iets botst dat geen hit points heeft (zoals een planeet of een maan), wordt de schade alleen aan het schip toegebracht. Het schip stopt na een botsing met een Gargantuesk of een onbeweeglijk wezen of voorwerp; anders kan het schip blijven bewegen als het nog enige beweging over heeft, en wat het ook geraakt heeft, beweegt naar de dichtstbijzijnde onbezette ruimte die niet op het pad van het schip ligt.",
+				"Bepaal na het oplossen van het effect van de crash of het zwaartekrachtvlak van het schip onderdrukt is (zie \"{@book Overlapping Gravity Planes|AAG|2|Overlapping Gravity Planes}\" eerder in het hoofdstuk). Als door de onderdrukking van het zwaartekrachtsvlak van een schip de wezens op of in dat schip zouden vallen, vallen ze in de richting die past bij de plotselinge verandering in zwaartekracht. Om de schade van een val te bepalen, zie de {@book falling|PHB|8|Falling} regels in de {@book Player's Handbook|PHB}.",
+				{
+					"type": "table",
+					"caption": "Crash Damage",
+					"colLabels": [
+						"Size of Creature or Object Struck",
+						"Bludgeoning Damage"
+					],
+					"colStyles": [
+						"col-8 text-center",
+						"col-4 text-center"
+					],
+					"rows": [
+						[
+							"Groot",
+							"{@dice 4d10}"
+						],
+						[
+							"Huge",
+							"{@dice 8d10}"
+						],
+						[
+							"Gargantuan",
+							"{@dice 16d10}"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Crashing a Ship",
 			"source": "UAOfShipsAndSea",
 			"page": 9,
@@ -435,6 +471,15 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Crew",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"De standaardbemanning van een spelljamming-schip bestaat uit een kapitein om bevelen te geven, een spelljammer om het schip te besturen en een of meer bemanningsleden om de wapens te bedienen. Sommige schepen hebben extra bemanning (zoals troepen en back-up spelljammers) of passagiers aan boord. Een schip met meer dan de standaard bemanning zal de kwaliteit van de luchtvoorziening sneller verslechteren.",
+				"Een spellcaster rekent gewoonlijk minstens 50 gp per dag om een {@item spelljamming helm|AAG} te bedienen."
 			]
 		},
 		{
@@ -10014,6 +10059,15 @@
 			]
 		},
 		{
+			"name": "Ship Repairs",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Niet-magische reparaties aan een beschadigd schip kunnen worden uitgevoerd terwijl het schip ligt afgemeerd. Het repareren van 1 trefpunt schade aan een afgemeerd schip duurt 1 dag en kost 20 gp voor materiaal en arbeid. Schade aan boordwapens kan net zo snel worden gerepareerd (1 trefpunt per dag), maar tegen de helft van de kosten (10 gp per trefpunt).",
+				"De {@spell mending} spreuk is een goedkopere, minder tijdrovende manier om reparaties uit te voeren. Als je {@spell mending} op een beschadigd schip of boordwapen uitspreekt, herstelt het doelwit een aantal hit points dat gelijk is aan {@dice 1d8} plus de vaardigheidsfactor van de spellcaster. Het doelwit kan niet meer dan eenmaal per uur weer hit points krijgen van die spreuk."
+			]
+		},
+		{
 			"name": "Ship Stat Blocks",
 			"source": "GoS",
 			"page": 186,
@@ -10287,6 +10341,77 @@
 								"{@vehicle Warship|UAOfShipsAndSea}"
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ship-to-Ship Combat",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"De volgende regels zijn ontworpen om schip-tot-schip gevechten eenvoudig maar spannend te maken.",
+				{
+					"type": "entries",
+					"name": "Starting Distance",
+					"entries": [
+						"Aan het begin van een gevecht beslist de DM hoe ver een schip van zijn vijanden verwijderd is. Er zijn drie mogelijkheden in de tabel Startafstand van het treffen. Hoe korter de afstand, hoe minder tijd de bemanning heeft om wapens te laden en andere voorbereidingen te treffen.",
+						{
+							"type": "table",
+							"caption": "Starting Encounter Distance",
+							"colLabels": [
+								"Distance",
+								"Notes"
+							],
+							"colStyles": [
+								"col-2",
+								"col-10"
+							],
+							"rows": [
+								[
+									"250 feet",
+									"Groot bereik voor ballistae, mangonels, kortbogen, langbogen, lichte kruisbogen, en zware kruisbogen"
+								],
+								[
+									"500 feet",
+									"Groot bereik voor longbows en mangonels; buiten het bereik van ballistae en kruisbogen"
+								],
+								[
+									"1,000 feet",
+									"Buiten het bereik van de meeste afstandswapens."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Initiative",
+					"entries": [
+						"De {@book Dungeon Master's Guide|DMG} regel presenteert een variant genaamd {@variantrule Initiative Variants||Side Initiative}, die ideaal is voor schip-tot-schip gevechten, omdat het je de moeite bespaart van het bijhouden van initiatief voor individuele wezens aan boord van elk schip.",
+						{
+							"type": "inset",
+							"name": "Shipboard Weapons",
+							"entries": [
+								"Een spelljamming-schip heeft gewoonlijk een of meer boordwapens, waarvan ballistae en mangonels de meest voorkomende zijn. Dergelijke wapens zijn traag te laden en te vuren. Spelerpersonages kunnen bijna altijd beter hun eigen wapens en spreuken gebruiken in gevechten tussen schepen, en de wapens aan boord reserveren voor doelen die te ver weg zijn om op een andere manier beschadigd te kunnen worden."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Moving and Steering a Ship",
+					"entries": [
+						"Een spelljammer kan de {@item spelljamming helm|AAG} van een schip gebruiken om te bewegen en het schip te besturen zonder eigen acties of beweging te verbruiken. Tijdens zijn beurt bepaalt de spelljammer hoe ver het schip beweegt (tot zijn maximumsnelheid) en beslist hij of hij een ander schip nadert of meer afstand tussen de twee schept.",
+						"Als een schip aan de beurt is, kan het worden gedraaid en geheroriënteerd, zodat alle wapens kunnen worden gericht op elk doelwit binnen bereik, ongeacht waar het zich op het dek bevindt."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Boarding",
+					"entries": [
+						"Als een schip zich binnen 5 voet van een ander schip beweegt, kan de spelljammer of piloot van het bewegende schip het naast het andere schip manoeuvreren, waardoor wezens zich veilig van het dek van het ene schip naar het dek van het andere schip kunnen bewegen totdat een van de schepen zich van het andere schip verwijdert.",
+						"Een schip dat genoeg beweging heeft kan langszij een ander schip komen, een enterploeg opstellen en dan weggaan, op voorwaarde dat de leden van de enterploeg de actie {@action ready||Ready} hebben ondernomen om zich zo te positioneren dat ze het andere schip kunnen oplopen als het dichtbij genoeg is."
 					]
 				}
 			]

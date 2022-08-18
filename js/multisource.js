@@ -35,7 +35,27 @@ class ListPageMultiSource extends ListPage {
 
 	async pDoLoadExportedSublistSources (exportedSublist) {
 		if (!exportedSublist?.sources?.length) return;
-		await exportedSublist.sources.pMap(src => this._pLoadSource(src, "yes"));
+		await (exportedSublist.sources || [])
+			.filter(src => SourceUtil.isSiteSource(src))
+			.pMap(src => this._pLoadSource(src, "yes"));
+
+		// region Note that we can't e.g. load the sources in the background, because the list won't update, and therefore
+		//   the sublist can't find the matching list elements.
+		// TODO(Future) have the notification include a button which, when clicked, will attempt to:
+		//    - load the brew from the repo
+		//    - cache the to-be-loaded sublist in local storage
+		//    - reload the page
+		//    - load the cached sublist
+		const sourcesUnknown = (exportedSublist.sources || [])
+			.filter(src => !SourceUtil.isSiteSource(src) && !BrewUtil2.hasSourceJson(src));
+		if (!sourcesUnknown.length) return;
+
+		JqueryUtil.doToast({
+			content: `Could not load content from the following source${sourcesUnknown.length === 1 ? "" : "s"}: ${sourcesUnknown.map(it => `"${it}"`).join(", ")}. You may need to load ${sourcesUnknown.length === 1 ? "it" : "them"} as homebrew first.`,
+			type: "danger",
+			isAutoHide: false,
+		});
+		// endregion
 	}
 
 	async _pLoadSource (src, nextFilterVal) {

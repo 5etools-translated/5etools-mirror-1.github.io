@@ -198,6 +198,42 @@
 			]
 		},
 		{
+			"name": "Crashing",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Un jeteur de sorts peut faire entrer son navire dans un autre objet ou une créature en déplaçant le navire dans l'espace de la cible et en effectuant un jet d'attaque spécial ({@dice 1d20} + le bonus de compétence du jeteur de sorts) contre la classe d'armure de la cible. Si le jet d'attaque est réussi, un crash se produit ; sinon, la cible se déplace hors de la trajectoire du navire, évitant ainsi le crash. Si le MD décide qu'un crash est inévitable, aucun jet d'attaque n'est nécessaire, et le crash se produit automatiquement.",
+				"Lorsqu'un vaisseau lanceur de sorts s'écrase sur quelque chose qui pourrait raisonnablement l'endommager, le vaisseau et la créature ou l'objet qu'il a percuté subissent des dégâts de matraquage en fonction de la taille de l'objet percuté, comme indiqué dans la table des dégâts d'écrasement. Si le vaisseau heurte un objet qui n'a pas de points de vie (comme une planète ou une lune), n'appliquez les dégâts qu'au vaisseau. Le vaisseau s'arrête après avoir percuté une créature ou un objet gigantesque ou inamovible ; sinon, le vaisseau peut continuer à se déplacer s'il lui reste du mouvement, et ce qu'il a percuté se déplace vers l'espace inoccupé le plus proche qui n'est pas sur la trajectoire du vaisseau.",
+				"Après avoir résolu l'effet du crash, déterminez si le plan de gravité du navire est supprimé (voir \"{@book Overlapping Gravity Planes|AAG|2|Overlapping Gravity Planes}\" plus haut dans le chapitre). Si la suppression du plan de gravité d'un navire entraîne la chute des créatures à bord ou à l'intérieur de ce navire, elles tombent dans la direction appropriée au changement soudain de gravité. Pour déterminer les dégâts d'une chute, consultez les règles de {@book falling|PHB|8|Falling} dans le {@book Player's Handbook|PHB}.",
+				{
+					"type": "table",
+					"caption": "Crash Damage",
+					"colLabels": [
+						"Size of Creature or Object Struck",
+						"Bludgeoning Damage"
+					],
+					"colStyles": [
+						"col-8 text-center",
+						"col-4 text-center"
+					],
+					"rows": [
+						[
+							"Large",
+							"{@dice 4d10}"
+						],
+						[
+							"Huge",
+							"{@dice 8d10}"
+						],
+						[
+							"Gargantua",
+							"{@dice 16d10}"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Crashing a Ship",
 			"source": "UAOfShipsAndSea",
 			"page": 9,
@@ -435,6 +471,15 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Crew",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"L'équipage standard d'un navire de brouilleur de sorts comprend un capitaine pour donner les ordres, un brouilleur de sorts pour piloter le navire, et un ou plusieurs membres d'équipage pour utiliser ses armes. Certains navires transportent des membres d'équipage supplémentaires (comme des troupes et des jeteurs de sorts de secours) ou des passagers. Un navire dont l'équipage est supérieur à l'effectif standard verra la qualité de son approvisionnement en air se dégrader plus rapidement.",
+				"Un lanceur de sorts facture généralement au moins 50 gp par jour pour faire fonctionner un {@item spelljamming helm|AAG}."
 			]
 		},
 		{
@@ -10014,6 +10059,15 @@
 			]
 		},
 		{
+			"name": "Ship Repairs",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Les réparations non magiques d'un navire endommagé peuvent être effectuées lorsque le navire est amarré. La réparation d'un point de dommage sur un navire amarré prend un jour et coûte 20 gp pour les matériaux et la main d'œuvre. Les dommages subis par les armes du navire peuvent être réparés tout aussi rapidement (1 point de vie par jour), mais à la moitié du coût (10 gp par point de vie).",
+				"Le sort {@spell mending} est un moyen moins coûteux et moins long d'effectuer des réparations. Lancer {@spell mending} sur un navire ou une arme de bord endommagée redonne un nombre de points de vie à la cible égal à {@dice 1d8} plus le modificateur de capacité de lanceur de sorts du lanceur de sorts. La cible ne peut regagner des points de vie grâce à ce sort qu'une fois par heure au maximum."
+			]
+		},
+		{
 			"name": "Ship Stat Blocks",
 			"source": "GoS",
 			"page": 186,
@@ -10287,6 +10341,77 @@
 								"{@vehicle Warship|UAOfShipsAndSea}"
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ship-to-Ship Combat",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Les règles suivantes sont conçues pour rendre les combats de navire à navire simples mais passionnants.",
+				{
+					"type": "entries",
+					"name": "Starting Distance",
+					"entries": [
+						"Au début d'un engagement, le DM décide de la distance qui sépare un navire de ses ennemis. Trois possibilités sont offertes dans la table de distance de début de rencontre. Plus la distance est courte, moins les équipages ont le temps de charger des armes et de faire d'autres préparatifs.",
+						{
+							"type": "table",
+							"caption": "Starting Encounter Distance",
+							"colLabels": [
+								"Distance",
+								"Notes"
+							],
+							"colStyles": [
+								"col-2",
+								"col-10"
+							],
+							"rows": [
+								[
+									"250 feet",
+									"Longue portée pour les ballistas, les mangonneaux, les arcs courts, les arcs longs, les arbalètes légères et les arbalètes lourdes."
+								],
+								[
+									"500 feet",
+									"Longue portée pour les arcs longs et les mangonneaux ; au-delà de la portée des ballistas et des arbalètes."
+								],
+								[
+									"1,000 feet",
+									"Au-delà de la portée de la plupart des armes à distance"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Initiative",
+					"entries": [
+						"Le {@book Dungeon Master's Guide|DMG} présente une règle variante appelée {@variantrule Initiative Variants||Side Initiative}, qui est idéale pour les engagements de navire à navire, puisqu'elle vous évite d'avoir à suivre l'initiative des créatures individuelles à bord de chaque navire.",
+						{
+							"type": "inset",
+							"name": "Shipboard Weapons",
+							"entries": [
+								"Un navire jongleur de sorts possède généralement une ou plusieurs armes de bord, les ballistas et les mangonneaux étant les plus courants. Ces armes sont lentes à charger et à tirer. Les personnages joueurs ont presque toujours intérêt à utiliser leurs propres armes et sorts dans les combats de navire à navire, réservant les armes de bord aux cibles trop éloignées pour être endommagées par d'autres moyens."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Moving and Steering a Ship",
+					"entries": [
+						"Un lanceur de sorts peut utiliser le {@item spelljamming helm|AAG} d'un navire pour le déplacer et le diriger sans dépenser ses propres actions ou mouvements. À son tour, le jeteur de sorts détermine la distance parcourue par le navire (jusqu'à sa vitesse maximale) et décide de s'approcher d'un autre navire ou de mettre plus de distance entre les deux.",
+						"À son tour, un navire peut être tourné et réorienté de façon à ce que toutes ses armes puissent viser et tirer sur n'importe quelle cible à portée, quelle que soit sa position sur le pont."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Boarding",
+					"entries": [
+						"Lorsqu'un navire se déplace à moins de 1,5 m d'un autre navire, le lanceur de sorts ou le pilote du navire en mouvement peut le manœuvrer le long de l'autre navire, ce qui permet aux créatures de se déplacer en toute sécurité du pont d'un navire à celui de l'autre jusqu'à ce que l'un des navires se retire de l'autre.",
+						"Un navire qui a suffisamment de mouvement peut se ranger le long d'un autre navire, déployer un groupe d'abordage, puis s'éloigner, à condition que les membres du groupe d'abordage aient fait l'action {@action ready||Ready} pour se positionner de manière à pouvoir monter sur l'autre navire lorsqu'il sera suffisamment proche."
 					]
 				}
 			]

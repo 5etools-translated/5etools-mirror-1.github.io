@@ -1,0 +1,124 @@
+{
+	"spell": [
+		{
+			"name": "Air Bubble",
+			"source": "AAG",
+			"page": 22,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"Si crea un globo spettrale attorno alla testa di una creatura consenziente che si vede nel raggio d'azione. Il globo si riempie di aria fresca che dura fino alla fine dell'incantesimo. Se la creatura ha più di una testa, il globo d'aria appare intorno a una sola delle sue teste (il che è tutto ciò di cui la creatura ha bisogno per evitare il soffocamento, supponendo che tutte le teste condividano lo stesso sistema respiratorio)."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Quando si lancia questo incantesimo utilizzando uno slot incantesimo di 3° livello o superiore, si possono creare due globi d'aria fresca aggiuntivi per ogni livello di slot superiore al 2°."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Create Spelljamming Helm",
+			"source": "AAG",
+			"page": 22,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a crystal rod worth at least 5,000 gp, which the spell consumes",
+					"cost": 500000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Tenendo in mano l'asta usata per lanciare l'incantesimo, si tocca una sedia grande o piccola non occupata. L'asta scompare e la sedia si trasforma in un {@item spelljamming helm|AAG}."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		}
+	]
+}

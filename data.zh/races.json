@@ -684,6 +684,132 @@
 		},
 		{
 			"name": "Astral Elf",
+			"source": "AAG",
+			"page": 10,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"humanoid"
+			],
+			"creatureTypeTags": [
+				"elf"
+			],
+			"size": [
+				"M"
+			],
+			"speed": 30,
+			"age": {
+				"max": 750
+			},
+			"darkvision": 60,
+			"traitTags": [
+				"Improved Resting"
+			],
+			"skillProficiencies": [
+				{
+					"perception": true
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"1": [
+							"dancing lights#c"
+						]
+					},
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					}
+				},
+				{
+					"known": {
+						"1": [
+							"light#c"
+						]
+					},
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					}
+				},
+				{
+					"known": {
+						"1": [
+							"sacred flame#c"
+						]
+					},
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"你是一个人形生物。对于任何需要你是精灵的先决条件或效果，你也被认为是精灵。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Astral Fire",
+					"entries": [
+						"你知道以下一个你选择的咒语。{@spell dancing lights}, {@spell light}, 或 {@spell sacred flame}。智力、智慧或魅力是你对它的施法能力（在你选择这个种族时选择）。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"你可以在自己60英尺范围内的昏暗光线下看东西，就像亮光一样，在黑暗中看东西，就像暗光一样。在黑暗中，你只能分辨出灰色的深浅。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Fey Ancestry",
+					"entries": [
+						"你在为避免或结束自己身上的{@condition charmed}状况而进行的拯救动作上有优势。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Keen Senses",
+					"entries": [
+						"你对{@skill Perception}的技能有熟练的掌握。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Starlight Step",
+					"entries": [
+						"作为一个额外的动作，你可以用魔法传送到一个你能看到的未被占用的空间，最远可达30英尺。你可以使用这个特质的次数与你的熟练度加成相等，当你完成一个长时间的休息时，你会恢复所有已消耗的使用。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Astral Trance",
+					"entries": [
+						"你不需要睡觉，魔法也不能让你睡觉。你可以在4个小时内完成长时间的休息，如果你把这几个小时花在恍惚的冥想中，在这期间你保持意识。",
+						"每当你完成这个恍惚，你就会获得你所选择的一项技能以及你所选择的一件武器或工具的熟练度，从（%0%）中选择。你通过从共享的精灵记忆和星界实体的经验中神秘地获得这些熟练度，并保留它们直到你完成下一次长时休息。"
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Astral Elf",
 			"source": "UA2021TravelersOfTheMultiverse",
 			"page": 1,
 			"lineage": "VRGR",
@@ -796,6 +922,88 @@
 				}
 			],
 			"hasFluff": true
+		},
+		{
+			"name": "Autognome",
+			"source": "AAG",
+			"page": 11,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"construct"
+			],
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"traitTags": [
+				"Improved Resting",
+				"Natural Armor"
+			],
+			"toolProficiencies": [
+				{
+					"any": 2
+				}
+			],
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"disease"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"你是一个结构体。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Armored Casing",
+					"entries": [
+						"你被包裹在薄金属或其他耐用材料中。当你没有穿戴盔甲时，你的基本装甲等级是13+你的灵巧修正值。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Built for Success",
+					"entries": [
+						"你可以在你做的一个攻击卷、能力检查或蓄力投掷中加入一个（%0%），你可以在看到（%1%）的卷子后但在卷子的效果被解决前这样做。你可以使用这个特质的次数与你的熟练度加成相等，当你完成一个长时间的休息时，你会恢复所有消耗的使用。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Healing Machine",
+					"entries": [
+						"如果{@spell mending}的法术是对你施放的，你可以花费一个命中率，滚动它，并恢复等于滚动加你的体质修正值的命中率数量（最小为1个命中率）。",
+						"此外，你的创造者为你设计了几个保护生命的法术，但这些法术通常不会影响结构体。{@spell cure wounds}, {@spell healing word}, {@spell mass cure wounds}, {@spell mass healing word}, 和 {@spell spare the dying}。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Mechanical Nature",
+					"entries": [
+						"你对毒物伤害有抵抗力，对疾病有免疫力，对被{@condition paralyzed}或{@condition poisoned}的拯救有优势。你不需要吃、喝、或呼吸。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sentry's Rest",
+					"entries": [
+						"当你长时间休息时，你至少要花6个小时处于不活动、不动的状态，而不是睡觉。在这种状态下，你看起来没有活力，但你仍然有意识。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Specialized Design",
+					"entries": [
+						"你获得两个你选择的工具熟练度，从（%0%）中选择。"
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Autognome",
@@ -4603,6 +4811,53 @@
 		},
 		{
 			"name": "Giff",
+			"source": "AAG",
+			"page": 12,
+			"lineage": "VRGR",
+			"size": [
+				"M"
+			],
+			"speed": {
+				"walk": 30,
+				"swim": true
+			},
+			"traitTags": [
+				"Powerful Build"
+			],
+			"weaponProficiencies": [
+				{
+					"firearms": true
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Astral Spark",
+					"entries": [
+						"你与星界的精神联系使你能够神秘地获得神圣力量的火花，你可以通过你的武器引导它。当你用简单武器或武术武器击中目标时，你可以使目标受到相当于你熟练程度的额外力量伤害。",
+						"你可以使用这个特质的次数与你的熟练度加成相等，但你每回合最多只能使用一次。当你完成长时间的休息时，你会重新获得所有已消耗的使用次数。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Firearms Mastery",
+					"entries": [
+						"你与枪械有一种神秘的联系，这种联系可以追溯到吉夫的神灵，他们对这种武器很满意。你精通所有的火器，并且无视任何火器的装载属性。此外，用火器进行远距离攻击时，不会对你的攻击卷轴造成不利影响。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hippo Build",
+					"entries": [
+						"你在基于力量的能力检查和力量投掷方面具有优势。此外，在确定你的运载能力和你可以推动、拖动或举起的重量时，你算作大一号。"
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Giff",
 			"source": "UA2021TravelersOfTheMultiverse",
 			"page": 2,
 			"lineage": "VRGR",
@@ -5964,6 +6219,60 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Hadozee",
+			"source": "AAG",
+			"page": 13,
+			"lineage": "VRGR",
+			"size": [
+				"S",
+				"M"
+			],
+			"speed": {
+				"walk": 30,
+				"climb": true
+			},
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"你是中号或小号。你在选择这项比赛时选择尺寸。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dexterous Feet",
+					"entries": [
+						"作为一个额外的动作，你可以用你的脚来操纵一个物体，打开或关闭一个门或容器，或拿起或放下一个微小的物体。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Glide",
+					"entries": [
+						"如果你没有{@condition incapacitated}或穿着重甲，你可以扩展你的皮膜并滑行。当你这样做时，你可以进行以下空中机动。",
+						{
+							"type": "list",
+							"items": [
+								"你在空中每下降1英尺，可以水平移动5英尺，对你来说没有移动成本。",
+								"当你会受到坠落的伤害时，你可以用你的反应将坠落的伤害减少到0。"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hadozee Resilience",
+					"entries": [
+						"流淌在你血管中的魔法增强了你的自然防御力。当你受到伤害时，你可以用你的反应来掷出一个（%0%）。在掷出的数字上加上你的熟练度奖励，并减少你所受的伤害，减少的数量等于这个总数（最小为0伤害）。",
+						"你可以使用这个特质的次数与你的熟练度加成相等。当你完成一个长时间的休息时，你会恢复所有已消耗的使用。"
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Hadozee",
@@ -10582,6 +10891,79 @@
 		},
 		{
 			"name": "Plasmoid",
+			"source": "AAG",
+			"page": 14,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"ooze"
+			],
+			"size": [
+				"S",
+				"M"
+			],
+			"speed": 30,
+			"darkvision": 60,
+			"resist": [
+				"acid",
+				"poison"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"你是乌鸦嘴。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"你是中号或小号。你在选择这项比赛时选择尺寸。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Amorphous",
+					"entries": [
+						"你可以挤过1英寸宽的空间，只要你没有穿戴和携带任何东西。你在发动或逃脱抓捕的能力检查中具有优势。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"你可以在自己60英尺范围内的昏暗光线下看东西，就像亮光一样，在黑暗中看东西，就像暗光一样。在黑暗中，你只能分辨出灰色的深浅。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hold Breath",
+					"entries": [
+						"你可以屏住呼吸1小时。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Natural Resilience",
+					"entries": [
+						"你对酸和毒的伤害有抵抗力，而且在对被攻击者的救赎上有优势（%0%）。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Shape Self",
+					"entries": [
+						"作为一个动作，你可以重塑你的身体，让你有一个头，一条或两条胳膊，一条或两条腿，以及临时的手和脚，或者你可以恢复成一个没有四肢的小球。当你有一个类似人类的形状时，你可以穿上为你这个体型的人形生物制作的衣服和盔甲。",
+						"作为一个额外的动作，你可以挤出一个宽6英寸、长10英尺的假肢，或者把它重新吸收到你的身体里。作为同一奖励动作的一部分，你可以使用这个假肢来操纵一个物体，打开或关闭一个门或容器，或者拿起或放下一个微小的物体。这个假体不包含任何感觉器官，不能攻击，不能激活魔法物品，也不能提起超过10磅的东西。"
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Plasmoid",
 			"source": "UA2021TravelersOfTheMultiverse",
 			"page": 3,
 			"lineage": "VRGR",
@@ -12229,6 +12611,79 @@
 						"你可以说、读、写普通话和你选择的其他一种语言。"
 					],
 					"type": "entries"
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Thri-kreen",
+			"source": "AAG",
+			"page": 15,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"monstrosity"
+			],
+			"size": [
+				"S",
+				"M"
+			],
+			"speed": 30,
+			"darkvision": 60,
+			"traitTags": [
+				"Improved Resting",
+				"Natural Armor"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"你是个怪胎。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"你是中号或小号。你在选择这项比赛时选择尺寸。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Chameleon Carapace",
+					"entries": [
+						"当你不穿盔甲时，你的盔甲使你的基本护甲等级为13+你的灵巧修正值。",
+						"作为一个动作，你可以改变你躯壳的颜色，以配合你周围环境的颜色和质地，使你在这些环境中的灵巧（（%0%））检查中获得优势。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"你可以在自己60英尺范围内的昏暗光线下看东西，就像亮光一样，在黑暗中看东西，就像暗光一样。在黑暗中，你只能分辨出灰色的深浅。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Secondary Arms",
+					"entries": [
+						"你的主臂下面有两只稍小的副臂。副臂可以操纵一个物体，打开或关闭一个门或容器，拿起或放下一个微小的物体，或挥舞一个具有光属性的武器。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sleepless",
+					"entries": [
+						"你不需要睡眠，在长时间的休息中可以保持清醒，尽管你仍然必须避免剧烈活动以获得休息的好处。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Thri-kreen Telepathy",
+					"entries": [
+						"没有魔法的帮助，你不能说你所知道的非斯里-格林语言。相反，你用心灵感应来传达你的想法。你有一种神奇的能力，可以将你的思想在精神上传递给你能看到的120英尺范围内的自愿生物。被联系的生物不需要和你有共同的语言来理解你的思想，但它必须能理解至少一种语言。如果你和生物之间的距离超过120英尺，如果你们中的任何一方是（%0%），或者如果你们中的任何一方在精神上中断了联系（不需要行动），那么你和生物的心灵感应联系就会中断。"
+					]
 				}
 			],
 			"hasFluff": true,

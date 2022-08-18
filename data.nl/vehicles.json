@@ -371,6 +371,180 @@
 			"hasFluffImages": true
 		},
 		{
+			"name": "Bombard",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"140 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 12,
+			"capCargo": 150,
+			"cost": 5000000,
+			"pace": {
+				"fly": 4
+			},
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 20
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Giant Cannon",
+					"crew": 4,
+					"ac": 19,
+					"hp": 250,
+					"costs": [
+						{
+							"note": "cannon"
+						},
+						{
+							"cost": 100000,
+							"note": "giant cannon ball"
+						}
+					],
+					"entries": [
+						"Het kost 3 acties om het enorme kanon te laden en 1 actie om het af te vuren."
+					],
+					"action": [
+						{
+							"name": "Cannon Ball",
+							"entries": [
+								"{@atk rw} +6 om te raken, afstand 600/2,400 ft., één doel. {@h}88 ({@dice 16d10}) knuppelschade."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Damselfly Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"100 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 9,
+			"capCargo": 5,
+			"cost": 2000000,
+			"pace": {
+				"fly": 8
+			},
+			"speed": {
+				"fly": 70
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 200,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om de ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 4,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het vergt 2 acties om de mangonel te laden, 1 actie om hem te richten met de rotator van de koepel (gebied 2 op het bijgevoegde dekplan), en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 voet van het), één doel. {@h}27 ({@dice 5d10}) knuppelschade."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Demon Grinder",
 			"source": "BGDIA",
 			"page": 219,
@@ -538,6 +712,93 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Flying Fish Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"120 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 10,
+			"capCargo": 13,
+			"cost": 2000000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om de ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het kost 2 acties om de kolonel te laden, 2 acties om te richten, en 1 actie om te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 voet van het), één doel. {@h}27 ({@dice 5d10}) knuppelschade."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},
@@ -815,20 +1076,27 @@
 		},
 		{
 			"name": "Hammerhead Ship",
-			"source": "SjA",
+			"source": "AAG",
+			"otherSources": [
+				{
+					"source": "SjA"
+				}
+			],
 			"vehicleType": "SPELLJAMMER",
 			"dimensions": [
 				"130 ft.",
 				"20 ft."
 			],
 			"terrain": [
-				"wildspace",
+				"space",
 				"sea"
 			],
 			"capCrew": 15,
 			"capCargo": 30,
 			"cost": 4000000,
-			"pace": 4,
+			"pace": {
+				"fly": 4
+			},
 			"speed": {
 				"fly": 35
 			},
@@ -1146,6 +1414,150 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Lamprey Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"115 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 6,
+			"cost": 2000000,
+			"pace": {
+				"fly": 4
+			},
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Grappling Jaws",
+					"crew": 1,
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een Grappling Jaws aanval te doen."
+					],
+					"action": [
+						{
+							"name": "Grappling Jaws",
+							"entries": [
+								"{@atk mw} +6 om te raken, reikwijdte 10 ft., één schip of Gargantuan schepsel. {@h}22 ({@dice 4d10}) doorborende schade, en de snelheid van het lampreischip en het doelwit wordt 0 totdat de enterhaak eindigt. Als actie kan een wezen de bediening van de grijpkaken gebruiken om het doelwit los te maken. Anders eindigt het effect wanneer het doelwit of het schip van de lamprei tot 0 hit points is gedaald."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Living Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"80 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 5,
+			"capCrewNote": "(plus the {@creature treant})",
+			"capCargo": 10,
+			"cost": 2500000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om de ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Longship",
@@ -1474,6 +1886,205 @@
 							"type": "item",
 							"name": "Move",
 							"entry": "De mechanische toeschouwer kan zijn helm gebruiken om zich voort te bewegen met behulp van zijn magische voortstuwingseenheid."
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nautiloid",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"180 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 20,
+			"capCargo": 17,
+			"cost": 5000000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het kost 2 acties om de kolonel te laden, 2 acties om te richten, en 1 actie om te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 voet van het), één doel. {@h}27 ({@dice 5d10}) knuppelschade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Tentacles",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Als actie kan de scheepsspreukentemmer een van de volgende aanvallen uitvoeren met de tentakels van het schip."
+					],
+					"action": [
+						{
+							"name": "Grappling Tentacles",
+							"entries": [
+								"{@atk mw} +8 om te raken, reikwijdte 30 ft., één reusachtig of Gargantuan doelwit. {@h}22 ({@dice 4d10}) knuppelschade, en de snelheid van de nautiloid wordt 0 totdat de spelljammer een actie gebruikt om het doelwit te bevrijden. Als het doelwit een wezen is, is het {@condition grappled} (ontsnapping DC 16). Als het doelwit een ander schip is, wordt de snelheid van het doelwit 0 totdat de nautiloid het vrijlaat, of totdat het doelwit of de nautiloid tot 0 hit points is gedaald."
+							]
+						},
+						{
+							"name": "Teleport",
+							"entries": [
+								"{@atk ms} +8 om te raken, reikwijdte 30 ft., één wezen. {@h}Het doelwit moet slagen op een DC 15 grondwetsredding of geteleporteerd worden naar een onbezette ruimte aan boord van de nautiloid die de nautiloid's spelljammer kan zien."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nightspider",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"175 ft.",
+				"50 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 25,
+			"capCargo": 50,
+			"cost": 5000000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het kost 2 acties om de kolonel te laden, 2 acties om te richten, en 1 actie om te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 voet van het), één doel. {@h}27 ({@dice 5d10}) knuppelschade."
+							]
 						}
 					]
 				}
@@ -1975,21 +2586,307 @@
 			"hasFluffImages": true
 		},
 		{
+			"name": "Scorpion Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"75 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"space",
+				"land"
+			],
+			"capCrew": 12,
+			"capCargo": 12,
+			"cost": 2500000,
+			"pace": {
+				"walk": "3½",
+				"fly": "3½"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 30
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om de ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Claws",
+					"crew": 1,
+					"count": 2,
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een Klauw aanval te doen."
+					],
+					"action": [
+						{
+							"name": "Claw",
+							"entries": [
+								"{@atk mw} +3 om te raken, reikwijdte 20 ft., één doel. {@h}11 ({@dice 2d10}) knuppelschade. Als het doelwit een Huge of kleiner wezen is, is het ook {@condition grappled} (ontsnapping DC 13). Totdat deze grapple eindigt, neemt het schepsel 11 ({@dice 2d10}) bludgeoning damage aan het begin van elke van zijn beurten."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het kost 2 acties om de kolonel te laden, 2 acties om te richten, en 1 actie om te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 voet van het), één doel. {@h}27 ({@dice 5d10}) knuppelschade."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Shrike Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"100 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 11,
+			"capCargo": 20,
+			"cost": 2000000,
+			"pace": {
+				"fly": 8
+			},
+			"speed": {
+				"fly": 70
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"De spelljammer van het schip kan de volgende aanval uitvoeren als het schip tegen een ander voorwerp of tegen een Gargantuan wezen aanloopt (zie \"{@book Crashing|AAG|2|Crashing}\" eerder in het hoofdstuk)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} +8 om te raken, bereik 0 ft., één voorwerp of Gargantuan wezen. {@h}88 ({@dice 16d10}) doorborende schade. Het shrike-schip loopt half zoveel schade op en komt tot stilstand. Mis: De aanval brengt geen schade toe, het doelwit beweegt naar de dichtstbijzijnde onbezette ruimte die niet op het pad van het shrike schip ligt, en het shrike schip kan verder bewegen als het nog enige beweging over heeft."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Space Galleon",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 20,
+			"capCargo": 20,
+			"cost": 3000000,
+			"pace": {
+				"fly": 4
+			},
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het kost 2 acties om de kolonel te laden, 2 acties om te richten, en 1 actie om te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 voet van het), één doel. {@h}27 ({@dice 5d10}) knuppelschade."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Squid Ship",
-			"source": "SjA",
+			"source": "AAG",
+			"otherSources": [
+				{
+					"source": "SjA"
+				}
+			],
 			"vehicleType": "SPELLJAMMER",
 			"dimensions": [
 				"250 ft.",
 				"25 ft."
 			],
 			"terrain": [
-				"wildspace",
+				"space",
 				"sea"
 			],
 			"capCrew": 13,
 			"capCargo": 20,
 			"cost": 2500000,
-			"pace": "3½",
+			"pace": {
+				"fly": "3½"
+			},
 			"speed": {
 				"fly": 30
 			},
@@ -2158,6 +3055,94 @@
 			"hasToken": true
 		},
 		{
+			"name": "Star Moth",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"200 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": {
+				"fly": "5½"
+			},
+			"speed": {
+				"fly": 50
+			},
+			"hull": {
+				"ac": 13,
+				"acFrom": [
+					"ceramic"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het kost 2 acties om de kolonel te laden, 2 acties om te richten, en 1 actie om te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 voet van het), één doel. {@h}27 ({@dice 5d10}) knuppelschade."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Tormentor",
 			"source": "BGDIA",
 			"page": 218,
@@ -2247,6 +3232,150 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Turtle Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"95 ft.",
+				"70 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 16,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": {
+				"fly": 3,
+				"swim": 3
+			},
+			"speed": {
+				"fly": 25,
+				"swim": 25
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om een ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Het kost 2 acties om de kolonel te laden, 2 acties om te richten, en 1 actie om te vuren."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 om te raken, bereik 200/800 ft. (kan doelen niet raken binnen 60 voet van het), één doel. {@h}27 ({@dice 5d10}) knuppelschade."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Tyrant Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"100 ft.",
+				"100 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 10,
+			"capCrewNote": "({@creature Beholder||beholders})",
+			"capCargo": 20,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 17,
+				"acFrom": [
+					"(stone)"
+				],
+				"hp": 300,
+				"dt": 20
+			},
+			"weapon": [
+				{
+					"name": "Eyestalk Cannons",
+					"crew": 1,
+					"count": 3,
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Dit wapen ziet eruit als een oog gemonteerd op een oogstengel. Een toeschouwer die zich in een van de meditatiecapsules van het tiranenschip bevindt, kan door het oog kijken door zich erop te concentreren (alsof hij zich op een spreuk concentreert) en een actie gebruiken om de volgende aanval uit te voeren."
+					],
+					"action": [
+						{
+							"name": "Destructive Ray",
+							"entries": [
+								"{@atk rs} +8 om te raken, bereik 120/480 ft., één doel. {@h}35 ({@dice 10d6}) krachtschade."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},
@@ -2521,6 +3650,66 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Wasp Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"80 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 5,
+			"capCargo": 10,
+			"cost": 2000000,
+			"pace": {
+				"fly": "5½"
+			},
+			"speed": {
+				"fly": 50
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Het kost 1 actie om de ballista te laden, 1 actie om hem te richten en 1 actie om hem af te vuren."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 om te raken, bereik 120/480 ft., één doel. {@h}16 ({@dice 3d10}) doorborende schade."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		}
 	],
 	"vehicleUpgrade": [

@@ -198,6 +198,42 @@
 			]
 		},
 		{
+			"name": "Crashing",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Un incantatore può far scontrare la propria nave con un altro oggetto o una creatura muovendo la nave nello spazio del bersaglio ed effettuando un tiro di attacco speciale ({@dice 1d20} + il bonus di competenza dell'incantatore) contro la Classe Armatura del bersaglio. Se il tiro di attacco va a segno, si verifica uno scontro; altrimenti, il bersaglio si sposta dalla traiettoria della nave, evitando lo scontro. Se il DM decide che lo scontro è inevitabile, non è necessario alcun tiro di attacco e lo scontro avviene automaticamente.",
+				"Quando una nave incantatrice si schianta contro qualcosa che potrebbe ragionevolmente danneggiarla, sia la nave che la creatura o l'oggetto colpito subiscono danni da percosse in base alla taglia dell'oggetto colpito, come indicato nella tabella Danni da Schianto. Se la nave urta qualcosa che non ha punti ferita (come un pianeta o una luna), il danno viene applicato solo alla nave. La nave si ferma dopo essersi schiantata contro una creatura o un oggetto gargantuesco o inamovibile; altrimenti, la nave può continuare a muoversi se ha ancora movimento, e qualsiasi cosa abbia colpito si sposta nel più vicino spazio non occupato che non si trovi sulla traiettoria della nave.",
+				"Dopo aver risolto l'effetto dell'incidente, determinare se il piano di gravità della nave è soppresso (vedere \"{@book Overlapping Gravity Planes|AAG|2|Overlapping Gravity Planes}\" all'inizio del capitolo). Se la soppressione del piano gravitazionale di una nave causa la caduta delle creature a bordo o all'interno della nave, queste cadono in qualsiasi direzione sia appropriata per l'improvviso cambiamento di gravità. Per determinare il danno da caduta, vedere le regole del {@book falling|PHB|8|Falling} nel {@book Player's Handbook|PHB}.",
+				{
+					"type": "table",
+					"caption": "Crash Damage",
+					"colLabels": [
+						"Size of Creature or Object Struck",
+						"Bludgeoning Damage"
+					],
+					"colStyles": [
+						"col-8 text-center",
+						"col-4 text-center"
+					],
+					"rows": [
+						[
+							"Grande",
+							"{@dice 4d10}"
+						],
+						[
+							"Huge",
+							"{@dice 8d10}"
+						],
+						[
+							"Gargantua",
+							"{@dice 16d10}"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Crashing a Ship",
 			"source": "UAOfShipsAndSea",
 			"page": 9,
@@ -435,6 +471,15 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Crew",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"L'equipaggio standard di una nave incantatrice comprende un capitano per dare ordini, un incantatore per pilotare la nave e uno o più membri dell'equipaggio per azionare le armi. Alcune navi trasportano equipaggio extra (come truppe e incantatori di riserva) o passeggeri. Una nave con un equipaggio superiore a quello standard degrada più rapidamente la qualità della sua riserva d'aria.",
+				"Un incantatore di solito spende almeno 50 gp al giorno per far funzionare un {@item spelljamming helm|AAG}."
 			]
 		},
 		{
@@ -10014,6 +10059,15 @@
 			]
 		},
 		{
+			"name": "Ship Repairs",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Le riparazioni non magiche di una nave danneggiata possono essere effettuate mentre la nave è ormeggiata. Riparare 1 punto ferita di una nave ormeggiata richiede 1 giorno e costa 20 gp per materiali e manodopera. I danni alle armi di bordo possono essere riparati altrettanto rapidamente (1 punto ferita al giorno), ma alla metà del costo (10 gp per punto ferita).",
+				"L'incantesimo {@spell mending} è un modo più economico e meno dispendioso per effettuare riparazioni. Lanciare {@spell mending} su una nave o un'arma di bordo danneggiata ripristina un numero di punti ferita al bersaglio pari a {@dice 1d8} più il modificatore di capacità dell'incantatore. Il bersaglio può recuperare punti ferita con questo incantesimo non più di una volta all'ora."
+			]
+		},
+		{
 			"name": "Ship Stat Blocks",
 			"source": "GoS",
 			"page": 186,
@@ -10287,6 +10341,77 @@
 								"{@vehicle Warship|UAOfShipsAndSea}"
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ship-to-Ship Combat",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Le seguenti regole sono state pensate per rendere il combattimento tra navi semplice e appassionante.",
+				{
+					"type": "entries",
+					"name": "Starting Distance",
+					"entries": [
+						"All'inizio di un incontro, il DM decide quanto una nave è lontana dai suoi nemici. Tre possibilità sono fornite nella tabella Distanza iniziale dell'incontro. Più la distanza è breve, meno tempo hanno gli equipaggi per caricare le armi e fare altri preparativi.",
+						{
+							"type": "table",
+							"caption": "Starting Encounter Distance",
+							"colLabels": [
+								"Distance",
+								"Notes"
+							],
+							"colStyles": [
+								"col-2",
+								"col-10"
+							],
+							"rows": [
+								[
+									"250 feet",
+									"Lunga gittata per baliste, manganelli, balestre corte, balestre lunghe, balestre leggere e balestre pesanti"
+								],
+								[
+									"500 feet",
+									"Lunga gittata per archi lunghi e manganelli; oltre la gittata di baliste e balestre."
+								],
+								[
+									"1,000 feet",
+									"Oltre la portata della maggior parte delle armi a distanza"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Initiative",
+					"entries": [
+						"La regola {@book Dungeon Master's Guide|DMG} presenta una variante chiamata {@variantrule Initiative Variants||Side Initiative}, che è ideale per gli scontri tra navi, in quanto risparmia la fatica di tenere traccia dell'iniziativa delle singole creature a bordo di ogni nave.",
+						{
+							"type": "inset",
+							"name": "Shipboard Weapons",
+							"entries": [
+								"Una nave incantatrice dispone in genere di una o più armi di bordo, le più comuni delle quali sono le baliste e i manganelli. Queste armi sono lente da caricare e sparare. I personaggi del giocatore sono quasi sempre più avvantaggiati nell'usare le proprie armi e i propri incantesimi nei combattimenti tra navi, riservando le armi di bordo ai bersagli troppo lontani per essere danneggiati con altri mezzi."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Moving and Steering a Ship",
+					"entries": [
+						"Un incantatore può usare il {@item spelljamming helm|AAG} di una nave per muoversi e guidarla senza spendere le proprie azioni o il proprio movimento. Nel suo turno, l'incantatore determina quanto si muove la nave (fino alla sua velocità massima) e decide se avvicinarsi a un'altra nave o se mettere più distanza tra le due.",
+						"Al suo turno, una nave può essere ruotata e riorientata in modo che tutte le sue armi possano mirare e sparare a qualsiasi bersaglio nel raggio d'azione, indipendentemente dalla sua posizione sul ponte."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Boarding",
+					"entries": [
+						"Quando una nave si sposta a meno di 5 piedi da un'altra nave, l'incantatore o il pilota della nave in movimento può manovrare a fianco dell'altra nave, consentendo alle creature di spostarsi in sicurezza dal ponte di una nave a quello dell'altra fino a quando una delle navi non si allontana dall'altra.",
+						"Una nave che ha abbastanza movimento può accostare un'altra nave, schierare un gruppo d'abbordaggio e poi allontanarsi, a patto che i membri del gruppo d'abbordaggio abbiano compiuto l'azione {@action ready||Ready} per posizionarsi in modo da poter salire sull'altra nave quando questa è abbastanza vicina."
 					]
 				}
 			]

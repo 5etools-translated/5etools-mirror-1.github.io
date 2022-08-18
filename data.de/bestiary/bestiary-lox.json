@@ -1,0 +1,192 @@
+{
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"otherSources": {
+			"monster": {
+				"BAM": "LoX",
+				"MM": "LoX"
+			}
+		}
+	},
+	"monster": [
+		{
+			"name": "Aarakocra Spelljammer",
+			"source": "LoX",
+			"page": 43,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_trait": {
+					"name": "Aarakocra",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "\\bmage\\b",
+						"with": "aarakocra"
+					}
+				}
+			}
+		},
+		{
+			"name": "Agony",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 34,
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the ghost",
+						"with": "Agony",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Astral Blight",
+			"source": "LoX",
+			"page": 10,
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8 + 8"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 16,
+			"dex": 8,
+			"con": 14,
+			"int": 6,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"cold",
+				"radiant"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Illumination",
+					"entries": [
+						"Solange er mindestens 1 Trefferpunkt hat, spendet der Astralbrand in einem Umkreis von 10 Fuß ein schwaches Licht."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Der Brand braucht weder Luft noch Schlaf."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Der Brand macht zwei Angriffe mit hitzetreibenden Ranken."
+					]
+				},
+				{
+					"name": "Heat-Draining Vine",
+					"entries": [
+						"{@atk mw} {@hit 5} auf Treffer, Reichweite 10 Fuß, ein Ziel. {@h}6 ({@damage 1d6 + 3}) Strahlenschaden, und wenn das Ziel eine große oder kleinere Kreatur ist, {@condition grappled} (Flucht {@dc 13}). Bis dieser Griff endet, erleidet das Ziel zu Beginn jeder seiner Runden 3 ({@damage 1d6}) Kälteschaden. Die Plage hat zwei Ranken, von denen jede eine Kreatur packen kann."
+					]
+				}
+			],
+			"traitTags": [
+				"Illumination",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"C",
+				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluffImages": true
+		},
+		{
+			"name": "Flapjack",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 13,
+			"_copy": {
+				"name": "Flumph",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the flumph",
+						"with": "Flapjack",
+						"flags": "i"
+					}
+				}
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Flapjack wirkt einen der folgenden Zauber, für die keine materiellen Komponenten benötigt werden und die Intelligenz als Zauberfähigkeit verwenden (Zauberschutz {@dc 12}): Nach Belieben: Magierhand, kleine Illusion"
+					],
+					"daily": {
+						"1e": [
+							"{@spell magic missile}",
+							"{@spell unseen servant}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"damageTagsSpell": [
+				"O"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

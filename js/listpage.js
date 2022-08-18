@@ -59,6 +59,7 @@ class SublistManager {
 		this._contextMenuListSub = null;
 
 		this._$wrpContainer = null;
+		this._$wrpSummaryControls = null;
 
 		this._pSaveSublistDebounced = MiscUtil.debounce(this._pSaveSublist.bind(this), 50);
 	}
@@ -92,13 +93,15 @@ class SublistManager {
 
 		if (this._$wrpContainer.hasClass(`sublist--resizable`)) this._pBindSublistResizeHandlers();
 
-		this._saveManager.render({
+		this._$wrpSummaryControls = this._saveManager.$getRenderedSummary({
 			cbOnNew: (evt) => this.pHandleClick_new(evt),
 			cbOnSave: (evt) => this.pHandleClick_save(evt),
+			cbOnLoad: (evt) => this.pHandleClick_load(evt),
 			cbOnReset: (evt, exportedSublist) => this.pDoLoadExportedSublist(exportedSublist),
 			cbOnUpload: (evt) => this.pHandleClick_upload({isAdditive: evt.shiftKey}),
-		})
-			.appendTo(this._$wrpContainer);
+		});
+
+		this._$wrpContainer.after(this._$wrpSummaryControls);
 
 		this._initContextMenu();
 
@@ -581,6 +584,7 @@ class SublistManager {
 
 	_updateSublistVisibility () {
 		this._$wrpContainer.toggleClass("sublist--visible", !!this._listSub.items.length);
+		this._$wrpSummaryControls.toggleVe(!!this._listSub.items.length);
 	}
 
 	async pDoSublistRemove ({entity, doFinalize = true} = {}) {

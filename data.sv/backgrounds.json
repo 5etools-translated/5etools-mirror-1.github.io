@@ -838,6 +838,143 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Astral Drifter",
+			"source": "AAG",
+			"feats": [
+				{
+					"magic initiate|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"religion": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 2
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						"traveler's clothes|phb",
+						{
+							"special": "diary"
+						},
+						"ink pen|phb",
+						"ink (1-ounce bottle)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Insight}, {@skill Religion}"
+						},
+						{
+							"type": "item",
+							"name": "Languages:",
+							"entry": "Två valfria (rekommenderat {@language Celestial} eller {@language Gith|MM})."
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "En uppsättning av {@item traveler's clothes|PHB}, en dagbok, en {@item ink pen|PHB}, en {@item Ink (1-ounce bottle)|PHB|bottle of ink} och en {@item pouch|phb} som innehåller 10 gp."
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Longevity",
+					"entries": [
+						"Du är {@dice 20d6} år äldre än du ser ut, eftersom du har tillbringat så mycket tid i Astralhavet utan att åldras."
+					]
+				},
+				{
+					"name": "Feature: Divine Contact",
+					"type": "entries",
+					"entries": [
+						"Du får {@feat Magic Initiate||Magic Initiate feat} från {@book Player's Handbook|PHB} och måste välja kleriker för denna bedrift.",
+						"I Astralhavet mötte du en vandrande gudom. Mötet var kort och icke-våldsamt, men gjorde ändå ett bestående intryck på dig. Denna gudom ansåg det lämpligt att dela en hemlighet eller en obskyr bit kosmisk kunskap med dig. Samarbeta med din DM för att bestämma detaljerna i denna kunskap och dess inverkan på kampanjen.",
+						"Slå på Divine Contact-tabellen för att avgöra vilken gudom du mötte, eller samarbeta med din DM för att hitta ett mer passande val.",
+						{
+							"type": "table",
+							"caption": "Divine Contact",
+							"colLabels": [
+								"d10",
+								"Wandering Deity"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"Corellon, konstens och magins gud (kaotiskt god)"
+								],
+								[
+									"2",
+									"Tymora, lyckans gud (kaotiskt gott)"
+								],
+								[
+									"3",
+									"Fharlanghn, horisontens och resandets gud (neutralt bra)"
+								],
+								[
+									"4",
+									"Istus, ödets gud (neutral)"
+								],
+								[
+									"5",
+									"Nuada, krigets och krigarnas gud (neutral)"
+								],
+								[
+									"6",
+									"Zivilyn, visdomens gud (neutral)"
+								],
+								[
+									"7",
+									"Arawn, livets och dödens gud (neutral ondska)"
+								],
+								[
+									"8",
+									"Hekate, gud för magi och månar (kaotisk ondska)"
+								],
+								[
+									"9",
+									"Celestian, stjärnornas och vandrarnas gud (neutral)"
+								],
+								[
+									"10",
+									"Ptah, gud för kunskap och hemligheter (lagligt neutral)"
+								]
+							]
+						}
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Athlete",
 			"source": "MOT",
 			"page": 31,
@@ -23908,6 +24045,143 @@
 				}
 			],
 			"hasFluff": true
+		},
+		{
+			"name": "Wildspacer",
+			"source": "AAG",
+			"feats": [
+				{
+					"tough|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"survival": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"navigator's tools": true,
+					"vehicles (space)": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						{
+							"item": "club|phb",
+							"displayName": "belaying pin"
+						},
+						"traveler's clothes|phb",
+						"grappling hook|phb",
+						"hempen rope (50 feet)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Athletics}, {@skill Survival}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiencies:",
+							"entry": "{@item Navigator's tools|phb}, {@filter vehicles (space)|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (space)}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "En säkringsnål ({@item club|phb}), en uppsättning {@item traveler's clothes|PHB}, en {@item grappling hook|PHB}, en {@item Hempen Rope (50 feet)|PHB|50 feet of hempen rope} och en {@item pouch|phb} som innehåller 10 gp."
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Close Encounter",
+					"entries": [
+						"Du har haft ett plågsamt möte med en av Wildspace många fasor. Du kom undan med livet i behåll, men mötet lämnade dig med ett eller två ärr eller kanske en återkommande mardröm. Rulla på tabellen för nära möten för att avgöra vilken varelse som nästan fick det bästa av dig. Varelser markerade med en asterisk visas i {@book Boo's Astral Menagerie|BAM}; de andra beskrivs i {@book Monster Manual|MM}.",
+						{
+							"type": "table",
+							"caption": "Close Encounter",
+							"colLabels": [
+								"d10",
+								"Creature"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"{@creature Beholder}"
+								],
+								[
+									"2",
+									"{@creature Cosmic horror|BAM}*"
+								],
+								[
+									"3",
+									"{@creature Feyr|BAM}*"
+								],
+								[
+									"4",
+									"{@filter Lunar dragon|bestiary|source=BAM|search=lunar dragon}*"
+								],
+								[
+									"5",
+									"{@creature Mind flayer}"
+								],
+								[
+									"6",
+									"{@creature Neh-thalggu|BAM}*"
+								],
+								[
+									"7",
+									"{@creature Neogi|MPMM}*"
+								],
+								[
+									"8",
+									"{@creature Space clown|BAM}*"
+								],
+								[
+									"9",
+									"{@creature Vampirate|BAM}*"
+								],
+								[
+									"10",
+									"{@creature Void scavver|BAM}*"
+								]
+							]
+						}
+					]
+				},
+				{
+					"name": "Feature: Wildspace Adaptation",
+					"type": "entries",
+					"entries": [
+						"Du får {@feat Tough||Tough feat} från {@book Player's Handbook|PHB}. Dessutom har du lärt dig att anpassa dig till tyngdlöshet. Att vara viktlös ger dig inte nackdel på någon av dina närstridsrullningar (se \"{@book Weightlessness|AAG|2|Weightlessness}\" i {@book chapter 2|AAG|2})."
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Witchlight Hand",

@@ -8069,9 +8069,7 @@ Renderer.vehicle = {
 			const ptSpeed = veh.speed != null
 				? Parser.getSpeedString(veh, {isSkipZeroWalk: true})
 				: "";
-			const ptPace = veh.pace != null
-				? `(<span class="help-subtle" title="${veh.pace * 24} miles per day">${veh.pace} mph</span>)`
-				: "";
+			const ptPace = Renderer.vehicle.spelljammer._getPtPace(renderer, veh);
 
 			const ptSpeedPace = [ptSpeed, ptPace].filter(Boolean).join(" ");
 
@@ -8083,7 +8081,7 @@ Renderer.vehicle = {
 					</tr>
 					<tr>
 						<td class="col-6"><b>Hit Points:</b> ${veh.hull?.hp ?? "\u2014"}</td>
-						<td class="col-6"><b>Crew:</b> ${veh.capCrew ?? "\u2014"}</td>
+						<td class="col-6"><b>Crew:</b> ${veh.capCrew ?? "\u2014"}${veh.capCrewNote ? ` ${renderer.render(veh.capCrewNote)}` : ""}</td>
 					</tr>
 					<tr>
 						<td class="col-6"><b>Damage Threshold:</b> ${veh.hull?.dt ?? "\u2014"}</td>
@@ -8097,10 +8095,29 @@ Renderer.vehicle = {
 			</td></tr>`;
 		},
 
+		_getPtPace (renderer, veh) {
+			if (!veh.pace) return "";
+
+			const isMulti = Object.keys(veh.pace).length > 1;
+
+			const out = Parser.SPEED_MODES
+				.map(mode => {
+					const pace = veh.pace[mode];
+					if (!pace) return null;
+
+					const asNum = Parser.vulgarToNumber(pace);
+					return `<span class="help-subtle" title="${asNum * 24} miles per day">${isMulti && mode !== "walk" ? `${mode} ` : ""}${pace} mph</span>`;
+				})
+				.filter(Boolean)
+				.join(", ");
+
+			return `(${out})`;
+		},
+
 		getWeaponSection_ (renderer, weap) {
 			const isMultiple = weap.count != null && weap.count > 1;
 			const ptAction = weap.action?.length
-				? weap.action.map(act => `<div class="mt-1">${renderer.render(act, 2)}</div>`)
+				? weap.action.map(act => `<div class="mt-1">${renderer.render(act, 2)}</div>`).join("")
 				: "";
 			return `
 				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${isMultiple ? `${weap.count} ` : ""}${weap.name}${weap.crew ? ` (Crew: ${weap.crew}${isMultiple ? " each" : ""})` : ""}</h3></td></tr>
@@ -8116,7 +8133,7 @@ Renderer.vehicle = {
 			const ptCosts = sect.costs?.length
 				? sect.costs.map(cost => {
 					return `${Parser.vehicleCostToFull(cost) || "\u2014"}${cost.note ? `  (${renderer.render(cost.note)})` : ""}`;
-				})
+				}).join(", ")
 				: "\u2014";
 			return `
 				<div><b>Armor Class:</b> ${sect.ac == null ? "\u2014" : sect.ac}</div>

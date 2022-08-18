@@ -890,14 +890,14 @@ class ConvertUtil {
 	static splitNameLine (line, isKeepPunctuation) {
 		const spl = this._getMergedSplitName({line});
 		const rawName = spl[0];
-		const entry = line.substring(rawName.length + 1, line.length).trim();
+		const entry = line.substring(rawName.length + spl[1].length, line.length).trim();
 		const name = this.getCleanTraitActionName(rawName);
 		const out = {name, entry};
 
 		if (
 			isKeepPunctuation
 			// If the name ends with something besides ".", maintain it
-			|| /^[?!:]$/.test(spl[1])
+			|| /^[?!:]"?$/.test(spl[1])
 		) out.name += spl[1].trim();
 
 		return out;
@@ -911,6 +911,8 @@ class ConvertUtil {
 			&& (
 				// Handle e.g. "1. Freezing Ray. ..."
 				/^\d+$/.test(spl[0])
+				// Handle e.g. "1-10: "All Fine Here!" ..."
+				|| /^\d+-\d+:?$/.test(spl[0])
 				// Handle e.g. "Action 1: Close In. ...
 				|| /^Action \d+$/.test(spl[0])
 			)
@@ -927,6 +929,15 @@ class ConvertUtil {
 			if (!toCheck.split(" ").some(it => ConvertUtil._CONTRACTIONS.has(it))) continue;
 			spl[i] = `${spl[i]}${spl[i + 1]}${spl[i + 2]}`;
 			spl.splice(i + 1, 2);
+		}
+
+		if (spl.length >= 3 && spl[0].includes(`"`) && spl[2].startsWith(`"`)) {
+			spl = [
+				`${spl[0]}${spl[1]}${spl[2].slice(0, 1)}`,
+				"",
+				spl[2].slice(1),
+				...spl.slice(3),
+			];
 		}
 
 		return spl;

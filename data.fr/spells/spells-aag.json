@@ -1,0 +1,124 @@
+{
+	"spell": [
+		{
+			"name": "Air Bubble",
+			"source": "AAG",
+			"page": 22,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"Vous créez un globe spectral autour de la tête d'une créature volontaire que vous pouvez voir à portée. Le globe est rempli d'air frais qui dure jusqu'à la fin du sort. Si la créature a plus d'une tête, le globe d'air n'apparaît qu'autour d'une seule de ses têtes (ce qui suffit à la créature pour éviter la suffocation, en supposant que toutes ses têtes partagent le même système respiratoire)."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Lorsque vous lancez ce sort en utilisant un emplacement de sort de 3e niveau ou plus, vous pouvez créer deux globes d'air frais supplémentaires pour chaque niveau d'emplacement supérieur au 2e."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Create Spelljamming Helm",
+			"source": "AAG",
+			"page": 22,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a crystal rod worth at least 5,000 gp, which the spell consumes",
+					"cost": 500000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"En tenant la baguette utilisée pour lancer le sort, vous touchez une chaise Large ou plus petite qui est inoccupée. La baguette disparaît, et la chaise se transforme en {@item spelljamming helm|AAG}."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		}
+	]
+}

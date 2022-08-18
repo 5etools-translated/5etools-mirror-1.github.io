@@ -751,6 +751,7 @@ PropOrder._VEHICLE = [
 	"page",
 	"srd",
 	"basicRules",
+	"otherSources",
 
 	"vehicleType",
 
@@ -763,6 +764,7 @@ PropOrder._VEHICLE = [
 
 	"capCreature",
 	"capCrew",
+	"capCrewNote",
 	"capPassenger",
 	"capCargo",
 

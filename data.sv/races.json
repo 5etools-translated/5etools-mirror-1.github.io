@@ -684,6 +684,132 @@
 		},
 		{
 			"name": "Astral Elf",
+			"source": "AAG",
+			"page": 10,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"humanoid"
+			],
+			"creatureTypeTags": [
+				"elf"
+			],
+			"size": [
+				"M"
+			],
+			"speed": 30,
+			"age": {
+				"max": 750
+			},
+			"darkvision": 60,
+			"traitTags": [
+				"Improved Resting"
+			],
+			"skillProficiencies": [
+				{
+					"perception": true
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"1": [
+							"dancing lights#c"
+						]
+					},
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					}
+				},
+				{
+					"known": {
+						"1": [
+							"light#c"
+						]
+					},
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					}
+				},
+				{
+					"known": {
+						"1": [
+							"sacred flame#c"
+						]
+					},
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"Du är en humanoid. Du betraktas också som en alv för alla förutsättningar eller effekter som kräver att du är en alv."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Astral Fire",
+					"entries": [
+						"Du kan en av följande trollkonster: {@spell dancing lights}, {@spell light} eller {@spell sacred flame}. Intelligens, Visdom eller Charisma är din trollformlerförmåga för den (välj när du väljer den här rasen)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"Du kan se i svagt ljus inom 60 fot från dig själv som om det vore starkt ljus, och i mörker som om det vore svagt ljus. Du ser färger i mörkret endast som grå nyanser."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Fey Ancestry",
+					"entries": [
+						"Du har fördel på räddningskast som du gör för att undvika eller avsluta {@condition charmed} tillståndet på dig själv."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Keen Senses",
+					"entries": [
+						"Du har färdighet i {@skill Perception}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Starlight Step",
+					"entries": [
+						"Som en bonusåtgärd kan du magiskt teleportera dig upp till 30 fot till ett obebott utrymme som du kan se. Du kan använda den här egenskapen ett antal gånger som är lika med din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Astral Trance",
+					"entries": [
+						"Du behöver inte sova och magi kan inte få dig att sova. Du kan avsluta en lång vila på 4 timmar om du tillbringar dessa timmar i en tranceliknande meditation, under vilken du förblir vid medvetande.",
+						"När du avslutar den här trancen får du färdighet i en valfri färdighet och ett valfritt vapen eller verktyg som du väljer från {@book Player's Handbook|PHB}. Du förvärvar dessa färdigheter på mystiskt sätt genom att hämta dem från delat elveminne och erfarenheter från varelser på det astrala planet, och du behåller dem tills du avslutar din nästa långa vila."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Astral Elf",
 			"source": "UA2021TravelersOfTheMultiverse",
 			"page": 1,
 			"lineage": "VRGR",
@@ -796,6 +922,88 @@
 				}
 			],
 			"hasFluff": true
+		},
+		{
+			"name": "Autognome",
+			"source": "AAG",
+			"page": 11,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"construct"
+			],
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"traitTags": [
+				"Improved Resting",
+				"Natural Armor"
+			],
+			"toolProficiencies": [
+				{
+					"any": 2
+				}
+			],
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"disease"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"Du är en konstruktion."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Armored Casing",
+					"entries": [
+						"Du är innesluten i tunn metall eller något annat hållbart material. När du inte bär rustning är din grundläggande Armor Class 13 + din Dexterity-modifierare."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Built for Success",
+					"entries": [
+						"Du kan lägga till en {@dice d4} till en attackkast, en förmågekontroll eller ett räddningskast du gör, och du kan göra det efter att du har sett {@dice d20} kastet men innan effekterna av kastet har lösts. Du kan använda den här egenskapen ett antal gånger som är lika med din kompetensbonus, och du återfår alla förbrukade användningar när du avslutar en lång vila."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Healing Machine",
+					"entries": [
+						"Om {@spell mending}-besvärjelsen kastas på dig kan du spendera en Hit Die, kasta den och återfå ett antal träffpunkter som är lika med kastet plus din konstitutionsmodifierare (minst 1 träffpunkt).",
+						"Dessutom har din skapare designat dig så att du kan dra nytta av flera trollformler som bevarar livet men som normalt inte påverkar Constructs: {@spell cure wounds}, {@spell healing word}, {@spell mass cure wounds}, {@spell mass healing word} och {@spell spare the dying}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Mechanical Nature",
+					"entries": [
+						"Du är motståndskraftig mot giftskador och immun mot sjukdomar, och du har fördel på räddningskast mot att bli {@condition paralyzed} eller {@condition poisoned}. Du behöver inte äta, dricka eller andas."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sentry's Rest",
+					"entries": [
+						"När du vilar länge tillbringar du minst sex timmar i ett inaktivt, orörligt tillstånd i stället för att sova. I detta tillstånd ser du ut att vara inaktiv, men du förblir medveten."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Specialized Design",
+					"entries": [
+						"Du får två valfria verktygsförmågor som du väljer från {@book Player's Handbook|PHB}."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Autognome",
@@ -4603,6 +4811,53 @@
 		},
 		{
 			"name": "Giff",
+			"source": "AAG",
+			"page": 12,
+			"lineage": "VRGR",
+			"size": [
+				"M"
+			],
+			"speed": {
+				"walk": 30,
+				"swim": true
+			},
+			"traitTags": [
+				"Powerful Build"
+			],
+			"weaponProficiencies": [
+				{
+					"firearms": true
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Astral Spark",
+					"entries": [
+						"Din psykiska koppling till det astrala planet gör att du på ett mystiskt sätt kan få tillgång till en gnista av gudomlig kraft som du kan kanalisera genom dina vapen. När du träffar ett mål med ett enkelt eller kampvapen kan du få målet att ta extra kraftskada lika med din kompetensbonus.",
+						"Du kan använda den här egenskapen lika många gånger som din kompetensbonus, men du kan inte använda den mer än en gång per tur. Du återfår alla förbrukade användningar när du avslutar en lång vila."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Firearms Mastery",
+					"entries": [
+						"Du har en mystisk koppling till skjutvapen som går tillbaka till gudarna i giff, som var förtjusta i sådana vapen. Du har färdigheter i alla skjutvapen och ignorerar laddningsegenskaperna hos alla skjutvapen. Dessutom ger attacker på långt avstånd med ett skjutvapen inte nackdel på din attackkast."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hippo Build",
+					"entries": [
+						"Du har fördel på styrkebaserade förmågekontroller och räddningskast med styrka. Dessutom räknas du som en storlek större när du bestämmer din bärförmåga och den vikt du kan skjuta, dra eller lyfta."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Giff",
 			"source": "UA2021TravelersOfTheMultiverse",
 			"page": 2,
 			"lineage": "VRGR",
@@ -5964,6 +6219,60 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Hadozee",
+			"source": "AAG",
+			"page": 13,
+			"lineage": "VRGR",
+			"size": [
+				"S",
+				"M"
+			],
+			"speed": {
+				"walk": 30,
+				"climb": true
+			},
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Du är Medium eller Small. Du väljer storlek när du väljer denna tävling."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dexterous Feet",
+					"entries": [
+						"Som en bonusåtgärd kan du använda dina fötter för att manipulera ett föremål, öppna eller stänga en dörr eller behållare eller plocka upp eller ställa ner ett litet föremål."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Glide",
+					"entries": [
+						"Om du inte är {@condition incapacitated} eller bär tung rustning kan du förlänga dina hudmembraner och glida. När du gör det kan du utföra följande luftmanövrar:",
+						{
+							"type": "list",
+							"items": [
+								"Du kan förflytta dig upp till 5 fot horisontellt för varje 1 fot du sjunker ner i luften, utan att det kostar dig någon rörelsekostnad.",
+								"När du skulle ta skada av ett fall kan du använda din reaktion för att minska fallets skada till 0."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hadozee Resilience",
+					"entries": [
+						"Magin som flyter i dina ådror förstärker ditt naturliga försvar. När du tar skada kan du använda din reaktion för att kasta en {@dice d6}. Lägg till din färdighetsbonus till det antal som kastas och minska skadan du tar med ett belopp som är lika stort som den summan (minst 0 skada).",
+						"Du kan använda den här egenskapen ett antal gånger som är lika med din kompetensbonus. Du återfår alla förbrukade användningar när du avslutar en lång vila."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Hadozee",
@@ -10582,6 +10891,79 @@
 		},
 		{
 			"name": "Plasmoid",
+			"source": "AAG",
+			"page": 14,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"ooze"
+			],
+			"size": [
+				"S",
+				"M"
+			],
+			"speed": 30,
+			"darkvision": 60,
+			"resist": [
+				"acid",
+				"poison"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"Du är en Ooze."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Du är Medium eller Small. Du väljer storlek när du väljer denna tävling."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Amorphous",
+					"entries": [
+						"Du kan klämma dig igenom ett utrymme som är så smalt som 1 tum brett, förutsatt att du inte har något på dig eller bär något. Du har en fördel på förmågekontroller som du gör för att inleda eller undkomma ett gripande."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"Du kan se i svagt ljus inom 60 fot från dig själv som om det vore starkt ljus, och i mörker som om det vore svagt ljus. Du ser färger i mörkret endast som grå nyanser."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hold Breath",
+					"entries": [
+						"Du kan hålla andan i en timme."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Natural Resilience",
+					"entries": [
+						"Du är motståndskraftig mot syra- och giftskador och har fördel på räddningskast mot syra {@condition poisoned}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Shape Self",
+					"entries": [
+						"Som en åtgärd kan du omforma din kropp så att du får ett huvud, en eller två armar, ett eller två ben och provisoriska händer och fötter, eller så kan du återgå till en lemlös klump. Medan du har en människoliknande form kan du bära kläder och rustningar gjorda för en humanoid av din storlek.",
+						"Som en bonusåtgärd kan du extrudera en pseudopod som är upp till 6 tum bred och 10 fot lång eller absorbera den i din kropp. Som en del av samma bonushandling kan du använda denna pseudopod för att manipulera ett föremål, öppna eller stänga en dörr eller behållare, eller plocka upp eller sätta ner ett Tiny-objekt. Pseudopoden innehåller inga sinnesorgan och kan inte attackera, aktivera magiska föremål eller lyfta mer än 10 pund."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Plasmoid",
 			"source": "UA2021TravelersOfTheMultiverse",
 			"page": 3,
 			"lineage": "VRGR",
@@ -12229,6 +12611,79 @@
 						"Du kan tala, läsa och skriva det gemensamma språket och ett annat valfritt språk."
 					],
 					"type": "entries"
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Thri-kreen",
+			"source": "AAG",
+			"page": 15,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"monstrosity"
+			],
+			"size": [
+				"S",
+				"M"
+			],
+			"speed": 30,
+			"darkvision": 60,
+			"traitTags": [
+				"Improved Resting",
+				"Natural Armor"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"Du är en monstrositet."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Du är Medium eller Small. Du väljer storlek när du väljer denna tävling."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Chameleon Carapace",
+					"entries": [
+						"När du inte bär rustning ger din carapace dig en grundläggande Armor Class på 13 + din Dexterity-modifierare.",
+						"Som en handling kan du ändra färgen på din pansar för att matcha färgen och strukturen i din omgivning, vilket ger dig en fördel på Dexterity ({@skill Stealth})-kontroller som görs för att {@action hide} i den omgivningen."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"Du kan se i svagt ljus inom 60 fot från dig själv som om det vore starkt ljus, och i mörker som om det vore svagt ljus. Du ser färger i mörkret endast som grå nyanser."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Secondary Arms",
+					"entries": [
+						"Du har två något mindre sekundära armar under ditt primära par armar. De sekundära armarna kan manipulera ett föremål, öppna eller stänga en dörr eller en behållare, ta upp eller sätta ner ett litet föremål eller använda ett vapen som har ljusegenskapen."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sleepless",
+					"entries": [
+						"Du behöver inte sova och kan vara vid medvetande under en lång vila, men du måste ändå avstå från ansträngande aktiviteter för att få nytta av vilan."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Thri-kreen Telepathy",
+					"entries": [
+						"Utan hjälp av magi kan du inte tala de icke-thri-kreen-språk som du känner till. Istället använder du telepati för att förmedla dina tankar. Du har den magiska förmågan att överföra dina tankar mentalt till villiga varelser som du kan se inom 120 fot från dig själv. En kontaktad varelse behöver inte dela språk med dig för att förstå dina tankar, men den måste kunna förstå minst ett språk. Din telepatiska länk till en varelse bryts om du och varelsen rör er mer än 120 fot ifrån varandra, om någon av er är {@condition incapacitated}, eller om någon av er mentalt bryter kontakten (ingen åtgärd krävs)."
+					]
 				}
 			],
 			"hasFluff": true,

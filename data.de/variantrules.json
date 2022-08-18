@@ -198,6 +198,42 @@
 			]
 		},
 		{
+			"name": "Crashing",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Ein Spelljammer kann sein Schiff in ein anderes Objekt oder eine Kreatur rammen, indem er das Schiff in den Raum des Ziels bewegt und einen speziellen Angriffswurf ({@dice 1d20} + Befähigungsbonus des Spelljammers) gegen die Rüstungsklasse des Ziels macht. Trifft der Angriffswurf, kommt es zum Absturz; andernfalls bewegt sich das Ziel aus dem Weg des Schiffes und vermeidet den Absturz. Wenn der DM entscheidet, dass ein Absturz unvermeidlich ist, ist kein Angriffswurf notwendig und der Absturz erfolgt automatisch.",
+				"Wenn ein Spelljamming-Schiff mit etwas zusammenstößt, das es vernünftigerweise beschädigen könnte, erleiden sowohl das Schiff als auch die Kreatur oder das Objekt, das es getroffen hat, Wucht-Schaden, basierend auf der Größe des getroffenen Objekts, wie in der Crash Damage-Tabelle angegeben. Wenn das Schiff auf etwas stößt, das keine Trefferpunkte hat (z. B. ein Planet oder ein Mond), wird der Schaden nur auf das Schiff angewendet. Das Schiff bleibt stehen, wenn es mit einem Gargantuan oder einem unbeweglichen Wesen oder Objekt zusammenstößt; andernfalls kann es sich weiterbewegen, wenn es noch Bewegung übrig hat, und was auch immer es getroffen hat, bewegt sich auf den nächsten unbesetzten Platz, der nicht in der Flugbahn des Schiffes liegt.",
+				"Nachdem der Effekt des Absturzes aufgelöst wurde, wird festgestellt, ob die Dimension des Schiffes unterdrückt ist (siehe \"{@book Overlapping Gravity Planes|AAG|2|Overlapping Gravity Planes}\" weiter oben im Kapitel). Wenn die Unterdrückung der Schwerkraft des Schiffes dazu führt, dass die Kreaturen auf oder in dem Schiff fallen, fallen sie in die Richtung, die der plötzlichen Änderung der Schwerkraft entspricht. Um den Schaden eines Sturzes zu bestimmen, siehe die {@book falling|PHB|8|Falling}-Regeln im Abschnitt {@book Player's Handbook|PHB}.",
+				{
+					"type": "table",
+					"caption": "Crash Damage",
+					"colLabels": [
+						"Size of Creature or Object Struck",
+						"Bludgeoning Damage"
+					],
+					"colStyles": [
+						"col-8 text-center",
+						"col-4 text-center"
+					],
+					"rows": [
+						[
+							"Groß",
+							"{@dice 4d10}"
+						],
+						[
+							"Huge",
+							"{@dice 8d10}"
+						],
+						[
+							"Gargantuan",
+							"{@dice 16d10}"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Crashing a Ship",
 			"source": "UAOfShipsAndSea",
 			"page": 9,
@@ -435,6 +471,15 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Crew",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Die Standardbesatzung eines Spelljamming-Schiffs besteht aus einem Kapitän, der Befehle erteilt, einem Spelljammer, der das Schiff steuert, und einem oder mehreren Besatzungsmitgliedern, die die Waffen bedienen. Einige Schiffe haben zusätzliche Besatzungsmitglieder (z. B. Truppen und Ersatzzauberjammer) oder Passagiere. Ein Schiff, das mehr als die Standardbesatzung hat, verschlechtert die Qualität seiner Luftversorgung schneller.",
+				"Ein Zauberer verlangt normalerweise mindestens 50 Gp pro Tag, um einen {@item spelljamming helm|AAG} zu betreiben."
 			]
 		},
 		{
@@ -10014,6 +10059,15 @@
 			]
 		},
 		{
+			"name": "Ship Repairs",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Nichtmagische Reparaturen an einem beschädigten Schiff können durchgeführt werden, während das Schiff vor Anker liegt. Die Reparatur eines Schadens von 1 Trefferpunkt an einem festgemachten Schiff dauert 1 Tag und kostet 20 gp für Material und Arbeit. Schäden an Bordwaffen können genauso schnell repariert werden (1 Trefferpunkt pro Tag), allerdings zu halb so hohen Kosten (10 gp pro Trefferpunkt).",
+				"Der {@spell mending}-Zauber ist eine billigere, weniger zeitaufwändige Art, Reparaturen durchzuführen. Wenn {@spell mending} auf ein beschädigtes Schiff oder eine beschädigte Bordwaffe gewirkt wird, erhält das Ziel eine Anzahl von Trefferpunkten in Höhe von {@dice 1d8} plus dem Zauberfähigkeitsmodifikator des Zaubernden zurück. Das Ziel kann nicht mehr als einmal pro Stunde Trefferpunkte durch diesen Zauber wiedererlangen."
+			]
+		},
+		{
 			"name": "Ship Stat Blocks",
 			"source": "GoS",
 			"page": 186,
@@ -10287,6 +10341,77 @@
 								"{@vehicle Warship|UAOfShipsAndSea}"
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ship-to-Ship Combat",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Die folgenden Regeln sollen den Kampf von Schiff zu Schiff einfach und dennoch spannend machen.",
+				{
+					"type": "entries",
+					"name": "Starting Distance",
+					"entries": [
+						"Zu Beginn eines Kampfes entscheidet der DM, wie weit ein Schiff von seinen Feinden entfernt ist. In der Tabelle Entfernung zu Beginn des Gefechts sind drei Möglichkeiten angegeben. Je kürzer die Entfernung, desto weniger Zeit haben die Besatzungen, Waffen zu laden und andere Vorbereitungen zu treffen.",
+						{
+							"type": "table",
+							"caption": "Starting Encounter Distance",
+							"colLabels": [
+								"Distance",
+								"Notes"
+							],
+							"colStyles": [
+								"col-2",
+								"col-10"
+							],
+							"rows": [
+								[
+									"250 feet",
+									"Große Reichweite für Ballisten, Mangone, Kurzbögen, Langbögen, leichte Armbrüste und schwere Armbrüste"
+								],
+								[
+									"500 feet",
+									"Große Reichweite für Langbögen und Mangonellen; außerhalb der Reichweite von Ballisten und Armbrüsten"
+								],
+								[
+									"1,000 feet",
+									"Außerhalb der Reichweite der meisten Fernkampfwaffen"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Initiative",
+					"entries": [
+						"Die {@book Dungeon Master's Guide|DMG} stellt eine Regelvariante namens {@variantrule Initiative Variants||Side Initiative} dar, die ideal für Schiff-zu-Schiff-Gefechte ist, da sie dir die Mühe erspart, die Initiative der einzelnen Kreaturen an Bord jedes Schiffes zu verfolgen.",
+						{
+							"type": "inset",
+							"name": "Shipboard Weapons",
+							"entries": [
+								"Ein Spelljamming-Schiff verfügt in der Regel über eine oder mehrere Bordwaffen, wobei Ballisten und Mangonen die häufigsten sind. Solche Waffen lassen sich nur langsam laden und abfeuern. Spielercharaktere sind fast immer besser dran, wenn sie ihre eigenen Waffen und Zauber im Kampf von Schiff zu Schiff einsetzen und die Bordwaffen für Ziele reservieren, die zu weit entfernt sind, um mit anderen Mitteln beschädigt zu werden."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Moving and Steering a Ship",
+					"entries": [
+						"Ein Spelljammer kann die {@item spelljamming helm|AAG} eines Schiffes nutzen, um das Schiff zu bewegen und zu steuern, ohne eigene Aktionen oder Bewegung zu verbrauchen. In seinem Zug bestimmt der Zauberjäger, wie weit sich das Schiff bewegt (bis zu seiner Höchstgeschwindigkeit) und entscheidet, ob er sich einem anderen Schiff nähert oder mehr Abstand zwischen die beiden bringt.",
+						"Wenn ein Schiff an der Reihe ist, kann es gedreht und neu ausgerichtet werden, so dass alle seine Waffen auf jedes Ziel in Reichweite zielen und schießen können, unabhängig davon, wo sie sich auf dem Deck befinden."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Boarding",
+					"entries": [
+						"Wenn sich ein Schiff bis auf 5 Fuß an ein anderes Schiff heranbewegt, kann der Zauberjäger oder der Pilot des sich bewegenden Schiffes es längsseits des anderen Schiffes manövrieren, so dass sich Kreaturen sicher vom Deck des einen Schiffes auf das Deck des anderen Schiffes bewegen können, bis sich eines der Schiffe vom anderen entfernt.",
+						"Ein Schiff, das über genügend Bewegung verfügt, kann an einem anderen Schiff vorbeiziehen, einen Entertrupp aufstellen und sich dann entfernen, vorausgesetzt, die Mitglieder des Entertrupps haben die Aktion {@action ready||Ready} durchgeführt, um sich so zu positionieren, dass sie auf das andere Schiff gelangen können, wenn es nahe genug ist."
 					]
 				}
 			]

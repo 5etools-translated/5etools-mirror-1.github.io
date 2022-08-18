@@ -2402,6 +2402,10 @@ SRC_SCC_ARiR = "SCC-ARiR";
 SRC_MPMM = "MPMM";
 SRC_CRCotN = "CRCotN";
 SRC_JttRC = "JttRC";
+SRC_SAiS = "SAiS";
+SRC_AAG = "AAG";
+SRC_BAM = "BAM";
+SRC_LoX = "LoX";
 SRC_SCREEN = "Screen";
 SRC_SCREEN_WILDERNESS_KIT = "ScreenWildernessKit";
 SRC_SCREEN_DUNGEON_KIT = "ScreenDungeonKit";
@@ -2613,6 +2617,10 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SCC_ARiR] = "A Reckoning in Ruins";
 Parser.SOURCE_JSON_TO_FULL[SRC_MPMM] = "Mordenkainen Presents: Monsters of the Multiverse";
 Parser.SOURCE_JSON_TO_FULL[SRC_CRCotN] = "Critical Role: Call of the Netherdeep";
 Parser.SOURCE_JSON_TO_FULL[SRC_JttRC] = "Journeys through the Radiant Citadel";
+Parser.SOURCE_JSON_TO_FULL[SRC_SAiS] = "Spelljammer: Adventures in Space";
+Parser.SOURCE_JSON_TO_FULL[SRC_AAG] = "Astral Adventurer's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_BAM] = "Boo's Astral Menagerie";
+Parser.SOURCE_JSON_TO_FULL[SRC_LoX] = "Light of Xaryxis";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN_WILDERNESS_KIT] = "Dungeon Master's Screen: Wilderness Kit";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN_DUNGEON_KIT] = "Dungeon Master's Screen: Dungeon Kit";
@@ -2802,6 +2810,10 @@ Parser.SOURCE_JSON_TO_ABV[SRC_SCC_ARiR] = "SCC-ARiR";
 Parser.SOURCE_JSON_TO_ABV[SRC_MPMM] = "MPMM";
 Parser.SOURCE_JSON_TO_ABV[SRC_CRCotN] = "CRCotN";
 Parser.SOURCE_JSON_TO_ABV[SRC_JttRC] = "JttRC";
+Parser.SOURCE_JSON_TO_ABV[SRC_SAiS] = "SAiS";
+Parser.SOURCE_JSON_TO_ABV[SRC_AAG] = "AAG";
+Parser.SOURCE_JSON_TO_ABV[SRC_BAM] = "BAM";
+Parser.SOURCE_JSON_TO_ABV[SRC_LoX] = "LoX";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN_WILDERNESS_KIT] = "ScWild";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN_DUNGEON_KIT] = "ScDun";
@@ -2990,6 +3002,10 @@ Parser.SOURCE_JSON_TO_DATE[SRC_SCC_ARiR] = "2021-12-07";
 Parser.SOURCE_JSON_TO_DATE[SRC_MPMM] = "2022-01-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_CRCotN] = "2022-03-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_JttRC] = "2022-07-19";
+Parser.SOURCE_JSON_TO_DATE[SRC_SAiS] = "2022-08-16";
+Parser.SOURCE_JSON_TO_DATE[SRC_AAG] = "2022-08-16";
+Parser.SOURCE_JSON_TO_DATE[SRC_BAM] = "2022-08-16";
+Parser.SOURCE_JSON_TO_DATE[SRC_LoX] = "2022-08-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN_WILDERNESS_KIT] = "2020-11-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN_DUNGEON_KIT] = "2020-09-21";
@@ -3161,6 +3177,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_CRCotN,
 	SRC_JttRC,
 	SRC_SjA,
+	SRC_LoX,
 
 	SRC_AWM,
 ]);
@@ -3255,6 +3272,10 @@ Parser.SOURCES_NON_FR = new Set([
 	SRC_SCC_ARiR,
 	SRC_CRCotN,
 	SRC_SjA,
+	SRC_SAiS,
+	SRC_AAG,
+	SRC_BAM,
+	SRC_LoX,
 ]);
 
 // endregion
@@ -3281,6 +3302,8 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_FTD,
 	SRC_SCC,
 	SRC_MPMM,
+	SRC_AAG,
+	SRC_BAM,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
@@ -3361,6 +3384,7 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 	SRC_SCC_ARiR,
 	SRC_CRCotN,
 	SRC_JttRC,
+	SRC_LoX,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
@@ -3489,6 +3513,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"VEH": "vehicle (land)",
 	"SHP": "vehicle (water)",
 	"AIR": "vehicle (air)",
+	"SPC": "vehicle (space)",
 	"WD": "wand",
 };
 

@@ -1,0 +1,124 @@
+{
+	"spell": [
+		{
+			"name": "Air Bubble",
+			"source": "AAG",
+			"page": 22,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"Creas un globo espectral alrededor de la cabeza de una criatura dispuesta que puedas ver dentro del alcance. El globo se llena de aire fresco que dura hasta que el hechizo termina. Si la criatura tiene más de una cabeza, el globo de aire aparece alrededor de una sola de sus cabezas (que es todo lo que la criatura necesita para evitar la asfixia, suponiendo que todas sus cabezas comparten el mismo sistema respiratorio)."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Cuando lanzas este hechizo utilizando una ranura de hechizo de 3er nivel o superior, puedes crear dos globos de aire fresco adicionales por cada nivel de ranura superior al 2º."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Create Spelljamming Helm",
+			"source": "AAG",
+			"page": 22,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a crystal rod worth at least 5,000 gp, which the spell consumes",
+					"cost": 500000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Sosteniendo la vara utilizada en el lanzamiento del hechizo, tocas una silla grande o más pequeña que esté desocupada. La vara desaparece y la silla se transforma en un {@item spelljamming helm|AAG}."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		}
+	]
+}

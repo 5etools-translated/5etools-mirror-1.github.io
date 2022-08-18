@@ -198,6 +198,42 @@
 			]
 		},
 		{
+			"name": "Crashing",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"A spelljammer can run their ship into another object or a creature by moving the ship into the target's space and making a special attack roll ({@dice 1d20} + the spelljammer's proficiency bonus) against the target's Armor Class. If the attack roll hits, a crash occurs; otherwise, the target moves out of the ship's path, avoiding the crash. If the DM decides that a crash is unavoidable, no attack roll is necessary, and the crash occurs automatically.",
+				"When a spelljamming ship crashes into something that could reasonably damage it, both the ship and the creature or object it struck take bludgeoning damage based on the size of the struck object, as shown in the Crash Damage table. If the ship runs into something that doesn't have hit points (such as a planet or a moon), apply the damage only to the ship. The ship stops after crashing into a Gargantuan or immovable creature or object; otherwise, the ship can continue moving if it has any movement left, and whatever it struck moves to the nearest unoccupied space that isn't in the ship's path.",
+				"After resolving the effect of the crash, determine whether the ship's gravity plane is suppressed (see \"{@book Overlapping Gravity Planes|AAG|2|Overlapping Gravity Planes}\" earlier in the chapter). If the suppression of a ship's gravity plane would cause the creatures on or inside that ship to fall, they fall in whatever direction is appropriate for the sudden change in gravity. To determine the damage from a fall, see the {@book falling|PHB|8|Falling} rules in the {@book Player's Handbook|PHB}.",
+				{
+					"type": "table",
+					"caption": "Crash Damage",
+					"colLabels": [
+						"Size of Creature or Object Struck",
+						"Bludgeoning Damage"
+					],
+					"colStyles": [
+						"col-8 text-center",
+						"col-4 text-center"
+					],
+					"rows": [
+						[
+							"Large",
+							"{@dice 4d10}"
+						],
+						[
+							"Huge",
+							"{@dice 8d10}"
+						],
+						[
+							"Gargantuan",
+							"{@dice 16d10}"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Crashing a Ship",
 			"source": "UAOfShipsAndSea",
 			"page": 9,
@@ -435,6 +471,15 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Crew",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"The standard crew complement for a spelljamming ship includes one captain to give orders, one spelljammer to pilot the ship, and one or more crew members to operate its weapons. Some ships carry extra crew (such as troops and back-up spelljammers) or passengers. A ship that has more than a standard crew complement will degrade the quality of its air supply more quickly.",
+				"A spellcaster typically charges at least 50 gp per day to operate a {@item spelljamming helm|AAG}."
 			]
 		},
 		{
@@ -10014,6 +10059,15 @@
 			]
 		},
 		{
+			"name": "Ship Repairs",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Nonmagical repairs to a damaged ship can be made while the vessel is berthed. Repairing 1 hit point of damage to a berthed ship takes 1 day and costs 20 gp for materials and labor. Damage to shipboard weapons can be repaired just as quickly (1 hit point per day), but at half the cost (10 gp per hit point).",
+				"The {@spell mending} spell is a cheaper, less time-consuming way to make repairs. Casting {@spell mending} on a damaged ship or shipboard weapon restores a number of hit points to the target equal to {@dice 1d8} plus the spellcaster's spellcasting ability modifier. The target can regain hit points from that spell no more than once per hour."
+			]
+		},
+		{
 			"name": "Ship Stat Blocks",
 			"source": "GoS",
 			"page": 186,
@@ -10287,6 +10341,77 @@
 								"{@vehicle Warship|UAOfShipsAndSea}"
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ship-to-Ship Combat",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"The following rules are designed to make ship-to-ship combat simple yet exciting.",
+				{
+					"type": "entries",
+					"name": "Starting Distance",
+					"entries": [
+						"At the start of an engagement, the DM decides how far a ship is from its enemies. Three possibilities are provided in the Starting Encounter Distance table. The shorter the distance, the less time crews have to load weapons and make other preparations.",
+						{
+							"type": "table",
+							"caption": "Starting Encounter Distance",
+							"colLabels": [
+								"Distance",
+								"Notes"
+							],
+							"colStyles": [
+								"col-2",
+								"col-10"
+							],
+							"rows": [
+								[
+									"250 feet",
+									"Long range for ballistae, mangonels, shortbows, longbows, light crossbows, and heavy crossbows"
+								],
+								[
+									"500 feet",
+									"Long range for longbows and mangonels; beyond the range of ballistae and crossbows"
+								],
+								[
+									"1,000 feet",
+									"Beyond the range of most ranged weapons"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Initiative",
+					"entries": [
+						"The {@book Dungeon Master's Guide|DMG} presents a variant rule called {@variantrule Initiative Variants||Side Initiative}, which is ideal for ship-to-ship engagements, since it saves you the trouble of tracking initiative for individual creatures aboard each ship.",
+						{
+							"type": "inset",
+							"name": "Shipboard Weapons",
+							"entries": [
+								"A spelljamming ship typically has one or more shipboard weapons, ballistae and mangonels being the most common. Such weapons are slow to load and fire. Player characters are almost always better off using their own weapons and spells in ship-to-ship combat, reserving shipboard weapons for targets that are too far away to be damaged by other means."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Moving and Steering a Ship",
+					"entries": [
+						"A spelljammer can use a ship's {@item spelljamming helm|AAG} to move and steer the ship without expending their own actions or movement. On their turn, the spelljammer determines how far the ship moves (up to its maximum speed) and decides whether to approach another ship or put more distance between the two.",
+						"On its turn, a ship can be turned and reoriented so that all its weapons can aim and fire at any target within range, regardless of where they're situated on the deck."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Boarding",
+					"entries": [
+						"When one ship moves to within 5 feet of another ship, the spelljammer or pilot of the moving ship can maneuver it alongside the other ship, enabling creatures to move safely from one ship's deck to the other ship's deck until one of the ships pulls away from the other.",
+						"A ship that has enough movement can pull alongside another vessel, deploy a boarding party, and then move away, provided the members of the boarding party took the {@action ready||Ready} action to position themselves so they can move onto the other vessel when it's close enough."
 					]
 				}
 			]

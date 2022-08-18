@@ -1,0 +1,192 @@
+{
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"otherSources": {
+			"monster": {
+				"BAM": "LoX",
+				"MM": "LoX"
+			}
+		}
+	},
+	"monster": [
+		{
+			"name": "Aarakocra Spelljammer",
+			"source": "LoX",
+			"page": 43,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_trait": {
+					"name": "Aarakocra",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "\\bmage\\b",
+						"with": "aarakocra"
+					}
+				}
+			}
+		},
+		{
+			"name": "Agony",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 34,
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the ghost",
+						"with": "Agony",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Astral Blight",
+			"source": "LoX",
+			"page": 10,
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8 + 8"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 16,
+			"dex": 8,
+			"con": 14,
+			"int": 6,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"cold",
+				"radiant"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Illumination",
+					"entries": [
+						"Finché ha almeno 1 punto ferita, la piaga astrale diffonde una luce fioca in un raggio di 3 metri."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"La peste non richiede aria o sonno."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"La piaga compie due attacchi di Vite che drena il calore."
+					]
+				},
+				{
+					"name": "Heat-Draining Vine",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 10 m, un bersaglio. {@h}6 ({@damage 1d6 + 3}) danni radianti, e se il bersaglio è una creatura Grande o più piccola, è {@condition grappled} (fuga {@dc 13}). Finché la presa non termina, il bersaglio subisce 3 ({@damage 1d6}) danni da freddo all'inizio di ogni suo turno. La ruggine ha due liane, ognuna delle quali può afferrare una creatura."
+					]
+				}
+			],
+			"traitTags": [
+				"Illumination",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"C",
+				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluffImages": true
+		},
+		{
+			"name": "Flapjack",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 13,
+			"_copy": {
+				"name": "Flumph",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the flumph",
+						"with": "Flapjack",
+						"flags": "i"
+					}
+				}
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Flapjack lancia uno dei seguenti incantesimi, che non richiedono componenti materiali e utilizzano l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 12}): A volontà: mano del mago, illusione minore"
+					],
+					"daily": {
+						"1e": [
+							"{@spell magic missile}",
+							"{@spell unseen servant}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"damageTagsSpell": [
+				"O"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

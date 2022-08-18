@@ -838,6 +838,143 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Astral Drifter",
+			"source": "AAG",
+			"feats": [
+				{
+					"magic initiate|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"religion": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 2
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						"traveler's clothes|phb",
+						{
+							"special": "diary"
+						},
+						"ink pen|phb",
+						"ink (1-ounce bottle)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Insight}, {@skill Religion}"
+						},
+						{
+							"type": "item",
+							"name": "Languages:",
+							"entry": "您可以选择两个（建议使用{@language Celestial}或{@language Gith|MM}）。"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "一套{@item traveler's clothes|PHB}，一本日记，一本{@item ink pen|PHB}，一本{@item Ink (1-ounce bottle)|PHB|bottle of ink}，和一本{@item pouch|phb}，包含10个Gp。"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Longevity",
+					"entries": [
+						"你比你看起来要老{@dice 20d6}岁，因为你在星海中度过了那么多时间而没有衰老。"
+					]
+				},
+				{
+					"name": "Feature: Divine Contact",
+					"type": "entries",
+					"entries": [
+						"你从{@book Player's Handbook|PHB}中获得{@feat Magic Initiate||Magic Initiate feat}，并且必须选择教士来完成这个特技。",
+						"在星海中，你与一位流浪的神灵擦肩而过。这次相遇是短暂的、非暴力的，但它给你留下了持久的印象。这位神灵认为应该与你分享一个秘密或晦涩的宇宙传说。与你的管理人合作，确定这些知识的细节以及它对活动的影响。",
+						"在 \"神灵接触表 \"上打滚，以确定你遇到的是哪位神灵，或者与你的管理员合作，确定一个更合适的选择。",
+						{
+							"type": "table",
+							"caption": "Divine Contact",
+							"colLabels": [
+								"d10",
+								"Wandering Deity"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"科雷隆，艺术和魔法之神（混沌善）。"
+								],
+								[
+									"2",
+									"泰莫拉"
+								],
+								[
+									"3",
+									"Fharlanghn，地平线和旅行之神（中立的好）。"
+								],
+								[
+									"4",
+									"伊斯托斯(Istus), 命运之神(中立)"
+								],
+								[
+									"5",
+									"努阿达，战争和战士之神（中立）。"
+								],
+								[
+									"6",
+									"Zivilyn, 智慧之神 (中立)"
+								],
+								[
+									"7",
+									"阿龙，生死之神（中立的邪恶）。"
+								],
+								[
+									"8",
+									"赫卡忒，魔法和月亮之神（混乱的邪恶）"
+								],
+								[
+									"9",
+									"天神(Celestian)，星星和流浪者之神(中立)"
+								],
+								[
+									"10",
+									"普塔，知识和秘密之神（合法中立）。"
+								]
+							]
+						}
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Athlete",
 			"source": "MOT",
 			"page": 31,
@@ -23908,6 +24045,143 @@
 				}
 			],
 			"hasFluff": true
+		},
+		{
+			"name": "Wildspacer",
+			"source": "AAG",
+			"feats": [
+				{
+					"tough|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"survival": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"navigator's tools": true,
+					"vehicles (space)": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						{
+							"item": "club|phb",
+							"displayName": "belaying pin"
+						},
+						"traveler's clothes|phb",
+						"grappling hook|phb",
+						"hempen rope (50 feet)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Athletics}, {@skill Survival}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiencies:",
+							"entry": "{@item Navigator's tools|phb}, {@filter vehicles (space)|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (space)}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "一根系绳针({@item club|phb})，一套{@item traveler's clothes|PHB}，一个{@item grappling hook|PHB}，{@item Hempen Rope (50 feet)|PHB|50 feet of hempen rope}，和一个{@item pouch|phb}，含10Gp"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Close Encounter",
+					"entries": [
+						"你曾与威尔兹空间的众多恐怖人物之一有过一次惨痛的遭遇。你逃过一劫，但这次遭遇给你留下了一两道伤疤，或者是一个反复出现的恶梦。请在 \"亲密接触 \"表上滚动，以确定哪种生物差点就把你干掉了。标有星号的生物出现在{@book Boo's Astral Menagerie|BAM}；其他的生物则在{@book Monster Manual|MM}中描述。",
+						{
+							"type": "table",
+							"caption": "Close Encounter",
+							"colLabels": [
+								"d10",
+								"Creature"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"{@creature Beholder}"
+								],
+								[
+									"2",
+									"{@creature Cosmic horror|BAM}*"
+								],
+								[
+									"3",
+									"{@creature Feyr|BAM}*"
+								],
+								[
+									"4",
+									"{@filter Lunar dragon|bestiary|source=BAM|search=lunar dragon}*"
+								],
+								[
+									"5",
+									"{@creature Mind flayer}"
+								],
+								[
+									"6",
+									"{@creature Neh-thalggu|BAM}*"
+								],
+								[
+									"7",
+									"{@creature Neogi|MPMM}*"
+								],
+								[
+									"8",
+									"{@creature Space clown|BAM}*"
+								],
+								[
+									"9",
+									"{@creature Vampirate|BAM}*"
+								],
+								[
+									"10",
+									"{@creature Void scavver|BAM}*"
+								]
+							]
+						}
+					]
+				},
+				{
+					"name": "Feature: Wildspace Adaptation",
+					"type": "entries",
+					"entries": [
+						"你从（%1%）中获得了（%0%）。此外，你学会了如何适应零重力。失重不会使你在任何近战攻击卷中处于劣势（见{@book chapter 2|AAG|2}中的\"{@book Weightlessness|AAG|2|Weightlessness}\"）。"
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Witchlight Hand",

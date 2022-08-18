@@ -371,6 +371,180 @@
 			"hasFluffImages": true
 		},
 		{
+			"name": "Bombard",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"140 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 12,
+			"capCargo": 150,
+			"cost": 5000000,
+			"pace": {
+				"fly": 4
+			},
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 300,
+				"dt": 20
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar una balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Giant Cannon",
+					"crew": 4,
+					"ac": 19,
+					"hp": 250,
+					"costs": [
+						{
+							"note": "cannon"
+						},
+						{
+							"cost": 100000,
+							"note": "giant cannon ball"
+						}
+					],
+					"entries": [
+						"Se necesitan 3 acciones para cargar el enorme cañón y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Cannon Ball",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 600/2.400 pies, un objetivo. {@h}88 ({@dice 16d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Damselfly Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"100 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 9,
+			"capCargo": 5,
+			"cost": 2000000,
+			"pace": {
+				"fly": 8
+			},
+			"speed": {
+				"fly": 70
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 200,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar la balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 4,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar el mangonel, 1 acción para apuntarlo usando el rotador de la torreta (área 2 en el plano de cubierta adjunto), y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 para golpear, alcance de 200/800 pies (no puede golpear a objetivos a menos de 60 pies), un objetivo. {@h}27 ({@dice 5d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Demon Grinder",
 			"source": "BGDIA",
 			"page": 219,
@@ -538,6 +712,93 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Flying Fish Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"120 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 10,
+			"capCargo": 13,
+			"cost": 2000000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar la balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar el mangonel, 2 acciones para apuntarlo y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 para golpear, alcance de 200/800 pies (no puede golpear a objetivos a menos de 60 pies), un objetivo. {@h}27 ({@dice 5d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},
@@ -815,20 +1076,27 @@
 		},
 		{
 			"name": "Hammerhead Ship",
-			"source": "SjA",
+			"source": "AAG",
+			"otherSources": [
+				{
+					"source": "SjA"
+				}
+			],
 			"vehicleType": "SPELLJAMMER",
 			"dimensions": [
 				"130 ft.",
 				"20 ft."
 			],
 			"terrain": [
-				"wildspace",
+				"space",
 				"sea"
 			],
 			"capCrew": 15,
 			"capCargo": 30,
 			"cost": 4000000,
-			"pace": 4,
+			"pace": {
+				"fly": 4
+			},
 			"speed": {
 				"fly": 35
 			},
@@ -1146,6 +1414,150 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Lamprey Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"115 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 15,
+			"capCargo": 6,
+			"cost": 2000000,
+			"pace": {
+				"fly": 4
+			},
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar una balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Grappling Jaws",
+					"crew": 1,
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para hacer un ataque con las mandíbulas de agarre."
+					],
+					"action": [
+						{
+							"name": "Grappling Jaws",
+							"entries": [
+								"{@atk mw} +6 al golpe, alcance de 10 pies, un barco o criatura Gargantuan. {@h}22 ({@dice 4d10}) de daño punzante, y la velocidad de la nave de la lamprea y del objetivo pasa a ser 0 hasta que el enganche termine. Como acción, una criatura puede utilizar los controles de las garras de agarre para liberar al objetivo. De lo contrario, el efecto termina cuando el objetivo o la nave lamprea caen a 0 puntos de vida."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Living Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"80 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 5,
+			"capCrewNote": "(plus the {@creature treant})",
+			"capCargo": 10,
+			"cost": 2500000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar la balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Longship",
@@ -1474,6 +1886,205 @@
 							"type": "item",
 							"name": "Move",
 							"entry": "El observador mecánico puede usar su timón para moverse usando su unidad de propulsión mágica."
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nautiloid",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"180 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 20,
+			"capCargo": 17,
+			"cost": 5000000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar una balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar el mangonel, 2 acciones para apuntarlo y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 para golpear, alcance de 200/800 pies (no puede golpear a objetivos a menos de 60 pies), un objetivo. {@h}27 ({@dice 5d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				},
+				{
+					"name": "Tentacles",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Como acción, el hechicero de la nave puede realizar uno de los siguientes ataques con los tentáculos de la nave."
+					],
+					"action": [
+						{
+							"name": "Grappling Tentacles",
+							"entries": [
+								"{@atk mw} +8 al golpe, alcance de 30 pies, un objetivo Huge o Gargantuan. {@h}22 ({@dice 4d10}) de daño contundente, y la velocidad del nautiloide pasa a ser 0 hasta que su hechicero utilice una acción para liberar al objetivo. Si el objetivo es una criatura, es {@condition grappled} (DC de escape 16). Si el objetivo es otro barco, la velocidad del objetivo pasa a ser 0 hasta que el nautiloide lo libere, o hasta que el objetivo o el nautiloide bajen a 0 puntos de vida."
+							]
+						},
+						{
+							"name": "Teleport",
+							"entries": [
+								"{@atk ms} +8 al golpe, alcance de 30 pies, una criatura. {@h}El objetivo debe tener éxito en una tirada de salvación de Constitución DC 15 o ser teletransportado a un espacio desocupado a bordo del nautiloide que el hechicero del nautiloide pueda ver."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Nightspider",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"175 ft.",
+				"50 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 25,
+			"capCargo": 50,
+			"cost": 5000000,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 4,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar una balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar el mangonel, 2 acciones para apuntarlo y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 para golpear, alcance de 200/800 pies (no puede golpear a objetivos a menos de 60 pies), un objetivo. {@h}27 ({@dice 5d10}) de daño por apaleamiento."
+							]
 						}
 					]
 				}
@@ -1975,21 +2586,307 @@
 			"hasFluffImages": true
 		},
 		{
+			"name": "Scorpion Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"75 ft.",
+				"25 ft."
+			],
+			"terrain": [
+				"space",
+				"land"
+			],
+			"capCrew": 12,
+			"capCargo": 12,
+			"cost": 2500000,
+			"pace": {
+				"walk": "3½",
+				"fly": "3½"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 30
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar la balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Claws",
+					"crew": 1,
+					"count": 2,
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para hacer un ataque de garra."
+					],
+					"action": [
+						{
+							"name": "Claw",
+							"entries": [
+								"{@atk mw} +3 para golpear, alcance 20 pies, un objetivo. {@h}11 ({@dice 2d10}) de daño por apaleamiento. Si el objetivo es una criatura enorme o más pequeña, también recibe {@condition grappled} (DC de escape 13). Hasta que este agarre termine, la criatura recibe 11 ({@dice 2d10}) de daño por apaleamiento al comienzo de cada uno de sus turnos."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar el mangonel, 2 acciones para apuntarlo y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 para golpear, alcance de 200/800 pies (no puede golpear a objetivos a menos de 60 pies), un objetivo. {@h}27 ({@dice 5d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Shrike Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"100 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 11,
+			"capCargo": 20,
+			"cost": 2000000,
+			"pace": {
+				"fly": 8
+			},
+			"speed": {
+				"fly": 70
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar una balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Piercing Ram",
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"El hechicero del barco puede realizar el siguiente ataque cuando el barco choca con otro objeto o con una criatura gargantuesca (ver \"{@book Crashing|AAG|2|Crashing}\" antes en el capítulo)."
+					],
+					"action": [
+						{
+							"name": "Piercing Ram",
+							"entries": [
+								"{@atk mw} +8 al golpe, alcance 0 pies, un objeto o criatura Gargantuesca. {@h}88 ({@dice 16d10}) de daño perforante. El barco alcaudón recibe la mitad de daño y se detiene en seco. Fallo: El ataque no causa ningún daño, el objetivo se desplaza al espacio desocupado más cercano que no esté en la trayectoria de la nave alcaudón, y la nave alcaudón puede seguir moviéndose si le queda movimiento."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Space Galleon",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"130 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 20,
+			"capCargo": 20,
+			"cost": 3000000,
+			"pace": {
+				"fly": 4
+			},
+			"speed": {
+				"fly": 35
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar una balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar el mangonel, 2 acciones para apuntarlo y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 para golpear, alcance de 200/800 pies (no puede golpear a objetivos a menos de 60 pies), un objetivo. {@h}27 ({@dice 5d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Squid Ship",
-			"source": "SjA",
+			"source": "AAG",
+			"otherSources": [
+				{
+					"source": "SjA"
+				}
+			],
 			"vehicleType": "SPELLJAMMER",
 			"dimensions": [
 				"250 ft.",
 				"25 ft."
 			],
 			"terrain": [
-				"wildspace",
+				"space",
 				"sea"
 			],
 			"capCrew": 13,
 			"capCargo": 20,
 			"cost": 2500000,
-			"pace": "3½",
+			"pace": {
+				"fly": "3½"
+			},
 			"speed": {
 				"fly": 30
 			},
@@ -2158,6 +3055,94 @@
 			"hasToken": true
 		},
 		{
+			"name": "Star Moth",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"200 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 13,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": {
+				"fly": "5½"
+			},
+			"speed": {
+				"fly": 50
+			},
+			"hull": {
+				"ac": 13,
+				"acFrom": [
+					"ceramic"
+				],
+				"hp": 400,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 2,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar una balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar el mangonel, 2 acciones para apuntarlo y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 para golpear, alcance de 200/800 pies (no puede golpear a objetivos a menos de 60 pies), un objetivo. {@h}27 ({@dice 5d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Tormentor",
 			"source": "BGDIA",
 			"page": 218,
@@ -2247,6 +3232,150 @@
 				}
 			],
 			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Turtle Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"95 ft.",
+				"70 ft."
+			],
+			"terrain": [
+				"space",
+				"sea"
+			],
+			"capCrew": 16,
+			"capCargo": 30,
+			"cost": 4000000,
+			"pace": {
+				"fly": 3,
+				"swim": 3
+			},
+			"speed": {
+				"fly": 25,
+				"swim": 25
+			},
+			"hull": {
+				"ac": 19,
+				"acFrom": [
+					"metal"
+				],
+				"hp": 300,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballistae",
+					"crew": 3,
+					"count": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar una balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				},
+				{
+					"name": "Mangonel",
+					"crew": 5,
+					"ac": 15,
+					"hp": 100,
+					"costs": [
+						{
+							"cost": 10000,
+							"note": "mangonel"
+						},
+						{
+							"note": "stone"
+						}
+					],
+					"entries": [
+						"Se necesitan 2 acciones para cargar el mangonel, 2 acciones para apuntarlo y 1 acción para dispararlo."
+					],
+					"action": [
+						{
+							"name": "Mangonel Stone",
+							"entries": [
+								"{@atk rw} +5 para golpear, alcance de 200/800 pies (no puede golpear a objetivos a menos de 60 pies), un objetivo. {@h}27 ({@dice 5d10}) de daño por apaleamiento."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Tyrant Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"100 ft.",
+				"100 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 10,
+			"capCrewNote": "({@creature Beholder||beholders})",
+			"capCargo": 20,
+			"pace": {
+				"fly": "4½"
+			},
+			"speed": {
+				"fly": 40
+			},
+			"hull": {
+				"ac": 17,
+				"acFrom": [
+					"(stone)"
+				],
+				"hp": 300,
+				"dt": 20
+			},
+			"weapon": [
+				{
+					"name": "Eyestalk Cannons",
+					"crew": 1,
+					"count": 3,
+					"costs": [
+						{
+							"note": "included in ship cost"
+						}
+					],
+					"entries": [
+						"Esta arma parece un ojo montado en un tallo ocular. Un observador situado en una de las cápsulas de meditación de la nave tirana puede ver a través del ojo concentrándose en él (como si se concentrara en un hechizo) y utilizar una acción para realizar el siguiente ataque."
+					],
+					"action": [
+						{
+							"name": "Destructive Ray",
+							"entries": [
+								"{@atk rs} +8 al golpe, alcance 120/480 pies, un objetivo. {@h}35 ({@dice 10d6}) de daño de fuerza."
+							]
+						}
+					]
+				}
+			],
 			"hasFluff": true,
 			"hasFluffImages": true
 		},
@@ -2521,6 +3650,66 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Wasp Ship",
+			"source": "AAG",
+			"vehicleType": "SPELLJAMMER",
+			"dimensions": [
+				"80 ft.",
+				"20 ft."
+			],
+			"terrain": [
+				"space"
+			],
+			"capCrew": 5,
+			"capCargo": 10,
+			"cost": 2000000,
+			"pace": {
+				"fly": "5½"
+			},
+			"speed": {
+				"fly": 50
+			},
+			"hull": {
+				"ac": 15,
+				"acFrom": [
+					"wood"
+				],
+				"hp": 250,
+				"dt": 15
+			},
+			"weapon": [
+				{
+					"name": "Ballista",
+					"crew": 3,
+					"ac": 15,
+					"hp": 50,
+					"costs": [
+						{
+							"cost": 5000,
+							"note": "ballista"
+						},
+						{
+							"cost": 500,
+							"note": "bolt"
+						}
+					],
+					"entries": [
+						"Se necesita 1 acción para cargar la balista, 1 acción para apuntarla y 1 acción para dispararla."
+					],
+					"action": [
+						{
+							"name": "Bolt",
+							"entries": [
+								"{@atk rw} +6 al golpe, alcance 120/480 pies, un objetivo. {@h}16 ({@dice 3d10}) de daño perforante."
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		}
 	],
 	"vehicleUpgrade": [

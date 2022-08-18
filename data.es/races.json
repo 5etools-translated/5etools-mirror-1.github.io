@@ -684,6 +684,132 @@
 		},
 		{
 			"name": "Astral Elf",
+			"source": "AAG",
+			"page": 10,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"humanoid"
+			],
+			"creatureTypeTags": [
+				"elf"
+			],
+			"size": [
+				"M"
+			],
+			"speed": 30,
+			"age": {
+				"max": 750
+			},
+			"darkvision": 60,
+			"traitTags": [
+				"Improved Resting"
+			],
+			"skillProficiencies": [
+				{
+					"perception": true
+				}
+			],
+			"additionalSpells": [
+				{
+					"known": {
+						"1": [
+							"dancing lights#c"
+						]
+					},
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					}
+				},
+				{
+					"known": {
+						"1": [
+							"light#c"
+						]
+					},
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					}
+				},
+				{
+					"known": {
+						"1": [
+							"sacred flame#c"
+						]
+					},
+					"ability": {
+						"choose": [
+							"int",
+							"wis",
+							"cha"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"Eres un Humanoide. También se te considera un elfo para cualquier prerrequisito o efecto que requiera que seas un elfo."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Astral Fire",
+					"entries": [
+						"Conoces uno de los siguientes cantrips a tu elección: {@spell dancing lights}, {@spell light}, o {@spell sacred flame}. Inteligencia, Sabiduría o Carisma es tu habilidad de lanzamiento de hechizos para ello (elige cuando selecciones esta raza)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"Puedes ver en la luz tenue a menos de 60 pies de ti como si fuera luz brillante, y en la oscuridad como si fuera luz tenue. Discierne los colores en esa oscuridad sólo como tonos de gris."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Fey Ancestry",
+					"entries": [
+						"Tienes ventaja en las tiradas de salvación que hagas para evitar o acabar con la condición {@condition charmed} sobre ti mismo."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Keen Senses",
+					"entries": [
+						"Tienes competencia en la habilidad {@skill Perception}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Starlight Step",
+					"entries": [
+						"Como acción de bonificación, puedes teletransportarte mágicamente hasta 30 pies a un espacio desocupado que puedas ver. Puedes usar este rasgo un número de veces igual a tu bonificación de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Astral Trance",
+					"entries": [
+						"No necesitas dormir, y la magia no puede ponerte a dormir. Puedes terminar un descanso largo en 4 horas si pasas esas horas en una meditación en trance, durante la cual permaneces consciente.",
+						"Siempre que termines este trance, ganas competencia en una habilidad de tu elección y con un arma o herramienta de tu elección, seleccionada del {@book Player's Handbook|PHB}. Adquieres místicamente estas habilidades extrayéndolas de la memoria compartida de los elfos y de las experiencias de las entidades del Plano Astral, y las conservas hasta que termines tu siguiente descanso largo."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Astral Elf",
 			"source": "UA2021TravelersOfTheMultiverse",
 			"page": 1,
 			"lineage": "VRGR",
@@ -796,6 +922,88 @@
 				}
 			],
 			"hasFluff": true
+		},
+		{
+			"name": "Autognome",
+			"source": "AAG",
+			"page": 11,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"construct"
+			],
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"traitTags": [
+				"Improved Resting",
+				"Natural Armor"
+			],
+			"toolProficiencies": [
+				{
+					"any": 2
+				}
+			],
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"disease"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"Usted es una construcción."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Armored Casing",
+					"entries": [
+						"Estás envuelto en un metal fino o en algún otro material duradero. Mientras no lleves armadura, tu Clase de Armadura base es 13 + tu modificador de Destreza."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Built for Success",
+					"entries": [
+						"Puedes añadir un {@dice d4} a una tirada de ataque, chequeo de habilidad o tirada de salvación que hagas, y puedes hacerlo después de ver la tirada del {@dice d20} pero antes de que se resuelvan los efectos de la misma. Puedes usar este rasgo un número de veces igual a tu bonificación de competencia, y recuperas todos los usos gastados cuando terminas un descanso largo."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Healing Machine",
+					"entries": [
+						"Si el hechizo {@spell mending} es lanzado sobre ti, puedes gastar un Dado de Golpe, tirarlo y recuperar un número de puntos de golpe igual a la tirada más tu modificador de Constitución (mínimo 1 punto de golpe).",
+						"Además, tu creador te ha diseñado para que te beneficies de varios hechizos que preservan la vida pero que normalmente no afectan a los constructos: {@spell cure wounds}, {@spell healing word}, {@spell mass cure wounds}, {@spell mass healing word} y {@spell spare the dying}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Mechanical Nature",
+					"entries": [
+						"Tienes resistencia al daño por veneno e inmunidad a las enfermedades, y tienes ventaja en las tiradas de salvación contra ser {@condition paralyzed} o {@condition poisoned}. No necesitas comer, beber ni respirar."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sentry's Rest",
+					"entries": [
+						"Cuando te tomas un descanso prolongado, pasas al menos 6 horas en un estado inactivo e inmóvil, en lugar de dormir. En este estado, pareces inerte, pero sigues siendo consciente."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Specialized Design",
+					"entries": [
+						"Obtienes dos competencias en herramientas a tu elección, seleccionadas del {@book Player's Handbook|PHB}."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Autognome",
@@ -4603,6 +4811,53 @@
 		},
 		{
 			"name": "Giff",
+			"source": "AAG",
+			"page": 12,
+			"lineage": "VRGR",
+			"size": [
+				"M"
+			],
+			"speed": {
+				"walk": 30,
+				"swim": true
+			},
+			"traitTags": [
+				"Powerful Build"
+			],
+			"weaponProficiencies": [
+				{
+					"firearms": true
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Astral Spark",
+					"entries": [
+						"Tu conexión psíquica con el Plano Astral te permite acceder místicamente a una chispa de poder divino, que puedes canalizar a través de tus armas. Cuando golpeas a un objetivo con un arma simple o marcial, puedes hacer que el objetivo reciba un daño de fuerza adicional igual a tu bonificación de competencia.",
+						"Puedes usar este rasgo un número de veces igual a tu bonificación de competencia, pero no puedes usarlo más de una vez por turno. Recuperas todos los usos gastados cuando terminas un descanso largo."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Firearms Mastery",
+					"entries": [
+						"Tienes una conexión mística con las armas de fuego que se remonta a los dioses del giff, que se deleitaban con dichas armas. Tienes competencia con todas las armas de fuego e ignoras la propiedad de carga de cualquier arma de fuego. Además, atacar a larga distancia con un arma de fuego no impone desventaja en tu tirada de ataque."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hippo Build",
+					"entries": [
+						"Tienes ventaja en los chequeos de habilidad basados en la Fuerza y en las tiradas de salvación de Fuerza. Además, cuentas como una talla más al determinar tu capacidad de carga y el peso que puedes empujar, arrastrar o levantar."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Giff",
 			"source": "UA2021TravelersOfTheMultiverse",
 			"page": 2,
 			"lineage": "VRGR",
@@ -5964,6 +6219,60 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Hadozee",
+			"source": "AAG",
+			"page": 13,
+			"lineage": "VRGR",
+			"size": [
+				"S",
+				"M"
+			],
+			"speed": {
+				"walk": 30,
+				"climb": true
+			},
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Eres mediano o pequeño. La talla la eliges cuando seleccionas esta carrera."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dexterous Feet",
+					"entries": [
+						"Como acción adicional, puedes utilizar tus pies para manipular un objeto, abrir o cerrar una puerta o un contenedor, o recoger o dejar un objeto diminuto."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Glide",
+					"entries": [
+						"Si no estás {@condition incapacitated} o llevas una armadura pesada, puedes extender las membranas de tu piel y planear. Al hacerlo, puedes realizar las siguientes maniobras aéreas:",
+						{
+							"type": "list",
+							"items": [
+								"Puedes moverte hasta 5 pies en horizontal por cada 1 pie que desciendas en el aire, sin coste de movimiento para ti.",
+								"Cuando recibas daño de una caída, puedes usar tu reacción para reducir el daño de la caída a 0."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hadozee Resilience",
+					"entries": [
+						"La magia que corre por tus venas aumenta tus defensas naturales. Cuando recibes daño, puedes usar tu reacción para tirar un {@dice d6}. Suma tu bonificación de competencia al número obtenido y reduce el daño que recibes en una cantidad igual a ese total (mínimo 0 de daño).",
+						"Puedes usar este rasgo un número de veces igual a tu bonificación de competencia. Recuperas todos los usos gastados cuando terminas un descanso largo."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Hadozee",
@@ -10582,6 +10891,79 @@
 		},
 		{
 			"name": "Plasmoid",
+			"source": "AAG",
+			"page": 14,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"ooze"
+			],
+			"size": [
+				"S",
+				"M"
+			],
+			"speed": 30,
+			"darkvision": 60,
+			"resist": [
+				"acid",
+				"poison"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"Eres un Ooze."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Eres mediano o pequeño. La talla la eliges cuando seleccionas esta carrera."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Amorphous",
+					"entries": [
+						"Puedes colarte en un espacio tan estrecho como 1 pulgada de ancho, siempre que no lleves nada encima. Tienes ventaja en los chequeos de habilidad que realices para iniciar o escapar de un agarre."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"Puedes ver en la luz tenue a menos de 60 pies de ti como si fuera luz brillante, y en la oscuridad como si fuera luz tenue. Discierne los colores en esa oscuridad sólo como tonos de gris."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Hold Breath",
+					"entries": [
+						"Puedes aguantar la respiración durante 1 hora."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Natural Resilience",
+					"entries": [
+						"Tienes resistencia al daño por ácido y veneno, y tienes ventaja en las tiradas de salvación contra el ser {@condition poisoned}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Shape Self",
+					"entries": [
+						"Como acción, puedes remodelar tu cuerpo para dotarte de una cabeza, uno o dos brazos, una o dos piernas, y manos y pies improvisados, o puedes volver a ser una mancha sin extremidades. Mientras tengas una forma humana, puedes usar ropa y armadura hechas para un Humanoide de tu tamaño.",
+						"Como acción de bonificación, puedes extrudir un pseudópodo de hasta 6 pulgadas de ancho y 10 pies de largo o reabsorberlo en tu cuerpo. Como parte de la misma acción de bonificación, puedes utilizar este pseudópodo para manipular un objeto, abrir o cerrar una puerta o contenedor, o recoger o dejar un objeto Diminuto. El pseudópodo no contiene órganos sensoriales y no puede atacar, activar objetos mágicos o levantar más de 10 libras."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Plasmoid",
 			"source": "UA2021TravelersOfTheMultiverse",
 			"page": 3,
 			"lineage": "VRGR",
@@ -12229,6 +12611,79 @@
 						"Puedes hablar, leer y escribir en común y en otro idioma de tu elección."
 					],
 					"type": "entries"
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Thri-kreen",
+			"source": "AAG",
+			"page": 15,
+			"lineage": "VRGR",
+			"creatureTypes": [
+				"monstrosity"
+			],
+			"size": [
+				"S",
+				"M"
+			],
+			"speed": 30,
+			"darkvision": 60,
+			"traitTags": [
+				"Improved Resting",
+				"Natural Armor"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"Eres una monstruosidad."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Eres mediano o pequeño. La talla la eliges cuando seleccionas esta carrera."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Chameleon Carapace",
+					"entries": [
+						"Mientras no lleves armadura, tu caparazón te da una Clase de Armadura base de 13 + tu modificador de Destreza.",
+						"Como acción, puedes cambiar el color de tu caparazón para que coincida con el color y la textura de tu entorno, lo que te da ventaja en los chequeos de Destreza ({@skill Stealth}) realizados a {@action hide} en ese entorno."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Darkvision",
+					"entries": [
+						"Puedes ver en la luz tenue a menos de 60 pies de ti como si fuera luz brillante, y en la oscuridad como si fuera luz tenue. Discierne los colores en esa oscuridad sólo como tonos de gris."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Secondary Arms",
+					"entries": [
+						"Tienes dos brazos secundarios ligeramente más pequeños debajo de tu par de brazos primario. Los brazos secundarios pueden manipular un objeto, abrir o cerrar una puerta o un contenedor, recoger o dejar un objeto Tiny, o empuñar un arma que tenga la propiedad de la luz."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Sleepless",
+					"entries": [
+						"No necesita dormir y puede permanecer consciente durante un descanso prolongado, aunque debe abstenerse de realizar actividades extenuantes para obtener los beneficios del descanso."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Thri-kreen Telepathy",
+					"entries": [
+						"Sin la ayuda de la magia, no puedes hablar las lenguas no thri-kreen que conoces. En su lugar, utilizas la telepatía para transmitir tus pensamientos. Tienes la capacidad mágica de transmitir tus pensamientos mentalmente a criaturas dispuestas que puedas ver en un radio de 120 pies. Una criatura contactada no necesita compartir un idioma contigo para entender tus pensamientos, pero debe ser capaz de entender al menos un idioma. Tu vínculo telepático con una criatura se rompe si tú y la criatura os movéis a más de 120 pies de distancia, si alguno de vosotros está {@condition incapacitated}, o si alguno de vosotros rompe mentalmente el contacto (no se requiere ninguna acción)."
+					]
 				}
 			],
 			"hasFluff": true,

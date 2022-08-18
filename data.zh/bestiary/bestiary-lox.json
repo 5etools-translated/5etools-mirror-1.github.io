@@ -1,0 +1,192 @@
+{
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"otherSources": {
+			"monster": {
+				"BAM": "LoX",
+				"MM": "LoX"
+			}
+		}
+	},
+	"monster": [
+		{
+			"name": "Aarakocra Spelljammer",
+			"source": "LoX",
+			"page": 43,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_trait": {
+					"name": "Aarakocra",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "\\bmage\\b",
+						"with": "aarakocra"
+					}
+				}
+			}
+		},
+		{
+			"name": "Agony",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 34,
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the ghost",
+						"with": "Agony",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Astral Blight",
+			"source": "LoX",
+			"page": 10,
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8 + 8"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 16,
+			"dex": 8,
+			"con": 14,
+			"int": 6,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"cold",
+				"radiant"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Illumination",
+					"entries": [
+						"当它至少有1个命中率时，星界之灾会在10英尺的范围内发出昏暗的光。"
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"瘟疫不需要空气或睡眠。"
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"枯萎病会进行两次排热藤的攻击。"
+					]
+				},
+				{
+					"name": "Heat-Draining Vine",
+					"entries": [
+						"{@atk mw} {@hit 5}击中，到达10英尺，一个目标。{@h}6({@damage 1d6 + 3})辐射伤害，如果目标是大型或小型生物，则是{@condition grappled}(逃逸{@dc 13})。直到这个抓捕结束，目标在每个回合开始时受到3（（%6%））的寒冷伤害。瘟疫有两条藤蔓，每条藤蔓可以抓取一个生物。"
+					]
+				}
+			],
+			"traitTags": [
+				"Illumination",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"C",
+				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluffImages": true
+		},
+		{
+			"name": "Flapjack",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 13,
+			"_copy": {
+				"name": "Flumph",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the flumph",
+						"with": "Flapjack",
+						"flags": "i"
+					}
+				}
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Flapjack可以施展以下一种法术，不需要任何材料成分，并使用智力作为施法能力（法术保存（%0%））。随意：法师之手，小型幻象"
+					],
+					"daily": {
+						"1e": [
+							"{@spell magic missile}",
+							"{@spell unseen servant}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"damageTagsSpell": [
+				"O"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

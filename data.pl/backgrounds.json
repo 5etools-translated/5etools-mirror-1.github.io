@@ -838,6 +838,143 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Astral Drifter",
+			"source": "AAG",
+			"feats": [
+				{
+					"magic initiate|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"religion": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 2
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						"traveler's clothes|phb",
+						{
+							"special": "diary"
+						},
+						"ink pen|phb",
+						"ink (1-ounce bottle)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Insight}, {@skill Religion}"
+						},
+						{
+							"type": "item",
+							"name": "Languages:",
+							"entry": "Dwa do wyboru ({@language Celestial} lub {@language Gith|MM} zalecane)"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Zestaw {@item traveler's clothes|PHB}, pamiętnik, {@item ink pen|PHB}, {@item Ink (1-ounce bottle)|PHB|bottle of ink} i {@item pouch|phb} zawierający 10 gp."
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Longevity",
+					"entries": [
+						"Jesteś {@dice 20d6} lat starszy niż wyglądasz, bo tyle czasu spędziłeś w Morzu Astralnym nie starzejąc się."
+					]
+				},
+				{
+					"name": "Feature: Divine Contact",
+					"type": "entries",
+					"entries": [
+						"Zyskujesz {@feat Magic Initiate||Magic Initiate feat} z {@book Player's Handbook|PHB} i musisz wybrać kleryka dla tego wyczynu.",
+						"Na Morzu Astralnym skrzyżowałeś ścieżki z wędrującym bóstwem. Spotkanie było krótkie i pozbawione przemocy, ale wywarło na tobie trwałe wrażenie. Bóstwo to uznało za stosowne podzielić się z tobą jednym sekretem lub niejasnym fragmentem kosmicznej wiedzy. Współpracuj z DM, aby ustalić szczegóły tej wiedzy i jej wpływ na kampanię.",
+						"Rzuć na stół Divine Contact, aby określić, które bóstwo spotkałeś, lub współpracuj z DM, aby wskazać bardziej odpowiedni wybór.",
+						{
+							"type": "table",
+							"caption": "Divine Contact",
+							"colLabels": [
+								"d10",
+								"Wandering Deity"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"Corellon, bóg sztuki i magii (chaotyczny dobry)"
+								],
+								[
+									"2",
+									"Tymora - bóg szczęścia (chaotycznego dobra)"
+								],
+								[
+									"3",
+									"Fharlanghn, bóg horyzontów i podróży (neutralne dobro)"
+								],
+								[
+									"4",
+									"Istus, bóg losu i przeznaczenia (neutralny)"
+								],
+								[
+									"5",
+									"Nuada, bóg wojny i wojowników (neutralny)"
+								],
+								[
+									"6",
+									"Zivilyn, bóg mądrości (neutralny)"
+								],
+								[
+									"7",
+									"Arawn, bóg życia i śmierci (neutralne zło)"
+								],
+								[
+									"8",
+									"Hekate, bogini magii i księżyców (chaotyczne zło)"
+								],
+								[
+									"9",
+									"Celestian, bóg gwiazd i wędrowców (neutralny)"
+								],
+								[
+									"10",
+									"Ptah, bóg wiedzy i tajemnic (praworządny neutralny)"
+								]
+							]
+						}
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Athlete",
 			"source": "MOT",
 			"page": 31,
@@ -23908,6 +24045,143 @@
 				}
 			],
 			"hasFluff": true
+		},
+		{
+			"name": "Wildspacer",
+			"source": "AAG",
+			"feats": [
+				{
+					"tough|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"survival": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"navigator's tools": true,
+					"vehicles (space)": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						{
+							"item": "club|phb",
+							"displayName": "belaying pin"
+						},
+						"traveler's clothes|phb",
+						"grappling hook|phb",
+						"hempen rope (50 feet)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Athletics}, {@skill Survival}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiencies:",
+							"entry": "{@item Navigator's tools|phb}, {@filter vehicles (space)|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (space)}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Kołek asekuracyjny ({@item club|phb}), zestaw {@item traveler's clothes|PHB}, {@item grappling hook|PHB}, {@item Hempen Rope (50 feet)|PHB|50 feet of hempen rope} i {@item pouch|phb} zawierający 10 gp"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Close Encounter",
+					"entries": [
+						"Miałeś wstrząsające spotkanie z jednym z wielu straszydeł Wildspace. Udało ci się ujść z życiem, ale spotkanie to pozostawiło po sobie bliznę lub dwie, a może i powracający koszmar. Rzuć na stół Bliskiego Spotkania, aby określić, które stworzenie prawie cię pokonało. Stworzenia oznaczone gwiazdką pojawiają się w {@book Boo's Astral Menagerie|BAM}; pozostałe są opisane w {@book Monster Manual|MM}.",
+						{
+							"type": "table",
+							"caption": "Close Encounter",
+							"colLabels": [
+								"d10",
+								"Creature"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"{@creature Beholder}"
+								],
+								[
+									"2",
+									"{@creature Cosmic horror|BAM}*"
+								],
+								[
+									"3",
+									"{@creature Feyr|BAM}*"
+								],
+								[
+									"4",
+									"{@filter Lunar dragon|bestiary|source=BAM|search=lunar dragon}*"
+								],
+								[
+									"5",
+									"{@creature Mind flayer}"
+								],
+								[
+									"6",
+									"{@creature Neh-thalggu|BAM}*"
+								],
+								[
+									"7",
+									"{@creature Neogi|MPMM}*"
+								],
+								[
+									"8",
+									"{@creature Space clown|BAM}*"
+								],
+								[
+									"9",
+									"{@creature Vampirate|BAM}*"
+								],
+								[
+									"10",
+									"{@creature Void scavver|BAM}*"
+								]
+							]
+						}
+					]
+				},
+				{
+					"name": "Feature: Wildspace Adaptation",
+					"type": "entries",
+					"entries": [
+						"Zyskujesz {@feat Tough||Tough feat} z {@book Player's Handbook|PHB}. Dodatkowo nauczyłeś się jak przystosować się do zerowej grawitacji. Bycie w stanie nieważkości nie daje ci minusów na żadnej z twoich rolek ataku wręcz (patrz \"{@book Weightlessness|AAG|2|Weightlessness}\" w {@book chapter 2|AAG|2})."
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Witchlight Hand",

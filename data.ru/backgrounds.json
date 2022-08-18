@@ -838,6 +838,143 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Astral Drifter",
+			"source": "AAG",
+			"feats": [
+				{
+					"magic initiate|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"religion": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 2
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						"traveler's clothes|phb",
+						{
+							"special": "diary"
+						},
+						"ink pen|phb",
+						"ink (1-ounce bottle)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Insight}, {@skill Religion}"
+						},
+						{
+							"type": "item",
+							"name": "Languages:",
+							"entry": "Два на ваш выбор ({@language Celestial} или {@language Gith|MM} рекомендуется)"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Набор из {@item traveler's clothes|PHB}, дневника, {@item ink pen|PHB}, {@item Ink (1-ounce bottle)|PHB|bottle of ink} и {@item pouch|phb}, содержащий 10 gp"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Longevity",
+					"entries": [
+						"Вы на {@dice 20d6} лет старше, чем выглядите, потому что вы провели столько времени в Астральном море без старения."
+					]
+				},
+				{
+					"name": "Feature: Divine Contact",
+					"type": "entries",
+					"entries": [
+						"Вы получаете {@feat Magic Initiate||Magic Initiate feat} от {@book Player's Handbook|PHB} и должны выбрать клерика для этого подвига.",
+						"В Астральном море вы встретились с бродячим божеством. Встреча была короткой и ненасильственной, но произвела на вас неизгладимое впечатление. Это божество сочло нужным поделиться с вами одним секретом или неясной частью космических преданий. Вместе с вашим DM определите детали этого знания и его влияние на кампанию.",
+						"Сделайте бросок по таблице \"Божественный контакт\", чтобы определить, с каким божеством вы столкнулись, или поработайте с вашим DM, чтобы определить более подходящий вариант.",
+						{
+							"type": "table",
+							"caption": "Divine Contact",
+							"colLabels": [
+								"d10",
+								"Wandering Deity"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"Кореллон, бог искусства и магии (хаотическое добро)"
+								],
+								[
+									"2",
+									"Тимора, бог удачи (хаотического добра)"
+								],
+								[
+									"3",
+									"Фхарлангн, бог горизонтов и путешествий (нейтральное добро)"
+								],
+								[
+									"4",
+									"Истус, бог рока и судьбы (нейтральный)"
+								],
+								[
+									"5",
+									"Нуада, бог войны и воинов (нейтральный)"
+								],
+								[
+									"6",
+									"Зивилин, бог мудрости (нейтральный)"
+								],
+								[
+									"7",
+									"Араун, бог жизни и смерти (нейтральное зло)"
+								],
+								[
+									"8",
+									"Геката, бог магии и луны (хаотическое зло)"
+								],
+								[
+									"9",
+									"Селестиан, бог звезд и странников (нейтральный)"
+								],
+								[
+									"10",
+									"Птах, бог знаний и тайн (законный нейтральный)"
+								]
+							]
+						}
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Athlete",
 			"source": "MOT",
 			"page": 31,
@@ -23908,6 +24045,143 @@
 				}
 			],
 			"hasFluff": true
+		},
+		{
+			"name": "Wildspacer",
+			"source": "AAG",
+			"feats": [
+				{
+					"tough|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"survival": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"navigator's tools": true,
+					"vehicles (space)": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						{
+							"item": "club|phb",
+							"displayName": "belaying pin"
+						},
+						"traveler's clothes|phb",
+						"grappling hook|phb",
+						"hempen rope (50 feet)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Athletics}, {@skill Survival}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiencies:",
+							"entry": "{@item Navigator's tools|phb}, {@filter vehicles (space)|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (space)}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Булавка ({@item club|phb}), набор {@item traveler's clothes|PHB}, {@item grappling hook|PHB}, {@item Hempen Rope (50 feet)|PHB|50 feet of hempen rope} и {@item pouch|phb}, содержащий 10 gp"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Close Encounter",
+					"entries": [
+						"Вы пережили ужасную встречу с одним из многочисленных ужасов Дикого Пространства. Вы спаслись, но после этой встречи у вас остался шрам или два, а возможно, и повторяющийся кошмар. Сделайте бросок по таблице \"Близкая встреча\", чтобы определить, какое существо едва не одержало над вами верх. Существа, отмеченные звездочкой, описаны в {@book Boo's Astral Menagerie|BAM}; остальные описаны в {@book Monster Manual|MM}.",
+						{
+							"type": "table",
+							"caption": "Close Encounter",
+							"colLabels": [
+								"d10",
+								"Creature"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"{@creature Beholder}"
+								],
+								[
+									"2",
+									"{@creature Cosmic horror|BAM}*"
+								],
+								[
+									"3",
+									"{@creature Feyr|BAM}*"
+								],
+								[
+									"4",
+									"{@filter Lunar dragon|bestiary|source=BAM|search=lunar dragon}*"
+								],
+								[
+									"5",
+									"{@creature Mind flayer}"
+								],
+								[
+									"6",
+									"{@creature Neh-thalggu|BAM}*"
+								],
+								[
+									"7",
+									"{@creature Neogi|MPMM}*"
+								],
+								[
+									"8",
+									"{@creature Space clown|BAM}*"
+								],
+								[
+									"9",
+									"{@creature Vampirate|BAM}*"
+								],
+								[
+									"10",
+									"{@creature Void scavver|BAM}*"
+								]
+							]
+						}
+					]
+				},
+				{
+					"name": "Feature: Wildspace Adaptation",
+					"type": "entries",
+					"entries": [
+						"Вы получаете {@feat Tough||Tough feat} от {@book Player's Handbook|PHB}. Кроме того, вы научились адаптироваться к невесомости. Невесомость не дает вам недостатков при бросках атаки ближнего боя (см. \"{@book Weightlessness|AAG|2|Weightlessness}\" в {@book chapter 2|AAG|2})."
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Witchlight Hand",

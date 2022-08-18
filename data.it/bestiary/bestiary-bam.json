@@ -1,0 +1,8551 @@
+{
+	"monster": [
+		{
+			"name": "Aartuk Elder",
+			"source": "BAM",
+			"page": 8,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"L"
+			],
+			"type": "plant",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d10 + 20"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 18,
+			"dex": 10,
+			"con": 15,
+			"int": 12,
+			"wis": 14,
+			"cha": 12,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 12,
+			"languages": [
+				"Aartuk"
+			],
+			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"L'aartuk lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano la Saggezza come capacità di incantesimo (tiro salvezza {@dc 12}):"
+					],
+					"daily": {
+						"1e": [
+							"{@spell calm emotions}",
+							"{@spell detect magic}",
+							"{@spell sending}"
+						]
+					},
+					"ability": "wis",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"L'aartuk può arrampicarsi su superfici difficili, anche a testa in giù sui soffitti, senza dover effettuare una prova di abilità."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'aartuk effettua due attacchi di Ramo, due attacchi di Pellet radiante o uno di questi."
+					]
+				},
+				{
+					"name": "Branch",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, raggio d'azione 10 ft., un bersaglio. {@h}11 ({@damage 2d6 + 4}) danni da percosse."
+					]
+				},
+				{
+					"name": "Radiant Pellet",
+					"entries": [
+						"{@atk rs} {@hit 4} per colpire, gittata 60 m, un bersaglio. {@h}10 ({@damage 4d4}) danni radianti."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Tongue {@recharge}",
+					"entries": [
+						"L'aartuk cerca di usare la sua lingua appiccicosa per catturare una creatura grande o più piccola che riesce a vedere entro 9 metri da sé. Il bersaglio deve effettuare un tiro salvezza di Destrezza {@dc 12}. Se il tiro salvezza fallisce, il bersaglio viene {@condition grappled} afferrato dalla lingua (fuga {@dc 14}) e tirato fino a 9 metri verso l'aartuk. La lingua può afferrare una creatura alla volta."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"R"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Aartuk Priest",
+			"source": "BAM",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "8d8 + 16"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 12,
+			"dex": 10,
+			"con": 14,
+			"int": 13,
+			"wis": 16,
+			"cha": 10,
+			"skill": {
+				"religion": "+3"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"languages": [
+				"Aartuk"
+			],
+			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"L'aartuk lancia uno dei seguenti incantesimi, che non richiedono componenti magiche e utilizzano la Saggezza come capacità incantatoria:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell revivify}",
+							"{@spell tongues}"
+						]
+					},
+					"ability": "wis",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"L'aartuk può arrampicarsi su superfici difficili, anche a testa in giù sui soffitti, senza dover effettuare una prova di abilità."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'aartuk effettua due attacchi di Ramo, due attacchi di Pellet radiante o uno di questi."
+					]
+				},
+				{
+					"name": "Branch",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, raggio d'azione 10 m, un bersaglio. {@h}8 ({@damage 2d6 + 1}) danni da percosse."
+					]
+				},
+				{
+					"name": "Radiant Pellet",
+					"entries": [
+						"{@atk rs} {@hit 2} per colpire, gittata 60 m, un bersaglio. {@h}7 ({@damage 3d4}) danni radianti."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Rally the Troops (1/Day)",
+					"entries": [
+						"L'aartuk elimina magicamente le condizioni {@condition charmed} e {@condition frightened} su se stesso e su ogni creatura a sua scelta che può vedere entro 9 metri da sé."
+					]
+				},
+				{
+					"name": "Tongue {@recharge}",
+					"entries": [
+						"L'aartuk cerca di usare la sua lingua appiccicosa per catturare una creatura media o più piccola che riesce a vedere nel raggio di 9 metri. Il bersaglio deve effettuare un tiro salvezza di Destrezza {@dc 12}. Se il tiro salvezza fallisce, il bersaglio viene {@condition grappled} afferrato dalla lingua (fuga {@dc 11}) e tirato fino a 9 metri verso l'aartuk. La lingua può afferrare una creatura alla volta."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"R"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Aartuk Warrior",
+			"source": "BAM",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 38,
+				"formula": "7d8 + 7"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 14,
+			"dex": 12,
+			"con": 13,
+			"int": 10,
+			"wis": 13,
+			"cha": 10,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 11,
+			"languages": [
+				"Aartuk"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"L'aartuk può arrampicarsi su superfici difficili, anche a testa in giù sui soffitti, senza dover effettuare una prova di abilità."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'aartuk effettua due attacchi di Ramo, due attacchi di Pellet radiante o uno di questi."
+					]
+				},
+				{
+					"name": "Branch",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, raggio d'azione 10 m, un bersaglio. {@h}8 ({@damage 2d6 + 2}) danni da percosse."
+					]
+				},
+				{
+					"name": "Radiant Pellet",
+					"entries": [
+						"{@atk rs} {@hit 3} per colpire, gittata 60 m, un bersaglio. {@h}7 ({@damage 3d4 + 1}) danni radianti."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Tongue {@recharge}",
+					"entries": [
+						"L'aartuk cerca di usare la sua lingua appiccicosa per catturare una creatura media o più piccola che riesce a vedere nel raggio di 9 metri. Il bersaglio deve effettuare un tiro salvezza di Destrezza {@dc 11}. Se il tiro salvezza fallisce, il bersaglio viene {@condition grappled} afferrato dalla lingua (fuga {@dc 12}) e tirato fino a 9 metri verso l'aartuk. La lingua può afferrare una creatura alla volta."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B",
+				"R"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Adult Lunar Dragon",
+			"source": "BAM",
+			"page": 34,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"H"
+			],
+			"type": "dragon",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 172,
+				"formula": "15d12 + 75"
+			},
+			"speed": {
+				"walk": 40,
+				"burrow": 20,
+				"fly": 80
+			},
+			"str": 23,
+			"dex": 12,
+			"con": 20,
+			"int": 10,
+			"wis": 13,
+			"cha": 15,
+			"save": {
+				"con": "+10",
+				"wis": "+6"
+			},
+			"skill": {
+				"perception": "+11",
+				"stealth": "+11"
+			},
+			"senses": [
+				"darkvision 240 ft."
+			],
+			"passive": 21,
+			"immune": [
+				"cold"
+			],
+			"languages": [
+				"Draconic"
+			],
+			"cr": "13",
+			"trait": [
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"Se il drago fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				},
+				{
+					"name": "Tunneler",
+					"entries": [
+						"Il drago può scavare nella roccia solida a metà della sua velocità di scavo e lascia nella sua scia un tunnel di 15 piedi di diametro."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il drago non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il drago effettua un attacco con il morso e due con l'artiglio."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 11} per colpire, portata 10 ft., un bersaglio. {@h}13 ({@damage 2d6 + 6}) danni da perforazione più 3 ({@damage 1d6}) danni da freddo."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 11} per colpire, portata 5 ft., un bersaglio. {@h}13 ({@damage 2d6 + 6}) danni da taglio."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 11} per colpire, portata 15 m, un bersaglio. {@h}13 ({@damage 2d6 + 6}) danni da percosse."
+					]
+				},
+				{
+					"name": "Cold Breath {@recharge 5}",
+					"entries": [
+						"Il drago emette un getto di gelo in un cono di 60 metri. Ogni creatura nel cono deve effettuare un tiro salvezza di Costituzione {@dc 18}. Se il tiro salvezza fallisce, la creatura subisce 36 ({@damage 8d8}) danni da freddo e la sua velocità è ridotta a 0 fino alla fine del suo turno successivo. Se il tiro salvezza riesce, la creatura subisce la metà dei danni e la sua velocità non viene ridotta."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Phase (3/Day)",
+					"entries": [
+						"Il drago diventa parzialmente incorporeo finché mantiene la concentrazione sull'effetto (come se si concentrasse su un incantesimo). Quando è parzialmente incorporeo, il drago ha resistenza ai danni da percosse, perforazione e taglio."
+					]
+				}
+			],
+			"legendaryActions": 2,
+			"legendary": [
+				{
+					"name": "Tail Attack",
+					"entries": [
+						"Il drago effettua un attacco con la coda."
+					]
+				},
+				{
+					"name": "Treacherous Ice",
+					"entries": [
+						"Il ghiaccio magico ricopre il terreno in un raggio di 6 metri, centrato su un punto che il drago può vedere nel raggio di 6 metri. Il ghiaccio, che è un terreno difficile per tutte le creature eccetto i draghi lunari, dura per 10 minuti o finché il drago non usa nuovamente questa azione leggendaria."
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Adult Lunar Dragon",
+				"source": "BAM"
+			},
+			"dragonAge": "adult",
+			"traitTags": [
+				"Legendary Resistances",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Breath Weapon",
+				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"B",
+				"C",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Adult Solar Dragon",
+			"source": "BAM",
+			"page": 52,
+			"size": [
+				"H"
+			],
+			"type": "dragon",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 200,
+				"formula": "16d12 + 96"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 90,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 24,
+			"dex": 15,
+			"con": 22,
+			"int": 15,
+			"wis": 16,
+			"cha": 14,
+			"save": {
+				"dex": "+7",
+				"con": "+11",
+				"wis": "+8",
+				"cha": "+7"
+			},
+			"skill": {
+				"perception": "+13",
+				"stealth": "+7"
+			},
+			"senses": [
+				"darkvision 180 ft."
+			],
+			"passive": 23,
+			"immune": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"blinded"
+			],
+			"languages": [
+				"Draconic"
+			],
+			"cr": "14",
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"Il drago non provoca attacchi di opportunità quando vola fuori dalla portata di un nemico."
+					]
+				},
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"Se il drago fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				},
+				{
+					"name": "Nebulous Thoughts",
+					"entries": [
+						"I tentativi magici di leggere la mente del drago o di carpirne i pensieri falliscono automaticamente."
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"Il drago infligge danni doppi a oggetti e strutture."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il drago non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il drago effettua un attacco di Morso e un attacco di Coda."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 12} per colpire, portata 15 m, un bersaglio. {@h}14 ({@damage 2d6 + 7}) danni perforanti più 7 ({@damage 2d6}) danni radianti."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 12} per colpire, portata 20 m, un bersaglio. {@h}10 ({@damage 1d6 + 7}) danni da percosse."
+					]
+				},
+				{
+					"name": "Photonic Breath {@recharge 5}",
+					"entries": [
+						"Il drago esala una goccia lampeggiante di energia radiante che viaggia fino a un punto che il drago può vedere entro 180 piedi da sé, poi sboccia in una sfera di 30 piedi di raggio centrata su quel punto. Ogni creatura nella sfera deve effettuare un tiro salvezza di Costituzione {@dc 19}, subendo 55 ({@damage 10d10}) danni radianti in caso di fallimento del tiro salvezza, o la metà dei danni in caso di successo."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Tail Attack",
+					"entries": [
+						"Il drago effettua un attacco con la coda."
+					]
+				},
+				{
+					"name": "Blinding Brilliance (Costs 2 Actions)",
+					"entries": [
+						"Il drago emette una luce magica in una sfera di 30 piedi di raggio centrata su di sé. Ogni creatura che si trova in quest'area deve superare un tiro salvezza di Saggezza {@dc 23} o subire {@condition blinded} fino alla fine del suo prossimo turno."
+					]
+				}
+			],
+			"dragonAge": "adult",
+			"traitTags": [
+				"Flyby",
+				"Legendary Resistances",
+				"Siege Monster",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Breath Weapon",
+				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"B",
+				"P",
+				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"blinded"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Ancient Lunar Dragon",
+			"source": "BAM",
+			"page": 32,
+			"size": [
+				"G"
+			],
+			"type": "dragon",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 297,
+				"formula": "17d20 + 119"
+			},
+			"speed": {
+				"walk": 40,
+				"burrow": 20,
+				"fly": 80
+			},
+			"str": 27,
+			"dex": 12,
+			"con": 24,
+			"int": 12,
+			"wis": 15,
+			"cha": 17,
+			"save": {
+				"con": "+13",
+				"wis": "+8"
+			},
+			"skill": {
+				"perception": "+14",
+				"stealth": "+13"
+			},
+			"senses": [
+				"darkvision 240 ft."
+			],
+			"passive": 24,
+			"immune": [
+				"cold"
+			],
+			"languages": [
+				"Draconic"
+			],
+			"cr": "19",
+			"trait": [
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"Se il drago fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				},
+				{
+					"name": "Tunneler",
+					"entries": [
+						"Il drago può scavare nella roccia solida a metà della sua velocità di scavo e lascia un tunnel di 6 metri di diametro nella sua scia."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il drago non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il drago effettua un attacco con il morso e due con l'artiglio."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 14} per colpire, portata 15 m, un bersaglio. {@h}15 ({@damage 2d6 + 8}) danni da perforazione più 7 ({@damage 2d6}) danni da freddo."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 14} per colpire, portata di 10 metri, un bersaglio. {@h}15 ({@damage 2d6 + 8}) danni da taglio."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 14} per colpire, portata 20 m, un bersaglio. {@h}15 ({@damage 2d6 + 8}) danni da percosse."
+					]
+				},
+				{
+					"name": "Cold Breath {@recharge 5}",
+					"entries": [
+						"Il drago emette un getto di gelo in un cono di 90 metri. Ogni creatura nel cono deve effettuare un tiro salvezza di Costituzione {@dc 21}. Se il tiro salvezza fallisce, la creatura subisce 36 ({@damage 8d8}) danni da freddo e la sua velocità è ridotta a 0 fino alla fine del suo turno successivo. Se il tiro salvezza riesce, la creatura subisce la metà dei danni e la sua velocità non viene ridotta."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Phase (3/Day)",
+					"entries": [
+						"Il drago diventa parzialmente incorporeo finché mantiene la concentrazione sull'effetto (come se si concentrasse su un incantesimo). Quando è parzialmente incorporeo, il drago ha resistenza ai danni da percosse, perforazione e taglio."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Tail Attack",
+					"entries": [
+						"Il drago effettua un attacco con la coda."
+					]
+				},
+				{
+					"name": "Treacherous Ice",
+					"entries": [
+						"Il ghiaccio magico ricopre il terreno in un raggio di 6 metri, centrato su un punto che il drago può vedere nel raggio di 6 metri. Il ghiaccio, che è un terreno difficile per tutte le creature eccetto i draghi lunari, dura per 10 minuti o finché il drago non usa nuovamente questa azione leggendaria."
+					]
+				},
+				{
+					"name": "Wing Attack (Costs 2 Actions)",
+					"entries": [
+						"Il drago batte le ali. Ogni creatura entro 15 piedi dal drago deve riuscire in un tiro salvezza di Destrezza {@dc 21} o subire 12 ({@damage 1d8 + 8}) danni da percosse ed essere sbalzata {@condition prone}. Il drago può volare fino a metà della sua velocità senza provocare attacchi di opportunità."
+					]
+				}
+			],
+			"legendaryGroup": {
+				"name": "Ancient Lunar Dragon",
+				"source": "BAM"
+			},
+			"dragonAge": "ancient",
+			"traitTags": [
+				"Legendary Resistances",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Breath Weapon",
+				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"B",
+				"C",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Ancient Solar Dragon",
+			"source": "BAM",
+			"page": 50,
+			"size": [
+				"G"
+			],
+			"type": "dragon",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 425,
+				"formula": "23d20 + 184"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 120,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 28,
+			"dex": 15,
+			"con": 26,
+			"int": 17,
+			"wis": 18,
+			"cha": 16,
+			"save": {
+				"dex": "+9",
+				"con": "+15",
+				"wis": "+11",
+				"cha": "+10"
+			},
+			"skill": {
+				"perception": "+18",
+				"stealth": "+9"
+			},
+			"senses": [
+				"darkvision 240 ft."
+			],
+			"passive": 28,
+			"immune": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"blinded"
+			],
+			"languages": [
+				"Draconic"
+			],
+			"cr": "21",
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"Il drago non provoca attacchi di opportunità quando vola fuori dalla portata di un nemico."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"Se il drago fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				},
+				{
+					"name": "Nebulous Thoughts",
+					"entries": [
+						"I tentativi magici di leggere la mente del drago o di carpirne i pensieri falliscono automaticamente."
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"Il drago infligge danni doppi a oggetti e strutture."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il drago non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il drago effettua un attacco di Morso e un attacco di Coda."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 16} per colpire, portata 20 m, un bersaglio. {@h}19 ({@damage 3d6 + 9}) danni perforanti più 10 ({@damage 3d6}) danni radianti."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 16} per colpire, portata 20 m, un bersaglio. {@h}13 ({@damage 1d8 + 9}) danni da percosse."
+					]
+				},
+				{
+					"name": "Photonic Breath {@recharge 5}",
+					"entries": [
+						"Il drago esala una goccia lampeggiante di energia radiante che viaggia fino a un punto che il drago può vedere entro 240 piedi da sé, quindi sboccia in una sfera di 40 piedi di raggio centrata su quel punto. Ogni creatura nella sfera deve effettuare un tiro salvezza di Costituzione {@dc 23}, subendo 66 ({@damage 12d10}) danni radianti in caso di fallimento del tiro salvezza, o la metà dei danni in caso di successo."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Tail Attack",
+					"entries": [
+						"Il drago effettua un attacco con la coda."
+					]
+				},
+				{
+					"name": "Blinding Brilliance (Costs 2 Actions)",
+					"entries": [
+						"Il drago emette una luce magica in una sfera di 30 piedi di raggio centrata su di sé. Ogni creatura che si trova in quest'area deve superare un tiro salvezza di Saggezza {@dc 23} o subire {@condition blinded} fino alla fine del suo prossimo turno."
+					]
+				}
+			],
+			"dragonAge": "ancient",
+			"traitTags": [
+				"Flyby",
+				"Legendary Resistances",
+				"Siege Monster",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Breath Weapon",
+				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"B",
+				"P",
+				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"blinded"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Astral Elf Aristocrat",
+			"source": "BAM",
+			"page": 11,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"wizard"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item elven chain}"
+					]
+				}
+			],
+			"hp": {
+				"average": 103,
+				"formula": "23d8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 14,
+			"con": 10,
+			"int": 21,
+			"wis": 18,
+			"cha": 18,
+			"save": {
+				"int": "+8",
+				"wis": "+7",
+				"cha": "+7"
+			},
+			"skill": {
+				"arcana": "+8",
+				"deception": "+7",
+				"insight": "+7",
+				"persuasion": "+7"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"Celestial",
+				"Common",
+				"Draconic",
+				"Elvish"
+			],
+			"cr": "8",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"L'elfo lancia uno dei seguenti incantesimi, utilizzando l'Intelligenza come capacità di incantesimo:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell fly}",
+							"{@spell mislead}",
+							"{@spell sending}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"L'elfo ha vantaggio sui tiri salvezza che effettua per evitare o terminare la condizione {@condition charmed} su se stesso, e la magia non può addormentarlo."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"L'elfo indossa un abito di catena elfico."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'elfo non ha bisogno di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'elfo effettua due attacchi di Scimitarra e usa il Raggio Radiante (se disponibile)."
+					]
+				},
+				{
+					"name": "Scimitar",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata di 5 metri, un bersaglio. {@h}5 ({@damage 1d6 + 2}) danni da taglio più 10 ({@damage 3d6}) danni radianti."
+					]
+				},
+				{
+					"name": "Radiant Beam (3/Day)",
+					"entries": [
+						"Dalla mano dell'elfo esce un fascio di luce magica in una linea di 5 piedi di larghezza e 60 di lunghezza. Ogni creatura nella linea deve effettuare un tiro salvezza di Costituzione {@dc 16}, subendo 18 ({@damage 4d8}) danni radianti se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Starlight Step (3/Day)",
+					"entries": [
+						"L'elfo si teletrasporta magicamente fino a 9 metri, insieme a tutto ciò che indossa o trasporta, in uno spazio non occupato che può vedere."
+					]
+				},
+				{
+					"name": "Summon Solar Dragon (1/Day)",
+					"entries": [
+						"L'elfo ha una probabilità del 50% di evocare magicamente un giovane drago solare. Il drago evocato appare in uno spazio non occupato che l'evocatore può vedere, agisce in base al proprio conteggio di iniziativa ed è un alleato del suo evocatore. Rimane per 10 minuti, finché non muore o finché il suo evocatore non lo congeda con un'azione."
+					]
+				}
+			],
+			"traitTags": [
+				"Fey Ancestry",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"CE",
+				"DR",
+				"E"
+			],
+			"damageTags": [
+				"R",
+				"S"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflictSpell": [
+				"blinded",
+				"deafened",
+				"invisible"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Astral Elf Commander",
+			"source": "BAM",
+			"page": 12,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item half plate armor|PHB|half plate}"
+					]
+				}
+			],
+			"hp": {
+				"average": 143,
+				"formula": "26d8 + 26"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 12,
+			"dex": 15,
+			"con": 13,
+			"int": 18,
+			"wis": 18,
+			"cha": 18,
+			"save": {
+				"dex": "+5",
+				"con": "+4",
+				"wis": "+7",
+				"cha": "+7"
+			},
+			"skill": {
+				"deception": "+7",
+				"history": "+7",
+				"intimidation": "+7",
+				"survival": "+7"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"Celestial",
+				"Common",
+				"Elvish"
+			],
+			"cr": "7",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"L'elfo lancia il seguente incantesimo, utilizzando la Saggezza come capacità di incantesimo:"
+					],
+					"daily": {
+						"2": [
+							"{@spell teleport}"
+						]
+					},
+					"ability": "wis",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"L'elfo ha vantaggio sui tiri salvezza che effettua per evitare o terminare la condizione {@condition charmed} su se stesso, e la magia non può addormentarlo."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'elfo non ha bisogno di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'elfo effettua due attacchi con spada lunga o arco lungo."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata di 5 metri, un bersaglio. {@h}5 ({@damage 1d8 + 1}) danni da taglio, o 6 ({@damage 1d10 + 1}) danni da taglio se usato a due mani, più 14 ({@damage 4d6}) danni radianti."
+					]
+				},
+				{
+					"name": "Longbow",
+					"entries": [
+						"{@atk rw} {@hit 5} per colpire, gittata 150/600 ft., un bersaglio. {@h}6 ({@damage 1d8 + 2}) danni perforanti più 14 ({@damage 4d6}) danni radianti."
+					]
+				}
+			],
+			"traitTags": [
+				"Fey Ancestry",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"CE",
+				"E"
+			],
+			"damageTags": [
+				"P",
+				"R",
+				"S"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Astral Elf Honor Guard",
+			"source": "BAM",
+			"page": 12,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item half plate armor|PHB|half plate}"
+					]
+				}
+			],
+			"hp": {
+				"average": 93,
+				"formula": "17d8 + 17"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 15,
+			"con": 12,
+			"int": 17,
+			"wis": 16,
+			"cha": 16,
+			"save": {
+				"wis": "+6",
+				"cha": "+6"
+			},
+			"skill": {
+				"intimidation": "+6",
+				"perception": "+6",
+				"survival": "+6"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 16,
+			"languages": [
+				"Celestial",
+				"Common",
+				"Elvish"
+			],
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"L'elfo ha vantaggio sui tiri salvezza che effettua per evitare o terminare la condizione {@condition charmed} su se stesso, e la magia non può addormentarlo."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'elfo non ha bisogno di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'elfo effettua due attacchi con spada lunga o raggio radiante."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata di 5 metri, un bersaglio. {@h}11 ({@damage 2d8 + 2}) danni da taglio, o 13 ({@damage 2d10 + 2}) danni da taglio se usato a due mani, più 10 ({@damage 3d6}) danni radianti."
+					]
+				},
+				{
+					"name": "Radiant Ray",
+					"entries": [
+						"{@atk rs} {@hit 6} per colpire, gittata 120 piedi, un bersaglio. {@h}22 ({@damage 4d10}) danni radianti."
+					]
+				}
+			],
+			"traitTags": [
+				"Fey Ancestry",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"CE",
+				"E"
+			],
+			"damageTags": [
+				"R",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Astral Elf Star Priest",
+			"source": "BAM",
+			"page": 13,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"cleric"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@item chain shirt|phb}"
+					]
+				}
+			],
+			"hp": {
+				"average": 90,
+				"formula": "20d8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 11,
+			"con": 10,
+			"int": 16,
+			"wis": 20,
+			"cha": 17,
+			"save": {
+				"int": "+6",
+				"wis": "+8",
+				"cha": "+6"
+			},
+			"skill": {
+				"medicine": "+8",
+				"religion": "+6"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 15,
+			"languages": [
+				"Celestial",
+				"Common",
+				"Elvish"
+			],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"L'elfo lancia uno dei seguenti incantesimi, utilizzando la Saggezza come capacità di incantesimo (tiro salvezza {@dc 16}):"
+					],
+					"daily": {
+						"2e": [
+							"{@spell cure wounds} (8th-level version)",
+							"{@spell hold person}"
+						],
+						"1e": [
+							"{@spell divination}",
+							"{@spell sending}",
+							"{@spell word of recall}"
+						]
+					},
+					"ability": "wis",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"L'elfo ha vantaggio sui tiri salvezza che effettua per evitare o terminare la condizione {@condition charmed} su se stesso, e la magia non può addormentarlo."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'elfo non ha bisogno di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'elfo effettua due attacchi Morningstar. Può usare Pioggia di splendore al posto di uno di questi attacchi."
+					]
+				},
+				{
+					"name": "Morningstar",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, portata 5 ft., un bersaglio. {@h}4 ({@damage 1d8}) danni perforanti più 17 ({@damage 5d6}) danni radianti."
+					]
+				},
+				{
+					"name": "Rain of Radiance",
+					"entries": [
+						"Una radiosità magica simile a una fiamma piove su una creatura che l'elfo può vedere entro 60 piedi da sé. Il bersaglio deve effettuare un tiro salvezza di Destrezza {@dc 16}, subendo 22 ({@damage 5d8}) danni radianti se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Starlight Step (2/Day)",
+					"entries": [
+						"L'elfo si teletrasporta magicamente fino a 9 metri, insieme a tutto ciò che indossa o trasporta, in uno spazio non occupato che può vedere."
+					]
+				}
+			],
+			"traitTags": [
+				"Fey Ancestry",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"CE",
+				"E"
+			],
+			"damageTags": [
+				"P",
+				"R"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflictSpell": [
+				"paralyzed"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Astral Elf Warrior",
+			"source": "BAM",
+			"page": 13,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item breastplate|PHB}"
+					]
+				}
+			],
+			"hp": {
+				"average": 58,
+				"formula": "13d8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 12,
+			"dex": 15,
+			"con": 10,
+			"int": 16,
+			"wis": 16,
+			"cha": 15,
+			"save": {
+				"dex": "+4",
+				"wis": "+5"
+			},
+			"skill": {
+				"intimidation": "+4",
+				"survival": "+5"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"languages": [
+				"Celestial",
+				"Common",
+				"Elvish"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"L'elfo ha vantaggio sui tiri salvezza che effettua per evitare o terminare la condizione {@condition charmed} su se stesso, e la magia non può addormentarlo."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'elfo non ha bisogno di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'elfo effettua due attacchi con spada lunga o arco lungo."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, portata di 5 metri, un bersaglio. {@h}5 ({@damage 1d8 + 1}) danni da taglio, o 6 ({@damage 1d10 + 1}) danni da taglio se usato a due mani, più 10 ({@damage 3d6}) danni radianti."
+					]
+				},
+				{
+					"name": "Longbow",
+					"entries": [
+						"{@atk rw} {@hit 4} per colpire, gittata 150/600 ft., un bersaglio. {@h}6 ({@damage 1d8 + 2}) danni perforanti più 10 ({@damage 3d6}) danni radianti."
+					]
+				}
+			],
+			"traitTags": [
+				"Fey Ancestry",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"CE",
+				"E"
+			],
+			"damageTags": [
+				"P",
+				"R",
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Autognome",
+			"source": "BAM",
+			"page": 13,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"S"
+			],
+			"type": "construct",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 39,
+				"formula": "6d6 + 18"
+			},
+			"speed": {
+				"walk": 20
+			},
+			"str": 13,
+			"dex": 6,
+			"con": 16,
+			"int": 4,
+			"wis": 11,
+			"cha": 6,
+			"save": {
+				"con": "+5",
+				"wis": "+2",
+				"cha": "+0"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"paralyzed",
+				"petrified",
+				"poisoned"
+			],
+			"languages": [
+				"Common",
+				"Gnomish"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Malfunction",
+					"entries": [
+						"Ogni volta che l'autognome subisce 15 o più danni da una singola fonte e non viene ridotto a 0 punti ferita da quei danni, tira un {@dice d20} per determinare se subisce un malfunzionamento:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "1-10: \"All Fine Here!\"",
+									"entries": [
+										"Non si verifica alcun malfunzionamento."
+									]
+								},
+								{
+									"type": "item",
+									"name": "11-12: \"My Mind Is Going. I Can Feel It.\"",
+									"entries": [
+										"L'autognome è {@condition incapacitated} per 1 minuto."
+									]
+								},
+								{
+									"type": "item",
+									"name": "13-14: \"You've Disarmed Me!\"",
+									"entries": [
+										"Un braccio dell'autognome si stacca, riducendo di 1 il numero di attacchi di shock che può effettuare finché una creatura non usa un'azione per riattaccare il braccio."
+									]
+								},
+								{
+									"type": "item",
+									"name": "15-16: \"Who Turned Out the Lights?\"",
+									"entries": [
+										"La testa dell'autognome si stacca e si disattiva, facendo sì che l'autognome sia {@condition blinded} e {@condition deafened} finché una creatura non usa un'azione per riattaccare la testa, che la riattiva."
+									]
+								},
+								{
+									"type": "item",
+									"name": "17-20: \"Have a Magical Day!\"",
+									"entries": [
+										"L'autognome esplode e viene distrutto. Ogni creatura entro 6 metri dall'autognome che esplode deve effettuare un tiro salvezza di Destrezza {@dc 11}, subendo 22 ({@damage 4d10}) danni da taglio se il tiro salvezza fallisce, o la metà dei danni se riesce."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Unusual Nature",
+									"entries": [
+										"L'autognome non ha bisogno di aria, cibo, bevande o sonno."
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'autognome effettua due attacchi Shock."
+					]
+				},
+				{
+					"name": "Shock",
+					"entries": [
+						"{@atk mw,rw} {@hit 3} per colpire, portata 5 ft. o 60 ft., un bersaglio. {@h}7 ({@damage 2d6}) danni da fulmine."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"G"
+			],
+			"damageTags": [
+				"L",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "B'rohg",
+			"source": "BAM",
+			"page": 16,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"H"
+			],
+			"type": "giant",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 92,
+				"formula": "8d12 + 40"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 21,
+			"dex": 14,
+			"con": 21,
+			"int": 5,
+			"wis": 10,
+			"cha": 7,
+			"skill": {
+				"athletics": "+8",
+				"survival": "+6"
+			},
+			"passive": 10,
+			"cr": "6",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il b'rohg effettua quattro attacchi di pugno o due attacchi di roccia."
+					]
+				},
+				{
+					"name": "Fist",
+					"entries": [
+						"{@atk mw} {@hit 8} per colpire, raggio d'azione 10 ft., un bersaglio. {@h}12 ({@damage 2d6 + 5}) danni da percosse."
+					]
+				},
+				{
+					"name": "Rock",
+					"entries": [
+						"{@atk rw} {@hit 5} per colpire, gittata 60/240 ft., un bersaglio. {@h}23 ({@damage 4d8 + 5}) danni da percosse."
+					]
+				},
+				{
+					"name": "Hideous Rend",
+					"entries": [
+						"Il b'rohg usa tutte e quattro le mani per colpire una creatura Grande o più piccola che può vedere entro 3 metri da sé. Il bersaglio deve riuscire in un tiro salvezza di Destrezza {@dc 16} o essere {@condition grappled} (fuga {@dc 16}). Finché la presa non termina, il b'rohg non può effettuare attacchi di pugno o di roccia e il bersaglio subisce 49 ({@damage 8d10 + 5}) danni da percosse all'inizio di ogni suo turno. Una creatura ridotta a 0 punti ferita da questo danno viene fatta a pezzi."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH",
+				"RW"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Braxat",
+			"source": "BAM",
+			"page": 15,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"H"
+			],
+			"type": "giant",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"natural armor",
+						"{@spell intellect fortress|tce}"
+					]
+				}
+			],
+			"hp": {
+				"average": 162,
+				"formula": "13d12 + 78"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 26,
+			"dex": 8,
+			"con": 22,
+			"int": 14,
+			"wis": 13,
+			"cha": 7,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 11,
+			"immune": [
+				"acid",
+				"psychic"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened"
+			],
+			"languages": [
+				"Common",
+				"Giant"
+			],
+			"cr": "9",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Il braxat lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 14}):"
+					],
+					"daily": {
+						"1e": [
+							"{@spell compulsion}",
+							"{@spell fear}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Intellect Fortress",
+					"entries": [
+						"La CA del braxat include il suo modificatore di Intelligenza."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il braxat effettua due attacchi Greatclub."
+					]
+				},
+				{
+					"name": "Greatclub",
+					"entries": [
+						"{@atk mw} {@hit 12} per colpire, gittata di 10 m, un bersaglio. {@h}21 ({@damage 3d8 + 8}) danni da percosse."
+					]
+				},
+				{
+					"name": "Acid Breath {@recharge}",
+					"entries": [
+						"Il braxat esala un cono di acido di 3 metri. Ogni creatura nel cono deve effettuare un tiro salvezza di Costituzione {@dc 18}, subendo 26 ({@damage 4d12}) danni da acido se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Psionic Shield (3/Day)",
+					"entries": [
+						"Quando il braxat verrebbe colpito da un tiro di attacco o da un incantesimo {@spell magic missile} proveniente da una fonte che il braxat può vedere, può creare una barriera di forza magica {@condition invisible} intorno a sé che dura fino all'inizio del suo prossimo turno. Questa barriera conferisce al braxat un bonus di +5 alla CA, anche contro l'attacco scatenante, e impedisce agli incantesimi {@spell magic missile} di danneggiarlo."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Breath Weapon",
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GI"
+			],
+			"damageTags": [
+				"A",
+				"B"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflictSpell": [
+				"frightened"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Brown Scavver",
+			"source": "BAM",
+			"page": 49,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"L"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 51,
+				"formula": "6d10 + 18"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 40
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 17,
+			"int": 1,
+			"wis": 10,
+			"cha": 1,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Lo scavatore non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Swallowing Bite",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 5 ft., un bersaglio. {@h}11 ({@damage 2d6 + 4}) danni da perforazione. Se il bersaglio è una creatura media o più piccola, deve superare un tiro salvezza di Destrezza {@dc 13} o essere inghiottita dallo scavatore. Lo scavatore può far inghiottire una creatura alla volta.",
+						"Una creatura inghiottita è {@condition blinded} e {@condition restrained}, ha una copertura totale contro gli attacchi e gli altri effetti esterni allo scavatore, e subisce 13 ({@damage 3d8}) danni da veleno all'inizio di ogni turno dello scavatore a causa del gas velenoso nell'esofago dello scavatore.",
+						"Se lo scavver subisce 15 o più danni in un singolo turno da una creatura al suo interno, deve riuscire a effettuare un tiro salvezza di Costituzione {@dc 20} alla fine di quel turno o rigurgitare la creatura inghiottita, che cade {@condition prone} in uno spazio entro 3 metri dallo scavver. Se lo scavatore muore, una creatura inghiottita non è più {@condition restrained} da lui e può fuggire dal cadavere utilizzando 3 metri di movimento, uscendo {@condition prone}."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Swallow"
+			],
+			"damageTags": [
+				"I",
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"blinded",
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Chwinga Astronaut",
+			"source": "BAM",
+			"page": 17,
+			"size": [
+				"T"
+			],
+			"type": "elemental",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				15
+			],
+			"hp": {
+				"average": 7,
+				"formula": "3d4"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20,
+				"swim": 20
+			},
+			"str": 1,
+			"dex": 20,
+			"con": 10,
+			"int": 14,
+			"wis": 16,
+			"cha": 16,
+			"skill": {
+				"acrobatics": "+7",
+				"perception": "+7",
+				"stealth": "+7"
+			},
+			"senses": [
+				"blindsight 60 ft."
+			],
+			"passive": 17,
+			"cr": "0",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Il chwinga lancia uno dei seguenti incantesimi, che non richiedono componenti materiali o verbali e utilizzano il Carisma come capacità di incantesimo: A volontà: druido, guida, passare senza traccia, resistenza."
+					],
+					"ability": "cha",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Evasion",
+					"entries": [
+						"Quando il chwinga subisce un effetto che gli consente di effettuare un tiro salvezza di Destrezza per subire solo metà dei danni, non subisce alcun danno se riesce nel tiro salvezza e solo metà dei danni se fallisce, a patto che non sia {@condition incapacitated}."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il chwinga non ha bisogno di aria, cibo o bevande. Quando muore, si trasforma in un mucchietto di polvere di luna, in una nuvola di spore scintillanti, in una statuetta che ricorda il suo aspetto precedente, in un pezzo di ghiaccio o in una spugna a forma di dodecaedro (a scelta del DM)."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Magical Gift (1/Day)",
+					"entries": [
+						"Il chwinga prende di mira un umanoide che riesce a vedere entro un raggio di 2 metri da sé. Il bersaglio ottiene un fascino soprannaturale a scelta del DM. Per ulteriori informazioni sugli incantesimi soprannaturali, consultare la Guida del Dungeon Master."
+					]
+				},
+				{
+					"name": "Natural Shelter",
+					"entries": [
+						"Il chwinga si ripara all'interno di una roccia, un cespuglio, un albero o una fonte naturale di acqua dolce nel suo spazio. Il chwinga non può essere bersagliato da alcun attacco, incantesimo o altro effetto mentre è protetto magicamente in questo modo, e il riparo non compromette la vista cieca del chwinga. Il chwinga può usare la sua azione per emergere da un riparo. Se il suo riparo viene distrutto, il chwinga è costretto a uscire e appare nello spazio del riparo, ma per il resto non subisce danni."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"B"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Cosmic Horror",
+			"source": "BAM",
+			"page": 18,
+			"size": [
+				"G"
+			],
+			"type": "aberration",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 280,
+				"formula": "16d20 + 112"
+			},
+			"speed": {
+				"walk": 50,
+				"fly": 100
+			},
+			"str": 27,
+			"dex": 10,
+			"con": 25,
+			"int": 24,
+			"wis": 15,
+			"cha": 24,
+			"save": {
+				"int": "+13",
+				"wis": "+8",
+				"cha": "+13"
+			},
+			"senses": [
+				"darkvision 240 ft."
+			],
+			"passive": 12,
+			"immune": [
+				"acid",
+				"poison"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"poisoned"
+			],
+			"languages": [
+				"Deep Speech",
+				"telepathy 240 ft."
+			],
+			"cr": "18",
+			"trait": [
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"Se l'orrore fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'orrore non richiede aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'orrore compie un attacco di Morso e due attacchi di Tentacolo."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 14} per colpire, portata 10 m, un bersaglio. {@h}22 ({@damage 4d6 + 8}) danni perforanti."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 14} per colpire, portata 30 m, un bersaglio. {@h}18 ({@damage 3d6 + 8}) danni da forza e, se il bersaglio è una creatura, è {@condition grappled} (fuga {@dc 18}). Finché la presa non termina, l'orrore non può usare questo tentacolo contro altri bersagli. L'orrore ha {@dice 1d8 + 1} tentacoli, ognuno dei quali può afferrare un bersaglio."
+					]
+				},
+				{
+					"name": "Psychic Whispers {@recharge 5}",
+					"entries": [
+						"L'orrore emette terribili sussurri in una sfera di 60 piedi di raggio centrata su di sé. Ogni creatura nella sfera che non sia un'aberrazione deve effettuare un tiro salvezza di Saggezza {@dc 21}, subendo 33 ({@damage 6d10}) danni psichici se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Crushing Tentacle",
+					"entries": [
+						"L'orrore schiaccia una creatura che sta afferrando. La creatura {@condition grappled} deve effettuare un tiro salvezza di Costituzione {@dc 22}, subendo 18 ({@damage 3d6 + 8}) danni alla forza se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				},
+				{
+					"name": "Poison Jet (Costs 2 Actions)",
+					"entries": [
+						"L'orrore spruzza gas ripugnante in una linea di 9 metri di larghezza. Ogni creatura nella linea deve riuscire in un tiro salvezza di Costituzione {@dc 21} o subire 14 ({@damage 4d6}) danni da veleno."
+					]
+				},
+				{
+					"name": "Teleport (Costs 2 Actions)",
+					"entries": [
+						"L'orrore si teletrasporta, insieme a qualsiasi creatura che sta afferrando, in uno spazio non occupato che può vedere entro 120 piedi da sé."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
+			],
+			"languageTags": [
+				"DS",
+				"TP"
+			],
+			"damageTags": [
+				"I",
+				"O",
+				"P",
+				"Y"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Dohwar",
+			"source": "BAM",
+			"page": 19,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"S"
+			],
+			"type": "fey",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 10,
+				"formula": "3d6"
+			},
+			"speed": {
+				"walk": 20,
+				"swim": 20
+			},
+			"str": 5,
+			"dex": 12,
+			"con": 11,
+			"int": 11,
+			"wis": 14,
+			"cha": 13,
+			"save": {
+				"dex": "+3",
+				"wis": "+4"
+			},
+			"skill": {
+				"deception": "+3",
+				"insight": "+4",
+				"persuasion": "+3"
+			},
+			"passive": 12,
+			"languages": [
+				"Common",
+				"Dohwar",
+				"telepathy 30 ft. (see also Merging below)"
+			],
+			"cr": "0",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Il dohwar lancia il seguente incantesimo, che non richiede alcuna componente e utilizza il Carisma come capacità di incantesimo (tiro salvezza {@dc 11}):"
+					],
+					"daily": {
+						"3": [
+							"{@spell detect thoughts}"
+						]
+					},
+					"ability": "cha",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Merging",
+					"entries": [
+						"Due dohwar possono conversare telepaticamente tra loro e con una terza creatura consenziente a loro scelta, a patto che tutti e tre si trovino entro 9 metri l'uno dall'altro."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, portata 5 ft., un bersaglio. {@h}3 ({@damage 1d4 + 1}) danni perforanti."
+					]
+				}
+			],
+			"languageTags": [
+				"C",
+				"TP"
+			],
+			"damageTags": [
+				"P"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Esthetic",
+			"source": "BAM",
+			"page": 20,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"G"
+			],
+			"type": "aberration",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 217,
+				"formula": "14d20 + 70"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 24,
+			"dex": 8,
+			"con": 20,
+			"int": 1,
+			"wis": 10,
+			"cha": 1,
+			"senses": [
+				"blindsight 300 ft. (blind beyond this radius)"
+			],
+			"passive": 12,
+			"immune": [
+				"acid"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"petrified",
+				"prone"
+			],
+			"cr": "12",
+			"trait": [
+				{
+					"name": "Bioluminescence",
+					"entries": [
+						"Finché ha almeno 1 punto ferita, l'esteta diffonde luce brillante in un raggio di 9 metri e luce fioca per altri 9 metri, e i suoi compartimenti interni sono poco illuminati."
+					]
+				},
+				{
+					"name": "Spelljamming",
+					"entries": [
+						"L'estetico ha le proprietà di un elmo incantatore (vedi Guida dell'Avventuriero Astrale), ma solo il suo creatore reigar può sintonizzarsi con esso."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'estetica non richiede aria, cibo o bevande."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'esteta effettua due attacchi di Tentacoli."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 11} per colpire, portata 30 m, un bersaglio. {@h}17 ({@damage 3d6 + 7}) danni da forza e, se il bersaglio è una creatura, è {@condition grappled} (fuga {@dc 17}). Finché la presa non termina, la creatura subisce 18 ({@damage 4d8}) danni da acido all'inizio di ogni suo turno e l'esteta non può usare questo tentacolo contro altri bersagli. L'esteta ha {@dice 1d4 × 2} tentacoli, ognuno dei quali può afferrare un bersaglio."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Jammerscream {@recharge}",
+					"entries": [
+						"L'Estetica prende di mira una nave incantatrice entro 300 piedi da sé, sopprimendo magicamente le proprietà del timone incantatore della nave per {@dice 2d10} giorni. Se la nave ha più di un timone a bordo, si determina casualmente quale timone è colpito. Una creatura sintonizzata con quell'elmo può scegliere di effettuare un tiro salvezza di Carisma {@dc 17}. Se il tiro salvezza fallisce, la creatura subisce 42 ({@damage 12d6}) danni psichici e l'elmo viene soppresso per {@dice 2d10} ore anziché {@dice 2d10} giorni. Se il tiro salvezza riesce, la creatura subisce la metà dei danni e l'elmo viene soppresso per {@dice 2d10} minuti anziché {@dice 2d10} giorni."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
+			],
+			"damageTags": [
+				"A",
+				"O",
+				"Y"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Eye Monger",
+			"source": "BAM",
+			"page": 21,
+			"size": [
+				"L"
+			],
+			"type": "aberration",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 149,
+				"formula": "13d10 + 78"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 20,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 21,
+			"dex": 6,
+			"con": 23,
+			"int": 7,
+			"wis": 13,
+			"cha": 7,
+			"senses": [
+				"darkvision 120 ft.",
+				"tremorsense 120 ft. while the eye monger's eye is closed"
+			],
+			"passive": 11,
+			"languages": [
+				"Deep Speech"
+			],
+			"cr": "10",
+			"trait": [
+				{
+					"name": "Antimagic Gullet",
+					"entries": [
+						"Gli effetti magici, compresi quelli prodotti da incantesimi e oggetti magici ma esclusi quelli creati da artefatti o divinità, sono soppressi all'interno dell'esofago del mercante di occhi. Qualsiasi slot incantesimo o carica spesa da una creatura nell'esofago per lanciare un incantesimo o attivare una proprietà di un oggetto magico viene sprecata. Mentre un effetto è soppresso, non funziona, ma il tempo trascorso a sopprimerlo conta per la sua durata. Nessun incantesimo o effetto magico che abbia origine al di fuori dell'esofago del mercante di occhi, eccetto quelli creati da un artefatto o da una divinità, può influenzare una creatura o un oggetto all'interno dell'esofago."
+					]
+				},
+				{
+					"name": "False Appearance",
+					"entries": [
+						"Se all'inizio del combattimento l'eye monger è immobile e ha gli occhi e la bocca chiusi, ha un vantaggio sul tiro iniziativa. Inoltre, se una creatura non ha osservato l'eye monger muoversi o agire, deve riuscire a effettuare una prova di Intelligenza {@dc 18} (Investigazione) per capire che l'eye monger è animato."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'occhio del mercante non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 9} per colpire, portata di 5 metri, un bersaglio. {@h}12 ({@damage 2d6 + 5}) danni perforanti, e se il bersaglio è una creatura media o più piccola, deve riuscire in un tiro salvezza di Destrezza {@dc 18} o essere inghiottito dall'Eye Monger e depositato nel suo esofago (vedi Esofago antimagico). L'Eye Monger può inghiottire una creatura alla volta. Una creatura inghiottita è {@condition blinded} e {@condition restrained}, ha una copertura totale contro gli attacchi e altri effetti provenienti dall'esterno dell'eye monger e subisce 35 ({@damage 10d6}) danni da acido all'inizio di ogni suo turno.",
+						"Se l'eye monger subisce 25 o più danni in un singolo turno da una creatura all'interno del suo esofago, l'eye monger rigurgita la creatura inghiottita, che cade {@condition prone} in uno spazio entro 3 piedi dall'eye monger. Se l'eye monger muore, una creatura inghiottita non è più {@condition restrained} da lui e può fuggire dal cadavere utilizzando 3 metri di movimento, uscendo {@condition prone}."
+					]
+				}
+			],
+			"traitTags": [
+				"False Appearance",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD",
+				"T"
+			],
+			"actionTags": [
+				"Swallow"
+			],
+			"languageTags": [
+				"DS"
+			],
+			"damageTags": [
+				"A",
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"blinded",
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Feyr",
+			"source": "BAM",
+			"page": 22,
+			"size": [
+				"L"
+			],
+			"type": "aberration",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 88,
+				"formula": "16d10"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 50,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 16,
+			"dex": 16,
+			"con": 11,
+			"int": 14,
+			"wis": 14,
+			"cha": 11,
+			"save": {
+				"int": "+5",
+				"wis": "+5"
+			},
+			"skill": {
+				"perception": "+5",
+				"stealth": "+9"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 15,
+			"conditionImmune": [
+				"frightened"
+			],
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il feyr non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il feyr effettua un attacco di Morso spaventoso e un attacco di Tentacolo."
+					]
+				},
+				{
+					"name": "Frightful Bite",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 5 piedi, una creatura. {@h}8 ({@damage 1d10 + 3}) danni perforanti, e ogni creatura entro 3 metri dal feyr che può vederlo deve riuscire in un tiro salvezza di {@dc 13} Saggezza o essere {@condition frightened} del feyr fino alla fine del suo prossimo turno."
+					]
+				},
+				{
+					"name": "Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 10 ft., una creatura. {@h}17 ({@damage 4d6 + 3}) danni psichici e il bersaglio subisce {@condition grappled} (fuga {@dc 13}). Finché la presa non termina, il feyr non può usare questo tentacolo contro altri bersagli. Il feyr ha due tentacoli, ognuno dei quali può afferrare una creatura."
+					]
+				},
+				{
+					"name": "Invisibility",
+					"entries": [
+						"Il feyr diventa {@condition invisible} finché non attacca, non usa il Combustibile da Incubo o non usa un'azione bonus per diventare visibile."
+					]
+				},
+				{
+					"name": "Nightmare Fuel (1/Day)",
+					"entries": [
+						"Il feyr prende di mira una creatura {@condition unconscious} che riesce a vedere entro 3 metri da sé. Il bersaglio deve riuscire a effettuare un tiro salvezza della Saggezza {@dc 13} o subire 27 ({@damage 5d10}) danni psichici, e il feyr guadagna punti ferita temporanei pari ai danni inflitti."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Tentacles"
+			],
+			"damageTags": [
+				"P",
+				"Y"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"frightened",
+				"grappled"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Gaj",
+			"source": "BAM",
+			"page": 23,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"L"
+			],
+			"type": "aberration",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d10 + 20"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 16,
+			"dex": 10,
+			"con": 15,
+			"int": 12,
+			"wis": 15,
+			"cha": 7,
+			"skill": {
+				"perception": "+6",
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 16,
+			"languages": [
+				"understands all languages but can't speak"
+			],
+			"cr": "4",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il gaj compie un attacco con le mandibole e usa le Antenne della mente o il Paralizzante (se disponibile)."
+					]
+				},
+				{
+					"name": "Mandibles",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 5 ft., una creatura. {@h}10 ({@damage 2d6 + 3}) danni da taglio e il bersaglio subisce {@condition grappled} (fuga {@dc 11}). Finché la presa non termina, il bersaglio subisce 10 ({@damage 2d6 + 3}) danni da taglio all'inizio di ogni turno del gaj. Mentre afferra una creatura, il gaj non può usare le mandibole per attaccare altre creature."
+					]
+				},
+				{
+					"name": "Mind-Probing Antennae",
+					"entries": [
+						"Il gaj prende di mira una creatura {@condition grappled} da esso. Il bersaglio deve effettuare un tiro salvezza di Saggezza {@dc 12}. Se il tiro salvezza fallisce, il bersaglio subisce 16 ({@damage 3d10}) danni psichici e il gaj estrae magicamente dalla mente del bersaglio un'informazione che vuole conoscere. Se il tiro salvezza riesce, il bersaglio subisce la metà dei danni e il gaj non apprende nulla."
+					]
+				},
+				{
+					"name": "Paralyze {@recharge}",
+					"entries": [
+						"Il gaj prende magicamente di mira una creatura che può vedere entro 60 piedi da sé. Il bersaglio deve riuscire in un tiro salvezza di {@dc 12} Saggezza o subire {@condition paralyzed} per 1 minuto. Il bersaglio può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stesso in caso di successo."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"CS",
+				"XX"
+			],
+			"damageTags": [
+				"S",
+				"Y"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"grappled",
+				"paralyzed"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Giant Space Hamster",
+			"source": "BAM",
+			"page": 56,
+			"size": [
+				"L"
+			],
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 22,
+				"formula": "4d10"
+			},
+			"speed": {
+				"walk": 30,
+				"burrow": 10
+			},
+			"str": 14,
+			"dex": 12,
+			"con": 10,
+			"int": 2,
+			"wis": 12,
+			"cha": 4,
+			"passive": 11,
+			"cr": "1/4",
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}7 ({@damage 2d4 + 2}) danni perforanti."
+					]
+				}
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Giff Shipmate",
+			"source": "BAM",
+			"page": 24,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d8 + 30"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 18,
+			"dex": 14,
+			"con": 17,
+			"int": 11,
+			"wis": 12,
+			"cha": 12,
+			"passive": 11,
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Firearms Knowledge",
+					"entries": [
+						"La padronanza delle armi del Giff gli consente di ignorare la proprietà di caricamento di qualsiasi arma da fuoco."
+					]
+				},
+				{
+					"name": "Steady as She Goes",
+					"entries": [
+						"Sul ponte di una nave, il giff ha vantaggio sulle prove di abilità e sui tiri salvezza effettuati contro gli effetti che lo farebbero cadere {@condition prone} o lo spingerebbero fuori bordo."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il giff effettua due attacchi con spada lunga o moschetto."
+					]
+				},
+				{
+					"name": "Longsword",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata di 5 metri, un bersaglio. {@h}8 ({@damage 1d8 + 4}) danni da taglio, o 9 ({@damage 1d10 + 4}) danni da taglio se usato a due mani."
+					]
+				},
+				{
+					"name": "Musket",
+					"entries": [
+						"{@atk rw} {@hit 4} per colpire, gittata 40/120 ft., un bersaglio. {@h}8 ({@damage 1d12 + 2}) danni perforanti."
+					]
+				},
+				{
+					"name": "Force Grenade",
+					"entries": [
+						"Il giff lancia una granata fino a 60 piedi, che esplode in una sfera di 6 metri di raggio. Ogni creatura in quell'area deve effettuare un tiro salvezza di Destrezza {@dc 15}, subendo 17 ({@damage 5d6}) danni alla forza se il tiro salvezza fallisce, o la metà dei danni se riesce. Dopo che il giff ha lanciato la granata, tira un {@dice d6}; con un tiro di 4 o inferiore, il giff non ha più granate da lanciare."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"O",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Giff Shock Trooper",
+			"source": "BAM",
+			"page": 25,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 18,
+					"from": [
+						"{@item plate armor|PHB|plate}"
+					]
+				}
+			],
+			"hp": {
+				"average": 93,
+				"formula": "11d8 + 44"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 20,
+			"dex": 14,
+			"con": 18,
+			"int": 11,
+			"wis": 12,
+			"cha": 13,
+			"save": {
+				"str": "+8",
+				"con": "+7",
+				"wis": "+4"
+			},
+			"skill": {
+				"athletics": "+8",
+				"intimidation": "+7",
+				"perception": "+4"
+			},
+			"passive": 14,
+			"languages": [
+				"Common"
+			],
+			"cr": "6",
+			"trait": [
+				{
+					"name": "Firearms Knowledge",
+					"entries": [
+						"La padronanza delle armi del Giff gli consente di ignorare la proprietà di caricamento di qualsiasi arma da fuoco."
+					]
+				},
+				{
+					"name": "Headfirst Charge",
+					"entries": [
+						"Se il giff si muove per almeno 6 metri in linea retta e finisce entro 5 metri da una creatura Grande o più piccola, questa deve riuscire in un tiro salvezza di Forza {@dc 16} o subire 7 ({@damage 2d6}) danni da percosse e subire un colpo {@condition prone}."
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"Il giff infligge danni doppi a oggetti e strutture."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il giff effettua due attacchi di Spada o Moschetto."
+					]
+				},
+				{
+					"name": "Greatsword",
+					"entries": [
+						"{@atk mw} {@hit 8} per colpire, portata 5 ft., un bersaglio. {@h}15 ({@damage 3d6 + 5}) danni da taglio."
+					]
+				},
+				{
+					"name": "Musket",
+					"entries": [
+						"{@atk rw} {@hit 5} per colpire, gittata 40/120 ft., un bersaglio. {@h}15 ({@damage 2d12 + 2}) danni perforanti."
+					]
+				},
+				{
+					"name": "Thunder Bomb",
+					"entries": [
+						"Il giff accende una bomba delle dimensioni di un pompelmo e la lancia in un punto fino a 60 piedi di distanza, dove esplode. Ogni creatura entro una sfera di 3 metri centrata su quel punto deve effettuare un tiro salvezza di Destrezza {@dc 15}, subendo 18 ({@damage 4d8}) danni da tuono in caso di fallimento del tiro salvezza, o la metà in caso di successo. Dopo che il giff ha lanciato la bomba, tira un {@dice d6}; con un tiro di 4 o inferiore, il giff non ha più bombe da lanciare."
+					]
+				}
+			],
+			"traitTags": [
+				"Siege Monster"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"B",
+				"P",
+				"S",
+				"T"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW"
+			],
+			"conditionInflict": [
+				"prone"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Giff Warlord",
+			"source": "BAM",
+			"page": 25,
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"{@item half plate armor|PHB|half plate}"
+					]
+				}
+			],
+			"hp": {
+				"average": 178,
+				"formula": "21d8 + 84"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 22,
+			"dex": 15,
+			"con": 18,
+			"int": 14,
+			"wis": 14,
+			"cha": 18,
+			"save": {
+				"str": "+10",
+				"dex": "+6",
+				"con": "+8",
+				"wis": "+6"
+			},
+			"skill": {
+				"athletics": "+10",
+				"insight": "+6",
+				"intimidation": "+12"
+			},
+			"passive": 12,
+			"languages": [
+				"Common"
+			],
+			"cr": "10",
+			"trait": [
+				{
+					"name": "Firearms Knowledge",
+					"entries": [
+						"La padronanza delle armi del Giff gli consente di ignorare la proprietà di caricamento di qualsiasi arma da fuoco."
+					]
+				},
+				{
+					"name": "Legendary Resistance (2/Day)",
+					"entries": [
+						"Se il giff fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il giff effettua due attacchi Morningstar."
+					]
+				},
+				{
+					"name": "Morningstar",
+					"entries": [
+						"{@atk mw} {@hit 10} per colpire, portata 5 ft., un bersaglio. {@h}14 ({@damage 2d8 + 5}) danni perforanti."
+					]
+				},
+				{
+					"name": "Double-Barreled Musket",
+					"entries": [
+						"{@atk rw} {@hit 6} per colpire, gittata 40/120 ft., un bersaglio. {@h}28 ({@damage 4d12 + 2}) danni perforanti."
+					]
+				}
+			],
+			"legendary": [
+				{
+					"name": "Move",
+					"entries": [
+						"Il giff si muove fino alla sua velocità senza provocare attacchi di opportunità."
+					]
+				},
+				{
+					"name": "Rallying Cry",
+					"entries": [
+						"Il giff termina la condizione {@condition frightened} su se stesso e su ogni creatura a sua scelta che può vedere entro 9 piedi da lui."
+					]
+				},
+				{
+					"name": "Weapon of Choice (2 Actions)",
+					"entries": [
+						"Il giff effettua due attacchi Morningstar o un attacco di Moschetto a doppia canna."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Githyanki Buccaneer",
+			"source": "BAM",
+			"page": 27,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"gith"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item breastplate|PHB}"
+					]
+				}
+			],
+			"hp": {
+				"average": 58,
+				"formula": "9d8 + 18"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 14,
+			"con": 14,
+			"int": 16,
+			"wis": 13,
+			"cha": 13,
+			"save": {
+				"con": "+4",
+				"int": "+5",
+				"wis": "+3"
+			},
+			"skill": {
+				"athletics": "+5",
+				"deception": "+3",
+				"perception": "+3",
+				"survival": "+3"
+			},
+			"passive": 13,
+			"languages": [
+				"Common",
+				"Gith"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Il githyanki lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 13}): A volontà: luce, mano del mago (la mano è invisibile)"
+					],
+					"daily": {
+						"1e": [
+							"{@spell plane shift}",
+							"{@spell telekinesis}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il githyanki compie due attacchi con Spada Magica o con Folgore Telecinetica."
+					]
+				},
+				{
+					"name": "Greatsword",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata di 5 metri, un bersaglio. {@h}10 ({@damage 2d6 + 3}) danni da taglio più 3 ({@damage 1d6}) danni psichici."
+					]
+				},
+				{
+					"name": "Telekinetic Bolt",
+					"entries": [
+						"{@atk rs} {@hit 5} per colpire, gittata 60 m, un bersaglio. {@h}13 ({@damage 3d6 + 3}) danni da forza."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Astral Step {@recharge 4}",
+					"entries": [
+						"Il githyanki si teletrasporta, insieme a qualsiasi equipaggiamento che indossa o trasporta, fino a 9 metri in uno spazio non occupato che può vedere."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GTH"
+			],
+			"damageTags": [
+				"O",
+				"S",
+				"Y"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflictSpell": [
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Githyanki Star Seer",
+			"source": "BAM",
+			"page": 27,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"gith",
+					"warlock"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@spell mage armor}"
+					]
+				}
+			],
+			"hp": {
+				"average": 110,
+				"formula": "17d8 + 34"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 11,
+			"dex": 11,
+			"con": 14,
+			"int": 19,
+			"wis": 16,
+			"cha": 14,
+			"save": {
+				"con": "+5",
+				"int": "+7",
+				"wis": "+6"
+			},
+			"skill": {
+				"arcana": "+10",
+				"history": "+10"
+			},
+			"passive": 13,
+			"resist": [
+				"radiant"
+			],
+			"languages": [
+				"Common",
+				"Gith"
+			],
+			"cr": "7",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Il githyanki lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 15}): A volontà: luce, mano del mago (la mano è invisibile)"
+					],
+					"daily": {
+						"2e": [
+							"{@spell detect magic}",
+							"{@spell invisibility} (self only)",
+							"{@spell mage armor} (self only)",
+							"{@spell tongues}"
+						],
+						"1e": [
+							"{@spell contact other plane} (as an action)",
+							"{@spell plane shift}",
+							"{@spell telekinesis}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il githyanki compie tre attacchi con i dardi astrali."
+					]
+				},
+				{
+					"name": "Astral Bolt",
+					"entries": [
+						"{@atk ms,rs} {@hit 7} per colpire, portata 5 ft. o 60 ft., un bersaglio. {@h}20 ({@damage 3d10 + 4}) danni radianti."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Astral Step {@recharge 4}",
+					"entries": [
+						"Il githyanki si teletrasporta, insieme a qualsiasi equipaggiamento che indossa o trasporta, fino a 9 metri in uno spazio non occupato che può vedere."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GTH"
+			],
+			"damageTags": [
+				"R"
+			],
+			"damageTagsSpell": [
+				"Y"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"conditionInflictSpell": [
+				"invisible",
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Githyanki Xenomancer",
+			"source": "BAM",
+			"page": 27,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"druid",
+					"gith"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				14
+			],
+			"hp": {
+				"average": 157,
+				"formula": "21d8 + 63"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 18,
+			"con": 17,
+			"int": 15,
+			"wis": 18,
+			"cha": 13,
+			"save": {
+				"dex": "+8",
+				"con": "+7",
+				"wis": "+8"
+			},
+			"skill": {
+				"animal handling": "+8",
+				"nature": "+6",
+				"perception": "+8",
+				"survival": "+8"
+			},
+			"passive": 18,
+			"languages": [
+				"Gith plus any four languages"
+			],
+			"cr": "9",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Il githyanki lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano la Saggezza come capacità di incantesimo (tiro salvezza {@dc 16}): A volontà: druido, luce, mano del mago (la mano è invisibile)."
+					],
+					"daily": {
+						"2e": [
+							"{@spell invisibility} (self only)",
+							"{@spell pass without trace} (self only)"
+						],
+						"1e": [
+							"{@spell dominate monster}",
+							"{@spell forcecage}",
+							"{@spell plane shift}",
+							"{@spell telekinesis}"
+						]
+					},
+					"ability": "wis",
+					"displayAs": "action"
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il githyanki compie tre attacchi di bastone, tre attacchi di dardo telecinetico o una combinazione di questi."
+					]
+				},
+				{
+					"name": "Staff",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 5 ft., un bersaglio. {@h}5 ({@damage 1d6 + 2}) danni da percosse, o 6 ({@damage 1d8 + 2}) danni da percosse se usato a due mani, più 14 ({@damage 4d6}) danni psichici."
+					]
+				},
+				{
+					"name": "Telekinetic Bolt",
+					"entries": [
+						"{@atk rs} {@hit 8} per colpire, gittata 60 m, un bersaglio. {@h}20 ({@damage 3d10 + 4}) danni da forza."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Astral Step {@recharge 4}",
+					"entries": [
+						"Il githyanki si teletrasporta, insieme a qualsiasi equipaggiamento che indossa o trasporta, fino a 9 metri in uno spazio non occupato che può vedere."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"GTH",
+				"X"
+			],
+			"damageTags": [
+				"B",
+				"O",
+				"Y"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflictSpell": [
+				"charmed",
+				"invisible",
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Gray Scavver",
+			"source": "BAM",
+			"page": 49,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 19,
+				"formula": "3d8 + 6"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 40
+			},
+			"str": 16,
+			"dex": 13,
+			"con": 15,
+			"int": 1,
+			"wis": 10,
+			"cha": 1,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Lo scavatore non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire (con vantaggio se il bersaglio è una creatura a cui mancano punti ferita), raggio d'azione di 5 m, un bersaglio. {@h}7 ({@damage 1d8 + 3}) danni perforanti."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Hadozee Explorer",
+			"source": "BAM",
+			"page": 28,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@item studded leather armor|PHB|studded leather}"
+					]
+				}
+			],
+			"hp": {
+				"average": 49,
+				"formula": "9d8 + 9"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 11,
+			"dex": 17,
+			"con": 13,
+			"int": 13,
+			"wis": 17,
+			"cha": 14,
+			"save": {
+				"con": "+3",
+				"wis": "+5"
+			},
+			"skill": {
+				"athletics": "+2",
+				"perception": "+5",
+				"stealth": "+5",
+				"survival": "+5"
+			},
+			"passive": 15,
+			"languages": [
+				"Common",
+				"Hadozee"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Glide",
+					"entries": [
+						"Se non è {@condition incapacitated} o non indossa un'armatura pesante, l'hadozee può estendere le sue membrane cutanee per muoversi fino a 5 piedi in orizzontale per ogni 1 piede che scende in aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'hadozee compie due attacchi di shortword."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}6 ({@damage 1d6 + 3}) danni perforanti."
+					]
+				},
+				{
+					"name": "Musket",
+					"entries": [
+						"{@atk rw} {@hit 5} per colpire, gittata 40/120 ft., un bersaglio. {@h}16 ({@damage 2d12 + 3}) danni perforanti."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Nimble Escape",
+					"entries": [
+						"L'hadozee effettua l'azione Disimpegnarsi o Nascondersi."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Safe Descent",
+					"entries": [
+						"Quando subisce danni da caduta, l'hadozee estende le sue membrane cutanee per ridurre a 0 i danni della caduta, a patto che non indossi un'armatura pesante."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Hadozee Shipmate",
+			"source": "BAM",
+			"page": 29,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 9,
+				"formula": "2d8"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 11,
+			"dex": 14,
+			"con": 11,
+			"int": 10,
+			"wis": 14,
+			"cha": 12,
+			"save": {
+				"dex": "+4",
+				"con": "+2"
+			},
+			"skill": {
+				"perception": "+4",
+				"survival": "+6"
+			},
+			"passive": 14,
+			"languages": [
+				"Common",
+				"Hadozee"
+			],
+			"cr": "1/8",
+			"trait": [
+				{
+					"name": "Glide",
+					"entries": [
+						"Se non è {@condition incapacitated} o non indossa un'armatura pesante, l'hadozee può estendere le sue membrane cutanee per muoversi fino a 5 piedi in orizzontale per ogni 1 piede che scende in aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} per colpire, portata 5 ft. o raggio d'azione 20/60 ft., un bersaglio. {@h}4 ({@damage 1d4 + 2}) danni perforanti."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Safe Descent",
+					"entries": [
+						"Quando subisce danni da caduta, l'hadozee estende le sue membrane cutanee per ridurre a 0 i danni della caduta, a patto che non indossi un'armatura pesante."
+					]
+				}
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Hadozee Warrior",
+			"source": "BAM",
+			"page": 29,
+			"size": [
+				"M"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item breastplate|PHB}"
+					]
+				}
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d8 + 3"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 11,
+			"dex": 16,
+			"con": 13,
+			"int": 10,
+			"wis": 13,
+			"cha": 12,
+			"save": {
+				"dex": "+5",
+				"con": "+3"
+			},
+			"skill": {
+				"perception": "+3",
+				"stealth": "+5",
+				"survival": "+5"
+			},
+			"passive": 13,
+			"languages": [
+				"Common",
+				"Hadozee"
+			],
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Glide",
+					"entries": [
+						"Se non è {@condition incapacitated} o non indossa un'armatura pesante, l'hadozee può estendere le sue membrane cutanee per muoversi fino a 5 piedi in orizzontale per ogni 1 piede che scende in aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"L'hadozee compie due attacchi di shortword."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}6 ({@damage 1d6 + 3}) danni perforanti."
+					]
+				},
+				{
+					"name": "Light Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 5} per colpire, gittata 80/320 piedi, un bersaglio. {@h}12 ({@damage 2d8 + 3}) danni perforanti."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Safe Descent",
+					"entries": [
+						"Quando subisce danni da caduta, l'hadozee estende le sue membrane cutanee per ridurre a 0 i danni della caduta, a patto che non indossi un'armatura pesante."
+					]
+				},
+				{
+					"name": "Uncanny Dodge",
+					"entries": [
+						"L'hadozee dimezza i danni subiti da un attacco che lo colpisce, purché riesca a vedere l'attaccante."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RNG",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Jammer Leech",
+			"source": "BAM",
+			"page": 30,
+			"size": [
+				"T"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 27,
+				"formula": "5d4 + 15"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 11,
+			"dex": 1,
+			"con": 16,
+			"int": 1,
+			"wis": 10,
+			"cha": 1,
+			"senses": [
+				"darkvision 30 ft."
+			],
+			"passive": 10,
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"prone"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Spelljammer Overload",
+					"entries": [
+						"Se la sanguisuga viene ridotta a 0 punti ferita mentre è attaccata a una nave dotata di un elmo incantatore, la creatura sintonizzata su quell'elmo deve effettuare un tiro salvezza di Costituzione {@dc 13}. Se il tiro salvezza fallisce, la creatura subisce 10 ({@damage 4d4}) danni psichici ed è {@condition incapacitated} per 1 minuto. Se il tiro salvezza va a buon fine, la creatura subisce la metà dei danni e rimane {@condition incapacitated} fino alla fine del suo turno successivo."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"La sanguisuga non ha bisogno di aria né di dormire."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Spiked Tentacle",
+					"entries": [
+						"{@atk mw} {@hit 2} per colpire, portata 5 ft., un bersaglio. {@h}2 ({@damage 1d4}) danni perforanti."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Attach to Hull",
+					"entries": [
+						"La sanguisuga si attacca allo scafo di una nave nel suo spazio, infliggendo 2 ({@damage 1d4}) danni da perforazione alla nave (ignorando la soglia di danno della nave). Il danno non può essere riparato finché la sanguisuga non viene rimossa dallo scafo. Mentre la sanguisuga è attaccata, la sua velocità è pari a 0 e può staccarsi come azione bonus. Come azione, una creatura che si trova a portata di mano della sanguisuga può tentare di staccarla dallo scafo con una prova di Forza {@dc 18} riuscita. Se la prova fallisce, l'azione viene sprecata e la sanguisuga rimane attaccata allo scafo. Rimuovere la sanguisuga in questo modo non infligge alcun danno alla sanguisuga o alla nave."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Magical Discharge (1/Day)",
+					"entries": [
+						"Quando subisce danni, la sanguisuga può scaricare un fulmine di energia magica dal suo occhio che prende di mira una creatura che riesce a vedere entro 9 metri da sé. Il bersaglio deve riuscire in un tiro salvezza di Destrezza {@dc 13} o subire 10 ({@damage 3d6}) danni da forza e subire {@condition stunned} fino alla fine del suo prossimo turno."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"D"
+			],
+			"damageTags": [
+				"O",
+				"P",
+				"Y"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"incapacitated",
+				"stunned"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Kindori",
+			"source": "BAM",
+			"page": 31,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"G"
+			],
+			"type": "celestial",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 11,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 202,
+				"formula": "15d20 + 45"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 25,
+			"dex": 7,
+			"con": 17,
+			"int": 6,
+			"wis": 14,
+			"cha": 7,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 12,
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il kindori non ha bisogno di cibo, bevande o aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 10} per colpire, portata 5 ft., un bersaglio. {@h}23 ({@damage 3d10 + 7}) danni da percosse."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Blinding Eyes {@recharge}",
+					"entries": [
+						"Il kindori emette una luce brillante in un cono di 120 piedi. Ogni creatura nel cono deve riuscire in un tiro salvezza di Saggezza {@dc 14} o subire {@condition blinded} per 1 minuto. Una creatura può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stessa in caso di successo."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflict": [
+				"blinded"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Lunar Dragon Wyrmling",
+			"source": "BAM",
+			"page": 35,
+			"size": [
+				"M"
+			],
+			"type": "dragon",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 37,
+				"formula": "5d8 + 15"
+			},
+			"speed": {
+				"walk": 40,
+				"burrow": 10,
+				"fly": 40
+			},
+			"str": 15,
+			"dex": 12,
+			"con": 16,
+			"int": 6,
+			"wis": 10,
+			"cha": 9,
+			"save": {
+				"con": "+5",
+				"wis": "+2"
+			},
+			"skill": {
+				"perception": "+4",
+				"stealth": "+5"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 14,
+			"immune": [
+				"cold"
+			],
+			"languages": [
+				"Draconic"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Tunneler",
+					"entries": [
+						"Il drago può scavare nella roccia solida a metà della sua velocità di scavo e lascia un tunnel di 5 piedi di diametro nella sua scia."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il drago non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}5 ({@damage 1d6 + 2}) danni da perforazione più 3 ({@damage 1d6}) danni da freddo."
+					]
+				},
+				{
+					"name": "Cold Breath {@recharge 5}",
+					"entries": [
+						"Il drago emette un getto di gelo in un cono di 15 metri. Ogni creatura nel cono deve effettuare un tiro salvezza di Costituzione {@dc 13}. Se il tiro salvezza fallisce, la creatura subisce 13 ({@damage 3d8}) danni da freddo e la sua velocità viene dimezzata fino alla fine del suo turno successivo. Se il tiro salvezza riesce, la creatura subisce la metà dei danni e la sua velocità non viene ridotta."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Phase (2/Day)",
+					"entries": [
+						"Il drago diventa parzialmente incorporeo finché mantiene la concentrazione sull'effetto (come se si concentrasse su un incantesimo). Quando è parzialmente incorporeo, il drago ha resistenza ai danni da percosse, perforazione e taglio."
+					]
+				}
+			],
+			"dragonAge": "wyrmling",
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Breath Weapon"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"C",
+				"P"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Megapede",
+			"source": "BAM",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"G"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 175,
+				"formula": "13d20 + 39"
+			},
+			"speed": {
+				"walk": 40,
+				"climb": 40
+			},
+			"str": 22,
+			"dex": 10,
+			"con": 17,
+			"int": 1,
+			"wis": 10,
+			"cha": 3,
+			"save": {
+				"con": "+7",
+				"wis": "+4"
+			},
+			"skill": {
+				"perception": "+8",
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 18,
+			"cr": "11",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il megapede effettua un attacco con il morso e utilizza Danno vitale o Bomba psichica."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 10} per colpire, portata 20 m, un bersaglio. {@h}22 ({@damage 3d10 + 6}) danni da perforazione più 22 ({@damage 5d8}) danni da veleno."
+					]
+				},
+				{
+					"name": "Life Drain",
+					"entries": [
+						"Il megapede prosciuga magicamente l'energia vitale delle creature vicine. Ogni creatura entro 15 piedi dal megapede deve effettuare un tiro salvezza di Costituzione {@dc 15}, subendo 16 ({@damage 3d10}) danni necrotici se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				},
+				{
+					"name": "Psychic Bomb",
+					"entries": [
+						"Il megapede prende di mira una creatura che può vedere entro 60 piedi da sé. Il bersaglio deve effettuare un tiro salvezza di Saggezza {@dc 15}. Se il tiro salvezza fallisce, il bersaglio subisce 22 ({@damage 5d8}) danni psichici e subisce {@condition incapacitated} fino alla fine del suo turno successivo. Se il tiro salvezza riesce, il bersaglio subisce la metà dei danni e non subisce {@condition incapacitated}."
+					]
+				}
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"I",
+				"N",
+				"P",
+				"Y"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Mercane",
+			"source": "BAM",
+			"page": 37,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"L"
+			],
+			"type": "giant",
+			"alignment": [
+				"L",
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@spell mage armor}"
+					]
+				}
+			],
+			"hp": {
+				"average": 75,
+				"formula": "10d10 + 20"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 10,
+			"con": 15,
+			"int": 18,
+			"wis": 16,
+			"cha": 15,
+			"save": {
+				"int": "+7",
+				"wis": "+6",
+				"cha": "+5"
+			},
+			"skill": {
+				"insight": "+9",
+				"perception": "+6",
+				"persuasion": "+5"
+			},
+			"passive": 16,
+			"languages": [
+				"Common",
+				"Giant",
+				"telepathy 60 ft. (see also Mercane telepathy)"
+			],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Il mercante lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 15}): A volontà: individuare la magia, luce"
+					],
+					"daily": {
+						"1e": [
+							"{@spell dimension door}",
+							"{@spell invisibility}",
+							"{@spell mage armor} (self only)"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Mercane Telepathy",
+					"entries": [
+						"Il mercenario può comunicare telepaticamente con qualsiasi altro mercenario che conosce, indipendentemente dalla distanza che lo separa."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il mercenario compie tre attacchi con la Lama Psi."
+					]
+				},
+				{
+					"name": "Psi-Imbued Blade",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata di 5 metri, un bersaglio. {@h}10 ({@damage 2d6 + 3}) danni da taglio e, se il bersaglio è una creatura, deve riuscire in un tiro salvezza di {@dc 15} Saggezza o essere {@condition frightened} del mercante fino alla fine del suo prossimo turno."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"GI",
+				"TP"
+			],
+			"damageTags": [
+				"S"
+			],
+			"damageTagsSpell": [
+				"O"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"frightened"
+			],
+			"conditionInflictSpell": [
+				"invisible"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Murder Comet",
+			"source": "BAM",
+			"page": 38,
+			"size": [
+				"M"
+			],
+			"type": "elemental",
+			"alignment": [
+				"N",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 19,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 66,
+				"formula": "7d8 + 35"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 120
+			},
+			"str": 15,
+			"dex": 15,
+			"con": 20,
+			"int": 6,
+			"wis": 10,
+			"cha": 6,
+			"senses": [
+				"darkvision 240 ft."
+			],
+			"passive": 10,
+			"immune": [
+				"fire",
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"unconscious"
+			],
+			"languages": [
+				"Ignan",
+				"Terran"
+			],
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Explode",
+					"entries": [
+						"Quando la cometa scende a 0 punti ferita, esplode in una sfera di 6 metri di raggio centrata su se stessa. Ogni creatura nella sfera deve effettuare un tiro salvezza di Destrezza {@dc 16}, subendo 28 ({@damage 8d6}) danni da fuoco se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				},
+				{
+					"name": "Flyby",
+					"entries": [
+						"La cometa non provoca attacchi di opportunità quando vola fuori dalla portata di un nemico."
+					]
+				},
+				{
+					"name": "Illumination",
+					"entries": [
+						"La cometa emette luce brillante in un raggio di 9 metri e luce fioca per altri 9 metri."
+					]
+				},
+				{
+					"name": "Siege Monster",
+					"entries": [
+						"La cometa infligge danni doppi a oggetti e strutture."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"La cometa non ha bisogno di aria, cibo, bevande o sonno."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"La cometa effettua un attacco di tipo Slam e un attacco di tipo Spit Fire."
+					]
+				},
+				{
+					"name": "Slam",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}6 ({@damage 1d8 + 2}) danni da percosse più 7 ({@damage 2d6}) danni da fuoco."
+					]
+				},
+				{
+					"name": "Spit Fire",
+					"entries": [
+						"{@atk rw} {@hit 5} per colpire, gittata 60 m, un bersaglio. {@h}13 ({@damage 2d10 + 2}) danni da fuoco."
+					]
+				}
+			],
+			"traitTags": [
+				"Flyby",
+				"Illumination",
+				"Siege Monster",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"IG",
+				"T"
+			],
+			"damageTags": [
+				"B",
+				"F"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Neh-thalggu",
+			"source": "BAM",
+			"page": 39,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"L"
+			],
+			"type": "aberration",
+			"alignment": [
+				"C",
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 95,
+				"formula": "10d10 + 40"
+			},
+			"speed": {
+				"walk": 40
+			},
+			"str": 15,
+			"dex": 8,
+			"con": 18,
+			"int": 12,
+			"wis": 11,
+			"cha": 7,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"languages": [
+				"Deep Speech; see also Brain Dump"
+			],
+			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Il neh-thalggu lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 11}). Per lanciare l'incantesimo deve aver consumato il numero di cervelli richiesto, come indicato:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell arms of Hadar} (1 brain)",
+							"{@spell detect magic} (2 brains)",
+							"{@spell magic missile} (3 brains)",
+							"{@spell Tenser's floating disk} (4 brains)",
+							"{@spell darkness} (5 brains)",
+							"{@spell hold person} (6 brains)",
+							"{@spell invisibility} (7 brains)",
+							"{@spell spider climb} (8 brains)",
+							"{@spell fear} (9 brains)",
+							"{@spell hypnotic pattern} (10 brains)",
+							"{@spell major image} (11 brains)",
+							"{@spell stinking cloud} (12 brains)"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Brain Dump",
+					"entries": [
+						"Ogni volta che il neh-thalggu consuma un cervello, ottiene la capacità magica di parlare e comprendere le lingue conosciute dal precedente proprietario del cervello."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il neh-thalggu non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il neh-thalggu compie un attacco con il morso e due con l'artiglio."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}11 ({@damage 2d8 + 2}) danni perforanti."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}4 ({@damage 1d4 + 2}) danni da taglio."
+					]
+				},
+				{
+					"name": "Extract Brain",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un {@condition incapacitated} Umanoide. {@h}35 ({@damage 10d6}) danni da perforazione. Se questo danno riduce il bersaglio a 0 punti ferita, il neh-thalggu lo uccide estraendo e consumando il suo cervello."
+					]
+				},
+				{
+					"name": "Mind Blast {@recharge 5}",
+					"entries": [
+						"Il neh-thalggu emette magicamente energia psichica verso un umanoide che riesce a vedere entro 3 metri da sé. Il bersaglio deve effettuare un tiro salvezza di Saggezza {@dc 14}. Se il tiro salvezza fallisce, il bersaglio subisce 9 ({@damage 2d8}) danni psichici ed è {@condition incapacitated} fino alla fine del suo prossimo turno. Se il tiro salvezza riesce, il bersaglio subisce la metà dei danni e non subisce {@condition incapacitated}."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DS"
+			],
+			"damageTags": [
+				"P",
+				"S",
+				"Y"
+			],
+			"damageTagsSpell": [
+				"N",
+				"O"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"conditionInflictSpell": [
+				"charmed",
+				"frightened",
+				"incapacitated",
+				"invisible",
+				"paralyzed"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Neogi Hatchling Swarm",
+			"source": "BAM",
+			"page": 40,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "aberration",
+				"swarmSize": "T"
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 52,
+				"formula": "8d8 + 16"
+			},
+			"speed": {
+				"walk": 20,
+				"climb": 20
+			},
+			"str": 12,
+			"dex": 13,
+			"con": 14,
+			"int": 6,
+			"wis": 10,
+			"cha": 9,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"resist": [
+				"bludgeoning",
+				"piercing",
+				"slashing"
+			],
+			"conditionImmune": [
+				"charmed",
+				"frightened",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"prone",
+				"restrained",
+				"stunned"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"Lo sciame può arrampicarsi su superfici difficili, anche a testa in giù sui soffitti, senza dover effettuare una prova di abilità."
+					]
+				},
+				{
+					"name": "Swarm",
+					"entries": [
+						"Lo sciame può occupare lo spazio di un'altra creatura e viceversa, e lo sciame può muoversi attraverso qualsiasi apertura sufficientemente grande per una covata di Tiny neogi. Lo sciame non può recuperare punti ferita o guadagnare punti ferita temporanei."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Swarm of Bites",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, raggio d'azione 5 ft., una creatura. {@h}22 ({@damage 6d6 + 1}) danni da veleno, o 11 ({@damage 3d6 + 1}) danni da veleno se lo sciame ha metà dei suoi punti ferita o meno, e il bersaglio deve riuscire in un tiro salvezza di Costituzione {@dc 12} o diventare {@condition poisoned} per 1 minuto. Un bersaglio può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stesso in caso di successo."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb"
+			],
+			"senseTags": [
+				"D"
+			],
+			"damageTags": [
+				"I"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"poisoned"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Neogi Pirate",
+			"source": "BAM",
+			"page": 41,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"S"
+			],
+			"type": "aberration",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"{@item breastplate|PHB}"
+					]
+				}
+			],
+			"hp": {
+				"average": 33,
+				"formula": "6d6 + 12"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 6,
+			"dex": 15,
+			"con": 14,
+			"int": 13,
+			"wis": 12,
+			"cha": 15,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"languages": [
+				"Common",
+				"Deep Speech",
+				"Undercommon"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Mental Fortitude",
+					"entries": [
+						"Il neogi ha vantaggio sui tiri salvezza contro l'essere {@condition charmed} o {@condition frightened}, e la magia non può addormentare il neogi."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"Il neogi può arrampicarsi su superfici difficili, anche a testa in giù sui soffitti, senza dover effettuare una prova di abilità."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il neogi effettua un attacco con il morso e due con l'artiglio."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata di 5 metri, un bersaglio. {@h}6 ({@damage 1d6 + 3}) danni perforanti più 14 ({@damage 4d6}) danni da veleno, e il bersaglio deve riuscire in un tiro salvezza di Costituzione {@dc 12} o diventare {@condition poisoned} per 1 minuto. Un bersaglio può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stesso in caso di successo."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}6 ({@damage 1d6 + 3}) danni da taglio."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DS",
+				"U"
+			],
+			"damageTags": [
+				"I",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"poisoned"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Neogi Void Hunter",
+			"source": "BAM",
+			"page": 41,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "aberration",
+				"tags": [
+					"warlock"
+				]
+			},
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 58,
+				"formula": "9d8 + 18"
+			},
+			"speed": {
+				"walk": 30,
+				"climb": 30
+			},
+			"str": 6,
+			"dex": 16,
+			"con": 14,
+			"int": 16,
+			"wis": 12,
+			"cha": 18,
+			"save": {
+				"wis": "+3",
+				"cha": "+6"
+			},
+			"skill": {
+				"arcana": "+5",
+				"deception": "+6",
+				"intimidation": "+6",
+				"perception": "+3",
+				"persuasion": "+6"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 13,
+			"languages": [
+				"Common",
+				"Deep Speech",
+				"telepathy 30 ft.",
+				"Undercommon"
+			],
+			"cr": "4",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Il neogi lancia uno dei seguenti incantesimi, usando il Carisma come capacità di incantesimo:"
+					],
+					"daily": {
+						"1e": [
+							"{@spell dimension door}",
+							"{@spell invisibility}"
+						]
+					},
+					"ability": "cha",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Devil's Sight",
+					"entries": [
+						"L'oscurità magica non ostacola la scurovisione del neogi."
+					]
+				},
+				{
+					"name": "Mental Fortitude",
+					"entries": [
+						"Il neogi ha vantaggio sui tiri salvezza contro l'essere {@condition charmed} o {@condition frightened}, e la magia non può addormentare il neogi."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"Il neogi può arrampicarsi su superfici difficili, anche a testa in giù sui soffitti, senza dover effettuare una prova di abilità."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il neogi effettua un attacco con il morso e due con l'artiglio, oppure effettua due attacchi con il fulmine di Eldritch."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata di 5 metri, un bersaglio. {@h}7 ({@damage 1d8 + 3}) danni perforanti più 14 ({@damage 4d6}) danni da veleno, e il bersaglio deve riuscire in un tiro salvezza di Costituzione {@dc 12} o diventare {@condition poisoned} per 1 minuto. Un bersaglio può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stesso in caso di successo."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}7 ({@damage 1d8 + 3}) danni perforanti."
+					]
+				},
+				{
+					"name": "Eldritch Bolt",
+					"entries": [
+						"{@atk rs} {@hit 6} per colpire, gittata 120 ft., una creatura. {@h}20 ({@damage 3d10 + 4}) danni da forza."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Enslave (Recharges after a Short or Long Rest)",
+					"entries": [
+						"Il neogi prende di mira una creatura che riesce a vedere entro 9 metri da sé. Il bersaglio deve riuscire a effettuare un tiro salvezza di Saggezza {@dc 14} o essere magicamente {@condition charmed} influenzato dal neogi per 1 giorno, o finché il neogi non muore o non si trova a più di 1 miglio dal bersaglio. Il bersaglio {@condition charmed} obbedisce ai comandi del neogi e non può reagire; il neogi e il bersaglio possono comunicare telepaticamente tra loro a una distanza massima di 1 miglio. Ogni volta che il bersaglio {@condition charmed} subisce danni, può ripetere il tiro salvezza, terminando l'effetto su se stesso in caso di successo."
+					]
+				}
+			],
+			"traitTags": [
+				"Devil's Sight",
+				"Spider Climb"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DS",
+				"TP",
+				"U"
+			],
+			"damageTags": [
+				"I",
+				"O",
+				"P"
+			],
+			"damageTagsSpell": [
+				"O"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"charmed",
+				"poisoned"
+			],
+			"conditionInflictSpell": [
+				"invisible"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Night Scavver",
+			"source": "BAM",
+			"page": 49,
+			"size": [
+				"H"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 114,
+				"formula": "12d12 + 36"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 40
+			},
+			"str": 20,
+			"dex": 15,
+			"con": 17,
+			"int": 1,
+			"wis": 10,
+			"cha": 1,
+			"skill": {
+				"perception": "+6",
+				"stealth": "+8"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 16,
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Lo scavatore non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 8} per colpire (con vantaggio se il bersaglio è una creatura a cui mancano punti ferita), raggio d'azione 10 m, un bersaglio. {@h}27 ({@damage 4d10 + 5}) danni perforanti."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Plasmoid Boss",
+			"source": "BAM",
+			"page": 42,
+			"size": [
+				"L"
+			],
+			"type": "ooze",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 82,
+				"formula": "11d10 + 22"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 12,
+			"con": 14,
+			"int": 14,
+			"wis": 13,
+			"cha": 15,
+			"save": {
+				"con": "+4",
+				"wis": "+3"
+			},
+			"skill": {
+				"deception": "+4",
+				"intimidation": "+4",
+				"persuasion": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 13,
+			"resist": [
+				"acid",
+				"poison"
+			],
+			"languages": [
+				"Common"
+			],
+			"cr": "4",
+			"trait": [
+				{
+					"name": "Amorphous",
+					"entries": [
+						"Il plasmoide può passare attraverso uno spazio stretto fino a 1 pollice di larghezza, a condizione che non indossi e non trasporti nulla. Ha vantaggio sulle prove di abilità che effettua per iniziare o sfuggire a una presa."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Il plasmoide può trattenere il respiro per 1 ora."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il plasmoide effettua tre attacchi di Pseudopodi."
+					]
+				},
+				{
+					"name": "Pseudopod",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire (con vantaggio se il plasmoide ha uno o più alleati entro 3 metri da sé), raggio d'azione di 10 metri, un bersaglio. {@h}11 ({@damage 2d6 + 4}) danni da percosse."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Uncanny Dodge",
+					"entries": [
+						"Il plasmoide dimezza i danni subiti da un attacco che lo colpisce. Il plasmoide deve essere in grado di vedere l'attaccante."
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous",
+				"Hold Breath"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Plasmoid Explorer",
+			"source": "BAM",
+			"page": 43,
+			"size": [
+				"M"
+			],
+			"type": "ooze",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 16,
+				"formula": "3d8 + 3"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 13,
+			"dex": 12,
+			"con": 12,
+			"int": 10,
+			"wis": 14,
+			"cha": 10,
+			"skill": {
+				"perception": "+4",
+				"survival": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"resist": [
+				"acid",
+				"poison"
+			],
+			"languages": [
+				"Common"
+			],
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Amorphous",
+					"entries": [
+						"Il plasmoide può passare attraverso uno spazio stretto fino a 1 pollice di larghezza, a condizione che non indossi e non trasporti nulla. Ha vantaggio sulle prove di abilità che effettua per iniziare o sfuggire a una presa."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Il plasmoide può trattenere il respiro per 1 ora."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il plasmoide effettua due attacchi di Pseudopodi. Può sostituire uno di questi attacchi con un attacco Javelin."
+					]
+				},
+				{
+					"name": "Pseudopod",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, portata 5 ft., un bersaglio. {@h}3 ({@damage 1d4 + 1}) danni da percosse."
+					]
+				},
+				{
+					"name": "Javelin",
+					"entries": [
+						"{@atk mw,rw} {@hit 3} per colpire, portata 5 ft. o raggio d'azione 30/120 ft., un bersaglio. {@h}4 ({@damage 1d6 + 1}) danni perforanti."
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous",
+				"Hold Breath"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Plasmoid Warrior",
+			"source": "BAM",
+			"page": 43,
+			"size": [
+				"M"
+			],
+			"type": "ooze",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor",
+						"{@item shield|PHB}"
+					]
+				}
+			],
+			"hp": {
+				"average": 71,
+				"formula": "11d8 + 22"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 14,
+			"con": 14,
+			"int": 10,
+			"wis": 11,
+			"cha": 10,
+			"skill": {
+				"athletics": "+5",
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"resist": [
+				"acid",
+				"poison"
+			],
+			"languages": [
+				"Common"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Amorphous",
+					"entries": [
+						"Il plasmoide può passare attraverso uno spazio stretto fino a 1 pollice di larghezza, a condizione che non indossi e non trasporti nulla. Ha vantaggio sulle prove di abilità che effettua per iniziare o sfuggire a una presa."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Il plasmoide può trattenere il respiro per 1 ora."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il plasmoide effettua tre attacchi di Pseudopodi. Può sostituire uno di questi attacchi con un attacco di Lancia o Pistola."
+					]
+				},
+				{
+					"name": "Pseudopod",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}6 ({@damage 1d6 + 3}) danni da percosse."
+					]
+				},
+				{
+					"name": "Spear",
+					"entries": [
+						"{@atk mw,rw} {@hit 5} per colpire, portata 5 ft. o raggio d'azione 20/60 ft., un bersaglio. {@h}6 [({@dice 1d6 + 3}) danni perforanti, o 7 ({@damage 1d8 + 3}) danni perforanti se usato con due mani per effettuare un attacco in mischia."
+					]
+				},
+				{
+					"name": "Pistol",
+					"entries": [
+						"{@atk rw} {@hit 4} per colpire, gittata 30/90 ft., un bersaglio. {@h}7 ({@damage 1d10 + 2}) danni perforanti."
+					]
+				}
+			],
+			"traitTags": [
+				"Amorphous",
+				"Hold Breath"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"B",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Psurlon",
+			"source": "BAM",
+			"page": 44,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "aberration",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@spell mage armor}"
+					]
+				}
+			],
+			"hp": {
+				"average": 45,
+				"formula": "7d8 + 14"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 14,
+			"dex": 14,
+			"con": 14,
+			"int": 17,
+			"wis": 11,
+			"cha": 7,
+			"senses": [
+				"blindsight 120 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed"
+			],
+			"languages": [
+				"Deep Speech",
+				"telepathy 120 ft."
+			],
+			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Lo psurlon lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 13}):"
+					],
+					"daily": {
+						"1": [
+							"{@spell suggestion}"
+						],
+						"2e": [
+							"{@spell disguise self}",
+							"{@spell mage armor} (self only)"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Aberrant Mind",
+					"entries": [
+						"La magia non può leggere i pensieri dello psurlon o addormentarlo."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Lo psurlon compie un attacco con il morso e due con l'artiglio."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., una creatura. {@h}6 ({@damage 1d8 + 2}) danni perforanti."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}4 ({@damage 1d4 + 2}) danni da taglio."
+					]
+				},
+				{
+					"name": "Psychic Crush",
+					"entries": [
+						"Lo psurlon prende di mira una creatura che riesce a vedere entro 120 piedi da sé. Il bersaglio deve effettuare un tiro salvezza di Saggezza {@dc 13}, subendo 14 ({@damage 2d10 + 3}) danni psichici in caso di fallimento del tiro salvezza, o la metà dei danni in caso di successo."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DS",
+				"TP"
+			],
+			"damageTags": [
+				"P",
+				"S",
+				"Y"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Psurlon Leader",
+			"source": "BAM",
+			"page": 45,
+			"size": [
+				"M"
+			],
+			"type": "aberration",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"{@spell mage armor}"
+					]
+				}
+			],
+			"hp": {
+				"average": 127,
+				"formula": "17d8 + 51"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 14,
+			"con": 16,
+			"int": 20,
+			"wis": 11,
+			"cha": 7,
+			"save": {
+				"wis": "+3",
+				"cha": "+1"
+			},
+			"skill": {
+				"perception": "+6"
+			},
+			"senses": [
+				"blindsight 120 ft. (blind beyond this radius)"
+			],
+			"passive": 16,
+			"resist": [
+				"psychic"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed"
+			],
+			"languages": [
+				"Deep Speech",
+				"telepathy 120 ft."
+			],
+			"cr": "6",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Lo psurlon lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 16}):"
+					],
+					"daily": {
+						"2e": [
+							"{@spell disguise self}",
+							"{@spell mage armor} (self only)"
+						],
+						"1e": [
+							"{@spell dimension door}",
+							"{@spell suggestion}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Aberrant Mind",
+					"entries": [
+						"La magia non può leggere i pensieri dello psurlon o addormentarlo."
+					]
+				},
+				{
+					"name": "Two Heads",
+					"entries": [
+						"Lo psurlon ha vantaggio sui tiri salvezza che effettua per evitare o terminare la condizione {@condition frightened}, {@condition stunned} o {@condition unconscious} su se stesso. Mentre una delle teste dello psurlon è addormentata, l'altra testa è sveglia."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Lo psurlon effettua due attacchi con il morso e due con l'artiglio. Può anche usare Pacificazione (se disponibile) o Schiacciamento psichico."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 5 ft., una creatura. {@h}7 ({@damage 1d8 + 3}) danni perforanti."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 6} per colpire, portata 5 ft., un bersaglio. {@h}5 ({@damage 1d4 + 3}) danni da taglio."
+					]
+				},
+				{
+					"name": "Pacify {@recharge 5}",
+					"entries": [
+						"Lo psurlon prende di mira una creatura che riesce a vedere entro 120 piedi da sé. Il bersaglio deve superare un tiro salvezza di Saggezza {@dc 16} o cadere {@condition unconscious} per 10 minuti. La condizione termina se il bersaglio subisce danni o se un'altra creatura usa la sua azione per scuotere il bersaglio."
+					]
+				},
+				{
+					"name": "Psychic Crush",
+					"entries": [
+						"Lo psurlon prende di mira una creatura che riesce a vedere entro 120 piedi da sé. Il bersaglio deve effettuare un tiro salvezza di Saggezza {@dc 16}, subendo 21 ({@damage 3d10 + 5}) danni psichici in caso di fallimento del tiro salvezza, o la metà dei danni in caso di successo."
+					]
+				}
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DS",
+				"TP"
+			],
+			"damageTags": [
+				"P",
+				"S",
+				"Y"
+			],
+			"damageTagsSpell": [
+				"O"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"unconscious"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Psurlon Ringer",
+			"source": "BAM",
+			"page": 45,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "aberration",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 13,
+					"from": [
+						"{@spell mage armor}"
+					]
+				}
+			],
+			"hp": {
+				"average": 31,
+				"formula": "7d8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 11,
+			"con": 10,
+			"int": 17,
+			"wis": 11,
+			"cha": 7,
+			"passive": 10,
+			"resist": [
+				"psychic"
+			],
+			"conditionImmune": [
+				"charmed"
+			],
+			"languages": [
+				"Deep Speech plus the languages of the Humanoid it is imitating",
+				"telepathy 120 ft."
+			],
+			"cr": "1",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Lo psurlon lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano l'Intelligenza come capacità di incantesimo (tiro salvezza {@dc 13}):"
+					],
+					"daily": {
+						"1": [
+							"{@spell suggestion}"
+						],
+						"2": [
+							"{@spell mage armor} (self only)"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Aberrant Mind",
+					"entries": [
+						"La magia non può leggere i pensieri dello psurlon o addormentarlo."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 2} per colpire, portata 5 ft. o raggio d'azione 20/60 ft., un bersaglio. {@h}2 ({@damage 1d4}) danni perforanti più 4 ({@damage 1d8}) danni psichici."
+					]
+				},
+				{
+					"name": "Psychic Crush",
+					"entries": [
+						"Lo psurlon prende di mira una creatura che riesce a vedere entro 120 piedi da sé. Il bersaglio deve effettuare un tiro salvezza di Saggezza {@dc 13}, subendo 12 ({@damage 3d8 + 3}) danni psichici in caso di fallimento del tiro salvezza, o la metà dei danni in caso di successo."
+					]
+				}
+			],
+			"languageTags": [
+				"DS",
+				"TP"
+			],
+			"damageTags": [
+				"P",
+				"Y"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Reigar",
+			"source": "BAM",
+			"page": 47,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "celestial",
+			"alignment": [
+				"C",
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 19,
+					"from": [
+						"glory"
+					]
+				}
+			],
+			"hp": {
+				"average": 82,
+				"formula": "15d8 + 15"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 18,
+			"dex": 15,
+			"con": 12,
+			"int": 19,
+			"wis": 16,
+			"cha": 24,
+			"save": {
+				"dex": "+5",
+				"con": "+4",
+				"wis": "+6",
+				"cha": "+10"
+			},
+			"skill": {
+				"arcana": "+7",
+				"history": "+7",
+				"performance": "+10",
+				"persuasion": "+10"
+			},
+			"passive": 13,
+			"languages": [
+				"Celestial",
+				"Common",
+				"Deep Speech",
+				"Draconic"
+			],
+			"cr": "8",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Il reigar lancia uno dei seguenti incantesimi, che non richiedono alcuna componente e utilizzano il Carisma come capacità di incantesimo (tiro salvezza {@dc 18}): A volontà: luce, mano del mago, prestidigitazione"
+					],
+					"daily": {
+						"2e": [
+							"{@spell dimension door}",
+							"{@spell phantasmal force}"
+						],
+						"1e": [
+							"{@spell mass suggestion}",
+							"{@spell sending}"
+						]
+					},
+					"ability": "cha",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Glory",
+					"entries": [
+						"La Classe Armatura del reigar include il suo modificatore di Carisma."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Il reigar può trattenere il respiro per 1 ora."
+					]
+				},
+				{
+					"name": "Special Equipment",
+					"entries": [
+						"Il reigar indossa un talarith."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il reigar effettua due attacchi con il tridente."
+					]
+				},
+				{
+					"name": "Trident",
+					"entries": [
+						"{@atk mw,rw} {@hit 7} per colpire, portata 5 ft. o raggio d'azione 20/60 ft., un bersaglio. {@h}7 ({@damage 1d6 + 4}) danni perforanti, o 8 ({@damage 1d8 + 4}) danni perforanti se usato con due mani per fare un attacco in mischia, più 3 ({@damage 1d6}) danni da forza se il reigar indossa il suo talarith."
+					]
+				},
+				{
+					"name": "Chromatic Bolt",
+					"entries": [
+						"{@atk rs} {@hit 10} per colpire, gittata 90 piedi, un bersaglio. {@h}22 ({@damage 5d8}) danni di un tipo scelto dal reigar dalla seguente lista: freddo, fuoco, fulmine o radiante."
+					]
+				},
+				{
+					"name": "Summon Golem (Recharges after a Short or Long Rest)",
+					"entries": [
+						"Usando il suo talarith, il reigar evoca un duplicato di se stesso simile a un golem. Il duplicato obbedisce ai comandi del reigar e ne utilizza le statistiche, tranne che per il fatto che è un costrutto non schierato che non ha un proprio talarith. Il duplicato passa il suo turno immediatamente dopo il reigar. Scompare dopo 1 ora o quando è ridotto a 0 punti ferita."
+					]
+				}
+			],
+			"traitTags": [
+				"Hold Breath"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"CE",
+				"DR",
+				"DS"
+			],
+			"damageTags": [
+				"O",
+				"P"
+			],
+			"damageTagsSpell": [
+				"O",
+				"Y"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Solar Dragon Wyrmling",
+			"source": "BAM",
+			"page": 53,
+			"size": [
+				"M"
+			],
+			"type": "dragon",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 51,
+				"formula": "6d8 + 24"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": {
+					"number": 40,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 16,
+			"dex": 15,
+			"con": 18,
+			"int": 11,
+			"wis": 12,
+			"cha": 10,
+			"save": {
+				"dex": "+4",
+				"con": "+6",
+				"wis": "+3",
+				"cha": "+2"
+			},
+			"skill": {
+				"perception": "+5",
+				"stealth": "+4"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 15,
+			"immune": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"blinded"
+			],
+			"languages": [
+				"Draconic"
+			],
+			"cr": "3",
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"Il drago non provoca attacchi di opportunità quando vola fuori dalla portata di un nemico."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il drago non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il drago effettua un attacco di Morso e un attacco di Coda."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}6 ({@damage 1d6 + 3}) danni perforanti più 3 ({@damage 1d6}) danni radianti."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, raggio d'azione 10 ft., un bersaglio. {@h}5 ({@damage 1d4 + 3}) danni da percosse."
+					]
+				},
+				{
+					"name": "Photonic Breath {@recharge 5}",
+					"entries": [
+						"Il drago esala una goccia lampeggiante di energia radiante che si dirige verso un punto che il drago può vedere entro 120 piedi da sé, quindi sboccia in una sfera di 3 metri di raggio centrata su quel punto. Ogni creatura nella sfera deve effettuare un tiro salvezza di Costituzione {@dc 14}, subendo 22 ({@damage 4d10}) danni radianti in caso di fallimento del tiro salvezza, o la metà dei danni in caso di successo."
+					]
+				}
+			],
+			"dragonAge": "wyrmling",
+			"traitTags": [
+				"Flyby",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Breath Weapon",
+				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"B",
+				"P",
+				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Space Clown",
+			"source": "BAM",
+			"page": 54,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "fiend",
+			"alignment": [
+				"C",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				13
+			],
+			"hp": {
+				"average": 58,
+				"formula": "9d8 + 18"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 16,
+			"con": 14,
+			"int": 11,
+			"wis": 11,
+			"cha": 16,
+			"skill": {
+				"acrobatics": "+5",
+				"performance": "+5",
+				"sleight of hand": "+5"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"languages": [
+				"Abyssal",
+				"Common"
+			],
+			"cr": "2",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Il clown lancia uno dei seguenti incantesimi, che non richiedono componenti materiali e utilizzano il Carisma come capacità di incantesimo: A volontà: amici, mano del mago, prestidigitazione"
+					],
+					"daily": {
+						"1e": [
+							"{@spell mirror image}",
+							"{@spell spider climb}"
+						]
+					},
+					"ability": "cha",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Dying Burst",
+					"entries": [
+						"Quando il clown scende a 0 punti ferita, scoppia come un palloncino, rilasciando uno spruzzo di itoro putrido e corrosivo. Ogni creatura entro un metro e mezzo dal clown quando scoppia deve effettuare un tiro salvezza di Destrezza {@dc 12}, subendo 10 ({@damage 3d6}) danni da acido se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				},
+				{
+					"name": "Squeakers",
+					"entries": [
+						"Il clown indossa scarpe che stridono quando cammina. Il cigolio può essere udito fino a un raggio di 9 metri. Il cigolio viene tacitato quando la Forma Fantasma del clown è attiva."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Shock",
+					"entries": [
+						"{@atk ms} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}17 ({@damage 4d6 + 3}) danni da fulmine."
+					]
+				},
+				{
+					"name": "Ray Gun",
+					"entries": [
+						"{@atk rs} {@hit 5} per colpire, gittata 120 piedi, una creatura. {@h}7 ({@damage 2d6}) danni psichici, e se il bersaglio è un umanoide con un punteggio di Intelligenza pari o superiore a 3, deve effettuare un tiro salvezza di Saggezza {@dc 12}. Se il tiro salvezza viene fallito, il bersaglio percepisce tutto ciò che vede o sente come esilarante e si sente {@condition incapacitated} per 1 minuto. Il bersaglio può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stesso in caso di successo."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Phantasmal Form (3/Day)",
+					"entries": [
+						"Il clown si avvolge, insieme a tutto ciò che indossa e trasporta, in un'illusione che lo fa assomigliare a un'altra creatura della sua taglia o più piccola (come un bambino) o a un oggetto abbastanza piccolo da entrare nello spazio del clown (come un palloncino galleggiante). Mantenere questo effetto richiede la concentrazione del clown (come se si concentrasse su un incantesimo), e l'illusione non regge all'ispezione fisica. Come azione, una creatura in grado di vedere la forma illusoria del clown può effettuare una prova di {@dc 15} Saggezza (Intuizione) per penetrare l'illusione e discernere la vera forma del clown in caso di successo."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"AB",
+				"C"
+			],
+			"damageTags": [
+				"A",
+				"L",
+				"Y"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"miscTags": [
+				"AOE"
+			],
+			"conditionInflict": [
+				"incapacitated"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Space Eel",
+			"source": "BAM",
+			"page": 55,
+			"size": [
+				"S"
+			],
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				14
+			],
+			"hp": {
+				"average": 7,
+				"formula": "2d6"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": 30
+			},
+			"str": 12,
+			"dex": 18,
+			"con": 11,
+			"int": 1,
+			"wis": 10,
+			"cha": 1,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'anguilla non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Se non è attaccata a una creatura, l'anguilla effettua un attacco di Morso e un attacco di Spina della coda."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, raggio d'azione di 5 piedi, una creatura. {@h}4 ({@damage 1d6 + 1}) danni perforanti e l'anguilla si attacca al bersaglio. Mentre è attaccata, l'anguilla non può effettuare attacchi con il morso. Il bersaglio subisce invece 4 ({@damage 1d6 + 1}) danni da perforazione all'inizio di ogni turno dell'anguilla. L'anguilla può staccarsi come azione bonus. Una creatura, compreso il bersaglio, può usare la sua azione per staccare l'anguilla."
+					]
+				},
+				{
+					"name": "Tail Spine",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, portata di 5 piedi, una creatura. {@h}3 ({@damage 1d4 + 1}) danni perforanti, e il bersaglio deve superare un tiro salvezza di Costituzione {@dc 10} o essere {@condition poisoned} per 1 minuto. Finché questo veleno non termina, il bersaglio è {@condition paralyzed}. Il bersaglio può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stesso in caso di successo."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"paralyzed",
+				"poisoned"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Space Guppy",
+			"source": "BAM",
+			"page": 55,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"S"
+			],
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"average": 3,
+				"formula": "1d6"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 30
+			},
+			"str": 3,
+			"dex": 16,
+			"con": 10,
+			"int": 1,
+			"wis": 10,
+			"cha": 1,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"cr": "0",
+			"trait": [
+				{
+					"name": "Air Envelope",
+					"entries": [
+						"Se ha almeno 1 punto ferita, il guppy può generare un involucro d'aria intorno a sé quando si trova nel vuoto. Questo involucro d'aria può sostenere il guppy e un'altra creatura Tiny nel suo spazio a tempo indeterminato."
+					]
+				},
+				{
+					"name": "Flyby",
+					"entries": [
+						"Il guppy non provoca attacchi di opportunità quando vola fuori dalla portata di un nemico."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Tail Slap",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}1 danni da percosse."
+					]
+				}
+			],
+			"traitTags": [
+				"Flyby"
+			],
+			"senseTags": [
+				"D"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Space Hamster",
+			"source": "BAM",
+			"page": 56,
+			"size": [
+				"T"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"N",
+				"G"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				15
+			],
+			"hp": {
+				"average": 10,
+				"formula": "4d4"
+			},
+			"speed": {
+				"walk": 20,
+				"burrow": 5
+			},
+			"str": 1,
+			"dex": 20,
+			"con": 10,
+			"int": 6,
+			"wis": 12,
+			"cha": 6,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+7"
+			},
+			"passive": 13,
+			"languages": [
+				"telepathy 5 ft."
+			],
+			"cr": "1/4",
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 7} per colpire, portata 5 ft., un bersaglio. {@h}1 danni perforanti."
+					]
+				},
+				{
+					"name": "Go for the Eyes {@recharge}",
+					"entries": [
+						"{@atk mw} {@hit 7} per colpire, portata di 5 metri, una creatura. {@h}8 ({@damage 1d6 + 5}) danni perforanti, e il bersaglio deve riuscire in un tiro salvezza di Destrezza {@dc 15} o subire {@condition blinded} fino all'inizio del prossimo turno del criceto."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Escape",
+					"entries": [
+						"Il criceto esegue l'azione Dash o Disengage."
+					]
+				}
+			],
+			"languageTags": [
+				"TP"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflict": [
+				"blinded"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Space Mollymawk",
+			"source": "BAM",
+			"page": 57,
+			"size": [
+				"S"
+			],
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 3,
+				"formula": "1d6"
+			},
+			"speed": {
+				"walk": 10,
+				"fly": 50
+			},
+			"str": 6,
+			"dex": 14,
+			"con": 11,
+			"int": 3,
+			"wis": 12,
+			"cha": 3,
+			"skill": {
+				"perception": "+5"
+			},
+			"passive": 15,
+			"cr": "0",
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"Il mollymawk non provoca attacchi di opportunità quando vola fuori dalla portata di un nemico."
+					]
+				},
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Il mollymawk può trattenere il respiro per 15 minuti."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}4 ({@damage 1d4 + 2}) danni perforanti."
+					]
+				}
+			],
+			"traitTags": [
+				"Flyby",
+				"Hold Breath"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Space Swine",
+			"source": "BAM",
+			"page": 57,
+			"size": [
+				"M"
+			],
+			"type": "beast",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 22,
+				"formula": "4d8 + 4"
+			},
+			"speed": {
+				"walk": 40,
+				"fly": 40
+			},
+			"str": 12,
+			"dex": 12,
+			"con": 12,
+			"int": 4,
+			"wis": 10,
+			"cha": 3,
+			"skill": {
+				"perception": "+4",
+				"survival": "+4"
+			},
+			"passive": 14,
+			"cr": "1/4",
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, portata 5 ft., un bersaglio. {@h}4 ({@damage 1d6 + 1}) danni perforanti."
+					]
+				}
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Ssurran Defiler",
+			"source": "BAM",
+			"page": 58,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "monstrosity",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor",
+						"{@spell intellect fortress|tce}"
+					]
+				}
+			],
+			"hp": {
+				"average": 52,
+				"formula": "7d8 + 21"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 13,
+			"dex": 12,
+			"con": 16,
+			"int": 15,
+			"wis": 15,
+			"cha": 7,
+			"save": {
+				"con": "+5",
+				"int": "+4"
+			},
+			"skill": {
+				"arcana": "+4",
+				"perception": "+4",
+				"stealth": "+3",
+				"survival": "+4"
+			},
+			"passive": 14,
+			"resist": [
+				"necrotic"
+			],
+			"languages": [
+				"Draconic"
+			],
+			"cr": "3",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Lo ssurran lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano l'Intelligenza come capacità incantatoria: A volontà: mano di mago (la mano è invisibile)"
+					],
+					"daily": {
+						"1": [
+							"{@spell invisibility} (self only)"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Il ssurran può trattenere il respiro per 15 minuti."
+					]
+				},
+				{
+					"name": "Intellect Fortress",
+					"entries": [
+						"La CA dello ssurran include il suo modificatore di Intelligenza."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Lo ssurran compie due attacchi con l'artiglio e usa Defilare (se disponibile)."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} +3a colpire, portata 5 ft., un bersaglio. {@h}4 ({@damage 1d6 + 1}) danni da taglio più 4 ({@damage 1d8}) danni necrotici."
+					]
+				},
+				{
+					"name": "Defile {@recharge}",
+					"entries": [
+						"La vegetazione ordinaria entro 3 metri dallo ssurran appassisce e muore. Inoltre, ogni creatura entro 3 metri dallo ssurran deve effettuare un tiro salvezza di Costituzione {@dc 11}, subendo 22 ({@damage 4d10}) danni necrotici se il tiro salvezza fallisce, o la metà dei danni se riesce. Lo ssurran recupera 5 ({@dice 1d10}) punti ferita per ogni creatura che fallisce il tiro salvezza."
+					]
+				}
+			],
+			"traitTags": [
+				"Hold Breath"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"N",
+				"S"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"conditionInflictSpell": [
+				"invisible"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Ssurran Poisoner",
+			"source": "BAM",
+			"page": 58,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "monstrosity",
+				"tags": [
+					"lizardfolk"
+				]
+			},
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor",
+						"{@item shield|PHB}"
+					]
+				}
+			],
+			"hp": {
+				"average": 22,
+				"formula": "4d8 + 4"
+			},
+			"speed": {
+				"walk": 30,
+				"swim": 30
+			},
+			"str": 13,
+			"dex": 12,
+			"con": 13,
+			"int": 12,
+			"wis": 12,
+			"cha": 7,
+			"skill": {
+				"perception": "+3",
+				"stealth": "+3",
+				"survival": "+3"
+			},
+			"passive": 13,
+			"languages": [
+				"Draconic"
+			],
+			"cr": "1/2",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Il ssurran può trattenere il respiro per 15 minuti."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Lo ssurran compie due attacchi con l'artiglio."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 3} per colpire, portata 5 ft., un bersaglio. {@h}4 ({@damage 1d6 + 1}) danni da taglio."
+					]
+				},
+				{
+					"name": "Javelin",
+					"entries": [
+						"{@atk mw,rw} {@hit 3} per colpire, gittata di 5 ft. o portata di 30/120 ft., un bersaglio. {@h}4 ({@damage 1d6 + 1}) danni da perforazione più 4 ({@damage 1d8}) danni da veleno."
+					]
+				},
+				{
+					"name": "Poison Bomb",
+					"entries": [
+						"Lo ssurran lancia una bomba delle dimensioni di un mandarino in un punto fino a 60 piedi di distanza, dove esplode rilasciando una sfera di gas velenoso di 3 metri di raggio che si disperde rapidamente. Ogni creatura nella sfera deve effettuare un tiro salvezza di Costituzione {@dc 11}, subendo 10 ({@damage 3d6}) danni da veleno se il tiro salvezza fallisce, o la metà dei danni se riesce. Dopo che lo ssurran ha lanciato una bomba, tira un {@dice d6}; con un tiro di 4 o inferiore, lo ssurran non ha più bombe da lanciare."
+					]
+				}
+			],
+			"traitTags": [
+				"Hold Breath"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"I",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Starlight Apparition",
+			"source": "BAM",
+			"page": 59,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "celestial",
+			"alignment": [
+				"N",
+				"G"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				10
+			],
+			"hp": {
+				"average": 72,
+				"formula": "16d8"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 1,
+			"dex": 11,
+			"con": 10,
+			"int": 18,
+			"wis": 16,
+			"cha": 16,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 13,
+			"resist": [
+				"acid",
+				"cold",
+				"fire",
+				{
+					"resist": [
+						"bludgeoning",
+						"piercing",
+						"slashing"
+					],
+					"note": "from nonmagical attacks",
+					"cond": true
+				}
+			],
+			"immune": [
+				"poison",
+				"radiant"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"exhaustion",
+				"frightened",
+				"grappled",
+				"paralyzed",
+				"petrified",
+				"poisoned",
+				"prone",
+				"restrained"
+			],
+			"languages": [
+				"the languages it knew in life"
+			],
+			"cr": "5",
+			"trait": [
+				{
+					"name": "Astral Existence",
+					"entries": [
+						"L'apparizione può esistere solo sul Piano Astrale. Se viene inviata in un luogo diverso dal Piano Astrale, l'apparizione viene distrutta."
+					]
+				},
+				{
+					"name": "Illumination",
+					"entries": [
+						"Finché ha almeno 1 punto ferita, l'apparizione diffonde luce brillante in un raggio di 6 metri e luce fioca per altri 6 metri."
+					]
+				},
+				{
+					"name": "Incorporeal Movement",
+					"entries": [
+						"L'apparizione può muoversi attraverso altre creature e oggetti come se fossero un terreno difficile. Subisce 5 ({@damage 1d10}) danni da forza se termina il suo turno all'interno di un oggetto."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"L'apparizione non ha bisogno di aria, bevande, cibo o sonno."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Radiant Eruption",
+					"entries": [
+						"{@atk ms,rs} {@hit 6} per colpire, gittata di 5 ft. o portata di 120 ft., un bersaglio. {@h}20 ({@damage 5d6 + 3}) danni radianti e, se il bersaglio è una creatura, deve riuscire in un tiro salvezza di {@dc 14} Saggezza o subire {@condition blinded} per 1 minuto. Il bersaglio può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stesso in caso di successo."
+					]
+				},
+				{
+					"name": "Possession {@recharge}",
+					"entries": [
+						"Un umanoide che l'apparizione può vedere nel raggio di un metro e mezzo deve riuscire in un tiro salvezza di Carisma {@dc 14} o essere posseduto dall'apparizione; l'apparizione scompare e il bersaglio perde il controllo del proprio corpo {@condition incapacitated}. L'apparizione ora controlla il corpo, ma non priva il bersaglio della consapevolezza. L'apparizione non può essere bersagliata da alcun attacco, incantesimo o altro effetto e mantiene allineamento, Intelligenza, Saggezza, Carisma e immunità all'essere {@condition charmed} e {@condition frightened}. Per il resto, utilizza le statistiche del bersaglio posseduto, ma non ha accesso alle conoscenze, alle caratteristiche di classe o alle abilità del bersaglio.",
+						"La possessione dura finché il corpo non scende a 0 punti ferita, l'apparizione la termina come azione bonus, il corpo lascia il Piano Astrale o l'apparizione è costretta a uscire da un effetto come l'incantesimo {@spell dispel evil and good}. Quando la possessione termina, l'apparizione riappare in uno spazio non occupato entro 2 metri dal corpo. Se riappare in un luogo diverso dal Piano Astrale, l'apparizione viene distrutta. Il bersaglio è immune alla Possessione di questa apparizione per 24 ore dopo aver superato il tiro salvezza o dopo la fine della possessione."
+					]
+				}
+			],
+			"traitTags": [
+				"Illumination",
+				"Incorporeal Movement",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"LF"
+			],
+			"damageTags": [
+				"O",
+				"R"
+			],
+			"miscTags": [
+				"AOE"
+			],
+			"conditionInflict": [
+				"blinded",
+				"incapacitated"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Thri-kreen Gladiator",
+			"source": "BAM",
+			"page": 60,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 17,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 142,
+				"formula": "19d8 + 57"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 18,
+			"dex": 18,
+			"con": 16,
+			"int": 10,
+			"wis": 15,
+			"cha": 11,
+			"save": {
+				"str": "+7",
+				"dex": "+7",
+				"wis": "+5"
+			},
+			"skill": {
+				"acrobatics": "+7",
+				"athletics": "+7",
+				"perception": "+5"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 15,
+			"conditionImmune": [
+				"frightened"
+			],
+			"languages": [
+				"telepathy 60 ft.",
+				"Thri-kreen"
+			],
+			"cr": "7",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il thri-kreen effettua due attacchi Gythka e un attacco Chatkcha."
+					]
+				},
+				{
+					"name": "Gythka",
+					"entries": [
+						"{@atk mw} {@hit 7} per colpire (con vantaggio se al thri-kreen mancano punti ferita), raggio d'azione di 5 m, un bersaglio. {@h}13 ({@damage 2d8 + 4}) danni da taglio."
+					]
+				},
+				{
+					"name": "Chatkcha",
+					"entries": [
+						"{@atk rw} {@hit 7} per colpire (con vantaggio se al thri-kreen mancano punti ferita), gittata 30/120 ft., un bersaglio. {@h}7 ({@damage 1d6 + 4}) danni da taglio."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Leap",
+					"entries": [
+						"Il thri-kreen salta fino a 6 metri in qualsiasi direzione, a condizione che la sua velocità non sia pari a 0."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"Il thri-kreen aggiunge 3 alla sua CA contro un attacco in mischia che lo colpirebbe. Per farlo, il thri-kreen deve vedere l'attaccante e brandire un'arma da mischia."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Parry"
+			],
+			"languageTags": [
+				"OTH",
+				"TP"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Thri-kreen Hunter",
+			"source": "BAM",
+			"page": 61,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 60,
+				"formula": "11d8 + 11"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 15,
+			"dex": 16,
+			"con": 13,
+			"int": 10,
+			"wis": 14,
+			"cha": 9,
+			"skill": {
+				"perception": "+4",
+				"stealth": "+5",
+				"survival": "+6"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 14,
+			"languages": [
+				"telepathy 60 ft.",
+				"Thri-kreen"
+			],
+			"cr": "2",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il thri-kreen effettua due attacchi Gythka o Chatkcha."
+					]
+				},
+				{
+					"name": "Gythka",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}6 ({@damage 1d8 + 2}) danni da taglio."
+					]
+				},
+				{
+					"name": "Chatkcha",
+					"entries": [
+						"{@atk rw} {@hit 5} per colpire, gittata 30/120 ft., un bersaglio. {@h}6 ({@damage 1d6 + 3}) danni da taglio."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Chameleon Carapace",
+					"entries": [
+						"Il thri-kreen cambia il colore del suo carapace per adattarlo al colore e alla struttura dell'ambiente circostante, ottenendo un vantaggio sulle prove di Destrezza (Furtività) effettuate per nascondersi in quell'ambiente."
+					]
+				},
+				{
+					"name": "Leap",
+					"entries": [
+						"Il thri-kreen salta fino a 6 metri in qualsiasi direzione, a condizione che la sua velocità non sia pari a 0."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Parry",
+					"entries": [
+						"Il thri-kreen aggiunge 2 alla sua CA contro un attacco in mischia che lo colpirebbe. Per farlo, il thri-kreen deve vedere l'attaccante e brandire un'arma da mischia."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack",
+				"Parry"
+			],
+			"languageTags": [
+				"OTH",
+				"TP"
+			],
+			"damageTags": [
+				"S"
+			],
+			"miscTags": [
+				"MW",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Thri-kreen Mystic",
+			"source": "BAM",
+			"page": 61,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 99,
+				"formula": "18d8 + 18"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 12,
+			"dex": 15,
+			"con": 13,
+			"int": 12,
+			"wis": 16,
+			"cha": 10,
+			"skill": {
+				"perception": "+6",
+				"stealth": "+5",
+				"survival": "+6"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 16,
+			"languages": [
+				"telepathy 60 ft.",
+				"Thri-kreen"
+			],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Spellcasting (Psionics)",
+					"headerEntries": [
+						"Il thri-kreen lancia uno dei seguenti incantesimi, che non richiedono componenti e utilizzano la Saggezza come capacità di incantesimo: A volontà: levitazione (solo per sé), mano del mago (la mano è invisibile)."
+					],
+					"daily": {
+						"1e": [
+							"{@spell freedom of movement} (self only)",
+							"{@spell invisibility} (self only)"
+						]
+					},
+					"ability": "wis",
+					"displayAs": "action"
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il thri-kreen effettua due attacchi di Gythka o quattro attacchi di Bolt Psichico."
+					]
+				},
+				{
+					"name": "Gythka",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}10 ({@damage 2d8 + 1}) danni da taglio."
+					]
+				},
+				{
+					"name": "Psychic Bolt",
+					"entries": [
+						"{@atk rs} {@hit 6} per colpire, gittata 60 ft., una creatura. {@h}6 ({@damage 1d6 + 3}) danni psichici."
+					]
+				},
+				{
+					"name": "Drain Vitality (Recharges after a Short or Long Rest)",
+					"entries": [
+						"Il thri-kreen prende di mira una creatura che riesce a vedere entro 9 metri da sé. Il bersaglio deve effettuare un tiro salvezza di Costituzione {@dc 14}, subendo 32 ({@damage 5d12}) danni necrotici se il tiro salvezza fallisce, o la metà dei danni se riesce. Il thri-kreen recupera punti ferita pari ai danni inflitti."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Chameleon Carapace",
+					"entries": [
+						"Il thri-kreen cambia il colore del suo carapace per adattarlo al colore e alla struttura dell'ambiente circostante, ottenendo un vantaggio sulle prove di Destrezza (Furtività) effettuate per nascondersi in quell'ambiente."
+					]
+				}
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"OTH",
+				"TP"
+			],
+			"damageTags": [
+				"N",
+				"S",
+				"Y"
+			],
+			"spellcastingTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"conditionInflictSpell": [
+				"invisible"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Vampirate",
+			"source": "BAM",
+			"page": 62,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "undead",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 42,
+				"formula": "5d8 + 20"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 12,
+			"dex": 14,
+			"con": 18,
+			"int": 10,
+			"wis": 11,
+			"cha": 12,
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 10,
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			],
+			"vulnerable": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"poisoned"
+			],
+			"languages": [
+				"the languages it knew in life"
+			],
+			"cr": "2",
+			"trait": [
+				{
+					"name": "Explode",
+					"entries": [
+						"Quando il vampiro è ridotto a 0 punti ferita, esplode in una nube di cenere. Qualsiasi creatura entro un raggio di 2 metri deve riuscire in un tiro salvezza di Costituzione {@dc 14} o subire 5 ({@damage 1d10}) danni necrotici."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"Il vampiro può arrampicarsi su superfici difficili, anche a testa in giù sui soffitti, senza dover effettuare una prova di abilità."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il vampiro non ha bisogno di aria o di bere."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Energy Drain",
+					"entries": [
+						"{@atk ms,rs} {@hit 4} per colpire, gittata di 5 ft. o portata di 30 ft., una creatura. {@h}11 ({@damage 2d10}) danni necrotici. Un umanoide ridotto a 0 punti ferita da questo attacco muore e si trasforma istantaneamente in un'ombra libera sotto il controllo del DM."
+					]
+				},
+				{
+					"name": "Light Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 4} per colpire, gittata 80/320 piedi, un bersaglio. {@h}11 ({@damage 2d8 + 2}) danni perforanti."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"LF"
+			],
+			"damageTags": [
+				"N",
+				"P"
+			],
+			"miscTags": [
+				"RNG",
+				"RW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Vampirate Captain",
+			"source": "BAM",
+			"page": 63,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "undead",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 85,
+				"formula": "10d8 + 40"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 15,
+			"dex": 16,
+			"con": 18,
+			"int": 12,
+			"wis": 13,
+			"cha": 16,
+			"save": {
+				"con": "+7",
+				"wis": "+4",
+				"cha": "+6"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 11,
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			],
+			"vulnerable": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"poisoned"
+			],
+			"languages": [
+				"the languages it knew in life"
+			],
+			"cr": "6",
+			"trait": [
+				{
+					"name": "Explode",
+					"entries": [
+						"Quando il capitano è ridotto a 0 punti ferita, esplode in una nube di cenere. Qualsiasi creatura entro un metro e mezzo deve riuscire a effettuare un tiro salvezza di Costituzione {@dc 15} o subire 16 ({@damage 3d10}) danni necrotici."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"Il capitano può arrampicarsi su superfici difficili, anche a testa in giù sui soffitti, senza dover effettuare una prova di abilità."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il capitano non ha bisogno di aria o di bevande."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Energy Drain",
+					"entries": [
+						"{@atk ms,rs} {@hit 6} per colpire, gittata di 5 ft. o portata di 30 ft., una creatura. {@h}22 ({@damage 4d10}) danni necrotici. Un umanoide ridotto a 0 punti ferita da questo attacco muore e si trasforma istantaneamente in un'ombra libera o in un vampiro (a scelta del capitano) sotto il controllo del DM."
+					]
+				},
+				{
+					"name": "Heavy Crossbow",
+					"entries": [
+						"{@atk rw} {@hit 6} per colpire, gittata 100/400 ft., un bersaglio. {@h}19 ({@damage 3d10 + 3}) danni perforanti."
+					]
+				},
+				{
+					"name": "Ship Invisibility (Recharges after a Short or Long Rest)",
+					"entries": [
+						"La nave su cui si trova il capitano, insieme a tutte le creature e gli oggetti a bordo, diventa {@condition invisible} per le creature che non sono a bordo della nave. Il capitano deve concentrarsi su questo effetto magico per mantenerlo (come se si concentrasse su un incantesimo) e dura fino a 1 ora. L'effetto termina se il capitano lascia la nave."
+					]
+				}
+			],
+			"reaction": [
+				{
+					"name": "Uncanny Dodge",
+					"entries": [
+						"Il capitano dimezza i danni subiti da un attacco che lo colpisce. Il capitano deve essere in grado di vedere l'attaccante."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"languageTags": [
+				"LF"
+			],
+			"damageTags": [
+				"N",
+				"P"
+			],
+			"miscTags": [
+				"RNG",
+				"RW"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Vampirate Mage",
+			"source": "BAM",
+			"page": 63,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "undead",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 14,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 68,
+				"formula": "8d8 + 32"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 12,
+			"dex": 14,
+			"con": 18,
+			"int": 13,
+			"wis": 14,
+			"cha": 15,
+			"save": {
+				"wis": "+5",
+				"cha": "+5"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 12,
+			"immune": [
+				"cold",
+				"necrotic",
+				"poison"
+			],
+			"vulnerable": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"charmed",
+				"exhaustion",
+				"poisoned"
+			],
+			"languages": [
+				"the languages it knew in life"
+			],
+			"cr": "5",
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Il mago lancia uno dei seguenti incantesimi, utilizzando il Carisma come capacità di incantesimo (tiro salvezza {@dc 13}): A volontà: mano del mago, messaggio"
+					],
+					"daily": {
+						"1": [
+							"{@spell darkness}",
+							"{@spell dimension door}",
+							"{@spell fly}",
+							"{@spell hypnotic pattern}"
+						]
+					},
+					"ability": "cha",
+					"displayAs": "action"
+				}
+			],
+			"trait": [
+				{
+					"name": "Explode",
+					"entries": [
+						"Quando il mago è ridotto a 0 punti ferita, esplode in una nube di cenere. Qualsiasi creatura entro un metro e mezzo deve riuscire a effettuare un tiro salvezza di Costituzione {@dc 14} o subire 11 ({@damage 2d10}) danni necrotici."
+					]
+				},
+				{
+					"name": "Spider Climb",
+					"entries": [
+						"Il mago può arrampicarsi su superfici difficili, anche a testa in giù sui soffitti, senza dover effettuare una prova di abilità."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il mago non ha bisogno di aria o di bere."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il mago effettua due attacchi di Raggio del Freddo."
+					]
+				},
+				{
+					"name": "Energy Drain",
+					"entries": [
+						"{@atk ms,rs} {@hit 5} per colpire, gittata di 5 ft. o portata di 30 ft., una creatura. {@h}22 ({@damage 4d10}) danni necrotici. Un umanoide ridotto a 0 punti ferita da questo attacco muore e si trasforma istantaneamente in un'ombra libera sotto il controllo del DM."
+					]
+				},
+				{
+					"name": "Ray of Cold",
+					"entries": [
+						"{@atk rs} {@hit 5} per colpire, gittata 120 m, un bersaglio. {@h}11 ({@damage 2d8 + 2}) danni da freddo."
+					]
+				}
+			],
+			"traitTags": [
+				"Spider Climb",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"LF"
+			],
+			"damageTags": [
+				"C",
+				"N"
+			],
+			"damageTagsSpell": [
+				"O"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"conditionInflictSpell": [
+				"charmed",
+				"incapacitated"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Void Scavver",
+			"source": "BAM",
+			"page": 49,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"H"
+			],
+			"type": "monstrosity",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 15,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 157,
+				"formula": "15d12 + 60"
+			},
+			"speed": {
+				"walk": 0,
+				"fly": 40
+			},
+			"str": 22,
+			"dex": 16,
+			"con": 19,
+			"int": 4,
+			"wis": 13,
+			"cha": 5,
+			"skill": {
+				"perception": "+5",
+				"stealth": "+11"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 15,
+			"cr": "11",
+			"trait": [
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Lo scavatore non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Swallowing Bite",
+					"entries": [
+						"{@atk mw} {@hit 10} per colpire, portata 10 m, un bersaglio. {@h}45 ({@damage 6d12 + 6}) danni da perforazione. Se il bersaglio è una creatura Grande o più piccola, deve superare un tiro salvezza di Destrezza {@dc 16} o essere inghiottita dallo scavatore. Lo scavatore può far inghiottire una creatura alla volta.",
+						"Una creatura inghiottita è {@condition blinded} e {@condition restrained}, ha una copertura totale contro gli attacchi e gli altri effetti esterni allo scavatore, e subisce 11 ({@damage 2d10}) danni da acido all'inizio di ogni turno dello scavatore a causa dei succhi digestivi nell'esofago dello scavatore.",
+						"Se lo scavver subisce 25 o più danni in un singolo turno da una creatura al suo interno, deve riuscire a effettuare un tiro salvezza di Costituzione {@dc 20} alla fine di quel turno o rigurgitare la creatura inghiottita, che cade {@condition prone} in uno spazio entro 3 metri dallo scavver. Se lo scavatore muore, una creatura inghiottita non è più {@condition restrained} da lui e può fuggire dal cadavere utilizzando 3 metri di movimento, uscendo {@condition prone}."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Ray of Fear {@recharge 4}",
+					"entries": [
+						"L'occhio dello scavver emette un raggio magico {@condition invisible} che colpisce una creatura che lo scavver può vedere entro 60 piedi da sé. Il bersaglio deve riuscire a superare un tiro salvezza di Saggezza {@dc 16} o essere {@condition frightened} dello scavver fino all'inizio del suo prossimo turno."
+					]
+				}
+			],
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Swallow"
+			],
+			"damageTags": [
+				"A",
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"blinded",
+				"frightened",
+				"restrained"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Young Lunar Dragon",
+			"source": "BAM",
+			"page": 35,
+			"size": [
+				"L"
+			],
+			"type": "dragon",
+			"alignment": [
+				"L",
+				"E"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 123,
+				"formula": "13d10 + 52"
+			},
+			"speed": {
+				"walk": 40,
+				"burrow": 20,
+				"fly": 80
+			},
+			"str": 19,
+			"dex": 12,
+			"con": 18,
+			"int": 8,
+			"wis": 10,
+			"cha": 13,
+			"save": {
+				"con": "+7",
+				"wis": "+3"
+			},
+			"skill": {
+				"perception": "+6",
+				"stealth": "+7"
+			},
+			"senses": [
+				"darkvision 240 ft."
+			],
+			"passive": 16,
+			"immune": [
+				"cold"
+			],
+			"languages": [
+				"Draconic"
+			],
+			"cr": "7",
+			"trait": [
+				{
+					"name": "Tunneler",
+					"entries": [
+						"Il drago può scavare nella roccia solida a metà della sua velocità di scavo e lascia un tunnel di 3 metri di diametro nella sua scia."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il drago non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il drago effettua un attacco con il morso e due con l'artiglio."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 7} per colpire, portata 10 m, un bersaglio. {@h}7 ({@damage 1d6 + 4}) danni da perforazione più 3 ({@damage 1d6}) danni da freddo."
+					]
+				},
+				{
+					"name": "Claw",
+					"entries": [
+						"{@atk mw} {@hit 7} per colpire, portata 5 ft., un bersaglio. {@h}7 ({@damage 1d6 + 4}) danni da taglio."
+					]
+				},
+				{
+					"name": "Cold Breath {@recharge 5}",
+					"entries": [
+						"Il drago emette un getto di gelo in un cono di 9 metri. Ogni creatura nel cono deve effettuare un tiro salvezza di Costituzione {@dc 15}. Se il tiro salvezza fallisce, la creatura subisce 27 ({@damage 6d8}) danni da freddo e la sua velocità viene dimezzata fino alla fine del suo turno successivo. Se il tiro salvezza riesce, la creatura subisce la metà dei danni e la sua velocità non viene ridotta."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Phase (2/Day)",
+					"entries": [
+						"Il drago diventa parzialmente incorporeo finché mantiene la concentrazione sull'effetto (come se si concentrasse su un incantesimo). Quando è parzialmente incorporeo, il drago ha resistenza ai danni da percosse, perforazione e taglio."
+					]
+				}
+			],
+			"dragonAge": "young",
+			"traitTags": [
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Breath Weapon",
+				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"C",
+				"P",
+				"S"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Young Solar Dragon",
+			"source": "BAM",
+			"page": 53,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"L"
+			],
+			"type": "dragon",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 16,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 178,
+				"formula": "17d10 + 85"
+			},
+			"speed": {
+				"walk": 20,
+				"fly": {
+					"number": 60,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 20,
+			"dex": 15,
+			"con": 20,
+			"int": 13,
+			"wis": 14,
+			"cha": 12,
+			"save": {
+				"dex": "+6",
+				"con": "+9",
+				"wis": "+6",
+				"cha": "+5"
+			},
+			"skill": {
+				"perception": "+10",
+				"stealth": "+6"
+			},
+			"senses": [
+				"darkvision 120 ft."
+			],
+			"passive": 20,
+			"immune": [
+				"radiant"
+			],
+			"conditionImmune": [
+				"blinded"
+			],
+			"languages": [
+				"Draconic"
+			],
+			"cr": "9",
+			"trait": [
+				{
+					"name": "Flyby",
+					"entries": [
+						"Il drago non provoca attacchi di opportunità quando vola fuori dalla portata di un nemico."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il drago non ha bisogno di aria."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Il drago effettua un attacco di Morso e un attacco di Coda."
+					]
+				},
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 9} per colpire, portata 10 m, un bersaglio. {@h}12 ({@damage 2d6 + 5}) danni perforanti più 7 ({@damage 2d6}) danni radianti."
+					]
+				},
+				{
+					"name": "Tail",
+					"entries": [
+						"{@atk mw} {@hit 9} per colpire, portata 15 m, un bersaglio. {@h}8 ({@damage 1d6 + 5}) danni da percosse."
+					]
+				},
+				{
+					"name": "Photonic Breath {@recharge 5}",
+					"entries": [
+						"Il drago esala una goccia lampeggiante di energia radiante che viaggia fino a un punto che il drago può vedere entro 120 piedi da sé, poi sboccia in una sfera di 6 metri di raggio centrata su quel punto. Ogni creatura nella sfera deve effettuare un tiro salvezza di Costituzione {@dc 17}, subendo 44 ({@damage 8d10}) danni radianti in caso di fallimento del tiro salvezza, o la metà dei danni in caso di successo."
+					]
+				}
+			],
+			"dragonAge": "young",
+			"traitTags": [
+				"Flyby",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"SD"
+			],
+			"actionTags": [
+				"Breath Weapon",
+				"Multiattack"
+			],
+			"languageTags": [
+				"DR"
+			],
+			"damageTags": [
+				"B",
+				"P",
+				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Zodar",
+			"source": "BAM",
+			"page": 64,
+			"otherSources": [
+				{
+					"source": "LoX"
+				}
+			],
+			"size": [
+				"M"
+			],
+			"type": "aberration",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				{
+					"ac": 20,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 200,
+				"formula": "16d8 + 128"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": {
+					"number": 30,
+					"condition": "(hover)"
+				},
+				"canHover": true
+			},
+			"str": 30,
+			"dex": 10,
+			"con": 26,
+			"int": 12,
+			"wis": 15,
+			"cha": 18,
+			"save": {
+				"con": "+13",
+				"int": "+6",
+				"wis": "+7",
+				"cha": "+9"
+			},
+			"senses": [
+				"blindsight 120 ft. (blind beyond this radius)"
+			],
+			"passive": 12,
+			"immune": [
+				"acid",
+				"fire",
+				"poison"
+			],
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"deafened",
+				"exhaustion",
+				"frightened",
+				"petrified",
+				"poisoned"
+			],
+			"languages": [
+				"see Disembodied Voice below"
+			],
+			"cr": "16",
+			"trait": [
+				{
+					"name": "Disembodied Voice",
+					"entries": [
+						"Fino a tre volte nella sua vita, lo zodar può far sì che un messaggio di venticinque parole venga emesso dall'aria che lo circonda. Parla solo quando ha qualcosa di profondamente importante da dire e il messaggio può essere compreso da qualsiasi creatura che abbia un punteggio di Intelligenza pari o superiore a 2."
+					]
+				},
+				{
+					"name": "Legendary Resistance (3/Day)",
+					"entries": [
+						"Se lo zodar fallisce un tiro salvezza, può invece scegliere di avere successo."
+					]
+				},
+				{
+					"name": "Transport Inhibitor",
+					"entries": [
+						"Lo zodar non può essere teletrasportato o mandato in nessun piano di esistenza contro la sua volontà."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Lo zodar non ha bisogno di aria, cibo, bevande o sonno."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Lo zodar effettua due attacchi di Pugno Schiacciante. Prima o dopo questi attacchi, lo zodar usa il Teletrasporto forzato."
+					]
+				},
+				{
+					"name": "Crushing Fist",
+					"entries": [
+						"{@atk mw} {@hit 15} per colpire, portata 5 ft., un bersaglio. {@h}21 ({@damage 2d10 + 10}) danni da forza."
+					]
+				},
+				{
+					"name": "Forced Teleport",
+					"entries": [
+						"Lo zodar deforma magicamente lo spazio intorno a una creatura che riesce a vedere entro 60 piedi da sé. Il bersaglio deve effettuare un tiro salvezza di Costituzione {@dc 21}. Se il tiro salvezza fallisce, il bersaglio subisce 22 ({@damage 4d10}) danni da forza e lo zodar lo teletrasporta, insieme a qualsiasi equipaggiamento che indossa o trasporta, fino a 60 piedi in uno spazio non occupato che lo zodar può vedere e che può sostenere il bersaglio. Se il tiro salvezza riesce, il bersaglio subisce la metà dei danni e non viene teletrasportato."
+					]
+				},
+				{
+					"name": "Wish",
+					"entries": [
+						"Lo zodar lancia l'incantesimo {@spell wish}, che non richiede alcuna componente e utilizza il Carisma come capacità di incantesimo (tiro salvezza {@dc 17}). Dopo aver lanciato questo incantesimo, lo zodar si trasforma in polvere e viene distrutto."
+					]
+				}
+			],
+			"traitTags": [
+				"Legendary Resistances",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"O"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

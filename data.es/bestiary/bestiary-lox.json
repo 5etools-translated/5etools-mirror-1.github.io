@@ -1,0 +1,192 @@
+{
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"otherSources": {
+			"monster": {
+				"BAM": "LoX",
+				"MM": "LoX"
+			}
+		}
+	},
+	"monster": [
+		{
+			"name": "Aarakocra Spelljammer",
+			"source": "LoX",
+			"page": 43,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_trait": {
+					"name": "Aarakocra",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "\\bmage\\b",
+						"with": "aarakocra"
+					}
+				}
+			}
+		},
+		{
+			"name": "Agony",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 34,
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the ghost",
+						"with": "Agony",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Astral Blight",
+			"source": "LoX",
+			"page": 10,
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8 + 8"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 16,
+			"dex": 8,
+			"con": 14,
+			"int": 6,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"cold",
+				"radiant"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Illumination",
+					"entries": [
+						"Mientras tenga al menos 1 punto de vida, la plaga astral arroja una luz tenue en un radio de 3 metros."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"La plaga no requiere aire ni sueño."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"El tizón hace dos ataques de la vid que drena el calor."
+					]
+				},
+				{
+					"name": "Heat-Draining Vine",
+					"entries": [
+						"{@atk mw} {@hit 5} para golpear, alcance de 10 pies, un objetivo. {@h}6 ({@damage 1d6 + 3}) de daño radiante, y si el objetivo es una criatura Grande o menor, es {@condition grappled} (escape {@dc 13}). Hasta que este agarre termine, el objetivo recibe 3 ({@damage 1d6}) de daño por frío al comienzo de cada uno de sus turnos. El tizón tiene dos vides, cada una de las cuales puede agarrar a una criatura."
+					]
+				}
+			],
+			"traitTags": [
+				"Illumination",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"C",
+				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluffImages": true
+		},
+		{
+			"name": "Flapjack",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 13,
+			"_copy": {
+				"name": "Flumph",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the flumph",
+						"with": "Flapjack",
+						"flags": "i"
+					}
+				}
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Flapjack lanza uno de los siguientes hechizos, que no requieren componentes materiales y utilizan la Inteligencia como capacidad de lanzamiento (salvación de hechizos {@dc 12}): A voluntad: mano de mago, ilusión menor"
+					],
+					"daily": {
+						"1e": [
+							"{@spell magic missile}",
+							"{@spell unseen servant}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"damageTagsSpell": [
+				"O"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

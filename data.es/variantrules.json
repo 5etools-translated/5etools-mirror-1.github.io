@@ -198,6 +198,42 @@
 			]
 		},
 		{
+			"name": "Crashing",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Un lanzador de conjuros puede chocar su nave con otro objeto o criatura moviendo la nave al espacio del objetivo y haciendo una tirada de ataque especial ({@dice 1d20} + el bono de competencia del lanzador de conjuros) contra la Clase de Armadura del objetivo. Si la tirada de ataque acierta, se produce un choque; de lo contrario, el objetivo se aparta de la trayectoria de la nave, evitando el choque. Si el DM decide que el choque es inevitable, no es necesaria ninguna tirada de ataque y el choque se produce automáticamente.",
+				"Cuando una nave con hechizos choca contra algo que podría dañarla razonablemente, tanto la nave como la criatura u objeto contra el que chocó reciben un daño por apaleamiento basado en el tamaño del objeto golpeado, tal y como se muestra en la tabla de Daños por Choque. Si la nave choca con algo que no tiene puntos de golpe (como un planeta o una luna), aplica el daño sólo a la nave. La nave se detiene tras chocar con una criatura u objeto gargantuesco o inamovible; en caso contrario, la nave puede seguir moviéndose si le queda movimiento, y lo que haya golpeado se desplaza al espacio desocupado más cercano que no esté en la trayectoria de la nave.",
+				"Después de resolver el efecto del choque, determina si el plano de gravedad de la nave está suprimido (ver \"{@book Overlapping Gravity Planes|AAG|2|Overlapping Gravity Planes}\" antes en el capítulo). Si la supresión del plano gravitatorio de una nave hace que las criaturas que se encuentran en ella o dentro de ella caigan, éstas caen en la dirección que sea apropiada para el cambio repentino de gravedad. Para determinar el daño de una caída, consulta las reglas del {@book falling|PHB|8|Falling} en el {@book Player's Handbook|PHB}.",
+				{
+					"type": "table",
+					"caption": "Crash Damage",
+					"colLabels": [
+						"Size of Creature or Object Struck",
+						"Bludgeoning Damage"
+					],
+					"colStyles": [
+						"col-8 text-center",
+						"col-4 text-center"
+					],
+					"rows": [
+						[
+							"Grande",
+							"{@dice 4d10}"
+						],
+						[
+							"Huge",
+							"{@dice 8d10}"
+						],
+						[
+							"Gargantúa",
+							"{@dice 16d10}"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Crashing a Ship",
 			"source": "UAOfShipsAndSea",
 			"page": 9,
@@ -435,6 +471,15 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Crew",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"La tripulación estándar de un barco lanzador de hechizos incluye un capitán para dar órdenes, un lanzador de hechizos para pilotar el barco y uno o más miembros de la tripulación para manejar sus armas. Algunas naves llevan tripulación extra (como tropas y hechiceros de apoyo) o pasajeros. Una nave con más tripulación de la habitual degradará más rápidamente la calidad de su suministro de aire.",
+				"Un hechicero suele cobrar al menos 50 gp por día para operar un {@item spelljamming helm|AAG}."
 			]
 		},
 		{
@@ -10014,6 +10059,15 @@
 			]
 		},
 		{
+			"name": "Ship Repairs",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Las reparaciones no mágicas de un barco dañado pueden realizarse mientras el barco está atracado. Reparar 1 punto de daño en un barco atracado lleva 1 día y cuesta 20 gp en materiales y mano de obra. Los daños en las armas del barco pueden repararse con la misma rapidez (1 punto de vida por día), pero con la mitad de coste (10 gp por punto de vida).",
+				"El hechizo {@spell mending} es una forma más barata y menos lenta de realizar reparaciones. Lanzar el {@spell mending} sobre un barco o arma de a bordo dañada restaura un número de puntos de vida del objetivo igual al {@dice 1d8} más el modificador de la habilidad de conjuro del hechicero. El objetivo puede recuperar puntos de golpe con ese hechizo no más de una vez por hora."
+			]
+		},
+		{
 			"name": "Ship Stat Blocks",
 			"source": "GoS",
 			"page": 186,
@@ -10287,6 +10341,77 @@
 								"{@vehicle Warship|UAOfShipsAndSea}"
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ship-to-Ship Combat",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Las siguientes reglas están diseñadas para que el combate entre naves sea sencillo y emocionante.",
+				{
+					"type": "entries",
+					"name": "Starting Distance",
+					"entries": [
+						"Al comienzo de un encuentro, el DM decide a qué distancia se encuentra una nave de sus enemigos. Se ofrecen tres posibilidades en la tabla de distancia de inicio del encuentro. Cuanto más corta sea la distancia, menos tiempo tendrán las tripulaciones para cargar las armas y hacer otros preparativos.",
+						{
+							"type": "table",
+							"caption": "Starting Encounter Distance",
+							"colLabels": [
+								"Distance",
+								"Notes"
+							],
+							"colStyles": [
+								"col-2",
+								"col-10"
+							],
+							"rows": [
+								[
+									"250 feet",
+									"Largo alcance para balistas, mangoneles, arcos cortos, arcos largos, ballestas ligeras y ballestas pesadas"
+								],
+								[
+									"500 feet",
+									"Largo alcance para arcos largos y mangoneles; más allá del alcance de ballestas y ballesteros"
+								],
+								[
+									"1,000 feet",
+									"Más allá del alcance de la mayoría de las armas a distancia"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Initiative",
+					"entries": [
+						"El {@book Dungeon Master's Guide|DMG} presenta una regla variante llamada {@variantrule Initiative Variants||Side Initiative}, que es ideal para los enfrentamientos entre naves, ya que te ahorra la molestia de seguir la iniciativa de las criaturas individuales a bordo de cada nave.",
+						{
+							"type": "inset",
+							"name": "Shipboard Weapons",
+							"entries": [
+								"Un barco de hechizos suele tener una o más armas a bordo, siendo las más comunes las balistas y los mangoneles. Estas armas son lentas de cargar y disparar. Casi siempre es mejor que los personajes de los jugadores utilicen sus propias armas y hechizos en los combates entre naves, reservando las armas de a bordo para los objetivos que están demasiado lejos para ser dañados por otros medios."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Moving and Steering a Ship",
+					"entries": [
+						"Un spelljammer puede usar el {@item spelljamming helm|AAG} de un barco para moverse y dirigirlo sin gastar sus propias acciones o movimiento. En su turno, el hechicero determina la distancia a la que se mueve el barco (hasta su velocidad máxima) y decide si se acerca a otro barco o pone más distancia entre ambos.",
+						"En su turno, un barco puede girar y reorientarse para que todas sus armas puedan apuntar y disparar a cualquier objetivo que esté a su alcance, independientemente de su ubicación en la cubierta."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Boarding",
+					"entries": [
+						"Cuando un barco se mueve a menos de 5 pies de otro barco, el hechicero o el piloto del barco en movimiento puede maniobrar junto al otro barco, lo que permite a las criaturas moverse con seguridad de la cubierta de un barco a la de otro hasta que uno de los barcos se aleje del otro.",
+						"Un barco que tiene suficiente movimiento puede acercarse a otro barco, desplegar un grupo de abordaje y luego alejarse, siempre que los miembros del grupo de abordaje hayan realizado la acción {@action ready||Ready} para posicionarse de manera que puedan moverse hacia el otro barco cuando esté lo suficientemente cerca."
 					]
 				}
 			]

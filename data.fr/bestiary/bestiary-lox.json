@@ -1,0 +1,192 @@
+{
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"otherSources": {
+			"monster": {
+				"BAM": "LoX",
+				"MM": "LoX"
+			}
+		}
+	},
+	"monster": [
+		{
+			"name": "Aarakocra Spelljammer",
+			"source": "LoX",
+			"page": 43,
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_trait": {
+					"name": "Aarakocra",
+					"source": "DMG"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "\\bmage\\b",
+						"with": "aarakocra"
+					}
+				}
+			}
+		},
+		{
+			"name": "Agony",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 34,
+			"_copy": {
+				"name": "Ghost",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the ghost",
+						"with": "Agony",
+						"flags": "i"
+					}
+				}
+			}
+		},
+		{
+			"name": "Astral Blight",
+			"source": "LoX",
+			"page": 10,
+			"size": [
+				"M"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				{
+					"ac": 12,
+					"from": [
+						"natural armor"
+					]
+				}
+			],
+			"hp": {
+				"average": 26,
+				"formula": "4d8 + 8"
+			},
+			"speed": {
+				"walk": 10
+			},
+			"str": 16,
+			"dex": 8,
+			"con": 14,
+			"int": 6,
+			"wis": 10,
+			"cha": 3,
+			"senses": [
+				"blindsight 60 ft. (blind beyond this radius)"
+			],
+			"passive": 10,
+			"resist": [
+				"cold",
+				"radiant"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Illumination",
+					"entries": [
+						"Tant qu'il a au moins 1 point de vie, le fléau astral diffuse une lumière faible dans un rayon de 3 mètres."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Le fléau n'a pas besoin d'air ou de sommeil."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Le fléau fait deux attaques de vigne drainant la chaleur."
+					]
+				},
+				{
+					"name": "Heat-Draining Vine",
+					"entries": [
+						"{@atk mw} {@hit 5} pour toucher, portée de 10 ft, une cible. {@h}6 ({@damage 1d6 + 3}) dégâts radiants, et si la cible est une créature Large ou plus petite, elle subit {@condition grappled} (fuite {@dc 13}). Jusqu'à la fin de ce grappin, la cible subit 3 ({@damage 1d6}) de dégâts de froid au début de chacun de ses tours. Le fléau possède deux lianes, qui peuvent chacune grappiner une créature."
+					]
+				}
+			],
+			"traitTags": [
+				"Illumination",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"damageTags": [
+				"C",
+				"R"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RCH"
+			],
+			"conditionInflict": [
+				"grappled"
+			],
+			"hasFluffImages": true
+		},
+		{
+			"name": "Flapjack",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"page": 13,
+			"_copy": {
+				"name": "Flumph",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the flumph",
+						"with": "Flapjack",
+						"flags": "i"
+					}
+				}
+			},
+			"spellcasting": [
+				{
+					"name": "Spellcasting",
+					"headerEntries": [
+						"Flapjack lance l'un des sorts suivants, ne nécessitant aucun composant matériel et utilisant l'Intelligence comme capacité de lanceur de sorts (sauvegarde contre les sorts {@dc 12}) : À volonté : main de mage, illusion mineure"
+					],
+					"daily": {
+						"1e": [
+							"{@spell magic missile}",
+							"{@spell unseen servant}"
+						]
+					},
+					"ability": "int",
+					"displayAs": "action"
+				}
+			],
+			"damageTagsSpell": [
+				"O"
+			],
+			"spellcastingTags": [
+				"O"
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

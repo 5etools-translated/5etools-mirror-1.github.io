@@ -838,6 +838,143 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Astral Drifter",
+			"source": "AAG",
+			"feats": [
+				{
+					"magic initiate|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"religion": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 2
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						"traveler's clothes|phb",
+						{
+							"special": "diary"
+						},
+						"ink pen|phb",
+						"ink (1-ounce bottle)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Insight}, {@skill Religion}"
+						},
+						{
+							"type": "item",
+							"name": "Languages:",
+							"entry": "Twee naar keuze ({@language Celestial} of {@language Gith|MM} aanbevolen)"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Een set van {@item traveler's clothes|PHB}, een dagboek, een {@item ink pen|PHB}, een {@item Ink (1-ounce bottle)|PHB|bottle of ink}, en een {@item pouch|phb} met 10 gp"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Longevity",
+					"entries": [
+						"Je bent {@dice 20d6} jaar ouder dan je eruit ziet, omdat je zoveel tijd in de Astrale Zee hebt doorgebracht zonder ouder te worden."
+					]
+				},
+				{
+					"name": "Feature: Divine Contact",
+					"type": "entries",
+					"entries": [
+						"Je krijgt de {@feat Magic Initiate||Magic Initiate feat} van de {@book Player's Handbook|PHB} en moet cleric kiezen voor de feat.",
+						"In de Astrale Zee, kruiste je pad met een rondzwervende godheid. De ontmoeting was kort en geweldloos, maar maakte een blijvende indruk op je. Deze godheid vond het nodig om een geheim of obscuur stukje kosmische overlevering met je te delen. Werk samen met je DM om de details van deze kennis en de invloed ervan op de campagne te bepalen.",
+						"Rol op de Goddelijk Contact tabel om te bepalen welke godheid je bent tegengekomen, of werk met je DM om een meer geschikte keuze te bepalen.",
+						{
+							"type": "table",
+							"caption": "Divine Contact",
+							"colLabels": [
+								"d10",
+								"Wandering Deity"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"Corellon, god van kunst en magie (chaotisch goed)"
+								],
+								[
+									"2",
+									"Tymora, god van het geluk (chaotisch goed)"
+								],
+								[
+									"3",
+									"Fharlanghn, god van horizonnen en reizen (neutraal goed)"
+								],
+								[
+									"4",
+									"Istus, god van het lot en het lot (neutraal)"
+								],
+								[
+									"5",
+									"Nuada, god van oorlog en krijgers (neutraal)"
+								],
+								[
+									"6",
+									"Zivilyn, god van de wijsheid (neutraal)"
+								],
+								[
+									"7",
+									"Arawn, god van leven en dood (neutraal kwaad)"
+								],
+								[
+									"8",
+									"Hecate, god van de magie en de manen (chaotisch kwaad)"
+								],
+								[
+									"9",
+									"Celestian, god van de sterren en zwervers (neutraal)"
+								],
+								[
+									"10",
+									"Ptah, god van kennis en geheimen (wetmatig neutraal)"
+								]
+							]
+						}
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Athlete",
 			"source": "MOT",
 			"page": 31,
@@ -23908,6 +24045,143 @@
 				}
 			],
 			"hasFluff": true
+		},
+		{
+			"name": "Wildspacer",
+			"source": "AAG",
+			"feats": [
+				{
+					"tough|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"athletics": true,
+					"survival": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"navigator's tools": true,
+					"vehicles (space)": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						{
+							"item": "club|phb",
+							"displayName": "belaying pin"
+						},
+						"traveler's clothes|phb",
+						"grappling hook|phb",
+						"hempen rope (50 feet)|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1000
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Athletics}, {@skill Survival}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiencies:",
+							"entry": "{@item Navigator's tools|phb}, {@filter vehicles (space)|items|source=phb;dmg|miscellaneous=mundane|type=vehicle (space)}"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "Een borgpen ({@item club|phb}), een set van {@item traveler's clothes|PHB}, een {@item grappling hook|PHB}, {@item Hempen Rope (50 feet)|PHB|50 feet of hempen rope}, en een {@item pouch|phb} met 10 gp"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Close Encounter",
+					"entries": [
+						"Je had een schrijnende ontmoeting met een van Wildspace's vele verschrikkingen. Je ontsnapte met je leven, maar je hield er een litteken of twee aan over, of misschien een terugkerende nachtmerrie. Rol op de Close Encounter tabel om te bepalen welk wezen je bijna te pakken had. Wezens gemarkeerd met een asterisk verschijnen in {@book Boo's Astral Menagerie|BAM}; de anderen worden beschreven in de {@book Monster Manual|MM}.",
+						{
+							"type": "table",
+							"caption": "Close Encounter",
+							"colLabels": [
+								"d10",
+								"Creature"
+							],
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"rows": [
+								[
+									"1",
+									"{@creature Beholder}"
+								],
+								[
+									"2",
+									"{@creature Cosmic horror|BAM}*"
+								],
+								[
+									"3",
+									"{@creature Feyr|BAM}*"
+								],
+								[
+									"4",
+									"{@filter Lunar dragon|bestiary|source=BAM|search=lunar dragon}*"
+								],
+								[
+									"5",
+									"{@creature Mind flayer}"
+								],
+								[
+									"6",
+									"{@creature Neh-thalggu|BAM}*"
+								],
+								[
+									"7",
+									"{@creature Neogi|MPMM}*"
+								],
+								[
+									"8",
+									"{@creature Space clown|BAM}*"
+								],
+								[
+									"9",
+									"{@creature Vampirate|BAM}*"
+								],
+								[
+									"10",
+									"{@creature Void scavver|BAM}*"
+								]
+							]
+						}
+					]
+				},
+				{
+					"name": "Feature: Wildspace Adaptation",
+					"type": "entries",
+					"entries": [
+						"Je hebt de {@feat Tough||Tough feat} van de {@book Player's Handbook|PHB}. Bovendien heb je geleerd hoe je je kunt aanpassen aan nul zwaartekracht. Gewichtloos zijn geeft je geen nadeel op een van je mêlee aanvalsrollen (zie \"{@book Weightlessness|AAG|2|Weightlessness}\" in {@book chapter 2|AAG|2})."
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Witchlight Hand",

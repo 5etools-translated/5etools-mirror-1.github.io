@@ -1,0 +1,124 @@
+{
+	"spell": [
+		{
+			"name": "Air Bubble",
+			"source": "AAG",
+			"page": 22,
+			"level": 2,
+			"school": "C",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"components": {
+				"s": true
+			},
+			"duration": [
+				{
+					"type": "timed",
+					"duration": {
+						"type": "hour",
+						"amount": 24
+					}
+				}
+			],
+			"entries": [
+				"Вы создаете призрачный шар вокруг головы желающего существа, которое вы видите в пределах досягаемости. Шар наполняется свежим воздухом, который сохраняется до окончания действия заклинания. Если у существа больше одной головы, шар воздуха появляется только вокруг одной из голов (а это все, что нужно существу, чтобы не задохнуться, если предположить, что у всех его голов одна дыхательная система)."
+			],
+			"entriesHigherLevel": [
+				{
+					"type": "entries",
+					"name": "At Higher Levels",
+					"entries": [
+						"Когда вы произносите это заклинание, используя слот заклинания 3-го уровня или выше, вы можете создать два дополнительных шара свежего воздуха за каждый уровень слота выше 2-го."
+					]
+				}
+			],
+			"miscTags": [
+				"SGT"
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Druid",
+						"source": "PHB"
+					},
+					{
+						"name": "Ranger",
+						"source": "PHB"
+					},
+					{
+						"name": "Sorcerer",
+						"source": "PHB"
+					},
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			},
+			"hasFluffImages": true
+		},
+		{
+			"name": "Create Spelljamming Helm",
+			"source": "AAG",
+			"page": 22,
+			"level": 5,
+			"school": "T",
+			"time": [
+				{
+					"number": 1,
+					"unit": "action"
+				}
+			],
+			"range": {
+				"type": "point",
+				"distance": {
+					"type": "touch"
+				}
+			},
+			"components": {
+				"v": true,
+				"s": true,
+				"m": {
+					"text": "a crystal rod worth at least 5,000 gp, which the spell consumes",
+					"cost": 500000,
+					"consume": true
+				}
+			},
+			"duration": [
+				{
+					"type": "instant"
+				}
+			],
+			"entries": [
+				"Держа жезл, использованный при произнесении заклинания, коснитесь большого или меньшего стула, который не занят. Жезл исчезает, а стул превращается в {@item spelljamming helm|AAG}."
+			],
+			"classes": {
+				"fromClassList": [
+					{
+						"name": "Wizard",
+						"source": "PHB"
+					},
+					{
+						"name": "Artificer",
+						"source": "TCE"
+					}
+				]
+			}
+		}
+	]
+}

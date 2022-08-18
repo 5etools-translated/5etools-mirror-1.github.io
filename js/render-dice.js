@@ -1541,6 +1541,7 @@ Renderer.dice.parsed = {
 
 		for (const mod of mods) {
 			vals.sort(SortUtil.ascSortProp.bind(null, "val")).reverse();
+			const valsAlive = vals.filter(it => !it.isDropped);
 
 			const modNum = mod.numSym[fnName]();
 
@@ -1551,10 +1552,10 @@ Renderer.dice.parsed = {
 				case Renderer.dice.tk.KEEP_LOWEST.type: {
 					const isHighest = mod.modSym.type.endsWith("H");
 
-					const splitPoint = isHighest ? modNum : vals.length - modNum;
+					const splitPoint = isHighest ? modNum : valsAlive.length - modNum;
 
-					const highSlice = vals.slice(0, splitPoint);
-					const lowSlice = vals.slice(splitPoint, vals.length);
+					const highSlice = valsAlive.slice(0, splitPoint);
+					const lowSlice = valsAlive.slice(splitPoint, valsAlive.length);
 
 					switch (mod.modSym.type) {
 						case Renderer.dice.tk.DROP_HIGHEST.type:
@@ -1585,7 +1586,7 @@ Renderer.dice.parsed = {
 						default: throw new Error(`Unimplemented!`);
 					}
 
-					const toReroll = vals.filter(val => fnPartition(val.val, modNum));
+					const toReroll = valsAlive.filter(val => fnPartition(val.val, modNum));
 					toReroll.forEach(val => val.isDropped = true);
 
 					const nuVals = opts.fnGetRerolls(toReroll);
@@ -1612,7 +1613,7 @@ Renderer.dice.parsed = {
 
 					let tries = 999; // limit the maximum explosions to a sane amount
 					let lastLen;
-					let toExplodeNext = vals;
+					let toExplodeNext = valsAlive;
 					do {
 						lastLen = vals.length;
 
@@ -1648,7 +1649,7 @@ Renderer.dice.parsed = {
 						default: throw new Error(`Unimplemented!`);
 					}
 
-					const successes = vals.filter(val => fnPartition(val.val, modNum));
+					const successes = valsAlive.filter(val => fnPartition(val.val, modNum));
 					successes.forEach(val => val.isSuccess = true);
 
 					break;
@@ -1659,7 +1660,7 @@ Renderer.dice.parsed = {
 				case Renderer.dice.tk.MARGIN_SUCCESS_GTEQ.type:
 				case Renderer.dice.tk.MARGIN_SUCCESS_LT.type:
 				case Renderer.dice.tk.MARGIN_SUCCESS_LTEQ.type: {
-					const total = vals.map(it => it.val).reduce((valA, valB) => valA + valB, 0);
+					const total = valsAlive.map(it => it.val).reduce((valA, valB) => valA + valB, 0);
 
 					const subDisplayDice = displayVals.map(r => `[${Renderer.dice.parsed._rollToNumPart_html(r, opts.faces)}]`).join("+");
 

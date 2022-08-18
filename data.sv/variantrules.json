@@ -198,6 +198,42 @@
 			]
 		},
 		{
+			"name": "Crashing",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"En spelljammer kan köra in sitt skepp i ett annat föremål eller en varelse genom att flytta skeppet in i målets utrymme och göra en specialattackrulle ({@dice 1d20} + spelljammerns kompetensbonus) mot målets rustningsklass. Om attackkastet träffar inträffar sker en krasch, annars flyttar sig målet ut ur skeppets bana och undviker kraschen. Om DM bestämmer att en krasch är oundviklig behövs ingen attackrulle och kraschen sker automatiskt.",
+				"När ett stavningsfartyg kraschar in i något som rimligen skulle kunna skada det, tar både fartyget och den varelse eller det föremål som det träffade skada genom att slåss, baserat på storleken på det träffade föremålet, som visas i tabellen Crash Damage (skador vid krasch). Om skeppet kör in i något som inte har träffpunkter (till exempel en planet eller en måne) appliceras skadan endast på skeppet. Skeppet stannar efter att ha kraschat in i en Gargantuan eller en orörlig varelse eller ett orörligt föremål; annars kan skeppet fortsätta att röra sig om det har någon rörelse kvar, och det som det träffade flyttar sig till närmaste obefolkade utrymme som inte är i skeppets väg.",
+				"Efter att ha löst effekten av kraschen avgör du om fartygets gravitationsplan är undertryckt (se \"{@book Overlapping Gravity Planes|AAG|2|Overlapping Gravity Planes}\" tidigare i kapitlet). Om undertryckandet av ett skepps gravitationsplan skulle få varelserna på eller i skeppet att falla, faller de i den riktning som är lämplig för den plötsliga gravitationsförändringen. För att bestämma skadan från ett fall, se {@book falling|PHB|8|Falling}-reglerna i {@book Player's Handbook|PHB}.",
+				{
+					"type": "table",
+					"caption": "Crash Damage",
+					"colLabels": [
+						"Size of Creature or Object Struck",
+						"Bludgeoning Damage"
+					],
+					"colStyles": [
+						"col-8 text-center",
+						"col-4 text-center"
+					],
+					"rows": [
+						[
+							"Stor",
+							"{@dice 4d10}"
+						],
+						[
+							"Huge",
+							"{@dice 8d10}"
+						],
+						[
+							"Gargantuan",
+							"{@dice 16d10}"
+						]
+					]
+				}
+			]
+		},
+		{
 			"name": "Crashing a Ship",
 			"source": "UAOfShipsAndSea",
 			"page": 9,
@@ -435,6 +471,15 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Crew",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Standardbesättningen för ett spelljammskepp består av en kapten som ger order, en spelljammer som styr fartyget och en eller flera besättningsmedlemmar som sköter vapnen. Vissa fartyg har extra besättning (t.ex. trupper och reservbesvärjare) eller passagerare. Ett fartyg som har mer än en standardbesättning försämrar kvaliteten på sin lufttillförsel snabbare.",
+				"En trollkarl tar vanligtvis minst 50 gp per dag för att använda en {@item spelljamming helm|AAG}."
 			]
 		},
 		{
@@ -10014,6 +10059,15 @@
 			]
 		},
 		{
+			"name": "Ship Repairs",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Icke-magiska reparationer av ett skadat fartyg kan göras medan fartyget ligger vid kaj. Att reparera 1 träffpunkts skada på ett förtöjt fartyg tar 1 dag och kostar 20 gp för material och arbete. Skador på fartygets vapen kan repareras lika snabbt (1 träffpunkt per dag), men till halva kostnaden (10 gp per träffpunkt).",
+				"{@spell mending} är ett billigare och mindre tidskrävande sätt att utföra reparationer. Genom att kasta {@spell mending} på ett skadat fartyg eller vapen ombord återställs ett antal träffpunkter till målet som är lika med {@dice 1d8} plus trollkarlens moduleringsförmåga för trollkonstnärens trollkonstnärsförmåga. Målet kan återfå träffpoäng från denna besvärjelse högst en gång per timme."
+			]
+		},
+		{
 			"name": "Ship Stat Blocks",
 			"source": "GoS",
 			"page": 186,
@@ -10287,6 +10341,77 @@
 								"{@vehicle Warship|UAOfShipsAndSea}"
 							]
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ship-to-Ship Combat",
+			"source": "AAG",
+			"type": "entries",
+			"entries": [
+				"Följande regler är utformade för att göra fartyg-till-skepp-striderna enkla men ändå spännande.",
+				{
+					"type": "entries",
+					"name": "Starting Distance",
+					"entries": [
+						"I början av en strid bestämmer DM hur långt ett skepp befinner sig från sina fiender. Tre möjligheter finns i tabellen Starting Encounter Distance (Avstånd till början av mötet). Ju kortare avstånd, desto mindre tid har besättningarna att ladda vapen och göra andra förberedelser.",
+						{
+							"type": "table",
+							"caption": "Starting Encounter Distance",
+							"colLabels": [
+								"Distance",
+								"Notes"
+							],
+							"colStyles": [
+								"col-2",
+								"col-10"
+							],
+							"rows": [
+								[
+									"250 feet",
+									"Lång räckvidd för ballistae, mangonels, kortbågar, långbågar, lätta armborst och tunga armborst."
+								],
+								[
+									"500 feet",
+									"Lång räckvidd för långbågar och mangoneller; utanför räckvidden för ballistor och armborst."
+								],
+								[
+									"1,000 feet",
+									"Utanför räckvidden för de flesta distansvapen"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Initiative",
+					"entries": [
+						"I {@book Dungeon Master's Guide|DMG} presenteras en variantregel som kallas {@variantrule Initiative Variants||Side Initiative}, som är idealisk för strider mellan skepp, eftersom den besparar dig besväret att följa initiativet för enskilda varelser ombord på varje skepp.",
+						{
+							"type": "inset",
+							"name": "Shipboard Weapons",
+							"entries": [
+								"Ett stavningsfartyg har vanligtvis ett eller flera vapen ombord, varav ballistae och mangonels är de vanligaste. Sådana vapen är långsamma att ladda och avfyra. Spelarkaraktärer är nästan alltid bättre lämpade att använda sina egna vapen och trollformler i strid från fartyg till fartyg och reservera fartygsvapen för mål som är för långt borta för att skadas på annat sätt."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Moving and Steering a Ship",
+					"entries": [
+						"En spelljammer kan använda ett fartygs {@item spelljamming helm|AAG} för att röra sig och styra fartyget utan att behöva använda sina egna handlingar eller rörelser. På sin tur bestämmer trollkarlen hur långt skeppet rör sig (upp till dess maximala hastighet) och bestämmer om han ska närma sig ett annat skepp eller lägga mer avstånd mellan de två.",
+						"Vid sin tur kan ett skepp vändas och omorienteras så att alla dess vapen kan sikta och skjuta mot alla mål inom räckhåll, oavsett var de befinner sig på däcket."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Boarding",
+					"entries": [
+						"När ett skepp rör sig inom 1,5 meter från ett annat skepp kan trollkarlen eller piloten på det rörliga skeppet manövrera det längs med det andra skeppet, vilket gör det möjligt för varelser att säkert förflytta sig från det ena skeppets däck till det andra skeppets däck tills ett av skeppen drar sig undan från det andra.",
+						"Ett fartyg som har tillräckligt med rörelse kan dra intill ett annat fartyg, placera ut en bordningsgrupp och sedan flytta sig, förutsatt att medlemmarna i bordningsgruppen gjorde {@action ready||Ready} för att positionera sig själva så att de kan gå in på det andra fartyget när det är tillräckligt nära."
 					]
 				}
 			]

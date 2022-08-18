@@ -53,94 +53,40 @@ class AcConvert {
 				.filter(Boolean)
 				.forEach(fromLow => {
 					switch (fromLow) {
-						// unhandled/other
-						case "unarmored defense":
-						case "suave defense":
-						case "armor scraps":
-						case "barding scraps":
-						case "patchwork armor":
-						case "see natural armor feature":
-						case "barkskin trait":
-						case "sylvan warrior":
-						case "cage":
-						case "chains":
-						case "coin mail":
-						case "crude armored coat":
-						case "improvised armor":
-						case "magic robes":
-						case "makeshift armor":
-						case "natural and mystic armor":
-						case "padded armor":
-						case "padded leather":
-						case "parrying dagger":
-						case "plant fiber armor":
-						case "plus armor worn":
-						case "rag armor":
-						case "ring of protection +2":
-						case "see below":
-						case "wicker armor":
-						case "bone armor":
-						case "deflection":
-						case "mental defense":
-						case "blood aegis":
-						case "psychic defense":
-							froms.push(fromLow);
-							break;
-
-						// au naturel
-						case "natural armor":
-						case "natural armour":
-						case "natural":
-							froms.push("natural armor");
-							break;
-
-						// spells
-						case "foresight bonus": froms.push(`{@spell foresight} bonus`); break;
-						case "natural barkskin": froms.push(`natural {@spell barkskin}`); break;
-						case "mage armor": froms.push("{@spell mage armor}"); break;
-
-						// armor (mostly handled by the item lookup; these are mis-named exceptions (usually for homebrew))
-						case "chainmail":
-						case "chain armor":
-							froms.push("{@item chain mail|phb}");
-							break;
-
-						case "plate mail":
-						case "platemail":
-						case "full plate":
-							froms.push("{@item plate armor|phb}");
-							break;
-
-						case "scale armor": froms.push("{@item scale mail|phb}"); break;
-						case "splint armor": froms.push("{@item splint mail|phb}"); break;
-						case "chain shirt": froms.push("{@item chain shirt|phb}"); break;
-						case "shields": froms.push("{@item shield|phb|shields}"); break;
-
-						case "spiked shield": froms.push("{@item shield|phb|spiked shield}"); break;
-
-						// magic items
-						case "dwarven plate": froms.push("{@item dwarven plate}"); break;
-						case "elven chain": froms.push("{@item elven chain}"); break;
-						case "glamoured studded leather": froms.push("{@item glamoured studded leather}"); break;
-						case "bracers of defense": froms.push("{@item bracers of defense}"); break;
-						case "badge of the watch": froms.push("{@item Badge of the Watch|wdh}"); break;
-						case "cloak of protection": froms.push("{@item cloak of protection}"); break;
-						case "ring of protection": froms.push("{@item ring of protection}"); break;
-						case "robe of the archmagi": froms.push("{@item robe of the archmagi}"); break;
-						case "robe of the archmage": froms.push("{@item robe of the archmagi}"); break;
-						case "staff of power": froms.push("{@item staff of power}"); break;
-
 						// literally nothing
 						case "unarmored": break;
 
 						// everything else
 						default: {
-							if (AcConvert._ITEM_LOOKUP[fromLow]) {
-								const itemMeta = AcConvert._ITEM_LOOKUP[fromLow];
+							const simpleFrom = this._getSimpleFrom(fromLow);
+							if (simpleFrom) return froms.push(simpleFrom);
 
-								if (itemMeta.isExact) froms.push(`{@item ${fromLow}${itemMeta.source === SRC_DMG ? "" : `|${itemMeta.source}`}}`);
-								else froms.push(`{@item ${itemMeta.name}${itemMeta.source === SRC_DMG ? "|" : `|${itemMeta.source}`}|${fromLow}}`);
-							} else if (fromLow.endsWith("with mage armor") || fromLow.endsWith("with barkskin")) {
+							// Special parsing for barding, as the pre-barding armor type might not exactly match our known
+							//   barding names (e.g. "chainmail barding")
+							const mWithBarding = /^(?<ac>\d+) with (?<name>(?<type>.*?) barding)$/.exec(fromLow);
+							if (mWithBarding) {
+								let simpleFromBarding = this._getSimpleFrom(mWithBarding.groups.type);
+								if (simpleFromBarding) {
+									simpleFromBarding = simpleFromBarding
+										.replace(/{@item ([^}]+)}/, (...m) => {
+											let [name, source, displayName] = m[1].split("|");
+											name = `${name.replace(/ armor$/i, "")} barding`;
+
+											if (mWithBarding.groups.name === name) return `{@item ${name}${source ? `|${source}` : ""}}`;
+											return `{@item ${name}${source ? `|${source}` : "|"}|${mWithBarding.groups.name}}`;
+										});
+
+									nxtAc = {
+										ac: Number(mWithBarding.groups.ac),
+										condition: `with ${simpleFromBarding}`,
+										braces: true,
+									};
+
+									return;
+								}
+							}
+
+							if (fromLow.endsWith("with mage armor") || fromLow.endsWith("with barkskin")) {
 								const numMatch = /(\d+) with (.*)/.exec(fromLow);
 								if (!numMatch) throw new Error("Spell AC but no leading number?");
 
@@ -154,16 +100,20 @@ class AcConvert {
 									condition: `with ${spell}`,
 									braces: true,
 								};
-							} else if (/^in .*? form$/i.test(fromLow)) {
+
+								return;
+							}
+
+							if (/^in .*? form$/i.test(fromLow)) {
 								// If there's an existing condition, flag a warning
 								if (cur.condition && cbMan) cbMan(fromLow, `AC requires manual checking: ${mon.name} ${mon.source} p${mon.page}`);
 								cur.condition = `${cur.condition ? `${cur.condition} ` : ""}${fromLow}`;
-							} else if (/scraps of .*?armor/i.test(fromLow)) { // e.g. "scraps of hide armor"
-								froms.push(fromLow);
-							} else {
-								if (cbMan) cbMan(fromLow, `AC requires manual checking: ${mon.name} ${mon.source} p${mon.page}`);
-								froms.push(fromLow);
+
+								return;
 							}
+
+							if (cbMan) cbMan(fromLow, `AC requires manual checking: ${mon.name} ${mon.source} p${mon.page}`);
+							froms.push(fromLow);
 						}
 					}
 				});
@@ -181,6 +131,105 @@ class AcConvert {
 		});
 
 		mon.ac = nuAc;
+	}
+
+	static _getSimpleFrom (fromLow) {
+		switch (fromLow) {
+			// region unhandled/other
+			case "unarmored defense":
+			case "suave defense":
+			case "armor scraps":
+			case "barding scraps":
+			case "patchwork armor":
+			case "see natural armor feature":
+			case "barkskin trait":
+			case "sylvan warrior":
+			case "cage":
+			case "chains":
+			case "coin mail":
+			case "crude armored coat":
+			case "improvised armor":
+			case "magic robes":
+			case "makeshift armor":
+			case "natural and mystic armor":
+			case "padded armor":
+			case "padded leather":
+			case "parrying dagger":
+			case "plant fiber armor":
+			case "plus armor worn":
+			case "rag armor":
+			case "ring of protection +2":
+			case "see below":
+			case "wicker armor":
+			case "bone armor":
+			case "deflection":
+			case "mental defense":
+			case "blood aegis":
+			case "psychic defense":
+			case "glory": // BAM :: Reigar
+				return fromLow;
+				// endregion
+
+			// region au naturel
+			case "natural armor":
+			case "natural armour":
+			case "natural":
+				return "natural armor";
+				// endregion
+
+			// region spells
+			case "foresight bonus": return `{@spell foresight} bonus`;
+			case "natural barkskin": return `natural {@spell barkskin}`;
+			case "mage armor": return "{@spell mage armor}";
+			case "intellect fortress": return "{@spell intellect fortress|tce}";
+			// endregion
+
+			// region armor (mostly handled by the item lookup; these are mis-named exceptions (usually for homebrew))
+			case "chainmail":
+			case "chain armor":
+				return "{@item chain mail|phb}";
+
+			case "plate mail":
+			case "platemail":
+			case "full plate":
+				return "{@item plate armor|phb}";
+
+			case "half-plate": return "{@item half plate armor|phb}";
+
+			case "scale armor": return "{@item scale mail|phb}";
+			case "splint armor": return "{@item splint mail|phb}";
+			case "chain shirt": return "{@item chain shirt|phb}";
+			case "shields": return "{@item shield|phb|shields}";
+
+			case "spiked shield": return "{@item shield|phb|spiked shield}";
+			// endregion
+
+			// region magic items
+			case "dwarven plate": return "{@item dwarven plate}";
+			case "elven chain": return "{@item elven chain}";
+			case "glamoured studded leather": return "{@item glamoured studded leather}";
+			case "bracers of defense": return "{@item bracers of defense}";
+			case "badge of the watch": return "{@item Badge of the Watch|wdh}";
+			case "cloak of protection": return "{@item cloak of protection}";
+			case "ring of protection": return "{@item ring of protection}";
+			case "robe of the archmagi": return "{@item robe of the archmagi}";
+			case "robe of the archmage": return "{@item robe of the archmagi}";
+			case "staff of power": return "{@item staff of power}";
+			// endregion
+
+			default: {
+				if (AcConvert._ITEM_LOOKUP[fromLow]) {
+					const itemMeta = AcConvert._ITEM_LOOKUP[fromLow];
+
+					if (itemMeta.isExact) return `{@item ${fromLow}${itemMeta.source === SRC_DMG ? "" : `|${itemMeta.source}`}}`;
+					return `{@item ${itemMeta.name}${itemMeta.source === SRC_DMG ? "|" : `|${itemMeta.source}`}|${fromLow}}`;
+				}
+
+				if (/scraps of .*?armor/i.test(fromLow)) { // e.g. "scraps of hide armor"
+					return fromLow;
+				}
+			}
+		}
 	}
 
 	static init (items) {
