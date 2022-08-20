@@ -405,6 +405,8 @@ class SublistManager {
 		await this._pSaveSublist();
 
 		JqueryUtil.doToast(`Saved "${saveInfo.name}"!`);
+
+		return true;
 	}
 
 	async pHandleClick_download ({isUrl = false, $eleCopyEffect = null} = {}) {
@@ -1180,7 +1182,7 @@ class ListPage {
 		$btnReset.before($btnHideSearch);
 
 		const $btnShowSearch = $(`<button class="btn btn-block btn-default btn-xs" type="button">Show List</button>`);
-		const $wrpBtnShowSearch = $$`<div class="col-12 ve-hidden">${$btnShowSearch}<br></div>`.prependTo($wrpContent);
+		const $wrpBtnShowSearch = $$`<div class="col-12 mb-1 ve-hidden">${$btnShowSearch}</div>`.prependTo($wrpContent);
 
 		$btnHideSearch.click(() => {
 			$wrpList.hideVe();

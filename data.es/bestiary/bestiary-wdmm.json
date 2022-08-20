@@ -377,6 +377,9 @@
 					"headerEntries": [
 						"Arcturia es una hechicera de nivel 18. Su habilidad de hechizo es Inteligencia (salvación de hechizo {@dc 20}, {@hit 12} para golpear con ataques de hechizo). Arcturia puede lanzar {@spell alter self} a voluntad y tiene preparados los siguientes hechizos de mago:"
 					],
+					"will": [
+						"{@spell alter self}"
+					],
 					"spells": {
 						"0": {
 							"spells": [
@@ -454,13 +457,10 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell alter self}"
-					],
+					"ability": "int",
 					"hidden": [
 						"will"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"damageTagsLegendary": [],
@@ -2036,6 +2036,16 @@
 					"headerEntries": [
 						"Halaster es un hechicero de nivel 20. Su habilidad de hechizo es Inteligencia (salvación de hechizo {@dc 22}, {@hit 14} para golpear con ataques de hechizo). Puede lanzar {@spell disguise self} y {@spell invisibility} a voluntad. Puede lanzar {@spell fly} y {@spell lightning bolt} una vez cada uno sin gastar una ranura de conjuro, pero no puede volver a hacerlo hasta que termine un descanso corto o largo. Halaster tiene preparados los siguientes hechizos de mago:"
 					],
+					"will": [
+						"{@spell disguise self}",
+						"{@spell invisibility}"
+					],
+					"daily": {
+						"1": [
+							"{@spell fly}",
+							"{@spell lightning bolt}"
+						]
+					},
 					"spells": {
 						"0": {
 							"spells": [
@@ -2119,21 +2129,11 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell disguise self}",
-						"{@spell invisibility}"
-					],
-					"daily": {
-						"1": [
-							"{@spell fly}",
-							"{@spell lightning bolt}"
-						]
-					},
+					"ability": "int",
 					"hidden": [
 						"will",
 						"daily"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"trait": [

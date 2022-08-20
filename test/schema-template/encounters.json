@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "encounters.json",
-	"version": "1.2.3",
+	"version": "1.2.4",
 	"title": "EncounterArray",
 	"type": "object",
 
@@ -9,15 +9,10 @@
 		"encounterTableRow": {
 			"type": "object",
 			"properties": {
-				"min": {
-					"type": "integer"
-				},
-				"max": {
-					"type": "integer"
-				},
-				"result": {
-					"$ref": "entry.json"
-				}
+				"min": {"type": "integer"},
+				"max": {"type": "integer"},
+				"result": {"$ref": "entry.json"},
+				"resultAttitude": {"$ref": "entry.json"}
 			},
 			"required": [
 				"min",
@@ -30,15 +25,10 @@
 		"encounterTable": {
 			"type": "object",
 			"properties": {
-				"minlvl": {
-					"type": "integer"
-				},
-				"maxlvl": {
-					"type": "integer"
-				},
-				"diceType": {
-					"type": "integer"
-				},
+				"minlvl": {"type": "integer"},
+				"maxlvl": {"type": "integer"},
+				"diceType": {"type": "integer"},
+				"rollAttitude": {"type": "boolean"},
 				"table": {
 					"type": "array",
 					"items": {
@@ -47,8 +37,6 @@
 				}
 			},
 			"required": [
-				"minlvl",
-				"maxlvl",
 				"table"
 			],
 			"additionalProperties": false
@@ -57,12 +45,8 @@
 		"encounter": {
 			"type": "object",
 			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"source": {
-					"type": "string"
-				},
+				"name": {"type": "string"},
+				"source": {"type": "string"},
 				"tables": {
 					"type": "array",
 					"items": {

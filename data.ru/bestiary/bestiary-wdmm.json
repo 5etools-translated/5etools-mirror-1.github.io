@@ -377,6 +377,9 @@
 					"headerEntries": [
 						"Арктурия - заклинатель 18-го уровня. Ее способность к заклинаниям - Интеллект (спасбросок от заклинаний {@dc 20}, {@hit 12} попадания при атаках заклинаниями). Арктурия может произносить {@spell alter self} заклинаний по желанию и имеет наготове следующие заклинания мага:"
 					],
+					"will": [
+						"{@spell alter self}"
+					],
 					"spells": {
 						"0": {
 							"spells": [
@@ -454,13 +457,10 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell alter self}"
-					],
+					"ability": "int",
 					"hidden": [
 						"will"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"damageTagsLegendary": [],
@@ -2036,6 +2036,16 @@
 					"headerEntries": [
 						"Халастер - заклинатель 20-го уровня. Его способность к заклинаниям - Интеллект (спасбросок от заклинаний {@dc 22}, {@hit 14} попадания при атаках заклинаниями). Он может произносить заклинания {@spell disguise self} и {@spell invisibility} по желанию. Он может произнести {@spell fly} и {@spell lightning bolt} по одному разу, не расходуя слот заклинаний, но не может сделать это снова, пока не закончит короткий или длинный отдых. У Халастера подготовлены следующие заклинания мага:"
 					],
+					"will": [
+						"{@spell disguise self}",
+						"{@spell invisibility}"
+					],
+					"daily": {
+						"1": [
+							"{@spell fly}",
+							"{@spell lightning bolt}"
+						]
+					},
 					"spells": {
 						"0": {
 							"spells": [
@@ -2119,21 +2129,11 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell disguise self}",
-						"{@spell invisibility}"
-					],
-					"daily": {
-						"1": [
-							"{@spell fly}",
-							"{@spell lightning bolt}"
-						]
-					},
+					"ability": "int",
 					"hidden": [
 						"will",
 						"daily"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"trait": [

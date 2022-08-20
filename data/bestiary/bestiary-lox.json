@@ -2,7 +2,8 @@
 	"_meta": {
 		"dependencies": {
 			"monster": [
-				"MM"
+				"MM",
+				"BAM"
 			]
 		},
 		"otherSources": {
@@ -31,7 +32,8 @@
 						"with": "aarakocra"
 					}
 				}
-			}
+			},
+			"hasToken": true
 		},
 		{
 			"name": "Agony",
@@ -50,7 +52,8 @@
 						"flags": "i"
 					}
 				}
-			}
+			},
+			"hasToken": true
 		},
 		{
 			"name": "Astral Blight",
@@ -143,7 +146,98 @@
 			"conditionInflict": [
 				"grappled"
 			],
+			"hasToken": true,
 			"hasFluffImages": true
+		},
+		{
+			"name": "Big Momma",
+			"shortName": true,
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Void Scavver",
+				"source": "BAM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the scavver",
+						"with": "Big Momma",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Commodore Krux",
+			"shortName": true,
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Giff Shipmate",
+				"source": "BAM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giff",
+						"with": "Krux",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Elaina Sartell",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Bandit Captain",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the captain",
+						"with": "Elaina",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"G"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Fel Ardra",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Cult Fanatic",
+				"source": "MM",
+				"_trait": {
+					"name": "Tiefling",
+					"source": "PHB"
+				},
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the fanatic",
+						"with": "Fel",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"N"
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Flapjack",
@@ -167,7 +261,11 @@
 				{
 					"name": "Spellcasting",
 					"headerEntries": [
-						"Flapjack casts one of the following spells, requiring no material components and using Intelligence as the spellcasting ability (spell save {@dc 12}): At will: mage hand, minor illusion"
+						"Flapjack casts one of the following spells, requiring no material components and using Intelligence as the spellcasting ability (spell save {@dc 12}):"
+					],
+					"will": [
+						"{@spell mage hand}",
+						"{@spell minor illusion}"
 					],
 					"daily": {
 						"1e": [
@@ -185,8 +283,168 @@
 			"spellcastingTags": [
 				"O"
 			],
+			"hasToken": true,
 			"hasFluff": true,
 			"hasFluffImages": true
+		},
+		{
+			"name": "Grimzod Gargenhale",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Vampirate Captain",
+				"source": "BAM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the captain",
+						"with": "Grimzod",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"N"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Hastain",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Reigar",
+				"source": "BAM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the reigar",
+						"with": "Hastain",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Prince Xeleth",
+			"shortName": true,
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Astral Elf Aristocrat",
+				"source": "BAM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the elf",
+						"with": "Xeleth",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"E"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Princess Xedalli",
+			"shortName": true,
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Astral Elf Aristocrat",
+				"source": "BAM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the elf",
+						"with": "Xedalli",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"N"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Topolah",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Mage",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mage",
+						"with": "Topolah",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"C",
+				"G"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Vocath",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Mercane",
+				"source": "BAM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the mercane",
+						"with": "Vocath",
+						"flags": "i"
+					}
+				}
+			},
+			"hasToken": true
+		},
+		{
+			"name": "Warwyck Blastimoff",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "LoX",
+			"_copy": {
+				"name": "Giff Shipmate",
+				"source": "BAM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the giff",
+						"with": "Warwyck",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"hasToken": true
 		}
 	]
 }

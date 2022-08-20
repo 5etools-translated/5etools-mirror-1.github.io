@@ -377,6 +377,9 @@
 					"headerEntries": [
 						"Arcturia est un lanceur de sorts de 18ème niveau. Sa capacité à lancer des sorts est Intelligence (sauvegarde contre les sorts {@dc 20}, {@hit 12} pour toucher avec les attaques de sorts). Arcturia peut lancer {@spell alter self} à volonté et a les sorts de sorcier suivants préparés :"
 					],
+					"will": [
+						"{@spell alter self}"
+					],
 					"spells": {
 						"0": {
 							"spells": [
@@ -454,13 +457,10 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell alter self}"
-					],
+					"ability": "int",
 					"hidden": [
 						"will"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"damageTagsLegendary": [],
@@ -2036,6 +2036,16 @@
 					"headerEntries": [
 						"Halaster est un lanceur de sorts de 20e niveau. Sa capacité de lanceur de sorts est Intelligence (sauvegarde contre les sorts {@dc 22}, {@hit 14} pour toucher avec les attaques de sorts). Il peut lancer {@spell disguise self} et {@spell invisibility} à volonté. Il peut lancer {@spell fly} et {@spell lightning bolt} une fois chacun sans dépenser un emplacement de sort, mais ne peut pas le faire à nouveau avant d'avoir terminé un repos court ou long. Halaster a les sorts de sorcier suivants préparés :"
 					],
+					"will": [
+						"{@spell disguise self}",
+						"{@spell invisibility}"
+					],
+					"daily": {
+						"1": [
+							"{@spell fly}",
+							"{@spell lightning bolt}"
+						]
+					},
 					"spells": {
 						"0": {
 							"spells": [
@@ -2119,21 +2129,11 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell disguise self}",
-						"{@spell invisibility}"
-					],
-					"daily": {
-						"1": [
-							"{@spell fly}",
-							"{@spell lightning bolt}"
-						]
-					},
+					"ability": "int",
 					"hidden": [
 						"will",
 						"daily"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"trait": [

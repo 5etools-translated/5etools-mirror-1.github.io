@@ -1541,6 +1541,7 @@ function Renderer () {
 
 			// DICE ////////////////////////////////////////////////////////////////////////////////////////////
 			case "@dice":
+			case "@autodice":
 			case "@damage":
 			case "@hit":
 			case "@d20":
@@ -2231,7 +2232,16 @@ Renderer.getRollableEntryDice = function (
 
 	toDisplay = (pluginResults || []).filter(it => it.toDisplay)[0]?.toDisplay ?? toDisplay;
 
-	return `<span class="roller render-roller" ${titlePart} ${handlerPart} ${additionalDataPart}>${toDisplay}</span>`;
+	const ptRoll = Renderer.getRollableEntryDice._getPtRoll(toPack);
+
+	return `<span class="roller render-roller" ${titlePart} ${handlerPart} ${additionalDataPart}>${toDisplay}</span>${ptRoll}`;
+};
+
+Renderer.getRollableEntryDice._getPtRoll = (toPack) => {
+	if (!toPack.autoRoll) return "";
+
+	const r = Renderer.dice.parseRandomise2(toPack.toRoll);
+	return ` (<span data-rd-is-autodice-result="true">${r}</span>)`;
 };
 
 Renderer.getEntryDiceTitle = function (subType) {
@@ -3182,6 +3192,7 @@ Renderer.utils = {
 	getTagEntry (tag, text) {
 		switch (tag) {
 			case "@dice":
+			case "@autodice":
 			case "@damage":
 			case "@hit":
 			case "@d20":
@@ -3202,6 +3213,7 @@ Renderer.utils = {
 
 				switch (tag) {
 					case "@dice":
+					case "@autodice":
 					case "@damage": {
 						// format: {@dice 1d2 + 3 + 4d5 - 6}
 						fauxEntry.toRoll = rollText;
@@ -3210,6 +3222,7 @@ Renderer.utils = {
 						if ((!fauxEntry.displayText && (rollText || "").includes("#$")) || (fauxEntry.displayText && fauxEntry.displayText.includes("#$"))) fauxEntry.displayText = (fauxEntry.displayText || rollText).replace(/#\$prompt_number[^$]*\$#/g, "(n)");
 
 						if (tag === "@damage") fauxEntry.subType = "damage";
+						if (tag === "@autodice") fauxEntry.autoRoll = true;
 
 						return fauxEntry;
 					}
@@ -9217,7 +9230,7 @@ Renderer.hover = {
 			});
 		const $wrpContent = $(`<div class="hwin__wrp-table"></div>`);
 		if (opts.height != null) $wrpContent.css("height", opts.height);
-		const $hovTitle = $(`<span class="window-title">${opts.title || ""}</span>`);
+		const $hovTitle = $(`<span class="window-title min-w-0 overflow-ellipsis" title="${`${opts.title || ""}`.qq()}">${opts.title || ""}</span>`);
 
 		const out = {};
 		const hoverId = Renderer.hover._getNextId();
@@ -9437,7 +9450,7 @@ Renderer.hover = {
 		$brdrTop.attr("data-display-title", false);
 		$brdrTop.on("dblclick", () => doToggleMinimizedMaximized());
 		$brdrTop.append($hovTitle);
-		const $brdTopRhs = $(`<div class="ve-flex ml-auto"></div>`).appendTo($brdrTop);
+		const $brdTopRhs = $(`<div class="ve-flex ml-auto no-shrink"></div>`).appendTo($brdrTop);
 
 		if (opts.pageUrl && !position.window._IS_POPOUT && !Renderer.get().isInternalLinksDisabled()) {
 			const $btnGotoPage = $(`<a class="hwin__top-border-icon glyphicon glyphicon-modal-window" title="Go to Page" href="${opts.pageUrl}"></a>`)
@@ -11006,6 +11019,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@d20":
 					case "@damage":
 					case "@dice":
+					case "@autodice":
 					case "@hit":
 					case "@recharge":
 					case "@ability":
@@ -11014,7 +11028,8 @@ Renderer._stripTagLayer = function (str) {
 						const [rollText, displayText] = Renderer.splitTagByPipe(text);
 						switch (tag) {
 							case "@damage":
-							case "@dice": {
+							case "@dice":
+							case "@autodice": {
 								return displayText || rollText.replace(/;/g, "/");
 							}
 							case "@d20":

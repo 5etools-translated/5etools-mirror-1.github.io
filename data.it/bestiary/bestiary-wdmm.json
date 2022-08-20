@@ -377,6 +377,9 @@
 					"headerEntries": [
 						"Arcturia è un incantatore di 18° livello. La sua capacità di incantatore è Intelligenza (tiro salvezza {@dc 20}, {@hit 12} per colpire con attacchi di incantesimi). Arcturia può lanciare {@spell alter self} a volontà e ha preparato i seguenti incantesimi da mago:"
 					],
+					"will": [
+						"{@spell alter self}"
+					],
 					"spells": {
 						"0": {
 							"spells": [
@@ -454,13 +457,10 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell alter self}"
-					],
+					"ability": "int",
 					"hidden": [
 						"will"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"damageTagsLegendary": [],
@@ -2036,6 +2036,16 @@
 					"headerEntries": [
 						"Halaster è un incantatore di 20° livello. La sua capacità di incantatore è Intelligenza (tiro salvezza {@dc 22}, {@hit 14} per colpire con attacchi di incantesimi). Può lanciare {@spell disguise self} e {@spell invisibility} a volontà. Può lanciare {@spell fly} e {@spell lightning bolt} una volta ciascuno senza spendere uno slot per incantesimi, ma non può farlo di nuovo finché non finisce un riposo breve o lungo. Halaster ha preparato i seguenti incantesimi da mago:"
 					],
+					"will": [
+						"{@spell disguise self}",
+						"{@spell invisibility}"
+					],
+					"daily": {
+						"1": [
+							"{@spell fly}",
+							"{@spell lightning bolt}"
+						]
+					},
 					"spells": {
 						"0": {
 							"spells": [
@@ -2119,21 +2129,11 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell disguise self}",
-						"{@spell invisibility}"
-					],
-					"daily": {
-						"1": [
-							"{@spell fly}",
-							"{@spell lightning bolt}"
-						]
-					},
+					"ability": "int",
 					"hidden": [
 						"will",
 						"daily"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"trait": [

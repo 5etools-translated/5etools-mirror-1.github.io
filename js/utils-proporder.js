@@ -164,7 +164,29 @@ PropOrder._MONSTER = [
 	"cr",
 	"pbNote",
 
-	"spellcasting",
+	new PropOrder._ArrayKey("spellcasting", {
+		fnGetOrder: () => [
+			"name",
+			"headerEntries",
+
+			"will",
+			"rest",
+			"daily",
+			"charges",
+
+			"ritual",
+
+			"spells",
+
+			"footerEntries",
+
+			"chargesItem",
+
+			"ability",
+			"displayAs",
+			"hidden",
+		],
+	}),
 	"trait",
 	"actionNote",
 	"actionHeader",
@@ -228,7 +250,17 @@ PropOrder._MONSTER = [
 PropOrder._MONSTER__COPY_MOD = [
 	"*",
 	"_",
-	...PropOrder._MONSTER,
+	...PropOrder._MONSTER
+		.map(it => {
+			if (typeof it === "string") return it;
+
+			if (it instanceof PropOrder._ArrayKey) {
+				if (it.key === "spellcasting") return it.key;
+				return it;
+			}
+
+			return it;
+		}),
 ];
 PropOrder._GENERIC_FLUFF = [
 	"name",

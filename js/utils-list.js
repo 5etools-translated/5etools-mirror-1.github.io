@@ -848,7 +848,8 @@ SaveManager._RenderableCollectionSaves_Load = class extends RenderableCollection
 			: $(`<button class="btn btn-5et btn-xs btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>`)
 				.click(evt => {
 					evt.stopPropagation();
-					this._comp._state.saves = this._comp._state.saves.filter(it => it !== save);
+					this._comp._state.saves = this._comp._state.saves.filter(it => it.id !== save.id);
+					if (this._comp._state.activeId === save.id) this._comp._doNew();
 				});
 
 		const $wrpRow = $$`<div class="ve-flex-col w-100">

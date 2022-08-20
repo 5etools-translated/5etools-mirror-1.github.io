@@ -314,6 +314,8 @@ Renderer.dice = {
 		return wrpTree.tree.evl({});
 	},
 
+	$getEleUnknownTableRoll (total) { return $(Renderer.dice._pRollerClick_getMsgBug(total)); },
+
 	_pRollerClick_getMsgBug (total) { return `<span class="message">No result found matching roll ${total}?! <span class="help-subtle" title="Bug!">🐛</span></span>`; },
 
 	async pRollerClick (evtMock, ele, packed, name) {
@@ -321,132 +323,190 @@ Renderer.dice = {
 		const entry = JSON.parse(packed);
 		const additionalData = {...ele.dataset};
 
-		// Aka "getTableName", probably
-		function attemptToGetNameOfRoll () {
-			// Try to use the entry's built-in name
-			if (entry.name) return entry.name;
-
-			// try to use table caption
-			let titleMaybe = $(ele).closest(`table:not(.stats)`).children(`caption`).text();
-			if (titleMaybe) return titleMaybe.trim();
-
-			// try to use list item title
-			titleMaybe = $(ele).parent().children(`.rd__list-item-name`).text();
-			if (titleMaybe) return titleMaybe.trim().replace(/[.,:]$/, "");
-
-			// use the section title, where applicable
-			titleMaybe = $(ele).closest(`div`).children(`.rd__h`).first().find(`.entry-title-inner`).text();
-			if (titleMaybe) {
-				titleMaybe = titleMaybe.trim().replace(/[.,:]$/, "");
-				return titleMaybe;
-			}
-
-			// try to use stats table name row
-			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`.rnd-name .stats-name`).text();
-			if (titleMaybe) return titleMaybe.trim();
-
-			if (UrlUtil.getCurrentPage() === UrlUtil.PG_CHARACTERS) {
-				// try use mini-entity name
-				titleMaybe = ($(ele).closest(`.chr-entity__row`).find(".chr-entity__ipt-name").val() || "").trim();
-				if (titleMaybe) return titleMaybe;
-			}
-
-			return titleMaybe;
-		}
-
-		function attemptToGetNameOfRoller () {
-			const $hov = $ele.closest(`.hwin`);
-			if ($hov.length) return $hov.find(`.stats-name`).first().text();
-			const $roll = $ele.closest(`.out-roll-wrp`);
-			if ($roll.length) return $roll.data("name");
-			const $dispPanelTitle = $ele.closest(`.dm-screen-panel`).children(`.panel-control-title`);
-			if ($dispPanelTitle.length) return $dispPanelTitle.text().trim();
-			let name = document.title.replace("- 5etools", "").trim();
-			return name === "DM Screen" ? "Dungeon Master" : name;
-		}
-
-		function _$getTdsFromTotal (total) {
-			const $table = $ele.closest(`table`);
-			const $tdRoll = $table.find(`td`).filter((i, e) => {
-				const $e = $(e);
-				if (!$e.closest(`table`).is($table)) return false;
-				return total >= Number($e.data("roll-min")) && total <= Number($e.data("roll-max"));
-			});
-			if ($tdRoll.length && $tdRoll.nextAll().length) {
-				return $tdRoll.nextAll().get();
-			}
-			return null;
-		}
-
-		function _rollInlineRollers ($ele) {
-			$ele.find(`.render-roller`).each((i, e) => {
-				const $e = $(e);
-				const r = Renderer.dice.__rollPackedData($e);
-				$e.attr("onclick", `Renderer.dice.__rerollNextInlineResult(this)`);
-				$e.after(` (<span class="result">${r}</span>)`);
-			});
-		}
-
-		function fnGetMessageTable (total) {
-			const elesTd = _$getTdsFromTotal(total);
-			if (elesTd) {
-				const tableRow = elesTd.map(ele => ele.innerHTML.trim()).filter(it => it).join(" | ");
-				const $row = $(`<span class="message">${tableRow}</span>`);
-				_rollInlineRollers($ele);
-				return $row.html();
-			}
-			return Renderer.dice._pRollerClick_getMsgBug(total);
-		}
-
-		function fnGetMessageGeneratorTable (ix, total) {
-			const elesTd = _$getTdsFromTotal(total);
-			if (elesTd) {
-				const $row = $(`<span class="message">${elesTd[ix].innerHTML.trim()}</span>`);
-				_rollInlineRollers($ele);
-				return $row.html();
-			}
-			return Renderer.dice._pRollerClick_getMsgBug(total);
-		}
-
-		async function pRollGeneratorTable () {
-			Renderer.dice.addElement({rolledBy, html: `<i>${rolledBy.label}:</i>`, isMessage: true});
-
-			const out = [];
-			const numRolls = Number($parent.attr("data-rd-namegeneratorrolls"));
-			const $ths = $ele.closest(`table`).find(`th`);
-			for (let i = 0; i < numRolls; ++i) {
-				const cpyRolledBy = MiscUtil.copy(rolledBy);
-				cpyRolledBy.label = $($ths.get(i + 1)).text().trim();
-
-				const result = await Renderer.dice.pRollEntry(modRollMeta.entry, cpyRolledBy, {fnGetMessage: fnGetMessageGeneratorTable.bind(null, i), rollCount: modRollMeta.rollCount});
-				const elesTd = _$getTdsFromTotal(result);
-
-				if (!elesTd) {
-					out.push(`(no result)`);
-					continue;
-				}
-
-				out.push(elesTd[i].innerHTML.trim());
-			}
-
-			Renderer.dice.addElement({rolledBy, html: `= ${out.join(" ")}`, isMessage: true});
-		}
-
 		const rolledBy = {
-			name: attemptToGetNameOfRoller(),
-			label: name != null ? name : attemptToGetNameOfRoll(ele),
+			name: Renderer.dice._pRollerClick_attemptToGetNameOfRoller({$ele}),
+			label: name != null ? name : Renderer.dice._pRollerClick_attemptToGetNameOfRoll({entry, $ele}),
 		};
 
 		const modRollMeta = Renderer.dice.getEventModifiedRollMeta(evtMock, entry);
 		const $parent = $ele.closest("th, p, table");
 
+		const rollResult = await this._pRollerClick_pGetResult({
+			$parent,
+			$ele,
+			entry,
+			modRollMeta,
+			rolledBy,
+			additionalData,
+		});
+
+		if (!entry.autoRoll) return;
+
+		const $tgt = $ele.next(`[data-rd-is-autodice-result="true"]`);
+		const curTxt = $tgt.text();
+		$tgt.text(rollResult);
+		JqueryUtil.showCopiedEffect($tgt, curTxt, true);
+	},
+
+	async _pRollerClick_pGetResult ({$parent, $ele, entry, modRollMeta, rolledBy, additionalData}) {
+		const sharedRollOpts = {
+			rollCount: modRollMeta.rollCount,
+			additionalData,
+			isHidden: !!entry.autoRoll,
+		};
+
 		if ($parent.is("th") && $parent.attr("data-rd-isroller") === "true") {
 			if ($parent.attr("data-rd-namegeneratorrolls")) {
-				pRollGeneratorTable();
-			} else {
-				Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {fnGetMessage: fnGetMessageTable, rollCount: modRollMeta.rollCount, additionalData});
+				return Renderer.dice._pRollerClick_pRollGeneratorTable({
+					$ele,
+					rolledBy,
+					modRollMeta,
+					rollOpts: sharedRollOpts,
+				});
 			}
-		} else Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {rollCount: modRollMeta.rollCount, additionalData});
+
+			return Renderer.dice.pRollEntry(
+				modRollMeta.entry,
+				rolledBy,
+				{
+					...sharedRollOpts,
+					fnGetMessage: Renderer.dice._pRollerClick_fnGetMessageTable.bind(Renderer.dice, $ele),
+				},
+			);
+		}
+
+		return Renderer.dice.pRollEntry(
+			modRollMeta.entry,
+			rolledBy,
+			{
+				...sharedRollOpts,
+			},
+		);
+	},
+
+	_pRollerClick_fnGetMessageTable ($ele, total) {
+		const elesTd = Renderer.dice._pRollerClick_$getTdsFromTotal($ele, total);
+		if (elesTd) {
+			const tableRow = elesTd.map(ele => ele.innerHTML.trim()).filter(it => it).join(" | ");
+			const $row = $(`<span class="message">${tableRow}</span>`);
+			Renderer.dice._pRollerClick_rollInlineRollers($ele);
+			return $row.html();
+		}
+		return Renderer.dice._pRollerClick_getMsgBug(total);
+	},
+
+	// Aka "getTableName", probably
+	_pRollerClick_attemptToGetNameOfRoll ({entry, $ele}) {
+		// Try to use the entry's built-in name
+		if (entry.name) return entry.name;
+
+		// try to use table caption
+		let titleMaybe = $ele.closest(`table:not(.stats)`).children(`caption`).text();
+		if (titleMaybe) return titleMaybe.trim();
+
+		// try to use list item title
+		titleMaybe = $ele.parent().children(`.rd__list-item-name`).text();
+		if (titleMaybe) return titleMaybe.trim().replace(/[.,:]$/, "");
+
+		// use the section title, where applicable
+		titleMaybe = $ele.closest(`div`).children(`.rd__h`).first().find(`.entry-title-inner`).text();
+		if (titleMaybe) {
+			titleMaybe = titleMaybe.trim().replace(/[.,:]$/, "");
+			return titleMaybe;
+		}
+
+		// try to use stats table name row
+		titleMaybe = $ele.closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`.rnd-name .stats-name`).text();
+		if (titleMaybe) return titleMaybe.trim();
+
+		if (UrlUtil.getCurrentPage() === UrlUtil.PG_CHARACTERS) {
+			// try use mini-entity name
+			titleMaybe = ($ele.closest(`.chr-entity__row`).find(".chr-entity__ipt-name").val() || "").trim();
+			if (titleMaybe) return titleMaybe;
+		}
+
+		return titleMaybe;
+	},
+
+	_pRollerClick_attemptToGetNameOfRoller ({$ele}) {
+		const $hov = $ele.closest(`.hwin`);
+		if ($hov.length) return $hov.find(`.stats-name`).first().text();
+		const $roll = $ele.closest(`.out-roll-wrp`);
+		if ($roll.length) return $roll.data("name");
+		const $dispPanelTitle = $ele.closest(`.dm-screen-panel`).children(`.panel-control-title`);
+		if ($dispPanelTitle.length) return $dispPanelTitle.text().trim();
+		let name = document.title.replace("- 5etools", "").trim();
+		return name === "DM Screen" ? "Dungeon Master" : name;
+	},
+
+	_pRollerClick_$getTdsFromTotal ($ele, total) {
+		const $table = $ele.closest(`table`);
+		const $tdRoll = $table.find(`td`).filter((i, e) => {
+			const $e = $(e);
+			if (!$e.closest(`table`).is($table)) return false;
+			return total >= Number($e.data("roll-min")) && total <= Number($e.data("roll-max"));
+		});
+		if ($tdRoll.length && $tdRoll.nextAll().length) {
+			return $tdRoll.nextAll().get();
+		}
+		return null;
+	},
+
+	// TODO erm
+	_pRollerClick_rollInlineRollers ($ele) {
+		$ele.find(`.render-roller`).each((i, e) => {
+			const $e = $(e);
+			const r = Renderer.dice.__rollPackedData($e);
+			$e.attr("onclick", `Renderer.dice.__rerollNextInlineResult(this)`);
+			$e.after(` (<span class="result">${r}</span>)`);
+		});
+	},
+
+	_pRollerClick_fnGetMessageGeneratorTable ($ele, ix, total) {
+		const elesTd = Renderer.dice._pRollerClick_$getTdsFromTotal($ele, total);
+		if (elesTd) {
+			const $row = $(`<span class="message">${elesTd[ix].innerHTML.trim()}</span>`);
+			Renderer.dice._pRollerClick_rollInlineRollers($ele);
+			return $row.html();
+		}
+		return Renderer.dice._pRollerClick_getMsgBug(total);
+	},
+
+	async _pRollerClick_pRollGeneratorTable ({$ele, rolledBy, modRollMeta, rollOpts}) {
+		Renderer.dice.addElement({rolledBy, html: `<i>${rolledBy.label}:</i>`, isMessage: true});
+
+		// Track a total of all rolls--this is a bit meaningless, but this method is expected to return a result value
+		let total = 0;
+
+		const out = [];
+		const numRolls = Number($parent.attr("data-rd-namegeneratorrolls"));
+		const $ths = $ele.closest(`table`).find(`th`);
+		for (let i = 0; i < numRolls; ++i) {
+			const cpyRolledBy = MiscUtil.copy(rolledBy);
+			cpyRolledBy.label = $($ths.get(i + 1)).text().trim();
+
+			const result = await Renderer.dice.pRollEntry(
+				modRollMeta.entry,
+				cpyRolledBy,
+				{
+					...rollOpts,
+					fnGetMessage: Renderer.dice._pRollerClick_fnGetMessageGeneratorTable.bind(Renderer.dice, $ele, i),
+				},
+			);
+			total += result;
+			const elesTd = Renderer.dice._pRollerClick_$getTdsFromTotal($ele, result);
+
+			if (!elesTd) {
+				out.push(`(no result)`);
+				continue;
+			}
+
+			out.push(elesTd[i].innerHTML.trim());
+		}
+
+		Renderer.dice.addElement({rolledBy, html: `= ${out.join(" ")}`, isMessage: true});
+
+		return total;
 	},
 
 	getEventModifiedRollMeta (evt, entry) {
@@ -524,6 +584,7 @@ Renderer.dice = {
 	 * @param [opts.isResultUsed] If an input box should be provided for the user to enter the result (manual mode only).
 	 * @param [opts.rollCount]
 	 * @param [opts.additionalData]
+	 * @param [opts.isHidden] If the result should not be posted to the rollbox.
 	 */
 	async pRollEntry (entry, rolledBy, opts) {
 		opts = opts || {};
@@ -540,7 +601,7 @@ Renderer.dice = {
 
 		// arbitrarily return the result of the highest roll if we roll multiple times
 		const results = [];
-		if (rollCount > 1) Renderer.dice._showMessage(`Rolling twice...`, rolledBy);
+		if (rollCount > 1 && !opts.isHidden) Renderer.dice._showMessage(`Rolling twice...`, rolledBy);
 		for (let i = 0; i < rollCount; ++i) {
 			const result = await Renderer.dice._pHandleRoll2(wrpTree, rolledBy, opts);
 			if (result == null) return null;
@@ -616,11 +677,12 @@ Renderer.dice = {
 	 * @param [opts.summonSpellLevel] User-entered summon spell level, to be propagated to the meta.
 	 * @param [opts.summonClassLevel] User-entered summon class level, to be propagated to the meta.
 	 * @param [opts.target] Generic target number (e.g. save DC, AC) to meet/beat.
+	 * @param [opts.isHidden] If the result should not be posted to the rollbox.
 	 */
 	_pHandleRoll2_automatic (tree, rolledBy, opts) {
 		opts = opts || {};
 
-		Renderer.dice._showBox();
+		if (!opts.isHidden) Renderer.dice._showBox();
 		Renderer.dice._checkHandleName(rolledBy.name);
 		const $out = Renderer.dice._$lastRolledBy;
 
@@ -647,27 +709,32 @@ Renderer.dice = {
 
 			const title = `${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${tree}`;
 
-			$out.append(`
-				<div class="out-roll-item" title="${title}">
-					<div>
-						${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
-						${totalPart}
-						${ptTarget}
-						<span class="all-rolls ve-muted">${fullHtml}</span>
-						${opts.fnGetMessage ? `<span class="message">${opts.fnGetMessage(result)}</span>` : ""}
-					</div>
-					<div class="out-roll-item-button-wrp">
-						<button title="Copy to input" class="btn btn-default btn-xs btn-copy-roll" onclick="Renderer.dice._$iptRoll.val('${tree.toString().replace(/\s+/g, "")}'); Renderer.dice._$iptRoll.focus()"><span class="glyphicon glyphicon-pencil"></span></button>
-					</div>
-				</div>`);
-
 			ExtensionUtil.doSendRoll({dice: tree.toString(), rolledBy: rolledBy.name, label: lbl});
 
-			Renderer.dice._scrollBottom();
+			if (!opts.isHidden) {
+				$out.append(`
+					<div class="out-roll-item" title="${title}">
+						<div>
+							${lbl ? `<span class="roll-label">${lbl}: </span>` : ""}
+							${totalPart}
+							${ptTarget}
+							<span class="all-rolls ve-muted">${fullHtml}</span>
+							${opts.fnGetMessage ? `<span class="message">${opts.fnGetMessage(result)}</span>` : ""}
+						</div>
+						<div class="out-roll-item-button-wrp">
+							<button title="Copy to input" class="btn btn-default btn-xs btn-copy-roll" onclick="Renderer.dice._$iptRoll.val('${tree.toString().replace(/\s+/g, "")}'); Renderer.dice._$iptRoll.focus()"><span class="glyphicon glyphicon-pencil"></span></button>
+						</div>
+					</div>`);
+
+				Renderer.dice._scrollBottom();
+			}
+
 			return result;
 		} else {
-			$out.append(`<div class="out-roll-item">Invalid input! Try &quot;/help&quot;</div>`);
-			Renderer.dice._scrollBottom();
+			if (!opts.isHidden) {
+				$out.append(`<div class="out-roll-item">Invalid input! Try &quot;/help&quot;</div>`);
+				Renderer.dice._scrollBottom();
+			}
 			return null;
 		}
 	},
@@ -879,10 +946,10 @@ Use <span class="out-roll-item-code">/macro list</span> to list saved macros.<br
 		Renderer.dice._checkHandleName(rolledBy.name);
 
 		if (html) {
-			Renderer.dice._$outRoll.prepend(`<div class="out-roll-item" title="${(rolledBy.name || "").qq()}">${html}</div>`);
+			Renderer.dice._$lastRolledBy.append(`<div class="out-roll-item" title="${(rolledBy.name || "").qq()}">${html}</div>`);
 		} else {
 			$$`<div class="out-roll-item" title="${(rolledBy.name || "").qq()}">${$ele}</div>`
-				.prependTo(Renderer.dice._$outRoll);
+				.appendTo(Renderer.dice._$lastRolledBy);
 		}
 
 		Renderer.dice._scrollBottom();
@@ -897,10 +964,10 @@ Use <span class="out-roll-item-code">/macro list</span> to list saved macros.<br
 		Renderer.dice._checkHandleName(rolledBy.name);
 
 		if (html) {
-			Renderer.dice._$lastRolledBy.prepend(`<div class="out-roll-item out-roll-item--message" title="${(rolledBy.name || "").qq()}">${html}</div>`);
+			Renderer.dice._$lastRolledBy.append(`<div class="out-roll-item out-roll-item--message" title="${(rolledBy.name || "").qq()}">${html}</div>`);
 		} else {
 			$$`<div class="out-roll-item out-roll-item--message" title="${(rolledBy.name || "").qq()}">${$ele}</div>`
-				.prependTo(Renderer.dice._$lastRolledBy);
+				.appendTo(Renderer.dice._$lastRolledBy);
 		}
 
 		Renderer.dice._scrollBottom();

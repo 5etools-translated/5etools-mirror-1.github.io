@@ -377,6 +377,9 @@
 					"headerEntries": [
 						"Arcturia ist ein Zauberwirker der Stufe 18. Ihre Zauberfähigkeit ist Intelligenz (Zauberschutz {@dc 20}, {@hit 12} um mit Zauberangriffen zu treffen). Arcturia kann {@spell alter self} nach Belieben zaubern und hat die folgenden Zaubersprüche vorbereitet:"
 					],
+					"will": [
+						"{@spell alter self}"
+					],
 					"spells": {
 						"0": {
 							"spells": [
@@ -454,13 +457,10 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell alter self}"
-					],
+					"ability": "int",
 					"hidden": [
 						"will"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"damageTagsLegendary": [],
@@ -2036,6 +2036,16 @@
 					"headerEntries": [
 						"Halaster ist ein Zauberwirker der Stufe 20. Seine Zauberfähigkeit ist Intelligenz (Zauberschutz {@dc 22}, {@hit 14} um mit Zauberangriffen zu treffen). Er kann {@spell disguise self} und {@spell invisibility} nach Belieben zaubern. Er kann {@spell fly} und {@spell lightning bolt} jeweils einmal wirken, ohne einen Zauberslot zu verbrauchen, kann dies aber erst wieder tun, wenn er eine kurze oder lange Pause beendet hat. Halaster hat die folgenden Zaubersprüche vorbereitet:"
 					],
+					"will": [
+						"{@spell disguise self}",
+						"{@spell invisibility}"
+					],
+					"daily": {
+						"1": [
+							"{@spell fly}",
+							"{@spell lightning bolt}"
+						]
+					},
 					"spells": {
 						"0": {
 							"spells": [
@@ -2119,21 +2129,11 @@
 							]
 						}
 					},
-					"will": [
-						"{@spell disguise self}",
-						"{@spell invisibility}"
-					],
-					"daily": {
-						"1": [
-							"{@spell fly}",
-							"{@spell lightning bolt}"
-						]
-					},
+					"ability": "int",
 					"hidden": [
 						"will",
 						"daily"
-					],
-					"ability": "int"
+					]
 				}
 			],
 			"trait": [

@@ -381,6 +381,10 @@ class CreatureParser extends BaseParser {
 				if (/[.?!]$/.test(line.trim()) || !/^[A-Z]/.test(lineNxt.trim())) continue;
 				if (ConvertUtil.isNameLine(lineNxt, {exceptions: new Set(["cantrips"]), splitterPunc: /(\.)/g})) continue;
 
+				// Avoid eating spellcasting `At Will: ...`
+				const splColonNext = lineNxt.split(":");
+				if (line.trim().endsWith(":") && splColonNext.length > 1 && /^[A-Z\d][\\/a-z]/.test(splColonNext[0].trim())) continue;
+
 				meta.toConvert[j] = `${line.trim()} ${lineNxt.trim()}`;
 				meta.toConvert.splice(j + 1, 1);
 				--j;

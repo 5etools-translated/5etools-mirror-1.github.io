@@ -68,7 +68,6 @@
 					"headerEntries": [
 						"堕落者施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell dancing lights}",
 						"{@spell mage hand}",
@@ -89,7 +88,8 @@
 							"{@spell wall of force}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -346,7 +346,6 @@
 					"headerEntries": [
 						"奥布拉克斯施展以下一种法术，不需要法术成分，并使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"daily": {
 						"3e": [
 							"{@spell charm person} (as 5th-level spell)",
@@ -355,7 +354,7 @@
 						]
 					},
 					"ability": "int",
-					"type": "spellcasting"
+					"displayAs": "action"
 				}
 			],
 			"trait": [
@@ -1660,7 +1659,6 @@
 					"headerEntries": [
 						"学徒施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell mage hand}",
 						"{@spell prestidigitation}"
@@ -1672,7 +1670,8 @@
 							"{@spell mage armor}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -7094,7 +7093,6 @@
 					"headerEntries": [
 						"魔法师施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell dancing lights}",
 						"{@spell mage hand}",
@@ -7112,7 +7110,8 @@
 							"{@spell web}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -9700,7 +9699,6 @@
 					"headerEntries": [
 						"占卜师施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell mage hand}",
 						"{@spell message}",
@@ -9721,7 +9719,8 @@
 							"{@spell true seeing}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -13346,9 +13345,8 @@
 							"{@spell telekinesis}"
 						]
 					},
-					"displayAs": "action",
 					"ability": "int",
-					"type": "spellcasting"
+					"displayAs": "action"
 				}
 			],
 			"trait": [
@@ -13697,7 +13695,6 @@
 					"headerEntries": [
 						"魔法师施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell friends}",
 						"{@spell mage hand}",
@@ -13713,7 +13710,8 @@
 							"{@spell tongues}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -13824,7 +13822,6 @@
 					"headerEntries": [
 						"唤醒者施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell light}",
 						"{@spell mage hand}",
@@ -13841,7 +13838,8 @@
 							"{@spell wall of ice}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -20425,7 +20423,6 @@
 					"headerEntries": [
 						"幻术师施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell dancing lights}",
 						"{@spell mage hand}",
@@ -20441,7 +20438,8 @@
 							"{@spell phantom steed}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -25289,7 +25287,6 @@
 					"headerEntries": [
 						"亡灵法师施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell dancing lights}",
 						"{@spell mage hand}",
@@ -25306,7 +25303,8 @@
 							"{@spell circle of death}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -27164,6 +27162,11 @@
 					"headerEntries": [
 						"当持有{@item Wand of Orcus}时，Orcus可以施展以下一种法术（法术保存{@dc 18}），其中一些需要充能；魔杖有7个充能来助长这些法术，每天黎明时分可以恢复{@dice 1d4 + 3}充能。"
 					],
+					"will": [
+						"{@spell animate dead} (as an action)",
+						"{@spell blight}",
+						"{@spell speak with dead}"
+					],
 					"charges": {
 						"1e": [
 							"{@spell circle of death}",
@@ -27174,11 +27177,6 @@
 						]
 					},
 					"chargesItem": "wand of orcus|dmg",
-					"will": [
-						"{@spell animate dead} (as an action)",
-						"{@spell blight}",
-						"{@spell speak with dead}"
-					],
 					"displayAs": "action"
 				}
 			],
@@ -34237,7 +34235,6 @@
 					"headerEntries": [
 						"转化者施展以下一种法术，使用智力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell light}",
 						"{@spell message}",
@@ -34256,7 +34253,8 @@
 							"{@spell telekinesis}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"trait": [
@@ -34511,7 +34509,6 @@
 			"spellcasting": [
 				{
 					"name": "Spellcasting (Psionics)",
-					"displayAs": "action",
 					"headerEntries": [
 						"ulitharid施展以下一种法术，不需要法术成分，并使用智力作为施法能力（法术保存（%0%））。"
 					],
@@ -34530,7 +34527,8 @@
 							"{@spell telekinesis}"
 						]
 					},
-					"ability": "int"
+					"ability": "int",
+					"displayAs": "action"
 				}
 			],
 			"trait": [
@@ -35430,7 +35428,6 @@
 					"headerEntries": [
 						"战神施展以下一种法术，使用智慧作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell light}",
 						"{@spell spare the dying}",
@@ -35448,7 +35445,8 @@
 							"{@spell revivify}"
 						]
 					},
-					"ability": "wis"
+					"ability": "wis",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -35583,7 +35581,6 @@
 					"headerEntries": [
 						"术士施展以下一种法术，使用魅力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell dancing lights}",
 						"{@spell disguise self}",
@@ -35600,7 +35597,8 @@
 							"{@spell hold monster}"
 						]
 					},
-					"ability": "cha"
+					"ability": "cha",
+					"displayAs": "action"
 				}
 			],
 			"action": [
@@ -35743,7 +35741,6 @@
 					"headerEntries": [
 						"术士施展以下一种法术，使用魅力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell alter self}",
 						"{@spell mage armor} (self only)",
@@ -35758,7 +35755,8 @@
 							"{@spell suggestion}"
 						]
 					},
-					"ability": "cha"
+					"ability": "cha",
+					"displayAs": "action"
 				}
 			],
 			"trait": [
@@ -35902,7 +35900,6 @@
 					"headerEntries": [
 						"术士施展以下一种法术，使用魅力作为施法能力（法术保存（%0%））。"
 					],
-					"displayAs": "action",
 					"will": [
 						"{@spell detect magic}",
 						"{@spell guidance}",
@@ -35919,7 +35916,8 @@
 							"{@spell true seeing}"
 						]
 					},
-					"ability": "cha"
+					"ability": "cha",
+					"displayAs": "action"
 				}
 			],
 			"trait": [

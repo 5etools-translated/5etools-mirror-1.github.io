@@ -60,10 +60,13 @@ class TableListPage extends ListPage {
 					},
 				});
 
-				const $dispShowHide = $(`<div class="lst__tgl-item-group mr-1">[\u2013]</div>`);
+				const $dispShowHide = $(`<div class="lst__tgl-item-group relative top-n1p">[\u2013]</div>`);
 
-				const $btnHeader = $$`<div class="lst__item-group-header my-2 split-v-center" title="Source: ${Parser.sourceJsonToFull(ent.source)}">
-					<div>${ent.name}</div>
+				const $btnHeader = $$`<div class="lst__item-group-header mt-3 split-v-center py-1 no-select clickable">
+					<div class="split-v-center w-100 min-w-0 mr-2">
+						<div class="bold">${ent.name}</div>
+						<div class="${Parser.sourceJsonToColor(ent.source)}" title="${Parser.sourceJsonToFull(ent.source).qq()}" ${BrewUtil2.sourceJsonToStyle(ent.source)}>${Parser.sourceJsonToAbv(ent.source)}</div>
+					</div>
 					${$dispShowHide}
 				</div>`
 					.click(() => {
@@ -127,7 +130,10 @@ class TableListPage extends ListPage {
 
 		const htmlRows = table.map(it => {
 			const range = it.min === it.max ? this.constructor._pad(it.min) : `${this.constructor._pad(it.min)}-${this.constructor._pad(it.max)}`;
-			return `<tr><td class="text-center p-0">${range}</td><td class="p-0">${Renderer.get().render(it.result)}</td></tr>`;
+			const ptAttitude = ent.rollAttitude
+				? `<td class="text-center">${it.resultAttitude ? Renderer.get().render(it.resultAttitude) : "\u2014"}</td>`
+				: "";
+			return `<tr><td class="text-center p-0">${range}</td><td class="p-0">${Renderer.get().render(it.result)}</td>${ptAttitude}</tr>`;
 		});
 
 		let htmlText = `
@@ -140,7 +146,8 @@ class TableListPage extends ListPage {
 							<th class="col-2 text-center">
 								<span class="roller" data-name="btn-roll">d${diceType}</span>
 							</th>
-							<th class="col-10">${this.constructor._COL_NAME_1}</th>
+							<th class="${ent.rollAttitude ? "col-8" : "col-10"}">${this.constructor._COL_NAME_1}</th>
+							${ent.rollAttitude ? `<th class="col-2 text-center">"Attitude</th>` : ""}
 						</tr>
 					</thead>
 					<tbody>
@@ -173,36 +180,25 @@ class TableListPage extends ListPage {
 
 		const roll = RollerUtil.randomise(rollTable._rMax, rollTable._rMin);
 
-		let result;
-		for (let i = 0; i < rollTable.length; i++) {
-			const row = rollTable[i];
+		const row = rollTable.find(row => {
 			const trueMin = row.max != null && row.max < row.min ? row.max : row.min;
 			const trueMax = row.max != null && row.max > row.min ? row.max : row.min;
-			if (roll >= trueMin && roll <= trueMax) {
-				result = Renderer.get().render(row.result);
-				break;
-			}
-		}
-
-		// add dice results
-		result = result.replace(RollerUtil.DICE_REGEX, (match) => {
-			const r = Renderer.dice.parseRandomise2(match);
-			return `<span class="roller" data-name="tablepage-reroll">${match}</span> (<span class="result">${r}</span>)`;
+			return roll >= trueMin && roll <= trueMax;
 		});
 
-		const $ele = $$`<span><strong>${this.constructor._pad(roll)}</strong> ${result}</span>`;
-
-		$ele.find(`[data-name="tablepage-reroll"]`)
-			.each((i, e) => {
-				const $roller = $(e);
-				$roller
-					.click(() => {
-						this._reroll($roller);
-					})
-					.mousedown(evt => {
-						evt.preventDefault();
-					});
+		if (!row) {
+			return Renderer.dice.addRoll({
+				rolledBy: {
+					name: this._getDisplayName(ent),
+				},
+				$ele: Renderer.dice.$getEleUnknownTableRoll(roll),
 			});
+		}
+
+		const ptResult = Renderer.get().render(row.result.replace(/{@dice /, "{@autodice "));
+		const $ptAttitude = this._roll_$getPtAttitude(row);
+
+		const $ele = $$`<span><strong>${this.constructor._pad(roll)}</strong> ${ptResult}${$ptAttitude}</span>`;
 
 		Renderer.dice.addRoll({
 			rolledBy: {
@@ -212,11 +208,49 @@ class TableListPage extends ListPage {
 		});
 	}
 
-	_reroll ($ele) {
-		const resultRoll = Renderer.dice.parseRandomise2($ele.text());
-		const $result = $ele.next(".result");
-		const oldText = $result.text();
-		$result.text(resultRoll);
-		JqueryUtil.showCopiedEffect($result, oldText, true);
+	_roll_$getPtAttitude (row) {
+		if (!row.resultAttitude?.length) return null;
+
+		const diceTagMetas = [];
+
+		const doRoll = rollText => Renderer.dice.parseRandomise2(rollText);
+
+		const getAttitudeDisplay = res => `${res} = ${this.constructor._roll_getAttitude(res)}`;
+
+		const entry = row.resultAttitude
+			.replace(/{@dice (?<text>[^}]+)}/g, (...m) => {
+				const [rollText, displayText] = Renderer.splitTagByPipe(m.last().text);
+				diceTagMetas.push({rollText, displayText});
+
+				const res = doRoll(rollText);
+
+				return `<span data-tablepage-roller="${diceTagMetas.length - 1}"></span> (<span data-tablepage-is-attitude-result="true">${getAttitudeDisplay(res)}</span>)`;
+			});
+		const rendered = Renderer.get().render(entry);
+
+		const $out = $(`<span> | Attitude ${rendered}</span>`);
+
+		$out.find(`[data-tablepage-roller]`)
+			.each((i, e) => {
+				const $e = $(e);
+				const {rollText, displayText} = diceTagMetas[i];
+
+				const $roller = $(`<span class="roller render-roller" onmousedown="event.preventDefault()">${displayText || rollText}</span>`)
+					.click(() => {
+						const res = doRoll(rollText);
+						$roller.next(`[data-tablepage-is-attitude-result="true"]`)
+							.text(getAttitudeDisplay(res));
+					});
+
+				$e.replaceWith($roller);
+			});
+
+		return $out;
+	}
+
+	static _roll_getAttitude (total) {
+		if (total <= 4) return "Hostile";
+		if (total <= 8) return "Indifferent";
+		return "Friendly";
 	}
 }
