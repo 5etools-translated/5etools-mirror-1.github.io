@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.24",
+	"version": "1.11.25",
 
 	"definitions" : {
 		"metaBlock": {
@@ -2564,7 +2564,8 @@
 						"additionalProperties": false
 					}
 				},
-				"disabled": {"type": "boolean"}
+				"disabled": {"const": true},
+				"transfer": {"const": true}
 			},
 			"required": ["changes"],
 			"additionalProperties": false

@@ -97,6 +97,8 @@ class CreatureBuilder extends Builder {
 		delete creature.altArt;
 		delete creature.hasToken;
 		delete creature.uniqueId;
+		delete creature._versions;
+		if (creature.variant) creature.variant.forEach(ent => delete ent._version);
 
 		// Semi-gracefully handle e.g. ERLW's Steel Defender
 		if (creature.passive != null && typeof creature.passive === "string") delete creature.passive;
