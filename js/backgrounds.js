@@ -41,8 +41,8 @@ class BackgroundPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterBackgrounds();
 		super({
-			dataSource: "data/backgrounds.json",
-			dataSourceFluff: "data/fluff-backgrounds.json",
+			dataSource: DataUtil.background.loadJSON.bind(DataUtil.background),
+			dataSourceFluff: DataUtil.backgroundFluff.loadJSON.bind(DataUtil.backgroundFluff),
 
 			pageFilter,
 

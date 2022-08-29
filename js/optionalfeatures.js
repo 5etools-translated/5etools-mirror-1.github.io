@@ -48,7 +48,7 @@ class OptionalFeaturesPage extends ListPage {
 		const pageFilter = new PageFilterOptionalFeatures();
 
 		super({
-			dataSource: "data/optionalfeatures.json",
+			dataSource: DataUtil.optionalfeature.loadJSON.bind(DataUtil.optionalfeature),
 
 			pageFilter,
 

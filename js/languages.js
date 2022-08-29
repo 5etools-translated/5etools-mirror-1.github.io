@@ -39,7 +39,7 @@ class LanguagesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterLanguages();
 		super({
-			dataSource: DataUtil.language.loadJSON,
+			dataSource: DataUtil.language.loadJSON.bind(DataUtil.language),
 
 			pageFilter,
 

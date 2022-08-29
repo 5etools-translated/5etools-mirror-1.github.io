@@ -518,7 +518,7 @@
 			"classSource": "UATheMysticClass",
 			"level": 1,
 			"entries": [
-				"Los talentos y las disciplinas psiónicas son el corazón del oficio de un místico. Son los ejercicios mentales y las fórmulas psiónicas que se utilizan para convertir la voluntad en efectos mágicos tangibles.",
+				"{@filter Psionic talents|psionics|type=T} y {@filter disciplines|psionics|type=D} son el corazón del oficio de un místico. Son los ejercicios mentales y las fórmulas psiónicas que se utilizan para convertir la voluntad en efectos mágicos tangibles.",
 				"Las disciplinas psiónicas fueron descubiertas por diferentes órdenes y tienden a reflejar las especialidades de sus creadores. Sin embargo, un místico puede aprender cualquier disciplina independientemente de su orden asociada."
 			]
 		},
@@ -535,14 +535,14 @@
 					"type": "entries",
 					"name": "Psionic Talents",
 					"entries": [
-						"Un talento psiónico es un efecto psiónico menor que dominas. A 1er nivel, conoces un talento psiónico de tu elección. A niveles superiores, aprende otros talentos a su elección. La columna de Talentos Conocidos de la tabla de Místicos muestra el número total de talentos que conoces en cada nivel; cuando ese número suba para ti, elige un nuevo talento."
+						"Un {@filter psionic talent|psionics|type=T} es un efecto psiónico menor que dominas. A 1er nivel, conoces un talento psiónico de tu elección. A niveles superiores, aprendes otros talentos a tu elección. La columna de Talentos Conocidos de la tabla de Místicos muestra el número total de talentos que conoces en cada nivel; cuando ese número suba para ti, elige un nuevo talento."
 					]
 				},
 				{
 					"type": "entries",
 					"name": "Psionic Disciplines",
 					"entries": [
-						"Una disciplina psiónica es un conjunto rígido de ejercicios mentales que permite a un místico manifestar su poder psiónico. Un místico sólo domina unas pocas disciplinas a la vez.",
+						"Un {@filter psionic discipline|psionics|type=D} es un conjunto rígido de ejercicios mentales que permite a un místico manifestar su poder psiónico. Un místico solo domina unas pocas disciplinas a la vez.",
 						"A 1er nivel, conoces una disciplina psiónica de tu elección. La columna de Disciplinas Conocidas de la tabla de Místicos muestra el número total de disciplinas que conoces en cada nivel; cuando ese número suba para ti, elige una nueva disciplina.",
 						"Además, cada vez que ganes un nivel en esta clase, podrás sustituir una disciplina que conozcas por otra de tu elección."
 					]
@@ -775,7 +775,7 @@
 			"level": 8,
 			"entries": [
 				"A 8º nivel, obtienes la habilidad de infundir energía psíquica a tus ataques con armas. Una vez en cada uno de tus turnos, cuando golpeas a una criatura con un arma, puedes infligir un {@damage 1d8} de daño psíquico adicional a ese objetivo. Cuando alcanzas el 14º nivel, este daño extra aumenta a {@dice 2d8}.",
-				"Además, añades tu modificador de Inteligencia a cualquier tirada de daño que hagas por un talento psiónico."
+				"Además, añades tu modificador de Inteligencia a cualquier tirada de daño que hagas para un {@filter psionic talent|psionics|type=T}."
 			]
 		},
 		{
@@ -873,7 +873,7 @@
 			"classSource": "UATheMysticClass",
 			"level": 14,
 			"entries": [
-				"A 14º nivel, tu daño psiónico potente ha aumentado a {@dice 2d8}."
+				"A 14º nivel, tu daño de Psiónica potente ha aumentado a {@dice 2d8}."
 			]
 		},
 		{
@@ -1017,7 +1017,7 @@
 			"level": 1,
 			"header": 1,
 			"entries": [
-				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las disciplinas del Avatar."
+				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las {@filter Avatar disciplines|psionics|type=D|order=Avatar}."
 			]
 		},
 		{
@@ -1109,7 +1109,7 @@
 			"level": 1,
 			"header": 1,
 			"entries": [
-				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las disciplinas Despertadas."
+				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las {@filter Awakened disciplines|psionics|type=D|order=Awakened}."
 			]
 		},
 		{
@@ -1192,7 +1192,7 @@
 			"level": 1,
 			"header": 1,
 			"entries": [
-				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las disciplinas inmortales."
+				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las {@filter Immortal disciplines|psionics|type=D|order=Immortal}."
 			]
 		},
 		{
@@ -1286,7 +1286,7 @@
 			"level": 1,
 			"header": 1,
 			"entries": [
-				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las disciplinas de los Nómadas."
+				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las {@filter Nomad disciplines|psionics|type=D|order=Nomad}."
 			]
 		},
 		{
@@ -1497,7 +1497,7 @@
 			"level": 1,
 			"header": 1,
 			"entries": [
-				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las disciplinas de Wu Jen."
+				"A 1er nivel, aprendes dos disciplinas psiónicas adicionales a tu elección. Deben elegirse de entre las {@filter Wu Jen disciplines|psionics|type=D|order=Wu Jen}."
 			]
 		},
 		{
@@ -1539,7 +1539,7 @@
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"A 6º nivel, aprendes tres hechizos de mago de tu elección y los tienes siempre preparados. Los hechizos deben ser de 1º a 3º nivel.",
+				"A 6º nivel, aprendes tres hechizos de mago a tu elección y los tienes siempre preparados. Los hechizos deben ser de {@filter 1st through 3rd level|spells|level=1;2;3|class=wizard}.",
 				"Como acción adicional, puedes gastar puntos psi para crear ranuras de hechizo que puedes utilizar para lanzar estos hechizos, así como otros hechizos que seas capaz de lanzar. El coste en puntos psi de cada ranura de hechizo se detalla en la siguiente tabla.",
 				{
 					"type": "table",
@@ -1575,7 +1575,7 @@
 					]
 				},
 				"La ranura de hechizo permanece hasta que la uses o termines un descanso largo. Debes respetar tu límite de psi cuando gastes puntos de psi para crear una ranura de hechizo.",
-				"Siempre que ganes un nivel en esta clase, puedes reemplazar uno de los hechizos de mago elegidos por un hechizo de mago diferente de nivel 1 a 3."
+				"Cada vez que ganes un nivel en esta clase, puedes sustituir uno de los hechizos de mago elegidos por otro {@filter wizard spell of 1st through 3rd level|spells|level=1;2;3|class=wizard}."
 			]
 		},
 		{

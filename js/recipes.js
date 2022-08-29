@@ -45,8 +45,8 @@ class RecipesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterRecipes();
 		super({
-			dataSource: DataUtil.recipe.loadJSON,
-			brewDataSource: DataUtil.recipe.loadBrew,
+			dataSource: DataUtil.recipe.loadJSON.bind(DataUtil.recipe),
+			brewDataSource: DataUtil.recipe.loadBrew.bind(DataUtil.recipe),
 
 			pageFilter,
 

@@ -1251,6 +1251,8 @@ PropOrder._TABLE = [
 
 	"source",
 	"page",
+	"srd",
+	"basicRules",
 
 	"otherSources",
 

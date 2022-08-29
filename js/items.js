@@ -151,8 +151,8 @@ class ItemsSublistManager extends SublistManager {
 class ItemsPage extends ListPage {
 	constructor () {
 		super({
-			dataSource: DataUtil.item.loadJson,
-			brewDataSource: DataUtil.item.loadBrew,
+			dataSource: DataUtil.item.loadJSON.bind(DataUtil.item),
+			brewDataSource: DataUtil.item.loadBrew.bind(DataUtil.item),
 
 			pageFilter: new PageFilterItems(),
 

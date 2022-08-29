@@ -298,15 +298,19 @@ class TagCondition {
 		if (!inflictedSet) return;
 
 		TagCondition._CONDITION_INFLICTED_MATCHERS.forEach(re => str.replace(re, (...m) => {
-			const cond = m[1];
-			if (!inflictedWhitelist || inflictedWhitelist.has(cond)) inflictedSet.add(m[1]);
+			this._collectInflictedConditions_withWhitelist({inflictedSet, inflictedWhitelist, cond: m[1]});
 
 			// ", {@condition ...}, ..."
-			if (m[2]) m[2].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
+			if (m[2]) m[2].replace(/{@condition ([^}]+)}/g, (...n) => this._collectInflictedConditions_withWhitelist({inflictedSet, inflictedWhitelist, cond: n[1]}));
 
 			// " and {@condition ...}
-			if (m[3]) m[3].replace(/{@condition ([^}]+)}/g, (...n) => inflictedSet.add(n[1]));
+			if (m[3]) m[3].replace(/{@condition ([^}]+)}/g, (...n) => this._collectInflictedConditions_withWhitelist({inflictedSet, inflictedWhitelist, cond: n[1]}));
 		}));
+	}
+
+	static _collectInflictedConditions_withWhitelist ({inflictedWhitelist, inflictedSet, cond}) {
+		if (!inflictedWhitelist || inflictedWhitelist.has(cond)) inflictedSet.add(cond);
+		return "";
 	}
 
 	static tryTagConditionsSpells (m, {cbMan, isTagInflicted, isInflictedAddOnly, inflictedWhitelist} = {}) {
@@ -409,7 +413,7 @@ TagCondition._CONDITION_INFLICTED_MATCHERS = [
 	`and then be (?:\\w+ )?{@condition ([^}]+)}`,
 	`(?:be|is) knocked (?:\\w+ )?{@condition (prone|unconscious)}`,
 	`a (?:\\w+ )?{@condition [^}]+} (?:creature|enemy) is (?:\\w+ )?{@condition ([^}]+)}`, // e.g. `a frightened creature is paralyzed`
-	`the[^.!?]+?${TagCondition.__TGT} is [^.!?]*?{@condition ([^}]+)}`,
+	`(?<!if )the[^.!?]+?${TagCondition.__TGT} is [^.!?]*?(?<!that isn't ){@condition ([^}]+)}`,
 	`the[^.!?]+?${TagCondition.__TGT} is [^.!?]+?, it is {@condition ([^}]+)}(?: \\(escape [^\\)]+\\))?`,
 	`begins to [^.!?]+? and is {@condition ([^}]+)}`, // e.g. `begins to turn to stone and is restrained`
 	`saving throw[^.!?]+?or [^.!?]+? and remain {@condition ([^}]+)}`, // e.g. `or fall asleep and remain unconscious`
@@ -437,10 +441,13 @@ TagCondition._CONDITION_INFLICTED_MATCHERS = [
 	`on a failure, the [^.!?]+? can [^.!?]+?{@condition ([^}]+)}`, // ERLW :: Zakya Rakshasa :: Martial Prowess
 	`the {@condition ([^}]+)} creature can repeat the saving throw`, // GGR :: Archon of the Triumvirate :: Pacifying Presence
 	`if the (?:${TagCondition.__TGT}|creature) is already {@condition [^}]+}, it becomes {@condition ([^}]+)}`,
-	`(?:creature|${TagCondition.__TGT}) (?:also becomes|is) {@condition ([^}]+)}`, // MTF :: Eidolon :: Divine Dread
+	`(?<!if the )(?:creature|${TagCondition.__TGT}) (?:also becomes|is) {@condition ([^}]+)}`, // MTF :: Eidolon :: Divine Dread
 	`magically (?:become|turn)s? {@condition (invisible)}`, // MM :: Will-o'-Wisp :: Invisibility
-	`The (?:[^.]+) is {@condition (invisible)}`, // MM :: Invisible Stalker :: Invisibility
-].map(it => new RegExp(`${it}((?:, {@condition [^}]+})*)(,? (?:and|or) {@condition [^}]+})?`, "gi"));
+	{re: `The (?!(?:[^.]+) can sense)(?:[^.]+) is {@condition (invisible)}`, flags: "g"}, // MM :: Invisible Stalker :: Invisibility
+	`succeed\\b[^.!?]+\\bsaving throw\\b[^.!?]+\\. (?:It|The (?:creature|target)) is {@condition ([^}]+)}`, // MM :: Beholder :: 6. Telekinetic Ray
+]
+	.map(it => typeof it === "object" ? it : ({re: it, flags: "gi"}))
+	.map(({re, flags}) => new RegExp(`${re}((?:, {@condition [^}]+})*)(,? (?:and|or) {@condition [^}]+})?`, flags));
 
 class TagUtil {
 	static isNoneOrEmpty (str) {

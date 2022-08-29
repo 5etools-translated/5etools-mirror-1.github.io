@@ -35,7 +35,7 @@ class VariantRulesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterVariantRules();
 		super({
-			dataSource: DataUtil.variantrule.loadJSON,
+			dataSource: DataUtil.variantrule.loadJSON.bind(DataUtil.variantrule),
 
 			pageFilter,
 

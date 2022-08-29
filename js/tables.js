@@ -34,7 +34,7 @@ class TablesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterTables();
 		super({
-			dataSource: DataUtil.table.loadJSON,
+			dataSource: DataUtil.table.loadJSON.bind(DataUtil.table),
 
 			pageFilter,
 

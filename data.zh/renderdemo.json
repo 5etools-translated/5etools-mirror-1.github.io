@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"风格标签; {@bold some text to be bolded}(替代{@b shorthand}), {@italic some text to be italicised}(替代{@i shorthand}), {@underline some text to be underlined}(替代{@u shorthand}), {@strike some text to strike-through}, (替代{@s shorthand}), {@color color|e40707} 标签, {@code print(&quot;hello world&quot;)} 标签",
+						"风格标签; {@bold some text to be bolded}(替代{@b shorthand}), {@italic some text to be italicised}(替代{@i shorthand}), {@underline some text to be underlined}(替代{@u shorthand}), {@strike some text to strike-through}, (替代{@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} 标签, {@code print(&quot;hello world&quot;)}标签",
 						"此外，{@note note tags}，用于添加勘误表或Twitter \"设计师脚注\"。",
 						"掷骰子标签；{@dice 1d2-2+2d3+5}用于常规掷骰子（{@dice 1d6;2d6}用于多个选项；{@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#}用于输入提示），有扩展的{@dice 1d20+2|display text}和{@dice 1d20+2|display text|rolled by name}，还有一个特殊的 \"命中 \"版本，假设要掷的是D20（%5%）（并且在按下Shift键时掷出优势，按下alt键时掷出劣势）。还有{@damage 1d12+3}，它将在按下Shift键时滚动关键命中，在按下alt键时滚动一半伤害（向下取整），以及{@d20 -4}，它也将滚动优势/劣势，但在适当的地方，@hit标签是首选。法术可以有缩放骰子标签，（1级时伤害为2d6或3d6，2级后每级增加一个额外的{@scaledice 2d6;3d6|2-9|1d6}），用于法术效果在更高等级时的缩放。{@ability str 20}、{@savingThrow str 5}和{@skillCheck animal_handling 5}是作为内部速记使用的，但在其他地方也可能有用。",
 						"自动掷骰子标签；同上，但在渲染时自动掷出一个结果：（%0%）。",

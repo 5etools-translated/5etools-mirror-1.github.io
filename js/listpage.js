@@ -1021,10 +1021,9 @@ class ListPage {
 	_pOnLoad_tableView () {
 		if (!this._tableViewOptions) return;
 
-		const sublisted = this._sublistManager.getSublistedEntities();
-
 		$(`#btn-show-table`)
 			.click(() => {
+				const sublisted = this._sublistManager.getSublistedEntities();
 				UtilsTableview.show({
 					entities: sublisted.length
 						? sublisted

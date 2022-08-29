@@ -40,8 +40,8 @@ class RacesPage extends ListPage {
 		const pageFilter = new PageFilterRaces();
 		super({
 			dataSource: DataUtil.race.loadJSON.bind(DataUtil.race, {isAddBaseRaces: true}),
-			dataSourceFluff: "data/fluff-races.json",
-			brewDataSource: DataUtil.race.loadBrew,
+			dataSourceFluff: DataUtil.raceFluff.loadJSON.bind(DataUtil.raceFluff),
+			brewDataSource: DataUtil.race.loadBrew.bind(DataUtil.race),
 
 			pageFilter,
 

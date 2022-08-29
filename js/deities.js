@@ -44,7 +44,7 @@ class DeitiesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterDeities();
 		super({
-			dataSource: DataUtil.deity.loadJSON,
+			dataSource: DataUtil.deity.loadJSON.bind(DataUtil.deity),
 
 			pageFilter,
 

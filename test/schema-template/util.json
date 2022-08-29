@@ -4,7 +4,7 @@
 
 	"title": "Util",
 	"description": "Utility definitions to be used in other schemas.",
-	"version": "1.11.25",
+	"version": "1.11.27",
 
 	"definitions" : {
 		"metaBlock": {
@@ -15,7 +15,8 @@
 					"properties": {
 						"monster": {
 							"type": "array",
-							"items": {"type": "string"}
+							"items": {"type": "string"},
+							"uniqueItems": true
 						}
 					}
 				},
@@ -52,7 +53,8 @@
 					"source"
 				],
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"additionalSources": {
@@ -71,7 +73,8 @@
 					"source"
 				],
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"reprintedAs": {
@@ -98,7 +101,8 @@
 						"required": ["tag", "uid"]
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"tagNameStats": {
@@ -202,7 +206,8 @@
 								"type": "array",
 								"items": {
 									"$ref": "#/definitions/languageNameLower"
-								}
+								},
+								"uniqueItems": true
 							},
 							"count": {
 								"type": "integer"
@@ -211,7 +216,8 @@
 						"additionalProperties": false
 					}
 				}
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"toolNameLower": {
@@ -305,7 +311,8 @@
 										{"$ref": "#/definitions/toolNameLower"},
 										{"type": "string", "enum": ["anyArtisansTool"]}
 									]
-								}
+								},
+								"uniqueItems": true
 							},
 							"count": {
 								"type": "integer"
@@ -317,7 +324,8 @@
 				"$$ifBrew": {
 					"additionalProperties": {"type": "boolean"}
 				}
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"skillNameLower": {
@@ -381,7 +389,8 @@
 								"type": "array",
 								"items": {
 									"$ref": "#/definitions/skillNameLower"
-								}
+								},
+								"uniqueItems": true
 							},
 							"count": {
 								"type": "integer"
@@ -516,7 +525,8 @@
 									"additionalProperties": false
 								}
 							]
-						}
+						},
+						"uniqueItems": true
 					}
 				},
 				"$$ifSite": {
@@ -525,7 +535,8 @@
 				"$$ifBrew": {
 					"additionalProperties": {"type": "boolean"}
 				}
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"weaponProficiencies": {
@@ -592,7 +603,8 @@
 					}
 				},
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"armorProficiencies": {
@@ -606,7 +618,8 @@
 					"shield|phb": {"type": "boolean"}
 				},
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"savingThrowProficiencies": {
@@ -635,7 +648,8 @@
 										"wis",
 										"cha"
 									]
-								}
+								},
+								"uniqueItems": true
 							},
 							"count": {"type": "integer"}
 						},
@@ -644,7 +658,8 @@
 					}
 				},
 				"additionalProperties": false
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"expertise": {
@@ -709,7 +724,8 @@
 					"vehicles (space)": {"type": "boolean"},
 					"poisoner's kit": {"type": "boolean"}
 				}
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"additionalFeatsArray": {
@@ -720,7 +736,8 @@
 					"any": {"type": "integer"}
 				},
 				"additionalProperties": {"type": "boolean"}
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"proficiencyTag": {
@@ -795,7 +812,8 @@
 											"fly",
 											"swim"
 										]
-									}
+									},
+									"uniqueItems": true
 								},
 								"amount": {
 									"type": "integer"
@@ -814,31 +832,36 @@
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								},
 								"burrow": {
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								},
 								"climb": {
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								},
 								"fly": {
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								},
 								"swim": {
 									"type": "array",
 									"items": {
 										"$ref": "#/definitions/_speedVal"
-									}
+									},
+									"uniqueItems": true
 								}
 							}
 						}
@@ -1243,7 +1266,8 @@
 								"required": ["immune"]
 							}
 						]
-					}
+					},
+					"uniqueItems": true
 				},
 				{
 					"type": "null"
@@ -1273,7 +1297,8 @@
 						}
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"damageResistArray": {
@@ -1315,7 +1340,8 @@
 								"required": ["resist"]
 							}
 						]
-					}
+					},
+					"uniqueItems": true
 				},
 				{
 					"type": "null"
@@ -1345,7 +1371,8 @@
 						}
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"damageVulnerabilityArray":  {
@@ -1387,7 +1414,8 @@
 								"required": ["vulnerable"]
 							}
 						]
-					}
+					},
+					"uniqueItems": true
 				},
 				{
 					"type": "null"
@@ -1417,7 +1445,8 @@
 						}
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"conditionImmunityArray": {
@@ -1456,7 +1485,8 @@
 								"required": ["conditionImmune"]
 							}
 						]
-					}
+					},
+					"uniqueItems": true
 				},
 				{
 					"type": "null"
@@ -1486,7 +1516,8 @@
 						}
 					}
 				]
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"resourcesArray": {
@@ -1503,7 +1534,8 @@
 					"faces": {"type": ["integer", "string"]}
 				},
 				"required": ["name", "type"]
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"sensesArray": {
@@ -1517,7 +1549,8 @@
 					"type": "integer"
 				},
 				"minProperties": 1
-			}
+			},
+			"uniqueItems": true
 		},
 
 		"consumesObject": {
@@ -2280,7 +2313,8 @@
 										"items":{
 											"type": "string",
 											"enum": ["str", "dex", "con", "int", "wis", "cha"]
-										}
+										},
+										"uniqueItems": true
 									}
 								},
 								"required": ["choose"],
@@ -2361,6 +2395,7 @@
 										"equipmentType": {
 											"type": "string",
 											"enum": [
+												"weapon",
 												"weaponSimple",
 												"weaponSimpleMelee",
 												"weaponMartial",

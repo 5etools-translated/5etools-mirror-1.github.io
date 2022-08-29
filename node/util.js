@@ -133,6 +133,9 @@ function rmDirRecursiveSync (dir) {
 }
 
 class PatchLoadJson {
+	static _CACHED = null;
+	static _CACHED_RAW = null;
+
 	static patchLoadJson () {
 		PatchLoadJson._CACHED = PatchLoadJson._CACHED || DataUtil.loadJSON;
 		DataUtil.loadJSON = async (url) => {
@@ -140,13 +143,15 @@ class PatchLoadJson {
 			await DataUtil.pDoMetaMerge(url, data);
 			return data;
 		};
+		PatchLoadJson._CACHED_RAW = PatchLoadJson._CACHED_RAW || DataUtil.loadRawJSON;
+		DataUtil.loadRawJSON = async (url) => readJson(url);
 	}
 
 	static unpatchLoadJson () {
 		if (PatchLoadJson._CACHED) DataUtil.loadJSON = PatchLoadJson._CACHED;
+		if (PatchLoadJson._CACHED_RAW) DataUtil.loadRawJSON = PatchLoadJson._CACHED_RAW;
 	}
 }
-PatchLoadJson._CACHED = null;
 
 class ArgParser {
 	static parse () {

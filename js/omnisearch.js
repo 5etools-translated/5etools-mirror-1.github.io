@@ -231,11 +231,23 @@ class Omnisearch {
 		}
 
 		if (!this._state.isShowBlacklisted && ExcludeUtil.getList().length) {
-			results = results.filter(r => {
-				if (r.doc.c === Parser.CAT_ID_QUICKREF || r.doc.c === Parser.CAT_ID_PAGE) return true;
+			const resultsNxt = [];
+			for (const r of results) {
+				if (r.doc.c === Parser.CAT_ID_QUICKREF || r.doc.c === Parser.CAT_ID_PAGE) {
+					resultsNxt.push(r);
+					continue;
+				}
+
 				const bCat = Parser.pageCategoryToProp(r.doc.c);
-				return !ExcludeUtil.isExcluded(r.doc.u, bCat, r.doc.s, {isNoCount: true});
-			});
+				if (bCat !== "item") {
+					if (!ExcludeUtil.isExcluded(r.doc.u, bCat, r.doc.s, {isNoCount: true})) resultsNxt.push(r);
+					continue;
+				}
+
+				const item = await Renderer.hover.pCacheAndGetHash(UrlUtil.PG_ITEMS, r.doc.u);
+				if (!Renderer.item.isExcluded(item, {hash: r.doc.u})) resultsNxt.push(r);
+			}
+			results = resultsNxt;
 		}
 
 		results.sort(this._sortResults);

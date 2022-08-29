@@ -38,8 +38,8 @@ class CharCreationOptionsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterCharCreationOptions();
 		super({
-			dataSource: "data/charcreationoptions.json",
-			dataSourceFluff: "data/fluff-charcreationoptions.json",
+			dataSource: DataUtil.charoption.loadJSON.bind(DataUtil.charoption),
+			dataSourceFluff: DataUtil.charoptionFluff.loadJSON.bind(DataUtil.charoptionFluff),
 
 			pageFilter,
 
