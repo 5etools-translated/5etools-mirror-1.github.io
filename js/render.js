@@ -42,6 +42,7 @@ function Renderer () {
 	this._depthTrackerAdditionalPropsInherited = [];
 	this._lastDepthTrackerInheritedProps = {};
 	this._isInternalLinksDisabled = false;
+	this._isPartPageExpandCollapseDisabled = false;
 	this._fnsGetStyleClasses = {};
 
 	/**
@@ -146,14 +147,10 @@ function Renderer () {
 	};
 
 	/** Used by Foundry config. */
-	this.setInternalLinksDisabled = function (bool) {
-		this._isInternalLinksDisabled = bool;
-		return this;
-	};
+	this.setInternalLinksDisabled = function (val) { this._isInternalLinksDisabled = !!val; return this; };
+	this.isInternalLinksDisabled = function () { return !!this._isInternalLinksDisabled; };
 
-	this.isInternalLinksDisabled = function () {
-		return !!this._isInternalLinksDisabled;
-	};
+	this.setPartPageExpandCollapseDisabled = function (val) { this._isPartPageExpandCollapseDisabled = !!val; return this; };
 
 	/** Bind function which apply exta CSS classes to entry/list renders.  */
 	this.setFnGetStyleClasses = function (identifier, fn) {
@@ -740,9 +737,13 @@ function Renderer () {
 		const type = entry.type || "entries";
 		const isInlineTitle = meta.depth >= 2;
 		const isAddPeriod = isInlineTitle && entry.name && !Renderer._INLINE_HEADER_TERMINATORS.has(entry.name[entry.name.length - 1]);
-		const pagePart = !isInlineTitle ? this._getPagePart(entry) : "";
-		const partExpandCollapse = !isInlineTitle ? `<span class="rd__h-toggle ml-2 clickable" data-rd-h-toggle-button="true">[\u2013]</span>` : "";
-		const partPageExpandCollapse = pagePart || partExpandCollapse
+		const pagePart = !this._isPartPageExpandCollapseDisabled && !isInlineTitle
+			? this._getPagePart(entry)
+			: "";
+		const partExpandCollapse = !this._isPartPageExpandCollapseDisabled && !isInlineTitle
+			? `<span class="rd__h-toggle ml-2 clickable" data-rd-h-toggle-button="true">[\u2013]</span>`
+			: "";
+		const partPageExpandCollapse = !this._isPartPageExpandCollapseDisabled && (pagePart || partExpandCollapse)
 			? `<span class="ve-flex-vh-center">${[pagePart, partExpandCollapse].filter(Boolean).join("")}</span>`
 			: "";
 		const nextDepth = incDepth && meta.depth < 2 ? meta.depth + 1 : meta.depth;
@@ -750,7 +751,7 @@ function Renderer () {
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
 		if (entry.name != null && Renderer.ENTRIES_WITH_ENUMERATED_TITLES_LOOKUP[entry.type]) this._handleTrackTitles(entry.name);
 
-		const headerTag = isInlineTitle ? "span" : `h${Math.min(Math.max(meta.depth + 1, 1), 6)}`;
+		const headerTag = isInlineTitle ? "span" : `h${Math.min(Math.max(meta.depth + 2, 1), 6)}`;
 		const headerClass = `rd__h--${meta.depth + 1}`; // adjust as the CSS is 0..4 rather than -1..3
 
 		const cachedLastDepthTrackerProps = MiscUtil.copy(this._lastDepthTrackerInheritedProps);
@@ -9632,6 +9633,7 @@ Renderer.hover = {
 
 		function adjustPosition () {
 			const eleHov = $hov[0];
+			const wrpContent = $wrpContent[0];
 
 			const bcr = MiscUtil.copy(eleHov.getBoundingClientRect());
 			const screenHeight = position.window.innerHeight;
@@ -9667,10 +9669,10 @@ Renderer.hover = {
 			) {
 				if (position.isFromBottom) {
 					bcr.height = position.bcr.top - 5;
-					eleHov.style.height = `${bcr.height}px`;
+					wrpContent.style.height = `${bcr.height}px`;
 				} else {
 					bcr.height = screenHeight - position.bcr.bottom - 5;
-					eleHov.style.height = `${bcr.height}px`;
+					wrpContent.style.height = `${bcr.height}px`;
 				}
 			}
 		}

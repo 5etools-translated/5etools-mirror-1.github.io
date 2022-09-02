@@ -6,8 +6,8 @@ IS_NODE = typeof module !== "undefined";
 if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
-IS_DEPLOYED="v1.152.4.1662015483";
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.167.4"/* 5ETOOLS_VERSION__CLOSE */;
+IS_DEPLOYED="v1.152.4.1662104137";
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.167.5"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -4816,7 +4816,7 @@ DataUtil = {
 				],
 				rows: tableRaw.table.map(it => [
 					`${it.min}${it.max && it.max !== it.min ? `-${it.max}` : ""}`,
-					it.result.replace(RollerUtil.DICE_REGEX, (...m) => `{@dice ${m[0]}}`),
+					it.result,
 				]),
 			};
 		}
