@@ -41,7 +41,7 @@ class BlacklistUtil {
 		this._addData(out, {monster: MiscUtil.copy(await DataUtil.monster.pLoadAll())});
 		this._addData(out, {spell: MiscUtil.copy(await DataUtil.spell.pLoadAll())});
 		this._addData(out, MiscUtil.copy(await DataUtil.class.loadRawJSON()));
-		this._addData(out, MiscUtil.copy(await DataUtil.race.loadJSON()));
+		this._addData(out, MiscUtil.copy(await DataUtil.race.loadJSON({isAddBaseRaces: true})));
 
 		const jsons = await Promise.all(this._BASIC_FILES.map(url => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/${url}`)));
 		for (let json of jsons) {
@@ -153,6 +153,17 @@ class BlacklistUi {
 			})).filter(Boolean);
 
 			MiscUtil.set(this._subBlacklistEntries, "itemGroup", itemGroupHash, subBlacklist);
+		}
+
+		for (const it of (this._data.race || []).filter(it => it._isBaseRace)) {
+			const baseRaceHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](it);
+
+			const subBlacklist = it._subraces.map(sr => {
+				const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](sr);
+				return {displayName: sr.name, hash, category: "race", source: sr.source};
+			});
+
+			MiscUtil.set(this._subBlacklistEntries, "race", baseRaceHash, subBlacklist);
 		}
 	}
 
@@ -530,7 +541,7 @@ class BlacklistUi {
 		this._list.addItem(listItem);
 	}
 
-	_addListItem_getItemStyles () { return `no-click ve-flex-v-center lst__row lst--border lst__row-inner no-shrink`; }
+	_addListItem_getItemStyles () { return `no-click ve-flex-v-center lst__row lst--border veapp__list-row lst__row-inner no-shrink`; }
 
 	async _pAdd () {
 		const {hash, name: displayName, category: categoryName} = this._comp.name;

@@ -5123,6 +5123,7 @@ Renderer.race = {
 				};
 
 				Renderer.race._mutBaseRaceEntries(baseRace, lst);
+				baseRace._subraces = r.subraces.map(sr => ({name: Renderer.race.getSubraceName(r.name, sr.name), source: sr.source}));
 
 				delete baseRace.subraces;
 
@@ -7733,22 +7734,25 @@ Renderer.item = {
 	isMundane (item) { return item.rarity === "none" || item.rarity === "unknown" || item._category === "basic"; },
 
 	isExcluded (item, {hash = null} = {}) {
-		hash = hash || UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
+		const name = item.name;
+		const source = item.source || item.inherits?.source;
 
-		if (ExcludeUtil.isExcluded(hash, "item", item.source)) return true;
+		hash = hash || UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS]({name, source});
 
-		if (item._isBaseItem) return ExcludeUtil.isExcluded(hash, "baseitem", item.source);
-		if (item._isItemGroup) return ExcludeUtil.isExcluded(hash, "itemGroup", item.source);
+		if (ExcludeUtil.isExcluded(hash, "item", source)) return true;
+
+		if (item._isBaseItem) return ExcludeUtil.isExcluded(hash, "baseitem", source);
+		if (item._isItemGroup) return ExcludeUtil.isExcluded(hash, "itemGroup", source);
 		if (item._variantName) {
-			if (ExcludeUtil.isExcluded(hash, "_specificVariant", item.source)) return true;
+			if (ExcludeUtil.isExcluded(hash, "_specificVariant", source)) return true;
 
-			const baseHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS]({name: item._baseName, source: item._baseSource || item.source});
-			if (ExcludeUtil.isExcluded(baseHash, "baseitem", item._baseSource || item.source)) return true;
+			const baseHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS]({name: item._baseName, source: item._baseSource || source});
+			if (ExcludeUtil.isExcluded(baseHash, "baseitem", item._baseSource || source)) return true;
 
-			const variantHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS]({name: item._variantName, source: item.source});
-			return ExcludeUtil.isExcluded(variantHash, "magicvariant", item.source);
+			const variantHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS]({name: item._variantName, source: source});
+			return ExcludeUtil.isExcluded(variantHash, "magicvariant", source);
 		}
-		if (item.type === "GV") return ExcludeUtil.isExcluded(hash, "magicvariant", item.source);
+		if (item.type === "GV") return ExcludeUtil.isExcluded(hash, "magicvariant", source);
 
 		return false;
 	},
@@ -9995,6 +9999,8 @@ Renderer.hover = {
 			await Renderer.hover._psCacheLoading[loadKey];
 		}
 
+		// FIXME this isn't completely thread-safe; if another thread is loading the same brew and has not yet
+		//    completed the load, we will always fail to find
 		if (!Renderer.hover.isCached(page, source, hash) && !Renderer.hover._hasBrewSourceBeenAttempted(source)) {
 			Renderer.hover._setHasBrewSourceBeenAttempted(source);
 			return Renderer.hover._pDoLoadFromBrew(page, source, hash);

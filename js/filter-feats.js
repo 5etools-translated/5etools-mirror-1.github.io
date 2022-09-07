@@ -168,7 +168,7 @@ class ModalFilterFeats extends ModalFilter {
 		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat);
 		const source = Parser.sourceJsonToAbv(feat.source);
 
-		eleRow.innerHTML = `<div class="w-100 ve-flex-vh-center lst--border no-select lst__wrp-cells">
+		eleRow.innerHTML = `<div class="w-100 ve-flex-vh-center lst--border veapp__list-row no-select lst__wrp-cells ${feat._versionBase_isVersion ? "ve-muted" : ""}">
 			<div class="col-0-5 pl-0 ve-flex-vh-center">${this._isRadio ? `<input type="radio" name="radio" class="no-events">` : `<input type="checkbox" class="no-events">`}</div>
 
 			<div class="col-0-5 px-1 ve-flex-vh-center">

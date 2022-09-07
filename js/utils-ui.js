@@ -4286,6 +4286,7 @@ class ComponentUiUtil {
 	 * @param [opts.isAllowNull] If null is allowed.
 	 * @param [opts.fnDisplay] Value display function.
 	 * @param [opts.displayNullAs] If null values are allowed, display them as this string.
+	 * @param [opts.fnGetAdditionalStyleClasses] Function which converts an item into CSS classes.
 	 * @param [opts.asMeta] If a meta-object should be returned containing the hook and the select.
 	 * @param [opts.isDisabled] If the selector should be display-only
 	 * @return {JQuery}
@@ -4359,8 +4360,9 @@ class ComponentUiUtil {
 		const procValues = opts.isAllowNull ? [null, ...opts.values] : opts.values;
 		const metaOptions = procValues.map((v, i) => {
 			const display = v == null ? (opts.displayNullAs || "\u2014") : opts.fnDisplay ? opts.fnDisplay(v) : v;
+			const additionalStyleClasses = opts.fnGetAdditionalStyleClasses ? opts.fnGetAdditionalStyleClasses(v) : null;
 
-			const $ele = $(`<div class="ve-flex-v-center py-1 px-1 clickable ui-sel2__disp-option ${v == null ? `italic` : ""}" tabindex="${i}">${display}</div>`)
+			const $ele = $(`<div class="ve-flex-v-center py-1 px-1 clickable ui-sel2__disp-option ${v == null ? `italic` : ""} ${additionalStyleClasses ? additionalStyleClasses.join(" ") : ""}" tabindex="${i}">${display}</div>`)
 				.click(() => {
 					if (opts.isDisabled) return;
 

@@ -2251,6 +2251,7 @@
 
 		this._scale_traits(mon, toSpellLevel, state);
 		this._scale_actions(mon, toSpellLevel, state);
+		this._scale_bonusActions(mon, toSpellLevel, state);
 		this._scale_reactions(mon, toSpellLevel, state);
 
 		mon._summonedBySpell_level = toSpellLevel;
@@ -2324,6 +2325,7 @@
 
 	_scale_traits (mon, toSpellLevel, state) { this._scale_genericEntries(mon, toSpellLevel, state, "trait"); },
 	_scale_actions (mon, toSpellLevel, state) { this._scale_genericEntries(mon, toSpellLevel, state, "action"); },
+	_scale_bonusActions (mon, toSpellLevel, state) { this._scale_genericEntries(mon, toSpellLevel, state, "bonus"); },
 	_scale_reactions (mon, toSpellLevel, state) { this._scale_genericEntries(mon, toSpellLevel, state, "reaction"); },
 
 	State: function () {
@@ -2357,6 +2359,7 @@
 
 		this._scale_traits(mon, toClassLevel, state);
 		this._scale_actions(mon, toClassLevel, state);
+		this._scale_bonusActions(mon, toClassLevel, state);
 		this._scale_reactions(mon, toClassLevel, state);
 
 		mon._summonedByClass_level = toClassLevel;
@@ -2471,6 +2474,7 @@
 
 	_scale_traits (mon, toClassLevel, state) { this._scale_genericEntries(mon, toClassLevel, state, "trait"); },
 	_scale_actions (mon, toClassLevel, state) { this._scale_genericEntries(mon, toClassLevel, state, "action"); },
+	_scale_bonusActions (mon, toClassLevel, state) { this._scale_genericEntries(mon, toClassLevel, state, "bonus"); },
 	_scale_reactions (mon, toClassLevel, state) { this._scale_genericEntries(mon, toClassLevel, state, "reaction"); },
 
 	_scale_pbNote (mon, toClassLevel, state) {

@@ -5,6 +5,7 @@ class TimeTracker {
 		const $wrpPanel = $(`<div class="w-100 h-100 dm-time__root dm__panel-bg dm__data-anchor"/>`) // root class used to identify for saving
 			.data("getState", () => tracker.getSaveableState());
 		const tracker = new TimeTrackerRoot(board, $wrpPanel);
+		state = TimeTrackerUtil.getMigratedState(state);
 		tracker.setStateFrom(state);
 		tracker.render($wrpPanel);
 		return $wrpPanel;
@@ -22,6 +23,24 @@ class TimeTrackerUtil {
 
 	static revSlugToText (it) {
 		return it.split("-").reverse().map(s => s.split("|").join("- ")).join(" ").toTitleCase();
+	}
+
+	static getMigratedState (state) {
+		if (!state?.state) return state;
+
+		// region Migrate legacy sub-objects
+		["days", "months", "years", "eras", "moons", "seasons"]
+			.forEach(prop => {
+				if (!state.state[prop]) return;
+				if (state.state[prop] instanceof Array) return;
+				if (typeof state.state[prop] !== "object") return;
+
+				state.state[prop] = Object.values(state.state[prop])
+					.map(({id, ...rest}) => ({id, data: rest}));
+			});
+		// endregion
+
+		return state;
 	}
 }
 

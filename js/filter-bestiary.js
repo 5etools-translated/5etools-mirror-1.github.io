@@ -541,7 +541,7 @@ class ModalFilterBestiary extends ModalFilter {
 		const type = mon._pTypes.asText.uppercaseFirst();
 		const cr = mon._pCr;
 
-		eleRow.innerHTML = `<div class="w-100 ve-flex-vh-center lst--border no-select lst__wrp-cells">
+		eleRow.innerHTML = `<div class="w-100 ve-flex-vh-center lst--border veapp__list-row no-select lst__wrp-cells ${mon._versionBase_isVersion ? "ve-muted" : ""}">
 			<div class="col-0-5 pl-0 ve-flex-vh-center">${this._isRadio ? `<input type="radio" name="radio" class="no-events">` : `<input type="checkbox" class="no-events">`}</div>
 
 			<div class="col-0-5 px-1 ve-flex-vh-center">

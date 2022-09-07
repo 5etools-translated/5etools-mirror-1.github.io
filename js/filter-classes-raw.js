@@ -123,17 +123,17 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 		// Load the data once before diving into nested promises, to avoid needless context switching
 		await this._pPreloadSideData();
 
-		await Promise.all(data.class.map(async cls => {
-			await Promise.all((cls.classFeatures || []).map(cf => this.pInitClassFeatureLoadeds({...opts, classFeature: cf, className: cls.name})));
+		for (const cls of data.class) {
+			await (cls.classFeatures || []).pSerialAwaitMap(cf => this.pInitClassFeatureLoadeds({...opts, classFeature: cf, className: cls.name}));
 
 			if (cls.classFeatures) cls.classFeatures = cls.classFeatures.filter(it => !it.isIgnored);
 
-			await Promise.all((cls.subclasses || []).map(async sc => {
-				await Promise.all((sc.subclassFeatures || []).map(scf => this.pInitSubclassFeatureLoadeds({...opts, subclassFeature: scf, className: cls.name, subclassName: sc.name})));
+			for (const sc of cls.subclasses || []) {
+				await (sc.subclassFeatures || []).pSerialAwaitMap(scf => this.pInitSubclassFeatureLoadeds({...opts, subclassFeature: scf, className: cls.name, subclassName: sc.name}));
 
 				if (sc.subclassFeatures) sc.subclassFeatures = sc.subclassFeatures.filter(it => !it.isIgnored);
-			}));
-		}));
+			}
+		}
 
 		// Add synthetic fluff to subclasses
 		data.class.forEach(cls => {
@@ -144,7 +144,7 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 			});
 		});
 
-		return data.class;
+		return data;
 	}
 
 	static async pInitClassFeatureLoadeds ({classFeature, className, ...opts}) {
@@ -891,7 +891,7 @@ class ModalFilterClasses extends ModalFilter {
 					.forEach(([prop, brewArr]) => data[prop] = [...(data[prop] || []), ...MiscUtil.copy(brewArr)]);
 			} else clsProps.forEach(prop => data[prop] = [...(data[prop] || []), ...MiscUtil.copy(brew[prop] || [])]);
 
-			this._allData = await PageFilterClassesRaw.pPostLoad(data);
+			this._allData = (await PageFilterClassesRaw.pPostLoad(data)).class;
 		})();
 
 		await this._pLoadingAllData;
@@ -907,7 +907,7 @@ class ModalFilterClasses extends ModalFilter {
 
 	_getListItems_getClassItem (pageFilter, cls, clsI) {
 		const eleLabel = document.createElement("label");
-		eleLabel.className = "w-100 ve-flex lst--border no-select lst__wrp-cells";
+		eleLabel.className = `w-100 ve-flex lst--border veapp__list-row no-select lst__wrp-cells ${cls._versionBase_isVersion ? "ve-muted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(cls.source);
 
@@ -931,7 +931,7 @@ class ModalFilterClasses extends ModalFilter {
 
 	_getListItems_getSubclassItem (pageFilter, cls, clsI, sc, scI) {
 		const eleLabel = document.createElement("label");
-		eleLabel.className = "w-100 ve-flex lst--border no-select lst__wrp-cells";
+		eleLabel.className = `w-100 ve-flex lst--border veapp__list-row no-select lst__wrp-cells ${sc._versionBase_isVersion ? "ve-muted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(sc.source);
 

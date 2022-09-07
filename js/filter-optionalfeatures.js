@@ -191,7 +191,7 @@ class ModalFilterOptionalFeatures extends ModalFilter {
 		const prerequisite = Renderer.utils.getPrerequisiteHtml(optfeat.prerequisite, {isListMode: true, blacklistKeys: new Set(["level"])});
 		const level = Renderer.optionalfeature.getListPrerequisiteLevelText(optfeat.prerequisite);
 
-		eleRow.innerHTML = `<div class="w-100 ve-flex-vh-center lst--border no-select lst__wrp-cells">
+		eleRow.innerHTML = `<div class="w-100 ve-flex-vh-center lst--border veapp__list-row no-select lst__wrp-cells ${optfeat._versionBase_isVersion ? "ve-muted" : ""}">
 			<div class="col-0-5 pl-0 ve-flex-vh-center">${this._isRadio ? `<input type="radio" name="radio" class="no-events">` : `<input type="checkbox" class="no-events">`}</div>
 
 			<div class="col-0-5 px-1 ve-flex-vh-center">
