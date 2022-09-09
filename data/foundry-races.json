@@ -1292,6 +1292,30 @@
 					]
 				]
 			}
+		},
+		{
+			"name": "Armored Casing",
+			"source": "AAG",
+			"raceName": "Autognome",
+			"raceSource": "AAG",
+			"effects": [
+				{
+					"name": "Armored Casing",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "data.attributes.ac.calc",
+							"mode": "OVERRIDE",
+							"value": "custom"
+						},
+						{
+							"key": "data.attributes.ac.formula",
+							"mode": "OVERRIDE",
+							"value": "13 + @abilities.dex.mod"
+						}
+					]
+				}
+			]
 		}
 	]
 }

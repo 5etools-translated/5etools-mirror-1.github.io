@@ -630,6 +630,7 @@ PropOrder._CONDITION = [
 	"page",
 	"srd",
 	"basicRules",
+	"otherSources",
 
 	"entries",
 
@@ -643,6 +644,7 @@ PropOrder._DISEASE = [
 	"page",
 	"srd",
 	"basicRules",
+	"otherSources",
 
 	"entries",
 ];
@@ -1144,6 +1146,7 @@ PropOrder._VARIANTRULE = [
 	"srd",
 	"basicRules",
 	"additionalSources",
+	"otherSources",
 
 	"ruleType",
 

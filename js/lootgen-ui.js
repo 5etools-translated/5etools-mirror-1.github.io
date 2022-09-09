@@ -12,13 +12,6 @@ class LootGenUi extends BaseComponent {
 		this._modalFilterItems = new ModalFilterItems({
 			namespace: "LootGenUi.items",
 			allData: items,
-			pageFilterOpts: {
-				filterOpts: {
-					"Category": {
-						deselFn: (it) => it === "Generic Variant",
-					},
-				},
-			},
 		});
 
 		this._data = null;

@@ -758,15 +758,21 @@ class StatGenUi extends BaseComponent {
 
 			${$wrpRace}
 		</div>`;
-		const hkIxRace = () => {
+
+		// Ensure this is run first, and doesn't trigger further state changes
+		this._addHookBase("common_ixRace", () => this.__state.common_ixAbilityScoreSet = 0);
+
+		const hkIxRace = (prop) => {
 			this._pb_unhookRaceRender();
-			this._state.common_raceChoiceMetasFrom = [];
-			this._state.common_raceChoiceMetasWeighted = [];
+			const isInitialLoad = prop == null;
+			if (!isInitialLoad) this._state.common_raceChoiceMetasFrom = [];
+			if (!isInitialLoad) this._state.common_raceChoiceMetasWeighted = [];
 			const isAnyRacial = this._render_pointBuy_races($wrpRace);
 			$wrpRaceOuter.toggleVe(isAnyRacial);
 		};
 		this._addHookBase("common_ixRace", hkIxRace);
 		this._addHookBase("common_isTashas", hkIxRace);
+		this._addHookBase("common_ixAbilityScoreSet", hkIxRace);
 		hkIxRace();
 
 		const {$wrp: $selRace, fnUpdateHidden: fnUpdateSelRaceHidden} = ComponentUiUtil.$getSelSearchable(
@@ -811,9 +817,42 @@ class StatGenUi extends BaseComponent {
 				html: `<button class="btn btn-xs btn-default" title="Toggle Race Preview"><span class="glyphicon glyphicon-eye-open"></span></button>`,
 			},
 		);
-		const hkBtnPreviewRace = () => $btnPreviewRace.toggleVe(this._state.common_ixRace != null && !~this._state.common_ixRace);
+		const hkBtnPreviewRace = () => $btnPreviewRace.toggleVe(this._state.common_ixRace != null && ~this._state.common_ixRace);
 		this._addHookBase("common_ixRace", hkBtnPreviewRace);
 		hkBtnPreviewRace();
+
+		// region Ability score set selection
+		const {$sel: $selAbilitySet, setValues: setValuesSelAbilitySet} = ComponentUiUtil.$getSelEnum(
+			this,
+			"common_ixAbilityScoreSet",
+			{
+				values: [],
+				asMeta: true,
+				fnDisplay: ixAbSet => {
+					const lst = this._pb_getRacialAbilityList();
+					if (!lst?.[ixAbSet]) return "(Unknown)";
+					return Renderer.getAbilityData([lst[ixAbSet]]).asText;
+				},
+			},
+		);
+
+		const $stgAbilityScoreSet = $$`<div class="ve-flex-v-center mb-2">
+			<div class="mr-2">Ability Score Increase</div>
+			<div>${$selAbilitySet}</div>
+		</div>`;
+
+		const hkSetValuesSelAbilitySet = () => {
+			const race = this.race;
+			$stgAbilityScoreSet.toggleVe(!!race && race.ability?.length > 1);
+			setValuesSelAbilitySet(
+				[...new Array(race?.ability?.length || 0)].map((_, ix) => ix),
+				{isForce: true},
+			);
+		};
+		this._addHookBase("common_ixRace", hkSetValuesSelAbilitySet);
+		this._addHookBase("common_isTashas", hkSetValuesSelAbilitySet);
+		hkSetValuesSelAbilitySet();
+		// endregion
 
 		const $dispPreviewRace = $(`<div class="ve-flex-col mb-2"></div>`);
 		const hkPreviewRace = () => {
@@ -909,8 +948,9 @@ class StatGenUi extends BaseComponent {
 							<div class="ve-flex-v-center btn-group w-100 mr-2">${$btnFilterForRace}${$selRace}</div>
 							<div>${$btnPreviewRace}</div>
 						</div>
+						${$stgAbilityScoreSet}
 						<label class="ve-flex-v-center mb-1">
-							<div class="mr-1">Allow Origin Customization</div>
+							<div class="mr-2">Allow Origin Customization</div>
 							${ComponentUiUtil.$getCbBool(this, "common_isTashas")}
 						</label>
 						<div class="ve-flex">
@@ -1093,44 +1133,47 @@ class StatGenUi extends BaseComponent {
 		this._pbRaceHookMetas = [];
 	}
 
-	_pb_getRacialAbility () {
-		const race = this._state.common_ixRace != null ? this._races[this._state.common_ixRace] : null;
-		if (!race) return null;
+	_pb_getRacialAbilityList () {
+		const race = this.race;
+		if (!race?.ability?.length) return null;
 
-		// (Always use the first set of ability scores, for simplicity)
-		let fromRace = race.ability ? race.ability[0] : null;
-		if (!fromRace) return null;
+		return race.ability
+			.map(fromRace => {
+				if (this._state.common_isTashas) {
+					const weights = [];
 
-		if (this._state.common_isTashas) {
-			const weights = [];
+					if (fromRace.choose && fromRace.choose.weighted && fromRace.choose.weighted.weights) {
+						weights.push(...fromRace.choose.weighted.weights);
+					}
 
-			if (fromRace.choose && fromRace.choose.weighted && fromRace.choose.weighted.weights) {
-				weights.push(...fromRace.choose.weighted.weights);
-			}
+					Parser.ABIL_ABVS.forEach(it => {
+						if (fromRace[it]) weights.push(fromRace[it]);
+					});
 
-			Parser.ABIL_ABVS.forEach(it => {
-				if (fromRace[it]) weights.push(fromRace[it]);
+					if (fromRace.choose && fromRace.choose.from) {
+						const count = fromRace.choose.count || 1;
+						const amount = fromRace.choose.amount || 1;
+						for (let i = 0; i < count; ++i) weights.push(amount);
+					}
+
+					weights.sort((a, b) => SortUtil.ascSort(b, a));
+
+					fromRace = {
+						choose: {
+							weighted: {
+								from: [...Parser.ABIL_ABVS],
+								weights,
+							},
+						},
+					};
+				}
+
+				return fromRace;
 			});
+	}
 
-			if (fromRace.choose && fromRace.choose.from) {
-				const count = fromRace.choose.count || 1;
-				const amount = fromRace.choose.amount || 1;
-				for (let i = 0; i < count; ++i) weights.push(amount);
-			}
-
-			weights.sort((a, b) => SortUtil.ascSort(b, a));
-
-			fromRace = {
-				choose: {
-					weighted: {
-						from: [...Parser.ABIL_ABVS],
-						weights,
-					},
-				},
-			};
-		}
-
-		return fromRace;
+	_pb_getRacialAbility () {
+		return this._pb_getRacialAbilityList()?.[this._state.common_ixAbilityScoreSet || 0];
 	}
 
 	_pb_getPointsRemaining (baseState) {
@@ -1457,6 +1500,7 @@ class StatGenUi extends BaseComponent {
 			common_isTashas: false,
 			common_isShowTashasRules: false,
 			common_ixRace: null,
+			common_ixAbilityScoreSet: 0,
 
 			common_pulseAsi: false, // Used as a general pulse for all changes in form data
 			common_cntAsi: 0,

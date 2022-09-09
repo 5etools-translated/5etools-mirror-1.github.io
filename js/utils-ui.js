@@ -4512,8 +4512,8 @@ class ComponentUiUtil {
 			}
 		};
 
-		const setValues = (nxtValues, {isResetOnMissing = false} = {}) => {
-			if (CollectionUtil.deepEquals(values_, nxtValues)) return;
+		const setValues = (nxtValues, {isResetOnMissing = false, isForce = false} = {}) => {
+			if (!isForce && CollectionUtil.deepEquals(values_, nxtValues)) return;
 			values_ = nxtValues;
 			$sel.empty();
 			// Use native API for performance

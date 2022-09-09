@@ -194,7 +194,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Bonus Actions", "Lair Actions", "Legendary", "Mythic", "Adventure NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Reprinted", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token", "Has Info", "Has Images", "Has Token", "Has Recharge", "SRD", "Basic Rules", "AC from Item(s)", "AC from Natural Armor", "AC from Unarmored Defense"],
+			items: ["Familiar", ...Object.keys(Parser.MON_MISC_TAG_TO_FULL), "Bonus Actions", "Lair Actions", "Legendary", "Mythic", "Adventure NPC", "Spellcaster", ...Object.values(Parser.ATB_ABV_TO_FULL).map(it => `${PageFilterBestiary.MISC_FILTER_SPELLCASTER}${it}`), "Regional Effects", "Reactions", "Reprinted", "Swarm", "Has Variants", "Modified Copy", "Has Alternate Token", "Has Info", "Has Images", "Has Token", "Has Recharge", "SRD", "Basic Rules", "AC from Item(s)", "AC from Natural Armor", "AC from Unarmored Defense", "Summoned by Spell", "Summoned by Class"],
 			displayFn: (it) => Parser.monMiscTagToFull(it).uppercaseFirst(),
 			deselFn: (it) => ["Adventure NPC", "Reprinted"].includes(it),
 			itemSortFn: PageFilterBestiary.ascSortMiscFilter,
@@ -297,6 +297,8 @@ class PageFilterBestiary extends PageFilter {
 		}
 		if (this._hasRecharge(mon)) mon._fMisc.push("Has Recharge");
 		if (mon._versionBase_isVersion) mon._fMisc.push("Is Variant");
+		if (mon.summonedBySpell) mon._fMisc.push("Summoned by Spell");
+		if (mon.summonedByClass) mon._fMisc.push("Summoned by Class");
 
 		const spellcasterMeta = this._getSpellcasterMeta(mon);
 		if (spellcasterMeta) {
