@@ -4692,7 +4692,7 @@
 					"name": "Death Gaze",
 					"entries": [
 						"Lorsqu'une créature qui peut voir les yeux du bodak commence son tour à moins de 30 pieds du bodak, ce dernier peut la forcer à effectuer un jet de sauvegarde de Constitution {@dc 13} si le bodak n'est pas {@condition incapacitated} et peut voir la créature. Si le jet de sauvegarde échoue par 5 ou plus, la créature est réduite à 0 point de vie, sauf si elle est immunisée contre la condition {@condition frightened}. Sinon, la créature subit 16 ({@damage 3d10}) de dégâts psychiques en cas d'échec au jet de sauvegarde.",
-						"À moins d'être surprise, une créature peut détourner les yeux pour éviter le jet de sauvegarde au début de son tour. Si la créature fait cela, elle a un désavantage sur les jets d'attaque contre le bodak jusqu'au début de son prochain tour. Si la créature regarde le bodak entre-temps, elle doit immédiatement effectuer le jet de sauvegarde."
+						"Sauf si {@quickref Surprise|PHB|3|0|surprised}, une créature peut détourner les yeux pour éviter le jet de sauvegarde au début de son tour. Si la créature fait cela, elle a un désavantage sur les jets d'attaque contre le bodak jusqu'au début de son prochain tour. Si la créature regarde le bodak entre-temps, elle doit immédiatement effectuer le jet de sauvegarde."
 					]
 				},
 				{
@@ -5521,7 +5521,7 @@
 				{
 					"name": "Uncanny Senses",
 					"entries": [
-						"Le canoloth ne peut être surpris que s'il est à {@condition incapacitated}."
+						"Le canoloth ne peut être {@quickref Surprise|PHB|3|0|surprised} que s'il est {@condition incapacitated}."
 					]
 				}
 			],
@@ -15465,7 +15465,7 @@
 					"name": "Stunning Gaze",
 					"entries": [
 						"Lorsqu'une créature qui peut voir l'œil central de la gauth commence son tour à moins de 30 pieds de la gauth, cette dernière peut la forcer à effectuer un jet de sauvegarde de {@dc 14} Sagesse si la gauth n'est pas {@condition incapacitated} et peut voir la créature. Une créature qui échoue à la sauvegarde est {@condition stunned} jusqu'au début de son prochain tour.",
-						"À moins d'être surprise, une créature peut détourner les yeux au début de son tour pour éviter le jet de sauvegarde. Si la créature fait cela, elle ne peut pas voir le gauth jusqu'au début de son prochain tour, où elle peut à nouveau détourner les yeux. Si la créature regarde la gauth entre-temps, elle doit immédiatement effectuer le jet de sauvegarde."
+						"Sauf si {@quickref Surprise|PHB|3|0|surprised}, une créature peut détourner les yeux au début de son tour pour éviter le jet de sauvegarde. Si la créature fait cela, elle ne peut pas voir le gauth jusqu'au début de son prochain tour, où elle peut à nouveau détourner les yeux. Si la créature regarde la gauth entre-temps, elle doit immédiatement effectuer le jet de sauvegarde."
 					]
 				},
 				{
@@ -30193,25 +30193,34 @@
 				{
 					"name": "Fallible Invisibility",
 					"entries": [
-						"Le skulk est de {@condition invisible}. Cette invisibilité peut être contournée par trois choses :"
-					]
-				},
-				{
-					"name": "Charnel Candles",
-					"entries": [
-						"Le skulk apparaît comme une forme sombre et translucide à la lumière d'une bougie faite de graisse provenant d'un cadavre dont l'identité est inconnue."
-					]
-				},
-				{
-					"name": "Children",
-					"entries": [
-						"Les enfants humanoïdes, âgés de 10 ans et moins, peuvent voir à travers cette invisibilité."
-					]
-				},
-				{
-					"name": "Reflective Surfaces",
-					"entries": [
-						"Le skulk apparaît comme un bipède terne à la peau lisse si son reflet peut être vu dans un miroir ou sur une autre surface."
+						"Le skulk est de {@condition invisible}. Cette invisibilité peut être contournée par trois choses :",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Charnel Candles",
+									"entries": [
+										"Le skulk apparaît comme une forme sombre et translucide à la lumière d'une bougie faite de graisse provenant d'un cadavre dont l'identité est inconnue."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Children",
+									"entries": [
+										"Les enfants humanoïdes, âgés de 10 ans et moins, peuvent voir à travers cette invisibilité."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Reflective Surfaces",
+									"entries": [
+										"Le skulk apparaît comme un bipède terne à la peau lisse si son reflet peut être vu dans un miroir ou sur une autre surface."
+									]
+								}
+							]
+						}
 					]
 				},
 				{

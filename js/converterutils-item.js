@@ -81,7 +81,7 @@ class ChargeTag {
 
 	static tryRun (it, opts) {
 		if (it.entries) this._checkAndTag(it, opts);
-		if (it.inherits && it.inherits.entries) this._checkAndTag(it.inherits, opts);
+		if (it.inherits?.entries) this._checkAndTag(it.inherits, opts);
 	}
 }
 
@@ -105,7 +105,86 @@ class RechargeTypeTag {
 
 	static tryRun (it, opts) {
 		if (it.charges) this._checkAndTag(it, opts);
-		if (it.inherits && it.inherits.charges) this._checkAndTag(it.inherits, opts);
+		if (it.inherits?.charges) this._checkAndTag(it.inherits, opts);
+	}
+}
+
+class RechargeAmountTag {
+	// Note that ordering is important--handle dice versions first
+	static _PTS_CHARGES = [
+		"{@dice [^}]+}",
+		"\\d+",
+	];
+
+	static _RE_TEMPLATES_CHARGES = [
+		[
+			"(?<charges>",
+			")[^.]*?\\b(?:charges? at dawn|charges? daily at dawn|charges? each day at dawn)",
+		],
+		[
+			"(?<charges>",
+			")[^.]*?\\b(?:charges? at dawn|charges? daily at dawn|charges? each day at dawn)",
+		],
+		[
+			"charges and regains (?<charges>",
+			") each dawn",
+		],
+		[
+			"(?<charges>",
+			")[^.]*?\\b(?:charges? daily at dusk|charges? each day at dusk)",
+		],
+		[
+			"(?<charges>",
+			")[^.]*?\\b(?:charges? daily at midnight)",
+		],
+		[
+			"Each night at midnight[^.]+regains (?<charges>",
+			")[^.]*\\bcharges",
+		],
+	];
+
+	static _RES_CHARGES = null;
+
+	static _RES_ALL = [
+		/charges and regains all of them at dawn/i,
+		/recharging them all each dawn/i,
+		/charges that are replenished each dawn/i,
+		/regains? all expended charges (?:daily )?at dawn/i,
+	];
+
+	static _getRechargeAmount (str) {
+		return isNaN(str) ? str : Number(str);
+	}
+
+	static _checkAndTag (obj, opts) {
+		if (!obj.entries) return;
+
+		const strEntries = JSON.stringify(obj.entries, null, 2);
+
+		this._RES_CHARGES = this._RES_CHARGES || this._PTS_CHARGES
+			.map(pt => {
+				return this._RE_TEMPLATES_CHARGES
+					.map(template => {
+						const [pre, post] = template;
+						return new RegExp([pre, pt, post].join(""), "i");
+					});
+			})
+			.flat();
+
+		for (const re of this._RES_CHARGES) {
+			const m = re.exec(strEntries);
+			if (!m) continue;
+			return obj.rechargeAmount = this._getRechargeAmount(m.groups.charges);
+		}
+
+		if (this._RES_ALL.some(re => re.test(strEntries))) return obj.rechargeAmount = obj.charges;
+
+		if (opts.cbMan) opts.cbMan(obj.name, obj.source);
+	}
+
+	static tryRun (it, opts) {
+		if (it.charges && it.recharge) this._checkAndTag(it, opts);
+		if (it.inherits?.charges && it.inherits?.recharge) this._checkAndTag(it.inherits, opts);
 	}
 }
 
@@ -135,6 +214,7 @@ class AttachedSpellTag {
 			/can be used to cast [^.]*/gi,
 			/you can([^.]*expend[^.]*)? cast [^.]* (and|or) [^.]*/gi,
 			/you can([^.]*)? cast [^.]* (and|or) [^.]* from the weapon/gi,
+			/Spells are cast at their lowest level[^.]*: [^.]*/gi,
 		];
 
 		const addTaggedSpells = str => str.replace(/{@spell ([^}]*)}/gi, (...m) => outSet.add(m[1].toSpellCase()));
@@ -220,7 +300,7 @@ class BonusTag {
 
 		// FIXME(Future) false positives:
 		//   - Black Dragon Scale Mail
-		strEntries = strEntries.replace(/\+\s*(\d)([^.]+(?:bonus )?(?:to|on) [^.]*saving throws)/g, (...m) => {
+		strEntries = strEntries.replace(/\+\s*(\d)([^.\d]+(?:bonus )?(?:to|on) [^.]*saving throws)/g, (...m) => {
 			obj.bonusSavingThrow = `+${m[1]}`;
 			return opts.isVariant ? `{=bonusSavingThrow}${m[2]}` : m[0];
 		});
@@ -359,7 +439,7 @@ BonusTag._RE_SPEED_BONUS_SPECIFIC = new RegExp(`increas(?:ing|e) your ${BonusTag
 
 class BasicTextClean {
 	static tryRun (it, opts) {
-		const walker = MiscUtil.getWalker({keyBlacklist: new Set(["type"])});
+		const walker = MiscUtil.getWalker({keyBlocklist: new Set(["type"])});
 		walker.walk(it, {
 			array: (arr) => {
 				return arr.filter(it => {
@@ -404,7 +484,7 @@ class ItemSpellcastingFocusTag {
 		if (it.entries || (it.inherits && it.inherits.entries)) {
 			const tgt = it.entries ? it : it.inherits;
 
-			const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST, isNoModification: true});
+			const walker = MiscUtil.getWalker({keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST, isNoModification: true});
 			walker.walk(
 				tgt,
 				{
@@ -505,7 +585,7 @@ class DamageResistanceImmunityVulnerabilityTag {
 	}
 
 	static tryRun (prop, reOuter, it, opts) {
-		DamageResistanceImmunityVulnerabilityTag._WALKER = DamageResistanceImmunityVulnerabilityTag._WALKER || MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST, isNoModification: true});
+		DamageResistanceImmunityVulnerabilityTag._WALKER = DamageResistanceImmunityVulnerabilityTag._WALKER || MiscUtil.getWalker({keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST, isNoModification: true});
 
 		if (it.entries) this._checkAndTag(prop, reOuter, it, opts);
 		if (it.inherits && it.inherits.entries) this._checkAndTag(prop, reOuter, it.inherits, opts);
@@ -537,7 +617,7 @@ class ConditionImmunityTag {
 	}
 
 	static tryRun (it, opts) {
-		ConditionImmunityTag._WALKER = ConditionImmunityTag._WALKER || MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST, isNoModification: true});
+		ConditionImmunityTag._WALKER = ConditionImmunityTag._WALKER || MiscUtil.getWalker({keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST, isNoModification: true});
 
 		if (it.entries) this._checkAndTag(it, opts);
 		if (it.inherits && it.inherits.entries) this._checkAndTag(it.inherits, opts);
@@ -691,6 +771,7 @@ if (typeof module !== "undefined") {
 		ConverterUtilsItem,
 		ChargeTag,
 		RechargeTypeTag,
+		RechargeAmountTag,
 		AttachedSpellTag,
 		BonusTag,
 		BasicTextClean,

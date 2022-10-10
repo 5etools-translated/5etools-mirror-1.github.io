@@ -79,11 +79,11 @@ function isDirectory (path) {
 	return fs.lstatSync(path).isDirectory();
 }
 
-const FILE_EXTENSION_WHITELIST = [
+const FILE_EXTENSION_ALLOWLIST = [
 	".json",
 ];
 
-const FILE_PREFIX_BLACKLIST = [
+const FILE_PREFIX_BLOCKLIST = [
 	"bookref-",
 	"roll20-",
 	"foundry-",
@@ -94,23 +94,23 @@ const FILE_PREFIX_BLACKLIST = [
  * Recursively list all files in a directory.
  *
  * @param [opts] Options object.
- * @param [opts.blacklistFilePrefixes] Blacklisted filename prefixes (case sensitive).
- * @param [opts.whitelistFileExts] Whitelisted filename extensions (case sensitive).
+ * @param [opts.blocklistFilePrefixes] Blocklisted filename prefixes (case sensitive).
+ * @param [opts.allowlistFileExts] Allowlisted filename extensions (case sensitive).
  * @param [opts.dir] Directory to list.
- * @param [opts.whitelistDirs] Directory whitelist.
+ * @param [opts.allowlistDirs] Directory allowlist.
  */
 function listFiles (opts) {
 	opts = opts || {};
 	opts.dir = opts.dir || "./data";
-	opts.blacklistFilePrefixes = opts.blacklistFilePrefixes || FILE_PREFIX_BLACKLIST;
-	opts.whitelistFileExts = opts.whitelistFileExts || FILE_EXTENSION_WHITELIST;
-	opts.whitelistDirs = opts.whitelistDirs || null;
+	opts.blocklistFilePrefixes = opts.blocklistFilePrefixes || FILE_PREFIX_BLOCKLIST;
+	opts.allowlistFileExts = opts.allowlistFileExts || FILE_EXTENSION_ALLOWLIST;
+	opts.allowlistDirs = opts.allowlistDirs || null;
 
 	const dirContent = fs.readdirSync(opts.dir, "utf8")
 		.filter(file => {
 			const path = `${opts.dir}/${file}`;
-			if (isDirectory(path)) return opts.whitelistDirs ? opts.whitelistDirs.includes(path) : true;
-			return !opts.blacklistFilePrefixes.some(it => file.startsWith(it)) && opts.whitelistFileExts.some(it => file.endsWith(it));
+			if (isDirectory(path)) return opts.allowlistDirs ? opts.allowlistDirs.includes(path) : true;
+			return !opts.blocklistFilePrefixes.some(it => file.startsWith(it)) && opts.allowlistFileExts.some(it => file.endsWith(it));
 		})
 		.map(file => `${opts.dir}/${file}`);
 
@@ -135,16 +135,25 @@ function rmDirRecursiveSync (dir) {
 class PatchLoadJson {
 	static _CACHED = null;
 	static _CACHED_RAW = null;
+	static _CACHE_BREW_LOAD_SOURCE_INDEX = null;
 
 	static patchLoadJson () {
 		PatchLoadJson._CACHED = PatchLoadJson._CACHED || DataUtil.loadJSON;
+		const loadJsonCache = {};
 		DataUtil.loadJSON = async (url) => {
-			const data = readJson(url);
-			await DataUtil.pDoMetaMerge(url, data);
-			return data;
+			if (!loadJsonCache[url]) {
+				const data = readJson(url);
+				await DataUtil.pDoMetaMerge(url, data);
+				loadJsonCache[url] = data;
+			}
+			return loadJsonCache[url];
 		};
+
 		PatchLoadJson._CACHED_RAW = PatchLoadJson._CACHED_RAW || DataUtil.loadRawJSON;
 		DataUtil.loadRawJSON = async (url) => readJson(url);
+
+		PatchLoadJson._CACHE_BREW_LOAD_SOURCE_INDEX = PatchLoadJson._CACHE_BREW_LOAD_SOURCE_INDEX || DataUtil.brew.pLoadSourceIndex;
+		DataUtil.brew.pLoadSourceIndex = async () => null;
 	}
 
 	static unpatchLoadJson () {
@@ -178,7 +187,7 @@ module.exports = {
 	dataRecurse,
 	readJson,
 	listFiles,
-	FILE_PREFIX_BLACKLIST,
+	FILE_PREFIX_BLOCKLIST,
 	patchLoadJson: PatchLoadJson.patchLoadJson,
 	unpatchLoadJson: PatchLoadJson.unpatchLoadJson,
 	ArgParser,

@@ -7,7 +7,6 @@ class LegendaryGroupBuilder extends Builder {
 			titleSidebarDownloadJson: "Download Legendary Groups as JSON",
 			prop: "legendaryGroup",
 			titleSelectDefaultSource: "(Same as Legendary Group)",
-			typeRenderData: "dataLegendaryGroup",
 		});
 
 		this._renderOutputDebounced = MiscUtil.debounce(() => this._renderOutput(), 50);

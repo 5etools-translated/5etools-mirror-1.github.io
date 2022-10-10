@@ -4,8 +4,8 @@ const fs = require("fs");
 const ut = require("./util");
 require("../js/utils");
 
-const BLACKLIST_FILE_PREFIXES = [
-	...ut.FILE_PREFIX_BLACKLIST,
+const BLOCKLIST_FILE_PREFIXES = [
+	...ut.FILE_PREFIX_BLOCKLIST,
 
 	// specific files
 	"demo.json",
@@ -32,7 +32,7 @@ const TAGS_TO_CHECK = new Set([
 	"vehicle",
 ]);
 
-const files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});
+const files = ut.listFiles({dir: `./data`, blocklistFilePrefixes: BLOCKLIST_FILE_PREFIXES});
 files.forEach(f => {
 	const compressedTags = fs.readFileSync(f, "utf-8").replace(/{@([a-zA-Z]+) ([^|}]+)\|([^|}]*)\|([^|}]+)}/g, (...m) => {
 		const [all, tag, ref, src, txt] = m;

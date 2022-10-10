@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Balises de style ; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@underline some text to be underlined} (alternative {@u shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} balises, {@code print(&quot;hello world&quot;)} balises",
+						"Balises de style ; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@underline some text to be underlined} (alternative {@u shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} balises, {@code print(&quot;hello world&quot;)} balises, balises diverses {@style Style|small-caps;small;capitalize;dnd-font}",
 						"En outre, {@note note tags}, utilisé pour l'ajout d'errata ou de Twitter \"notes de bas de page de concepteur\".",
 						"Balises pour les rouleaux de dés ; {@dice 1d2-2+2d3+5} pour les jets de dés normaux ({@dice 1d6;2d6} pour les options multiples ; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} pour les invites de saisie), avec des {@dice 1d20+2|display text} et {@dice 1d20+2|display text|rolled by name} étendus, et une version spéciale 'hit' qui suppose qu'un d20 doit être lancé {@hit +7} (et qui lance un avantage sur shift-clic, un désavantage sur alt-clic). Il y a aussi {@damage 1d12+3} qui calcule les coups critiques en cas de shift-clic et la moitié des dégâts (arrondis à l'inférieur) en cas de alt-clic, et {@d20 -4} qui calcule également l'avantage et le désavantage, bien que les étiquettes @hit soient préférées lorsque cela est approprié. Les sorts peuvent avoir des étiquettes de dés d'échelle, (dégâts de 2d6 ou 3d6 au niveau 1, ajouter un {@scaledice 2d6;3d6|2-9|1d6} supplémentaire pour chaque niveau au-delà du 2ème), pour quand un effet de sort s'étend à des niveaux plus élevés. {@ability str 20}, {@savingThrow str 5} et {@skillCheck animal_handling 5} sont utilisés comme raccourcis internes, mais peuvent être utiles ailleurs.",
 						"Balises de dés automatiques ; comme ci-dessus, mais un résultat est automatiquement obtenu au moment du rendu : {@autodice 2d10+2}.",
@@ -68,7 +68,7 @@
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"Une autre balise qui apparaît occasionnellement dans les données est la balise @filter. Cette balise peut s'avérer délicate à utiliser et repose généralement sur la connaissance des éléments internes de chaque page. Il convient donc de l'utiliser avec précaution et, en cas de doute, n'hésitez pas à vous rendre sur notre site {@link Discord|https://discord.gg/5etools} pour poser des questions.",
+								"Une autre balise qui apparaît occasionnellement dans les données est la balise @filter. Cette balise peut s'avérer délicate à utiliser et repose généralement sur la connaissance des éléments internes de chaque page. En tant que tel, utilisez-le avec précaution et si vous n'êtes pas sûr de quelque chose, n'hésitez pas à passer par notre {@link Discord|https://discord.gg/5etools} et à poser des questions. Notez que vous pouvez cliquer avec CTRL+clic sur le bouton \"Obtenir le lien vers les filtres\" (aimant) sur une page de liste pour copier la balise @filter de votre sélection de filtres actuelle.",
 								"La syntaxe de la balise @filter est la suivante :",
 								"(ouvrir l'accolade)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2 ;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2 ;...(fermer l'accolade)",
 								"Le but de cette balise est d'ouvrir la page donnée, pré-filtrée avec les options de filtrage spécifiées. Il y a un problème majeur qui rend l'utilisation de cette balise délicate pour les JSONtranautes en herbe : les valeurs de filtrage utilisent la version {@i internal}, comme vous le trouveriez dans les données. Ainsi, par exemple, ..|school=D|... filtrerait les sorts en fonction de l'école de divination, puisque 'D' est l'identifiant de la divination dans les données. Essayer de faire par exemple ..|school=Divination|... ne fonctionnera pas.",
@@ -566,9 +566,10 @@
 					"entries": [
 						"Créatures ; format basé sur les données du Bestiaire, avec ajout du type (notez qu'une entrée correcte dans le Bestiaire et un lien vers l'entrée est la méthode préférée pour ajouter des créatures, cette fonctionnalité existe principalement pour les données homebrew) :",
 						{
-							"type": "dataCreature",
+							"type": "statblockInline",
 							"style": "inset",
-							"dataCreature": {
+							"dataType": "monster",
+							"data": {
 								"name": "Unicorn",
 								"size": [
 									"L"
@@ -731,8 +732,9 @@
 						},
 						"Sorts ; comme ci-dessus :",
 						{
-							"type": "dataSpell",
-							"dataSpell": {
+							"type": "statblockInline",
+							"dataType": "spell",
+							"data": {
 								"name": "Fireball",
 								"level": 3,
 								"school": "V",

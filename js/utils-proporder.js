@@ -973,6 +973,7 @@ PropOrder._ITEM = [
 	"critThreshold",
 
 	"recharge",
+	"rechargeAmount",
 	"charges",
 
 	"axe",

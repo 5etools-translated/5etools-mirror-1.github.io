@@ -1305,7 +1305,10 @@ class InitiativeTracker {
 								}).filter(Boolean);
 
 								if (hpIndex != null) {
-									row.h = row.g = (playerDetails.extras[hpIndex]?.value || "").trim();
+									[row.h, row.g] = (playerDetails.extras[hpIndex]?.value || "")
+										.split("/")
+										.map(it => it.trim());
+									if (row.g == null) row.g = row.h;
 								} else row.h = row.g = "";
 							} else row.h = row.g = "";
 

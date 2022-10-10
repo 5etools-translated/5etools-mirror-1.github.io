@@ -412,6 +412,7 @@ class FilterBox extends ProxyBase {
 		this._cachedState = null;
 
 		this._compSearch = BaseComponent.fromObject({search: ""});
+		this._metaIptSearch = null;
 
 		this._filters.forEach(f => f.filterBox = this);
 
@@ -599,7 +600,7 @@ class FilterBox extends ProxyBase {
 
 		const $children = this._filters.map((f, i) => f.$render({filterBox: this, isFirst: i === 0, $wrpMini: this._$wrpMiniPills}));
 
-		const metaIptSearch = ComponentUiUtil.$getIptStr(
+		this._metaIptSearch = ComponentUiUtil.$getIptStr(
 			this._compSearch, "search",
 			{decorationRight: "clear", asMeta: true, html: `<input class="form-control input-xs" placeholder="Search...">`},
 		);
@@ -651,7 +652,7 @@ class FilterBox extends ProxyBase {
 		$$(this._modalMeta.$modal)`<div class="split mb-2 mt-2 ve-flex-v-center mobile__ve-flex-col">
 			<div class="ve-flex-v-baseline mobile__ve-flex-col">
 				<h4 class="m-0 mr-2 mobile__mb-2">Filters</h4>
-				${metaIptSearch.$wrp.addClass("mobile__mb-2")}
+				${this._metaIptSearch.$wrp.addClass("mobile__mb-2")}
 			</div>
 			<div class="ve-flex-v-center mobile__ve-flex-col">
 				<div class="ve-flex-v-center mobile__m-1">
@@ -749,6 +750,7 @@ class FilterBox extends ProxyBase {
 		if (!this._isModalRendered) await this._render_pRenderModal();
 		this._cachedState = this._getSaveableState();
 		this._modalMeta.doOpen();
+		if (this._metaIptSearch?.$ipt) this._metaIptSearch.$ipt.focus();
 	}
 
 	async _pHandleHide (isCancel = false) {
@@ -956,6 +958,7 @@ class FilterBox extends ProxyBase {
 
 	setFromValues (values) {
 		this._filters.forEach(it => it.setFromValues(values));
+		this.fireChangeEvent();
 	}
 
 	toDisplay (boxState, ...entryVals) {

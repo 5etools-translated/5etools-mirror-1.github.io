@@ -1,0 +1,604 @@
+{
+	"_meta": {
+		"dependencies": {
+			"monster": [
+				"MM"
+			]
+		},
+		"otherSources": {
+			"monster": {
+				"MM": "DoSI"
+			}
+		},
+		"internalCopies": [
+			"monster"
+		]
+	},
+	"monster": [
+		{
+			"name": "Fume Drake",
+			"source": "DoSI",
+			"page": 41,
+			"size": [
+				"S"
+			],
+			"type": "elemental",
+			"alignment": [
+				"N"
+			],
+			"alignmentPrefix": "typically ",
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 22,
+				"formula": "5d6 + 5"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 30
+			},
+			"str": 6,
+			"dex": 14,
+			"con": 12,
+			"int": 6,
+			"wis": 10,
+			"cha": 11,
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"immune": [
+				"fire",
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"languages": [
+				"Draconic",
+				"Ignan"
+			],
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Death Burst",
+					"entries": [
+						"Quando il drago dei fumi muore, esplode in una nube di fumi nocivi. Ogni creatura entro un raggio di 3 metri dal drago dei fumi deve superare un tiro salvezza di Costituzione {@dc 11} o subire 4 ({@damage 1d8}) danni da veleno."
+					]
+				},
+				{
+					"name": "Unusual Nature",
+					"entries": [
+						"Il drago dei fumi non ha bisogno di cibo, bevande o sonno."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Bite",
+					"entries": [
+						"{@atk mw} {@hit 4} per colpire, portata 5 ft., un bersaglio. {@h}4 ({@damage 1d4 + 2}) danni da fuoco."
+					]
+				},
+				{
+					"name": "Scalding Breath {@recharge}",
+					"entries": [
+						"Il drago dei fumi esala un cono di vapore rovente lungo 15 piedi. Ogni creatura in quell'area deve effettuare un tiro salvezza di Destrezza {@dc 11}, subendo 4 ({@damage 1d8}) danni da fuoco se il tiro salvezza fallisce, o la metà dei danni se riesce."
+					]
+				}
+			],
+			"traitTags": [
+				"Death Burst",
+				"Unusual Nature"
+			],
+			"senseTags": [
+				"D"
+			],
+			"actionTags": [
+				"Breath Weapon"
+			],
+			"languageTags": [
+				"DR",
+				"IG"
+			],
+			"damageTags": [
+				"F",
+				"I"
+			],
+			"miscTags": [
+				"AOE",
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true
+		},
+		{
+			"name": "Kobold Tinkerer",
+			"source": "DoSI",
+			"page": 43,
+			"size": [
+				"S"
+			],
+			"type": "humanoid",
+			"alignment": [
+				"A"
+			],
+			"ac": [
+				12
+			],
+			"hp": {
+				"average": 10,
+				"formula": "3d6"
+			},
+			"speed": {
+				"walk": 30,
+				"fly": 10
+			},
+			"str": 7,
+			"dex": 14,
+			"con": 10,
+			"int": 15,
+			"wis": 7,
+			"cha": 9,
+			"skill": {
+				"arcana": "+4",
+				"perception": "+0"
+			},
+			"senses": [
+				"darkvision 60 ft."
+			],
+			"passive": 10,
+			"languages": [
+				"Common",
+				"Draconic"
+			],
+			"cr": "1/4",
+			"trait": [
+				{
+					"name": "Inquiring Mind (1/Day)",
+					"entries": [
+						"Il kobold può lanciare {@spell detect magic}, senza richiedere componenti per gli incantesimi e usando l'Intelligenza come capacità di incantesimo."
+					]
+				},
+				{
+					"name": "Pack Tactics",
+					"entries": [
+						"Il kobold ha vantaggio su un tiro di attacco contro una creatura se almeno uno dei suoi alleati si trova entro un raggio di 2 metri dalla creatura e l'alleato non lo è {@condition incapacitated}."
+					]
+				},
+				{
+					"name": "Sunlight Sensitivity",
+					"entries": [
+						"Quando è alla luce del sole, il kobold ha svantaggio sui tiri di attacco e sulle prove di Saggezza (Percezione) che si basano sulla vista."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 4} per colpire, portata 5 ft. o raggio d'azione 20/60 ft., un bersaglio. {@h}4 ({@damage 1d4 + 2}) danni perforanti."
+					]
+				},
+				{
+					"name": "Alchemical Flame {@recharge}",
+					"entries": [
+						"Il kobold scatena il fuoco in un cono di 15 piedi. Ogni creatura in quell'area deve effettuare un tiro salvezza di Destrezza {@dc 12}, subendo 10 ({@damage 3d6}) danni da fuoco in caso di tiro salvezza fallito, o la metà dei danni in caso di successo."
+					]
+				}
+			],
+			"traitTags": [
+				"Pack Tactics",
+				"Sunlight Sensitivity"
+			],
+			"senseTags": [
+				"D"
+			],
+			"languageTags": [
+				"C",
+				"DR"
+			],
+			"damageTags": [
+				"F",
+				"P"
+			],
+			"miscTags": [
+				"AOE",
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasToken": true,
+			"hasFluff": true
+		},
+		{
+			"name": "Myla",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "DoSI",
+			"_copy": {
+				"name": "Kobold Tinkerer",
+				"source": "DoSI",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the kobold",
+						"with": "Myla",
+						"flags": "i"
+					}
+				}
+			},
+			"alignment": [
+				"L",
+				"G"
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Runara",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "DoSI",
+			"page": 40,
+			"_copy": {
+				"name": "Adult Bronze Dragon",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the dragon",
+						"with": "Runara",
+						"flags": "i"
+					},
+					"action": [
+						{
+							"mode": "removeArr",
+							"names": "Tail"
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Change Shape",
+							"items": {
+								"name": "Change Shape",
+								"type": "entries",
+								"entries": [
+									"Runara si trasforma magicamente in un Umanoide o in una Bestia di taglia Media o Piccola, mantenendo le sue statistiche di gioco (a parte la taglia). Questa trasformazione termina se Runara viene ridotta a 0 punti ferita o se utilizza un'azione bonus per terminarla."
+								]
+							}
+						}
+					]
+				}
+			},
+			"cr": "13",
+			"legendary": null,
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Sinensa",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "DoSI",
+			"page": 45,
+			"_copy": {
+				"name": "Myconid Sovereign",
+				"source": "MM",
+				"_mod": {
+					"*": {
+						"mode": "replaceTxt",
+						"replace": "the myconid",
+						"with": "Sinensa",
+						"flags": "i"
+					},
+					"action": [
+						{
+							"mode": "removeArr",
+							"names": [
+								"Animating Spores (3/Day)",
+								"Pacifying Spores"
+							]
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Multiattack",
+							"items": {
+								"name": "Multiattack",
+								"type": "entries",
+								"entries": [
+									"Il miconide effettua un attacco di pugno e usa le sue spore di allucinazione."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Fist",
+							"items": {
+								"name": "Fist",
+								"type": "entries",
+								"entries": [
+									"{@atk mw} {@hit 3} per colpire, gittata di 5 m, un bersaglio. {@h}8 ({@damage 3d4 + 1}) danni da percosse più 7 ({@damage 2d4}) danni da veleno."
+								]
+							}
+						}
+					]
+				}
+			},
+			"hasToken": true,
+			"hasFluff": true
+		},
+		{
+			"name": "Spore Servant Octopus",
+			"source": "DoSI",
+			"page": 46,
+			"size": [
+				"L"
+			],
+			"type": "plant",
+			"alignment": [
+				"U"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 52,
+				"formula": "8d10 + 8"
+			},
+			"speed": {
+				"walk": 5,
+				"swim": 50
+			},
+			"str": 17,
+			"dex": 13,
+			"con": 13,
+			"int": 2,
+			"wis": 6,
+			"cha": 1,
+			"senses": [
+				"blindsight 30 ft. (blind beyond this radius)"
+			],
+			"passive": 8,
+			"conditionImmune": [
+				"blinded",
+				"charmed",
+				"frightened",
+				"paralyzed"
+			],
+			"cr": "1",
+			"trait": [
+				{
+					"name": "Hold Breath",
+					"entries": [
+						"Fuori dall'acqua, il polpo può trattenere il respiro per 1 ora."
+					]
+				},
+				{
+					"name": "Water Breathing",
+					"entries": [
+						"Il polpo può respirare solo sott'acqua."
+					]
+				}
+			],
+			"action": [
+				{
+					"name": "Tentacles",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, raggio d'azione 15 ft., un bersaglio {@h}7 ({@damage 1d8 + 3}) danni da percosse."
+					]
+				}
+			],
+			"traitTags": [
+				"Hold Breath",
+				"Water Breathing"
+			],
+			"senseTags": [
+				"B"
+			],
+			"actionTags": [
+				"Tentacles"
+			],
+			"damageTags": [
+				"B"
+			],
+			"miscTags": [
+				"MW",
+				"RCH"
+			],
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
+			"name": "Tarak",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "DoSI",
+			"page": 47,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"L",
+				"N"
+			],
+			"ac": [
+				13
+			],
+			"hp": {
+				"average": 27,
+				"formula": "6d8"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 10,
+			"dex": 16,
+			"con": 10,
+			"int": 12,
+			"wis": 14,
+			"cha": 16,
+			"skill": {
+				"deception": "+5",
+				"insight": "+4",
+				"medicine": "+4",
+				"nature": "+3"
+			},
+			"passive": 12,
+			"languages": [
+				"Common",
+				"Draconic",
+				"Thieves' cant"
+			],
+			"cr": "1",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Tarak effettua tre attacchi di pugnale."
+					]
+				},
+				{
+					"name": "Dagger",
+					"entries": [
+						"{@atk mw,rw} {@hit 5} per colpire, portata 5 ft. o raggio d'azione 20/60 ft., un bersaglio. {@h}5 ({@damage 1d4 + 3}) danni perforanti."
+					]
+				}
+			],
+			"bonus": [
+				{
+					"name": "Cunning Action",
+					"entries": [
+						"Tarak compie l'azione Fuga, Disimpegno o Nascondersi."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C",
+				"DR",
+				"TC"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW",
+				"RW",
+				"THW"
+			],
+			"hasToken": true,
+			"hasFluff": true
+		},
+		{
+			"name": "Varnoth",
+			"isNpc": true,
+			"isNamedCreature": true,
+			"source": "DoSI",
+			"page": 47,
+			"size": [
+				"M"
+			],
+			"type": {
+				"type": "humanoid",
+				"tags": [
+					"human"
+				]
+			},
+			"alignment": [
+				"N",
+				"G"
+			],
+			"ac": [
+				11
+			],
+			"hp": {
+				"average": 39,
+				"formula": "6d8 + 12"
+			},
+			"speed": {
+				"walk": 30
+			},
+			"str": 16,
+			"dex": 13,
+			"con": 14,
+			"int": 10,
+			"wis": 11,
+			"cha": 10,
+			"skill": {
+				"athletics": "+5",
+				"history": "+2",
+				"perception": "+2",
+				"religion": "+2"
+			},
+			"passive": 12,
+			"languages": [
+				"Common"
+			],
+			"cr": "2",
+			"action": [
+				{
+					"name": "Multiattack",
+					"entries": [
+						"Varnoth compie tre attacchi di spada corta."
+					]
+				},
+				{
+					"name": "Shortsword",
+					"entries": [
+						"{@atk mw} {@hit 5} per colpire, portata 5 ft., un bersaglio. {@h}6 ({@damage 1d6 + 3}) danni perforanti."
+					]
+				}
+			],
+			"actionTags": [
+				"Multiattack"
+			],
+			"languageTags": [
+				"C"
+			],
+			"damageTags": [
+				"P"
+			],
+			"miscTags": [
+				"MW"
+			],
+			"hasToken": true,
+			"hasFluff": true
+		},
+		{
+			"name": "Violet Fungus",
+			"source": "DoSI",
+			"_copy": {
+				"name": "Violet Fungus",
+				"source": "MM",
+				"_mod": {
+					"trait": [
+						{
+							"mode": "replaceArr",
+							"replace": "False Appearance",
+							"items": {
+								"name": "False Appearance",
+								"type": "entries",
+								"entries": [
+									"Se il fungo viola è immobile all'inizio del combattimento, ha un vantaggio sul tiro iniziativa. Inoltre, se una creatura non ha osservato il fungo muoversi o agire, deve superare una prova di Intelligenza ({@skill Investigation}) con DC 18 per capire che il fungo viola non è un fungo normale."
+								]
+							}
+						}
+					]
+				}
+			},
+			"hasToken": true,
+			"hasFluff": true,
+			"hasFluffImages": true
+		}
+	]
+}

@@ -279,7 +279,7 @@ class RaceImmResVulnTag {
 	static tryRun (race, {cbWarning, cbError} = {}) {
 		if (!race.entries?.length) return;
 
-		this._WALKER = this._WALKER || MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST, isNoModification: true});
+		this._WALKER = this._WALKER || MiscUtil.getWalker({keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST, isNoModification: true});
 
 		this._handleResist(race);
 		this._handleImmune(race);

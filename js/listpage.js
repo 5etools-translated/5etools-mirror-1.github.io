@@ -668,7 +668,7 @@ class SublistManager {
 		if (this._isRolling) return;
 
 		if (this._listSub.items.length <= 1) {
-			JqueryUtil.doToast({
+			return JqueryUtil.doToast({
 				content: "Not enough entries to roll!",
 				type: "danger",
 			});
@@ -685,7 +685,7 @@ class SublistManager {
 		const timerMult = RollerUtil.randomise(125, 75);
 		const timers = [0, 1, 1, 1, 1, 1, 1.5, 1.5, 1.5, 2, 2, 2, 2.5, 3, 4, -1] // last element is always sliced off
 			.map(it => it * timerMult)
-			.slice(0, -RollerUtil.randomise(4, 1));
+			.slice(0, -RollerUtil.randomise(4));
 
 		function generateSequence (array, length) {
 			const out = [RollerUtil.rollOnArray(array)];
@@ -982,15 +982,15 @@ class ListPage {
 			.map(this._bookViewOptions.fnGetMd);
 
 		const out = [];
-		let charLimit = RendererMarkdown._PAGE_CHARS;
+		let charLimit = RendererMarkdown.CHARS_PER_PAGE;
 		for (let i = 0; i < parts.length; ++i) {
 			const part = parts[i];
 			out.push(part);
 
 			if (i < parts.length - 1) {
 				if ((charLimit -= part.length) < 0) {
-					if (RendererMarkdown._isAddPageBreaks) out.push("", "\\pagebreak", "");
-					charLimit = RendererMarkdown._PAGE_CHARS;
+					if (RendererMarkdown.getSetting("isAddPageBreaks")) out.push("", "\\pagebreak", "");
+					charLimit = RendererMarkdown.CHARS_PER_PAGE;
 				}
 			}
 		}
@@ -1172,7 +1172,7 @@ class ListPage {
 		if (!ExcludeUtil.isAllContentExcluded(list)) return;
 
 		$pagecontent.html(`<tr><th class="border" colspan="6"></th></tr>
-			<tr><td colspan="6">${ExcludeUtil.getAllContentBlacklistedHtml()}</td></tr>
+			<tr><td colspan="6">${ExcludeUtil.getAllContentBlocklistedHtml()}</td></tr>
 			<tr><th class="border" colspan="6"></th></tr>`);
 	}
 
@@ -1269,10 +1269,18 @@ class ListPage {
 	}
 
 	_bindPopoutButton_doShowMarkdown (evt) {
-		const propData = this._propEntryData || `data${this._lastRender.entity.__prop.uppercaseFirst()}`;
+		const propData = this._propEntryData || this._lastRender.entity.__prop;
 
 		const name = `${this._lastRender.entity._displayName || this._lastRender.entity.name} \u2014 Markdown`;
-		const mdText = RendererMarkdown.get().render({entries: [{type: propData, [propData]: this._lastRender.entity}]});
+		const mdText = RendererMarkdown.get().render({
+			entries: [
+				{
+					type: "statblockInline",
+					dataType: propData,
+					data: this._lastRender.entity,
+				},
+			],
+		});
 		const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
 
 		Renderer.hover.getShowWindow(
@@ -1643,6 +1651,6 @@ class ListPage {
 	}
 }
 ListPage._READONLY_WALKER = MiscUtil.getWalker({
-	keyBlacklist: new Set(["type", "colStyles", "style"]),
+	keyBlocklist: new Set(["type", "colStyles", "style"]),
 	isNoModification: true,
 });

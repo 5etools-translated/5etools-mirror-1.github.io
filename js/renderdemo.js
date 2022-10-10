@@ -50,12 +50,7 @@ async function initDemo (data, rendererType) {
 	$selRenderer.val(rendererType || "html");
 
 	// init editor
-	const editor = ace.edit("jsoninput");
-	editor.setOptions({
-		wrap: true,
-		showPrintMargin: false,
-		tabSize: 2,
-	});
+	const editor = EditorUtil.initEditor("jsoninput", {mode: "ace/mode/json"});
 
 	function demoRender () {
 		$msg.html("");

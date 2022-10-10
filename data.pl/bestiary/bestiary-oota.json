@@ -2288,7 +2288,34 @@
 						"replace": "the drow",
 						"with": "Hanne",
 						"flags": "i"
-					}
+					},
+					"spellcasting": [
+						{
+							"mode": "appendArr",
+							"items": {
+								"name": "Spellcasting",
+								"headerEntries": [
+									"Hanne jest czarodziejką 1. poziomu. Jej zdolność zaklęcia to Inteligencja (save na zaklęcia {@dc 13}, {@hit 5} do trafienia z atakami zaklęciami). Ma przygotowane następujące zaklęcia czarodziejskie:"
+								],
+								"spells": {
+									"0": {
+										"spells": [
+											"{@spell minor illusion}",
+											"{@spell ray of frost}"
+										]
+									},
+									"1": {
+										"slots": 4,
+										"spells": [
+											"{@spell shield}",
+											"{@spell mage armor}"
+										]
+									}
+								},
+								"ability": "int"
+							}
+						}
+					]
 				}
 			},
 			"ac": [
@@ -4008,10 +4035,10 @@
 				"cha": "+7"
 			},
 			"skill": {
-				"arcana": "+5",
-				"perception": "+3",
-				"stealth": "+7",
-				"survival": "+3"
+				"arcana": "+4",
+				"perception": "+2",
+				"stealth": "+6",
+				"survival": "+2"
 			},
 			"senses": [
 				"darkvision 60 ft."
@@ -4980,7 +5007,7 @@
 					"name": "Petrifying Gaze",
 					"entries": [
 						"Jeśli stworzenie rozpocznie swoją turę w promieniu 15 stóp od bazyliszka i widzą się nawzajem, bazyliszek może zmusić stworzenie do wykonania {@dc 12} rzutu na uratowanie Konstytucji, jeśli bazyliszek nie jest {@condition incapacitated}. W przypadku nieudanego testu, stworzenie magicznie zamienia się w kamień i jest {@condition restrained}. Musi powtórzyć rzut na koniec swojej następnej tury. Jeśli się powiedzie, efekt się kończy. W przypadku porażki, stworzenie jest {@condition petrified}, dopóki nie zostanie uwolnione przez zaklęcie {@spell greater restoration} lub inną magię.",
-						"Stworzenie, które nie jest zaskoczone, może na początku swojej tury odwrócić wzrok, aby uniknąć rzutu ratunkowego. Jeśli to zrobi, nie może zobaczyć bazyliszka aż do początku swojej następnej tury, kiedy to może ponownie odwrócić wzrok. Jeśli w międzyczasie spojrzy na bazyliszka, musi natychmiast wykonać rzut.",
+						"Stworzenie, które nie jest {@quickref Surprise|PHB|3|0|surprised} może odwrócić wzrok, aby uniknąć rzutu ratunkowego na początku swojej tury. Jeśli to zrobi, nie widzi bazyliszka aż do początku swojej następnej tury, kiedy to może ponownie odwrócić wzrok. Jeśli w międzyczasie spojrzy na bazyliszka, musi natychmiast wykonać save.",
 						"Jeśli bazyliszek zobaczy swoje odbicie w promieniu 30 stóp od siebie w jasnym świetle, bierze siebie za rywala i kieruje na niego swój wzrok."
 					]
 				}

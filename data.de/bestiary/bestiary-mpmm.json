@@ -4692,7 +4692,7 @@
 					"name": "Death Gaze",
 					"entries": [
 						"Wenn eine Kreatur, die die Augen des Bodaks sehen kann, ihren Zug innerhalb von 30 Fuß um den Bodak beginnt, kann der Bodak sie zu einem {@dc 13} Rettungswurf auf Konstitution zwingen, wenn der Bodak nicht {@condition incapacitated} ist und die Kreatur sehen kann. Wenn der Rettungswurf um 5 oder mehr misslingt, wird die Kreatur auf 0 Trefferpunkte reduziert, es sei denn, sie ist immun gegen den {@condition frightened} Zustand. Andernfalls erleidet die Kreatur bei einem misslungenen Schutzwurf 16 ({@damage 3d10}) psychischen Schaden.",
-						"Wenn eine Kreatur nicht überrascht wird, kann sie ihre Augen abwenden, um den Rettungswurf zu Beginn ihres Zuges zu vermeiden. Wenn die Kreatur dies tut, hat sie bis zum Beginn ihres nächsten Zuges Nachteil bei Angriffswürfen gegen den Bodak. Wenn die Kreatur den Bodak in der Zwischenzeit ansieht, muss sie sofort den Rettungswurf machen."
+						"Es sei denn {@quickref Surprise|PHB|3|0|surprised}, eine Kreatur kann ihre Augen abwenden, um den Rettungswurf zu Beginn ihres Zuges zu vermeiden. Wenn die Kreatur dies tut, hat sie bis zum Beginn ihres nächsten Zuges Nachteil bei Angriffswürfen gegen den Bodak. Wenn die Kreatur den Bodak in der Zwischenzeit ansieht, muss sie sofort den Rettungswurf machen."
 					]
 				},
 				{
@@ -5521,7 +5521,7 @@
 				{
 					"name": "Uncanny Senses",
 					"entries": [
-						"Der Kanolot kann nur überrascht werden, wenn er {@condition incapacitated} ist."
+						"Das Kanolot kann nicht {@quickref Surprise|PHB|3|0|surprised} sein, wenn es nicht {@condition incapacitated} ist."
 					]
 				}
 			],
@@ -15465,7 +15465,7 @@
 					"name": "Stunning Gaze",
 					"entries": [
 						"Wenn eine Kreatur, die das zentrale Auge des Gauth sehen kann, ihren Zug innerhalb von 30 Fuß um den Gauth beginnt, kann der Gauth sie zu einem {@dc 14} Rettungswurf in Weisheit zwingen, wenn der Gauth nicht {@condition incapacitated} ist und die Kreatur sehen kann. Eine Kreatur, die den Schutzwurf nicht besteht, ist bis zum Beginn ihres nächsten Zuges {@condition stunned}.",
-						"Wenn eine Kreatur nicht überrascht wird, kann sie ihre Augen zu Beginn ihres Zuges abwenden, um den Rettungswurf zu vermeiden. Wenn die Kreatur dies tut, kann sie den Gauth bis zum Beginn ihres nächsten Zuges nicht mehr sehen, dann kann sie ihre Augen wieder abwenden. Wenn die Kreatur den Gauth in der Zwischenzeit ansieht, muss sie sofort den Schutzwurf machen."
+						"Es sei denn {@quickref Surprise|PHB|3|0|surprised}, eine Kreatur kann ihre Augen zu Beginn ihres Zuges abwenden, um den Rettungswurf zu vermeiden. Wenn die Kreatur dies tut, kann sie den Gauth bis zum Beginn ihres nächsten Zuges nicht mehr sehen, wenn sie ihre Augen wieder abwenden kann. Wenn die Kreatur den Gauth in der Zwischenzeit ansieht, muss sie sofort den Schutzwurf machen."
 					]
 				},
 				{
@@ -30193,25 +30193,34 @@
 				{
 					"name": "Fallible Invisibility",
 					"entries": [
-						"Der Schleicher ist {@condition invisible}. Diese Unsichtbarkeit kann durch drei Dinge umgangen werden:"
-					]
-				},
-				{
-					"name": "Charnel Candles",
-					"entries": [
-						"Der Skulk erscheint als schummrige, durchscheinende Form im Licht einer Kerze, die aus dem Fett einer Leiche hergestellt wurde, deren Identität unbekannt ist."
-					]
-				},
-				{
-					"name": "Children",
-					"entries": [
-						"Humanoide Kinder bis zum Alter von 10 Jahren können diese Unsichtbarkeit durchschauen."
-					]
-				},
-				{
-					"name": "Reflective Surfaces",
-					"entries": [
-						"Der Skulk erscheint als grauer, glatthäutiger Zweibeiner, wenn sein Spiegelbild in einem Spiegel oder auf einer anderen Oberfläche zu sehen ist."
+						"Der Schleicher ist {@condition invisible}. Diese Unsichtbarkeit kann durch drei Dinge umgangen werden:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Charnel Candles",
+									"entries": [
+										"Der Skulk erscheint als schummrige, durchscheinende Form im Licht einer Kerze, die aus dem Fett einer Leiche hergestellt wurde, deren Identität unbekannt ist."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Children",
+									"entries": [
+										"Humanoide Kinder bis zum Alter von 10 Jahren können diese Unsichtbarkeit durchschauen."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Reflective Surfaces",
+									"entries": [
+										"Der Skulk erscheint als grauer, glatthäutiger Zweibeiner, wenn sein Spiegelbild in einem Spiegel oder auf einer anderen Oberfläche zu sehen ist."
+									]
+								}
+							]
+						}
 					]
 				},
 				{

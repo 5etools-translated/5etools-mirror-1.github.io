@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"风格标签; {@bold some text to be bolded}(替代{@b shorthand}), {@italic some text to be italicised}(替代{@i shorthand}), {@underline some text to be underlined}(替代{@u shorthand}), {@strike some text to strike-through}, (替代{@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} 标签, {@code print(&quot;hello world&quot;)}标签",
+						"风格标签; {@bold some text to be bolded}(替代{@b shorthand}), {@italic some text to be italicised}(替代{@i shorthand}), {@underline some text to be underlined}(替代{@u shorthand}), {@strike some text to strike-through}, (替代{@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name}标签, {@code print(&quot;hello world&quot;)}标签, 混杂{@style Style|small-caps;small;capitalize;dnd-font}标签",
 						"此外，{@note note tags}，用于添加勘误表或Twitter \"设计师脚注\"。",
 						"掷骰子标签；{@dice 1d2-2+2d3+5}用于常规掷骰子（{@dice 1d6;2d6}用于多个选项；{@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#}用于输入提示），有扩展的{@dice 1d20+2|display text}和{@dice 1d20+2|display text|rolled by name}，还有一个特殊的 \"命中 \"版本，假设要掷的是D20（%5%）（并且在按下Shift键时掷出优势，按下alt键时掷出劣势）。还有{@damage 1d12+3}，它将在按下Shift键时滚动关键命中，在按下alt键时滚动一半伤害（向下取整），以及{@d20 -4}，它也将滚动优势/劣势，但在适当的地方，@hit标签是首选。法术可以有缩放骰子标签，（1级时伤害为2d6或3d6，2级后每级增加一个额外的{@scaledice 2d6;3d6|2-9|1d6}），用于法术效果在更高等级时的缩放。{@ability str 20}、{@savingThrow str 5}和{@skillCheck animal_handling 5}是作为内部速记使用的，但在其他地方也可能有用。",
 						"自动掷骰子标签；同上，但在渲染时自动掷出一个结果：（%0%）。",
@@ -68,7 +68,7 @@
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"另一个偶尔出现在数据中的标签是@filter标签。这个标签的使用可能很棘手，而且通常依赖于对每个页面内部的了解。因此，请谨慎使用，如果你对某些事情不确定，不要害怕到我们的{@link Discord|https://discord.gg/5etools}问问题。",
+								"另一个偶尔出现在数据中的标签是@filter标签。这个标签的使用可能很棘手，而且通常依赖于对每个页面内部的了解。因此，请谨慎使用，如果你对某件事情不确定，不要害怕到我们的{@link Discord|https://discord.gg/5etools}来问问题。请注意，你可以在列表页上CTRL+点击 \"获取过滤器的链接\"（magnet）按钮，为你当前选择的过滤器复制@过滤器标签。",
 								"@filter标签的语法如下。",
 								"(打开大括号)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;... (关闭大括号)",
 								"这个标签的目的是打开给定的页面，用指定的过滤选项进行预过滤。有一个主要的注意事项，使得有抱负的JSONtranauts使用起来很棘手--过滤值使用{@i internal}版本，就像你在数据中发现的那样。因此，例如，.|school=D|...会将法术过滤为占卜学校的法术，因为'D'是数据中的占卜标识。试图这样做，例如 ...|school=Divination|...，是行不通的。",
@@ -566,9 +566,10 @@
 					"entries": [
 						"生物；格式基于兽皮书数据，并添加了类型（注意，适当的兽皮书条目和条目链接是添加生物的首选方法，此功能主要为自制数据而存在）。",
 						{
-							"type": "dataCreature",
+							"type": "statblockInline",
 							"style": "inset",
-							"dataCreature": {
+							"dataType": "monster",
+							"data": {
 								"name": "Unicorn",
 								"size": [
 									"L"
@@ -731,8 +732,9 @@
 						},
 						"法术；同上。",
 						{
-							"type": "dataSpell",
-							"dataSpell": {
+							"type": "statblockInline",
+							"dataType": "spell",
+							"data": {
 								"name": "Fireball",
 								"level": 3,
 								"school": "V",

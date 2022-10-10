@@ -295,7 +295,7 @@ class BrewUtil2 {
 		]);
 		if (!cpyBrews.length) return this._cache_brewsProc = {};
 
-		await this._pGetBrewProcessed_pDoBlacklistExtension({cpyBrews});
+		await this._pGetBrewProcessed_pDoBlocklistExtension({cpyBrews});
 
 		// Avoid caching the meta merge, as we have our own cache. We might edit the brew, so we don't want a stale copy.
 		const cpyBrewsLoaded = await cpyBrews.pSerialAwaitMap(async ({head, body}) => DataUtil.pDoMetaMerge(head.url || head.docIdLocal, body, {isSkipMetaMergeCache: true}));
@@ -304,11 +304,11 @@ class BrewUtil2 {
 		return this._cache_brewsProc;
 	}
 
-	/** Homebrew files can contain embedded blacklists. */
-	static async _pGetBrewProcessed_pDoBlacklistExtension ({cpyBrews}) {
+	/** Homebrew files can contain embedded blocklists. */
+	static async _pGetBrewProcessed_pDoBlocklistExtension ({cpyBrews}) {
 		for (const {body} of cpyBrews) {
-			if (!body?.blacklist?.length || !(body.blacklist instanceof Array)) continue;
-			await ExcludeUtil.pExtendList(body.blacklist);
+			if (!body?.blocklist?.length || !(body.blocklist instanceof Array)) continue;
+			await ExcludeUtil.pExtendList(body.blocklist);
 		}
 	}
 
@@ -1931,9 +1931,9 @@ class ManageBrewUi {
 
 		// region Filter output by selected sources
 		const cpyBrew = MiscUtil.copy(brew.body);
-		const sourceWhitelist = new Set(choices.map(it => it.json));
+		const sourceAllowlist = new Set(choices.map(it => it.json));
 
-		cpyBrew._meta.sources = cpyBrew._meta.sources.filter(it => sourceWhitelist.has(it.json));
+		cpyBrew._meta.sources = cpyBrew._meta.sources.filter(it => sourceAllowlist.has(it.json));
 
 		Object.entries(cpyBrew)
 			.forEach(([k, v]) => {
@@ -1942,7 +1942,7 @@ class ManageBrewUi {
 				cpyBrew[k] = v.filter(it => {
 					const source = SourceUtil.getEntitySource(it);
 					if (!source) return true;
-					return sourceWhitelist.has(source);
+					return sourceAllowlist.has(source);
 				});
 			});
 		// endregion
@@ -2119,7 +2119,7 @@ class GetBrewUi {
 		_getHeaderControls_addExtraStateBtns (opts, wrpStateBtnsOuter) {
 			const menu = ContextUtil.getMenu(
 				BrewUtil2.getPropPages()
-					.map(page => ({page, displayPage: UrlUtil.PG_TO_NAME[page] || page}))
+					.map(page => ({page, displayPage: UrlUtil.pageToDisplayPage(page)}))
 					.sort(SortUtil.ascSortProp.bind(SortUtil, "displayPage"))
 					.map(({page, displayPage}) => {
 						return new ContextUtil.Action(

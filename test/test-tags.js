@@ -2,9 +2,9 @@ const fs = require("fs");
 require("../js/utils.js");
 require("../js/render.js");
 require("../js/render-dice.js");
-Object.assign(global, require("../js/hist.js"));
+require("../js/hist.js");
 const utS = require("../node/util-search-index");
-const od = require("../js/omnidexer.js");
+require("../js/omnidexer.js");
 const ut = require("../node/util.js");
 
 const TIME_TAG = "\tRun duration";
@@ -37,7 +37,7 @@ const MSG = {
 };
 
 const WALKER = MiscUtil.getWalker({
-	keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
+	keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST,
 	isNoModification: true,
 });
 
@@ -52,10 +52,10 @@ class TagTestUtil {
 	}
 
 	static async _pInit_pPopulateUrls () {
-		const primaryIndex = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndex(false, true));
+		const primaryIndex = Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndex({doLogging: false, noFilter: true}));
 		primaryIndex.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${(it.u).toLowerCase().trim()}`));
 		const highestId = primaryIndex.last().id;
-		const secondaryIndexItem = od.Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndexAdditionalItem(highestId + 1, false));
+		const secondaryIndexItem = Omnidexer.decompressIndex(await utS.UtilSearchIndex.pGetIndexAdditionalItem({baseIndex: highestId + 1, doLogging: false}));
 		secondaryIndexItem.forEach(it => ALL_URLS.add(`${UrlUtil.categoryToPage(it.c)}#${(it.u).toLowerCase().trim()}`));
 	}
 
@@ -304,8 +304,8 @@ class LinkCheck {
 		}
 	}
 }
-LinkCheck._RE_TAG_BLACKLIST = new Set(["quickref"]);
-LinkCheck.RE = RegExp(`{@(${Object.keys(Parser.TAG_TO_DEFAULT_SOURCE).filter(tag => !LinkCheck._RE_TAG_BLACKLIST.has(tag)).join("|")}) ([^}]*?)}`, "g");
+LinkCheck._RE_TAG_BLOCKLIST = new Set(["quickref"]);
+LinkCheck.RE = RegExp(`{@(${Object.keys(Parser.TAG_TO_DEFAULT_SOURCE).filter(tag => !LinkCheck._RE_TAG_BLOCKLIST.has(tag)).join("|")}) ([^}]*?)}`, "g");
 
 class ClassLinkCheck {
 	static addHandlers () {
@@ -505,7 +505,7 @@ class FilterCheck {
 				return m0;
 			}
 
-			if (!UrlUtil.PG_TO_NAME[`${spl[1]}.html`]) {
+			if (!UrlUtil.pageToDisplayPage(`${spl[1]}.html`)) {
 				MSG.FilterCheck += `Unknown page in filter tag "${str}"\n`;
 			}
 

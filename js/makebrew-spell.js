@@ -7,7 +7,6 @@ class SpellBuilder extends Builder {
 			titleSidebarDownloadJson: "Download Spells as JSON",
 			prop: "spell",
 			titleSelectDefaultSource: "(Same as Spell)",
-			typeRenderData: "dataSpell",
 		});
 
 		this._subclassLookup = {};
@@ -16,7 +15,7 @@ class SpellBuilder extends Builder {
 	}
 
 	static _getAsMarkdown (sp) {
-		return RendererMarkdown.get().render({entries: [{type: "dataSpell", dataSpell: sp}]});
+		return RendererMarkdown.get().render({entries: [{type: "statblockInline", dataType: "spell", data: sp}]});
 	}
 
 	async pHandleSidebarLoadExistingClick () {

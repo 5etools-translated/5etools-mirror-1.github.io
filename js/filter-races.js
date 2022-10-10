@@ -592,6 +592,34 @@ class AbilityScoreFilter extends FilterBase {
 
 		Object.values(this.__wrpPillsRows).forEach(meta => meta.row.detach());
 	}
+
+	_getStateNotDefault () {
+		return Object.entries(this._state)
+			.filter(([, v]) => !!v);
+	}
+
+	getFilterTagPart () {
+		const areNotDefaultState = this._getStateNotDefault();
+		const compressedMeta = this._getCompressedMeta({isStripUiKeys: true});
+
+		// If _any_ value is non-default, we need to include _all_ values in the tag
+		// The same goes for meta values
+		if (!areNotDefaultState.length && !compressedMeta) return null;
+
+		const pt = Object.entries(this._state)
+			.filter(([, v]) => !!v)
+			.map(([k, v]) => `${v === 2 ? "!" : ""}${k}`)
+			.join(";")
+			.toLowerCase();
+
+		return [
+			this.header.toLowerCase(),
+			pt,
+			compressedMeta ? compressedMeta.join(HASH_SUB_LIST_SEP) : null,
+		]
+			.filter(it => it != null)
+			.join("=");
+	}
 }
 AbilityScoreFilter._MODIFIER_SORT_OFFSET = 10000; // Arbitrarily large value
 

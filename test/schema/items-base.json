@@ -120,10 +120,10 @@
 						"type": "string"
 					},
 					"type": {
-						"$ref": "shared-items.json#/definitions/itemType"
+						"$ref": "items-shared.json#/definitions/itemType"
 					},
 					"rarity": {
-						"$ref": "shared-items.json#/definitions/itemRarity"
+						"$ref": "items-shared.json#/definitions/itemRarity"
 					},
 					"source": {
 						"type": "string"
@@ -135,7 +135,7 @@
 						"type": "integer"
 					},
 					"age": {
-						"$ref": "shared-items.json#/definitions/itemAge"
+						"$ref": "items-shared.json#/definitions/itemAge"
 					},
 					"armor": {
 						"description": "Flag used when merging generic variants",
@@ -160,7 +160,7 @@
 						}
 					},
 					"property": {
-						"$ref": "shared-items.json#/definitions/itemProperty"
+						"$ref": "items-shared.json#/definitions/itemProperty"
 					},
 					"range": {
 						"type": "string"
@@ -169,7 +169,7 @@
 						"type": "integer"
 					},
 					"scfType": {
-						"$ref": "shared-items.json#/definitions/itemScfType"
+						"$ref": "items-shared.json#/definitions/itemScfType"
 					},
 					"stealth": {
 						"type": "boolean"
@@ -222,7 +222,7 @@
 						"type": "boolean"
 					},
 					"weaponCategory": {
-						"$ref": "shared-items.json#/definitions/itemWeaponCategory"
+						"$ref": "items-shared.json#/definitions/itemWeaponCategory"
 					},
 					"weight": {
 						"type": "number"
@@ -243,7 +243,7 @@
 						"$ref": "util.json#/definitions/otherSources"
 					},
 					"ammoType": {
-						"$ref": "shared-items.json#/definitions/itemAmmoType"
+						"$ref": "items-shared.json#/definitions/itemAmmoType"
 					},
 					"packContents": {
 						"type": "array",
@@ -313,7 +313,20 @@
 			"$ref": "#/definitions/itemLookupArray"
 		},
 		"itemType": {
-			"$ref": "#/definitions/itemLookupArray"
+			"allOf": [
+				{
+					"$ref": "#/definitions/itemLookupArray"
+				},
+				{
+					"items": {
+						"not": {
+							"required": [
+								"template"
+							]
+						}
+					}
+				}
+			]
 		},
 		"itemEntry": {
 			"type": "array",

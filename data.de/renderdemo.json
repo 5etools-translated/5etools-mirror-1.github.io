@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Stil-Tags; {@bold some text to be bolded} (alternativ {@b shorthand}), {@italic some text to be italicised} (alternativ {@i shorthand}), {@underline some text to be underlined} (alternativ {@u shorthand}), {@strike some text to strike-through}, (alternativ {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} Tags, {@code print(&quot;hello world&quot;)} Tags",
+						"Stil-Tags; {@bold some text to be bolded} (alternativ {@b shorthand}), {@italic some text to be italicised} (alternativ {@i shorthand}), {@underline some text to be underlined} (alternativ {@u shorthand}), {@strike some text to strike-through}, (alternativ {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} tags, {@code print(&quot;hello world&quot;)} tags, misc {@style Style|small-caps;small;capitalize;dnd-font} tags",
 						"Zusätzlich {@note note tags}, verwendet für das Hinzufügen von Errata oder Twitter \"Designer-Fußnoten\".",
 						"Würfelrollen-Tags; {@dice 1d2-2+2d3+5} für normale Würfelwürfe ({@dice 1d6;2d6} für mehrere Optionen; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} für Eingabeaufforderungen), mit erweiterten {@dice 1d20+2|display text} und {@dice 1d20+2|display text|rolled by name} und einer speziellen \"Treffer\"-Version, die davon ausgeht, dass ein d20 gewürfelt werden soll {@hit +7} (und bei Shift-Klick einen Vorteil und bei Alt-Klick einen Nachteil würfelt). Es gibt auch {@damage 1d12+3}, das bei Shift-Klick kritische Treffer und bei Alt-Klick den halben Schaden (abrundend) würfelt, und {@d20 -4}, das ebenfalls Vorteil/Nachteil würfelt, obwohl @hit-Tags bevorzugt werden, wo es angebracht ist. Zauber können mit Skalierungswürfeln versehen werden (Schaden von 2d6 oder 3d6 auf Stufe 1, zusätzlich {@scaledice 2d6;3d6|2-9|1d6} für jede Stufe über 2), wenn ein Zaubereffekt auf höheren Stufen skaliert. {@ability str 20}, {@savingThrow str 5} und {@skillCheck animal_handling 5} werden als interne Abkürzung verwendet, können aber auch anderswo nützlich sein.",
 						"Auto-Würfel-Tags; wie oben, jedoch wird beim Rendern automatisch ein Ergebnis gewürfelt: {@autodice 2d10+2}.",
@@ -68,7 +68,7 @@
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"Ein weiteres Tag, das gelegentlich in den Daten auftaucht, ist das @filter-Tag. Die Verwendung dieses Tags kann schwierig sein und setzt im Allgemeinen Kenntnisse über die Interna der einzelnen Seiten voraus. Seien Sie also vorsichtig bei der Verwendung, und wenn Sie sich nicht sicher sind, scheuen Sie sich nicht, bei uns vorbeizukommen {@link Discord|https://discord.gg/5etools} und Fragen zu stellen.",
+								"Ein weiteres Tag, das gelegentlich in den Daten auftaucht, ist das @filter-Tag. Die Verwendung dieses Tags kann schwierig sein und setzt im Allgemeinen Kenntnisse über die Interna der einzelnen Seiten voraus. Verwenden Sie es daher mit Vorsicht, und wenn Sie sich nicht sicher sind, scheuen Sie sich nicht, bei uns {@link Discord|https://discord.gg/5etools} vorbeizuschauen und Fragen zu stellen. Beachten Sie, dass Sie mit STRG+Klick auf die Schaltfläche \"Link zu Filtern holen\" (Magnet) auf einer Listenseite das @filter-Tag für Ihre aktuelle Filterauswahl kopieren können.",
 								"Die Syntax für das @filter-Tag lautet wie folgt:",
 								"(geschweifte Klammer öffnen)@filter display text|page_without_file_extension|filter_name_1=filter_1_wert_1;filter_1_wert_2;...filter_1_wert_n|...|filter_name_m=filter_m_wert_1;filter_m_wert_2;...(geschweifte Klammer schließen)",
 								"Der Zweck dieses Tags ist es, die angegebene Seite zu öffnen, die mit den angegebenen Filteroptionen vorgefiltert ist. Es gibt eine wichtige Einschränkung, die die Verwendung für angehende JSONtranauten schwierig macht - die Filterwerte verwenden die {@i internal}-Version, wie sie in den Daten zu finden ist. So würde z.B. ..|school=D|... die Zaubersprüche nach den Zaubersprüchen der Wahrsagerschule filtern, da 'D' die Kennung für Wahrsager in den Daten ist. Der Versuch, z.B. ..|school=Divination|.. zu verwenden, wird nicht funktionieren.",
@@ -566,9 +566,10 @@
 					"entries": [
 						"Kreaturen; das Format basiert auf den Daten des Bestiariums, mit hinzugefügtem Typ (beachten Sie, dass ein richtiger Eintrag im Bestiarium und ein Link zu diesem Eintrag die bevorzugte Methode zum Hinzufügen von Kreaturen ist; diese Funktion ist in erster Linie für selbst erstellte Daten gedacht):",
 						{
-							"type": "dataCreature",
+							"type": "statblockInline",
 							"style": "inset",
-							"dataCreature": {
+							"dataType": "monster",
+							"data": {
 								"name": "Unicorn",
 								"size": [
 									"L"
@@ -731,8 +732,9 @@
 						},
 						"Zaubersprüche; wie oben:",
 						{
-							"type": "dataSpell",
-							"dataSpell": {
+							"type": "statblockInline",
+							"dataType": "spell",
+							"data": {
 								"name": "Fireball",
 								"level": 3,
 								"school": "V",

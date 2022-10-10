@@ -6,7 +6,7 @@ class GenVariantrules {
 	_doLoadAdventureData () {
 		return ut.readJson(`./data/adventures.json`).adventure
 			.map(idx => {
-				if (GenVariantrules.ADVENTURE_WHITELIST[idx.id]) {
+				if (GenVariantrules.ADVENTURE_ALLOWLIST[idx.id]) {
 					return {
 						adventure: idx,
 						adventureData: JSON.parse(fs.readFileSync(`./data/adventure/adventure-${idx.id.toLowerCase()}.json`, "utf-8")),
@@ -19,7 +19,7 @@ class GenVariantrules {
 	_doLoadBookData () {
 		return ut.readJson(`./data/books.json`).book
 			.map(idx => {
-				if (!GenVariantrules.BOOK_BLACKLIST[idx.id]) {
+				if (!GenVariantrules.BOOK_BLOCKLIST[idx.id]) {
 					return {
 						book: idx,
 						bookData: JSON.parse(fs.readFileSync(`./data/book/book-${idx.id.toLowerCase()}.json`, "utf-8")),
@@ -30,7 +30,7 @@ class GenVariantrules {
 	}
 
 	async pRun () {
-		GenVariantrules._WALKER = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST, isNoModification: true});
+		GenVariantrules._WALKER = MiscUtil.getWalker({keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST, isNoModification: true});
 
 		const output = {variantrule: []};
 
@@ -116,8 +116,8 @@ class GenVariantrules {
 		return out;
 	}
 }
-GenVariantrules.BOOK_BLACKLIST = {};
-GenVariantrules.ADVENTURE_WHITELIST = {};
+GenVariantrules.BOOK_BLOCKLIST = {};
+GenVariantrules.ADVENTURE_ALLOWLIST = {};
 GenVariantrules._WALKER = null;
 
 const generator = new GenVariantrules();

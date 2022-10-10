@@ -25,7 +25,6 @@ class BestiarySublistManager extends SublistManager {
 			},
 			shiftCountAddSubtract: 5,
 			isSublistItemsCountable: true,
-			isMarkdownPopout: true,
 		});
 
 		this._$dispCrTotal = null;
@@ -66,7 +65,7 @@ class BestiarySublistManager extends SublistManager {
 		const hashBase = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon);
 		const isLocked = !!initialData?.isLocked; // If e.g. reloading from a save
 
-		const $hovStatblock = $(`<span class="col-1-4 help help--hover ecgen__visible">Statblock</span>`)
+		const $hovStatblock = $(`<span class="col-1-4 help help--hover ecgen__visible">Stat Block</span>`)
 			.mouseover(evt => this._encounterBuilder.doStatblockMouseOver({
 				evt,
 				ele: $hovStatblock[0],
@@ -263,7 +262,7 @@ class BestiaryPage extends ListPageMultiSource {
 			},
 
 			isMarkdownPopout: true,
-			propEntryData: "dataCreature",
+			propEntryData: "monster",
 			bindOtherButtonsOptions: {
 				upload: {
 					pFnPreLoad: (...args) => this.pPreloadSublistSources(...args),
@@ -305,7 +304,7 @@ class BestiaryPage extends ListPageMultiSource {
 
 		const renderCreature = (mon) => {
 			stack.push(`<div class="bkmv__wrp-item"><table class="w-100 stats stats--book stats--bkmv"><tbody>`);
-			stack.push(Renderer.monster.getCompactRenderedString(mon, Renderer.get()));
+			stack.push(Renderer.monster.getCompactRenderedString(mon));
 			stack.push(`</tbody></table></div>`);
 		};
 
@@ -364,7 +363,7 @@ class BestiaryPage extends ListPageMultiSource {
 
 		const eleLi = e_({
 			tag: "div",
-			clazz: `lst__row ve-flex-col ${isExcluded ? "lst__row--blacklisted" : ""}`,
+			clazz: `lst__row ve-flex-col ${isExcluded ? "lst__row--blocklisted" : ""}`,
 			click: (evt) => this._handleBestiaryLiClick(evt, listItem),
 			contextmenu: (evt) => this._handleBestiaryLiContext(evt, listItem),
 			children: [
@@ -570,7 +569,7 @@ class BestiaryPage extends ListPageMultiSource {
 		// reset tabs
 		const tabMetas = [
 			new Renderer.utils.TabButton({
-				label: "Statblock",
+				label: "Stat Block",
 				fnChange: () => {
 					$wrpBtnProf.append(this._$btnProf);
 					this._$dispToken.showVe();

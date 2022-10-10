@@ -2,14 +2,13 @@ const fs = require("fs");
 require("../js/utils");
 const ut = require("./util");
 const UtilGenTables = require("./util-generate-tables-data.js");
-
-Object.assign(global, require("../js/hist.js"));
+require("../js/hist.js");
 
 class GenTables {
 	_doLoadAdventureData () {
 		return ut.readJson(`./data/adventures.json`).adventure
 			.map(idx => {
-				if (GenTables.ADVENTURE_WHITELIST[idx.id]) {
+				if (GenTables.ADVENTURE_ALLOWLIST[idx.id]) {
 					return {
 						adventure: idx,
 						adventureData: JSON.parse(fs.readFileSync(`./data/adventure/adventure-${idx.id.toLowerCase()}.json`, "utf-8")),
@@ -22,7 +21,7 @@ class GenTables {
 	_doLoadBookData () {
 		return ut.readJson(`./data/books.json`).book
 			.map(idx => {
-				if (!GenTables.BOOK_BLACKLIST[idx.id]) {
+				if (!GenTables.BOOK_BLOCKLIST[idx.id]) {
 					return {
 						book: idx,
 						bookData: JSON.parse(fs.readFileSync(`./data/book/book-${idx.id.toLowerCase()}.json`, "utf-8")),
@@ -135,8 +134,8 @@ class GenTables {
 		});
 	}
 }
-GenTables.BOOK_BLACKLIST = {};
-GenTables.ADVENTURE_WHITELIST = {
+GenTables.BOOK_BLOCKLIST = {};
+GenTables.ADVENTURE_ALLOWLIST = {
 	[SRC_SKT]: true,
 	[SRC_TTP]: true,
 };

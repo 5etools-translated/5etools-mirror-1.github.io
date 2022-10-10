@@ -152,9 +152,25 @@ Hist.util = class {
 		return hash.replace(/,+/g, ",").replace(/,$/, "").toLowerCase();
 	}
 
+	static _SYMS_NO_ENCODE = [/(,)/g, /(:)/g, /(=)/g];
+
 	static getHashParts (location) {
 		if (location[0] === "#") location = location.slice(1);
-		return location.toLowerCase().replace(/%27/g, "'").split(HASH_PART_SEP);
+
+		// region Normalize encoding
+		let pts = [location];
+		this._SYMS_NO_ENCODE.forEach(re => {
+			pts = pts.map(pt => pt.split(re)).flat();
+		});
+		pts = pts.map(pt => {
+			if (this._SYMS_NO_ENCODE.some(re => re.test(pt))) return pt;
+			return decodeURIComponent(pt).toUrlified();
+		});
+		location = pts.join("");
+		// endregion
+
+		return location
+			.split(HASH_PART_SEP);
 	}
 
 	static getSubHash (location, key) {
@@ -180,6 +196,4 @@ Hist.util = class {
 	}
 };
 
-if (typeof module !== "undefined") {
-	module.exports = {Hist};
-}
+globalThis.Hist = Hist;

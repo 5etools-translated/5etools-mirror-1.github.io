@@ -4692,7 +4692,7 @@
 					"name": "Death Gaze",
 					"entries": [
 						"Quando una creatura che può vedere gli occhi del bodak inizia il suo turno entro 30 piedi dal bodak, il bodak può costringerla a effettuare un tiro salvezza di Costituzione {@dc 13} se il bodak non è {@condition incapacitated} e può vedere la creatura. Se il tiro salvezza fallisce di 5 o più, la creatura viene ridotta a 0 punti ferita, a meno che non sia immune alla condizione {@condition frightened}. Altrimenti, una creatura prende 16 ({@damage 3d10}) danni psichici per un tiro salvezza fallito.",
-						"A meno che non sia sorpresa, una creatura può distogliere lo sguardo per evitare il tiro salvezza all'inizio del suo turno. Se la creatura lo fa, ha svantaggio nei tiri di attacco contro il bodak fino all'inizio del suo prossimo turno. Se la creatura guarda il bodak nel frattempo, deve effettuare immediatamente il tiro salvezza."
+						"A meno che {@quickref Surprise|PHB|3|0|surprised}, una creatura possa distogliere lo sguardo per evitare il tiro salvezza all'inizio del suo turno. Se la creatura lo fa, ha svantaggio ai tiri di attacco contro il bodak fino all'inizio del suo turno successivo. Se nel frattempo la creatura guarda il bodak, deve effettuare immediatamente il tiro salvezza."
 					]
 				},
 				{
@@ -5521,7 +5521,7 @@
 				{
 					"name": "Uncanny Senses",
 					"entries": [
-						"Il canoloth non può essere sorpreso a meno che non sia {@condition incapacitated}."
+						"Il canoloth non può essere {@quickref Surprise|PHB|3|0|surprised} se non è {@condition incapacitated}."
 					]
 				}
 			],
@@ -15465,7 +15465,7 @@
 					"name": "Stunning Gaze",
 					"entries": [
 						"Quando una creatura che può vedere l'occhio centrale del gauth inizia il suo turno entro 30 piedi dal gauth, il gauth può costringerla a fare un tiro salvezza di saggezza {@dc 14} se il gauth non è {@condition incapacitated} e può vedere la creatura. Una creatura che fallisce il tiro salvezza è {@condition stunned} fino all'inizio del suo prossimo turno.",
-						"A meno che non sia sorpresa, una creatura può distogliere lo sguardo all'inizio del suo turno per evitare il tiro salvezza. Se la creatura lo fa, non può vedere il gauth fino all'inizio del suo prossimo turno, quando può distogliere nuovamente lo sguardo. Se la creatura guarda il gauth nel frattempo, deve effettuare immediatamente il tiro salvezza."
+						"A meno che {@quickref Surprise|PHB|3|0|surprised}, una creatura possa distogliere lo sguardo all'inizio del suo turno per evitare il tiro salvezza. Se la creatura lo fa, non può vedere il gauth fino all'inizio del suo turno successivo, quando può distogliere nuovamente lo sguardo. Se nel frattempo la creatura guarda il gauth, deve effettuare immediatamente il tiro salvezza."
 					]
 				},
 				{
@@ -30193,25 +30193,34 @@
 				{
 					"name": "Fallible Invisibility",
 					"entries": [
-						"Lo skulk è {@condition invisible}. Questa invisibilità può essere aggirata da tre cose:"
-					]
-				},
-				{
-					"name": "Charnel Candles",
-					"entries": [
-						"Lo skulk appare come una forma fioca e traslucida alla luce di una candela fatta di grasso ricavato da un cadavere la cui identità è sconosciuta."
-					]
-				},
-				{
-					"name": "Children",
-					"entries": [
-						"I bambini umanoidi, dai 10 anni in giù, possono vedere attraverso questa invisibilità."
-					]
-				},
-				{
-					"name": "Reflective Surfaces",
-					"entries": [
-						"Lo skulk appare come un bipede dalla pelle liscia e spenta se il suo riflesso può essere visto in uno specchio o su un'altra superficie."
+						"Lo skulk è {@condition invisible}. Questa invisibilità può essere aggirata da tre cose:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Charnel Candles",
+									"entries": [
+										"Lo skulk appare come una forma fioca e traslucida alla luce di una candela fatta di grasso ricavato da un cadavere la cui identità è sconosciuta."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Children",
+									"entries": [
+										"I bambini umanoidi, dai 10 anni in giù, possono vedere attraverso questa invisibilità."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Reflective Surfaces",
+									"entries": [
+										"Lo skulk appare come un bipede dalla pelle liscia e spenta se il suo riflesso può essere visto in uno specchio o su un'altra superficie."
+									]
+								}
+							]
+						}
 					]
 				},
 				{

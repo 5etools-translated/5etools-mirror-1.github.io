@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Stijl tags; {@bold some text to be bolded} (alternatief {@b shorthand}), {@italic some text to be italicised} (alternatief {@i shorthand}), {@underline some text to be underlined} (alternatief {@u shorthand}), {@strike some text to strike-through}, (alternatief {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} tags, {@code print(&quot;hello world&quot;)} tags",
+						"Stijltags; {@bold some text to be bolded} (alternatief {@b shorthand}), {@italic some text to be italicised} (alternatief {@i shorthand}), {@underline some text to be underlined} (alternatief {@u shorthand}), {@strike some text to strike-through}, (alternatief {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} tags, {@code print(&quot;hello world&quot;)} tags, misc {@style Style|small-caps;small;capitalize;dnd-font} tags",
 						"Daarnaast, {@note note tags}, gebruikt voor het toevoegen van errata of Twitter \"designer footnotes.\"",
 						"Dobbelsteen rol tags; {@dice 1d2-2+2d3+5} voor normale dobbelsteen worpen ({@dice 1d6;2d6} voor meerdere opties; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} voor invoer prompts), met uitgebreide {@dice 1d20+2|display text} en {@dice 1d20+2|display text|rolled by name}, en een speciale 'hit' versie die er van uit gaat dat er met een d20 gegooid moet worden {@hit +7} (en voordeel rolt bij shift-klik, nadeel bij alt-klik). Er is ook {@damage 1d12+3} die kritieke slagen rolt bij shift-klik en de helft van de schade (naar beneden afrondend) bij alt-klik, en {@d20 -4} die ook voordeel/nadeel rolt, hoewel @hit-tags de voorkeur hebben waar nodig. Spreuken kunnen scaling-dice tags hebben, (schade van 2d6 of 3d6 op level 1, voeg een extra {@scaledice 2d6;3d6|2-9|1d6} toe voor elk level na de 2de), voor wanneer een spreuk effect schaalt op hogere levels. {@ability str 20}, {@savingThrow str 5}, en {@skillCheck animal_handling 5} worden gebruikt als interne afkorting, maar kunnen ook elders nuttig zijn.",
 						"Autodobbeltags; als hierboven, maar het resultaat wordt automatisch gegooid bij het renderen: {@autodice 2d10+2}.",
@@ -68,7 +68,7 @@
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"Een andere tag die af en toe in de gegevens voorkomt is de tag @filter. Deze tag kan lastig te gebruiken zijn, en berust over het algemeen op kennis van de interne onderdelen van elke pagina. Wees dus voorzichtig, en als je ergens niet zeker van bent, wees dan niet bang om bij ons langs te komen {@link Discord|https://discord.gg/5etools} en vragen te stellen.",
+								"Een andere tag die af en toe voorkomt in de gegevens is de @filter tag. Deze tag kan lastig te gebruiken zijn, en vereist over het algemeen kennis van de interne werking van elke pagina. Wees daarom voorzichtig, en als u iets niet zeker weet, wees dan niet bang om bij ons langs te komen {@link Discord|https://discord.gg/5etools} en vragen te stellen. U kunt CTRL+klikken op de knop \"Koppeling naar filters\" (magneet) op een lijstpagina om de @filter-tag voor uw huidige filterselectie te kopiëren.",
 								"De syntaxis voor de tag @filter is als volgt:",
 								"(open accolade)@filter display text|page_withwithout_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(sluit accolade)",
 								"Het doel van deze tag is om de gegeven pagina te openen, voorgefilterd met de gespecificeerde filteropties. Er is één groot nadeel dat dit lastig maakt voor aspirant JSONtranauten-de filterwaarden gebruiken de {@i internal} versie, zoals je die in de data zou vinden. Dus, bijvoorbeeld, ..|school=D|... zou spreuken filteren op Divinatie school spreuken, aangezien 'D' de Divinatie identifier is in de data. Proberen om bijv. ..|school=Divination|.. te doen zal niet werken.",
@@ -566,9 +566,10 @@
 					"entries": [
 						"Wezens; formaat gebaseerd op Bestiarium-gegevens, met toegevoegd type (merk op dat een correcte Bestiarium-ingang en een link naar de ingang de voorkeursmethode is om wezens toe te voegen, deze functionaliteit bestaat voornamelijk voor zelfgebrouwen gegevens):",
 						{
-							"type": "dataCreature",
+							"type": "statblockInline",
 							"style": "inset",
-							"dataCreature": {
+							"dataType": "monster",
+							"data": {
 								"name": "Unicorn",
 								"size": [
 									"L"
@@ -731,8 +732,9 @@
 						},
 						"Spreuken, zoals hierboven:",
 						{
-							"type": "dataSpell",
-							"dataSpell": {
+							"type": "statblockInline",
+							"dataType": "spell",
+							"data": {
 								"name": "Fireball",
 								"level": 3,
 								"school": "V",

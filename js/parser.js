@@ -2406,6 +2406,7 @@ SRC_SAiS = "SAiS";
 SRC_AAG = "AAG";
 SRC_BAM = "BAM";
 SRC_LoX = "LoX";
+SRC_DoSI = "DoSI";
 SRC_SCREEN = "Screen";
 SRC_SCREEN_WILDERNESS_KIT = "ScreenWildernessKit";
 SRC_SCREEN_DUNGEON_KIT = "ScreenDungeonKit";
@@ -2621,6 +2622,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_SAiS] = "Spelljammer: Adventures in Space";
 Parser.SOURCE_JSON_TO_FULL[SRC_AAG] = "Astral Adventurer's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BAM] = "Boo's Astral Menagerie";
 Parser.SOURCE_JSON_TO_FULL[SRC_LoX] = "Light of Xaryxis";
+Parser.SOURCE_JSON_TO_FULL[SRC_DoSI] = "Dragons of Stormwreck Isle";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN_WILDERNESS_KIT] = "Dungeon Master's Screen: Wilderness Kit";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN_DUNGEON_KIT] = "Dungeon Master's Screen: Dungeon Kit";
@@ -2814,6 +2816,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_SAiS] = "SAiS";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAG] = "AAG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BAM] = "BAM";
 Parser.SOURCE_JSON_TO_ABV[SRC_LoX] = "LoX";
+Parser.SOURCE_JSON_TO_ABV[SRC_DoSI] = "DoSI";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN_WILDERNESS_KIT] = "ScWild";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN_DUNGEON_KIT] = "ScDun";
@@ -3006,6 +3009,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_SAiS] = "2022-08-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAG] = "2022-08-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_BAM] = "2022-08-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_LoX] = "2022-08-16";
+Parser.SOURCE_JSON_TO_DATE[SRC_DoSI] = "2022-07-31";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN_WILDERNESS_KIT] = "2020-11-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN_DUNGEON_KIT] = "2020-09-21";
@@ -3178,6 +3182,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_JttRC,
 	SRC_SjA,
 	SRC_LoX,
+	SRC_DoSI,
 
 	SRC_AWM,
 ]);
@@ -3385,6 +3390,7 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 	SRC_CRCotN,
 	SRC_JttRC,
 	SRC_LoX,
+	SRC_DoSI,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;

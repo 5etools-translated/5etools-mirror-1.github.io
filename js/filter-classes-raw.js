@@ -500,7 +500,7 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 							displayName: ent._displayNamePrefix ? `${ent._displayNamePrefix}${entity.name}` : null,
 							...ancestorMeta,
 							foundryData: {
-								requirements: `${entityRoot.className} ${entityRoot.level}${entityRoot.subclassShortName ? ` (${entityRoot.subclassShortName})` : ""}`,
+								requirements: entityRoot.className ? `${entityRoot.className} ${entityRoot.level}${entityRoot.subclassShortName ? ` (${entityRoot.subclassShortName})` : ""}` : null,
 							},
 						});
 
@@ -559,7 +559,7 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 
 	static _getPostLoadWalker () {
 		PageFilterClassesRaw._WALKER = PageFilterClassesRaw._WALKER || MiscUtil.getWalker({
-			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
+			keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST,
 			isDepthFirst: true,
 		});
 		return PageFilterClassesRaw._WALKER;

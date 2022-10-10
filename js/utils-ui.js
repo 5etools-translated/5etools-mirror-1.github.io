@@ -1236,7 +1236,7 @@ class TabUiUtilSide extends TabUiUtilBase {
 	}
 }
 
-// TODO have this respect the blacklist?
+// TODO have this respect the blocklist?
 class SearchUiUtil {
 	static async pDoGlobalInit () {
 		elasticlunr.clearStopWords();
@@ -3116,7 +3116,7 @@ class SourceUiUtil {
 				${$iptName}
 			</div></div>
 			<div class="ui-source__row mb-2"><div class="col-12 ve-flex-v-center">
-				<span class="mr-2 ui-source__name help" title="An abbreviated form of the title. This will be shown in lists on the site, and in the top-right corner of statblocks or data entries; for example, 'MM'">Abbreviation</span>
+				<span class="mr-2 ui-source__name help" title="An abbreviated form of the title. This will be shown in lists on the site, and in the top-right corner of stat blocks or data entries; for example, 'MM'">Abbreviation</span>
 				${$iptAbv}
 			</div></div>
 			<div class="ui-source__row mb-2"><div class="col-12 ve-flex-v-center">
@@ -3743,17 +3743,17 @@ function MixinComponentHistory (Cls) {
 			this._histStackUndo = [];
 			this._histStackRedo = [];
 			this._isHistDisabled = true;
-			this._histPropBlacklist = new Set();
-			this._histPropWhitelist = null;
+			this._histPropBlocklist = new Set();
+			this._histPropAllowlist = null;
 
 			this._histInitialState = null;
 		}
 
 		set isHistDisabled (val) { this._isHistDisabled = val; }
-		addBlacklistProps (...props) { props.forEach(p => this._histPropBlacklist.add(p)); }
-		addWhitelistProps (...props) {
-			this._histPropWhitelist = this._histPropWhitelist || new Set();
-			props.forEach(p => this._histPropWhitelist.add(p));
+		addBlocklistProps (...props) { props.forEach(p => this._histPropBlocklist.add(p)); }
+		addAllowlistProps (...props) {
+			this._histPropAllowlist = this._histPropAllowlist || new Set();
+			props.forEach(p => this._histPropAllowlist.add(p));
 		}
 
 		/**
@@ -3766,8 +3766,8 @@ function MixinComponentHistory (Cls) {
 
 			this._addHookAll("state", prop => {
 				if (this._isHistDisabled) return;
-				if (this._histPropBlacklist.has(prop)) return;
-				if (this._histPropWhitelist && !this._histPropWhitelist.has(prop)) return;
+				if (this._histPropBlocklist.has(prop)) return;
+				if (this._histPropAllowlist && !this._histPropAllowlist.has(prop)) return;
 
 				this.recordHistory();
 			});
@@ -3777,8 +3777,8 @@ function MixinComponentHistory (Cls) {
 			const stateCopy = MiscUtil.copy(this._state);
 
 			// remove any un-tracked properties
-			this._histPropBlacklist.forEach(prop => delete stateCopy[prop]);
-			if (this._histPropWhitelist) Object.keys(stateCopy).filter(k => !this._histPropWhitelist.has(k)).forEach(k => delete stateCopy[k]);
+			this._histPropBlocklist.forEach(prop => delete stateCopy[prop]);
+			if (this._histPropAllowlist) Object.keys(stateCopy).filter(k => !this._histPropAllowlist.has(k)).forEach(k => delete stateCopy[k]);
 
 			this._histStackUndo.push(stateCopy);
 			this._histStackRedo = [];
@@ -3786,8 +3786,8 @@ function MixinComponentHistory (Cls) {
 
 		_histAddExcludedProperties (stateCopy) {
 			Object.entries(this._state).forEach(([k, v]) => {
-				if (this._histPropBlacklist.has(k)) return stateCopy[k] = v;
-				if (this._histPropWhitelist && !this._histPropWhitelist.has(k)) stateCopy[k] = v;
+				if (this._histPropBlocklist.has(k)) return stateCopy[k] = v;
+				if (this._histPropAllowlist && !this._histPropAllowlist.has(k)) stateCopy[k] = v;
 			});
 		}
 

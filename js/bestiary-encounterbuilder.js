@@ -460,7 +460,7 @@ class EncounterBuilder extends ProxyBase {
 		const $btnReset = $(`<button class="btn btn-danger btn-xs" title="SHIFT to Reset Players">Reset</button>`)
 			.click((evt) => this._sublistManager.pHandleClick_new(evt));
 
-		const $btnBackToStatblocks = $(`<button class="btn btn-success btn-xs">Back to Statblocks</button>`).click((evt) => this._handleClickBackToStatblocks(evt));
+		const $btnBackToStatblocks = $(`<button class="btn btn-success btn-xs">Back to Stat Blocks</button>`).click((evt) => this._handleClickBackToStatblocks(evt));
 
 		const {
 			$stg: $stgSimple,

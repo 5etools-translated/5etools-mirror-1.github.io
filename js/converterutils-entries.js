@@ -1,6 +1,6 @@
 "use strict";
 
-const LAST_KEY_WHITELIST = new Set([
+const LAST_KEY_ALLOWLIST = new Set([
 	"entries",
 	"entry",
 	"items",
@@ -29,7 +29,7 @@ class TagJsons {
 					{_: json[k]},
 					{
 						object: (obj, lastKey) => {
-							if (lastKey != null && !LAST_KEY_WHITELIST.has(lastKey)) return obj;
+							if (lastKey != null && !LAST_KEY_ALLOWLIST.has(lastKey)) return obj;
 
 							obj = TagCondition.tryRunBasic(obj);
 							obj = SkillTag.tryRun(obj);
@@ -56,29 +56,36 @@ class TagJsons {
 
 TagJsons.OPTIMISTIC = true;
 
-TagJsons._BLACKLIST_FILE_PREFIXES = null;
+TagJsons._BLOCKLIST_FILE_PREFIXES = null;
 
-TagJsons.WALKER_KEY_BLACKLIST = new Set([
-	...MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
-	"dataCreature",
-	"dataObject",
+TagJsons.WALKER_KEY_BLOCKLIST = new Set([
+	...MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST,
 ]);
 
 TagJsons.WALKER = MiscUtil.getWalker({
-	keyBlacklist: TagJsons.WALKER_KEY_BLACKLIST,
+	keyBlocklist: TagJsons.WALKER_KEY_BLOCKLIST,
 });
 
 class SpellTag {
+	static _NON_STANDARD = new Set([
+		// Skip "Divination" to avoid tagging occurrences of the school
+		"Divination",
+		// Skip spells we specifically handle
+		"Antimagic Field",
+		"Dispel Magic",
+	].map(it => it.toLowerCase()));
+
 	static init (spells) {
 		spells
-			// Skip "Divination" to avoid tagging occurrences of the school
-			.filter(it => !(it.name === "Divination" && it.source === SRC_PHB))
 			.forEach(sp => SpellTag._SPELL_NAMES[sp.name.toLowerCase()] = {name: sp.name, source: sp.source});
 
-		SpellTag._SPELL_NAME_REGEX = new RegExp(`\\b(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")})\\b`, "gi");
-		SpellTag._SPELL_NAME_REGEX_SPELL = new RegExp(`\\b(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (spell|cantrip)`, "gi");
-		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`\\b(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (and {@spell)`, "gi");
-		SpellTag._SPELL_NAME_REGEX_CAST = new RegExp(`(?<prefix>casts? (?:the )?)(?<spell>${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")})\\b`, "gi");
+		const spellnamesFiltered = Object.keys(SpellTag._SPELL_NAMES)
+			.filter(n => !SpellTag._NON_STANDARD.has(n));
+
+		SpellTag._SPELL_NAME_REGEX = new RegExp(`\\b(${spellnamesFiltered.map(it => it.escapeRegexp()).join("|")})\\b`, "gi");
+		SpellTag._SPELL_NAME_REGEX_SPELL = new RegExp(`\\b(${spellnamesFiltered.map(it => it.escapeRegexp()).join("|")}) (spell|cantrip)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`\\b(${spellnamesFiltered.map(it => it.escapeRegexp()).join("|")}) (and {@spell)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_CAST = new RegExp(`(?<prefix>casts? (?:the )?)(?<spell>${spellnamesFiltered.map(it => it.escapeRegexp()).join("|")})\\b`, "gi");
 	}
 
 	static tryRun (it) {
@@ -223,8 +230,8 @@ ItemTag._ITEM_NAMES = {};
 ItemTag._ITEM_NAMES_REGEX_TOOLS = null;
 
 ItemTag._WALKER = MiscUtil.getWalker({
-	keyBlacklist: new Set([
-		...TagJsons.WALKER_KEY_BLACKLIST,
+	keyBlocklist: new Set([
+		...TagJsons.WALKER_KEY_BLOCKLIST,
 		"packContents", // Avoid tagging item pack contents
 		"items", // Avoid tagging item group item lists
 	]),

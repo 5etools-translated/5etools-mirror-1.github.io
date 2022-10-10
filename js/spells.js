@@ -19,9 +19,9 @@ class SpellsSublistManager extends SublistManager {
 		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}" class="lst--border lst__row-inner">
 				<span class="bold col-3-2 pl-0">${spell.name}</span>
-				<span class="capitalise col-1-5 text-center">${PageFilterSpells.getTblLevelStr(spell)}</span>
+				<span class="capitalize col-1-5 text-center">${PageFilterSpells.getTblLevelStr(spell)}</span>
 				<span class="col-1-8 text-center">${time}</span>
-				<span class="capitalise col-1-6 sp__school-${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+				<span class="capitalize col-1-6 sp__school-${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 				<span class="concentration--sublist col-0-7 text-center" title="Concentration">${concentration}</span>
 				<span class="range col-3-2 pr-0 text-right">${range}</span>
 			</a>
@@ -68,7 +68,7 @@ class SpellsPage extends ListPageMultiSource {
 				$eleNoneVisible: $(`<span class="initial-message">If you wish to view multiple spells, please first make a list</span>`),
 				pageTitle: "Spells Book View",
 				fnSort: (a, b) => this._bookViewLastOrder === "0" ? SortUtil.ascSort(a.level, b.level) : SortUtil.ascSortLower(a.name, b.name),
-				fnGetMd: sp => RendererMarkdown.get().render({type: "dataSpell", dataSpell: sp}).trim(),
+				fnGetMd: sp => RendererMarkdown.get().render({type: "statblockInline", dataType: "spell", data: sp}).trim(),
 			},
 
 			tableViewOptions: {
@@ -91,8 +91,15 @@ class SpellsPage extends ListPageMultiSource {
 					_classes: {
 						name: "Classes",
 						transform: (sp) => {
-							const fromClassList = Renderer.spell.getCombinedClasses(sp, "fromClassList");
-							return Parser.spMainClassesToFull(fromClassList);
+							const [current] = Parser.spClassesToCurrentAndLegacy(Renderer.spell.getCombinedClasses(sp, "fromClassList"));
+							return Parser.spMainClassesToFull(current);
+						},
+					},
+					_classesVariant: {
+						name: "Optional/Variant Classes",
+						transform: (sp) => {
+							const [current] = Parser.spVariantClassesToCurrentAndLegacy(Renderer.spell.getCombinedClasses(sp, "fromClassListVariant"));
+							return Parser.spMainClassesToFull(current);
 						},
 					},
 					entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
@@ -213,7 +220,7 @@ class SpellsPage extends ListPageMultiSource {
 
 		const eleLi = e_({
 			tag: "div",
-			clazz: `lst__row ve-flex-col ${isExcluded ? "lst__row--blacklisted" : ""}`,
+			clazz: `lst__row ve-flex-col ${isExcluded ? "lst__row--blocklisted" : ""}`,
 			click: (evt) => this._list.doSelect(listItem, evt),
 			contextmenu: (evt) => this._openContextMenu(evt, this._list, listItem),
 			children: [

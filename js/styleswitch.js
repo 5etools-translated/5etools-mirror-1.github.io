@@ -19,6 +19,13 @@ class StyleSwitcher {
 		[...document.getElementsByClassName(btnClassName)].forEach(ele => ele.innerHTML = text);
 	}
 
+	getSummary () {
+		return {isNight: this.currentStylesheet !== StyleSwitcher._STYLE_DAY};
+	}
+
+	_fnsOnChange = [];
+	addFnOnChange (fn) { this._fnsOnChange.push(fn); }
+
 	// region Night Mode
 	_setActiveDayNight (style) {
 		this.currentStylesheet = style;
@@ -44,6 +51,8 @@ class StyleSwitcher {
 		StyleSwitcher._setButtonText("nightModeToggle", this.getDayNightButtonText(style));
 
 		StyleSwitcher.storage.setItem(StyleSwitcher._STORAGE_DAY_NIGHT, this.currentStylesheet);
+
+		this._fnsOnChange.forEach(fn => fn());
 	}
 
 	getDayNightClassNames () {

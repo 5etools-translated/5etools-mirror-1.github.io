@@ -2288,7 +2288,34 @@
 						"replace": "the drow",
 						"with": "Hanne",
 						"flags": "i"
-					}
+					},
+					"spellcasting": [
+						{
+							"mode": "appendArr",
+							"items": {
+								"name": "Spellcasting",
+								"headerEntries": [
+									"Hanne est un lanceur de sorts de 1er niveau. Sa capacité à lancer des sorts est Intelligence (sauvegarde contre les sorts {@dc 13}, {@hit 5} pour toucher avec les attaques de sorts). Elle a préparé les sorts de sorcier suivants :"
+								],
+								"spells": {
+									"0": {
+										"spells": [
+											"{@spell minor illusion}",
+											"{@spell ray of frost}"
+										]
+									},
+									"1": {
+										"slots": 4,
+										"spells": [
+											"{@spell shield}",
+											"{@spell mage armor}"
+										]
+									}
+								},
+								"ability": "int"
+							}
+						}
+					]
 				}
 			},
 			"ac": [
@@ -4008,10 +4035,10 @@
 				"cha": "+7"
 			},
 			"skill": {
-				"arcana": "+5",
-				"perception": "+3",
-				"stealth": "+7",
-				"survival": "+3"
+				"arcana": "+4",
+				"perception": "+2",
+				"stealth": "+6",
+				"survival": "+2"
 			},
 			"senses": [
 				"darkvision 60 ft."
@@ -4980,7 +5007,7 @@
 					"name": "Petrifying Gaze",
 					"entries": [
 						"Si une créature commence son tour à moins de 15 pieds du basilic et que les deux peuvent se voir, le basilic peut forcer la créature à effectuer un jet de sauvegarde de Constitution {@dc 12} si le basilic n'est pas {@condition incapacitated}. En cas d'échec, la créature commence magiquement à se transformer en pierre et devient {@condition restrained}. Elle doit répéter le jet de sauvegarde à la fin de son prochain tour. En cas de réussite, l'effet prend fin. En cas d'échec, la créature est {@condition petrified} jusqu'à ce qu'elle soit libérée par le sort {@spell greater restoration} ou une autre magie.",
-						"Une créature qui n'est pas surprise peut détourner les yeux pour éviter le jet de sauvegarde au début de son tour. Si elle le fait, elle ne peut pas voir le basilic jusqu'au début de son prochain tour, où elle peut à nouveau détourner les yeux. S'il regarde le basilic entre-temps, il doit immédiatement effectuer le jet de sauvegarde.",
+						"Une créature qui n'est pas {@quickref Surprise|PHB|3|0|surprised} peut détourner les yeux pour éviter le jet de sauvegarde au début de son tour. Si elle le fait, elle ne peut pas voir le basilic jusqu'au début de son prochain tour, où elle peut à nouveau détourner les yeux. S'il regarde le basilic entre-temps, il doit immédiatement effectuer le jet de sauvegarde.",
 						"Si le basilic voit son reflet à moins de 30 pieds de lui en pleine lumière, il se prend pour un rival et se cible avec son regard."
 					]
 				}

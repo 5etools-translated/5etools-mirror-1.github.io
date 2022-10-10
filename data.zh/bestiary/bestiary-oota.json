@@ -2288,7 +2288,34 @@
 						"replace": "the drow",
 						"with": "Hanne",
 						"flags": "i"
-					}
+					},
+					"spellcasting": [
+						{
+							"mode": "appendArr",
+							"items": {
+								"name": "Spellcasting",
+								"headerEntries": [
+									"汉娜是一个一级施法者。她的法术能力是智力（法术救赎（%0%），用法术攻击命中率（%1%））。她准备了以下巫师法术。"
+								],
+								"spells": {
+									"0": {
+										"spells": [
+											"{@spell minor illusion}",
+											"{@spell ray of frost}"
+										]
+									},
+									"1": {
+										"slots": 4,
+										"spells": [
+											"{@spell shield}",
+											"{@spell mage armor}"
+										]
+									}
+								},
+								"ability": "int"
+							}
+						}
+					]
 				}
 			},
 			"ac": [
@@ -4008,10 +4035,10 @@
 				"cha": "+7"
 			},
 			"skill": {
-				"arcana": "+5",
-				"perception": "+3",
-				"stealth": "+7",
-				"survival": "+3"
+				"arcana": "+4",
+				"perception": "+2",
+				"stealth": "+6",
+				"survival": "+2"
 			},
 			"senses": [
 				"darkvision 60 ft."
@@ -4980,7 +5007,7 @@
 					"name": "Petrifying Gaze",
 					"entries": [
 						"如果一个生物在巴斯里斯克的15英尺范围内开始它的回合，并且他们两个可以看到对方，巴斯里斯克可以强迫这个生物做一个{@dc 12}的宪法拯救，如果巴斯里斯克不是{@condition incapacitated}。如果救赎失败，该生物会神奇地开始变成石头，并且是（%2%）。它必须在下一回合结束时重复这个蓄力动作。成功时，效果结束。失败时，该生物会被{@condition petrified}，直到被{@spell greater restoration}的咒语或其他魔法解救。",
-						"没有受到惊吓的生物可以在它的回合开始时转移视线以避免蓄力动作。如果它这样做了，它就不能看到巴斯里斯克，直到它下一个回合开始时，它可以再次移开眼睛。如果它在这期间看到了巴斯里斯克，它必须立即进行蓄力。",
+						"不属于{@quickref Surprise|PHB|3|0|surprised}的生物可以在它的回合开始时移开它的眼睛以避免救赎动作。如果它这样做了，它就不能看到巴斯里斯克，直到它下一个回合开始时，它可以再次移开眼睛。如果它在这期间看到了巴斯里斯克，它必须立即进行救赎。",
 						"如果巴斯里斯克在强光下看到自己的倒影在30英尺内，它就会误以为自己是对手，并以自己的目光为目标。"
 					]
 				}

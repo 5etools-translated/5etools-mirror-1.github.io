@@ -115,6 +115,7 @@ class ItemParser extends BaseParser {
 		const manName = stats.name ? `(${stats.name}) ` : "";
 		ChargeTag.tryRun(stats);
 		RechargeTypeTag.tryRun(stats, {cbMan: () => options.cbWarning(`${manName}Recharge type requires manual conversion`)});
+		RechargeAmountTag.tryRun(stats, {cbMan: () => options.cbWarning(`${manName}Recharge amount requires manual conversion`)});
 		BonusTag.tryRun(stats);
 		ItemMiscTag.tryRun(stats);
 		ItemSpellcastingFocusTag.tryRun(stats);
@@ -315,7 +316,7 @@ class ItemParser extends BaseParser {
 	static _setCleanTaglineInfo_handleBaseItem (stats, baseItem, options) {
 		if (!baseItem) return;
 
-		const blacklistedProps = new Set([
+		const blocklistedProps = new Set([
 			"source",
 			"srd",
 			"basicRules",
@@ -324,7 +325,7 @@ class ItemParser extends BaseParser {
 
 		// Apply base item stats only if there's no existing data
 		Object.entries(baseItem)
-			.filter(([k]) => stats[k] === undefined && !k.startsWith("_") && !blacklistedProps.has(k))
+			.filter(([k]) => stats[k] === undefined && !k.startsWith("_") && !blocklistedProps.has(k))
 			.forEach(([k, v]) => stats[k] = v);
 
 		// Clean unwanted base properties

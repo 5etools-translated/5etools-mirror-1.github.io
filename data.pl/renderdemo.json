@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Tagi stylu; {@bold some text to be bolded} (alternatywa {@b shorthand}), {@italic some text to be italicised} (alternatywa {@i shorthand}), {@underline some text to be underlined} (alternatywa {@u shorthand}), {@strike some text to strike-through}, (alternatywa {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} tagi, {@code print(&quot;hello world&quot;)} tagi",
+						"Tagi stylu; {@bold some text to be bolded} (alternatywa {@b shorthand}), {@italic some text to be italicised} (alternatywa {@i shorthand}), {@underline some text to be underlined} (alternatywa {@u shorthand}), {@strike some text to strike-through}, (alternatywa {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} tagi, {@code print(&quot;hello world&quot;)} tagi, misc {@style Style|small-caps;small;capitalize;dnd-font} tagi",
 						"Dodatkowo {@note note tags}, używane do dodawania erraty lub Twittera \"przypisy projektanta\".",
 						"Znaczniki rolek kości; {@dice 1d2-2+2d3+5} do zwykłego rzucania kośćmi ({@dice 1d6;2d6} dla wielu opcji; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} dla podpowiedzi), z rozszerzonymi {@dice 1d20+2|display text} i {@dice 1d20+2|display text|rolled by name} oraz specjalną wersją \"hit\", która zakłada, że ma być rzucona kość d20 {@hit +7} (i rzuca korzyść po kliknięciu z shiftem i niekorzyść po kliknięciu z alt-clickiem). Jest też {@damage 1d12+3}, które wylicza trafienia krytyczne po kliknięciu z shiftem i połowę obrażeń (zaokrąglając w dół) po kliknięciu z alt-clickiem, oraz {@d20 -4}, które również wylicza przewagę/dyskwalifikację, choć w razie potrzeby preferowane są znaczniki @hit. Zaklęcia mogą mieć znaczniki skalowania kostek (obrażenia 2d6 lub 3d6 na 1. poziomie, dodają dodatkowe {@scaledice 2d6;3d6|2-9|1d6} na każdy kolejny poziom), gdy efekt zaklęcia skaluje się na wyższych poziomach. {@ability str 20}, {@savingThrow str 5} i {@skillCheck animal_handling 5} są używane jako wewnętrzne skróty, ale mogą być przydatne w innych miejscach.",
 						"Tagi Auto dice; jak wyżej, ale wynik jest automatycznie toczony przy renderowaniu: {@autodice 2d10+2}.",
@@ -68,7 +68,7 @@
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"Innym znacznikiem, który od czasu do czasu pojawia się w danych, jest znacznik @filter. Ten znacznik może być trudny w użyciu i generalnie wymaga wiedzy na temat wnętrza każdej strony. W związku z tym należy używać go z rozwagą, a jeśli nie jesteś czegoś pewien, nie bój się wpaść na naszą stronę {@link Discord|https://discord.gg/5etools} i zadać pytanie.",
+								"Innym znacznikiem, który pojawia się sporadycznie w danych, jest znacznik @filter. Ten tag może być trudny w użyciu i generalnie opiera się na znajomości wnętrza każdej strony. Dlatego używaj go z rozwagą, a jeśli nie jesteś pewien czegoś, nie bój się wpaść do nas {@link Discord|https://discord.gg/5etools} i zadać pytania. Zauważ, że możesz CTRL+kliknąć przycisk \"Pobierz link do filtrów\" (magnes) na stronie listy, aby skopiować tag @filter dla bieżącego wyboru filtra.",
 								"Składnia znacznika @filter jest następująca:",
 								"(open curly brace)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
 								"Zadaniem tego znacznika jest otwarcie podanej strony, wstępnie przefiltrowanej przy użyciu określonych opcji filtrowania. Jest jedno poważne zastrzeżenie, które sprawia, że jest on trudny w użyciu dla aspirujących entuzjastów JSONtranauts - wartości filtrów używają wersji {@i internal} takiej, jaką można znaleźć w danych. Tak więc na przykład ..|school=D|... będzie filtrować zaklęcia do zaklęć ze szkoły Wróżbiarstwa, ponieważ 'D' jest identyfikatorem Wróżbiarstwa w danych. Próba użycia np. ..|school=Divination|... nie zadziała.",
@@ -566,9 +566,10 @@
 					"entries": [
 						"Stworzenia; format oparty na danych z Bestiariusza, z dodanym typem (należy pamiętać, że preferowaną metodą dodawania stworzeń jest prawidłowy wpis w Bestiariuszu i link do niego, ta funkcjonalność istnieje głównie dla danych homebrew):",
 						{
-							"type": "dataCreature",
+							"type": "statblockInline",
 							"style": "inset",
-							"dataCreature": {
+							"dataType": "monster",
+							"data": {
 								"name": "Unicorn",
 								"size": [
 									"L"
@@ -731,8 +732,9 @@
 						},
 						"Zaklęcia; jak wyżej:",
 						{
-							"type": "dataSpell",
-							"dataSpell": {
+							"type": "statblockInline",
+							"dataType": "spell",
+							"data": {
 								"name": "Fireball",
 								"level": 3,
 								"school": "V",

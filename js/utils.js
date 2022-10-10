@@ -6,8 +6,8 @@ IS_NODE = typeof module !== "undefined";
 if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
-IS_DEPLOYED="v1.152.4.1665385870";
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.167.7"/* 5ETOOLS_VERSION__CLOSE */;
+IS_DEPLOYED="v1.152.4.1665432473";
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.168.2"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -1498,11 +1498,11 @@ MiscUtil = {
 		return new Promise(resolve => setTimeout(() => resolve(resolveAs), msecs));
 	},
 
-	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "colLabels", "name", "colStyles", "style", "shortName", "subclassShortName", "id", "path"]),
+	GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST: new Set(["caption", "type", "colLabels", "name", "colStyles", "style", "shortName", "subclassShortName", "id", "path"]),
 
 	/**
 	 * @param [opts]
-	 * @param [opts.keyBlacklist]
+	 * @param [opts.keyBlocklist]
 	 * @param [opts.isAllowDeleteObjects] If returning `undefined` from an object handler should be treated as a delete.
 	 * @param [opts.isAllowDeleteArrays] If returning `undefined` from an array handler should be treated as a delete.
 	 * @param [opts.isAllowDeleteBooleans] (Unimplemented) // TODO
@@ -1517,7 +1517,7 @@ MiscUtil = {
 
 		if (opts.isBreakOnReturn && !opts.isNoModification) throw new Error(`"isBreakOnReturn" may only be used in "isNoModification" mode!`);
 
-		const keyBlacklist = opts.keyBlacklist || new Set();
+		const keyBlocklist = opts.keyBlocklist || new Set();
 
 		const getMappedPrimitive = (obj, primitiveHandlers, lastKey, stack, prop, propPre, propPost) => {
 			if (primitiveHandlers[propPre]) MiscUtil._getWalker_runHandlers({handlers: primitiveHandlers[propPre], obj, lastKey, stack});
@@ -1533,7 +1533,7 @@ MiscUtil = {
 		const doObjectRecurse = (obj, primitiveHandlers, stack) => {
 			const didBreak = Object.keys(obj).some(k => {
 				const v = obj[k];
-				if (keyBlacklist.has(k)) return;
+				if (keyBlocklist.has(k)) return;
 
 				const out = fn(v, primitiveHandlers, k, stack);
 				if (out === VeCt.SYM_WALKER_BREAK) return true;
@@ -1654,7 +1654,7 @@ MiscUtil = {
 	/**
 	 * TODO refresh to match sync version
 	 * @param [opts]
-	 * @param [opts.keyBlacklist]
+	 * @param [opts.keyBlocklist]
 	 * @param [opts.isAllowDeleteObjects] If returning `undefined` from an object handler should be treated as a delete.
 	 * @param [opts.isAllowDeleteArrays] If returning `undefined` from an array handler should be treated as a delete.
 	 * @param [opts.isAllowDeleteBooleans] (Unimplemented) // TODO
@@ -1665,7 +1665,7 @@ MiscUtil = {
 	 */
 	getAsyncWalker (opts) {
 		opts = opts || {};
-		const keyBlacklist = opts.keyBlacklist || new Set();
+		const keyBlocklist = opts.keyBlocklist || new Set();
 
 		const pFn = async (obj, primitiveHandlers, lastKey, stack) => {
 			if (obj == null) {
@@ -1676,7 +1676,7 @@ MiscUtil = {
 			const pDoObjectRecurse = async () => {
 				await Object.keys(obj).pSerialAwaitMap(async k => {
 					const v = obj[k];
-					if (keyBlacklist.has(k)) return;
+					if (keyBlocklist.has(k)) return;
 					const out = await pFn(v, primitiveHandlers, k, stack);
 					if (!opts.isNoModification) obj[k] = out;
 				});
@@ -2117,6 +2117,8 @@ UrlUtil = {
 
 	categoryToPage (category) { return UrlUtil.CAT_TO_PAGE[category]; },
 	categoryToHoverPage (category) { return UrlUtil.CAT_TO_HOVER_PAGE[category] || UrlUtil.categoryToPage(category); },
+
+	pageToDisplayPage (page) { return UrlUtil.PG_TO_NAME[page] || page; },
 
 	getFilename (url) { return url.slice(url.lastIndexOf("/") + 1); },
 
@@ -3308,7 +3310,8 @@ DataUtil = {
 		},
 
 		getUid (ent, {isMaintainCase = false} = {}) {
-			const {name, source} = ent;
+			const {name} = ent;
+			const source = SourceUtil.getEntitySource(ent);
 			if (!name || !source) throw new Error(`Entity did not have a name and source!`);
 			const out = [name, source].join("|");
 			if (isMaintainCase) return out;
@@ -4004,10 +4007,25 @@ DataUtil = {
 	},
 
 	proxy: {
-		getVersions (prop, ent) { return (DataUtil[prop]?.getVersions || DataUtil.generic.getVersions)(ent); },
-		unpackUid (prop, uid, tag, opts) { return (DataUtil[prop]?.unpackUid || DataUtil.generic.unpackUid)(uid, tag, opts); },
-		getNormalizedUid (prop, uid, tag, opts) { return (DataUtil[prop]?.getNormalizedUid || DataUtil.generic.getNormalizedUid)(uid, tag, opts); },
-		getUid (prop, ent, opts) { return (DataUtil[prop]?.getUid || DataUtil.generic.getUid)(ent, opts); },
+		getVersions (prop, ent) {
+			if (DataUtil[prop]?.getVersions) return DataUtil[prop]?.getVersions(ent);
+			return DataUtil.generic.getVersions(ent);
+		},
+
+		unpackUid (prop, uid, tag, opts) {
+			if (DataUtil[prop]?.unpackUid) return DataUtil[prop]?.unpackUid(uid, tag, opts);
+			return DataUtil.generic.unpackUid(uid, tag, opts);
+		},
+
+		getNormalizedUid (prop, uid, tag, opts) {
+			if (DataUtil[prop]?.getNormalizedUid) return DataUtil[prop].getNormalizedUid(uid, tag, opts);
+			return DataUtil.generic.getNormalizedUid(uid, tag, opts);
+		},
+
+		getUid (prop, ent, opts) {
+			if (DataUtil[prop]?.getUid) return DataUtil[prop].getUid(ent, opts);
+			return DataUtil.generic.getUid(ent, opts);
+		},
 	},
 
 	monster: class extends _DataUtilPropConfigMultiSource {
@@ -4041,7 +4059,7 @@ DataUtil = {
 		}
 
 		static _getAdditionalVersionsData (mon) {
-			if (!mon.variant) return [];
+			if (!mon.variant?.length) return [];
 
 			return mon.variant
 				.filter(it => it._version)
@@ -4291,6 +4309,7 @@ DataUtil = {
 		}
 
 		static async loadBrew ({isAddBaseRaces = true} = {}) {
+			if (typeof BrewUtil2 === "undefined") return {};
 			const rawSite = await DataUtil.race.loadRawJSON();
 			const brew = await BrewUtil2.pGetBrewProcessed();
 			return DataUtil.race.getPostProcessedBrewJson(rawSite, brew, {isAddBaseRaces});
@@ -4401,7 +4420,7 @@ DataUtil = {
 		}
 
 		static async loadBrew () {
-			const brew = await BrewUtil2.pGetBrewProcessed();
+			const brew = typeof BrewUtil2 !== "undefined" ? await BrewUtil2.pGetBrewProcessed() : {};
 			DataUtil.recipe.postProcessData(brew);
 			return brew;
 		}
@@ -4595,7 +4614,7 @@ DataUtil = {
 
 				const hash = UrlUtil.URL_TO_HASH_BUILDER["classFeature"]({name, className, classSource, level, source});
 
-				// Skip blacklisted
+				// Skip blocklisted
 				if (ExcludeUtil.isInitialised && ExcludeUtil.isExcluded(hash, "classFeature", source, {isNoCount: true})) continue;
 
 				const classFeature = await Renderer.hover.pCacheAndGet("classFeature", source, hash, {isCopy: true});
@@ -4646,7 +4665,7 @@ DataUtil = {
 
 				const hash = UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"]({name, className, classSource, subclassShortName, subclassSource, level, source});
 
-				// Skip blacklisted
+				// Skip blocklisted
 				if (ExcludeUtil.isInitialised && ExcludeUtil.isExcluded(hash, "subclassFeature", source, {isNoCount: true})) continue;
 
 				const subclassFeature = await Renderer.hover.pCacheAndGet("subclassFeature", source, hash, {isCopy: true});
@@ -4742,6 +4761,35 @@ DataUtil = {
 			return data;
 		}
 
+		static getUid (ent, opts) {
+			return this.packUidDeity(ent, opts);
+		}
+
+		static getNormalizedUid (uid, tag) {
+			const {name, pantheon, source} = this.unpackUidDeity(uid, tag, {isLower: true});
+			return [name, pantheon, source].join("|");
+		}
+
+		static unpackUidDeity (uid, opts) {
+			opts = opts || {};
+			if (opts.isLower) uid = uid.toLowerCase();
+			let [name, pantheon, source, displayText, ...others] = uid.split("|").map(it => it.trim());
+
+			pantheon = pantheon || "forgotten realms";
+			if (opts.isLower) pantheon = pantheon.toLowerCase();
+
+			source = source || Parser.getTagSource("deity", source);
+			if (opts.isLower) source = source.toLowerCase();
+
+			return {
+				name,
+				pantheon,
+				source,
+				displayText,
+				others,
+			};
+		}
+
 		static packUidDeity (it) {
 			// <name>|<pantheon>|<source>
 			const sourceDefault = Parser.getTagSource("deity");
@@ -4795,7 +4843,7 @@ DataUtil = {
 			return combined;
 		}
 
-		static _getConvertedEncounterTableName (group, tableRaw) { return `${group.name} Encounters (Levels ${tableRaw.minlvl}\u2014${tableRaw.maxlvl})`; }
+		static _getConvertedEncounterTableName (group, tableRaw) { return `${group.name} Encounters${tableRaw.minlvl && tableRaw.maxlvl ? ` (Levels ${tableRaw.minlvl}\u2014${tableRaw.maxlvl})` : ""}`; }
 		static _getConvertedNameTableName (group, tableRaw) { return `${group.name} Names - ${tableRaw.option}`; }
 
 		static _getConvertedEncounterOrNamesTable ({group, tableRaw, fnGetNameCaption, colLabel1}) {
@@ -4809,15 +4857,18 @@ DataUtil = {
 				colLabels: [
 					`d${tableRaw.diceType}`,
 					colLabel1,
-				],
+					tableRaw.rollAttitude ? `Attitude` : null,
+				].filter(Boolean),
 				colStyles: [
 					"col-2 text-center",
-					"col-10",
-				],
+					tableRaw.rollAttitude ? "col-8" : "col-10",
+					tableRaw.rollAttitude ? `col-2 text-center` : null,
+				].filter(Boolean),
 				rows: tableRaw.table.map(it => [
 					`${it.min}${it.max && it.max !== it.min ? `-${it.max}` : ""}`,
 					it.result,
-				]),
+					tableRaw.rollAttitude ? it.resultAttitude || "\u2014" : null,
+				].filter(Boolean)),
 			};
 		}
 	},
@@ -4835,7 +4886,7 @@ DataUtil = {
 		static _PAGE = UrlUtil.PG_VARIANTRULES;
 		static _FILENAME = "variantrules.json";
 
-		async loadJSON () {
+		static async loadJSON () {
 			const rawData = await super.loadJSON();
 			const rawDataGenerated = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/generated/gendata-variantrules.json`);
 
@@ -6037,7 +6088,7 @@ ExcludeUtil = {
 			ExcludeUtil._excludes = ExcludeUtil._excludes.filter(it => it.hash); // remove legacy rows
 		} catch (e) {
 			JqueryUtil.doToast({
-				content: "Error when loading content blacklist! Purged blacklist data. (See the log for more information.)",
+				content: "Error when loading content blocklist! Purged blocklist data. (See the log for more information.)",
 				type: "danger",
 			});
 			try {
@@ -6153,7 +6204,7 @@ ExcludeUtil = {
 	},
 
 	isAllContentExcluded (list) { return (!list.length && ExcludeUtil._excludeCount) || (list.length > 0 && list.length === ExcludeUtil._excludeCount); },
-	getAllContentBlacklistedHtml () { return `<div class="initial-message">(All content <a href="blacklist.html">blacklisted</a>)</div>`; },
+	getAllContentBlocklistedHtml () { return `<div class="initial-message">(All content <a href="blocklist.html">blocklisted</a>)</div>`; },
 
 	async _pSave () {
 		return StorageUtil.pSet(VeCt.STORAGE_EXCLUDES, ExcludeUtil._excludes);
@@ -6353,6 +6404,30 @@ DatetimeUtil._SECS_PER_YEAR = 31536000;
 DatetimeUtil._SECS_PER_DAY = 86400;
 DatetimeUtil._SECS_PER_HOUR = 3600;
 DatetimeUtil._SECS_PER_MINUTE = 60;
+
+EditorUtil = {
+	getTheme () {
+		const {isNight} = styleSwitcher.getSummary();
+		return isNight ? "ace/theme/tomorrow_night" : "ace/theme/textmate";
+	},
+
+	initEditor (id, additionalOpts = null) {
+		additionalOpts = additionalOpts || {};
+
+		const editor = ace.edit(id);
+		editor.setOptions({
+			theme: EditorUtil.getTheme(),
+			wrap: true,
+			showPrintMargin: false,
+			tabSize: 2,
+			...additionalOpts,
+		});
+
+		styleSwitcher.addFnOnChange(() => editor.setOptions({theme: EditorUtil.getTheme()}));
+
+		return editor;
+	},
+};
 
 // MISC WEBPAGE ONLOADS ================================================================================================
 if (!IS_VTT && typeof window !== "undefined") {

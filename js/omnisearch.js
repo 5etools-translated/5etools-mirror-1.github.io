@@ -230,7 +230,7 @@ class Omnisearch {
 			results = results.filter(r => !r.doc.s || !SourceUtil.isNonstandardSourceWotc(r.doc.s));
 		}
 
-		if (!this._state.isShowBlacklisted && ExcludeUtil.getList().length) {
+		if (!this._state.isShowBlocklisted && ExcludeUtil.getList().length) {
 			const resultsNxt = [];
 			for (const r of results) {
 				if (r.doc.c === Parser.CAT_ID_QUICKREF || r.doc.c === Parser.CAT_ID_PAGE) {
@@ -276,7 +276,7 @@ class Omnisearch {
 
 	static _$btnToggleBrew = null;
 	static _$btnToggleUa = null;
-	static _$btnToggleBlacklisted = null;
+	static _$btnToggleBlocklisted = null;
 	static _$btnToggleSrd = null;
 
 	static _doInitBtnToggleFilter (
@@ -317,10 +317,10 @@ class Omnisearch {
 		});
 
 		this._doInitBtnToggleFilter({
-			propState: "isShowBlacklisted",
-			propBtn: "_$btnToggleBlacklisted",
-			title: "Include blacklisted content results",
-			text: "Include Blacklisted",
+			propState: "isShowBlocklisted",
+			propBtn: "_$btnToggleBlocklisted",
+			title: "Include blocklisted content results",
+			text: "Include Blocklisted",
 		});
 
 		this._doInitBtnToggleFilter({
@@ -337,7 +337,7 @@ class Omnisearch {
 
 		this._$searchOut.append($(`<div class="ve-flex-h-right ve-flex-v-center mb-2"/>`)
 			.append([
-				$$`<div class="btn-group ve-flex-v-center">${this._$btnToggleBrew}${this._$btnToggleUa}${this._$btnToggleBlacklisted}${this._$btnToggleSrd}</div>`,
+				$$`<div class="btn-group ve-flex-v-center">${this._$btnToggleBrew}${this._$btnToggleUa}${this._$btnToggleBlocklisted}${this._$btnToggleSrd}</div>`,
 				$btnHelp,
 			]));
 		const base = page * this._MAX_RESULTS;
@@ -420,18 +420,18 @@ class Omnisearch {
 			|| {
 				isShowBrew: true,
 				isShowUa: true,
-				isShowBlacklisted: false,
+				isShowBlocklisted: false,
 				isSrdOnly: false,
 			};
 
 		class SearchState extends BaseComponent {
 			get isShowBrew () { return this._state.isShowBrew; }
 			get isShowUa () { return this._state.isShowUa; }
-			get isShowBlacklisted () { return this._state.isShowBlacklisted; }
+			get isShowBlocklisted () { return this._state.isShowBlocklisted; }
 			get isSrdOnly () { return this._state.isSrdOnly; }
 			set isShowBrew (val) { this._state.isShowBrew = !!val; }
 			set isShowUa (val) { this._state.isShowUa = !!val; }
-			set isShowBlacklisted (val) { this._state.isShowBlacklisted = !!val; }
+			set isShowBlocklisted (val) { this._state.isShowBlocklisted = !!val; }
 			set isSrdOnly (val) { this._state.isSrdOnly = !!val; }
 		}
 		this._state = SearchState.fromObject(saved);
@@ -442,15 +442,15 @@ class Omnisearch {
 
 	static addHookBrew (hk) { this._state._addHookBase("isShowBrew", hk); }
 	static addHookUa (hk) { this._state._addHookBase("isShowUa", hk); }
-	static addHookBlacklisted (hk) { this._state._addHookBase("isShowBlacklisted", hk); }
+	static addHookBlocklisted (hk) { this._state._addHookBase("isShowBlocklisted", hk); }
 	static addHookSrdOnly (hk) { this._state._addHookBase("isSrdOnly", hk); }
 	static doToggleBrew () { this._state.isShowBrew = !this._state.isShowBrew; }
 	static doToggleUa () { this._state.isShowUa = !this._state.isShowUa; }
-	static doToggleBlacklisted () { this._state.isShowBlacklisted = !this._state.isShowBlacklisted; }
+	static doToggleBlocklisted () { this._state.isShowBlocklisted = !this._state.isShowBlocklisted; }
 	static doToggleSrdOnly () { this._state.isSrdOnly = !this._state.isSrdOnly; }
 	static get isShowBrew () { return this._state.isShowBrew; }
 	static get isShowUa () { return this._state.isShowUa; }
-	static get isShowBlacklisted () { return this._state.isShowBlacklisted; }
+	static get isShowBlocklisted () { return this._state.isShowBlocklisted; }
 	static get isSrdOnly () { return this._state.isSrdOnly; }
 
 	static async _pDoSearchLoad () {
@@ -582,7 +582,7 @@ Omnisearch._$wrpNoResultsFound = null;
 Omnisearch._clickFirst = false;
 Omnisearch._MAX_RESULTS = 15;
 Omnisearch._showUaEtc = false;
-Omnisearch._hideBlacklisted = false;
+Omnisearch._hideBlocklisted = false;
 
 Omnisearch._STORAGE_NAME = "search";
 

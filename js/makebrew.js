@@ -316,7 +316,6 @@ class Builder extends ProxyBase {
 	 * @param opts.titleSidebarDownloadJson Text for "Download JSON" sidebar button.
 	 * @param opts.metaSidebarDownloadMarkdown Meta for a "Download Markdown" sidebar button.
 	 * @param opts.prop Homebrew prop.
-	 * @param opts.typeRenderData Renderer "dataX" entry type.
 	 */
 	constructor (opts) {
 		super();
@@ -325,7 +324,6 @@ class Builder extends ProxyBase {
 		this._titleSidebarDownloadJson = opts.titleSidebarDownloadJson;
 		this._metaSidebarDownloadMarkdown = opts.metaSidebarDownloadMarkdown;
 		this._prop = opts.prop;
-		this._typeRenderData = opts.typeRenderData;
 
 		Builder._BUILDERS.push(this);
 		TabUiUtil.decorate(this);
@@ -590,7 +588,15 @@ class Builder extends ProxyBase {
 					async (evt) => {
 						const entry = MiscUtil.copy(await BrewUtil2.pGetEditableBrewEntity(this._prop, ent.uniqueId));
 						const name = `${entry._displayName || entry.name} \u2014 Markdown`;
-						const mdText = RendererMarkdown.get().render({entries: [{type: this._typeRenderData, [this._typeRenderData]: entry}]});
+						const mdText = RendererMarkdown.get().render({
+							entries: [
+								{
+									type: "statblockInline",
+									dataType: this._prop,
+									data: entry,
+								},
+							],
+						});
 						const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
 
 						Renderer.hover.getShowWindow(

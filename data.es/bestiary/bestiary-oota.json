@@ -2288,7 +2288,34 @@
 						"replace": "the drow",
 						"with": "Hanne",
 						"flags": "i"
-					}
+					},
+					"spellcasting": [
+						{
+							"mode": "appendArr",
+							"items": {
+								"name": "Spellcasting",
+								"headerEntries": [
+									"Hanne is a 1st-level spellcaster. Her spellcasting ability is Intelligence (spell save {@dc 13}, {@hit 5} to hit with spell attacks). She has the following wizard spells prepared:"
+								],
+								"spells": {
+									"0": {
+										"spells": [
+											"{@spell minor illusion}",
+											"{@spell ray of frost}"
+										]
+									},
+									"1": {
+										"slots": 4,
+										"spells": [
+											"{@spell shield}",
+											"{@spell mage armor}"
+										]
+									}
+								},
+								"ability": "int"
+							}
+						}
+					]
 				}
 			},
 			"ac": [
@@ -4008,10 +4035,10 @@
 				"cha": "+7"
 			},
 			"skill": {
-				"arcana": "+5",
-				"perception": "+3",
-				"stealth": "+7",
-				"survival": "+3"
+				"arcana": "+4",
+				"perception": "+2",
+				"stealth": "+6",
+				"survival": "+2"
 			},
 			"senses": [
 				"darkvision 60 ft."
@@ -4980,7 +5007,7 @@
 					"name": "Petrifying Gaze",
 					"entries": [
 						"Si una criatura comienza su turno a menos de 15 pies del basilisco y ambos pueden verse, el basilisco puede obligar a la criatura a realizar una tirada de salvación de Constitución {@dc 12} si el basilisco no es {@condition incapacitated}. Si falla la tirada de salvación, la criatura empieza a convertirse en piedra por arte de magia y queda {@condition restrained}. Debe repetir la tirada de salvación al final de su siguiente turno. Si tiene éxito, el efecto termina. Si falla, la criatura queda {@condition petrified} hasta que se libere mediante el hechizo {@spell greater restoration} u otra magia.",
-						"Una criatura que no esté sorprendida puede desviar la mirada para evitar la tirada de salvación al comienzo de su turno. Si lo hace, no podrá ver al basilisco hasta el comienzo de su siguiente turno, cuando podrá volver a desviar la mirada. Si mira al basilisco mientras tanto, debe realizar inmediatamente la tirada de salvación.",
+						"A creature that isn't {@quickref Surprise|PHB|3|0|surprised} can avert its eyes to avoid the saving throw at the start of its turn. If it does so, it can't see the basilisk until the start of its next turn, when it can avert its eyes again. If it looks at the basilisk in the meantime, it must immediately make the save.",
 						"Si el basilisco ve su reflejo a menos de 30 pies de él con luz brillante, se confunde con un rival y se apunta con su mirada."
 					]
 				}

@@ -34,6 +34,7 @@ const PANEL_TYP_COUNTER = 16;
 const PANEL_TYP_IMAGE = 20;
 const PANEL_TYP_ADVENTURE_DYNAMIC_MAP = 21;
 const PANEL_TYP_GENERIC_EMBED = 90;
+const PANEL_TYP_ERROR = 98;
 const PANEL_TYP_BLANK = 99;
 
 const TIME_TRACKER_MOON_SPRITE = new Image();
@@ -997,6 +998,10 @@ class Panel {
 					p.doPopulate_AdventureBookDynamicMap(saved.s, saved.r);
 					handleTabRenamed(p);
 					return p;
+				case PANEL_TYP_ERROR:
+					p.doPopulate_Error(saved.s, saved.r);
+					handleTabRenamed(p);
+					return p;
 				case PANEL_TYP_BLANK:
 					p.doPopulate_Blank(saved.r);
 					handleTabRenamed(p);
@@ -1098,6 +1103,11 @@ class Panel {
 			source,
 			hash,
 		).then(it => {
+			if (!it) {
+				setTimeout(() => { throw new Error(`Failed to load entity: "${hash}" (${source}) from ${page}`); });
+				return this.doPopulate_Error({message: `Failed to load <code>${hash}</code> from page <code>${page}</code>! (Content does not exist.)`}, title);
+			}
+
 			const fn = Renderer.hover.getFnRenderCompact(page);
 
 			const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
@@ -1140,7 +1150,7 @@ class Panel {
 					const originalCr = Parser.crToNumber(mon.cr) === targetCr;
 
 					const doRender = (toRender) => {
-						$contentStats.empty().append(Renderer.monster.getCompactRenderedString(toRender, null, {isShowScalers: true, isScaledCr: !originalCr}));
+						$contentStats.empty().append(Renderer.monster.getCompactRenderedString(toRender, {isShowScalers: true, isScaledCr: !originalCr}));
 
 						const nxtMeta = {
 							...meta,
@@ -1168,7 +1178,7 @@ class Panel {
 		});
 
 		$contentStats.off("click", ".mon__btn-reset-cr").on("click", ".mon__btn-reset-cr", function () {
-			$contentStats.empty().append(Renderer.monster.getCompactRenderedString(mon, null, {isShowScalers: true, isScaledCr: false}));
+			$contentStats.empty().append(Renderer.monster.getCompactRenderedString(mon, {isShowScalers: true, isScaledCr: false}));
 			self.set$Tab(
 				self.tabIndex,
 				PANEL_TYP_STATS,
@@ -1197,7 +1207,7 @@ class Panel {
 
 					ScaleSpellSummonedCreature.scale(mon, spellLevel)
 						.then(toRender => {
-							$contentStats.empty().append(Renderer.monster.getCompactRenderedString(toRender, null, {isShowScalers: true, isScaledSpellSummon: true}));
+							$contentStats.empty().append(Renderer.monster.getCompactRenderedString(toRender, {isShowScalers: true, isScaledSpellSummon: true}));
 
 							self._stats_doUpdateSummonScaleDropdowns(toRender, $contentStats);
 
@@ -1211,7 +1221,7 @@ class Panel {
 							);
 						});
 				} else {
-					$contentStats.empty().append(Renderer.monster.getCompactRenderedString(mon, null, {isShowScalers: true, isScaledCr: false, isScaledSpellSummon: false}));
+					$contentStats.empty().append(Renderer.monster.getCompactRenderedString(mon, {isShowScalers: true, isScaledCr: false, isScaledSpellSummon: false}));
 
 					self._stats_doUpdateSummonScaleDropdowns(mon, $contentStats);
 
@@ -1240,7 +1250,7 @@ class Panel {
 
 					ScaleClassSummonedCreature.scale(mon, classLevel)
 						.then(toRender => {
-							$contentStats.empty().append(Renderer.monster.getCompactRenderedString(toRender, null, {isShowScalers: true, isScaledClassSummon: true}));
+							$contentStats.empty().append(Renderer.monster.getCompactRenderedString(toRender, {isShowScalers: true, isScaledClassSummon: true}));
 
 							self._stats_doUpdateSummonScaleDropdowns(toRender, $contentStats);
 
@@ -1254,7 +1264,7 @@ class Panel {
 							);
 						});
 				} else {
-					$contentStats.empty().append(Renderer.monster.getCompactRenderedString(mon, null, {isShowScalers: true, isScaledCr: false, isScaledClassSummon: false}));
+					$contentStats.empty().append(Renderer.monster.getCompactRenderedString(mon, {isShowScalers: true, isScaledCr: false, isScaledClassSummon: false}));
 
 					self._stats_doUpdateSummonScaleDropdowns(mon, $contentStats);
 
@@ -1294,7 +1304,7 @@ class Panel {
 			ScaleCreature.scale(it, targetCr).then(initialRender => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
 				const $contentStats = $(`<table class="w-100 stats"/>`).appendTo($contentInner);
-				$contentStats.append(Renderer.monster.getCompactRenderedString(initialRender, null, {isShowScalers: true, isScaledCr: true}));
+				$contentStats.append(Renderer.monster.getCompactRenderedString(initialRender, {isShowScalers: true, isScaledCr: true}));
 
 				this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
 
@@ -1325,7 +1335,7 @@ class Panel {
 			ScaleSpellSummonedCreature.scale(it, summonSpellLevel).then(scaledMon => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
 				const $contentStats = $(`<table class="w-100 stats"/>`).appendTo($contentInner);
-				$contentStats.append(Renderer.monster.getCompactRenderedString(scaledMon, null, {isShowScalers: true, isScaledSpellSummon: true}));
+				$contentStats.append(Renderer.monster.getCompactRenderedString(scaledMon, {isShowScalers: true, isScaledSpellSummon: true}));
 
 				this._stats_doUpdateSummonScaleDropdowns(scaledMon, $contentStats);
 
@@ -1358,7 +1368,7 @@ class Panel {
 			ScaleClassSummonedCreature.scale(it, summonClassLevel).then(scaledMon => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
 				const $contentStats = $(`<table class="w-100 stats"/>`).appendTo($contentInner);
-				$contentStats.append(Renderer.monster.getCompactRenderedString(scaledMon, null, {isShowScalers: true, isScaledClassSummon: true}));
+				$contentStats.append(Renderer.monster.getCompactRenderedString(scaledMon, {isShowScalers: true, isScaledClassSummon: true}));
 
 				this._stats_doUpdateSummonScaleDropdowns(scaledMon, $contentStats);
 
@@ -1614,6 +1624,16 @@ class Panel {
 		);
 	}
 
+	doPopulate_Error (state, title = "") {
+		this.set$ContentTab(
+			PANEL_TYP_ERROR,
+			state,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(`<div class="w-100 h-100 ve-flex-vh-center text-danger"><div>${state.message}</div></div>`),
+			title,
+			true,
+		);
+	}
+
 	doPopulate_Blank (title = "") {
 		const meta = {};
 		this.set$ContentTab(
@@ -1635,8 +1655,8 @@ class Panel {
 		const page = await InputUiUtil.pGetUserEnum({
 			title: "Select Page",
 			values: Object.keys(UrlUtil.SUBLIST_PAGES)
-				.sort((a, b) => SortUtil.ascSortLower(UrlUtil.PG_TO_NAME[a], UrlUtil.PG_TO_NAME[b])),
-			fnDisplay: page => UrlUtil.PG_TO_NAME[page],
+				.sort((a, b) => SortUtil.ascSortLower(UrlUtil.pageToDisplayPage(a), UrlUtil.pageToDisplayPage(b))),
+			fnDisplay: page => UrlUtil.pageToDisplayPage(page),
 			isResolveItem: true,
 		});
 		if (!page) return;
@@ -2479,6 +2499,8 @@ class Panel {
 							u: contentMeta.u,
 						},
 					};
+				case PANEL_TYP_ERROR:
+					return {r: toSaveTitle, s: contentMeta};
 				case PANEL_TYP_BLANK:
 					return {r: toSaveTitle};
 				default:

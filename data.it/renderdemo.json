@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Tag di stile; {@bold some text to be bolded} (alternativa {@b shorthand}), {@italic some text to be italicised} (alternativa {@i shorthand}), {@underline some text to be underlined} (alternativa {@u shorthand}), {@strike some text to strike-through}, (alternativa {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} tag, {@code print(&quot;hello world&quot;)} tag",
+						"Tag di stile; {@bold some text to be bolded} (alternativa {@b shorthand}), {@italic some text to be italicised} (alternativa {@i shorthand}), {@underline some text to be underlined} (alternativa {@u shorthand}), {@strike some text to strike-through}, (alternativa {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} tag, {@code print(&quot;hello world&quot;)} tag, misc {@style Style|small-caps;small;capitalize;dnd-font} tag",
 						"Inoltre, {@note note tags}, utilizzato per aggiungere errata o note a piè di pagina di Twitter.",
 						"Tag del rullo di dadi; {@dice 1d2-2+2d3+5} per i normali lanci di dadi ({@dice 1d6;2d6} per le opzioni multiple; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} per le richieste di input), con {@dice 1d20+2|display text} e {@dice 1d20+2|display text|rolled by name} estesi, e una versione speciale \"hit\" che assume che un d20 debba essere lanciato {@hit +7} (e lancia vantaggio su shift-click, svantaggio su alt-click). C'è anche {@damage 1d12+3} che tira i colpi critici su shift-click e metà danno (arrotondando per difetto) su alt-click, e {@d20 -4} che tira anche vantaggio/svantaggio, anche se i tag @hit sono preferiti dove appropriato. Gli incantesimi possono avere tag di dado scalare, (danno di 2d6 o 3d6 al livello 1, aggiungere un extra {@scaledice 2d6;3d6|2-9|1d6} per ogni livello oltre il 2°), per quando l'effetto di un incantesimo scala a livelli più alti. {@ability str 20}, {@savingThrow str 5} e {@skillCheck animal_handling 5} sono usati come stenografia interna, ma possono essere utili altrove.",
 						"Tag dadi automatici; come sopra, ma un risultato viene tirato automaticamente al momento del rendering: {@autodice 2d10+2}.",
@@ -68,7 +68,7 @@
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"Un altro tag che appare occasionalmente nei dati è il tag @filter. Questo tag può essere difficile da usare, e generalmente si basa sulla conoscenza degli interni di ogni pagina. Come tale, usalo con cautela, e se non sei sicuro di qualcosa, non aver paura di passare dal nostro {@link Discord|https://discord.gg/5etools} e fare domande.",
+								"Un altro tag che compare occasionalmente nei dati è il tag @filtro. Questo tag può essere difficile da usare e in genere si basa sulla conoscenza degli interni di ogni pagina. Per questo motivo, è bene usarlo con cautela e, se non si è sicuri di qualcosa, non si deve avere paura di fare un salto da noi {@link Discord|https://discord.gg/5etools} per chiedere informazioni. Si noti che è possibile fare CTRL+click sul pulsante \"Ottieni link ai filtri\" (magnete) in una pagina dell'elenco per copiare il tag @filtro per la selezione del filtro corrente.",
 								"La sintassi del tag @filter è la seguente:",
 								"(aprire parentesi graffa)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(chiudere parentesi graffa)",
 								"Lo scopo di questo tag è di aprire la pagina data, pre-filtrata con le opzioni di filtro specificate. C'è un grosso inconveniente che lo rende difficile da usare per gli aspiranti JSONtranauti: i valori del filtro usano la versione {@i internal}, come si trova nei dati. Così, per esempio, ..|school=D|... filtrerebbe gli incantesimi per quelli della scuola di Divinazione, poiché 'D' è l'identificatore di Divinazione nei dati. Provare a fare ad esempio ..|scuola=Divinazione|... non funzionerà.",
@@ -566,9 +566,10 @@
 					"entries": [
 						"Creature; formato basato sui dati del Bestiario, con l'aggiunta del tipo (si noti che una voce corretta del Bestiario e un link alla voce è il metodo preferito per aggiungere creature, questa funzionalità esiste principalmente per i dati homebrew):",
 						{
-							"type": "dataCreature",
+							"type": "statblockInline",
 							"style": "inset",
-							"dataCreature": {
+							"dataType": "monster",
+							"data": {
 								"name": "Unicorn",
 								"size": [
 									"L"
@@ -731,8 +732,9 @@
 						},
 						"Incantesimi; come sopra:",
 						{
-							"type": "dataSpell",
-							"dataSpell": {
+							"type": "statblockInline",
+							"dataType": "spell",
+							"data": {
 								"name": "Fireball",
 								"level": 3,
 								"school": "V",

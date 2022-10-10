@@ -21,7 +21,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Stiltaggar; {@bold some text to be bolded} (alternativ {@b shorthand}), {@italic some text to be italicised} (alternativ {@i shorthand}), {@underline some text to be underlined} (alternativ {@u shorthand}), {@strike some text to strike-through}, (alternativ {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} taggar, {@code print(&quot;hello world&quot;)} taggar",
+						"Stilmarkeringar; {@bold some text to be bolded} (alternativ {@b shorthand}), {@italic some text to be italicised} (alternativ {@i shorthand}), {@underline some text to be underlined} (alternativ {@u shorthand}), {@strike some text to strike-through}, (alternativ {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} markeringar, {@code print(&quot;hello world&quot;)} markeringar, diverse {@style Style|small-caps;small;capitalize;dnd-font} markeringar",
 						"Dessutom {@note note tags}, som används för att lägga till errata eller Twitter \"designer fotnoter\".",
 						"Tärningsrulle-taggar; {@dice 1d2-2+2d3+5} för vanliga tärningsrullar ({@dice 1d6;2d6} för flera alternativ; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} för inmatningsfrågor), med utökade {@dice 1d20+2|display text} och {@dice 1d20+2|display text|rolled by name}, och en speciell \"träff\"-version som förutsätter att en d20 ska kastas {@hit +7} (och som ger fördel vid shift-klick, nackdel vid alt-klick). Det finns också {@damage 1d12+3} som ger kritiska träffar vid shift-klick och halva skadan (avrundning nedåt) vid alt-klick, och {@d20 -4} som också ger fördel/nackdel, även om @hit-taggar är att föredra där det är lämpligt. Besvärjelser kan ha skalnings-tärningsmarkeringar, (skada på 2d6 eller 3d6 på nivå 1, lägg till en extra {@scaledice 2d6;3d6|2-9|1d6} för varje nivå efter nivå 2), för när en besvärjelseeffekt skalar på högre nivåer. {@ability str 20}, {@savingThrow str 5} och {@skillCheck animal_handling 5} används som intern förkortning, men kan vara användbara på andra ställen.",
 						"Automatiska tärningsmarkeringar; som ovan, men ett resultat kastas automatiskt vid rendering: {@autodice 2d10+2}.",
@@ -68,7 +68,7 @@
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"En annan tagg som ibland förekommer i uppgifterna är @filter-taggen. Det kan vara svårt att använda den här taggen, och den förutsätter i allmänhet att man känner till sidans interna system. Använd därför med försiktighet och om du är osäker på något, var inte rädd för att komma förbi vår {@link Discord|https://discord.gg/5etools} och ställa frågor.",
+								"En annan tagg som förekommer ibland i uppgifterna är @filter-tagget. Det kan vara svårt att använda den här taggen, och den förutsätter i allmänhet att man känner till sidans interna system. Använd därför med försiktighet och om du är osäker på något, var inte rädd för att komma förbi vår {@link Discord|https://discord.gg/5etools} och ställa frågor. Observera att du kan CTRL+klicka på knappen \"Get link to filters\" (magnet) på en listsida för att kopiera @filter-tagget för ditt aktuella filterval.",
 								"Syntaxen för @filter-taggen är följande:",
 								"(öppna hakparentes)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(stäng hakparentes)",
 								"Syftet med den här taggen är att öppna den angivna sidan, förfiltrerad med de angivna filtreringsalternativen. Det finns en viktig invändning som gör det svårt att använda den här för blivande JSONtranautövare - filtervärdena använder {@i internal}-versionen, som du skulle hitta i data. Så till exempel skulle ..|school=D|... filtrera trollformler till trollformler från Divination school, eftersom \"D\" är Divination-identifieraren i data. Att försöka göra t.ex. ..|school=Divination|... kommer inte att fungera.",
@@ -566,9 +566,10 @@
 					"entries": [
 						"Varelser; format baserat på Bestiary data, med tillagd typ (observera att en riktig Bestiary post och en länk till posten är den föredragna metoden för att lägga till varelser, denna funktion finns främst för homebrew data):",
 						{
-							"type": "dataCreature",
+							"type": "statblockInline",
 							"style": "inset",
-							"dataCreature": {
+							"dataType": "monster",
+							"data": {
 								"name": "Unicorn",
 								"size": [
 									"L"
@@ -731,8 +732,9 @@
 						},
 						"Besvärjelser; som ovan:",
 						{
-							"type": "dataSpell",
-							"dataSpell": {
+							"type": "statblockInline",
+							"dataType": "spell",
+							"data": {
 								"name": "Fireball",
 								"level": 3,
 								"school": "V",

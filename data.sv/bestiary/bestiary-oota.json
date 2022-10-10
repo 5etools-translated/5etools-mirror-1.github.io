@@ -2288,7 +2288,34 @@
 						"replace": "the drow",
 						"with": "Hanne",
 						"flags": "i"
-					}
+					},
+					"spellcasting": [
+						{
+							"mode": "appendArr",
+							"items": {
+								"name": "Spellcasting",
+								"headerEntries": [
+									"Hanne är en trollkarl på 1:a nivån. Hennes trollkonstförmåga är intelligens (trollformelräddning {@dc 13}, {@hit 5} för att träffa med trollformelattacker). Hon har följande trollformler förberedda:"
+								],
+								"spells": {
+									"0": {
+										"spells": [
+											"{@spell minor illusion}",
+											"{@spell ray of frost}"
+										]
+									},
+									"1": {
+										"slots": 4,
+										"spells": [
+											"{@spell shield}",
+											"{@spell mage armor}"
+										]
+									}
+								},
+								"ability": "int"
+							}
+						}
+					]
 				}
 			},
 			"ac": [
@@ -4008,10 +4035,10 @@
 				"cha": "+7"
 			},
 			"skill": {
-				"arcana": "+5",
-				"perception": "+3",
-				"stealth": "+7",
-				"survival": "+3"
+				"arcana": "+4",
+				"perception": "+2",
+				"stealth": "+6",
+				"survival": "+2"
 			},
 			"senses": [
 				"darkvision 60 ft."
@@ -4980,7 +5007,7 @@
 					"name": "Petrifying Gaze",
 					"entries": [
 						"Om en varelse börjar sin tur inom 15 fot från basiliskan och de två kan se varandra kan basiliskan tvinga varelsen att göra ett {@dc 12} räddningskast i konstitutionen om basiliskan inte är {@condition incapacitated}. Vid ett misslyckat räddningsförsök börjar varelsen magiskt förvandlas till sten och blir {@condition restrained}. Den måste upprepa räddningskastet i slutet av sin nästa tur. Vid ett lyckat försök upphör effekten. Vid ett misslyckande är varelsen {@condition petrified} tills den befrias av {@spell greater restoration} förtrollningen eller annan magi.",
-						"En varelse som inte är överraskad kan vända bort ögonen för att undvika räddningskastet i början av sin tur. Om den gör det kan den inte se basiliskan förrän i början av nästa tur, då den kan vända bort ögonen igen. Om den tittar på basilisken under tiden måste den omedelbart göra räddningskastet.",
+						"En varelse som inte är {@quickref Surprise|PHB|3|0|surprised} kan vända bort ögonen för att undvika räddningskastet i början av sin tur. Om den gör det kan den inte se basiliskan förrän i början av nästa tur, då den kan vända bort ögonen igen. Om den tittar på basilisken under tiden måste den omedelbart göra räddningskastet.",
 						"Om basiliskan ser sin spegelbild inom 30 fot från sig i starkt ljus misstar den sig själv för en rival och siktar på sig själv med sin blick."
 					]
 				}

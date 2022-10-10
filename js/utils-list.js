@@ -99,12 +99,12 @@ class ListUtil {
 }
 
 class ListUtilEntity {
-	static _getString_action_currentPinned_name ({page}) { return `From Current ${UrlUtil.PG_TO_NAME[page]} Pinned List`; }
-	static _getString_action_savedPinned_name ({page}) { return `From Saved ${UrlUtil.PG_TO_NAME[page]} Pinned List`; }
-	static _getString_action_file_name ({page}) { return `From ${UrlUtil.PG_TO_NAME[page]} Pinned List File`; }
+	static _getString_action_currentPinned_name ({page}) { return `From Current ${UrlUtil.pageToDisplayPage(page)} Pinned List`; }
+	static _getString_action_savedPinned_name ({page}) { return `From Saved ${UrlUtil.pageToDisplayPage(page)} Pinned List`; }
+	static _getString_action_file_name ({page}) { return `From ${UrlUtil.pageToDisplayPage(page)} Pinned List File`; }
 
-	static _getString_action_currentPinned_msg_noSaved ({page}) { return `No saved list! Please first go to the ${UrlUtil.PG_TO_NAME[page]} page and create one.`; }
-	static _getString_action_savedPinned_msg_noSaved ({page}) { return `No saved lists were found! Go to the ${UrlUtil.PG_TO_NAME[page]} page and create some first.`; }
+	static _getString_action_currentPinned_msg_noSaved ({page}) { return `No saved list! Please first go to the ${UrlUtil.pageToDisplayPage(page)} page and create one.`; }
+	static _getString_action_savedPinned_msg_noSaved ({page}) { return `No saved lists were found! Go to the ${UrlUtil.pageToDisplayPage(page)} page and create some first.`; }
 
 	static async _pGetLoadableSublist_getAdditionalState ({exportedSublist}) { return {}; }
 

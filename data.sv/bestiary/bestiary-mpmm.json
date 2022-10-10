@@ -4692,7 +4692,7 @@
 					"name": "Death Gaze",
 					"entries": [
 						"När en varelse som kan se bodakens ögon börjar sin tur inom 30 fot från bodaken kan bodaken tvinga den att göra ett {@dc 13} räddningskast i konstitutionen om bodaken inte är {@condition incapacitated} och kan se varelsen. Om räddningskastet misslyckas med 5 eller mer reduceras varelsen till 0 träffpunkter om den inte är immun mot {@condition frightened} tillståndet. I annat fall tar varelsen 16 ({@damage 3d10}) psykisk skada vid ett misslyckat räddningsförsök.",
-						"Om den inte är överraskad kan en varelse vända bort ögonen för att undvika räddningskastet i början av sin tur. Om varelsen gör det har den nackdel på attackkast mot bodaken fram till början av nästa tur. Om varelsen tittar på bodaken under tiden måste den varelsen omedelbart göra räddningskastet."
+						"Om inte {@quickref Surprise|PHB|3|0|surprised} kan en varelse vända bort ögonen för att undvika räddningskastet i början av sin tur. Om varelsen gör det har den nackdel på attackkast mot bodaken fram till början av nästa tur. Om varelsen tittar på bodaken under tiden måste den varelsen omedelbart göra räddningskastet."
 					]
 				},
 				{
@@ -5521,7 +5521,7 @@
 				{
 					"name": "Uncanny Senses",
 					"entries": [
-						"Canoloth kan inte överraskas om den inte är {@condition incapacitated}."
+						"Canoloth kan inte vara {@quickref Surprise|PHB|3|0|surprised} om den inte är {@condition incapacitated}."
 					]
 				}
 			],
@@ -15465,7 +15465,7 @@
 					"name": "Stunning Gaze",
 					"entries": [
 						"När en varelse som kan se gauthens centrala öga börjar sin tur inom 30 fot från gauthen kan gauthen tvinga den att göra ett {@dc 14} räddningskast för visdom om gauthen inte är {@condition incapacitated} och kan se varelsen. En varelse som misslyckas med räddningsförsöket är {@condition stunned} tills början av sin nästa tur.",
-						"Om den inte är överraskad kan en varelse vända bort ögonen i början av sin tur för att undvika räddningskastet. Om varelsen gör det kan den inte se gauthern förrän i början av nästa vändning, då den kan vända bort ögonen igen. Om varelsen tittar på gauth under tiden måste den omedelbart göra räddningskastet."
+						"Om inte {@quickref Surprise|PHB|3|0|surprised} kan en varelse vända bort ögonen i början av sin tur för att undvika räddningskastet. Om varelsen gör det kan den inte se gauthern förrän i början av nästa vändning, då den kan vända bort ögonen igen. Om varelsen tittar på gauth under tiden måste den omedelbart göra räddningskastet."
 					]
 				},
 				{
@@ -30193,25 +30193,34 @@
 				{
 					"name": "Fallible Invisibility",
 					"entries": [
-						"Skulken är {@condition invisible}. Denna osynlighet kan kringgås av tre saker:"
-					]
-				},
-				{
-					"name": "Charnel Candles",
-					"entries": [
-						"Skulken framträder som en dimmig, genomskinlig form i ljuset från ett ljus som är tillverkat av fett från ett lik vars identitet är okänd."
-					]
-				},
-				{
-					"name": "Children",
-					"entries": [
-						"Humanoida barn i åldrarna 10 år och yngre kan se genom denna osynlighet."
-					]
-				},
-				{
-					"name": "Reflective Surfaces",
-					"entries": [
-						"Skulken framträder som en tråkig, slätskinnad tvåbent människa om dess spegelbild kan ses i en spegel eller på en annan yta."
+						"Skulken är {@condition invisible}. Denna osynlighet kan kringgås av tre saker:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Charnel Candles",
+									"entries": [
+										"Skulken framträder som en dimmig, genomskinlig form i ljuset från ett ljus som är tillverkat av fett från ett lik vars identitet är okänd."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Children",
+									"entries": [
+										"Humanoida barn i åldrarna 10 år och yngre kan se genom denna osynlighet."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Reflective Surfaces",
+									"entries": [
+										"Skulken framträder som en tråkig, slätskinnad tvåbent människa om dess spegelbild kan ses i en spegel eller på en annan yta."
+									]
+								}
+							]
+						}
 					]
 				},
 				{
