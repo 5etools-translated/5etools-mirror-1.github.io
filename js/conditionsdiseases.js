@@ -40,6 +40,8 @@ class ConditionsDiseasesPage extends ListPage {
 		super({
 			dataSource: "data/conditionsdiseases.json",
 
+			pFnGetFluff: Renderer.condition.pGetFluff.bind(Renderer.condition),
+
 			pageFilter,
 
 			listClass: "conditions",
@@ -109,7 +111,7 @@ class ConditionsDiseasesPage extends ListPage {
 				isImageTab,
 				$content: this._$pgContent,
 				entity: it,
-				pFnGetFluff: Renderer.condition.pGetFluff,
+				pFnGetFluff: this._pFnGetFluff,
 			});
 		};
 

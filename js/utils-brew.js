@@ -498,33 +498,35 @@ class BrewUtil2 {
 	}
 
 	static async _pAddBrewDependencies_ ({brewDocs, brewsRaw = null, brewsRawLocal = null, lockToken}) {
-		const brewIndex = await DataUtil.brew.pLoadSourceIndex();
 		const urlRoot = await this.pGetCustomUrl();
+		const brewIndex = await DataUtil.brew.pLoadSourceIndex(urlRoot);
 
-		const toLoad = [];
+		const toLoadSources = [];
+		const loadedSources = new Set();
 		const out = [];
-		const loaded = new Set();
 
 		brewsRaw = brewsRaw || await this._pGetBrewRaw({lockToken});
 		brewsRawLocal = brewsRawLocal || await this._pGetBrew_pGetLocalBrew({lockToken});
 
 		const trackLoaded = brew => (brew.body._meta?.sources || [])
 			.filter(src => src.json)
-			.forEach(src => loaded.add(src.json));
+			.forEach(src => loadedSources.add(src.json));
 		brewsRaw.forEach(brew => trackLoaded(brew));
 		brewsRawLocal.forEach(brew => trackLoaded(brew));
 
-		brewDocs.forEach(brewDoc => toLoad.push(...this._getBrewDependencySources({brewDoc, brewIndex})));
+		brewDocs.forEach(brewDoc => toLoadSources.push(...this._getBrewDependencySources({brewDoc, brewIndex})));
 
-		while (toLoad.length) {
-			const src = toLoad.pop();
-			if (loaded.has(src)) continue;
-			loaded.add(src);
+		while (toLoadSources.length) {
+			const src = toLoadSources.pop();
+			if (loadedSources.has(src)) continue;
+			loadedSources.add(src);
 
 			const url = DataUtil.brew.getFileUrl(brewIndex[src], urlRoot);
 			const brewDocDep = await this._pGetBrewDocFromUrl({url});
 			out.push(brewDocDep);
 			trackLoaded(brewDocDep);
+
+			toLoadSources.push(...this._getBrewDependencySources({brewDoc: brewDocDep, brewIndex}));
 		}
 
 		return out;
@@ -770,14 +772,20 @@ class BrewUtil2 {
 	static async pAddBrewFromLoaderTag (ele) {
 		const $ele = $(ele);
 		if (!$ele.hasClass("rd__wrp-loadbrew--ready")) return; // an existing click is being handled
-		let jsonUrl = ele.dataset.rdLoaderPath;
+		let jsonPath = ele.dataset.rdLoaderPath;
 		const name = ele.dataset.rdLoaderName;
 		const cached = $ele.html();
 		const cachedTitle = $ele.title();
 		$ele.title("");
 		$ele.removeClass("rd__wrp-loadbrew--ready").html(`${name.qq()}<span class="glyphicon glyphicon-refresh rd__loadbrew-icon rd__loadbrew-icon--active"></span>`);
-		jsonUrl = jsonUrl.unescapeQuotes();
-		await this.pAddBrewFromUrl(jsonUrl);
+
+		jsonPath = jsonPath.unescapeQuotes();
+		if (!UrlUtil.isFullUrl(jsonPath)) {
+			const brewUrl = await BrewUtil2.pGetCustomUrl();
+			jsonPath = DataUtil.brew.getFileUrl(jsonPath, brewUrl);
+		}
+
+		await this.pAddBrewFromUrl(jsonPath);
 		$ele.html(`${name.qq()}<span class="glyphicon glyphicon-saved rd__loadbrew-icon"></span>`);
 		setTimeout(() => $ele.html(cached).addClass("rd__wrp-loadbrew--ready").title(cachedTitle), 500);
 	}

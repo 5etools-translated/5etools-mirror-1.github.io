@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.21.7",
+	"version": "1.21.8",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
@@ -91,12 +91,7 @@
 					"description": "Used anywhere a shortened form of the creatures name is required (e.g. in legendary action headers).\nIf not supplied, a shortened name will be automatically generated from the creature's full name.\nAlternatively use \"true\" if the \"shortName\" should be an exact copy of the creature's \"name\".",
 					"type": ["string", "boolean"]
 				},
-				"alias": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
-				},
+				"alias": {"$ref": "../util.json#/definitions/alias"},
 				"group": {
 					"description": "A group name, indexed by search. E.g. searching \"Lycanthrope\" would otherwise fail to find anything.\nOnly works on the bestiary page, not in the full site search.",
 					"type": [
@@ -363,6 +358,7 @@
 					"oneOf": [
 						{
 							"type": "array",
+							"minItems": 1,
 							"items": {
 								"type": "string"
 							}
@@ -430,6 +426,7 @@
 					"oneOf": [
 						{
 							"type": "array",
+							"minItems": 1,
 							"items": {
 								"type": "object",
 								"properties": {
@@ -468,6 +465,7 @@
 				},
 				"actionHeader": {
 					"type": "array",
+					"minItems": 1,
 					"items": {
 						"$ref": "../entry.json"
 					}
@@ -476,6 +474,7 @@
 					"oneOf": [
 						{
 							"type": "array",
+							"minItems": 1,
 							"items": {
 								"type": "object",
 								"properties": {
@@ -506,12 +505,14 @@
 				},
 				"bonusHeader": {
 					"type": "array",
+					"minItems": 1,
 					"items": {
 						"$ref": "../entry.json"
 					}
 				},
 				"bonus": {
 					"type": "array",
+					"minItems": 1,
 					"items": {
 						"type": "object",
 						"properties": {
@@ -537,12 +538,14 @@
 				},
 				"reactionHeader": {
 					"type": "array",
+					"minItems": 1,
 					"items": {
 						"$ref": "../entry.json"
 					}
 				},
 				"reaction": {
 					"type": "array",
+					"minItems": 1,
 					"items": {
 						"type": "object",
 						"properties": {
@@ -579,6 +582,7 @@
 				},
 				"legendaryHeader": {
 					"type": "array",
+					"minItems": 1,
 					"items": {
 						"$ref": "../entry.json"
 					}
@@ -587,6 +591,7 @@
 					"oneOf": [
 						{
 							"type": "array",
+							"minItems": 1,
 							"items": {
 								"type": "object",
 								"properties": {
@@ -613,12 +618,14 @@
 				},
 				"mythicHeader": {
 					"type": "array",
+					"minItems": 1,
 					"items": {
 						"$ref": "../entry.json"
 					}
 				},
 				"mythic": {
 					"type": "array",
+					"minItems": 1,
 					"items": {
 						"type": "object",
 						"properties": {
@@ -754,6 +761,7 @@
 				},
 				"environment": {
 					"type": "array",
+					"minItems": 1,
 					"items": {
 						"type": "string",
 						"$$ifSiteElse_key": {
@@ -1087,10 +1095,14 @@
 	"properties": {
 		"monster": {
 			"type": "array",
-			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/creature"
-			}
+			},
+			"$$ifBrew": {
+				"minItems": 1
+			},
+			"$comment": "This is necessary as some site bestiary files assert only otherSources and do not contain any true data.",
+			"uniqueItems": true
 		},
 		"_meta": {
 			"$ref": "../util.json#/definitions/metaBlock"

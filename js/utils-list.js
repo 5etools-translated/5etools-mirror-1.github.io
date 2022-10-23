@@ -461,7 +461,7 @@ class SaveManager extends BaseComponent {
 	async pDoUpdateCurrentStateFrom (exportedSublist, {isNoSave = false} = {}) {
 		if (!exportedSublist) return;
 
-		const activeSave = this._getActiveSave();
+		const activeSave = this._getOrCreateActiveSave();
 
 		Object.keys(this._getNewSave_entity()).forEach(k => activeSave.entity[k] = exportedSublist[k]);
 

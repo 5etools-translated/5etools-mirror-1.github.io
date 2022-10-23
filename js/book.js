@@ -13,6 +13,7 @@ async function onJsonLoad (data) {
 	BookUtil.baseDataUrl = "data/book/book-";
 	BookUtil.allPageUrl = "books.html";
 	BookUtil.propHomebrewData = "bookData";
+	BookUtil.typeTitle = "Book";
 	BookUtil.initLinkGrabbers();
 	BookUtil.initScrollTopFloat();
 

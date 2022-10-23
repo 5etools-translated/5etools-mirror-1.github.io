@@ -1268,6 +1268,7 @@ class IndexableSpecialPages extends IndexableSpecial {
 				n: name,
 				c: Parser.CAT_ID_PAGE,
 				u: page,
+				r: 1, // Consider basic pages to be "SRD friendly"
 			}));
 	}
 }

@@ -42,6 +42,8 @@ class VehiclesPage extends ListPage {
 			dataSource: "data/vehicles.json",
 			dataSourceFluff: "data/fluff-vehicles.json",
 
+			pFnGetFluff: Renderer.vehicle.pGetFluff.bind(Renderer.vehicle),
+
 			pageFilter,
 
 			listClass: "vehicles",
@@ -119,7 +121,7 @@ class VehiclesPage extends ListPage {
 				isImageTab,
 				$content: this._$pgContent,
 				entity: veh,
-				pFnGetFluff: Renderer.vehicle.pGetFluff,
+				pFnGetFluff: this._pFnGetFluff,
 			});
 		};
 
@@ -152,7 +154,7 @@ class VehiclesPage extends ListPage {
 		this._updateSelected();
 	}
 
-	_getSearchCache (entity) {
+	_getSearchCacheStats (entity) {
 		if (this.constructor._INDEXABLE_PROPS.every(it => !entity[it])) return "";
 		const ptrOut = {_: ""};
 		this.constructor._INDEXABLE_PROPS.forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));

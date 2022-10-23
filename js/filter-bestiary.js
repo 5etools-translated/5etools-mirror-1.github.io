@@ -172,7 +172,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		this._environmentFilter = new Filter({
 			header: "Environment",
-			items: ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"],
+			items: ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "none", "swamp", "underdark", "underwater", "urban"],
 			displayFn: StrUtil.uppercaseFirst,
 		});
 		this._vulnerableFilter = FilterCommon.getDamageVulnerableFilter();
@@ -252,6 +252,7 @@ class PageFilterBestiary extends PageFilter {
 		} else {
 			mon._fAlign = ["No Alignment"];
 		}
+		mon._fEnvironment = mon.environment || ["none"];
 		mon._fVuln = mon.vulnerable ? PageFilterBestiary.getAllImmRest(mon.vulnerable, "vulnerable") : [];
 		mon._fRes = mon.resist ? PageFilterBestiary.getAllImmRest(mon.resist, "resist") : [];
 		mon._fImm = mon.immune ? PageFilterBestiary.getAllImmRest(mon.immune, "immune") : [];
@@ -371,7 +372,7 @@ class PageFilterBestiary extends PageFilter {
 		this._tagFilter.addItem(mon._pTypes.tags);
 		this._traitFilter.addItem(mon.traitTags);
 		this._actionReactionFilter.addItem(mon.actionTags);
-		this._environmentFilter.addItem(mon.environment);
+		this._environmentFilter.addItem(mon._fEnvironment);
 		this._vulnerableFilter.addItem(mon._fVuln);
 		this._resistFilter.addItem(mon._fRes);
 		this._immuneFilter.addItem(mon._fImm);
@@ -436,7 +437,7 @@ class PageFilterBestiary extends PageFilter {
 			m._fCr,
 			m._pTypes.type,
 			m._pTypes.tags,
-			m.environment,
+			m._fEnvironment,
 			[
 				m._fVuln,
 				m._fRes,

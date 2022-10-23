@@ -154,6 +154,8 @@ class ItemsPage extends ListPage {
 			dataSource: DataUtil.item.loadJSON.bind(DataUtil.item),
 			brewDataSource: DataUtil.item.loadBrew.bind(DataUtil.item),
 
+			pFnGetFluff: Renderer.item.pGetFluff.bind(Renderer.item),
+
 			pageFilter: new PageFilterItems(),
 
 			dataProps: ["item"],
@@ -319,7 +321,7 @@ class ItemsPage extends ListPage {
 				isImageTab,
 				$content: this._$pgContent,
 				entity: item,
-				pFnGetFluff: Renderer.item.pGetFluff,
+				pFnGetFluff: this._pFnGetFluff,
 			});
 		};
 

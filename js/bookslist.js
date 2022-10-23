@@ -164,8 +164,13 @@ class AdventuresBooksList {
 				this._dataIx,
 				$eleLi,
 				it.name,
-				{source: it.id},
-				{$btnToggleExpand},
+				{
+					source: Parser.sourceJsonToAbv(it.source),
+					alias: (it.alias || []).map(it => `"${it}"`).join(","),
+				},
+				{
+					$btnToggleExpand,
+				},
 			);
 
 			this._list.addItem(listItem);

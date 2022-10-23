@@ -140,7 +140,7 @@ class PsionicsPage extends ListPage {
 		await this._bookView.pHandleSub(sub);
 	}
 
-	_getSearchCache (entity) {
+	_getSearchCacheStats (entity) {
 		if (!entity.entries && !entity.modes && !entity.focus) return "";
 		const ptrOut = {_: ""};
 		this._getSearchCache_handleEntryProp(entity, "entries", ptrOut);

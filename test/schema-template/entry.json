@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.8.0",
+	"version": "1.8.2",
 
 	"definitions" : {
 		"_arrayOfSpell": {
@@ -46,9 +46,7 @@
 					"type": "object",
 					"properties": {
 						"type": {"const": "external"},
-						"url": {
-							"type": "string"
-						}
+						"url": {"$ref": "util.json#/definitions/url"}
 					},
 					"required": ["url"],
 					"additionalProperties": false
@@ -85,12 +83,7 @@
 				{
 					"properties": {
 						"type": {"const": "section"},
-						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
+						"alias": {"$ref": "util.json#/definitions/alias"},
 						"entries": {
 							"type": "array",
 							"items": {
@@ -117,12 +110,7 @@
 								"$ref": "#"
 							}
 						},
-						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
+						"alias": {"$ref": "util.json#/definitions/alias"},
 						"style": {"type": "string"}
 					},
 					"required": ["entries"],
@@ -684,9 +672,7 @@
 									"type": "object",
 									"properties": {
 										"type": {"const": "external"},
-										"url": {
-											"type": "string"
-										}
+										"url": {"$ref": "util.json#/definitions/url"}
 									},
 									"required": ["url"],
 									"additionalProperties": false

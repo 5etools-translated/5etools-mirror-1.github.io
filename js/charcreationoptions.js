@@ -41,6 +41,8 @@ class CharCreationOptionsPage extends ListPage {
 			dataSource: DataUtil.charoption.loadJSON.bind(DataUtil.charoption),
 			dataSourceFluff: DataUtil.charoptionFluff.loadJSON.bind(DataUtil.charoptionFluff),
 
+			pFnGetFluff: Renderer.charoption.pGetFluff.bind(Renderer.charoption),
+
 			pageFilter,
 
 			listClass: "charcreationoptions",
@@ -103,7 +105,7 @@ class CharCreationOptionsPage extends ListPage {
 				isImageTab,
 				$content: this._$pgContent,
 				entity: it,
-				pFnGetFluff: Renderer.charoption.pGetFluff,
+				pFnGetFluff: this._pFnGetFluff,
 			});
 		};
 

@@ -41,6 +41,8 @@ class LanguagesPage extends ListPage {
 		super({
 			dataSource: DataUtil.language.loadJSON.bind(DataUtil.language),
 
+			pFnGetFluff: Renderer.language.pGetFluff.bind(Renderer.language),
+
 			pageFilter,
 
 			listClass: "languages",
@@ -106,7 +108,7 @@ class LanguagesPage extends ListPage {
 				isImageTab,
 				$content: this._$pgContent,
 				entity: it,
-				pFnGetFluff: Renderer.language.pGetFluff,
+				pFnGetFluff: this._pFnGetFluff,
 			});
 		};
 

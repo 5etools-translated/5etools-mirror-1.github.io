@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "races.json",
-	"version": "1.11.3",
+	"version": "1.11.4",
 	"type": "object",
 	"definitions": {
 		"sharedData": {
@@ -11,10 +11,7 @@
 					"type": "string"
 				},
 				"alias": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"$ref": "util.json#/definitions/alias"
 				},
 				"source": {
 					"type": "string"
@@ -199,6 +196,7 @@
 				"creatureTypeTags": {
 					"type": "array",
 					"uniqueItems": true,
+					"minItems": 1,
 					"items": {
 						"type": "string"
 					}
@@ -225,10 +223,7 @@
 					"type": "string"
 				},
 				"alias": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+					"$ref": "util.json#/definitions/alias"
 				},
 				"source": {
 					"type": "string"
@@ -413,6 +408,7 @@
 				"creatureTypeTags": {
 					"type": "array",
 					"uniqueItems": true,
+					"minItems": 1,
 					"items": {
 						"type": "string"
 					}
@@ -606,10 +602,7 @@
 							"type": "string"
 						},
 						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
+							"$ref": "util.json#/definitions/alias"
 						},
 						"source": {
 							"type": "string"
@@ -794,6 +787,7 @@
 						"creatureTypeTags": {
 							"type": "array",
 							"uniqueItems": true,
+							"minItems": 1,
 							"items": {
 								"type": "string"
 							}
@@ -824,10 +818,7 @@
 							"type": "string"
 						},
 						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
+							"$ref": "util.json#/definitions/alias"
 						},
 						"source": {
 							"type": "string"
@@ -1012,6 +1003,7 @@
 						"creatureTypeTags": {
 							"type": "array",
 							"uniqueItems": true,
+							"minItems": 1,
 							"items": {
 								"type": "string"
 							}
@@ -1103,10 +1095,7 @@
 							"type": "string"
 						},
 						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
+							"$ref": "util.json#/definitions/alias"
 						},
 						"source": {
 							"type": "string"
@@ -1291,6 +1280,7 @@
 						"creatureTypeTags": {
 							"type": "array",
 							"uniqueItems": true,
+							"minItems": 1,
 							"items": {
 								"type": "string"
 							}
@@ -1332,10 +1322,7 @@
 							"type": "string"
 						},
 						"alias": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
+							"$ref": "util.json#/definitions/alias"
 						},
 						"source": {
 							"type": "string"
@@ -1520,6 +1507,7 @@
 						"creatureTypeTags": {
 							"type": "array",
 							"uniqueItems": true,
+							"minItems": 1,
 							"items": {
 								"type": "string"
 							}
@@ -1653,6 +1641,7 @@
 		"race": {
 			"type": "array",
 			"uniqueItems": true,
+			"minItems": 1,
 			"items": {
 				"$ref": "#/definitions/race"
 			}
@@ -1660,6 +1649,7 @@
 		"subrace": {
 			"type": "array",
 			"uniqueItems": true,
+			"minItems": 1,
 			"items": {
 				"$ref": "#/definitions/subrace"
 			}

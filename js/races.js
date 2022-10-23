@@ -43,6 +43,8 @@ class RacesPage extends ListPage {
 			dataSourceFluff: DataUtil.raceFluff.loadJSON.bind(DataUtil.raceFluff),
 			brewDataSource: DataUtil.race.loadBrew.bind(DataUtil.race),
 
+			pFnGetFluff: Renderer.race.pGetFluff.bind(Renderer.race),
+
 			pageFilter,
 
 			listClass: "races",
@@ -127,7 +129,7 @@ class RacesPage extends ListPage {
 				isImageTab,
 				$content: this._$pgContent,
 				entity: race,
-				pFnGetFluff: Renderer.race.pGetFluff,
+				pFnGetFluff: this._pFnGetFluff,
 			});
 		};
 

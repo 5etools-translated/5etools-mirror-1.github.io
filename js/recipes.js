@@ -48,6 +48,8 @@ class RecipesPage extends ListPage {
 			dataSource: DataUtil.recipe.loadJSON.bind(DataUtil.recipe),
 			brewDataSource: DataUtil.recipe.loadBrew.bind(DataUtil.recipe),
 
+			pFnGetFluff: Renderer.recipe.pGetFluff.bind(Renderer.recipe),
+
 			pageFilter,
 
 			listClass: "recipes",
@@ -152,7 +154,7 @@ class RecipesPage extends ListPage {
 		return Renderer.utils.pBuildFluffTab({
 			isImageTab,
 			$content: this._$pgContent,
-			pFnGetFluff: Renderer.recipe.pGetFluff,
+			pFnGetFluff: this._pFnGetFluff,
 			entity: it,
 		});
 	}
@@ -168,7 +170,7 @@ class RecipesPage extends ListPage {
 		}
 	}
 
-	_getSearchCache (entity) {
+	_getSearchCacheStats (entity) {
 		if (!entity.ingredients && !entity.instructions) return "";
 		const ptrOut = {_: ""};
 		this._getSearchCache_handleEntryProp(entity, "ingredients", ptrOut);

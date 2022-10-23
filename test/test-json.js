@@ -1,6 +1,7 @@
 const fs = require("fs");
 const ut = require("../node/util.js");
 const Ajv = require("ajv").default;
+const addFormats = require("ajv-formats");
 const jsonSourceMap = require("json-source-map");
 
 const _IS_SORT_RESULTS = !process.env.VET_TEST_JSON_RESULTS_UNSORTED;
@@ -13,6 +14,7 @@ require("../node/compile-schemas.js");
 const ajv = new Ajv({
 	allowUnionTypes: true,
 });
+addFormats(ajv);
 
 ajv.addKeyword({
 	keyword: "version",

@@ -1573,6 +1573,7 @@ function Renderer () {
 			case "@hit":
 			case "@d20":
 			case "@chance":
+			case "@coinflip":
 			case "@recharge":
 			case "@ability":
 			case "@savingThrow":
@@ -1799,8 +1800,11 @@ function Renderer () {
 		return this._recursiveRender(fauxEntry, textStack, meta);
 	};
 
-	this._renderString_getLoaderTagMeta = function (text) {
+	this._renderString_getLoaderTagMeta = function (text, {isDefaultUrl = false} = {}) {
 		const [name, file] = Renderer.splitTagByPipe(text);
+
+		if (!isDefaultUrl) return {name, path: file};
+
 		const path = /^.*?:\/\//.test(file) ? file : `${VeCt.URL_ROOT_BREW}${file}`;
 		return {name, path};
 	};
@@ -3267,6 +3271,25 @@ Renderer.utils = {
 
 				fauxEntry.toRoll = `1d20${mod}`;
 				fauxEntry.d20mod = mod;
+
+				return fauxEntry;
+			}
+
+			// format: {@coinflip} or {@coinflip display text|rollbox rollee name|success text|failure text}
+			case "@coinflip": {
+				const [displayText, name, textSuccess, textFailure] = Renderer.splitTagByPipe(text);
+
+				const fauxEntry = {
+					type: "dice",
+					toRoll: "1d2",
+					successThresh: 1,
+					successMax: 2,
+					displayText: displayText || "flip a coin",
+					chanceSuccessText: textSuccess || `Heads`,
+					chanceFailureText: textFailure || `Tails`,
+					isColorSuccessFail: !textSuccess && !textFailure,
+					rollable: true,
+				};
 
 				return fauxEntry;
 			}
@@ -7747,9 +7770,12 @@ Renderer.item = {
 
 	// flip e.g. "longsword +1" to "+1 longsword"
 	modifierPostToPre (item) {
-		const m = /^(.*)(?:,)? (\+\d+)$/.exec(item.name);
-		if (m) return Object.assign(MiscUtil.copy(item), {name: `${m[2]} ${m[1]}`});
-		else return null;
+		const m = /^(?<name>.*)(?:,)? (?<bonus>\+\d+)$/.exec(item.name);
+		if (!m) return null;
+		return {
+			name: `${m.groups.bonus} ${m.groups.name}`,
+			source: item.source,
+		};
 	},
 
 	_isRefPopulated: false,
@@ -8471,7 +8497,7 @@ Renderer.adventureBook = {
 	},
 
 	getCoverUrl (contents) {
-		return contents.coverUrl || `${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/covers/blank.png`;
+		return contents.coverUrl || `${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/covers/blank${Math.random() <= 0.05 ? "-alt" : ""}.png`;
 	},
 };
 
@@ -9873,9 +9899,11 @@ Renderer.hover = {
 	async _pDoLoadFromBrew (page, source, hash) {
 		// Cache the sources, so we can do case-insensitve lookups
 		if (!Renderer.hover._pDoLoadFromBrew_cachedSources) {
+			if (typeof BrewUtil2 === "undefined") return false;
+
 			let sourceIndex;
 			try {
-				sourceIndex = await DataUtil.brew.pLoadSourceIndex();
+				sourceIndex = await DataUtil.brew.pLoadSourceIndex(await BrewUtil2.pGetCustomUrl());
 			} catch (e) {
 				setTimeout(() => { throw e; });
 			}
@@ -10014,7 +10042,7 @@ Renderer.hover = {
 			case UrlUtil.PG_ACTIONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
 			case UrlUtil.PG_LANGUAGES: return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "languages.json", "language", null, "language");
 			case "raw_charoption":
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return Renderer.hover._pCacheAndGet_pLoadSimple(UrlUtil.PG_CHAR_CREATION_OPTIONS, source, hash, opts, "charcreationoptions.json", "charoption");
+			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "charcreationoptions.json", "charoption");
 			case UrlUtil.PG_RECIPES: return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "recipes.json", "recipe", null, "recipe");
 			case UrlUtil.PG_CLASS_SUBCLASS_FEATURES: return Renderer.hover._pCacheAndGet_pLoadClassSubclassFeatures(page, source, hash, opts);
 
@@ -10172,7 +10200,7 @@ Renderer.hover = {
 		else Renderer.hover._pCacheAndGet_populate(page, data, listProps, {fnMutateItem, fnGetHash: opts.fnGetHash});
 	},
 
-	async _pCacheAndGet_pLoadSimple (page, source, hash, opts, jsonFile, listProps, fnMutateItem) {
+	async _pCacheAndGet_pLoadSimple (page, source, hash, opts, jsonFile, listProps) {
 		const loadKey = jsonFile;
 
 		const isNotLoadedAndIsSourceAvailableBrew = await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
@@ -10181,9 +10209,9 @@ Renderer.hover = {
 			hash,
 			loadKey,
 			async () => {
-				await Renderer.hover._pCacheAndGet_pLoadSingleBrew(page, opts, listProps, fnMutateItem);
+				await Renderer.hover._pCacheAndGet_pLoadSingleBrew(page, opts, listProps);
 				const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/${jsonFile}`);
-				Renderer.hover._pCacheAndGet_handleSingleData(page, opts, data, listProps, fnMutateItem);
+				Renderer.hover._pCacheAndGet_handleSingleData(page, opts, data, listProps);
 			},
 		);
 
@@ -10494,8 +10522,9 @@ Renderer.hover = {
 			loadKey,
 			async () => {
 				const brewData = typeof BrewUtil2 !== "undefined" ? await BrewUtil2.pGetBrewProcessed() : {};
-				await Renderer.hover.pDoDereferenceNestedAndCache(brewData.classFeature, "classFeature", UrlUtil.URL_TO_HASH_BUILDER["classFeature"]);
+				// Load official first to ensure availibility for brew, and then load brew with overwrites disabled to avoid clobbering official
 				await Renderer.hover._pCacheAndGet_pLoadOfficialClassAndSubclassFeatures();
+				await Renderer.hover.pDoDereferenceNestedAndCache(brewData.classFeature, "classFeature", UrlUtil.URL_TO_HASH_BUILDER["classFeature"], {isOverwrite: false});
 			},
 		);
 
@@ -10513,8 +10542,9 @@ Renderer.hover = {
 			loadKey,
 			async () => {
 				const brewData = typeof BrewUtil2 !== "undefined" ? await BrewUtil2.pGetBrewProcessed() : {};
-				await Renderer.hover.pDoDereferenceNestedAndCache(brewData.subclassFeature, "subclassFeature", UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"]);
+				// Load official first to ensure availibility for brew, and then load brew with overwrites disabled to avoid clobbering official
 				await Renderer.hover._pCacheAndGet_pLoadOfficialClassAndSubclassFeatures();
+				await Renderer.hover.pDoDereferenceNestedAndCache(brewData.subclassFeature, "subclassFeature", UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"], {isOverwrite: false});
 			},
 		);
 
@@ -10559,7 +10589,7 @@ Renderer.hover = {
 		"refOptionalfeature",
 		"refItemEntry",
 	]),
-	async pDoDereferenceNestedAndCache (entities, page, fnGetHash, {isMutateOriginal = false, entryProp = "entries"} = {}) {
+	async pDoDereferenceNestedAndCache (entities, page, fnGetHash, {isMutateOriginal = false, entryProp = "entries", isOverwrite = true} = {}) {
 		if (!entities || !entities.length) return;
 
 		const entriesWithRefs = {};
@@ -10591,7 +10621,10 @@ Renderer.hover = {
 			// Cache the raw version
 			//  ...unless we're mutating, in which case, skip it, as this is currently unused
 			const hash = fnGetHash(ent);
-			if (!isMutateOriginal) Renderer.hover._addToCache(`raw_${page}`, ent.source, hash, ent);
+			if (!isMutateOriginal) {
+				const pageRaw = `raw_${page}`;
+				if (isOverwrite || !Renderer.hover.isCached(pageRaw, ent.source, hash)) Renderer.hover._addToCache(pageRaw, ent.source, hash, ent);
+			}
 
 			ptrHasRef._ = false;
 			walker.walk(ent[entryProp], handlers);
@@ -10734,13 +10767,13 @@ Renderer.hover = {
 		}
 
 		Object.values(entriesWithoutRefs).forEach(ent => {
-			Renderer.hover._addToCache(page, ent.source, fnGetHash(ent), ent);
+			const hash = fnGetHash(ent);
+			if (isOverwrite || !Renderer.hover.isCached(page, ent.source, hash)) Renderer.hover._addToCache(page, ent.source, hash, ent);
 		});
 
 		// Add the failed-to-resolve entities to the cache nonetheless
 		const entriesWithRefsVals = Object.values(entriesWithRefs);
 		if (entriesWithRefsVals.length) {
-			// this._handleReferenceError(`Failed to load "subclassFeature" reference "${ent.subclassFeature}"`);
 			const missingRefSets = {};
 			walker.walk(
 				entriesWithRefsVals,
@@ -10756,15 +10789,28 @@ Renderer.hover = {
 				},
 			);
 
-			const printableRefs = Object.entries(missingRefSets).map(([k, v]) => {
-				return `${k}: ${[...v].sort(SortUtil.ascSortLower).join(", ")}`;
-			}).join("; ");
+			const notificationRefs = Object.entries(missingRefSets)
+				.map(([k, v]) => `${k}: ${[...v].sort(SortUtil.ascSortLower).join(", ")}`)
+				.join("; ");
 
-			JqueryUtil.doToast({type: "danger", content: `Failed to load references for ${entriesWithRefsVals.length} entr${entriesWithRefsVals.length === 1 ? "y" : "ies"}! Reference types and values were: ${printableRefs}`});
+			const msgStart = `Failed to load references for ${entriesWithRefsVals.length} entr${entriesWithRefsVals.length === 1 ? "y" : "ies"}!`;
+
+			JqueryUtil.doToast({
+				type: "danger",
+				content: `${msgStart} Reference types and values were: ${notificationRefs}`,
+				isAutoHide: false,
+			});
+
+			const cnslRefs = Object.entries(missingRefSets)
+				.map(([k, v]) => `${k}:\n\t${[...v].sort(SortUtil.ascSortLower).join("\n\t")}`)
+				.join("\n");
+
+			setTimeout(() => { throw new Error(`${msgStart}\nReference types and values were:\n${cnslRefs}`); });
 		}
 
 		entriesWithRefsVals.forEach(ent => {
-			Renderer.hover._addToCache(page, ent.source, fnGetHash(ent), ent);
+			const hash = fnGetHash(ent);
+			if (isOverwrite || !Renderer.hover.isCached(page, ent.source, hash)) Renderer.hover._addToCache(page, ent.source, hash, ent);
 		});
 	},
 
@@ -11130,6 +11176,9 @@ Renderer._stripTagLayer = function (str) {
 							case "@chance": {
 								return displayText || `${rollText} percent`;
 							}
+							case "@coin": {
+								return displayText || `flip a coin`;
+							}
 							case "@ability": {
 								const [abil, rawScore] = rollText.split(" ").map(it => it.trim().toLowerCase()).filter(Boolean);
 								const score = Number(rawScore) || 0;
@@ -11150,6 +11199,11 @@ Renderer._stripTagLayer = function (str) {
 					}
 
 					case "@hitYourSpellAttack": return "your spell attack modifier";
+
+					case "@coinflip": {
+						const [displayText] = Renderer.splitTagByPipe(text);
+						return displayText || "flip a coin";
+					}
 
 					case "@comic":
 					case "@comicH1":

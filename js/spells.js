@@ -63,6 +63,8 @@ class SpellsPage extends ListPageMultiSource {
 
 			dataProps: ["spell"],
 
+			pFnGetFluff: Renderer.spell.pGetFluff.bind(Renderer.spell),
+
 			bookViewOptions: {
 				$btnOpen: $(`#btn-spellbook`),
 				$eleNoneVisible: $(`<span class="initial-message">If you wish to view multiple spells, please first make a list</span>`),
@@ -300,7 +302,7 @@ class SpellsPage extends ListPageMultiSource {
 				isImageTab,
 				$content: this._$pgContent,
 				entity: spell,
-				pFnGetFluff: Renderer.spell.pGetFluff,
+				pFnGetFluff: this._pFnGetFluff,
 			});
 		};
 
@@ -345,7 +347,7 @@ class SpellsPage extends ListPageMultiSource {
 		Renderer.spell.populateHomebrewLookup(homebrew);
 	}
 
-	_getSearchCache (entity) {
+	_getSearchCacheStats (entity) {
 		if (this.constructor._INDEXABLE_PROPS.every(it => !entity[it])) return "";
 		const ptrOut = {_: ""};
 		this.constructor._INDEXABLE_PROPS.forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));

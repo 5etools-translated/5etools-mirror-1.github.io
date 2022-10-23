@@ -19,6 +19,8 @@ async function main () {
 	if (!testsPassed) handleFail();
 	testsPassed = testsPassed && await require("./test-multisource.js");
 	if (!testsPassed) handleFail();
+	testsPassed = testsPassed && await require("./test-language-fonts.js");
+	if (!testsPassed) handleFail();
 	testsPassed = testsPassed && await require("./test-foundry.js");
 	if (!testsPassed) handleFail();
 	process.exit(0);

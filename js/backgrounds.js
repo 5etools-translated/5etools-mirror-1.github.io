@@ -44,6 +44,8 @@ class BackgroundPage extends ListPage {
 			dataSource: DataUtil.background.loadJSON.bind(DataUtil.background),
 			dataSourceFluff: DataUtil.backgroundFluff.loadJSON.bind(DataUtil.backgroundFluff),
 
+			pFnGetFluff: Renderer.background.pGetFluff.bind(Renderer.background),
+
 			pageFilter,
 
 			listClass: "backgrounds",
@@ -108,7 +110,7 @@ class BackgroundPage extends ListPage {
 			return Renderer.utils.pBuildFluffTab({
 				isImageTab,
 				$content: this._$pgContent,
-				pFnGetFluff: Renderer.background.pGetFluff,
+				pFnGetFluff: this._pFnGetFluff,
 				entity: bg,
 			});
 		};

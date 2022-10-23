@@ -45,7 +45,34 @@ class ListItem {
 	get isSelected () { return this._isSelected; }
 }
 
+class _ListSearch {
+	#isInterrupted = false;
+
+	#term = null;
+	#fn = null;
+	#items = null;
+
+	constructor ({term, fn, items}) {
+		this.#term = term;
+		this.#fn = fn;
+		this.#items = [...items];
+	}
+
+	interrupt () { this.#isInterrupted = true; }
+
+	async pRun () {
+		const out = [];
+		for (const item of this.#items) {
+			if (this.#isInterrupted) break;
+			if (await this.#fn(item, this.#term)) out.push(item);
+		}
+		return {isInterrupted: this.#isInterrupted, searchedItems: out};
+	}
+}
+
 class List {
+	#activeSearch = null;
+
 	/**
 	 * @param [opts] Options object.
 	 * @param [opts.fnSort] Sort function. Should accept `(a, b, o)` where `o` is an options object. Pass `null` to
@@ -119,7 +146,7 @@ class List {
 			this._searchTerm = List.getCleanSearchTerm(this._$iptSearch.val());
 			this._init_bindKeydowns();
 		}
-		this._doSearch();
+		this._pDoSearch().then(null);
 		this._isInit = true;
 	}
 
@@ -174,11 +201,12 @@ class List {
 
 	update ({isForce = false} = {}) {
 		if (!this._isInit || !this._isDirty || isForce) return;
-		this._doSearch();
+		this._pDoSearch().then(null);
 	}
 
-	_doSearch () {
-		this._doSearch_doSearchTerm();
+	async _pDoSearch () {
+		this._doSearch_doInterruptExistingSearch();
+		await this._doSearch_pDoSearchTerm();
 
 		// Never show excluded items
 		this._searchedItems = this._searchedItems.filter(it => !it.data.isExcluded);
@@ -186,23 +214,46 @@ class List {
 		this._doFilter();
 	}
 
-	_doSearch_doSearchTerm () {
+	_doSearch_doInterruptExistingSearch () {
+		if (!this.#activeSearch) return;
+		this.#activeSearch.interrupt();
+		this.#activeSearch = null;
+	}
+
+	async _doSearch_pDoSearchTerm () {
 		if (!this._searchTerm && !this._fnSearch) return this._searchedItems = [...this._items];
 
-		if (this._syntax) {
-			const [command, term] = this._searchTerm.split(/^([a-z]+):/).filter(Boolean);
-			if (command && term && this._syntax[command]) {
-				const fnCommand = this._syntax[command].fn;
-				this._searchedItems = this._items.filter(it => fnCommand(it, term));
-				return;
-			}
-		}
+		const matchingSyntax = this._doSearch_getMatchingSyntax();
+		if (matchingSyntax) return this._doSearch_doSearchTerm_pSyntax(matchingSyntax);
 
 		if (this._isFuzzy) return this._searchedItems = this._doSearch_doSearchTerm_fuzzy();
 
 		if (this._fnSearch) return this._searchedItems = this._items.filter(it => this._fnSearch(it, this._searchTerm));
 
 		this._searchedItems = this._items.filter(it => this.constructor.isVisibleDefaultSearch(it, this._searchTerm));
+	}
+
+	_doSearch_getMatchingSyntax () {
+		const [command, term] = this._searchTerm.split(/^([a-z]+):/).filter(Boolean);
+		if (!command || !term || !this._syntax[command]) return null;
+		return {term, syntax: this._syntax[command]};
+	}
+
+	async _doSearch_doSearchTerm_pSyntax ({term, syntax: {fn, isAsync}}) {
+		if (!isAsync) {
+			this._searchedItems = this._items.filter(it => fn(it, term));
+			return;
+		}
+
+		this.#activeSearch = new _ListSearch({
+			term,
+			fn,
+			items: this._items,
+		});
+		const {isInterrupted, searchedItems} = await this.#activeSearch.pRun();
+
+		if (isInterrupted) return;
+		this._searchedItems = searchedItems;
 	}
 
 	static isVisibleDefaultSearch (li, searchTerm) { return li.searchText.includes(searchTerm); }
@@ -263,7 +314,7 @@ class List {
 		const nextTerm = List.getCleanSearchTerm(searchTerm);
 		if (nextTerm !== this._searchTerm) {
 			this._searchTerm = nextTerm;
-			this._doSearch();
+			this._pDoSearch().then(null);
 		}
 	}
 
@@ -285,7 +336,7 @@ class List {
 	reset () {
 		if (this._searchTerm !== List._DEFAULTS.searchTerm) {
 			this._searchTerm = List._DEFAULTS.searchTerm;
-			this._doSearch();
+			this._pDoSearch().then(null);
 		} else if (this._sortBy !== this._sortByInitial || this._sortDir !== this._sortDirInitial) {
 			this._sortBy = this._sortByInitial;
 			this._sortDir = this._sortDirInitial;

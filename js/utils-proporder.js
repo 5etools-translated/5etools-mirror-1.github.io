@@ -338,6 +338,7 @@ PropOrder._ACTION = [
 ];
 PropOrder._ADVENTURE = [
 	"name",
+	"alias",
 
 	"id",
 	"source",
@@ -355,6 +356,7 @@ PropOrder._ADVENTURE = [
 ];
 PropOrder._BOOK = [
 	"name",
+	"alias",
 
 	"id",
 	"source",

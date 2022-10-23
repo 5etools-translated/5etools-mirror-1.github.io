@@ -220,7 +220,7 @@ class SpellParser extends BaseParser {
 		line = ConvertUtil.cleanDashes(line).toLowerCase().trim();
 
 		const mCantrip = /cantrip/i.exec(line);
-		const mSpellLevel = /^(\d+)(?:st|nd|rd|th)-level/i.exec(line);
+		const mSpellLevel = /^(\d+)(?:st|nd|rd|th)?-level/i.exec(line);
 
 		if (mCantrip) {
 			const trailing = line.slice(mCantrip.index + "cantrip".length, line.length);
@@ -340,17 +340,17 @@ class SpellParser extends BaseParser {
 			.map(it => it.trim())
 			.filter(Boolean)
 			.map(str => {
-				const mNumber = /^(\d+)(.*?)$/.exec(str);
+				const mNumber = /^(?<count>\d+)?(?<rest>.*?)$/.exec(str);
 
 				if (!mNumber) {
 					options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Casting time part "${str}" requires manual conversion`);
 					return str;
 				}
 
-				const amount = Number(mNumber[1].trim());
-				const [unit, ...conditionParts] = mNumber[2].split(", ");
+				const amount = mNumber.groups.count ? Number(mNumber.groups.count.trim()) : null;
+				const [unit, ...conditionParts] = mNumber.groups.rest.split(", ");
 				const out = {
-					number: amount,
+					number: amount ?? 1,
 					unit: this._getCleanTimeUnit(unit, false, options),
 					condition: conditionParts.join(", "),
 				};

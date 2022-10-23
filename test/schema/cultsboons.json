@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "cultsboons.json",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"type": "object",
 	"definitions": {
 		"cult": {
@@ -149,6 +149,7 @@
 	"properties": {
 		"cult": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/cult"
@@ -156,6 +157,7 @@
 		},
 		"boon": {
 			"type": "array",
+			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/boon"

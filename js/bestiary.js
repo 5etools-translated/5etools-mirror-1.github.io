@@ -188,6 +188,8 @@ class BestiaryPage extends ListPageMultiSource {
 				return brew;
 			},
 
+			pFnGetFluff: Renderer.monster.pGetFluff.bind(Renderer.monster),
+
 			hasAudio: true,
 
 			bookViewOptions: {
@@ -858,7 +860,7 @@ class BestiaryPage extends ListPageMultiSource {
 	) {
 		const pGetFluffEntries = async () => {
 			const mon = this._dataList[Hist.lastLoadedId];
-			const fluff = await Renderer.monster.pGetFluff(mon);
+			const fluff = await this._pFnGetFluff(mon);
 			return fluff.entries || [];
 		};
 
@@ -894,12 +896,12 @@ class BestiaryPage extends ListPageMultiSource {
 			isImageTab,
 			$content: this._$pgContent,
 			entity: this._dataList[Hist.lastLoadedId],
-			pFnGetFluff: Renderer.monster.pGetFluff,
+			pFnGetFluff: this._pFnGetFluff,
 			$headerControls,
 		});
 	}
 
-	_getSearchCache (entity) {
+	_getSearchCacheStats (entity) {
 		const legGroup = DataUtil.monster.getMetaGroup(entity);
 		if (!legGroup && this.constructor._INDEXABLE_PROPS.every(it => !entity[it])) return "";
 		const ptrOut = {_: ""};
@@ -932,6 +934,14 @@ class BestiaryPage extends ListPageMultiSource {
 			await this._pLoadSource(src, "yes");
 			Hist.hashChange();
 		}
+	}
+
+	_pOnLoad_initVisibleItemsDisplay (...args) {
+		super._pOnLoad_initVisibleItemsDisplay(...arguments);
+
+		this._list.on("updated", () => {
+			this._encounterBuilder.resetCache();
+		});
 	}
 }
 BestiaryPage._INDEXABLE_PROPS = [

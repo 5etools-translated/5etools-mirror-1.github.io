@@ -6,8 +6,8 @@ IS_NODE = typeof module !== "undefined";
 if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
-IS_DEPLOYED="v1.152.4.1666422827";
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.168.2"/* 5ETOOLS_VERSION__CLOSE */;
+IS_DEPLOYED="v1.152.4.1666510101";
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.169.0"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -2122,6 +2122,8 @@ UrlUtil = {
 
 	getFilename (url) { return url.slice(url.lastIndexOf("/") + 1); },
 
+	isFullUrl (url) { return url && /^.*?:\/\//.test(url); },
+
 	mini: {
 		compress (primitive) {
 			const type = typeof primitive;
@@ -3011,13 +3013,6 @@ DataUtil = {
 
 		if (data._meta && !Object.keys(data._meta).length) delete data._meta;
 
-		const props = Object.keys(data);
-		for (const prop of props) {
-			if (!data[prop] || !(data[prop] instanceof Array) || !data[prop].length) continue;
-
-			if (DataUtil[prop]?.pPostProcess) await DataUtil[prop]?.pPostProcess(data);
-		}
-
 		DataUtil._merged[ident] = data;
 	},
 
@@ -3243,7 +3238,7 @@ DataUtil = {
 	},
 
 	async _pLoadAddBrewBySource_pGetUrl ({source, isSilent = true}) {
-		const brewIndex = await DataUtil.brew.pLoadSourceIndex();
+		const brewIndex = await DataUtil.brew.pLoadSourceIndex(await BrewUtil2.pGetCustomUrl());
 		if (!brewIndex[source]) {
 			if (isSilent) return null;
 			throw new Error(`Neither base nor brew index contained source "${source}"`);
@@ -3599,7 +3594,7 @@ DataUtil = {
 						if (m) {
 							found = true;
 							// if the creature already has a greater sense of this type, do nothing
-							if (Number(m[1]) < sense.type) {
+							if (Number(m[1]) < sense.range) {
 								copyTo.senses[i] = `${sense.type} ${sense.range} ft.`;
 							}
 							break;
@@ -5771,6 +5766,18 @@ Array.prototype.pSerialAwaitMap || Object.defineProperty(Array.prototype, "pSeri
 	value: async function (fnMap) {
 		const out = [];
 		for (let i = 0, len = this.length; i < len; ++i) out.push(await fnMap(this[i], i, this));
+		return out;
+	},
+});
+
+Array.prototype.pSerialAwaitFilter || Object.defineProperty(Array.prototype, "pSerialAwaitFilter", {
+	enumerable: false,
+	writable: true,
+	value: async function (fnFilter) {
+		const out = [];
+		for (let i = 0, len = this.length; i < len; ++i) {
+			if (await fnFilter(this[i], i, this)) out.push(this[i]);
+		}
 		return out;
 	},
 });

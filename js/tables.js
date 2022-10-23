@@ -123,7 +123,7 @@ class TablesPage extends ListPage {
 		this._updateSelected();
 	}
 
-	_getSearchCache (entity) {
+	_getSearchCacheStats (entity) {
 		if (!entity.rows && !entity.tables) return "";
 		const ptrOut = {_: ""};
 		this._getSearchCache_handleEntryProp(entity, "rows", ptrOut);

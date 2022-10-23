@@ -99,7 +99,7 @@ class TrapsHazardsPage extends ListPage {
 
 		this._updateSelected();
 	}
-	_getSearchCache (entity) {
+	_getSearchCacheStats (entity) {
 		if (!entity.effect && !entity.trigger && !entity.countermeasures && !entity.entries) return "";
 		const ptrOut = {_: ""};
 		this._getSearchCache_handleEntryProp(entity, "effect", ptrOut);

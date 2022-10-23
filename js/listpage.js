@@ -725,6 +725,7 @@ class ListPage {
 	 * @param opts Options object.
 	 * @param opts.dataSource Main JSON data url or function to fetch main data.
 	 * @param [opts.brewDataSource] Function to fetch brew data.
+	 * @param [opts.pFnGetFluff] Function to fetch fluff for a given entity.
 	 * @param [opts.dataSourceFluff] Fluff JSON data url or function to fetch fluff data.
 	 * @param [opts.filters] Array of filters to use in the filter box. (Either `filters` and `filterSource` or
 	 * `pageFilter` must be specified.)
@@ -754,6 +755,7 @@ class ListPage {
 	constructor (opts) {
 		this._dataSource = opts.dataSource;
 		this._brewDataSource = opts.brewDataSource;
+		this._pFnGetFluff = opts.pFnGetFluff;
 		this._dataSourcefluff = opts.dataSourceFluff;
 		this._filters = opts.filters;
 		this._filterSource = opts.filterSource;
@@ -1133,21 +1135,50 @@ class ListPage {
 		dispExpandedInner.innerHTML = "";
 	}
 
+	// ==================
+
 	get _listSyntax () {
 		return {
-			text: {
-				help: `"text:<text>" to search within text.`,
+			stats: {
+				help: `"stats:<text>" to search within stat blocks.`,
 				fn: (listItem, searchTerm) => {
-					if (listItem.data._textCache == null) listItem.data._textCache = this._getSearchCache(this._dataList[listItem.ix]);
-					return listItem.data._textCache && listItem.data._textCache.includes(searchTerm);
+					if (listItem.data._textCacheStats == null) listItem.data._textCacheStats = this._getSearchCacheStats(this._dataList[listItem.ix]);
+					return this._listSyntax_isTextMatch(listItem.data._textCacheStats, searchTerm);
 				},
+			},
+			info: {
+				help: `"info:<text>" to search within stat blocks plus info.`,
+				fn: async (listItem, searchTerm) => {
+					if (listItem.data._textCacheFluff == null) listItem.data._textCacheFluff = await this._pGetSearchCacheFluff(this._dataList[listItem.ix]);
+					return this._listSyntax_isTextMatch(listItem.data._textCacheFluff, searchTerm);
+				},
+				isAsync: true,
+			},
+			text: {
+				help: `"text:<text>" to search within stat blocks plus info.`,
+				fn: async (listItem, searchTerm) => {
+					if (listItem.data._textCacheAll == null) {
+						const {textCacheStats, textCacheFluff, textCacheAll} = await this._pGetSearchCacheAll(this._dataList[listItem.ix], {textCacheStats: listItem.data._textCacheStats, textCacheFluff: listItem.data._textCacheFluff});
+						listItem.data._textCacheStats = listItem.data._textCacheStats || textCacheStats;
+						listItem.data._textCacheFluff = listItem.data._textCacheFluff || textCacheFluff;
+						listItem.data._textCacheAll = textCacheAll;
+					}
+					return this._listSyntax_isTextMatch(listItem.data._textCacheAll, searchTerm);
+				},
+				isAsync: true,
 			},
 		};
 	}
 
+	_listSyntax_isTextMatch (str, searchTerm) { return str && str.includes(searchTerm); }
+
 	// TODO(Future) the ideal solution to this is to render every entity to plain text (or failing that, Markdown) and
 	//   indexing that text with e.g. elasticlunr.
-	_getSearchCache (entity) {
+	_getSearchCacheStats (entity) {
+		return this._getSearchCache_entries(entity);
+	}
+
+	_getSearchCache_entries (entity) {
 		if (!entity.entries) return "";
 		const ptrOut = {_: ""};
 		this._getSearchCache_handleEntryProp(entity, "entries", ptrOut);
@@ -1167,6 +1198,23 @@ class ListPage {
 	_getSearchCache_handleString (ptrOut, str) {
 		ptrOut._ += `${Renderer.stripTags(str).toLowerCase()} -- `;
 	}
+
+	async _pGetSearchCacheFluff (entity) {
+		const fluff = this._pFnGetFluff ? await this._pFnGetFluff(entity) : null;
+		return fluff ? this._getSearchCache_entries(fluff) : "";
+	}
+
+	async _pGetSearchCacheAll (entity, {textCacheStats = null, textCacheFluff = null}) {
+		textCacheStats = textCacheStats || this._getSearchCacheStats(entity);
+		textCacheFluff = textCacheFluff || await this._pGetSearchCacheFluff(entity);
+		return {
+			textCacheStats,
+			textCacheFluff,
+			textCacheAll: [textCacheStats, textCacheFluff].filter(Boolean).join(" -- "),
+		};
+	}
+
+	// ==================
 
 	static _checkShowAllExcluded (list, $pagecontent) {
 		if (!ExcludeUtil.isAllContentExcluded(list)) return;

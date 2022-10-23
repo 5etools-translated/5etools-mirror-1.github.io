@@ -114,7 +114,7 @@ class ObjectsPage extends ListPage {
 		this._updateSelected();
 	}
 
-	_getSearchCache (entity) {
+	_getSearchCacheStats (entity) {
 		if (!entity.entries && !entity.actionEntries) return "";
 		const ptrOut = {_: ""};
 		this._getSearchCache_handleEntryProp(entity, "entries", ptrOut);
