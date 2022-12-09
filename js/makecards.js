@@ -600,9 +600,9 @@ class MakeCards extends BaseComponent {
 		];
 
 		if (classIconNames.includes(iconName)) {
-			return `https://raw.githubusercontent.com/crobi/rpg-cards/gh-pages/generator/icons/${iconName}.png`;
+			return `https://rpg-cards.vercel.app/icons/${iconName}.png`;
 		}
-		return `https://raw.githubusercontent.com/crobi/rpg-cards/gh-pages/generator/icons/${iconName}.svg`;
+		return `https://rpg-cards.vercel.app/icons/${iconName}.svg`;
 	}
 
 	static _pGetUserIcon (initialVal) {
@@ -797,8 +797,8 @@ MakeCards._AVAILABLE_TYPES = {
 		},
 	},
 	optionalfeature: {
-		searchTitle: "Optional Feature",
-		pageTitle: "Optional Features",
+		searchTitle: "Option/Feature",
+		pageTitle: "Options/Features",
 		page: UrlUtil.PG_OPT_FEATURES,
 		colorDefault: "#8c6a00",
 		iconDefault: "checkbox-tree",

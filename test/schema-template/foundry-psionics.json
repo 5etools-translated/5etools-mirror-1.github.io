@@ -1,12 +1,12 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "foundry-psionics.json",
-	"version": "1.0.1",
+	"version": "1.1.0",
 
 	"type": "object",
 
 	"properties": {
-		"psionicDisciplineFocus": {"$ref": "util.json#/definitions/foundrySideDataGenericFeatureArray"},
+		"psionicDisciplineFocus": {"$ref": "util.json#/$defs/foundrySideDataGenericFeatureArray"},
 
 		"psionicDisciplineActive": {
 			"type": "array",
@@ -21,11 +21,11 @@
 					"psionicName": {"type": "string"},
 					"psionicSource": {"type": "string"},
 
-					"data": {"$ref": "util.json#/definitions/foundryDataObject"},
+					"system": {"$ref": "util.json#/$defs/foundrySystemObject"},
 
-					"flags": {"$ref": "util.json#/definitions/foundryFlagsObject"},
+					"flags": {"$ref": "util.json#/$defs/foundryFlagsObject"},
 
-					"effects": {"$ref": "util.json#/definitions/foundryEffectsArray"}
+					"effects": {"$ref": "util.json#/$defs/foundryEffectsArray"}
 				},
 				"required": [
 					"name",

@@ -33,7 +33,7 @@ class PageFilterEquipment extends PageFilter {
 		this._weightFilter = new RangeFilter({header: "Weight", min: 0, max: 100, isAllowGreater: true, suffix: " lb."});
 		this._focusFilter = new Filter({header: "Spellcasting Focus", items: [...Parser.ITEM_SPELLCASTING_FOCUS_CLASSES]});
 		this._damageTypeFilter = new Filter({header: "Weapon Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Item Group", "SRD", "Basic Rules", "Has Images", "Has Info"], isMiscFilter: true});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Item Group", "Bundle", "SRD", "Basic Rules", "Has Images", "Has Info"], isMiscFilter: true});
 		this._poisonTypeFilter = new Filter({header: "Poison Type", items: ["ingested", "injury", "inhaled", "contact"], displayFn: StrUtil.toTitleCase});
 	}
 
@@ -44,6 +44,7 @@ class PageFilterEquipment extends PageFilter {
 
 		item._fMisc = [];
 		if (item._isItemGroup) item._fMisc.push("Item Group");
+		if (item.packContents) item._fMisc.push("Bundle");
 		if (item.srd) item._fMisc.push("SRD");
 		if (item.basicRules) item._fMisc.push("Basic Rules");
 		if (item.hasFluff) item._fMisc.push("Has Info");
@@ -219,9 +220,20 @@ class PageFilterItems extends PageFilterEquipment {
 			itemSortFn: null,
 		});
 		this._rechargeTypeFilter = new Filter({header: "Recharge Type", displayFn: Parser.itemRechargeToFull});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Grants Proficiency", "Has Images", "Has Info", "Item Group", "Magic", "Mundane", "Sentient", "Speed Adjustment", "SRD", "Basic Rules"], isMiscFilter: true});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Grants Proficiency", "Has Images", "Has Info", "Item Group", "Bundle", "Magic", "Mundane", "Sentient", "Speed Adjustment", "SRD", "Basic Rules"], isMiscFilter: true});
 		this._baseSourceFilter = new SourceFilter({header: "Base Source", selFn: null});
 		this._baseItemFilter = new Filter({header: "Base Item", displayFn: this.constructor._getBaseItemDisplay.bind(this.constructor)});
+		this._optionalfeaturesFilter = new Filter({
+			header: "Feature",
+			displayFn: (it) => {
+				const [name, source] = it.split("|");
+				if (!source) return name.toTitleCase();
+				const sourceJson = Parser.sourceJsonToJson(source);
+				if (!SourceUtil.isNonstandardSourceWotc(sourceJson)) return name.toTitleCase();
+				return `${name.toTitleCase()} (${Parser.sourceJsonToAbv(sourceJson)})`;
+			},
+			itemSortFn: SortUtil.ascSortLower,
+		});
 	}
 
 	static mutateForFilters (item) {
@@ -284,6 +296,7 @@ class PageFilterItems extends PageFilterEquipment {
 		this._baseSourceFilter.addItem(item._baseSource);
 		this._attunementFilter.addItem(item._fAttunement);
 		this._rechargeTypeFilter.addItem(item.recharge);
+		this._optionalfeaturesFilter.addItem(item.optionalfeatures);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -308,6 +321,7 @@ class PageFilterItems extends PageFilterEquipment {
 			this._lootTableFilter,
 			this._baseItemFilter,
 			this._baseSourceFilter,
+			this._optionalfeaturesFilter,
 			this._attachedSpellsFilter,
 		];
 	}
@@ -333,6 +347,7 @@ class PageFilterItems extends PageFilterEquipment {
 			it.lootTables,
 			it._fBaseItemAll,
 			it._baseSource,
+			it.optionalfeatures,
 			it.attachedSpells,
 		);
 	}

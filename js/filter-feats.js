@@ -45,7 +45,7 @@ class PageFilterFeats extends PageFilter {
 		this._immuneFilter = FilterCommon.getDamageImmuneFilter();
 		this._defenceFilter = new MultiFilter({header: "Damage", filters: [this._vulnerableFilter, this._resistFilter, this._immuneFilter]});
 		this._conditionImmuneFilter = FilterCommon.getConditionImmuneFilter();
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isMiscFilter: true});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Has Info", "Has Images", "SRD", "Basic Rules"], isMiscFilter: true});
 	}
 
 	static mutateForFilters (feat) {
@@ -75,6 +75,9 @@ class PageFilterFeats extends PageFilter {
 			if (feat.skillToolLanguageProficiencies.some(it => (it.choose || []).some(x => x.from || [].includes("anyLanguage")))) feat._fBenifits.push("Language Proficiency");
 		}
 		feat._fMisc = feat.srd ? ["SRD"] : [];
+		if (feat.basicRules) feat._fMisc.push("Basic Rules");
+		if (feat.hasFluff) feat._fMisc.push("Has Info");
+		if (feat.hasFluffImages) feat._fMisc.push("Has Images");
 
 		feat._slAbility = ability.asText || VeCt.STR_NONE;
 		feat._slPrereq = prereqText;

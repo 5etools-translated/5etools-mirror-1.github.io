@@ -1,15 +1,15 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"version": "1.0.2",
 	"$id": "traits.json",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"trait": {
 			"type": "object",
 			"properties": {
 				"name": {"type": "string"},
 				"source": {"type": "string"},
-				"page": {"$ref": "../util.json#/definitions/page"},
+				"page": {"$ref": "../util.json#/$defs/page"},
 
 				"ref": {"type": "string"},
 
@@ -46,8 +46,8 @@
 				"apply": {
 					"type": "object",
 					"properties": {
-						"_root": {"$ref": "bestiary.json#/definitions/creatureData"},
-						"_mod": {"$ref": "../util.json#/definitions/_modObject"}
+						"_root": {"$ref": "bestiary.json#/$defs/creatureData"},
+						"_mod": {"$ref": "../util.json#/$defs/_modObject"}
 					}
 				}
 			},
@@ -62,7 +62,7 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/trait"
+				"$ref": "#/$defs/trait"
 			}
 		}
 	},

@@ -1,9 +1,9 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "objects.json",
-	"version": "1.2.6",
+	"version": "1.2.8",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"object": {
 			"type": "object",
 			"properties": {
@@ -14,13 +14,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"size": {
-					"$ref": "util.json#/definitions/size"
+					"$ref": "util.json#/$defs/size"
 				},
 				"creatureType": {
-					"$ref": "util.json#/definitions/creatureType"
+					"$ref": "util.json#/$defs/creatureType"
 				},
 				"objectType": {
 					"type": "string",
@@ -88,7 +88,7 @@
 					]
 				},
 				"speed": {
-					"$ref": "util.json#/definitions/speed"
+					"$ref": "util.json#/$defs/speed"
 				},
 				"senses": {
 					"type": "array",
@@ -97,16 +97,16 @@
 					}
 				},
 				"resist": {
-					"$ref": "util.json#/definitions/damageResistArray"
+					"$ref": "util.json#/$defs/damageResistArray"
 				},
 				"conditionImmune": {
-					"$ref": "util.json#/definitions/conditionImmunityArray"
+					"$ref": "util.json#/$defs/conditionImmunityArray"
 				},
 				"immune": {
-					"$ref": "util.json#/definitions/damageImmunityArray"
+					"$ref": "util.json#/$defs/damageImmunityArray"
 				},
 				"vulnerable": {
-					"$ref": "util.json#/definitions/damageVulnerabilityArray"
+					"$ref": "util.json#/$defs/damageVulnerabilityArray"
 				},
 				"entries": {
 					"type": "array",
@@ -125,13 +125,19 @@
 					"type": "string"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"isNpc": {
 					"type": "boolean"
 				},
 				"hasToken": {
 					"type": "boolean"
+				},
+				"hasFluff": {
+					"const": true
+				},
+				"hasFluffImages": {
+					"const": true
 				}
 			},
 			"additionalProperties": false,
@@ -151,7 +157,7 @@
 			"uniqueItems": true,
 			"minItems": 1,
 			"items": {
-				"$ref": "#/definitions/object"
+				"$ref": "#/$defs/object"
 			}
 		}
 	},

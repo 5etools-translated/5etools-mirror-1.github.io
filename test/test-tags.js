@@ -390,6 +390,11 @@ class ItemDataCheck extends GenericDataCheck {
 			ItemDataCheck._checkArrayItemsExist(file, name, source, root.attachedSpells, "attachedSpells", "spell");
 		}
 
+		if (root.optionalfeatures) {
+			ItemDataCheck._checkArrayDuplicates(file, name, source, root.optionalfeatures, "optionalfeatures", "optfeature");
+			ItemDataCheck._checkArrayItemsExist(file, name, source, root.optionalfeatures, "optionalfeatures", "optfeature");
+		}
+
 		if (root.items) {
 			ItemDataCheck._checkArrayDuplicates(file, name, source, root.items, "items", "item");
 			ItemDataCheck._checkArrayItemsExist(file, name, source, root.items, "items", "item");

@@ -56,11 +56,13 @@ function getFnListSort (prop) {
 		case "vehicle":
 		case "vehicleUpgrade":
 		case "backgroundFluff":
+		case "featFluff":
 		case "conditionFluff":
 		case "spellFluff":
 		case "itemFluff":
 		case "languageFluff":
 		case "vehicleFluff":
+		case "objectFluff":
 		case "raceFluff":
 		case "item":
 		case "baseitem":

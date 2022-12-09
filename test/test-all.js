@@ -6,23 +6,14 @@ function handleFail () {
 }
 
 async function main () {
-	let testsPassed = true;
-	testsPassed = testsPassed && await require("./test-tags");
-	if (!testsPassed) handleFail();
-	// don't fail on missing tokens
-	await require("./test-images");
-	// don't fail on missing page numbers
-	await require("./test-pagenumbers");
-	testsPassed = testsPassed && await require("./test-json");
-	if (!testsPassed) handleFail();
-	testsPassed = testsPassed && await require("./test-misc");
-	if (!testsPassed) handleFail();
-	testsPassed = testsPassed && await require("./test-multisource.js");
-	if (!testsPassed) handleFail();
-	testsPassed = testsPassed && await require("./test-language-fonts.js");
-	if (!testsPassed) handleFail();
-	testsPassed = testsPassed && await require("./test-foundry.js");
-	if (!testsPassed) handleFail();
+	if (!(await require("./test-tags"))) handleFail();
+	if (!(await require("./test-images"))) handleFail();
+	await require("./test-pagenumbers"); // don't fail on missing page numbers
+	if (!(await require("./test-json"))) handleFail();
+	if (!(await require("./test-misc"))) handleFail();
+	if (!(await require("./test-multisource.js"))) handleFail();
+	if (!(await require("./test-language-fonts.js"))) handleFail();
+	if (!(await require("./test-foundry.js"))) handleFail();
 	process.exit(0);
 }
 

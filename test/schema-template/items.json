@@ -1,9 +1,9 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "items.json",
-	"version": "1.11.8",
+	"version": "1.12.1",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"itemData": {
 			"type": "object",
 			"properties": {
@@ -11,20 +11,20 @@
 					"type": "string"
 				},
 				"type": {
-					"$ref": "items-shared.json#/definitions/itemType"
+					"$ref": "items-shared.json#/$defs/itemType"
 				},
 				"typeAlt": {
-					"$ref": "items-shared.json#/definitions/itemType"
+					"$ref": "items-shared.json#/$defs/itemType"
 				},
 				"rarity": {
-					"$ref": "items-shared.json#/definitions/itemRarity"
+					"$ref": "items-shared.json#/$defs/itemRarity"
 				},
 				"source": {
 					"type": "string"
 				},
-				"page": {"$ref": "util.json#/definitions/page"},
+				"page": {"$ref": "util.json#/$defs/page"},
 				"additionalSources": {
-					"$ref": "util.json#/definitions/additionalSources"
+					"$ref": "util.json#/$defs/additionalSources"
 				},
 				"baseItem": {
 					"type": "string"
@@ -33,7 +33,7 @@
 					"type": "integer"
 				},
 				"age": {
-					"$ref": "items-shared.json#/definitions/itemAge"
+					"$ref": "items-shared.json#/$defs/itemAge"
 				},
 				"ammunition": {
 					"type": "boolean",
@@ -54,7 +54,7 @@
 					"description": "The versatile or alternative damage dice of the weapon, e.g. \"1d10\""
 				},
 				"dmgType": {
-					"$ref": "util.json#/definitions/dataDamageTags"
+					"$ref": "util.json#/$defs/dataDamageTags"
 				},
 				"entries": {
 					"type": "array",
@@ -69,7 +69,7 @@
 					}
 				},
 				"property": {
-					"$ref": "items-shared.json#/definitions/itemProperty"
+					"$ref": "items-shared.json#/$defs/itemProperty"
 				},
 				"range": {
 					"type": "string"
@@ -88,23 +88,23 @@
 					"type": "boolean"
 				},
 				"vulnerable": {
-					"$ref": "util.json#/definitions/damageVulnerabilityArray"
+					"$ref": "util.json#/$defs/damageVulnerabilityArray"
 				},
 				"resist": {
-					"$ref": "util.json#/definitions/damageResistArray"
+					"$ref": "util.json#/$defs/damageResistArray"
 				},
 				"immune": {
-					"$ref": "util.json#/definitions/damageImmunityArray"
+					"$ref": "util.json#/$defs/damageImmunityArray"
 				},
 				"conditionImmune": {
-					"$ref": "util.json#/definitions/conditionImmunityArray"
+					"$ref": "util.json#/$defs/conditionImmunityArray"
 				},
 				"detail1": {
 					"description": "A descriptive field that can be used to complete entries in variants.",
 					"type": "string"
 				},
 				"scfType": {
-					"$ref": "items-shared.json#/definitions/itemScfType"
+					"$ref": "items-shared.json#/$defs/itemScfType"
 				},
 				"speed": {
 					"type": "integer"
@@ -130,7 +130,7 @@
 					"type": "boolean"
 				},
 				"tier": {
-					"$ref": "items-shared.json#/definitions/itemTier"
+					"$ref": "items-shared.json#/$defs/itemTier"
 				},
 				"value": {
 					"description": "In copper pieces.",
@@ -143,7 +143,7 @@
 					"type": "boolean"
 				},
 				"weaponCategory": {
-					"$ref": "items-shared.json#/definitions/itemWeaponCategory"
+					"$ref": "items-shared.json#/$defs/itemWeaponCategory"
 				},
 				"weight": {
 					"type": "number"
@@ -218,10 +218,16 @@
 					"type": ["string", "integer"]
 				},
 				"recharge": {
-					"$ref": "items-shared.json#/definitions/itemRecharge"
+					"$ref": "items-shared.json#/$defs/itemRecharge"
 				},
 				"rechargeAmount": {
-					"$ref": "items-shared.json#/definitions/itemRechargeAmount"
+					"$ref": "items-shared.json#/$defs/itemRechargeAmount"
+				},
+				"optionalfeatures": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				},
 				"attachedSpells": {
 					"type": "array",
@@ -350,16 +356,16 @@
 					"type": "string"
 				},
 				"modifySpeed": {
-					"$ref": "items-shared.json#/definitions/itemModifySpeed"
+					"$ref": "items-shared.json#/$defs/itemModifySpeed"
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"packContents": {
 					"type": "array",
@@ -430,7 +436,7 @@
 					"additionalProperties": false
 				},
 				"ammoType": {
-					"$ref": "items-shared.json#/definitions/itemAmmoType"
+					"$ref": "items-shared.json#/$defs/itemAmmoType"
 				},
 				"grantsProficiency": {
 					"type": "boolean"
@@ -444,10 +450,10 @@
 					}
 				},
 				"reqAttuneTags": {
-					"$ref": "util.json#/definitions/reqAttuneTags"
+					"$ref": "util.json#/$defs/reqAttuneTags"
 				},
 				"reqAttuneAltTags": {
-					"$ref": "util.json#/definitions/reqAttuneTags"
+					"$ref": "util.json#/$defs/reqAttuneTags"
 				},
 				"miscTags": {
 					"type": "array",
@@ -481,12 +487,12 @@
 						"type": "string",
 						"enum": ["weapon", "equipment", "consumable", "tool", "loot", "class", "spell", "feat", "backpack"]
 					},
-					"foundryData": {"$ref": "util.json#/definitions/foundryDataObject"},
-					"foundryFlags": {"$ref": "util.json#/definitions/foundryFlagsObject"},
-					"foundryEffects": {"$ref": "util.json#/definitions/foundryEffectsArray"},
-					"foundryImg": {"$ref": "util.json#/definitions/foundryImg"},
+					"foundrySystem": {"$ref": "util.json#/$defs/foundrySystemObject"},
+					"foundryFlags": {"$ref": "util.json#/$defs/foundryFlagsObject"},
+					"foundryEffects": {"$ref": "util.json#/$defs/foundryEffectsArray"},
+					"foundryImg": {"$ref": "util.json#/$defs/foundryImg"},
 					"fluff": {
-						"$ref": "items-shared.json#/definitions/fluff"
+						"$ref": "items-shared.json#/$defs/fluff"
 					}
 				}
 			},
@@ -510,7 +516,7 @@
 					"type": "object",
 					"$$merge": [
 						{
-							"$ref": "#/definitions/itemData"
+							"$ref": "#/$defs/itemData"
 						},
 						{
 							"required": [
@@ -525,10 +531,10 @@
 					"type": "object",
 					"$$merge": [
 						{
-							"$ref": "#/definitions/itemData"
+							"$ref": "#/$defs/itemData"
 						},
 						{
-							"$ref": "util.json#/definitions/copyBlock"
+							"$ref": "util.json#/$defs/copyBlock"
 						}
 					]
 				}
@@ -539,7 +545,7 @@
 		"item": {
 			"type": "array",
 			"items": {
-				"$ref": "#/definitions/item"
+				"$ref": "#/$defs/item"
 			},
 			"uniqueItems": true,
 			"minItems": 1
@@ -549,7 +555,7 @@
 			"type": "array",
 			"items": {
 				"type":"object",
-				"$ref": "#/definitions/item",
+				"$ref": "#/$defs/item",
 				"oneOf": [
 					{
 						"required": [
@@ -567,7 +573,7 @@
 			"minItems": 1
 		},
 		"_meta": {
-			"$ref": "util.json#/definitions/metaBlock"
+			"$ref": "util.json#/$defs/metaBlock"
 		}
 	},
 	"additionalProperties": false

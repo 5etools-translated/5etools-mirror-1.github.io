@@ -17,4 +17,5 @@ function cleanFolder (folder) {
 }
 
 cleanFolder(`./data`);
+cleanFolder(`./homebrew`);
 console.log("Cleaning complete.");

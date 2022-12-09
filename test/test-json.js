@@ -1,6 +1,6 @@
 const fs = require("fs");
 const ut = require("../node/util.js");
-const Ajv = require("ajv").default;
+const Ajv2020 = require("ajv/dist/2020.js").default;
 const addFormats = require("ajv-formats");
 const jsonSourceMap = require("json-source-map");
 
@@ -11,7 +11,7 @@ const _IS_TRIM_RESULTS = !process.env.VET_TEST_JSON_RESULTS_UNTRIMMED;
 require("../node/compile-schemas.js");
 
 // region Set up validator
-const ajv = new Ajv({
+const ajv = new Ajv2020({
 	allowUnionTypes: true,
 });
 addFormats(ajv);

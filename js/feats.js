@@ -39,7 +39,10 @@ class FeatsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterFeats();
 		super({
-			dataSource: "data/feats.json",
+			dataSource: DataUtil.feat.loadJSON.bind(DataUtil.feat),
+			dataSourceFluff: DataUtil.featFluff.loadJSON.bind(DataUtil.featFluff),
+
+			pFnGetFluff: Renderer.feat.pGetFluff.bind(Renderer.feat),
 
 			pageFilter,
 
@@ -100,9 +103,46 @@ class FeatsPage extends ListPage {
 	}
 
 	_doLoadHash (id) {
+		this._$pgContent.empty();
+
+		this._renderer.setFirstSection(true);
 		const feat = this._dataList[id];
 
-		this._$pgContent.empty().append(RenderFeats.$getRenderedFeat(feat));
+		const buildStatsTab = () => {
+			this._$pgContent.append(RenderFeats.$getRenderedFeat(feat));
+		};
+
+		const buildFluffTab = (isImageTab) => {
+			return Renderer.utils.pBuildFluffTab({
+				isImageTab,
+				$content: this._$pgContent,
+				pFnGetFluff: this._pFnGetFluff,
+				entity: feat,
+			});
+		};
+
+		const tabMetas = [
+			new Renderer.utils.TabButton({
+				label: "Traits",
+				fnPopulate: buildStatsTab,
+				isVisible: true,
+			}),
+			new Renderer.utils.TabButton({
+				label: "Info",
+				fnPopulate: buildFluffTab,
+				isVisible: Renderer.utils.hasFluffText(feat, "featFluff"),
+			}),
+			new Renderer.utils.TabButton({
+				label: "Images",
+				fnPopulate: buildFluffTab.bind(null, true),
+				isVisible: Renderer.utils.hasFluffImages(feat, "featFluff"),
+			}),
+		];
+
+		Renderer.utils.bindTabButtons({
+			tabButtons: tabMetas.filter(it => it.isVisible),
+			tabLabelReference: tabMetas.map(it => it.label),
+		});
 
 		this._updateSelected();
 	}

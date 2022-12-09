@@ -86,6 +86,7 @@ class List {
 	 * @param [opts.syntax] A dictionary of search syntax prefixes, each with an item "to display" checker function.
 	 * @param [opts.isFuzzy]
 	 * @param [opts.isSkipSearchKeybindingEnter]
+	 * @param {array} [opts.helpText]
 	 */
 	constructor (opts) {
 		if (opts.fnSearch && opts.isFuzzy) throw new Error(`The options "fnSearch" and "isFuzzy" are mutually incompatible!`);
@@ -97,6 +98,7 @@ class List {
 		this._syntax = opts.syntax;
 		this._isFuzzy = !!opts.isFuzzy;
 		this._isSkipSearchKeybindingEnter = !!opts.isSkipSearchKeybindingEnter;
+		this._helpText = opts.helpText;
 
 		this._items = [];
 		this._eventHandlers = {};
@@ -145,8 +147,20 @@ class List {
 			UiUtil.bindTypingEnd({$ipt: this._$iptSearch, fnKeyup: () => this.search(this._$iptSearch.val())});
 			this._searchTerm = List.getCleanSearchTerm(this._$iptSearch.val());
 			this._init_bindKeydowns();
+
+			// region Help text
+			const helpText = [
+				...(this._helpText || []),
+				...Object.values(this._syntax || {})
+					.filter(({help}) => help)
+					.map(({help}) => help),
+			];
+
+			if (helpText.length) this._$iptSearch.title(helpText.join(" "));
+			// endregion
 		}
-		this._pDoSearch().then(null);
+
+		this._doSearch();
 		this._isInit = true;
 	}
 
@@ -201,17 +215,13 @@ class List {
 
 	update ({isForce = false} = {}) {
 		if (!this._isInit || !this._isDirty || isForce) return;
-		this._pDoSearch().then(null);
+		return this._doSearch();
 	}
 
-	async _pDoSearch () {
+	_doSearch () {
 		this._doSearch_doInterruptExistingSearch();
-		await this._doSearch_pDoSearchTerm();
-
-		// Never show excluded items
-		this._searchedItems = this._searchedItems.filter(it => !it.data.isExcluded);
-
-		this._doFilter();
+		this._doSearch_doSearchTerm();
+		this._doSearch_doPostSearchTerm();
 	}
 
 	_doSearch_doInterruptExistingSearch () {
@@ -220,11 +230,23 @@ class List {
 		this.#activeSearch = null;
 	}
 
-	async _doSearch_pDoSearchTerm () {
-		if (!this._searchTerm && !this._fnSearch) return this._searchedItems = [...this._items];
+	_doSearch_doSearchTerm () {
+		if (this._doSearch_doSearchTerm_preSyntax()) return;
 
 		const matchingSyntax = this._doSearch_getMatchingSyntax();
-		if (matchingSyntax) return this._doSearch_doSearchTerm_pSyntax(matchingSyntax);
+		if (matchingSyntax) {
+			if (this._doSearch_doSearchTerm_syntax(matchingSyntax)) return;
+
+			// For async syntax, blank the list for now, and allow the search to "resume" later
+			this._searchedItems = [];
+			this._doSearch_doSearchTerm_pSyntax(matchingSyntax)
+				.then(isContinue => {
+					if (!isContinue) return;
+					this._doSearch_doPostSearchTerm();
+				});
+
+			return;
+		}
 
 		if (this._isFuzzy) return this._searchedItems = this._doSearch_doSearchTerm_fuzzy();
 
@@ -233,17 +255,28 @@ class List {
 		this._searchedItems = this._items.filter(it => this.constructor.isVisibleDefaultSearch(it, this._searchTerm));
 	}
 
+	_doSearch_doSearchTerm_preSyntax () {
+		if (!this._searchTerm && !this._fnSearch) {
+			this._searchedItems = [...this._items];
+			return true;
+		}
+	}
+
 	_doSearch_getMatchingSyntax () {
 		const [command, term] = this._searchTerm.split(/^([a-z]+):/).filter(Boolean);
-		if (!command || !term || !this._syntax[command]) return null;
+		if (!command || !term || !this._syntax?.[command]) return null;
 		return {term, syntax: this._syntax[command]};
 	}
 
+	_doSearch_doSearchTerm_syntax ({term, syntax: {fn, isAsync}}) {
+		if (isAsync) return false;
+
+		this._searchedItems = this._items.filter(it => fn(it, term));
+		return true;
+	}
+
 	async _doSearch_doSearchTerm_pSyntax ({term, syntax: {fn, isAsync}}) {
-		if (!isAsync) {
-			this._searchedItems = this._items.filter(it => fn(it, term));
-			return;
-		}
+		if (!isAsync) return false;
 
 		this.#activeSearch = new _ListSearch({
 			term,
@@ -252,8 +285,9 @@ class List {
 		});
 		const {isInterrupted, searchedItems} = await this.#activeSearch.pRun();
 
-		if (isInterrupted) return;
+		if (isInterrupted) return false;
 		this._searchedItems = searchedItems;
+		return true;
 	}
 
 	static isVisibleDefaultSearch (li, searchTerm) { return li.searchText.includes(searchTerm); }
@@ -272,6 +306,13 @@ class List {
 			);
 
 		return results.map(res => this._items[res.doc.ix]);
+	}
+
+	_doSearch_doPostSearchTerm () {
+		// Never show excluded items
+		this._searchedItems = this._searchedItems.filter(it => !it.data.isExcluded);
+
+		this._doFilter();
 	}
 
 	_doFilter () {
@@ -312,17 +353,15 @@ class List {
 
 	search (searchTerm) {
 		const nextTerm = List.getCleanSearchTerm(searchTerm);
-		if (nextTerm !== this._searchTerm) {
-			this._searchTerm = nextTerm;
-			this._pDoSearch().then(null);
-		}
+		if (nextTerm === this._searchTerm) return;
+		this._searchTerm = nextTerm;
+		return this._doSearch();
 	}
 
 	filter (fnFilter) {
-		if (this._fnFilter !== fnFilter) {
-			this._fnFilter = fnFilter;
-			this._doFilter();
-		}
+		if (this._fnFilter === fnFilter) return;
+		this._fnFilter = fnFilter;
+		this._doFilter();
 	}
 
 	sort (sortBy, sortDir) {
@@ -336,7 +375,7 @@ class List {
 	reset () {
 		if (this._searchTerm !== List._DEFAULTS.searchTerm) {
 			this._searchTerm = List._DEFAULTS.searchTerm;
-			this._pDoSearch().then(null);
+			return this._doSearch();
 		} else if (this._sortBy !== this._sortByInitial || this._sortDir !== this._sortDirInitial) {
 			this._sortBy = this._sortByInitial;
 			this._sortDir = this._sortDirInitial;

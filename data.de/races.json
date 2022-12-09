@@ -6267,7 +6267,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Hadozee Resilience",
+					"name": "Hadozee Dodge",
 					"entries": [
 						"Die Magie, die in deinen Adern fließt, verstärkt deine natürliche Abwehr. Wenn du Schaden nimmst, kannst du deine Reaktion nutzen, um einen {@dice d6} zu würfeln. Addiere deinen Fertigkeitsbonus zu der gewürfelten Zahl und reduziere den erlittenen Schaden um einen Betrag in Höhe dieser Summe (mindestens 0 Schaden).",
 						"Du kannst diese Eigenschaft so oft einsetzen, wie es deinem Fertigkeitsbonus entspricht. Du erhältst alle verbrauchten Einsätze zurück, wenn du eine lange Pause beendest."
@@ -7912,6 +7912,55 @@
 					"type": "entries"
 				}
 			]
+		},
+		{
+			"name": "Kender",
+			"source": "DSotDQ",
+			"page": 27,
+			"lineage": "VRGR",
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"insight",
+							"investigation",
+							"sleight of hand",
+							"stealth",
+							"survival"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fearless",
+					"entries": [
+						"You have advantage on saving throws you make to avoid or end the {@condition frightened} condition on yourself. When you fail a saving throw to avoid or end the {@condition frightened} condition on yourself, you can choose to succeed instead. Once you succeed on a saving throw in this way, you can't do so again until you finish a long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Kender Curiosity",
+					"entries": [
+						"Dank des mystischen Ursprungs deines Volkes erlangst du die Beherrschung einer der folgenden Fertigkeiten deiner Wahl: {@skill Insight}, {@skill Investigation}, {@skill Sleight of Hand}, {@skill Stealth} oder {@skill Survival}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Taunt",
+					"entries": [
+						"You have an extraordinary ability to fluster creatures. As a bonus action, you can unleash a string of provoking words at a creature within 60 feet of yourself that can hear and understand you. The target must succeed on a Wisdom saving throw, or it has disadvantage on attack rolls against targets other than you until the start of your next turn. The DC equals 8 + your proficiency bonus + your Intelligence, Wisdom, or Charisma modifier (choose when you select this race).",
+						"Du kannst diese Bonusaktion so oft einsetzen, wie es deinem Fertigkeitsbonus entspricht, und du erhältst alle verbrauchten Einsätze zurück, wenn du eine lange Pause beendet hast."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Kender",
@@ -12686,7 +12735,7 @@
 					"type": "entries",
 					"name": "Thri-kreen Telepathy",
 					"entries": [
-						"Ohne die Hilfe von Magie kannst du die nicht-thri-kreen Sprachen, die du kennst, nicht sprechen. Stattdessen benutzt du Telepathie, um deine Gedanken zu übermitteln. Du hast die magische Fähigkeit, deine Gedanken mental an willige Kreaturen zu übertragen, die du in einem Umkreis von 120 Fuß von dir sehen kannst. Die Kreatur, mit der du Kontakt aufnimmst, muss nicht die gleiche Sprache sprechen wie du, um deine Gedanken zu verstehen, aber sie muss mindestens eine Sprache verstehen können. Deine telepathische Verbindung zu einer Kreatur wird unterbrochen, wenn du und die Kreatur sich mehr als 120 Fuß voneinander entfernen, wenn einer von euch beiden {@condition incapacitated} ist oder wenn einer von euch beiden den Kontakt geistig abbricht (keine Aktion erforderlich)."
+						"Without the assistance of magic, you can't speak the non-thri-kreen languages you know. Instead you use telepathy to convey your thoughts. You have the magical ability to transmit your thoughts mentally to willing creatures within 120 feet of yourself. A contacted creature doesn't need to share a language with you to understand your thoughts, but it must be able to understand at least one language. Your telepathic link to a creature is broken if you and the creature move more than 120 feet apart, if either of you is {@condition incapacitated}, or if either of you mentally breaks the contact (no action required)."
 					]
 				}
 			],
@@ -13258,9 +13307,13 @@
 			"additionalSpells": [
 				{
 					"innate": {
-						"1": [
-							"fog cloud"
-						],
+						"1": {
+							"daily": {
+								"1": [
+									"fog cloud"
+								]
+							}
+						},
 						"3": {
 							"daily": {
 								"1": [
@@ -18534,6 +18587,7 @@
 				"Dragonmark",
 				"Skill Bonus Dice"
 			],
+			"skillProficiencies": null,
 			"additionalSpells": [
 				{
 					"innate": {
@@ -18660,6 +18714,7 @@
 				"Skill Bonus Dice",
 				"Tool Bonus Dice"
 			],
+			"skillProficiencies": null,
 			"resist": [
 				"lightning"
 			],

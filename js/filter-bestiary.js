@@ -97,11 +97,18 @@ class PageFilterBestiary extends PageFilter {
 		this._averageHpFilter = new RangeFilter({header: "Average Hit Points"});
 		this._typeFilter = new Filter({
 			header: "Type",
-			items: Parser.MON_TYPES,
+			items: [...Parser.MON_TYPES],
 			displayFn: StrUtil.toTitleCase,
 			itemSortFn: SortUtil.ascSortLower,
 		});
 		this._tagFilter = new Filter({header: "Tag", displayFn: StrUtil.toTitleCase});
+		this._sidekickTypeFilter = new Filter({
+			header: "Sidekick Type",
+			items: ["expert", "spellcaster", "warrior"],
+			displayFn: StrUtil.toTitleCase,
+			itemSortFn: SortUtil.ascSortLower,
+		});
+		this._sidekickTagFilter = new Filter({header: "Sidekick Tag", displayFn: StrUtil.toTitleCase});
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
 			items: ["L", "NX", "C", "G", "NY", "E", "N", "U", "A", "No Alignment"],
@@ -262,7 +269,17 @@ class PageFilterBestiary extends PageFilter {
 		mon._fSources = SourceFilter.getCompleteFilterSources(mon);
 		mon._fPassive = !isNaN(mon.passive) ? Number(mon.passive) : null;
 
-		mon._fMisc = mon.legendary ? ["Legendary"] : [];
+		mon._fMisc = [...mon.miscTags || []];
+		for (const it of (mon.trait || [])) {
+			if (it.name && it.name.startsWith("Unarmored Defense")) mon._fMisc.push("AC from Unarmored Defense");
+		}
+		for (const it of (mon.ac || [])) {
+			if (!it.from) continue;
+			if (it.from.includes("natural armor")) mon._fMisc.push("AC from Natural Armor");
+			if (it.from.some(x => x.startsWith("{@item "))) mon._fMisc.push("AC from Item(s)");
+			if (!mon._fMisc.includes("AC from Unarmored Defense") && it.from.includes("Unarmored Defense")) mon._fMisc.push("AC from Unarmored Defense");
+		}
+		if (mon.legendary) mon._fMisc.push("Legendary");
 		if (mon.familiar) mon._fMisc.push("Familiar");
 		if (mon.type.swarmSize) mon._fMisc.push("Swarm");
 		if (mon.spellcasting) {
@@ -280,7 +297,6 @@ class PageFilterBestiary extends PageFilter {
 		if (mon.reaction) mon._fMisc.push("Reactions");
 		if (mon.bonus) mon._fMisc.push("Bonus Actions");
 		if (mon.variant) mon._fMisc.push("Has Variants");
-		if (mon.miscTags) mon._fMisc.push(...mon.miscTags);
 		if (mon._isCopy) mon._fMisc.push("Modified Copy");
 		if (mon.altArt) mon._fMisc.push("Has Alternate Token");
 		if (mon.srd) mon._fMisc.push("SRD");
@@ -290,12 +306,6 @@ class PageFilterBestiary extends PageFilter {
 		if (mon.hasFluff) mon._fMisc.push("Has Info");
 		if (mon.hasFluffImages) mon._fMisc.push("Has Images");
 		if (this._isReprinted({reprintedAs: mon.reprintedAs, tag: "creature", prop: "monster", page: UrlUtil.PG_BESTIARY})) mon._fMisc.push("Reprinted");
-		for (const it of (mon.ac || [])) {
-			if (!it.from) continue;
-			if (it.from.includes("natural armor")) mon._fMisc.push("AC from Natural Armor");
-			if (it.from.some(x => x.startsWith("{@item "))) mon._fMisc.push("AC from Item(s)");
-			if (it.from.includes("Unarmored Defense")) mon._fMisc.push("AC from Unarmored Defense");
-		}
 		if (this._hasRecharge(mon)) mon._fMisc.push("Has Recharge");
 		if (mon._versionBase_isVersion) mon._fMisc.push("Is Variant");
 		if (mon.summonedBySpell) mon._fMisc.push("Summoned by Spell");
@@ -370,6 +380,8 @@ class PageFilterBestiary extends PageFilter {
 		mon.ac.forEach(it => this._acFilter.addItem(it.ac || it));
 		if (mon.hp.average) this._averageHpFilter.addItem(mon.hp.average);
 		this._tagFilter.addItem(mon._pTypes.tags);
+		this._sidekickTypeFilter.addItem(mon._pTypes.typeSidekick);
+		this._sidekickTagFilter.addItem(mon._pTypes.tagsSidekick);
 		this._traitFilter.addItem(mon.traitTags);
 		this._actionReactionFilter.addItem(mon.actionTags);
 		this._environmentFilter.addItem(mon._fEnvironment);
@@ -402,6 +414,8 @@ class PageFilterBestiary extends PageFilter {
 			this._crFilter,
 			this._typeFilter,
 			this._tagFilter,
+			this._sidekickTypeFilter,
+			this._sidekickTagFilter,
 			this._environmentFilter,
 			this._defenceFilter,
 			this._conditionImmuneFilter,
@@ -437,6 +451,8 @@ class PageFilterBestiary extends PageFilter {
 			m._fCr,
 			m._pTypes.type,
 			m._pTypes.tags,
+			m._pTypes.typeSidekick,
+			m._pTypes.tagsSidekick,
 			m._fEnvironment,
 			[
 				m._fVuln,
@@ -579,5 +595,32 @@ class ModalFilterBestiary extends ModalFilter {
 		ListUiUtil.bindPreviewButton(UrlUtil.PG_BESTIARY, this._allData, listItem, btnShowHidePreview);
 
 		return listItem;
+	}
+}
+
+class ListSyntaxBestiary extends ListUiUtil.ListSyntax {
+	static _INDEXABLE_PROPS = [
+		"trait",
+		"spellcasting",
+		"action",
+		"bonus",
+		"reaction",
+		"legendary",
+		"mythic",
+		"variant",
+	];
+	static _INDEXABLE_PROPS_LEG_GROUP = [
+		"lairActions",
+		"regionalEffects",
+		"mythicEncounter",
+	];
+
+	_getSearchCacheStats (entity) {
+		const legGroup = DataUtil.monster.getMetaGroup(entity);
+		if (!legGroup && this.constructor._INDEXABLE_PROPS.every(it => !entity[it])) return "";
+		const ptrOut = {_: ""};
+		this.constructor._INDEXABLE_PROPS.forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));
+		if (legGroup) this.constructor._INDEXABLE_PROPS_LEG_GROUP.forEach(it => this._getSearchCache_handleEntryProp(legGroup, it, ptrOut));
+		return ptrOut._;
 	}
 }

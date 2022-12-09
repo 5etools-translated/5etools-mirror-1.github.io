@@ -6267,7 +6267,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Hadozee Resilience",
+					"name": "Hadozee Dodge",
 					"entries": [
 						"De magie die door je aderen stroomt, verhoogt je natuurlijke afweer. Wanneer je schade oploopt, kun je je reactie gebruiken om een {@dice d6} te rollen. Voeg je vaardigheidsbonus toe aan het gerolde getal, en verminder de schade die je oploopt met een bedrag gelijk aan dat totaal (minimaal 0 schade).",
 						"Je kunt deze eigenschap een aantal keer gebruiken gelijk aan je bekwaamheidsbonus. Je krijgt alle gebruikte gebruiken terug als je een lange rustpauze beëindigt."
@@ -7912,6 +7912,55 @@
 					"type": "entries"
 				}
 			]
+		},
+		{
+			"name": "Kender",
+			"source": "DSotDQ",
+			"page": 27,
+			"lineage": "VRGR",
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"insight",
+							"investigation",
+							"sleight of hand",
+							"stealth",
+							"survival"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fearless",
+					"entries": [
+						"You have advantage on saving throws you make to avoid or end the {@condition frightened} condition on yourself. When you fail a saving throw to avoid or end the {@condition frightened} condition on yourself, you can choose to succeed instead. Once you succeed on a saving throw in this way, you can't do so again until you finish a long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Kender Curiosity",
+					"entries": [
+						"Dankzij de mystieke oorsprong van je volk, krijg je vaardigheid in een van de volgende vaardigheden naar keuze: {@skill Insight}, {@skill Investigation}, {@skill Sleight of Hand}, {@skill Stealth}, of {@skill Survival}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Taunt",
+					"entries": [
+						"You have an extraordinary ability to fluster creatures. As a bonus action, you can unleash a string of provoking words at a creature within 60 feet of yourself that can hear and understand you. The target must succeed on a Wisdom saving throw, or it has disadvantage on attack rolls against targets other than you until the start of your next turn. The DC equals 8 + your proficiency bonus + your Intelligence, Wisdom, or Charisma modifier (choose when you select this race).",
+						"Je kunt deze bonus actie een aantal keren gebruiken gelijk aan je vaardigheidsbonus, en je krijgt alle verbruikte acties terug als je een lange rustpauze beëindigt."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Kender",
@@ -12686,7 +12735,7 @@
 					"type": "entries",
 					"name": "Thri-kreen Telepathy",
 					"entries": [
-						"Zonder hulp van magie kun je de niet-thri-kreen talen die je kent niet spreken. In plaats daarvan gebruik je telepathie om je gedachten over te brengen. Je hebt de magische mogelijkheid om je gedachten mentaal over te brengen op gewillige wezens die je kunt zien binnen een straal van 120 meter van jezelf. Een gecontacteerd wezen hoeft geen taal met je te delen om je gedachten te begrijpen, maar het moet wel minstens één taal kunnen begrijpen. Je telepathische link met een wezen wordt verbroken als jij en het wezen meer dan 120 voet van elkaar verwijderd zijn, als een van jullie beiden {@condition incapacitated} is, of als een van jullie beiden het contact mentaal verbreekt (geen actie nodig)."
+						"Without the assistance of magic, you can't speak the non-thri-kreen languages you know. Instead you use telepathy to convey your thoughts. You have the magical ability to transmit your thoughts mentally to willing creatures within 120 feet of yourself. A contacted creature doesn't need to share a language with you to understand your thoughts, but it must be able to understand at least one language. Your telepathic link to a creature is broken if you and the creature move more than 120 feet apart, if either of you is {@condition incapacitated}, or if either of you mentally breaks the contact (no action required)."
 					]
 				}
 			],
@@ -13258,9 +13307,13 @@
 			"additionalSpells": [
 				{
 					"innate": {
-						"1": [
-							"fog cloud"
-						],
+						"1": {
+							"daily": {
+								"1": [
+									"fog cloud"
+								]
+							}
+						},
 						"3": {
 							"daily": {
 								"1": [
@@ -18534,6 +18587,7 @@
 				"Dragonmark",
 				"Skill Bonus Dice"
 			],
+			"skillProficiencies": null,
 			"additionalSpells": [
 				{
 					"innate": {
@@ -18660,6 +18714,7 @@
 				"Skill Bonus Dice",
 				"Tool Bonus Dice"
 			],
+			"skillProficiencies": null,
 			"resist": [
 				"lightning"
 			],

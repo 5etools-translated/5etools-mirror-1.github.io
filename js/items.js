@@ -164,7 +164,7 @@ class ItemsPage extends ListPage {
 				$btnOpen: $(`#btn-book`),
 				$eleNoneVisible: $(`<span class="initial-message">If you wish to view multiple items, please first make a list</span>`),
 				pageTitle: "Items Book View",
-				fnGetMd: it => RendererMarkdown.get().render({type: "dataItem", dataItem: it}).trim(),
+				fnGetMd: it => RendererMarkdown.get().render({entries: [{type: "statblockInline", dataType: "item", data: it}]}),
 			},
 
 			tableViewOptions: {
@@ -188,6 +188,14 @@ class ItemsPage extends ListPage {
 
 		this._mundaneList = null;
 		this._magicList = null;
+	}
+
+	get _bindOtherButtonsOptions () {
+		return {
+			other: [
+				this._bindOtherButtonsOptions_openAsSinglePage({slugPage: "items", fnGetHash: () => Hist.getHashParts()[0]}),
+			].filter(Boolean),
+		};
 	}
 
 	get primaryLists () { return [this._mundaneList, this._magicList]; }

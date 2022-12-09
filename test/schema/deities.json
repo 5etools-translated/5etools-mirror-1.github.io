@@ -1,9 +1,9 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "deities.json",
 	"version": "1.2.4",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"deityData": {
 			"type": "object",
 			"properties": {
@@ -17,7 +17,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "util.json#/definitions/alignment"
+						"$ref": "util.json#/$defs/alignment"
 					}
 				},
 				"title": {
@@ -95,10 +95,10 @@
 					}
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"additionalSources": {
-					"$ref": "util.json#/definitions/additionalSources"
+					"$ref": "util.json#/$defs/additionalSources"
 				},
 				"altNames": {
 					"type": "array",
@@ -109,13 +109,13 @@
 					}
 				},
 				"symbolImg": {
-					"$ref": "entry.json#/definitions/entryImage"
+					"$ref": "entry.json#/$defs/entryImage"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"customExtensionOf": {
 					"type": "string",
@@ -142,7 +142,7 @@
 							"type": "array",
 							"minItems": 1,
 							"items": {
-								"$ref": "util.json#/definitions/alignment"
+								"$ref": "util.json#/$defs/alignment"
 							}
 						},
 						"title": {
@@ -220,10 +220,10 @@
 							}
 						},
 						"page": {
-							"$ref": "util.json#/definitions/page"
+							"$ref": "util.json#/$defs/page"
 						},
 						"additionalSources": {
-							"$ref": "util.json#/definitions/additionalSources"
+							"$ref": "util.json#/$defs/additionalSources"
 						},
 						"altNames": {
 							"type": "array",
@@ -234,13 +234,13 @@
 							}
 						},
 						"symbolImg": {
-							"$ref": "entry.json#/definitions/entryImage"
+							"$ref": "entry.json#/$defs/entryImage"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
 						},
 						"customExtensionOf": {
 							"type": "string",
@@ -270,7 +270,7 @@
 							"type": "array",
 							"minItems": 1,
 							"items": {
-								"$ref": "util.json#/definitions/alignment"
+								"$ref": "util.json#/$defs/alignment"
 							}
 						},
 						"title": {
@@ -348,10 +348,10 @@
 							}
 						},
 						"page": {
-							"$ref": "util.json#/definitions/page"
+							"$ref": "util.json#/$defs/page"
 						},
 						"additionalSources": {
-							"$ref": "util.json#/definitions/additionalSources"
+							"$ref": "util.json#/$defs/additionalSources"
 						},
 						"altNames": {
 							"type": "array",
@@ -362,13 +362,13 @@
 							}
 						},
 						"symbolImg": {
-							"$ref": "entry.json#/definitions/entryImage"
+							"$ref": "entry.json#/$defs/entryImage"
 						},
 						"srd": {
-							"$ref": "util.json#/definitions/srd"
+							"$ref": "util.json#/$defs/srd"
 						},
 						"basicRules": {
-							"$ref": "util.json#/definitions/basicRules"
+							"$ref": "util.json#/$defs/basicRules"
 						},
 						"customExtensionOf": {
 							"type": "string",
@@ -403,7 +403,7 @@
 									"type": "string"
 								},
 								"_mod": {
-									"$ref": "util.json#/definitions/_modObject"
+									"$ref": "util.json#/$defs/_modObject"
 								},
 								"_trait": {
 									"type": "object",
@@ -424,7 +424,7 @@
 									"type": "object",
 									"patternProperties": {
 										".*": {
-											"type": "boolean"
+											"const": true
 										}
 									}
 								}
@@ -450,11 +450,11 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/deity"
+				"$ref": "#/$defs/deity"
 			}
 		},
 		"_meta": {
-			"$ref": "util.json#/definitions/metaBlock"
+			"$ref": "util.json#/$defs/metaBlock"
 		}
 	},
 	"additionalProperties": false

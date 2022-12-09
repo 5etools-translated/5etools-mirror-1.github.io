@@ -88,6 +88,8 @@ class BrewDoc {
 		"internalCopies": (a, b) => [...(a || []), ...(b || [])].unique(),
 
 		"otherSources": (a, b) => this._metaMerge_otherSources(a, b),
+
+		"status": (a, b) => this._metaMerge_status(a, b),
 	};
 
 	static _metaMerge_dependenciesIncludes (a, b) {
@@ -109,6 +111,18 @@ class BrewDoc {
 		}
 
 		return a ?? b;
+	}
+
+	static _META_MERGE__STATUS_PRECEDENCE = [
+		"invalid",
+		"deprecated",
+		"wip",
+		"ready",
+	];
+
+	static _metaMerge_status (a, b) {
+		return [a || "ready", b || "ready"]
+			.sort((a, b) => this._META_MERGE__STATUS_PRECEDENCE.indexOf(a) - this._META_MERGE__STATUS_PRECEDENCE.indexOf(b))[0];
 	}
 
 	static _mergeObjects_key__meta ({out, val}) {
@@ -2158,10 +2172,24 @@ class GetBrewUi {
 	};
 
 	static _PageFilterGetBrew = class extends PageFilter {
+		static _STATUS_FILTER_DEFAULT_DESELECTED = new Set(["wip", "deprecated", "invalid"]);
+
 		constructor () {
 			super();
 
 			this._typeFilter = new GetBrewUi._TypeFilter();
+			this._statusFilter = new Filter({
+				header: "Status",
+				items: [
+					"ready",
+					"wip",
+					"deprecated",
+					"invalid",
+				],
+				displayFn: StrUtil.toTitleCase,
+				itemSortFn: null,
+				deselFn: it => this.constructor._STATUS_FILTER_DEFAULT_DESELECTED.has(it),
+			});
 			this._miscFilter = new Filter({
 				header: "Miscellaneous",
 				items: ["Sample"],
@@ -2182,6 +2210,7 @@ class GetBrewUi {
 		async _pPopulateBoxOptions (opts) {
 			opts.filters = [
 				this._typeFilter,
+				this._statusFilter,
 				this._miscFilter,
 			];
 		}
@@ -2190,6 +2219,7 @@ class GetBrewUi {
 			return this._filterBox.toDisplay(
 				values,
 				it.props,
+				it._brewStatus,
 				it._fMisc,
 			);
 		}
@@ -2244,10 +2274,10 @@ class GetBrewUi {
 
 	async pInit () {
 		const urlRoot = await BrewUtil2.pGetCustomUrl();
-		const [timestamps, propIndex, nameIndex] = await Promise.all([
+		const [timestamps, propIndex, metaIndex] = await Promise.all([
 			DataUtil.brew.pLoadTimestamps(urlRoot),
 			DataUtil.brew.pLoadPropIndex(urlRoot),
-			DataUtil.brew.pLoadNameIndex(urlRoot),
+			DataUtil.brew.pLoadMetaIndex(urlRoot),
 		]);
 
 		const pathToMeta = {};
@@ -2281,7 +2311,8 @@ class GetBrewUi {
 
 				out._brewAdded = timestamps[out.path]?.a ?? 0;
 				out._brewModified = timestamps[out.path]?.m ?? 0;
-				out._brewInternalSources = nameIndex[out.name] || [];
+				out._brewInternalSources = metaIndex[out.name]?.n || [];
+				out._brewStatus = metaIndex[out.name]?.s || "ready";
 				out._brewPropDisplayName = BrewUtil2.getPropDisplayName(out.dirProp);
 
 				return out;

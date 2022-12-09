@@ -6267,7 +6267,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Hadozee Resilience",
+					"name": "Hadozee Dodge",
 					"entries": [
 						"流淌在你血管中的魔法增强了你的自然防御力。当你受到伤害时，你可以用你的反应来掷出一个（%0%）。在掷出的数字上加上你的熟练度奖励，并减少你所受的伤害，减少的数量等于这个总数（最小为0伤害）。",
 						"你可以使用这个特质的次数与你的熟练度加成相等。当你完成一个长时间的休息时，你会恢复所有已消耗的使用。"
@@ -7912,6 +7912,55 @@
 					"type": "entries"
 				}
 			]
+		},
+		{
+			"name": "Kender",
+			"source": "DSotDQ",
+			"page": 27,
+			"lineage": "VRGR",
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"insight",
+							"investigation",
+							"sleight of hand",
+							"stealth",
+							"survival"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fearless",
+					"entries": [
+						"You have advantage on saving throws you make to avoid or end the {@condition frightened} condition on yourself. When you fail a saving throw to avoid or end the {@condition frightened} condition on yourself, you can choose to succeed instead. Once you succeed on a saving throw in this way, you can't do so again until you finish a long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Kender Curiosity",
+					"entries": [
+						"由于你的民族的神秘起源，你获得了以下技能的熟练度：{@skill Insight}、{@skill Investigation}、{@skill Sleight of Hand}、{@skill Stealth}或{@skill Survival}。"
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Taunt",
+					"entries": [
+						"You have an extraordinary ability to fluster creatures. As a bonus action, you can unleash a string of provoking words at a creature within 60 feet of yourself that can hear and understand you. The target must succeed on a Wisdom saving throw, or it has disadvantage on attack rolls against targets other than you until the start of your next turn. The DC equals 8 + your proficiency bonus + your Intelligence, Wisdom, or Charisma modifier (choose when you select this race).",
+						"你可以使用这个额外动作的次数与你的熟练度加成相等，当你完成一个长时间的休息时，你会恢复所有消耗的动作。"
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Kender",
@@ -12686,7 +12735,7 @@
 					"type": "entries",
 					"name": "Thri-kreen Telepathy",
 					"entries": [
-						"没有魔法的帮助，你不能说你所知道的非斯里-格林语言。相反，你用心灵感应来传达你的想法。你有一种神奇的能力，可以将你的思想在精神上传递给你能看到的120英尺范围内的自愿生物。被联系的生物不需要和你有共同的语言来理解你的思想，但它必须能理解至少一种语言。如果你和生物之间的距离超过120英尺，如果你们中的任何一方是（%0%），或者如果你们中的任何一方在精神上中断了联系（不需要行动），那么你和生物的心灵感应联系就会中断。"
+						"Without the assistance of magic, you can't speak the non-thri-kreen languages you know. Instead you use telepathy to convey your thoughts. You have the magical ability to transmit your thoughts mentally to willing creatures within 120 feet of yourself. A contacted creature doesn't need to share a language with you to understand your thoughts, but it must be able to understand at least one language. Your telepathic link to a creature is broken if you and the creature move more than 120 feet apart, if either of you is {@condition incapacitated}, or if either of you mentally breaks the contact (no action required)."
 					]
 				}
 			],
@@ -13258,9 +13307,13 @@
 			"additionalSpells": [
 				{
 					"innate": {
-						"1": [
-							"fog cloud"
-						],
+						"1": {
+							"daily": {
+								"1": [
+									"fog cloud"
+								]
+							}
+						},
 						"3": {
 							"daily": {
 								"1": [
@@ -18534,6 +18587,7 @@
 				"Dragonmark",
 				"Skill Bonus Dice"
 			],
+			"skillProficiencies": null,
 			"additionalSpells": [
 				{
 					"innate": {
@@ -18660,6 +18714,7 @@
 				"Skill Bonus Dice",
 				"Tool Bonus Dice"
 			],
+			"skillProficiencies": null,
 			"resist": [
 				"lightning"
 			],

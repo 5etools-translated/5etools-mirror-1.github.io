@@ -1032,6 +1032,7 @@ class BuilderUi {
 				if (options.withHeader && out) {
 					out = [
 						{
+							type: "entries",
 							name: options.withHeader,
 							entries: out,
 						},

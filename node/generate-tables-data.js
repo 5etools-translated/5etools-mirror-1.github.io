@@ -38,6 +38,8 @@ class GenTables {
 		await this._pAddClassData(output);
 		await this._pAddVariantRuleData(output);
 		await this._pAddBackgroundData(output);
+		await this._pAddEncountersData(output);
+		await this._pAddNamesData(output);
 
 		const toSave = JSON.stringify({table: output.tables, tableGroup: output.tableGroups});
 		fs.writeFileSync(`./data/generated/gendata-tables.json`, toSave, "utf-8");
@@ -133,6 +135,83 @@ class GenTables {
 			});
 		});
 	}
+
+	// -----------------------
+
+	async _pAddEncountersData (output) {
+		return this._pAddEncounterOrNamesData({
+			output,
+			path: `./data/encounters.json`,
+			prop: "encounter",
+			fnGetNameCaption: this.constructor._getConvertedEncounterTableName.bind(this),
+			colLabel1: "Encounter",
+		});
+	}
+
+	async _pAddNamesData (output) {
+		return this._pAddEncounterOrNamesData({
+			output,
+			path: `./data/names.json`,
+			prop: "name",
+			fnGetNameCaption: this.constructor._getConvertedNameTableName.bind(this),
+			colLabel1: "Name",
+		});
+	}
+
+	async _pAddEncounterOrNamesData (
+		{
+			output,
+			path,
+			prop,
+			fnGetNameCaption,
+			colLabel1,
+		},
+	) {
+		ut.patchLoadJson();
+		const jsonData = await DataUtil.loadJSON(path);
+		ut.unpatchLoadJson();
+
+		jsonData[prop].forEach(group => {
+			group.tables.forEach(tableRaw => {
+				output.tables.push(this.constructor._getConvertedEncounterOrNamesTable({
+					group,
+					tableRaw,
+					fnGetNameCaption,
+					colLabel1,
+				}));
+			});
+		});
+	}
+
+	static _getConvertedEncounterTableName (group, tableRaw) { return `${group.name} Encounters${tableRaw.minlvl && tableRaw.maxlvl ? ` (Levels ${tableRaw.minlvl}\u2014${tableRaw.maxlvl})` : ""}`; }
+	static _getConvertedNameTableName (group, tableRaw) { return `${group.name} Names - ${tableRaw.option}`; }
+
+	static _getConvertedEncounterOrNamesTable ({group, tableRaw, fnGetNameCaption, colLabel1}) {
+		const nameCaption = fnGetNameCaption(group, tableRaw);
+		return {
+			name: nameCaption,
+			source: group.source,
+			page: group.page,
+			caption: nameCaption,
+			colLabels: [
+				`d${tableRaw.diceType}`,
+				colLabel1,
+				tableRaw.rollAttitude ? `Attitude` : null,
+			].filter(Boolean),
+			colStyles: [
+				"col-2 text-center",
+				tableRaw.rollAttitude ? "col-8" : "col-10",
+				tableRaw.rollAttitude ? `col-2 text-center` : null,
+			].filter(Boolean),
+			rows: tableRaw.table.map(it => [
+				`${it.min}${it.max != null && it.max !== it.min ? `-${it.max}` : ""}`,
+				it.result,
+				tableRaw.rollAttitude ? it.resultAttitude || "\u2014" : null,
+			].filter(Boolean)),
+		};
+	}
+
+	// -----------------------
 }
 GenTables.BOOK_BLOCKLIST = {};
 GenTables.ADVENTURE_ALLOWLIST = {

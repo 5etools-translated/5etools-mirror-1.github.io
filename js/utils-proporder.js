@@ -391,6 +391,8 @@ PropOrder._BACKGROUND = [
 		],
 	}),
 
+	"prerequisite",
+
 	"feats",
 
 	"skillProficiencies",
@@ -779,6 +781,9 @@ PropOrder._FEAT = [
 	"optionalfeatureProgression",
 
 	"entries",
+
+	"hasFluff",
+	"hasFluffImages",
 ];
 PropOrder._VEHICLE = [
 	"name",
@@ -1009,6 +1014,7 @@ PropOrder._ITEM = [
 	"atomicPackContents",
 	"containerCapacity",
 
+	"optionalfeatures",
 	"attachedSpells",
 	"spellScrollLevel",
 	"lootTables",
@@ -1082,6 +1088,8 @@ PropOrder._OBJECT = [
 
 	"tokenUrl",
 	"hasToken",
+	"hasFluff",
+	"hasFluffImages",
 ];
 PropOrder._OPTIONALFEATURE = [
 	"name",
@@ -1377,10 +1385,12 @@ PropOrder._PROP_TO_LIST = {
 	"monster": PropOrder._MONSTER,
 	"monsterFluff": PropOrder._GENERIC_FLUFF,
 	"backgroundFluff": PropOrder._GENERIC_FLUFF,
+	"featFluff": PropOrder._GENERIC_FLUFF,
 	"conditionFluff": PropOrder._GENERIC_FLUFF,
 	"itemFluff": PropOrder._GENERIC_FLUFF,
 	"languageFluff": PropOrder._GENERIC_FLUFF,
 	"vehicleFluff": PropOrder._GENERIC_FLUFF,
+	"objectFluff": PropOrder._GENERIC_FLUFF,
 	"raceFluff": PropOrder._RACE_FLUFF,
 	"spell": PropOrder._SPELL,
 	"action": PropOrder._ACTION,

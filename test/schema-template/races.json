@@ -1,64 +1,69 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "races.json",
-	"version": "1.11.4",
+	"version": "1.12.1",
 	"type": "object",
 
-	"definitions": {
+	"$defs": {
 		"sharedData": {
 			"type": "object",
 			"properties": {
 				"name": {"type": "string"},
-				"alias": {"$ref": "util.json#/definitions/alias"},
+				"alias": {"$ref": "util.json#/$defs/alias"},
 				"source": {"type": "string"},
-				"page": {"$ref": "util.json#/definitions/page"},
-				"otherSources": {"$ref": "util.json#/definitions/otherSources"},
-				"additionalSources": {"$ref": "util.json#/definitions/additionalSources"},
-				"reprintedAs": {"$ref": "util.json#/definitions/reprintedAs"},
-				"ability": {"$ref": "#/definitions/abilityScores"},
+				"page": {"$ref": "util.json#/$defs/page"},
+				"otherSources": {"$ref": "util.json#/$defs/otherSources"},
+				"additionalSources": {"$ref": "util.json#/$defs/additionalSources"},
+				"reprintedAs": {"$ref": "util.json#/$defs/reprintedAs"},
+				"ability": {"$ref": "#/$defs/abilityScores"},
 				"size": {
 					"type": "array",
-					"items": {"$ref": "util.json#/definitions/size"}
+					"items": {"$ref": "util.json#/$defs/size"}
 				},
-				"speed": {"$ref": "util.json#/definitions/speed"},
+				"speed": {"$ref": "util.json#/$defs/speed"},
 				"entries": {
 					"type": "array",
 					"items": {"$ref": "entry.json"}
 				},
 				"darkvision": {"type": "integer"},
 				"blindsight": {"type": "integer"},
-				"feats": {"$ref": "util.json#/definitions/additionalFeatsArray"},
+				"feats": {"$ref": "util.json#/$defs/additionalFeatsArray"},
 				"traitTags": {
 					"oneOf": [
 						{
 							"type": "array",
-							"items": {"$ref": "#/definitions/traitTag"}
+							"items": {"$ref": "#/$defs/traitTag"}
 						},
 						{
 							"type": "null"
 						}
 					]
 				},
-				"soundClip": {"$ref": "entry.json#/definitions/mediaHref"},
-				"languageProficiencies": {"$ref": "util.json#/definitions/languageProficiencies"},
-				"skillProficiencies": {"$ref": "util.json#/definitions/skillProficiencies"},
-				"toolProficiencies": {"$ref": "util.json#/definitions/toolProficiencies"},
-				"skillToolLanguageProficiencies": {"$ref": "util.json#/definitions/skillToolLanguageProficiencies"},
-				"expertise": {"$ref": "util.json#/definitions/expertise"},
-				"weaponProficiencies": {"$ref": "util.json#/definitions/weaponProficiencies"},
-				"armorProficiencies": {"$ref": "util.json#/definitions/armorProficiencies"},
-				"srd": {"$ref": "util.json#/definitions/srd"},
-				"basicRules": {"$ref": "util.json#/definitions/basicRules"},
+				"soundClip": {"$ref": "entry.json#/$defs/mediaHref"},
+				"languageProficiencies": {"$ref": "util.json#/$defs/languageProficiencies"},
+				"skillProficiencies": {
+					"oneOf": [
+						{"$ref": "util.json#/$defs/skillProficiencies"},
+						{"type": "null"}
+					]
+				},
+				"toolProficiencies": {"$ref": "util.json#/$defs/toolProficiencies"},
+				"skillToolLanguageProficiencies": {"$ref": "util.json#/$defs/skillToolLanguageProficiencies"},
+				"expertise": {"$ref": "util.json#/$defs/expertise"},
+				"weaponProficiencies": {"$ref": "util.json#/$defs/weaponProficiencies"},
+				"armorProficiencies": {"$ref": "util.json#/$defs/armorProficiencies"},
+				"srd": {"$ref": "util.json#/$defs/srd"},
+				"basicRules": {"$ref": "util.json#/$defs/basicRules"},
 				"lineage": {
 					"oneOf": [
-						{"$ref": "#/definitions/lineage"},
+						{"$ref": "#/$defs/lineage"},
 						{"type": "null"}
 					]
 				},
 				"heightAndWeight": {
 					"oneOf": [
 						{
-							"$ref": "#/definitions/heightAndWeight"
+							"$ref": "#/$defs/heightAndWeight"
 						},
 						{
 							"type": "null"
@@ -71,14 +76,14 @@
 							"type": "null"
 						},
 						{
-							"$ref": "util.json#/definitions/additionalSpellsArray"
+							"$ref": "util.json#/$defs/additionalSpellsArray"
 						}
 					]
 				},
 				"resist": {
 					"oneOf": [
 						{
-							"$ref": "util.json#/definitions/damageResistArrayPlayer"
+							"$ref": "util.json#/$defs/damageResistArrayPlayer"
 						},
 						{
 							"type": "null"
@@ -88,7 +93,7 @@
 				"immune": {
 					"oneOf": [
 						{
-							"$ref": "util.json#/definitions/damageImmunityArrayPlayer"
+							"$ref": "util.json#/$defs/damageImmunityArrayPlayer"
 						},
 						{
 							"type": "null"
@@ -98,7 +103,7 @@
 				"vulnerable": {
 					"oneOf": [
 						{
-							"$ref": "util.json#/definitions/damageVulnerabilityArrayPlayer"
+							"$ref": "util.json#/$defs/damageVulnerabilityArrayPlayer"
 						},
 						{
 							"type": "null"
@@ -108,7 +113,7 @@
 				"conditionImmune": {
 					"oneOf": [
 						{
-							"$ref": "util.json#/definitions/conditionImmunityArrayPlayer"
+							"$ref": "util.json#/$defs/conditionImmunityArrayPlayer"
 						},
 						{
 							"type": "null"
@@ -125,7 +130,7 @@
 									"choose": {
 										"type": "array",
 										"items": {
-											"$ref": "util.json#/definitions/creatureType"
+											"$ref": "util.json#/$defs/creatureType"
 										}
 									}
 								},
@@ -133,7 +138,7 @@
 								"additionalProperties": false
 							},
 							{
-								"$ref": "util.json#/definitions/creatureType"
+								"$ref": "util.json#/$defs/creatureType"
 							}
 						]
 					}
@@ -146,16 +151,16 @@
 						"type": "string"
 					}
 				},
-				"age": {"$ref": "#/definitions/age"},
+				"age": {"$ref": "#/$defs/age"},
 				"hasFluff": {"type": "boolean"},
 				"hasFluffImages": {"type": "boolean"},
-				"_versions": {"$ref": "util.json#/definitions/versionsArray"},
+				"_versions": {"$ref": "util.json#/$defs/versionsArray"},
 				"$$ifBrew": {
-					"fluff": {"$ref": "#/definitions/fluff"},
-					"foundryData": {"$ref": "util.json#/definitions/foundryDataObject"},
-					"foundryFlags": {"$ref": "util.json#/definitions/foundryFlagsObject"},
-					"foundryEffects": {"$ref": "util.json#/definitions/foundryEffectsArray"},
-					"foundryImg": {"$ref": "util.json#/definitions/foundryImg"}
+					"fluff": {"$ref": "#/$defs/fluff"},
+					"foundrySystem": {"$ref": "util.json#/$defs/foundrySystemObject"},
+					"foundryFlags": {"$ref": "util.json#/$defs/foundryFlagsObject"},
+					"foundryEffects": {"$ref": "util.json#/$defs/foundryEffectsArray"},
+					"foundryImg": {"$ref": "util.json#/$defs/foundryImg"}
 				}
 			},
 			"additionalProperties": false
@@ -164,7 +169,7 @@
 		"subraceData": {
 			"$$merge": [
 				{
-					"$ref": "#/definitions/sharedData"
+					"$ref": "#/$defs/sharedData"
 				},
 				{
 					"type": "object",
@@ -181,13 +186,13 @@
 		},
 
 		"raceData": {
-			"$ref": "#/definitions/sharedData"
+			"$ref": "#/$defs/sharedData"
 		},
 
 		"traitTag": {
 			"oneOf": [
 				{
-					"$ref": "util.json#/definitions/proficiencyTag"
+					"$ref": "util.json#/$defs/proficiencyTag"
 				},
 				{
 					"type": "string",
@@ -318,7 +323,7 @@
 					"type": "object",
 					"$$merge": [
 						{
-							"$ref": "#/definitions/raceData"
+							"$ref": "#/$defs/raceData"
 						},
 						{
 							"required": [
@@ -332,10 +337,10 @@
 					"type": "object",
 					"$$merge": [
 						{
-							"$ref": "#/definitions/raceData"
+							"$ref": "#/$defs/raceData"
 						},
 						{
-							"$ref": "util.json#/definitions/copyBlock"
+							"$ref": "util.json#/$defs/copyBlock"
 						}
 					]
 				}
@@ -348,7 +353,7 @@
 					"type": "object",
 					"$$merge": [
 						{
-							"$ref": "#/definitions/subraceData"
+							"$ref": "#/$defs/subraceData"
 						},
 						{
 							"$$ifSite": {
@@ -373,10 +378,10 @@
 					"type": "object",
 					"$$merge": [
 						{
-							"$ref": "#/definitions/subraceData"
+							"$ref": "#/$defs/subraceData"
 						},
 						{
-							"$ref": "util.json#/definitions/copyBlock"
+							"$ref": "util.json#/$defs/copyBlock"
 						}
 					]
 				}
@@ -387,7 +392,7 @@
 			"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source.",
 			"anyOf": [
 				{
-					"$ref": "util.json#/definitions/fluffObject"
+					"$ref": "util.json#/$defs/fluffObject"
 				},
 				{
 					"description": "References \"raceFluff\" array items",
@@ -427,7 +432,7 @@
 			"uniqueItems": true,
 			"minItems": 1,
 			"items": {
-				"$ref": "#/definitions/race"
+				"$ref": "#/$defs/race"
 			}
 		},
 		"subrace": {
@@ -435,11 +440,11 @@
 			"uniqueItems": true,
 			"minItems": 1,
 			"items": {
-				"$ref": "#/definitions/subrace"
+				"$ref": "#/$defs/subrace"
 			}
 		},
 		"_meta": {
-			"$ref": "util.json#/definitions/metaBlock"
+			"$ref": "util.json#/$defs/metaBlock"
 		}
 	},
 	"required": ["race", "subrace"],

@@ -36,6 +36,38 @@
 			"hasToken": true
 		},
 		{
+			"name": "Boilerdrak",
+			"source": "DSotDQ",
+			"size": "L",
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 100,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"entries": [
+				"This wagon-sized device is designed to look roughly like a dragon. Before it can be used, the boilerdrak must be lit and aimed. It takes 1 action to light the weapon, 1 action to aim it, and 1 action to fire it. When you use your action to fire it, roll a {@dice d20}. If you roll a 2 or higher, use the Flames action. If you roll a 1, use the Explosion action."
+			],
+			"actionEntries": [
+				{
+					"type": "entries",
+					"name": "Flames",
+					"entries": [
+						"The boilerdrak expels flames in a 60-foot cone. Each creature in that area must make a {@dc 15} Dexterity saving throw, taking 27 ({@dice 5d10}) fire damage on a failed save, or half as much damage on a successful one."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Explosion",
+					"entries": [
+						"The boilerdrak explodes in a 30-foot-radius sphere and is destroyed. Each creature in that area must make a {@dc 15} Dexterity saving throw, taking 27 ({@dice 5d10}) fire damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			],
+			"hasFluffImages": true
+		},
+		{
 			"name": "Cannon",
 			"source": "DMG",
 			"page": 255,
@@ -255,6 +287,32 @@
 				}
 			],
 			"hasToken": true
+		},
+		{
+			"name": "Gnomeflinger",
+			"source": "DSotDQ",
+			"size": "L",
+			"objectType": "SW",
+			"ac": 15,
+			"hp": 100,
+			"immune": [
+				"poison",
+				"psychic"
+			],
+			"entries": [
+				"The gnomeflinger is a catapult designed to hurl creatures, instead of projectiles, in a high arc. The gnomeflinger was designed in conjunction with the {@item narycrash|DSotDQ} (see the {@area \"Adventuring Gear\"|498|x} section) to hasten transportation. The device can hold one Medium or smaller creature. Before it can be used, the gnomeflinger must be loaded and aimed. It takes 1 action to load the gnomeflinger, 1 action to aim it, and 1 action to fire it.",
+				"While taking an action to aim the gnomeflinger, you set the maximum horizontal distance of the Fling Personnel action to 60 feet, 150 feet, or 300 feet."
+			],
+			"actionEntries": [
+				{
+					"type": "entries",
+					"name": "Fling Personnel",
+					"entries": [
+						"The gnomeflinger catapults a Medium or smaller creature at least 60 feet away horizontally, with a maximum horizontal distance of 60 feet, 150 feet, or 300 feet, depending on the option chosen when the catapult was aimed. During this trajectory, the creature always reaches a height of 60 feet vertically.",
+						"A creature that collides with another creature or an object during this trajectory takes 3 ({@dice 1d6}) bludgeoning damage for every 10 feet away from the gnomeflinger it is."
+					]
+				}
+			]
 		},
 		{
 			"name": "Gulthias Tree",

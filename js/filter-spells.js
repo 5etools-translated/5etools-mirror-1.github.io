@@ -685,6 +685,20 @@ class ModalFilterSpells extends ModalFilter {
 	}
 }
 
+class ListSyntaxSpells extends ListUiUtil.ListSyntax {
+	static _INDEXABLE_PROPS = [
+		"entries",
+		"entriesHigherLevel",
+	];
+
+	_getSearchCacheStats (entity) {
+		if (this.constructor._INDEXABLE_PROPS.every(it => !entity[it])) return "";
+		const ptrOut = {_: ""};
+		this.constructor._INDEXABLE_PROPS.forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));
+		return ptrOut._;
+	}
+}
+
 if (typeof module !== "undefined") {
 	module.exports = PageFilterSpells;
 }

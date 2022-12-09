@@ -46,6 +46,8 @@ class TrapsHazardsPage extends ListPage {
 			listClass: "trapshazards",
 
 			dataProps: ["trap", "hazard"],
+
+			listSyntax: new ListSyntaxTrapsHazards({fnGetDataList: () => this._dataList}),
 		});
 	}
 
@@ -98,15 +100,6 @@ class TrapsHazardsPage extends ListPage {
 		this._$pgContent.empty().append(RenderTrapsHazards.$getRenderedTrapHazard(it));
 
 		this._updateSelected();
-	}
-	_getSearchCacheStats (entity) {
-		if (!entity.effect && !entity.trigger && !entity.countermeasures && !entity.entries) return "";
-		const ptrOut = {_: ""};
-		this._getSearchCache_handleEntryProp(entity, "effect", ptrOut);
-		this._getSearchCache_handleEntryProp(entity, "trigger", ptrOut);
-		this._getSearchCache_handleEntryProp(entity, "countermeasures", ptrOut);
-		this._getSearchCache_handleEntryProp(entity, "entries", ptrOut);
-		return ptrOut._;
 	}
 }
 

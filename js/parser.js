@@ -221,11 +221,16 @@ Parser.getSpeedString = (ent, {isMetric = false, isSkipZeroWalk = false} = {}) =
 	if (typeof ent.speed === "object") {
 		const stack = [];
 		let joiner = ", ";
-		Parser.SPEED_MODES.forEach(mode => Parser._getSpeedString_addSpeedMode({ent, prop: mode, stack, isMetric, isSkipZeroWalk, unit}));
-		if (ent.speed.choose) {
+
+		Parser.SPEED_MODES
+			.filter(mode => !ent.speed.hidden?.includes(mode))
+			.forEach(mode => Parser._getSpeedString_addSpeedMode({ent, prop: mode, stack, isMetric, isSkipZeroWalk, unit}));
+
+		if (ent.speed.choose && !ent.speed.hidden?.includes("choose")) {
 			joiner = "; ";
 			stack.push(`${ent.speed.choose.from.sort().joinConjunct(", ", " or ")} ${ent.speed.choose.amount} ${unit}${ent.speed.choose.note ? ` ${ent.speed.choose.note}` : ""}`);
 		}
+
 		return stack.join(joiner) + (ent.speed.note ? ` ${ent.speed.note}` : "");
 	}
 
@@ -540,6 +545,11 @@ Parser._buildSourceCache = function (dict) {
 	Object.entries(dict).forEach(([k, v]) => out[k.toLowerCase()] = v);
 	return out;
 };
+Parser._sourceJsonCache = null;
+Parser.hasSourceJson = function (source) {
+	Parser._sourceJsonCache = Parser._sourceJsonCache || Parser._buildSourceCache(Object.keys(Parser.SOURCE_JSON_TO_FULL).mergeMap(k => ({[k]: k})));
+	return !!Parser._sourceJsonCache[source.toLowerCase()];
+};
 Parser._sourceFullCache = null;
 Parser.hasSourceFull = function (source) {
 	Parser._sourceFullCache = Parser._sourceFullCache || Parser._buildSourceCache(Parser.SOURCE_JSON_TO_FULL);
@@ -554,6 +564,12 @@ Parser._sourceDateCache = null;
 Parser.hasSourceDate = function (source) {
 	Parser._sourceDateCache = Parser._sourceDateCache || Parser._buildSourceCache(Parser.SOURCE_JSON_TO_DATE);
 	return !!Parser._sourceDateCache[source.toLowerCase()];
+};
+Parser.sourceJsonToJson = function (source) {
+	source = Parser._getSourceStringFromSource(source);
+	if (Parser.hasSourceJson(source)) return Parser._sourceJsonCache[source.toLowerCase()];
+	if (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(source)) return BrewUtil2.sourceJsonToSource(source).json;
+	return source;
 };
 Parser.sourceJsonToFull = function (source) {
 	source = Parser._getSourceStringFromSource(source);
@@ -1293,6 +1309,8 @@ Parser.SP_MISC_TAG_TO_FULL = {
 	RO: "Rollable Effects",
 	LGTS: "Creates Sunlight",
 	LGT: "Creates Light",
+	UBA: "Uses Bonus Action",
+	PS: "Plane Shifting",
 };
 Parser.spMiscTagToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_MISC_TAG_TO_FULL, type);
@@ -1310,7 +1328,15 @@ Parser.spCasterProgressionToFull = function (type) {
 
 // mon-prefix functions are for parsing monster data, and shared with the roll20 script
 Parser.monTypeToFullObj = function (type) {
-	const out = {type: "", tags: [], asText: ""};
+	const out = {
+		type: "",
+		tags: [],
+		asText: "",
+
+		typeSidekick: null,
+		tagsSidekick: [],
+		asTextSidekick: null,
+	};
 
 	if (typeof type === "string") {
 		// handles e.g. "fey"
@@ -1319,20 +1345,6 @@ Parser.monTypeToFullObj = function (type) {
 		return out;
 	}
 
-	const tempTags = [];
-	if (type.tags) {
-		for (const tag of type.tags) {
-			if (typeof tag === "string") {
-				// handles e.g. "fiend (devil)"
-				out.tags.push(tag.toLowerCase());
-				tempTags.push(tag);
-			} else {
-				// handles e.g. "humanoid (Chondathan human)"
-				out.tags.push(tag.tag.toLowerCase());
-				tempTags.push(`${tag.prefix} ${tag.tag}`);
-			}
-		}
-	}
 	out.type = type.type;
 	if (type.swarmSize) {
 		out.tags.push("swarm");
@@ -1341,8 +1353,45 @@ Parser.monTypeToFullObj = function (type) {
 	} else {
 		out.asText = `${type.type}`;
 	}
-	if (tempTags.length) out.asText += ` (${tempTags.join(", ")})`;
+
+	const tagMetas = Parser.monTypeToFullObj._getTagMetas(type.tags);
+	if (tagMetas.length) {
+		out.tags.push(...tagMetas.map(({filterTag}) => filterTag));
+		out.asText += ` (${tagMetas.map(({displayTag}) => displayTag).join(", ")})`;
+	}
+
+	// region Sidekick
+	if (type.sidekickType) {
+		out.typeSidekick = type.sidekickType;
+		if (!type.sidekickHidden) out.asTextSidekick = `${type.sidekickType}`;
+
+		const tagMetas = Parser.monTypeToFullObj._getTagMetas(type.sidekickTags);
+		if (tagMetas.length) {
+			out.tagsSidekick.push(...tagMetas.map(({filterTag}) => filterTag));
+			if (!type.sidekickHidden) out.asTextSidekick += ` (${tagMetas.map(({displayTag}) => displayTag).join(", ")})`;
+		}
+	}
+	// endregion
+
 	return out;
+};
+
+Parser.monTypeToFullObj._getTagMetas = (tags) => {
+	return tags
+		? tags.map(tag => {
+			if (typeof tag === "string") { // handles e.g. "fiend (devil)"
+				return {
+					filterTag: tag.toLowerCase(),
+					displayTag: tag,
+				};
+			} else { // handles e.g. "humanoid (Chondathan human)"
+				return {
+					filterTag: tag.tag.toLowerCase(),
+					displayTag: `${tag.prefix} ${tag.tag}`,
+				};
+			}
+		})
+		: [];
 };
 
 Parser.monTypeToPlural = function (type) {
@@ -2407,6 +2456,7 @@ SRC_AAG = "AAG";
 SRC_BAM = "BAM";
 SRC_LoX = "LoX";
 SRC_DoSI = "DoSI";
+SRC_DSotDQ = "DSotDQ";
 SRC_SCREEN = "Screen";
 SRC_SCREEN_WILDERNESS_KIT = "ScreenWildernessKit";
 SRC_SCREEN_DUNGEON_KIT = "ScreenDungeonKit";
@@ -2517,6 +2567,7 @@ SRC_UA2022HoKR = `${SRC_UA_PREFIX}2022HeroesOfKrynnRevisited`;
 SRC_UA2022GO = `${SRC_UA_PREFIX}2022GiantOptions`;
 SRC_UA2022WotM = `${SRC_UA_PREFIX}2022WondersOfTheMultiverse`;
 SRC_MCV1SC = `${SRC_MCVX_PREFIX}1SC`;
+SRC_MCV2DC = `${SRC_MCVX_PREFIX}2DC`;
 
 SRC_3PP_SUFFIX = " 3pp";
 
@@ -2529,7 +2580,7 @@ UA_PREFIX_SHORT = "UA: ";
 TftYP_NAME = "Tales from the Yawning Portal";
 AitFR_NAME = "Adventures in the Forgotten Realms";
 NRH_NAME = "NERDS Restoring Harmony";
-MCVX_PREFIX = "Monster Compendium Volume ";
+MCVX_PREFIX = "Monstrous Compendium Volume ";
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CoS] = "Curse of Strahd";
@@ -2623,6 +2674,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_AAG] = "Astral Adventurer's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BAM] = "Boo's Astral Menagerie";
 Parser.SOURCE_JSON_TO_FULL[SRC_LoX] = "Light of Xaryxis";
 Parser.SOURCE_JSON_TO_FULL[SRC_DoSI] = "Dragons of Stormwreck Isle";
+Parser.SOURCE_JSON_TO_FULL[SRC_DSotDQ] = "Dragonlance: Shadow of the Dragon Queen";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN_WILDERNESS_KIT] = "Dungeon Master's Screen: Wilderness Kit";
 Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN_DUNGEON_KIT] = "Dungeon Master's Screen: Dungeon Kit";
@@ -2724,6 +2776,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UA2022HoKR] = `${UA_PREFIX}2022 Heroes of Krynn R
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2022GO] = `${UA_PREFIX}2022 Giant Options`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2022WotM] = `${UA_PREFIX}2022 Wonders of the Multiverse`;
 Parser.SOURCE_JSON_TO_FULL[SRC_MCV1SC] = `${MCVX_PREFIX}1: Spelljammer Creatures`;
+Parser.SOURCE_JSON_TO_FULL[SRC_MCV2DC] = `${MCVX_PREFIX}2: Dragonlance Creatures`;
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CoS] = "CoS";
@@ -2817,6 +2870,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_AAG] = "AAG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BAM] = "BAM";
 Parser.SOURCE_JSON_TO_ABV[SRC_LoX] = "LoX";
 Parser.SOURCE_JSON_TO_ABV[SRC_DoSI] = "DoSI";
+Parser.SOURCE_JSON_TO_ABV[SRC_DSotDQ] = "DSotDQ";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN_WILDERNESS_KIT] = "ScWild";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN_DUNGEON_KIT] = "ScDun";
@@ -2918,6 +2972,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UA2022HoKR] = "UA22HoKR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2022GO] = "UA22GO";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2022WotM] = "UA22WotM";
 Parser.SOURCE_JSON_TO_ABV[SRC_MCV1SC] = "MCV1SC";
+Parser.SOURCE_JSON_TO_ABV[SRC_MCV2DC] = "MCV2DC";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CoS] = "2016-03-15";
@@ -3010,6 +3065,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_AAG] = "2022-08-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_BAM] = "2022-08-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_LoX] = "2022-08-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_DoSI] = "2022-07-31";
+Parser.SOURCE_JSON_TO_DATE[SRC_DSotDQ] = "2022-11-22";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN_WILDERNESS_KIT] = "2020-11-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN_DUNGEON_KIT] = "2020-09-21";
@@ -3111,6 +3167,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_UA2022HoKR] = "2022-04-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2022GO] = "2022-05-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2022WotM] = "2022-07-18";
 Parser.SOURCE_JSON_TO_DATE[SRC_MCV1SC] = "2022-04-21";
+Parser.SOURCE_JSON_TO_DATE[SRC_MCV2DC] = "2022-12-05";
 
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_LMoP,
@@ -3183,6 +3240,7 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_SjA,
 	SRC_LoX,
 	SRC_DoSI,
+	SRC_DSotDQ,
 
 	SRC_AWM,
 ]);
@@ -3281,6 +3339,7 @@ Parser.SOURCES_NON_FR = new Set([
 	SRC_AAG,
 	SRC_BAM,
 	SRC_LoX,
+	SRC_DSotDQ,
 ]);
 
 // endregion
@@ -3391,6 +3450,7 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 	SRC_JttRC,
 	SRC_LoX,
 	SRC_DoSI,
+	SRC_DSotDQ,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
@@ -3458,7 +3518,7 @@ Parser.getPropTag = function (prop) {
 
 Parser.PROP_TO_DISPLAY_NAME = {
 	"variantrule": "Variant Rule",
-	"optionalfeature": "Optional Feature",
+	"optionalfeature": "Option/Feature",
 	"magicvariant": "Magic Item Variant",
 	"baseitem": "Item (Base)",
 	"item": "Item",

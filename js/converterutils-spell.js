@@ -74,6 +74,11 @@ class SpellAttackTagger {
 // TODO areaTags
 
 class MiscTagsTagger {
+	static _addTag ({tags, tag, options}) {
+		if (options?.allowlistTags && !options?.allowlistTags.has(tag)) return;
+		tags.add(tag);
+	}
+
 	static tryRun (sp, options) {
 		const tags = new Set(sp.miscTags || []);
 
@@ -82,32 +87,34 @@ class MiscTagsTagger {
 			[sp.entries, sp.entriesHigherLevel],
 			{
 				string: (str) => {
-					if (/becomes permanent/ig.test(str)) tags.add("PRM");
-					if (/when you reach/ig.test(str)) tags.add("SCL");
-					if ((/regain|restore/ig.test(str) && /hit point/ig.test(str)) || /heal/ig.test(str)) tags.add("HL");
-					if (/temporary hit points/ig.test(str)) tags.add("THP");
-					if (/you summon/ig.test(str) || /creature shares your initiative count/ig.test(str)) tags.add("SMN");
-					if (/you can see/ig.test(str)) tags.add("SGT");
-					if (/you (?:can then )?teleport/i.test(str) || /instantly (?:transports you|teleport)/i.test(str) || /enters(?:[^.]+)portal instantly/i.test(str) || /entering the portal exits from the other portal/i.test(str)) tags.add("TP");
+					if (/becomes permanent/ig.test(str)) this._addTag({tags, tag: "PRM", options});
+					if (/when you reach/ig.test(str)) this._addTag({tags, tag: "SCL", options});
+					if ((/regain|restore/ig.test(str) && /hit point/ig.test(str)) || /heal/ig.test(str)) this._addTag({tags, tag: "HL", options});
+					if (/temporary hit points/ig.test(str)) this._addTag({tags, tag: "THP", options});
+					if (/you summon/ig.test(str) || /creature shares your initiative count/ig.test(str)) this._addTag({tags, tag: "SMN", options});
+					if (/you can see/ig.test(str)) this._addTag({tags, tag: "SGT", options});
+					if (/you (?:can then )?teleport/i.test(str) || /instantly (?:transports you|teleport)/i.test(str) || /enters(?:[^.]+)portal instantly/i.test(str) || /entering the portal exits from the other portal/i.test(str)) this._addTag({tags, tag: "TP", options});
 
-					if ((str.includes("bonus") || str.includes("penalty")) && str.includes("AC")) tags.add("MAC");
-					if (/target's (?:base )?AC becomes/.exec(str)) tags.add("MAC");
-					if (/target's AC can't be less than/.exec(str)) tags.add("MAC");
+					if ((str.includes("bonus") || str.includes("penalty")) && str.includes("AC")) this._addTag({tags, tag: "MAC", options});
+					if (/target's (?:base )?AC becomes/.exec(str)) this._addTag({tags, tag: "MAC", options});
+					if (/target's AC can't be less than/.exec(str)) this._addTag({tags, tag: "MAC", options});
 
-					if (/(?:^|\W)(?:pull(?:|ed|s)|push(?:|ed|s)) [^.!?:]*\d+\s+(?:ft|feet|foot|mile|square)/ig.test(str)) tags.add("FMV");
+					if (/(?:^|\W)(?:pull(?:|ed|s)|push(?:|ed|s)) [^.!?:]*\d+\s+(?:ft|feet|foot|mile|square)/ig.test(str)) this._addTag({tags, tag: "FMV", options});
 
-					if (/rolls? (?:a )?{@dice [^}]+} and consults? the table/.test(str)) tags.add("RO");
+					if (/rolls? (?:a )?{@dice [^}]+} and consults? the table/.test(str)) this._addTag({tags, tag: "RO", options});
 
 					if ((/\bbright light\b/i.test(str) || /\bdim light\b/i.test(str)) && /\b\d+[- ]foot[- ]radius\b/i.test(str)) {
-						if (/\bsunlight\b/.test(str)) tags.add("LGTS");
-						else tags.add("LGT");
+						if (/\bsunlight\b/.test(str)) this._addTag({tags, tag: "LGTS", options});
+						else this._addTag({tags, tag: "LGT", options});
 					}
+
+					if (/\bbonus action\b/i.test(str)) this._addTag({tags, tag: "UBA", options});
 				},
 				object: (obj) => {
 					if (obj.type !== "table") return;
 
 					const rollMode = Renderer.getAutoConvertedTableRollMode(obj);
-					if (rollMode !== RollerUtil.ROLL_COL_NONE) tags.add("RO");
+					if (rollMode !== RollerUtil.ROLL_COL_NONE) this._addTag({tags, tag: "RO", options});
 				},
 			},
 		);

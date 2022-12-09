@@ -6267,7 +6267,7 @@
 				},
 				{
 					"type": "entries",
-					"name": "Hadozee Resilience",
+					"name": "Hadozee Dodge",
 					"entries": [
 						"Magia, która płynie w twoich żyłach, zwiększa twoją naturalną obronę. Kiedy otrzymujesz obrażenia, możesz użyć swojej reakcji, aby rzucić {@dice d6}. Dodaj swój bonus do biegłości do wyrzuconej liczby i zmniejsz otrzymane obrażenia o wartość równą tej sumie (minimum 0 obrażeń).",
 						"Możesz użyć tej cechy tyle razy, ile wynosi twój bonus do biegłości. Po długim odpoczynku odzyskujesz wszystkie zużyte atuty."
@@ -7912,6 +7912,55 @@
 					"type": "entries"
 				}
 			]
+		},
+		{
+			"name": "Kender",
+			"source": "DSotDQ",
+			"page": 27,
+			"lineage": "VRGR",
+			"size": [
+				"S"
+			],
+			"speed": 30,
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"insight",
+							"investigation",
+							"sleight of hand",
+							"stealth",
+							"survival"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Fearless",
+					"entries": [
+						"You have advantage on saving throws you make to avoid or end the {@condition frightened} condition on yourself. When you fail a saving throw to avoid or end the {@condition frightened} condition on yourself, you can choose to succeed instead. Once you succeed on a saving throw in this way, you can't do so again until you finish a long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Kender Curiosity",
+					"entries": [
+						"Dzięki mistycznemu pochodzeniu twojego ludu zyskujesz biegłość w jednej z następujących umiejętności do wyboru: {@skill Insight}, {@skill Investigation}, {@skill Sleight of Hand}, {@skill Stealth} lub {@skill Survival}."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Taunt",
+					"entries": [
+						"You have an extraordinary ability to fluster creatures. As a bonus action, you can unleash a string of provoking words at a creature within 60 feet of yourself that can hear and understand you. The target must succeed on a Wisdom saving throw, or it has disadvantage on attack rolls against targets other than you until the start of your next turn. The DC equals 8 + your proficiency bonus + your Intelligence, Wisdom, or Charisma modifier (choose when you select this race).",
+						"Możesz użyć tej dodatkowej akcji tyle razy, ile wynosi twoja premia do biegłości, a wszystkie zużyte środki odzyskujesz po zakończeniu długiego odpoczynku."
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Kender",
@@ -12686,7 +12735,7 @@
 					"type": "entries",
 					"name": "Thri-kreen Telepathy",
 					"entries": [
-						"Bez pomocy magii nie możesz mówić w znanych ci językach niethri-kreenów. Zamiast tego używasz telepatii do przekazywania swoich myśli. Posiadasz magiczną zdolność mentalnego przekazywania swoich myśli chętnym istotom, które widzisz w promieniu 120 stóp od siebie. Stworzenie, z którym nawiązujesz kontakt, nie musi dzielić z tobą języka, aby zrozumieć twoje myśli, ale musi być w stanie zrozumieć co najmniej jeden język. Twoja telepatyczna więź ze stworzeniem zostaje zerwana, jeśli ty i stworzenie oddalicie się od siebie o więcej niż 120 stóp, jeśli któreś z was będzie {@condition incapacitated}, lub jeśli któreś z was mentalnie zerwie kontakt (nie wymaga to żadnej akcji)."
+						"Without the assistance of magic, you can't speak the non-thri-kreen languages you know. Instead you use telepathy to convey your thoughts. You have the magical ability to transmit your thoughts mentally to willing creatures within 120 feet of yourself. A contacted creature doesn't need to share a language with you to understand your thoughts, but it must be able to understand at least one language. Your telepathic link to a creature is broken if you and the creature move more than 120 feet apart, if either of you is {@condition incapacitated}, or if either of you mentally breaks the contact (no action required)."
 					]
 				}
 			],
@@ -13258,9 +13307,13 @@
 			"additionalSpells": [
 				{
 					"innate": {
-						"1": [
-							"fog cloud"
-						],
+						"1": {
+							"daily": {
+								"1": [
+									"fog cloud"
+								]
+							}
+						},
 						"3": {
 							"daily": {
 								"1": [
@@ -18534,6 +18587,7 @@
 				"Dragonmark",
 				"Skill Bonus Dice"
 			],
+			"skillProficiencies": null,
 			"additionalSpells": [
 				{
 					"innate": {
@@ -18660,6 +18714,7 @@
 				"Skill Bonus Dice",
 				"Tool Bonus Dice"
 			],
+			"skillProficiencies": null,
 			"resist": [
 				"lightning"
 			],

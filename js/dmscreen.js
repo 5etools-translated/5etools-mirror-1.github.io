@@ -810,13 +810,13 @@ class SideMenu {
 						this.board.recallPanel(p);
 						const her = this.board.hoveringPanel;
 						if (her.getEmpty()) {
-							her.setFromPeer(p.getPanelMeta(), p.$content);
+							her.setFromPeer(p.getPanelMeta(), p.$content, p.isMovable());
 							p.destroy();
 						} else {
 							const herMeta = her.getPanelMeta();
 							const $herContent = her.get$Content();
-							her.setFromPeer(p.getPanelMeta(), p.get$Content());
-							p.setFromPeer(herMeta, $herContent);
+							her.setFromPeer(p.getPanelMeta(), p.get$Content(), p.isMovable());
+							p.setFromPeer(herMeta, $herContent, her.isMovable());
 							p.exile();
 						}
 						// clean any lingering hidden scrollbar
@@ -2005,6 +2005,10 @@ class Panel {
 		this.$pnl.find(`.panel-control-bar`).toggleClass("move-expand-active", val);
 	}
 
+	isMovable () {
+		this.$pnl.hasClass(`panel-mode-move`);
+	}
+
 	render () {
 		const doApplyPosCss = ($ele) => {
 			// indexed from 1 instead of zero...
@@ -2157,7 +2161,7 @@ class Panel {
 		this.doRenderTabs();
 	}
 
-	setFromPeer (hisMeta, $hisContent) {
+	setFromPeer (hisMeta, $hisContent, isMovable) {
 		this.isTabs = hisMeta.isTabs;
 		this.tabIndex = hisMeta.tabIndex;
 		this.tabDatas = hisMeta.tabDatas;
@@ -2174,6 +2178,8 @@ class Panel {
 					this.$pnlTabs.children().last().before(it.$tabButton);
 				}
 			});
+
+		this.toggleMovable(isMovable);
 	}
 
 	getNextTabIndex () {
@@ -2594,8 +2600,8 @@ class JoystickMenu {
 					// TODO this should ideally peel off the selected tab and transfer it to the target pane, instead of swapping
 					const herMeta = her.getPanelMeta();
 					const $herContent = her.get$Content();
-					her.setFromPeer(this.panel.getPanelMeta(), this.panel.get$Content());
-					this.panel.setFromPeer(herMeta, $herContent);
+					her.setFromPeer(this.panel.getPanelMeta(), this.panel.get$Content(), this.panel.isMovable());
+					this.panel.setFromPeer(herMeta, $herContent, her.isMovable());
 
 					this.panel.doHideJoystick();
 					her.doShowJoystick();
@@ -2700,7 +2706,7 @@ class JoystickMenu {
 			$(document).on(`mouseup${EVT_NAMESPACE} touchend${EVT_NAMESPACE}`, () => {
 				$(document).off(`mousemove${EVT_NAMESPACE} touchmove${EVT_NAMESPACE}`).off(`mouseup${EVT_NAMESPACE} touchend${EVT_NAMESPACE}`);
 
-				$(`body`).css("userSelect", "");
+				$(document.body).css("userSelect", "");
 				this.panel.$pnl.find(`.panel-control-move`).show();
 				$(`.panel-control-bar`).removeClass("move-expand-active");
 				this.panel.$pnl.css({
@@ -3229,7 +3235,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			});
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			const $wrpUnitConverter = $(`<div class="ui-modal__row"><span>Imperial-Metric Unit Converter</span></div>`).appendTo($tab);
+			const $wrpUnitConverter = $(`<div class="ui-modal__row"><span>Unit Converter</span></div>`).appendTo($tab);
 			const $btnUnitConverter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpUnitConverter);
 			$btnUnitConverter.on("click", () => {
 				this.menu.pnl.doPopulate_UnitConverter();
@@ -3719,6 +3725,7 @@ class UnitConverter {
 			new UnitConverterUnit("Miles", "1.61", "Kilometres", "0.620"),
 			new UnitConverterUnit("Pounds", "0.454", "Kilograms", "2.20"),
 			new UnitConverterUnit("Gallons", "3.79", "Litres", "0.264"),
+			new UnitConverterUnit("Gallons", "8", "Pints", "0.125"),
 		];
 
 		let ixConv = state.c || 0;

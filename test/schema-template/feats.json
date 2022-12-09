@@ -1,10 +1,10 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "feats.json",
-	"version": "1.5.6",
+	"version": "1.6.2",
 	"type": "object",
 
-	"definitions": {
+	"$defs": {
 		"feat": {
 			"type": "object",
 			"properties": {
@@ -12,15 +12,15 @@
 					"type": "string"
 				},
 				"prerequisite": {
-					"$ref": "util.json#/definitions/prerequisite"
+					"$ref": "util.json#/$defs/prerequisite"
 				},
 				"source": {
 					"type": "string"
 				},
 				"additionalSources": {
-					"$ref": "util.json#/definitions/additionalSources"
+					"$ref": "util.json#/$defs/additionalSources"
 				},
-				"page": {"$ref": "util.json#/definitions/page"},
+				"page": {"$ref": "util.json#/$defs/page"},
 				"entries": {
 					"type": "array",
 					"items": {
@@ -99,46 +99,59 @@
 					}
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
+				},
+				"repeatable": {
+					"type": "boolean"
+				},
+				"repeatableNote": {
+					"type": "string"
 				},
 				"additionalSpells": {
-					"$ref": "util.json#/definitions/additionalSpellsArray"
+					"$ref": "util.json#/$defs/additionalSpellsArray"
 				},
 				"languageProficiencies": {
-					"$ref": "util.json#/definitions/languageProficiencies"
+					"$ref": "util.json#/$defs/languageProficiencies"
 				},
 				"skillProficiencies": {
-					"$ref": "util.json#/definitions/skillProficiencies"
+					"$ref": "util.json#/$defs/skillProficiencies"
 				},
 				"weaponProficiencies": {
-					"$ref": "util.json#/definitions/weaponProficiencies"
+					"$ref": "util.json#/$defs/weaponProficiencies"
 				},
 				"armorProficiencies": {
-					"$ref": "util.json#/definitions/armorProficiencies"
+					"$ref": "util.json#/$defs/armorProficiencies"
 				},
 				"toolProficiencies": {
-					"$ref": "util.json#/definitions/toolProficiencies"
+					"$ref": "util.json#/$defs/toolProficiencies"
 				},
 				"skillToolLanguageProficiencies": {
-					"$ref": "util.json#/definitions/skillToolLanguageProficiencies"
+					"$ref": "util.json#/$defs/skillToolLanguageProficiencies"
 				},
 				"savingThrowProficiencies": {
-					"$ref": "util.json#/definitions/savingThrowProficiencies"
+					"$ref": "util.json#/$defs/savingThrowProficiencies"
 				},
-				"optionalfeatureProgression": {"$ref": "util.json#/definitions/optionalfeatureProgression"},
-				"expertise": {"$ref": "util.json#/definitions/expertise"},
-				"resist": {"$ref": "util.json#/definitions/damageResistArrayPlayer"},
-				"immune": {"$ref": "util.json#/definitions/damageImmunityArrayPlayer"},
-				"vulnerable": 	{"$ref": "util.json#/definitions/damageVulnerabilityArrayPlayer"},
-				"conditionImmune": {"$ref": "util.json#/definitions/conditionImmunityArrayPlayer"},
+				"optionalfeatureProgression": {"$ref": "util.json#/$defs/optionalfeatureProgression"},
+				"expertise": {"$ref": "util.json#/$defs/expertise"},
+				"resist": {"$ref": "util.json#/$defs/damageResistArrayPlayer"},
+				"immune": {"$ref": "util.json#/$defs/damageImmunityArrayPlayer"},
+				"vulnerable": 	{"$ref": "util.json#/$defs/damageVulnerabilityArrayPlayer"},
+				"conditionImmune": {"$ref": "util.json#/$defs/conditionImmunityArrayPlayer"},
+				"hasFluff": {"const": true},
+				"hasFluffImages": {"const": true},
+
 				"$$ifBrew": {
-					"foundryData": {"$ref": "util.json#/definitions/foundryDataObject"},
-					"foundryFlags": {"$ref": "util.json#/definitions/foundryFlagsObject"},
-					"foundryEffects": {"$ref": "util.json#/definitions/foundryEffectsArray"},
-					"foundryImg": {"$ref": "util.json#/definitions/foundryImg"}
+					"fluff": {
+						"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source",
+						"$ref": "util.json#/$defs/fluffObject"
+					},
+					"foundrySystem": {"$ref": "util.json#/$defs/foundrySystemObject"},
+					"foundryFlags": {"$ref": "util.json#/$defs/foundryFlagsObject"},
+					"foundryEffects": {"$ref": "util.json#/$defs/foundryEffectsArray"},
+					"foundryImg": {"$ref": "util.json#/$defs/foundryImg"}
 				}
 			},
 			"required": ["name", "source", "entries"],
@@ -152,7 +165,7 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/feat"
+				"$ref": "#/$defs/feat"
 			}
 		}
 	},

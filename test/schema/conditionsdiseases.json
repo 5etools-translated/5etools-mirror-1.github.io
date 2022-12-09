@@ -1,9 +1,9 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "conditionsdiseases.json",
-	"version": "1.1.11",
+	"version": "1.2.0",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"conditionDisease": {
 			"type": "object",
 			"properties": {
@@ -20,16 +20,16 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"hasFluff": {
 					"type": "boolean"
@@ -53,7 +53,7 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/conditionDisease"
+				"$ref": "#/$defs/conditionDisease"
 			}
 		},
 		"disease": {
@@ -61,7 +61,7 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/conditionDisease"
+				"$ref": "#/$defs/conditionDisease"
 			}
 		},
 		"status": {
@@ -69,7 +69,7 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/conditionDisease"
+				"$ref": "#/$defs/conditionDisease"
 			}
 		}
 	},

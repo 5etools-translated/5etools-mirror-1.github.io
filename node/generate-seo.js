@@ -94,8 +94,8 @@ const getTemplateDev = (page, source, hash, textStyle, isFluff) => `<!DOCTYPE ht
 <script type="text/javascript" src="/js/utils-ui.js"></script>
 <script type="text/javascript" src="/js/omnidexer.js"></script>
 <script type="text/javascript" src="/js/omnisearch.js"></script>
-<script type="text/javascript" src="js/filter.js"></script>
-<script type="text/javascript" src="js/utils-brew.js"></script>
+<script type="text/javascript" src="/js/filter.js"></script>
+<script type="text/javascript" src="/js/utils-brew.js"></script>
 <script type="text/javascript" src="/js/render.js"></script>
 <script type="text/javascript" src="/js/render-dice.js"></script>
 <script type="text/javascript" src="/js/scalecreature.js"></script>
@@ -175,7 +175,7 @@ async function main () {
 			let path;
 			while (true) {
 				const hash = builder(ent);
-				const sluggedHash = Parser.stringToSlug(decodeURIComponent(hash)).replace(/_/g, "-");
+				const sluggedHash = UrlUtil.getSluggedHash(hash);
 				path = `${meta.page}/${sluggedHash}${offset ? `-${offset}` : ""}.html`;
 				if (siteMapData[path]) {
 					++offset;

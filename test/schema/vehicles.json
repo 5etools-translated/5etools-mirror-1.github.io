@@ -1,9 +1,9 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "vehicles.json",
-	"version": "1.6.2",
+	"version": "1.7.0",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"vehicleTerrain": {
 			"description": "Note that a vehicle's \"primary\" terrain should be listed first.",
 			"type": "array",
@@ -25,19 +25,19 @@
 			"type": "object",
 			"properties": {
 				"walk": {
-					"$ref": "#/definitions/_spelljammerPace"
+					"$ref": "#/$defs/_spelljammerPace"
 				},
 				"burrow": {
-					"$ref": "#/definitions/_spelljammerPace"
+					"$ref": "#/$defs/_spelljammerPace"
 				},
 				"climb": {
-					"$ref": "#/definitions/_spelljammerPace"
+					"$ref": "#/$defs/_spelljammerPace"
 				},
 				"fly": {
-					"$ref": "#/definitions/_spelljammerPace"
+					"$ref": "#/$defs/_spelljammerPace"
 				},
 				"swim": {
-					"$ref": "#/definitions/_spelljammerPace"
+					"$ref": "#/$defs/_spelljammerPace"
 				}
 			},
 			"additionalProperties": false
@@ -51,19 +51,19 @@
 		"vehicle": {
 			"oneOf": [
 				{
-					"$ref": "#/definitions/vehicleShip"
+					"$ref": "#/$defs/vehicleShip"
 				},
 				{
-					"$ref": "#/definitions/vehicleSpelljammer"
+					"$ref": "#/$defs/vehicleSpelljammer"
 				},
 				{
-					"$ref": "#/definitions/vehicleInfernalWarMachine"
+					"$ref": "#/$defs/vehicleInfernalWarMachine"
 				},
 				{
-					"$ref": "#/definitions/vehicleCreature"
+					"$ref": "#/$defs/vehicleCreature"
 				},
 				{
-					"$ref": "#/definitions/vehicleObject"
+					"$ref": "#/$defs/vehicleObject"
 				}
 			]
 		},
@@ -83,15 +83,15 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"upgradeType": {
 					"type": "array",
 					"items": {
-						"$ref": "util.json#/definitions/dataOptionalfeatureType",
+						"$ref": "util.json#/$defs/dataOptionalfeatureType",
 						"type": "string",
 						"pattern": "^(SHP|IWM):.*"
 					}
@@ -121,19 +121,19 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"vehicleType": {
 					"const": "SHIP"
 				},
 				"terrain": {
-					"$ref": "#/definitions/vehicleTerrain"
+					"$ref": "#/$defs/vehicleTerrain"
 				},
 				"size": {
-					"$ref": "util.json#/definitions/size"
+					"$ref": "util.json#/$defs/size"
 				},
 				"dimensions": {
 					"type": "array",
@@ -179,13 +179,13 @@
 				"conditionImmune": {
 					"type": "array",
 					"items": {
-						"$ref": "entry.json#/definitions/dataCondImmune"
+						"$ref": "entry.json#/$defs/dataCondImmune"
 					}
 				},
 				"immune": {
 					"type": "array",
 					"items": {
-						"$ref": "entry.json#/definitions/dataDamImmune"
+						"$ref": "entry.json#/$defs/dataDamImmune"
 					}
 				},
 				"actionThresholds": {
@@ -458,16 +458,16 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"vehicleType": {
 					"const": "SPELLJAMMER"
 				},
 				"terrain": {
-					"$ref": "#/definitions/vehicleTerrain"
+					"$ref": "#/$defs/vehicleTerrain"
 				},
 				"dimensions": {
 					"type": "array",
@@ -488,10 +488,10 @@
 					]
 				},
 				"pace": {
-					"$ref": "#/definitions/spelljammerPaceObj"
+					"$ref": "#/$defs/spelljammerPaceObj"
 				},
 				"speed": {
-					"$ref": "util.json#/definitions/speed"
+					"$ref": "util.json#/$defs/speed"
 				},
 				"hull": {
 					"type": "object",
@@ -520,7 +520,7 @@
 					"additionalProperties": false
 				},
 				"cost": {
-					"$ref": "#/definitions/_vehicleCost"
+					"$ref": "#/$defs/_vehicleCost"
 				},
 				"weapon": {
 					"type": "array",
@@ -548,7 +548,7 @@
 									"type": "object",
 									"properties": {
 										"cost": {
-											"$ref": "#/definitions/_vehicleCost"
+											"$ref": "#/$defs/_vehicleCost"
 										},
 										"note": {
 											"type": "string"
@@ -615,19 +615,19 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"vehicleType": {
 					"const": "INFWAR"
 				},
 				"terrain": {
-					"$ref": "#/definitions/vehicleTerrain"
+					"$ref": "#/$defs/vehicleTerrain"
 				},
 				"size": {
-					"$ref": "util.json#/definitions/size"
+					"$ref": "util.json#/$defs/size"
 				},
 				"weight": {
 					"type": "integer"
@@ -685,13 +685,13 @@
 				"conditionImmune": {
 					"type": "array",
 					"items": {
-						"$ref": "entry.json#/definitions/dataCondImmune"
+						"$ref": "entry.json#/$defs/dataCondImmune"
 					}
 				},
 				"immune": {
 					"type": "array",
 					"items": {
-						"$ref": "entry.json#/definitions/dataDamImmune"
+						"$ref": "entry.json#/$defs/dataDamImmune"
 					}
 				},
 				"trait": {
@@ -769,7 +769,7 @@
 					"const": "CREATURE"
 				},
 				"terrain": {
-					"$ref": "#/definitions/vehicleTerrain"
+					"$ref": "#/$defs/vehicleTerrain"
 				}
 			}
 		},
@@ -780,7 +780,7 @@
 					"const": "OBJECT"
 				},
 				"terrain": {
-					"$ref": "#/definitions/vehicleTerrain"
+					"$ref": "#/$defs/vehicleTerrain"
 				}
 			}
 		}
@@ -791,7 +791,7 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/vehicle"
+				"$ref": "#/$defs/vehicle"
 			}
 		},
 		"vehicleUpgrade": {
@@ -799,7 +799,7 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/vehicleUpgrade"
+				"$ref": "#/$defs/vehicleUpgrade"
 			}
 		}
 	},

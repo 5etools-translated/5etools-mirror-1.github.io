@@ -1,17 +1,17 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "skills.json",
 	"version": "1.0.1",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"skill": {
 			"type": "object",
 			"properties": {
 				"name": {"type": "string"},
 				"source": {"type": "string"},
-				"page": {"$ref": "util.json#/definitions/page"},
-				"srd": {"$ref": "util.json#/definitions/srd"},
-				"basicRules": {"$ref": "util.json#/definitions/basicRules"},
+				"page": {"$ref": "util.json#/$defs/page"},
+				"srd": {"$ref": "util.json#/$defs/srd"},
+				"basicRules": {"$ref": "util.json#/$defs/basicRules"},
 				"entries": {
 					"type": "array",
 					"items": {
@@ -34,7 +34,7 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/skill"
+				"$ref": "#/$defs/skill"
 			}
 		}
 	},

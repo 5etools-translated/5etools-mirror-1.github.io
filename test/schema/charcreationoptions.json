@@ -1,10 +1,10 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "charcreationoptions.json",
-	"version": "1.1.6",
+	"version": "1.2.0",
 	"title": "Character Creation Options",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"optionType": {
 			"type": "string",
 			"description": "CS: Character Secret\nDG: Dark Gift\n OF: Optional Feature\n RF:B Replacement Feature: Background\n SG: Supernatural Gift",
@@ -32,20 +32,20 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"optionType": {
 					"$comment": "Note that this field supports arbitrary strings for homebrew usage.",
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/optionType"
+						"$ref": "#/$defs/optionType"
 					}
 				},
 				"otherSources": {
-					"$ref": "util.json#/definitions/otherSources"
+					"$ref": "util.json#/$defs/otherSources"
 				},
 				"srd": {
-					"$ref": "util.json#/definitions/srd"
+					"$ref": "util.json#/$defs/srd"
 				},
 				"hasFluff": {
 					"type": "boolean"
@@ -54,7 +54,7 @@
 					"type": "boolean"
 				},
 				"prerequisite": {
-					"$ref": "util.json#/definitions/prerequisite"
+					"$ref": "util.json#/$defs/prerequisite"
 				}
 			},
 			"required": [
@@ -72,7 +72,7 @@
 			"minItems": 1,
 			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/charoption"
+				"$ref": "#/$defs/charoption"
 			}
 		}
 	},

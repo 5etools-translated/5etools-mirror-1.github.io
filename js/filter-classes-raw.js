@@ -285,6 +285,17 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 		});
 	}
 
+	static async pInitVehicleUpgradeLoadeds ({vehicleUpgrade, raw, ...opts}) {
+		return this._pInitGenericLoadeds({
+			...opts,
+			ent: vehicleUpgrade,
+			prop: "vehicleUpgrade",
+			page: UrlUtil.PG_VEHICLES,
+			propAncestorName: "_ancestorVehicleUpgradeName",
+			raw,
+		});
+	}
+
 	static async _pInitGenericLoadeds ({ent, prop, page, propAncestorName, raw, ...opts}) {
 		if (typeof ent !== "object") throw new Error(`Expected an object of the form {${prop}: "<UID>"}`);
 
@@ -413,7 +424,12 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 						let entity = await Renderer.hover.pCacheAndGet("raw_classFeature", source, hash, {isCopy: true});
 
 						if (!entity) {
-							this._handleReferenceError(`Failed to load "classFeature" reference "${ent.classFeature}"`);
+							this._handleReferenceError(`Failed to load "classFeature" reference "${ent.classFeature}" (not found)`);
+							continue;
+						}
+
+						if (toWalk.__prop === entity.__prop && UrlUtil.URL_TO_HASH_BUILDER["classFeature"](toWalk) === hash) {
+							this._handleReferenceError(`Failed to load "classFeature" reference "${ent.classFeature}" (circular reference)`);
 							continue;
 						}
 
@@ -449,7 +465,12 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 						let entity = await Renderer.hover.pCacheAndGet("raw_subclassFeature", source, hash, {isCopy: true});
 
 						if (!entity) {
-							this._handleReferenceError(`Failed to load "subclassFeature" reference "${ent.subclassFeature}"`);
+							this._handleReferenceError(`Failed to load "subclassFeature" reference "${ent.subclassFeature}" (not found)`);
+							continue;
+						}
+
+						if (toWalk.__prop === entity.__prop && UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](toWalk) === hash) {
+							this._handleReferenceError(`Failed to load "subclassFeature" reference "${ent.subclassFeature}" (circular reference)`);
 							continue;
 						}
 
@@ -486,7 +507,12 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 						const entity = await Renderer.hover.pCacheAndGet(page, source, hash, {isCopy: true});
 
 						if (!entity) {
-							this._handleReferenceError(`Failed to load "optfeature" reference "${ent.optionalfeature}"`);
+							this._handleReferenceError(`Failed to load "optfeature" reference "${ent.optionalfeature}" (not found)`);
+							continue;
+						}
+
+						if (toWalk.__prop === entity.__prop && UrlUtil.URL_TO_HASH_BUILDER[page](toWalk) === hash) {
+							this._handleReferenceError(`Failed to load "optfeature" reference "${ent.optionalfeature}" (circular reference)`);
 							continue;
 						}
 
@@ -499,7 +525,7 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 							ancestorType,
 							displayName: ent._displayNamePrefix ? `${ent._displayNamePrefix}${entity.name}` : null,
 							...ancestorMeta,
-							foundryData: {
+							foundrySystem: {
 								requirements: entityRoot.className ? `${entityRoot.className} ${entityRoot.level}${entityRoot.subclassShortName ? ` (${entityRoot.subclassShortName})` : ""}` : null,
 							},
 						});
@@ -543,13 +569,13 @@ class PageFilterClassesRaw extends PageFilterClassesBase {
 			entity,
 			ancestorType,
 			displayName,
-			foundryData,
+			foundrySystem,
 			...others
 		},
 	) {
 		if (ancestorType) entity._ancestorType = ancestorType;
 		if (displayName) entity._displayName = displayName;
-		if (foundryData) entity._foundryData = foundryData;
+		if (foundrySystem) entity._foundrySystem = foundrySystem;
 		Object.assign(entity, {...others});
 	}
 

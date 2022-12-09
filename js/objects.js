@@ -38,14 +38,21 @@ class ObjectsSublistManager extends SublistManager {
 class ObjectsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterObjects();
+		const pFnGetFluff = Renderer.object.pGetFluff.bind(Renderer.object);
+
 		super({
-			dataSource: "data/objects.json",
+			dataSource: DataUtil.object.loadJSON.bind(DataUtil.object),
+			dataSourceFluff: DataUtil.objectFluff.loadJSON.bind(DataUtil.objectFluff),
+
+			pFnGetFluff,
 
 			pageFilter,
 
 			listClass: "objects",
 
 			dataProps: ["object"],
+
+			listSyntax: new ListSyntaxObjects({fnGetDataList: () => this._dataList, pFnGetFluff}),
 		});
 
 		this._$dispToken = null;
@@ -96,6 +103,42 @@ class ObjectsPage extends ListPage {
 	_doLoadHash (id) {
 		const obj = this._dataList[id];
 
+		const tabMetas = [
+			new Renderer.utils.TabButton({
+				label: "Stat Block",
+				fnChange: () => {
+					this._$dispToken.showVe();
+				},
+				fnPopulate: () => this._renderStatblock_doBuildStatsTab(obj),
+				isVisible: true,
+			}),
+			new Renderer.utils.TabButton({
+				label: "Info",
+				fnChange: () => {
+					this._$dispToken.hideVe();
+				},
+				fnPopulate: () => this._renderStatblock_doBuildFluffTab(obj),
+				isVisible: Renderer.utils.hasFluffText(obj, "objectFluff"),
+			}),
+			new Renderer.utils.TabButton({
+				label: "Images",
+				fnChange: () => {
+					this._$dispToken.hideVe();
+				},
+				fnPopulate: () => this._renderStatblock_doBuildFluffTab(obj, {isImageTab: true}),
+				isVisible: Renderer.utils.hasFluffImages(obj, "objectFluff"),
+			}),
+		];
+
+		Renderer.utils.bindTabButtons({
+			tabButtons: tabMetas.filter(it => it.isVisible),
+			tabLabelReference: tabMetas.map(it => it.label),
+		});
+
+		this._updateSelected();
+	}
+
+	_renderStatblock_doBuildStatsTab (obj) {
 		const renderStack = [];
 
 		if (obj.entries) this._renderer.recursiveRender({entries: obj.entries}, renderStack, {depth: 2});
@@ -110,16 +153,15 @@ class ObjectsPage extends ListPage {
 			const imgLink = Renderer.object.getTokenUrl(obj);
 			this._$dispToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="Token Image: ${(obj.name || "").qq()}" loading="lazy"></a>`);
 		}
-
-		this._updateSelected();
 	}
 
-	_getSearchCacheStats (entity) {
-		if (!entity.entries && !entity.actionEntries) return "";
-		const ptrOut = {_: ""};
-		this._getSearchCache_handleEntryProp(entity, "entries", ptrOut);
-		this._getSearchCache_handleEntryProp(entity, "actionEntries", ptrOut);
-		return ptrOut._;
+	_renderStatblock_doBuildFluffTab (obj, {isImageTab = false} = {}) {
+		return Renderer.utils.pBuildFluffTab({
+			isImageTab,
+			$content: this._$pgContent,
+			entity: obj,
+			pFnGetFluff: this._pFnGetFluff,
+		});
 	}
 }
 

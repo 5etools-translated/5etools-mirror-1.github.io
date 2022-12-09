@@ -4,11 +4,14 @@ class PageFilterObjects extends PageFilter {
 	constructor () {
 		super();
 
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isMiscFilter: true});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD", "Has Images", "Has Info", "Has Token"], isMiscFilter: true});
 	}
 
 	static mutateForFilters (obj) {
 		obj._fMisc = obj.srd ? ["SRD"] : [];
+		if (obj.tokenUrl || obj.hasToken) obj._fMisc.push("Has Token");
+		if (obj.hasFluff) obj._fMisc.push("Has Info");
+		if (obj.hasFluffImages) obj._fMisc.push("Has Images");
 	}
 
 	addToFilters (obj, isExcluded) {
@@ -30,5 +33,15 @@ class PageFilterObjects extends PageFilter {
 			obj.source,
 			obj._fMisc,
 		);
+	}
+}
+
+class ListSyntaxObjects extends ListUiUtil.ListSyntax {
+	_getSearchCacheStats (entity) {
+		if (!entity.entries && !entity.actionEntries) return "";
+		const ptrOut = {_: ""};
+		this._getSearchCache_handleEntryProp(entity, "entries", ptrOut);
+		this._getSearchCache_handleEntryProp(entity, "actionEntries", ptrOut);
+		return ptrOut._;
 	}
 }

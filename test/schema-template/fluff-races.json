@@ -1,10 +1,10 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "fluff-races.json",
 	"version": "2.1.2",
 	"type": "object",
 
-	"definitions": {
+	"$defs": {
 		"raceFluffData": {
 			"type": "object",
 			"properties": {
@@ -19,7 +19,7 @@
 						{
 							"type": "array",
 							"items": {
-								"$ref": "entry.json#/definitions/entryImage"
+								"$ref": "entry.json#/$defs/entryImage"
 							}
 						},
 						{
@@ -49,7 +49,7 @@
 					"type": "object",
 					"$$merge": [
 						{
-							"$ref": "#/definitions/raceFluffData"
+							"$ref": "#/$defs/raceFluffData"
 						},
 						{
 							"required": ["name", "source"]
@@ -61,10 +61,10 @@
 					"$comment": "This is a custom pre-processor tag, which merges together the array of objects into one. This allows proper inheritance, which JSON schema don't really do.",
 					"$$merge": [
 						{
-							"$ref": "#/definitions/raceFluffData"
+							"$ref": "#/$defs/raceFluffData"
 						},
 						{
-							"$ref": "util.json#/definitions/copyBlock"
+							"$ref": "util.json#/$defs/copyBlock"
 						}
 					]
 				}
@@ -78,7 +78,7 @@
 			"uniqueItems": true,
 			"minItems": 1,
 			"items": {
-				"$ref": "#/definitions/raceFluff"
+				"$ref": "#/$defs/raceFluff"
 			}
 		},
 		"raceFluffMeta": {
@@ -93,7 +93,7 @@
 			}
 		},
 		"_meta": {
-			"$ref": "util.json#/definitions/metaBlock"
+			"$ref": "util.json#/$defs/metaBlock"
 		}
 	},
 	"additionalProperties": false

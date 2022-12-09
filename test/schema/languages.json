@@ -1,9 +1,9 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "languages.json",
-	"version": "1.1.7",
+	"version": "1.1.8",
 	"type": "object",
-	"definitions": {
+	"$defs": {
 		"language": {
 			"type": "object",
 			"properties": {
@@ -20,13 +20,13 @@
 					"type": "string"
 				},
 				"page": {
-					"$ref": "util.json#/definitions/page"
+					"$ref": "util.json#/$defs/page"
 				},
 				"srd": {
 					"type": "boolean"
 				},
 				"basicRules": {
-					"$ref": "util.json#/definitions/basicRules"
+					"$ref": "util.json#/$defs/basicRules"
 				},
 				"typicalSpeakers": {
 					"type": "array",
@@ -41,12 +41,13 @@
 					"type": "string",
 					"enum": [
 						"standard",
+						"rare",
 						"exotic",
 						"secret"
 					]
 				},
 				"additionalSources": {
-					"$ref": "util.json#/definitions/additionalSources"
+					"$ref": "util.json#/$defs/additionalSources"
 				},
 				"dialects": {
 					"type": "array",
@@ -70,8 +71,7 @@
 			},
 			"required": [
 				"name",
-				"source",
-				"page"
+				"source"
 			],
 			"additionalProperties": false
 		}
@@ -82,7 +82,7 @@
 			"uniqueItems": true,
 			"minItems": 1,
 			"items": {
-				"$ref": "#/definitions/language"
+				"$ref": "#/$defs/language"
 			}
 		},
 		"languageScript": {
