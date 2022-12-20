@@ -95,6 +95,7 @@ const getTemplateDev = (page, source, hash, textStyle, isFluff) => `<!DOCTYPE ht
 <script type="text/javascript" src="/js/omnidexer.js"></script>
 <script type="text/javascript" src="/js/omnisearch.js"></script>
 <script type="text/javascript" src="/js/filter.js"></script>
+<script type="text/javascript" src="/js/utils-dataloader.js"></script>
 <script type="text/javascript" src="/js/utils-brew.js"></script>
 <script type="text/javascript" src="/js/render.js"></script>
 <script type="text/javascript" src="/js/render-dice.js"></script>
@@ -143,7 +144,7 @@ const toGenerate = [
 	{
 		page: "items",
 		pGetEntries: async () => {
-			const out = await Renderer.item.pBuildList();
+			const out = (await Renderer.item.pBuildList()).filter(it => !it._isItemGroup);
 			return out
 				.filter(it => !isSkipUaEtc || !SourceUtil.isNonstandardSourceWotc(it.source))
 				.filter(it => !isOnlyVanilla || Parser.SOURCES_VANILLA.has(it.source));

@@ -614,7 +614,7 @@ Parser.itemValueToFull = function (item, opts = {isShortForm: false, isSmallUnit
 	return Parser._moneyToFull(item, "value", "valueMult", opts);
 };
 
-Parser.itemValueToFullMultiCurrency = function (item, opts = {isShortForm: false, isSmallUnits: false, multiplier: 1}) {
+Parser.itemValueToFullMultiCurrency = function (item, opts = {isShortForm: false, isSmallUnits: false}) {
 	return Parser._moneyToFullMultiCurrency(item, "value", "valueMult", opts);
 };
 
@@ -644,23 +644,31 @@ Parser._moneyToFull = function (it, prop, propMult, opts = {isShortForm: false, 
 
 Parser._moneyToFullMultiCurrency = function (it, prop, propMult, {isShortForm, multiplier} = {}) {
 	if (it[prop]) {
-		const simplified = CurrencyUtil.doSimplifyCoins(
-			{
-				cp: it[prop] * (multiplier ?? 1),
-			},
-			{
-				currencyConversionId: it.currencyConversion,
-			},
-		);
-
 		const conversionTable = Parser.getCurrencyConversionTable(it.currencyConversion);
+
+		const simplified = it.currencyConversion
+			? CurrencyUtil.doSimplifyCoins(
+				{
+					// Assume the e.g. item's value is in the lowest available denomination
+					[conversionTable[0]?.coin || "cp"]: it[prop] * (multiplier ?? conversionTable[0]?.mult ?? 1),
+				},
+				{
+					currencyConversionId: it.currencyConversion,
+				},
+			)
+			: CurrencyUtil.doSimplifyCoins({
+				cp: it[prop] * (multiplier ?? 1),
+			});
 
 		return [...conversionTable]
 			.reverse()
 			.filter(meta => simplified[meta.coin])
 			.map(meta => `${simplified[meta.coin].toLocaleString(undefined, {maximumFractionDigits: 5})} ${meta.coin}`)
 			.join(", ");
-	} else if (it[propMult]) return isShortForm ? `×${it[propMult]}` : `base value ×${it[propMult]}`;
+	}
+
+	if (it[propMult]) return isShortForm ? `×${it[propMult]}` : `base value ×${it[propMult]}`;
+
 	return "";
 };
 
@@ -821,7 +829,7 @@ Parser.dmgTypeToFull = function (dmgType) {
 Parser.skillProficienciesToFull = function (skillProficiencies) {
 	function renderSingle (skProf) {
 		if (skProf.any) {
-			skProf = MiscUtil.copy(skProf);
+			skProf = MiscUtil.copyFast(skProf);
 			skProf.choose = {"from": Object.keys(Parser.SKILL_TO_ATB_ABV), "count": skProf.any};
 			delete skProf.any;
 		}
@@ -1568,7 +1576,7 @@ Parser.psiTypeToMeta = type => {
 	let out = {};
 	if (type === Parser.PSI_ABV_TYPE_TALENT) out = {hasOrder: false, full: "Talent"};
 	else if (type === Parser.PSI_ABV_TYPE_DISCIPLINE) out = {hasOrder: true, full: "Discipline"};
-	else if (BrewUtil2.getMetaLookup("psionicTypes")?.[type]) out = MiscUtil.copy(BrewUtil2.getMetaLookup("psionicTypes")[type]);
+	else if (BrewUtil2.getMetaLookup("psionicTypes")?.[type]) out = MiscUtil.copyFast(BrewUtil2.getMetaLookup("psionicTypes")[type]);
 	out.full = out.full || "Unknown";
 	out.short = out.short || out.full;
 	return out;

@@ -1,4 +1,5 @@
 require("../js/utils.js");
+require("../js/utils-dataloader.js");
 require("../js/render.js");
 require("../js/omnidexer.js");
 const ut = require("./util.js");
@@ -65,7 +66,7 @@ class UtilSearchIndex {
 			for (const filename of loadedFiles) {
 				const filePath = `../data/${indexMeta.dir}/${filename}`;
 				const contents = require(filePath);
-				if (doLogging) console.log(`indexing ${filePath}`);
+				if (doLogging) console.log(`\tindexing ${filePath}`);
 				const optsNxt = {isNoFilter: noFilter};
 				if (opts.alternate) optsNxt.alt = indexMeta.alternateIndexes[opts.alternate];
 				await indexer.pAddToIndex(indexMeta, contents, {...optsNxt, ...optsAddToIndex});
@@ -83,10 +84,10 @@ class UtilSearchIndex {
 
 			if (indexMeta.postLoad) indexMeta.postLoad(data);
 
-			if (doLogging) console.log(`indexing ${filePath}`);
+			if (doLogging) console.log(`\tindexing ${filePath}`);
 			Object.values(data)
 				.filter(it => it instanceof Array)
-				.forEach(it => it.sort((a, b) => UtilSearchIndex._sortSources(a.source || MiscUtil.get(a, "inherits", "source"), b.source || MiscUtil.get(b, "inherits", "source")) || SortUtil.ascSortLower(a.name || MiscUtil.get(a, "inherits", "name") || "", b.name || MiscUtil.get(b, "inherits", "name") || "")));
+				.forEach(it => it.sort((a, b) => UtilSearchIndex._sortSources(SourceUtil.getEntitySource(a), SourceUtil.getEntitySource(b)) || SortUtil.ascSortLower(a.name || MiscUtil.get(a, "inherits", "name") || "", b.name || MiscUtil.get(b, "inherits", "name") || "")));
 
 			const optsNxt = {isNoFilter: noFilter};
 			if (opts.alternate) optsNxt.alt = indexMeta.alternateIndexes[opts.alternate];
@@ -121,7 +122,7 @@ class UtilSearchIndex {
 			if (ti.postLoad) ti.postLoad(data);
 
 			if (ti.additionalIndexes && ti.additionalIndexes.item) {
-				if (doLogging) console.log(`indexing ${filename}`);
+				if (doLogging) console.log(`\tindexing ${filename}`);
 				const extra = await ti.additionalIndexes.item(indexer, data);
 				extra.forEach(add => indexer.pushToIndex(add));
 			}
