@@ -138,11 +138,12 @@ class PatchLoadJson {
 
 	static patchLoadJson () {
 		PatchLoadJson._CACHED = PatchLoadJson._CACHED || DataUtil.loadJSON;
+
 		const loadJsonCache = {};
 		DataUtil.loadJSON = async (url) => {
 			if (!loadJsonCache[url]) {
 				const data = readJson(url);
-				await DataUtil.pDoMetaMerge(url, data);
+				await DataUtil.pDoMetaMerge(url, data, {isSkipMetaMergeCache: true});
 				loadJsonCache[url] = data;
 			}
 			return loadJsonCache[url];

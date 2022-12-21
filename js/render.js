@@ -3515,6 +3515,8 @@ Renderer.utils = {
 				if (others.length) {
 					const [subclassShortName, subclassSource, featurePart] = others;
 
+					if (subclassSource) out.source = subclassSource;
+
 					const classStateOpts = {
 						subclass: {
 							shortName: subclassShortName.trim(),
@@ -4233,19 +4235,19 @@ Renderer.spell = {
 				sc.shortName = sc.shortName || sc.name;
 				sc.source = sc.source || sc.classSource;
 
-				if (sc.subclassSpells) sc.subclassSpells.forEach(it => Renderer.spell._populateHomebrewLookup_handleSpellListItem(it, sc.className, sc.classSource, sc.shortName, sc.source));
-				if (sc.subSubclassSpells) Object.entries(sc.subSubclassSpells).forEach(([ssC, arr]) => arr.forEach(it => Renderer.spell._populateHomebrewLookup_handleSpellListItem(it, sc.className, sc.classSource, sc.shortName, sc.source, ssC)));
+				if (sc.subclassSpells) sc.subclassSpells.forEach(it => Renderer.spell._populateHomebrewLookup_handleSpellListItem(it, sc.className, sc.classSource, sc.shortName, sc.name, sc.source));
+				if (sc.subSubclassSpells) Object.entries(sc.subSubclassSpells).forEach(([ssC, arr]) => arr.forEach(it => Renderer.spell._populateHomebrewLookup_handleSpellListItem(it, sc.className, sc.classSource, sc.shortName, sc.name, sc.source, ssC)));
 			});
 		}
 		// endregion
 	},
 
-	_populateHomebrewLookup_handleSpellListItem (it, className, classSource, subclassShortName, subclassSource, subSubclassName) {
+	_populateHomebrewLookup_handleSpellListItem (it, className, classSource, subclassShortName, subclassName, subclassSource, subSubclassName) {
 		const doAdd = (target) => {
 			if (subclassShortName) {
 				const toAdd = {
 					class: {name: className, source: classSource},
-					subclass: {name: subclassShortName, source: subclassSource},
+					subclass: {name: subclassName || subclassShortName, shortName: subclassShortName, source: subclassSource},
 				};
 				if (subSubclassName) toAdd.subclass.subSubclass = subSubclassName;
 
@@ -4314,6 +4316,7 @@ Renderer.spell = {
 					case "fromSubclassVariant": {
 						const hash = UrlUtil.URL_TO_HASH_BUILDER["subclass"]({
 							name: it.subclass.name,
+							shortName: it.subclass.shortName,
 							source: it.subclass.source,
 							className: it.class.name,
 							classSource: it.class.source,

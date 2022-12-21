@@ -276,7 +276,11 @@ class PageFilterSpells extends PageFilter {
 	static getTblLevelStr (spell) { return `${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}`; }
 
 	static getRaceFilterItem (r) {
-		const addSuffix = (r.source === SRC_DMG || SourceUtil.isNonstandardSource(r.source || SRC_PHB) || BrewUtil2.hasSourceJson(r.source || SRC_PHB)) && !r.name.includes(Parser.sourceJsonToAbv(r.source));
+		const addSuffix = (
+			r.source === SRC_DMG
+			|| SourceUtil.isNonstandardSource(r.source || SRC_PHB)
+			|| (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(r.source || SRC_PHB))
+		) && !r.name.includes(Parser.sourceJsonToAbv(r.source));
 		const name = `${r.name}${addSuffix ? ` (${Parser.sourceJsonToAbv(r.source)})` : ""}`;
 		const opts = {
 			item: name,
@@ -450,7 +454,7 @@ class PageFilterSpells extends PageFilter {
 				return this._getSubclassFilterItem({
 					className: c.class.name,
 					classSource: c.class.source,
-					subclassShortName: c.subclass.name,
+					subclassShortName: c.subclass.shortName,
 					subclassSource: c.subclass.source,
 					subSubclassName: c.subclass.subSubclass,
 				});
@@ -481,6 +485,17 @@ class PageFilterSpells extends PageFilter {
 		if (s.range.type === "line" && !s._fAreaTags.includes("L")) s._fAreaTags.push("L");
 
 		s._fAffectsCreatureType = s.affectsCreatureType || [...Parser.MON_TYPES];
+	}
+
+	static unmutateForFilters (s) {
+		Renderer.spell.uninitBrewSources(s);
+
+		delete s._normalisedTime;
+		delete s._normalisedRange;
+
+		Object.keys(s)
+			.filter(it => it.startsWith("_f"))
+			.forEach(it => delete s[it]);
 	}
 
 	addToFilters (s, isExcluded) {
@@ -589,6 +604,8 @@ PageFilterSpells._META_FILTER_BASE_ITEMS = [PageFilterSpells._META_ADD_CONC, Pag
 PageFilterSpells.INCHES_PER_FOOT = 12;
 PageFilterSpells.FEET_PER_MILE = 5280;
 
+globalThis.PageFilterSpells = PageFilterSpells;
+
 class ModalFilterSpells extends ModalFilter {
 	/**
 	 * @param opts
@@ -620,8 +637,10 @@ class ModalFilterSpells extends ModalFilter {
 	}
 
 	async _pInit () {
-		const brew = await BrewUtil2.pGetBrewProcessed();
-		Renderer.spell.populateHomebrewLookup(brew);
+		if (typeof BrewUtil2 !== "undefined") {
+			const brew = await BrewUtil2.pGetBrewProcessed();
+			Renderer.spell.populateHomebrewLookup(brew);
+		}
 	}
 
 	async _pLoadAllData () {

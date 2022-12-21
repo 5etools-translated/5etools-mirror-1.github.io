@@ -41,7 +41,10 @@ class PageFilter {
 	static _getClassFilterItem ({className, classSource, isVariantClass, definedInSource}) {
 		const nm = className.split("(")[0].trim();
 		const variantSuffix = isVariantClass ? ` [${definedInSource ? Parser.sourceJsonToAbv(definedInSource) : "Unknown"}]` : "";
-		const sourceSuffix = (SourceUtil.isNonstandardSource(classSource || SRC_PHB) || BrewUtil2.hasSourceJson(classSource || SRC_PHB))
+		const sourceSuffix = (
+			SourceUtil.isNonstandardSource(classSource || SRC_PHB)
+			|| (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(classSource || SRC_PHB))
+		)
 			? ` (${Parser.sourceJsonToAbv(classSource)})` : "";
 		const name = `${nm}${variantSuffix}${sourceSuffix}`;
 
@@ -1277,12 +1280,6 @@ class FilterBase extends BaseComponent {
 		this.setStateFromNextState(nxtState);
 	}
 
-	resetBase () {
-		const nxtState = this._getNextState_base();
-		this._mutNextState_resetBase(nxtState);
-		this.setStateFromNextState(nxtState);
-	}
-
 	_mutNextState_resetBase (nxtState, {isResetAll = false} = {}) {
 		Object.assign(nxtState[this.header].meta, MiscUtil.copy(this.getDefaultMeta()));
 	}
@@ -1744,6 +1741,10 @@ class Filter extends FilterBase {
 
 	_getPill_handleContextmenu ({evt, item}) {
 		evt.preventDefault();
+
+		if (evt.shiftKey) {
+			this._doSetPillsClear();
+		}
 
 		if (--this._state[item.item] < 0) this._state[item.item] = 2;
 	}
@@ -2594,7 +2595,8 @@ class SearchableFilter extends Filter {
 					case "Enter": {
 						const visibleRowMetas = rowMetas.filter(it => it.isVisible);
 						if (!visibleRowMetas.length) return;
-						this._state[visibleRowMetas[0].item.item] = evt.shiftKey ? 2 : 1;
+						if (evt.shiftKey) this._doSetPillsClear();
+						this._state[visibleRowMetas[0].item.item] = (evt.ctrlKey || evt.metaKey) ? 2 : 1;
 						$iptSearch.blur();
 						break;
 					}
@@ -2691,7 +2693,8 @@ class SearchableFilter extends Filter {
 					}
 
 					case "Enter": {
-						this._state[item.item] = evt.shiftKey ? 2 : 1;
+						if (evt.shiftKey) this._doSetPillsClear();
+						this._state[item.item] = (evt.ctrlKey || evt.metaKey) ? 2 : 1;
 						row.blur();
 						break;
 					}
@@ -4059,7 +4062,7 @@ class OptionsFilter extends FilterBase {
 		};
 	}
 
-	_mutNextState_reset (nxtState, {isResetAll}) {
+	_mutNextState_reset (nxtState, {isResetAll = false} = {}) {
 		if (isResetAll) this._mutNextState_resetBase(nxtState, {isResetAll});
 		Object.assign(nxtState[this.header].state, MiscUtil.copy(this._defaultState));
 	}
@@ -4329,13 +4332,6 @@ class MultiFilter extends FilterBase {
 		const out = {};
 		this._filters.forEach(it => Object.assign(out, it.getValues({nxtState})));
 		return out;
-	}
-
-	_getNextState_base () {
-		return {
-			[this.header]: super._getNextState_base()[this.header],
-			...this._filters.mergeMap(filter => filter._getNextState_base()),
-		};
 	}
 
 	_mutNextState_reset_self (nxtState) {

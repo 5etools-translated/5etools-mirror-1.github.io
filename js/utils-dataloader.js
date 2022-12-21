@@ -37,11 +37,28 @@ class _DataLoaderInternalUtil {
 
 	/* -------------------------------------------- */
 
+	static _NOTIFIED_FAILED_DEREFERENCES = new Set();
+
 	static doNotifyFailedDereferences ({missingRefSets}) {
-		const cntMissingRefs = Object.values(missingRefSets).map(({size}) => size).sum();
+		// region Avoid repeatedly throwing errors for the same missing references
+		const missingRefSetsUnseen = Object.entries(missingRefSets)
+			.mergeMap(([prop, set]) => ({
+				[prop]: new Set(
+					[...set]
+						.filter(ref => {
+							const refLower = ref.toLowerCase();
+							const out = !this._NOTIFIED_FAILED_DEREFERENCES.has(refLower);
+							this._NOTIFIED_FAILED_DEREFERENCES.add(refLower);
+							return out;
+						}),
+				),
+			}));
+		// endregion
+
+		const cntMissingRefs = Object.values(missingRefSetsUnseen).map(({size}) => size).sum();
 		if (!cntMissingRefs) return;
 
-		const notificationRefs = Object.entries(missingRefSets)
+		const notificationRefs = Object.entries(missingRefSetsUnseen)
 			.map(([k, v]) => `${k}: ${[...v].sort(SortUtil.ascSortLower).join(", ")}`)
 			.join("; ");
 
@@ -53,7 +70,7 @@ class _DataLoaderInternalUtil {
 			isAutoHide: false,
 		});
 
-		const cnslRefs = Object.entries(missingRefSets)
+		const cnslRefs = Object.entries(missingRefSetsUnseen)
 			.map(([k, v]) => `${k}:\n\t${[...v].sort(SortUtil.ascSortLower).join("\n\t")}`)
 			.join("\n");
 
@@ -79,12 +96,13 @@ class _DataLoaderDereferencerBase {
 		keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST,
 	});
 
-	/**
-	 * Ensure any entities the dereferencer may wish to access are preloaded in the cache. Note that for homebrew, we
-	 *   assume that all entities are preloaded, as when a brew (and its dependencies) is loaded into the cache, the
-	 *   entire brew is loaded into the cache; this happens in a prior step in the loader pipeline.
-	 */
-	async pPreloadRefContent () { /* Implement as required */ }
+	_pPreloadingRefContent = null;
+
+	async pPreloadRefContent () {
+		return (this._pPreloadingRefContent = this._pPreloadingRefContent || this._pPreloadRefContent());
+	}
+
+	async _pPreloadRefContent () { /* Implement as required */ }
 
 	dereference ({ent, entriesWithoutRefs, toReplaceMeta, ixReplace}) { throw new Error("Unimplemented!"); }
 
@@ -124,9 +142,9 @@ class _DataLoaderDereferencerClassSubclassFeatures extends _DataLoaderDereferenc
 }
 
 class _DataLoaderDereferencerOptionalfeatures extends _DataLoaderDereferencerBase {
-	/** @inheritdoc */
-	async pPreloadRefContent () {
+	async _pPreloadRefContent () {
 		await DataLoader.pCacheAndGetAllSite(UrlUtil.PG_OPT_FEATURES);
+		await DataLoader.pCacheAndGetAllBrew(UrlUtil.PG_OPT_FEATURES);
 	}
 
 	dereference ({ent, entriesWithoutRefs, toReplaceMeta, ixReplace}) {
@@ -152,9 +170,9 @@ class _DataLoaderDereferencerOptionalfeatures extends _DataLoaderDereferencerBas
 }
 
 class _DataLoaderDereferencerItemEntries extends _DataLoaderDereferencerBase {
-	/** @inheritdoc */
-	async pPreloadRefContent () {
+	async _pPreloadRefContent () {
 		await DataLoader.pCacheAndGetAllSite(UrlUtil.PG_ITEMS);
+		await DataLoader.pCacheAndGetAllBrew(UrlUtil.PG_ITEMS);
 	}
 
 	dereference ({ent, entriesWithoutRefs, toReplaceMeta, ixReplace}) {
@@ -720,7 +738,7 @@ class _DataTypeLoaderCustomClassesSubclasses extends _DataTypeLoader {
 			},
 		);
 
-		cls.classFeatures = [...new Array(Math.max(...Object.keys(byLevel).map(Number)))]
+		cls.classFeatures = [...new Array(Math.max(0, ...Object.keys(byLevel).map(Number)))]
 			.map((_, i) => byLevel[i + 1] || []);
 
 		return cls;
@@ -975,7 +993,7 @@ class _DataTypeLoaderCustomAdventureBook extends _DataTypeLoader {
 	_propData;
 	_filename;
 
-	_getSiteIdent ({pageClean, sourceClean}) { return this._page; }
+	_getSiteIdent ({pageClean, sourceClean}) { return `${pageClean}__${sourceClean}`; }
 
 	hasCustomCacheStrategy ({obj}) { return [this._prop, this._propData].some(prop => obj[prop]?.length); }
 
@@ -1572,6 +1590,8 @@ class DataLoader {
 
 	static _pCache_addToCache ({allDataMerged, propAllowlist = null}) {
 		if (!allDataMerged) return;
+
+		allDataMerged = {...allDataMerged};
 
 		this._DATA_TYPE_LOADER_LIST
 			.filter(loader => loader.hasCustomCacheStrategy({obj: allDataMerged}))

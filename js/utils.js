@@ -6,8 +6,8 @@ IS_NODE = typeof module !== "undefined";
 if (IS_NODE) require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
-IS_DEPLOYED="v1.152.4.1671567777";
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.172.0"/* 5ETOOLS_VERSION__CLOSE */;
+IS_DEPLOYED="v1.152.4.1671654130";
+VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.172.2"/* 5ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
@@ -443,7 +443,7 @@ SourceUtil = {
 
 	getFilterGroup (source) {
 		if (source instanceof FilterItem) source = source.item;
-		if (BrewUtil2.hasSourceJson(source)) return 2;
+		if (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(source)) return 2;
 		return Number(SourceUtil.isNonstandardSource(source));
 	},
 
@@ -812,6 +812,10 @@ JqueryUtil = {
 			click: evt => {
 				evt.preventDefault();
 				JqueryUtil._doToastCleanup(eleToast);
+
+				// Close all on SHIFT-click
+				if (!evt.shiftKey) return;
+				[...JqueryUtil._ACTIVE_TOAST].forEach(eleToast => JqueryUtil._doToastCleanup(eleToast));
 			},
 		});
 
@@ -4308,26 +4312,34 @@ DataUtil = {
 
 		static _SPELL_SOURCE_LOOKUP = null;
 
+		// region Utilities for external applications (i.e., the spell source generation script) to use
+		static setSpellSourceLookup (lookup, {isExternalApplication = false} = {}) {
+			if (!isExternalApplication) throw new Error("Should not be calling this!");
+			this._SPELL_SOURCE_LOOKUP = MiscUtil.copyFast(lookup);
+		}
+
+		static mutEntity (sp, {isExternalApplication = false} = {}) {
+			if (!isExternalApplication) throw new Error("Should not be calling this!");
+			return this._mutEntity(sp);
+		}
+
+		static unmutEntity (sp, {isExternalApplication = false} = {}) {
+			if (!isExternalApplication) throw new Error("Should not be calling this!");
+			delete sp.classes;
+			delete sp.races;
+			delete sp.optionalfeatures;
+			delete sp.backgrounds;
+			delete sp.feats;
+			delete sp.charoptions;
+			delete sp.rewards;
+		}
+		// endregion
+
 		static async _pInitPreData_ () {
 			this._SPELL_SOURCE_LOOKUP = await DataUtil.loadRawJSON(`${Renderer.get().baseUrl}data/generated/gendata-spell-source-lookup.json`);
 		}
 
 		static _mutEntity (sp) {
-			// region Clean existing data
-			// TODO(Future) Remove
-			const _PROP_METAS = [
-				{prop: "classes"},
-				{prop: "backgrounds"},
-				{prop: "charoptions"},
-				{prop: "feats"},
-				{prop: "optionalfeatures"},
-				{prop: "races"},
-				{prop: "rewards"},
-			];
-
-			_PROP_METAS.forEach(({prop}) => delete sp[prop]);
-			// endregion
-
 			const spSources = this._SPELL_SOURCE_LOOKUP[sp.source.toLowerCase()]?.[sp.name.toLowerCase()];
 			if (!spSources) return;
 
@@ -4408,7 +4420,8 @@ DataUtil = {
 													source: classSource,
 												},
 												subclass: {
-													name,
+													name: val.name,
+													shortName: name,
 													source,
 												},
 											};

@@ -416,24 +416,35 @@ async function pMain () {
 		});
 
 	const spellDatas = jsonMetas.flatMap(({json}) => json.spell);
-	const modalFilterSpells = new ModalFilterSpells({allData: spellDatas});
-	await modalFilterSpells.pageFilter.pInitFilterBox();
+	const cpySpellDatas = MiscUtil.copyFast(spellDatas);
 
 	const lookup = {};
 
-	const adders = [
-		new _SpellSourceClasses(),
-		new _AdditionalSpellSourceClassesSubclasses({modalFilterSpells}),
-		new _AdditionalSpellSourceBackgrounds({modalFilterSpells}),
-		new _AdditionalSpellSourceCharCreationOptions({modalFilterSpells}),
-		new _AdditionalSpellSourceFeats({modalFilterSpells}),
-		new _AdditionalSpellSourceOptionalFeatures({modalFilterSpells}),
-		new _AdditionalSpellSourceRaces({modalFilterSpells}),
-		new _AdditionalSpellSourceRewards({modalFilterSpells}),
-	];
-	for (const adder of adders) {
+	for (
+		const Clazz of [
+			_SpellSourceClasses,
+			_AdditionalSpellSourceClassesSubclasses,
+			_AdditionalSpellSourceBackgrounds,
+			_AdditionalSpellSourceCharCreationOptions,
+			_AdditionalSpellSourceFeats,
+			_AdditionalSpellSourceOptionalFeatures,
+			_AdditionalSpellSourceRaces,
+			_AdditionalSpellSourceRewards,
+		]
+	) {
+		cpySpellDatas.forEach(sp => PageFilterSpells.unmutateForFilters(sp));
+		const modalFilterSpells = new ModalFilterSpells({allData: cpySpellDatas});
+		await modalFilterSpells.pPopulateHiddenWrapper();
+
+		const adder = new Clazz({modalFilterSpells});
 		await adder.pInit();
 		adder.mutLookup(lookup);
+
+		DataUtil.spell.setSpellSourceLookup(lookup, {isExternalApplication: true});
+		cpySpellDatas.forEach(sp => {
+			DataUtil.spell.unmutEntity(sp, {isExternalApplication: true});
+			DataUtil.spell.mutEntity(sp, {isExternalApplication: true});
+		});
 	}
 
 	fs.writeFileSync(`./data/generated/gendata-spell-source-lookup.json`, CleanUtil.getCleanJson(lookup, {isMinify: true}));
