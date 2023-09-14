@@ -127,17 +127,18 @@ class Translator:
 		self._webdriver.get("https://www.deepl.com/en/translator")
 
 		# Select from / to languages
-		WebDriverWait(self._webdriver, 5).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="translator-source-lang-btn"]'))).click()
+		WebDriverWait(self._webdriver, 5).until(EC.presence_of_element_located((By.XPATH, '//button[@data-testid="translator-source-lang-btn"]'))).click()
 		# div[@dl-test=translator-source-lang-list]
-		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="translator-lang-option-en"]'))).click()
+		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@data-testid="translator-lang-option-en"]'))).click()
 
-		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="translator-target-lang-btn"]'))).click()
+		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@data-testid="translator-target-lang-btn"]'))).click()
 		# div[@dl-test=translator-target-lang-list]
-		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, f"//button[@dl-test=\"translator-lang-option-{self._language}\"]"))).click()
+		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, f"//button[@data-testid=\"translator-lang-option-{self._language}\"]"))).click()
 
 		#self._inputField = self._webdriver.find_element(By.XPATH, '//d-textarea[@dl-test="translator-source-input"]')
-		self._inputField = self._webdriver.find_element(By.XPATH, '//*[@class="lmt__textarea_container"]')
-		self._outputField = self._webdriver.find_element(By.XPATH, '//*[@id="target-dummydiv"]')
+		inputFields = self._webdriver.find_elements(By.XPATH, '//*[@class="lmt__textarea_container"]')
+		self._inputField = inputFields[0]
+		self._outputField = inputFields[1]
 
 		# Init glossary
 		self._deeplGlossary = []
@@ -152,12 +153,12 @@ class Translator:
 			return
 
 		self._webdriver.find_element(By.CLASS_NAME, 'lmt__glossary_button_label').click()
-		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="glossary-close-editor"]')))
+		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@data-testid="glossary-close-editor"]')))
 
-		entries = self._webdriver.find_elements(By.XPATH, '//button[@dl-test="glossary-entry-delete-button"]')
+		entries = self._webdriver.find_elements(By.XPATH, '//button[@data-testid="glossary-entry-delete-button"]')
 		# Delete some if needed
 		for i in range(0, -10+(len(entries)+len(contains))):
-			removed_word = entries[i].parent.find_element(By.XPATH, '//span[@dl-test="glossary-entry-source-text"]').text
+			removed_word = entries[i].parent.find_element(By.XPATH, '//span[@data-testid="glossary-entry-source-text"]').text
 			print(f"remove '{removed_word}' from glossary to make room")
 			entries[i].click()
 			self._deeplGlossary.remove(removed_word)
@@ -176,7 +177,7 @@ class Translator:
 			self._deeplGlossary.append(word)
 
 		# close
-		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="glossary-close-editor"]'))).click()
+		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@data-testid="glossary-close-editor"]'))).click()
 
 
 	def _needsRecheck(self, text: str) -> bool:
