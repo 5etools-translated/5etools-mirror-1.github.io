@@ -136,9 +136,8 @@ class Translator:
 		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, f"//button[@data-testid=\"translator-lang-option-{self._language}\"]"))).click()
 
 		#self._inputField = self._webdriver.find_element(By.XPATH, '//d-textarea[@dl-test="translator-source-input"]')
-		inputFields = self._webdriver.find_elements(By.XPATH, '//*[@class="lmt__textarea_container"]')
-		self._inputField = inputFields[0]
-		self._outputField = inputFields[1]
+		self._inputField = self._webdriver.find_element(By.XPATH, '//*[@data-testid="translator-source-input"]')
+		self._outputField = self._webdriver.find_element(By.XPATH, '//*[@data-testid="translator-target-input"]')
 
 		# Init glossary
 		self._deeplGlossary = []
