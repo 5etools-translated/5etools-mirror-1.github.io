@@ -129,37 +129,8 @@ class Translator:
         self._webdriver = webdriver.Firefox(options=firefox_options)
         self._webdriver.set_window_size(1920, 1080)
 
-        self._webdriver.get("https://www.deepl.com/en/translator")
+        self._webdriver.get(f"https://www.deepl.com/en/translator#en/{self._language}/")
 
-        # Select from / to languages
-        WebDriverWait(self._webdriver, 5).until(
-            EC.presence_of_element_located(
-                (By.XPATH, '//button[@data-testid="translator-source-lang-btn"]')
-            )
-        ).click()
-        # div[@dl-test=translator-source-lang-list]
-        WebDriverWait(self._webdriver, 1).until(
-            EC.presence_of_element_located(
-                (By.XPATH, '//button[@data-testid="translator-lang-option-en"]')
-            )
-        ).click()
-
-        WebDriverWait(self._webdriver, 1).until(
-            EC.presence_of_element_located(
-                (By.XPATH, '//button[@data-testid="translator-target-lang-btn"]')
-            )
-        ).click()
-        # div[@dl-test=translator-target-lang-list]
-        WebDriverWait(self._webdriver, 1).until(
-            EC.presence_of_element_located(
-                (
-                    By.XPATH,
-                    f'//button[@data-testid="translator-lang-option-{self._language}"]',
-                )
-            )
-        ).click()
-
-        # self._inputField = self._webdriver.find_element(By.XPATH, '//d-textarea[@dl-test="translator-source-input"]')
         self._inputField = self._webdriver.find_element(
             By.XPATH, '//*[@data-testid="translator-source-input"]'
         )
