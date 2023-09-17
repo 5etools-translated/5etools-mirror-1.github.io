@@ -228,7 +228,7 @@ class Translator:
         for word in self._recheckWords:
             # ignore vars and case
             checkText = re.sub(self._tag_regex, "", text.lower())
-            if word.lower() in checkText:
+            if re.match(r"(?i).*\b" + re.escape(word) + r"\b.*", checkText):
                 return True
 
         return False
