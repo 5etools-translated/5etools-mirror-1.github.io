@@ -142,11 +142,16 @@ class Translator:
         self._deeplGlossary = []
 
     def _setupGlossary(self, text: str):
-        contains = {
-            word: translation
-            for word, translation in self._glossary.items()
-            if word.lower() in text.lower() and word not in self._deeplGlossary
-        }
+        contains = {}
+        # We avoid adding the translation with caps if the word is lowercase in the text.
+        # To avoid common words like 'alarm', which is also a spell to always be capitalised.
+        for word, translation in sorted_glossary.items():
+            pattern = r".*\b" + re.escape(word) + r"\b.*"
+            if re.match(pattern, text) and word not in self._deeplGlossary:
+                contains[word] = translation
+            elif re.match(pattern) and word not in self._deeplGlossary:
+                contains[word.lower()] = translation.lower()
+
         if len(contains) == 0:
             return
 
