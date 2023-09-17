@@ -186,9 +186,15 @@ class Translator:
         # To avoid common words like 'alarm', which is also a spell to always be capitalised.
         for word, translation in sorted_glossary.items():
             pattern = r".*\b" + re.escape(word) + r"\b.*"
-            if re.match(pattern, text) and word not in self._deeplGlossary:
+            if (
+                re.match(r".*\b" + re.escape(word) + r"\b.*", text)
+                and word not in self._deeplGlossary
+            ):
                 contains[word] = translation
-            elif re.match(pattern) and word not in self._deeplGlossary:
+            elif (
+                re.match(r".*\b" + re.escape(word.lower()) + r"\b.*", text.lower())
+                and word not in self._deeplGlossary
+            ):
                 contains[word.lower()] = translation.lower()
 
         if len(contains) == 0:
