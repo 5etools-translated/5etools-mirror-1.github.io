@@ -327,7 +327,7 @@ class Translator:
 
         # Do not translate variable only and very short or non alpha texts
         noVars = re.sub(self._tag_regex, "", text)
-        if len(re.sub("[\d\s()\[\].,_-]+", "", noVars)) < 5:
+        if len(re.sub("[\d\s()\[\].,_-]+", "", noVars)) < 3:
             return text
 
         # Serve from cache if present
