@@ -51,6 +51,8 @@ class Translator:
         useDeepl: bool,
         glossary_folder: str,
         recheckWords: list,
+        retranslateGlossaryModified: bool,
+        retranslateGlossaryForce: bool,
     ):
         self._language = language
 
@@ -75,6 +77,24 @@ class Translator:
         self._webdriver = None
 
         self._glossary = self.loadGlossary()
+        (
+            new_glossary_keys,
+            modified_glossary_keys,
+            deleted_glossary_key,
+        ) = self.glossaryDiff()
+        if retranslateGlossaryForce:
+            print("Retranslating all string that contain a glossary word")
+            self._recheckWords = list(
+                set(self._recheckWords + [key.lower() for key in self._glossary.keys()])
+            )
+        elif retranslateGlossaryModified:
+            print(
+                "Retranslating strings that contains words for which tehere is a new or modified glossary translation"
+            )
+            self._recheckWords = list(
+                set(self._recheckWords + new_glossary_keys + modified_glossary_keys)
+            )
+
 
     def __enter__(self):
         signal(SIGINT, self._sigint_handler)
@@ -266,6 +286,45 @@ class Translator:
         # We lowercase the key to avoid some odd capital
         return glossary
 	def translate(self, text: str) -> str:
+    def glossaryCachePath(self):
+        cache_file = self._cacheFile.replace("translation/cache/", "")
+        return f"translation/cache/{self._language}/glossary/{cache_file}"
+
+    # Return the glossary lastly used for a specific file
+    def glossaryCacheGet(self):
+        glossary_cache_path = self.glossaryCachePath()
+        if os.path.exists(glossary_cache_path):
+            with open(glossary_cache_path) as f:
+                return json.load(f)
+        return {}
+
+    def glossaryCacheSave(self):
+        glossary_cache_path = self.glossaryCachePath()
+        os.makedirs(os.path.dirname(glossary_cache_path), exist_ok=True)
+
+        with open(glossary_cache_path, mode="w", encoding="utf-8") as f:
+            json.dump(self._glossary, f, indent="\t", ensure_ascii=False)
+
+    # Returns new words in glossary, words for which the translation as changed and words that have been removed from the glossary
+    def glossaryDiff(self):
+        cached_glossary = self.glossaryCacheGet()
+        new_glossary = self._glossary
+        modified_keys = []
+        new_keys = []
+        deleted_keys = []
+        for key in new_glossary:
+            if key not in cached_glossary:
+                print(f"{key} was added from previously used glossary")
+                new_keys.append(key.lower())
+            elif cached_glossary[key] != new_glossary[key]:
+                print(f"{key} was modified from previously used glossary")
+                modified_keys.append(key.lower())
+        for key in cached_glossary:
+            if key not in new_glossary:
+                print(f"{key} was removed from previously used glossary")
+                deleted_keys.append(key.lower())
+        return new_keys, modified_keys, deleted_keys
+
         # Do not translate variable only and very short or non alpha texts
         noVars = re.sub(self._tag_regex, "", text)
         if len(re.sub("[\d\s()\[\].,_-]+", "", noVars)) < 5:
@@ -395,7 +454,13 @@ def translate_data(translator: Translator, data):
 
 
 def translate_file(
-    language: str, fileName: str, writeJSON: bool, useDeepl: bool, recheckWords: list
+    language: str,
+    fileName: str,
+    writeJSON: bool,
+    useDeepl: bool,
+    recheckWords: list,
+    retranslateGlossaryModified: bool,
+    retranslateGlossaryForce: bool,
 ):
     cache_file = fileName.replace("data/", f"translation/cache/{language}/")
     os.makedirs(os.path.dirname(cache_file), exist_ok=True)
@@ -412,12 +477,17 @@ def translate_file(
         cache_file,
         useDeepl,
         glossary_folder,
+        recheckWords,
+        retranslateGlossaryModified,
+        retranslateGlossaryForce,
     ) as translator:
         print(f"Translating\t{file}")
         try:
             with open(fileName) as f:
                 data = json.load(f)
             translate_data(translator, data)
+            # Save the used glossary only if everything in the file was translated.
+            translator.glossaryCacheSave()
         except Exception as e:
             print(repr(e))
             traceback.print_exc()
@@ -437,13 +507,31 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Translate json data")
     parser.add_argument("--language", type=str, required=True)
     parser.add_argument(
-        "--translate", type=bool, default=False, action=argparse.BooleanOptionalAction
+        "--translate",
+        type=bool,
+        default=False,
+        action=argparse.BooleanOptionalAction,
     )
     parser.add_argument(
-        "--deepl", type=bool, default=False, action=argparse.BooleanOptionalAction
+        "--deepl",
+        type=bool,
+        default=False,
+        action=argparse.BooleanOptionalAction,
     )
     parser.add_argument("--maxrun", type=int, default=False)
     parser.add_argument("--recheck-words", type=str, default=[], nargs="*")
+    parser.add_argument(
+        "--retranslate-glossary-modified",
+        type=bool,
+        default=False,
+        action=argparse.BooleanOptionalAction,
+    )
+    parser.add_argument(
+        "--retranslate-glossary-force",
+        type=bool,
+        default=False,
+        action=argparse.BooleanOptionalAction,
+    )
     parser.add_argument("files", type=str, nargs="*")
     args = parser.parse_args()
     maxRuntime = args.maxrun
@@ -458,7 +546,13 @@ if __name__ == "__main__":
             continue
 
         translate_file(
-            args.language.lower(), file, args.translate, args.deepl, args.recheck_words
+            args.language.lower(),
+            file,
+            args.translate,
+            args.deepl,
+            args.recheck_words,
+            args.retranslate_glossary_modified,
+            args.retranslate_glossary_force,
         )
 
     print(f"Total todo: {todoCharCounter}")
