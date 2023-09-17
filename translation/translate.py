@@ -415,7 +415,7 @@ def translate_data(translator: Translator, data):
     elif type(data) is dict:
         for k, v in data.items():
             # We only translate specific keys from dicts
-            if k in ["entry", "effect"] and type(v) is str:
+            if k in ["entry", "effect", "text", "m"] and type(v) is str:
                 data[k] = translator.translate(v)
             elif k == "other" and type(v) is dict:
                 # Special hack for life.json
