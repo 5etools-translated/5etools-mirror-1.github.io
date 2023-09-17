@@ -413,14 +413,11 @@ class Translator:
         self._setupGlossary(translate_text)
 
         self._inputField.click()
-        # self._inputField.clear()
-        # self._inputField.send_keys(5000 * Keys.BACKSPACE)
         actions = ActionChains(self._webdriver)
         actions.send_keys(5000 * Keys.BACKSPACE)
         actions.perform()
 
         time.sleep(0.5)
-        # self._inputField.send_keys(translate_text)
         actions.send_keys(translate_text)
         actions.perform()
 
