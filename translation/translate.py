@@ -49,7 +49,7 @@ class Translator:
         language: str,
         cacheFile: str,
         useDeepl: bool,
-        glossary_file: str,
+        glossary_folder: str,
         recheckWords: list,
     ):
         self._language = language
@@ -74,9 +74,7 @@ class Translator:
         self.cachedCharCount = 0
         self._webdriver = None
 
-        if os.path.exists(glossary_file):
-            with open(glossary_file) as f:
-                self._glossary = json.load(f)
+        self._glossary = self.loadGlossary()
 
     def __enter__(self):
         signal(SIGINT, self._sigint_handler)
@@ -273,7 +271,20 @@ class Translator:
 
         return text
 
-    def translate(self, text: str) -> str:
+    # Returns the glossary to use
+    def loadGlossary(self):
+        glossary_folder = f"translation/glossary/{self._language}"
+        glossary = {}
+        os.makedirs(os.path.dirname(glossary_folder), exist_ok=True)
+        if os.path.exists(glossary_folder):
+            for file in os.listdir(glossary_folder):
+                file_path = os.path.join(glossary_folder, file)
+                if os.path.isfile(file_path) and file_path.endswith(".json"):
+                    with open(file_path) as f:
+                        glossary = json.load(f) | glossary
+        # We lowercase the key to avoid some odd capital
+        return glossary
+	def translate(self, text: str) -> str:
         # Do not translate variable only and very short or non alpha texts
         noVars = re.sub(self._tag_regex, "", text)
         if len(re.sub("[\d\s()\[\].,_-]+", "", noVars)) < 5:
@@ -408,15 +419,18 @@ def translate_file(
     cache_file = fileName.replace("data/", f"translation/cache/{language}/")
     os.makedirs(os.path.dirname(cache_file), exist_ok=True)
 
-    glossary_file = f"translation/glossary/{language}.json"
-    os.makedirs(os.path.dirname(glossary_file), exist_ok=True)
+    glossary_folder = f"translation/glossary/{language}"
+    os.makedirs(os.path.dirname(glossary_folder), exist_ok=True)
 
     output_file = fileName.replace("data/", f"data.{language}/")
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
     data = {}
     with Translator(
-        language, cache_file, useDeepl, glossary_file, recheckWords
+        language,
+        cache_file,
+        useDeepl,
+        glossary_folder,
     ) as translator:
         print(f"Translating\t{file}")
         try:
