@@ -142,6 +142,11 @@ class Translator:
         self._deeplGlossary = []
 
     def _setupGlossary(self, text: str):
+        # We sort the glossary to have the longuest words first. That way "Orc Chieftain" we be added before "Orc"
+        sorted_glossary = {}
+        for k in sorted(self._glossary, key=len, reverse=True):
+            sorted_glossary[k] = self._glossary[k]
+
         contains = {}
         # We avoid adding the translation with caps if the word is lowercase in the text.
         # To avoid common words like 'alarm', which is also a spell to always be capitalised.
