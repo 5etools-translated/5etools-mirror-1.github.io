@@ -76,7 +76,12 @@ class Translator:
         self.cachedCharCount = 0
         self._webdriver = None
 
+        # We load both our glossary and the entities translations cache
+        # The glossary has priority
         self._glossary = self.loadGlossary()
+        self._entitiesCacheData = self.loadEntitiesCache()
+        self._entitiesNameDirty = False
+
         (
             new_glossary_keys,
             modified_glossary_keys,
@@ -95,6 +100,14 @@ class Translator:
                 set(self._recheckWords + new_glossary_keys + modified_glossary_keys)
             )
 
+        # We remove from the entities translations the ones that came from the glossary and are no longer in it
+        for k in deleted_glossary_key:
+            if k in self._entitiesCacheData:
+                print(f"Deleting {k} from entities cache")
+                self.entitiesCacheDelete(k)
+
+        # We then add the entities to the glossary for this run
+        self._glossary = self._entitiesCacheData | self._glossary
 
     def __enter__(self):
         signal(SIGINT, self._sigint_handler)
@@ -106,6 +119,7 @@ class Translator:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.cacheSync()
+        self.entitiesCacheSync()
         if self._webdriver:
             self._webdriver.quit()
 
@@ -268,6 +282,13 @@ class Translator:
 
     def tags2links(self, text: str, links: list) -> str:
         for idx, link in enumerate(links):
+            match = re.match(r"{@([a-z]*)\s+([A-Za-z ]*?)(\|.*)?}", link)
+            if match:
+                # Tags are only translated using glossary and entity names.
+                translated_tag = self.translateTag(match.group(2))
+                link = f"{{@{match.group(1)} {translated_tag}{match.group(3) or ''}}}"
+                print(link)
+
             text = re.sub(f"\(%{idx}%\)", link, text)
 
         return text
@@ -285,7 +306,7 @@ class Translator:
                         glossary = json.load(f) | glossary
         # We lowercase the key to avoid some odd capital
         return glossary
-	def translate(self, text: str) -> str:
+
     def glossaryCachePath(self):
         cache_file = self._cacheFile.replace("translation/cache/", "")
         return f"translation/cache/{self._language}/glossary/{cache_file}"
@@ -325,14 +346,48 @@ class Translator:
                 deleted_keys.append(key.lower())
         return new_keys, modified_keys, deleted_keys
 
+    # Entities names are translations for the entities (spells, monsters) that we should only translate once for the whole files
+    def entitiesNamesCachePath(self):
+        return f"translation/cache/{self._language}/glossary/entities_names.json"
+
+    def loadEntitiesCache(self):
+        path = self.entitiesNamesCachePath()
+        if os.path.exists(path):
+            with open(path) as f:
+                return json.load(f)
+        return {}
+
+    def entitiesCacheSet(self, key: str, value: str):
+        self._entitiesCacheData[key] = value
+        self._entitiesNameDirty = True
+
+    def entitiesCacheDelete(self, key: str):
+        del self._entitiesCacheData[key]
+        self._entitiesNameDirty = True
+
+    def entitiesCacheSync(self):
+        if self._entitiesNameDirty:
+            path = self.entitiesNamesCachePath()
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            with open(path, mode="w", encoding="utf-8") as f:
+                json.dump(self._entitiesCacheData, f, indent="\t", ensure_ascii=False)
+
+    def translateTag(self, tag):
+        for k, v in self._glossary.items():
+            if tag.lower() == k.lower():
+                return v
+        return tag
+
+    def translate(self, text: str, isEntityName: bool = False) -> str:
         # Do not translate variable only and very short or non alpha texts
         noVars = re.sub(self._tag_regex, "", text)
         if len(re.sub("[\d\s()\[\].,_-]+", "", noVars)) < 3:
             return text
 
         # Serve from cache if present
-        if text in self._cacheData and len(self._cacheData[text]) > 0:
+        if text in self._cacheData and len(self.cacheGet(text)) > 0:
             if self._needsRecheck(text):
+                print("Needs recheck")
                 print(text)
                 print(self.cacheGet(text))
                 self.cacheDelete(text)
@@ -405,6 +460,10 @@ class Translator:
         self.cacheSet(text, translated_text)
         print()
 
+        # We translated an entity name, save it to the shared cache
+        if isEntityName:
+            self.entitiesCacheSet(text, translated_text)
+
         return translated_text
 
 
@@ -417,6 +476,12 @@ def translate_data(translator: Translator, data):
             # We only translate specific keys from dicts
             if k in ["entry", "effect", "text", "m"] and type(v) is str:
                 data[k] = translator.translate(v)
+            elif k == "name" and type(v) is str:
+                # This is the base name of an entity.
+                if "source" in data:
+                    data[k] = translator.translate(v, isEntityName=True)
+                else:
+                    data[k] = translator.translate(v)
             elif k == "other" and type(v) is dict:
                 # Special hack for life.json
                 for section, items in v.items():
@@ -493,6 +558,7 @@ def translate_file(
             traceback.print_exc()
             # Make sure we save what we got
             translator.cacheSync()
+            translator.entitiesCacheSync()
 
         print(f"Cached:{translator.cachedCharCount}\tTodo: {translator.charCount}")
         global todoCharCounter
