@@ -495,11 +495,7 @@ def translate_data(translator: Translator, data):
             if k in ["entry", "effect", "text", "m"] and type(v) is str:
                 data[k] = translator.translate(v)
             elif k == "name" and type(v) is str:
-                # This is the base name of an entity.
-                if "source" in data:
-                    data[k] = translator.translate(v, isEntityName=True)
-                else:
-                    data[k] = translator.translate(v)
+                data[k] = translator.translate(v, isEntityName=True)
             elif k == "other" and type(v) is dict:
                 # Special hack for life.json
                 for section, items in v.items():
