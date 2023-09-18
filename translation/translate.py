@@ -433,9 +433,13 @@ class Translator:
         self._inputField.click()
         actions = ActionChains(self._webdriver)
         if platform == "darwin":
-            actions.key_down(Keys.COMMAND).send_keys('A').key_up(Keys. COMMAND).send_keys(Keys.BACKSPACE)
+            actions.key_down(Keys.COMMAND).send_keys("A").key_up(
+                Keys.COMMAND
+            ).send_keys(Keys.BACKSPACE)
         else:
-            actions.key_down(Keys.CONTROL).send_keys('A').key_up(Keys.CONTROL).send_keys(Keys.BACKSPACE)
+            actions.key_down(Keys.CONTROL).send_keys("A").key_up(
+                Keys.CONTROL
+            ).send_keys(Keys.BACKSPACE)
         actions.perform()
 
         time.sleep(0.5)
