@@ -27,6 +27,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from selenium.webdriver.common.action_chains import ActionChains
 
+from metric_converter import convertToMetric
+
 supported_languages = {
     "es": "es-ES",
     "de": "de-DE",
@@ -54,6 +56,7 @@ class Translator:
         recheckWords: list,
         retranslateGlossaryModified: bool,
         retranslateGlossaryForce: bool,
+        convertToMetricSystem: bool,
     ):
         self._language = language
 
@@ -72,6 +75,7 @@ class Translator:
         self._glossary = {}
         self._deeplGlossary = []
         self._recheckWords = recheckWords
+        self._convertToMetricSystem = convertToMetricSystem
 
         self.charCount = 0
         self.cachedCharCount = 0
@@ -95,7 +99,7 @@ class Translator:
             )
         elif retranslateGlossaryModified:
             print(
-                "Retranslating strings that contains words for which tehere is a new or modified glossary translation"
+                "Retranslating strings that contains words for which there is a new or modified glossary translation"
             )
             self._recheckWords = list(
                 set(self._recheckWords + new_glossary_keys + modified_glossary_keys)
@@ -394,6 +398,10 @@ class Translator:
         if len(re.sub("[\d\s()\[\].,_-]+", "", noVars)) < 3:
             return text
 
+        # Convert to metric system
+        if self._convertToMetricSystem:
+            text = convertToMetric(text)
+
         # Serve from cache if present
         if text in self._cacheData and len(self.cacheGet(text)) > 0:
             if self._needsRecheck(text):
@@ -536,6 +544,7 @@ def translate_file(
     recheckWords: list,
     retranslateGlossaryModified: bool,
     retranslateGlossaryForce: bool,
+    convertToMetricSystem: bool,
 ):
     cache_file = fileName.replace("data/", f"translation/cache/{language}/")
     os.makedirs(os.path.dirname(cache_file), exist_ok=True)
@@ -555,6 +564,7 @@ def translate_file(
         recheckWords,
         retranslateGlossaryModified,
         retranslateGlossaryForce,
+        convertToMetricSystem,
     ) as translator:
         print(f"Translating\t{file}")
         try:
@@ -608,6 +618,12 @@ if __name__ == "__main__":
         default=False,
         action=argparse.BooleanOptionalAction,
     )
+    parser.add_argument(
+        "--convert-to-metric-system",
+        type=bool,
+        default=False,
+        action=argparse.BooleanOptionalAction,
+    )
     parser.add_argument("files", type=str, nargs="*")
     args = parser.parse_args()
     maxRuntime = args.maxrun
@@ -629,6 +645,7 @@ if __name__ == "__main__":
             args.recheck_words,
             args.retranslate_glossary_modified,
             args.retranslate_glossary_force,
+            args.convert_to_metric_system,
         )
 
     print(f"Total todo: {todoCharCounter}")
