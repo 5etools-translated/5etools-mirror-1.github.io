@@ -323,7 +323,7 @@ class Translator:
 
     def glossaryCachePath(self):
         cache_file = self._cacheFile.replace("translation/cache/", "")
-        return f"translation/cache/{self._language}/glossary/{cache_file}"
+        return f"translation/cache/{self._language}/glossary_used/{cache_file}"
 
     # Return the glossary lastly used for a specific file
     def glossaryCacheGet(self):
