@@ -224,7 +224,11 @@ class Translator:
             )
             print(f"remove '{removed_word}' from glossary to make room")
             entries[i].click()
-            self._deeplGlossary.remove(removed_word)
+            try:
+                self._deeplGlossary.remove(removed_word)
+            except:
+                # In some case the removal from Deepl fails but it's already removed from out list
+                pass
 
         for word, translation in contains.items():
             print(f"adding {word}:{translation} to glossary")
