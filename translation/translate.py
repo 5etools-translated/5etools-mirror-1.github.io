@@ -185,7 +185,6 @@ class Translator:
         # We avoid adding the translation with caps if the word is lowercase in the text.
         # To avoid common words like 'alarm', which is also a spell to always be capitalised.
         for word, translation in sorted_glossary.items():
-            pattern = r".*\b" + re.escape(word) + r"\b.*"
             if (
                 re.match(r".*\b" + re.escape(word) + r"\b.*", text)
                 and word not in self._deeplGlossary
