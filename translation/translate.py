@@ -126,18 +126,22 @@ class Translator:
 
 		self._webdriver.get("https://www.deepl.com/en/translator")
 
-		# Select from / to languages
-		WebDriverWait(self._webdriver, 5).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="translator-source-lang-btn"]'))).click()
-		# div[@dl-test=translator-source-lang-list]
-		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="translator-lang-option-en"]'))).click()
+		# Click cookie banner
+		WebDriverWait(self._webdriver, 5).until(EC.presence_of_element_located((By.XPATH, '//button[@data-testid="cookie-banner-strict-accept-selected"]'))).click()
 
-		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, '//button[@dl-test="translator-target-lang-btn"]'))).click()
+		# Select from / to languages
+		WebDriverWait(self._webdriver, 5).until(EC.presence_of_element_located((By.XPATH, '//button[@data-testid="translator-source-lang-btn"]'))).click()
+		# div[@dl-test=translator-source-lang-list]
+		WebDriverWait(self._webdriver, 2).until(EC.presence_of_element_located((By.XPATH, '//button[@data-testid="translator-lang-option-en"]'))).click()
+
+		WebDriverWait(self._webdriver, 2).until(EC.presence_of_element_located((By.XPATH, '//button[@data-testid="translator-target-lang-btn"]'))).click()
 		# div[@dl-test=translator-target-lang-list]
-		WebDriverWait(self._webdriver, 1).until(EC.presence_of_element_located((By.XPATH, f"//button[@dl-test=\"translator-lang-option-{self._language}\"]"))).click()
+		WebDriverWait(self._webdriver, 2).until(EC.presence_of_element_located((By.XPATH, f"//button[@data-testid=\"translator-lang-option-{self._language}\"]"))).click()
 
 		#self._inputField = self._webdriver.find_element(By.XPATH, '//d-textarea[@dl-test="translator-source-input"]')
-		self._inputField = self._webdriver.find_element(By.XPATH, '//*[@class="lmt__textarea_container"]')
-		self._outputField = self._webdriver.find_element(By.XPATH, '//*[@id="target-dummydiv"]')
+		#self._inputField = self._webdriver.find_element(By.XPATH, '//*[@class="lmt__textarea_container"]')
+		self._inputField = self._webdriver.find_element(By.XPATH, '//d-textarea[@data-testid="translator-source-input"]')
+		self._outputField = self._webdriver.find_element(By.XPATH, '//d-textarea[@data-testid="translator-target-input"]')
 
 		# Init glossary
 		self._deeplGlossary = []
