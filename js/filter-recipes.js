@@ -8,13 +8,14 @@ class PageFilterRecipes extends PageFilter {
 	};
 	static _MISC_TAG_TO_FULL = {
 		"alcohol": "Contains Alcohol",
+		"feast": "Feast Dish",
 	};
 
 	constructor () {
 		super();
 
 		this._typeFilter = new Filter({
-			header: "Type",
+			header: "Category",
 			displayFn: StrUtil.toTitleCase,
 			itemSortFn: SortUtil.ascSortLower,
 		});
@@ -36,7 +37,7 @@ class PageFilterRecipes extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["SRD"],
+			items: ["SRD", "Legacy"],
 			isMiscFilter: true,
 			displayFn: PageFilterRecipes._miscTagToFull,
 		});
@@ -44,9 +45,12 @@ class PageFilterRecipes extends PageFilter {
 
 	static mutateForFilters (it) {
 		it._fMisc = it.srd ? ["SRD"] : [];
+		if (SourceUtil.isLegacySourceWotc(it.source)) it._fMisc.push("Legacy");
 		if (it.miscTags) it._fMisc.push(...it.miscTags);
 		it._fServes = (it.serves?.min != null && it.serves?.max != null) ? [it.serves.min, it.serves.max] : (it.serves?.exact ?? null);
 		it._fDiet = it.diet ? PageFilterRecipes._DIET_TO_FULL[it.diet] || it.diet : null;
+		if (it.hasFluff || it.fluff?.entries) it._fMisc.push("Has Info");
+		if (it.hasFluffImages || it.fluff?.images) it._fMisc.push("Has Images");
 	}
 
 	addToFilters (it, isExcluded) {

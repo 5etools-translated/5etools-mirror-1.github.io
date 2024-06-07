@@ -34,12 +34,12 @@ class PropOrder {
 
 					if (k instanceof PropOrder._ObjectKey) {
 						const nxtPath = `${path}.${key}`;
-						if (k.fnGetOrder) out[key] = this._getOrdered(obj[key], k.fnGetOrder(), opts, nxtPath);
+						if (k.fnGetOrder) out[key] = this._getOrdered(obj[key], k.fnGetOrder(obj[key]), opts, nxtPath);
 						else if (k.order) out[key] = this._getOrdered(obj[key], k.order, opts, nxtPath);
 						else out[key] = obj[key];
 					} else if (k instanceof PropOrder._ArrayKey) {
 						const nxtPath = `${path}[n].${key}`;
-						if (k.fnGetOrder) out[key] = obj[key].map(it => this._getOrdered(it, k.fnGetOrder(), opts, nxtPath));
+						if (k.fnGetOrder) out[key] = obj[key].map(it => this._getOrdered(it, k.fnGetOrder(obj[key]), opts, nxtPath));
 						else if (k.order) out[key] = obj[key].map(it => this._getOrdered(it, k.order, opts, nxtPath));
 						else out[key] = obj[key];
 
@@ -177,6 +177,7 @@ PropOrder._MONSTER = [
 			"rest",
 			"daily",
 			"weekly",
+			"monthly",
 			"yearly",
 			"recharge",
 			"charges",
@@ -219,6 +220,7 @@ PropOrder._MONSTER = [
 	"dragonAge",
 
 	"tokenUrl",
+	"tokenCredit",
 	"soundClip",
 	"foundryImg",
 
@@ -481,6 +483,10 @@ PropOrder._SPELL_LIST = [
 	"source",
 
 	"spellListType",
+
+	"className",
+	"classSource",
+
 	"spells",
 ];
 PropOrder._ACTION = [
@@ -584,6 +590,7 @@ PropOrder._BACKGROUND = [
 	"toolProficiencies",
 	"weaponProficiencies",
 	"armorProficiencies",
+	"skillToolLanguageProficiencies",
 	"expertise",
 
 	"resist",
@@ -1063,7 +1070,9 @@ PropOrder._DEITY = [
 
 	"piety",
 
-	"customProperties",
+	new PropOrder._ObjectKey("customProperties", {
+		fnGetOrder: obj => Object.keys(obj).sort(SortUtil.ascSortLower),
+	}),
 
 	"entries",
 
@@ -1085,6 +1094,7 @@ PropOrder._FEAT = [
 	"additionalSources",
 	"otherSources",
 
+	"category",
 	"prerequisite",
 
 	"repeatable",
@@ -1121,6 +1131,15 @@ PropOrder._FEAT = [
 	"foundryFlags",
 	"foundryEffects",
 	"foundryImg",
+];
+PropOrder._FOUNDRY_FEAT = [
+	"name",
+	"source",
+
+	"system",
+	"effects",
+	"flags",
+	"img",
 ];
 PropOrder._VEHICLE = [
 	"name",
@@ -1178,6 +1197,7 @@ PropOrder._VEHICLE = [
 	"reaction",
 
 	"tokenUrl",
+	"tokenCredit",
 
 	"hasToken",
 	"hasFluff",
@@ -1313,6 +1333,7 @@ PropOrder._ITEM = [
 
 	"ability",
 	"grantsProficiency",
+	"grantsLanguage",
 
 	"bonusWeapon",
 	"bonusWeaponAttack",
@@ -1333,9 +1354,11 @@ PropOrder._ITEM = [
 	"rechargeAmount",
 	"charges",
 
-	"axe",
 	"armor",
+	"arrow",
+	"axe",
 	"barding",
+	"bolt",
 	"bow",
 	"club",
 	"crossbow",
@@ -1346,6 +1369,7 @@ PropOrder._ITEM = [
 	"mace",
 	"net",
 	"poison",
+	"polearm",
 	"spear",
 	"staff",
 	"stealth",
@@ -1372,7 +1396,9 @@ PropOrder._ITEM = [
 	"seeAlsoDeck",
 	"seeAlsoVehicle",
 
-	"customProperties",
+	new PropOrder._ObjectKey("customProperties", {
+		fnGetOrder: obj => Object.keys(obj).sort(SortUtil.ascSortLower),
+	}),
 
 	"miscTags",
 
@@ -1458,6 +1484,7 @@ PropOrder._OBJECT = [
 	"actionEntries",
 
 	"tokenUrl",
+	"tokenCredit",
 	"hasToken",
 	"hasFluff",
 	"hasFluffImages",
@@ -1729,6 +1756,11 @@ PropOrder._TRAP = [
 	"countermeasures",
 
 	"entries",
+
+	"hasFluff",
+	"hasFluffImages",
+
+	"fluff",
 ];
 PropOrder._HAZARD = [
 	"name",
@@ -1744,12 +1776,20 @@ PropOrder._HAZARD = [
 	"trapHazType",
 
 	"entries",
+
+	"hasFluff",
+	"hasFluffImages",
+
+	"fluff",
 ];
 PropOrder._RECIPE = [
 	"name",
+	"alias",
 
 	"source",
 	"page",
+
+	"otherSources",
 
 	"type",
 	"dishTypes",
@@ -1867,6 +1907,37 @@ PropOrder._CARD = [
 	"entries",
 ];
 
+PropOrder._ENCOUNTER = [
+	"name",
+
+	"source",
+	"page",
+
+	new PropOrder._ArrayKey("tables", {
+		order: [
+			"caption",
+			"minlvl",
+			"maxlvl",
+
+			"diceExpression",
+			"rollAttitude",
+			"table",
+
+			"footnotes",
+		],
+		fnSort: SortUtil.ascSortEncounter,
+	}),
+];
+
+PropOrder._CITATION = [
+	"name",
+
+	"source",
+	"page",
+
+	"entries",
+];
+
 PropOrder._PROP_TO_LIST = {
 	"monster": PropOrder._MONSTER,
 	"foundryMonster": PropOrder._FOUNDRY_MONSTER,
@@ -1883,6 +1954,8 @@ PropOrder._PROP_TO_LIST = {
 	"objectFluff": PropOrder._GENERIC_FLUFF,
 	"raceFluff": PropOrder._RACE_FLUFF,
 	"rewardFluff": PropOrder._GENERIC_FLUFF,
+	"trapFluff": PropOrder._GENERIC_FLUFF,
+	"hazardFluff": PropOrder._GENERIC_FLUFF,
 	"spell": PropOrder._SPELL,
 	"roll20Spell": PropOrder._ROLL20_SPELL,
 	"foundrySpell": PropOrder._FOUNDRY_SPELL,
@@ -1911,6 +1984,7 @@ PropOrder._PROP_TO_LIST = {
 	"boon": PropOrder._BOON,
 	"deity": PropOrder._DEITY,
 	"feat": PropOrder._FEAT,
+	"foundryFeat": PropOrder._FOUNDRY_FEAT,
 	"vehicle": PropOrder._VEHICLE,
 	"vehicleUpgrade": PropOrder._VEHICLE_UPGRADE,
 	"item": PropOrder._ITEM,
@@ -1938,6 +2012,8 @@ PropOrder._PROP_TO_LIST = {
 	"sense": PropOrder._SENSE,
 	"deck": PropOrder._DECK,
 	"card": PropOrder._CARD,
+	"encounter": PropOrder._ENCOUNTER,
+	"citation": PropOrder._CITATION,
 };
 
 globalThis.PropOrder = PropOrder;

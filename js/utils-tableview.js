@@ -21,15 +21,15 @@ class UtilsTableview {
 
 		state.metasCbs = Object.values(colTransforms)
 			.map((c, i) => {
-				const $cb = $(`<input type="checkbox" checked>`)
+				const $cb = $(`<input type="checkbox" class="mr-2" checked>`)
 					.click(() => {
 						const $eles = $modal.find(`[data-col="${i}"]`);
 						$eles.toggleVe($cb.prop("checked"));
 					});
 
-				const $wrp = $$`<label class="ve-flex-${c.flex || 1} px-2 py-1 no-wrap ve-flex-inline-v-center">
-					<span class="mr-2">${c.name}</span>
+				const $wrp = $$`<label class="px-2 py-1 no-wrap ve-flex-inline-v-center">
 					${$cb}
+					<span>${c.name}</span>
 				</label>`;
 
 				return {$wrp, $cb, name: c.name};

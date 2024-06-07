@@ -402,7 +402,10 @@ class Builder extends ProxyBase {
 	}
 
 	async _pHashChange_pHandleSubHashes (sub, toLoad) {
-		return toLoad;
+		return {
+			isAllowEditExisting: true,
+			toLoad,
+		};
 	}
 
 	$getSourceInput (cb) {
@@ -523,17 +526,7 @@ class Builder extends ProxyBase {
 						this.getOnNavMessage()
 						&& !await InputUiUtil.pGetUserBoolean({title: "Discard Unsaved Changes", htmlDescription: "You have unsaved changes. Are you sure?", textYes: "Yes", textNo: "Cancel"})
 					) return;
-					const entEditable = await BrewUtil2.pGetEditableBrewEntity(this._prop, ent.uniqueId);
-					this.setStateFromLoaded({
-						s: MiscUtil.copy(entEditable),
-						m: this._getInitialMetaState({
-							isModified: false,
-							isPersisted: false,
-						}),
-					});
-					this.renderInput();
-					this.renderOutput();
-					this.doUiSave();
+					await this.pHandleSidebarEditUniqueId(ent.uniqueId);
 				});
 
 			const menu = ContextUtil.getMenu([
@@ -654,6 +647,20 @@ class Builder extends ProxyBase {
 		Object.entries(this._sidemenuListRenderCache)
 			.filter(([uniqueId]) => !metasVisible.has(uniqueId))
 			.forEach(([, meta]) => meta.$row.hideVe());
+	}
+
+	async pHandleSidebarEditUniqueId (uniqueId) {
+		const entEditable = await BrewUtil2.pGetEditableBrewEntity(this._prop, uniqueId);
+		this.setStateFromLoaded({
+			s: MiscUtil.copy(entEditable),
+			m: this._getInitialMetaState({
+				isModified: false,
+				isPersisted: false,
+			}),
+		});
+		this.renderInput();
+		this.renderOutput();
+		this.doUiSave();
 	}
 
 	async pHandleSidebarDownloadJsonClick () {
@@ -972,7 +979,7 @@ class BuilderUi {
 		const eleType = options.eleType || "div";
 
 		const $rowInner = $(`<div class="${options.isRow ? "ve-flex" : "ve-flex-col"} w-100"/>`);
-		const $row = $$`<div class="mb-2 mkbru__row stripe-even"><${eleType} class="mkbru__wrp-row ve-flex-v-center"><span class="mr-2 mkbru__row-name ${options.isMarked ? `mkbru__row-name--marked` : ""} ${options.title ? "help" : ""}" ${options.title ? `title="${options.title}"` : ""}>${name}</span>${options.isMarked ? `<div class="mkbru__row-mark mr-2"/>` : ""}${$rowInner}</${eleType}></div>`;
+		const $row = $$`<div class="mb-2 mkbru__row stripe-even"><${eleType} class="mkbru__wrp-row ve-flex-v-center"><span class="mr-2 mkbru__row-name ve-shrink-10 ${options.isMarked ? `mkbru__row-name--marked` : ""} ${options.title ? "help" : ""}" ${options.title ? `title="${options.title}"` : ""}>${name}</span>${options.isMarked ? `<div class="mkbru__row-mark mr-2"/>` : ""}${$rowInner}</${eleType}></div>`;
 		return [$row, $rowInner];
 	}
 
@@ -1385,11 +1392,17 @@ class Makebrew {
 		if (!initialLoadMeta.statemeta) return;
 
 		const [page, source, hash] = initialLoadMeta.statemeta;
-		let toLoad = await DataLoader.pCacheAndGet(page, source, hash, {isCopy: true});
+		const toLoadOriginal = await DataLoader.pCacheAndGet(page, source, hash, {isCopy: true});
 
-		toLoad = await builder._pHashChange_pHandleSubHashes(sub, toLoad);
+		const {toLoad, isAllowEditExisting} = await builder._pHashChange_pHandleSubHashes(sub, toLoadOriginal);
 
-		return builder.pHandleSidebarLoadExistingData(toLoad, {isForce: true});
+		if (
+			!isAllowEditExisting
+			|| !BrewUtil2.hasSourceJson(toLoad.source)
+			|| !toLoad.uniqueId
+		) return builder.pHandleSidebarLoadExistingData(toLoad, {isForce: true});
+
+		return builder.pHandleSidebarEditUniqueId(toLoad.uniqueId);
 	}
 }
 Makebrew._LOCK = null;

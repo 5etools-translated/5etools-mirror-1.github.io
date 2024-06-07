@@ -7,12 +7,36 @@ class LanguagesSublistManager extends SublistManager {
 		});
 	}
 
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-8 pl-0",
+				colStyle: "",
+			}),
+			new SublistCellTemplate({
+				name: "Type",
+				css: "col-2 ve-text-center",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "Script",
+				css: "col-2 ve-text-center pr-0",
+				colStyle: "text-center",
+			}),
+		];
+	}
+
 	pGetSublistItem (it, hash) {
+		const cellsText = [
+			it.name,
+			(it.type || "\u2014").uppercaseFirst(),
+			(it.script || "\u2014").toTitleCase(),
+		];
+
 		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-8 pl-0">${it.name}</span>
-				<span class="col-2 ve-text-center">${(it.type || "\u2014").uppercaseFirst()}</span>
-				<span class="col-2 ve-text-center pr-0">${(it.script || "\u2014").toTitleCase()}</span>
+				${this.constructor._getRowCellsHtml({values: cellsText})}
 			</a>
 		</div>`)
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
@@ -29,6 +53,7 @@ class LanguagesSublistManager extends SublistManager {
 			},
 			{
 				entity: it,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;
@@ -48,6 +73,8 @@ class LanguagesPage extends ListPage {
 			listClass: "languages",
 
 			dataProps: ["language"],
+
+			isMarkdownPopout: true,
 		});
 	}
 

@@ -1,5 +1,44 @@
 "use strict";
 
+class _GroupHeaderManager {
+	constructor ({ent, $wrpList, groupHeaderManagers}) {
+		this._$wrpList = $wrpList;
+		this._isVisible = true;
+
+		this._$dispShowHide = $(`<div class="lst__tgl-item-group relative top-n1p">[\u2013]</div>`);
+
+		this._$btnHeader = $$`<div class="lst__item-group-header mt-3 split-v-center py-1 no-select clickable" title="SHIFT to Toggle All">
+			<div class="split-v-center w-100 min-w-0 mr-2">
+				<div class="bold">${ent.name}</div>
+				<div class="${Parser.sourceJsonToColor(ent.source)}" title="${Parser.sourceJsonToFull(ent.source).qq()}" ${Parser.sourceJsonToStyle(ent.source)}>${Parser.sourceJsonToAbv(ent.source)}</div>
+			</div>
+			${this._$dispShowHide}
+		</div>`
+			.click(evt => {
+				this.toggle();
+				if (!evt.shiftKey) return;
+				groupHeaderManagers.forEach(it => it.toggle(this._isVisible));
+			});
+
+		groupHeaderManagers.push(this);
+	}
+
+	get $btnHeader () { return this._$btnHeader; }
+
+	toggle (isVisible) {
+		if (isVisible === undefined) isVisible = !this._isVisible;
+
+		this._$wrpList.toggleVe(isVisible);
+		this._$dispShowHide.html(isVisible ? `[\u2013]` : `[+]`);
+
+		this._isVisible = isVisible;
+	}
+
+	onListUpdate ({list}) {
+		this._$btnHeader.toggleVe(!!list.visibleItems.length);
+	}
+}
+
 class TableListPage extends ListPage {
 	constructor (...args) {
 		super(...args);
@@ -14,7 +53,11 @@ class TableListPage extends ListPage {
 		return Object.values(this._listMetas).map(it => it.list);
 	}
 
-	static _FN_SORT; // Implement as required
+	static _FN_SORT (a, b, o) {
+		if (o.sortBy === "name") SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
+		if (o.sortBy === "source") return SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortLower(a.name, b.name);
+		return 0;
+	}
 
 	_getListItemData (ent, i) { return {}; }
 
@@ -30,9 +73,11 @@ class TableListPage extends ListPage {
 						return out;
 					});
 			})
-			.flat();
+			.flat()
+			.sort((a, b) => this.constructor._FN_SORT(a, b, {sortBy: "source"}));
 
 		const $wrpLists = $(`[data-name="tablepage-wrp-list"]`);
+		const groupHeaderManagers = [];
 
 		for (let i = 0; i < this._dataList.length; i++) {
 			const ent = this._dataList[i];
@@ -55,27 +100,11 @@ class TableListPage extends ListPage {
 					},
 				});
 
-				const $dispShowHide = $(`<div class="lst__tgl-item-group relative top-n1p">[\u2013]</div>`);
-
-				const $btnHeader = $$`<div class="lst__item-group-header mt-3 split-v-center py-1 no-select clickable">
-					<div class="split-v-center w-100 min-w-0 mr-2">
-						<div class="bold">${ent.name}</div>
-						<div class="${Parser.sourceJsonToColor(ent.source)}" title="${Parser.sourceJsonToFull(ent.source).qq()}" ${Parser.sourceJsonToStyle(ent.source)}>${Parser.sourceJsonToAbv(ent.source)}</div>
-					</div>
-					${$dispShowHide}
-				</div>`
-					.click(() => {
-						$wrpList.toggleVe();
-						if ($wrpList.hasClass("ve-hidden")) $dispShowHide.html(`[+]`);
-						else $dispShowHide.html(`[\u2013]`);
-					});
-
-				list.on("updated", () => {
-					$btnHeader.toggleVe(!!list.visibleItems.length);
-				});
+				const groupHeader = new _GroupHeaderManager({ent, $wrpList, groupHeaderManagers});
+				list.on("updated", () => groupHeader.onListUpdate({list}));
 
 				$$`<div class="flex-col">
-					${$btnHeader}
+					${groupHeader.$btnHeader}
 					${$wrpList}
 				</div>`.appendTo($wrpLists);
 

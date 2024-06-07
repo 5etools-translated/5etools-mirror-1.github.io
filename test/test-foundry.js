@@ -64,7 +64,7 @@ class TestFoundry {
 		const FOUNDRY_FILE = "foundry.json";
 
 		const dirList = fs.readdirSync(`./data/${dir}`)
-			.filter(it => !it.startsWith("fluff-") && !it.startsWith("roll20") && it !== "index.json");
+			.filter(it => !it.startsWith("fluff-") && it !== "sources.json" && it !== "index.json");
 
 		if (!dirList.includes(FOUNDRY_FILE)) throw new Error(`No "${FOUNDRY_FILE}" file found in dir "${dir}"!`);
 

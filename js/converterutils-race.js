@@ -355,7 +355,7 @@ class RaceImmResVulnTag {
 				ent.entries,
 				{
 					string: (str) => {
-						str.replace(/immune to disease/gi, () => {
+						str.replace(/immun(?:e|ity) to disease/gi, () => {
 							out.add("disease");
 						});
 

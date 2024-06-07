@@ -217,8 +217,9 @@ class List {
 	}
 
 	update ({isForce = false} = {}) {
-		if (!this._isInit || !this._isDirty || isForce) return;
-		return this._doSearch();
+		if (!this._isInit || !this._isDirty || isForce) return false;
+		this._doSearch();
+		return true;
 	}
 
 	_doSearch () {

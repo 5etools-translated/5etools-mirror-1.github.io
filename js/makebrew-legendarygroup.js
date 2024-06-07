@@ -3,7 +3,7 @@
 class LegendaryGroupBuilder extends Builder {
 	constructor () {
 		super({
-			titleSidebarLoadExisting: "Load Existing Legendary Group",
+			titleSidebarLoadExisting: "Copy Existing Legendary Group",
 			titleSidebarDownloadJson: "Download Legendary Groups as JSON",
 			prop: "legendaryGroup",
 			titleSelectDefaultSource: "(Same as Legendary Group)",

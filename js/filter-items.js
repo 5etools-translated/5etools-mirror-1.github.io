@@ -2,7 +2,7 @@
 
 class PageFilterEquipment extends PageFilter {
 	static _MISC_FILTER_ITEMS = [
-		"Item Group", "Bundle", "SRD", "Basic Rules", "Has Images", "Has Info", "Reprinted",
+		"Item Group", "Bundle", "SRD", "Basic Rules", "Legacy", "Has Images", "Has Info", "Reprinted",
 	];
 
 	static _RE_FOUNDRY_ATTR = /(?:[-+*/]\s*)?@[a-z0-9.]+/gi;
@@ -86,6 +86,7 @@ class PageFilterEquipment extends PageFilter {
 		if (item.packContents) item._fMisc.push("Bundle");
 		if (item.srd) item._fMisc.push("SRD");
 		if (item.basicRules) item._fMisc.push("Basic Rules");
+		if (SourceUtil.isLegacySourceWotc(item.source)) item._fMisc.push("Legacy");
 		if (item.hasFluff || item.fluff?.entries) item._fMisc.push("Has Info");
 		if (item.hasFluffImages || item.fluff?.images) item._fMisc.push("Has Images");
 		if (item.miscTags) item._fMisc.push(...item.miscTags.map(Parser.itemMiscTagToFull));
@@ -282,7 +283,7 @@ class PageFilterItems extends PageFilterEquipment {
 			itemSortFn: null,
 		});
 		this._rechargeTypeFilter = new Filter({header: "Recharge Type", displayFn: Parser.itemRechargeToFull});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Grants Proficiency", "Magic", "Mundane", "Sentient", "Speed Adjustment", ...PageFilterEquipment._MISC_FILTER_ITEMS], isMiscFilter: true});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Grants Language", "Grants Proficiency", "Magic", "Mundane", "Sentient", "Speed Adjustment", ...PageFilterEquipment._MISC_FILTER_ITEMS], isMiscFilter: true});
 		this._baseSourceFilter = new SourceFilter({header: "Base Source", selFn: null});
 		this._baseItemFilter = new Filter({header: "Base Item", displayFn: this.constructor._getBaseItemDisplay.bind(this.constructor)});
 		this._optionalfeaturesFilter = new Filter({
@@ -312,6 +313,7 @@ class PageFilterItems extends PageFilterEquipment {
 		if (item.charges) item._fMisc.push("Charges");
 		if (item.sentient) item._fMisc.push("Sentient");
 		if (item.grantsProficiency) item._fMisc.push("Grants Proficiency");
+		if (item.grantsLanguage) item._fMisc.push("Grants Language");
 		if (item.critThreshold) item._fMisc.push("Expanded Critical Range");
 
 		const fBaseItemSelf = item._isBaseItem ? `${item.name}__${item.source}`.toLowerCase() : null;
@@ -481,7 +483,7 @@ class ModalFilterItems extends ModalFilter {
 
 			<div class="col-5 ${item._versionBase_isVersion ? "italic" : ""} ${this._getNameStyle()}">${item._versionBase_isVersion ? `<span class="px-3"></span>` : ""}${item.name}</div>
 			<div class="col-5">${type.uppercaseFirst()}</div>
-			<div class="col-1 ve-text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${Parser.sourceJsonToStyle(item.source)}>${source}</div>
+			<div class="col-1 ve-flex-h-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${Parser.sourceJsonToStyle(item.source)}>${source}${Parser.sourceJsonToMarkerHtml(item.source)}</div>
 		</div>`;
 
 		const btnShowHidePreview = eleRow.firstElementChild.children[1].firstElementChild;

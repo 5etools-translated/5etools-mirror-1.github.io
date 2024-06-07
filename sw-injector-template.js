@@ -42,8 +42,12 @@ const fetchError = {
 const wb = new Workbox("sw.js");
 
 wb.addEventListener("controlling", () => {
+	const $lnk = $(`<a href="${Renderer.get().baseUrl}changelog.html" class="alert-link">changelog</a>`)
+		.on("click", evt => {
+			evt.stopPropagation();
+		});
 	JqueryUtil.doToast({
-		content: `${window.location.hostname} has been updated\u2014reload to see new content, and ensure the page is displayed correctly.`,
+		content: $$`<div>${window.location.hostname} has been updated\u2014reload to see new content, and ensure the page is displayed correctly. See the ${$lnk} for more info!</div>`,
 		type: "success",
 		isAutoHide: false, // never auto hide - this warning is important
 	});

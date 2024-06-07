@@ -214,8 +214,8 @@ class ClassesPage extends MixinComponentGlobalState(MixinBaseComponent(MixinProx
 	_addData (data) {
 		let isAddedAnyClass = false;
 		let isAddedAnySubclass = false;
-		if (data.class && data.class.length) (isAddedAnyClass = true) && this._addData_addClassData(data);
-		if (data.subclass && data.subclass.length) (isAddedAnySubclass = true) && this._addData_addSubclassData(data);
+		if (data.class && data.class.length) { isAddedAnyClass = true; this._addData_addClassData(data); }
+		if (data.subclass && data.subclass.length) { isAddedAnySubclass = true; this._addData_addSubclassData(data); }
 
 		const walker = MiscUtil.getWalker({
 			keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST,
@@ -1402,9 +1402,9 @@ class ClassesPage extends MixinComponentGlobalState(MixinBaseComponent(MixinProx
 
 		const filterSets = [
 			{name: "View Default", subHashes: [], isClearSources: false},
-			{name: "View Official", subHashes: [], isClearSources: false, sourceCategories: ["official"]},
-			{name: "View Homebrew", subHashes: [], isClearSources: false, sourceCategories: ["homebrew"]},
-			{name: "View Most Recent", subHashes: [], isClearSources: false, sources: {[Parser.SRC_UACFV]: 2}},
+			{name: "View Standard Plus Partnered", subHashes: [], isClearSources: false, sourceCategories: [SourceUtil.FILTER_GROUP_STANDARD, SourceUtil.FILTER_GROUP_PARTNERED]},
+			{name: "View Standard Plus Homebrew", subHashes: [], isClearSources: false, sourceCategories: [SourceUtil.FILTER_GROUP_STANDARD, SourceUtil.FILTER_GROUP_HOMEBREW]},
+			{name: "View Most Recent", subHashes: [], isClearSources: true},
 			{name: "View All", subHashes: ["flstmiscellaneous:reprinted=0"], isClearSources: true},
 		];
 		const setFilterSet = ix => {
@@ -1416,15 +1416,20 @@ class ClassesPage extends MixinComponentGlobalState(MixinBaseComponent(MixinProx
 				const classifiedSources = this._pageFilter.sourceFilter.getSources();
 
 				const toInclude = filterSet.sourceCategories || [];
-				const toExclude = ["official", "unofficial", "homebrew"].filter(it => !toInclude.includes(it));
+				const toExclude = [
+					SourceUtil.FILTER_GROUP_STANDARD,
+					SourceUtil.FILTER_GROUP_PARTNERED,
+					SourceUtil.FILTER_GROUP_NON_STANDARD,
+					SourceUtil.FILTER_GROUP_HOMEBREW,
+				].filter(it => !toInclude.includes(it));
 
 				const sourcePart = [
 					...toInclude
-						.map(prop => classifiedSources[prop])
+						.map(prop => classifiedSources[prop] || [])
 						.flat()
 						.map(src => `${src.toUrlified()}=1`),
 					...toExclude
-						.map(prop => classifiedSources[prop])
+						.map(prop => classifiedSources[prop] || [])
 						.flat()
 						.map(src => `${src.toUrlified()}=0`),
 				]
@@ -1434,7 +1439,7 @@ class ClassesPage extends MixinComponentGlobalState(MixinBaseComponent(MixinProx
 				const sourcePartSpecified = Object.entries(filterSet.sources).map(([src, val]) => `${src.toUrlified()}=${val}`);
 
 				const classifiedSources = this._pageFilter.sourceFilter.getSources();
-				const sourcePartRest = [...classifiedSources.official, ...classifiedSources.homebrew]
+				const sourcePartRest = classifiedSources.all
 					.filter(src => filterSet.sources[src] == null)
 					.map(src => `${src.toUrlified()}=0`);
 
@@ -1810,7 +1815,7 @@ class ClassesPage extends MixinComponentGlobalState(MixinBaseComponent(MixinProx
 		};
 	}
 
-	_render_renderAltViews () { // "Hitler was right"
+	_render_renderAltViews () { // Donuts *are* delicious!
 		const cls = this.activeClass;
 
 		// region subclass comparison

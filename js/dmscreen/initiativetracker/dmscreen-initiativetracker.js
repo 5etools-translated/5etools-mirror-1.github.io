@@ -25,6 +25,7 @@ import {
 	InitiativeTrackerRowStateBuilderDefaultParty,
 } from "./dmscreen-initiativetracker-rowstatebuilder.js";
 import {InitiativeTrackerDefaultParty} from "./dmscreen-initiativetracker-defaultparty.js";
+import {ListUtilBestiary} from "../../utils-list-bestiary.js";
 
 export class InitiativeTracker extends BaseComponent {
 	constructor ({board, savedState}) {

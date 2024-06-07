@@ -12,8 +12,11 @@ const LAST_KEY_ALLOWLIST = new Set([
 
 class TagJsons {
 	static async pInit ({spells}) {
+		TagCondition.init();
 		SpellTag.init(spells);
 		await ItemTag.pInit();
+		await FeatTag.pInit();
+		await AdventureBookTag.pInit();
 	}
 
 	static mutTagObject (json, {keySet, isOptimistic = true, creaturesToTag = null} = {}) {
@@ -43,6 +46,8 @@ class TagJsons {
 							obj = ChanceTag.tryRun(obj);
 							obj = DiceConvert.getTaggedEntry(obj);
 							obj = QuickrefTag.tryRun(obj);
+							obj = FeatTag.tryRun(obj);
+							obj = AdventureBookTag.tryRun(obj);
 
 							if (fnCreatureTagSpecific) obj = fnCreatureTagSpecific(obj);
 
@@ -81,13 +86,13 @@ class SpellTag {
 		spells
 			.forEach(sp => SpellTag._SPELL_NAMES[sp.name.toLowerCase()] = {name: sp.name, source: sp.source});
 
-		const spellnamesFiltered = Object.keys(SpellTag._SPELL_NAMES)
+		const spellNamesFiltered = Object.keys(SpellTag._SPELL_NAMES)
 			.filter(n => !SpellTag._NON_STANDARD.has(n));
 
-		SpellTag._SPELL_NAME_REGEX = new RegExp(`\\b(${spellnamesFiltered.map(it => it.escapeRegexp()).join("|")})\\b`, "gi");
-		SpellTag._SPELL_NAME_REGEX_SPELL = new RegExp(`\\b(${spellnamesFiltered.map(it => it.escapeRegexp()).join("|")}) (spell|cantrip)`, "gi");
-		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`\\b(${spellnamesFiltered.map(it => it.escapeRegexp()).join("|")}) (and {@spell)`, "gi");
-		SpellTag._SPELL_NAME_REGEX_CAST = new RegExp(`(?<prefix>casts? (?:the )?)(?<spell>${spellnamesFiltered.map(it => it.escapeRegexp()).join("|")})\\b`, "gi");
+		SpellTag._SPELL_NAME_REGEX = new RegExp(`\\b(${spellNamesFiltered.map(it => it.escapeRegexp()).join("|")})\\b`, "gi");
+		SpellTag._SPELL_NAME_REGEX_SPELL = new RegExp(`\\b(${spellNamesFiltered.map(it => it.escapeRegexp()).join("|")}) (spell|cantrip)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`\\b(${spellNamesFiltered.map(it => it.escapeRegexp()).join("|")}) (and {@spell)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_CAST = new RegExp(`(?<prefix>casts?(?: the(?: spell)?)? )(?<spell>${spellNamesFiltered.map(it => it.escapeRegexp()).join("|")})\\b`, "gi");
 	}
 
 	static tryRun (it) {
@@ -162,6 +167,19 @@ SpellTag._SPELL_NAME_REGEX_CAST = null;
 globalThis.SpellTag = SpellTag;
 
 class ItemTag {
+	static _ITEM_NAMES = {};
+	static _ITEM_NAMES_REGEX_TOOLS = null;
+	static _ITEM_NAMES_REGEX_OTHER = null;
+	static _ITEM_NAMES_REGEX_EQUIPMENT = null;
+
+	static _WALKER = MiscUtil.getWalker({
+		keyBlocklist: new Set([
+			...TagJsons.WALKER_KEY_BLOCKLIST,
+			"packContents", // Avoid tagging item pack contents
+			"items", // Avoid tagging item group item lists
+		]),
+	});
+
 	static async pInit () {
 		const itemArr = await Renderer.item.pBuildList();
 
@@ -171,10 +189,10 @@ class ItemTag {
 		const toolTypes = new Set(["AT", "GS", "INS", "T"]);
 		const tools = standardItems.filter(it => toolTypes.has(it.type) && it.name !== "Horn");
 		tools.forEach(tool => {
-			ItemTag._ITEM_NAMES[tool.name.toLowerCase()] = {name: tool.name, source: tool.source};
+			this._ITEM_NAMES[tool.name.toLowerCase()] = {name: tool.name, source: tool.source};
 		});
 
-		ItemTag._ITEM_NAMES_REGEX_TOOLS = new RegExp(`\\b(${tools.map(it => it.name.escapeRegexp()).join("|")})\\b`, "gi");
+		this._ITEM_NAMES_REGEX_TOOLS = new RegExp(`\\b(${tools.map(it => it.name.escapeRegexp()).join("|")})\\b`, "gi");
 		// endregion
 
 		// region Other items
@@ -188,15 +206,25 @@ class ItemTag {
 			return it.name.split(" ").length > 2;
 		});
 		otherItems.forEach(it => {
-			ItemTag._ITEM_NAMES[it.name.toLowerCase()] = {name: it.name, source: it.source};
+			this._ITEM_NAMES[it.name.toLowerCase()] = {name: it.name, source: it.source};
 		});
 
-		ItemTag._ITEM_NAMES_REGEX_OTHER = new RegExp(`\\b(${otherItems.map(it => it.name.escapeRegexp()).join("|")})\\b`, "gi");
+		this._ITEM_NAMES_REGEX_OTHER = new RegExp(`\\b(${otherItems.map(it => it.name.escapeRegexp()).join("|")})\\b`, "gi");
+		// endregion
+
+		// region Basic equipment
+		// (Has some overlap with others)
+		const itemsEquipment = itemArr
+			.filter(itm => itm.source === "PHB" && !["M", "R", "LA", "MA", "HA", "S"].includes(itm.type));
+		this._ITEM_NAMES_REGEX_EQUIPMENT = new RegExp(`\\b(${itemsEquipment.map(it => it.name.escapeRegexp()).join("|")})\\b`, "gi");
+		itemsEquipment.forEach(itm => this._ITEM_NAMES[itm.name.toLowerCase()] = {name: itm.name, source: itm.source});
 		// endregion
 	}
 
+	/* -------------------------------------------- */
+
 	static tryRun (it) {
-		return TagJsons.WALKER.walk(
+		return this._WALKER.walk(
 			it,
 			{
 				string: (str) => {
@@ -219,27 +247,52 @@ class ItemTag {
 
 	static _fnTag (strMod) {
 		return strMod
-			.replace(ItemTag._ITEM_NAMES_REGEX_TOOLS, (...m) => {
-				const itemMeta = ItemTag._ITEM_NAMES[m[1].toLowerCase()];
+			.replace(this._ITEM_NAMES_REGEX_TOOLS, (...m) => {
+				const itemMeta = this._ITEM_NAMES[m[1].toLowerCase()];
 				return `{@item ${m[1]}${itemMeta.source !== Parser.SRC_DMG ? `|${itemMeta.source}` : ""}}`;
 			})
-			.replace(ItemTag._ITEM_NAMES_REGEX_OTHER, (...m) => {
+			.replace(this._ITEM_NAMES_REGEX_OTHER, (...m) => {
+				const itemMeta = this._ITEM_NAMES[m[1].toLowerCase()];
+				return `{@item ${m[1]}${itemMeta.source !== Parser.SRC_DMG ? `|${itemMeta.source}` : ""}}`;
+			})
+		;
+	}
+
+	/* -------------------------------------------- */
+
+	static tryRunBasicEquipment (it) {
+		return this._WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@item"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTagBasicEquipment,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTagBasicEquipment (strMod) {
+		return strMod
+			.replace(ItemTag._ITEM_NAMES_REGEX_EQUIPMENT, (...m) => {
 				const itemMeta = ItemTag._ITEM_NAMES[m[1].toLowerCase()];
 				return `{@item ${m[1]}${itemMeta.source !== Parser.SRC_DMG ? `|${itemMeta.source}` : ""}}`;
 			})
 		;
 	}
 }
-ItemTag._ITEM_NAMES = {};
-ItemTag._ITEM_NAMES_REGEX_TOOLS = null;
 
-ItemTag._WALKER = MiscUtil.getWalker({
-	keyBlocklist: new Set([
-		...TagJsons.WALKER_KEY_BLOCKLIST,
-		"packContents", // Avoid tagging item pack contents
-		"items", // Avoid tagging item group item lists
-	]),
-});
+globalThis.ItemTag = ItemTag;
 
 class TableTag {
 	static tryRun (it) {
@@ -456,3 +509,129 @@ QuickrefTag._LOOKUP_VISION = {
 	"lightly obscured": "Vision and Light||2",
 	"heavily obscured": "Vision and Light||2",
 };
+
+class FeatTag {
+	static _FEAT_LOOKUP = [];
+
+	static async pInit () {
+		const featData = await DataUtil.feat.loadJSON();
+		const [featsNonStandard, feats] = [...featData.feat]
+			.sort((a, b) => SortUtil.ascSortDateString(Parser.sourceJsonToDate(a.source), Parser.sourceJsonToDate(b.source)) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source))
+			.segregate(feat => SourceUtil.isNonstandardSource(feat.source));
+		this._FEAT_LOOKUP = [
+			...feats,
+			...featsNonStandard,
+		]
+			.map(feat => ({searchName: feat.name.toLowerCase(), feat}));
+	}
+
+	static tryRun (it) {
+		return TagJsons.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@feat"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag.bind(this),
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod
+			.replace(/(?<pre>\bgain the )(?<name>.*)(?<post> feat\b)/, (...m) => {
+				const {pre, post, name} = m.at(-1);
+				const feat = this._getFeat(name);
+				if (!feat) return m[0];
+				const uid = DataUtil.proxy.getUid("feat", feat, {isMaintainCase: true});
+				const [uidName, ...uidRest] = uid.split("|");
+
+				// Tag display name not expected
+				if (name.toLowerCase() !== uidName.toLowerCase()) throw new Error(`Unimplemented!`);
+
+				const uidFinal = [
+					name,
+					...uidRest,
+				]
+					.join("|");
+				return `${pre}{@feat ${uidFinal}}${post}`;
+			})
+		;
+	}
+
+	static _getFeat (name) {
+		const searchName = name.toLowerCase().trim();
+		const featMeta = this._FEAT_LOOKUP.find(it => it.searchName === searchName);
+		if (!featMeta) return null;
+		return featMeta.feat;
+	}
+}
+
+class AdventureBookTag {
+	static _ADVENTURE_RES = [];
+	static _BOOK_RES = [];
+
+	static async pInit () {
+		for (const meta of [
+			{
+				propRes: "_ADVENTURE_RES",
+				propData: "adventure",
+				tag: "adventure",
+				contentsUrl: `${Renderer.get().baseUrl}data/adventures.json`,
+			},
+			{
+				propRes: "_BOOK_RES",
+				propData: "book",
+				tag: "book",
+				contentsUrl: `${Renderer.get().baseUrl}data/books.json`,
+			},
+		]) {
+			const contents = await DataUtil.loadJSON(meta.contentsUrl);
+
+			this[meta.propRes] = contents[meta.propData]
+				.map(({name, id}) => {
+					const re = new RegExp(`\\b${name.escapeRegexp()}\\b`, "g");
+					return str => str.replace(re, (...m) => `{@${meta.tag} ${m[0]}|${id}}`);
+				});
+		}
+	}
+
+	static tryRun (it) {
+		return TagJsons.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@adventure", "@book"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag.bind(this),
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (strMod) {
+		for (const arr of [this._ADVENTURE_RES, this._BOOK_RES]) {
+			strMod = arr.reduce((str, fn) => fn(str), strMod);
+		}
+		return strMod;
+	}
+}

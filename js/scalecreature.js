@@ -1,36 +1,46 @@
 "use strict";
 
-// Global variable for Roll20 compatibility
-globalThis.ScaleCreature = {
-	isCrInScaleRange (mon) {
-		if ([VeCt.CR_UNKNOWN, VeCt.CR_CUSTOM].includes(Parser.crToNumber(mon.cr))) return false;
-		// Only allow scaling for creatures in the 0-30 CR range (homebrew may specify e.g. >30)
-		const xpVal = Parser.XP_CHART_ALT[mon.cr?.cr ?? mon.cr];
-		return xpVal != null;
-	},
+globalThis.ScaleCreatureConsts = class {
+	// DMG p274
+	static CR_DPR_RANGES = {
+		"0": [0, 1],
+		"0.125": [2, 3],
+		"0.25": [4, 5],
+		"0.5": [6, 8],
+		"1": [9, 14],
+		"2": [15, 20],
+		"3": [21, 26],
+		"4": [27, 32],
+		"5": [33, 38],
+		"6": [39, 44],
+		"7": [45, 50],
+		"8": [51, 56],
+		"9": [57, 62],
+		"10": [63, 68],
+		"11": [69, 74],
+		"12": [75, 80],
+		"13": [81, 86],
+		"14": [87, 92],
+		"15": [93, 98],
+		"16": [99, 104],
+		"17": [105, 110],
+		"18": [111, 116],
+		"19": [117, 122],
+		"20": [123, 140],
+		"21": [141, 158],
+		"22": [159, 176],
+		"23": [177, 194],
+		"24": [195, 212],
+		"25": [213, 230],
+		"26": [231, 248],
+		"27": [249, 266],
+		"28": [267, 284],
+		"29": [285, 302],
+		"30": [303, 320],
+	};
 
-	_crRangeToVal (cr, ranges) {
-		return Object.keys(ranges).find(k => {
-			const [a, b] = ranges[k];
-			return cr >= a && cr <= b;
-		});
-	},
-
-	_acCrRanges: {
-		"13": [-1, 3],
-		"14": [4, 4],
-		"15": [5, 7],
-		"16": [8, 9],
-		"17": [10, 12],
-		"18": [13, 16],
-		"19": [17, 30],
-	},
-
-	_crToAc (cr) {
-		return Number(this._crRangeToVal(cr, this._acCrRanges));
-	},
-
-	_crHpRanges: {
+	// DMG p274
+	static CR_HP_RANGES = {
 		"0": [1, 6],
 		"0.125": [7, 35],
 		"0.25": [36, 49],
@@ -65,6 +75,496 @@ globalThis.ScaleCreature = {
 		"28": [716, 760],
 		"29": [761, 805],
 		"30": [806, 850],
+	};
+
+	// Manual smoothing applied to ensure e.g. going down a CR doesn't increase the mod
+	static CR_TO_ESTIMATED_DAMAGE_MOD = {
+		"0": [-1, 2],
+		"0.125": [0, 2],
+		"0.25": [0, 3],
+		"0.5": [0, 3],
+		"1": [0, 3],
+		"2": [1, 4],
+		"3": [1, 4],
+		"4": [2, 4],
+		"5": [2, 5],
+		"6": [2, 5],
+		"7": [2, 5],
+		"8": [2, 5],
+		"9": [2, 6],
+		"10": [3, 6],
+		"11": [3, 6],
+		"12": [3, 6],
+		"13": [3, 7],
+		"14": [3, 7],
+		"15": [3, 7],
+		"16": [4, 8],
+		"17": [4, 8],
+		"18": [4, 8],
+		"19": [5, 8],
+		"20": [6, 9],
+		"21": [6, 9],
+		"22": [6, 10],
+		"23": [6, 10],
+		"24": [6, 11],
+		"25": [7, 11],
+		"26": [7, 11],
+		// region No creatures for these CRs; use 26 with modifications
+		"27": [7, 11],
+		"28": [8, 11],
+		"29": [8, 11],
+		// endregion
+		"30": [9, 11],
+	};
+};
+
+globalThis.ScaleCreatureUtils = class {
+	/**
+	 * Calculate outVal based on a ratio equality.
+	 *
+	 *   inVal       outVal
+	 * --------- = ----------
+	 *  inTotal     outTotal
+	 *
+	 * @param inVal
+	 * @param inTotal
+	 * @param outTotal
+	 * @returns {number} outVal
+	 */
+	static getScaledToRatio (inVal, inTotal, outTotal) {
+		return Math.round(inVal * (outTotal / inTotal));
+	}
+
+	/* -------------------------------------------- */
+
+	/**
+	 * X in L-H
+	 * --L---X------H--
+	 *   \   \     |
+	 *    \   \    |
+	 *   --M---Y---I--
+	 * to Y; relative position in M-I
+	 * so (where D is "delta;" fractional position in L-H range)
+	 * X = D(H - L) + L
+	 *   => D = X - L / H - L
+	 *
+	 * @param x position within L-H space
+	 * @param lh L-H is the original space (1 dimension; a range)
+	 * @param mi M-I is the target space (1 dimension; a range)
+	 * @returns {number} the relative position in M-I space
+	 */
+	static interpAndTranslateToSpace (x, lh, mi) {
+		let [l, h] = lh;
+		let [m, i] = mi;
+		// adjust to avoid infinite delta
+		const OFFSET = 0.1;
+		l -= OFFSET; h += OFFSET;
+		m -= OFFSET; i += OFFSET;
+		const delta = (x - l) / (h - l);
+		return Math.round((delta * (i - m)) + m); // round to nearest whole number
+	}
+
+	/* -------------------------------------------- */
+
+	static _RE_HIT = /{@hit ([-+]?\d+)}/g;
+
+	static applyPbDeltaToHit (str, pbDelta) {
+		if (!pbDelta) return str;
+
+		return str.replace(this._RE_HIT, (_, m1) => {
+			const curToHit = Number(m1);
+			const outToHit = curToHit + pbDelta;
+			return `{@hit ${outToHit}}`;
+		});
+	}
+
+	static _RE_DC_PLAINTEXT = /DC (\d+)/g;
+	// Strip display text, as it may no longer be accurate
+	static _RE_DC_TAG = /{@dc (\d+)(?:\|[^}]+)?}/g;
+
+	static applyPbDeltaDc (str, pbDelta) {
+		if (!pbDelta) return str;
+
+		return str
+			.replace(this._RE_DC_PLAINTEXT, (_, m1) => `{@dc ${m1}}`)
+			.replace(this._RE_DC_TAG, (_, m1) => {
+				const curDc = Number(m1);
+				const outDc = curDc + pbDelta;
+				return `{@dc ${outDc}}`;
+			});
+	}
+
+	/* -------------------------------------------- */
+
+	static getDiceExpressionAverage (diceExp) {
+		diceExp = diceExp.replace(/\s*/g, "");
+		const asAverages = diceExp.replace(/d(\d+)/gi, (...m) => {
+			return ` * ${(Number(m[1]) + 1) / 2}`;
+		});
+		return MiscUtil.expEval(asAverages);
+	}
+
+	static getScaledDpr ({dprIn, crInNumber, dprTargetIn, dprTargetOut}) {
+		if (crInNumber === 0) dprIn = Math.min(dprIn, 0.63); // cap CR 0 DPR to prevent average damage in the thousands
+		return this.getScaledToRatio(dprIn, dprTargetIn, dprTargetOut);
+	}
+};
+
+globalThis.ScaleCreatureDamageExpression = class {
+	static _State = class {
+		constructor (
+			{
+				dprTargetRange,
+				prefix,
+				suffix,
+
+				numDice,
+				dprAdjusted,
+				diceFaces,
+				offsetEnchant = 0,
+
+				modOut,
+
+				isAllowAdjustingMod = true,
+			},
+		) {
+			// region Inputs
+			this.dprTargetRange = dprTargetRange;
+			this.prefix = prefix;
+			this.suffix = suffix;
+			this.numDice = numDice;
+			this.dprAdjusted = dprAdjusted;
+			this.diceFaces = diceFaces;
+			this.offsetEnchant = offsetEnchant;
+			this.isAllowAdjustingMod = isAllowAdjustingMod;
+			// endregion
+
+			// region Outputs
+			this.numDiceOut = numDice;
+			this.diceFacesOut = diceFaces;
+			this.modOut = modOut;
+			// endregion
+		}
+
+		get dprTargetMin () { return this.dprTargetRange[0]; }
+		get dprTargetMax () { return this.dprTargetRange[1]; }
+
+		isInRange (num) {
+			return num >= this.dprTargetRange[0] && num <= this.dprTargetRange[1];
+		}
+
+		getDiceExpression ({numDice, diceFaces, mod} = {}) {
+			numDice ??= this.numDiceOut;
+			diceFaces ??= this.diceFacesOut;
+			mod ??= this.modOut;
+
+			const ptDice = diceFaces === 1
+				? ((numDice || 1) * diceFaces)
+				: `${numDice}d${diceFaces}`;
+			const ptMod = mod !== 0
+				? ` ${mod > 0 ? "+" : ""} ${mod}`
+				: "";
+			return `${ptDice}${ptMod}`;
+		}
+
+		toString () {
+			return [
+				`Original expression (approx): ${this.numDice}d${this.diceFaces} + ${this.modOut}`,
+				`Current formula: ${this.getDiceExpression()}`,
+				`Current average: ${ScaleCreatureUtils.getDiceExpressionAverage(this.getDiceExpression())}`,
+				`Target range: ${this.dprTargetMin}-${this.dprTargetMax}`,
+			]
+				.join("\n");
+		}
+	};
+
+	static _MAX_ATTEMPTS = 100;
+
+	static getScaled (
+		{
+			dprTargetRange,
+
+			prefix,
+			suffix,
+
+			numDice,
+			dprAdjusted,
+			diceFaces,
+
+			modOut,
+
+			isAllowAdjustingMod = true,
+		},
+	) {
+		const state = new this._State({
+			dprTargetRange,
+			prefix,
+			suffix,
+			numDice,
+			dprAdjusted,
+			diceFaces,
+			modOut,
+			isAllowAdjustingMod,
+		});
+
+		for (let ixAttempt = 0; ixAttempt < this._MAX_ATTEMPTS; ++ixAttempt) {
+			if (state.isInRange(ScaleCreatureUtils.getDiceExpressionAverage(state.getDiceExpression()))) return this._getScaled_getOutput(state);
+
+			// order of preference for scaling:
+			// - adjusting number of dice
+			// - adjusting number of faces
+			// - adjusting modifier
+			if (this._getScaled_tryAdjustNumDice(state)) continue;
+			if (this._getScaled_tryAdjustDiceFaces(state)) continue;
+			this._getScaled_tryAdjustMod(state, {ixAttempt});
+		}
+
+		throw new Error(`Failed to find new DPR!\n${state}`);
+	}
+
+	static _DIR_INCREASE = 1;
+	static _DIR_DECREASE = -1;
+
+	static _getScaled_tryAdjustNumDice (state, {diceFacesTemp = null} = {}) {
+		diceFacesTemp ??= state.diceFacesOut;
+		let numDiceTemp = state.numDice;
+
+		let tempAvgDpr = ScaleCreatureUtils.getDiceExpressionAverage(
+			state.getDiceExpression({
+				numDice: numDiceTemp,
+				diceFaces: diceFacesTemp,
+			}),
+		);
+
+		const dir = state.dprAdjusted < tempAvgDpr ? this._DIR_DECREASE : this._DIR_INCREASE;
+
+		while (
+			(dir === this._DIR_INCREASE || numDiceTemp > 1)
+			&& (dir === this._DIR_INCREASE ? tempAvgDpr <= state.dprTargetMax : tempAvgDpr >= state.dprTargetMin)
+		) {
+			numDiceTemp += dir;
+			tempAvgDpr += dir * ((diceFacesTemp + 1) / 2);
+
+			if (
+				state.isInRange(
+					ScaleCreatureUtils.getDiceExpressionAverage(
+						state.getDiceExpression({
+							numDice: numDiceTemp,
+						}),
+					),
+				)
+			) {
+				state.numDiceOut = numDiceTemp;
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	static _getNextDice (diceFaces) {
+		return Renderer.dice.getNextDice(diceFaces);
+	}
+
+	static _getPreviousDice (diceFaces) {
+		return diceFaces === 4 ? 1 : Renderer.dice.getPreviousDice(diceFaces);
+	}
+
+	static _getScaled_tryAdjustDiceFaces (state) {
+		// can't be scaled
+		if (state.diceFaces === 1 || state.diceFaces === 20) return false;
+
+		let diceFacesTemp = state.diceFaces;
+
+		let tempAvgDpr = ScaleCreatureUtils.getDiceExpressionAverage(
+			state.getDiceExpression({
+				diceFaces: diceFacesTemp,
+			}),
+		);
+
+		const dir = state.dprAdjusted < tempAvgDpr ? this._DIR_DECREASE : this._DIR_INCREASE;
+
+		while (
+			(dir === this._DIR_INCREASE ? diceFacesTemp < 20 : diceFacesTemp > 1)
+			&& (dir === this._DIR_INCREASE ? tempAvgDpr <= state.dprTargetMax : tempAvgDpr >= state.dprTargetMin)
+		) {
+			diceFacesTemp = dir === this._DIR_INCREASE ? this._getNextDice(diceFacesTemp) : this._getPreviousDice(diceFacesTemp);
+			tempAvgDpr = ScaleCreatureUtils.getDiceExpressionAverage(state.getDiceExpression({diceFaces: diceFacesTemp}));
+
+			if (
+				state.isInRange(
+					ScaleCreatureUtils.getDiceExpressionAverage(
+						state.getDiceExpression({diceFaces: diceFacesTemp}),
+					),
+				)
+			) {
+				state.diceFacesOut = diceFacesTemp;
+				return true;
+			}
+
+			if (this._getScaled_tryAdjustNumDice(state, {diceFacesTemp})) {
+				state.diceFacesOut = diceFacesTemp;
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	static _getScaled_tryAdjustMod (state, {ixAttempt}) {
+		if (!state.isAllowAdjustingMod) return false;
+
+		// alternating sequence, going further from origin each time.
+		// E.g. original modOut == 0 => 1, -1, 2, -2, 3, -3, ... modOut+n, modOut-n
+		state.modOut += (1 - ((ixAttempt % 2) * 2)) * (ixAttempt + 1);
+	}
+
+	/** Alternate implementation which prevents dec/increasing AS when inc/decreasing CR */
+	static _getScaled_tryAdjustMod_alt (state, {crIn, crOut}) {
+		if (!state.isAllowAdjustingMod) return false;
+
+		state.modOut += Math.sign(crOut - crIn);
+		state.modOut = Math.max(-5, Math.min(state.modOut, 10)); // Cap at -5 (0) and at +10 (30)
+	}
+
+	static _getScaled_getOutput (state) {
+		const diceExpOut = state.getDiceExpression({
+			numDice: state.numDiceOut,
+			diceFaces: state.diceFacesOut,
+			mod: state.modOut + state.offsetEnchant,
+		});
+
+		const avgDamOut = Math.floor(ScaleCreatureUtils.getDiceExpressionAverage(diceExpOut));
+		if (avgDamOut <= 0 || diceExpOut === "1") return `1 ${suffix.replace(/^\W+/, " ").replace(/ +/, " ")}`;
+
+		const expression = [
+			Math.floor(ScaleCreatureUtils.getDiceExpressionAverage(diceExpOut)),
+			state.prefix,
+			diceExpOut,
+			state.suffix,
+		]
+			.filter(Boolean)
+			.join("");
+
+		return {
+			expression,
+			modOut: state.modOut,
+		};
+	}
+
+	/* -------------------------------------------- */
+
+	static getCreatureDamageScaleMeta ({crInNumber, crOutNumber}) {
+		const dprRangeIn = ScaleCreatureConsts.CR_DPR_RANGES[crInNumber];
+		if (!dprRangeIn) return null;
+		const dprRangeOut = ScaleCreatureConsts.CR_DPR_RANGES[crOutNumber];
+		if (!dprRangeOut) return null;
+
+		const dprAverageIn = dprRangeIn.mean();
+		const dprAverageOut = dprRangeOut.mean();
+
+		const crOutDprVariance = (dprRangeOut[1] - dprRangeOut[0]) / 2;
+
+		return {
+			dprAverageIn,
+			dprAverageOut,
+			crOutDprVariance,
+		};
+	}
+
+	static getExpressionDamageScaleMeta (
+		{
+			diceExp,
+
+			crInNumber,
+			crOutNumber,
+
+			dprAverageIn,
+			dprAverageOut,
+			crOutDprVariance,
+
+			offsetEnchant = 0,
+		},
+	) {
+		diceExp = diceExp.replace(/\s+/g, "");
+		const avgDpr = ScaleCreatureUtils.getDiceExpressionAverage(diceExp);
+		const dprAdjusted = ScaleCreatureUtils.getScaledDpr({dprIn: avgDpr, crInNumber, dprTargetIn: dprAverageIn, dprTargetOut: dprAverageOut});
+
+		const dprTargetRange = [
+			Math.max(0, Math.floor(dprAdjusted - crOutDprVariance)),
+			Math.ceil(Math.max(1, dprAdjusted + crOutDprVariance)),
+		];
+
+		// in official data, there are no dice expressions with more than one type of dice
+		const [dice, modifier] = diceExp.split(/[-+]/);
+		const [numDice, diceFaces] = dice.split("d").map(it => Number(it));
+		const modFromAbil = modifier ? Number(modifier) - offsetEnchant : null;
+
+		return {
+			dprTargetRange,
+			numDice,
+			dprAdjusted,
+			diceFaces,
+			modFromAbil,
+		};
+	}
+
+	static getAdjustedDamageMod (
+		{
+			crInNumber,
+			crOutNumber,
+
+			abilBeingScaled = null,
+			strTmpMod = null,
+			dexTmpMod = null,
+
+			modFromAbil,
+
+			offsetEnchant = 0,
+		},
+	) {
+		if (abilBeingScaled === "str" && strTmpMod != null) return strTmpMod;
+		if (abilBeingScaled === "dex" && dexTmpMod != null) return dexTmpMod;
+
+		if (modFromAbil == null) return 0 - offsetEnchant; // ensure enchanted equipment is ignored even with +0 base damage mod
+
+		// calculate this without enchanted equipment; ignore them and add them back at the end
+		return ScaleCreatureUtils.interpAndTranslateToSpace(
+			modFromAbil,
+			ScaleCreatureConsts.CR_TO_ESTIMATED_DAMAGE_MOD[crInNumber],
+			ScaleCreatureConsts.CR_TO_ESTIMATED_DAMAGE_MOD[crOutNumber],
+		);
+	}
+};
+
+// Global variable for Roll20 compatibility
+globalThis.ScaleCreature = {
+	isCrInScaleRange (mon) {
+		if ([VeCt.CR_UNKNOWN, VeCt.CR_CUSTOM].includes(Parser.crToNumber(mon.cr))) return false;
+		// Only allow scaling for creatures in the 0-30 CR range (homebrew may specify e.g. >30)
+		const xpVal = Parser.XP_CHART_ALT[mon.cr?.cr ?? mon.cr];
+		return xpVal != null;
+	},
+
+	_crRangeToVal (cr, ranges) {
+		return Object.keys(ranges).find(k => {
+			const [a, b] = ranges[k];
+			return cr >= a && cr <= b;
+		});
+	},
+
+	_acCrRanges: {
+		"13": [-1, 3],
+		"14": [4, 4],
+		"15": [5, 7],
+		"16": [8, 9],
+		"17": [10, 12],
+		"18": [13, 16],
+		"19": [17, 30],
+	},
+
+	_crToAc (cr) {
+		return Number(this._crRangeToVal(cr, this._acCrRanges));
 	},
 
 	// calculated as the mean modifier for each CR,
@@ -126,83 +626,6 @@ globalThis.ScaleCreature = {
 
 	_crToAtk (cr) {
 		return this._crRangeToVal(cr, this._atkCrRanges);
-	},
-
-	_crDprRanges: {
-		"0": [0, 1],
-		"0.125": [2, 3],
-		"0.25": [4, 5],
-		"0.5": [6, 8],
-		"1": [9, 14],
-		"2": [15, 20],
-		"3": [21, 26],
-		"4": [27, 32],
-		"5": [33, 38],
-		"6": [39, 44],
-		"7": [45, 50],
-		"8": [51, 56],
-		"9": [57, 62],
-		"10": [63, 68],
-		"11": [69, 74],
-		"12": [75, 80],
-		"13": [81, 86],
-		"14": [87, 92],
-		"15": [93, 98],
-		"16": [99, 104],
-		"17": [105, 110],
-		"18": [111, 116],
-		"19": [117, 122],
-		"20": [123, 140],
-		"21": [141, 158],
-		"22": [159, 176],
-		"23": [177, 194],
-		"24": [195, 212],
-		"25": [213, 230],
-		"26": [231, 248],
-		"27": [249, 266],
-		"28": [267, 284],
-		"29": [285, 302],
-		"30": [303, 320],
-	},
-
-	// Manual smoothing applied to ensure e.g. going down a CR doesn't increase the mod
-	_crToEstimatedDamageMod: {
-		"0": [-1, 2],
-		"0.125": [0, 2],
-		"0.25": [0, 3],
-		"0.5": [0, 3],
-		"1": [0, 3],
-		"2": [1, 4],
-		"3": [1, 4],
-		"4": [2, 4],
-		"5": [2, 5],
-		"6": [2, 5],
-		"7": [2, 5],
-		"8": [2, 5],
-		"9": [2, 6],
-		"10": [3, 6],
-		"11": [3, 6],
-		"12": [3, 6],
-		"13": [3, 7],
-		"14": [3, 7],
-		"15": [3, 7],
-		"16": [4, 8],
-		"17": [4, 8],
-		"18": [4, 8],
-		"19": [5, 8],
-		"20": [6, 9],
-		"21": [6, 9],
-		"22": [6, 10],
-		"23": [6, 10],
-		"24": [6, 11],
-		"25": [7, 11],
-		"26": [7, 11],
-		// no creatures for these CRs; use 26 with modifications
-		"27": [7, 11],
-		"28": [8, 11],
-		"29": [8, 11],
-		// end
-		"30": [9, 11],
 	},
 
 	_dcRanges: {
@@ -364,29 +787,15 @@ globalThis.ScaleCreature = {
 		this._applyPb_skills(mon, pbIn, pbOut, mon.skill);
 
 		const pbDelta = pbOut - pbIn;
-		const handleHit = (str) => {
-			return str.replace(/{@hit ([-+]?\d+)}/g, (m0, m1) => {
-				const curToHit = Number(m1);
-				const outToHit = curToHit + pbDelta;
-				return `{@hit ${outToHit}}`;
-			});
-		};
-
-		const handleDc = (str) => {
-			return str
-				.replace(/DC (\d+)/g, (m0, m1) => `{@dc ${m1}}`)
-				.replace(/{@dc (\d+)(?:\|[^}]+)?}/g, (m0, m1) => {
-					const curDc = Number(m1);
-					const outDc = curDc + pbDelta;
-					return `DC ${outDc}`;
-				});
-		};
 
 		if (mon.spellcasting) {
 			mon.spellcasting.forEach(sc => {
 				if (sc.headerEntries) {
 					const toUpdate = JSON.stringify(sc.headerEntries);
-					const out = handleDc(handleHit(toUpdate));
+					const out = ScaleCreatureUtils.applyPbDeltaDc(
+						ScaleCreatureUtils.applyPbDeltaToHit(toUpdate, pbDelta),
+						pbDelta,
+					);
 					sc.headerEntries = JSON.parse(out);
 				}
 			});
@@ -396,7 +805,10 @@ globalThis.ScaleCreature = {
 			if (mon[prop]) {
 				mon[prop].forEach(it => {
 					const toUpdate = JSON.stringify(it.entries);
-					const out = handleDc(handleHit(toUpdate));
+					const out = ScaleCreatureUtils.applyPbDeltaDc(
+						ScaleCreatureUtils.applyPbDeltaToHit(toUpdate, pbDelta),
+						pbDelta,
+					);
 					it.entries = JSON.parse(out);
 				});
 			}
@@ -769,7 +1181,7 @@ globalThis.ScaleCreature = {
 			const idealAcIn = ScaleCreature._crToAc(crIn);
 			const idealAcOut = ScaleCreature._crToAc(crOut);
 			const effectiveCurrent = expectedBaseScore == null ? currWithoutEnchants : expectedBaseScore;
-			const target = ScaleCreature._getScaledToRatio(effectiveCurrent, idealAcIn, idealAcOut);
+			const target = ScaleCreatureUtils.getScaledToRatio(effectiveCurrent, idealAcIn, idealAcOut);
 			let targetNoShield = target;
 			const acGain = target - effectiveCurrent;
 
@@ -1230,56 +1642,13 @@ globalThis.ScaleCreature = {
 		},
 	},
 
-	/**
-	 * X in L-H
-	 * --L---X------H--
-	 *   \   \     |
-	 *    \   \    |
-	 *   --M---Y---I--
-	 * to Y; relative position in M-I
-	 * so (where D is "delta;" fractional position in L-H range)
-	 * X = D(H - L) + L
-	 *   => D = X - L / H - L
-	 *
-	 * @param x position within L-H space
-	 * @param lh L-H is the original space (1 dimension; a range)
-	 * @param mi M-I is the target space (1 dimension; a range)
-	 * @returns {number} the relative position in M-I space
-	 */
-	_interpAndTranslateToSpace (x, lh, mi) {
-		let [l, h] = lh;
-		let [m, i] = mi;
-		// adjust to avoid infinite delta
-		const OFFSET = 0.1;
-		l -= OFFSET; h += OFFSET;
-		m -= OFFSET; i += OFFSET;
-		const delta = (x - l) / (h - l);
-		return Math.round((delta * (i - m)) + m); // round to nearest whole number
-	},
-
-	/**
-	 * Calculate outVal based on a ratio equality.
-	 *
-	 *   inVal       outVal
-	 * --------- = ----------
-	 *  inTotal     outTotal
-	 *
-	 * @param inVal
-	 * @param inTotal
-	 * @param outTotal
-	 * @returns {number} outVal
-	 */
-	_getScaledToRatio (inVal, inTotal, outTotal) {
-		return Math.round(inVal * (outTotal / inTotal));
-	},
-
 	_adjustHp (mon, crIn, crOut) {
 		if (mon.hp.special) return; // could be anything; best to just leave it
 
-		const hpInAvg = this._crHpRanges[crIn].mean();
-		const hpOutRange = this._crHpRanges[crOut];
+		const hpInAvg = ScaleCreatureConsts.CR_HP_RANGES[crIn].mean();
+		const hpOutRange = ScaleCreatureConsts.CR_HP_RANGES[crOut];
 		const hpOutAvg = hpOutRange.mean();
-		const targetHpOut = this._getScaledToRatio(mon.hp.average, hpInAvg, hpOutAvg);
+		const targetHpOut = ScaleCreatureUtils.getScaledToRatio(mon.hp.average, hpInAvg, hpOutAvg);
 		const targetHpDeviation = (hpOutRange[1] - hpOutRange[0]) / 2;
 		const targetHpRange = [Math.floor(targetHpOut - targetHpDeviation), Math.ceil(targetHpOut + targetHpDeviation)];
 
@@ -1297,7 +1666,7 @@ globalThis.ScaleCreature = {
 		const getAdjustedConMod = () => {
 			const outRange = this._crToEstimatedConModRange[crOut];
 			if (outRange[0] === outRange[1]) return outRange[0]; // handle CR 30, which is always 10
-			return this._interpAndTranslateToSpace(modPerHd, this._crToEstimatedConModRange[crIn], outRange);
+			return ScaleCreatureUtils.interpAndTranslateToSpace(modPerHd, this._crToEstimatedConModRange[crIn], outRange);
 		};
 
 		let numHdOut = numHd;
@@ -1444,7 +1813,7 @@ globalThis.ScaleCreature = {
 			if (crIn < crOut) return toHitIn + (idealHitOut - idealHitIn);
 
 			// Otherwise, for high CR -> low CR
-			return this._getScaledToRatio(toHitIn, idealHitIn, idealHitOut);
+			return ScaleCreatureUtils.getScaledToRatio(toHitIn, idealHitIn, idealHitOut);
 		};
 
 		const handleHit = (str, name) => {
@@ -1533,7 +1902,7 @@ globalThis.ScaleCreature = {
 							mon[castingAbility] = this._calcNewAbility(mon, castingAbility, curMod + dcDiff + pbIn - pbOut);
 						}
 					}
-					return `DC ${outDc}`;
+					return `{@dc ${outDc}}`;
 				});
 		};
 
@@ -1603,25 +1972,7 @@ globalThis.ScaleCreature = {
 	},
 
 	_adjustDpr (mon, crIn, crOut) {
-		const idealDprRangeIn = this._crDprRanges[crIn];
-		const idealDprRangeOut = this._crDprRanges[crOut];
-		const dprTotalIn = idealDprRangeIn.mean();
-		const dprTotalOut = idealDprRangeOut.mean();
-
-		const getAdjustedDpr = (dprIn) => {
-			if (crIn === 0) dprIn = Math.min(dprIn, 0.63); // cap CR 0 DPR to prevent average damage in the thousands
-			return this._getScaledToRatio(dprIn, dprTotalIn, dprTotalOut);
-		};
-
-		const getAvgDpr = (diceExp) => {
-			diceExp = diceExp.replace(/\s*/g, "");
-			const asAverages = diceExp.replace(/d(\d+)/gi, (...m) => {
-				return ` * ${(Number(m[1]) + 1) / 2}`;
-			});
-			return MiscUtil.expEval(asAverages);
-		};
-
-		const crOutDprVariance = (idealDprRangeOut[1] - idealDprRangeOut[0]) / 2;
+		const {dprAverageIn, dprAverageOut, crOutDprVariance} = ScaleCreatureDamageExpression.getCreatureDamageScaleMeta({crInNumber: crIn, crOutNumber: crOut});
 
 		let dprAdjustmentComplete = false;
 		let scaledEntries = [];
@@ -1643,7 +1994,7 @@ globalThis.ScaleCreature = {
 
 					// handle flat values first, as we may convert dice values to flats
 					let out = toUpdate.replace(RollerUtil.REGEX_DAMAGE_FLAT, (m0, prefix, flatVal, suffix) => {
-						const adjDpr = getAdjustedDpr(flatVal);
+						const adjDpr = ScaleCreatureUtils.getScaledDpr({dprIn: flatVal, crInNumber: crIn, dprTargetIn: dprAverageIn, dprTargetOut: dprAverageOut});
 						return `${prefix}${adjDpr}${suffix}`;
 					});
 
@@ -1654,23 +2005,22 @@ globalThis.ScaleCreature = {
 					const offsetEnchant = this._getEnchantmentBonus(it.name);
 
 					out = out.replace(RollerUtil.REGEX_DAMAGE_DICE, (m0, average, prefix, diceExp, suffix) => {
-						diceExp = diceExp.replace(/\s+/g, "");
-						const avgDpr = getAvgDpr(diceExp);
-						const adjustedDpr = getAdjustedDpr(avgDpr);
+						const {
+							dprTargetRange,
+							numDice,
+							dprAdjusted,
+							diceFaces,
+							modFromAbil,
+						} = ScaleCreatureDamageExpression.getExpressionDamageScaleMeta({
+							diceExp,
 
-						const targetDprRange = [ // cap min damage range at 0-1
-							Math.max(0, Math.floor(adjustedDpr - crOutDprVariance)),
-							Math.ceil(Math.max(1, adjustedDpr + crOutDprVariance)),
-						];
+							crInNumber: crIn,
+							crOutNumber: crOut,
 
-						const inRange = (num) => {
-							return num >= targetDprRange[0] && num <= targetDprRange[1];
-						};
-
-						// in official data, there are no dice expressions with more than one type of dice
-						const [dice, modifier] = diceExp.split(/[-+]/);
-						const [numDice, diceFaces] = dice.split("d").map(it => Number(it));
-						const modFromAbil = modifier ? Number(modifier) - offsetEnchant : null;
+							dprAverageIn,
+							dprAverageOut,
+							crOutDprVariance,
+						});
 
 						// try to figure out which mod we're going to be scaling
 						const abilBeingScaled = this._getAbilBeingScaled({
@@ -1680,32 +2030,32 @@ globalThis.ScaleCreature = {
 							name: it.name,
 							content: toUpdate,
 						});
-						const originalAbilMod = abilBeingScaled === "str" ? strMod : abilBeingScaled === "dex" ? dexMod : null;
 
-						const getAdjustedDamMod = () => {
-							if (abilBeingScaled === "str" && mon._strTmpMod != null) return mon._strTmpMod;
-							if (abilBeingScaled === "dex" && mon._dexTmpMod != null) return mon._dexTmpMod;
+						const modOut = ScaleCreatureDamageExpression.getAdjustedDamageMod({
+							crInNumber: crIn,
+							crOutNumber: crOut,
 
-							if (modFromAbil == null) return 0 - offsetEnchant; // ensure enchanted equipment is ignored even with +0 base damage mod
+							abilBeingScaled,
+							strTmpMod: mon._strTmpMod,
+							dexTmpMod: mon._dexTmpMod,
 
-							// calculate this without enchanted equipment; ignore them and add them back at the end
-							return this._interpAndTranslateToSpace(modFromAbil, this._crToEstimatedDamageMod[crIn], this._crToEstimatedDamageMod[crOut]);
-						};
+							modFromAbil,
 
-						let numDiceOut = numDice;
-						let diceFacesOut = diceFaces;
-						let modOut = getAdjustedDamMod();
+							offsetEnchant,
+						});
 
-						const doPostCalc = () => {
+						const doPostCalc = ({modOutScaled}) => {
 							// prevent ability scores going below zero
 							// should be mathematically impossible, if the recalculation is working correctly as:
 							// - minimum damage dice is a d4
 							// - minimum number of dice is 1
 							// - minimum DPR range is 0-1, which can be achieved with e.g. 1d4-1 (avg 1) or 1d4-2 (avg 0)
 							// therefore, this provides a sanity check: this should only occur when something's broken
-							if (modOut < -5) throw new Error(`Ability modifier ${abilBeingScaled != null ? `(${abilBeingScaled})` : ""} was below -5 (${modOut})! Original dice expression was ${diceExp}.`);
+							if (modOutScaled < -5) throw new Error(`Ability modifier ${abilBeingScaled != null ? `(${abilBeingScaled})` : ""} was below -5 (${modOutScaled})! Original dice expression was ${diceExp}.`);
 
 							if (abilBeingScaled == null) return;
+
+							const originalAbilMod = abilBeingScaled === "str" ? strMod : abilBeingScaled === "dex" ? dexMod : null;
 
 							// Written out in full to make ctrl-F easier
 							const [tmpModProp, maxDprKey] = {
@@ -1714,8 +2064,8 @@ globalThis.ScaleCreature = {
 							}[abilBeingScaled];
 
 							if (originalAbilMod != null) {
-								if (mon[tmpModProp] != null && mon[tmpModProp] !== modOut) {
-									if (mon[maxDprKey] < adjustedDpr) {
+								if (mon[tmpModProp] != null && mon[tmpModProp] !== modOutScaled) {
+									if (mon[maxDprKey] < dprAdjusted) {
 										// TODO test this -- none of the official monsters require attribute re-calculation but homebrew might. The story so far:
 										//   - A previous damage roll required an adjusted ability modifier to make the numbers line up
 										//   - This damage roll requires a _different_ adjustment to the same modifier to make the numbers line up
@@ -1723,8 +2073,8 @@ globalThis.ScaleCreature = {
 										//   - Since this will effectively invalidate the previous roll adjustments, break out of whatever we're doing here, and restart the entire adjustment process
 										//   - As we've set our new attribute modifier on the creature, the next loop will respect it, and use it by default
 										//   - Additionally, track the largest DPR, so we don't get stuck in a loop doing this on the next DPR adjustment iteration
-										mon[tmpModProp] = modOut;
-										mon[maxDprKey] = adjustedDpr;
+										mon[tmpModProp] = modOutScaled;
+										mon[maxDprKey] = dprAdjusted;
 										allSucceeded = false;
 										return;
 									}
@@ -1733,140 +2083,36 @@ globalThis.ScaleCreature = {
 								// Always update the ability score key if one was used, to avoid later rolls clobbering our
 								//   values. We do this for e.g. Young White Dragon's "Bite" attack being scaled from CR6 to 7,
 								//   which would otherwise cause the 1d8 (mod 0) to calculate a new Strength value.
-								mon[maxDprKey] = Math.max((mon[maxDprKey] || 0), adjustedDpr);
-								mon[tmpModProp] = modOut;
+								mon[maxDprKey] = Math.max((mon[maxDprKey] || 0), dprAdjusted);
+								mon[tmpModProp] = modOutScaled;
 							}
 
 							// Track dbg data
 							reqAbilAdjust.push({
 								ability: abilBeingScaled,
-								mod: modOut,
-								adjustedDpr,
+								mod: modOutScaled,
+								dprAdjusted,
 							});
 						};
 
-						const getDiceExp = (a = numDiceOut, b = diceFacesOut, c = modOut) => {
-							const ptDice = b === 1
-								? ((a || 1) * b)
-								: `${a}d${b}`;
-							const ptMod = `${c !== 0 ? ` ${c > 0 ? "+" : ""} ${c}` : ""}`;
-							return `${ptDice}${ptMod}`;
-						};
-						let loops = 0;
-						while (1) {
-							if (inRange(getAvgDpr(getDiceExp()))) break;
-							if (loops > 100) throw new Error(`Failed to find new DPR! Current formula is: ${getDiceExp()}`);
+						const {expression, modOut: modOutScaled} = ScaleCreatureDamageExpression.getScaled({
+							dprTargetRange,
+							prefix,
+							suffix,
 
-							const tryAdjustNumDice = (diceFacesTemp = diceFacesOut, modTemp = modOut) => {
-								let numDiceTemp = numDice;
-								let tempAvgDpr = getAvgDpr(getDiceExp(numDiceTemp, diceFacesTemp, modTemp));
+							numDice,
+							dprAdjusted,
+							diceFaces,
+							offsetEnchant,
 
-								let found = false;
+							modOut,
 
-								if (adjustedDpr < tempAvgDpr) {
-									while (numDiceTemp > 1 && tempAvgDpr >= targetDprRange[0]) {
-										numDiceTemp -= 1;
-										tempAvgDpr -= (diceFacesTemp + 1) / 2;
+							isAllowAdjustingMod: modFromAbil != null,
+						});
 
-										if (inRange(getAvgDpr(getDiceExp(numDiceTemp, diceFacesTemp, modTemp)))) {
-											found = true;
-											break;
-										}
-									}
-								} else {
-									while (tempAvgDpr <= targetDprRange[1]) {
-										numDiceTemp += 1;
-										tempAvgDpr += (diceFacesTemp + 1) / 2;
+						doPostCalc({modOutScaled});
 
-										if (inRange(getAvgDpr(getDiceExp(numDiceTemp, diceFacesTemp, modTemp)))) {
-											found = true;
-											break;
-										}
-									}
-								}
-
-								if (found) {
-									numDiceOut = numDiceTemp;
-									return true;
-								}
-								return false;
-							};
-
-							const tryAdjustDiceFaces = () => {
-								if (diceFaces === 1 || diceFaces === 20) return; // can't be scaled
-								let diceFacesTemp = diceFaces;
-								let tempAvgDpr = getAvgDpr(getDiceExp(undefined, diceFacesTemp));
-								let found = false;
-
-								if (adjustedDpr < tempAvgDpr) {
-									while (diceFacesTemp > 1 && tempAvgDpr >= targetDprRange[0]) {
-										diceFacesTemp = diceFacesTemp === 4
-											? 1
-											: Renderer.dice.getPreviousDice(diceFacesTemp);
-										tempAvgDpr = getAvgDpr(getDiceExp(undefined, diceFacesTemp));
-
-										if (inRange(getAvgDpr(getDiceExp(numDice, diceFacesTemp, modOut)))) {
-											found = true;
-											break;
-										} else {
-											found = tryAdjustNumDice(diceFacesTemp);
-											if (found) break;
-										}
-									}
-								} else {
-									while (diceFacesTemp < 20 && tempAvgDpr <= targetDprRange[1]) {
-										diceFacesTemp = Renderer.dice.getNextDice(diceFacesTemp);
-										tempAvgDpr = getAvgDpr(getDiceExp(undefined, diceFacesTemp));
-
-										if (inRange(getAvgDpr(getDiceExp(numDice, diceFacesTemp, modOut)))) {
-											found = true;
-											break;
-										} else {
-											found = tryAdjustNumDice(diceFacesTemp);
-											if (found) break;
-										}
-									}
-								}
-
-								if (found) {
-									diceFacesOut = diceFacesTemp;
-									return true;
-								}
-								return false;
-							};
-
-							const tryAdjustMod = () => {
-								if (modFromAbil == null) return;
-
-								// alternating sequence, going further from origin each time.
-								// E.g. original modOut == 0 => 1, -1, 2, -2, 3, -3, ... modOut+n, modOut-n
-								modOut += (1 - ((loops % 2) * 2)) * (loops + 1);
-							};
-
-							/** Alternate implementation which prevents dec/increasing AS when inc/decreasing CR */
-							const tryAdjustMod_alt = () => {
-								if (modFromAbil == null) return;
-
-								modOut += Math.sign(crOut - crIn);
-								modOut = Math.max(-5, Math.min(modOut, 10)); // Cap at -5 (0) and at +10 (30)
-							};
-
-							// order of preference for scaling:
-							// - adjusting number of dice
-							// - adjusting number of faces
-							// - adjusting modifier
-							if (tryAdjustNumDice()) break;
-							if (tryAdjustDiceFaces()) break;
-							tryAdjustMod();
-
-							loops++;
-						}
-
-						doPostCalc();
-						const diceExpOut = getDiceExp(undefined, undefined, modOut + offsetEnchant);
-						const avgDamOut = Math.floor(getAvgDpr(diceExpOut));
-						if (avgDamOut <= 0 || diceExpOut === "1") return `1 ${suffix.replace(/^[^\w]+/, " ").replace(/ +/, " ")}`;
-						return `${Math.floor(getAvgDpr(diceExpOut))}${prefix}${diceExpOut}${suffix}`;
+						return expression;
 					});
 
 					// skip remaining entries, to let the outer loop continue
@@ -2041,7 +2287,7 @@ globalThis.ScaleCreature = {
 				let anyChange = false;
 				const outStr = inStr.replace(/(an?) (\d+)[A-Za-z]+-level/i, (...m) => {
 					const level = Number(m[2]);
-					const outLevel = Math.max(1, Math.min(20, this._getScaledToRatio(level, idealClvlIn, idealClvlOut)));
+					const outLevel = Math.max(1, Math.min(20, ScaleCreatureUtils.getScaledToRatio(level, idealClvlIn, idealClvlOut)));
 					anyChange = level !== outLevel;
 					if (anyChange) {
 						if (primaryInLevel == null) primaryInLevel = level;
@@ -2082,7 +2328,7 @@ globalThis.ScaleCreature = {
 					const curCantrips = spells[0].spells.length;
 					const idealCantripsIn = this._casterLevelAndClassToCantrips(primaryInLevel, spellsFromClass);
 					const idealCantripsOut = this._casterLevelAndClassToCantrips(primaryOutLevel, spellsFromClass);
-					const targetCantripCount = this._getScaledToRatio(curCantrips, idealCantripsIn, idealCantripsOut);
+					const targetCantripCount = ScaleCreatureUtils.getScaledToRatio(curCantrips, idealCantripsIn, idealCantripsOut);
 
 					if (curCantrips < targetCantripCount) {
 						const cantrips = Object.keys((this._spells[Parser.SRC_PHB][spellsFromClass.toLowerCase()] || {})[0]).map(it => it.toLowerCase());
@@ -2148,7 +2394,7 @@ globalThis.ScaleCreature = {
 						if (atLevel) {
 							// TODO grow/shrink the spell list at this level as required
 							if (atLevel.slots) { // no "slots" signifies at-wills
-								const adjustedSlotsOut = this._getScaledToRatio(atLevel.slots, idealSlotsIn, idealSlotsOut);
+								const adjustedSlotsOut = ScaleCreatureUtils.getScaledToRatio(atLevel.slots, idealSlotsIn, idealSlotsOut);
 								lastRatio = adjustedSlotsOut / idealSlotsOut;
 
 								atLevel.slots = adjustedSlotsOut;

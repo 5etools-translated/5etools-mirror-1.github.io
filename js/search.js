@@ -172,7 +172,9 @@ class SearchPage {
 						? `<a href="${adventureBookSourceHref}">${ptPageInner}</a>`
 						: ptPageInner;
 
-					const ptSourceInner = source ? `<i>${Parser.sourceJsonToFull(source)}</i> (<span class="${Parser.sourceJsonToColor(source)}" ${Parser.sourceJsonToStyle(source)}>${Parser.sourceJsonToAbv(source)}</span>)${isSrd ? `<span class="ve-muted relative help-subtle pg-search__disp-srd" title="Available in the Systems Reference Document">[SRD]</span>` : ""}` : `<span></span>`;
+					const ptSourceInner = source
+						? `<i>${Parser.sourceJsonToFull(source)}</i> (<span class="${Parser.sourceJsonToColor(source)}" ${Parser.sourceJsonToStyle(source)}>${Parser.sourceJsonToAbv(source)}</span>)${isSrd ? `<span class="ve-muted relative help-subtle pg-search__disp-srd" title="Available in the Systems Reference Document">[SRD]</span>` : ""}${Parser.sourceJsonToMarkerHtml(source, {isList: false, additionalStyles: "pg-search__disp-source-marker"})}`
+						: `<span></span>`;
 					const ptSource = ptPage || !adventureBookSourceHref
 						? ptSourceInner
 						: `<a href="${adventureBookSourceHref}">${ptSourceInner}</a>`;
@@ -228,6 +230,11 @@ class SearchPage {
 						{
 							onObserve: () => {
 								const page = UrlUtil.categoryToHoverPage(category);
+								if (!page) {
+									$dispImage.addClass(`mobile__hidden`);
+									return;
+								}
+
 								DataLoader.pCacheAndGet(
 									page,
 									source,
@@ -246,7 +253,7 @@ class SearchPage {
 
 												isImagePopulated = true;
 												const tokenUrl = fnGetTokenUrl(ent);
-												$dispImage.html(`<img src="${tokenUrl}" class="w-100 h-100" alt="Token Image: ${(ent.name || "").qq()}" loading="lazy">`);
+												$dispImage.html(`<img src="${tokenUrl}" class="w-100 h-100" alt="Token Image: ${(ent.name || "").qq()}" ${ent.tokenCredit ? `title="Credit: ${ent.tokenCredit.qq()}"` : ""} loading="lazy">`);
 											}
 											break;
 										}

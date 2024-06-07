@@ -154,8 +154,16 @@ Hist.util = class {
 
 	static _SYMS_NO_ENCODE = [/(,)/g, /(:)/g, /(=)/g];
 
-	static getHashParts (location) {
+	static getHashParts (location, {isReturnEncoded = false} = {}) {
 		if (location[0] === "#") location = location.slice(1);
+
+		// Handle junk from external ads
+		if (location === "google_vignette") location = "";
+
+		if (isReturnEncoded) {
+			return location
+				.split(HASH_PART_SEP);
+		}
 
 		// region Normalize encoding
 		let pts = [location];

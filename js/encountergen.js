@@ -12,16 +12,13 @@ class EncountersPage extends TableListPage {
 	static _COL_NAME_1 = "Encounter";
 
 	static _FN_SORT (a, b, o) {
-		if (o.sortBy === "name") return SortUtil.ascSort(a.data._sLevel, b.data._sLevel) || SortUtil.compareListNames(a, b);
+		if (o.sortBy === "name") return SortUtil.ascSortEncounter(a, b);
+		if (o.sortBy === "source") return SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortEncounter(a, b);
 		return 0;
 	}
 
-	_getListItemData (ent) {
-		return {_sLevel: ent.minlvl ?? 0};
-	}
-
 	_getHash (ent) {
-		return UrlUtil.encodeForHash([ent.name, ent.source, `${ent.minlvl ?? 0}-${ent.maxlvl ?? 0}`]);
+		return UrlUtil.encodeForHash([ent.name, ent.source, `${ent.minlvl ?? 0}-${ent.maxlvl ?? 0}-${ent.caption || ""}`]);
 	}
 
 	_getHeaderId (ent) {

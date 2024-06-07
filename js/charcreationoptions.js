@@ -1,17 +1,27 @@
 "use strict";
 
 class CharCreationOptionsSublistManager extends SublistManager {
-	constructor () {
-		super({
-			sublistClass: "subcharcreationoptions",
-		});
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Type",
+				css: "col-5 ve-text-center pl-0",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-7 pr-0",
+				colStyle: "",
+			}),
+		];
 	}
 
 	pGetSublistItem (it, hash) {
+		const cellsText = [it.name, it._fOptionType];
+
 		const $ele = $$`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="col-5 ve-text-center pl-0">${it._fOptionType}</span>
-				<span class="bold col-7 pr-0">${it.name}</span>
+				${this.constructor._getRowCellsHtml({values: cellsText})}
 			</a>
 		</div>`
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
@@ -28,6 +38,7 @@ class CharCreationOptionsSublistManager extends SublistManager {
 			},
 			{
 				entity: it,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;
@@ -44,8 +55,6 @@ class CharCreationOptionsPage extends ListPage {
 			pFnGetFluff: Renderer.charoption.pGetFluff.bind(Renderer.charoption),
 
 			pageFilter,
-
-			listClass: "charcreationoptions",
 
 			dataProps: ["charoption"],
 

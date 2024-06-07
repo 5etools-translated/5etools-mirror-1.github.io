@@ -31,10 +31,6 @@ async function onJsonLoad (data) {
 	BookUtil.bookIndexBrew = (await BrewUtil2.pGetBrewProcessed())?.adventure || [];
 
 	window.onhashchange = BookUtil.booksHashChange.bind(BookUtil);
-	if (window.location.hash.length) {
-		BookUtil.booksHashChange();
-	} else {
-		$(`.contents-item`).show();
-	}
+	await BookUtil.booksHashChange();
 	window.dispatchEvent(new Event("toolsLoaded"));
 }

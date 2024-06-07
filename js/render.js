@@ -474,10 +474,13 @@ globalThis.Renderer = function () {
 			? `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${entry.width}" height="${entry.height}"><rect width="100%" height="100%" fill="#ccc3"></rect></svg>`)}`
 			: null;
 		const ptTitleCreditTooltip = this._renderImage_getTitleCreditTooltipText(entry);
+		const ptTitle = ptTitleCreditTooltip ? `title="${ptTitleCreditTooltip}"` : "";
+		const pluginDataIsNoLink = this._getPlugins("image_isNoLink").map(plugin => plugin(entry, textStack, meta, options)).some(Boolean);
+
 		textStack[0] += `<div class="${this._renderImage_getWrapperClasses(entry, meta)}" ${entry.title && this._isHeaderIndexIncludeImageTitles ? `data-title-index="${this._headerIndex++}"` : ""}>
-			<a href="${href}" target="_blank" rel="noopener noreferrer" ${ptTitleCreditTooltip ? `title="${ptTitleCreditTooltip}"` : ""}>
-				<img class="${this._renderImage_getImageClasses(entry, meta)}" src="${svg || href}" ${entry.altText || entry.title ? `alt="${Renderer.stripTags((entry.altText || entry.title)).qq()}"` : ""} ${svg ? `data-src="${href}"` : `loading="lazy"`} ${this._renderImage_getStylePart(entry)}>
-			</a>
+			${pluginDataIsNoLink ? "" : `<a href="${href}" target="_blank" rel="noopener noreferrer" ${ptTitle}>`}
+				<img class="${this._renderImage_getImageClasses(entry, meta)}" src="${svg || href}" ${pluginDataIsNoLink ? ptTitle : ""} ${entry.altText || entry.title ? `alt="${Renderer.stripTags((entry.altText || entry.title)).qq()}"` : ""} ${svg ? `data-src="${href}"` : `loading="lazy"`} ${this._renderImage_getStylePart(entry)}>
+			${pluginDataIsNoLink ? "" : `</a>`}
 		</div>`;
 
 		if (!this._renderImage_isComicStyling(entry) && (entry.title || entry.credit || entry.mapRegions)) {
@@ -611,7 +614,7 @@ globalThis.Renderer = function () {
 
 		const headerRowMetas = Renderer.table.getHeaderRowMetas(entry);
 		const autoRollMode = Renderer.table.getAutoConvertedRollMode(entry, {headerRowMetas});
-		const toRenderLabel = autoRollMode ? RollerUtil.getFullRollCol(entry.colLabels[0]) : null;
+		const toRenderLabel = autoRollMode ? RollerUtil.getFullRollCol(headerRowMetas.last()[0]) : null;
 		const isInfiniteResults = autoRollMode === RollerUtil.ROLL_COL_VARIABLE;
 
 		// caption
@@ -1027,7 +1030,7 @@ globalThis.Renderer = function () {
 		const hidden = new Set(entry.hidden || []);
 		const toRender = [{type: "entries", name: entry.name, entries: entry.headerEntries ? MiscUtil.copyFast(entry.headerEntries) : []}];
 
-		if (entry.constant || entry.will || entry.recharge || entry.charges || entry.rest || entry.daily || entry.weekly || entry.yearly || entry.ritual) {
+		if (entry.constant || entry.will || entry.recharge || entry.charges || entry.rest || entry.daily || entry.weekly || entry.monthly || entry.yearly || entry.ritual) {
 			const tempList = {type: "list", style: "list-hang-notitle", items: [], data: {isSpellList: true}};
 			if (entry.constant && !hidden.has("constant")) tempList.items.push({type: "itemSpell", name: `Constant:`, entry: this._renderSpellcasting_getRenderableList(entry.constant).join(", ")});
 			if (entry.will && !hidden.has("will")) tempList.items.push({type: "itemSpell", name: `At will:`, entry: this._renderSpellcasting_getRenderableList(entry.will).join(", ")});
@@ -1037,6 +1040,7 @@ globalThis.Renderer = function () {
 			this._renderSpellcasting_getEntries_procPerDuration({entry, tempList, hidden, prop: "rest", durationText: "/rest"});
 			this._renderSpellcasting_getEntries_procPerDuration({entry, tempList, hidden, prop: "daily", durationText: "/day"});
 			this._renderSpellcasting_getEntries_procPerDuration({entry, tempList, hidden, prop: "weekly", durationText: "/week"});
+			this._renderSpellcasting_getEntries_procPerDuration({entry, tempList, hidden, prop: "monthly", durationText: "/month"});
 			this._renderSpellcasting_getEntries_procPerDuration({entry, tempList, hidden, prop: "yearly", durationText: "/year"});
 
 			if (entry.ritual && !hidden.has("ritual")) tempList.items.push({type: "itemSpell", name: `Rituals:`, entry: this._renderSpellcasting_getRenderableList(entry.ritual).join(", ")});
@@ -1104,10 +1108,13 @@ globalThis.Renderer = function () {
 
 	this._renderSpellcasting = function (entry, textStack, meta, options) {
 		const toRender = this._renderSpellcasting_getEntries(entry);
+		if (!toRender?.[0].entries?.length) return;
 		this._recursiveRender({type: "entries", entries: toRender}, textStack, meta);
 	};
 
 	this._renderQuote = function (entry, textStack, meta, options) {
+		textStack[0] += `<div class="${this._renderList_getQuoteCssClasses(entry, textStack, meta, options)}">`;
+
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
 			textStack[0] += `<p class="rd__quote-line ${i === len - 1 && entry.by ? `rd__quote-line--last` : ""}">${i === 0 && !entry.skipMarks ? "&ldquo;" : ""}`;
@@ -1129,6 +1136,16 @@ globalThis.Renderer = function () {
 			textStack[0] += `<span class="rd__quote-by">\u2014 ${byArr ? tempStack.join("") : ""}${byArr && entry.from ? `, ` : ""}${entry.from ? `<i>${entry.from}</i>` : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
+
+		textStack[0] += `</div>`;
+	};
+
+	this._renderList_getQuoteCssClasses = function (entry, textStack, meta, options) {
+		const out = [`rd__quote`];
+		if (entry.style) {
+			if (entry.style) out.push(...entry.style.split(" ").map(it => `rd__${it}`));
+		}
+		return out.join(" ");
 	};
 
 	this._renderQuote_getBy = function (entry) {
@@ -1232,8 +1249,7 @@ globalThis.Renderer = function () {
 
 	this._renderItem = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		const isAddPeriod = entry.name && entry.nameDot !== false && !Renderer._INLINE_HEADER_TERMINATORS.has(entry.name[entry.name.length - 1]);
-		textStack[0] += `<p class="rd__p-list-item"><span class="${this._getMutatedStyleString(entry.style) || "bold"} rd__list-item-name">${this.render(entry.name)}${isAddPeriod ? "." : ""}</span> `;
+		textStack[0] += `<p class="rd__p-list-item"><span class="${this._getMutatedStyleString(entry.style) || "bold"} rd__list-item-name">${this.render(entry.name)}${this._renderItem_isAddPeriod(entry) ? "." : ""}</span> `;
 		if (entry.entry) this._recursiveRender(entry.entry, textStack, meta);
 		else if (entry.entries) {
 			const len = entry.entries.length;
@@ -1241,6 +1257,10 @@ globalThis.Renderer = function () {
 		}
 		textStack[0] += "</p>";
 		this._renderSuffix(entry, textStack, meta, options);
+	};
+
+	this._renderItem_isAddPeriod = function (entry) {
+		return entry.name && entry.nameDot !== false && !Renderer._INLINE_HEADER_TERMINATORS.has(entry.name[entry.name.length - 1]);
 	};
 
 	this._renderItemSub = function (entry, textStack, meta, options) {
@@ -1384,6 +1404,7 @@ globalThis.Renderer = function () {
 	};
 
 	this._renderGallery = function (entry, textStack, meta, options) {
+		if (entry.name) textStack[0] += `<h5 class="rd__gallery-name">${entry.name}</h5>`;
 		textStack[0] += `<div class="rd__wrp-gallery">`;
 		const len = entry.images.length;
 		const anyNamed = entry.images.some(it => it.title);
@@ -1440,11 +1461,10 @@ globalThis.Renderer = function () {
 	};
 
 	this._renderHomebrew = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<div class="homebrew-section"><div class="homebrew-float"><span class="homebrew-notice"></span>`;
+		textStack[0] += `<div class="rd-homebrew__b"><div class="rd-homebrew__wrp-notice"><span class="rd-homebrew__disp-notice"></span>`;
 
 		if (entry.oldEntries) {
-			const hoverMeta = Renderer.hover.getMakePredefinedHover({type: "entries", name: "Homebrew", entries: entry.oldEntries});
+			const hoverMeta = Renderer.hover.getInlineHover({type: "entries", name: "Homebrew", entries: entry.oldEntries});
 			let markerText;
 			if (entry.movedTo) {
 				markerText = "(See moved content)";
@@ -1453,7 +1473,7 @@ globalThis.Renderer = function () {
 			} else {
 				markerText = "(See removed content)";
 			}
-			textStack[0] += `<span class="homebrew-old-content" href="#${window.location.hash}" ${hoverMeta.html}>${markerText}</span>`;
+			textStack[0] += `<span class="rd-homebrew__disp-old-content" href="#${window.location.hash}" ${hoverMeta.html}>${markerText}</span>`;
 		}
 
 		textStack[0] += `</div>`;
@@ -1468,7 +1488,6 @@ globalThis.Renderer = function () {
 		}
 
 		textStack[0] += `</div>`;
-		this._renderSuffix(entry, textStack, meta, options);
 	};
 
 	this._renderCode = function (entry, textStack, meta, options) {
@@ -1605,6 +1624,13 @@ globalThis.Renderer = function () {
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</i>`;
 				break;
+			case "@tip": {
+				const [displayText, titielText] = Renderer.splitTagByPipe(text);
+				textStack[0] += `<span title="${titielText.qq()}">`;
+				this._recursiveRender(displayText, textStack, meta);
+				textStack[0] += `</span>`;
+				break;
+			}
 			case "@atk":
 				textStack[0] += `<i>${Renderer.attackTagToFull(text)}</i>`;
 				break;
@@ -1788,7 +1814,7 @@ globalThis.Renderer = function () {
 			// OTHER HOVERABLES ////////////////////////////////////////////////////////////////////////////////
 			case "@footnote": {
 				const [displayText, footnoteText, optTitle] = Renderer.splitTagByPipe(text);
-				const hoverMeta = Renderer.hover.getMakePredefinedHover({
+				const hoverMeta = Renderer.hover.getInlineHover({
 					type: "entries",
 					name: optTitle ? optTitle.toTitleCase() : "Footnote",
 					entries: [footnoteText, optTitle ? `{@note ${optTitle}}` : ""].filter(Boolean),
@@ -1812,12 +1838,12 @@ globalThis.Renderer = function () {
 				if (oldText) {
 					tooltipEntries.push(oldText);
 				}
-				const hoverMeta = Renderer.hover.getMakePredefinedHover({
+				const hoverMeta = Renderer.hover.getInlineHover({
 					type: "entries",
 					name: "Homebrew Modifications",
 					entries: tooltipEntries,
 				});
-				textStack[0] += `<span class="homebrew-inline" ${hoverMeta.html}>`;
+				textStack[0] += `<span class="rd-homebrew__disp-inline" ${hoverMeta.html}>`;
 				this._recursiveRender(newText || "[...]", textStack, meta);
 				textStack[0] += `</span>`;
 
@@ -1830,7 +1856,7 @@ globalThis.Renderer = function () {
 					textStack[0] += displayText;
 				} else {
 					const area = BookUtil.curRender.headerMap[areaId] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
-					const hoverMeta = Renderer.hover.getMakePredefinedHover(area.entry, {isLargeBookContent: true, depth: area.depth});
+					const hoverMeta = Renderer.hover.getInlineHover(area.entry, {isLargeBookContent: true, depth: area.depth});
 					textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)},0" ${hoverMeta.html}>${displayText}</a>`;
 				}
 
@@ -2085,6 +2111,8 @@ Renderer.applyProperties = function (entry, object) {
 				textStack += fromProp;
 				continue;
 			}
+
+			if (fromProp == null) throw new Error(`Could not apply property in "${s}"; "${path}" value was null!`);
 
 			modifiers
 				.split("")
@@ -2653,18 +2681,18 @@ Renderer._cache = {
 	},
 };
 
-Renderer.utils = {
-	getBorderTr: (optText = null) => {
+Renderer.utils = class {
+	static getBorderTr (optText = null) {
 		return `<tr><th class="border" colspan="6">${optText || ""}</th></tr>`;
-	},
+	}
 
-	getDividerTr: () => {
+	static getDividerTr () {
 		return `<tr><td class="divider" colspan="6"><div></div></td></tr>`;
-	},
+	}
 
-	getSourceSubText (it) {
+	static getSourceSubText (it) {
 		return it.sourceSub ? ` \u2014 ${it.sourceSub}` : "";
-	},
+	}
 
 	/**
 	 * @param it Entity to render the name row for.
@@ -2678,7 +2706,7 @@ Renderer.utils = {
 	 * @param [opts.extensionData] Additional data to pass to listening extensions when the send button is clicked.
 	 * @param [opts.isEmbeddedEntity] True if this is an embedded entity, i.e. one from a `"dataX"` entry.
 	 */
-	getNameTr: (it, opts) => {
+	static getNameTr (it, opts) {
 		opts = opts || {};
 
 		let dataPart = "";
@@ -2720,27 +2748,27 @@ Renderer.utils = {
 
 		if (opts.asJquery) return $ele;
 		else return $ele[0].outerHTML;
-	},
+	}
 
-	_getNameTr_getPtPrereleaseBrewSourceLink ({ent, brewUtil}) {
+	static _getNameTr_getPtPrereleaseBrewSourceLink ({ent, brewUtil}) {
 		if (!brewUtil.hasSourceJson(ent.source) || !brewUtil.sourceJsonToSource(ent.source)?.url) return "";
 
 		return `<a href="${brewUtil.sourceJsonToSource(ent.source).url}" title="View ${brewUtil.DISPLAY_NAME.toTitleCase()} Source" class="ve-self-flex-center ml-2 ve-muted rd__stats-name-brew-link" target="_blank" rel="noopener noreferrer"><span class="	glyphicon glyphicon-share"></span></a>`;
-	},
+	}
 
-	getBtnSendToFoundryHtml ({isMb = true} = {}) {
+	static getBtnSendToFoundryHtml ({isMb = true} = {}) {
 		return `<button title="Send to Foundry (SHIFT for Temporary Import)" class="btn btn-xs btn-default btn-stats-name mx-2 ${isMb ? "mb-2" : ""} ve-self-flex-end" onclick="ExtensionUtil.pDoSendStats(event, this)" draggable="true" ondragstart="ExtensionUtil.doDragStart(event, this)"><span class="glyphicon glyphicon-send"></span></button>`;
-	},
+	}
 
-	isDisplayPage (page) { return page != null && ((!isNaN(page) && page > 0) || isNaN(page)); },
+	static isDisplayPage (page) { return page != null && ((!isNaN(page) && page > 0) || isNaN(page)); }
 
-	getExcludedTr ({entity, dataProp, page, isExcluded}) {
+	static getExcludedTr ({entity, dataProp, page, isExcluded}) {
 		const excludedHtml = Renderer.utils.getExcludedHtml({entity, dataProp, page, isExcluded});
 		if (!excludedHtml) return "";
 		return `<tr><td colspan="6" class="pt-3">${excludedHtml}</td></tr>`;
-	},
+	}
 
-	getExcludedHtml ({entity, dataProp, page, isExcluded}) {
+	static getExcludedHtml ({entity, dataProp, page, isExcluded}) {
 		if (isExcluded != null && !isExcluded) return "";
 		if (isExcluded == null) {
 			if (!ExcludeUtil.isInitialised) return "";
@@ -2750,23 +2778,23 @@ Renderer.utils = {
 				|| dataProp === "item" ? Renderer.item.isExcluded(entity, {hash}) : ExcludeUtil.isExcluded(hash, dataProp, entity.source);
 		}
 		return isExcluded ? `<div class="ve-text-center text-danger"><b><i>Warning: This content has been <a href="blocklist.html">blocklisted</a>.</i></b></div>` : "";
-	},
+	}
 
-	getSourceAndPageTrHtml (it, {tag, fnUnpackUid} = {}) {
+	static getSourceAndPageTrHtml (it, {tag, fnUnpackUid} = {}) {
 		const html = Renderer.utils.getSourceAndPageHtml(it, {tag, fnUnpackUid});
 		return html ? `<b>Source:</b> ${html}` : "";
-	},
+	}
 
-	_getAltSourceHtmlOrText (it, prop, introText, isText) {
+	static _getAltSourceHtmlOrText (it, prop, introText, isText) {
 		if (!it[prop] || !it[prop].length) return "";
 
 		return `${introText} ${it[prop].map(as => {
 			if (as.entry) return (isText ? Renderer.stripTags : Renderer.get().render)(as.entry);
 			return `${isText ? "" : `<i class="help-subtle" title="${Parser.sourceJsonToFull(as.source).qq()}">`}${Parser.sourceJsonToAbv(as.source)}${isText ? "" : `</i>`}${Renderer.utils.isDisplayPage(as.page) ? `, page ${as.page}` : ""}`;
 		}).join("; ")}`;
-	},
+	}
 
-	_getReprintedAsHtmlOrText (ent, {isText, tag, fnUnpackUid} = {}) {
+	static _getReprintedAsHtmlOrText (ent, {isText, tag, fnUnpackUid} = {}) {
 		if (!ent.reprintedAs) return "";
 		if (!tag || !fnUnpackUid) return "";
 
@@ -2788,12 +2816,12 @@ Renderer.utils = {
 			.join("; ");
 
 		return `Reprinted as ${ptReprinted}`;
-	},
+	}
 
-	getSourceAndPageHtml (it, {tag, fnUnpackUid} = {}) { return this._getSourceAndPageHtmlOrText(it, {tag, fnUnpackUid}); },
-	getSourceAndPageText (it, {tag, fnUnpackUid} = {}) { return this._getSourceAndPageHtmlOrText(it, {isText: true, tag, fnUnpackUid}); },
+	static getSourceAndPageHtml (it, {tag, fnUnpackUid} = {}) { return this._getSourceAndPageHtmlOrText(it, {tag, fnUnpackUid}); }
+	static getSourceAndPageText (it, {tag, fnUnpackUid} = {}) { return this._getSourceAndPageHtmlOrText(it, {isText: true, tag, fnUnpackUid}); }
 
-	_getSourceAndPageHtmlOrText (it, {isText, tag, fnUnpackUid} = {}) {
+	static _getSourceAndPageHtmlOrText (it, {isText, tag, fnUnpackUid} = {}) {
 		const sourceSub = Renderer.utils.getSourceSubText(it);
 		const baseText = `${isText ? `` : `<i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">`}${Parser.sourceJsonToAbv(it.source)}${sourceSub}${isText ? "" : `</i>`}${Renderer.utils.isDisplayPage(it.page) ? `, page ${it.page}` : ""}`;
 		const reprintedAsText = Renderer.utils._getReprintedAsHtmlOrText(it, {isText, tag, fnUnpackUid});
@@ -2806,42 +2834,46 @@ Renderer.utils = {
 		const srdAndBasicRulesText = (srdText || basicRulesText) ? `Available in ${[srdText, basicRulesText].filter(it => it).join(" and ")}` : "";
 
 		return `${[baseText, addSourceText, reprintedAsText, otherSourceText, srdAndBasicRulesText, externalSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText || srdAndBasicRulesText || externalSourceText) ? "." : ""}`;
-	},
+	}
 
-	async _pHandleNameClick (ele) {
+	static async _pHandleNameClick (ele) {
 		await MiscUtil.pCopyTextToClipboard($(ele).text());
 		JqueryUtil.showCopiedEffect($(ele));
-	},
+	}
 
-	getPageTr (it, {tag, fnUnpackUid} = {}) {
+	static getPageTr (it, {tag, fnUnpackUid} = {}) {
 		return `<tr><td colspan=6>${Renderer.utils.getSourceAndPageTrHtml(it, {tag, fnUnpackUid})}</td></tr>`;
-	},
+	}
 
-	getAbilityRoller (statblock, ability) {
+	static getAbilityRollerEntry (statblock, ability) {
 		if (statblock[ability] == null) return "\u2014";
-		return Renderer.get().render(`{@ability ${ability} ${statblock[ability]}}`);
-	},
+		return `{@ability ${ability} ${statblock[ability]}}`;
+	}
 
-	getEmbeddedDataHeader (name, style, {isCollapsed = false} = {}) {
+	static getAbilityRoller (statblock, ability) {
+		return Renderer.get().render(Renderer.utils.getAbilityRollerEntry(statblock, ability));
+	}
+
+	static getEmbeddedDataHeader (name, style, {isCollapsed = false} = {}) {
 		return `<table class="rd__b-special rd__b-data ${style ? `rd__b-data--${style}` : ""}">
 		<thead><tr><th class="rd__data-embed-header" colspan="6" data-rd-data-embed-header="true"><span class="rd__data-embed-name ${isCollapsed ? "" : `ve-hidden`}">${name}</span><span class="rd__data-embed-toggle">[${isCollapsed ? "+" : "\u2013"}]</span></th></tr></thead><tbody class="${isCollapsed ? `ve-hidden` : ""}" data-rd-embedded-data-render-target="true">`;
-	},
+	}
 
-	getEmbeddedDataFooter () {
+	static getEmbeddedDataFooter () {
 		return `</tbody></table>`;
-	},
+	}
 
-	TabButton: function ({label, fnChange, fnPopulate, isVisible}) {
+	static TabButton = function ({label, fnChange, fnPopulate, isVisible}) {
 		this.label = label;
 		this.fnChange = fnChange;
 		this.fnPopulate = fnPopulate;
 		this.isVisible = isVisible;
-	},
+	};
 
-	_tabs: {},
-	_curTab: null,
-	_tabsPreferredLabel: null,
-	bindTabButtons ({tabButtons, tabLabelReference, $wrpTabs, $pgContent}) {
+	static _tabs = {};
+	static _curTab = null;
+	static _tabsPreferredLabel = null;
+	static bindTabButtons ({tabButtons, tabLabelReference, $wrpTabs, $pgContent}) {
 		Renderer.utils._tabs = {};
 		Renderer.utils._curTab = null;
 
@@ -2908,10 +2940,10 @@ Renderer.utils = {
 		// Otherwise, click the highest tab
 		const ixMetaMax = ixsAvailableMetas.last();
 		(tabButtons.find(it => it.label === ixMetaMax.label) || tabButtons[0]).fnActivateTab();
-	},
+	}
 
-	_pronounceButtonsBound: false,
-	bindPronounceButtons () {
+	static _pronounceButtonsBound = false;
+	static bindPronounceButtons () {
 		if (Renderer.utils._pronounceButtonsBound) return;
 		Renderer.utils._pronounceButtonsBound = true;
 		$(`body`).on("click", ".btn-name-pronounce", function () {
@@ -2919,21 +2951,21 @@ Renderer.utils = {
 			audio.currentTime = 0;
 			audio.play();
 		});
-	},
+	}
 
-	async pHasFluffText (entity, prop) {
+	static async pHasFluffText (entity, prop) {
 		return entity.hasFluff || ((await Renderer.utils.pGetPredefinedFluff(entity, prop))?.entries?.length || 0) > 0;
-	},
+	}
 
-	async pHasFluffImages (entity, prop) {
+	static async pHasFluffImages (entity, prop) {
 		return entity.hasFluffImages || (((await Renderer.utils.pGetPredefinedFluff(entity, prop))?.images?.length || 0) > 0);
-	},
+	}
 
 	/**
 	 * @param entry Data entry to search for fluff on, e.g. a monster
 	 * @param prop The fluff index reference prop, e.g. `"monsterFluff"`
 	 */
-	async pGetPredefinedFluff (entry, prop) {
+	static async pGetPredefinedFluff (entry, prop) {
 		if (!entry.fluff) return null;
 
 		const mappedProp = `_${prop}`;
@@ -2984,9 +3016,9 @@ Renderer.utils = {
 		}
 
 		return fluff;
-	},
+	}
 
-	async pGetFluff ({entity, pFnPostProcess, fnGetFluffData, fluffUrl, fluffBaseUrl, fluffProp} = {}) {
+	static async pGetFluff ({entity, pFnPostProcess, fnGetFluffData, fluffUrl, fluffBaseUrl, fluffProp} = {}) {
 		let predefinedFluff = await Renderer.utils.pGetPredefinedFluff(entity, fluffProp);
 		if (predefinedFluff) {
 			if (pFnPostProcess) predefinedFluff = await pFnPostProcess(predefinedFluff);
@@ -3009,9 +3041,9 @@ Renderer.utils = {
 		// Avoid modifying the original object
 		if (pFnPostProcess) fluff = await pFnPostProcess(fluff);
 		return fluff;
-	},
+	}
 
-	_TITLE_SKIP_TYPES: new Set(["entries", "section"]),
+	static _TITLE_SKIP_TYPES = new Set(["entries", "section"]);
 	/**
 	 * @param isImageTab True if this is the "Images" tab, false otherwise
 	 * @param $content The statblock wrapper
@@ -3019,7 +3051,7 @@ Renderer.utils = {
 	 * @param pFnGetFluff Function which gets the entity's fluff.
 	 * @param $headerControls
 	 */
-	async pBuildFluffTab ({isImageTab, $content, entity, $headerControls, pFnGetFluff} = {}) {
+	static async pBuildFluffTab ({isImageTab, $content, entity, $headerControls, pFnGetFluff} = {}) {
 		$content.append(Renderer.utils.getBorderTr());
 		$content.append(Renderer.utils.getNameTr(entity, {controlRhs: $headerControls, asJquery: true}));
 		const $td = $(`<td colspan="6" class="text"></td>`);
@@ -3031,9 +3063,9 @@ Renderer.utils = {
 		fluff.images = fluff.images || [Renderer.utils.HTML_NO_IMAGES];
 
 		$td.fastSetHtml(Renderer.utils.getFluffTabContent({entity, fluff, isImageTab}));
-	},
+	}
 
-	getFluffTabContent ({entity, fluff, isImageTab = false}) {
+	static getFluffTabContent ({entity, fluff, isImageTab = false}) {
 		Renderer.get().setFirstSection(true);
 		return (fluff[isImageTab ? "images" : "entries"] || []).map((ent, i) => {
 			if (isImageTab) return Renderer.get().render(ent);
@@ -3054,12 +3086,12 @@ Renderer.utils = {
 				else return Renderer.get().render(ent);
 			}
 		}).join("");
-	},
+	}
 
-	HTML_NO_INFO: "<i>No information available.</i>",
-	HTML_NO_IMAGES: "<i>No images available.</i>",
+	static HTML_NO_INFO = "<i>No information available.</i>";
+	static HTML_NO_IMAGES = "<i>No images available.</i>";
 
-	prerequisite: class {
+	static prerequisite = class {
 		static _WEIGHTS = [
 			"level",
 			"pact",
@@ -3183,7 +3215,7 @@ Renderer.utils = {
 					? listOfChoicesTrimmed.join(" Or, ")
 					: listOfChoicesTrimmed.joinConjunct(listOfChoicesTrimmed.some(it => / or /.test(it)) ? "; " : ", ", " or ")
 			) + sharedSuffix;
-			return `${isSkipPrefix ? "" : `<b>Prerequisite${cntPrerequisites === 1 ? "" : "s"}:</b> `}${[shared, joinedChoices].filter(Boolean).join(", plus ")}`;
+			return `${isSkipPrefix ? "" : `Prerequisite${cntPrerequisites === 1 ? "" : "s"}: `}${[shared, joinedChoices].filter(Boolean).join(", plus ")}`;
 		}
 
 		static _getHtml_level ({v, isListMode}) {
@@ -3228,7 +3260,7 @@ Renderer.utils = {
 					.join("/")
 				: v.map(sp => {
 					if (typeof sp === "string") return Parser.prereqSpellToFull(sp, {isTextOnly});
-					return Renderer.get().render(`{@filter ${sp.entry}|spells|${sp.choose}}`);
+					return isTextOnly ? Renderer.stripTags(sp.entry) : Renderer.get().render(`{@filter ${sp.entry}|spells|${sp.choose}}`);
 				})
 					.joinConjunct(", ", " or ");
 		}
@@ -3413,7 +3445,7 @@ Renderer.utils = {
 		static _getHtml_psionics ({v, isListMode, isTextOnly}) {
 			return isListMode
 				? "Psionics"
-				: (isTextOnly ? Renderer.stripTags : Renderer.get().render.bind(Renderer.get()))("Psionic Talent feature or {@feat Wild Talent|UA2020PsionicOptionsRevisited} feat");
+				: (isTextOnly ? Renderer.stripTags : Renderer.get().render.bind(Renderer.get()))("Psionic Talent feature or Wild Talent feat");
 		}
 
 		static _getHtml_alignment ({v, isListMode}) {
@@ -3436,21 +3468,82 @@ Renderer.utils = {
 				? v.map(it => it.toTitleCase()).join("/")
 				: `${v.map(it => it.toTitleCase()).joinConjunct(", ", " or ")} Group`;
 		}
-	},
+	};
 
-	getRepeatableHtml (ent, {isListMode = false} = {}) {
-		if (ent.repeatable == null) return isListMode ? "\u2014" : "";
-		return `${isListMode ? "" : "<b>"}Repeatable:${isListMode ? "" : "</b>"} ${ent.repeatableNote || (ent.repeatable ? "Yes" : "No")}`;
-	},
+	static getRepeatableEntry (ent) {
+		if (!ent.repeatable) return null;
+		return `{@b Repeatable:} ${ent.repeatableNote || (ent.repeatable ? "Yes" : "No")}`;
+	}
 
-	getRenderedSize (size) {
+	static getRepeatableHtml (ent, {isListMode = false} = {}) {
+		const entryRepeatable = Renderer.utils.getRepeatableEntry(ent);
+		if (entryRepeatable == null) return isListMode ? "\u2014" : "";
+		return Renderer.get().render(entryRepeatable);
+	}
+
+	static getRenderedSize (size) {
 		return [...(size ? [size].flat() : [])]
 			.sort(SortUtil.ascSortSize)
 			.map(sz => Parser.sizeAbvToFull(sz))
 			.joinConjunct(", ", " or ");
-	},
+	}
 
-	getMediaUrl (entry, prop, mediaDir) {
+	static _FN_TAG_SENSES = null;
+	static _SENSE_TAG_METAS = null;
+	static getSensesEntry (senses) {
+		if (typeof senses === "string") senses = [senses]; // handle legacy format
+
+		if (!Renderer.utils._FN_TAG_SENSES) {
+			Renderer.utils._SENSE_TAG_METAS = [
+				...MiscUtil.copyFast(Parser.SENSES),
+				...(PrereleaseUtil.getBrewProcessedFromCache("sense") || []),
+				...(BrewUtil2.getBrewProcessedFromCache("sense") || []),
+			];
+			const seenNames = new Set();
+			Renderer.utils._SENSE_TAG_METAS
+				.filter(it => {
+					if (seenNames.has(it.name.toLowerCase())) return false;
+					seenNames.add(it.name.toLowerCase());
+					return true;
+				})
+				.forEach(it => it._re = new RegExp(`\\b(?<sense>${it.name.escapeRegexp()})\\b`, "gi"));
+			Renderer.utils._FN_TAG_SENSES = str => {
+				Renderer.utils._SENSE_TAG_METAS
+					.forEach(({name, source, _re}) => str = str.replace(_re, (...m) => `{@sense ${m.last().sense}|${source}}`));
+				return str;
+			};
+		}
+
+		return senses
+			.map(str => {
+				const tagSplit = Renderer.splitByTags(str);
+				str = "";
+				const len = tagSplit.length;
+				for (let i = 0; i < len; ++i) {
+					const s = tagSplit[i];
+
+					if (!s) continue;
+
+					if (s.startsWith("{@")) {
+						str += s;
+						continue;
+					}
+
+					str += Renderer.utils._FN_TAG_SENSES(s);
+				}
+				return str;
+			})
+			.join(", ")
+			.replace(/(^| |\()(blind|blinded)(\)| |$)/gi, (...m) => `${m[1]}{@condition blinded||${m[2]}}${m[3]}`);
+	}
+
+	static getRenderedSenses (senses, isPlainText) {
+		const sensesEntry = Renderer.utils.getSensesEntry(senses);
+		if (isPlainText) return Renderer.stripTags(sensesEntry);
+		return Renderer.get().render(sensesEntry);
+	}
+
+	static getMediaUrl (entry, prop, mediaDir) {
 		if (!entry[prop]) return "";
 
 		let href = "";
@@ -3462,9 +3555,9 @@ Renderer.utils = {
 			href = entry[prop].url;
 		}
 		return href;
-	},
+	}
 
-	getTagEntry (tag, text) {
+	static getTagEntry (tag, text) {
 		switch (tag) {
 			case "@dice":
 			case "@autodice":
@@ -3645,9 +3738,9 @@ Renderer.utils = {
 
 			default: throw new Error(`Unhandled tag "${tag}"`);
 		}
-	},
+	}
 
-	getTagMeta (tag, text) {
+	static getTagMeta (tag, text) {
 		switch (tag) {
 			case "@deity": {
 				let [name, pantheon, source, displayText, ...others] = Renderer.splitTagByPipe(text);
@@ -3743,9 +3836,9 @@ Renderer.utils = {
 
 			default: return Renderer.utils._getTagMeta_generic(tag, text);
 		}
-	},
+	}
 
-	_getTagMeta_generic (tag, text) {
+	static _getTagMeta_generic (tag, text) {
 		const {name, source, displayText, others} = DataUtil.generic.unpackUid(text, tag);
 		const hash = UrlUtil.encodeForHash([name, source]);
 
@@ -3886,15 +3979,16 @@ Renderer.utils = {
 			case "@skill": { out.isFauxPage = true; out.page = "skill"; break; }
 			case "@sense": { out.isFauxPage = true; out.page = "sense"; break; }
 			case "@itemMastery": { out.isFauxPage = true; out.page = "itemMastery"; break; }
+			case "@cite": { out.isFauxPage = true; out.page = "citation"; break; }
 
 			default: throw new Error(`Unhandled tag "${tag}"`);
 		}
 
 		return out;
-	},
+	}
 
 	// region Templating
-	applyTemplate (ent, templateString, {fnPreApply, mapCustom} = {}) {
+	static applyTemplate (ent, templateString, {fnPreApply, mapCustom} = {}) {
 		return templateString.replace(/{{([^}]+)}}/g, (fullMatch, strArgs) => {
 			if (fnPreApply) fnPreApply(fullMatch, strArgs);
 
@@ -3921,9 +4015,9 @@ Renderer.utils = {
 				}
 			} else throw new Error(`Unhandled number of arguments ${args.length}`);
 		});
-	},
+	}
 
-	_applyTemplate_getValue (ent, prop) {
+	static _applyTemplate_getValue (ent, prop) {
 		const spl = prop.split(".");
 		switch (spl[0]) {
 			case "item": {
@@ -3933,13 +4027,13 @@ Renderer.utils = {
 			}
 			default: return `{@i unknown template root: "${spl[0]}"}`;
 		}
-	},
+	}
 	// endregion
 
 	/**
 	 * Convert a nested entry structure into a flat list of entry metadata with depth info.
 	 **/
-	getFlatEntries (entry) {
+	static getFlatEntries (entry) {
 		const out = [];
 		const depthStack = [];
 
@@ -4000,9 +4094,9 @@ Renderer.utils = {
 		recurse({obj: entry});
 
 		return out;
-	},
+	}
 
-	getLinkSubhashString (subhashes) {
+	static getLinkSubhashString (subhashes) {
 		let out = "";
 		const len = subhashes.length;
 		for (let i = 0; i < len; ++i) {
@@ -4018,13 +4112,13 @@ Renderer.utils = {
 			}
 		}
 		return out;
-	},
+	}
 
-	initFullEntries_ (ent, {propEntries = "entries", propFullEntries = "_fullEntries"} = {}) {
+	static initFullEntries_ (ent, {propEntries = "entries", propFullEntries = "_fullEntries"} = {}) {
 		ent[propFullEntries] = ent[propFullEntries] || (ent[propEntries] ? MiscUtil.copyFast(ent[propEntries]) : []);
-	},
+	}
 
-	lazy: {
+	static lazy = {
 		_getIntersectionConfig () {
 			return {
 				rootMargin: "150px 0px", // if the element gets within 150px of the viewport
@@ -4102,7 +4196,7 @@ Renderer.utils = {
 				});
 			};
 		},
-	},
+	};
 };
 
 Renderer.tag = class {
@@ -4219,6 +4313,10 @@ Renderer.tag = class {
 
 	static TagNote = class extends this._TagTextStyle {
 		tagName = "note";
+	};
+
+	static TagTip = class extends this._TagTextStyle {
+		tagName = "tip";
 	};
 
 	static TagUnit = class extends this._TagBaseAt {
@@ -4556,7 +4654,7 @@ Renderer.tag = class {
 
 	static TagRecipe = class extends this._TagPipedDisplayTextThird {
 		tagName = "recipe";
-		defaultSource = Parser.SRC_HEROES_FEAST;
+		defaultSource = Parser.SRC_HF;
 		page = UrlUtil.PG_RECIPES;
 	};
 
@@ -4618,6 +4716,12 @@ Renderer.tag = class {
 		tagName = "variantrule";
 		defaultSource = Parser.SRC_DMG;
 		page = UrlUtil.PG_VARIANTRULES;
+	};
+
+	static TagCite = class extends this._TagPipedDisplayTextThird {
+		tagName = "cite";
+		defaultSource = Parser.SRC_PHB;
+		page = "citation";
 	};
 
 	static _TagPipedDisplayTextFourth = class extends this._TagBaseAt {
@@ -4747,6 +4851,7 @@ Renderer.tag = class {
 		new this.TagComicNote(),
 
 		new this.TagNote(),
+		new this.TagTip(),
 
 		new this.TagUnit(),
 
@@ -4823,6 +4928,7 @@ Renderer.tag = class {
 		new this.TagTable(),
 		new this.TagTrap(),
 		new this.TagVariantrule(),
+		new this.TagCite(),
 
 		new this.TagCard(),
 		new this.TagDeity(),
@@ -4859,22 +4965,22 @@ Renderer.tag = class {
 	}
 };
 
-Renderer.events = {
-	handleClick_copyCode (evt, ele) {
+Renderer.events = class {
+	static handleClick_copyCode (evt, ele) {
 		const $e = $(ele).parent().next("pre");
 		MiscUtil.pCopyTextToClipboard($e.text());
 		JqueryUtil.showCopiedEffect($e);
-	},
+	}
 
-	handleClick_toggleCodeWrap (evt, ele) {
+	static handleClick_toggleCodeWrap (evt, ele) {
 		const nxt = !StorageUtil.syncGet("rendererCodeWrap");
 		StorageUtil.syncSet("rendererCodeWrap", nxt);
 		const $btn = $(ele).toggleClass("active", nxt);
 		const $e = $btn.parent().next("pre");
 		$e.toggleClass("rd__pre-wrap", nxt);
-	},
+	}
 
-	bindGeneric ({element = document.body} = {}) {
+	static bindGeneric ({element = document.body} = {}) {
 		const $ele = $(element)
 			.on("click", `[data-rd-data-embed-header]`, evt => {
 				Renderer.events.handleClick_dataEmbedHeader(evt, evt.currentTarget);
@@ -4888,9 +4994,9 @@ Renderer.events = {
 					});
 			})
 		;
-	},
+	}
 
-	handleClick_dataEmbedHeader (evt, ele) {
+	static handleClick_dataEmbedHeader (evt, ele) {
 		evt.stopPropagation();
 		evt.preventDefault();
 
@@ -4898,14 +5004,14 @@ Renderer.events = {
 		$ele.find(".rd__data-embed-name").toggleVe();
 		$ele.find(".rd__data-embed-toggle").text($ele.text().includes("+") ? "[\u2013]" : "[+]");
 		$ele.closest("table").find("tbody").toggleVe();
-	},
+	}
 
-	_HEADER_TOGGLE_CLICK_SELECTORS: [
+	static _HEADER_TOGGLE_CLICK_SELECTORS = [
 		`[data-rd-h-toggle-button]`,
 		`[data-rd-h-special-toggle-button]`,
-	],
+	];
 
-	handleClick_headerToggleButton (evt, ele, {selector = false} = {}) {
+	static handleClick_headerToggleButton (evt, ele, {selector = false} = {}) {
 		evt.stopPropagation();
 		evt.preventDefault();
 
@@ -4922,9 +5028,9 @@ Renderer.events = {
 					});
 			})
 		;
-	},
+	}
 
-	_handleClick_headerToggleButton_doToggleEle (ele, {selector = false, force = null} = {}) {
+	static _handleClick_headerToggleButton_doToggleEle (ele, {selector = false, force = null} = {}) {
 		const isShow = force != null ? force : ele.innerHTML.includes("+");
 
 		let eleNxt = ele.closest(".rd__h").nextElementSibling;
@@ -4953,9 +5059,9 @@ Renderer.events = {
 		ele.innerHTML = isShow ? "[\u2013]" : "[+]";
 
 		return isShow;
-	},
+	}
 
-	_handleClick_headerToggleButton_getEleToCheck (eleNxt) {
+	static _handleClick_headerToggleButton_getEleToCheck (eleNxt) {
 		if (eleNxt.type === 3) return eleNxt; // Text nodes
 
 		// If the element is a block with only one child which is itself a block, treat it as a "wrapper" block, and dig
@@ -4964,18 +5070,18 @@ Renderer.events = {
 		if (childNodes.length !== 1) return eleNxt;
 		if (childNodes[0].classList.contains("rd__b")) return Renderer.events._handleClick_headerToggleButton_getEleToCheck(childNodes[0]);
 		return eleNxt;
-	},
+	}
 
-	handleLoad_inlineStatblock (ele) {
+	static handleLoad_inlineStatblock (ele) {
 		const observer = Renderer.utils.lazy.getCreateObserver({
 			observerId: "inlineStatblock",
 			fnOnObserve: Renderer.events._handleLoad_inlineStatblock_fnOnObserve.bind(Renderer.events),
 		});
 
 		observer.track(ele.parentNode);
-	},
+	}
 
-	_handleLoad_inlineStatblock_fnOnObserve ({entry}) {
+	static _handleLoad_inlineStatblock_fnOnObserve ({entry}) {
 		const ele = entry.target;
 
 		const tag = ele.dataset.rdTag.uq();
@@ -5015,23 +5121,23 @@ Renderer.events = {
 				const fnBind = Renderer.hover.getFnBindListenersCompact(page);
 				if (fnBind) fnBind(toRender, nxtTgt);
 			});
-	},
+	}
 };
 
-Renderer.feat = {
-	_mergeAbilityIncrease_getListItemText (abilityObj) {
+Renderer.feat = class {
+	static _mergeAbilityIncrease_getListItemText (abilityObj) {
 		return Renderer.feat._mergeAbilityIncrease_getText(abilityObj);
-	},
+	}
 
-	_mergeAbilityIncrease_getListItemItem (abilityObj) {
+	static _mergeAbilityIncrease_getListItemItem (abilityObj) {
 		return {
 			type: "item",
 			name: "Ability Score Increase.",
 			entry: Renderer.feat._mergeAbilityIncrease_getText(abilityObj),
 		};
-	},
+	}
 
-	_mergeAbilityIncrease_getText (abilityObj) {
+	static _mergeAbilityIncrease_getText (abilityObj) {
 		const maxScore = abilityObj.max ?? 20;
 
 		if (!abilityObj.choose) {
@@ -5049,9 +5155,9 @@ Renderer.feat = {
 
 		const abbChoicesText = abilityObj.choose.from.map(it => Parser.attAbvToFull(it)).joinConjunct(", ", " or ");
 		return `Increase your ${abbChoicesText} by ${abilityObj.choose.amount ?? 1}, to a maximum of ${maxScore}.`;
-	},
+	}
 
-	initFullEntries (feat) {
+	static initFullEntries (feat) {
 		if (!feat.ability || feat._fullEntries || !feat.ability.length) return;
 
 		const abilsToDisplay = feat.ability.filter(it => !it.hidden);
@@ -5078,46 +5184,64 @@ Renderer.feat = {
 		setTimeout(() => {
 			throw new Error(`Could not find object of type "list" in "entries" for feat "${feat.name}" from source "${feat.source}" when merging ability scores! Reformat the feat to include a "list"-type entry.`);
 		}, 1);
-	},
+	}
+
+	static getFeatRendereableEntriesMeta (ent) {
+		Renderer.feat.initFullEntries(ent);
+		return {
+			entryMain: {entries: ent._fullEntries || ent.entries},
+		};
+	}
+
+	static getJoinedCategoryPrerequisites (category, rdPrereqs) {
+		const ptCategory = category ? `${category.toTitleCase()} Feat` : "";
+
+		return ptCategory && rdPrereqs
+			? `${ptCategory} (${rdPrereqs})`
+			: (ptCategory || rdPrereqs);
+	}
 
 	/**
 	 * @param feat
 	 * @param [opts]
 	 * @param [opts.isSkipNameRow]
 	 */
-	getCompactRenderedString (feat, opts) {
+	static getCompactRenderedString (feat, opts) {
 		opts = opts || {};
 
 		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [];
 
-		const prerequisite = Renderer.utils.prerequisite.getHtml(feat.prerequisite);
+		const ptCategoryPrerequisite = Renderer.feat.getJoinedCategoryPrerequisites(
+			feat.category,
+			Renderer.utils.prerequisite.getHtml(feat.prerequisite),
+		);
 		const ptRepeatable = Renderer.utils.getRepeatableHtml(feat);
-		Renderer.feat.initFullEntries(feat);
+
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr({entity: feat, dataProp: "feat", page: UrlUtil.PG_FEATS})}
 			${opts.isSkipNameRow ? "" : Renderer.utils.getNameTr(feat, {page: UrlUtil.PG_FEATS})}
 			<tr class="text"><td colspan="6" class="text">
-			${prerequisite ? `<p>${prerequisite}</p>` : ""}
+			${ptCategoryPrerequisite ? `<p>${ptCategoryPrerequisite}</p>` : ""}
 			${ptRepeatable ? `<p>${ptRepeatable}</p>` : ""}
 		`);
-		renderer.recursiveRender({entries: feat._fullEntries || feat.entries}, renderStack, {depth: 2});
+		renderer.recursiveRender(Renderer.feat.getFeatRendereableEntriesMeta(feat)?.entryMain, renderStack, {depth: 2});
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
-	},
+	}
 
-	pGetFluff (feat) {
+	static pGetFluff (feat) {
 		return Renderer.utils.pGetFluff({
 			entity: feat,
 			fnGetFluffData: DataUtil.featFluff.loadJSON.bind(DataUtil.featFluff),
 			fluffProp: "featFluff",
 		});
-	},
+	}
 };
 
-Renderer.class = {
-	getCompactRenderedString (cls) {
+Renderer.class = class {
+	static getCompactRenderedString (cls) {
 		if (cls.__prop === "subclass") return Renderer.subclass.getCompactRenderedString(cls);
 
 		const clsEntry = {
@@ -5129,26 +5253,26 @@ Renderer.class = {
 		};
 
 		return Renderer.hover.getGenericCompactRenderedString(clsEntry);
-	},
+	}
 
-	getHitDiceEntry (clsHd) { return clsHd ? {toRoll: `${clsHd.number}d${clsHd.faces}`, rollable: true} : null; },
-	getHitPointsAtFirstLevel (clsHd) { return clsHd ? `${clsHd.number * clsHd.faces} + your Constitution modifier` : null; },
-	getHitPointsAtHigherLevels (className, clsHd, hdEntry) { return className && clsHd && hdEntry ? `${Renderer.getEntryDice(hdEntry, "Hit die")} (or ${((clsHd.number * clsHd.faces) / 2 + 1)}) + your Constitution modifier per ${className} level after 1st` : null; },
+	static getHitDiceEntry (clsHd) { return clsHd ? {toRoll: `${clsHd.number}d${clsHd.faces}`, rollable: true} : null; }
+	static getHitPointsAtFirstLevel (clsHd) { return clsHd ? `${clsHd.number * clsHd.faces} + your Constitution modifier` : null; }
+	static getHitPointsAtHigherLevels (className, clsHd, hdEntry) { return className && clsHd && hdEntry ? `${Renderer.getEntryDice(hdEntry, "Hit die")} (or ${((clsHd.number * clsHd.faces) / 2 + 1)}) + your Constitution modifier per ${className} level after 1st` : null; }
 
-	getRenderedArmorProfs (armorProfs) { return armorProfs.map(a => Renderer.get().render(a.full ? a.full : a === "light" || a === "medium" || a === "heavy" ? `{@filter ${a} armor|items|type=${a} armor}` : a)).join(", "); },
-	getRenderedWeaponProfs (weaponProfs) { return weaponProfs.map(w => Renderer.get().render(w === "simple" || w === "martial" ? `{@filter ${w} weapons|items|type=${w} weapon}` : w.optional ? `<span class="help help--hover" title="Optional Proficiency">${w.proficiency}</span>` : w)).join(", "); },
-	getRenderedToolProfs (toolProfs) { return toolProfs.map(it => Renderer.get().render(it)).join(", "); },
-	getRenderedSkillProfs (skills) { return `${Parser.skillProficienciesToFull(skills).uppercaseFirst()}.`; },
+	static getRenderedArmorProfs (armorProfs) { return armorProfs.map(a => Renderer.get().render(a.full ? a.full : a === "light" || a === "medium" || a === "heavy" ? `{@filter ${a} armor|items|type=${a} armor}` : a)).join(", "); }
+	static getRenderedWeaponProfs (weaponProfs) { return weaponProfs.map(w => Renderer.get().render(w === "simple" || w === "martial" ? `{@filter ${w} weapons|items|type=${w} weapon}` : w.optional ? `<span class="help help--hover" title="Optional Proficiency">${w.proficiency}</span>` : w)).join(", "); }
+	static getRenderedToolProfs (toolProfs) { return toolProfs.map(it => Renderer.get().render(it)).join(", "); }
+	static getRenderedSkillProfs (skills) { return `${Parser.skillProficienciesToFull(skills).uppercaseFirst()}.`; }
 
-	getWalkerFilterDereferencedFeatures () {
+	static getWalkerFilterDereferencedFeatures () {
 		return MiscUtil.getWalker({
 			keyBlocklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLOCKLIST,
 			isAllowDeleteObjects: true,
 			isDepthFirst: true,
 		});
-	},
+	}
 
-	mutFilterDereferencedClassFeatures (
+	static mutFilterDereferencedClassFeatures (
 		{
 			walker,
 			cpyCls,
@@ -5199,9 +5323,9 @@ Renderer.class = {
 				},
 			);
 		});
-	},
+	}
 
-	mutFilterDereferencedSubclassFeatures (
+	static mutFilterDereferencedSubclassFeatures (
 		{
 			walker,
 			cpySc,
@@ -5252,11 +5376,11 @@ Renderer.class = {
 				},
 			);
 		});
-	},
+	}
 };
 
-Renderer.subclass = {
-	getCompactRenderedString (sc) {
+Renderer.subclass = class {
+	static getCompactRenderedString (sc) {
 		const scEntry = {
 			type: "section",
 			name: sc.name,
@@ -5266,11 +5390,11 @@ Renderer.subclass = {
 		};
 
 		return Renderer.hover.getGenericCompactRenderedString(scEntry);
-	},
+	}
 };
 
-Renderer.spell = {
-	getCompactRenderedString (spell, opts) {
+Renderer.spell = class {
+	static getCompactRenderedString (spell, opts) {
 		opts = opts || {};
 
 		const renderer = Renderer.get();
@@ -5320,9 +5444,9 @@ Renderer.spell = {
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
-	},
+	}
 
-	_SpellSourceManager: class {
+	static _SpellSourceManager = class {
 		_cache = null;
 
 		populate ({brew, isForce = false}) {
@@ -5709,31 +5833,31 @@ Renderer.spell = {
 
 			// TODO(Future) implement "copy existing list"
 		}
-	},
+	};
 
-	populatePrereleaseLookup (brew, {isForce = false} = {}) {
+	static populatePrereleaseLookup (brew, {isForce = false} = {}) {
 		Renderer.spell._spellSourceManagerPrerelease.populate({brew, isForce});
-	},
+	}
 
-	populateBrewLookup (brew, {isForce = false} = {}) {
+	static populateBrewLookup (brew, {isForce = false} = {}) {
 		Renderer.spell._spellSourceManagerBrew.populate({brew, isForce});
-	},
+	}
 
-	prePopulateHover (data) {
+	static prePopulateHover (data) {
 		(data.spell || []).forEach(sp => Renderer.spell.initBrewSources(sp));
-	},
+	}
 
-	prePopulateHoverPrerelease (data) {
+	static prePopulateHoverPrerelease (data) {
 		Renderer.spell.populatePrereleaseLookup(data);
-	},
+	}
 
-	prePopulateHoverBrew (data) {
+	static prePopulateHoverBrew (data) {
 		Renderer.spell.populateBrewLookup(data);
-	},
+	}
 
 	/* -------------------------------------------- */
 
-	_BREW_SOURCES_TMP_PROPS: [
+	static _BREW_SOURCES_TMP_PROPS = [
 		"_tmpSourcesInit",
 		"_tmpClasses",
 		"_tmpRaces",
@@ -5741,12 +5865,12 @@ Renderer.spell = {
 		"_tmpFeats",
 		"_tmpOptionalfeatures",
 		"_tmpGroups",
-	],
-	uninitBrewSources (sp) {
+	];
+	static uninitBrewSources (sp) {
 		Renderer.spell._BREW_SOURCES_TMP_PROPS.forEach(prop => delete sp[prop]);
-	},
+	}
 
-	initBrewSources (sp) {
+	static initBrewSources (sp) {
 		if (sp._tmpSourcesInit) return;
 		sp._tmpSourcesInit = true;
 
@@ -5763,9 +5887,9 @@ Renderer.spell = {
 		for (const manager of [Renderer.spell._spellSourceManagerPrerelease, Renderer.spell._spellSourceManagerBrew]) {
 			manager.mutateSpell({spell: sp, lowName, lowSource});
 		}
-	},
+	}
 
-	getCombinedClasses (sp, prop) {
+	static getCombinedClasses (sp, prop) {
 		return [
 			...((sp.classes || {})[prop] || []),
 			...((sp._tmpClasses || {})[prop] || []),
@@ -5802,14 +5926,14 @@ Renderer.spell = {
 					default: throw new Error(`Unhandled prop "${prop}"`);
 				}
 			});
-	},
+	}
 
-	isExcludedSubclassVariantSource ({classDefinedInSource, subclassDefinedInSource}) {
+	static isExcludedSubclassVariantSource ({classDefinedInSource, subclassDefinedInSource}) {
 		return (classDefinedInSource != null && ExcludeUtil.isExcluded("*", "classFeature", classDefinedInSource, {isNoCount: true}))
 			|| (subclassDefinedInSource != null && ExcludeUtil.isExcluded("*", "subclassFeature", subclassDefinedInSource, {isNoCount: true}));
-	},
+	}
 
-	getCombinedGeneric (sp, {propSpell, prop}) {
+	static getCombinedGeneric (sp, {propSpell, prop}) {
 		const propSpellTmp = `_tmp${propSpell.uppercaseFirst()}`;
 		return [
 			...(sp[propSpell] || []),
@@ -5821,24 +5945,24 @@ Renderer.spell = {
 				return !ExcludeUtil.isExcluded(hash, prop, it.source, {isNoCount: true});
 			})
 			.sort(SortUtil.ascSortGenericEntity.bind(SortUtil));
-	},
+	}
 
 	/* -------------------------------------------- */
 
-	pGetFluff (sp) {
+	static pGetFluff (sp) {
 		return Renderer.utils.pGetFluff({
 			entity: sp,
 			fluffBaseUrl: `data/spells/`,
 			fluffProp: "spellFluff",
 		});
-	},
+	}
 };
 
 Renderer.spell._spellSourceManagerPrerelease = new Renderer.spell._SpellSourceManager();
 Renderer.spell._spellSourceManagerBrew = new Renderer.spell._SpellSourceManager();
 
-Renderer.condition = {
-	getCompactRenderedString (cond) {
+Renderer.condition = class {
+	static getCompactRenderedString (cond) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
@@ -5851,19 +5975,19 @@ Renderer.condition = {
 		renderStack.push(`</td></tr>`);
 
 		return renderStack.join("");
-	},
+	}
 
-	pGetFluff (it) {
+	static pGetFluff (it) {
 		return Renderer.utils.pGetFluff({
 			entity: it,
 			fnGetFluffData: it.__prop === "condition" ? DataUtil.conditionFluff.loadJSON.bind(DataUtil.conditionFluff) : null,
 			fluffProp: it.__prop === "condition" ? "conditionFluff" : "diseaseFluff",
 		});
-	},
+	}
 };
 
-Renderer.background = {
-	getCompactRenderedString (bg) {
+Renderer.background = class {
+	static getCompactRenderedString (bg) {
 		return Renderer.generic.getCompactRenderedString(
 			bg,
 			{
@@ -5871,151 +5995,150 @@ Renderer.background = {
 				page: UrlUtil.PG_BACKGROUNDS,
 			},
 		);
-	},
+	}
 
-	getSkillSummary (skillProfsArr, short, collectIn) {
-		return Renderer.background._summariseProfs(skillProfsArr, short, collectIn, `skill`);
-	},
-
-	getToolSummary (toolProfsArray, short, collectIn) {
-		return Renderer.background._summariseProfs(toolProfsArray, short, collectIn);
-	},
-
-	getLanguageSummary (languageProfsArray, short, collectIn) {
-		return Renderer.background._summariseProfs(languageProfsArray, short, collectIn);
-	},
-
-	_summariseProfs (profGroupArr, short, collectIn, hoverTag) {
-		if (!profGroupArr) return "";
-
-		function getEntry (s) {
-			return short ? s.toTitleCase() : hoverTag ? `{@${hoverTag} ${s.toTitleCase()}}` : s.toTitleCase();
-		}
-
-		function sortKeys (a, b) {
-			if (a === b) return 0;
-			if (a === "choose") return 1;
-			if (b === "choose") return -1;
-			return SortUtil.ascSort(a, b);
-		}
-
-		return profGroupArr.map(profGroup => {
-			let sep = ", ";
-			const toJoin = Object.keys(profGroup).sort(sortKeys).filter(k => profGroup[k]).map((k, i) => {
-				if (k === "choose") {
-					sep = "; ";
-					const choose = profGroup[k];
-					const chooseProfs = choose.from.map(s => {
-						collectIn && !collectIn.includes(s) && collectIn.push(s);
-						return getEntry(s);
-					});
-					return `${short ? `${i === 0 ? "C" : "c"}hoose ` : ""}${choose.count || 1} ${short ? `of` : `from`} ${chooseProfs.joinConjunct(", ", " or ")}`;
-				} else {
-					collectIn && !collectIn.includes(k) && collectIn.push(k);
-					return getEntry(k);
-				}
-			});
-			return toJoin.join(sep);
-		}).join(" <i>or</i> ");
-	},
-
-	pGetFluff (bg) {
+	static pGetFluff (bg) {
 		return Renderer.utils.pGetFluff({
 			entity: bg,
 			fnGetFluffData: DataUtil.backgroundFluff.loadJSON.bind(DataUtil.backgroundFluff),
 			fluffProp: "backgroundFluff",
 		});
-	},
+	}
 };
 
-Renderer.backgroundFeature = {
-	getCompactRenderedString (ent) {
+Renderer.backgroundFeature = class {
+	static getCompactRenderedString (ent) {
 		return Renderer.generic.getCompactRenderedString(ent);
-	},
+	}
 };
 
-Renderer.optionalfeature = {
-	getListPrerequisiteLevelText (prerequisites) {
+Renderer.optionalfeature = class {
+	static getListPrerequisiteLevelText (prerequisites) {
 		if (!prerequisites || !prerequisites.some(it => it.level)) return "\u2014";
 		const levelPart = prerequisites.find(it => it.level).level;
 		return levelPart.level || levelPart;
-	},
+	}
 
-	getPreviouslyPrintedText (it) {
-		return it.previousVersion ? `<tr><td colspan="6"><p class="mt-2">${Renderer.get().render(`{@i An earlier version of this ${it.featureType.map(t => Parser.optFeatureTypeToFull(t)).join("/")} is available in }${Parser.sourceJsonToFull(it.previousVersion.source)} {@i as {@optfeature ${it.previousVersion.name}|${it.previousVersion.source}}.}`)}</p></td></tr>` : "";
-	},
+	/* -------------------------------------------- */
 
-	getTypeText (it) {
-		const commonPrefix = it.featureType.length > 1 ? MiscUtil.findCommonPrefix(it.featureType.map(fs => Parser.optFeatureTypeToFull(fs)), {isRespectWordBoundaries: true}) : "";
+	static getPreviouslyPrintedEntry (ent) {
+		if (!ent.previousVersion) return null;
+		return `{@i An earlier version of this ${ent.featureType.map(t => Parser.optFeatureTypeToFull(t)).join("/")} is available in }${Parser.sourceJsonToFull(ent.previousVersion.source)} {@i as {@optfeature ${ent.previousVersion.name}|${ent.previousVersion.source}}.}`;
+	}
+
+	static getTypeEntry (ent) {
+		return `{@note Type: ${Renderer.optionalfeature.getTypeText(ent)}}`;
+	}
+
+	static getCostEntry (ent) {
+		if (!ent.consumes?.name) return null;
+
+		const ptPrefix = "Cost: ";
+		const tksUnit = ent.consumes.name
+			.split(" ")
+			.map(it => it.trim())
+			.filter(Boolean);
+		tksUnit.last(tksUnit.last()[ent.consumes.amount != null && ent.consumes.amount !== 1 ? "toPlural" : "toString"]());
+		const ptUnit = ` ${tksUnit.join(" ")}`;
+
+		if (ent.consumes?.amountMin != null && ent.consumes?.amountMax != null) return `{@i ${ptPrefix}${ent.consumes.amountMin}\u2013${ent.consumes.amountMax}${ptUnit}}`;
+		return `{@i ${ptPrefix}${ent.consumes.amount ?? 1}${ptUnit}}`;
+	}
+
+	/* -------------------------------------------- */
+
+	static getPreviouslyPrintedText (ent) {
+		const entry = Renderer.optionalfeature.getPreviouslyPrintedEntry(ent);
+		if (!entry) return "";
+		return `<tr><td colspan="6"><p class="mt-2">${Renderer.get().render(entry)}</p></td></tr>`;
+	}
+
+	static getTypeText (ent) {
+		const commonPrefix = ent.featureType.length > 1 ? MiscUtil.findCommonPrefix(ent.featureType.map(fs => Parser.optFeatureTypeToFull(fs)), {isRespectWordBoundaries: true}) : "";
 
 		return [
 			commonPrefix.trim() || null,
-			it.featureType.map(ft => Parser.optFeatureTypeToFull(ft).substring(commonPrefix.length)).join("/"),
-		].filter(Boolean).join(" ");
-	},
+			ent.featureType.map(ft => Parser.optFeatureTypeToFull(ft).substring(commonPrefix.length)).join("/"),
+		]
+			.filter(Boolean).join(" ");
+	}
 
-	getCostHtml (ent) {
-		if (!ent.consumes?.name) return "";
+	static getCostHtml (ent) {
+		const entry = Renderer.optionalfeature.getCostEntry(ent);
+		if (!entry) return "";
 
-		const ptPrefix = "Cost: ";
-		const ptUnit = ` ${ent.consumes.name[ent.consumes.amount !== 1 ? "toPlural" : "toString"]()}`;
+		return Renderer.get().render(entry);
+	}
 
-		if (ent.consumes?.amountMin != null && ent.consumes?.amountMax != null) return `<i>${ptPrefix}${ent.consumes.amountMin}\u2013${ent.consumes.amountMax}${ptUnit}</i>`;
-		return `<i>${ptPrefix}${ent.consumes.amount ?? 1}${ptUnit}</i>`;
-	},
-
-	getCompactRenderedString (it) {
-		const ptCost = Renderer.optionalfeature.getCostHtml(it);
+	static getCompactRenderedString (ent) {
+		const ptCost = Renderer.optionalfeature.getCostHtml(ent);
 		return `
-			${Renderer.utils.getExcludedTr({entity: it, dataProp: "optionalfeature", page: UrlUtil.PG_OPT_FEATURES})}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_OPT_FEATURES})}
+			${Renderer.utils.getExcludedTr({entity: ent, dataProp: "optionalfeature", page: UrlUtil.PG_OPT_FEATURES})}
+			${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_OPT_FEATURES})}
 			<tr class="text"><td colspan="6">
-			${it.prerequisite ? `<p>${Renderer.utils.prerequisite.getHtml(it.prerequisite)}</p>` : ""}
+			${ent.prerequisite ? `<p>${Renderer.utils.prerequisite.getHtml(ent.prerequisite)}</p>` : ""}
 			${ptCost ? `<p>${ptCost}</p>` : ""}
-			${Renderer.get().render({entries: it.entries}, 1)}
+			${Renderer.get().render({entries: ent.entries}, 1)}
 			</td></tr>
-			${Renderer.optionalfeature.getPreviouslyPrintedText(it)}
-			<tr><td colspan="6"><p>${Renderer.get().render(`{@note Type: ${Renderer.optionalfeature.getTypeText(it)}}`)}</p></td></tr>
+			${Renderer.optionalfeature.getPreviouslyPrintedText(ent)}
+			<tr><td colspan="6"><p>${Renderer.get().render(Renderer.optionalfeature.getTypeEntry(ent))}</p></td></tr>
 		`;
-	},
+	}
 };
 
-Renderer.reward = {
-	getRenderedString: (reward) => {
+Renderer.reward = class {
+	static getRewardRenderableEntriesMeta (ent) {
 		const ptSubtitle = [
-			(reward.type || "").toTitleCase(),
-			reward.rarity ? reward.rarity.toTitleCase() : "",
-		].filter(Boolean).join(", ");
-		const entries = [
-			ptSubtitle ? `{@i ${ptSubtitle}}` : "",
-			...reward.entries,
-		].filter(Boolean);
-		return `<tr class="text"><td colspan="6">${Renderer.get().setFirstSection(true).render({entries}, 1)}</td></tr>`;
-	},
+			(ent.type || "").toTitleCase(),
+			ent.rarity ? ent.rarity.toTitleCase() : "",
+		]
+			.filter(Boolean)
+			.join(", ");
 
-	getCompactRenderedString (reward) {
+		return {
+			entriesContent: [
+				ptSubtitle ? `{@i ${ptSubtitle}}` : "",
+				...ent.entries,
+			]
+				.filter(Boolean),
+		};
+	}
+
+	static getRenderedString (ent) {
+		const entriesMeta = Renderer.reward.getRewardRenderableEntriesMeta(ent);
+		return `<tr class="text"><td colspan="6">${Renderer.get().setFirstSection(true).render({entries: entriesMeta.entriesContent}, 1)}</td></tr>`;
+	}
+
+	static getCompactRenderedString (ent) {
 		return `
-			${Renderer.utils.getExcludedTr({entity: reward, dataProp: "reward", page: UrlUtil.PG_REWARDS})}
-			${Renderer.utils.getNameTr(reward, {page: UrlUtil.PG_REWARDS})}
-			${Renderer.reward.getRenderedString(reward)}
+			${Renderer.utils.getExcludedTr({entity: ent, dataProp: "reward", page: UrlUtil.PG_REWARDS})}
+			${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_REWARDS})}
+			${Renderer.reward.getRenderedString(ent)}
 		`;
-	},
+	}
 
-	pGetFluff (ent) {
+	static pGetFluff (ent) {
 		return Renderer.utils.pGetFluff({
 			entity: ent,
 			fnGetFluffData: DataUtil.rewardFluff.loadJSON.bind(DataUtil.rewardFluff),
 			fluffProp: "rewardFluff",
 		});
-	},
+	}
 };
 
-Renderer.race = {
-	getCompactRenderedString (race, {isStatic = false} = {}) {
+Renderer.race = class {
+	static getRaceRenderableEntriesMeta (race) {
+		return {
+			entryMain: race._isBaseRace
+				? {type: "entries", entries: race._baseRaceEntries}
+				: {type: "entries", entries: race.entries},
+		};
+	}
+
+	static getCompactRenderedString (race, {isStatic = false} = {}) {
 		const renderer = Renderer.get();
 		const renderStack = [];
 
-		const ability = Renderer.getAbilityData(race.ability);
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr({entity: race, dataProp: "race", page: UrlUtil.PG_RACES})}
 			${Renderer.utils.getNameTr(race, {page: UrlUtil.PG_RACES})}
@@ -6027,7 +6150,7 @@ Renderer.race = {
 						<th class="col-4 ve-text-center">Speed</th>
 					</tr>
 					<tr>
-						<td class="ve-text-center">${ability.asText}</td>
+						<td class="ve-text-center">${Renderer.getAbilityData(race.ability).asText}</td>
 						<td class="ve-text-center">${(race.size || [Parser.SZ_VARIES]).map(sz => Parser.sizeAbvToFull(sz)).join("/")}</td>
 						<td class="ve-text-center">${Parser.getSpeedString(race)}</td>
 					</tr>
@@ -6035,28 +6158,41 @@ Renderer.race = {
 			</td></tr>
 			<tr class="text"><td colspan="6">
 		`);
-		race._isBaseRace
-			? renderer.recursiveRender({type: "entries", entries: race._baseRaceEntries}, renderStack, {depth: 1})
-			: renderer.recursiveRender({type: "entries", entries: race.entries}, renderStack, {depth: 1});
+		renderer.recursiveRender(Renderer.race.getRaceRenderableEntriesMeta(race).entryMain, renderStack, {depth: 1});
 		renderStack.push("</td></tr>");
 
 		const ptHeightWeight = Renderer.race.getHeightAndWeightPart(race, {isStatic});
 		if (ptHeightWeight) renderStack.push(`<tr class="text"><td colspan="6"><hr class="rd__hr">${ptHeightWeight}</td></tr>`);
 
 		return renderStack.join("");
-	},
+	}
 
-	getHeightAndWeightPart (race, {isStatic = false} = {}) {
+	static getRenderedSize (race) {
+		return (race.size || [Parser.SZ_VARIES]).map(sz => Parser.sizeAbvToFull(sz)).join("/");
+	}
+
+	static getHeightAndWeightPart (race, {isStatic = false} = {}) {
 		if (!race.heightAndWeight) return null;
 		if (race._isBaseRace) return null;
+		return Renderer.get().render({entries: Renderer.race.getHeightAndWeightEntries(race, {isStatic})});
+	}
 
+	static getHeightAndWeightEntries (race, {isStatic = false} = {}) {
 		const colLabels = ["Base Height", "Base Weight", "Height Modifier", "Weight Modifier"];
 		const colStyles = ["col-2-3 ve-text-center", "col-2-3 ve-text-center", "col-2-3 ve-text-center", "col-2 ve-text-center"];
+
+		const cellHeightMod = !isStatic
+			? `+<span data-race-heightmod="true">${race.heightAndWeight.heightMod}</span>`
+			: `+${race.heightAndWeight.heightMod}`;
+		const cellWeightMod = !isStatic
+			? `× <span data-race-weightmod="true">${race.heightAndWeight.weightMod || "1"}</span> lb.`
+			: `× ${race.heightAndWeight.weightMod || "1"} lb.`;
+
 		const row = [
 			Renderer.race.getRenderedHeight(race.heightAndWeight.baseHeight),
 			`${race.heightAndWeight.baseWeight} lb.`,
-			`+<span data-race-heightmod="true">${race.heightAndWeight.heightMod}</span>`,
-			`× <span data-race-weightmod="true">${race.heightAndWeight.weightMod || "1"}</span> lb.`,
+			cellHeightMod,
+			cellWeightMod,
 		];
 
 		if (!isStatic) {
@@ -6074,7 +6210,7 @@ Renderer.race = {
 			</div>`);
 		}
 
-		const entries = [
+		return [
 			"You may roll for your character's height and weight on the Random Height and Weight table. The roll in the Height Modifier column adds a number (in inches) to the character's base height. To get a weight, multiply the number you rolled for height by the roll in the Weight Modifier column and add the result (in pounds) to the base weight.",
 			{
 				type: "table",
@@ -6084,22 +6220,20 @@ Renderer.race = {
 				rows: [row],
 			},
 		];
+	}
 
-		return Renderer.get().render({entries});
-	},
-
-	getRenderedHeight (height) {
+	static getRenderedHeight (height) {
 		const heightFeet = Number(Math.floor(height / 12).toFixed(3));
 		const heightInches = Number((height % 12).toFixed(3));
 		return `${heightFeet ? `${heightFeet}'` : ""}${heightInches ? `${heightInches}"` : ""}`;
-	},
+	}
 
 	/**
 	 * @param races
 	 * @param [opts] Options object.
 	 * @param [opts.isAddBaseRaces] If an entity should be created for each base race.
 	 */
-	mergeSubraces (races, opts) {
+	static mergeSubraces (races, opts) {
 		opts = opts || {};
 
 		const out = [];
@@ -6200,17 +6334,17 @@ Renderer.race = {
 		});
 
 		return out;
-	},
+	}
 
-	_mutMakeBaseRace (baseRace) {
+	static _mutMakeBaseRace (baseRace) {
 		if (baseRace._isBaseRace) return;
 
 		baseRace._isBaseRace = true;
 
 		Renderer.race._mutBaseRaceEntries(baseRace, {type: "list", items: []});
-	},
+	}
 
-	_mutBaseRaceEntries (baseRace, lst) {
+	static _mutBaseRaceEntries (baseRace, lst) {
 		baseRace._baseRaceEntries = [
 			{
 				type: "section",
@@ -6237,9 +6371,9 @@ Renderer.race = {
 				],
 			},
 		];
-	},
+	}
 
-	getSubraceName (raceName, subraceName) {
+	static getSubraceName (raceName, subraceName) {
 		if (!subraceName) return raceName;
 
 		const mBrackets = /^(.*?)(\(.*?\))$/i.exec(raceName || "");
@@ -6247,14 +6381,14 @@ Renderer.race = {
 
 		const bracketPart = mBrackets[2].substring(1, mBrackets[2].length - 1);
 		return `${mBrackets[1]}(${[bracketPart, subraceName].join("; ")})`;
-	},
+	}
 
-	_mergeSubraces (race) {
+	static _mergeSubraces (race) {
 		if (!race.subraces) return [race];
 		return MiscUtil.copyFast(race.subraces).map(s => Renderer.race._getMergedSubrace(race, s));
-	},
+	}
 
-	_getMergedSubrace (race, cpySr) {
+	static _getMergedSubrace (race, cpySr) {
 		const cpy = MiscUtil.copyFast(race);
 		cpy._baseName = cpy.name;
 		cpy._baseSource = cpy.source;
@@ -6342,9 +6476,9 @@ Renderer.race = {
 			});
 
 		return cpy;
-	},
+	}
 
-	adoptSubraces (allRaces, subraces) {
+	static adoptSubraces (allRaces, subraces) {
 		const nxtData = [];
 
 		subraces.forEach(sr => {
@@ -6391,9 +6525,9 @@ Renderer.race = {
 		});
 
 		return nxtData;
-	},
+	}
 
-	bindListenersHeightAndWeight (race, ele) {
+	static bindListenersHeightAndWeight (race, ele) {
 		if (!race.heightAndWeight) return;
 		if (race._isBaseRace) return;
 
@@ -6489,328 +6623,449 @@ Renderer.race = {
 				if (!isPreLocked) lock.unlock();
 			}
 		};
-	},
+	}
 
-	bindListenersCompact (race, ele) {
+	static bindListenersCompact (race, ele) {
 		Renderer.race.bindListenersHeightAndWeight(race, ele);
-	},
+	}
 
-	pGetFluff (race) {
+	static pGetFluff (race) {
 		return Renderer.utils.pGetFluff({
 			entity: race,
 			fnGetFluffData: DataUtil.raceFluff.loadJSON.bind(DataUtil.raceFluff),
 			fluffProp: "raceFluff",
 		});
-	},
+	}
 };
 
-Renderer.raceFeature = {
-	getCompactRenderedString (ent) {
+Renderer.raceFeature = class {
+	static getCompactRenderedString (ent) {
 		return Renderer.generic.getCompactRenderedString(ent);
-	},
+	}
 };
 
-Renderer.deity = {
-	_basePartTranslators: {
-		"Alignment": {
-			prop: "alignment",
+Renderer.deity = class {
+	static _BASE_PART_TRANSLATORS = {
+		"alignment": {
+			name: "Alignment",
 			displayFn: (it) => it.map(a => Parser.alignmentAbvToFull(a)).join(" ").toTitleCase(),
 		},
-		"Pantheon": {
-			prop: "pantheon",
+		"pantheon": {
+			name: "Pantheon",
 		},
-		"Category": {
-			prop: "category",
+		"category": {
+			name: "Category",
 			displayFn: it => typeof it === "string" ? it : it.join(", "),
 		},
-		"Domains": {
-			prop: "domains",
+		"domains": {
+			name: "Domains",
 			displayFn: (it) => it.join(", "),
 		},
-		"Province": {
-			prop: "province",
+		"province": {
+			name: "Province",
 		},
-		"Alternate Names": {
-			prop: "altNames",
+		"altNames": {
+			name: "Alternate Names",
 			displayFn: (it) => it.join(", "),
 		},
-		"Symbol": {
-			prop: "symbol",
+		"symbol": {
+			name: "Symbol",
 		},
-	},
-	getOrderedParts (deity, prefix, suffix) {
-		const parts = {};
-		Object.entries(Renderer.deity._basePartTranslators).forEach(([k, v]) => {
-			const val = deity[v.prop];
-			if (val != null) {
-				const outVal = v.displayFn ? v.displayFn(val) : val;
-				parts[k] = outVal;
-			}
-		});
-		if (deity.customProperties) Object.entries(deity.customProperties).forEach(([k, v]) => parts[k] = v);
-		const allKeys = Object.keys(parts).sort(SortUtil.ascSortLower);
-		return allKeys.map(k => `${prefix}<b>${k}: </b>${Renderer.get().render(parts[k])}${suffix}`).join("");
-	},
+	};
 
-	getCompactRenderedString (deity) {
+	static getDeityRenderableEntriesMeta (ent) {
+		return {
+			entriesAttributes: [
+				...Object.entries(Renderer.deity._BASE_PART_TRANSLATORS)
+					.map(([prop, {name, displayFn}]) => {
+						if (ent[prop] == null) return null;
+
+						const displayVal = displayFn ? displayFn(ent[prop]) : ent[prop];
+						return {
+							name,
+							entry: `{@b ${name}:} ${displayVal}`,
+						};
+					})
+					.filter(Boolean),
+				...Object.entries(ent.customProperties || {})
+					.map(([name, val]) => ({
+						name,
+						entry: `{@b ${name}:} ${val}`,
+					})),
+			]
+				.sort(({name: nameA}, {name: nameB}) => SortUtil.ascSortLower(nameA, nameB))
+				.map(({entry}) => entry),
+		};
+	}
+
+	static getCompactRenderedString (ent) {
 		const renderer = Renderer.get();
+		const entriesMeta = Renderer.deity.getDeityRenderableEntriesMeta(ent);
 		return `
-			${Renderer.utils.getExcludedTr({entity: deity, dataProp: "deity", page: UrlUtil.PG_DEITIES})}
-			${Renderer.utils.getNameTr(deity, {suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "", page: UrlUtil.PG_DEITIES})}
+			${Renderer.utils.getExcludedTr({entity: ent, dataProp: "deity", page: UrlUtil.PG_DEITIES})}
+			${Renderer.utils.getNameTr(ent, {suffix: ent.title ? `, ${ent.title.toTitleCase()}` : "", page: UrlUtil.PG_DEITIES})}
 			<tr><td colspan="6">
-				<div class="rd__compact-stat">${Renderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
+				${entriesMeta.entriesAttributes.map(entry => `<div class="my-1p">${Renderer.get().render(entry)}</div>`).join("")}
 			</td>
-			${deity.entries ? `<tr><td colspan="6"><div class="border"></div></td></tr><tr><td colspan="6">${renderer.render({entries: deity.entries}, 1)}</td></tr>` : ""}
+			${ent.entries ? `<tr><td colspan="6"><div class="border"></div></td></tr><tr><td colspan="6">${renderer.render({entries: ent.entries}, 1)}</td></tr>` : ""}
 		`;
-	},
+	}
 };
 
-Renderer.object = {
-	CHILD_PROPS: ["actionEntries"],
+Renderer.object = class {
+	static CHILD_PROPS = ["actionEntries"];
 
-	getCompactRenderedString (obj, opts) {
+	/* -------------------------------------------- */
+
+	static RENDERABLE_ENTRIES_PROP_ORDER__ATTRIBUTES = [
+		"entryCreatureCapacity",
+		"entryCargoCapacity",
+		"entryArmorClass",
+		"entryHitPoints",
+		"entrySpeed",
+		"entryAbilityScores",
+		"entryDamageImmunities",
+		"entryDamageResistances",
+		"entryDamageVulnerabilities",
+		"entryConditionImmunities",
+		"entrySenses",
+	];
+
+	static getObjectRenderableEntriesMeta (ent) {
+		return {
+			entrySize: `{@i ${ent.objectType !== "GEN" ? `${Renderer.utils.getRenderedSize(ent.size)} ${ent.creatureType ? Parser.monTypeToFullObj(ent.creatureType).asText : "object"}` : `Variable size object`}}`,
+
+			entryCreatureCapacity: ent.capCrew != null || ent.capPassenger != null
+				? `{@b Creature Capacity:} ${Renderer.vehicle.getShipCreatureCapacity(ent)}`
+				: null,
+			entryCargoCapacity: ent.capCargo != null
+				? `{@b Cargo Capacity:} ${Renderer.vehicle.getShipCargoCapacity(ent)}`
+				: null,
+			entryArmorClass: ent.ac != null
+				? `{@b Armor Class:} ${ent.ac.special ?? ent.ac}`
+				: null,
+			entryHitPoints: ent.hp != null
+				? `{@b Hit Points:} ${ent.hp.special ?? ent.hp}`
+				: null,
+			entrySpeed: ent.speed != null
+				? `{@b Speed:} ${Parser.getSpeedString(ent)}`
+				: null,
+			entryAbilityScores: Parser.ABIL_ABVS.some(ab => ent[ab] != null)
+				? `{@b Ability Scores:} ${Parser.ABIL_ABVS.filter(ab => ent[ab] != null).map(ab => `${ab.toUpperCase()} ${Renderer.utils.getAbilityRollerEntry(ent, ab)}`).join(", ")}`
+				: null,
+			entryDamageImmunities: ent.immune != null
+				? `{@b Damage Immunities:} ${Parser.getFullImmRes(ent.immune)}`
+				: null,
+			entryDamageResistances: ent.resist
+				? `{@b Damage Resistances:} ${Parser.getFullImmRes(ent.resist)}`
+				: null,
+			entryDamageVulnerabilities: ent.vulnerable
+				? `{@b Damage Vulnerabilities:} ${Parser.getFullImmRes(ent.vulnerable)}`
+				: null,
+			entryConditionImmunities: ent.conditionImmune
+				? `{@b Condition Immunities:} ${Parser.getFullCondImm(ent.conditionImmune, {isEntry: true})}`
+				: null,
+			entrySenses: ent.senses
+				? `{@b Senses:} ${Renderer.utils.getSensesEntry(ent.senses)}`
+				: null,
+		};
+	}
+
+	/* -------------------------------------------- */
+
+	static getCompactRenderedString (obj, opts) {
 		return Renderer.object.getRenderedString(obj, {...opts, isCompact: true});
-	},
+	}
 
-	getRenderedString (obj, opts) {
+	static getRenderedString (ent, opts) {
 		opts = opts || {};
 
 		const renderer = Renderer.get().setFirstSection(true);
 
-		const hasToken = obj.tokenUrl || obj.hasToken;
+		const hasToken = ent.tokenUrl || ent.hasToken;
 		const extraThClasses = !opts.isCompact && hasToken ? ["objs__name--token"] : null;
 
+		const entriesMeta = Renderer.object.getObjectRenderableEntriesMeta(ent);
+
+		const ptAttribs = Renderer.object.RENDERABLE_ENTRIES_PROP_ORDER__ATTRIBUTES
+			.filter(prop => entriesMeta[prop])
+			.map(prop => `${Renderer.get().render(entriesMeta[prop])}<br>`)
+			.join("");
+
 		return `
-			${Renderer.utils.getExcludedTr({entity: obj, dataProp: "object", page: opts.page || UrlUtil.PG_OBJECTS})}
-			${Renderer.utils.getNameTr(obj, {page: opts.page || UrlUtil.PG_OBJECTS, extraThClasses, isEmbeddedEntity: opts.isEmbeddedEntity})}
-			<tr class="text"><td colspan="6"><i>${obj.objectType !== "GEN" ? `${Parser.sizeAbvToFull(obj.size)} ${obj.creatureType ? Parser.monTypeToFullObj(obj.creatureType).asText : "object"}` : `Variable size object`}</i><br></td></tr>
+			${Renderer.utils.getExcludedTr({entity: ent, dataProp: "object", page: opts.page || UrlUtil.PG_OBJECTS})}
+			${Renderer.utils.getNameTr(ent, {page: opts.page || UrlUtil.PG_OBJECTS, extraThClasses, isEmbeddedEntity: opts.isEmbeddedEntity})}
+			<tr class="text"><td colspan="6">${Renderer.get().render(entriesMeta.entrySize)}</td></tr>
+			<tr class="text"><td colspan="6">${ptAttribs}</td></tr>
 			<tr class="text"><td colspan="6">
-				${obj.capCrew != null || obj.capPassenger != null ? `<b>Creature Capacity:</b> ${Renderer.vehicle.getShipCreatureCapacity(obj)}<br>` : ""}
-				${obj.capCargo != null ? `<b>Cargo Capacity:</b> ${Renderer.vehicle.getShipCargoCapacity(obj)}</br>` : ""}
-				${obj.ac != null ? `<b>Armor Class:</b> ${obj.ac.special ?? obj.ac}<br>` : ""}
-				${obj.hp != null ? `<b>Hit Points:</b> ${obj.hp.special ?? obj.hp}<br>` : ""}
-				${obj.speed != null ? `<b>Speed:</b> ${Parser.getSpeedString(obj)}<br>` : ""}
-				${obj.immune != null ? `<b>Damage Immunities:</b> ${Parser.getFullImmRes(obj.immune)}<br>` : ""}
-				${Parser.ABIL_ABVS.some(ab => obj[ab] != null) ? `<b>Ability Scores:</b> ${Parser.ABIL_ABVS.filter(ab => obj[ab] != null).map(ab => renderer.render(`${ab.toUpperCase()} ${Renderer.utils.getAbilityRoller(obj, ab)}`)).join(", ")}` : ""}
-				${obj.resist ? `<b>Damage Resistances:</b> ${Parser.getFullImmRes(obj.resist)}<br>` : ""}
-				${obj.vulnerable ? `<b>Damage Vulnerabilities:</b> ${Parser.getFullImmRes(obj.vulnerable)}<br>` : ""}
-				${obj.conditionImmune ? `<b>Condition Immunities:</b> ${Parser.getFullCondImm(obj.conditionImmune)}<br>` : ""}
-			</td></tr>
-			<tr class="text"><td colspan="6">
-			${obj.entries ? renderer.render({entries: obj.entries}, 2) : ""}
-			${obj.actionEntries ? renderer.render({entries: obj.actionEntries}, 2) : ""}
+			${ent.entries ? renderer.render({entries: ent.entries}, 2) : ""}
+			${ent.actionEntries ? renderer.render({entries: ent.actionEntries}, 2) : ""}
 			</td></tr>
 		`;
-	},
+	}
 
-	getTokenUrl (obj) {
+	static getTokenUrl (obj) {
 		return obj.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/objects/tokens/${Parser.sourceJsonToAbv(obj.source)}/${Parser.nameToTokenName(obj.name)}.png`);
-	},
+	}
 
-	pGetFluff (obj) {
+	static pGetFluff (obj) {
 		return Renderer.utils.pGetFluff({
 			entity: obj,
 			fnGetFluffData: DataUtil.objectFluff.loadJSON.bind(DataUtil.objectFluff),
 			fluffProp: "objectFluff",
 		});
-	},
+	}
 };
 
-Renderer.trap = {
-	CHILD_PROPS: ["trigger", "effect", "eActive", "eDynamic", "eConstant", "countermeasures"],
+Renderer.trap = class {
+	static CHILD_PROPS = ["trigger", "effect", "eActive", "eDynamic", "eConstant", "countermeasures"];
 
-	_getTrapEntries (it) {
-		return [
-			// region Shared between simple/complex
-			it.trigger ? {
-				type: "entries",
-				name: "Trigger",
-				entries: it.trigger,
-			} : null,
-			// endregion
+	static getTrapRenderableEntriesMeta (ent) {
+		return {
+			entriesAttributes: [
+				// region Shared between simple/complex
+				ent.trigger ? {
+					type: "entries",
+					name: "Trigger",
+					entries: ent.trigger,
+				} : null,
+				// endregion
 
-			// region Simple traps
-			it.effect ? {
-				type: "entries",
-				name: "Effect",
-				entries: it.effect,
-			} : null,
-			// endregion
+				// region Simple traps
+				ent.effect ? {
+					type: "entries",
+					name: "Effect",
+					entries: ent.effect,
+				} : null,
+				// endregion
 
-			// region Complex traps
-			it.initiative ? {
-				type: "entries",
-				name: "Initiative",
-				entries: Renderer.trap.getTrapInitiativeEntries(it),
-			} : null,
-			it.eActive ? {
-				type: "entries",
-				name: "Active Elements",
-				entries: it.eActive,
-			} : null,
-			it.eDynamic ? {
-				type: "entries",
-				name: "Dynamic Elements",
-				entries: it.eDynamic,
-			} : null,
-			it.eConstant ? {
-				type: "entries",
-				name: "Constant Elements",
-				entries: it.eConstant,
-			} : null,
-			// endregion
+				// region Complex traps
+				ent.initiative ? {
+					type: "entries",
+					name: "Initiative",
+					entries: Renderer.trap.getTrapInitiativeEntries(ent),
+				} : null,
+				ent.eActive ? {
+					type: "entries",
+					name: "Active Elements",
+					entries: ent.eActive,
+				} : null,
+				ent.eDynamic ? {
+					type: "entries",
+					name: "Dynamic Elements",
+					entries: ent.eDynamic,
+				} : null,
+				ent.eConstant ? {
+					type: "entries",
+					name: "Constant Elements",
+					entries: ent.eConstant,
+				} : null,
+				// endregion
 
-			// region Shared between simple/complex
-			it.countermeasures ? {
-				type: "entries",
-				name: "Countermeasures",
-				entries: it.countermeasures,
-			} : null,
-			// endregion
-		].filter(Boolean);
-	},
+				// region Shared between simple/complex
+				ent.countermeasures ? {
+					type: "entries",
+					name: "Countermeasures",
+					entries: ent.countermeasures,
+				} : null,
+				// endregion
+			]
+				.filter(Boolean),
+		};
+	}
 
-	getTrapInitiativeEntries (it) { return [`The trap acts on ${Parser.trapInitToFull(it.initiative)}${it.initiativeNote ? ` (${it.initiativeNote})` : ""}.`]; },
+	static getTrapInitiativeEntries (ent) { return [`The trap acts on ${Parser.trapInitToFull(ent.initiative)}${ent.initiativeNote ? ` (${ent.initiativeNote})` : ""}.`]; }
 
-	getRenderedTrapPart (renderer, it) {
-		const trapEntries = Renderer.trap._getTrapEntries(it);
+	static getRenderedTrapPart (renderer, ent) {
+		const entriesMeta = Renderer.trap.getTrapRenderableEntriesMeta(ent);
+		if (!entriesMeta.entriesAttributes.length) return "";
+		return renderer.render({entries: entriesMeta.entriesAttributes}, 1);
+	}
 
-		if (!trapEntries.length) return "";
+	static getCompactRenderedString (ent, opts) {
+		return Renderer.traphazard.getCompactRenderedString(ent, opts);
+	}
 
-		return renderer.render({
-			entries: trapEntries,
-		}, 1);
-	},
-
-	getCompactRenderedString (it, opts) {
-		return Renderer.traphazard.getCompactRenderedString(it, opts);
-	},
+	static pGetFluff (ent) { return Renderer.traphazard.pGetFluff(ent); }
 };
 
-Renderer.hazard = {
-	getCompactRenderedString (it, opts) {
-		return Renderer.traphazard.getCompactRenderedString(it, opts);
-	},
+Renderer.hazard = class {
+	static getCompactRenderedString (ent, opts) {
+		return Renderer.traphazard.getCompactRenderedString(ent, opts);
+	}
+
+	static pGetFluff (ent) { return Renderer.traphazard.pGetFluff(ent); }
 };
 
-Renderer.traphazard = {
-	getSubtitle (it) {
-		const type = it.trapHazType || "HAZ";
+Renderer.traphazard = class {
+	static getSubtitle (ent) {
+		const type = ent.trapHazType || "HAZ";
 		if (type === "GEN") return null;
 
+		const ptThreat = ent.threat ? ent.threat.toTitleCase() : null;
+
+		const ptTypeThreat = [
+			Parser.trapHazTypeToFull(type),
+			ent.threat ? ent.threat.toTitleCase() : null,
+		]
+			.filter(Boolean)
+			.join(", ");
+
 		const parenPart = [
-			it.tier ? Parser.tierToFullLevel(it.tier) : null,
-			Renderer.traphazard.getTrapLevelPart(it),
-			it.threat ? `${it.threat} threat` : null,
-		].filter(Boolean).join(", ");
+			ent.tier ? Parser.tierToFullLevel(ent.tier) : null,
+			Renderer.traphazard.getTrapLevelPart(ent),
+		]
+			.filter(Boolean)
+			.join(", ");
 
-		return parenPart ? `${Parser.trapHazTypeToFull(type)} (${parenPart})` : Parser.trapHazTypeToFull(type);
-	},
+		return parenPart ? `${ptTypeThreat} (${parenPart})` : ptTypeThreat;
+	}
 
-	getTrapLevelPart (it) {
-		return it.level?.min != null && it.level?.max != null
-			? `level ${it.level.min}${it.level.min !== it.level.max ? `\u2013${it.level.max}` : ""}`
+	static getTrapLevelPart (ent) {
+		return ent.level?.min != null && ent.level?.max != null
+			? `level ${ent.level.min}${ent.level.min !== ent.level.max ? `\u2013${ent.level.max}` : ""}`
 			: null;
-	},
+	}
 
-	getCompactRenderedString (it, opts) {
+	static getCompactRenderedString (ent, opts) {
 		opts = opts || {};
 
 		const renderer = Renderer.get();
-		const subtitle = Renderer.traphazard.getSubtitle(it);
+		const subtitle = Renderer.traphazard.getSubtitle(ent);
 		return `
-			${Renderer.utils.getExcludedTr({entity: it, dataProp: it.__prop, page: UrlUtil.PG_TRAPS_HAZARDS})}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_TRAPS_HAZARDS, isEmbeddedEntity: opts.isEmbeddedEntity})}
+			${Renderer.utils.getExcludedTr({entity: ent, dataProp: ent.__prop, page: UrlUtil.PG_TRAPS_HAZARDS})}
+			${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_TRAPS_HAZARDS, isEmbeddedEntity: opts.isEmbeddedEntity})}
 			${subtitle ? `<tr class="text"><td colspan="6"><i>${subtitle}</i></td></tr>` : ""}
 			<tr class="text"><td colspan="6">
-			${renderer.render({entries: it.entries}, 2)}
-			${Renderer.trap.getRenderedTrapPart(renderer, it)}
+			${renderer.render({entries: ent.entries}, 2)}
+			${Renderer.trap.getRenderedTrapPart(renderer, ent)}
 			</td></tr>
 		`;
-	},
+	}
+
+	static pGetFluff (ent) {
+		return Renderer.utils.pGetFluff({
+			entity: ent,
+			fnGetFluffData: ent.__prop === "trap" ? DataUtil.trapFluff.loadJSON.bind(DataUtil.trapFluff) : DataUtil.hazardFluff.loadJSON.bind(DataUtil.hazardFluff),
+			fluffProp: ent.__prop === "trap" ? "trapFluff" : "hazardFluff",
+		});
+	}
 };
 
-Renderer.cultboon = {
-	doRenderCultParts (it, renderer, renderStack) {
-		if (it.goal || it.cultists || it.signaturespells) {
-			const fauxList = {
-				type: "list",
-				style: "list-hang-notitle",
-				items: [],
-			};
-			if (it.goal) {
-				fauxList.items.push({
-					type: "item",
-					name: "Goals:",
-					entry: it.goal.entry,
-				});
-			}
+Renderer.cultboon = class {
+	static getCultRenderableEntriesMeta (ent) {
+		if (!ent.goal && !ent.cultists && !ent.signaturespells) return null;
 
-			if (it.cultists) {
-				fauxList.items.push({
-					type: "item",
-					name: "Typical Cultists:",
-					entry: it.cultists.entry,
-				});
-			}
-			if (it.signaturespells) {
-				fauxList.items.push({
-					type: "item",
-					name: "Signature Spells:",
-					entry: it.signaturespells.entry,
-				});
-			}
-			renderer.recursiveRender(fauxList, renderStack, {depth: 2});
+		const fauxList = {
+			type: "list",
+			style: "list-hang-notitle",
+			items: [],
+		};
+
+		if (ent.goal) {
+			fauxList.items.push({
+				type: "item",
+				name: "Goals:",
+				entry: ent.goal.entry,
+			});
 		}
-	},
 
-	doRenderBoonParts (it, renderer, renderStack) {
+		if (ent.cultists) {
+			fauxList.items.push({
+				type: "item",
+				name: "Typical Cultists:",
+				entry: ent.cultists.entry,
+			});
+		}
+		if (ent.signaturespells) {
+			fauxList.items.push({
+				type: "item",
+				name: "Signature Spells:",
+				entry: ent.signaturespells.entry,
+			});
+		}
+
+		return {listGoalsCultistsSpells: fauxList};
+	}
+
+	static doRenderCultParts (ent, renderer, renderStack) {
+		const cultEntriesMeta = Renderer.cultboon.getCultRenderableEntriesMeta(ent);
+		if (!cultEntriesMeta) return;
+		renderer.recursiveRender(cultEntriesMeta.listGoalsCultistsSpells, renderStack, {depth: 2});
+	}
+
+	/* -------------------------------------------- */
+
+	static getBoonRenderableEntriesMeta (ent) {
+		if (!ent.ability && !ent.signaturespells) return null;
+
 		const benefits = {type: "list", style: "list-hang-notitle", items: []};
-		if (it.ability) {
+
+		if (ent.ability) {
 			benefits.items.push({
 				type: "item",
 				name: "Ability Score Adjustment:",
-				entry: it.ability ? it.ability.entry : "None",
+				entry: ent.ability ? ent.ability.entry : "None",
 			});
 		}
-		if (it.signaturespells) {
+
+		if (ent.signaturespells) {
 			benefits.items.push({
 				type: "item",
 				name: "Signature Spells:",
-				entry: it.signaturespells ? it.signaturespells.entry : "None",
+				entry: ent.signaturespells ? ent.signaturespells.entry : "None",
 			});
 		}
-		if (benefits.items.length) renderer.recursiveRender(benefits, renderStack, {depth: 1});
-	},
 
-	getCompactRenderedString (it) {
-		const renderer = Renderer.get();
+		return {listBenefits: benefits};
+	}
 
+	static doRenderBoonParts (ent, renderer, renderStack) {
+		const boonEntriesMeta = Renderer.cultboon.getBoonRenderableEntriesMeta(ent);
+		if (!boonEntriesMeta) return;
+		renderer.recursiveRender(boonEntriesMeta.listBenefits, renderStack, {depth: 1});
+	}
+
+	/* -------------------------------------------- */
+
+	static _getCompactRenderedString_cult ({ent, renderer}) {
 		const renderStack = [];
-		if (it.__prop === "cult") {
-			Renderer.cultboon.doRenderCultParts(it, renderer, renderStack);
-			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
-			return `
-			${Renderer.utils.getExcludedTr({entity: it, dataProp: "cult", page: UrlUtil.PG_CULTS_BOONS})}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
-			<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
-			<tr class="text"><td colspan="6" class="text">${renderStack.join("")}</td></tr>`;
-		} else if (it.__prop === "boon") {
-			Renderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
-			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
-			it._displayName = it._displayName || it.name;
-			return `
-			${Renderer.utils.getExcludedTr({entity: it, dataProp: "boon", page: UrlUtil.PG_CULTS_BOONS})}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
-			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>`;
+
+		Renderer.cultboon.doRenderCultParts(ent, renderer, renderStack);
+		renderer.recursiveRender({entries: ent.entries}, renderStack, {depth: 2});
+
+		return `${Renderer.utils.getExcludedTr({entity: ent, dataProp: "cult", page: UrlUtil.PG_CULTS_BOONS})}
+		${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_CULTS_BOONS})}
+		<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
+		<tr class="text"><td colspan="6" class="text">${renderStack.join("")}</td></tr>`;
+	}
+
+	static _getCompactRenderedString_boon ({ent, renderer}) {
+		const renderStack = [];
+
+		Renderer.cultboon.doRenderBoonParts(ent, renderer, renderStack);
+		renderer.recursiveRender({entries: ent.entries}, renderStack, {depth: 1});
+		ent._displayName = ent._displayName || ent.name;
+
+		return `${Renderer.utils.getExcludedTr({entity: ent, dataProp: "boon", page: UrlUtil.PG_CULTS_BOONS})}
+		${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_CULTS_BOONS})}
+		<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>`;
+	}
+
+	static getCompactRenderedString (ent) {
+		const renderer = Renderer.get();
+		switch (ent.__prop) {
+			case "cult": return Renderer.cultboon._getCompactRenderedString_cult({ent, renderer});
+			case "boon": return Renderer.cultboon._getCompactRenderedString_boon({ent, renderer});
+			default: throw new Error(`Unhandled prop "${ent.__prop}"`);
 		}
-	},
+	}
 };
 
-Renderer.monster = {
-	CHILD_PROPS: ["action", "bonus", "reaction", "trait", "legendary", "mythic", "variant", "spellcasting"],
+Renderer.monster = class {
+	static CHILD_PROPS = ["action", "bonus", "reaction", "trait", "legendary", "mythic", "variant", "spellcasting"];
 
-	getShortName (mon, {isTitleCase = false, isSentenceCase = false, isUseDisplayName = false} = {}) {
+	static getShortName (mon, {isTitleCase = false, isSentenceCase = false, isUseDisplayName = false} = {}) {
 		const name = isUseDisplayName ? (mon._displayName ?? mon.name) : mon.name;
 		const shortName = isUseDisplayName ? (mon._displayShortName ?? mon.shortName) : mon.shortName;
 
@@ -6820,40 +7075,48 @@ Renderer.monster = {
 
 		const out = Renderer.monster.getShortNameFromName(name, {isNamedCreature: mon.isNamedCreature});
 		return `${prefix}${out}`;
-	},
+	}
 
-	getShortNameFromName (name, {isNamedCreature = false} = {}) {
+	static getShortNameFromName (name, {isNamedCreature = false} = {}) {
 		const base = name.split(",")[0];
 		let out = base
 			.replace(/(?:adult|ancient|young) \w+ (dragon|dracolich)/gi, "$1");
 		out = isNamedCreature ? out.split(" ")[0] : out.toLowerCase();
 		return out;
-	},
+	}
 
-	getLegendaryActionIntro (mon, {renderer = Renderer.get(), isUseDisplayName = false} = {}) {
+	static getLegendaryActionIntro (mon, {renderer = Renderer.get(), isUseDisplayName = false} = {}) {
+		return renderer.render(Renderer.monster.getLegendaryActionIntroEntry(mon, {isUseDisplayName}));
+	}
+
+	static getLegendaryActionIntroEntry (mon, {isUseDisplayName = false} = {}) {
 		if (mon.legendaryHeader) {
-			return renderer.render({entries: mon.legendaryHeader});
-		} else {
-			const legendaryActions = mon.legendaryActions || 3;
-			const legendaryNameTitle = Renderer.monster.getShortName(mon, {isTitleCase: true, isUseDisplayName});
-			return `${legendaryNameTitle} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryNameTitle} regains spent legendary actions at the start of its turn.`;
+			return {entries: mon.legendaryHeader};
 		}
-	},
 
-	getSectionIntro (mon, {renderer = Renderer.get(), prop}) {
+		const legendaryActions = mon.legendaryActions || 3;
+		const legendaryNameTitle = Renderer.monster.getShortName(mon, {isTitleCase: true, isUseDisplayName});
+		return {
+			entries: [
+				`${legendaryNameTitle} can take ${legendaryActions} legendary action${legendaryActions > 1 ? "s" : ""}, choosing from the options below. Only one legendary action can be used at a time and only at the end of another creature's turn. ${legendaryNameTitle} regains spent legendary actions at the start of its turn.`,
+			],
+		};
+	}
+
+	static getSectionIntro (mon, {renderer = Renderer.get(), prop}) {
 		const headerProp = `${prop}Header`;
 		if (mon[headerProp]) return renderer.render({entries: mon[headerProp]});
 		return "";
-	},
+	}
 
-	getSave (renderer, attr, mod) {
+	static getSave (renderer, attr, mod) {
 		if (attr === "special") return renderer.render(mod);
 		return renderer.render(`<span>${attr.uppercaseFirst()} {@savingThrow ${attr} ${mod}}</span>`);
-	},
+	}
 
-	dragonCasterVariant: {
+	static dragonCasterVariant = class {
 		// Community-created (legacy)
-		_LVL_TO_COLOR_TO_SPELLS__UNOFFICIAL: {
+		static _LVL_TO_COLOR_TO_SPELLS__UNOFFICIAL = {
 			2: {
 				black: ["darkness", "Melf's acid arrow", "fog cloud", "scorching ray"],
 				green: ["ray of sickness", "charm person", "detect thoughts", "invisibility", "suggestion"],
@@ -6896,9 +7159,9 @@ Renderer.monster = {
 			8: {
 				gold: ["sunburst", "delayed blast fireball", "antimagic field", "teleport", "globe of invulnerability", "maze"],
 			},
-		},
+		};
 		// From Fizban's Treasury of Dragons
-		_LVL_TO_COLOR_TO_SPELLS__FTD: {
+		static _LVL_TO_COLOR_TO_SPELLS__FTD = {
 			1: {
 				deep: ["command", "dissonant whispers", "faerie fire"],
 			},
@@ -6948,9 +7211,9 @@ Renderer.monster = {
 			8: {
 				gold: ["bless", "commune", "cure wounds", "geas", "plane shift", "slow", "suggestion", "word of recall", "zone of truth"],
 			},
-		},
+		};
 
-		getAvailableColors () {
+		static getAvailableColors () {
 			const out = new Set();
 
 			const add = (lookup) => Object.values(lookup).forEach(obj => Object.keys(obj).forEach(k => out.add(k)));
@@ -6958,14 +7221,14 @@ Renderer.monster = {
 			add(Renderer.monster.dragonCasterVariant._LVL_TO_COLOR_TO_SPELLS__FTD);
 
 			return [...out].sort(SortUtil.ascSortLower);
-		},
+		}
 
-		hasCastingColorVariant (dragon) {
+		static hasCastingColorVariant (dragon) {
 			// if the dragon already has a spellcasting trait specified, don't add a note about adding a spellcasting trait
 			return dragon.dragonCastingColor && !dragon.spellcasting;
-		},
+		}
 
-		getMeta (dragon) {
+		static getMeta (dragon) {
 			const chaMod = Parser.getAbilityModNumber(dragon.cha);
 			const pb = Parser.crToPb(dragon.cr);
 			const maxSpellLevel = Math.floor(Parser.crToNumber(dragon.cr) / 3);
@@ -6987,9 +7250,9 @@ Renderer.monster = {
 					spellLookup: Renderer.monster.dragonCasterVariant._LVL_TO_COLOR_TO_SPELLS__FTD,
 				}),
 			};
-		},
+		}
 
-		_getMeta_getExampleSpells ({dragon, maxSpellLevel, spellLookup}) {
+		static _getMeta_getExampleSpells ({dragon, maxSpellLevel, spellLookup}) {
 			if (spellLookup[maxSpellLevel]?.[dragon.dragonCastingColor]) return spellLookup[maxSpellLevel][dragon.dragonCastingColor];
 
 			// If there's no exact match, try to find the next lowest
@@ -7006,15 +7269,15 @@ Renderer.monster = {
 				if (flatKeys[lookupKey]) return spellLookup[maxSpellLevel][dragon.dragonCastingColor];
 			}
 			return [];
-		},
+		}
 
-		getSpellcasterDetailsPart ({chaMod, maxSpellLevel, spellSaveDc, spellToHit, isSeeSpellsPageNote = false}) {
+		static getSpellcasterDetailsPart ({chaMod, maxSpellLevel, spellSaveDc, spellToHit, isSeeSpellsPageNote = false}) {
 			const levelString = maxSpellLevel === 0 ? `${chaMod === 1 ? "This" : "These"} spells are Cantrips.` : `${chaMod === 1 ? "The" : "Each"} spell's level can be no higher than ${Parser.spLevelToFull(maxSpellLevel)}.`;
 
 			return `This dragon can innately cast ${Parser.numberToText(chaMod)} spell${chaMod === 1 ? "" : "s"}, once per day${chaMod === 1 ? "" : " each"}, requiring no material components. ${levelString} The dragon's spell save DC is {@dc ${spellSaveDc}}, and it has {@hit ${spellToHit}} to hit with spell attacks.${isSeeSpellsPageNote ? ` See the {@filter spell page|spells|level=${[...new Array(maxSpellLevel + 1)].map((it, i) => i).join(";")}} for a list of spells the dragon is capable of casting.` : ""}`;
-		},
+		}
 
-		getVariantEntries (dragon) {
+		static getVariantEntries (dragon) {
 			if (!Renderer.monster.dragonCasterVariant.hasCastingColorVariant(dragon)) return [];
 
 			const meta = Renderer.monster.dragonCasterVariant.getMeta(dragon);
@@ -7057,16 +7320,16 @@ Renderer.monster = {
 			}
 
 			return [vFtd, vBasic].filter(Boolean);
-		},
+		}
 
-		getHtml (dragon, {renderer = null} = {}) {
+		static getHtml (dragon, {renderer = null} = {}) {
 			const variantEntrues = Renderer.monster.dragonCasterVariant.getVariantEntries(dragon);
 			if (!variantEntrues.length) return null;
 			return variantEntrues.map(it => renderer.render(it)).join("");
-		},
-	},
+		}
+	};
 
-	getCrScaleTarget (
+	static getCrScaleTarget (
 		{
 			win,
 			$btnScale,
@@ -7118,9 +7381,9 @@ Renderer.monster = {
 		});
 
 		$btnScale.after($wrp);
-	},
+	}
 
-	getSelSummonSpellLevel (mon) {
+	static getSelSummonSpellLevel (mon) {
 		if (mon.summonedBySpellLevel == null) return;
 
 		return e_({
@@ -7136,9 +7399,9 @@ Renderer.monster = {
 				})),
 			],
 		});
-	},
+	}
 
-	getSelSummonClassLevel (mon) {
+	static getSelSummonClassLevel (mon) {
 		if (mon.summonedByClass == null) return;
 
 		return e_({
@@ -7154,9 +7417,9 @@ Renderer.monster = {
 				})),
 			],
 		});
-	},
+	}
 
-	getCompactRenderedStringSection (mon, renderer, title, key, depth) {
+	static getCompactRenderedStringSection (mon, renderer, title, key, depth) {
 		if (!mon[key]) return "";
 
 		const noteKey = `${key}Note`;
@@ -7173,17 +7436,17 @@ Renderer.monster = {
 		${ptHeader ? `<p>${ptHeader}</p>` : ""}
 		${toRender.map(it => it.rendered || renderer.render(it, depth)).join("")}
 		</td></tr>`;
-	},
+	}
 
-	getTypeAlignmentPart (mon) {
+	static getTypeAlignmentPart (mon) {
 		const typeObj = Parser.monTypeToFullObj(mon.type);
 
 		return `${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${typeObj.asTextSidekick ? `${typeObj.asTextSidekick}; ` : ""}${Renderer.utils.getRenderedSize(mon.size)}${mon.sizeNote ? ` ${mon.sizeNote}` : ""} ${typeObj.asText}${mon.alignment ? `, ${mon.alignmentPrefix ? Renderer.get().render(mon.alignmentPrefix) : ""}${Parser.alignmentListToFull(mon.alignment).toTitleCase()}` : ""}`;
-	},
-	getSavesPart (mon) { return `${Object.keys(mon.save || {}).sort(SortUtil.ascSortAtts).map(s => Renderer.monster.getSave(Renderer.get(), s, mon.save[s])).join(", ")}`; },
-	getSensesPart (mon) { return `${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive || "\u2014"}`; },
+	}
+	static getSavesPart (mon) { return `${Object.keys(mon.save || {}).sort(SortUtil.ascSortAtts).map(s => Renderer.monster.getSave(Renderer.get(), s, mon.save[s])).join(", ")}`; }
+	static getSensesPart (mon) { return `${mon.senses ? `${Renderer.utils.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive || "\u2014"}`; }
 
-	getRenderWithPlugins ({renderer, mon, fn}) {
+	static getRenderWithPlugins ({renderer, mon, fn}) {
 		return renderer.withPlugin({
 			pluginTypes: [
 				"dice",
@@ -7205,7 +7468,7 @@ Renderer.monster = {
 			},
 			fn,
 		});
-	},
+	}
 
 	/**
 	 * @param mon
@@ -7217,16 +7480,16 @@ Renderer.monster = {
 	 * @param [opts.isScaledSpellSummon]
 	 * @param [opts.isScaledClassSummon]
 	 */
-	getCompactRenderedString (mon, opts) {
+	static getCompactRenderedString (mon, opts) {
 		const renderer = Renderer.get();
 		return Renderer.monster.getRenderWithPlugins({
 			renderer,
 			mon,
 			fn: () => Renderer.monster._getCompactRenderedString(mon, renderer, opts),
 		});
-	},
+	}
 
-	_getCompactRenderedString (mon, renderer, opts) {
+	static _getCompactRenderedString (mon, renderer, opts) {
 		opts = opts || {};
 		if (opts.isCompact === undefined) opts.isCompact = true;
 
@@ -7330,13 +7593,13 @@ Renderer.monster = {
 		`);
 
 		return renderStack.join("");
-	},
+	}
 
-	_getFormulaMax (formula) {
+	static _getFormulaMax (formula) {
 		return Renderer.dice.parseRandomise2(`dmax(${formula})`);
-	},
+	}
 
-	getRenderedHp: (hp, isPlainText) => {
+	static getRenderedHp (hp, isPlainText) {
 		if (hp.special != null) return isPlainText ? Renderer.stripTags(hp.special) : Renderer.get().render(hp.special);
 
 		if (/^\d+d1$/.exec(hp.formula)) {
@@ -7348,9 +7611,9 @@ Renderer.monster = {
 		const maxVal = Renderer.monster._getFormulaMax(hp.formula);
 		const maxStr = maxVal ? `Maximum: ${maxVal}` : "";
 		return `${maxStr ? `<span title="${maxStr}" class="help-subtle">` : ""}${hp.average}${maxStr ? "</span>" : ""} ${Renderer.get().render(`({@dice ${hp.formula}|${hp.formula}|Hit Points})`)}`;
-	},
+	}
 
-	getRenderedResource (res, isPlainText) {
+	static getRenderedResource (res, isPlainText) {
 		if (!res.formula) return `${res.value}`;
 
 		if (isPlainText) return `${res.value} (${res.formula})`;
@@ -7358,15 +7621,15 @@ Renderer.monster = {
 		const maxVal = Renderer.monster._getFormulaMax(res.formula);
 		const maxStr = maxVal ? `Maximum: ${maxVal}` : "";
 		return `${maxStr ? `<span title="${maxStr}" class="help-subtle">` : ""}${res.value}${maxStr ? "</span>" : ""} ${Renderer.get().render(`({@dice ${res.formula}|${res.formula}|${res.name}})`)}`;
-	},
+	}
 
-	getSafeAbilityScore (mon, abil, {isDefaultTen = false} = {}) {
-		if (!mon) return isDefaultTen ? 10 : 0;
+	static getSafeAbilityScore (mon, abil, {isDefaultTen = false} = {}) {
+		if (!mon || abil == null) return isDefaultTen ? 10 : 0;
 		if (mon[abil] == null) return isDefaultTen ? 10 : 0;
 		return typeof mon[abil] === "number" ? mon[abil] : (isDefaultTen ? 10 : 0);
-	},
+	}
 
-	getRenderedAbilityScores (mon) {
+	static getRenderedAbilityScores (mon) {
 		const byAbil = {};
 		const byValue = {};
 
@@ -7402,20 +7665,22 @@ Renderer.monster = {
 		<tr>
 			${absRemaining.map(ab => `<td class="ve-text-center">${Renderer.utils.getAbilityRoller(mon, ab)}</td>`).join("")}
 		</tr>`;
-	},
+	}
 
-	getSpellcastingRenderedTraits: (renderer, mon, displayAsProp = "trait") => {
+	static getSpellcastingRenderedTraits (renderer, mon, displayAsProp = "trait") {
 		const out = [];
 		(mon.spellcasting || []).filter(it => (it.displayAs || "trait") === displayAsProp).forEach(entry => {
 			entry.type = entry.type || "spellcasting";
 			const renderStack = [];
 			renderer.recursiveRender(entry, renderStack, {depth: 2});
-			out.push({name: entry.name, rendered: renderStack.join("")});
+			const rendered = renderStack.join("");
+			if (!rendered.length) return;
+			out.push({name: entry.name, rendered});
 		});
 		return out;
-	},
+	}
 
-	getOrderedTraits (mon, {fnGetSpellTraits} = {}) {
+	static getOrderedTraits (mon, {fnGetSpellTraits} = {}) {
 		let traits = mon.trait ? MiscUtil.copyFast(mon.trait) : null;
 
 		if (fnGetSpellTraits) {
@@ -7424,13 +7689,14 @@ Renderer.monster = {
 		}
 
 		if (traits?.length) return traits.sort((a, b) => SortUtil.monTraitSort(a, b));
-	},
+		return null;
+	}
 
-	getOrderedActions (mon, {fnGetSpellTraits} = {}) { return Renderer.monster._getOrderedActionsBonusActions({mon, fnGetSpellTraits, prop: "action"}); },
-	getOrderedBonusActions (mon, {fnGetSpellTraits} = {}) { return Renderer.monster._getOrderedActionsBonusActions({mon, fnGetSpellTraits, prop: "bonus"}); },
-	getOrderedReactions (mon, {fnGetSpellTraits} = {}) { return Renderer.monster._getOrderedActionsBonusActions({mon, fnGetSpellTraits, prop: "reaction"}); },
+	static getOrderedActions (mon, {fnGetSpellTraits} = {}) { return Renderer.monster._getOrderedActionsBonusActions({mon, fnGetSpellTraits, prop: "action"}); }
+	static getOrderedBonusActions (mon, {fnGetSpellTraits} = {}) { return Renderer.monster._getOrderedActionsBonusActions({mon, fnGetSpellTraits, prop: "bonus"}); }
+	static getOrderedReactions (mon, {fnGetSpellTraits} = {}) { return Renderer.monster._getOrderedActionsBonusActions({mon, fnGetSpellTraits, prop: "reaction"}); }
 
-	_getOrderedActionsBonusActions ({mon, fnGetSpellTraits, prop} = {}) {
+	static _getOrderedActionsBonusActions ({mon, fnGetSpellTraits, prop} = {}) {
 		let actions = mon[prop] ? MiscUtil.copyFast(mon[prop]) : null;
 
 		let spellActions;
@@ -7453,9 +7719,9 @@ Renderer.monster = {
 		if (~ixNext) actions.splice(ixNext, 0, ...spellActions);
 		else actions.push(...spellActions);
 		return actions;
-	},
+	}
 
-	getSkillsString (renderer, mon) {
+	static getSkillsString (renderer, mon) {
 		if (!mon.skill) return "";
 
 		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
@@ -7475,13 +7741,13 @@ Renderer.monster = {
 			return [skills, others, special].filter(Boolean).join(", ");
 		}
 		return skills;
-	},
+	}
 
-	getTokenUrl (mon) {
+	static getTokenUrl (mon) {
 		return mon.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/${Parser.sourceJsonToAbv(mon.source)}/${Parser.nameToTokenName(mon.name)}.png`);
-	},
+	}
 
-	postProcessFluff (mon, fluff) {
+	static postProcessFluff (mon, fluff) {
 		const cpy = MiscUtil.copyFast(fluff);
 
 		// TODO is this good enough? Should additionally check for lair blocks which are not the last, and tag them with
@@ -7508,59 +7774,14 @@ Renderer.monster = {
 		handleGroupProp("mythicEncounter", `${mon.name} as a Mythic Encounter`);
 
 		return cpy;
-	},
+	}
 
-	_FN_TAG_SENSES: null,
-	_SENSE_TAG_METAS: null,
-	getRenderedSenses (senses, isPlainText) {
-		if (typeof senses === "string") senses = [senses]; // handle legacy format
-		if (isPlainText) return senses.join(", ");
-
-		if (!Renderer.monster._FN_TAG_SENSES) {
-			Renderer.monster._SENSE_TAG_METAS = [
-				...MiscUtil.copyFast(Parser.SENSES),
-				...(PrereleaseUtil.getBrewProcessedFromCache("sense") || []),
-				...(BrewUtil2.getBrewProcessedFromCache("sense") || []),
-			];
-			Renderer.monster._SENSE_TAG_METAS.forEach(it => it._re = new RegExp(`\\b(?<sense>${it.name.escapeRegexp()})\\b`, "gi"));
-			Renderer.monster._FN_TAG_SENSES = str => {
-				Renderer.monster._SENSE_TAG_METAS
-					.forEach(({name, source, _re}) => str = str.replace(_re, (...m) => `{@sense ${m.last().sense}|${source}}`));
-				return str;
-			};
-		}
-
-		const senseStr = senses
-			.map(str => {
-				const tagSplit = Renderer.splitByTags(str);
-				str = "";
-				const len = tagSplit.length;
-				for (let i = 0; i < len; ++i) {
-					const s = tagSplit[i];
-
-					if (!s) continue;
-
-					if (s.startsWith("{@")) {
-						str += s;
-						continue;
-					}
-
-					str += Renderer.monster._FN_TAG_SENSES(s);
-				}
-				return str;
-			})
-			.join(", ")
-			.replace(/(^| |\()(blind|blinded)(\)| |$)/gi, (...m) => `${m[1]}{@condition blinded||${m[2]}}${m[3]}`);
-
-		return Renderer.get().render(senseStr);
-	},
-
-	getRenderedLanguages (languages) {
+	static getRenderedLanguages (languages) {
 		if (typeof languages === "string") languages = [languages]; // handle legacy format
 		return languages ? languages.map(it => Renderer.get().render(it)).join(", ") : "\u2014";
-	},
+	}
 
-	initParsed (mon) {
+	static initParsed (mon) {
 		mon._pTypes = mon._pTypes || Parser.monTypeToFullObj(mon.type); // store the parsed type
 		if (!mon._pCr) {
 			if (Parser.crToNumber(mon.cr) === VeCt.CR_CUSTOM) mon._pCr = "Special";
@@ -7574,16 +7795,16 @@ Renderer.monster = {
 				if (mon.cr.coven) mon._fCr.push(mon.cr.coven);
 			}
 		}
-	},
+	}
 
-	updateParsed (mon) {
+	static updateParsed (mon) {
 		delete mon._pTypes;
 		delete mon._pCr;
 		delete mon._fCr;
 		Renderer.monster.initParsed(mon);
-	},
+	}
 
-	getRenderedVariants (mon, {renderer = null} = {}) {
+	static getRenderedVariants (mon, {renderer = null} = {}) {
 		renderer = renderer || Renderer.get();
 		const dragonVariant = Renderer.monster.dragonCasterVariant.getHtml(mon, {renderer});
 		const variants = mon.variant;
@@ -7593,25 +7814,25 @@ Renderer.monster = {
 		(variants || []).forEach(v => renderer.recursiveRender(v, rStack));
 		if (dragonVariant) rStack.push(dragonVariant);
 		return rStack.join("");
-	},
+	}
 
-	getRenderedEnvironment (envs) { return (envs || []).sort(SortUtil.ascSortLower).map(it => it.toTitleCase()).join(", "); },
+	static getRenderedEnvironment (envs) { return (envs || []).sort(SortUtil.ascSortLower).map(it => it.toTitleCase()).join(", "); }
 
-	getRenderedAltArtEntry (meta, {isPlainText = false} = {}) {
+	static getRenderedAltArtEntry (meta, {isPlainText = false} = {}) {
 		return `${isPlainText ? "" : `<div>`}${meta.displayName || meta.name}; ${isPlainText ? "" : `<span title="${Parser.sourceJsonToFull(meta.source)}">`}${Parser.sourceJsonToAbv(meta.source)}${Renderer.utils.isDisplayPage(meta.page) ? ` p${meta.page}` : ""}${isPlainText ? "" : `</span></div>`}`;
-	},
+	}
 
-	pGetFluff (mon) {
+	static pGetFluff (mon) {
 		return Renderer.utils.pGetFluff({
 			entity: mon,
 			pFnPostProcess: Renderer.monster.postProcessFluff.bind(null, mon),
 			fluffBaseUrl: `data/bestiary/`,
 			fluffProp: "monsterFluff",
 		});
-	},
+	}
 
 	// region Custom hash ID packing/unpacking
-	getCustomHashId (mon) {
+	static getCustomHashId (mon) {
 		if (!mon._isScaledCr && !mon._isScaledSpellSummon && !mon._scaledClassSummonLevel) return null;
 
 		const {
@@ -7629,9 +7850,9 @@ Renderer.monster = {
 			scaledSpellSummonLevel ?? "",
 			scaledClassSummonLevel ?? "",
 		].join("__").toLowerCase();
-	},
+	}
 
-	getUnpackedCustomHashId (customHashId) {
+	static getUnpackedCustomHashId (customHashId) {
 		if (!customHashId) return null;
 
 		const [, , scaledCr, scaledSpellSummonLevel, scaledClassSummonLevel] = customHashId.split("__").map(it => it.trim());
@@ -7644,19 +7865,19 @@ Renderer.monster = {
 			_scaledClassSummonLevel: scaledClassSummonLevel ? Number(scaledClassSummonLevel) : null,
 			customHashId,
 		};
-	},
+	}
 	// endregion
 
-	async pGetModifiedCreature (monRaw, customHashId) {
+	static async pGetModifiedCreature (monRaw, customHashId) {
 		if (!customHashId) return monRaw;
 		const {_scaledCr, _scaledSpellSummonLevel, _scaledClassSummonLevel} = Renderer.monster.getUnpackedCustomHashId(customHashId);
 		if (_scaledCr) return ScaleCreature.scale(monRaw, _scaledCr);
 		if (_scaledSpellSummonLevel) return ScaleSpellSummonedCreature.scale(monRaw, _scaledSpellSummonLevel);
 		if (_scaledClassSummonLevel) return ScaleClassSummonedCreature.scale(monRaw, _scaledClassSummonLevel);
 		throw new Error(`Unhandled custom hash ID "${customHashId}"`);
-	},
+	}
 
-	_bindListenersScale (mon, ele) {
+	static _bindListenersScale (mon, ele) {
 		const page = UrlUtil.PG_BESTIARY;
 		const source = mon.source;
 		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon);
@@ -7733,13 +7954,13 @@ Renderer.monster = {
 				Renderer.monster._bindListenersScale(toRender, ele);
 			})
 			.val(mon._summonedByClass_level != null ? `${mon._summonedByClass_level}` : "-1");
-	},
+	}
 
-	bindListenersCompact (mon, ele) {
+	static bindListenersCompact (mon, ele) {
 		Renderer.monster._bindListenersScale(mon, ele);
-	},
+	}
 
-	hover: class {
+	static hover = class {
 		static bindFluffImageMouseover ({mon, $ele}) {
 			$ele
 				.on("mouseover", evt => this._pOnFluffImageMouseover({evt, mon, $ele}));
@@ -7800,7 +8021,7 @@ Renderer.monster = {
 				{isBookContent: true},
 			);
 		}
-	},
+	};
 };
 Renderer.monster.CHILD_PROPS_EXTENDED = [...Renderer.monster.CHILD_PROPS, "lairActions", "regionalEffects"];
 
@@ -7821,8 +8042,8 @@ Renderer.monsterAction.getWeaponLookupName = act => {
 	;
 };
 
-Renderer.legendaryGroup = {
-	getCompactRenderedString (legGroup, opts) {
+Renderer.legendaryGroup = class {
+	static getCompactRenderedString (legGroup, opts) {
 		opts = opts || {};
 
 		const ent = Renderer.legendaryGroup.getSummaryEntry(legGroup);
@@ -7834,9 +8055,9 @@ Renderer.legendaryGroup = {
 		${Renderer.get().setFirstSection(true).render(ent)}
 		</td></tr>
 		${Renderer.utils.getPageTr(legGroup)}`;
-	},
+	}
 
-	getSummaryEntry (legGroup) {
+	static getSummaryEntry (legGroup) {
 		if (!legGroup || (!legGroup.lairActions && !legGroup.regionalEffects && !legGroup.mythicEncounter)) return null;
 
 		return {
@@ -7847,15 +8068,15 @@ Renderer.legendaryGroup = {
 				legGroup.mythicEncounter ? {name: "As a Mythic Encounter", type: "entries", entries: legGroup.mythicEncounter} : null,
 			].filter(Boolean),
 		};
-	},
+	}
 };
 
-Renderer.item = {
-	_sortProperties (a, b) {
+Renderer.item = class {
+	static _sortProperties (a, b) {
 		return SortUtil.ascSort(Renderer.item.getProperty(a, {isIgnoreMissing: true})?.name || "", Renderer.item.getProperty(b, {isIgnoreMissing: true})?.name || "");
-	},
+	}
 
-	_getPropertiesText (item, {renderer = null} = {}) {
+	static _getPropertiesText (item, {renderer = null} = {}) {
 		renderer = renderer || Renderer.get();
 
 		if (!item.property) {
@@ -7891,9 +8112,9 @@ Renderer.item = {
 		if (!renderedDmg2 && item.dmg2) renderedProperties.unshift(`alt. ${Renderer.item._renderDamage(item.dmg2, {renderer})}`);
 
 		return `${item.dmg1 && renderedProperties.length ? " - " : ""}${renderedProperties.join(", ")}`;
-	},
+	}
 
-	_getTaggedDamage (dmg, {renderer = null} = {}) {
+	static _getTaggedDamage (dmg, {renderer = null} = {}) {
 		if (!dmg) return "";
 
 		renderer = renderer || Renderer.get();
@@ -7901,22 +8122,20 @@ Renderer.item = {
 		Renderer.stripTags(dmg.trim());
 
 		return renderer.render(`{@damage ${dmg}}`);
-	},
+	}
 
-	_renderDamage (dmg, {renderer = null} = {}) {
+	static _renderDamage (dmg, {renderer = null} = {}) {
 		renderer = renderer || Renderer.get();
 		return renderer.render(Renderer.item._getTaggedDamage(dmg, {renderer}));
-	},
+	}
 
-	getDamageAndPropertiesText (item, {renderer = null} = {}) {
+	static getDamageAndPropertiesText (item, {renderer = null} = {}) {
 		renderer = renderer || Renderer.get();
 
 		const damagePartsPre = [];
 		const damageParts = [];
 
 		if (item.mastery) damagePartsPre.push(`Mastery: ${item.mastery.map(it => renderer.render(`{@itemMastery ${it}}`)).join(", ")}`);
-
-		if (item.dmg1) damageParts.push(Renderer.item._renderDamage(item.dmg1, {renderer}));
 
 		// armor
 		if (item.ac != null) {
@@ -7925,6 +8144,9 @@ Renderer.item = {
 			damageParts.push(`AC ${prefix}${item.ac}${suffix}`);
 		}
 		if (item.acSpecial != null) damageParts.push(item.ac != null ? item.acSpecial : `AC ${item.acSpecial}`);
+
+		// damage
+		if (item.dmg1) damageParts.push(Renderer.item._renderDamage(item.dmg1, {renderer}));
 
 		// mounts
 		if (item.speed != null) damageParts.push(`Speed: ${item.speed}`);
@@ -7969,9 +8191,9 @@ Renderer.item = {
 		const propertiesTxt = Renderer.item._getPropertiesText(item, {renderer});
 
 		return [damage, damageType, propertiesTxt];
-	},
+	}
 
-	getTypeRarityAndAttunementText (item) {
+	static getTypeRarityAndAttunementText (item) {
 		const typeRarity = [
 			item._typeHtml === "other" ? "" : item._typeHtml,
 			(item.rarity && Renderer.item.doRenderRarity(item.rarity) ? item.rarity : ""),
@@ -7982,9 +8204,9 @@ Renderer.item = {
 			item._subTypeHtml || "",
 			item.tier ? `${item.tier} tier` : "",
 		];
-	},
+	}
 
-	getAttunementAndAttunementCatText (item, prop = "reqAttune") {
+	static getAttunementAndAttunementCatText (item, prop = "reqAttune") {
 		let attunement = null;
 		let attunementCat = VeCt.STR_NO_ATTUNEMENT;
 		if (item[prop] != null && item[prop] !== false) {
@@ -8003,9 +8225,9 @@ Renderer.item = {
 			}
 		}
 		return [attunement, attunementCat];
-	},
+	}
 
-	getHtmlAndTextTypes (item) {
+	static getHtmlAndTextTypes (item) {
 		const typeHtml = [];
 		const typeListText = [];
 		const subTypeHtml = [];
@@ -8051,9 +8273,9 @@ Renderer.item = {
 			typeListText.push("poison");
 		}
 		return [typeListText, typeHtml.join(", "), subTypeHtml.join(", ")];
-	},
+	}
 
-	_getHtmlAndTextTypes_type ({type, typeHtml, typeListText, subTypeHtml, showingBase, item}) {
+	static _getHtmlAndTextTypes_type ({type, typeHtml, typeListText, subTypeHtml, showingBase, item}) {
 		const fullType = Renderer.item.getItemTypeName(type);
 
 		const isSub = (typeListText.some(it => it.includes("weapon")) && fullType.includes("weapon"))
@@ -8064,16 +8286,16 @@ Renderer.item = {
 		else (isSub ? subTypeHtml : typeHtml).push(fullType);
 
 		typeListText.push(fullType);
-	},
+	}
 
-	_GET_RENDERED_ENTRIES_WALKER: null,
+	static _GET_RENDERED_ENTRIES_WALKER = null;
 
 	/**
 	 * @param item
 	 * @param isCompact
 	 * @param wrappedTypeAllowlist An optional set of: `"note", "type", "property", "variant"`
 	 */
-	getRenderedEntries (item, {isCompact = false, wrappedTypeAllowlist = null} = {}) {
+	static getRenderedEntries (item, {isCompact = false, wrappedTypeAllowlist = null} = {}) {
 		const renderer = Renderer.get();
 
 		Renderer.item._GET_RENDERED_ENTRIES_WALKER = Renderer.item._GET_RENDERED_ENTRIES_WALKER || MiscUtil.getWalker({
@@ -8113,10 +8335,10 @@ Renderer.item = {
 		}
 
 		return renderStack.join("").trim();
-	},
+	}
 
-	_getRenderedEntries_handlerConvertNamesToItalics (item, baseName, str) {
-		if (item._fIsMundane) return str;
+	static _getRenderedEntries_handlerConvertNamesToItalics (item, baseName, str) {
+		if (Renderer.item.isMundane(item)) return str;
 
 		const stack = [];
 		let depth = 0;
@@ -8162,9 +8384,9 @@ Renderer.item = {
 		}
 
 		return stack.join("");
-	},
+	}
 
-	getCompactRenderedString (item, opts) {
+	static getCompactRenderedString (item, opts) {
 		opts = opts || {};
 
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
@@ -8179,13 +8401,13 @@ Renderer.item = {
 			<td class="text-right" colspan="4">${damage} ${damageType} ${propertiesTxt}</td>
 		</tr>
 		${Renderer.item.hasEntries(item) ? `${Renderer.utils.getDividerTr()}<tr class="text"><td colspan="6" class="text">${Renderer.item.getRenderedEntries(item, {isCompact: true})}</td></tr>` : ""}`;
-	},
+	}
 
-	hasEntries (item) {
+	static hasEntries (item) {
 		return item._fullAdditionalEntries?.length || item._fullEntries?.length || item.entries?.length;
-	},
+	}
 
-	getTypeRarityAndAttunementHtml (typeRarityText, subTypeText, tierText) {
+	static getTypeRarityAndAttunementHtml (typeRarityText, subTypeText, tierText) {
 		return `<div class="ve-flex-col">
 			${typeRarityText || tierText ? `<div class="split ${subTypeText ? "mb-1" : ""}">
 				<div class="italic">${(typeRarityText || "").uppercaseFirst()}</div>
@@ -8193,34 +8415,34 @@ Renderer.item = {
 			</div>` : ""}
 			${subTypeText ? `<div class="italic">${subTypeText.uppercaseFirst()}</div>` : ""}
 		</div>`;
-	},
+	}
 
-	_hiddenRarity: new Set(["none", "unknown", "unknown (magic)", "varies"]),
-	doRenderRarity (rarity) {
+	static _hiddenRarity = new Set(["none", "unknown", "unknown (magic)", "varies"]);
+	static doRenderRarity (rarity) {
 		return !Renderer.item._hiddenRarity.has(rarity);
-	},
+	}
 
 	// ---
 
-	_propertyMap: {},
-	_addProperty (prt) {
+	static _propertyMap = {};
+	static _addProperty (prt) {
 		if (Renderer.item._propertyMap[prt.abbreviation]) return;
 		const cpy = MiscUtil.copyFast(prt);
 		Renderer.item._propertyMap[prt.abbreviation] = prt.name ? cpy : {
 			...cpy,
 			name: (prt.entries || prt.entriesTemplate)[0].name.toLowerCase(),
 		};
-	},
+	}
 
-	getProperty (abbv, {isIgnoreMissing = false} = {}) {
+	static getProperty (abbv, {isIgnoreMissing = false} = {}) {
 		if (!isIgnoreMissing && !Renderer.item._propertyMap[abbv]) throw new Error(`Item property ${abbv} not found. You probably meant to load the property reference first.`);
 		return Renderer.item._propertyMap[abbv];
-	},
+	}
 
 	// ---
 
-	_typeMap: {},
-	_addType (typ) {
+	static _typeMap = {};
+	static _addType (typ) {
 		if (Renderer.item._typeMap[typ.abbreviation]?.entries || Renderer.item._typeMap[typ.abbreviation]?.entriesTemplate) return;
 		const cpy = MiscUtil.copyFast(typ);
 
@@ -8234,54 +8456,54 @@ Renderer.item = {
 		cpy.name = cpy.name || (cpy.entries || cpy.entriesTemplate)[0].name.toLowerCase();
 
 		Renderer.item._typeMap[typ.abbreviation] = cpy;
-	},
+	}
 
-	getType (abbv) {
+	static getType (abbv) {
 		if (!Renderer.item._typeMap[abbv]) throw new Error(`Item type ${abbv} not found. You probably meant to load the type reference first.`);
 		return Renderer.item._typeMap[abbv];
-	},
+	}
 
 	// ---
 
-	entryMap: {},
-	_addEntry (ent) {
+	static entryMap = {};
+	static _addEntry (ent) {
 		if (Renderer.item.entryMap[ent.source]?.[ent.name]) return;
 		MiscUtil.set(Renderer.item.entryMap, ent.source, ent.name, ent);
-	},
+	}
 
 	// ---
 
-	_additionalEntriesMap: {},
-	_addAdditionalEntries (ent) {
+	static _additionalEntriesMap = {};
+	static _addAdditionalEntries (ent) {
 		if (Renderer.item._additionalEntriesMap[ent.appliesTo]) return;
 		Renderer.item._additionalEntriesMap[ent.appliesTo] = MiscUtil.copyFast(ent.entries);
-	},
+	}
 
 	// ---
 
-	_masteryMap: {},
-	_addMastery (ent) {
+	static _masteryMap = {};
+	static _addMastery (ent) {
 		const lookupSource = ent.source.toLowerCase();
 		const lookupName = ent.name.toLowerCase();
 		if (Renderer.item._masteryMap[lookupSource]?.[lookupName]) return;
 		MiscUtil.set(Renderer.item._masteryMap, lookupSource, lookupName, ent);
-	},
+	}
 
-	_getMastery (uid) {
+	static _getMastery (uid) {
 		const {name, source} = DataUtil.proxy.unpackUid("itemMastery", uid, "itemMastery", {isLower: true});
 		const out = MiscUtil.get(Renderer.item._masteryMap, source, name);
 		if (!out) throw new Error(`Item mastry ${uid} not found. You probably meant to load the mastery reference first.`);
 		return out;
-	},
+	}
 
 	// ---
 
-	async _pAddPrereleaseBrewPropertiesAndTypes () {
+	static async _pAddPrereleaseBrewPropertiesAndTypes () {
 		if (typeof PrereleaseUtil !== "undefined") Renderer.item.addPrereleaseBrewPropertiesAndTypesFrom({data: await PrereleaseUtil.pGetBrewProcessed()});
 		if (typeof BrewUtil2 !== "undefined") Renderer.item.addPrereleaseBrewPropertiesAndTypesFrom({data: await BrewUtil2.pGetBrewProcessed()});
-	},
+	}
 
-	addPrereleaseBrewPropertiesAndTypesFrom ({data}) {
+	static addPrereleaseBrewPropertiesAndTypesFrom ({data}) {
 		(data.itemProperty || [])
 			.forEach(it => Renderer.item._addProperty(it));
 		(data.itemType || [])
@@ -8292,33 +8514,29 @@ Renderer.item = {
 			.forEach(it => Renderer.item._addAdditionalEntries(it));
 		(data.itemMastery || [])
 			.forEach(it => Renderer.item._addMastery(it));
-	},
+	}
 
-	_addBasePropertiesAndTypes (baseItemData) {
+	static _addBasePropertiesAndTypes (baseItemData) {
 		Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({abbreviation: abv, name}));
 
 		// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 		(baseItemData.itemProperty || []).forEach(it => Renderer.item._addProperty(it));
-		(baseItemData.itemType || []).forEach(it => {
-			// air/water vehicles share a type
-			if (it.abbreviation === "SHP") Renderer.item._addType({...MiscUtil.copyFast(it), abbreviation: "AIR"});
-			Renderer.item._addType(it);
-		});
+		(baseItemData.itemType || []).forEach(it => Renderer.item._addType(it));
 		(baseItemData.itemEntry || []).forEach(it => Renderer.item._addEntry(it));
 		(baseItemData.itemTypeAdditionalEntries || []).forEach(it => Renderer.item._addAdditionalEntries(it));
 		(baseItemData.itemMastery || []).forEach(it => Renderer.item._addMastery(it));
 
 		baseItemData.baseitem.forEach(it => it._isBaseItem = true);
-	},
+	}
 
-	async _pGetSiteUnresolvedRefItems_pLoadItems () {
+	static async _pGetSiteUnresolvedRefItems_pLoadItems () {
 		const itemData = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items.json`);
 		const items = itemData.item;
 		itemData.itemGroup.forEach(it => it._isItemGroup = true);
 		return [...items, ...itemData.itemGroup];
-	},
+	}
 
-	async pGetSiteUnresolvedRefItems () {
+	static async pGetSiteUnresolvedRefItems () {
 		const itemList = await Renderer.item._pGetSiteUnresolvedRefItems_pLoadItems();
 		const baseItemsJson = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items-base.json`);
 		const baseItems = await Renderer.item._pGetAndProcBaseItems(baseItemsJson);
@@ -8331,39 +8549,39 @@ Renderer.item = {
 			item: allItems,
 			itemEntry: baseItemsJson.itemEntry,
 		};
-	},
+	}
 
-	_pGettingSiteGenericVariants: null,
-	async _pGetCacheSiteGenericVariants () {
+	static _pGettingSiteGenericVariants = null;
+	static async _pGetCacheSiteGenericVariants () {
 		Renderer.item._pGettingSiteGenericVariants = Renderer.item._pGettingSiteGenericVariants || (async () => {
 			const [genericVariants, linkedLootTables] = Renderer.item._getAndProcGenericVariants(await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/magicvariants.json`));
 			return {genericVariants, linkedLootTables};
 		})();
 		return Renderer.item._pGettingSiteGenericVariants;
-	},
+	}
 
-	async pBuildList () {
+	static async pBuildList () {
 		return DataLoader.pCacheAndGetAllSite(UrlUtil.PG_ITEMS);
-	},
+	}
 
-	async _pGetAndProcBaseItems (baseItemData) {
+	static async _pGetAndProcBaseItems (baseItemData) {
 		Renderer.item._addBasePropertiesAndTypes(baseItemData);
 		await Renderer.item._pAddPrereleaseBrewPropertiesAndTypes();
 		return baseItemData.baseitem;
-	},
+	}
 
-	_getAndProcGenericVariants (variantData) {
+	static _getAndProcGenericVariants (variantData) {
 		variantData.magicvariant.forEach(Renderer.item._genericVariants_addInheritedPropertiesToSelf);
 		return [variantData.magicvariant, variantData.linkedLootTables];
-	},
+	}
 
-	_initFullEntries (item) {
+	static _initFullEntries (item) {
 		Renderer.utils.initFullEntries_(item);
-	},
+	}
 
-	_initFullAdditionalEntries (item) {
+	static _initFullAdditionalEntries (item) {
 		Renderer.utils.initFullEntries_(item, {propEntries: "additionalEntries", propFullEntries: "_fullAdditionalEntries"});
-	},
+	}
 
 	/**
 	 * @param baseItems
@@ -8371,7 +8589,7 @@ Renderer.item = {
 	 * @param [opts]
 	 * @param [opts.linkedLootTables]
 	 */
-	_createSpecificVariants (baseItems, genericVariants, opts) {
+	static _createSpecificVariants (baseItems, genericVariants, opts) {
 		opts = opts || {};
 
 		const genericAndSpecificVariants = [];
@@ -8389,18 +8607,18 @@ Renderer.item = {
 			});
 		});
 		return genericAndSpecificVariants;
-	},
+	}
 
-	_createSpecificVariants_hasRequiredProperty (baseItem, genericVariant) {
+	static _createSpecificVariants_hasRequiredProperty (baseItem, genericVariant) {
 		return genericVariant.requires.some(req => Renderer.item._createSpecificVariants_isRequiresExcludesMatch(baseItem, req, "every"));
-	},
+	}
 
-	_createSpecificVariants_hasExcludedProperty (baseItem, genericVariant) {
+	static _createSpecificVariants_hasExcludedProperty (baseItem, genericVariant) {
 		const curExcludes = genericVariant.excludes || {};
 		return Renderer.item._createSpecificVariants_isRequiresExcludesMatch(baseItem, genericVariant.excludes, "some");
-	},
+	}
 
-	_createSpecificVariants_isRequiresExcludesMatch (candidate, requirements, method) {
+	static _createSpecificVariants_isRequiresExcludesMatch (candidate, requirements, method) {
 		if (candidate == null || requirements == null) return false;
 
 		return Object.entries(requirements)[method](([reqKey, reqVal]) => {
@@ -8419,7 +8637,7 @@ Renderer.item = {
 				? candidate[reqKey].some(it => reqVal === it)
 				: reqVal === candidate[reqKey];
 		});
-	},
+	}
 
 	/**
 	 * @param baseItem
@@ -8427,7 +8645,7 @@ Renderer.item = {
 	 * @param [opts]
 	 * @param [opts.linkedLootTables]
 	 */
-	_createSpecificVariants_createSpecificVariant (baseItem, genericVariant, opts) {
+	static _createSpecificVariants_createSpecificVariant (baseItem, genericVariant, opts) {
 		const inherits = genericVariant.inherits;
 		const specificVariant = MiscUtil.copyFast(baseItem);
 
@@ -8553,9 +8771,9 @@ Renderer.item = {
 		}
 
 		return specificVariant;
-	},
+	}
 
-	_createSpecificVariants_evaluateExpression (baseItem, specificVariant, inherits, inheritedProperty) {
+	static _createSpecificVariants_evaluateExpression (baseItem, specificVariant, inherits, inheritedProperty) {
 		return inherits[inheritedProperty].replace(/\[\[([^\]]+)]]/g, (...m) => {
 			const propPath = m[1].split(".");
 			return propPath[0] === "item"
@@ -8564,14 +8782,14 @@ Renderer.item = {
 					? MiscUtil.get(baseItem, ...propPath.slice(1))
 					: MiscUtil.get(specificVariant, ...propPath);
 		});
-	},
+	}
 
-	_PROPS_VULN_RES_IMMUNE: [
+	static _PROPS_VULN_RES_IMMUNE = [
 		"vulnerable",
 		"resist",
 		"immune",
-	],
-	_createSpecificVariants_mergeVulnerableResistImmune ({specificVariant, inherits}) {
+	];
+	static _createSpecificVariants_mergeVulnerableResistImmune ({specificVariant, inherits}) {
 		const fromBase = {};
 		Renderer.item._PROPS_VULN_RES_IMMUNE
 			.filter(prop => specificVariant[prop])
@@ -8626,12 +8844,12 @@ Renderer.item = {
 				if (fromBase[prop] || inherits[prop]) specificVariant[prop] = [...(fromBase[prop] || []), ...(inherits[prop] || [])].unique();
 				else delete specificVariant[prop];
 			});
-	},
+	}
 
-	_enhanceItems (allItems) {
+	static _enhanceItems (allItems) {
 		allItems.forEach((item) => Renderer.item.enhanceItem(item));
 		return allItems;
-	},
+	}
 
 	/**
 	 * @param genericVariants
@@ -8640,7 +8858,7 @@ Renderer.item = {
 	 * @param [opts.baseItems]
 	 * @param [opts.isSpecificVariantsOnly]
 	 */
-	async pGetGenericAndSpecificVariants (genericVariants, opts) {
+	static async pGetGenericAndSpecificVariants (genericVariants, opts) {
 		opts = opts || {};
 
 		let baseItems;
@@ -8661,9 +8879,9 @@ Renderer.item = {
 
 		const outGenericVariants = Renderer.item._enhanceItems(genericVariants);
 		return [...outGenericVariants, ...outSpecificVariants];
-	},
+	}
 
-	_getInjectableProps (baseItem, inherits) {
+	static _getInjectableProps (baseItem, inherits) {
 		return {
 			baseName: baseItem.name,
 			dmgType: baseItem.dmgType ? Parser.dmgTypeToFull(baseItem.dmgType) : null,
@@ -8676,9 +8894,9 @@ Renderer.item = {
 			bonusSpellSaveDc: inherits.bonusSpellSaveDc,
 			bonusSavingThrow: inherits.bonusSavingThrow,
 		};
-	},
+	}
 
-	_INHERITED_PROPS_BLOCKLIST: new Set([
+	static _INHERITED_PROPS_BLOCKLIST = new Set([
 		// region Specific merge strategy
 		"entries",
 		"rarity",
@@ -8688,8 +8906,8 @@ Renderer.item = {
 		"namePrefix",
 		"nameSuffix",
 		// endregion
-	]),
-	_genericVariants_addInheritedPropertiesToSelf (genericVariant) {
+	]);
+	static _genericVariants_addInheritedPropertiesToSelf (genericVariant) {
 		if (genericVariant._isInherited) return;
 		genericVariant._isInherited = true;
 
@@ -8715,13 +8933,13 @@ Renderer.item = {
 		} else genericVariant.rarity = genericVariant.inherits.rarity;
 
 		if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
-	},
+	}
 
-	getItemTypeName (t) {
-		return Renderer.item.getType(t).name || t;
-	},
+	static getItemTypeName (t) {
+		return Renderer.item.getType(t).name?.toLowerCase() || t;
+	}
 
-	enhanceItem (item) {
+	static enhanceItem (item) {
 		if (item._isEnhanced) return;
 		item._isEnhanced = true;
 		if (item.noDisplay) return;
@@ -8866,6 +9084,8 @@ Renderer.item = {
 		// region Add base items list
 		// item.variants was added during generic variant creation
 		if (item.variants && item.variants.length) {
+			item.variants.sort((a, b) => SortUtil.ascSortLower(a.base.name, b.base.name) || SortUtil.ascSortLower(a.base.source, b.base.source));
+
 			Renderer.item._initFullEntries(item);
 			item._fullEntries.push({
 				type: "wrapper",
@@ -8886,9 +9106,9 @@ Renderer.item = {
 			});
 		}
 		// endregion
-	},
+	}
 
-	_enhanceItem_getItemPropertyTypeEntries ({item, ent}) {
+	static _enhanceItem_getItemPropertyTypeEntries ({item, ent}) {
 		if (!ent.entriesTemplate) return MiscUtil.copyFast(ent.entries);
 		return MiscUtil
 			.getWalker({
@@ -8905,15 +9125,15 @@ Renderer.item = {
 					},
 				},
 			);
-	},
+	}
 
-	unenhanceItem (item) {
+	static unenhanceItem (item) {
 		if (!item._isEnhanced) return;
 		delete item._isEnhanced;
 		delete item._fullEntries;
-	},
+	}
 
-	async pGetSiteUnresolvedRefItemsFromPrereleaseBrew ({brewUtil, brew = null}) {
+	static async pGetSiteUnresolvedRefItemsFromPrereleaseBrew ({brewUtil, brew = null}) {
 		if (brewUtil == null && brew == null) return [];
 
 		brew = brew || await brewUtil.pGetBrewProcessed();
@@ -8964,25 +9184,24 @@ Renderer.item = {
 		if (isReEnhanceVariants) {
 			const {genericVariants} = await Renderer.item._pGetCacheSiteGenericVariants();
 			genericVariants.forEach(item => {
-				item.variants.sort((a, b) => SortUtil.ascSortLower(a.base.name, b.base.name) || SortUtil.ascSortLower(a.base.source, b.base.source));
 				Renderer.item.unenhanceItem(item);
 				Renderer.item.enhanceItem(item);
 			});
 		}
 
 		return items;
-	},
+	}
 
-	async pGetItemsFromPrerelease () {
+	static async pGetItemsFromPrerelease () {
 		return DataLoader.pCacheAndGetAllPrerelease(UrlUtil.PG_ITEMS);
-	},
+	}
 
-	async pGetItemsFromBrew () {
+	static async pGetItemsFromBrew () {
 		return DataLoader.pCacheAndGetAllBrew(UrlUtil.PG_ITEMS);
-	},
+	}
 
-	_pPopulatePropertyAndTypeReference: null,
-	pPopulatePropertyAndTypeReference: () => {
+	static _pPopulatePropertyAndTypeReference = null;
+	static pPopulatePropertyAndTypeReference () {
 		return Renderer.item._pPopulatePropertyAndTypeReference || (async () => {
 			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items-base.json`);
 
@@ -8994,10 +9213,10 @@ Renderer.item = {
 
 			await Renderer.item._pAddPrereleaseBrewPropertiesAndTypes();
 		})();
-	},
+	}
 
 	// fetch every possible indexable item from official data
-	async getAllIndexableItems (rawVariants, rawBaseItems) {
+	static async getAllIndexableItems (rawVariants, rawBaseItems) {
 		const basicItems = await Renderer.item._pGetAndProcBaseItems(rawBaseItems);
 		const [genericVariants, linkedLootTables] = await Renderer.item._getAndProcGenericVariants(rawVariants);
 		const specificVariants = Renderer.item._createSpecificVariants(basicItems, genericVariants, {linkedLootTables});
@@ -9007,11 +9226,11 @@ Renderer.item = {
 		});
 
 		return specificVariants;
-	},
+	}
 
-	isMundane (item) { return item.rarity === "none" || item.rarity === "unknown" || item._category === "Basic"; },
+	static isMundane (item) { return item.rarity === "none" || item.rarity === "unknown" || item._category === "Basic"; }
 
-	isExcluded (item, {hash = null} = {}) {
+	static isExcluded (item, {hash = null} = {}) {
 		const name = item.name;
 		const source = item.source || item.inherits?.source;
 
@@ -9033,140 +9252,140 @@ Renderer.item = {
 		if (item.type === "GV") return ExcludeUtil.isExcluded(hash, "magicvariant", source);
 
 		return false;
-	},
+	}
 
-	pGetFluff (item) {
+	static pGetFluff (item) {
 		return Renderer.utils.pGetFluff({
 			entity: item,
 			fnGetFluffData: DataUtil.itemFluff.loadJSON.bind(DataUtil.itemFluff),
 			fluffProp: "itemFluff",
 		});
-	},
+	}
 };
 
-Renderer.psionic = {
-	enhanceMode: (mode) => {
-		if (!mode.enhanced) {
-			mode.name = [mode.name, getModeSuffix(mode, false)].filter(Boolean).join(" ");
+Renderer.psionic = class {
+	static enhanceMode (mode) {
+		if (mode._isEnhanced) return;
 
-			if (mode.submodes) {
-				mode.submodes.forEach(sm => {
-					sm.name = [sm.name, getModeSuffix(sm, true)].filter(Boolean).join(" ");
-				});
-			}
+		mode.name = [mode.name, Renderer.psionic._enhanceMode_getModeTitleBracketPart({mode: mode})].filter(Boolean).join(" ");
 
-			mode.enhanced = true;
-		}
-
-		function getModeSuffix (mode, subMode) {
-			subMode = subMode == null ? false : subMode;
-			const modeTitleArray = [];
-			const bracketPart = getModeTitleBracketPart();
-			if (bracketPart != null) modeTitleArray.push(bracketPart);
-			if (subMode) return `${modeTitleArray.join(" ")}`;
-			else return `${modeTitleArray.join(" ")}`;
-
-			function getModeTitleBracketPart () {
-				const modeTitleBracketArray = [];
-
-				if (mode.cost) modeTitleBracketArray.push(getModeTitleCost());
-				if (mode.concentration) modeTitleBracketArray.push(getModeTitleConcentration());
-
-				if (modeTitleBracketArray.length === 0) return null;
-				return `(${modeTitleBracketArray.join("; ")})`;
-
-				function getModeTitleCost () {
-					const costMin = mode.cost.min;
-					const costMax = mode.cost.max;
-					const costString = costMin === costMax ? costMin : `${costMin}-${costMax}`;
-					return `${costString} psi`;
-				}
-
-				function getModeTitleConcentration () {
-					return `conc., ${mode.concentration.duration} ${mode.concentration.unit}.`;
-				}
-			}
-		}
-	},
-
-	getBodyText (psi, renderer) {
-		const renderStack = [];
-		if (psi.entries) Renderer.get().recursiveRender(({entries: psi.entries, type: "entries"}), renderStack);
-		if (psi.focus) renderStack.push(Renderer.psionic.getFocusString(psi, renderer));
-		if (psi.modes) renderStack.push(...psi.modes.map(mode => Renderer.psionic.getModeString(mode, renderer)));
-		return renderStack.join("");
-	},
-
-	getDescriptionString: (psionic, renderer) => {
-		return `<p>${renderer.render({type: "inline", entries: [psionic.description]})}</p>`;
-	},
-
-	getFocusString: (psionic, renderer) => {
-		return `<p><span class="psi-focus-title">Psychic Focus.</span> ${renderer.render({type: "inline", entries: [psionic.focus]})}</p>`;
-	},
-
-	getModeString: (mode, renderer) => {
-		Renderer.psionic.enhanceMode(mode);
-
-		const renderStack = [];
-		renderer.recursiveRender(mode, renderStack, {depth: 2});
-		const modeString = renderStack.join("");
-		if (mode.submodes == null) return modeString;
-		const subModeString = Renderer.psionic.getSubModeString(mode.submodes, renderer);
-		return `${modeString}${subModeString}`;
-	},
-
-	getSubModeString (subModes, renderer) {
-		const fauxEntry = {
-			type: "list",
-			style: "list-hang-notitle",
-			items: [],
-		};
-
-		for (let i = 0; i < subModes.length; ++i) {
-			fauxEntry.items.push({
-				type: "item",
-				name: subModes[i].name,
-				entry: subModes[i].entries.join("<br>"),
+		if (mode.submodes) {
+			mode.submodes.forEach(sm => {
+				sm.name = [sm.name, Renderer.psionic._enhanceMode_getModeTitleBracketPart({mode: sm})].filter(Boolean).join(" ");
 			});
 		}
-		const renderStack = [];
-		renderer.recursiveRender(fauxEntry, renderStack, {depth: 2});
-		return renderStack.join("");
-	},
 
-	getTypeOrderString (psi) {
+		mode._isEnhanced = true;
+	}
+
+	static _enhanceMode_getModeTitleBracketPart ({mode}) {
+		const modeTitleBracketArray = [];
+
+		if (mode.cost) modeTitleBracketArray.push(Renderer.psionic._enhanceMode_getModeTitleCost({mode}));
+		if (mode.concentration) modeTitleBracketArray.push(Renderer.psionic._enhanceMode_getModeTitleConcentration({mode}));
+
+		if (modeTitleBracketArray.length === 0) return null;
+		return `(${modeTitleBracketArray.join("; ")})`;
+	}
+
+	static _enhanceMode_getModeTitleCost ({mode}) {
+		const costMin = mode.cost.min;
+		const costMax = mode.cost.max;
+		const costString = costMin === costMax ? costMin : `${costMin}-${costMax}`;
+		return `${costString} psi`;
+	}
+
+	static _enhanceMode_getModeTitleConcentration ({mode}) {
+		return `conc., ${mode.concentration.duration} ${mode.concentration.unit}.`;
+	}
+
+	/* -------------------------------------------- */
+
+	static getPsionicRenderableEntriesMeta (ent) {
+		const entriesContent = [];
+
+		return {
+			entryTypeOrder: `{@i ${Renderer.psionic.getTypeOrderString(ent)}}`,
+			entryContent: ent.entries ? {entries: ent.entries, type: "entries"} : null,
+			entryFocus: ent.focus ? `{@b {@i Psychic Focus.}} ${ent.focus}` : null,
+			entriesModes: ent.modes
+				? ent.modes
+					.flatMap(mode => Renderer.psionic._getModeEntries(mode))
+				: null,
+		};
+	}
+
+	static _getModeEntries (mode, renderer) {
+		Renderer.psionic.enhanceMode(mode);
+
+		return [
+			{
+				type: mode.type || "entries",
+				name: mode.name,
+				entries: mode.entries,
+			},
+			mode.submodes ? Renderer.psionic._getSubModesEntry(mode.submodes) : null,
+		]
+			.filter(Boolean);
+	}
+
+	static _getSubModesEntry (subModes) {
+		return {
+			type: "list",
+			style: "list-hang-notitle",
+			items: subModes
+				.map(sm => ({
+					type: "item",
+					name: sm.name,
+					entries: sm.entries,
+				})),
+		};
+	}
+
+	static getTypeOrderString (psi) {
 		const typeMeta = Parser.psiTypeToMeta(psi.type);
 		// if "isAltDisplay" is true, render as e.g. "Greater Discipline (Awakened)" rather than "Awakened Greater Discipline"
 		return typeMeta.hasOrder
 			? typeMeta.isAltDisplay ? `${typeMeta.full} (${psi.order})` : `${psi.order} ${typeMeta.full}`
 			: typeMeta.full;
-	},
+	}
 
-	getCompactRenderedString (psi) {
+	static getBodyHtml (ent, {renderer = null, entriesMeta = null} = {}) {
+		renderer ||= Renderer.get().setFirstSection(true);
+		entriesMeta ||= Renderer.psionic.getPsionicRenderableEntriesMeta(ent);
+
+		return `${entriesMeta.entryContent ? renderer.render(entriesMeta.entryContent) : ""}
+		${entriesMeta.entryFocus ? `<p>${renderer.render(entriesMeta.entryFocus)}</p>` : ""}
+		${entriesMeta.entriesModes ? entriesMeta.entriesModes.map(entry => renderer.render(entry, 2)).join("") : ""}`;
+	}
+
+	static getCompactRenderedString (ent) {
+		const renderer = Renderer.get().setFirstSection(true);
+		const entriesMeta = Renderer.psionic.getPsionicRenderableEntriesMeta(ent);
+
 		return `
-			${Renderer.utils.getExcludedTr({entity: psi, dataProp: "psionic", page: UrlUtil.PG_PSIONICS})}
-			${Renderer.utils.getNameTr(psi, {page: UrlUtil.PG_PSIONICS})}
+			${Renderer.utils.getExcludedTr({entity: ent, dataProp: "psionic", page: UrlUtil.PG_PSIONICS})}
+			${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_PSIONICS})}
 			<tr class="text"><td colspan="6">
-			<p><i>${Renderer.psionic.getTypeOrderString(psi)}</i></p>
-			${Renderer.psionic.getBodyText(psi, Renderer.get().setFirstSection(true))}
+			<p>${renderer.render(entriesMeta.entryTypeOrder)}</p>
+			${Renderer.psionic.getBodyHtml(ent, {renderer, entriesMeta})}
 			</td></tr>
 		`;
-	},
+	}
 };
 
-Renderer.rule = {
-	getCompactRenderedString (rule) {
+Renderer.rule = class {
+	static getCompactRenderedString (rule) {
 		return `
 			<tr><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(rule)}
 			</td></tr>
 		`;
-	},
+	}
 };
 
-Renderer.variantrule = {
-	getCompactRenderedString (rule) {
+Renderer.variantrule = class {
+	static getCompactRenderedString (rule) {
 		const cpy = MiscUtil.copyFast(rule);
 		delete cpy.name;
 		return `
@@ -9176,11 +9395,11 @@ Renderer.variantrule = {
 			${Renderer.get().setFirstSection(true).render(cpy)}
 			</td></tr>
 		`;
-	},
+	}
 };
 
-Renderer.table = {
-	getCompactRenderedString (it) {
+Renderer.table = class {
+	static getCompactRenderedString (it) {
 		it.type = it.type || "table";
 		const cpy = MiscUtil.copyFast(it);
 		delete cpy.name;
@@ -9191,9 +9410,9 @@ Renderer.table = {
 			${Renderer.get().setFirstSection(true).render(it)}
 			</td></tr>
 		`;
-	},
+	}
 
-	getConvertedEncounterOrNamesTable ({group, tableRaw, fnGetNameCaption, colLabel1}) {
+	static getConvertedEncounterOrNamesTable ({group, tableRaw, fnGetNameCaption, colLabel1}) {
 		const getPadded = (number) => {
 			if (tableRaw.diceExpression === "d100") return String(number).padStart(2, "0");
 			return String(number);
@@ -9223,17 +9442,17 @@ Renderer.table = {
 			].filter(Boolean)),
 			footnotes: tableRaw.footnotes,
 		};
-	},
+	}
 
-	getConvertedEncounterTableName (group, tableRaw) {
-		return `${group.name}${/\bencounters?\b/i.test(group.name) ? "" : " Encounters"}${tableRaw.minlvl && tableRaw.maxlvl ? ` (Levels ${tableRaw.minlvl}\u2014${tableRaw.maxlvl})` : ""}`;
-	},
+	static getConvertedEncounterTableName (group, tableRaw) {
+		return `${group.name}${tableRaw.caption ? ` ${tableRaw.caption}` : ""}${/\bencounters?\b/i.test(group.name) ? "" : " Encounters"}${tableRaw.minlvl && tableRaw.maxlvl ? ` (Levels ${tableRaw.minlvl}\u2014${tableRaw.maxlvl})` : ""}`;
+	}
 
-	getConvertedNameTableName (group, tableRaw) {
+	static getConvertedNameTableName (group, tableRaw) {
 		return `${group.name} Names \u2013 ${tableRaw.option}`;
-	},
+	}
 
-	getHeaderRowMetas (ent) {
+	static getHeaderRowMetas (ent) {
 		if (!ent.colLabels?.length && !ent.colLabelGroups?.length) return null;
 
 		if (ent.colLabels?.length) return [ent.colLabels];
@@ -9249,10 +9468,10 @@ Renderer.table = {
 
 		return [...new Array(maxHeight)]
 			.map((_, i) => padded.map(lbls => lbls[i]));
-	},
+	}
 
-	_RE_TABLE_ROW_DASHED_NUMBERS: /^\d+([-\u2012\u2013]\d+)?/,
-	getAutoConvertedRollMode (table, {headerRowMetas} = {}) {
+	static _RE_TABLE_ROW_DASHED_NUMBERS = /^\d+([-\u2012\u2013]\d+)?/;
+	static getAutoConvertedRollMode (table, {headerRowMetas} = {}) {
 		if (headerRowMetas === undefined) headerRowMetas = Renderer.table.getHeaderRowMetas(table);
 
 		if (!headerRowMetas || headerRowMetas.last().length < 2) return RollerUtil.ROLL_COL_NONE;
@@ -9260,61 +9479,103 @@ Renderer.table = {
 		const rollColMode = RollerUtil.getColRollType(headerRowMetas.last()[0]);
 		if (!rollColMode) return RollerUtil.ROLL_COL_NONE;
 
-		// scan the first column to ensure all rollable
-		if (!table.rows.every(it => {
-			if (it?.[0] == null) return false;
-			if (it?.[0]?.roll) return true;
-
-			if (typeof it[0] === "number") return Number.isInteger(it[0]);
-
-			// u2012 = figure dash; u2013 = en-dash
-			return typeof it[0] === "string" && Renderer.table._RE_TABLE_ROW_DASHED_NUMBERS.test(it[0]);
-		})) return RollerUtil.ROLL_COL_NONE;
+		if (!Renderer.table.isEveryRowRollable(table.rows)) return RollerUtil.ROLL_COL_NONE;
 
 		return rollColMode;
-	},
+	}
+
+	static isEveryRowRollable (rows) {
+		// scan the first column to ensure all rollable
+		return rows
+			.every(row => {
+				if (!row) return false;
+				const [cell] = row;
+				return Renderer.table.isRollableCell(cell);
+			});
+	}
+
+	static isRollableCell (cell) {
+		if (cell == null) return false;
+		if (cell?.roll) return true;
+
+		if (typeof cell === "number") return Number.isInteger(cell);
+
+		// u2012 = figure dash; u2013 = en-dash
+		return typeof cell === "string" && Renderer.table._RE_TABLE_ROW_DASHED_NUMBERS.test(cell);
+	}
 };
 
-Renderer.vehicle = {
-	CHILD_PROPS: ["movement", "weapon", "other", "action", "trait", "reaction", "control", "actionStation"],
+Renderer.vehicle = class {
+	static CHILD_PROPS = ["movement", "weapon", "other", "action", "trait", "reaction", "control", "actionStation"];
 
-	getCompactRenderedString (veh, opts) {
+	static getVehicleRenderableEntriesMeta (ent) {
+		return {
+			entryDamageImmunities: ent.immune
+				? `{@b Damage Immunities} ${Parser.getFullImmRes(ent.immune)}`
+				: null,
+			entryConditionImmunities: ent.conditionImmune
+				? `{@b Condition Immunities} ${Parser.getFullCondImm(ent.conditionImmune, {isEntry: true})}`
+				: null,
+		};
+	}
+
+	static getCompactRenderedString (veh, opts) {
 		return Renderer.vehicle.getRenderedString(veh, {...opts, isCompact: true});
-	},
+	}
 
-	getRenderedString (veh, opts) {
+	static getRenderedString (ent, opts) {
 		opts = opts || {};
 
-		if (veh.upgradeType) return Renderer.vehicle._getRenderedString_upgrade(veh, opts);
+		if (ent.upgradeType) return Renderer.vehicleUpgrade.getCompactRenderedString(ent, opts);
 
-		veh.vehicleType = veh.vehicleType || "SHIP";
-		switch (veh.vehicleType) {
-			case "SHIP": return Renderer.vehicle._getRenderedString_ship(veh, opts);
-			case "SPELLJAMMER": return Renderer.vehicle._getRenderedString_spelljammer(veh, opts);
-			case "INFWAR": return Renderer.vehicle._getRenderedString_infwar(veh, opts);
-			case "CREATURE": return Renderer.monster.getCompactRenderedString(veh, {...opts, isHideLanguages: true, isHideSenses: true, isCompact: false, page: UrlUtil.PG_VEHICLES});
-			case "OBJECT": return Renderer.object.getCompactRenderedString(veh, {...opts, isCompact: false, page: UrlUtil.PG_VEHICLES});
-			default: throw new Error(`Unhandled vehicle type "${veh.vehicleType}"`);
+		ent.vehicleType ||= "SHIP";
+		switch (ent.vehicleType) {
+			case "SHIP": return Renderer.vehicle._getRenderedString_ship(ent, opts);
+			case "SPELLJAMMER": return Renderer.vehicle._getRenderedString_spelljammer(ent, opts);
+			case "INFWAR": return Renderer.vehicle._getRenderedString_infwar(ent, opts);
+			case "CREATURE": return Renderer.monster.getCompactRenderedString(ent, {...opts, isHideLanguages: true, isHideSenses: true, isCompact: opts.isCompact ?? false, page: UrlUtil.PG_VEHICLES});
+			case "OBJECT": return Renderer.object.getCompactRenderedString(ent, {...opts, isCompact: opts.isCompact ?? false, page: UrlUtil.PG_VEHICLES});
+			default: throw new Error(`Unhandled vehicle type "${ent.vehicleType}"`);
 		}
-	},
+	}
 
-	getUpgradeSummary (it) {
-		return [
-			it.upgradeType ? it.upgradeType.map(t => Parser.vehicleTypeToFull(t)) : null,
-			it.prerequisite ? Renderer.utils.prerequisite.getHtml(it.prerequisite) : "",
-		].filter(Boolean).join(", ");
-	},
+	static ship = class {
+		static PROPS_RENDERABLE_ENTRIES_ATTRIBUTES = [
+			"entryCreatureCapacity",
+			"entryCargoCapacity",
+			"entryTravelPace",
+			"entryTravelPaceNote",
+		];
 
-	_getRenderedString_upgrade (it, opts) {
-		return $$`${Renderer.utils.getExcludedTr({entity: it, dataProp: "vehicleUpgrade", page: UrlUtil.PG_VEHICLES})}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_VEHICLES})}
-			<tr><td colspan="6"><i>${Renderer.vehicle.getUpgradeSummary(it)}</i></td></tr>
-			<tr><td class="divider" colspan="6"><div></div></td></tr>
-			<tr><td colspan="6">${Renderer.get().render({entries: it.entries}, 1)}</td></tr>`;
-	},
+		static getVehicleShipRenderableEntriesMeta (ent) {
+			// Render UA ship actions at the top, to match later printed layout
+			const entriesOtherActions = (ent.other || []).filter(it => it.name === "Actions");
+			const entriesOtherOthers = (ent.other || []).filter(it => it.name !== "Actions");
 
-	ship: {
-		getLocomotionEntries (loc) {
+			return {
+				entrySizeDimensions: `{@i ${Parser.sizeAbvToFull(ent.size)} vehicle${ent.dimensions ? ` (${ent.dimensions.join(" by ")})` : ""}}`,
+				entryCreatureCapacity: ent.capCrew != null || ent.capPassenger != null
+					? `{@b Creature Capacity} ${Renderer.vehicle.getShipCreatureCapacity(ent)}`
+					: null,
+				entryCargoCapacity: ent.capCargo != null
+					? `{@b Cargo Capacity} ${Renderer.vehicle.getShipCargoCapacity(ent)}`
+					: null,
+				entryTravelPace: ent.pace != null
+					? `{@b Travel Pace} ${ent.pace} miles per hour (${ent.pace * 24} miles per day)`
+					: null,
+				entryTravelPaceNote: ent.pace != null
+					? `[{@b Speed} ${ent.pace * 10} ft.]`
+					: null,
+				entryTravelPaceNoteTitle: ent.pace != null
+					? `Based on "Special Travel Pace," DMG p242`
+					: null,
+
+				entriesOtherActions: entriesOtherActions.length ? entriesOtherActions : null,
+				entriesOtherOthers: entriesOtherOthers.length ? entriesOtherOthers : null,
+			};
+		}
+
+		static getLocomotionEntries (loc) {
 			return {
 				type: "list",
 				style: "list-hang-notitle",
@@ -9326,9 +9587,9 @@ Renderer.vehicle = {
 					},
 				],
 			};
-		},
+		}
 
-		getSpeedEntries (spd) {
+		static getSpeedEntries (spd) {
 			return {
 				type: "list",
 				style: "list-hang-notitle",
@@ -9340,25 +9601,43 @@ Renderer.vehicle = {
 					},
 				],
 			};
-		},
+		}
 
-		getActionPart_ (renderer, veh) {
+		static getActionPart_ (renderer, veh) {
 			return renderer.render({entries: veh.action});
-		},
+		}
 
-		getSectionTitle_ (title) {
+		static getSectionTitle_ (title) {
 			return `<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${title}</h3></td></tr>`;
-		},
+		}
 
-		getSectionHpPart_ (renderer, sect, each) {
-			if (!sect.ac && !sect.hp) return "";
-			return `
-				<div><b>Armor Class</b> ${sect.ac}</div>
-				<div><b>Hit Points</b> ${sect.hp}${each ? ` each` : ""}${sect.dt ? ` (damage threshold ${sect.dt})` : ""}${sect.hpNote ? `; ${renderer.render(sect.hpNote)}` : ""}</div>
-			`;
-		},
+		static getSectionHpEntriesMeta_ ({entry, isEach = false}) {
+			return {
+				entryArmorClass: entry.ac
+					? `{@b Armor Class} ${entry.ac}`
+					: null,
+				entryHitPoints: entry.hp
+					? `{@b Hit Points} ${entry.hp}${isEach ? ` each` : ""}${entry.dt ? ` (damage threshold ${entry.dt})` : ""}${entry.hpNote ? `; ${entry.hpNote}` : ""}`
+					: null,
+			};
+		}
 
-		getControlSection_ (renderer, control) {
+		static getSectionHpPart_ (renderer, entry, isEach) {
+			const entriesMetaSection = Renderer.vehicle.ship.getSectionHpEntriesMeta_({entry, isEach});
+
+			const props = [
+				"entryArmorClass",
+				"entryHitPoints",
+			];
+
+			if (!props.some(prop => entriesMetaSection[prop])) return "";
+
+			return props
+				.map(prop => `<div>${renderer.render(entriesMetaSection[prop])}</div>`)
+				.join("");
+		}
+
+		static getControlSection_ (renderer, control) {
 			if (!control) return "";
 			return `
 				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">Control: ${control.name}</h3></td></tr>
@@ -9367,32 +9646,32 @@ Renderer.vehicle = {
 				<div class="rd__b--1">${renderer.render({entries: control.entries})}</div>
 				</td></tr>
 			`;
-		},
+		}
 
-		getMovementSection_ (renderer, move) {
+		static _getMovementSection_getLocomotionSection ({renderer, entry}) {
+			const asList = Renderer.vehicle.ship.getLocomotionEntries(entry);
+			return `<div class="rd__b--1">${renderer.render(asList)}</div>`;
+		}
+
+		static _getMovementSection_getSpeedSection ({renderer, entry}) {
+			const asList = Renderer.vehicle.ship.getSpeedEntries(entry);
+			return `<div class="rd__b--1">${renderer.render(asList)}</div>`;
+		}
+
+		static getMovementSection_ (renderer, move) {
 			if (!move) return "";
-
-			function getLocomotionSection (loc) {
-				const asList = Renderer.vehicle.ship.getLocomotionEntries(loc);
-				return `<div class="rd__b--1">${renderer.render(asList)}</div>`;
-			}
-
-			function getSpeedSection (spd) {
-				const asList = Renderer.vehicle.ship.getSpeedEntries(spd);
-				return `<div class="rd__b--1">${renderer.render(asList)}</div>`;
-			}
 
 			return `
 				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${move.isControl ? `Control and ` : ""}Movement: ${move.name}</h3></td></tr>
 				<tr><td colspan="6" class="mon__sect-row-inner">
 				${Renderer.vehicle.ship.getSectionHpPart_(renderer, move)}
-				${(move.locomotion || []).map(getLocomotionSection)}
-				${(move.speed || []).map(getSpeedSection)}
+				${(move.locomotion || []).map(entry => Renderer.vehicle.ship._getMovementSection_getLocomotionSection({renderer, entry})).join("")}
+				${(move.speed || []).map(entry => Renderer.vehicle.ship._getMovementSection_getSpeedSection({renderer, entry})).join("")}
 				</td></tr>
 			`;
-		},
+		}
 
-		getWeaponSection_ (renderer, weap) {
+		static getWeaponSection_ (renderer, weap) {
 			return `
 				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</h3></td></tr>
 				<tr><td colspan="6" class="mon__sect-row-inner">
@@ -9400,9 +9679,9 @@ Renderer.vehicle = {
 				${renderer.render({entries: weap.entries})}
 				</td></tr>
 			`;
-		},
+		}
 
-		getOtherSection_ (renderer, oth) {
+		static getOtherSection_ (renderer, oth) {
 			return `
 				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${oth.name}</h3></td></tr>
 				<tr><td colspan="6" class="mon__sect-row-inner">
@@ -9410,108 +9689,136 @@ Renderer.vehicle = {
 				${renderer.render({entries: oth.entries})}
 				</td></tr>
 			`;
-		},
+		}
 
-		getSizeDimensionsSection_ (renderer, veh) {
-			return `<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? ` (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>`;
-		},
-
-		getCrewCargoPageSection_ (renderer, veh) {
-			if (veh.capCrew == null && veh.capCargo == null && veh.pace == null) return "";
+		static getCrewCargoPaceSection_ (ent, {entriesMetaShip = null} = {}) {
+			entriesMetaShip ||= Renderer.vehicle.ship.getVehicleShipRenderableEntriesMeta(ent);
+			if (!Renderer.vehicle.ship.PROPS_RENDERABLE_ENTRIES_ATTRIBUTES.some(prop => entriesMetaShip[prop])) return "";
 
 			return `<tr class="text"><td colspan="6">
-				${veh.capCrew != null || veh.capPassenger != null ? `<div><b>Creature Capacity</b> ${Renderer.vehicle.getShipCreatureCapacity(veh)}</div>` : ""}
-				${veh.capCargo != null ? `<div><b>Cargo Capacity</b> ${Renderer.vehicle.getShipCargoCapacity(veh)}</div>` : ""}
-				${veh.pace != null ? `<div><b>Travel Pace</b> ${veh.pace} miles per hour (${veh.pace * 24} miles per day)</div>
-				<div class="ve-muted ve-small help-subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Speed</b> ${veh.pace * 10} ft.]</div>` : ""}
+				${entriesMetaShip.entryCreatureCapacity ? `<div>${Renderer.get().render(entriesMetaShip.entryCreatureCapacity)}</div>` : ""}
+				${entriesMetaShip.entryCargoCapacity ? `<div>${Renderer.get().render(entriesMetaShip.entryCargoCapacity)}</div>` : ""}
+				${entriesMetaShip.entryTravelPace ? `<div>${Renderer.get().render(entriesMetaShip.entryTravelPace)}</div>` : ""}
+				${entriesMetaShip.entryTravelPaceNote ? `<div class="ve-muted ve-small help-subtle ml-2" ${entriesMetaShip.entryTravelPaceNoteTitle ? `title="${entriesMetaShip.entryTravelPaceNote.qq()}"` : ""}>${Renderer.get().render(entriesMetaShip.entryTravelPaceNote)}</div>` : ""}
 			</td></tr>`;
-		},
-	},
+		}
+	};
 
-	spelljammer: {
-		getSummarySection_ (renderer, veh) {
-			const ptAc = veh.hull?.ac
-				? `${veh.hull.ac}${veh.hull.acFrom ? ` (${veh.hull.acFrom.join(", ")})` : ""}`
+	static spelljammer = class {
+		static getVehicleSpelljammerRenderableEntriesMeta (ent) {
+			const ptAc = ent.hull?.ac
+				? `${ent.hull.ac}${ent.hull.acFrom ? ` (${ent.hull.acFrom.join(", ")})` : ""}`
 				: "\u2014";
 
-			const ptSpeed = veh.speed != null
-				? Parser.getSpeedString(veh, {isSkipZeroWalk: true})
+			const ptSpeed = ent.speed != null
+				? Parser.getSpeedString(ent, {isSkipZeroWalk: true})
 				: "";
-			const ptPace = Renderer.vehicle.spelljammer._getPtPace(renderer, veh);
+			const ptPace = Renderer.vehicle.spelljammer._getVehicleSpelljammerRenderableEntriesMeta_getPtPace({ent});
 
 			const ptSpeedPace = [ptSpeed, ptPace].filter(Boolean).join(" ");
 
-			return `<tr><td colspan="6">
-				<table class="w-100 summary stripe-odd-table">
-					<tr>
-						<td class="col-6"><b>Armor Class:</b> ${ptAc}</td>
-						<td class="col-6"><b>Cargo:</b> ${veh.capCargo ? `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}` : "\u2014"}</td>
-					</tr>
-					<tr>
-						<td class="col-6"><b>Hit Points:</b> ${veh.hull?.hp ?? "\u2014"}</td>
-						<td class="col-6"><b>Crew:</b> ${veh.capCrew ?? "\u2014"}${veh.capCrewNote ? ` ${renderer.render(veh.capCrewNote)}` : ""}</td>
-					</tr>
-					<tr>
-						<td class="col-6"><b>Damage Threshold:</b> ${veh.hull?.dt ?? "\u2014"}</td>
-						<td class="col-6"><b>Keel/Beam:</b> ${(veh.dimensions || ["\u2014"]).join("/")}</td>
-					</tr>
-					<tr>
-						<td class="col-6"><b>Speed:</b> ${ptSpeedPace}</td>
-						<td class="col-6"><b>Cost:</b> ${veh.cost != null ? Parser.vehicleCostToFull(veh) : "\u2014"}</td>
-					</tr>
-				</table>
-			</td></tr>`;
-		},
+			return {
+				entryTableSummary: {
+					type: "table",
+					style: "summary",
+					colStyles: ["col-6", "col-6"],
+					rows: [
+						[
+							`{@b Armor Class:} ${ptAc}`,
+							`{@b Cargo:} ${ent.capCargo ? `${ent.capCargo} ton${ent.capCargo === 1 ? "" : "s"}` : "\u2014"}`,
+						],
+						[
+							`{@b Hit Points:} ${ent.hull?.hp ?? "\u2014"}`,
+							`{@b Crew:} ${ent.capCrew ?? "\u2014"}${ent.capCrewNote ? ` ${ent.capCrewNote}` : ""}`,
+						],
+						[
+							`{@b Damage Threshold:} ${ent.hull?.dt ?? "\u2014"}`,
+							`{@b Keel/Beam:} ${(ent.dimensions || ["\u2014"]).join("/")}`,
+						],
+						[
+							`{@b Speed:} ${ptSpeedPace}`,
+							`{@b Cost:} ${ent.cost != null ? Parser.vehicleCostToFull(ent) : "\u2014"}`,
+						],
+					],
+				},
+			};
+		}
 
-		_getPtPace (renderer, veh) {
-			if (!veh.pace) return "";
+		static _getVehicleSpelljammerRenderableEntriesMeta_getPtPace (ent) {
+			if (!ent.pace) return "";
 
-			const isMulti = Object.keys(veh.pace).length > 1;
+			const isMulti = Object.keys(ent.pace).length > 1;
 
 			const out = Parser.SPEED_MODES
 				.map(mode => {
-					const pace = veh.pace[mode];
+					const pace = ent.pace[mode];
 					if (!pace) return null;
 
 					const asNum = Parser.vulgarToNumber(pace);
-					return `<span class="help-subtle" title="${asNum * 24} miles per day">${isMulti && mode !== "walk" ? `${mode} ` : ""}${pace} mph</span>`;
+					return `{@tip ${isMulti && mode !== "walk" ? `${mode} ` : ""}${pace} mph|${asNum * 24} miles per day}`;
 				})
 				.filter(Boolean)
 				.join(", ");
 
 			return `(${out})`;
-		},
+		}
 
-		getWeaponSection_ (renderer, weap) {
-			const isMultiple = weap.count != null && weap.count > 1;
-			const ptAction = weap.action?.length
-				? weap.action.map(act => `<div class="mt-1">${renderer.render(act, 2)}</div>`).join("")
+		static getSummarySection_ (renderer, ent) {
+			const entriesMetaSpelljammer = Renderer.vehicle.spelljammer.getVehicleSpelljammerRenderableEntriesMeta(ent);
+
+			return `<tr><td colspan="6">${renderer.render(entriesMetaSpelljammer.entryTableSummary)}</td></tr>`;
+		}
+
+		static getSectionWeaponEntriesMeta (entry) {
+			const isMultiple = entry.count != null && entry.count > 1;
+
+			return {
+				entryName: `${isMultiple ? `${entry.count} ` : ""}${entry.name}${entry.crew ? ` (Crew: ${entry.crew}${isMultiple ? " each" : ""})` : ""}`,
+			};
+		}
+
+		static getWeaponSection_ (renderer, entry) {
+			const entriesMetaSectionWeapon = Renderer.vehicle.spelljammer.getSectionWeaponEntriesMeta(entry);
+
+			const ptAction = entry.action?.length
+				? entry.action.map(act => `<div class="mt-1">${renderer.render(act, 2)}</div>`).join("")
 				: "";
 			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${isMultiple ? `${weap.count} ` : ""}${weap.name}${weap.crew ? ` (Crew: ${weap.crew}${isMultiple ? " each" : ""})` : ""}</h3></td></tr>
+				<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">${entriesMetaSectionWeapon.entryName}</h3></td></tr>
 				<tr><td colspan="6" class="mon__sect-row-inner">
-				${Renderer.vehicle.spelljammer.getSectionHpCostPart_(renderer, weap)}
-				${weap.entries?.length ? `<div>${renderer.render({entries: weap.entries})}</div>` : ""}
+				${Renderer.vehicle.spelljammer.getSectionHpCostPart_(renderer, entry)}
+				${entry.entries?.length ? `<div>${renderer.render({entries: entry.entries})}</div>` : ""}
 				${ptAction}
 				</td></tr>
 			`;
-		},
+		}
 
-		getSectionHpCostPart_ (renderer, sect) {
-			const ptCosts = sect.costs?.length
-				? sect.costs.map(cost => {
-					return `${Parser.vehicleCostToFull(cost) || "\u2014"}${cost.note ? `  (${renderer.render(cost.note)})` : ""}`;
+		static getSectionHpCostEntriesMeta (entry) {
+			const ptCosts = entry.costs?.length
+				? entry.costs.map(cost => {
+					return `${Parser.vehicleCostToFull(cost) || "\u2014"}${cost.note ? ` (${cost.note})` : ""}`;
 				}).join(", ")
 				: "\u2014";
-			return `
-				<div><b>Armor Class:</b> ${sect.ac == null ? "\u2014" : sect.ac}</div>
-				<div><b>Hit Points:</b> ${sect.hp == null ? "\u2014" : sect.hp}</div>
-				<div class="mb-2"><b>Cost:</b> ${ptCosts}</div>
-			`;
-		},
-	},
 
-	_getAbilitySection (veh) {
+			return {
+				entryArmorClass: `{@b Armor Class:} ${entry.ac == null ? "\u2014" : entry.ac}`,
+				entryHitPoints: `{@b Hit Points:} ${entry.hp == null ? "\u2014" : entry.hp}`,
+				entryCost: `{@b Cost:} ${ptCosts}`,
+			};
+		}
+
+		static getSectionHpCostPart_ (renderer, entry) {
+			const entriesMetaSectionHpCost = Renderer.vehicle.spelljammer.getSectionHpCostEntriesMeta(entry);
+
+			return `
+				<div>${renderer.render(entriesMetaSectionHpCost.entryArmorClass)}</div>
+				<div>${renderer.render(entriesMetaSectionHpCost.entryHitPoints)}</div>
+				<div class="mb-2">${renderer.render(entriesMetaSectionHpCost.entryCost)}</div>
+			`;
+		}
+	};
+
+	static _getAbilitySection (veh) {
 		return Parser.ABIL_ABVS.some(it => veh[it] != null) ? `<tr><td colspan="6">
 			<table class="w-100 summary stripe-even-table">
 				<tr>
@@ -9532,66 +9839,73 @@ Renderer.vehicle = {
 				</tr>
 			</table>
 		</td></tr>` : "";
-	},
+	}
 
-	_getResImmVulnSection (veh) {
-		if (!veh.immune && !veh.conditionImmune) return "";
+	static _getResImmVulnSection (ent, {entriesMeta = null} = {}) {
+		entriesMeta ||= Renderer.vehicle.getVehicleRenderableEntriesMeta(ent);
+
+		const props = [
+			"entryDamageImmunities",
+			"entryConditionImmunities",
+		];
+
+		if (!props.some(prop => entriesMeta[prop])) return "";
 
 		return `<tr class="text"><td colspan="6">
-			${veh.immune ? `<div><b>Damage Immunities</b> ${Parser.getFullImmRes(veh.immune)}</div>` : ""}
-			${veh.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.getFullCondImm(veh.conditionImmune)}</div>` : ""}
+			${props.filter(prop => entriesMeta[prop]).map(prop => `<div>${Renderer.get().render(entriesMeta[prop])}</div>`).join("")}
 		</td></tr>`;
-	},
+	}
 
-	_getTraitSection (renderer, veh) {
+	static _getTraitSection (renderer, veh) {
 		return veh.trait ? `<tr class="mon__stat-header-underline"><td colspan="6"><h3 class="mon__sect-header-inner">Traits</h3></td></tr>
 		<tr><td colspan="6"><div class="border"></div></td></tr>
 		<tr class="text"><td colspan="6">
 		${Renderer.monster.getOrderedTraits(veh, renderer).map(it => it.rendered || renderer.render(it, 2)).join("")}
 		</td></tr>` : "";
-	},
+	}
 
-	_getRenderedString_ship (veh, opts) {
+	static _getRenderedString_ship (ent, opts) {
 		const renderer = Renderer.get();
+		const entriesMeta = Renderer.vehicle.getVehicleRenderableEntriesMeta(ent);
+		const entriesMetaShip = Renderer.vehicle.ship.getVehicleShipRenderableEntriesMeta(ent);
 
-		// Render UA ship actions at the top, to match later printed layout
-		const otherSectionActions = (veh.other || []).filter(it => it.name === "Actions");
-		const otherSectionOthers = (veh.other || []).filter(it => it.name !== "Actions");
-
-		const hasToken = veh.tokenUrl || veh.hasToken;
+		const hasToken = ent.tokenUrl || ent.hasToken;
 		const extraThClasses = !opts.isCompact && hasToken ? ["veh__name--token"] : null;
 
 		return `
-			${Renderer.utils.getExcludedTr({entity: veh, dataProp: "vehicle", page: UrlUtil.PG_VEHICLES})}
-			${Renderer.utils.getNameTr(veh, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
-			${Renderer.vehicle.ship.getSizeDimensionsSection_(renderer, veh)}
-			${Renderer.vehicle.ship.getCrewCargoPageSection_(renderer, veh)}
-			${Renderer.vehicle._getAbilitySection(veh)}
-			${Renderer.vehicle._getResImmVulnSection(veh)}
-			${veh.action ? Renderer.vehicle.ship.getSectionTitle_("Actions") : ""}
-			${veh.action ? `<tr><td colspan="6" class="mon__sect-row-inner">${Renderer.vehicle.ship.getActionPart_(renderer, veh)}</td></tr>` : ""}
-			${otherSectionActions.map(Renderer.vehicle.ship.getOtherSection_.bind(this, renderer)).join("")}
-			${veh.hull ? `${Renderer.vehicle.ship.getSectionTitle_("Hull")}
+			${Renderer.utils.getExcludedTr({entity: ent, dataProp: "vehicle", page: UrlUtil.PG_VEHICLES})}
+			${Renderer.utils.getNameTr(ent, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
+			<tr class="text"><td colspan="6">${Renderer.get().render(entriesMetaShip.entrySizeDimensions)}</td></tr>
+			${Renderer.vehicle.ship.getCrewCargoPaceSection_(ent, {entriesMetaShip})}
+			${Renderer.vehicle._getAbilitySection(ent)}
+			${Renderer.vehicle._getResImmVulnSection(ent, {entriesMeta})}
+			${ent.action ? Renderer.vehicle.ship.getSectionTitle_("Actions") : ""}
+			${ent.action ? `<tr><td colspan="6" class="mon__sect-row-inner">${Renderer.vehicle.ship.getActionPart_(renderer, ent)}</td></tr>` : ""}
+			${(entriesMetaShip.entriesOtherActions || []).map(Renderer.vehicle.ship.getOtherSection_.bind(this, renderer)).join("")}
+			${ent.hull ? `${Renderer.vehicle.ship.getSectionTitle_("Hull")}
 			<tr><td colspan="6" class="mon__sect-row-inner">
-			${Renderer.vehicle.ship.getSectionHpPart_(renderer, veh.hull)}
+			${Renderer.vehicle.ship.getSectionHpPart_(renderer, ent.hull)}
 			</td></tr>` : ""}
-			${Renderer.vehicle._getTraitSection(renderer, veh)}
-			${(veh.control || []).map(Renderer.vehicle.ship.getControlSection_.bind(this, renderer)).join("")}
-			${(veh.movement || []).map(Renderer.vehicle.ship.getMovementSection_.bind(this, renderer)).join("")}
-			${(veh.weapon || []).map(Renderer.vehicle.ship.getWeaponSection_.bind(this, renderer)).join("")}
-			${otherSectionOthers.map(Renderer.vehicle.ship.getOtherSection_.bind(this, renderer)).join("")}
+			${Renderer.vehicle._getTraitSection(renderer, ent)}
+			${(ent.control || []).map(Renderer.vehicle.ship.getControlSection_.bind(this, renderer)).join("")}
+			${(ent.movement || []).map(Renderer.vehicle.ship.getMovementSection_.bind(this, renderer)).join("")}
+			${(ent.weapon || []).map(Renderer.vehicle.ship.getWeaponSection_.bind(this, renderer)).join("")}
+			${(entriesMetaShip.entriesOtherOthers || []).map(Renderer.vehicle.ship.getOtherSection_.bind(this, renderer)).join("")}
 		`;
-	},
+	}
 
-	getShipCreatureCapacity (veh) {
+	static getShipCreatureCapacity (veh) {
 		return [
 			veh.capCrew ? `${veh.capCrew} crew` : null,
 			veh.capPassenger ? `${veh.capPassenger} passenger${veh.capPassenger === 1 ? "" : "s"}` : null,
 		].filter(Boolean).join(", ");
-	},
-	getShipCargoCapacity (veh) { return typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`; },
+	}
 
-	_getRenderedString_spelljammer (veh, opts) {
+	static getShipCargoCapacity (veh) {
+		return typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`;
+	}
+
+	static _getRenderedString_spelljammer (veh, opts) {
 		const renderer = Renderer.get();
 
 		const hasToken = veh.tokenUrl || veh.hasToken;
@@ -9603,102 +9917,154 @@ Renderer.vehicle = {
 			${Renderer.vehicle.spelljammer.getSummarySection_(renderer, veh)}
 			${(veh.weapon || []).map(Renderer.vehicle.spelljammer.getWeaponSection_.bind(this, renderer)).join("")}
 		`;
-	},
+	}
 
-	_getRenderedString_infwar (veh, opts) {
+	static infwar = class {
+		static PROPS_RENDERABLE_ENTRIES_ATTRIBUTES = [
+			"entryCreatureCapacity",
+			"entryCargoCapacity",
+			"entryArmorClass",
+			"entryHitPoints",
+			"entrySpeed",
+		];
+
+		static getVehicleInfwarRenderableEntriesMeta (ent) {
+			const dexMod = Parser.getAbilityModNumber(ent.dex);
+
+			return {
+				entrySizeWeight: `{@i ${Parser.sizeAbvToFull(ent.size)} vehicle (${ent.weight.toLocaleString()} lb.)}`,
+				entryCreatureCapacity: `{@b Creature Capacity} ${Renderer.vehicle.getInfwarCreatureCapacity(ent)}`,
+				entryCargoCapacity: `{@b Cargo Capacity} ${Parser.weightToFull(ent.capCargo)}`,
+				entryArmorClass: `{@b Armor Class} ${dexMod === 0 ? `19` : `${19 + dexMod} (19 while motionless)`}`,
+				entryHitPoints: `{@b Hit Points} ${ent.hp.hp} (damage threshold ${ent.hp.dt}, mishap threshold ${ent.hp.mt})`,
+				entrySpeed: `{@b Speed} ${ent.speed} ft.`,
+				entrySpeedNote: `[{@b Travel Pace} ${Math.floor(ent.speed / 10)} miles per hour (${Math.floor(ent.speed * 24 / 10)} miles per day)]`,
+				entrySpeedNoteTitle: `Based on "Special Travel Pace," DMG p242`,
+			};
+		}
+	};
+
+	static _getRenderedString_infwar (ent, opts) {
 		const renderer = Renderer.get();
-		const dexMod = Parser.getAbilityModNumber(veh.dex);
+		const entriesMeta = Renderer.vehicle.getVehicleRenderableEntriesMeta(ent);
+		const entriesMetaInfwar = Renderer.vehicle.infwar.getVehicleInfwarRenderableEntriesMeta(ent);
 
-		const hasToken = veh.tokenUrl || veh.hasToken;
+		const hasToken = ent.tokenUrl || ent.hasToken;
 		const extraThClasses = !opts.isCompact && hasToken ? ["veh__name--token"] : null;
 
 		return `
-			${Renderer.utils.getExcludedTr({entity: veh, datProp: "vehicle", page: UrlUtil.PG_VEHICLES})}
-			${Renderer.utils.getNameTr(veh, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
-			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle (${veh.weight.toLocaleString()} lb.)</i><br></td></tr>
+			${Renderer.utils.getExcludedTr({entity: ent, datProp: "vehicle", page: UrlUtil.PG_VEHICLES})}
+			${Renderer.utils.getNameTr(ent, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
+			<tr class="text"><td colspan="6">${renderer.render(entriesMetaInfwar.entrySizeWeight)}</td></tr>
 			<tr class="text"><td colspan="6">
-				<div><b>Creature Capacity</b> ${Renderer.vehicle.getInfwarCreatureCapacity(veh)}</div>
-				<div><b>Cargo Capacity</b> ${Parser.weightToFull(veh.capCargo)}</div>
-				<div><b>Armor Class</b> ${dexMod === 0 ? `19` : `${19 + dexMod} (19 while motionless)`}</div>
-				<div><b>Hit Points</b> ${veh.hp.hp} (damage threshold ${veh.hp.dt}, mishap threshold ${veh.hp.mt})</div>
-				<div><b>Speed</b> ${veh.speed} ft.</div>
-				<div class="ve-muted ve-small help-subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Travel Pace</b> ${Math.floor(veh.speed / 10)} miles per hour (${Math.floor(veh.speed * 24 / 10)} miles per day)]</div>
+				${Renderer.vehicle.infwar.PROPS_RENDERABLE_ENTRIES_ATTRIBUTES.map(prop => `<div>${renderer.render(entriesMetaInfwar[prop])}</div>`).join("")}
+				<div class="ve-muted ve-small help-subtle ml-2" title="${entriesMetaInfwar.entrySpeedNoteTitle.qq()}">${renderer.render(entriesMetaInfwar.entrySpeedNote)}</div>
 			</td></tr>
-			${Renderer.vehicle._getAbilitySection(veh)}
-			${Renderer.vehicle._getResImmVulnSection(veh)}
-			${Renderer.vehicle._getTraitSection(renderer, veh)}
-			${Renderer.monster.getCompactRenderedStringSection(veh, renderer, "Action Stations", "actionStation", 2)}
-			${Renderer.monster.getCompactRenderedStringSection(veh, renderer, "Reactions", "reaction", 2)}
+			${Renderer.vehicle._getAbilitySection(ent)}
+			${Renderer.vehicle._getResImmVulnSection(ent, {entriesMeta})}
+			${Renderer.vehicle._getTraitSection(renderer, ent)}
+			${Renderer.monster.getCompactRenderedStringSection(ent, renderer, "Action Stations", "actionStation", 2)}
+			${Renderer.monster.getCompactRenderedStringSection(ent, renderer, "Reactions", "reaction", 2)}
 		`;
-	},
+	}
 
-	getInfwarCreatureCapacity (veh) { return `${veh.capCreature} Medium creatures`; },
+	static getInfwarCreatureCapacity (veh) {
+		return `${veh.capCreature} Medium creatures`;
+	}
 
-	pGetFluff (veh) {
+	static pGetFluff (veh) {
 		return Renderer.utils.pGetFluff({
 			entity: veh,
 			fnGetFluffData: DataUtil.vehicleFluff.loadJSON.bind(DataUtil.vehicleFluff),
 			fluffProp: "vehicleFluff",
 		});
-	},
+	}
 
-	getTokenUrl (veh) {
+	static getTokenUrl (veh) {
 		return veh.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/vehicles/tokens/${Parser.sourceJsonToAbv(veh.source)}/${Parser.nameToTokenName(veh.name)}.png`);
-	},
+	}
 };
 
-Renderer.action = {
-	getCompactRenderedString (it) {
+Renderer.vehicleUpgrade = class {
+	static getUpgradeSummary (ent) {
+		return [
+			ent.upgradeType ? ent.upgradeType.map(t => Parser.vehicleTypeToFull(t)) : null,
+			ent.prerequisite ? Renderer.utils.prerequisite.getHtml(ent.prerequisite) : null,
+		]
+			.filter(Boolean)
+			.join(", ");
+	}
+
+	static getCompactRenderedString (ent, opts) {
+		return `${Renderer.utils.getExcludedTr({entity: ent, dataProp: "vehicleUpgrade", page: UrlUtil.PG_VEHICLES})}
+		${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_VEHICLES})}
+		<tr><td colspan="6"><i>${Renderer.vehicleUpgrade.getUpgradeSummary(ent)}</i></td></tr>
+		<tr><td class="divider" colspan="6"><div></div></td></tr>
+		<tr><td colspan="6">${Renderer.get().render({entries: ent.entries}, 1)}</td></tr>`;
+	}
+};
+
+Renderer.action = class {
+	static getCompactRenderedString (it) {
 		const cpy = MiscUtil.copyFast(it);
 		delete cpy.name;
 		return `${Renderer.utils.getExcludedTr({entity: it, dataProp: "action", page: UrlUtil.PG_ACTIONS})}
 		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_ACTIONS})}
 		<tr><td colspan="6">${Renderer.get().setFirstSection(true).render(cpy)}</td></tr>`;
-	},
+	}
 };
 
-Renderer.language = {
-	getCompactRenderedString (it) {
-		return Renderer.language.getRenderedString(it);
-	},
+Renderer.language = class {
+	static getLanguageRenderableEntriesMeta (ent) {
+		const hasMeta = ent.typicalSpeakers || ent.script;
 
-	getRenderedString (it, {isSkipNameRow = false} = {}) {
-		const allEntries = [];
+		const entriesContent = [];
 
-		const hasMeta = it.typicalSpeakers || it.script;
-
-		if (it.entries) allEntries.push(...it.entries);
-		if (it.dialects) {
-			allEntries.push(`This language is a family which includes the following dialects: ${it.dialects.sort(SortUtil.ascSortLower).join(", ")}. Creatures that speak different dialects of the same language can communicate with one another.`);
+		if (ent.entries) entriesContent.push(...ent.entries);
+		if (ent.dialects) {
+			entriesContent.push(`This language is a family which includes the following dialects: ${ent.dialects.sort(SortUtil.ascSortLower).join(", ")}. Creatures that speak different dialects of the same language can communicate with one another.`);
 		}
 
-		if (!allEntries.length && !hasMeta) allEntries.push("{@i No information available.}");
+		if (!entriesContent.length && !hasMeta) entriesContent.push("{@i No information available.}");
+
+		return {
+			entryType: ent.type ? `{@i ${ent.type.toTitleCase()} language}` : null,
+			entryTypicalSpeakers: ent.typicalSpeakers ? `{@b Typical Speakers:} ${ent.typicalSpeakers.join(", ")}` : null,
+			entryScript: ent.script ? `{@b Script:} ${ent.script}` : null,
+			entriesContent: entriesContent.length ? entriesContent : null,
+		};
+	}
+
+	static getCompactRenderedString (ent) {
+		return Renderer.language.getRenderedString(ent);
+	}
+
+	static getRenderedString (ent, {isSkipNameRow = false} = {}) {
+		const entriesMeta = Renderer.language.getLanguageRenderableEntriesMeta(ent);
 
 		return `
-		${Renderer.utils.getExcludedTr({entity: it, dataProp: "language", page: UrlUtil.PG_LANGUAGES})}
-		${isSkipNameRow ? "" : Renderer.utils.getNameTr(it, {page: UrlUtil.PG_LANGUAGES})}
-		${it.type ? `<tr class="text"><td colspan="6" class="pt-0"><i>${it.type.toTitleCase()} language</i></td></tr>` : ""}
-		${hasMeta ? `<tr class="text"><td colspan="6">
-		${it.typicalSpeakers ? `<div><b>Typical Speakers</b> ${Renderer.get().render(it.typicalSpeakers.join(", "))}</b>` : ""}
-		${it.script ? `<div><b>Script</b> ${Renderer.get().render(it.script)}</div>` : ""}
-		<div></div>
+		${Renderer.utils.getExcludedTr({entity: ent, dataProp: "language", page: UrlUtil.PG_LANGUAGES})}
+		${isSkipNameRow ? "" : Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_LANGUAGES})}
+		${entriesMeta.entryType ? `<tr class="text"><td colspan="6" class="pt-0">${Renderer.get().render(entriesMeta.entryType)}</td></tr>` : ""}
+		${entriesMeta.entryTypicalSpeakers || entriesMeta.entryScript ? `<tr class="text"><td colspan="6">
+		${[entriesMeta.entryTypicalSpeakers, entriesMeta.entryScript].filter(Boolean).map(entry => `<div>${Renderer.get().render(entry)}</div>`).join("")}
 		</td></tr>` : ""}
-		${allEntries.length ? `<tr class="text"><td colspan="6">
-		${Renderer.get().setFirstSection(true).render({entries: allEntries})}
+		${entriesMeta.entriesContent ? `<tr class="text"><td colspan="6">
+		${Renderer.get().setFirstSection(true).render({entries: entriesMeta.entriesContent})}
 		</td></tr>` : ""}`;
-	},
+	}
 
-	pGetFluff (it) {
+	static pGetFluff (it) {
 		return Renderer.utils.pGetFluff({
 			entity: it,
 			fnGetFluffData: DataUtil.languageFluff.loadJSON.bind(DataUtil.languageFluff),
 			fluffProp: "languageFluff",
 		});
-	},
+	}
 };
 
-Renderer.adventureBook = {
-	getEntryIdLookup (bookData, doThrowError = true) {
+Renderer.adventureBook = class {
+	static getEntryIdLookup (bookData, doThrowError = true) {
 		const out = {};
 		const titlesRel = {};
 		const titlesRelChapter = {};
@@ -9720,34 +10086,35 @@ Renderer.adventureBook = {
 								2,
 							),
 						);
-
-						if (obj.id) {
-							if (out[obj.id]) {
-								(out.__BAD = out.__BAD || []).push(obj.id);
-							} else {
-								out[obj.id] = {
-									chapter: chapIx,
-									entry: obj,
-									depth: depthStack.last(),
-								};
-
-								if (obj.name) {
-									out[obj.id].name = obj.name;
-
-									const cleanName = obj.name.toLowerCase();
-									out[obj.id].nameClean = cleanName;
-
-									// Relative title index for full-book mode
-									titlesRel[cleanName] = titlesRel[cleanName] || 0;
-									out[obj.id].ixTitleRel = titlesRel[cleanName]++;
-
-									// Relative title index per-chapter
-									MiscUtil.getOrSet(titlesRelChapter, chapIx, cleanName, -1);
-									out[obj.id].ixTitleRelChapter = ++titlesRelChapter[chapIx][cleanName];
-								}
-							}
-						}
 					});
+
+				if (!obj.id) return obj;
+
+				if (out[obj.id]) {
+					(out.__BAD = out.__BAD || []).push(obj.id);
+					return obj;
+				}
+
+				out[obj.id] = {
+					chapter: chapIx,
+					entry: obj,
+					depth: depthStack.last(),
+				};
+
+				if (obj.name) {
+					out[obj.id].name = obj.name;
+
+					const cleanName = obj.name.toLowerCase();
+					out[obj.id].nameClean = cleanName;
+
+					// Relative title index for full-book mode
+					titlesRel[cleanName] = titlesRel[cleanName] || 0;
+					out[obj.id].ixTitleRel = titlesRel[cleanName]++;
+
+					// Relative title index per-chapter
+					MiscUtil.getOrSet(titlesRelChapter, chapIx, cleanName, -1);
+					out[obj.id].ixTitleRelChapter = ++titlesRelChapter[chapIx][cleanName];
+				}
 
 				return obj;
 			},
@@ -9763,102 +10130,77 @@ Renderer.adventureBook = {
 
 		bookData.forEach((chap, _chapIx) => {
 			chapIx = _chapIx;
-			MiscUtil.getWalker({isNoModification: true}).walk(chap, handlers);
+			MiscUtil.getWalker({
+				isNoModification: true,
+				keyBlocklist: new Set(["mapParent"]),
+			})
+				.walk(chap, handlers);
 		});
 
 		if (doThrowError) if (out.__BAD) throw new Error(`IDs were already in storage: ${out.__BAD.map(it => `"${it}"`).join(", ")}`);
 
 		return out;
-	},
+	}
 
-	_isAltMissingCoverUsed: false,
-	getCoverUrl (contents) {
+	static _isAltMissingCoverUsed = false;
+	static getCoverUrl (contents) {
 		return contents.coverUrl
-			|| `${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/covers/blank${Math.random() <= 0.05 && !Renderer.adventureBook._isAltMissingCoverUsed && (Renderer.adventureBook._isAltMissingCoverUsed = true) ? "-alt" : ""}.png`;
-	},
+			|| `${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/covers/blank${Math.random() <= 0.05 && !Renderer.adventureBook._isAltMissingCoverUsed && (Renderer.adventureBook._isAltMissingCoverUsed = true) ? "-alt" : ""}.webp`;
+	}
 };
 
-Renderer.charoption = {
-	getCompactRenderedString (it) {
-		const prerequisite = Renderer.utils.prerequisite.getHtml(it.prerequisite);
-		const preText = Renderer.charoption.getOptionTypePreText(it.optionType);
+Renderer.charoption = class {
+	static getCompactRenderedString (ent) {
+		const prerequisite = Renderer.utils.prerequisite.getHtml(ent.prerequisite);
+		const preText = Renderer.charoption.getOptionTypePreText(ent);
 		return `
-		${Renderer.utils.getExcludedTr({entity: it, dataProp: "charoption", page: UrlUtil.PG_CHAR_CREATION_OPTIONS})}
-		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CHAR_CREATION_OPTIONS})}
+		${Renderer.utils.getExcludedTr({entity: ent, dataProp: "charoption", page: UrlUtil.PG_CHAR_CREATION_OPTIONS})}
+		${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_CHAR_CREATION_OPTIONS})}
 		<tr class="text"><td colspan="6">
 		${prerequisite ? `<p>${prerequisite}</p>` : ""}
-		${preText || ""}${Renderer.get().setFirstSection(true).render({type: "entries", entries: it.entries})}
+		${preText || ""}${Renderer.get().setFirstSection(true).render({type: "entries", entries: ent.entries})}
 		</td></tr>
 		`;
-	},
+	}
 
-	_OPTION_TYPE_ENTRIES: {
+	/* -------------------------------------------- */
+
+	static getCharoptionRenderableEntriesMeta (ent) {
+		const optsMapped = ent.optionType
+			.map(it => Renderer.charoption._OPTION_TYPE_ENTRIES[it])
+			.filter(Boolean);
+		if (!optsMapped.length) return null;
+
+		return {
+			entryOptionType: {type: "entries", entries: optsMapped},
+		};
+	}
+
+	static _OPTION_TYPE_ENTRIES = {
 		"RF:B": `{@note You may replace the standard feature of your background with this feature.}`,
 		"CS": `{@note See the {@adventure Character Secrets|IDRotF|0|character secrets} section for more information.}`,
-	},
-	getOptionTypePreText (optionTypes) {
-		const mapped = optionTypes.map(it => Renderer.charoption._OPTION_TYPE_ENTRIES[it]).filter(Boolean);
-		return mapped.length ? Renderer.get().render({type: "entries", entries: mapped}) : "";
-	},
+	};
 
-	pGetFluff (it) {
+	static getOptionTypePreText (ent) {
+		const meta = Renderer.charoption.getCharoptionRenderableEntriesMeta(ent);
+		if (!meta) return "";
+		return Renderer.get().render(meta.entryOptionType);
+	}
+
+	/* -------------------------------------------- */
+
+	static pGetFluff (it) {
 		return Renderer.utils.pGetFluff({
 			entity: it,
 			fnGetFluffData: DataUtil.charoptionFluff.loadJSON.bind(DataUtil.charoptionFluff),
 			fluffProp: "charoptionFluff",
 		});
-	},
+	}
 };
 
-Renderer.recipe = {
-	getCompactRenderedString (it) {
-		return `${Renderer.utils.getExcludedTr({entity: it, dataProp: "recipe", page: UrlUtil.PG_RECIPES})}
-		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_RECIPES})}
-		<tr><td colspan="6">
-		${Renderer.recipe.getBodyHtml(it)}
-		</td></tr>`;
-	},
-
-	getBodyHtml (it) {
-		const ptTime = Renderer.recipe.getTimeHtml(it);
-		const {ptMakes, ptServes} = Renderer.recipe.getMakesServesHtml(it);
-
-		return `<div class="ve-flex w-100 rd-recipes__wrp-recipe">
-			<div class="ve-flex-1 ve-flex-col br-1p pr-2">
-				${ptTime || ""}
-
-				${ptMakes || ""}
-				${ptServes || ""}
-
-				<div class="rd-recipes__wrp-ingredients ${ptMakes || ptServes ? "mt-1" : ""}">${Renderer.get().render({entries: it._fullIngredients}, 0)}</div>
-
-				${it._fullEquipment?.length ? `<div class="rd-recipes__wrp-ingredients mt-4"><div class="ve-flex-vh-center bold mb-1 small-caps">Equipment</div><div>${Renderer.get().render({entries: it._fullEquipment})}</div></div>` : ""}
-
-				${it.noteCook ? `<div class="w-100 ve-flex-col mt-4"><div class="ve-flex-vh-center bold mb-1 small-caps">Cook's Notes</div><div class="italic">${Renderer.get().render({entries: it.noteCook})}</div></div>` : ""}
-			</div>
-
-			<div class="pl-2 ve-flex-2 rd-recipes__wrp-instructions overflow-x-auto">
-				${Renderer.get().setFirstSection(true).render({entries: it.instructions}, 2)}
-			</div>
-		</div>`;
-	},
-
-	getMakesServesHtml (it) {
-		const ptMakes = it.makes ? `<div class="mb-2 ve-flex-v-center">
-			<div class="bold small-caps mr-2">Makes</div>
-			<div>${it._scaleFactor ? `${it._scaleFactor}× ` : ""}${Renderer.get().render(it.makes || it.serves)}</div>
-		</div>` : null;
-
-		const ptServes = it.serves ? `<div class="mb-2 ve-flex-v-center">
-			<div class="bold small-caps mr-2">Serves</div>
-			<div>${it.serves.min ?? it.serves.exact}${it.serves.min != null ? " to " : ""}${it.serves.max ?? ""}</div>
-		</div>` : null;
-
-		return {ptMakes, ptServes};
-	},
-
-	getTimeHtml (ent) {
-		if (!Object.keys(ent.time || {}).length) return "";
+Renderer.recipe = class {
+	static _getEntryMetasTime (ent) {
+		if (!Object.keys(ent.time || {}).length) return null;
 
 		return [
 			"total",
@@ -9885,30 +10227,104 @@ Renderer.recipe = {
 					.map(it => !suffix.length ? it : it.slice(0, -suffix.length))
 					.join(" to ");
 
+				return {
+					entryName: `{@b {@style ${prop.toTitleCase()} Time:|small-caps}}`,
+					entryContent: `${ptTime}${suffix}`,
+				};
+			});
+	}
+
+	static getRecipeRenderableEntriesMeta (ent) {
+		return {
+			entryMakes: ent.makes
+				? `{@b {@style Makes|small-caps}} ${ent._scaleFactor ? `${ent._scaleFactor}× ` : ""}${ent.makes}`
+				: null,
+			entryServes: ent.serves
+				? `{@b {@style Serves|small-caps}} ${ent.serves.min ?? ent.serves.exact}${ent.serves.min != null ? " to " : ""}${ent.serves.max ?? ""}`
+				: null,
+			entryMetasTime: Renderer.recipe._getEntryMetasTime(ent),
+			entryIngredients: {entries: ent._fullIngredients},
+			entryEquipment: ent._fullEquipment?.length
+				? {entries: ent._fullEquipment}
+				: null,
+			entryCooksNotes: ent.noteCook
+				? {entries: ent.noteCook}
+				: null,
+			entryInstructions: {entries: ent.instructions},
+		};
+	}
+
+	static getCompactRenderedString (ent) {
+		return `${Renderer.utils.getExcludedTr({entity: ent, dataProp: "recipe", page: UrlUtil.PG_RECIPES})}
+		${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_RECIPES})}
+		<tr><td colspan="6">
+		${Renderer.recipe.getBodyHtml(ent)}
+		</td></tr>`;
+	}
+
+	static getBodyHtml (ent) {
+		const entriesMeta = Renderer.recipe.getRecipeRenderableEntriesMeta(ent);
+
+		const ptTime = Renderer.recipe.getTimeHtml(ent, {entriesMeta});
+		const {ptMakes, ptServes} = Renderer.recipe.getMakesServesHtml(ent, {entriesMeta});
+
+		return `<div class="ve-flex w-100 rd-recipes__wrp-recipe">
+			<div class="ve-flex-1 ve-flex-col br-1p pr-2">
+				${ptTime || ""}
+
+				${ptMakes || ""}
+				${ptServes || ""}
+
+				<div class="rd-recipes__wrp-ingredients ${ptMakes || ptServes ? "mt-1" : ""}">${Renderer.get().render(entriesMeta.entryIngredients, 0)}</div>
+
+				${entriesMeta.entryEquipment ? `<div class="rd-recipes__wrp-ingredients mt-4"><div class="ve-flex-vh-center bold mb-1 small-caps">Equipment</div><div>${Renderer.get().render(entriesMeta.entryEquipment)}</div></div>` : ""}
+
+				${entriesMeta.entryCooksNotes ? `<div class="w-100 ve-flex-col mt-4"><div class="ve-flex-vh-center bold mb-1 small-caps">Cook's Notes</div><div class="italic">${Renderer.get().render(entriesMeta.entryCooksNotes)}</div></div>` : ""}
+			</div>
+
+			<div class="pl-2 ve-flex-2 rd-recipes__wrp-instructions overflow-x-auto">
+				${Renderer.get().setFirstSection(true).render(entriesMeta.entryInstructions, 2)}
+			</div>
+		</div>`;
+	}
+
+	static getMakesServesHtml (ent, {entriesMeta = null} = {}) {
+		entriesMeta ||= Renderer.recipe.getRecipeRenderableEntriesMeta(ent);
+		const ptMakes = entriesMeta.entryMakes ? `<div class="mb-2">${Renderer.get().render(entriesMeta.entryMakes)}</div>` : null;
+		const ptServes = entriesMeta.entryServes ? `<div class="mb-2">${Renderer.get().render(entriesMeta.entryServes)}</div>` : null;
+		return {ptMakes, ptServes};
+	}
+
+	static getTimeHtml (ent, {entriesMeta = null} = {}) {
+		entriesMeta ||= Renderer.recipe.getRecipeRenderableEntriesMeta(ent);
+		if (!entriesMeta.entryMetasTime) return "";
+
+		return entriesMeta.entryMetasTime
+			.map(({entryName, entryContent}, i, arr) => {
 				return `<div class="split-v-center ${i === arr.length - 1 ? "mb-2" : "mb-1p"}">
-					<b class="small-caps">${prop.toTitleCase()} Time:</b>
-					<span>${ptTime}${suffix}</span>
+					${Renderer.get().render(entryName)}
+					<span>${Renderer.get().render(entryContent)}</span>
 				</div>`;
 			})
 			.join("");
-	},
+	}
 
-	pGetFluff (it) {
+	static pGetFluff (it) {
 		return Renderer.utils.pGetFluff({
 			entity: it,
 			fnGetFluffData: DataUtil.recipeFluff.loadJSON.bind(DataUtil.recipeFluff),
 			fluffProp: "recipeFluff",
 		});
-	},
+	}
 
-	populateFullIngredients (r) {
+	static populateFullIngredients (r) {
 		r._fullIngredients = Renderer.applyAllProperties(MiscUtil.copyFast(r.ingredients));
 		if (r.equipment) r._fullEquipment = Renderer.applyAllProperties(MiscUtil.copyFast(r.equipment));
-	},
+	}
 
-	_RE_AMOUNT: /(?<tagAmount>{=amount\d+(?:\/[^}]+)?})/g,
-	_SCALED_PRECISION_LIMIT: 10 ** 6,
-	getScaledRecipe (r, scaleFactor) {
+	static _RE_AMOUNT = /(?<tagAmount>{=amount\d+(?:\/[^}]+)?})/g;
+	static _SCALED_PRECISION_LIMIT = 10 ** 6;
+	static getScaledRecipe (r, scaleFactor) {
 		const cpyR = MiscUtil.copyFast(r);
 
 		["ingredients", "equipment"]
@@ -9994,13 +10410,14 @@ Renderer.recipe = {
 		cpyR._scaleFactor = scaleFactor;
 
 		return cpyR;
-	},
+	}
 
-	_UNITS_SINGLE_TO_PLURAL_S: [
+	static _UNITS_SINGLE_TO_PLURAL_S = [
 		"bundle",
 		"cup",
 		"handful",
 		"ounce",
+		"packet",
 		"piece",
 		"pound",
 		"slice",
@@ -10010,15 +10427,15 @@ Renderer.recipe = {
 		"tablespoon",
 		"teaspoon",
 		"wedge",
-	],
-	_UNITS_SINGLE_TO_PLURAL_ES: [
+	];
+	static _UNITS_SINGLE_TO_PLURAL_ES = [
 		"dash",
 		"inch",
-	],
-	_FNS_SINGLE_TO_PLURAL: [],
-	_FNS_PLURAL_TO_SINGLE: [],
+	];
+	static _FNS_SINGLE_TO_PLURAL = [];
+	static _FNS_PLURAL_TO_SINGLE = [];
 
-	_getSingleizedUnits (str) {
+	static _getSingleizedUnits (str) {
 		if (!Renderer.recipe._FNS_PLURAL_TO_SINGLE.length) {
 			Renderer.recipe._FNS_PLURAL_TO_SINGLE = [
 				...Renderer.recipe._UNITS_SINGLE_TO_PLURAL_S.map(word => str => str.replace(new RegExp(`\\b${word.escapeRegexp()}s\\b`, "gi"), (...m) => m[0].slice(0, -1))),
@@ -10029,9 +10446,9 @@ Renderer.recipe = {
 		Renderer.recipe._FNS_PLURAL_TO_SINGLE.forEach(fn => str = fn(str));
 
 		return str;
-	},
+	}
 
-	_getPluralizedUnits (str) {
+	static _getPluralizedUnits (str) {
 		if (!Renderer.recipe._FNS_SINGLE_TO_PLURAL.length) {
 			Renderer.recipe._FNS_SINGLE_TO_PLURAL = [
 				...Renderer.recipe._UNITS_SINGLE_TO_PLURAL_S.map(word => str => str.replace(new RegExp(`\\b${word.escapeRegexp()}\\b`, "gi"), (...m) => `${m[0]}s`)),
@@ -10042,10 +10459,10 @@ Renderer.recipe = {
 		Renderer.recipe._FNS_SINGLE_TO_PLURAL.forEach(fn => str = fn(str));
 
 		return str;
-	},
+	}
 
 	/** Only apply the `@help` note to standalone amounts, i.e. those not in other tags. */
-	_mutWrapOriginalAmounts ({obj, objOriginal}) {
+	static _mutWrapOriginalAmounts ({obj, objOriginal}) {
 		const parts = [];
 		let stack = "";
 		let depth = 0;
@@ -10083,10 +10500,10 @@ Renderer.recipe = {
 				return `{@help ${m.last().tagAmount}|In the original recipe: ${originalValue}}`;
 			}))
 			.join("");
-	},
+	}
 
 	// region Custom hash ID packing/unpacking
-	getCustomHashId (it) {
+	static getCustomHashId (it) {
 		if (!it._scaleFactor) return null;
 
 		const {
@@ -10100,9 +10517,9 @@ Renderer.recipe = {
 			source,
 			scaleFactor ?? "",
 		].join("__").toLowerCase();
-	},
+	}
 
-	getUnpackedCustomHashId (customHashId) {
+	static getUnpackedCustomHashId (customHashId) {
 		if (!customHashId) return null;
 
 		const [, , scaleFactor] = customHashId.split("__").map(it => it.trim());
@@ -10113,21 +10530,28 @@ Renderer.recipe = {
 			_scaleFactor: scaleFactor ? Number(scaleFactor) : null,
 			customHashId,
 		};
-	},
+	}
 	// endregion
+
+	static async pGetModifiedRecipe (ent, customHashId) {
+		if (!customHashId) return ent;
+		const {_scaleFactor} = Renderer.recipe.getUnpackedCustomHashId(customHashId);
+		if (_scaleFactor == null) return ent;
+		return Renderer.recipe.getScaledRecipe(ent, _scaleFactor);
+	}
 };
 
-Renderer.card = {
-	getFullEntries (ent) {
+Renderer.card = class {
+	static getFullEntries (ent) {
 		const entries = [...ent.entries || []];
 		if (ent.suit && (ent.valueName || ent.value)) {
 			const suitAndValue = `${((ent.valueName || "") || Parser.numberToText(ent.value)).toTitleCase()} of ${ent.suit.toTitleCase()}`;
 			if (suitAndValue.toLowerCase() !== ent.name.toLowerCase()) entries.unshift(`{@i ${suitAndValue}}`);
 		}
 		return entries;
-	},
+	}
 
-	getCompactRenderedString (ent) {
+	static getCompactRenderedString (ent) {
 		const fullEntries = Renderer.card.getFullEntries(ent);
 		return `
 			${Renderer.utils.getNameTr(ent)}
@@ -10137,11 +10561,11 @@ Renderer.card = {
 			${Renderer.get().setFirstSection(true).render({type: "entries", entries: fullEntries}, 1)}` : ""}
 			</td></tr>
 		`;
-	},
+	}
 };
 
-Renderer.deck = {
-	getCompactRenderedString (ent) {
+Renderer.deck = class {
+	static getCompactRenderedString (ent) {
 		const lstCards = {
 			name: "Cards",
 			entries: [
@@ -10161,49 +10585,306 @@ Renderer.deck = {
 			${Renderer.get().setFirstSection(true).render(lstCards, 1)}
 			</td></tr>
 		`;
-	},
+	}
 };
 
-Renderer.skill = {
-	getCompactRenderedString (ent) {
+Renderer.skill = class {
+	static getCompactRenderedString (ent) {
 		return Renderer.generic.getCompactRenderedString(ent);
-	},
+	}
 };
 
-Renderer.sense = {
-	getCompactRenderedString (ent) {
+Renderer.sense = class {
+	static getCompactRenderedString (ent) {
 		return Renderer.generic.getCompactRenderedString(ent);
-	},
+	}
 };
 
-Renderer.itemMastery = {
-	getCompactRenderedString (ent) {
+Renderer.itemMastery = class {
+	static getCompactRenderedString (ent) {
 		return Renderer.generic.getCompactRenderedString(ent);
-	},
+	}
 };
 
-Renderer.generic = {
+Renderer.generic = class {
 	/**
-	 * @param it
+	 * @param ent
 	 * @param [opts]
 	 * @param [opts.isSkipNameRow]
 	 * @param [opts.isSkipPageRow]
 	 * @param [opts.dataProp]
 	 * @param [opts.page]
 	 */
-	getCompactRenderedString (it, opts) {
+	static getCompactRenderedString (ent, opts) {
 		opts = opts || {};
-		const prerequisite = Renderer.utils.prerequisite.getHtml(it.prerequisite);
+		const prerequisite = Renderer.utils.prerequisite.getHtml(ent.prerequisite);
 
 		return `
-		${opts.dataProp && opts.page ? Renderer.utils.getExcludedTr({entity: it, dataProp: opts.dataProp, page: opts.page}) : ""}
-		${opts.isSkipNameRow ? "" : Renderer.utils.getNameTr(it, {page: opts.page})}
+		${opts.dataProp && opts.page ? Renderer.utils.getExcludedTr({entity: ent, dataProp: opts.dataProp, page: opts.page}) : ""}
+		${opts.isSkipNameRow ? "" : Renderer.utils.getNameTr(ent, {page: opts.page})}
 		<tr class="text"><td colspan="6">
 		${prerequisite ? `<p>${prerequisite}</p>` : ""}
-		${Renderer.get().setFirstSection(true).render({entries: it.entries})}
+		${Renderer.get().setFirstSection(true).render({entries: ent.entries})}
 		</td></tr>
-		${opts.isSkipPageRow ? "" : Renderer.utils.getPageTr(it)}`;
-	},
+		${opts.isSkipPageRow ? "" : Renderer.utils.getPageTr(ent)}`;
+	}
+
+	/* -------------------------------------------- */
+
+	// region Mirror the schema
+	static FEATURE__SKILLS_ALL = Object.keys(Parser.SKILL_TO_ATB_ABV).sort(SortUtil.ascSortLower);
+
+	static FEATURE__TOOLS_ARTISANS = [
+		"alchemist's supplies",
+		"brewer's supplies",
+		"calligrapher's supplies",
+		"carpenter's tools",
+		"cartographer's tools",
+		"cobbler's tools",
+		"cook's utensils",
+		"glassblower's tools",
+		"jeweler's tools",
+		"leatherworker's tools",
+		"mason's tools",
+		"painter's supplies",
+		"potter's tools",
+		"smith's tools",
+		"tinker's tools",
+		"weaver's tools",
+		"woodcarver's tools",
+	];
+	static FEATURE__TOOLS_MUSICAL_INSTRUMENTS = [
+		"bagpipes",
+		"drum",
+		"dulcimer",
+		"flute",
+		"horn",
+		"lute",
+		"lyre",
+		"pan flute",
+		"shawm",
+		"viol",
+	];
+	static FEATURE__TOOLS_ALL = [
+		"artisan's tools",
+
+		...this.FEATURE__TOOLS_ARTISANS,
+		...this.FEATURE__TOOLS_MUSICAL_INSTRUMENTS,
+
+		"disguise kit",
+		"forgery kit",
+		"gaming set",
+		"herbalism kit",
+		"musical instrument",
+		"navigator's tools",
+		"thieves' tools",
+		"poisoner's kit",
+		"vehicles (land)",
+		"vehicles (water)",
+		"vehicles (air)",
+		"vehicles (space)",
+	];
+
+	static FEATURE__LANGUAGES_ALL = Parser.LANGUAGES_ALL.map(it => it.toLowerCase());
+	static FEATURE__LANGUAGES_STANDARD__CHOICE_OBJ = {
+		from: [
+			...Parser.LANGUAGES_STANDARD
+				.map(it => ({
+					name: it.toLowerCase(),
+					prop: "languageProficiencies",
+					group: "languagesStandard",
+				})),
+			...Parser.LANGUAGES_EXOTIC
+				.map(it => ({
+					name: it.toLowerCase(),
+					prop: "languageProficiencies",
+					group: "languagesExotic",
+				})),
+			...Parser.LANGUAGES_SECRET
+				.map(it => ({
+					name: it.toLowerCase(),
+					prop: "languageProficiencies",
+					group: "languagesSecret",
+				})),
+		],
+		groups: {
+			languagesStandard: {
+				name: "Standard Languages",
+			},
+			languagesExotic: {
+				name: "Exotic Languages",
+				hint: "With your DM's permission, you can choose an exotic language.",
+			},
+			languagesSecret: {
+				name: "Secret Languages",
+				hint: "With your DM's permission, you can choose a secret language.",
+			},
+		},
+	};
+
+	static FEATURE__SAVING_THROWS_ALL = [...Parser.ABIL_ABVS];
+	// endregion
+
+	/* -------------------------------------------- */
+
+	// region Should mirror the schema
+	static _SKILL_TOOL_LANGUAGE_KEYS__SKILL_ANY = new Set(["anySkill"]);
+	static _SKILL_TOOL_LANGUAGE_KEYS__TOOL_ANY = new Set(["anyTool", "anyArtisansTool"]);
+	static _SKILL_TOOL_LANGUAGE_KEYS__LANGAUGE_ANY = new Set(["anyLanguage", "anyStandardLanguage", "anyExoticLanguage"]);
+	// endregion
+
+	static getSkillSummary ({skillProfs, skillToolLanguageProfs, isShort = false}) {
+		return this._summariseProfs({
+			profGroupArr: skillProfs,
+			skillToolLanguageProfs,
+			setValid: new Set(this.FEATURE__SKILLS_ALL),
+			setValidAny: this._SKILL_TOOL_LANGUAGE_KEYS__SKILL_ANY,
+			isShort,
+			hoverTag: "skill",
+		});
+	}
+
+	static getToolSummary ({toolProfs, skillToolLanguageProfs, isShort = false}) {
+		return this._summariseProfs({
+			profGroupArr: toolProfs,
+			skillToolLanguageProfs,
+			setValid: new Set(this.FEATURE__TOOLS_ALL),
+			setValidAny: this._SKILL_TOOL_LANGUAGE_KEYS__TOOL_ANY,
+			isShort,
+		});
+	}
+
+	static getLanguageSummary ({languageProfs, skillToolLanguageProfs, isShort = false}) {
+		return this._summariseProfs({
+			profGroupArr: languageProfs,
+			skillToolLanguageProfs,
+			setValid: new Set(this.FEATURE__LANGUAGES_ALL),
+			setValidAny: this._SKILL_TOOL_LANGUAGE_KEYS__LANGAUGE_ANY,
+			isShort,
+		});
+	}
+
+	static _summariseProfs ({profGroupArr, skillToolLanguageProfs, setValid, setValidAny, isShort, hoverTag}) {
+		if (!profGroupArr?.length && !skillToolLanguageProfs?.length) return {summary: "", collection: []};
+
+		const collectionSet = new Set();
+
+		const handleProfGroup = (profGroup, {isValidate = true} = {}) => {
+			let sep = ", ";
+
+			const toJoin = Object.entries(profGroup)
+				.sort(([kA], [kB]) => this._summariseProfs_sortKeys(kA, kB))
+				.filter(([k, v]) => v && (!isValidate || setValid.has(k) || setValidAny.has(k)))
+				.map(([k, v], i) => {
+					const vMapped = this.getMappedAnyProficiency({keyAny: k, countRaw: v}) ?? v;
+
+					if (k === "choose") {
+						sep = "; ";
+
+						const chooseProfs = vMapped.from
+							.filter(s => !isValidate || setValid.has(s))
+							.map(s => {
+								collectionSet.add(s);
+								return this._summariseProfs_getEntry({str: s, isShort, hoverTag});
+							});
+						return `${isShort ? `${i === 0 ? "C" : "c"}hoose ` : ""}${v.count || 1} ${isShort ? `of` : `from`} ${chooseProfs.joinConjunct(", ", " or ")}`;
+					}
+
+					collectionSet.add(k);
+					return this._summariseProfs_getEntry({str: k, isShort, hoverTag});
+				});
+
+			return toJoin.join(sep);
+		};
+
+		const summary = [
+			...(profGroupArr || [])
+				// Skip validation (i.e. allow homebrew/etc.) for the specific proficiency array
+				.map(profGroup => handleProfGroup(profGroup, {isValidate: false})),
+			...(skillToolLanguageProfs || [])
+				.map(profGroup => handleProfGroup(profGroup)),
+		]
+			.filter(Boolean)
+			.join(` <i>or</i> `);
+
+		return {summary, collection: [...collectionSet].sort(SortUtil.ascSortLower)};
+	}
+
+	static _summariseProfs_sortKeys (a, b, {setValidAny = null} = {}) {
+		if (a === b) return 0;
+		if (a === "choose") return 2;
+		if (b === "choose") return -2;
+		if (setValidAny) {
+			if (setValidAny.has(a)) return 1;
+			if (setValidAny.has(b)) return -1;
+		}
+		return SortUtil.ascSort(a, b);
+	}
+
+	static _summariseProfs_getEntry ({str, isShort, hoverTag}) {
+		return isShort ? str.toTitleCase() : hoverTag ? `{@${hoverTag} ${str.toTitleCase()}}` : str.toTitleCase();
+	}
+
+	/* -------------------------------------------- */
+
+	static getMappedAnyProficiency ({keyAny, countRaw}) {
+		const mappedCount = !isNaN(countRaw) ? Number(countRaw) : 1;
+		if (mappedCount <= 0) return null;
+
+		switch (keyAny) {
+			case "anySkill": return {
+				name: mappedCount === 1 ? `Any Skill` : `Any ${mappedCount} Skills`,
+				from: this.FEATURE__SKILLS_ALL
+					.map(it => ({name: it, prop: "skillProficiencies"})),
+				count: mappedCount,
+			};
+			case "anyTool": return {
+				name: mappedCount === 1 ? `Any Tool` : `Any ${mappedCount} Tools`,
+				from: this.FEATURE__TOOLS_ALL
+					.map(it => ({name: it, prop: "toolProficiencies"})),
+				count: mappedCount,
+			};
+			case "anyArtisansTool": return {
+				name: mappedCount === 1 ? `Any Artisan's Tool` : `Any ${mappedCount} Artisan's Tools`,
+				from: this.FEATURE__TOOLS_ARTISANS
+					.map(it => ({name: it, prop: "toolProficiencies"})),
+				count: mappedCount,
+			};
+			case "anyMusicalInstrument": return {
+				name: mappedCount === 1 ? `Any Musical Instrument` : `Any ${mappedCount} Musical Instruments`,
+				from: this.FEATURE__TOOLS_MUSICAL_INSTRUMENTS
+					.map(it => ({name: it, prop: "toolProficiencies"})),
+				count: mappedCount,
+			};
+			case "anyLanguage": return {
+				name: mappedCount === 1 ? `Any Language` : `Any ${mappedCount} Languages`,
+				from: this.FEATURE__LANGUAGES_ALL
+					.map(it => ({name: it, prop: "languageProficiencies"})),
+				count: mappedCount,
+			};
+			case "anyStandardLanguage": return {
+				name: mappedCount === 1 ? `Any Standard Language` : `Any ${mappedCount} Standard Languages`,
+				...MiscUtil.copyFast(this.FEATURE__LANGUAGES_STANDARD__CHOICE_OBJ), // Use a generic choice object, as rules state DM can allow choosing any
+				count: mappedCount,
+			};
+			case "anyExoticLanguage": return {
+				name: mappedCount === 1 ? `Any Exotic Language` : `Any ${mappedCount} Exotic Languages`,
+				...MiscUtil.copyFast(this.FEATURE__LANGUAGES_STANDARD__CHOICE_OBJ), // Use a generic choice object, as rules state DM can allow choosing any
+				count: mappedCount,
+			};
+			case "anySavingThrow": return {
+				name: mappedCount === 1 ? `Any Saving Throw` : `Any ${mappedCount} Saving Throws`,
+				from: this.FEATURE__SAVING_THROWS_ALL
+					.map(it => ({name: it, prop: "savingThrowProficiencies"})),
+				count: mappedCount,
+			};
+
+			case "anyWeapon": throw new Error(`Property handling for "anyWeapon" is unimplemented!`);
+			case "anyArmor": throw new Error(`Property handling for "anyArmor" is unimplemented!`);
+
+			default: return null;
+		}
+	}
 };
 
 Renderer.hover = {
@@ -10438,6 +11119,49 @@ Renderer.hover = {
 			const fnBind = Renderer.hover.getFnBindListenersCompact(page);
 			if (fnBind) fnBind(toRender, $content);
 		}
+	},
+
+	// (Baked into render strings)
+	handleInlineMouseOver (evt, ele, entry, opts) {
+		Renderer.hover._doInit();
+
+		entry = entry || JSON.parse(ele.dataset.vetEntry);
+
+		let meta = Renderer.hover._handleGenericMouseOverStart({evt, ele});
+		if (meta == null) return;
+
+		meta.isLoading = false;
+
+		// Reset cursor
+		ele.style.cursor = "";
+
+		// Check if we're still hovering the entity
+		if (!meta || (!meta.isHovered && !meta.isPermanent)) return;
+
+		const tmpEvt = meta._tmpEvt;
+		delete meta._tmpEvt;
+
+		const win = (evt.view || {}).window;
+
+		const $content = Renderer.hover.$getHoverContent_generic(entry, opts);
+
+		if (meta.windowMeta && !meta.isPermanent) {
+			meta.windowMeta.doClose();
+			meta.windowMeta = null;
+		}
+
+		meta.windowMeta = Renderer.hover.getShowWindow(
+			$content,
+			Renderer.hover.getWindowPositionFromEvent(tmpEvt || evt, {isPreventFlicker: !meta.isPermanent}),
+			{
+				title: entry?.name || "",
+				isPermanent: meta.isPermanent,
+				pageUrl: null,
+				cbClose: () => meta.isHovered = meta.isPermanent = meta.isLoading = false,
+				isBookContent: true,
+				sourceData: entry,
+			},
+		);
 	},
 
 	async pGetHoverableFluff (page, source, hash, opts) {
@@ -11183,7 +11907,7 @@ Renderer.hover = {
 
 	_getShowWindow_doZIndexToFront ({$hov, hoverWindow, hoverId}) {
 		const nxtZIndex = Renderer.hover._getNextZIndex(hoverId);
-		Renderer.hover._getNextZIndex({$hov, hoverWindow}, nxtZIndex);
+		Renderer.hover._getShowWindow_setZIndex({$hov, hoverWindow}, nxtZIndex);
 	},
 
 	/**
@@ -11212,6 +11936,13 @@ Renderer.hover = {
 
 	updatePredefinedHover (id, entry) {
 		Renderer.hover._entryCache[id] = entry;
+	},
+
+	getInlineHover (entry, opts) {
+		return {
+			// Re-use link handlers, as the inline version is a simplified version
+			html: `onmouseover="Renderer.hover.handleInlineMouseOver(event, this)" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)" data-vet-entry="${JSON.stringify(entry).qq()}" ${opts ? `data-vet-opts="${JSON.stringify(opts).qq()}"` : ""} ${Renderer.hover.getPreventTouchString()}`,
+		};
 	},
 
 	getPreventTouchString () {
@@ -11301,27 +12032,12 @@ Renderer.hover = {
 	async pApplyCustomHashId (page, ent, customHashId) {
 		switch (page) {
 			case UrlUtil.PG_BESTIARY: {
-				if (!customHashId) {
-					Renderer.monster.initParsed(ent);
-					return ent;
-				}
-
-				const {_scaledCr, _scaledSpellSummonLevel, _scaledClassSummonLevel} = Renderer.monster.getUnpackedCustomHashId(customHashId);
-				if (_scaledCr != null) ent = await ScaleCreature.scale(ent, _scaledCr);
-				else if (_scaledSpellSummonLevel != null) ent = await ScaleSpellSummonedCreature.scale(ent, _scaledSpellSummonLevel);
-				else if (_scaledClassSummonLevel != null) ent = await ScaleClassSummonedCreature.scale(ent, _scaledClassSummonLevel);
-
-				Renderer.monster.updateParsed(ent);
-
-				return ent;
+				const out = await Renderer.monster.pGetModifiedCreature(ent, customHashId);
+				Renderer.monster.updateParsed(out);
+				return out;
 			}
 
-			case UrlUtil.PG_RECIPES: {
-				if (!customHashId) return ent;
-				const {_scaleFactor} = Renderer.recipe.getUnpackedCustomHashId(customHashId);
-				if (_scaleFactor == null) return ent;
-				return Renderer.recipe.getScaledRecipe(ent, _scaleFactor);
-			}
+			case UrlUtil.PG_RECIPES: return Renderer.recipe.pGetModifiedRecipe(ent, customHashId);
 
 			default: return ent;
 		}
@@ -11364,6 +12080,7 @@ Renderer.hover = {
 			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return Renderer.charoption.getCompactRenderedString;
 			case UrlUtil.PG_RECIPES: return Renderer.recipe.getCompactRenderedString;
 			case UrlUtil.PG_CLASS_SUBCLASS_FEATURES: return Renderer.hover.getGenericCompactRenderedString;
+			case UrlUtil.PG_CREATURE_FEATURES: return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_DECKS: return Renderer.deck.getCompactRenderedString;
 			// region props
 			case "classfeature":
@@ -11372,6 +12089,7 @@ Renderer.hover = {
 			case "subclassfeature":
 			case "subclassFeature":
 				return Renderer.hover.getGenericCompactRenderedString;
+			case "citation": return Renderer.hover.getGenericCompactRenderedString;
 			// endregion
 			default:
 				if (Renderer[page]?.getCompactRenderedString) return Renderer[page].getCompactRenderedString;

@@ -2,8 +2,7 @@
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 globalThis.IS_DEPLOYED = undefined;
-globalThis.VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.188.1"/* 5ETOOLS_VERSION__CLOSE */;
-globalThis.DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
+globalThis.VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.197.4"/* 5ETOOLS_VERSION__CLOSE */;
 globalThis.DEPLOYED_IMG_ROOT = undefined;
 // for the roll20 script to set
 globalThis.IS_VTT = false;
@@ -118,7 +117,7 @@ String.prototype.toTitleCase = String.prototype.toTitleCase || function () {
 	for (let i = 0; i < len1; i++) {
 		str = str.replace(
 			StrUtil._TITLE_UPPER_WORDS_PLURAL_RE[i],
-			`${StrUtil.TITLE_UPPER_WORDS_PLURAL[i].toUpperCase()}`,
+			`${StrUtil.TITLE_UPPER_WORDS_PLURAL[i].slice(0, -1).toUpperCase()}${StrUtil.TITLE_UPPER_WORDS_PLURAL[i].slice(-1).toLowerCase()}`,
 		);
 	}
 
@@ -301,8 +300,8 @@ globalThis.StrUtil = {
 	// Certain minor words should be left lowercase unless they are the first or last words in the string
 	TITLE_LOWER_WORDS: ["a", "an", "the", "and", "but", "or", "for", "nor", "as", "at", "by", "for", "from", "in", "into", "near", "of", "on", "onto", "to", "with", "over", "von"],
 	// Certain words such as initialisms or acronyms should be left uppercase
-	TITLE_UPPER_WORDS: ["Id", "Tv", "Dm", "Ok", "Npc", "Pc", "Tpk", "Wip"],
-	TITLE_UPPER_WORDS_PLURAL: ["Ids", "Tvs", "Dms", "Oks", "Npcs", "Pcs", "Tpks", "Wips"], // (Manually pluralize, to avoid infinite loop)
+	TITLE_UPPER_WORDS: ["Id", "Tv", "Dm", "Ok", "Npc", "Pc", "Tpk", "Wip", "Dc"],
+	TITLE_UPPER_WORDS_PLURAL: ["Ids", "Tvs", "Dms", "Oks", "Npcs", "Pcs", "Tpks", "Wips", "Dcs"], // (Manually pluralize, to avoid infinite loop)
 
 	IRREGULAR_PLURAL_WORDS: {
 		"cactus": "cacti",
@@ -349,6 +348,17 @@ globalThis.StrUtil = {
 
 	toTitleCase (str) { return str.toTitleCase(); },
 	qq (str) { return (str = str || "").qq(); },
+};
+
+globalThis.NumberUtil = class {
+	static toFixedNumber (num, toFixed) {
+		if (num == null || isNaN(num)) return num;
+
+		num = Number(num);
+		if (!num) return num;
+
+		return Number(num.toFixed(toFixed));
+	}
 };
 
 globalThis.CleanUtil = {
@@ -428,6 +438,7 @@ CleanUtil.STR_REPLACEMENTS = {
 	"‑": "\\u2011",
 	"−": "\\u2212",
 	" ": "\\u00A0",
+	" ": "\\u2007",
 };
 CleanUtil.SHARED_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.SHARED_REPLACEMENTS).join("|"), "g");
 CleanUtil.STR_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.STR_REPLACEMENTS).join("|"), "g");
@@ -436,8 +447,8 @@ CleanUtil._ELLIPSIS_COLLAPSE_REGEX = /\s*(\.\s*\.\s*\.)/g;
 CleanUtil._DASH_COLLAPSE_REGEX = /[ ]*([\u2014\u2013])[ ]*/g;
 
 // SOURCES =============================================================================================================
-globalThis.SourceUtil = {
-	ADV_BOOK_GROUPS: [
+globalThis.SourceUtil = class {
+	static ADV_BOOK_GROUPS = [
 		{group: "core", displayName: "Core"},
 		{group: "supplement", displayName: "Supplements"},
 		{group: "setting", displayName: "Settings"},
@@ -446,65 +457,81 @@ globalThis.SourceUtil = {
 		{group: "prerelease", displayName: "Prerelease"},
 		{group: "homebrew", displayName: "Homebrew"},
 		{group: "screen", displayName: "Screens"},
+		{group: "recipe", displayName: "Recipes"},
 		{group: "other", displayName: "Miscellaneous"},
-	],
+	];
 
-	_subclassReprintLookup: {},
-	async pInitSubclassReprintLookup () {
+	static _subclassReprintLookup = {};
+	static async pInitSubclassReprintLookup () {
 		SourceUtil._subclassReprintLookup = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/generated/gendata-subclass-lookup.json`);
-	},
+	}
 
-	isSubclassReprinted (className, classSource, subclassShortName, subclassSource) {
+	static isSubclassReprinted (className, classSource, subclassShortName, subclassSource) {
 		const fromLookup = MiscUtil.get(SourceUtil._subclassReprintLookup, classSource, className, subclassSource, subclassShortName);
 		return fromLookup ? fromLookup.isReprinted : false;
-	},
+	}
+
+	static isKnownSource (source) {
+		return SourceUtil.isSiteSource(source)
+			|| (typeof PrereleaseUtil !== "undefined" && PrereleaseUtil.hasSourceJson(source))
+			|| (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(source));
+	}
 
 	/** I.e., not homebrew. */
-	isSiteSource (source) { return !!Parser.SOURCE_JSON_TO_FULL[source]; },
+	static isSiteSource (source) { return !!Parser.SOURCE_JSON_TO_FULL[source]; }
 
-	isAdventure (source) {
+	static isAdventure (source) {
 		if (source instanceof FilterItem) source = source.item;
 		return Parser.SOURCES_ADVENTURES.has(source);
-	},
+	}
 
-	isCoreOrSupplement (source) {
+	static isCoreOrSupplement (source) {
 		if (source instanceof FilterItem) source = source.item;
 		return Parser.SOURCES_CORE_SUPPLEMENTS.has(source);
-	},
+	}
 
-	isNonstandardSource (source) {
+	static isNonstandardSource (source) {
 		if (source == null) return false;
 		return (
 			(typeof BrewUtil2 === "undefined" || !BrewUtil2.hasSourceJson(source))
 				&& SourceUtil.isNonstandardSourceWotc(source)
 		)
 			|| SourceUtil.isPrereleaseSource(source);
-	},
+	}
 
-	isPartneredSourceWotc (source) {
+	static isPartneredSourceWotc (source) {
 		if (source == null) return false;
 		return Parser.SOURCES_PARTNERED_WOTC.has(source);
-	},
+	}
+
+	static isLegacySourceWotc (source) {
+		if (source == null) return false;
+		return source === Parser.SRC_VGM || source === Parser.SRC_MTF;
+	}
 
 	// TODO(Future) remove this in favor of simply checking existence in `PrereleaseUtil`
 	// TODO(Future) cleanup uses of `PrereleaseUtil.hasSourceJson` to match
-	isPrereleaseSource (source) {
+	static isPrereleaseSource (source) {
 		if (source == null) return false;
 		if (typeof PrereleaseUtil !== "undefined" && PrereleaseUtil.hasSourceJson(source)) return true;
 		return source.startsWith(Parser.SRC_UA_PREFIX)
 			|| source.startsWith(Parser.SRC_UA_ONE_PREFIX);
-	},
+	}
 
-	isNonstandardSourceWotc (source) {
-		return source.startsWith(Parser.SRC_UA_PREFIX) || source.startsWith(Parser.SRC_UA_ONE_PREFIX) || source.startsWith(Parser.SRC_PS_PREFIX) || source.startsWith(Parser.SRC_AL_PREFIX) || source.startsWith(Parser.SRC_MCVX_PREFIX) || Parser.SOURCES_NON_STANDARD_WOTC.has(source);
-	},
+	static isNonstandardSourceWotc (source) {
+		return SourceUtil.isPrereleaseSource(source)
+			|| source.startsWith(Parser.SRC_PS_PREFIX)
+			|| source.startsWith(Parser.SRC_AL_PREFIX)
+			|| source.startsWith(Parser.SRC_MCVX_PREFIX)
+			|| Parser.SOURCES_NON_STANDARD_WOTC.has(source);
+	}
 
-	FILTER_GROUP_STANDARD: 0,
-	FILTER_GROUP_PARTNERED: 1,
-	FILTER_GROUP_NON_STANDARD: 2,
-	FILTER_GROUP_HOMEBREW: 3,
+	static FILTER_GROUP_STANDARD = 0;
+	static FILTER_GROUP_PARTNERED = 1;
+	static FILTER_GROUP_NON_STANDARD = 2;
+	static FILTER_GROUP_HOMEBREW = 3;
 
-	getFilterGroup (source) {
+	static getFilterGroup (source) {
 		if (source instanceof FilterItem) source = source.item;
 		if (
 			(typeof PrereleaseUtil !== "undefined" && PrereleaseUtil.hasSourceJson(source))
@@ -513,9 +540,9 @@ globalThis.SourceUtil = {
 		if (typeof BrewUtil2 !== "undefined" && BrewUtil2.hasSourceJson(source)) return SourceUtil.FILTER_GROUP_HOMEBREW;
 		if (SourceUtil.isPartneredSourceWotc(source)) return SourceUtil.FILTER_GROUP_PARTNERED;
 		return SourceUtil.FILTER_GROUP_STANDARD;
-	},
+	}
 
-	getAdventureBookSourceHref (source, page) {
+	static getAdventureBookSourceHref (source, page) {
 		if (!source) return null;
 		source = source.toLowerCase();
 
@@ -533,13 +560,13 @@ globalThis.SourceUtil = {
 		mappedSource = mappedSource.toLowerCase();
 
 		return `${docPage}#${[mappedSource, page ? `page:${page}` : null].filter(Boolean).join(HASH_PART_SEP)}`;
-	},
+	}
 
-	getEntitySource (it) { return it.source || it.inherits?.source; },
+	static getEntitySource (it) { return it.source || it.inherits?.source; }
 };
 
 // CURRENCY ============================================================================================================
-globalThis.CurrencyUtil = {
+globalThis.CurrencyUtil = class {
 	/**
 	 * Convert 10 gold -> 1 platinum, etc.
 	 * @param obj Object of the form {cp: 123, sp: 456, ...} (values optional)
@@ -550,7 +577,7 @@ globalThis.CurrencyUtil = {
 	 * @param [opts.isPopulateAllValues] If all currency properties should be be populated, even if no currency of that
 	 * type is being returned (i.e. zero out unused coins).
 	 */
-	doSimplifyCoins (obj, opts) {
+	static doSimplifyCoins (obj, opts) {
 		opts = opts || {};
 
 		const conversionTable = opts.currencyConversionTable || Parser.getCurrencyConversionTable(opts.currencyConversionId);
@@ -630,23 +657,23 @@ globalThis.CurrencyUtil = {
 		if (opts.isPopulateAllValues) normalized.forEach(coinMeta => obj[coinMeta.coin] = obj[coinMeta.coin] || 0);
 
 		return obj;
-	},
+	}
 
 	/**
 	 * Convert a collection of coins into an equivalent value in copper.
 	 * @param obj Object of the form {cp: 123, sp: 456, ...} (values optional)
 	 */
-	getAsCopper (obj) {
+	static getAsCopper (obj) {
 		return Parser.FULL_CURRENCY_CONVERSION_TABLE
 			.map(currencyMeta => (obj[currencyMeta.coin] || 0) * (1 / currencyMeta.mult))
 			.reduce((a, b) => a + b, 0);
-	},
+	}
 
 	/**
 	 * Convert a collection of coins into an equivalent number of coins of the highest denomination.
 	 * @param obj Object of the form {cp: 123, sp: 456, ...} (values optional)
 	 */
-	getAsSingleCurrency (obj) {
+	static getAsSingleCurrency (obj) {
 		const simplified = CurrencyUtil.doSimplifyCoins({...obj});
 
 		if (Object.keys(simplified).length === 1) return simplified;
@@ -665,7 +692,24 @@ globalThis.CurrencyUtil = {
 			});
 
 		return out;
-	},
+	}
+
+	static getCombinedCurrency (currencyA, currencyB) {
+		const out = {};
+
+		[currencyA, currencyB]
+			.forEach(currency => {
+				Object.entries(currency)
+					.forEach(([coin, cnt]) => {
+						if (cnt == null) return;
+						if (isNaN(cnt)) throw new Error(`Unexpected non-numerical value "${JSON.stringify(cnt)}" for currency key "${coin}"`);
+
+						out[coin] = (out[coin] || 0) + cnt;
+					});
+			});
+
+		return out;
+	}
 };
 
 // CONVENIENCE/ELEMENTS ================================================================================================
@@ -2782,6 +2826,10 @@ UrlUtil.PG_CHANGELOG = "changelog.html";
 UrlUtil.PG_CHAR_CREATION_OPTIONS = "charcreationoptions.html";
 UrlUtil.PG_RECIPES = "recipes.html";
 UrlUtil.PG_CLASS_SUBCLASS_FEATURES = "classfeatures.html";
+UrlUtil.PG_CREATURE_FEATURES = "creaturefeatures.html";
+UrlUtil.PG_VEHICLE_FEATURES = "vehiclefeatures.html";
+UrlUtil.PG_OBJECT_FEATURES = "objectfeatures.html";
+UrlUtil.PG_TRAP_FEATURES = "trapfeatures.html";
 UrlUtil.PG_MAPS = "maps.html";
 UrlUtil.PG_SEARCH = "search.html";
 UrlUtil.PG_DECKS = "decks.html";
@@ -2817,6 +2865,10 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CHAR_CREATION_OPTIONS] = UrlUtil.URL_TO_H
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RECIPES] = (it) => `${UrlUtil.encodeArrayForHash(it.name, it.source)}${it._scaleFactor ? `${HASH_PART_SEP}${VeCt.HASH_SCALED}${HASH_SUB_KV_SEP}${it._scaleFactor}` : ""}`;
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DECKS] = UrlUtil.URL_TO_HASH_GENERIC;
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASS_SUBCLASS_FEATURES] = (it) => (it.__prop === "subclassFeature" || it.subclassSource) ? UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"](it) : UrlUtil.URL_TO_HASH_BUILDER["classFeature"](it);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CREATURE_FEATURES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLE_FEATURES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECT_FEATURES] = UrlUtil.URL_TO_HASH_GENERIC;
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAP_FEATURES] = UrlUtil.URL_TO_HASH_GENERIC;
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_QUICKREF] = ({name, ixChapter, ixHeader}) => {
 	const hashParts = ["bookref-quick", ixChapter, UrlUtil.encodeForHash(name.toLowerCase())];
 	if (ixHeader) hashParts.push(ixHeader);
@@ -2879,6 +2931,7 @@ UrlUtil.URL_TO_HASH_BUILDER["itemMastery"] = UrlUtil.URL_TO_HASH_GENERIC;
 UrlUtil.URL_TO_HASH_BUILDER["skill"] = UrlUtil.URL_TO_HASH_GENERIC;
 UrlUtil.URL_TO_HASH_BUILDER["sense"] = UrlUtil.URL_TO_HASH_GENERIC;
 UrlUtil.URL_TO_HASH_BUILDER["raceFeature"] = (it) => UrlUtil.encodeArrayForHash(it.name, it.raceName, it.raceSource, it.source);
+UrlUtil.URL_TO_HASH_BUILDER["citation"] = UrlUtil.URL_TO_HASH_GENERIC;
 
 // Add lowercase aliases
 Object.keys(UrlUtil.URL_TO_HASH_BUILDER)
@@ -2939,7 +2992,10 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_TEXT_CONVERTER] = "Text Converter";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CHANGELOG] = "Changelog";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CHAR_CREATION_OPTIONS] = "Other Character Creation Options";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_RECIPES] = "Recipes";
-UrlUtil.PG_TO_NAME[UrlUtil.PG_CLASS_SUBCLASS_FEATURES] = "Class & Subclass Features";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_CREATURE_FEATURES] = "Creature Features";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_VEHICLE_FEATURES] = "Vehicle Features";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_OBJECT_FEATURES] = "Object Features";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_TRAP_FEATURES] = "Trap Features";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_MAPS] = "Maps";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DECKS] = "Decks";
 
@@ -3293,6 +3349,10 @@ globalThis.SortUtil = {
 		return SortUtil.ascSortLower(a.set, b.set) || SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortLower(a.name, b.name);
 	},
 
+	ascSortEncounter (a, b) {
+		return SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.caption || "", b.caption || "") || SortUtil.ascSort(a.minlvl || 0, b.minlvl || 0) || SortUtil.ascSort(a.maxlvl || Number.MAX_SAFE_INTEGER, b.maxlvl || Number.MAX_SAFE_INTEGER);
+	},
+
 	_ITEM_RARITY_ORDER: ["none", "common", "uncommon", "rare", "very rare", "legendary", "artifact", "varies", "unknown (magic)", "unknown"],
 	ascSortItemRarity (a, b) {
 		const ixA = SortUtil._ITEM_RARITY_ORDER.indexOf(a);
@@ -3488,7 +3548,18 @@ globalThis.DataUtil = {
 					reject(new Error(`Could not parse JSON from ${url}: ${e.message}`));
 				}
 			};
-			request.onerror = (e) => reject(new Error(`Error during JSON request: ${e.target.status}`));
+			request.onerror = (e) => {
+				const ptDetail = [
+					"status",
+					"statusText",
+					"readyState",
+					"response",
+					"responseType",
+				]
+					.map(prop => `${prop}=${JSON.stringify(e.target[prop])}`)
+					.join(" ");
+				reject(new Error(`Error during JSON request: ${ptDetail}`));
+			};
 
 			request.send();
 		});
@@ -4309,7 +4380,7 @@ globalThis.DataUtil = {
 					modInfo[prop].forEach(sp => (spellcasting[prop] = spellcasting[prop] || []).push(sp));
 				});
 
-				["recharge", "charges", "rest", "daily", "weekly", "yearly"].forEach(prop => {
+				["recharge", "charges", "rest", "daily", "weekly", "monthly", "yearly"].forEach(prop => {
 					if (!modInfo[prop]) return;
 
 					for (let i = 1; i <= 9; ++i) {
@@ -4392,7 +4463,7 @@ globalThis.DataUtil = {
 					spellcasting[prop].filter(it => !modInfo[prop].includes(it));
 				});
 
-				["recharge", "charges", "rest", "daily", "weekly", "yearly"].forEach(prop => {
+				["recharge", "charges", "rest", "daily", "weekly", "monthly", "yearly"].forEach(prop => {
 					if (!modInfo[prop]) return;
 
 					for (let i = 1; i <= 9; ++i) {
@@ -4880,6 +4951,16 @@ globalThis.DataUtil = {
 
 		static _SPELL_SOURCE_LOOKUP = null;
 
+		static PROPS_SPELL_SOURCE = [
+			"classes",
+			"races",
+			"optionalfeatures",
+			"backgrounds",
+			"feats",
+			"charoptions",
+			"rewards",
+		];
+
 		// region Utilities for external applications (i.e., the spell source generation script) to use
 		static setSpellSourceLookup (lookup, {isExternalApplication = false} = {}) {
 			if (!isExternalApplication) throw new Error("Should not be calling this!");
@@ -4893,14 +4974,16 @@ globalThis.DataUtil = {
 
 		static unmutEntity (sp, {isExternalApplication = false} = {}) {
 			if (!isExternalApplication) throw new Error("Should not be calling this!");
-			delete sp.classes;
-			delete sp.races;
-			delete sp.optionalfeatures;
-			delete sp.backgrounds;
-			delete sp.feats;
-			delete sp.charoptions;
-			delete sp.rewards;
+			this.PROPS_SPELL_SOURCE.forEach(prop => delete sp[prop]);
 			delete sp._isMutEntity;
+		}
+		// endregion
+
+		// region Special mutator for the homebrew builder
+		static mutEntityBrewBuilder (sp, sourcesLookup) {
+			const out = this._mutEntity(sp, {sourcesLookup});
+			delete sp._isMutEntity;
+			return out;
 		}
 		// endregion
 
@@ -4908,10 +4991,10 @@ globalThis.DataUtil = {
 			this._SPELL_SOURCE_LOOKUP = await DataUtil.loadRawJSON(`${Renderer.get().baseUrl}data/generated/gendata-spell-source-lookup.json`);
 		}
 
-		static _mutEntity (sp) {
+		static _mutEntity (sp, {sourcesLookup = null} = {}) {
 			if (sp._isMutEntity) return sp;
 
-			const spSources = this._SPELL_SOURCE_LOOKUP[sp.source.toLowerCase()]?.[sp.name.toLowerCase()];
+			const spSources = (sourcesLookup ?? this._SPELL_SOURCE_LOOKUP)[sp.source.toLowerCase()]?.[sp.name.toLowerCase()];
 			if (!spSources) return sp;
 
 			this._mutSpell_class({sp, spSources, propSources: "class", propClasses: "fromClassList"});
@@ -5176,6 +5259,10 @@ globalThis.DataUtil = {
 	itemFluff: class extends _DataUtilPropConfigSingleSource {
 		static _PAGE = UrlUtil.PG_ITEMS;
 		static _FILENAME = "fluff-items.json";
+	},
+
+	itemType: class extends _DataUtilPropConfig {
+		static _PAGE = "itemType";
 	},
 
 	language: class extends _DataUtilPropConfigSingleSource {
@@ -5768,6 +5855,26 @@ globalThis.DataUtil = {
 		static _FILENAME = "fluff-rewards.json";
 	},
 
+	trap: class extends _DataUtilPropConfigSingleSource {
+		static _PAGE = UrlUtil.PG_TRAPS_HAZARDS;
+		static _FILENAME = "trapshazards.json";
+	},
+
+	trapFluff: class extends _DataUtilPropConfigSingleSource {
+		static _PAGE = UrlUtil.PG_TRAPS_HAZARDS;
+		static _FILENAME = "fluff-trapshazards.json";
+	},
+
+	hazard: class extends _DataUtilPropConfigSingleSource {
+		static _PAGE = UrlUtil.PG_TRAPS_HAZARDS;
+		static _FILENAME = "trapshazards.json";
+	},
+
+	hazardFluff: class extends _DataUtilPropConfigSingleSource {
+		static _PAGE = UrlUtil.PG_TRAPS_HAZARDS;
+		static _FILENAME = "fluff-trapshazards.json";
+	},
+
 	quickreference: {
 		/**
 		 * @param uid
@@ -5850,10 +5957,6 @@ globalThis.RollerUtil = {
 	 */
 	roll (max, fn = Math.random) {
 		return Math.floor(fn() * max);
-	},
-
-	addListRollButton (isCompact) {
-
 	},
 
 	getColRollType (colLabel) {
@@ -6611,11 +6714,17 @@ Array.prototype.getNext || Object.defineProperty(Array.prototype, "getNext", {
 	},
 });
 
+// See: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
 Array.prototype.shuffle || Object.defineProperty(Array.prototype, "shuffle", {
 	enumerable: false,
 	writable: true,
 	value: function () {
-		for (let i = 0; i < 10000; ++i) this.sort(() => Math.random() - 0.5);
+		const len = this.length;
+		const ixLast = len - 1;
+		for (let i = 0; i < len; ++i) {
+			const j = i + Math.floor(Math.random() * (ixLast - i + 1));
+			[this[i], this[j]] = [this[j], this[i]];
+		}
 		return this;
 	},
 });
@@ -7392,6 +7501,7 @@ if (!IS_VTT && typeof window !== "undefined") {
 	window.addEventListener("load", () => {
 		const docRoot = document.querySelector(":root");
 
+		// TODO(iOS)
 		if (CSS?.supports("top: constant(safe-area-inset-top)")) {
 			docRoot.style.setProperty("--safe-area-inset-top", "constant(safe-area-inset-top, 0)");
 			docRoot.style.setProperty("--safe-area-inset-right", "constant(safe-area-inset-right, 0)");
@@ -7478,55 +7588,15 @@ if (!IS_VTT && typeof window !== "undefined") {
 	// 	$(`.cancer__sidebar-rhs-inner--top`).append(`<div class="TEST_RHS_TOP"></div>`)
 	// 	$(`.cancer__sidebar-rhs-inner--bottom`).append(`<div class="TEST_RHS_BOTTOM"></div>`)
 	// });
+
+	// TODO(img) remove this in future
+	window.addEventListener("load", () => {
+		if (window.location?.host !== "5etools-mirror-1.github.io") return;
+
+		JqueryUtil.doToast({
+			type: "warning",
+			isAutoHide: false,
+			content: $(`<div>This mirror is no longer being updated/maintained, and will be shut down on March 1st 2024.<br>Please use <a href="https://5etools-mirror-2.github.io/" rel="noopener noreferrer">5etools-mirror-2.github.io</a> instead, and <a href="https://gist.github.com/5etools-mirror-2/40d6d80f40205882d3fa5006fae963a4" rel="noopener noreferrer">migrate your data</a>.</div>`),
+		});
+	});
 }
-
-globalThis._Donate = {
-	// TAG Disabled until further notice
-	/*
-	init () {
-		if (IS_DEPLOYED) {
-			DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
-				const pct = Number(dosh.donated) / Number(dosh.Goal);
-				$(`#don-total`).text(`€${dosh.Goal}`);
-				if (isNaN(pct)) {
-					throw new Error(`Was not a number! Values were ${dosh.donated} and ${dosh.Goal}`);
-				} else {
-					const $bar = $(`.don__bar_inner`);
-					$bar.css("width", `${Math.min(Math.ceil(100 * pct), 100)}%`).html(pct !== 0 ? `€${dosh.donated}&nbsp;` : "");
-					if (pct >= 1) $bar.css("background-color", "lightgreen");
-				}
-			}).catch(noDosh => {
-				$(`#don-wrapper`).remove();
-				throw noDosh;
-			});
-		}
-	},
-
-	async pNotDonating () {
-		const isFake = await StorageUtil.pIsAsyncFake();
-		const isNotDonating = await StorageUtil.pGet("notDonating");
-		return isFake || isNotDonating;
-	},
-	*/
-
-	// region Test code, please ignore
-	cycleLeader (ele) {
-		const modes = [{width: 970, height: 90}, {width: 970, height: 250}, {width: 320, height: 50}, {width: 728, height: 90}];
-		_Donate._cycleMode(ele, modes);
-	},
-
-	cycleSide (ele) {
-		const modes = [{width: 300, height: 250}, {width: 300, height: 600}];
-		_Donate._cycleMode(ele, modes);
-	},
-
-	_cycleMode (ele, modes) {
-		const $e = $(ele);
-		const pos = $e.data("pos") || 0;
-		const mode = modes[pos];
-		$e.css(mode);
-		$e.text(`${mode.width}*${mode.height}`);
-		$e.data("pos", (pos + 1) % modes.length);
-	},
-	// endregion
-};

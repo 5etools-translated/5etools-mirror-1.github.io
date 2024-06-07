@@ -1,9 +1,9 @@
-"use strict";
+import {SpellSourceLookupBuilder} from "./converterutils-spell-sources.js";
 
 class SpellBuilder extends Builder {
 	constructor () {
 		super({
-			titleSidebarLoadExisting: "Load Existing Spell",
+			titleSidebarLoadExisting: "Copy Existing Spell",
 			titleSidebarDownloadJson: "Download Spells as JSON",
 			prop: "spell",
 			titleSelectDefaultSource: "(Same as Spell)",
@@ -188,9 +188,35 @@ class SpellBuilder extends Builder {
 		BuilderUi.$getStateIptEntries("&quot;At Higher Levels&quot; Text", cb, this._state, {nullable: true, withHeader: "At Higher Levels", fnPostProcess: BuilderUi.fnPostProcessDice}, "entriesHigherLevel").appendTo(detailsTab.$wrpTab);
 
 		// SOURCES
-		this.__$getClassesInputs(cb).forEach($e => $e.appendTo(sourcesTab.$wrpTab));
-		this.__$getRaces(cb).appendTo(sourcesTab.$wrpTab);
-		this.__$getBackgrounds(cb).appendTo(sourcesTab.$wrpTab);
+		const [
+			{$row: $rowClasses, doRefresh: doRefreshClasses},
+			{$row: $rowSubclasses, doRefresh: doRefreshSubclasses},
+		] = this.__$getClassesInputs(cb);
+		$rowClasses.appendTo(sourcesTab.$wrpTab);
+		$rowSubclasses.appendTo(sourcesTab.$wrpTab);
+		const {$row: $rowRaces, doRefresh: doRefreshRaces} = this.__$getRaces(cb);
+		$rowRaces.appendTo(sourcesTab.$wrpTab);
+		const {$row: $rowBackgrounds, doRefresh: doRefreshBackgrounds} = this.__$getBackgrounds(cb);
+		$rowBackgrounds.appendTo(sourcesTab.$wrpTab);
+		const {$row: $rowOptionalFeatures, doRefresh: doRefreshOptionalFeatures} = this.__$getOptionalfeatures(cb);
+		$rowOptionalFeatures.appendTo(sourcesTab.$wrpTab);
+		const {$row: $rowFeats, doRefresh: doRefreshFeats} = this.__$getFeats(cb);
+		$rowFeats.appendTo(sourcesTab.$wrpTab);
+		const {$row: $rowChatoptions, doRefresh: doRefreshChatoptions} = this.__$getCharoptions(cb);
+		$rowChatoptions.appendTo(sourcesTab.$wrpTab);
+		const {$row: $rowRewards, doRefresh: doRefreshRewards} = this.__$getRewards(cb);
+		$rowRewards.appendTo(sourcesTab.$wrpTab);
+		const fnsDoRefreshSources = [
+			doRefreshClasses,
+			doRefreshSubclasses,
+			doRefreshRaces,
+			doRefreshBackgrounds,
+			doRefreshOptionalFeatures,
+			doRefreshFeats,
+			doRefreshChatoptions,
+			doRefreshRewards,
+		];
+		this.__$getSourcesGenerated(cb, fnsDoRefreshSources).appendTo(sourcesTab.$wrpTab);
 
 		// FLAVOR/MISC
 		this.$getFluffInput(cb).appendTo(miscTab.$wrpTab);
@@ -767,7 +793,12 @@ class SpellBuilder extends Builder {
 
 		// CLASSES
 		const $wrpRowsCls = $(`<div/>`).appendTo($rowInnerCls);
-		((this._state.classes || {}).fromClassList || []).forEach(cls => this.__$getClassesInputs__getClassRow(doUpdateState, classRows, cls).$wrp.appendTo($wrpRowsCls));
+		const doRefreshCls = () => {
+			$wrpRowsCls.empty();
+			classRows.splice(0, classRows.length);
+			((this._state.classes || {}).fromClassList || []).forEach(cls => this.__$getClassesInputs__getClassRow(doUpdateState, classRows, cls).$wrp.appendTo($wrpRowsCls));
+		};
+		doRefreshCls();
 
 		const $wrpBtnAddCls = $(`<div/>`).appendTo($rowInnerCls);
 		$(`<button class="btn btn-xs btn-default">Add Class</button>`)
@@ -779,7 +810,12 @@ class SpellBuilder extends Builder {
 
 		// SUBCLASSES
 		const $wrpRowsSc = $(`<div/>`).appendTo($rowInnerSc);
-		((this._state.classes || {}).fromSubclass || []).forEach(sc => this.__$getClassesInputs__getSubclassRow(doUpdateState, subclassRows, sc).$wrp.appendTo($wrpRowsSc));
+		const doRefreshSc = () => {
+			$wrpRowsSc.empty();
+			subclassRows.splice(0, subclassRows.length);
+			((this._state.classes || {}).fromSubclass || []).forEach(sc => this.__$getClassesInputs__getSubclassRow(doUpdateState, subclassRows, sc).$wrp.appendTo($wrpRowsSc));
+		};
+		doRefreshSc();
 
 		const $wrpBtnAddSc = $(`<div/>`).appendTo($rowInnerSc);
 		$(`<button class="btn btn-xs btn-default">Add Subclass</button>`)
@@ -789,7 +825,7 @@ class SpellBuilder extends Builder {
 				doUpdateState();
 			});
 
-		return [$rowCls, $rowSc];
+		return [{$row: $rowCls, doRefresh: doRefreshCls}, {$row: $rowSc, doRefresh: doRefreshSc}];
 	}
 
 	__$getClassesInputs__getClassRow (doUpdateState, classRows, cls) {
@@ -891,7 +927,13 @@ class SpellBuilder extends Builder {
 		const raceRows = [];
 
 		const $wrpRows = $(`<div/>`).appendTo($rowInner);
-		(this._state.races || []).forEach(race => this.__$getRaces__getRaceRow(doUpdateState, raceRows, race).$wrp.appendTo($wrpRows));
+
+		const doRefresh = () => {
+			$wrpRows.empty();
+			raceRows.splice(0, raceRows.length);
+			(this._state.races || []).forEach(race => this.__$getRaces__getRaceRow(doUpdateState, raceRows, race).$wrp.appendTo($wrpRows));
+		};
+		doRefresh();
 
 		const $wrpBtnAdd = $(`<div/>`).appendTo($rowInner);
 		$(`<button class="btn btn-xs btn-default">Add Race</button>`)
@@ -901,7 +943,7 @@ class SpellBuilder extends Builder {
 				doUpdateState();
 			});
 
-		return $row;
+		return {$row, doRefresh};
 	}
 
 	__$getRaces__getRaceRow (doUpdateState, raceRows, race) {
@@ -948,49 +990,57 @@ class SpellBuilder extends Builder {
 		return out;
 	}
 
-	__$getBackgrounds (cb) {
-		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Backgrounds", {isMarked: true});
+	__$getSimpleSource ({cb, nameSingle, namePlural, prop, $propEles}) {
+		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple(namePlural, {isMarked: true});
 
 		const doUpdateState = () => {
-			const bgs = bgRows.map(row => row.getBackground()).filter(Boolean);
-			if (bgs.length) this._state.backgrounds = bgs;
-			else delete this._state.backgrounds;
+			const identObjs = rows.map(row => row.getIdentObject()).filter(Boolean);
+			if (identObjs.length) this._state[prop] = identObjs;
+			else delete this._state[prop];
 			cb();
 		};
 
-		const bgRows = [];
+		const optsRow = {nameSingle, $propEles};
+		const rows = [];
 
-		const $wrpRows = $(`<div/>`).appendTo($rowInner);
-		(this._state.backgrounds || []).forEach(bg => this.__$getBackgrounds__getBackgroundRow(doUpdateState, bgRows, bg).$wrp.appendTo($wrpRows));
+		const $wrpRows = $(`<div></div>`).appendTo($rowInner);
 
-		const $wrpBtnAdd = $(`<div/>`).appendTo($rowInner);
-		$(`<button class="btn btn-xs btn-default">Add Background</button>`)
+		const doRefresh = () => {
+			$wrpRows.empty();
+			rows.splice(0, rows.length);
+			(this._state[prop] || []).forEach(idObj => this.__$getSimpleSource__getIdentRow(doUpdateState, rows, idObj, optsRow).$wrp.appendTo($wrpRows));
+		};
+		doRefresh();
+
+		const $wrpBtnAdd = $(`<div></div>`).appendTo($rowInner);
+		$(`<button class="btn btn-xs btn-default">Add ${nameSingle}</button>`)
 			.appendTo($wrpBtnAdd)
 			.click(() => {
-				this.__$getBackgrounds__getBackgroundRow(doUpdateState, bgRows, null).$wrp.appendTo($wrpRows);
+				this.__$getSimpleSource__getIdentRow(doUpdateState, rows, null, optsRow).$wrp.appendTo($wrpRows);
 				doUpdateState();
 			});
 
-		return $row;
+		return {$row, doRefresh};
 	}
-	__$getBackgrounds__getBackgroundRow (doUpdateState, bgRows, bg) {
-		const getBackground = () => {
-			const bgName = $iptName.val().trim();
-			if (bgName) {
-				return {
-					name: bgName,
-					source: $selSource.val().unescapeQuotes(),
-				};
-			} else return null;
+
+	__$getSimpleSource__getIdentRow (doUpdateState, rows, identObj, {nameSingle, $propEles}) {
+		const getIdentObject = () => {
+			const name = $iptName.val().trim();
+			if (!name) return null;
+
+			return {
+				name: name,
+				source: $selSource.val().unescapeQuotes(),
+			};
 		};
 
 		const $iptName = $(`<input class="form-control form-control--minimal input-xs">`)
 			.change(() => doUpdateState())
-			.val(bg ? bg.name : null);
+			.val(identObj ? identObj.name : null);
 
-		const $selSource = this._$getSelSource("$selBackgroundSources", doUpdateState, bg ? bg.source.escapeQuotes() : Parser.SRC_PHB);
+		const $selSource = this._$getSelSource($propEles, doUpdateState, identObj ? identObj.source.escapeQuotes() : Parser.SRC_PHB);
 
-		const out = {getBackground};
+		const out = {getIdentObject};
 
 		const $wrpBtnRemove = $(`<div class="text-right mb-2"/>`);
 		const $wrp = $$`<div class="ve-flex-col mkbru__wrp-rows">
@@ -998,11 +1048,61 @@ class SpellBuilder extends Builder {
 			<div class="ve-flex-v-center mb-2"><span class="mr-2 mkbru__sub-name--33">Source</span>${$selSource}</div>
 			${$wrpBtnRemove}
 		</div>`;
-		Builder.$getBtnRemoveRow(doUpdateState, bgRows, out, $wrp, "Background").appendTo($wrpBtnRemove);
+		Builder.$getBtnRemoveRow(doUpdateState, rows, out, $wrp, nameSingle).appendTo($wrpBtnRemove);
 
 		out.$wrp = $wrp;
-		bgRows.push(out);
+		rows.push(out);
 		return out;
+	}
+
+	__$getBackgrounds (cb) {
+		return this.__$getSimpleSource({
+			cb,
+			nameSingle: "Background",
+			namePlural: "Backgrounds",
+			prop: "backgrounds",
+			$propEles: "$selBackgroundSources",
+		});
+	}
+
+	__$getOptionalfeatures (cb) {
+		return this.__$getSimpleSource({
+			cb,
+			nameSingle: "Optional Feature",
+			namePlural: "Optional Features",
+			prop: "optionalfeatures",
+			$propEles: "$selOptionalfeatureSources",
+		});
+	}
+
+	__$getFeats (cb) {
+		return this.__$getSimpleSource({
+			cb,
+			nameSingle: "Feat",
+			namePlural: "Feats",
+			prop: "feats",
+			$propEles: "$selFeatSources",
+		});
+	}
+
+	__$getCharoptions (cb) {
+		return this.__$getSimpleSource({
+			cb,
+			nameSingle: "Character Creation Option",
+			namePlural: "Character Creation Options",
+			prop: "charoptions",
+			$propEles: "$selCharoptionSources",
+		});
+	}
+
+	__$getRewards (cb) {
+		return this.__$getSimpleSource({
+			cb,
+			nameSingle: "Supernatural Gift/Reward",
+			namePlural: "Supernatural Gifts and Rewards",
+			prop: "rewards",
+			$propEles: "$selRewardSources",
+		});
 	}
 
 	// TODO use this in creature builder (_$eles)
@@ -1019,6 +1119,58 @@ class SpellBuilder extends Builder {
 		if (initialVal != null) $selSource.val(initialVal);
 		(this._$eles[elesProp] = this._$eles[elesProp] || []).push($selSource);
 		return $selSource;
+	}
+
+	__$getSourcesGenerated (cb, fnsDoRefreshSources) {
+		const [$row, $rowInner] = BuilderUi.getLabelledRowTuple("Generated", {isMarked: true});
+
+		const getBtnAdd = () => {
+			const $btn = $(`<button class="btn btn-xs btn-default" title="Generate additional spell sources based on the spell's current sources (for example, Eldritch Knight Fighter for a Wizard spell).">Generate Additional</button>`)
+				.click(async () => {
+					try {
+						$btn.prop("disabled", true);
+
+						const cpySp = MiscUtil.copyFast(this._state);
+
+						const fauxSpellSourceLookup = {};
+						// TODO(Future) expand to things beyond `class`?
+						if (cpySp.classes?.fromClassList?.length) MiscUtil.set(fauxSpellSourceLookup, cpySp.source, cpySp.name, "class", cpySp.classes.fromClassList.map(({name, source}) => ({name, source})));
+
+						const sourceLookup = await SpellSourceLookupBuilder.pGetLookup({
+							spells: [
+								// Load the default spell set to ensure all filters are populated
+								...MiscUtil.copyFast(await DataUtil.spell.pLoadAll()),
+								cpySp,
+							],
+							spellSourceLookupAdditional: fauxSpellSourceLookup,
+						});
+
+						DataUtil.spell.PROPS_SPELL_SOURCE.forEach(prop => {
+							cpySp[prop] = cpySp[prop] || MiscUtil.copyFast(this._state[prop]);
+							// Avoid duplicating existing values
+							delete cpySp[prop];
+						});
+						DataUtil.spell.mutEntityBrewBuilder(cpySp, sourceLookup);
+
+						DataUtil.spell.PROPS_SPELL_SOURCE.forEach(prop => this._state[prop] = cpySp[prop]);
+
+						cb();
+						fnsDoRefreshSources.forEach(fn => fn());
+					} finally {
+						$btn.prop("disabled", false);
+					}
+				});
+
+			return $btn;
+		};
+
+		const $btnAdd = getBtnAdd();
+
+		$$`<div class="ve-flex-v-center">
+			${$btnAdd}
+		</div>`.appendTo($rowInner);
+
+		return $row;
 	}
 
 	renderOutput () {

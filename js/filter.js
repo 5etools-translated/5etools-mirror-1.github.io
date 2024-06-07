@@ -5,7 +5,10 @@ FilterUtil.SUB_HASH_PREFIX_LENGTH = 4;
 
 class PageFilter {
 	static defaultSourceSelFn (val) {
-		return !SourceUtil.isNonstandardSource(val);
+		// Assume the user wants to select their loaded homebrew by default
+		// Overridden by the "Deselect Homebrew Sources by Default" option
+		return SourceUtil.getFilterGroup(val) === SourceUtil.FILTER_GROUP_STANDARD
+			|| SourceUtil.getFilterGroup(val) === SourceUtil.FILTER_GROUP_HOMEBREW;
 	}
 
 	constructor (opts) {
@@ -88,6 +91,10 @@ class PageFilter {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[page]({name, source});
 			return !ExcludeUtil.isExcluded(hash, prop, source, {isNoCount: true});
 		});
+	}
+
+	static getListAliases (ent) {
+		return (ent.alias || []).map(it => `"${it}"`).join(",");
 	}
 	// endregion
 }
@@ -1715,11 +1722,11 @@ class Filter extends FilterBase {
 	}
 
 	_defaultItemState (item, {isForce = false} = {}) {
-		// Avoid setting state for new items if the user already has filter state. This prevents the case where e.g.:
+		// Avoid setting state for new items if the user already has active filter state. This prevents the case where e.g.:
 		//   - The user has cleared their source filter;
 		//   - A new source is added to the site;
 		//   - The new source becomes the *only* selected item in their filter.
-		if (!isForce && this._hasUserSavedState) return this._state[item.item] = 0;
+		if (!isForce && this._hasUserSavedState && !Object.values(this.__state).some(Boolean)) return this._state[item.item] = 0;
 
 		// if both a selFn and a deselFn are specified, we default to deselecting
 		this._state[item.item] = this._getDefaultState(item.item);
@@ -2268,6 +2275,10 @@ class Filter extends FilterBase {
 		this._doToggleDisplay();
 	}
 
+	_getFilterItem (item) {
+		return item instanceof FilterItem ? item : new FilterItem({item});
+	}
+
 	addItem (item) {
 		if (item == null) return;
 
@@ -2278,30 +2289,13 @@ class Filter extends FilterBase {
 		}
 
 		if (!this.__itemsSet.has(item.item || item)) {
-			item = item instanceof FilterItem ? item : new FilterItem({item});
+			item = this._getFilterItem(item);
 			Filter._validateItemNest(item, this._nests);
 
 			this._isItemsDirty = true;
 			this._items.push(item);
 			this.__itemsSet.add(item.item);
 			if (this._state[item.item] == null) this._defaultItemState(item);
-		}
-	}
-
-	static _isItemsEqual (item1, item2) {
-		return (item1 instanceof FilterItem ? item1.item : item1) === (item2 instanceof FilterItem ? item2.item : item2);
-	}
-
-	removeItem (item) {
-		const ixItem = this._items.findIndex(it => Filter._isItemsEqual(it, item));
-		if (~ixItem) {
-			const item = this._items[ixItem];
-
-			// FIXME this doesn't remove any associated hooks, and is therefore a minor memory leak
-			this._isItemsDirty = true;
-			item.rendered.detach();
-			item.btnMini.detach();
-			this._items.splice(ixItem, 1);
 		}
 	}
 
@@ -2832,48 +2826,70 @@ class SourceFilter extends Filter {
 
 	doSetPillsClear () { return this._doSetPillsClear(); }
 
+	_getFilterItem (item) {
+		return item instanceof FilterItem ? item : new SourceFilterItem({item});
+	}
+
 	addItem (item) {
 		const out = super.addItem(item);
 		this._tmpState.ixAdded++;
 		return out;
 	}
 
-	removeItem (item) {
-		const out = super.removeItem(item);
-		this._tmpState.ixAdded--;
-		return out;
+	trimState_ () {
+		if (!this._items?.length) return;
+
+		const sourcesLoaded = new Set(this._items.map(itm => itm.item));
+		const nxtState = MiscUtil.copyFast(this.__state);
+		Object.keys(nxtState)
+			.filter(k => !sourcesLoaded.has(k))
+			.forEach(k => delete nxtState[k]);
+
+		this._proxyAssignSimple("state", nxtState, true);
 	}
 
 	_getHeaderControls_addExtraStateBtns (opts, wrpStateBtnsOuter) {
 		const btnSupplements = e_({
 			tag: "button",
 			clazz: `btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}`,
-			title: `SHIFT to include UA/etc.`,
+			title: `SHIFT to add to existing selection; CTRL to include UA/etc.`,
 			html: `Core/Supplements`,
-			click: evt => this._doSetPinsSupplements(evt.shiftKey),
+			click: evt => this._doSetPinsSupplements({isIncludeUnofficial: EventUtil.isCtrlMetaKey(evt), isAdditive: evt.shiftKey}),
 		});
 
 		const btnAdventures = e_({
 			tag: "button",
 			clazz: `btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}`,
-			title: `SHIFT to include UA/etc.`,
+			title: `SHIFT to add to existing selection; CTRL to include UA`,
 			html: `Adventures`,
-			click: evt => this._doSetPinsAdventures(evt.shiftKey),
+			click: evt => this._doSetPinsAdventures({isIncludeUnofficial: EventUtil.isCtrlMetaKey(evt), isAdditive: evt.shiftKey}),
+		});
+
+		const btnPartnered = e_({
+			tag: "button",
+			clazz: `btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}`,
+			title: `SHIFT to add to existing selection`,
+			html: `Partnered`,
+			click: evt => this._doSetPinsPartnered({isAdditive: evt.shiftKey}),
 		});
 
 		const btnHomebrew = e_({
 			tag: "button",
 			clazz: `btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}`,
+			title: `SHIFT to add to existing selection`,
 			html: `Homebrew`,
-			click: () => this._doSetPinsHomebrew(),
+			click: evt => this._doSetPinsHomebrew({isAdditive: evt.shiftKey}),
 		});
 
-		const hkIsBrewActive = () => {
-			const hasBrew = Object.keys(this.__state).some(src => SourceUtil.getFilterGroup(src) === 2);
+		const hkIsButtonsActive = () => {
+			const hasPartnered = Object.keys(this.__state).some(src => SourceUtil.getFilterGroup(src) === SourceUtil.FILTER_GROUP_PARTNERED);
+			btnPartnered.toggleClass("ve-hidden", !hasPartnered);
+
+			const hasBrew = Object.keys(this.__state).some(src => SourceUtil.getFilterGroup(src) === SourceUtil.FILTER_GROUP_HOMEBREW);
 			btnHomebrew.toggleClass("ve-hidden", !hasBrew);
 		};
-		this._addHook("tmpState", "ixAdded", hkIsBrewActive);
-		hkIsBrewActive();
+		this._addHook("tmpState", "ixAdded", hkIsButtonsActive);
+		hkIsButtonsActive();
 
 		const actionSelectDisplayMode = new ContextUtil.ActionSelect({
 			values: Object.keys(SourceFilter._PILL_DISPLAY_MODE_LABELS).map(Number),
@@ -2888,6 +2904,10 @@ class SourceFilter extends Filter {
 			new ContextUtil.Action(
 				"Select All Standard Sources",
 				() => this._doSetPinsStandard(),
+			),
+			new ContextUtil.Action(
+				"Select All Partnered Sources",
+				() => this._doSetPinsPartnered(),
 			),
 			new ContextUtil.Action(
 				"Select All Non-Standard Sources",
@@ -2952,6 +2972,7 @@ class SourceFilter extends Filter {
 			children: [
 				btnSupplements,
 				btnAdventures,
+				btnPartnered,
 				btnHomebrew,
 				btnBurger,
 				btnOnlyPrimary,
@@ -2960,23 +2981,43 @@ class SourceFilter extends Filter {
 	}
 
 	_doSetPinsStandard () {
-		Object.keys(this._state).forEach(k => this._state[k] = [SourceUtil.FILTER_GROUP_STANDARD, SourceUtil.FILTER_GROUP_PARTNERED].includes(SourceUtil.getFilterGroup(k)) ? 1 : 0);
-	}
-
-	_doSetPinsNonStandard () {
 		Object.keys(this._state).forEach(k => this._state[k] = SourceUtil.getFilterGroup(k) === SourceUtil.FILTER_GROUP_STANDARD ? 1 : 0);
 	}
 
-	_doSetPinsSupplements (isIncludeUnofficial) {
-		Object.keys(this._state).forEach(k => this._state[k] = SourceUtil.isCoreOrSupplement(k) && (isIncludeUnofficial || !SourceUtil.isNonstandardSource(k)) ? 1 : 0);
+	_doSetPinsPartnered ({isAdditive = false}) {
+		this._proxyAssignSimple(
+			"state",
+			Object.keys(this._state)
+				.mergeMap(k => ({[k]: SourceUtil.getFilterGroup(k) === SourceUtil.FILTER_GROUP_PARTNERED ? 1 : isAdditive ? this._state[k] : 0})),
+		);
 	}
 
-	_doSetPinsAdventures (isIncludeUnofficial) {
-		Object.keys(this._state).forEach(k => this._state[k] = SourceUtil.isAdventure(k) && (isIncludeUnofficial || !SourceUtil.isNonstandardSource(k)) ? 1 : 0);
+	_doSetPinsNonStandard () {
+		Object.keys(this._state).forEach(k => this._state[k] = SourceUtil.getFilterGroup(k) === SourceUtil.FILTER_GROUP_NON_STANDARD ? 1 : 0);
 	}
 
-	_doSetPinsHomebrew () {
-		Object.keys(this._state).forEach(k => this._state[k] = SourceUtil.getFilterGroup(k) === SourceUtil.FILTER_GROUP_HOMEBREW ? 1 : 0);
+	_doSetPinsSupplements ({isIncludeUnofficial = false, isAdditive = false} = {}) {
+		this._proxyAssignSimple(
+			"state",
+			Object.keys(this._state)
+				.mergeMap(k => ({[k]: SourceUtil.isCoreOrSupplement(k) && (isIncludeUnofficial || !SourceUtil.isNonstandardSource(k)) ? 1 : isAdditive ? this._state[k] : 0})),
+		);
+	}
+
+	_doSetPinsAdventures ({isIncludeUnofficial = false, isAdditive = false}) {
+		this._proxyAssignSimple(
+			"state",
+			Object.keys(this._state)
+				.mergeMap(k => ({[k]: SourceUtil.isAdventure(k) && (isIncludeUnofficial || !SourceUtil.isNonstandardSource(k)) ? 1 : isAdditive ? this._state[k] : 0})),
+		);
+	}
+
+	_doSetPinsHomebrew ({isAdditive = false}) {
+		this._proxyAssignSimple(
+			"state",
+			Object.keys(this._state)
+				.mergeMap(k => ({[k]: SourceUtil.getFilterGroup(k) === SourceUtil.FILTER_GROUP_HOMEBREW ? 1 : isAdditive ? this._state[k] : 0})),
+		);
 	}
 
 	_doSetPinsVanilla () {
@@ -3022,7 +3063,9 @@ class SourceFilter extends Filter {
 	static getCompleteFilterSources (ent) {
 		if (!ent.otherSources) return ent.source;
 
-		const otherSourcesFilt = ent.otherSources.filter(src => !ExcludeUtil.isExcluded("*", "*", src.source, {isNoCount: true}));
+		const otherSourcesFilt = ent.otherSources
+			// Avoid `otherSources` from e.g. homebrews which are not loaded, and so lack their metadata
+			.filter(src => !ExcludeUtil.isExcluded("*", "*", src.source, {isNoCount: true}) && SourceUtil.isKnownSource(src.source));
 		if (!otherSourcesFilt.length) return ent.source;
 
 		return [ent.source].concat(otherSourcesFilt.map(src => new SourceFilterItem({item: src.source, isIgnoreRed: true, isOtherSource: true})));
@@ -3266,17 +3309,11 @@ class SourceFilter extends Filter {
 	getSources () {
 		const out = {
 			all: [],
-			official: [],
-			unofficial: [],
-			homebrew: [],
 		};
 		this._items.forEach(it => {
 			out.all.push(it.item);
-			switch (this._groupFn(it)) {
-				case 0: out.official.push(it.item); break;
-				case 1: out.unofficial.push(it.item); break;
-				case 2: out.homebrew.push(it.item); break;
-			}
+			const group = this._groupFn(it);
+			(out[group] ||= []).push(it.item);
 		});
 		return out;
 	}

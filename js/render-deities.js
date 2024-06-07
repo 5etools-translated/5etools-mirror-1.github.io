@@ -35,6 +35,8 @@ class RenderDeities {
 
 		if (deity.symbolImg) deity.symbolImg.style = deity.symbolImg.style || "deity-symbol";
 
+		const entriesMeta = Renderer.deity.getDeityRenderableEntriesMeta(deity);
+
 		return `
 			${reprintIndex ? `
 				<tr><td colspan="6">
@@ -44,7 +46,7 @@ class RenderDeities {
 				</td></tr>
 			` : ""}
 
-			${Renderer.deity.getOrderedParts(deity, `<tr><td colspan="6">`, `</td></tr>`)}
+			${entriesMeta.entriesAttributes.map(entry => `<tr><td colspan="6">${Renderer.get().render(entry)}</td></tr>`).join("")}
 
 			${deity.symbolImg ? `<tr><td colspan="6">${renderer.render({entries: [deity.symbolImg]})}<div class="mb-2"/></td></tr>` : ""}
 			${renderStack.length ? `<tr class="text"><td class="pt-2" colspan="6">${renderStack.join("")}</td></tr>` : ""}

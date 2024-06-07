@@ -10,20 +10,67 @@ class SpellsSublistManager extends SublistManager {
 		});
 	}
 
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-3-2 pl-0",
+				colStyle: "",
+			}),
+			new SublistCellTemplate({
+				name: "Level",
+				css: "capitalize col-1-5 ve-text-center",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "Time",
+				css: "col-1-8 ve-text-center",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "School",
+				css: "capitalize col-1-6 ve-text-center",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "C.",
+				css: "concentration--sublist col-0-7 ve-text-center",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "Range",
+				css: "range col-3-2 pr-0 text-right",
+				colStyle: "text-right",
+			}),
+		];
+	}
+
 	pGetSublistItem (spell, hash) {
 		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools);
 		const time = PageFilterSpells.getTblTimeStr(spell.time[0]);
 		const concentration = spell._isConc ? "×" : "";
 		const range = Parser.spRangeToFull(spell.range);
 
+		const cellsText = [
+			spell.name,
+			PageFilterSpells.getTblLevelStr(spell),
+			time,
+			new SublistCell({
+				text: school,
+				title: Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools),
+				css: `sp__school-${spell.school}`,
+				style: Parser.spSchoolAbvToStyle(spell.school),
+			}),
+			new SublistCell({
+				text: concentration,
+				title: concentration ? "Concentration" : "",
+			}),
+			range,
+		];
+
 		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}" class="lst--border lst__row-inner">
-				<span class="bold col-3-2 pl-0">${spell.name}</span>
-				<span class="capitalize col-1-5 ve-text-center">${PageFilterSpells.getTblLevelStr(spell)}</span>
-				<span class="col-1-8 ve-text-center">${time}</span>
-				<span class="capitalize col-1-6 sp__school-${spell.school} ve-text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
-				<span class="concentration--sublist col-0-7 ve-text-center" title="Concentration">${concentration}</span>
-				<span class="range col-3-2 pr-0 text-right">${range}</span>
+				${this.constructor._getRowCellsHtml({values: cellsText})}
 			</a>
 		</div>`)
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
@@ -45,6 +92,7 @@ class SpellsSublistManager extends SublistManager {
 			},
 			{
 				entity: spell,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;
@@ -317,7 +365,6 @@ class SpellsPage extends ListPageMultiSource {
 				level: spell.level,
 				time,
 				school: Parser.spSchoolAbvToFull(spell.school),
-				classes: Parser.spClassesToFull(spell, {isTextOnly: true, subclassLookup: this._subclassLookup}),
 				concentration,
 				normalisedTime: spell._normalisedTime,
 				normalisedRange: spell._normalisedRange,

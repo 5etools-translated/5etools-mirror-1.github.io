@@ -56,7 +56,8 @@ jobs:
 
          -  name: Cleanup
             run: |
-               rm -rf node_modules
+               rm -rf node_modules node .gitmodules *.md *.zip scss spellcheck homebrew prerelease
+               ls -lah
 
          -  name: Setup Pages
             uses: actions/configure-pages@master

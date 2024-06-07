@@ -714,7 +714,7 @@ Renderer.dice = {
 			const isColorSuccess = tree.isColorSuccessFail || !tree.chanceSuccessText;
 			const isColorFail = tree.isColorSuccessFail || !tree.chanceFailureText;
 			const totalPart = tree.successThresh != null
-				? `<span class="roll ${isThreshSuccess && isColorSuccess ? "roll-max" : !isThreshSuccess && isColorFail ? "roll-min" : ""}">${isThreshSuccess ? (tree.chanceSuccessText || "Success!") : (tree.chanceFailureText || "Failure")}</span>`
+				? `<span class="roll ${isThreshSuccess && isColorSuccess ? "roll-max" : !isThreshSuccess && isColorFail ? "roll-min" : ""}">${isThreshSuccess ? Renderer.get().render(tree.chanceSuccessText || "Success!") : Renderer.get().render(tree.chanceFailureText || "Failure")}</span>`
 				: `<span class="roll ${allMax ? "roll-max" : allMin ? "roll-min" : ""}">${result}</span>`;
 
 			const title = `${rolledBy.name ? `${rolledBy.name} \u2014 ` : ""}${lbl ? `${lbl}: ` : ""}${tree}`;

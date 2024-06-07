@@ -45,6 +45,10 @@ class Prx {
 	}
 }
 
+/**
+ * @mixin
+ * @param {Class} Cls
+ */
 function MixinProxyBase (Cls) {
 	class MixedProxyBase extends Cls {
 		constructor (...args) {
@@ -1929,7 +1933,15 @@ class SearchWidget {
 			fnTransform: doc => {
 				const cpy = MiscUtil.copyFast(doc);
 				Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
-				cpy.tag = `{@spell ${doc.n.toSpellCase()}${doc.s !== Parser.SRC_PHB ? `|${doc.s}` : ""}}`;
+				const hashName = UrlUtil.decodeHash(cpy.u)[0].toTitleCase();
+				const isRename = hashName.toLowerCase() !== cpy.n.toLowerCase();
+				const pts = [
+					isRename ? hashName : cpy.n.toSpellCase(),
+					doc.s !== Parser.SRC_PHB ? doc.s : "",
+					isRename ? cpy.n.toSpellCase() : "",
+				];
+				while (pts.at(-1) === "") pts.pop();
+				cpy.tag = `{@spell ${pts.join("|")}}`;
 				return cpy;
 			},
 		};
@@ -2751,6 +2763,8 @@ class InputUiUtil {
 	/**
 	 * @param [opts] Options.
 	 * @param [opts.title] Prompt title.
+	 * @param [opts.htmlDescription] Description HTML for the modal.
+	 * @param [opts.$eleDescription] Description element for the modal.
 	 * @param [opts.default] Default value.
 	 * @param [opts.autocomplete] Array of autocomplete strings. REQUIRES INCLUSION OF THE TYPEAHEAD LIBRARY.
 	 * @param [opts.isCode] If the text is code.
@@ -2809,6 +2823,7 @@ class InputUiUtil {
 		const {$modalInner, doClose, pGetResolved, doAutoResize: doAutoResizeModal} = await InputUiUtil._pGetShowModal({
 			title: opts.title || "Enter Text",
 			isMinHeight0: true,
+			isWidth100: true,
 		});
 
 		const $btnOk = this._$getBtnOk({comp, opts, doClose});
@@ -2816,6 +2831,8 @@ class InputUiUtil {
 		const $btnSkip = this._$getBtnSkip({comp, opts, doClose});
 
 		if (opts.$elePre) opts.$elePre.appendTo($modalInner);
+		if (opts.$eleDescription?.length) $$`<div class="ve-flex w-100 mb-1">${opts.$eleDescription}</div>`.appendTo($modalInner);
+		else if (opts.htmlDescription && opts.htmlDescription.trim()) $$`<div class="ve-flex w-100 mb-1">${opts.htmlDescription}</div>`.appendTo($modalInner);
 		$iptStr.appendTo($modalInner);
 		if (opts.$elePost) opts.$elePost.appendTo($modalInner);
 		$$`<div class="ve-flex-v-center ve-flex-h-right pb-1 px-1">${$btnOk}${$btnCancel}${$btnSkip}</div>`.appendTo($modalInner);
@@ -3164,7 +3181,7 @@ class InputUiUtil {
 			propCurMin: "cur",
 			fnDisplay: ix => Parser.CRS[ix],
 		});
-		slider.$get().appendTo($modalInner);
+		$$`<div class="ve-flex-col w-640p">${slider.$get()}</div>`.appendTo($modalInner);
 
 		const $btnOk = this._$getBtnOk({opts, doClose});
 		const $btnCancel = this._$getBtnCancel({opts, doClose});
@@ -3376,7 +3393,7 @@ class SourceUiUtil {
 		const $iptColor = $(`<input type="color" class="w-100 b-0">`)
 			.keydown(evt => { if (evt.key === "Escape") $iptColor.blur(); })
 			.change(() => hasColor = true);
-		if (options.source?.color != null) (hasColor = true) && $iptColor.val(options.source.color);
+		if (options.source?.color != null) { hasColor = true; $iptColor.val(options.source.color); }
 		const $iptUrl = $(`<input class="form-control ui-source__ipt-named">`)
 			.keydown(evt => { if (evt.key === "Escape") $iptUrl.blur(); });
 		if (options.source) $iptUrl.val(options.source.url);
@@ -3392,7 +3409,7 @@ class SourceUiUtil {
 				let incomplete = false;
 				[$iptName, $iptAbv, $iptJson].forEach($ipt => {
 					const val = $ipt.val();
-					if (!val || !val.trim()) (incomplete = true) && $ipt.addClass("form-control--error");
+					if (!val || !val.trim()) { incomplete = true; $ipt.addClass("form-control--error"); }
 				});
 				if (incomplete) return;
 
@@ -3503,6 +3520,10 @@ class SourceUiUtil {
 	}
 }
 
+/**
+ * @mixin
+ * @param {typeof ProxyBase} Cls
+ */
 function MixinBaseComponent (Cls) {
 	class MixedBaseComponent extends Cls {
 		constructor (...args) {
@@ -3631,8 +3652,7 @@ function MixinBaseComponent (Cls) {
 				toDelete.delete(it.id);
 				if (meta) {
 					if (opts.isDiffMode) {
-						// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
-						const nxtHash = CryptUtil.md5(JSON.stringify(it));
+						const nxtHash = this._getCollectionEntityHash(it);
 						if (nxtHash !== meta.__hash) meta.__hash = nxtHash;
 						else continue;
 					}
@@ -3648,7 +3668,7 @@ function MixinBaseComponent (Cls) {
 					meta.data = it; // update any existing pointers
 					if (!meta.$wrpRow && !meta.fnRemoveEles) throw new Error(`A "$wrpRow" or a "fnRemoveEles" property is required for deletes!`);
 
-					if (opts.isDiffMode) meta.__hash = CryptUtil.md5(JSON.stringify(it));
+					if (opts.isDiffMode) meta.__hash = this._getCollectionEntityHash(it);
 
 					rendered[it.id] = meta;
 				}
@@ -3712,8 +3732,7 @@ function MixinBaseComponent (Cls) {
 				toDelete.delete(it.id);
 				if (meta) {
 					if (opts.isDiffMode) {
-						// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
-						const nxtHash = CryptUtil.md5(JSON.stringify(it));
+						const nxtHash = this._getCollectionEntityHash(it);
 						if (nxtHash !== meta.__hash) meta.__hash = nxtHash;
 						else continue;
 					}
@@ -3731,7 +3750,7 @@ function MixinBaseComponent (Cls) {
 					if (!opts.isMultiRender && !meta.$wrpRow && !meta.fnRemoveEles) throw new Error(`A "$wrpRow" or a "fnRemoveEles" property is required for deletes!`);
 					if (opts.isMultiRender && meta.some(it => !it.$wrpRow && !it.fnRemoveEles)) throw new Error(`A "$wrpRow" or a "fnRemoveEles" property is required for deletes!`);
 
-					if (opts.isDiffMode) meta.__hash = CryptUtil.md5(JSON.stringify(it));
+					if (opts.isDiffMode) meta.__hash = this._getCollectionEntityHash(it);
 
 					rendered[it.id] = meta;
 				}
@@ -3782,6 +3801,11 @@ function MixinBaseComponent (Cls) {
 			const rendered = (this.__rendered[renderedLookupProp] = this.__rendered[renderedLookupProp] || {});
 			Object.values(rendered).forEach(it => it.$wrpRow.remove());
 			delete this.__rendered[renderedLookupProp];
+		}
+
+		_getCollectionEntityHash (ent) {
+			// Hashing the stringified JSON relies on the property order remaining consistent, but this is fine
+			return CryptUtil.md5(JSON.stringify(ent));
 		}
 
 		render () { throw new Error("Unimplemented!"); }
@@ -3975,8 +3999,8 @@ class _RenderableCollectionGenericRowsSyncAsyncUtils {
 
 	/* -------------------------------------------- */
 
-	$getBtnDelete ({entity}) {
-		return $(`<button class="btn btn-xxs btn-danger" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>`)
+	$getBtnDelete ({entity, title = "Delete"}) {
+		return $(`<button class="btn btn-xxs btn-danger" title="${title.qq()}"><span class="glyphicon glyphicon-trash"></span></button>`)
 			.click(() => this.doDelete({entity}));
 	}
 
@@ -5038,7 +5062,7 @@ class ComponentUiUtil {
 
 	static _$getSelSearchable_getSearchString (str) {
 		if (str == null) return "";
-		return str.trim().toLowerCase().replace(/\s+/g, " ");
+		return CleanUtil.getCleanString(str.trim().toLowerCase().replace(/\s+/g, " "));
 	}
 
 	/**

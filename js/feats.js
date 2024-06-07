@@ -1,18 +1,32 @@
 "use strict";
 
 class FeatsSublistManager extends SublistManager {
-	constructor () {
-		super({
-			sublistClass: "subfeats",
-		});
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-4 pl-0",
+				colStyle: "",
+			}),
+			new SublistCellTemplate({
+				name: "Ability",
+				css: "col-4",
+				colStyle: "",
+			}),
+			new SublistCellTemplate({
+				name: "Prerequisite",
+				css: "col-4 pr-0",
+				colStyle: "",
+			}),
+		];
 	}
 
 	pGetSublistItem (it, hash) {
+		const cellsText = [it.name, it._slAbility, it._slPrereq];
+
 		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-4 pl-0">${it.name}</span>
-				<span class="col-4 ${it._slAbility === VeCt.STR_NONE ? "list-entry-none" : ""}">${it._slAbility}</span>
-				<span class="col-4 ${it._slPrereq === VeCt.STR_NONE ? "list-entry-none" : ""} pr-0">${it._slPrereq}</span>
+				${this.constructor._getRowCellsHtml({values: cellsText})}
 			</a>
 		</div>`)
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
@@ -29,6 +43,7 @@ class FeatsSublistManager extends SublistManager {
 			},
 			{
 				entity: it,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;
@@ -46,8 +61,6 @@ class FeatsPage extends ListPage {
 
 			pageFilter,
 
-			listClass: "feats",
-
 			dataProps: ["feat"],
 
 			bookViewOptions: {
@@ -56,6 +69,8 @@ class FeatsPage extends ListPage {
 			},
 
 			isPreviewable: true,
+
+			isMarkdownPopout: true,
 		});
 	}
 

@@ -1,14 +1,6 @@
 {
 	"optionalfeature": [
 		{
-			"name": "Pact of the Blade",
-			"source": "PHB",
-			"system": {
-				"activation.type": "action",
-				"activation.cost": 1
-			}
-		},
-		{
 			"name": "Agonizing Blast",
 			"source": "PHB",
 			"effects": [
@@ -19,29 +11,7 @@
 						{
 							"key": "data.bonuses.rsak.damage",
 							"mode": "ADD",
-							"value": "(@srd5e.name.eldritchblast * @abilities.cha.mod)"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Devil's Sight",
-			"source": "PHB",
-			"effects": [
-				{
-					"name": "Enhanced Vision",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "data.attributes.senses.darkvision",
-							"mode": "OVERRIDE",
-							"value": "120"
-						},
-						{
-							"key": "data.attributes.senses.special",
-							"mode": "ADD",
-							"value": "Devil's Sight"
+							"value": "+ (@srd5e.name.eldritchblast * @abilities.cha.mod)"
 						}
 					]
 				}
@@ -94,6 +64,28 @@
 				"activation.type": null,
 				"activation.cost": null
 			}
+		},
+		{
+			"name": "Devil's Sight",
+			"source": "PHB",
+			"effects": [
+				{
+					"name": "Enhanced Vision",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "data.attributes.senses.darkvision",
+							"mode": "OVERRIDE",
+							"value": "120"
+						},
+						{
+							"key": "data.attributes.senses.special",
+							"mode": "ADD",
+							"value": "Devil's Sight"
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Dreadful Word",
@@ -165,6 +157,14 @@
 			"system": {
 				"activation.type": null,
 				"activation.cost": null
+			}
+		},
+		{
+			"name": "Pact of the Blade",
+			"source": "PHB",
+			"system": {
+				"activation.type": "action",
+				"activation.cost": 1
 			}
 		},
 		{

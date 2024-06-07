@@ -6,7 +6,7 @@
 class CreatureBuilder extends Builder {
 	constructor () {
 		super({
-			titleSidebarLoadExisting: "Load Existing Creature",
+			titleSidebarLoadExisting: "Copy Existing Creature",
 			titleSidebarDownloadJson: "Download Creatures as JSON",
 			metaSidebarDownloadMarkdown: {
 				title: "Download Creatures as Markdown",
@@ -148,11 +148,17 @@ class CreatureBuilder extends Builder {
 	}
 
 	async _pHashChange_pHandleSubHashes (sub, toLoad) {
-		if (!sub.length) return toLoad;
+		if (!sub.length) return super._pHashChange_pHandleSubHashes(sub, toLoad);
 
 		const scaledHash = sub.find(it => it.startsWith(UrlUtil.HASH_START_CREATURE_SCALED));
 		const scaledSpellSummonHash = sub.find(it => it.startsWith(UrlUtil.HASH_START_CREATURE_SCALED_SPELL_SUMMON));
 		const scaledClassSummonHash = sub.find(it => it.startsWith(UrlUtil.HASH_START_CREATURE_SCALED_CLASS_SUMMON));
+
+		if (
+			!scaledHash
+			&& !scaledSpellSummonHash
+			&& !scaledClassSummonHash
+		) return super._pHashChange_pHandleSubHashes(sub, toLoad);
 
 		if (scaledHash) {
 			const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[VeCt.HASH_SCALED][0]);
@@ -180,7 +186,10 @@ class CreatureBuilder extends Builder {
 			}
 		}
 
-		return toLoad;
+		return {
+			isAllowEditExisting: false,
+			toLoad,
+		};
 	}
 
 	async _pInit () {
@@ -1691,7 +1700,7 @@ class CreatureBuilder extends Builder {
 		const raw = $iptVal.val();
 		if (raw && raw.trim()) {
 			const num = UiUtil.strToInt(raw);
-			const nextState = {...this._state[mode]} || {};
+			const nextState = {...(this._state[mode] || {})};
 			nextState[prop] = num < 0 ? `${num}` : `+${num}`;
 			this._state[mode] = nextState;
 		} else {
@@ -2344,6 +2353,11 @@ class CreatureBuilder extends Builder {
 				mode: "frequency",
 			},
 			{
+				display: "\uD835\uDC65/month (/each) spells",
+				type: "monthly",
+				mode: "frequency",
+			},
+			{
 				display: "\uD835\uDC65/year (/each) spells",
 				type: "yearly",
 				mode: "frequency",
@@ -2430,6 +2444,7 @@ class CreatureBuilder extends Builder {
 			if (trait.daily) handleFrequency("daily");
 			if (trait.rest) handleFrequency("rest");
 			if (trait.weekly) handleFrequency("weekly");
+			if (trait.monthly) handleFrequency("monthly");
 			if (trait.yearly) handleFrequency("yearly");
 			if (trait.spells) {
 				Object.entries(trait.spells).forEach(([k, v]) => {
@@ -2530,6 +2545,7 @@ class CreatureBuilder extends Builder {
 							case "daily": return "/Day";
 							case "rest": return "/Rest";
 							case "weekly": return "/Week";
+							case "monthly": return "/Month";
 							case "yearly": return "/Year";
 						}
 					})();

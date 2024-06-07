@@ -1,6 +1,52 @@
 {
 	"trap": [
 		{
+			"name": "Balance and Ruin",
+			"source": "BMT",
+			"page": 29,
+			"trapHazType": "MECH",
+			"tier": 2,
+			"threat": "deadly",
+			"entries": [
+				{
+					"type": "inset",
+					"entries": [
+						"A narrow wooden beam spans the length of this hundred-foot-long, fifty-foot-wide chamber. The beam crosses a twenty-five-foot-deep pit filled with slowly turning, bloodstained gears. The chamber's side walls, each 25 feet from the balance beam, are made of smooth metal sheeting."
+					]
+				},
+				"The most obvious way to cross the room is to walk along the beam. But there's a hidden danger: a pressure plate beneath the beam's closest end causes the metal walls to emit a strong magnetic field.",
+				{
+					"type": "entries",
+					"name": "Fulcrum",
+					"entries": [
+						"Stone pillars set at regular intervals appear to hold up the beam. But the pillar beneath the beam's center is a fulcrum (like the center of a seesaw), which gives the beam a nearly indiscernible tilt. A creature that examines the beam and succeeds on a DC 15 Intelligence ({@skill Investigation}) check notices the tilt. When the characters enter the room, the beam's weight rests on the far end. When any amount of weight is placed on the stretch of beam between the characters and the fulcrum, unless a counterweight is placed on the opposite side, the end of the beam sinks a few inches and presses on a hidden pressure plate. If all the weight is removed from the beam at once, the beam remains in whatever position it was last in."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Balance Beam",
+					"entries": [
+						"The balance beam is {@book difficult terrain|PHB|8|Difficult Terrain}. A creature that ends its turn on the beam or that is on the beam when it tilts must make a DC 12 Dexterity saving throw to keep its balance. If the walls are magnetized (see below) and the creature is wearing metal armor or holding metal equipment, the creature has disadvantage on this save. A creature that fails the save by 4 or less slips, landing on the beam, and has the {@condition prone} condition. A creature that fails this save by 5 or more falls into the gear pit (see \"Gear Pit\" below)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Magnetic Walls",
+					"entries": [
+						"When the balance beam's weight is on the pressure plate, the metal walls emit a magnetic field. Any creature wearing metal armor or holding metal equipment who isn't on the beam is pulled to the nearest metal wall and sticks to it, taking 11 ({@dice 2d10}) bludgeoning damage. Any creature stuck to the wall has the {@condition restrained} condition until the magnetic field deactivates. Removing pressure from the plate\u2014such as by putting more weight on the opposite end of the beam\u2014deactivates the magnetic field. If the whole party has access to flight, you can make the trap suitably challenging by removing the pressure plate and having the magnetic field toggle on or off in 1-minute intervals or whenever a creature ends its turn on a different side of the pit from where it started. A character wearing metal armor or holding metal equipment who flies across the hall while the walls are magnetized is pulled to the wall and stuck to it."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Gear Pit",
+					"entries": [
+						"Whenever a creature falls into the pit or ends its turn there, that creature must succeed on a DC 17 Dexterity saving throw or take 55 ({@dice 10d10}) bludgeoning damage and have the {@condition prone} condition. A creature that is {@condition prone} on the gears can't use movement to stand up without first using an action and a Tiny object to jam the gears below it. Those gears remain jammed until the end of the character's turn, whereupon the Tiny object tumbles loose, falls through the gears, and is lost."
+					]
+				}
+			],
+			"hasFluffImages": true
+		},
+		{
 			"name": "Bear Trap",
 			"source": "XGE",
 			"page": 113,
@@ -751,6 +797,118 @@
 			"entries": [
 				"The court jester devised a deadly trap to foil anyone who sought to steal his magic fool's cap. The jester's tomb is located at the end of a 10-foot-wide, 150-foot-long hallway that descends sharply from north to south. The entrance to the tomb is a door on the eastern wall at the bottom of the slope, at the south end of the hall."
 			]
+		},
+		{
+			"name": "Surface of the Sun",
+			"source": "BMT",
+			"page": 30,
+			"trapHazType": "MAG",
+			"tier": 1,
+			"threat": "dangerous",
+			"entries": [
+				{
+					"type": "inset",
+					"entries": [
+						"Thick vines cover the walls of this high-ceilinged chamber. The chamber splits into three long, parallel hallways separated by brick walls that don't quite reach the ceiling. The ceiling emits a scorching, fiery light.",
+						"At the far end of the rightmost hall, a large golden key is mounted on a sword rack. At the end of the middle hall is a pedestal shaped like a bird's upraised talon holding a silver orb. The wall at the end of the leftmost hall is molded into the shape of a large skull whose nose cavity looks like a keyhole."
+					]
+				},
+				"Characters must use the large key to unlock the skull door. The silver orb is an enticing treasure, but it's out of the way, and every second of delay means more time spent under the ceiling's heat.",
+				"Each hallway is 15 feet wide and 100 feet long. The ceiling is 50 feet high, and the brick walls are 40 feet tall.",
+				{
+					"type": "entries",
+					"name": "Sun Damage",
+					"entries": [
+						"The blazing light that fills this trap room deals damage to every creature in the area. On initiative count 20 (losing ties), each creature in the area takes 5 ({@dice 1d10}) radiant damage."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Talons Pedestal",
+					"entries": [
+						"The silver orb, which is 1 foot in diameter, can't be removed while the talons clutch it. The pedestal is trapped. Touching the silver orb causes the talons to snap closed. A creature that tries to take the orb takes 11 ({@dice 2d10}) slashing damage and has the {@condition grappled} condition (escape DC 15) as the talons grab hold of it, releasing the orb. The talons have an AC of 19, 10 hit points, and immunity to poison and psychic damage.",
+						"With a successful DC 12 Wisdom ({@skill Perception}) check, a character can spot the pressure plate that activates the talons through a narrow slit on the east side of the pedestal. A character can disable the pressure plate with a successful DC 13 Dexterity check using thieves' tools, which causes the talons to open. A Medium or Small creature {@condition grappled} by the talons can't reach this pressure plate.",
+						"Undamaged, the silver orb is a valuable art object worth 500 gp."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Oversized Key",
+					"entries": [
+						"This gold key is 4 feet long and weighs 100 pounds. One round after it is removed from the sword stand, it comes to life, revealing itself to be a living object (use the {@creature flying sword} stat block). The key does everything it can to return to its stand, attacking anyone who tries to stop it. If the key is destroyed by reducing it to 0 hit points, it must be repaired (such as with the {@spell Mending} spell) before it can be used in the skull door."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Skull Door",
+					"entries": [
+						"The oversized key fits the skull sculpture's nose. Inserting the key and turning it clockwise unlatches the door, which swings inward."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Vines",
+					"entries": [
+						"The plants that cover the walls are fragile from the scorching light and not helpful for climbing. A character must succeed on a DC 12 Strength ({@skill Athletics}) check to climb the walls."
+					]
+				}
+			],
+			"hasFluffImages": true
+		},
+		{
+			"name": "Test of the Empty Moon",
+			"source": "BMT",
+			"page": 31,
+			"trapHazType": "MECH",
+			"tier": 1,
+			"threat": "setback",
+			"entries": [
+				{
+					"type": "inset",
+					"entries": [
+						"In the center of this square dungeon chamber, the floor drops into a massive silver bowl. Shallow stone channels in the floor slope toward the bowl. Sewer pipes jut from the ceiling over each channel.",
+						"A portcullis in the north wall blocks the way forward. Above the portcullis, a large glyph depicts a waxing crescent moon, its right edge illuminated by the faintest sliver of light. A large iron lever juts from the floor to the right of the portcullis."
+					]
+				},
+				"Adding sufficient weight to a hidden scale beneath the bowl opens the portcullis.",
+				{
+					"type": "entries",
+					"name": "Metal Bowl",
+					"entries": [
+						"The bowl is 30 feet wide and 20 feet deep and weighs 2,000 pounds. Its smooth texture and shape make it difficult terrain. A creature that enters the bowl or ends its turn inside it must succeed on a DC 15 Dexterity saving throw or have the {@condition prone} condition. The bowl is impossible to climb out of without assistance such as rope or magic. The bowl's lip is flush with the floor, but the bowl wobbles slightly if pushed."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Weight Scale and Moon Glyph",
+					"entries": [
+						"Hidden beneath the bowl is an {@item Immovable Rod} that separates the bowl from a large weight scale just below it. The rod can be detected with the {@spell Detect Magic} spell. Deactivating the rod (see \"Lever\" below) causes it to fall away, dropping the bowl onto the scale. The rod can't be recovered from this room.",
+						"Transmutation magic connects the scale to the moon glyph above the portcullis. As more weight is placed on the scale, the moon glyph above the portcullis gets fuller and glows brighter. When a total of 4,000 pounds of pressure is applied to the scale, the glyph is fully illuminated, like a full moon, and the portcullis opens. The portcullis remains open as long as the moon glyph remains full.",
+						{
+							"type": "inset",
+							"entries": [
+								"Under Pressure",
+								"Canny characters might realize that shoving enemies into the bowl is a quick way to resolve the trap. Spells such as {@spell Telekinesis} or {@spell Levitate} could also feasibly add pressure to the scale beneath the bowl."
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Lever",
+					"entries": [
+						"When the lever is pulled, a mechanism in the floor pushes the button that deactivates the {@item Immovable Rod}. The weight of the bowl causes the moon glyph to glow like a half moon. Simultaneously, valves open within the sewer pipes, releasing four oozes (see \"Monsters\" below) and a flood of water that pours from each pipe, down the channels on the floor, and into the bowl. The pipes release 1,000 pounds of water every minute. After 2 minutes, the bowl is full. After 4 minutes, several inches of water cover the floor, and enough water has poured into the room to illuminate the moon glyph; at this point, the flooding stops and the portcullis opens."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Monsters",
+					"entries": [
+						"When the lever is pulled, four {@creature Ochre Jelly||ochre jellies} are released, one slithering from each pipe and crawling along the ceiling to drop on the characters. Each ochre jelly weighs 500 pounds."
+					]
+				}
+			],
+			"hasFluffImages": true
 		}
 	],
 	"hazard": [
@@ -792,7 +950,6 @@
 				{
 					"type": "entries",
 					"name": "Veering Off Course",
-					"id": "01f",
 					"entries": [
 						"It's easy to veer off course while traveling through a blizzard, and it's also easy for party members to become separated from one another, which is why the wisest course of action is to stay put and wait for the blizzard to pass.",
 						"If the characters travel during a blizzard, have the players designate one party member as the navigator. At the end of each hour of travel through the blizzard, the DM makes a DC 15 Wisdom ({@skill Survival}) check on behalf of the navigator. On a successful check, the party stays on course. On a failed check, the party wanders off course, putting its members no closer to their destination than they were at the start of that hour. If the check fails by 5 or more and the party members aren't tied together, one randomly determined party member becomes lost in the blizzard and separated from the others. If the group tries to reunite with its missing member, have the party members (including the missing one) make a DC 15 Wisdom ({@skill Survival}) group check at the end of each hour. If this group check succeeds, the missing party member is found, but no progress is made toward reaching the group's intended destination that hour. The group check can be repeated after each hour spent searching for the missing party member."

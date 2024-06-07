@@ -1,19 +1,28 @@
 "use strict";
 
 class TrapsHazardsSublistManager extends SublistManager {
-	constructor () {
-		super({
-			sublistClass: "subtrapshazards",
-		});
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Type",
+				css: "col-4 ve-text-center pl-0",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-8 pr-0",
+				colStyle: "",
+			}),
+		];
 	}
 
 	pGetSublistItem (it, hash) {
 		const trapType = Parser.trapHazTypeToFull(it.trapHazType);
+		const cellsText = [trapType, it.name];
 
 		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="col-4 ve-text-center pl-0">${trapType}</span>
-				<span class="bold col-8 pr-0">${it.name}</span>
+				${this.constructor._getRowCellsHtml({values: cellsText})}
 			</a>
 		</div>`)
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
@@ -29,6 +38,7 @@ class TrapsHazardsSublistManager extends SublistManager {
 			},
 			{
 				entity: it,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;
@@ -38,14 +48,17 @@ class TrapsHazardsSublistManager extends SublistManager {
 class TrapsHazardsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterTrapsHazards();
+
 		super({
 			dataSource: "data/trapshazards.json",
 
+			pFnGetFluff: Renderer.traphazard.pGetFluff.bind(Renderer.traphazard),
+
 			pageFilter,
 
-			listClass: "trapshazards",
-
 			dataProps: ["trap", "hazard"],
+
+			isMarkdownPopout: true,
 
 			listSyntax: new ListSyntaxTrapsHazards({fnGetDataList: () => this._dataList}),
 		});

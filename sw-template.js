@@ -114,6 +114,10 @@ https://stackoverflow.com/questions/52423473
 precacheAndRoute(self.__WB_PRECACHE_MANIFEST);
 
 class RevisionCacheFirst extends Strategy {
+	// explicitly set `credentials` option as a workaround to enable basic auth in third-party installs
+	// See: 5ET-BUG-115
+	static _FETCH_OPTIONS_VET = {credentials: "same-origin"};
+
 	cacheRoutesAbortController = null;
 	constructor () {
 		super({ cacheName: "runtime-revision" });
@@ -163,7 +167,7 @@ class RevisionCacheFirst extends Strategy {
 		// we need to fetch the request from the network and store it with revision for next time
 		console.log(`Fetching URL "${url}" over the network for RevisionFirstCache`);
 		try {
-			const fetchResponse = await handler.fetch(request);
+			const fetchResponse = await handler.fetch(request, this.constructor._FETCH_OPTIONS_VET);
 			// no await because it can happen later
 			handler.cachePut(cacheKey, fetchResponse.clone());
 			return fetchResponse;
@@ -266,7 +270,7 @@ class RevisionCacheFirst extends Strategy {
 
 				// this regex is a very bad idea, but it trims the cache version off the url
 				const cleanUrl = url.replace(/\?__WB_REVISION__=\w+$/m, "");
-				const response = await fetch(cleanUrl);
+				const response = await fetch(cleanUrl, this.constructor._FETCH_OPTIONS_VET);
 				// this await could be omitted to further speed up fetching at risk of failure during error
 				await cache.put(url, response);
 				fetched++;

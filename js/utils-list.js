@@ -1025,23 +1025,21 @@ SaveManager._RenderableCollectionSaves_Summary = class extends RenderableCollect
 	}
 };
 
-class SublistPlugin extends BaseComponent {
-	async pLoadData ({exportedSublist, isMemoryOnly = false}) { throw new Error(`Unimplemented!`); }
-	async pMutSaveableData ({exportedSublist, isMemoryOnly = false}) { throw new Error(`Unimplemented!`); }
-
+class SublistPlugin {
 	initLate () { /* Implement as required */ }
-	async pHandleRemoveAll () { /* Implement as required */ }
-	async pDoInitNewState ({prevExportableSublist, evt}) { /* Implement as required */ }
-	getDownloadName () { /* Implement as required */ }
-	getDownloadFileType () { /* Implement as required */ }
+
+	async pLoadData ({exportedSublist, isMemoryOnly = false}) { throw new Error(`Unimplemented!`); }
 	async pMutLegacyData ({exportedSublist, isMemoryOnly = false}) { /* Implement as required */ }
 
-	doPulseSublistUpdate () { this._state.pulse_sublist = !this._state.pulse_sublist; }
-	addHookPulseSublist (hk) { this._addHookBase("pulse_sublist", hk); }
+	async pMutSaveableData ({exportedSublist, isMemoryOnly = false}) { throw new Error(`Unimplemented!`); }
 
-	_getDefaultState () {
-		return {
-			pulse_sublist: false,
-		};
-	}
+	async pHandleRemoveAll () { /* Implement as required */ }
+
+	async pDoInitNewState ({prevExportableSublist, evt}) { /* Implement as required */ }
+
+	getDownloadName () { /* Implement as required */ }
+	getDownloadFileType () { /* Implement as required */ }
+	getUploadFileTypes ({downloadFileTypeBase}) { /* Implement as required */ }
+
+	onSublistUpdate () { /* Implement as required */ }
 }

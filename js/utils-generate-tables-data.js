@@ -164,7 +164,7 @@ class UtilGenTables {
 				if (this._isSectionInTitle(cleanSectionNames, tbl.caption) || (tbl.data && tbl.data.skipSectionPrefix)) {
 					tbl.name = tbl.caption;
 				} else {
-					tbl.name = `${cleanSectionNames.last()}; ${tbl.caption}`;
+					tbl.name = cleanSectionNames.length ? `${cleanSectionNames.last()}; ${tbl.caption}` : tbl.caption;
 				}
 			} else {
 				// If this is the only table in this section, remove the numerical suffix

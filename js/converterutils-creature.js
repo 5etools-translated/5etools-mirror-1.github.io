@@ -241,6 +241,13 @@ class AcConvert {
 			case "disarming charm": // TG :: Forge Fitzwilliam
 			case "graz'zt's gift": // KftGV :: Sythian Skalderang
 			case "damaged plate": // BGG :: Firegaunt
+			case "intellect fortress": // N.b. *not* the spell of the same name, as this usually appears as a creature feature
+			case "veiled presence": // BMT :: Enchanting Infiltrator
+			case "coat of lies": // Grim Hollow: Lairs of Etharis
+			case "rotting buff coat":
+			case "battered splint mail":
+			case "natural & tailored leather":
+			case "canny defense": // Dungeons of Drakkenheim
 				return fromLow;
 				// endregion
 
@@ -269,7 +276,6 @@ class AcConvert {
 			case "foresight bonus": return `{@spell foresight} bonus`;
 			case "natural barkskin": return `natural {@spell barkskin}`;
 			case "mage armor": return "{@spell mage armor}";
-			case "intellect fortress": return "{@spell intellect fortress|tce}";
 			// endregion
 
 			// region armor (mostly handled by the item lookup; these are mis-named exceptions (usually for homebrew))
@@ -303,6 +309,7 @@ class AcConvert {
 			case "robe of the archmagi": return "{@item robe of the archmagi}";
 			case "robe of the archmage": return "{@item robe of the archmagi}";
 			case "staff of power": return "{@item staff of power}";
+			case "wrought-iron tower": return "{@item wrought-iron tower|CoA}";
 			// endregion
 
 			default: {
@@ -1361,6 +1368,7 @@ class SpellcastingTraitConvert {
 				{re: /\/rest/i, prop: "rest"},
 				{re: /\/day/i, prop: "daily"},
 				{re: /\/week/i, prop: "weekly"},
+				{re: /\/month/i, prop: "monthly"},
 				{re: /\/yeark/i, prop: "yearly"},
 			];
 
@@ -1368,14 +1376,14 @@ class SpellcastingTraitConvert {
 
 			if (perDuration) {
 				hasAnyHeader = true;
-				let property = thisLine.substr(0, 1) + (thisLine.includes(" each:") ? "e" : "");
+				let property = thisLine.substring(0, 1) + (/ each(?::| - )/.test(thisLine) ? "e" : "");
 				const value = this._getParsedSpells({thisLine, isMarkdown});
 				if (!spellcastingEntry[perDuration.prop]) spellcastingEntry[perDuration.prop] = {};
 				spellcastingEntry[perDuration.prop][property] = value;
-			} else if (thisLine.startsWith("Constant: ")) {
+			} else if (/^Constant(?::| -) /.test(thisLine)) {
 				hasAnyHeader = true;
 				spellcastingEntry.constant = this._getParsedSpells({thisLine, isMarkdown});
-			} else if (thisLine.startsWith("At will: ")) {
+			} else if (/^At[- ][Ww]ill(?::| -) /.test(thisLine)) {
 				hasAnyHeader = true;
 				spellcastingEntry.will = this._getParsedSpells({thisLine, isMarkdown});
 			} else if (thisLine.includes("Cantrip")) {
@@ -1383,15 +1391,15 @@ class SpellcastingTraitConvert {
 				const value = this._getParsedSpells({thisLine, isMarkdown});
 				if (!spellcastingEntry.spells) spellcastingEntry.spells = {"0": {"spells": []}};
 				spellcastingEntry.spells["0"].spells = value;
-			} else if (thisLine.includes(" level") && thisLine.includes(": ")) {
+			} else if (/ [Ll]evel/.test(thisLine) && /(?::| -) /.test(thisLine)) {
 				hasAnyHeader = true;
-				let property = thisLine.substr(0, 1);
+				let property = thisLine.substring(0, 1);
 				const allSpells = this._getParsedSpells({thisLine, isMarkdown});
 				spellcastingEntry.spells = spellcastingEntry.spells || {};
 
 				const out = {};
 				if (thisLine.includes(" slot")) {
-					const mWarlock = /^(\d)..(?: level)?-(\d).. level \((\d) (\d)..[- ]level slots?\)/.exec(thisLine);
+					const mWarlock = /^(\d)..(?: [Ll]evel)?-(\d).. [Ll]evel \((\d) (\d)..[- ][Ll]evel slots?\)/.exec(thisLine);
 					if (mWarlock) {
 						out.lower = parseInt(mWarlock[1]);
 						out.slots = parseInt(mWarlock[3]);
@@ -1426,7 +1434,8 @@ class SpellcastingTraitConvert {
 	}
 
 	static _getParsedSpells ({thisLine, isMarkdown}) {
-		let spellPart = thisLine.substring(thisLine.indexOf(": ") + 2).trim();
+		const mLabelSep = /(?::| -) /.exec(thisLine);
+		let spellPart = thisLine.substring((mLabelSep?.index || 0) + (mLabelSep?.[0]?.length || 0)).trim();
 		if (isMarkdown) {
 			const cleanPart = (part) => {
 				part = part.trim();
@@ -1450,25 +1459,20 @@ class SpellcastingTraitConvert {
 		return spellPart.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX).map(it => this._parseSpell(it));
 	}
 
-	// Homebrew (e.g. "Flee, Mortals!", page 3)
-	static _SPELL_BREW_SUPER_CAST_TIME_TO_FULL = {
-		"A": "1 action",
-		"B": "1 bonus action",
-		"R": "1 reaction",
-		"+": "Longer than 1 action (see spell description)",
-	};
-
 	static _parseSpell (str) {
 		str = str.trim();
 
 		const ptsSuffix = [];
 
+		// region Homebrew (e.g. "Flee, Mortals!", page 3)
 		const mBrewSuffixCastingTime = / +(?<time>[ABR+])\s*$/.exec(str);
 		if (mBrewSuffixCastingTime) {
 			str = str.slice(0, -mBrewSuffixCastingTime[0].length);
 			const action = mBrewSuffixCastingTime.groups.time;
-			ptsSuffix.unshift(`{@footnote {@sup ${action}}|Casting time: ${this._SPELL_BREW_SUPER_CAST_TIME_TO_FULL[action]}}`);
+			// TODO(Future) pass in source?
+			ptsSuffix.unshift(`{@sup {@cite Casting Times|FleeMortals|${action}}}`);
 		}
+		// endregion
 
 		const ixAsterisk = str.indexOf("*");
 		if (~ixAsterisk) {
@@ -1830,6 +1834,10 @@ class AttachedItemTag {
 		return mAtk[1].split(",").some(it => it.includes("w"));
 	}
 
+	// FIXME tags too aggressively; should limit by e.g.:
+	//   - for creatures with a known "book" source, never use items from a known "adventure" source
+	//   - for creatures with a known "adventure" source, never use items from a *different* "adventure" source
+	//   - for a creature from a known source, never tag items from a more recent known source
 	static tryRun (mon, {cbNotFound = null, isAddOnly = false} = {}) {
 		if (!this._WEAPON_DETAIL_CACHE) throw new Error(`Attached item cache was not initialized!`);
 

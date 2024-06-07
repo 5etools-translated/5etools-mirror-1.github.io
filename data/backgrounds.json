@@ -4716,6 +4716,386 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Continental Nobility",
+			"source": "DoDk",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Artificer",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Barbarian",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Bard",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Cleric",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Druid",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Fighter",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Monk",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Paladin",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Ranger",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Rogue",
+							"visible": true
+						}
+					}
+				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"persuasion",
+							"athletics",
+							"history",
+							"intimidation"
+						],
+						"count": 2
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 2
+				}
+			],
+			"startingEquipment": [
+				{
+					"a": [
+						"signet ring|phb"
+					],
+					"b": [
+						{
+							"special": "brooch bearing your family crest"
+						}
+					]
+				},
+				{
+					"_": [
+						{
+							"special": "cape in the colours of your house"
+						},
+						"fine clothes|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 2500
+						}
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "Two of the following: {@skill Persuasion}, {@skill Athletics}, {@skill History}, or {@skill Intimidation}"
+						},
+						{
+							"type": "item",
+							"name": "Languages:",
+							"entry": "Two of your choice"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "A {@item signet ring|PHB} or brooch bearing your family crest, a cape in the colours of your house, a set of {@item fine clothes|PHB}, and a {@item pouch|PHB} containing 25 gp"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Defining Event",
+					"entries": [
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Defining Event"
+							],
+							"rows": [
+								[
+									"1",
+									"I was well celebrated in my city as a slayer of a great troll."
+								],
+								[
+									"2",
+									"I witnessed the death of my family during the civil war. They were targets for their ties to the von Kessel name."
+								],
+								[
+									"3",
+									"I led my knights to victory in defending our castle during a raid in the war."
+								],
+								[
+									"4",
+									"I lost a lot of good soldiers in an earlier expedition into Drakkenheim. We never made it past the gate."
+								],
+								[
+									"5",
+									"My house was an enemy of the von Kessel family and had many battles with them."
+								],
+								[
+									"6",
+									"I broke ties with my family when they folded to the Silver Order."
+								],
+								[
+									"7",
+									"I am related, not to a king or queen, but to a noble figure who sat in the small council and made important decisions for their represented house."
+								],
+								[
+									"8",
+									"My family lost everything in the destruction of Drakkenheim. We are noble only in name, no longer in standing."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feature: Noble Confidence",
+					"entries": [
+						"During a short rest you can give an inspiring pep talk to a number of allies equal to your proficiency bonus. Once in the next 8 hours, each of those allies can roll {@dice 1d4} and add it to the result of a single attack roll, ability check, or saving throw.",
+						{
+							"type": "table",
+							"caption": "Suggested Characteristics",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Personality Trait"
+							],
+							"rows": [
+								[
+									"1",
+									"I consider myself a renowned monster slayer, and like to remind everyone of the many accomplishments I hold to my name."
+								],
+								[
+									"2",
+									"I keep family traditions close. Honour and family are amongst the most important things in the world, and I cherish them."
+								],
+								[
+									"3",
+									"I miss the comforts of my home. This city is dirty and smells terrible."
+								],
+								[
+									"4",
+									"I believe in the good in people, and I hope to find a peaceful resolution to our problems. A diplomatic approach is something Westemär greatly needs."
+								],
+								[
+									"5",
+									"As a noble, I have a responsibility to protect those who cannot protect themselves."
+								],
+								[
+									"6",
+									"It is highly important that I look my best and maintain my regal demeanor in all situations. My reputation must go untarnished."
+								],
+								[
+									"7",
+									"I may be of noble birth, but have lived life on the road for some time. I am more than willing to share what I have with others, as I am no better or worse than anyone else."
+								],
+								[
+									"8",
+									"There is no challenge I can't face. I heard about the horrors and monsters of this world, and I am what they fear the most."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Ideal"
+							],
+							"rows": [
+								[
+									"1",
+									"Respect. I am a respected member of my family, and I expect what remains of Drakkenheim's nobility and royal line to acknowledge my standing. (Lawful)"
+								],
+								[
+									"2",
+									"Responsibility. It is my responsibility as a representative of my noble line to remain cordial, and diplomatic in dealings with the various high ranking members of Drakkenheim's society. (Good)"
+								],
+								[
+									"3",
+									"Privacy. I do not wish for my nobility to come up. It may be best if the people of Drakkenheim do not know who I am. At least for now. (Any)"
+								],
+								[
+									"4",
+									"Duty. It is my duty to aid the people of Drakkenheim. As a noble I was connected to this city, and it is what is expected of me. (Good)"
+								],
+								[
+									"5",
+									"Glory. I must claim my victories and prove myself in battle. (Any)"
+								],
+								[
+									"6",
+									"Family. Blood is thicker than water and I will fight to defend my family's honour. (Good)"
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Bond"
+							],
+							"rows": [
+								[
+									"1",
+									"I must prove myself as a great warrior for my house and my people."
+								],
+								[
+									"2",
+									"My family was once bound to the royal family of Westemär, I must ensure we remain bound to whoever takes the throne."
+								],
+								[
+									"3",
+									"My family's fortune was lost. Drakkenheim may be our last chance to get it back."
+								],
+								[
+									"4",
+									"My family was betrayed by one of the royal houses, and I plan to make sure any that remain of that name are brought to justice and my family takes its place where it belongs."
+								],
+								[
+									"5",
+									"I am destined to rule, as my ancestors before me have."
+								],
+								[
+									"6",
+									"I have been sent unwillingly on a diplomatic mission to Drakkenheim. I am to gain political standing in these crumbling ruins."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Flaw"
+							],
+							"rows": [
+								[
+									"1",
+									"I boast about my own triumphs, and belittle the accomplishments of others."
+								],
+								[
+									"2",
+									"Bound by honor, I can never back down from a challenge, nor can I let those who undervalue my name go unchallenged."
+								],
+								[
+									"3",
+									"I do not like getting my hands dirty. Other people must do the heavy lifting, not me."
+								],
+								[
+									"4",
+									"I like to flaunt my wealth, and I spare no expense."
+								],
+								[
+									"5",
+									"I'm never wrong. Even if I was, I would never admit it."
+								],
+								[
+									"6",
+									"I was forced to lead, but I am very far out of my depth and desperately hoping people do not catch on that I don't know what I am doing here."
+								]
+							]
+						}
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true
+		},
+		{
 			"name": "Cormanthor Refugee",
 			"source": "ALRageOfDemons",
 			"page": 5,
@@ -5309,6 +5689,362 @@
 							]
 						}
 					]
+				}
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Custom Background",
+			"source": "PHB",
+			"page": 126,
+			"skillProficiencies": [
+				{
+					"any": 2
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 2
+				}
+			],
+			"skillToolLanguageProficiencies": [
+				{
+					"anyLanguage": 2
+				},
+				{
+					"anyLanguage": 1,
+					"anyTool": 1
+				},
+				{
+					"anyTool": 1
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "Two of your choice"
+						},
+						{
+							"type": "item",
+							"name": "Languages and Tool Proficiencies:",
+							"entry": "Two of your choice"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "The equipment package from any background"
+						}
+					]
+				},
+				{
+					"name": "Feature: Choose a Feature",
+					"type": "entries",
+					"entries": [
+						"Choose a feature from any background."
+					],
+					"data": {
+						"isFeature": true
+					}
+				},
+				{
+					"name": "Suggested Characteristics",
+					"type": "entries",
+					"entries": [
+						"Use the suggested characteristics from any background."
+					]
+				},
+				"{@note See the section on {@book Customizing a Background|PHB|4|Customizing a Background} in the {@book Player's Handbook|PHB} for more information.}"
+			]
+		},
+		{
+			"name": "Devoted Missionary",
+			"source": "DoDk",
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"history",
+							"religion",
+							"arcana",
+							"nature"
+						],
+						"count": 2
+					}
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 2
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						{
+							"item": "robes|phb",
+							"displayName": "set of pale robes"
+						},
+						{
+							"special": "small chip of delerium encased in glass"
+						},
+						{
+							"special": "walking stick"
+						},
+						{
+							"item": "amulet|phb",
+							"displayName": "amulet with a symbol of your chosen god"
+						},
+						{
+							"item": "book|phb",
+							"displayName": "small book of religious text"
+						}
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "Two of the following: {@skill History}, {@skill Religion}, {@skill Arcana}, {@skill Nature}"
+						},
+						{
+							"type": "item",
+							"name": "Languages:",
+							"entry": "Two of your choice"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "A set of pale {@item robes|PHB}, a small chip of delerium encased in glass, a walking stick, an {@item amulet|PHB} with a symbol of your chosen god, a small {@item book|PHB} of religious text"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Missionary Life",
+					"entries": [
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Missionary Life"
+							],
+							"rows": [
+								[
+									"1",
+									"I was on a quest of self-enlightenment."
+								],
+								[
+									"2",
+									"I ritualistically surround myself with lit candles and ancient texts when I rest."
+								],
+								[
+									"3",
+									"I had taken a vow of silence until the time that my voice was needed to fulfil my destiny."
+								],
+								[
+									"4",
+									"I was the caretaker of ancient relics of our faith and am quested with finding others."
+								],
+								[
+									"5",
+									"I am but a pilgrim hoping to find divine light in dark places in the world."
+								],
+								[
+									"6",
+									"I was guided to my faith by angels who rescued me from my dark past."
+								],
+								[
+									"7",
+									"I broke my vows to my faith and was exiled. I seek redemption."
+								],
+								[
+									"8",
+									"I must prove myself worthy to my faith and its purpose, no matter the amount of blood spilled or lives lost."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feature: Guided by Faith",
+					"entries": [
+						"A number of times per day equal to your proficiency bonus, you may ask the Game Master to reveal the DC of any ability check you make before rolling the dice. You may then decide whether or not you wish to attempt the roll.",
+						{
+							"type": "table",
+							"caption": "Suggested Characteristics",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Personality Trait"
+							],
+							"rows": [
+								[
+									"1",
+									"I empathize with those who do not follow the path of light. Creatures of all types can be brought back to the path of righteousness and are often suffering and in great pain."
+								],
+								[
+									"2",
+									"I believe in the words of my religion and quote its texts and scriptures as often as I can."
+								],
+								[
+									"3",
+									"I am tolerant (or intolerant) of other faiths and respect (or condemn) the worship of other gods."
+								],
+								[
+									"4",
+									"I have spent my life in a temple or church. Rough living wears on me quickly."
+								],
+								[
+									"5",
+									"I believe very strongly that everything will turn out okay, and nothing can shake my positive attitude."
+								],
+								[
+									"6",
+									"My faith kept me distant from others. I have very little experience with the world outside the church/temple/shrine."
+								],
+								[
+									"7",
+									"I have extremely strict etiquette and manners for interactions and tasks, and I refuse to stray from them."
+								],
+								[
+									"8",
+									"I am working on my thesis of religious ongoings in the world and excitedly discuss the nuances of these ideas with anyone and everyone."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Ideal"
+							],
+							"rows": [
+								[
+									"1",
+									"Logic. Emotions must not cloud our judgement on what is right or true. (Lawful)"
+								],
+								[
+									"2",
+									"Self. My religious journey is that of discovering myself. If I can obtain that, there is nothing left to know. (Any)"
+								],
+								[
+									"3",
+									"Charity. I will always help those in need, no matter the cost. (Good)"
+								],
+								[
+									"4",
+									"Faith. The path laid out before me is determined by the divine entity I worship. I will follow its signs and patterns to fulfil my purpose. (Lawful)"
+								],
+								[
+									"5",
+									"Power. The gods have granted me divine powers and I must use them to make those who do not worship as strongly as I see the divine light and understand that I am the one true speaker of my faith. (Chaotic)"
+								],
+								[
+									"6",
+									"Peace. I do not like to be part of conflicts, rather a neutral voice of reason to all sides. (Neutral)"
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Bond"
+							],
+							"rows": [
+								[
+									"1",
+									"Nothing is more important than my church and what it represents."
+								],
+								[
+									"2",
+									"I joined my religion to hide from a past I would rather forget."
+								],
+								[
+									"3",
+									"The path to enlightenment is unending. I must stay the course."
+								],
+								[
+									"4",
+									"I will die if it means doing right by my religious beliefs."
+								],
+								[
+									"5",
+									"Everything I do is for the good of the common people."
+								],
+								[
+									"6",
+									"I seek to preserve the ancient texts and artefact of my religion."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Flaw"
+							],
+							"rows": [
+								[
+									"1",
+									"I judge others harshly and believe my path to be the one true path."
+								],
+								[
+									"2",
+									"I believe in the words of my religion so strongly that I follow them without question."
+								],
+								[
+									"3",
+									"The goal I have set for myself is my destiny, and I can not act against it or abandon it for any reason."
+								],
+								[
+									"4",
+									"My religion was meant to keep the dark thoughts at bay, but I find myself losing that battle and a blood thirst grows within me."
+								],
+								[
+									"5",
+									"This is my first taste of life outside my religion, and I enjoy its pleasures a little too much."
+								],
+								[
+									"6",
+									"The gods and my faith have determined that I am always correct as I speak on their behalf. There is no question in my mind that I speak the ultimate truths and any who do not agree are misguided fools."
+								]
+							]
+						}
+					],
+					"data": {
+						"isFeature": true
+					}
 				}
 			],
 			"hasFluff": true
@@ -9091,11 +9827,17 @@
 		},
 		{
 			"name": "Gate Warden",
-			"source": "UA2022WondersOfTheMultiverse",
-			"page": 3,
+			"source": "SatO",
+			"prerequisite": [
+				{
+					"campaign": [
+						"Planescape"
+					]
+				}
+			],
 			"feats": [
 				{
-					"scion of the outer planes|ua2022wondersofthemultiverse": true
+					"scion of the outer planes|sato": true
 				}
 			],
 			"skillProficiencies": [
@@ -9119,7 +9861,9 @@
 							"item": "book|phb",
 							"displayName": "blank book"
 						},
-						"ink (1-ounce bottle)|phb",
+						{
+							"special": "bottle of black ink"
+						},
 						"traveler's clothes|phb",
 						{
 							"item": "pouch|phb",
@@ -9154,12 +9898,12 @@
 						{
 							"type": "item",
 							"name": "Languages:",
-							"entry": "Two of your choice ({@language Abyssal}, {@language Celestial}, or {@language Infernal} recommended)"
+							"entry": "Two of your choice (Abyssal, Celestial, or Infernal recommended)"
 						},
 						{
 							"type": "item",
 							"name": "Equipment:",
-							"entry": "A ring of keys to unknown locks, a blank {@item book|phb}, an {@item ink pen|phb} or quill, a {@item Ink (1-ounce bottle)|PHB|bottle of black ink}, a set of {@item traveler's clothes|phb}, and a {@item pouch|phb} containing 10 gp"
+							"entry": "A ring of keys to unknown locks, a blank {@item book|PHB}, an {@item ink pen|PHB} or quill, a bottle of black ink, a set of {@item traveler's clothes|PHB}, and a {@item pouch|PHB} containing 10 gp"
 						}
 					]
 				},
@@ -9167,7 +9911,7 @@
 					"type": "entries",
 					"name": "Feature: Planar Infusion",
 					"entries": [
-						"Living someplace steeped in the energy of the planes, you gain the {@feat Scion of the Outer Planes|UA2022WondersOfTheMultiverse} feat. In addition, you know where to find free, modest lodging and food in the community you grew up in."
+						"Living in a gate-town or a similar location steeped you in planar energy. You gain the {@feat Scion of the Outer Planes|SatO} feat. In addition, you know where to find free, modest lodging and food in the community you grew up in."
 					],
 					"data": {
 						"isFeature": true
@@ -9175,107 +9919,70 @@
 				},
 				{
 					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"The influence of an Outer Plane shapes your perspective. The Gate Warden Personality Traits table suggests traits you might adopt for your character.",
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Personality Trait"
+							],
+							"rows": [
+								[
+									"1",
+									"Strange events and otherworldly creatures don't faze me."
+								],
+								[
+									"2",
+									"I think in terms of exchange: something for something, nothing for nothing."
+								],
+								[
+									"3",
+									"I speak with an unusual cadence."
+								],
+								[
+									"4",
+									"I pepper my speech with words or curses borrowed from planar languages."
+								],
+								[
+									"5",
+									"I've seen enough to know that you can't take anyone at face value, so I scrutinize everyone."
+								],
+								[
+									"6",
+									"I have a superstitious habit I picked up from my gate-town, such as touching iron when I'm nervous or arranging objects in a specific order."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
 					"name": "Building a Gate Warden Character",
 					"entries": [
-						"Those who dwell for any extended time near a permanent portal to another plane absorb the essence radiating from the realm beyond. This creates similarities in behaviors and even physical appearances that mark someone as influenced by a particular plane.",
-						{
-							"type": "entries",
-							"name": "Suggested Characteristics",
-							"entries": [
-								"The influence of an Outer Plane shapes your perspective. The Gate Warden Personality Traits table suggests various traits you might adopt for your character.",
-								{
-									"type": "table",
-									"caption": "Gate Warden Personality Traits",
-									"colLabels": [
-										"d6",
-										"Personality Trait"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"Strange events and otherworldly creatures don't phase me."
-										],
-										[
-											"2",
-											"I think in terms of exchange; something for something, nothing for nothing."
-										],
-										[
-											"3",
-											"I speak with an unusual cadence."
-										],
-										[
-											"4",
-											"I pepper my speech with borrowed words or curses from planar languages."
-										],
-										[
-											"5",
-											"I've seen enough to know that you can't take anyone at face value, so I scrutinize everyone I deal with."
-										],
-										[
-											"6",
-											"I have a superstitious habit I picked up, such as touching iron when I'm nervous or arranging objects in a specific order."
-										]
-									]
-								}
-							]
-						},
+						"Those who dwell for an extended time near a permanent portal to another plane absorb the essence radiating from the realm beyond. Those influenced by the same plane share similarities in behavior and even physical appearance.",
 						{
 							"type": "entries",
 							"name": "Gate Warden Trinkets",
 							"entries": [
-								"When you make your character, you can roll once on the Gate Warden Trinkets table, instead of on the Trinkets table in the Player's Handbook, for your starting trinket.",
-								{
-									"type": "table",
-									"caption": "Gate Warden Trinkets",
-									"colLabels": [
-										"d6",
-										"Trinket"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"A tiny vial pendant, filled with a drip of honey that glows faintly"
-										],
-										[
-											"2",
-											"A small lead ingot with a strange thumbprint pressed into it that whispers when held tightly"
-										],
-										[
-											"3",
-											"Two lodestone spheres that chime when they attract each other"
-										],
-										[
-											"4",
-											"A smoldering pebble of coal that, while always hot, doesn't burn skin"
-										],
-										[
-											"5",
-											"A white feather that sheds dim light in a 5-foot radius"
-										],
-										[
-											"6",
-											"A ring made from a chain link that, once worn, won't come off without pulling painfully hard"
-										]
-									]
-								}
+								"When you make your character, you can roll once on the {@item Gate Warden Trinket|SatO|Gate Warden Trinkets} table, instead of on the {@item Trinket|PHB|Trinkets} table in the Player's Handbook, for your starting trinket."
 							]
 						}
 					]
 				}
 			],
-			"hasFluff": true
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Giant Foundling",
 			"source": "BGG",
+			"page": 6,
 			"feats": [
 				{
 					"strike of the giants|bgg": true
@@ -9451,180 +10158,6 @@
 			],
 			"hasFluff": true,
 			"hasFluffImages": true
-		},
-		{
-			"name": "Giant Foundling",
-			"source": "UA2022WondersOfTheMultiverse",
-			"page": 4,
-			"feats": [
-				{
-					"strike of the giants|ua2022wondersofthemultiverse": true
-				}
-			],
-			"skillProficiencies": [
-				{
-					"intimidation": true,
-					"survival": true
-				}
-			],
-			"languageProficiencies": [
-				{
-					"anyStandard": 2
-				}
-			],
-			"startingEquipment": [
-				{
-					"_": [
-						{
-							"special": "backpack"
-						},
-						"traveler's clothes|phb",
-						{
-							"item": "pouch|phb",
-							"containsValue": 1000
-						}
-					]
-				},
-				{
-					"a": [
-						{
-							"special": "small stone"
-						}
-					],
-					"b": [
-						{
-							"special": "sprig that reminds you of home"
-						}
-					]
-				}
-			],
-			"fromFeature": {
-				"feats": true
-			},
-			"entries": [
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Skill Proficiencies:",
-							"entry": "{@skill Intimidation}, {@skill Survival}"
-						},
-						{
-							"type": "item",
-							"name": "Languages:",
-							"entry": "Two of your choice"
-						},
-						{
-							"type": "item",
-							"name": "Equipment:",
-							"entry": "A backpack, a set of {@item traveler's clothes|phb}, a small stone or sprig that reminds you of home, and a {@item pouch|phb} containing 10 gp"
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Origin Stories",
-					"entries": [
-						"How you came to live among colossal creatures is up to you to determine, but the Foundling Origin table suggests a variety of possibilities.",
-						{
-							"type": "table",
-							"caption": "Foundling Origin",
-							"colLabels": [
-								"d6",
-								"Origin"
-							],
-							"colStyles": [
-								"col-1 text-center",
-								"col-11"
-							],
-							"rows": [
-								[
-									"1",
-									"You were found as a baby by a family of nomadic giants who raised you as one of their own."
-								],
-								[
-									"2",
-									"A family of stone giants rescued you when you fell into a mountain crag, and you have lived with them underground ever since."
-								],
-								[
-									"3",
-									"You were lost or abandoned as a child in a jungle that teemed with ravenous dinosaurs. There, you found an equally lost frost giant and together, you survived."
-								],
-								[
-									"4",
-									"Your farm was crushed and your family killed in a battle between warring groups of giants. Racked with guilt over the destruction, a sympathetic giant soldier promised to care for you."
-								],
-								[
-									"5",
-									"After you had a series of strange dreams as a child, your superstitious parents sent you to study with a powerful but aloof storm giant oracle."
-								],
-								[
-									"6",
-									"While playing hide-and-seek with your friends, you stumbled into the castle of a cloud giant matriarch, who immediately adopted you."
-								]
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Feature: Strike of the Giants",
-					"entries": [
-						"You gain the {@feat Strike of the Giants|UA2022WondersOfTheMultiverse} feat."
-					],
-					"data": {
-						"isFeature": true
-					}
-				},
-				{
-					"type": "entries",
-					"name": "Building a Giant Foundling Character",
-					"entries": [
-						"Your remarkable size and experience with titanic creatures has given you a unique perspective. Suggested Characteristics. The Giant Foundling Personality Traits table suggests a variety of traits you might adopt for your character.",
-						{
-							"type": "table",
-							"caption": "Giant Foundling Personality Traits",
-							"colLabels": [
-								"d6",
-								"Personality Trait"
-							],
-							"colStyles": [
-								"col-1 text-center",
-								"col-11"
-							],
-							"rows": [
-								[
-									"1",
-									"What I lack in stature, I make up for with sheer spite."
-								],
-								[
-									"2",
-									"Sometimes size does matter, okay? If I see a beast bigger than me, I'm immediately running away."
-								],
-								[
-									"3",
-									"Crowded spaces make me uncomfortable. I'd much rather be in a wide-open field than a bustling tavern."
-								],
-								[
-									"4",
-									"I like being small. It helps me stay unnoticed\u2014and underestimated."
-								],
-								[
-									"5",
-									"Size is just half the story. Every avalanche begins as a single pebble."
-								],
-								[
-									"6",
-									"The world always feels too big, and I'm afraid I'll never find my place in it."
-								]
-							]
-						}
-					]
-				}
-			],
-			"hasFluff": true
 		},
 		{
 			"name": "Golgari Agent",
@@ -12567,12 +13100,6 @@
 			"name": "House Agent",
 			"source": "ERLW",
 			"page": 53,
-			"otherSources": [
-				{
-					"source": "UAWGE",
-					"page": 94
-				}
-			],
 			"skillProficiencies": [
 				{
 					"investigation": true,
@@ -14654,364 +15181,6 @@
 			"hasFluffImages": true
 		},
 		{
-			"name": "Knight of Solamnia",
-			"source": "UA2022HeroesOfKrynn",
-			"page": 3,
-			"feats": [
-				{
-					"squire of solamnia|ua2022heroesofkrynn": true
-				}
-			],
-			"skillProficiencies": [
-				{
-					"athletics": true,
-					"survival": true
-				}
-			],
-			"languageProficiencies": [
-				{
-					"anyStandard": 1
-				}
-			],
-			"toolProficiencies": [
-				{
-					"musical instrument": true
-				}
-			],
-			"startingEquipment": [
-				{
-					"_": [
-						{
-							"special": "insignia of rank"
-						},
-						{
-							"special": "deck of cards"
-						},
-						"common clothes|phb",
-						{
-							"item": "pouch|phb",
-							"containsValue": 1000
-						}
-					]
-				}
-			],
-			"fromFeature": {
-				"feats": true
-			},
-			"entries": [
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Skill Proficiencies:",
-							"entry": "{@skill Athletics}, {@skill Survival}"
-						},
-						{
-							"type": "item",
-							"name": "Tool Proficiencies:",
-							"entry": "One type of {@filter musical instrument|items|source=phb|miscellaneous=mundane|type=instrument}"
-						},
-						{
-							"type": "item",
-							"name": "Languages:",
-							"entry": "One of your choice"
-						},
-						{
-							"type": "item",
-							"name": "Equipment:",
-							"entry": "An insignia of rank, a deck of cards, a set of {@item common clothes|PHB}, and a {@item pouch|PHB} containing 10 gp"
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Feature: Squire of Solamnia",
-					"entries": [
-						"You gain the {@feat Squire of Solamnia|UA2022HeroesOfKrynn} feat.",
-						"In addition, the Knights of Solamnia provide you free, modest lodging and food at any of their fortresses or encampments."
-					],
-					"data": {
-						"isFeature": true
-					}
-				},
-				{
-					"type": "entries",
-					"name": "Building a Knight of Solamnia Character",
-					"entries": [
-						"Any class or subclass that has martial prowess can be a good fit in the Knights of Solamnia. Fighters and paladins make up the bulk of the knighthood's forces. Clerics (often with the War domain) can also be found among the knights' ranks.",
-						"For a more unusual take on a Knight of Solamnia character, consider playing a bard of the College of Valor (or the College of Swords from Xanathar's Guide to Everything) or a barbarian devoted to the ideals of the nature god Habbakuk (perhaps adopting the Path of the Zealot from Xanathar's Guide to Everything).",
-						{
-							"type": "entries",
-							"name": "Suggested Characteristics",
-							"entries": [
-								"Adventurers who dedicate themselves to protecting the innocent and upholding honorable virtues are welcomed among the Knights of Solamnia. The Knight of Solamnia Personality Traits table suggests various traits you might adopt for your character.",
-								{
-									"type": "table",
-									"caption": "Knight of Solamnia Personality Traits",
-									"colLabels": [
-										"d6",
-										"Personality Trait"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"I pledge my sword to the greater good. If I must perish in pursuit of that good, so be it."
-										],
-										[
-											"2",
-											"My comrades-in-arms are my family. I'll do whatever it takes to keep them safe."
-										],
-										[
-											"3",
-											"The protection of innocent people comes first. All other concerns come second."
-										],
-										[
-											"4",
-											"I joined the knights for the free meals, but their lessons grew on me over time."
-										],
-										[
-											"5",
-											"I wish my deeds to become the stuff of legends\u2014just like those of the knighthood's heroic founders."
-										],
-										[
-											"6",
-											"A dishonorable act drove me to become a knight. I have acted with honor ever since."
-										]
-									]
-								}
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Knight of Solamnia Trinkets",
-							"entries": [
-								"When you make your character, you may roll once on the Knight of Solamnia Trinkets table, instead of on the Trinkets table in the Player's Handbook, for your starting trinket.",
-								{
-									"type": "table",
-									"caption": "Knight of Solamnia Trinkets",
-									"colLabels": [
-										"d6",
-										"Trinket"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"A flat silver disk you record your heroics upon"
-										],
-										[
-											"2",
-											"A piece of a fallen knight's armor"
-										],
-										[
-											"3",
-											"A pendant featuring a crown, a rose, a sword, or combination of all three"
-										],
-										[
-											"4",
-											"The pommel of your mentor's sword"
-										],
-										[
-											"5",
-											"A meaningful favor from someone you defended\u2014perhaps a handkerchief or glove"
-										],
-										[
-											"6",
-											"A brass locket with a sketch of a silver dragon inside"
-										]
-									]
-								}
-							]
-						}
-					]
-				}
-			],
-			"hasFluff": true
-		},
-		{
-			"name": "Knight of Solamnia",
-			"source": "UA2022HeroesOfKrynnRevisited",
-			"page": 2,
-			"feats": [
-				{
-					"squire of solamnia|ua2022heroesofkrynnrevisited": true
-				}
-			],
-			"skillProficiencies": [
-				{
-					"athletics": true,
-					"survival": true
-				}
-			],
-			"languageProficiencies": [
-				{
-					"anyStandard": 2
-				}
-			],
-			"startingEquipment": [
-				{
-					"_": [
-						{
-							"special": "insignia of rank"
-						},
-						{
-							"special": "deck of cards"
-						},
-						"common clothes|phb",
-						{
-							"item": "pouch|phb",
-							"containsValue": 1000
-						}
-					]
-				}
-			],
-			"fromFeature": {
-				"feats": true
-			},
-			"entries": [
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Skill Proficiencies:",
-							"entry": "{@skill Athletics}, {@skill Survival}"
-						},
-						{
-							"type": "item",
-							"name": "Languages:",
-							"entry": "Two of your choice"
-						},
-						{
-							"type": "item",
-							"name": "Equipment:",
-							"entry": "An insignia of rank, a deck of cards, a set of {@item common clothes|PHB}, and a {@item pouch|PHB} containing 10 gp"
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Feature: Squire of Solamnia",
-					"entries": [
-						"You gain the {@feat Squire of Solamnia|UA2022HeroesOfKrynnRevisited} feat.",
-						"In addition, the Knights of Solamnia provide you free, modest lodging and food at any of their fortresses or encampments."
-					],
-					"data": {
-						"isFeature": true
-					}
-				},
-				{
-					"type": "entries",
-					"name": "Building a Knight of Solamnia Character",
-					"entries": [
-						"Any class or subclass that has martial prowess can be a good fit in the Knights of Solamnia. Fighters and paladins make up the bulk of the knighthood's forces. Clerics (often with the War domain) can also be found among the knights' ranks.",
-						"For a more unusual take on a Knight of Solamnia character, consider playing a bard of the College of Valor (or the College of Swords from Xanathar's Guide to Everything) or a barbarian devoted to the ideals of the nature god Habbakuk (perhaps adopting the Path of the Zealot from Xanathar's Guide to Everything).",
-						{
-							"type": "entries",
-							"name": "Suggested Characteristics",
-							"entries": [
-								"Adventurers who dedicate themselves to protecting the innocent and upholding honorable virtues are welcomed among the Knights of Solamnia. The Knight of Solamnia Personality Traits table suggests various traits you might adopt for your character.",
-								{
-									"type": "table",
-									"caption": "Knight of Solamnia Personality Traits",
-									"colLabels": [
-										"d6",
-										"Personality Trait"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"I pledge my sword to the greater good. If I must perish in pursuit of that good, so be it."
-										],
-										[
-											"2",
-											"My comrades-in-arms are my family. I'll do whatever it takes to keep them safe."
-										],
-										[
-											"3",
-											"The protection of innocent people comes first. All other concerns come second."
-										],
-										[
-											"4",
-											"I joined the knights for the free meals, but their lessons grew on me over time."
-										],
-										[
-											"5",
-											"I wish my deeds to become the stuff of legends\u2014just like those of the knighthood's heroic founders."
-										],
-										[
-											"6",
-											"A dishonorable act drove me to become a knight. I have acted with honor ever since."
-										]
-									]
-								}
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Knight of Solamnia Trinkets",
-							"entries": [
-								"When you make your character, you may roll once on the Knight of Solamnia Trinkets table, instead of on the Trinkets table in the Player's Handbook, for your starting trinket.",
-								{
-									"type": "table",
-									"caption": "Knight of Solamnia Trinkets",
-									"colLabels": [
-										"d6",
-										"Trinket"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"A flat silver disk you record your heroics upon"
-										],
-										[
-											"2",
-											"A piece of a fallen knight's armor"
-										],
-										[
-											"3",
-											"A pendant featuring a crown, a rose, a sword, or combination of all three"
-										],
-										[
-											"4",
-											"The pommel of your mentor's sword"
-										],
-										[
-											"5",
-											"A meaningful favor from someone you defended\u2014perhaps a handkerchief or glove"
-										],
-										[
-											"6",
-											"A brass locket with a sketch of a silver dragon inside"
-										]
-									]
-								}
-							]
-						}
-					]
-				}
-			],
-			"hasFluff": true
-		},
-		{
 			"name": "Knight of the Order",
 			"source": "SCAG",
 			"page": 151,
@@ -15736,44 +15905,108 @@
 					]
 				}
 			],
-			"hasFluff": true
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
-			"name": "Mage of High Sorcery",
-			"source": "UA2022HeroesOfKrynn",
-			"page": 4,
-			"feats": [
+			"name": "Mageborn",
+			"source": "DoDk",
+			"prerequisite": [
 				{
-					"initiate of high sorcery|ua2022heroesofkrynn": true
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Bard",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Sorcerer",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Warlock",
+							"visible": true
+						}
+					}
+				},
+				{
+					"level": {
+						"level": 1,
+						"class": {
+							"name": "Wizard",
+							"visible": true
+						}
+					}
 				}
 			],
 			"skillProficiencies": [
 				{
-					"arcana": true,
-					"history": true
+					"choose": {
+						"from": [
+							"arcana",
+							"deception",
+							"investigation",
+							"perception"
+						],
+						"count": 2
+					}
 				}
 			],
 			"languageProficiencies": [
 				{
-					"anyStandard": 2
+					"draconic": true
+				},
+				{
+					"elvish": true
+				}
+			],
+			"toolProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"calligrapher's supplies",
+							"alchemist's supplies"
+						]
+					}
 				}
 			],
 			"startingEquipment": [
 				{
 					"_": [
-						"ink (1-ounce bottle)|phb",
-						"ink pen|phb",
-						"common clothes|phb",
 						{
-							"item": "pouch|phb",
-							"containsValue": 1000
+							"item": "wand|phb",
+							"displayName": "gnarled wand made of wood"
+						},
+						{
+							"special": "duster jacket"
+						},
+						{
+							"special": "satchel for material components and potions"
+						}
+					]
+				},
+				{
+					"a": [
+						"amulet|phb"
+					],
+					"b": [
+						{
+							"item": "trinket|phb",
+							"displayName": "other trinket of importance to you"
 						}
 					]
 				}
 			],
-			"fromFeature": {
-				"feats": true
-			},
 			"entries": [
 				{
 					"type": "list",
@@ -15782,310 +16015,242 @@
 						{
 							"type": "item",
 							"name": "Skill Proficiencies:",
-							"entry": "{@skill Arcana}, {@skill History}"
+							"entry": "Two of the following: {@skill Arcana}, {@skill Deception}, {@skill Investigation}, {@skill Perception}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiencies:",
+							"entry": "Either calligraphers' supplies or alchemists' supplies"
 						},
 						{
 							"type": "item",
 							"name": "Languages:",
-							"entry": "Two of your choice"
+							"entry": "Draconic or Elvish"
 						},
 						{
 							"type": "item",
 							"name": "Equipment:",
-							"entry": "A {@item Ink (1-ounce bottle)|PHB|bottle of colored ink}, an {@item ink pen|phb}, a set of {@item common clothes|phb}, and a {@item pouch|phb} containing 10 gp"
+							"entry": "A gnarled {@item wand|PHB} made of wood, a duster jacket, a satchel for material components and potions, an {@item amulet|PHB} or other {@item trinket|PHB} of importance to you"
 						}
 					]
 				},
 				{
 					"type": "entries",
-					"name": "Feature: Initiate of High Sorcery",
+					"name": "Mageborn Quirk",
 					"entries": [
-						"You gain the {@feat Initiate of High Sorcery|UA2022HeroesOfKrynn} feat.",
-						"In addition, the Mages of High Sorcery provide you with free, modest lodging and food indefinitely at any occupied Tower of High Sorcery and for one night at the home of an organization member."
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Mageborn Quirk"
+							],
+							"rows": [
+								[
+									"1",
+									"My eyes are two different colours."
+								],
+								[
+									"2",
+									"Whenever I cast a spell, my voice echoes and an unknown wind seems to blow around me."
+								],
+								[
+									"3",
+									"My eyes glow with octarine light when I am casting spells."
+								],
+								[
+									"4",
+									"I hear voices and sounds when close to magical entities, as if the magic itself speaks to me."
+								],
+								[
+									"5",
+									"I have full conversations with myself out loud that occasionally can get heated."
+								],
+								[
+									"6",
+									"Magic floods my mind and makes it difficult to sleep without constant nightmares and visions."
+								],
+								[
+									"7",
+									"I speak to beings from other planes of existence who manifest as simple creatures before me."
+								],
+								[
+									"8",
+									"I have a birthmark in a unique shape that appears every day for 2 and a half hours, then vanishes."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feature: Bookworm",
+					"entries": [
+						"Once per day after you finish a long rest, you can spend one hour to create a spell scroll. You need only paper and ink to do so, and the level of the spell you can create equals one half your proficiency bonus (rounded down) or lower. The scroll you create must be a spell you know or have prepared. It crumbles to dust in 24 hours.",
+						{
+							"type": "table",
+							"caption": "Suggested Characteristics",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Personality Trait"
+							],
+							"rows": [
+								[
+									"1",
+									"I idolize one of the archmages of the Academy and hope to prove myself to them in time."
+								],
+								[
+									"2",
+									"Nothing will get between me and my goals. When people say something I care about is impossible, I prove them wrong."
+								],
+								[
+									"3",
+									"I am confident in my powers, and do not fear the horrors of Drakkenheim, for I can bend reality."
+								],
+								[
+									"4",
+									"I am constantly reading books. The more knowledge I can obtain, the more I can outwit friends and foes alike."
+								],
+								[
+									"5",
+									"I am a mage for hire and am not afraid to use my magic to get my hands dirty. A lot of people will pay top coin for a skillset like mine."
+								],
+								[
+									"6",
+									"I am a sucker for a good mystery and pride myself in my ability to solve them."
+								],
+								[
+									"7",
+									"Everyone is always so serious - we all die in the end, might as well enjoy the ride."
+								],
+								[
+									"8",
+									"I always push myself to be the best at whatever it is I set out to do."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Ideal"
+							],
+							"rows": [
+								[
+									"1",
+									"Respect. My powers are a blessing and a curse, and I work diligently to show people not to fear magic. (Good)"
+								],
+								[
+									"2",
+									"Knowledge. I left the Academy on good terms to work at one of the many historical institutes of the world, hoping that my love for books and history would be of use. (Any)"
+								],
+								[
+									"3",
+									"Love. I left the Academy due to love, and I plan to keep my promise to that love. (Good)"
+								],
+								[
+									"4",
+									"Forgiveness. I must undo the mistakes of my past by proving myself to those I care about most. (Good)"
+								],
+								[
+									"5",
+									"Power. Delerium is power, and I must learn all I can about its origins and properties if I am to harness that power. (Chaotic)"
+								],
+								[
+									"6",
+									"Independence. I stand alone from the Academy for a reason. I do not wish to be on their bad side, but I do not wish to be on their good side either. (Neutral)"
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Bond"
+							],
+							"rows": [
+								[
+									"1",
+									"It is my duty to protect the Amethyst Academy."
+								],
+								[
+									"2",
+									"My life's work in the study of delerium caused my expulsion. I must continue that research to prove its value."
+								],
+								[
+									"3",
+									"The mysteries of my past and my power are tied to the meteor. I need answers."
+								],
+								[
+									"4",
+									"My terrible mistake was covered up by my mentor in the Academy. I owe them my life."
+								],
+								[
+									"5",
+									"My nightmares have guided me to Drakkenheim. I must investigate these visions."
+								],
+								[
+									"6",
+									"I come from a long line of wizards, my exit from the Academy was highly upsetting to them and I need to earn my way back into their favour, even if it means risking my life in Drakkenheim."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Flaw"
+							],
+							"rows": [
+								[
+									"1",
+									"I walk straight into danger. What's the worst that could happen?"
+								],
+								[
+									"2",
+									"I believe my plan is always far superior to everyone else's."
+								],
+								[
+									"3",
+									"I am distracted by possibilities of gaining knowledge or power, regardless of the cost or danger."
+								],
+								[
+									"4",
+									"I overcomplicate most situations with small details and over analyzing simple things."
+								],
+								[
+									"5",
+									"I get angry quickly, and cause more harm than good with my magic when I get mad."
+								],
+								[
+									"6",
+									"I can't get enough delerium. I want the power for myself."
+								]
+							]
+						}
 					],
 					"data": {
 						"isFeature": true
 					}
-				},
-				{
-					"type": "entries",
-					"name": "Building a Mage of High Sorcery Character",
-					"entries": [
-						"Mages of High Sorcery are typically bards, wizards, or warlocks and might have any subclass. Spellcasters who gain their magic through devotion or who possess innate magic are less likely to be welcomed among the traditionalist mages. Nevertheless, the Mages of High Sorcery are shrewd, and they rarely let unique opportunities or individuals pass them by. Even members of martial classes who train in magic might find a rare place among the group's three orders.",
-						{
-							"type": "entries",
-							"name": "Suggested Characteristics",
-							"entries": [
-								"The study of magic drives the Mages of High Sorcery. Consider which of the group's three orders you aspire to join. The Mage of High Sorcery Personality Traits table suggests traits you might adopt for your character.",
-								{
-									"type": "table",
-									"caption": "Mage of High Sorcery Personality Traits",
-									"colLabels": [
-										"d6",
-										"Personality Trait"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"I wish to use my knowledge of magic to better people's lives."
-										],
-										[
-											"2",
-											"My study of magic might reveal all manner of secrets."
-										],
-										[
-											"3",
-											"Magic is a means to power, and I will use it to pursue my ambitions."
-										],
-										[
-											"4",
-											"I learned magic so I'd be able to protect those I care about."
-										],
-										[
-											"5",
-											"I use my magic to maintain the balance between all things."
-										],
-										[
-											"6",
-											"Whether in the past, present, or future, I will be the greatest mage ever known."
-										]
-									]
-								}
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Mage of High Sorcery Trinkets",
-							"entries": [
-								"When you make your character, you may roll once on the Mage of High Sorcery Trinkets table, instead of on the Trinkets table in the Player's Handbook, for your starting trinket.",
-								{
-									"type": "table",
-									"caption": "Mage of High Sorcery Trinkets",
-									"colLabels": [
-										"d6",
-										"Trinket"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"An unopened letter from your first teacher"
-										],
-										[
-											"2",
-											"A broken wand made of black, red, or white wood"
-										],
-										[
-											"3",
-											"A scroll bearing an incomprehensible formula"
-										],
-										[
-											"4",
-											"A purposeless device covered in colored stones that can fold into various enigmatic shapes"
-										],
-										[
-											"5",
-											"A pouch or spell book emblazoned with the triple moon symbol of the Mages of High Sorcery"
-										],
-										[
-											"6",
-											"A lens through which you can see Krynn's invisible black moon, Nuitari"
-										]
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "inset",
-					"name": "Mages of Dragonlance",
-					"entries": [
-						"In past presentations of the Dragonlance setting, several of Dungeons & Dragon's modern spellcasting classes didn't exist. To accommodate these classes, the group known as the Wizards of High Sorcery has evolved into the Mages of High Sorcery. The group's distinct orders and signature robes remain, but the organization now accepts members from a broad range of spellcasting traditions. Members who find their magic influenced by the phases of Krynn's moons also remain part of the group, largely represented by sorcerers with the {@class sorcerer|phb|Lunar Magic|lunar magic (UA)|UA2022HeroesOfKrynn} subclass."
-					]
-				}
-			],
-			"hasFluff": true
-		},
-		{
-			"name": "Mage of High Sorcery",
-			"source": "UA2022HeroesOfKrynnRevisited",
-			"page": 3,
-			"feats": [
-				{
-					"initiate of high sorcery|ua2022heroesofkrynnrevisited": true
-				}
-			],
-			"skillProficiencies": [
-				{
-					"arcana": true,
-					"history": true
-				}
-			],
-			"languageProficiencies": [
-				{
-					"anyStandard": 2
-				}
-			],
-			"startingEquipment": [
-				{
-					"_": [
-						"ink (1-ounce bottle)|phb",
-						"ink pen|phb",
-						"common clothes|phb",
-						{
-							"item": "pouch|phb",
-							"containsValue": 1000
-						}
-					]
-				}
-			],
-			"fromFeature": {
-				"feats": true
-			},
-			"entries": [
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Skill Proficiencies:",
-							"entry": "{@skill Arcana}, {@skill History}"
-						},
-						{
-							"type": "item",
-							"name": "Languages:",
-							"entry": "Two of your choice"
-						},
-						{
-							"type": "item",
-							"name": "Equipment:",
-							"entry": "A {@item Ink (1-ounce bottle)|PHB|bottle of colored ink}, an {@item ink pen|phb}, a set of {@item common clothes|phb}, and a {@item pouch|phb} containing 10 gp"
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Feature: Initiate of High Sorcery",
-					"entries": [
-						"You gain the {@feat Initiate of High Sorcery|UA2022HeroesOfKrynnRevisited} feat.",
-						"In addition, the Mages of High Sorcery provide you with free, modest lodging and food indefinitely at any occupied Tower of High Sorcery and for one night at the home of an organization member."
-					],
-					"data": {
-						"isFeature": true
-					}
-				},
-				{
-					"type": "entries",
-					"name": "Building a Mage of High Sorcery Character",
-					"entries": [
-						"Mages of High Sorcery are typically sorcerers, warlocks, or wizards and might have any subclass. Spellcasters who gain their magic through devotion are less likely to be welcomed among the traditionalist mages. Nevertheless, the Mages of High Sorcery are shrewd, and they rarely let unique opportunities or individuals pass them by. Even members of martial classes who train in magic might find a rare place among the group's three orders.",
-						{
-							"type": "entries",
-							"name": "Suggested Characteristics",
-							"entries": [
-								"The study of magic drives the Mages of High Sorcery. Consider which of the group's three orders you aspire to join. The Mage of High Sorcery Personality Traits table suggests traits you might adopt for your character.",
-								{
-									"type": "table",
-									"caption": "Mage of High Sorcery Personality Traits",
-									"colLabels": [
-										"d6",
-										"Personality Trait"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"I wish to use my knowledge of magic to better people's lives."
-										],
-										[
-											"2",
-											"My study of magic might reveal all manner of secrets."
-										],
-										[
-											"3",
-											"Magic is a means to power, and I will use it to pursue my ambitions."
-										],
-										[
-											"4",
-											"I learned magic so I'd be able to protect those I care about."
-										],
-										[
-											"5",
-											"I use my magic to maintain the balance between all things."
-										],
-										[
-											"6",
-											"Whether in the past, present, or future, I will be the greatest mage ever known."
-										]
-									]
-								}
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Mage of High Sorcery Trinkets",
-							"entries": [
-								"When you make your character, you may roll once on the Mage of High Sorcery Trinkets table, instead of on the Trinkets table in the Player's Handbook, for your starting trinket.",
-								{
-									"type": "table",
-									"caption": "Mage of High Sorcery Trinkets",
-									"colLabels": [
-										"d6",
-										"Trinket"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"An unopened letter from your first teacher"
-										],
-										[
-											"2",
-											"A broken wand made of black, red, or white wood"
-										],
-										[
-											"3",
-											"A scroll bearing an incomprehensible formula"
-										],
-										[
-											"4",
-											"A purposeless device covered in colored stones that can fold into various enigmatic shapes"
-										],
-										[
-											"5",
-											"A pouch or spell book emblazoned with the triple moon symbol of the Mages of High Sorcery"
-										],
-										[
-											"6",
-											"A lens through which you can see Krynn's invisible black moon, Nuitari"
-										]
-									]
-								}
-							]
-						}
-					]
-				},
-				{
-					"type": "inset",
-					"name": "Mages of Dragonlance",
-					"entries": [
-						"In past presentations of the Dragonlance setting, several of Dungeons & Dragon's modern spellcasting classes didn't exist. To accommodate these classes, the group known as the Wizards of High Sorcery has evolved into the Mages of High Sorcery. The group's distinct orders and signature robes remain, but the organization now accepts members from a broad range of spellcasting traditions."
-					]
 				}
 			],
 			"hasFluff": true
@@ -17821,7 +17986,7 @@
 					"name": "Feature: Guerrilla",
 					"type": "entries",
 					"entries": [
-						"You've come to know the surrounding forests, streams, caves, and other natural features in which you can take refuge--or set up ambushes. You can quickly survey your environment for advantageous features. Additionally, you can scavenge around your natural surroundings to cobble together simple supplies (such as improvised torches, rope, patches of fabric, etc.) that are consumed after use. Note: This feature is a variant of the Outlander feature."
+						"You've come to know the surrounding forests, streams, caves, and other natural features in which you can take refuge\u2014or set up ambushes. You can quickly survey your environment for advantageous features. Additionally, you can scavenge around your natural surroundings to cobble together simple supplies (such as improvised torches, rope, patches of fabric, etc.) that are consumed after use. Note: This feature is a variant of the Outlander feature."
 					],
 					"data": {
 						"isFeature": true
@@ -18489,17 +18654,38 @@
 		},
 		{
 			"name": "Planar Philosopher",
-			"source": "UA2022WondersOfTheMultiverse",
-			"page": 3,
+			"source": "SatO",
+			"prerequisite": [
+				{
+					"campaign": [
+						"Planescape"
+					]
+				}
+			],
 			"feats": [
 				{
-					"scion of the outer planes|ua2022wondersofthemultiverse": true
+					"scion of the outer planes|sato": true
 				}
 			],
 			"skillProficiencies": [
 				{
 					"arcana": true,
-					"persuasion": true
+					"choose": {
+						"from": [
+							"religion",
+							"insight",
+							"nature",
+							"intimidation",
+							"history",
+							"stealth",
+							"perception",
+							"medicine",
+							"survival",
+							"persuasion",
+							"performance",
+							"athletics"
+						]
+					}
 				}
 			],
 			"languageProficiencies": [
@@ -18510,7 +18696,16 @@
 			"startingEquipment": [
 				{
 					"_": [
-						"common clothes|phb",
+						{
+							"special": "portal key (such as a bag of golden tea leaves or the tooth of a planar beast)"
+						},
+						{
+							"special": "manifesto of your guiding philosophy"
+						},
+						{
+							"item": "common clothes|phb",
+							"displayName": "common clothes in your faction's style"
+						},
 						{
 							"item": "pouch|phb",
 							"containsValue": 1000
@@ -18529,7 +18724,7 @@
 						{
 							"type": "item",
 							"name": "Skill Proficiencies:",
-							"entry": "{@skill Arcana}, {@skill Persuasion}"
+							"entry": "{@skill Arcana}, the skill associated with your faction (see the Sigil Faction Affinities table) or one skill of your choice"
 						},
 						{
 							"type": "item",
@@ -18539,7 +18734,167 @@
 						{
 							"type": "item",
 							"name": "Equipment:",
-							"entry": "A set of {@item common clothes|phb}, and a {@item pouch|phb} containing 10 gp comprised of coins from different worlds and planes"
+							"entry": "A portal key (such as a bag of golden tea leaves or the tooth of a planar beast), a manifesto of your guiding philosophy, a set of {@item common clothes|PHB} in your faction's style, and a {@item pouch|PHB} containing 10 gp worth of coins from different worlds and planes"
+						}
+					]
+				},
+				{
+					"type": "table",
+					"caption": "Sigil Faction Affinities",
+					"colStyles": [
+						"col-6",
+						"col-6"
+					],
+					"colLabels": [
+						"Faction",
+						"Skill"
+					],
+					"rows": [
+						[
+							"Athar",
+							"{@skill Religion}"
+						],
+						[
+							"Bleak Cabal",
+							"{@skill Insight}"
+						],
+						[
+							"Doomguard",
+							"{@skill Nature}"
+						],
+						[
+							"Fated",
+							"{@skill Intimidation}"
+						],
+						[
+							"Fraternity of Order",
+							"{@skill History}"
+						],
+						[
+							"Hands of Havoc",
+							"{@skill Stealth}"
+						],
+						[
+							"Harmonium",
+							"{@skill Perception}"
+						],
+						[
+							"Heralds of Dust",
+							"{@skill Medicine}"
+						],
+						[
+							"Mercykillers",
+							"{@skill Survival}"
+						],
+						[
+							"Mind's Eye",
+							"{@skill Persuasion}"
+						],
+						[
+							"Society of Sensation",
+							"{@skill Performance}"
+						],
+						[
+							"Transcendent Order",
+							"{@skill Athletics}"
+						]
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Factions of Sigil",
+					"entries": [
+						"Twelve factions have risen to prominence in the City of Doors, though many more exist. Your character might belong to one of these groups or another ideological faction, perhaps one of your own creation.",
+						"The primary factions of Sigil, which are further detailed in chapter 2, adhere to the following philosophies:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Athar",
+									"entries": [
+										"Deities are frauds and merely channel the might of a true, higher power."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bleak Cabal",
+									"entries": [
+										"There is no greater truth to the multiverse. Each being must discover their own meaning."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Doomguard",
+									"entries": [
+										"Nothing lasts forever. The purpose of everything is to crumble and decay."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Fated",
+									"entries": [
+										"Everyone makes their own fate and is entitled to whatever they can take and hold."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Fraternity of Order",
+									"entries": [
+										"All of existence is governed by laws, and power comes from understanding and exploiting them."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Hands of Havoc",
+									"entries": [
+										"Those who try to impose a single order on the multiverse are doomed to fail."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Harmonium",
+									"entries": [
+										"The multiverse will be perfect only when everything is acting in harmony, whether it wants to or not."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Heralds of Dust",
+									"entries": [
+										"Everyone is already dead; the entirety of the multiverse is an afterlife. Undeath holds the key to the next stage of existence."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Mercykillers",
+									"entries": [
+										"Cold, relentless justice is absolute, and no one is above it."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Mind's Eye",
+									"entries": [
+										"The multiverse exists to be explored. It shapes us, and we shape it in turn."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Society of Sensation",
+									"entries": [
+										"Sensation is the proof of existence. By experiencing everything, we can understand the multiverse in all its complexity."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Transcendent Order",
+									"entries": [
+										"Thought clouds action. To fall in step with the multiverse, one must act on instinct alone."
+									]
+								}
+							]
 						}
 					]
 				},
@@ -18547,7 +18902,7 @@
 					"type": "entries",
 					"name": "Feature: Conviction",
 					"entries": [
-						"You gain the {@feat Scion of the Outer Planes|UA2022WondersOfTheMultiverse} feat. In addition, members of organization provide you free, modest lodging and food at any of their holding or the homes of other faction members."
+						"You gain the {@feat Scion of the Outer Planes|SatO} feat. In addition, members of your organization provide you free, modest lodging and food at any of their holdings or the homes of other faction members."
 					],
 					"data": {
 						"isFeature": true
@@ -18555,103 +18910,65 @@
 				},
 				{
 					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Adventurers who dedicate themselves to a particular philosophy regarding the multiverse are welcomed among factions that embrace those beliefs. The Planar Philosopher Personality Traits table suggests various traits you might adopt for your character.",
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Personality Trait"
+							],
+							"rows": [
+								[
+									"1",
+									"I don't venerate any gods. With time, we can be as powerful as them or greater."
+								],
+								[
+									"2",
+									"Experience is everything; live in the moment."
+								],
+								[
+									"3",
+									"When things crumble, I find meaning in the dust."
+								],
+								[
+									"4",
+									"Life thrives through order, and I seek to maintain that order."
+								],
+								[
+									"5",
+									"When others make plans, the multiverse laughs and so do I."
+								],
+								[
+									"6",
+									"I know what's right, and none will stand in my way."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
 					"name": "Building a Planar Philosopher Character",
 					"entries": [
-						"Some groups of planar philosophers might have preferences for or against certain types of characters, but by and large any character that upholds and furthers the beliefs of the group is welcome within its ranks.",
-						{
-							"type": "entries",
-							"name": "Suggested Characteristics",
-							"entries": [
-								"Adventurers who dedicate themselves to a particular philosophy toward the multiverse are welcomed among the faction that embraces those beliefs. The Planar Philosopher Personality Traits table suggests various traits you might adopt for your character, and which factions would welcome adventurers with those traits.",
-								{
-									"type": "table",
-									"caption": "Planar Philosopher Personality Traits",
-									"colLabels": [
-										"d6",
-										"Personality Trait"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"I don't venerate any gods; we can be as powerful or greater than them."
-										],
-										[
-											"2",
-											"Experience is everything, live in the moment."
-										],
-										[
-											"3",
-											"When things crumble, I find meaning in the ashes."
-										],
-										[
-											"4",
-											"Life thrives through order; I won't tolerate disruptions."
-										],
-										[
-											"5",
-											"When others make plans, the multiverse laughs and so do I."
-										],
-										[
-											"6",
-											"I know what's right, and no one will stand in my way."
-										]
-									]
-								}
-							]
-						},
+						"Some groups of planar philosophers might prefer certain types of characters, but by and large any character who upholds and furthers the beliefs of such a group is welcome within its ranks.",
 						{
 							"type": "entries",
 							"name": "Planar Philosopher Trinkets",
 							"entries": [
-								"When you make your character, you can roll once on the Planar Philosopher Trinkets table, instead of on the Trinkets table in the Player's Handbook, for your starting trinket.",
-								{
-									"type": "table",
-									"caption": "Planar Philosopher Trinkets",
-									"colLabels": [
-										"d6",
-										"Trinket"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"A locket with a picture of my mentor and an inscription I can't read"
-										],
-										[
-											"2",
-											"A bleached rat skull with colored glass beads in its eye sockets"
-										],
-										[
-											"3",
-											"A torn parchment with half a rebus puzzle painted on it"
-										],
-										[
-											"4",
-											"A bracelet of twisted razorvine stems"
-										],
-										[
-											"5",
-											"A fragment of verdigris-coated bronze blade"
-										],
-										[
-											"6",
-											"A smooth river stone covered in tiny, carved holy symbols"
-										]
-									]
-								}
+								"When you make your character, you can roll once on the {@item Planar Philosopher Trinket|SatO|Planar Philosopher Trinkets} table, instead of on the {@item Trinket|PHB|Trinkets} table in the Player's Handbook, for your starting trinket."
 							]
 						}
 					]
 				}
 			],
-			"hasFluff": true
+			"hasFluff": true,
+			"hasFluffImages": true
 		},
 		{
 			"name": "Prismari Student",
@@ -19935,6 +20252,199 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Rewarded",
+			"source": "BMT",
+			"page": 57,
+			"feats": [
+				{
+					"lucky|phb": true,
+					"magic initiate|phb": true,
+					"skilled|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"insight": true,
+					"persuasion": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 1
+				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						{
+							"special": "bottle of black ink"
+						},
+						"ink pen|phb",
+						{
+							"special": "sheets of paper",
+							"quantity": 5
+						},
+						{
+							"item": "gaming set|phb",
+							"displayName": "gaming set (matching your chosen proficiency)"
+						},
+						"signet ring|phb",
+						"fine clothes|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1800
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Insight}, {@skill Persuasion}"
+						},
+						{
+							"type": "item",
+							"name": "Languages:",
+							"entry": "One of your choice"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "A bottle of black ink, an {@item ink pen|PHB}, five sheets of paper, a {@item gaming set|PHB} (matching your chosen proficiency), a {@item signet ring|PHB}, a set of {@item fine clothes|PHB}, and a {@item pouch|PHB} containing 18 gp"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiencies:",
+							"entries": [
+								"One {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set} of your choice (such as {@item playing card set|phb|playing cards} or {@item three-dragon ante set|phb|three-dragon ante cards})"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feature: Fortune's Favor",
+					"entries": [
+						"Your unexpected good fortune is reflected by a minor boon. You gain the {@feat Lucky}, {@feat Magic Initiate}, or {@feat Skilled} feat (your choice). Your choice of feat reflects the transformation that changed your life. An encounter with a genie who gave you three wishes might have resulted in magical powers represented by Magic Initiate. If you paid off all your family debts with a fortuitous round of three-dragon ante, you might be Lucky instead. Alternatively, you could use the Skilled feat to reflect whatever trial you endured to secure your new destiny and to model the knowledge and abilities imparted to you by whatever force transformed your life."
+					],
+					"data": {
+						"isFeature": true
+					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Your character's perspective on life has changed thanks to their new destiny. The Rewarded Personality Traits table suggests traits you might adopt for your character and cards from the {@item Deck of Many Things} that might have prompted this trait.",
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Personality Trait"
+							],
+							"rows": [
+								[
+									"1",
+									"A safe home is a foundation on which anything else can be built. (Key, Throne)"
+								],
+								[
+									"2",
+									"I was elevated to heights I could never otherwise attain, and I won't waste my fortune. (Star, Sun)"
+								],
+								[
+									"3",
+									"I try to be a source of inspiration and joy to others. Life is never as bad as you think! (Euryale, Jester)"
+								],
+								[
+									"4",
+									"Courage and boldness can carry the day when all else fails. (Comet, Knight)"
+								],
+								[
+									"5",
+									"My good fortune means I can lift others up as well. (Gem, Moon)"
+								],
+								[
+									"6",
+									"Having the right answers is the first step to solving any problem, no matter how dire. (Fates, Sage)"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Building a Rewarded Character",
+					"entries": [
+						"Rewarded characters have varied histories, but they have one thing in common: they were down on their luck before their lives abruptly turned around. They might have given up all hope of a happier life, only to suddenly get a second chance. A rewarded character has often spent many years struggling to escape painful circumstances. Now, extricated from the (sometimes literal) prison that was their former life, they throw their cares to the wind and become adventurers.",
+						"If your character's life was changed by a {@item Deck of Many Things}, consider which card was responsible. Perhaps the Fates card undid a tragic mistake your character made in their youth. The Gem card could have wiped out debts incurred over a lifetime. Maybe the Sage card provided the advice needed to escape a hopeless situation, the Star card increased an ability score to its current value, or a {@spell Wish} spell cast after drawing the Moon card transformed your character from a peddler to a fledgling sorcerer infused with magic and new knowledge and skills. If you're making a character at higher than 1st level, magic items they have could have been granted by the Key or Sun card."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Rewarded Trinkets",
+					"entries": [
+						"When you make your character, you can roll once on the Rewarded Trinkets table instead of on the Trinkets table in the {@book Player's Handbook|PHB} for your starting trinket.",
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Trinket"
+							],
+							"rows": [
+								[
+									"1",
+									"A perfumed silk scarf from an admirer"
+								],
+								[
+									"2",
+									"A crystal bead that glows like a candle in the dark"
+								],
+								[
+									"3",
+									"A letter of introduction and invitation from an influential person in a far-off city"
+								],
+								[
+									"4",
+									"A motto or symbol whose meaning eludes you, etched on a piece of your equipment"
+								],
+								[
+									"5",
+									"A crisp playing card that never seems to tear or soil, depicting the card that affected you"
+								],
+								[
+									"6",
+									"Half a medallion designed to be rejoined to its other half"
+								]
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Rival Intern",
 			"source": "AI",
 			"page": 51,
@@ -20175,8 +20685,205 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Ruined",
+			"source": "BMT",
+			"page": 58,
+			"feats": [
+				{
+					"alert|phb": true,
+					"skilled|phb": true,
+					"tough|phb": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"stealth": true,
+					"survival": true
+				}
+			],
+			"languageProficiencies": [
+				{
+					"anyStandard": 1
+				}
+			],
+			"toolProficiencies": [
+				{
+					"gaming set": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						{
+							"item": "hourglass|phb",
+							"displayName": "cracked hourglass"
+						},
+						{
+							"item": "manacles|phb",
+							"displayName": "set of rusty manacles"
+						},
+						{
+							"special": "half-empty bottle"
+						},
+						"hunting trap|phb",
+						{
+							"item": "gaming set|phb",
+							"displayName": "gaming set (matching your chosen proficiency)"
+						},
+						"traveler's clothes|phb",
+						{
+							"item": "pouch|phb",
+							"containsValue": 1300
+						}
+					]
+				}
+			],
+			"fromFeature": {
+				"feats": true
+			},
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Stealth}, {@skill Survival}"
+						},
+						{
+							"type": "item",
+							"name": "Languages:",
+							"entry": "One of your choice"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "A cracked {@item hourglass|PHB}, a set of rusty {@item manacles|PHB}, a half-empty bottle, a {@item hunting trap|PHB}, a {@item gaming set|PHB} (matching your chosen proficiency), a set of {@item traveler's clothes|PHB}, and a {@item pouch|PHB} containing 13 gp"
+						},
+						{
+							"type": "entries",
+							"name": "Tool Proficiencies:",
+							"entries": [
+								"One {@filter gaming set|items|source=phb|miscellaneous=mundane|type=gaming set} of your choice (such as playing cards or three-dragon ante cards)"
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feature: Still Standing",
+					"entries": [
+						"You have weathered ruinous misfortune, and you possess hidden reserves others don't expect. You gain the {@feat Alert}, {@feat Skilled}, or {@feat Tough} feat (your choice). Your choice of feat reflects how you've dealt with the terrible loss that changed your life forever. If you've kept your senses sharp for every opportunity and climbed your way out of misery by seizing the tiniest scrap of hope, choose Alert. If you've redoubled your efforts to reclaim what was once yours, choose Skilled. If you've stoically persevered through your misfortune, select Tough."
+					],
+					"data": {
+						"isFeature": true
+					}
+				},
+				{
+					"type": "entries",
+					"name": "Suggested Characteristics",
+					"entries": [
+						"Rising above misfortune shapes one's perspective. The Ruined Personality Traits table suggests traits you might adopt for your character (and ruinous cards that might have prompted this trait).",
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Personality Trait"
+							],
+							"rows": [
+								[
+									"1",
+									"I've changed from my past, and I work to live up to my new path. (Balance, Throne)"
+								],
+								[
+									"2",
+									"Every moment is a gift I refuse to squander. (Euryale, Skull)"
+								],
+								[
+									"3",
+									"Now that I've overcome having nothing, I can survive anything. (Fool, Ruin, Talons)"
+								],
+								[
+									"4",
+									"I know enemies are set against me, and I always prepare for the worst. (Flames, Rogue)"
+								],
+								[
+									"5",
+									"I interpret every event as part of a larger pattern I just haven't worked out yet. (Puzzle, Star)"
+								],
+								[
+									"6",
+									"I must make up for so much time I've already lost. (Donjon, Void)"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Building a Ruined Character",
+					"entries": [
+						"Ruined characters were on top of the world before misfortune struck. Many were wealthy. Others come from modest backgrounds, but they were surrounded by friends, family, and loved ones. They might have been famous, or simply never encountered serious hardship before. Some were born to privilege or rose to prominence through trickery or a false reputation. Now a {@item Deck of Many Things}\u2014or another calamity\u2014has knocked them down like a house of cards.",
+						"If your character's life was ruined by a {@item Deck of Many Things}, consider which card was responsible. Perhaps your character was imprisoned for years by the Donjon or Void card, and now everyone they knew has died. Maybe your character drew the Rogue card, and the person closest to them\u2014a spouse, child, or parent\u2014turned against them. A devil unleashed by the Flames card might have destroyed their life. The Ruin or Talons card might have stolen the character's material goods or saddled them with vast debt."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Ruined Trinkets",
+					"entries": [
+						"When you make your character, you can roll once on the Ruined Trinkets table instead of on the Trinkets table in the {@book Player's Handbook|PHB}.",
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Trinket"
+							],
+							"rows": [
+								[
+									"1",
+									"A rusted scrap of a once-beloved family heirloom"
+								],
+								[
+									"2",
+									"A land deed, but all the names and markings that once tied it to you have faded into obscurity"
+								],
+								[
+									"3",
+									"A bauble once imbued with powerful magic"
+								],
+								[
+									"4",
+									"A battered playing card with a hole pierced in it, its face depicting the card that affected you"
+								],
+								[
+									"5",
+									"A yellowed Humanoid tooth that whispers eerily when placed under a pillow"
+								],
+								[
+									"6",
+									"A keepsake from someone you were once close to but who is now your enemy"
+								]
+							]
+						}
+					]
+				}
+			],
+			"hasFluff": true,
+			"hasFluffImages": true
+		},
+		{
 			"name": "Rune Carver",
 			"source": "BGG",
+			"page": 12,
 			"feats": [
 				{
 					"rune shaper|bgg": true
@@ -20355,185 +21062,6 @@
 			],
 			"hasFluff": true,
 			"hasFluffImages": true
-		},
-		{
-			"name": "Rune Carver",
-			"source": "UA2022WondersOfTheMultiverse",
-			"page": 5,
-			"feats": [
-				{
-					"rune carver apprentice|ua2022wondersofthemultiverse": true
-				}
-			],
-			"skillProficiencies": [
-				{
-					"history": true,
-					"perception": true
-				}
-			],
-			"languageProficiencies": [
-				{
-					"giant": true,
-					"anyStandard": 1
-				}
-			],
-			"toolProficiencies": [
-				{
-					"herbalism kit": true
-				}
-			],
-			"startingEquipment": [
-				{
-					"_": [
-						{
-							"equipmentType": "toolArtisan"
-						},
-						{
-							"special": "small knife"
-						},
-						"whetstone|phb",
-						"common clothes|phb",
-						{
-							"item": "pouch|phb",
-							"containsValue": 1000
-						}
-					]
-				}
-			],
-			"fromFeature": {
-				"feats": true
-			},
-			"entries": [
-				{
-					"type": "list",
-					"style": "list-hang-notitle",
-					"items": [
-						{
-							"type": "item",
-							"name": "Skill Proficiencies:",
-							"entry": "{@skill History}, {@skill Perception}"
-						},
-						{
-							"type": "item",
-							"name": "Languages:",
-							"entry": "Giant and one other language of your choice"
-						},
-						{
-							"type": "item",
-							"name": "Equipment:",
-							"entry": "A set of {@filter artisan's tools|items|source=phb|miscellaneous=mundane|type=artisan's tools} (one of your choice), a small knife, a {@item whetstone|phb}, a set of {@item common clothes|phb}, and a {@item pouch|phb} containing 10 gp"
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Rune Styles",
-					"entries": [
-						"Each rune carver has a unique style and preferred medium for creating runes. To determine how you make your runes, you can roll on the Rune Style table.",
-						{
-							"type": "table",
-							"caption": "Rune Style",
-							"colLabels": [
-								"d6",
-								"Style"
-							],
-							"colStyles": [
-								"col-1 text-center",
-								"col-11"
-							],
-							"rows": [
-								[
-									"1",
-									"You inscribe your runes with a fine metal needle."
-								],
-								[
-									"2",
-									"You whittle down pieces of wood into small figurines you mark with your runes."
-								],
-								[
-									"3",
-									"You engrave runes onto glass beads and thread them onto necklaces and bracelets."
-								],
-								[
-									"4",
-									"You stitch your runes into the hems of clothing."
-								],
-								[
-									"5",
-									"You carve runes on a set of animal bones you can throw in different formations."
-								],
-								[
-									"6",
-									"You draw your runes into candles, melting the wax to smooth over the engravings."
-								]
-							]
-						}
-					]
-				},
-				{
-					"type": "entries",
-					"name": "Feature: Rune Carver Apprentice",
-					"entries": [
-						"You gain the {@feat Rune Carver Apprentice|UA2022WondersOfTheMultiverse} feat."
-					],
-					"data": {
-						"isFeature": true
-					}
-				},
-				{
-					"type": "entries",
-					"name": "Building a Rune Carver Character",
-					"entries": [
-						"Scholarly pursuits, ancient mysteries, or all manner of fateful encounters might inspire a character to pursue the secrets of a rune carver.",
-						{
-							"type": "entries",
-							"name": "Suggested Characteristics",
-							"entries": [
-								"The Rune Carver Personality Traits table suggests a variety of traits you might adopt for your character.",
-								{
-									"type": "table",
-									"caption": "Rune Carver Personality Traits",
-									"colLabels": [
-										"d6",
-										"Personality Trait"
-									],
-									"colStyles": [
-										"col-1 text-center",
-										"col-11"
-									],
-									"rows": [
-										[
-											"1",
-											"Is it practical to learn an ancient language that is rarely used in everyday speech? No. But is it fun? Very."
-										],
-										[
-											"2",
-											"I learned one of my ancestors was a lauded rune carver whose story was lost to time. I seek to rekindle that legacy."
-										],
-										[
-											"3",
-											"The old, traditional markings of runecraft look so boring. Why not give your runes some flair?"
-										],
-										[
-											"4",
-											"In my studies of runes, I strive to understand how great civilizations of the past fell, so that I may prevent it from happening to societies of the present."
-										],
-										[
-											"5",
-											"Life may be a whirlwind of chaos around me, but whenever I create my runes, I feel at peace."
-										],
-										[
-											"6",
-											"My brain struggles to process ink words written on paper, but the tactile feeling of carved runes makes my mind sing."
-										]
-									]
-								}
-							]
-						}
-					]
-				}
-			],
-			"hasFluff": true
 		},
 		{
 			"name": "Sage",
@@ -23848,6 +24376,286 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Survivor",
+			"source": "DoDk",
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"perception",
+							"survival",
+							"stealth",
+							"athletics"
+						],
+						"count": 2
+					}
+				}
+			],
+			"toolProficiencies": [
+				{
+					"cook's utensils": true,
+					"artisan's tools": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						"cook's utensils|phb",
+						"climber's kit|phb",
+						"shovel|phb",
+						{
+							"special": "pair of thick gloves"
+						},
+						{
+							"special": "cloak with a hood"
+						}
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "Two of the following: {@skill Perception}, {@skill Survival}, {@skill Stealth}, {@skill Athletics}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiencies:",
+							"entry": "Cook's utensils, one other set of artisan's tools"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "{@item Cook's utensils|PHB}, {@item climber's kit|PHB}, a {@item shovel|PHB}, a pair of thick gloves, a cloak with a hood."
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Marks of Survival",
+					"entries": [
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Marks of Survival"
+							],
+							"rows": [
+								[
+									"1",
+									"Being alone for so long means I am very used to conversing with myself out loud."
+								],
+								[
+									"2",
+									"I eat things that others find disgusting. I have learned to love the delicacies of scavenged food in the ruins."
+								],
+								[
+									"3",
+									"I have many scars across my body from barely scraping by."
+								],
+								[
+									"4",
+									"I am missing a finger on one hand due to a horrible encounter I had in the ruins."
+								],
+								[
+									"5",
+									"I keep a locket of someone I lost in the ruins. I stare at it every night before I fall asleep to remember what I am looking for."
+								],
+								[
+									"6",
+									"I keep souvenirs of the monsters I have bested in these ruins, to remind myself how strong I truly am."
+								],
+								[
+									"7",
+									"I can sleep just about anywhere, nothing really phases me anymore."
+								],
+								[
+									"8",
+									"I often recite the names of people I used to know and lost so I can hold on to their memory."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feature: Makeshift Meals",
+					"entries": [
+						"You know how to purify food and rations found in the ruins. When you take a short rest, you prepare a meal for a number of creatures equal to your proficiency bonus. Creatures who consume the food regain hit points equal to your level. Once they do, they can't regain hit points from another one of your meals until they finish a long rest.",
+						{
+							"type": "table",
+							"caption": "Suggested Characteristics",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Personality Trait"
+							],
+							"rows": [
+								[
+									"1",
+									"I always have an exit strategy in mind if things go poorly."
+								],
+								[
+									"2",
+									"You can't survive in this grim city without a good sense of humor, but I have a taste for gallows humor."
+								],
+								[
+									"3",
+									"I try to work in the thin grey area between the squabbling factions, squeezing under their radar when possible. The less I am seen, the better."
+								],
+								[
+									"4",
+									"If you spot danger, it is best to avoid it, that's how you survive."
+								],
+								[
+									"5",
+									"Drakkenheim is a dangerous place. But I can navigate it with my eyes closed. No one else I've ever met is as good as I am."
+								],
+								[
+									"6",
+									"In order to survive the monsters of Drakkenheim, one must be a monster of Drakkenheim."
+								],
+								[
+									"7",
+									"Take everything you can from the dead, take it from the living if you can. If you are to survive, you must take any opportunity to scavenge."
+								],
+								[
+									"8",
+									"I will never give up until I reclaim what I lost in these ruins."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Ideal"
+							],
+							"rows": [
+								[
+									"1",
+									"Self-Reliance. I won't risk my life for others. Everyone must fend for themselves\u2014better you than me. (Evil)"
+								],
+								[
+									"2",
+									"Bravery. I find the thrill of surviving the monsters and magics of Drakkenheim exhilarating and thrive on the chaos. (Chaotic)"
+								],
+								[
+									"3",
+									"Safety. Whatever I can do to keep myself fed and keep a safe place to rest is good in my books. (Any)"
+								],
+								[
+									"4",
+									"Helpful. People need all the help they can get in the city, and I know I can provide it. (Good)"
+								],
+								[
+									"5",
+									"Hope. I believe there is something worth saving here, we must hold on to the idea of a better future. (Good)"
+								],
+								[
+									"6",
+									"Responsibility. I lived here before the meteor, I'll live here long after. I must protect my home and do what I can to make it livable again. (Lawful)"
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Bond"
+							],
+							"rows": [
+								[
+									"1",
+									"I had family in these ruins. I know not what became of them, but I must find out."
+								],
+								[
+									"2",
+									"This city is my home, and I will fight for what's left of it until the very end."
+								],
+								[
+									"3",
+									"I'll do any dirty work in the city if it means a hot meal, a warm bed, or some good company."
+								],
+								[
+									"4",
+									"I've spent so long in these ruins, its the outside world that terrifies me now."
+								],
+								[
+									"5",
+									"Why haven't I left Drakkenheim? Have you seen how much gold there is to be made here?"
+								],
+								[
+									"6",
+									"I am bound to the throne of Drakkenheim, and fight to see it one day reclaimed."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Flaw"
+							],
+							"rows": [
+								[
+									"1",
+									"Any meal could be my last. I'll eat just about anything. I do what I must to survive."
+								],
+								[
+									"2",
+									"I don't like being outside the Haze of the city for too long, I've gotten used to it."
+								],
+								[
+									"3",
+									"I am convinced my family is alive in the city somewhere. I hear their voices call to me at night."
+								],
+								[
+									"4",
+									"I don't trust anyone easily. I'll sleep with one eye open even around my companions, for Drakkenheim makes monsters of us all."
+								],
+								[
+									"5",
+									"The years spent here have turned me to a vice, I very much rely on that vice to get me through my days."
+								],
+								[
+									"6",
+									"I hear voices constantly. Sometimes I get distracted with conversations with people who are not there."
+								]
+							]
+						}
+					],
+					"data": {
+						"isFeature": true
+					}
+				}
+			],
+			"hasFluff": true
+		},
+		{
 			"name": "Ticklebelly Nomad",
 			"source": "ALCurseOfStrahd",
 			"page": 9,
@@ -24351,6 +25159,293 @@
 						}
 					],
 					"name": "Suggested Characteristics"
+				}
+			],
+			"hasFluff": true
+		},
+		{
+			"name": "Treasure Seeker",
+			"source": "DoDk",
+			"skillProficiencies": [
+				{
+					"investigation": true,
+					"choose": {
+						"from": [
+							"stealth",
+							"insight",
+							"perception"
+						]
+					}
+				}
+			],
+			"toolProficiencies": [
+				{
+					"thieves' tools": true,
+					"cartographer's tools": true
+				}
+			],
+			"startingEquipment": [
+				{
+					"_": [
+						"thieves' tools|phb",
+						{
+							"special": "dark clothes with a hood and a face covering"
+						},
+						{
+							"item": "signet ring|phb",
+							"displayName": "signet ring of a fake lord"
+						},
+						{
+							"special": "fake identification"
+						},
+						{
+							"special": "set of weighted dice"
+						},
+						{
+							"special": "deck of cards"
+						}
+					]
+				}
+			],
+			"entries": [
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Skill Proficiencies:",
+							"entry": "{@skill Investigation} and one choice from the following: {@skill Stealth}, {@skill Insight}, or {@skill Perception}"
+						},
+						{
+							"type": "item",
+							"name": "Tool Proficiencies:",
+							"entry": "Thieves' tools, cartographer's tools"
+						},
+						{
+							"type": "item",
+							"name": "Equipment:",
+							"entry": "{@item Thieves' tools|PHB}, a set of dark clothes with a hood and a face covering. A {@item signet ring|PHB} of a fake lord, a fake identification, a set of weighted dice, and a deck of cards"
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Treasure Hunters' Secrets",
+					"entries": [
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Treasure Hunters' Secrets"
+							],
+							"rows": [
+								[
+									"1",
+									"You keep a cryptic map to a lost treasure that you have always wanted to uncover."
+								],
+								[
+									"2",
+									"You have a coin that is heads on both sides, helpful for winning a chance game."
+								],
+								[
+									"3",
+									"You have a magnifying spyglass you use to examine items."
+								],
+								[
+									"4",
+									"You have a ring that opens to reveal a small compartment inside."
+								],
+								[
+									"5",
+									"Your left boot has a compartment for a hidden dagger."
+								],
+								[
+									"6",
+									"You carry an old compass that doesn't point north, you hope it points towards a great treasure."
+								],
+								[
+									"7",
+									"You have a collection of exotic coins and medals that are of personal value to you."
+								],
+								[
+									"8",
+									"You have a rival treasure hunter who used to be a partner. You parted ways years ago."
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feature: Detail-Oriented",
+					"entries": [
+						"You double your proficiency bonus when making any ability check to search the ruins of Drakkenheim.",
+						{
+							"type": "table",
+							"caption": "Suggested Characteristics",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d8",
+								"Personality Trait"
+							],
+							"rows": [
+								[
+									"1",
+									"I believe that I am destined for greatness, and nothing can convince me otherwise."
+								],
+								[
+									"2",
+									"I always have a plan or plot to outwit my foes. It may not always be good, but it's almost always overly complex."
+								],
+								[
+									"3",
+									"I love to flaunt my wealth and showcase the things I have bought with it."
+								],
+								[
+									"4",
+									"I pay no mind to the risks of a situation. I always bet on myself and my abilities and it's gotten me this far. Never tell me the odds."
+								],
+								[
+									"5",
+									"I have a quip, allegory, or joke for almost any situation."
+								],
+								[
+									"6",
+									"I lie about anything and everything. I lie for almost no reason at all, sometimes just to see if I can fool the people around me."
+								],
+								[
+									"7",
+									"I use flattery and honeyed words to get what I want."
+								],
+								[
+									"8",
+									"I can't help it if valuable objects lying around end up in my pockets. It's for safe keeping."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Ideal"
+							],
+							"rows": [
+								[
+									"1",
+									"Independent. No one tells me what to do. I make my own rules, and my own luck. (Chaotic)"
+								],
+								[
+									"2",
+									"Fair. I do not take anything from anyone who couldn't afford to lose it. I am a treasure hunter, not a thief. (Lawful)"
+								],
+								[
+									"3",
+									"Family. I care about material possessions and wealth, but not as much as I care about my friends and family. (Good)"
+								],
+								[
+									"4",
+									"Aspiration. Wealth is power. Wealth means you will be remembered. In this world making a name for yourself is as simple as acquiring enough gold to buy your way to victory. I intend to be remembered. (Any)"
+								],
+								[
+									"5",
+									"Danger. Every great discovery requires risk. The greater the risk, the greater the reward. It's the thrill of the hunt that I live for. (Any)"
+								],
+								[
+									"6",
+									"Dignity. The dead and their prized belongings deserve more than to waste away in the ruins. They deserve to be found, remembered, and taken care of. (Lawful)"
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Bond"
+							],
+							"rows": [
+								[
+									"1",
+									"My desire for wealth is out of a need to protect my family."
+								],
+								[
+									"2",
+									"Something important to me was stolen. I've longed to get it back ever since."
+								],
+								[
+									"3",
+									"I'm wanted for my many crimes and hope that where I am going, the law will not follow."
+								],
+								[
+									"4",
+									"I made mistakes in my past that cost me the life of someone I loved. I will not let that happen again."
+								],
+								[
+									"5",
+									"I plan to be the greatest thief or most cunning explorer of all time."
+								],
+								[
+									"6",
+									"This is my last job, the big one. After this I hope to settle down with my wealth, maybe start a family."
+								]
+							]
+						},
+						{
+							"type": "table",
+							"colStyles": [
+								"col-2 text-center",
+								"col-10"
+							],
+							"colLabels": [
+								"d6",
+								"Flaw"
+							],
+							"rows": [
+								[
+									"1",
+									"My entire identity is layers of falsities presented to hide my true self, for I am not a good person. I've never told the truth for as long as I can remember and it's too late now to stop."
+								],
+								[
+									"2",
+									"Every situation, every person, is only as valuable to me as what I can gain from them. I'm not afraid to pull strings to bend luck in my favour."
+								],
+								[
+									"3",
+									"I jump to defensive measures as soon as someone catches me in a lie, or tries to call me out for anything."
+								],
+								[
+									"4",
+									"I take what I want, and I want it all."
+								],
+								[
+									"5",
+									"I like to show my skills, talk big, and take big risks in the hopes of impressing everyone watching."
+								],
+								[
+									"6",
+									"I know for a fact I am the smartest person in the room, and if people are suggesting anything otherwise they are terribly mistaken."
+								]
+							]
+						}
+					],
+					"data": {
+						"isFeature": true
+					}
 				}
 			],
 			"hasFluff": true
@@ -24878,6 +25973,15 @@
 			}
 		},
 		{
+			"name": "Variant Continental Nobility (Last of the Line)",
+			"source": "DoDk",
+			"_copy": {
+				"name": "Continental Nobility",
+				"source": "DoDk"
+			},
+			"hasFluff": true
+		},
+		{
 			"name": "Variant Criminal (Spy)",
 			"source": "PHB",
 			"page": 130,
@@ -24901,6 +26005,15 @@
 						}
 					}
 				}
+			},
+			"hasFluff": true
+		},
+		{
+			"name": "Variant Devoted Missionary (Stargazer)",
+			"source": "DoDk",
+			"_copy": {
+				"name": "Devoted Missionary",
+				"source": "DoDk"
 			},
 			"hasFluff": true
 		},
@@ -25022,6 +26135,15 @@
 			"hasFluff": true
 		},
 		{
+			"name": "Variant Mageborn (Malfeasant Mage)",
+			"source": "DoDk",
+			"_copy": {
+				"name": "Mageborn",
+				"source": "DoDk"
+			},
+			"hasFluff": true
+		},
+		{
 			"name": "Variant Noble (Knight)",
 			"source": "PHB",
 			"page": 136,
@@ -25113,6 +26235,24 @@
 						}
 					}
 				}
+			},
+			"hasFluff": true
+		},
+		{
+			"name": "Variant Survivor (Veteran of the Civil War)",
+			"source": "DoDk",
+			"_copy": {
+				"name": "Survivor",
+				"source": "DoDk"
+			},
+			"hasFluff": true
+		},
+		{
+			"name": "Variant Treasure Seeker (Soldier of Fortune)",
+			"source": "DoDk",
+			"_copy": {
+				"name": "Treasure Seeker",
+				"source": "DoDk"
 			},
 			"hasFluff": true
 		},

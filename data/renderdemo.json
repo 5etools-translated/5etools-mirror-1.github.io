@@ -22,8 +22,8 @@
 					"type": "list",
 					"items": [
 						"Style tags; {@bold some text to be bolded} (alternative {@b shorthand}), {@italic some text to be italicised} (alternative {@i shorthand}), {@underline some text to be underlined} (alternative {@u shorthand}), {@strike some text to strike-through}, (alternative {@s shorthand}), {@color color|e40707}/{@color color variable|--rgb-name} tags, {@highlight highlight} tags, {@sup superscript} tags, {@sub subscript} tags, {@kbd keyboard} tags, {@code print(&quot;hello world&quot;)} tags, misc {@style Style|small-caps;small;capitalize;dnd-font} tags, {@font alternate font|Comic Sans MS} tags",
-						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes.\"",
-						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls ({@dice 1d6;2d6} for multiple options; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} for input prompts), with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on shift-click, disadvantage on alt-click). There's also {@damage 1d12+3} which will roll critical hits on shift-click and half damage (rounding down) on alt-click, and {@d20 -4} which will also roll advantage/disadvantage, although @hit tags are preferred where appropriate. Spells can have scaling-dice tags, (damage of 2d6 or 3d6 at level 1, add an extra {@scaledamage 2d6;3d6|2-9|1d6} for each level beyond 2nd; or, roll 2d6 when using 1 psi point, add an {@scaledice 2d6|1,3,5,7,9|1d6|psi|extra amount} for each additional psi point spent), for when a spell effect scales at higher levels. {@ability str 20}, {@savingThrow str 5}, and {@skillCheck animal_handling 5} are used as internal shorthand, but may be useful elsewhere.",
+						"Additionally, {@note note tags}, used for adding errata or Twitter \"designer footnotes,\" and {@tip tooltip tags|a note}.",
+						"Dice roller tags; {@dice 1d2-2+2d3+5} for regular dice rolls ({@dice 1d6;2d6} for multiple options; {@dice 1d6 + #$prompt_number:min=1,title=Enter a Number!,default=123$#} for input prompts), with extended {@dice 1d20+2|display text} and {@dice 1d20+2|display text|rolled by name}, and a special 'hit' version which assumes a d20 is to be rolled {@hit +7} (and rolls advantage on {@kbd SHIFT}+click, disadvantage on {@kbd ALT}+click). There's also {@damage 1d12+3} which will roll critical hits on {@kbd SHIFT}+click and half damage (rounding down) on {@kbd ALT}+click, and {@d20 -4} which will also roll advantage/disadvantage, although @hit tags are preferred where appropriate. Spells can have scaling-dice tags, (damage of 2d6 or 3d6 at level 1, add an extra {@scaledamage 2d6;3d6|2-9|1d6} for each level beyond 2nd; or, roll 2d6 when using 1 psi point, add an {@scaledice 2d6|1,3,5,7,9|1d6|psi|extra amount} for each additional psi point spent), for when a spell effect scales at higher levels. {@ability str 20}, {@savingThrow str 5}, and {@skillCheck animal_handling 5} are used as internal shorthand, but may be useful elsewhere.",
 						"Auto dice tags; as above, but a result is automatically rolled upon rendering: {@autodice 2d10+2}.",
 						"Chance tags; similar to dice roller tags, but output success/failure. Similar syntax as dice tags: {@chance 50}; {@chance 50|display text}; {@chance 50|display text|rolled by name}; {@chance 50|display text|rolled by name|on success text}; {@chance 50|display text|rolled by name|on success text|on failure text}.",
 						"Summon/companion-specific tags: {@hitYourSpellAttack} ({@hitYourSpellAttack with optional display text}), {@dcYourSpellSave} ({@dcYourSpellSave with optional display text}).",
@@ -43,9 +43,9 @@
 								"Backgrounds: {@background Charlatan} assumes PHB by default, {@background Anthropologist|toa} can have sources added with a pipe, {@background Anthropologist|ToA|and optional link text added with another pipe}.",
 								"Races: {@race Human} assumes PHB by default, {@race Aarakocra|eepc} can have sources added with a pipe, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
 								"Invocations and Other Optional Features: {@optfeature Agonizing Blast} assumes PHB by default, {@optfeature Aspect of the Moon|xge} can have sources added with a pipe, {@optfeature Aspect of the Moon|xge|and optional link text added with another pipe}.",
-								"Classes: {@class fighter} assumes PHB by default, {@class artificer|uaartificer} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} with another pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|2-0} with another pipe (first number is level index (0-19), second number is feature index (0-n)).",
-								"Class Features: {@classFeature Rage|Barbarian||1}, {@classFeature Infuse Item|Artificer|TCE|2}, {@classFeature Survival Instincts|Barbarian||2|UAClassFeatureVariants}, {@classFeature Rage|Barbarian||1||optional display text}. Class source is assumed to be PHB. Class feature source is assumed to be the same as class source.",
-								"Subclass Features: {@subclassFeature Path of the Berserker|Barbarian||Berserker||3}, {@subclassFeature Alchemist|Artificer|TCE|Alchemist|TCE|3}, {@subclassFeature Path of the Battlerager|Barbarian||Battlerager|SCAG|3}, {@subclassFeature Blessed Strikes|Cleric||Life||8|UAClassFeatureVariants}, {@subclassFeature Path of the Berserker|Barbarian||Berserker||3||optional display text}. Class source is assumed to be PHB. Subclass source is assumed to be PHB. Subclass feature source is assumed to be the same as subclass source.",
+								"Classes: {@class fighter} assumes PHB by default, {@class artificer|tce} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} with another pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|2-0} with another pipe (first number is level index (0-19), second number is feature index (0-n)).",
+								"Class Features: {@classFeature Rage|Barbarian||1}, {@classFeature Infuse Item|Artificer|TCE|2}, {@classFeature Primal Knowledge|Barbarian||3|TCE}, {@classFeature Rage|Barbarian||1||optional display text}. Class source is assumed to be PHB. Class feature source is assumed to be the same as class source.",
+								"Subclass Features: {@subclassFeature Path of the Berserker|Barbarian||Berserker||3}, {@subclassFeature Alchemist|Artificer|TCE|Alchemist|TCE|3}, {@subclassFeature Path of the Battlerager|Barbarian||Battlerager|SCAG|3}, {@subclassFeature Blessed Strikes|Cleric||Life||8|TCE}, {@subclassFeature Path of the Berserker|Barbarian||Berserker||3||optional display text}. Class source is assumed to be PHB. Subclass source is assumed to be PHB. Subclass feature source is assumed to be the same as subclass source.",
 								"Conditions: {@condition stunned} assumes PHB by default, {@condition stunned|PHB} can have sources added with a pipe (not that it's ever useful), {@condition stunned|PHB|and optional link text added with another pipe}.",
 								"Diseases: {@disease cackle fever} assumes DMG by default, {@disease cackle fever} can have sources added with a pipe, {@disease cackle fever|DMG|and optional link text added with another pipe}.",
 								"Other Rewards: {@reward Blessing of Health} assumes DMG by default, {@reward Blessing of Health} can have sources added with a pipe, {@reward Blessing of Health|DMG|and optional link text added with another pipe}.",
@@ -58,13 +58,13 @@
 								"Hazards: {@hazard brown mold} assumes DMG by default, {@hazard russet mold|vgm} can have sources added with a pipe, {@hazard russet mold|vgm|and optional link text added with another pipe}.",
 								"Deities: {@deity Gond} assumes PHB Forgotten Realms pantheon by default, {@deity Gruumsh|nonhuman} can have pantheons added with a pipe, {@deity Ioun|dawn war|dmg} can have sources added with another pipe, {@deity Ioun|dawn war|dmg|and optional link text added with another pipe}.",
 								"Variant rules: {@variantrule Diagonals} assumes DMG by default, {@variantrule Multiclassing|phb} can have sources added with a pipe, {@variantrule Multiclassing|phb|and optional link text added with another pipe}.",
-								"Vehicles: {@vehicle Galley} assumes GoS by default, {@vehicle Galley|UAOfShipsAndSea} can have sources added with a pipe, {@vehicle Galley|GoS|and optional link text added with another pipe}.",
+								"Vehicles: {@vehicle Galley} assumes GoS by default, {@vehicle Galley|GoS} can have sources added with a pipe, {@vehicle Galley|GoS|and optional link text added with another pipe}.",
 								"Vehicle upgrades: {@vehupgrade Guardian Figurehead} assumes GoS by default, {@vehicle Gilded Death Armor|BGDIA} can have sources added with a pipe, {@vehicle Guardian Figurehead|GoS|and optional link text added with another pipe}.",
 								"Tables: {@table 25 gp Art Objects} assumes DMG by default, {@table Adventuring Gear|phb} can have sources added with a pipe, {@table Adventuring Gear|phb|and optional link text added with another pipe}.",
 								"Actions: {@action Attack} assumes PHB by default, {@action Tumble|DMG} can have sources added with a pipe, {@action Tumble|DMG|and optional link text added with another pipe}.",
 								"Languages: {@language common} assumes PHB by default, {@language Dambrathan|SCAG} can have sources added with a pipe, {@language Dambrathan|SCAG|and optional link text added with another pipe}.",
 								"Other Character Creation Options: {@charoption Anvilwrought} assumes MOT by default, {@charoption Hollow One|EGW} can have sources added with a pipe, {@charoption Hollow One|EGW|and optional link text added with another pipe}.",
-								"Recipes: {@recipe Elven Bread} assumes Heroes' Feast by default, {@recipe Elven Bread|HF} can have sources added with a pipe, {@recipe Elven Bread|HF|and optional link text added with another pipe}.",
+								"Recipes: {@recipe Elven Bread} assumes Heroes' Feast by default, {@recipe Barovian Garlic Bread|HFFotM} can have sources added with a pipe, {@recipe Barovian Garlic Bread|HFFotM|and optional link text added with another pipe}.",
 								"Decks: {@deck Deck of Many Things} assumes DMG by default, {@deck Deck of Many Things|DMG} can have sources added with a pipe, {@deck Deck of Many Things|DMG|and optional link text added with another pipe}.",
 								"Cards: {@card Vizier|Deck of Many Things} assumes DMG by default, {@card Vizier|Deck of Many Things|DMG} can have sources added with a pipe, {@card Vizier|Deck of Many Things|DMG|and optional link text added with another pipe}."
 							]
@@ -73,7 +73,7 @@
 							"type": "inset",
 							"name": "Filter Tag",
 							"entries": [
-								"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/5etools} and ask questions. Note that you can CTRL+click the \"Get link to filters\" (magnet) button on a list page to copy the @filter tag for your current filter selection.",
+								"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/5etools} and ask questions. Note that you can {@kbd CTRL}+click the \"Get link to filters\" (magnet) button on a list page to copy the @filter tag for your current filter selection.",
 								"The syntax for the @filter tag is as follows:",
 								"(open curly brace)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
 								"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts\u2014the filter values use the {@i internal} version, as you'd find in the data. So, for example, ..|school=D|.. would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ..|school=Divination|.. will not work.",
@@ -247,7 +247,7 @@
 					],
 					"colStyles": [
 						"col-6 text-center",
-						"col-4-5 text-right ",
+						"col-4-5 text-right",
 						"col-1-5"
 					],
 					"rows": [
@@ -266,7 +266,7 @@
 								"type": "list",
 								"items": [
 									"Nested entries (generally) work, too.",
-									"Although why you would put a list in a table is beyond me."
+									"Although layout may start to deteriorate with more exotic nesting."
 								]
 							},
 							"{@spell bless||Spells, on the other hand, make sense.}",
@@ -451,11 +451,10 @@
 							"type": "item",
 							"name": "Multiple entry version",
 							"entries": [
-								"This was, again, required specifically for XGE's complex traps, which can have multiple lines of text; due to their large and complex nature, one would have to presume.",
-								"Speaking of lines, this one is very long (much like the one above, which was specifically packed with superfluous information to pad it out to a decent word count) to hopefully demonstrate the effects of having to wrap a paragraph into the column, which should indent the first line of the paragraph only. Of course, if you're viewing this on an obscenely wide monitor, this will have little or no effect, so if you're in the future where 10k monitors are standard, then congratulations. Otherwise, like the rest of us plebs, you should see the desired layout.",
-								"For most uses, the single-entry version is preferred.",
-								"And here's another really long run-on sentence, just to really hammer home the effects of {@s drugs} excessive text, something I'm sure my English teacher would have a few comments about; thankfully, they're not much of a fan of Dungeons & Dragons, or even fantasy in general (needless to say, they were at best ambivalent towards the vast majority of my literary interests as a teenager; at least, as much as an English teacher can be towards a student who enjoys reading and who would choose to do it of their own volition).",
-								"What on earth did I just write"
+								"This was, again, required specifically for XGE's complex traps, which can have multiple lines of text, often long enough to wrap into multiple rows in the same column. For example:",
+								"Either portal can be neutralized with three successful DC 20 Intelligence ({@skill Arcana}) checks, but the process of analyzing a portal to disrupt it takes time. Faint runes in the ceiling and floor at both ends of the hallway are involved in the functioning of the portals. A creature must first use an action to examine a set of runes, then use a subsequent action to attempt to vandalize the runes. Each successful check reduces the sphere's damage by 11 ({@dice 2d10}), as the disrupted sphere loses speed moving through the failing portal.",
+								"Alternatively, a set of runes can be disabled with three successful castings of {@spell dispel magic} (DC 19) targeting any of the runes in the set.",
+								"If the southern portal is destroyed, the sphere slams into the south wall and comes to a halt. It blocks the door to the tomb, but the characters can escape."
 							]
 						}
 					]

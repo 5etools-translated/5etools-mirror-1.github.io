@@ -1,57 +1,18 @@
 "use strict";
 
-class RaceParser extends BaseParser {
-	static _StateMd = class {
-		constructor ({options, race}) {
-			this.options = options;
-			this.race = race;
-			this.ix = 0;
-			this.curLine = null;
-			this.stage = "name";
-			this.stack = [];
-		}
-	};
+class _ParseStateTextRace extends BaseParseStateText {
 
-	/**
-	 * Parses races from raw markdown pastes
-	 * @param inText Input text.
-	 * @param options Options object.
-	 * @param options.cbWarning Warning callback.
-	 * @param options.cbOutput Output callback.
-	 * @param options.isAppend Default output append mode.
-	 * @param options.source Entity source.
-	 * @param options.page Entity page.
-	 * @param options.titleCaseFields Array of fields to be title-cased in this entity (if enabled).
-	 * @param options.isTitleCase Whether title-case fields should be title-cased in this entity.
-	 */
-	static doParseMarkdown (inText, options) {
-		options = this._getValidOptions(options);
+}
 
-		const {toConvert, race} = this._doParseMarkdown_getInitialState(inText, options);
-		if (!toConvert) return;
-
-		const state = new this._StateMd({options, race});
-
-		for (; state.ix < toConvert.length; ++state.ix) {
-			state.curLine = toConvert[state.ix].trim();
-
-			if (ConverterUtilsMarkdown.isBlankLine(state.curLine)) continue;
-
-			switch (state.stage) {
-				case "name": this._doParseMarkdown_stepName(state); state.stage = "entries"; break;
-				case "entries": this._doParseMarkdown_stepEntries(state); break;
-				default: throw new Error(`Unknown stage "${state.stage}"`);
-			}
-		}
-
-		if (!race.entries?.length) delete race.entries;
-
-		const raceOut = this._getFinalStats(race, options);
-
-		options.cbOutput(raceOut, options.isAppend);
+class _ParseStateMarkdownRace extends BaseParseStateMarkdown {
+	constructor (...rest) {
+		super(...rest);
+		this.stack = [];
 	}
+}
 
-	static _doParseMarkdown_getInitialState (inText, options) {
+class RaceParser extends BaseParser {
+	static _doParse_getInitialState (inText, options) {
 		if (!inText || !inText.trim()) {
 			options.cbWarning("No input!");
 			return {};
@@ -69,13 +30,117 @@ class RaceParser extends BaseParser {
 		return {toConvert, race};
 	}
 
+	/* -------------------------------------------- */
+
+	/**
+	 * Parses races from raw text pastes
+	 * @param inText Input text.
+	 * @param options Options object.
+	 * @param options.cbWarning Warning callback.
+	 * @param options.cbOutput Output callback.
+	 * @param options.isAppend Default output append mode.
+	 * @param options.source Entity source.
+	 * @param options.page Entity page.
+	 * @param options.titleCaseFields Array of fields to be title-cased in this entity (if enabled).
+	 * @param options.isTitleCase Whether title-case fields should be title-cased in this entity.
+	 */
+	static doParseText (inText, options) {
+		options = this._getValidOptions(options);
+
+		const {toConvert, race} = this._doParse_getInitialState(inText, options);
+		if (!toConvert) return;
+
+		const state = new _ParseStateTextRace({toConvert, options, entity: race});
+
+		state.doPreLoop();
+		for (; state.ixToConvert < toConvert.length; ++state.ixToConvert) {
+			state.initCurLine();
+			if (state.isSkippableCurLine()) continue;
+
+			switch (state.stage) {
+				case "name": this._doParseText_stepName(state); state.stage = "entries"; break;
+				case "entries": this._doParseText_stepEntries(state); break;
+				default: throw new Error(`Unknown stage "${state.stage}"`);
+			}
+		}
+		state.doPostLoop();
+
+		if (!race.entries?.length) delete race.entries;
+
+		const raceOut = this._getFinalEntity(race, options);
+
+		options.cbOutput(raceOut, options.isAppend);
+	}
+
+	static _doParseText_stepName (state) {
+		const name = state.curLine.replace(/ Traits$/i, "");
+		state.entity.name = this._getAsTitle("name", name, state.options.titleCaseFields, state.options.isTitleCase);
+
+		// region Skip over intro line
+		const nextLineMeta = state.getNextLineMeta();
+
+		if (!/[yY]ou have the following traits[.:]$/.test(nextLineMeta.nxtLine.trim())) return;
+
+		state.ixToConvert = nextLineMeta.ixToConvertNext;
+		// endregion
+	}
+
+	static _doParseText_stepEntries (state) {
+		const ptrI = {_: state.ixToConvert};
+		state.entity.entries = EntryConvert.coalesceLines(
+			ptrI,
+			state.toConvert,
+		);
+		state.ixToConvert = ptrI._;
+	}
+
+	/* -------------------------------------------- */
+
+	/**
+	 * Parses races from raw markdown pastes
+	 * @param inText Input text.
+	 * @param options Options object.
+	 * @param options.cbWarning Warning callback.
+	 * @param options.cbOutput Output callback.
+	 * @param options.isAppend Default output append mode.
+	 * @param options.source Entity source.
+	 * @param options.page Entity page.
+	 * @param options.titleCaseFields Array of fields to be title-cased in this entity (if enabled).
+	 * @param options.isTitleCase Whether title-case fields should be title-cased in this entity.
+	 */
+	static doParseMarkdown (inText, options) {
+		options = this._getValidOptions(options);
+
+		const {toConvert, race} = this._doParse_getInitialState(inText, options);
+		if (!toConvert) return;
+
+		const state = new _ParseStateMarkdownRace({toConvert, options, entity: race});
+
+		for (; state.ixToConvert < toConvert.length; ++state.ixToConvert) {
+			state.initCurLine();
+			if (state.isSkippableCurLine()) continue;
+
+			switch (state.stage) {
+				case "name": this._doParseMarkdown_stepName(state); state.stage = "entries"; break;
+				case "entries": this._doParseMarkdown_stepEntries(state); break;
+				default: throw new Error(`Unknown stage "${state.stage}"`);
+			}
+		}
+
+		if (!race.entries?.length) delete race.entries;
+
+		const raceOut = this._getFinalEntity(race, options);
+
+		options.cbOutput(raceOut, options.isAppend);
+	}
+
 	static _doParseMarkdown_stepName (state) {
 		state.curLine = ConverterUtilsMarkdown.getNoHashes(state.curLine);
-		state.race.name = this._getAsTitle("name", state.curLine, state.options.titleCaseFields, state.options.isTitleCase);
+		state.entity.name = this._getAsTitle("name", state.curLine, state.options.titleCaseFields, state.options.isTitleCase);
 	}
 
 	static _doParseMarkdown_stepEntries (state) {
-		state.race.entries = state.race.entries || [];
+		state.entity.entries = state.entity.entries || [];
 
 		if (ConverterUtilsMarkdown.isInlineHeader(state.curLine)) {
 			while (state.stack.length) state.stack.pop();
@@ -84,7 +149,7 @@ class RaceParser extends BaseParser {
 			if (state.stack.length) delete nxt.type;
 			state.stack.push(nxt);
 
-			state.race.entries.push(nxt);
+			state.entity.entries.push(nxt);
 
 			const [name, text] = ConverterUtilsMarkdown.getCleanTraitText(state.curLine);
 			nxt.name = name;
@@ -101,7 +166,7 @@ class RaceParser extends BaseParser {
 					state.stack.last().entries.push(lst);
 					state.stack.push(lst);
 				} else {
-					state.race.entries.push(lst);
+					state.entity.entries.push(lst);
 					state.stack.push(lst);
 				}
 			}
@@ -116,7 +181,7 @@ class RaceParser extends BaseParser {
 				state.stack.last().items.push(nxt);
 
 				const [name, text] = ConverterUtilsMarkdown.getCleanTraitText(state.curLine);
-				nxt.name = `${name}.`;
+				nxt.name = name;
 				nxt.entry = ConverterUtilsMarkdown.getNoLeadingSymbols(text);
 			} else {
 				state.stack.last().items.push(ConverterUtilsMarkdown.getNoLeadingSymbols(state.curLine));
@@ -132,21 +197,20 @@ class RaceParser extends BaseParser {
 			return;
 		}
 
-		state.race.entries.push(ConverterUtilsMarkdown.getNoLeadingSymbols(state.curLine));
+		state.entity.entries.push(ConverterUtilsMarkdown.getNoLeadingSymbols(state.curLine));
 	}
 
-	static _getFinalStats (race, options) {
+	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
+	static _getFinalEntity (race, options) {
 		this._doRacePostProcess(race, options);
 		return PropOrder.getOrdered(race, race.__prop || "race");
 	}
 
-	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
 	static _doRacePostProcess (race, options) {
 		if (!race.entries) return;
 
 		// region Tag
 		EntryConvert.tryRun(race, "entries");
-		ArtifactPropertiesTag.tryRun(race);
 		TagJsons.mutTagObject(race, {keySet: new Set(["entries"]), isOptimistic: false});
 		// endregion
 

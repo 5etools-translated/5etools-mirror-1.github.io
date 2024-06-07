@@ -3,7 +3,6 @@
 class ItemsSublistManager extends SublistManager {
 	constructor () {
 		super({
-			sublistClass: "subitems",
 			sublistListOptions: {
 				fnSort: PageFilterItems.sortItems,
 			},
@@ -27,13 +26,42 @@ class ItemsSublistManager extends SublistManager {
 		return super.pCreateSublist();
 	}
 
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-6 pl-0",
+				colStyle: "",
+			}),
+			new SublistCellTemplate({
+				name: "Weight",
+				css: "ve-text-center col-2",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "Cost",
+				css: "ve-text-center col-2",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "Number",
+				css: "ve-text-center col-2 pr-0",
+				colStyle: "text-center",
+			}),
+		];
+	}
+
 	pGetSublistItem (item, hash, {count = 1} = {}) {
+		const cellsText = [
+			item.name,
+			Parser.itemWeightToFull(item, true) || "\u2014",
+			item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014",
+		];
+
 		const $dispCount = $(`<span class="ve-text-center col-2 pr-0">${count}</span>`);
 		const $ele = $$`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-6 pl-0">${item.name}</span>
-				<span class="ve-text-center col-2">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-				<span class="ve-text-center col-2">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				${this.constructor._getRowCellsHtml({values: cellsText, templates: this.constructor._ROW_TEMPLATE.slice(0, 3)})}
 				${$dispCount}
 			</a>
 		</div>`
@@ -54,6 +82,7 @@ class ItemsSublistManager extends SublistManager {
 				count,
 				$elesCount: [$dispCount],
 				entity: item,
+				mdRow: [...cellsText, ({listItem}) => listItem.data.count],
 			},
 		);
 		return listItem;

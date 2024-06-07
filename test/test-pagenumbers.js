@@ -42,6 +42,11 @@ const BLOCKLIST_SOURCES = new Set([
 	Parser.SRC_HAT_TG,
 	Parser.SRC_HAT_LMI,
 	Parser.SRC_LK,
+	Parser.SRC_AATM,
+	Parser.SRC_HFStCM,
+
+	// N.b.: other MCV source creatures mysteriously have page numbers on Beyond
+	Parser.SRC_MCV4EC,
 	// endregion
 
 	// region Sources which are screens, and therefore "pageless"
@@ -91,10 +96,11 @@ function run ({isModificationMode = false} = {}) {
 							});
 						}
 
-						if (noPage.length) {
+						if (noPage.length && isModificationMode) {
 							console.log(`${file}:`);
-							if (isModificationMode) console.log(`\t${noPage.length} missing page number${noPage.length === 1 ? "" : "s"}`);
+							console.log(`\t${noPage.length} missing page number${noPage.length === 1 ? "" : "s"}`);
 						}
+
 						noPage
 							.forEach(it => {
 								const ident = `${k.padEnd(20, " ")} ${SourceUtil.getEntitySource(it).padEnd(32, " ")} ${it.name}`;

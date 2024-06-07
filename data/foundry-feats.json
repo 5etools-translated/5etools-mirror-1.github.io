@@ -1,90 +1,6 @@
 {
 	"feat": [
 		{
-			"name": "Dragon Wings",
-			"source": "UAFeatsForRaces",
-			"effects": [
-				{
-					"name": "Flying Speed",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "data.attributes.movement.fly",
-							"mode": "UPGRADE",
-							"value": 20
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Mobile",
-			"source": "PHB",
-			"effects": [
-				{
-					"name": "Movement Speed Increase",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "data.attributes.movement.walk",
-							"mode": "ADD",
-							"value": 10
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Squat Nimbleness",
-			"source": "UAFeatsForRaces",
-			"effects": [
-				{
-					"name": "Movement Speed Increase",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "data.attributes.movement.walk",
-							"mode": "ADD",
-							"value": 5
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Squat Nimbleness",
-			"source": "XGE",
-			"effects": [
-				{
-					"name": "Movement Speed Increase",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "data.attributes.movement.walk",
-							"mode": "ADD",
-							"value": 5
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Observant",
-			"source": "PHB",
-			"effects": [
-				{
-					"transfer": true,
-					"changes": [
-						{
-							"key": "flags.dnd5e.observantFeat",
-							"mode": "OVERRIDE",
-							"value": true
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "Alert",
 			"source": "PHB",
 			"effects": [
@@ -95,6 +11,23 @@
 							"key": "flags.dnd5e.initiativeAlert",
 							"mode": "OVERRIDE",
 							"value": true
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Dual Wielder",
+			"source": "PHB",
+			"effects": [
+				{
+					"name": "AC Increase",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "data.attributes.ac.bonus",
+							"mode": "ADD",
+							"value": "+ 1"
 						}
 					]
 				}
@@ -117,23 +50,6 @@
 			]
 		},
 		{
-			"name": "Tough",
-			"source": "PHB",
-			"effects": [
-				{
-					"name": "HP Increase",
-					"transfer": true,
-					"changes": [
-						{
-							"key": "system.attributes.hp.bonuses.overall",
-							"mode": "ADD",
-							"value": "2 * @details.level"
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "Lucky",
 			"source": "PHB",
 			"system": {
@@ -147,17 +63,50 @@
 			}
 		},
 		{
-			"name": "Dual Wielder",
+			"name": "Mobile",
 			"source": "PHB",
 			"effects": [
 				{
-					"name": "AC Increase",
+					"name": "Movement Speed Increase",
 					"transfer": true,
 					"changes": [
 						{
-							"key": "data.attributes.ac.bonus",
+							"key": "data.attributes.movement.walk",
 							"mode": "ADD",
-							"value": 1
+							"value": "+ 10"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Observant",
+			"source": "PHB",
+			"effects": [
+				{
+					"transfer": true,
+					"changes": [
+						{
+							"key": "flags.dnd5e.observantFeat",
+							"mode": "OVERRIDE",
+							"value": true
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Squat Nimbleness",
+			"source": "XGE",
+			"effects": [
+				{
+					"name": "Movement Speed Increase",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "data.attributes.movement.walk",
+							"mode": "ADD",
+							"value": "+ 5"
 						}
 					]
 				}
@@ -174,6 +123,23 @@
 							"key": "flags.dnd5e.tavernBrawlerFeat",
 							"mode": "OVERRIDE",
 							"value": true
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tough",
+			"source": "PHB",
+			"effects": [
+				{
+					"name": "HP Increase",
+					"transfer": true,
+					"changes": [
+						{
+							"key": "system.attributes.hp.bonuses.overall",
+							"mode": "ADD",
+							"value": "+ (2 * @details.level)"
 						}
 					]
 				}

@@ -10,8 +10,24 @@ class TablesSublistManager extends SublistManager {
 		});
 	}
 
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-12 px-0",
+				colStyle: "",
+			}),
+		];
+	}
+
 	pGetSublistItem (it, hash) {
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col"><a href="#${hash}" class="lst--border lst__row-inner" title="${it.name}"><span class="bold col-12 px-0">${it.name}</span></a></div>`)
+		const cellsText = [it.name];
+
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner" title="${it.name}">
+				${this.constructor._getRowCellsHtml({values: cellsText})}
+			</a>
+		</div>`)
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
 			.click(evt => this._listSub.doSelect(listItem, evt));
 
@@ -24,6 +40,7 @@ class TablesSublistManager extends SublistManager {
 			},
 			{
 				entity: it,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;

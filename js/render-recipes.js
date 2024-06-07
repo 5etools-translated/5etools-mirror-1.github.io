@@ -2,30 +2,26 @@
 
 class RenderRecipes {
 	/**
-	 * @param it
+	 * @param ent
 	 * @param [opts]
 	 * @param [opts.$selScaleFactor]
 	 */
-	static $getRenderedRecipe (it, opts) {
+	static $getRenderedRecipe (ent, opts) {
 		opts = opts || {};
 
-		const ptFluff = this._getFluffHtml(it);
+		const ptFluff = this._getFluffHtml(ent);
 
-		const ptTime = Renderer.recipe.getTimeHtml(it);
-		const {ptMakes, ptServes} = Renderer.recipe.getMakesServesHtml(it);
+		const entriesMeta = Renderer.recipe.getRecipeRenderableEntriesMeta(ent);
 
-		const $ptMakes = ptMakes ? $(ptMakes) : null;
-		const $ptServes = ptServes ? $(ptServes) : null;
+		const ptTime = Renderer.recipe.getTimeHtml(ent, {entriesMeta});
+		const {ptMakes, ptServes} = Renderer.recipe.getMakesServesHtml(ent, {entriesMeta});
 
-		if (opts.$selScaleFactor) {
-			if ($ptMakes) $ptMakes.append($$`<div class="ve-flex-v-center ml-2">(${opts.$selScaleFactor})</div>`);
-			else if ($ptServes) $ptServes.append($$`<div class="ve-flex-v-center ml-2">(${opts.$selScaleFactor})</div>`);
-		}
+		const $wrpSelScaleFactor = $$`<div class="ve-flex-v-center ml-2 mb-2">(${opts.$selScaleFactor})</div>`;
 
 		return $$`
 		${Renderer.utils.getBorderTr()}
-		${Renderer.utils.getExcludedTr({entity: it, dataProp: "recipe"})}
-		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_RECIPES})}
+		${Renderer.utils.getExcludedTr({entity: ent, dataProp: "recipe"})}
+		${Renderer.utils.getNameTr(ent, {page: UrlUtil.PG_RECIPES})}
 
 		${ptFluff ? `<tr class="mobile__hidden recipes__wrp-fluff"><td colspan="6">${ptFluff}</td></tr>
 		<tr class="mobile__hidden"><td class="divider" colspan="6"><div></div></td></tr>` : ""}
@@ -35,24 +31,24 @@ class RenderRecipes {
 			<div class="w-33 pl-3 pr-2 ve-flex-col">
 				${ptTime}
 
-				${$ptMakes}
-				${$ptServes}
+				${(ptMakes || ptServes) ? $$`<div class="ve-flex-v-center">${ptMakes || ptServes}${$wrpSelScaleFactor}</div>` : ""}
+				${(ptMakes && ptServes) ? ptServes : ""}
 				${!(ptMakes || ptServes) && opts.$selScaleFactor ? $$`<div class="mb-2">Scale: ${opts.$selScaleFactor}</div>` : ""}
 
-				<div class="rd-recipes__wrp-ingredients ${ptMakes || ptServes || opts.$selScaleFactor ? "mt-1" : ""}">${Renderer.get().render({entries: it._fullIngredients}, 0)}</div>
+				<div class="rd-recipes__wrp-ingredients ${ptMakes || ptServes || opts.$selScaleFactor ? "mt-1" : ""}">${Renderer.get().render(entriesMeta.entryIngredients, 0)}</div>
 
-				${it._fullEquipment?.length ? `<div class="rd-recipes__wrp-ingredients mt-4"><div class="ve-flex-vh-center bold mb-1 small-caps">Equipment</div><div>${Renderer.get().render({entries: it._fullEquipment})}</div></div>` : ""}
+				${entriesMeta.entryEquipment ? `<div class="rd-recipes__wrp-ingredients mt-4"><div class="ve-flex-vh-center bold mb-1 small-caps">Equipment</div><div>${Renderer.get().render(entriesMeta.entryEquipment)}</div></div>` : ""}
 
-				${it.noteCook ? `<div class="w-100 ve-flex-col mt-4"><div class="ve-flex-vh-center bold mb-1 small-caps">Cook's Notes</div><div class="italic">${Renderer.get().render({entries: it.noteCook})}</div></div>` : ""}
+				${entriesMeta.entryCooksNotes ? `<div class="w-100 ve-flex-col mt-4"><div class="ve-flex-vh-center bold mb-1 small-caps">Cook's Notes</div><div class="italic">${Renderer.get().render(entriesMeta.entryCooksNotes)}</div></div>` : ""}
 			</div>
 
 			<div class="w-66 pr-3 pl-5 rd-recipes__wrp-instructions">
-				${Renderer.get().setFirstSection(true).render({entries: it.instructions}, 2)}
+				${Renderer.get().setFirstSection(true).render(entriesMeta.entryInstructions, 2)}
 			</div>
 		</div>
 		</td></tr>
 
-		${Renderer.utils.getPageTr(it)}
+		${Renderer.utils.getPageTr(ent)}
 		${Renderer.utils.getBorderTr()}
 		`;
 	}
@@ -60,8 +56,13 @@ class RenderRecipes {
 	static _getFluffHtml (it) {
 		if (!it.fluff?.images?.length) return null;
 
+		const fluffReduced = {
+			...it.fluff,
+			images: [it.fluff.images[0]],
+		};
+
 		Renderer.get().setLazyImages(true);
-		const out = Renderer.utils.getFluffTabContent({entity: it, isImageTab: true, fluff: it.fluff});
+		const out = Renderer.utils.getFluffTabContent({entity: it, isImageTab: true, fluff: fluffReduced});
 		Renderer.get().setLazyImages(false);
 		return out;
 	}

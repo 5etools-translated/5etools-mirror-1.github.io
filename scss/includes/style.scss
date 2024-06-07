@@ -469,10 +469,21 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 	&disp-srd {
 		font-size: 8.5px;
-		vertical-align: super;
+		align-self: start;
 		top: 2px;
 		margin-right: 1px;
-		margin-left: -2px;
+		margin-left: 2px;
+	}
+
+	&disp-source-marker {
+		margin-left: 2px;
+	}
+
+	&wrp-page {
+		margin-left: 4px;
+		font-family: "Convergence", Arial, sans-serif;
+		font-weight: 100;
+		font-size: 94%;
 	}
 
 	// region Clear button
@@ -546,7 +557,10 @@ input[type=checkbox].sidemenu__row__label__cb {
 	bottom: 0;
 	color: rgba(255, 255, 255, 0.7);
 	width: 24px;
-	height: 24px;
+	// TODO(iOS)
+	// Support iOS Webclip corner
+	//   See: https://github.com/5etools-mirror-1/5etools-mirror-1.github.io/issues/122
+	height: calc(24px + calc(env(safe-area-inset-bottom, 0) / 2));
 	cursor: pointer;
 	user-select: none;
 	border: 0;
@@ -1529,17 +1543,6 @@ img.token:hover {
 	border-top-left-radius: 4px;
 }
 
-/* Psionics */
-
-.psi-order-and-talent {
-	font-style: italic;
-}
-
-.psi-focus-title {
-	font-style: italic;
-	font-weight: bold;
-}
-
 .stats-sub-header {
 	font-style: italic;
 	font-weight: bold;
@@ -1773,7 +1776,7 @@ tr.regionaleffect {
 	line-height: 2.3em;
 
 	&--large {
-		font-size: 5vmin;
+		font-size: 4vmin;
 		color: initial;
 	}
 }
@@ -2076,14 +2079,6 @@ th.border {
 		left: 7px;
 	}
 
-	&btn-find {
-		border-bottom-left-radius: 0;
-	}
-
-	&btn-goto {
-		border-bottom-right-radius: 0;
-	}
-
 	&head-chapter--active,
 	&head-section--active {
 		background: $rgb-bg--alt;
@@ -2200,72 +2195,6 @@ th.border {
 
 .life__output-wrp-border {
 	border: 1px solid rgba(0, 0, 0, 0.15);
-}
-
-.homebrew-section {
-	background-color: $rgb-bg-homebrew;
-
-	.homebrew-float {
-		float: right;
-		border: 1px dotted;
-		margin-bottom: 5px;
-		margin-left: 5px;
-		padding-right: 2px;
-		padding-left: 2px;
-		text-indent: 0;
-	}
-
-	.homebrew-old-content {
-		color: #a00;
-		margin-left: 5px;
-	}
-
-	.homebrew-notice {
-		&::before {
-			content: "Homebrew";
-		}
-	}
-}
-
-.homebrew-inline {
-	background-color: $rgb-bg-homebrew;
-	text-decoration: underline dotted;
-}
-
-.stats tr.homebrew-hover {
-	> td {
-		padding: 5px 0.3em;
-
-		> div > *:last-child {
-			margin-bottom: 0;
-		}
-	}
-}
-
-.don {
-	&__bar {
-		width: calc(100% - 40px);
-		height: 20px;
-		margin: 20px 20px 5px;
-		box-shadow: 0 0 3px 0 black;
-		border-radius: 4px;
-		border: 1px solid $rgb-border-grey;
-		background: #f0f0f0;
-	}
-
-	&__bar--home {
-		width: calc(100% - 10px);
-		height: 20px;
-		margin: 5px;
-	}
-
-	&__bar_inner {
-		height: 18px;
-		background: gold;
-		width: 0;
-		text-align: right;
-		color: $rgb-off-black;
-	}
 }
 
 .toast {
@@ -2803,10 +2732,6 @@ th.border {
 		}
 	}
 
-	.don__bar {
-		background: $rgb-bg--night;
-	}
-
 	.input-group-addon,
 	.form-control {
 		background: $rgb-form-control-bg--night;
@@ -3052,7 +2977,7 @@ th.border {
 
 	.stripe-odd-table > tbody > tr:nth-child(odd),
 	.stripe-even-table > tbody > tr:nth-child(even) {
-		background-color: #4e4e4e80; // pre-blend (50% opacity): 38 38 38
+		background-color: $rgb-stripe-grey--night;
 	}
 
 	#please-select-message.showing > td {
@@ -3171,18 +3096,6 @@ th.border {
 
 	.content-tab-bar {
 		background: $rgb-bg--night;
-	}
-
-	.homebrew-section {
-		background-color: $rgb-bg-homebrew--night;
-
-		.homebrew-old-content {
-			color: #f99;
-		}
-	}
-
-	.homebrew-inline {
-		background-color: $rgb-bg-homebrew--night;
 	}
 
 	.highlight {

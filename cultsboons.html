@@ -57,6 +57,7 @@
 </head>
 
 <body>
+
 <div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 <div class="viewport-wrapper">
@@ -65,10 +66,9 @@
 	<header class="hidden-xs hidden-sm page__header">
 		<div class="container ve-flex-v-baseline">
 			<h1 class="page__title no-wrap my-0">Cults &amp; Supernatural Boons</h1>
-			<p class="page__subtitle no-wrap my-0" id="page__subtitle">Search by name on the left, click to display on the right.</p>
+			<p class="page__subtitle no-wrap my-0" id="page__subtitle">Search by name on the left, click a name to display on the right.</p>
 		</div>
 	</header>
-
 	<nav class="container page__nav" id="navigation">
 		<ul class="nav nav-pills page__nav-inner" id="navbar"></ul>
 	</nav>
@@ -76,7 +76,6 @@
 	<div class="view-col-group--cancer h-100 mh-0">
 		<div class="container view-col-wrapper view-col-wrapper--cancer">
 			<div class="view-col" id="listcontainer">
-
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
 						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
@@ -93,8 +92,10 @@
 					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source</button>
 				</div>
 
-				<div class="list list--stats cultsboons"></div>
+				<div id="list" class="list list--stats"></div>
 			</div>
+
+			<div class="cancer__wrp-mobile-1 cancer__anchor"><div class="cancer__disp-cancer"></div><!--5ETOOLS_AD_MOB_PLAYER_1--></div>
 
 			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist sublist--resizable no-print">
@@ -103,16 +104,21 @@
 						<button class="col-2 sort btn btn-default btn-xs" data-sort="subType">Subtype</button>
 						<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name</button>
 					</div>
-					<div class="list subcultsboons">
-						<!-- populate with JS -->
-					</div>
+
+					<div id="sublist" class="list"></div>
 				</div>
 
-				<div class="wrp-stat-tab">
+				<div class="wrp-stat-tab" id="stat-tabs">
 					<div id="tabs-right"></div>
 				</div>
 
-				<div class="wrp-stats-table"><table id="pagecontent" class="w-100 stats"></table></div>
+				<div id="wrp-pagecontent" class="wrp-stats-table">
+					<table id="pagecontent" class="w-100 stats">
+						<tr><th class="border" colspan="6"></th></tr>
+						<tr><td colspan="6" class="initial-message">Select an entry from the list to view it here</td></tr>
+						<tr><th class="border" colspan="6"></th></tr>
+					</table>
+				</div>
 
 				<div class="ve-text-center mt-2 no-print">
 					<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
@@ -120,8 +126,11 @@
 			</div>
 		</div>
 	</div>
-</div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
+</div>
+
+<!--5ETOOLS_SCRIPT_ANCHOR-->
 <!--5ETOOLS_AD_ADHESION-->
+
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="js/parser.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
@@ -140,10 +149,11 @@
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/hist.js"></script>
 <script type="text/javascript" src="js/listpage.js"></script>
+<script type="text/javascript" src="js/filter-common.js"></script>
 <script type="text/javascript" src="js/filter-cultsboons.js"></script>
 <script type="text/javascript" src="js/cultsboons.js"></script>
 <script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
-</body>
 
+</body>
 </html>

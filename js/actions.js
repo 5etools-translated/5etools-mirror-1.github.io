@@ -1,13 +1,28 @@
 "use strict";
 
 class ActionsSublistManager extends SublistManager {
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-8 pl-0",
+				colStyle: "",
+			}),
+			new SublistCellTemplate({
+				name: "Time",
+				css: "ve-text-center col-4 pr-0",
+				colStyle: "text-center",
+			}),
+		];
+	}
+
 	pGetSublistItem (it, hash) {
 		const time = it.time ? it.time.map(tm => PageFilterActions.getTimeText(tm)).join("/") : "\u2014";
+		const cellsText = [it.name, time];
 
 		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-8 pl-0">${it.name}</span>
-				<span class="ve-text-center col-4 pr-0">${time}</span>
+				${this.constructor._getRowCellsHtml({values: cellsText})}
 			</a>
 		</div>`)
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
@@ -23,6 +38,7 @@ class ActionsSublistManager extends SublistManager {
 			},
 			{
 				entity: it,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;

@@ -7,14 +7,33 @@ class PsionicsSublistManager extends SublistManager {
 		});
 	}
 
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-6 pl-0",
+				colStyle: "",
+			}),
+			new SublistCellTemplate({
+				name: "Type",
+				css: "col-3 ve-text-center",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "Order",
+				css: "col-3 ve-text-center pr-0",
+				colStyle: "text-center",
+			}),
+		];
+	}
+
 	pGetSublistItem (it, hash) {
 		const typeMeta = Parser.psiTypeToMeta(it.type);
+		const cellsText = [it.name, typeMeta.short, it._fOrder];
 
 		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-6 pl-0">${it.name}</span>
-				<span class="col-3">${typeMeta.short}</span>
-				<span class="col-3 ${it._fOrder === VeCt.STR_NONE ? "list-entry-none" : ""} pr-0">${it._fOrder}</span>
+				${this.constructor._getRowCellsHtml({values: cellsText})}
 			</a>
 		</div>`)
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
@@ -31,6 +50,7 @@ class PsionicsSublistManager extends SublistManager {
 			},
 			{
 				entity: it,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;
@@ -51,6 +71,8 @@ class PsionicsPage extends ListPage {
 
 			dataProps: ["psionic"],
 
+			isMarkdownPopout: true,
+
 			bookViewOptions: {
 				namePlural: "psionics",
 				pageTitle: "Psionics Book View",
@@ -62,7 +84,7 @@ class PsionicsPage extends ListPage {
 				colTransforms: {
 					name: UtilsTableview.COL_TRANSFORM_NAME,
 					source: UtilsTableview.COL_TRANSFORM_SOURCE,
-					_text: {name: "Text", transform: (it) => Renderer.psionic.getBodyText(it, Renderer.get()), flex: 3},
+					_text: {name: "Text", transform: (it) => Renderer.psionic.getBodyText(it), flex: 3},
 				},
 			},
 

@@ -1,5 +1,6 @@
 import {PANEL_TYP_INITIATIVE_TRACKER} from "./dmscreen-consts.js";
 import {DmScreenUtil} from "./dmscreen-util.js";
+import {EncounterBuilderHelpers, ListUtilBestiary} from "../utils-list-bestiary.js";
 
 const _TIME_TRACKER_MOON_SPRITE = new Image();
 export const TIME_TRACKER_MOON_SPRITE_LOADER = new Promise(resolve => {
@@ -2134,7 +2135,7 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 			exportedSublist.name = exportedSublist.name
 				|| await InputUiUtil.pGetUserString({
 					title: "Enter Encounter Name",
-					default: await EncounterBuilderSublistPlugin.pGetEncounterName(exportedSublist),
+					default: await EncounterBuilderHelpers.pGetEncounterName(exportedSublist),
 				})
 				|| "(Unnamed encounter)";
 
@@ -2637,7 +2638,6 @@ class TimeTrackerRoot_Calendar extends TimeTrackerComponent {
 		await saveManager.pMutStateFromStorage();
 
 		encounter = MiscUtil.copy(encounter);
-		await EncounterBuilderSublistPlugin.pMutLegacyData({exportedSublist: encounter.data});
 
 		if (
 			encounter.data.managerClient_isReferencable

@@ -7,11 +7,29 @@ class VariantRulesSublistManager extends SublistManager {
 		});
 	}
 
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-10 pl-0",
+				colStyle: "",
+			}),
+			new SublistCellTemplate({
+				name: "Type",
+				css: "col-3 ve-text-center pr-0",
+				colStyle: "text-center",
+			}),
+		];
+	}
+
 	pGetSublistItem (it, hash) {
-		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col"><a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="bold col-10 pl-0">${it.name}</span>
-				<span class="col-3 ve-text-center pr-0">${it.ruleType ? Parser.ruleTypeToFull(it.ruleType) : "\u2014"}</span>
-			</a></div>`)
+		const cellsText = [it.name, it.ruleType ? Parser.ruleTypeToFull(it.ruleType) : "\u2014"];
+
+		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
+			<a href="#${hash}" class="lst--border lst__row-inner">
+				${this.constructor._getRowCellsHtml({values: cellsText})}
+			</a>
+		</div>`)
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
 			.click(evt => this._listSub.doSelect(listItem, evt));
 
@@ -25,6 +43,7 @@ class VariantRulesSublistManager extends SublistManager {
 			},
 			{
 				entity: it,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;
@@ -42,6 +61,8 @@ class VariantRulesPage extends ListPage {
 			listClass: "variantrules",
 
 			dataProps: ["variantrule"],
+
+			isMarkdownPopout: true,
 		});
 	}
 

@@ -29,6 +29,79 @@ class _UtilListPage {
 	}
 }
 
+class SublistCellTemplate {
+	constructor (
+		{
+			name,
+			css,
+			colStyle,
+		},
+	) {
+		this._name = name;
+		this._css = css;
+		this._colStyle = colStyle;
+	}
+
+	get name () { return this._name; }
+	get colStyle () { return this._colStyle; }
+
+	getCss (text) {
+		return [
+			this._css,
+			text === VeCt.STR_NONE
+				? "list-entry-none"
+				: "",
+		]
+			.filter(Boolean)
+			.join(" ");
+	}
+}
+
+class SublistCell {
+	constructor (
+		{
+			text,
+			title,
+			css,
+			style,
+		},
+	) {
+		this._text = text;
+		this._title = title;
+		this._css = css;
+		this._style = style;
+	}
+
+	static renderHtml ({templates, cell, ix}) {
+		const text = cell instanceof SublistCell ? cell._text : cell;
+		const title = cell instanceof SublistCell ? cell._title : null;
+		const cssCell = cell instanceof SublistCell ? cell._css : null;
+		const style = cell instanceof SublistCell ? cell._style : null;
+
+		const css = [
+			templates[ix].getCss(text),
+			cssCell,
+		]
+			.filter(Boolean)
+			.join(" ");
+
+		const attrs = [
+			`class="${css}"`,
+			title ? `title="${title.qq()}"` : "",
+			style ? `style="${style}"` : "",
+		]
+			.filter(Boolean)
+			.join(" ");
+
+		return `<span ${attrs}>${text}</span>`;
+	}
+
+	static renderMarkdown ({listItem, cell}) {
+		cell = (typeof cell === "function") ? cell({listItem}) : cell;
+		return (cell instanceof SublistCell) ? cell._text : cell;
+	}
+}
+
 class SublistManager {
 	static _SUB_HASH_PREFIX = "sublistselected";
 
@@ -117,7 +190,7 @@ class SublistManager {
 
 		this._listSub
 			.on("updated", () => {
-				this._plugins.forEach(plugin => plugin.doPulseSublistUpdate());
+				this._plugins.forEach(plugin => plugin.onSublistUpdate());
 			});
 	}
 
@@ -223,6 +296,11 @@ class SublistManager {
 			new ContextUtil.Action(
 				"Download JSON Data",
 				() => this._pHandleJsonDownload(),
+			),
+			null,
+			new ContextUtil.Action(
+				"Copy as Markdown Table",
+				() => this._pHandleCopyAsMarkdownTable(),
 			),
 		].filter(it => it !== undefined);
 		this._contextMenuListSub = ContextUtil.getMenu(subActions);
@@ -387,6 +465,22 @@ class SublistManager {
 		DataUtil.userDownload(`${this._getDownloadName()}-data`, entities);
 	}
 
+	async _pHandleCopyAsMarkdownTable () {
+		await MiscUtil.pCopyTextToClipboard(
+			RendererMarkdown.get()
+				.render({
+					type: "table",
+					colStyles: this.constructor._getRowEntryColStyles(),
+					colLabels: this.constructor._getRowEntryColLabels(),
+					rows: this._listSub.items
+						.map(listItem => {
+							return listItem.data.mdRow
+								.map(cell => SublistCell.renderMarkdown({listItem, cell}));
+						}),
+				}),
+		);
+	}
+
 	async pHandleClick_new (evt) {
 		const exportableSublist = await this.pGetExportableSublist({isForceIncludePlugins: true});
 		const exportableSublistMemory = await this.pGetExportableSublist({isForceIncludePlugins: true, isMemoryOnly: true});
@@ -442,7 +536,7 @@ class SublistManager {
 	}
 
 	async pHandleClick_upload ({isAdditive = false} = {}) {
-		const {jsons, errors} = await DataUtil.pUserUpload({expectedFileTypes: [this._getDownloadFileType()]});
+		const {jsons, errors} = await DataUtil.pUserUpload({expectedFileTypes: this._getUploadFileTypes()});
 
 		DataUtil.doHandleFileLoadErrorsGeneric(errors);
 
@@ -459,10 +553,22 @@ class SublistManager {
 		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
 	}
 
+	_getDownloadFileTypeBase () {
+		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
+	}
+
 	_getDownloadFileType () {
 		const fromPlugin = this._plugins.first(plugin => plugin.getDownloadFileType());
 		if (fromPlugin) return fromPlugin;
-		return `${UrlUtil.getCurrentPage().replace(".html", "")}-sublist`;
+		return this._getDownloadFileTypeBase();
+	}
+
+	_getUploadFileTypes () {
+		const fromPlugin = this._plugins.first(plugin => plugin.getUploadFileTypes({
+			downloadFileTypeBase: this._getDownloadFileTypeBase(),
+		}));
+		if (fromPlugin) return fromPlugin;
+		return [this._getDownloadFileType()];
 	}
 
 	async pSetFromSubHashes (subHashes, pFnPreLoad) {
@@ -581,7 +687,11 @@ class SublistManager {
 	}
 
 	async _pFinaliseSublist ({isNoSave = false} = {}) {
-		this._listSub.update();
+		const isUpdateFired = this._listSub.update();
+
+		// Manually trigger plugin updates if the list failed to do so
+		if (!isUpdateFired) this._plugins.forEach(plugin => plugin.onSublistUpdate());
+
 		this._updateSublistVisibility();
 		this._onSublistChange();
 		if (!isNoSave) await this._pSaveSublist();
@@ -667,15 +777,24 @@ class SublistManager {
 
 		const page = UrlUtil.getCurrentPage();
 
-		for (const it of list.items) {
-			let toSend = await DataLoader.pCacheAndGetHash(page, it.h);
-
-			toSend = await Renderer.hover.pApplyCustomHashId(UrlUtil.getCurrentPage(), toSend, it.customHashId);
-
-			await ExtensionUtil._doSend("entity", {page, entity: toSend});
+		for (const serialItem of list.items) {
+			const {entity} = await this.constructor.pDeserializeExportedSublistItem(serialItem);
+			await ExtensionUtil._doSend("entity", {page, entity});
 		}
 
 		JqueryUtil.doToast(`Attempted to send ${len} item${len === 1 ? "" : "s"} to Foundry.`);
+	}
+
+	static async pDeserializeExportedSublistItem (serialItem) {
+		const page = UrlUtil.getCurrentPage();
+		const entityBase = await DataLoader.pCacheAndGetHash(page, serialItem.h);
+		return {
+			entity: await Renderer.hover.pApplyCustomHashId(page, entityBase, serialItem.customHashId),
+			entityBase: serialItem.customHashId != null ? entityBase : null,
+			count: serialItem.c,
+			isLocked: !!serialItem.l,
+			customHashId: serialItem.customHashId,
+		};
 	}
 
 	_rollSubListed ({evt}) {
@@ -732,6 +851,29 @@ class SublistManager {
 	}
 
 	doSublistDeselectAll () { this._listSub.deselectAll(); }
+
+	/* -------------------------------------------- */
+
+	static get _ROW_TEMPLATE () { throw new Error("Unimplemented"); }
+
+	static _doValidateRowTemplateValues ({values, templates}) {
+		if (values.length !== templates.length) throw new Error(`Length of row template and row values did not match! This is a bug!`);
+	}
+
+	/**
+	 * @param values
+	 * @param {Array<SublistCellTemplate>} templates
+	 */
+	static _getRowCellsHtml ({values, templates = null}) {
+		templates = templates || this._ROW_TEMPLATE;
+		this._doValidateRowTemplateValues({values, templates});
+		return values
+			.map((val, i) => SublistCell.renderHtml({templates, cell: val, ix: i}))
+			.join("");
+	}
+
+	static _getRowEntryColLabels () { return this._ROW_TEMPLATE.map(it => it.name); }
+	static _getRowEntryColStyles () { return this._ROW_TEMPLATE.map(it => it.colStyle); }
 }
 
 class ListPageStateManager extends BaseComponent {

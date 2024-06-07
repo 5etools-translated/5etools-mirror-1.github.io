@@ -90,14 +90,20 @@ class RechargeTypeTag {
 
 		const strEntries = JSON.stringify(obj.entries, null, 2);
 
-		const mDawn = /charges? at dawn|charges? daily at dawn|charges? each day at dawn|charges and regains all of them at dawn|charges and regains[^.]+each dawn|recharging them all each dawn|charges that are replenished each dawn/gi.exec(strEntries);
+		const mLongRest = /All charges are restored when you finish a long rest/i.test(strEntries);
+		if (mLongRest) return obj.recharge = "restLong";
+
+		const mDawn = /charges? at dawn|charges? daily at dawn|charges?(?:, which (?:are|you) regain(?:ed)?)? each day at dawn|charges and regains all of them at dawn|charges and regains[^.]+each dawn|recharging them all each dawn|charges that are replenished each dawn/gi.exec(strEntries);
 		if (mDawn) return obj.recharge = "dawn";
 
-		const mDusk = /charges? daily at dusk|charges? each day at dusk/gi.exec(strEntries);
+		const mDusk = /charges? daily at dusk|charges? each (?:day at dusk|nightfall)|regains all charges at dusk/gi.exec(strEntries);
 		if (mDusk) return obj.recharge = "dusk";
 
 		const mMidnight = /charges? daily at midnight|Each night at midnight[^.]+charges/gi.exec(strEntries);
 		if (mMidnight) return obj.recharge = "midnight";
+
+		const mDecade = /regains [^ ]+ expended charge every ten years/gi.exec(strEntries);
+		if (mDecade) return obj.recharge = "decade";
 
 		if (opts.cbMan) opts.cbMan(obj.name, obj.source);
 	}
@@ -111,25 +117,33 @@ class RechargeTypeTag {
 globalThis.RechargeTypeTag = RechargeTypeTag;
 
 class RechargeAmountTag {
-	// Note that ordering is important--handle dice versions first
+	// Note that ordering is important--handle dice versions; text numbers first
 	static _PTS_CHARGES = [
 		"{@dice [^}]+}",
+		"(?:one|two|three|four|five|six|seven|eight|nine|ten)",
 		"\\d+",
 	];
 
 	static _RE_TEMPLATES_CHARGES = [
+		// region Dawn
 		[
 			"(?<charges>",
-			")[^.]*?\\b(?:charges? (?:at|each) dawn|charges? daily at dawn|charges? each day at dawn)",
+			")[^.]*?\\b(?:charges? (?:at|each) dawn|charges? daily at dawn|charges?(?:, which (?:are|you) regain(?:ed)?)? each day at dawn)",
 		],
 		[
 			"charges and regains (?<charges>",
 			") each dawn",
 		],
+		// endregion
+
+		// region Dusk
 		[
 			"(?<charges>",
-			")[^.]*?\\b(?:charges? daily at dusk|charges? each day at dusk)",
+			")[^.]*?\\b(?:charges? daily at dusk|charges? each (?:day at dusk|nightfall))",
 		],
+		// endregion
+
+		// region Midnight
 		[
 			"(?<charges>",
 			")[^.]*?\\b(?:charges? daily at midnight)",
@@ -138,6 +152,14 @@ class RechargeAmountTag {
 			"Each night at midnight[^.]+regains (?<charges>",
 			")[^.]*\\bcharges",
 		],
+		// endregion
+
+		// region Decade
+		[
+			"regains (?<charges>",
+			")[^.]*?\\b(?:charges? every ten years)",
+		],
+		// endregion
 	];
 
 	static _RES_CHARGES = null;
@@ -147,10 +169,15 @@ class RechargeAmountTag {
 		/recharging them all each dawn/i,
 		/charges that are replenished each dawn/i,
 		/regains? all expended charges (?:daily )?at dawn/i,
+		/regains all charges (?:each day )?at (?:dusk|dawn)/i,
+		/All charges are restored when you finish a (?:long|short) rest/i,
 	];
 
 	static _getRechargeAmount (str) {
-		return isNaN(str) ? str : Number(str);
+		if (!isNaN(str)) return Number(str);
+		const fromText = Parser.textToNumber(str);
+		if (!isNaN(fromText)) return fromText;
+		return str;
 	}
 
 	static _checkAndTag (obj, opts) {
@@ -202,7 +229,7 @@ class AttachedSpellTag {
 			/as if using a(?:n)? {@spell ([^}]*)} spell/gi,
 			/cast a(?:n)? {@spell ([^}]*)} spell/gi,
 			/as a(?:n)? \d..-level {@spell ([^}]*)} spell/gi,
-			/cast(?:(?: a version of)? the)? {@spell ([^}]*)}/gi,
+			/cast(?:(?: a version of)? the)?(?: spell)? {@spell ([^}]*)}/gi,
 			/cast the \d..-level version of {@spell ([^}]*)}/gi,
 			/{@spell ([^}]*)} \([^)]*\d+ charge(?:s)?\)/gi,
 		];
@@ -216,18 +243,28 @@ class AttachedSpellTag {
 			/Spells are cast at their lowest level[^.]*: [^.]*/gi,
 		];
 
-		const addTaggedSpells = str => str.replace(/{@spell ([^}]*)}/gi, (...m) => outSet.add(m[1].toSpellCase()));
-
 		regexps.forEach(re => {
 			strEntries.replace(re, (...m) => outSet.add(m[1].toSpellCase()));
 		});
 
 		regexpsSeries.forEach(re => {
-			strEntries.replace(re, (...m) => addTaggedSpells(m[0]));
+			strEntries.replace(re, (...m) => this._checkAndTag_addTaggedSpells({str: m[0], outSet}));
 		});
 
 		// region Tag spells in tables
-		const walker = MiscUtil.getWalker();
+		const walker = MiscUtil.getWalker({isNoModification: true});
+		this._checkAndTag_tables({obj, walker, outSet});
+		// endregion
+
+		obj.attachedSpells = [...outSet];
+		if (!obj.attachedSpells.length) delete obj.attachedSpells;
+	}
+
+	static _checkAndTag_addTaggedSpells ({str, outSet}) {
+		return str.replace(/{@spell ([^}]*)}/gi, (...m) => outSet.add(m[1].toSpellCase()));
+	}
+
+	static _checkAndTag_tables ({obj, walker, outSet}) {
 		const walkerHandlers = {
 			obj: [
 				(obj) => {
@@ -239,7 +276,7 @@ class AttachedSpellTag {
 					if (!hasSpellInCaption && !hasSpellInColLabels) return obj;
 
 					(obj.rows || []).forEach(r => {
-						r.forEach(c => addTaggedSpells(c));
+						r.forEach(c => this._checkAndTag_addTaggedSpells({str: c, outSet}));
 					});
 
 					return obj;
@@ -248,10 +285,6 @@ class AttachedSpellTag {
 		};
 		const cpy = MiscUtil.copy(obj);
 		walker.walk(cpy, walkerHandlers);
-		// endregion
-
-		obj.attachedSpells = [...outSet];
-		if (!obj.attachedSpells.length) delete obj.attachedSpells;
 	}
 
 	static tryRun (it, opts) {
@@ -476,7 +509,8 @@ class ItemMiscTag {
 		strEntries.replace(/you[^.]* (gain|have)? proficiency/gi, (...m) => tgt.grantsProficiency = true);
 		strEntries.replace(/you gain[^.]* following proficiencies/gi, (...m) => tgt.grantsProficiency = true);
 		strEntries.replace(/you are[^.]* considered proficient/gi, (...m) => tgt.grantsProficiency = true);
-		strEntries.replace(/[Yy]ou can speak( and understand)? [A-Z]/g, (...m) => tgt.grantsProficiency = true);
+
+		strEntries.replace(/[Yy]ou can speak( and understand)? [A-Z]/g, (...m) => tgt.grantsLanguage = true);
 	}
 }
 
@@ -619,7 +653,7 @@ class ConditionImmunityTag {
 						all.add("disease");
 					});
 
-					str.replace(/you (?:have|gain|are) (?:[^.!?]+ )?(?:immune) ([^.!?]+)/, (...m) => {
+					str.replace(/you (?:have|gain|are) (?:[^.!?]+ )?(?:immune) ([^.!?]+)/gi, (...m) => {
 						m[1].replace(/{@condition ([^}]+)}/gi, (...n) => {
 							all.add(n[1].toLowerCase());
 						});

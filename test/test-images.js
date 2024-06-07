@@ -70,7 +70,6 @@ class _TestTokenImages {
 			"rules",
 			"objects",
 			"bestiary",
-			"roll20",
 			"book",
 			"items",
 			"races",
@@ -85,6 +84,7 @@ class _TestTokenImages {
 			"recipes",
 			"feats",
 			"decks",
+			"traps",
 		]);
 
 		fs.readdirSync("./img")

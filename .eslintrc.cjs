@@ -180,5 +180,6 @@ module.exports = {
 		"prefer-template": "error",
 		"quotes": ["error", "double", {"allowTemplateLiterals": true}],
 		"no-var": "error",
+		"no-constant-binary-expression": "error",
 	},
 };

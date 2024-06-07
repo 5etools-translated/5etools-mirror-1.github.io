@@ -7,11 +7,27 @@ class RewardsSublistManager extends SublistManager {
 		});
 	}
 
+	static get _ROW_TEMPLATE () {
+		return [
+			new SublistCellTemplate({
+				name: "Type",
+				css: "col-2 pl-0 ve-text-center",
+				colStyle: "text-center",
+			}),
+			new SublistCellTemplate({
+				name: "Name",
+				css: "bold col-10 pr-0",
+				colStyle: "",
+			}),
+		];
+	}
+
 	pGetSublistItem (reward, hash) {
+		const cellsText = [reward.type, reward.name];
+
 		const $ele = $(`<div class="lst__row lst__row--sublist ve-flex-col">
 			<a href="#${hash}" class="lst--border lst__row-inner">
-				<span class="name col-2 pl-0 ve-text-center">${reward.type}</span>
-				<span class="name col-10 pr-0">${reward.name}</span>
+				${this.constructor._getRowCellsHtml({values: cellsText})}
 			</a>
 		</div>`)
 			.contextmenu(evt => this._handleSublistItemContextMenu(evt, listItem))
@@ -27,6 +43,7 @@ class RewardsSublistManager extends SublistManager {
 			},
 			{
 				entity: reward,
+				mdRow: [...cellsText],
 			},
 		);
 		return listItem;
@@ -49,6 +66,8 @@ class RewardsPage extends ListPage {
 			dataProps: ["reward"],
 
 			isPreviewable: true,
+
+			isMarkdownPopout: true,
 		});
 	}
 
